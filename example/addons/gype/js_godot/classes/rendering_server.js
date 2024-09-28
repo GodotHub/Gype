@@ -1,14 +1,15 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { GodotObject } from '@js_godot/classes/godot_object'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_texture_2d_create;
@@ -507,8 +508,7 @@ class _MethodBindings {
   method_has_feature;
 }class _RenderingServer extends GodotObject{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -518,10 +518,10 @@ class _MethodBindings {
     }
   }
   static init_method_texture_2d_create() {
-    if (!this.#_bindings.method_texture_2d_create) {
+    if (!this._bindings.method_texture_2d_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("texture_2d_create");
-      this.#_bindings.method_texture_2d_create = internal.classdb_get_method_bind(
+      this._bindings.method_texture_2d_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2010018390
@@ -529,10 +529,10 @@ class _MethodBindings {
     }
   }
   static init_method_texture_2d_layered_create() {
-    if (!this.#_bindings.method_texture_2d_layered_create) {
+    if (!this._bindings.method_texture_2d_layered_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("texture_2d_layered_create");
-      this.#_bindings.method_texture_2d_layered_create = internal.classdb_get_method_bind(
+      this._bindings.method_texture_2d_layered_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         913689023
@@ -540,10 +540,10 @@ class _MethodBindings {
     }
   }
   static init_method_texture_3d_create() {
-    if (!this.#_bindings.method_texture_3d_create) {
+    if (!this._bindings.method_texture_3d_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("texture_3d_create");
-      this.#_bindings.method_texture_3d_create = internal.classdb_get_method_bind(
+      this._bindings.method_texture_3d_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4036838706
@@ -551,10 +551,10 @@ class _MethodBindings {
     }
   }
   static init_method_texture_proxy_create() {
-    if (!this.#_bindings.method_texture_proxy_create) {
+    if (!this._bindings.method_texture_proxy_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("texture_proxy_create");
-      this.#_bindings.method_texture_proxy_create = internal.classdb_get_method_bind(
+      this._bindings.method_texture_proxy_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         41030802
@@ -562,10 +562,10 @@ class _MethodBindings {
     }
   }
   static init_method_texture_2d_update() {
-    if (!this.#_bindings.method_texture_2d_update) {
+    if (!this._bindings.method_texture_2d_update) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("texture_2d_update");
-      this.#_bindings.method_texture_2d_update = internal.classdb_get_method_bind(
+      this._bindings.method_texture_2d_update = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         999539803
@@ -573,10 +573,10 @@ class _MethodBindings {
     }
   }
   static init_method_texture_3d_update() {
-    if (!this.#_bindings.method_texture_3d_update) {
+    if (!this._bindings.method_texture_3d_update) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("texture_3d_update");
-      this.#_bindings.method_texture_3d_update = internal.classdb_get_method_bind(
+      this._bindings.method_texture_3d_update = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         684822712
@@ -584,10 +584,10 @@ class _MethodBindings {
     }
   }
   static init_method_texture_proxy_update() {
-    if (!this.#_bindings.method_texture_proxy_update) {
+    if (!this._bindings.method_texture_proxy_update) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("texture_proxy_update");
-      this.#_bindings.method_texture_proxy_update = internal.classdb_get_method_bind(
+      this._bindings.method_texture_proxy_update = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -595,10 +595,10 @@ class _MethodBindings {
     }
   }
   static init_method_texture_2d_placeholder_create() {
-    if (!this.#_bindings.method_texture_2d_placeholder_create) {
+    if (!this._bindings.method_texture_2d_placeholder_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("texture_2d_placeholder_create");
-      this.#_bindings.method_texture_2d_placeholder_create = internal.classdb_get_method_bind(
+      this._bindings.method_texture_2d_placeholder_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -606,10 +606,10 @@ class _MethodBindings {
     }
   }
   static init_method_texture_2d_layered_placeholder_create() {
-    if (!this.#_bindings.method_texture_2d_layered_placeholder_create) {
+    if (!this._bindings.method_texture_2d_layered_placeholder_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("texture_2d_layered_placeholder_create");
-      this.#_bindings.method_texture_2d_layered_placeholder_create = internal.classdb_get_method_bind(
+      this._bindings.method_texture_2d_layered_placeholder_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1394585590
@@ -617,10 +617,10 @@ class _MethodBindings {
     }
   }
   static init_method_texture_3d_placeholder_create() {
-    if (!this.#_bindings.method_texture_3d_placeholder_create) {
+    if (!this._bindings.method_texture_3d_placeholder_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("texture_3d_placeholder_create");
-      this.#_bindings.method_texture_3d_placeholder_create = internal.classdb_get_method_bind(
+      this._bindings.method_texture_3d_placeholder_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -628,10 +628,10 @@ class _MethodBindings {
     }
   }
   static init_method_texture_2d_get() {
-    if (!this.#_bindings.method_texture_2d_get) {
+    if (!this._bindings.method_texture_2d_get) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("texture_2d_get");
-      this.#_bindings.method_texture_2d_get = internal.classdb_get_method_bind(
+      this._bindings.method_texture_2d_get = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4206205781
@@ -639,10 +639,10 @@ class _MethodBindings {
     }
   }
   static init_method_texture_2d_layer_get() {
-    if (!this.#_bindings.method_texture_2d_layer_get) {
+    if (!this._bindings.method_texture_2d_layer_get) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("texture_2d_layer_get");
-      this.#_bindings.method_texture_2d_layer_get = internal.classdb_get_method_bind(
+      this._bindings.method_texture_2d_layer_get = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2705440895
@@ -650,10 +650,10 @@ class _MethodBindings {
     }
   }
   static init_method_texture_3d_get() {
-    if (!this.#_bindings.method_texture_3d_get) {
+    if (!this._bindings.method_texture_3d_get) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("texture_3d_get");
-      this.#_bindings.method_texture_3d_get = internal.classdb_get_method_bind(
+      this._bindings.method_texture_3d_get = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2684255073
@@ -661,10 +661,10 @@ class _MethodBindings {
     }
   }
   static init_method_texture_replace() {
-    if (!this.#_bindings.method_texture_replace) {
+    if (!this._bindings.method_texture_replace) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("texture_replace");
-      this.#_bindings.method_texture_replace = internal.classdb_get_method_bind(
+      this._bindings.method_texture_replace = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -672,10 +672,10 @@ class _MethodBindings {
     }
   }
   static init_method_texture_set_size_override() {
-    if (!this.#_bindings.method_texture_set_size_override) {
+    if (!this._bindings.method_texture_set_size_override) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("texture_set_size_override");
-      this.#_bindings.method_texture_set_size_override = internal.classdb_get_method_bind(
+      this._bindings.method_texture_set_size_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4288446313
@@ -683,10 +683,10 @@ class _MethodBindings {
     }
   }
   static init_method_texture_set_path() {
-    if (!this.#_bindings.method_texture_set_path) {
+    if (!this._bindings.method_texture_set_path) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("texture_set_path");
-      this.#_bindings.method_texture_set_path = internal.classdb_get_method_bind(
+      this._bindings.method_texture_set_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2726140452
@@ -694,10 +694,10 @@ class _MethodBindings {
     }
   }
   static init_method_texture_get_path() {
-    if (!this.#_bindings.method_texture_get_path) {
+    if (!this._bindings.method_texture_get_path) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("texture_get_path");
-      this.#_bindings.method_texture_get_path = internal.classdb_get_method_bind(
+      this._bindings.method_texture_get_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         642473191
@@ -705,10 +705,10 @@ class _MethodBindings {
     }
   }
   static init_method_texture_get_format() {
-    if (!this.#_bindings.method_texture_get_format) {
+    if (!this._bindings.method_texture_get_format) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("texture_get_format");
-      this.#_bindings.method_texture_get_format = internal.classdb_get_method_bind(
+      this._bindings.method_texture_get_format = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1932918979
@@ -716,10 +716,10 @@ class _MethodBindings {
     }
   }
   static init_method_texture_set_force_redraw_if_visible() {
-    if (!this.#_bindings.method_texture_set_force_redraw_if_visible) {
+    if (!this._bindings.method_texture_set_force_redraw_if_visible) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("texture_set_force_redraw_if_visible");
-      this.#_bindings.method_texture_set_force_redraw_if_visible = internal.classdb_get_method_bind(
+      this._bindings.method_texture_set_force_redraw_if_visible = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -727,10 +727,10 @@ class _MethodBindings {
     }
   }
   static init_method_texture_rd_create() {
-    if (!this.#_bindings.method_texture_rd_create) {
+    if (!this._bindings.method_texture_rd_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("texture_rd_create");
-      this.#_bindings.method_texture_rd_create = internal.classdb_get_method_bind(
+      this._bindings.method_texture_rd_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1434128712
@@ -738,10 +738,10 @@ class _MethodBindings {
     }
   }
   static init_method_texture_get_rd_texture() {
-    if (!this.#_bindings.method_texture_get_rd_texture) {
+    if (!this._bindings.method_texture_get_rd_texture) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("texture_get_rd_texture");
-      this.#_bindings.method_texture_get_rd_texture = internal.classdb_get_method_bind(
+      this._bindings.method_texture_get_rd_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2790148051
@@ -749,10 +749,10 @@ class _MethodBindings {
     }
   }
   static init_method_texture_get_native_handle() {
-    if (!this.#_bindings.method_texture_get_native_handle) {
+    if (!this._bindings.method_texture_get_native_handle) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("texture_get_native_handle");
-      this.#_bindings.method_texture_get_native_handle = internal.classdb_get_method_bind(
+      this._bindings.method_texture_get_native_handle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1834114100
@@ -760,10 +760,10 @@ class _MethodBindings {
     }
   }
   static init_method_shader_create() {
-    if (!this.#_bindings.method_shader_create) {
+    if (!this._bindings.method_shader_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("shader_create");
-      this.#_bindings.method_shader_create = internal.classdb_get_method_bind(
+      this._bindings.method_shader_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -771,10 +771,10 @@ class _MethodBindings {
     }
   }
   static init_method_shader_set_code() {
-    if (!this.#_bindings.method_shader_set_code) {
+    if (!this._bindings.method_shader_set_code) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("shader_set_code");
-      this.#_bindings.method_shader_set_code = internal.classdb_get_method_bind(
+      this._bindings.method_shader_set_code = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2726140452
@@ -782,10 +782,10 @@ class _MethodBindings {
     }
   }
   static init_method_shader_set_path_hint() {
-    if (!this.#_bindings.method_shader_set_path_hint) {
+    if (!this._bindings.method_shader_set_path_hint) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("shader_set_path_hint");
-      this.#_bindings.method_shader_set_path_hint = internal.classdb_get_method_bind(
+      this._bindings.method_shader_set_path_hint = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2726140452
@@ -793,10 +793,10 @@ class _MethodBindings {
     }
   }
   static init_method_shader_get_code() {
-    if (!this.#_bindings.method_shader_get_code) {
+    if (!this._bindings.method_shader_get_code) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("shader_get_code");
-      this.#_bindings.method_shader_get_code = internal.classdb_get_method_bind(
+      this._bindings.method_shader_get_code = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         642473191
@@ -804,10 +804,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_shader_parameter_list() {
-    if (!this.#_bindings.method_get_shader_parameter_list) {
+    if (!this._bindings.method_get_shader_parameter_list) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("get_shader_parameter_list");
-      this.#_bindings.method_get_shader_parameter_list = internal.classdb_get_method_bind(
+      this._bindings.method_get_shader_parameter_list = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2684255073
@@ -815,10 +815,10 @@ class _MethodBindings {
     }
   }
   static init_method_shader_get_parameter_default() {
-    if (!this.#_bindings.method_shader_get_parameter_default) {
+    if (!this._bindings.method_shader_get_parameter_default) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("shader_get_parameter_default");
-      this.#_bindings.method_shader_get_parameter_default = internal.classdb_get_method_bind(
+      this._bindings.method_shader_get_parameter_default = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2621281810
@@ -826,10 +826,10 @@ class _MethodBindings {
     }
   }
   static init_method_shader_set_default_texture_parameter() {
-    if (!this.#_bindings.method_shader_set_default_texture_parameter) {
+    if (!this._bindings.method_shader_set_default_texture_parameter) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("shader_set_default_texture_parameter");
-      this.#_bindings.method_shader_set_default_texture_parameter = internal.classdb_get_method_bind(
+      this._bindings.method_shader_set_default_texture_parameter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4094001817
@@ -837,10 +837,10 @@ class _MethodBindings {
     }
   }
   static init_method_shader_get_default_texture_parameter() {
-    if (!this.#_bindings.method_shader_get_default_texture_parameter) {
+    if (!this._bindings.method_shader_get_default_texture_parameter) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("shader_get_default_texture_parameter");
-      this.#_bindings.method_shader_get_default_texture_parameter = internal.classdb_get_method_bind(
+      this._bindings.method_shader_get_default_texture_parameter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1464608890
@@ -848,10 +848,10 @@ class _MethodBindings {
     }
   }
   static init_method_material_create() {
-    if (!this.#_bindings.method_material_create) {
+    if (!this._bindings.method_material_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("material_create");
-      this.#_bindings.method_material_create = internal.classdb_get_method_bind(
+      this._bindings.method_material_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -859,10 +859,10 @@ class _MethodBindings {
     }
   }
   static init_method_material_set_shader() {
-    if (!this.#_bindings.method_material_set_shader) {
+    if (!this._bindings.method_material_set_shader) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("material_set_shader");
-      this.#_bindings.method_material_set_shader = internal.classdb_get_method_bind(
+      this._bindings.method_material_set_shader = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -870,10 +870,10 @@ class _MethodBindings {
     }
   }
   static init_method_material_set_param() {
-    if (!this.#_bindings.method_material_set_param) {
+    if (!this._bindings.method_material_set_param) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("material_set_param");
-      this.#_bindings.method_material_set_param = internal.classdb_get_method_bind(
+      this._bindings.method_material_set_param = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3477296213
@@ -881,10 +881,10 @@ class _MethodBindings {
     }
   }
   static init_method_material_get_param() {
-    if (!this.#_bindings.method_material_get_param) {
+    if (!this._bindings.method_material_get_param) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("material_get_param");
-      this.#_bindings.method_material_get_param = internal.classdb_get_method_bind(
+      this._bindings.method_material_get_param = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2621281810
@@ -892,10 +892,10 @@ class _MethodBindings {
     }
   }
   static init_method_material_set_render_priority() {
-    if (!this.#_bindings.method_material_set_render_priority) {
+    if (!this._bindings.method_material_set_render_priority) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("material_set_render_priority");
-      this.#_bindings.method_material_set_render_priority = internal.classdb_get_method_bind(
+      this._bindings.method_material_set_render_priority = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -903,10 +903,10 @@ class _MethodBindings {
     }
   }
   static init_method_material_set_next_pass() {
-    if (!this.#_bindings.method_material_set_next_pass) {
+    if (!this._bindings.method_material_set_next_pass) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("material_set_next_pass");
-      this.#_bindings.method_material_set_next_pass = internal.classdb_get_method_bind(
+      this._bindings.method_material_set_next_pass = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -914,10 +914,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_create_from_surfaces() {
-    if (!this.#_bindings.method_mesh_create_from_surfaces) {
+    if (!this._bindings.method_mesh_create_from_surfaces) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_create_from_surfaces");
-      this.#_bindings.method_mesh_create_from_surfaces = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_create_from_surfaces = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4291747531
@@ -925,10 +925,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_create() {
-    if (!this.#_bindings.method_mesh_create) {
+    if (!this._bindings.method_mesh_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_create");
-      this.#_bindings.method_mesh_create = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -936,10 +936,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_surface_get_format_offset() {
-    if (!this.#_bindings.method_mesh_surface_get_format_offset) {
+    if (!this._bindings.method_mesh_surface_get_format_offset) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_surface_get_format_offset");
-      this.#_bindings.method_mesh_surface_get_format_offset = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_surface_get_format_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2981368685
@@ -947,10 +947,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_surface_get_format_vertex_stride() {
-    if (!this.#_bindings.method_mesh_surface_get_format_vertex_stride) {
+    if (!this._bindings.method_mesh_surface_get_format_vertex_stride) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_surface_get_format_vertex_stride");
-      this.#_bindings.method_mesh_surface_get_format_vertex_stride = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_surface_get_format_vertex_stride = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3188363337
@@ -958,10 +958,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_surface_get_format_normal_tangent_stride() {
-    if (!this.#_bindings.method_mesh_surface_get_format_normal_tangent_stride) {
+    if (!this._bindings.method_mesh_surface_get_format_normal_tangent_stride) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_surface_get_format_normal_tangent_stride");
-      this.#_bindings.method_mesh_surface_get_format_normal_tangent_stride = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_surface_get_format_normal_tangent_stride = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3188363337
@@ -969,10 +969,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_surface_get_format_attribute_stride() {
-    if (!this.#_bindings.method_mesh_surface_get_format_attribute_stride) {
+    if (!this._bindings.method_mesh_surface_get_format_attribute_stride) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_surface_get_format_attribute_stride");
-      this.#_bindings.method_mesh_surface_get_format_attribute_stride = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_surface_get_format_attribute_stride = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3188363337
@@ -980,10 +980,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_surface_get_format_skin_stride() {
-    if (!this.#_bindings.method_mesh_surface_get_format_skin_stride) {
+    if (!this._bindings.method_mesh_surface_get_format_skin_stride) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_surface_get_format_skin_stride");
-      this.#_bindings.method_mesh_surface_get_format_skin_stride = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_surface_get_format_skin_stride = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3188363337
@@ -991,10 +991,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_add_surface() {
-    if (!this.#_bindings.method_mesh_add_surface) {
+    if (!this._bindings.method_mesh_add_surface) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_add_surface");
-      this.#_bindings.method_mesh_add_surface = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_add_surface = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1217542888
@@ -1002,10 +1002,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_add_surface_from_arrays() {
-    if (!this.#_bindings.method_mesh_add_surface_from_arrays) {
+    if (!this._bindings.method_mesh_add_surface_from_arrays) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_add_surface_from_arrays");
-      this.#_bindings.method_mesh_add_surface_from_arrays = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_add_surface_from_arrays = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2342446560
@@ -1013,10 +1013,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_get_blend_shape_count() {
-    if (!this.#_bindings.method_mesh_get_blend_shape_count) {
+    if (!this._bindings.method_mesh_get_blend_shape_count) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_get_blend_shape_count");
-      this.#_bindings.method_mesh_get_blend_shape_count = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_get_blend_shape_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2198884583
@@ -1024,10 +1024,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_set_blend_shape_mode() {
-    if (!this.#_bindings.method_mesh_set_blend_shape_mode) {
+    if (!this._bindings.method_mesh_set_blend_shape_mode) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_set_blend_shape_mode");
-      this.#_bindings.method_mesh_set_blend_shape_mode = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_set_blend_shape_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1294662092
@@ -1035,10 +1035,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_get_blend_shape_mode() {
-    if (!this.#_bindings.method_mesh_get_blend_shape_mode) {
+    if (!this._bindings.method_mesh_get_blend_shape_mode) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_get_blend_shape_mode");
-      this.#_bindings.method_mesh_get_blend_shape_mode = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_get_blend_shape_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4282291819
@@ -1046,10 +1046,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_surface_set_material() {
-    if (!this.#_bindings.method_mesh_surface_set_material) {
+    if (!this._bindings.method_mesh_surface_set_material) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_surface_set_material");
-      this.#_bindings.method_mesh_surface_set_material = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_surface_set_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2310537182
@@ -1057,10 +1057,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_surface_get_material() {
-    if (!this.#_bindings.method_mesh_surface_get_material) {
+    if (!this._bindings.method_mesh_surface_get_material) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_surface_get_material");
-      this.#_bindings.method_mesh_surface_get_material = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_surface_get_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1066463050
@@ -1068,10 +1068,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_get_surface() {
-    if (!this.#_bindings.method_mesh_get_surface) {
+    if (!this._bindings.method_mesh_get_surface) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_get_surface");
-      this.#_bindings.method_mesh_get_surface = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_get_surface = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         186674697
@@ -1079,10 +1079,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_surface_get_arrays() {
-    if (!this.#_bindings.method_mesh_surface_get_arrays) {
+    if (!this._bindings.method_mesh_surface_get_arrays) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_surface_get_arrays");
-      this.#_bindings.method_mesh_surface_get_arrays = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_surface_get_arrays = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1778388067
@@ -1090,10 +1090,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_surface_get_blend_shape_arrays() {
-    if (!this.#_bindings.method_mesh_surface_get_blend_shape_arrays) {
+    if (!this._bindings.method_mesh_surface_get_blend_shape_arrays) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_surface_get_blend_shape_arrays");
-      this.#_bindings.method_mesh_surface_get_blend_shape_arrays = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_surface_get_blend_shape_arrays = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1778388067
@@ -1101,10 +1101,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_get_surface_count() {
-    if (!this.#_bindings.method_mesh_get_surface_count) {
+    if (!this._bindings.method_mesh_get_surface_count) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_get_surface_count");
-      this.#_bindings.method_mesh_get_surface_count = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_get_surface_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2198884583
@@ -1112,10 +1112,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_set_custom_aabb() {
-    if (!this.#_bindings.method_mesh_set_custom_aabb) {
+    if (!this._bindings.method_mesh_set_custom_aabb) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_set_custom_aabb");
-      this.#_bindings.method_mesh_set_custom_aabb = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_set_custom_aabb = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3696536120
@@ -1123,10 +1123,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_get_custom_aabb() {
-    if (!this.#_bindings.method_mesh_get_custom_aabb) {
+    if (!this._bindings.method_mesh_get_custom_aabb) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_get_custom_aabb");
-      this.#_bindings.method_mesh_get_custom_aabb = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_get_custom_aabb = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         974181306
@@ -1134,10 +1134,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_clear() {
-    if (!this.#_bindings.method_mesh_clear) {
+    if (!this._bindings.method_mesh_clear) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_clear");
-      this.#_bindings.method_mesh_clear = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_clear = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2722037293
@@ -1145,10 +1145,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_surface_update_vertex_region() {
-    if (!this.#_bindings.method_mesh_surface_update_vertex_region) {
+    if (!this._bindings.method_mesh_surface_update_vertex_region) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_surface_update_vertex_region");
-      this.#_bindings.method_mesh_surface_update_vertex_region = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_surface_update_vertex_region = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2900195149
@@ -1156,10 +1156,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_surface_update_attribute_region() {
-    if (!this.#_bindings.method_mesh_surface_update_attribute_region) {
+    if (!this._bindings.method_mesh_surface_update_attribute_region) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_surface_update_attribute_region");
-      this.#_bindings.method_mesh_surface_update_attribute_region = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_surface_update_attribute_region = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2900195149
@@ -1167,10 +1167,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_surface_update_skin_region() {
-    if (!this.#_bindings.method_mesh_surface_update_skin_region) {
+    if (!this._bindings.method_mesh_surface_update_skin_region) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_surface_update_skin_region");
-      this.#_bindings.method_mesh_surface_update_skin_region = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_surface_update_skin_region = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2900195149
@@ -1178,10 +1178,10 @@ class _MethodBindings {
     }
   }
   static init_method_mesh_set_shadow_mesh() {
-    if (!this.#_bindings.method_mesh_set_shadow_mesh) {
+    if (!this._bindings.method_mesh_set_shadow_mesh) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("mesh_set_shadow_mesh");
-      this.#_bindings.method_mesh_set_shadow_mesh = internal.classdb_get_method_bind(
+      this._bindings.method_mesh_set_shadow_mesh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -1189,10 +1189,10 @@ class _MethodBindings {
     }
   }
   static init_method_multimesh_create() {
-    if (!this.#_bindings.method_multimesh_create) {
+    if (!this._bindings.method_multimesh_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("multimesh_create");
-      this.#_bindings.method_multimesh_create = internal.classdb_get_method_bind(
+      this._bindings.method_multimesh_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -1200,10 +1200,10 @@ class _MethodBindings {
     }
   }
   static init_method_multimesh_allocate_data() {
-    if (!this.#_bindings.method_multimesh_allocate_data) {
+    if (!this._bindings.method_multimesh_allocate_data) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("multimesh_allocate_data");
-      this.#_bindings.method_multimesh_allocate_data = internal.classdb_get_method_bind(
+      this._bindings.method_multimesh_allocate_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         283685892
@@ -1211,10 +1211,10 @@ class _MethodBindings {
     }
   }
   static init_method_multimesh_get_instance_count() {
-    if (!this.#_bindings.method_multimesh_get_instance_count) {
+    if (!this._bindings.method_multimesh_get_instance_count) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("multimesh_get_instance_count");
-      this.#_bindings.method_multimesh_get_instance_count = internal.classdb_get_method_bind(
+      this._bindings.method_multimesh_get_instance_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2198884583
@@ -1222,10 +1222,10 @@ class _MethodBindings {
     }
   }
   static init_method_multimesh_set_mesh() {
-    if (!this.#_bindings.method_multimesh_set_mesh) {
+    if (!this._bindings.method_multimesh_set_mesh) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("multimesh_set_mesh");
-      this.#_bindings.method_multimesh_set_mesh = internal.classdb_get_method_bind(
+      this._bindings.method_multimesh_set_mesh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -1233,10 +1233,10 @@ class _MethodBindings {
     }
   }
   static init_method_multimesh_instance_set_transform() {
-    if (!this.#_bindings.method_multimesh_instance_set_transform) {
+    if (!this._bindings.method_multimesh_instance_set_transform) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("multimesh_instance_set_transform");
-      this.#_bindings.method_multimesh_instance_set_transform = internal.classdb_get_method_bind(
+      this._bindings.method_multimesh_instance_set_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         675327471
@@ -1244,10 +1244,10 @@ class _MethodBindings {
     }
   }
   static init_method_multimesh_instance_set_transform_2d() {
-    if (!this.#_bindings.method_multimesh_instance_set_transform_2d) {
+    if (!this._bindings.method_multimesh_instance_set_transform_2d) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("multimesh_instance_set_transform_2d");
-      this.#_bindings.method_multimesh_instance_set_transform_2d = internal.classdb_get_method_bind(
+      this._bindings.method_multimesh_instance_set_transform_2d = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         736082694
@@ -1255,10 +1255,10 @@ class _MethodBindings {
     }
   }
   static init_method_multimesh_instance_set_color() {
-    if (!this.#_bindings.method_multimesh_instance_set_color) {
+    if (!this._bindings.method_multimesh_instance_set_color) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("multimesh_instance_set_color");
-      this.#_bindings.method_multimesh_instance_set_color = internal.classdb_get_method_bind(
+      this._bindings.method_multimesh_instance_set_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         176975443
@@ -1266,10 +1266,10 @@ class _MethodBindings {
     }
   }
   static init_method_multimesh_instance_set_custom_data() {
-    if (!this.#_bindings.method_multimesh_instance_set_custom_data) {
+    if (!this._bindings.method_multimesh_instance_set_custom_data) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("multimesh_instance_set_custom_data");
-      this.#_bindings.method_multimesh_instance_set_custom_data = internal.classdb_get_method_bind(
+      this._bindings.method_multimesh_instance_set_custom_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         176975443
@@ -1277,10 +1277,10 @@ class _MethodBindings {
     }
   }
   static init_method_multimesh_get_mesh() {
-    if (!this.#_bindings.method_multimesh_get_mesh) {
+    if (!this._bindings.method_multimesh_get_mesh) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("multimesh_get_mesh");
-      this.#_bindings.method_multimesh_get_mesh = internal.classdb_get_method_bind(
+      this._bindings.method_multimesh_get_mesh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3814569979
@@ -1288,10 +1288,10 @@ class _MethodBindings {
     }
   }
   static init_method_multimesh_get_aabb() {
-    if (!this.#_bindings.method_multimesh_get_aabb) {
+    if (!this._bindings.method_multimesh_get_aabb) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("multimesh_get_aabb");
-      this.#_bindings.method_multimesh_get_aabb = internal.classdb_get_method_bind(
+      this._bindings.method_multimesh_get_aabb = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         974181306
@@ -1299,10 +1299,10 @@ class _MethodBindings {
     }
   }
   static init_method_multimesh_set_custom_aabb() {
-    if (!this.#_bindings.method_multimesh_set_custom_aabb) {
+    if (!this._bindings.method_multimesh_set_custom_aabb) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("multimesh_set_custom_aabb");
-      this.#_bindings.method_multimesh_set_custom_aabb = internal.classdb_get_method_bind(
+      this._bindings.method_multimesh_set_custom_aabb = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3696536120
@@ -1310,10 +1310,10 @@ class _MethodBindings {
     }
   }
   static init_method_multimesh_get_custom_aabb() {
-    if (!this.#_bindings.method_multimesh_get_custom_aabb) {
+    if (!this._bindings.method_multimesh_get_custom_aabb) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("multimesh_get_custom_aabb");
-      this.#_bindings.method_multimesh_get_custom_aabb = internal.classdb_get_method_bind(
+      this._bindings.method_multimesh_get_custom_aabb = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         974181306
@@ -1321,10 +1321,10 @@ class _MethodBindings {
     }
   }
   static init_method_multimesh_instance_get_transform() {
-    if (!this.#_bindings.method_multimesh_instance_get_transform) {
+    if (!this._bindings.method_multimesh_instance_get_transform) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("multimesh_instance_get_transform");
-      this.#_bindings.method_multimesh_instance_get_transform = internal.classdb_get_method_bind(
+      this._bindings.method_multimesh_instance_get_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1050775521
@@ -1332,10 +1332,10 @@ class _MethodBindings {
     }
   }
   static init_method_multimesh_instance_get_transform_2d() {
-    if (!this.#_bindings.method_multimesh_instance_get_transform_2d) {
+    if (!this._bindings.method_multimesh_instance_get_transform_2d) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("multimesh_instance_get_transform_2d");
-      this.#_bindings.method_multimesh_instance_get_transform_2d = internal.classdb_get_method_bind(
+      this._bindings.method_multimesh_instance_get_transform_2d = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1324854622
@@ -1343,10 +1343,10 @@ class _MethodBindings {
     }
   }
   static init_method_multimesh_instance_get_color() {
-    if (!this.#_bindings.method_multimesh_instance_get_color) {
+    if (!this._bindings.method_multimesh_instance_get_color) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("multimesh_instance_get_color");
-      this.#_bindings.method_multimesh_instance_get_color = internal.classdb_get_method_bind(
+      this._bindings.method_multimesh_instance_get_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2946315076
@@ -1354,10 +1354,10 @@ class _MethodBindings {
     }
   }
   static init_method_multimesh_instance_get_custom_data() {
-    if (!this.#_bindings.method_multimesh_instance_get_custom_data) {
+    if (!this._bindings.method_multimesh_instance_get_custom_data) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("multimesh_instance_get_custom_data");
-      this.#_bindings.method_multimesh_instance_get_custom_data = internal.classdb_get_method_bind(
+      this._bindings.method_multimesh_instance_get_custom_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2946315076
@@ -1365,10 +1365,10 @@ class _MethodBindings {
     }
   }
   static init_method_multimesh_set_visible_instances() {
-    if (!this.#_bindings.method_multimesh_set_visible_instances) {
+    if (!this._bindings.method_multimesh_set_visible_instances) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("multimesh_set_visible_instances");
-      this.#_bindings.method_multimesh_set_visible_instances = internal.classdb_get_method_bind(
+      this._bindings.method_multimesh_set_visible_instances = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -1376,10 +1376,10 @@ class _MethodBindings {
     }
   }
   static init_method_multimesh_get_visible_instances() {
-    if (!this.#_bindings.method_multimesh_get_visible_instances) {
+    if (!this._bindings.method_multimesh_get_visible_instances) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("multimesh_get_visible_instances");
-      this.#_bindings.method_multimesh_get_visible_instances = internal.classdb_get_method_bind(
+      this._bindings.method_multimesh_get_visible_instances = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2198884583
@@ -1387,10 +1387,10 @@ class _MethodBindings {
     }
   }
   static init_method_multimesh_set_buffer() {
-    if (!this.#_bindings.method_multimesh_set_buffer) {
+    if (!this._bindings.method_multimesh_set_buffer) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("multimesh_set_buffer");
-      this.#_bindings.method_multimesh_set_buffer = internal.classdb_get_method_bind(
+      this._bindings.method_multimesh_set_buffer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2960552364
@@ -1398,10 +1398,10 @@ class _MethodBindings {
     }
   }
   static init_method_multimesh_get_buffer() {
-    if (!this.#_bindings.method_multimesh_get_buffer) {
+    if (!this._bindings.method_multimesh_get_buffer) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("multimesh_get_buffer");
-      this.#_bindings.method_multimesh_get_buffer = internal.classdb_get_method_bind(
+      this._bindings.method_multimesh_get_buffer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3964669176
@@ -1409,10 +1409,10 @@ class _MethodBindings {
     }
   }
   static init_method_skeleton_create() {
-    if (!this.#_bindings.method_skeleton_create) {
+    if (!this._bindings.method_skeleton_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("skeleton_create");
-      this.#_bindings.method_skeleton_create = internal.classdb_get_method_bind(
+      this._bindings.method_skeleton_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -1420,10 +1420,10 @@ class _MethodBindings {
     }
   }
   static init_method_skeleton_allocate_data() {
-    if (!this.#_bindings.method_skeleton_allocate_data) {
+    if (!this._bindings.method_skeleton_allocate_data) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("skeleton_allocate_data");
-      this.#_bindings.method_skeleton_allocate_data = internal.classdb_get_method_bind(
+      this._bindings.method_skeleton_allocate_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1904426712
@@ -1431,10 +1431,10 @@ class _MethodBindings {
     }
   }
   static init_method_skeleton_get_bone_count() {
-    if (!this.#_bindings.method_skeleton_get_bone_count) {
+    if (!this._bindings.method_skeleton_get_bone_count) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("skeleton_get_bone_count");
-      this.#_bindings.method_skeleton_get_bone_count = internal.classdb_get_method_bind(
+      this._bindings.method_skeleton_get_bone_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2198884583
@@ -1442,10 +1442,10 @@ class _MethodBindings {
     }
   }
   static init_method_skeleton_bone_set_transform() {
-    if (!this.#_bindings.method_skeleton_bone_set_transform) {
+    if (!this._bindings.method_skeleton_bone_set_transform) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("skeleton_bone_set_transform");
-      this.#_bindings.method_skeleton_bone_set_transform = internal.classdb_get_method_bind(
+      this._bindings.method_skeleton_bone_set_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         675327471
@@ -1453,10 +1453,10 @@ class _MethodBindings {
     }
   }
   static init_method_skeleton_bone_get_transform() {
-    if (!this.#_bindings.method_skeleton_bone_get_transform) {
+    if (!this._bindings.method_skeleton_bone_get_transform) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("skeleton_bone_get_transform");
-      this.#_bindings.method_skeleton_bone_get_transform = internal.classdb_get_method_bind(
+      this._bindings.method_skeleton_bone_get_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1050775521
@@ -1464,10 +1464,10 @@ class _MethodBindings {
     }
   }
   static init_method_skeleton_bone_set_transform_2d() {
-    if (!this.#_bindings.method_skeleton_bone_set_transform_2d) {
+    if (!this._bindings.method_skeleton_bone_set_transform_2d) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("skeleton_bone_set_transform_2d");
-      this.#_bindings.method_skeleton_bone_set_transform_2d = internal.classdb_get_method_bind(
+      this._bindings.method_skeleton_bone_set_transform_2d = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         736082694
@@ -1475,10 +1475,10 @@ class _MethodBindings {
     }
   }
   static init_method_skeleton_bone_get_transform_2d() {
-    if (!this.#_bindings.method_skeleton_bone_get_transform_2d) {
+    if (!this._bindings.method_skeleton_bone_get_transform_2d) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("skeleton_bone_get_transform_2d");
-      this.#_bindings.method_skeleton_bone_get_transform_2d = internal.classdb_get_method_bind(
+      this._bindings.method_skeleton_bone_get_transform_2d = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1324854622
@@ -1486,10 +1486,10 @@ class _MethodBindings {
     }
   }
   static init_method_skeleton_set_base_transform_2d() {
-    if (!this.#_bindings.method_skeleton_set_base_transform_2d) {
+    if (!this._bindings.method_skeleton_set_base_transform_2d) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("skeleton_set_base_transform_2d");
-      this.#_bindings.method_skeleton_set_base_transform_2d = internal.classdb_get_method_bind(
+      this._bindings.method_skeleton_set_base_transform_2d = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1246044741
@@ -1497,10 +1497,10 @@ class _MethodBindings {
     }
   }
   static init_method_directional_light_create() {
-    if (!this.#_bindings.method_directional_light_create) {
+    if (!this._bindings.method_directional_light_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("directional_light_create");
-      this.#_bindings.method_directional_light_create = internal.classdb_get_method_bind(
+      this._bindings.method_directional_light_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -1508,10 +1508,10 @@ class _MethodBindings {
     }
   }
   static init_method_omni_light_create() {
-    if (!this.#_bindings.method_omni_light_create) {
+    if (!this._bindings.method_omni_light_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("omni_light_create");
-      this.#_bindings.method_omni_light_create = internal.classdb_get_method_bind(
+      this._bindings.method_omni_light_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -1519,10 +1519,10 @@ class _MethodBindings {
     }
   }
   static init_method_spot_light_create() {
-    if (!this.#_bindings.method_spot_light_create) {
+    if (!this._bindings.method_spot_light_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("spot_light_create");
-      this.#_bindings.method_spot_light_create = internal.classdb_get_method_bind(
+      this._bindings.method_spot_light_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -1530,10 +1530,10 @@ class _MethodBindings {
     }
   }
   static init_method_light_set_color() {
-    if (!this.#_bindings.method_light_set_color) {
+    if (!this._bindings.method_light_set_color) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("light_set_color");
-      this.#_bindings.method_light_set_color = internal.classdb_get_method_bind(
+      this._bindings.method_light_set_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2948539648
@@ -1541,10 +1541,10 @@ class _MethodBindings {
     }
   }
   static init_method_light_set_param() {
-    if (!this.#_bindings.method_light_set_param) {
+    if (!this._bindings.method_light_set_param) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("light_set_param");
-      this.#_bindings.method_light_set_param = internal.classdb_get_method_bind(
+      this._bindings.method_light_set_param = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         501936875
@@ -1552,10 +1552,10 @@ class _MethodBindings {
     }
   }
   static init_method_light_set_shadow() {
-    if (!this.#_bindings.method_light_set_shadow) {
+    if (!this._bindings.method_light_set_shadow) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("light_set_shadow");
-      this.#_bindings.method_light_set_shadow = internal.classdb_get_method_bind(
+      this._bindings.method_light_set_shadow = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -1563,10 +1563,10 @@ class _MethodBindings {
     }
   }
   static init_method_light_set_projector() {
-    if (!this.#_bindings.method_light_set_projector) {
+    if (!this._bindings.method_light_set_projector) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("light_set_projector");
-      this.#_bindings.method_light_set_projector = internal.classdb_get_method_bind(
+      this._bindings.method_light_set_projector = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -1574,10 +1574,10 @@ class _MethodBindings {
     }
   }
   static init_method_light_set_negative() {
-    if (!this.#_bindings.method_light_set_negative) {
+    if (!this._bindings.method_light_set_negative) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("light_set_negative");
-      this.#_bindings.method_light_set_negative = internal.classdb_get_method_bind(
+      this._bindings.method_light_set_negative = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -1585,10 +1585,10 @@ class _MethodBindings {
     }
   }
   static init_method_light_set_cull_mask() {
-    if (!this.#_bindings.method_light_set_cull_mask) {
+    if (!this._bindings.method_light_set_cull_mask) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("light_set_cull_mask");
-      this.#_bindings.method_light_set_cull_mask = internal.classdb_get_method_bind(
+      this._bindings.method_light_set_cull_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -1596,10 +1596,10 @@ class _MethodBindings {
     }
   }
   static init_method_light_set_distance_fade() {
-    if (!this.#_bindings.method_light_set_distance_fade) {
+    if (!this._bindings.method_light_set_distance_fade) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("light_set_distance_fade");
-      this.#_bindings.method_light_set_distance_fade = internal.classdb_get_method_bind(
+      this._bindings.method_light_set_distance_fade = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1622292572
@@ -1607,10 +1607,10 @@ class _MethodBindings {
     }
   }
   static init_method_light_set_reverse_cull_face_mode() {
-    if (!this.#_bindings.method_light_set_reverse_cull_face_mode) {
+    if (!this._bindings.method_light_set_reverse_cull_face_mode) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("light_set_reverse_cull_face_mode");
-      this.#_bindings.method_light_set_reverse_cull_face_mode = internal.classdb_get_method_bind(
+      this._bindings.method_light_set_reverse_cull_face_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -1618,10 +1618,10 @@ class _MethodBindings {
     }
   }
   static init_method_light_set_bake_mode() {
-    if (!this.#_bindings.method_light_set_bake_mode) {
+    if (!this._bindings.method_light_set_bake_mode) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("light_set_bake_mode");
-      this.#_bindings.method_light_set_bake_mode = internal.classdb_get_method_bind(
+      this._bindings.method_light_set_bake_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1048525260
@@ -1629,10 +1629,10 @@ class _MethodBindings {
     }
   }
   static init_method_light_set_max_sdfgi_cascade() {
-    if (!this.#_bindings.method_light_set_max_sdfgi_cascade) {
+    if (!this._bindings.method_light_set_max_sdfgi_cascade) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("light_set_max_sdfgi_cascade");
-      this.#_bindings.method_light_set_max_sdfgi_cascade = internal.classdb_get_method_bind(
+      this._bindings.method_light_set_max_sdfgi_cascade = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -1640,10 +1640,10 @@ class _MethodBindings {
     }
   }
   static init_method_light_omni_set_shadow_mode() {
-    if (!this.#_bindings.method_light_omni_set_shadow_mode) {
+    if (!this._bindings.method_light_omni_set_shadow_mode) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("light_omni_set_shadow_mode");
-      this.#_bindings.method_light_omni_set_shadow_mode = internal.classdb_get_method_bind(
+      this._bindings.method_light_omni_set_shadow_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2552677200
@@ -1651,10 +1651,10 @@ class _MethodBindings {
     }
   }
   static init_method_light_directional_set_shadow_mode() {
-    if (!this.#_bindings.method_light_directional_set_shadow_mode) {
+    if (!this._bindings.method_light_directional_set_shadow_mode) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("light_directional_set_shadow_mode");
-      this.#_bindings.method_light_directional_set_shadow_mode = internal.classdb_get_method_bind(
+      this._bindings.method_light_directional_set_shadow_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         380462970
@@ -1662,10 +1662,10 @@ class _MethodBindings {
     }
   }
   static init_method_light_directional_set_blend_splits() {
-    if (!this.#_bindings.method_light_directional_set_blend_splits) {
+    if (!this._bindings.method_light_directional_set_blend_splits) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("light_directional_set_blend_splits");
-      this.#_bindings.method_light_directional_set_blend_splits = internal.classdb_get_method_bind(
+      this._bindings.method_light_directional_set_blend_splits = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -1673,10 +1673,10 @@ class _MethodBindings {
     }
   }
   static init_method_light_directional_set_sky_mode() {
-    if (!this.#_bindings.method_light_directional_set_sky_mode) {
+    if (!this._bindings.method_light_directional_set_sky_mode) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("light_directional_set_sky_mode");
-      this.#_bindings.method_light_directional_set_sky_mode = internal.classdb_get_method_bind(
+      this._bindings.method_light_directional_set_sky_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2559740754
@@ -1684,10 +1684,10 @@ class _MethodBindings {
     }
   }
   static init_method_light_projectors_set_filter() {
-    if (!this.#_bindings.method_light_projectors_set_filter) {
+    if (!this._bindings.method_light_projectors_set_filter) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("light_projectors_set_filter");
-      this.#_bindings.method_light_projectors_set_filter = internal.classdb_get_method_bind(
+      this._bindings.method_light_projectors_set_filter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         43944325
@@ -1695,10 +1695,10 @@ class _MethodBindings {
     }
   }
   static init_method_positional_soft_shadow_filter_set_quality() {
-    if (!this.#_bindings.method_positional_soft_shadow_filter_set_quality) {
+    if (!this._bindings.method_positional_soft_shadow_filter_set_quality) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("positional_soft_shadow_filter_set_quality");
-      this.#_bindings.method_positional_soft_shadow_filter_set_quality = internal.classdb_get_method_bind(
+      this._bindings.method_positional_soft_shadow_filter_set_quality = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3613045266
@@ -1706,10 +1706,10 @@ class _MethodBindings {
     }
   }
   static init_method_directional_soft_shadow_filter_set_quality() {
-    if (!this.#_bindings.method_directional_soft_shadow_filter_set_quality) {
+    if (!this._bindings.method_directional_soft_shadow_filter_set_quality) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("directional_soft_shadow_filter_set_quality");
-      this.#_bindings.method_directional_soft_shadow_filter_set_quality = internal.classdb_get_method_bind(
+      this._bindings.method_directional_soft_shadow_filter_set_quality = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3613045266
@@ -1717,10 +1717,10 @@ class _MethodBindings {
     }
   }
   static init_method_directional_shadow_atlas_set_size() {
-    if (!this.#_bindings.method_directional_shadow_atlas_set_size) {
+    if (!this._bindings.method_directional_shadow_atlas_set_size) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("directional_shadow_atlas_set_size");
-      this.#_bindings.method_directional_shadow_atlas_set_size = internal.classdb_get_method_bind(
+      this._bindings.method_directional_shadow_atlas_set_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -1728,10 +1728,10 @@ class _MethodBindings {
     }
   }
   static init_method_reflection_probe_create() {
-    if (!this.#_bindings.method_reflection_probe_create) {
+    if (!this._bindings.method_reflection_probe_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("reflection_probe_create");
-      this.#_bindings.method_reflection_probe_create = internal.classdb_get_method_bind(
+      this._bindings.method_reflection_probe_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -1739,10 +1739,10 @@ class _MethodBindings {
     }
   }
   static init_method_reflection_probe_set_update_mode() {
-    if (!this.#_bindings.method_reflection_probe_set_update_mode) {
+    if (!this._bindings.method_reflection_probe_set_update_mode) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("reflection_probe_set_update_mode");
-      this.#_bindings.method_reflection_probe_set_update_mode = internal.classdb_get_method_bind(
+      this._bindings.method_reflection_probe_set_update_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3853670147
@@ -1750,10 +1750,10 @@ class _MethodBindings {
     }
   }
   static init_method_reflection_probe_set_intensity() {
-    if (!this.#_bindings.method_reflection_probe_set_intensity) {
+    if (!this._bindings.method_reflection_probe_set_intensity) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("reflection_probe_set_intensity");
-      this.#_bindings.method_reflection_probe_set_intensity = internal.classdb_get_method_bind(
+      this._bindings.method_reflection_probe_set_intensity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -1761,10 +1761,10 @@ class _MethodBindings {
     }
   }
   static init_method_reflection_probe_set_ambient_mode() {
-    if (!this.#_bindings.method_reflection_probe_set_ambient_mode) {
+    if (!this._bindings.method_reflection_probe_set_ambient_mode) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("reflection_probe_set_ambient_mode");
-      this.#_bindings.method_reflection_probe_set_ambient_mode = internal.classdb_get_method_bind(
+      this._bindings.method_reflection_probe_set_ambient_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         184163074
@@ -1772,10 +1772,10 @@ class _MethodBindings {
     }
   }
   static init_method_reflection_probe_set_ambient_color() {
-    if (!this.#_bindings.method_reflection_probe_set_ambient_color) {
+    if (!this._bindings.method_reflection_probe_set_ambient_color) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("reflection_probe_set_ambient_color");
-      this.#_bindings.method_reflection_probe_set_ambient_color = internal.classdb_get_method_bind(
+      this._bindings.method_reflection_probe_set_ambient_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2948539648
@@ -1783,10 +1783,10 @@ class _MethodBindings {
     }
   }
   static init_method_reflection_probe_set_ambient_energy() {
-    if (!this.#_bindings.method_reflection_probe_set_ambient_energy) {
+    if (!this._bindings.method_reflection_probe_set_ambient_energy) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("reflection_probe_set_ambient_energy");
-      this.#_bindings.method_reflection_probe_set_ambient_energy = internal.classdb_get_method_bind(
+      this._bindings.method_reflection_probe_set_ambient_energy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -1794,10 +1794,10 @@ class _MethodBindings {
     }
   }
   static init_method_reflection_probe_set_max_distance() {
-    if (!this.#_bindings.method_reflection_probe_set_max_distance) {
+    if (!this._bindings.method_reflection_probe_set_max_distance) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("reflection_probe_set_max_distance");
-      this.#_bindings.method_reflection_probe_set_max_distance = internal.classdb_get_method_bind(
+      this._bindings.method_reflection_probe_set_max_distance = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -1805,10 +1805,10 @@ class _MethodBindings {
     }
   }
   static init_method_reflection_probe_set_size() {
-    if (!this.#_bindings.method_reflection_probe_set_size) {
+    if (!this._bindings.method_reflection_probe_set_size) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("reflection_probe_set_size");
-      this.#_bindings.method_reflection_probe_set_size = internal.classdb_get_method_bind(
+      this._bindings.method_reflection_probe_set_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3227306858
@@ -1816,10 +1816,10 @@ class _MethodBindings {
     }
   }
   static init_method_reflection_probe_set_origin_offset() {
-    if (!this.#_bindings.method_reflection_probe_set_origin_offset) {
+    if (!this._bindings.method_reflection_probe_set_origin_offset) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("reflection_probe_set_origin_offset");
-      this.#_bindings.method_reflection_probe_set_origin_offset = internal.classdb_get_method_bind(
+      this._bindings.method_reflection_probe_set_origin_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3227306858
@@ -1827,10 +1827,10 @@ class _MethodBindings {
     }
   }
   static init_method_reflection_probe_set_as_interior() {
-    if (!this.#_bindings.method_reflection_probe_set_as_interior) {
+    if (!this._bindings.method_reflection_probe_set_as_interior) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("reflection_probe_set_as_interior");
-      this.#_bindings.method_reflection_probe_set_as_interior = internal.classdb_get_method_bind(
+      this._bindings.method_reflection_probe_set_as_interior = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -1838,10 +1838,10 @@ class _MethodBindings {
     }
   }
   static init_method_reflection_probe_set_enable_box_projection() {
-    if (!this.#_bindings.method_reflection_probe_set_enable_box_projection) {
+    if (!this._bindings.method_reflection_probe_set_enable_box_projection) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("reflection_probe_set_enable_box_projection");
-      this.#_bindings.method_reflection_probe_set_enable_box_projection = internal.classdb_get_method_bind(
+      this._bindings.method_reflection_probe_set_enable_box_projection = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -1849,10 +1849,10 @@ class _MethodBindings {
     }
   }
   static init_method_reflection_probe_set_enable_shadows() {
-    if (!this.#_bindings.method_reflection_probe_set_enable_shadows) {
+    if (!this._bindings.method_reflection_probe_set_enable_shadows) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("reflection_probe_set_enable_shadows");
-      this.#_bindings.method_reflection_probe_set_enable_shadows = internal.classdb_get_method_bind(
+      this._bindings.method_reflection_probe_set_enable_shadows = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -1860,10 +1860,10 @@ class _MethodBindings {
     }
   }
   static init_method_reflection_probe_set_cull_mask() {
-    if (!this.#_bindings.method_reflection_probe_set_cull_mask) {
+    if (!this._bindings.method_reflection_probe_set_cull_mask) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("reflection_probe_set_cull_mask");
-      this.#_bindings.method_reflection_probe_set_cull_mask = internal.classdb_get_method_bind(
+      this._bindings.method_reflection_probe_set_cull_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -1871,10 +1871,10 @@ class _MethodBindings {
     }
   }
   static init_method_reflection_probe_set_reflection_mask() {
-    if (!this.#_bindings.method_reflection_probe_set_reflection_mask) {
+    if (!this._bindings.method_reflection_probe_set_reflection_mask) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("reflection_probe_set_reflection_mask");
-      this.#_bindings.method_reflection_probe_set_reflection_mask = internal.classdb_get_method_bind(
+      this._bindings.method_reflection_probe_set_reflection_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -1882,10 +1882,10 @@ class _MethodBindings {
     }
   }
   static init_method_reflection_probe_set_resolution() {
-    if (!this.#_bindings.method_reflection_probe_set_resolution) {
+    if (!this._bindings.method_reflection_probe_set_resolution) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("reflection_probe_set_resolution");
-      this.#_bindings.method_reflection_probe_set_resolution = internal.classdb_get_method_bind(
+      this._bindings.method_reflection_probe_set_resolution = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -1893,10 +1893,10 @@ class _MethodBindings {
     }
   }
   static init_method_reflection_probe_set_mesh_lod_threshold() {
-    if (!this.#_bindings.method_reflection_probe_set_mesh_lod_threshold) {
+    if (!this._bindings.method_reflection_probe_set_mesh_lod_threshold) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("reflection_probe_set_mesh_lod_threshold");
-      this.#_bindings.method_reflection_probe_set_mesh_lod_threshold = internal.classdb_get_method_bind(
+      this._bindings.method_reflection_probe_set_mesh_lod_threshold = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -1904,10 +1904,10 @@ class _MethodBindings {
     }
   }
   static init_method_decal_create() {
-    if (!this.#_bindings.method_decal_create) {
+    if (!this._bindings.method_decal_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("decal_create");
-      this.#_bindings.method_decal_create = internal.classdb_get_method_bind(
+      this._bindings.method_decal_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -1915,10 +1915,10 @@ class _MethodBindings {
     }
   }
   static init_method_decal_set_size() {
-    if (!this.#_bindings.method_decal_set_size) {
+    if (!this._bindings.method_decal_set_size) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("decal_set_size");
-      this.#_bindings.method_decal_set_size = internal.classdb_get_method_bind(
+      this._bindings.method_decal_set_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3227306858
@@ -1926,10 +1926,10 @@ class _MethodBindings {
     }
   }
   static init_method_decal_set_texture() {
-    if (!this.#_bindings.method_decal_set_texture) {
+    if (!this._bindings.method_decal_set_texture) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("decal_set_texture");
-      this.#_bindings.method_decal_set_texture = internal.classdb_get_method_bind(
+      this._bindings.method_decal_set_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3953344054
@@ -1937,10 +1937,10 @@ class _MethodBindings {
     }
   }
   static init_method_decal_set_emission_energy() {
-    if (!this.#_bindings.method_decal_set_emission_energy) {
+    if (!this._bindings.method_decal_set_emission_energy) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("decal_set_emission_energy");
-      this.#_bindings.method_decal_set_emission_energy = internal.classdb_get_method_bind(
+      this._bindings.method_decal_set_emission_energy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -1948,10 +1948,10 @@ class _MethodBindings {
     }
   }
   static init_method_decal_set_albedo_mix() {
-    if (!this.#_bindings.method_decal_set_albedo_mix) {
+    if (!this._bindings.method_decal_set_albedo_mix) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("decal_set_albedo_mix");
-      this.#_bindings.method_decal_set_albedo_mix = internal.classdb_get_method_bind(
+      this._bindings.method_decal_set_albedo_mix = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -1959,10 +1959,10 @@ class _MethodBindings {
     }
   }
   static init_method_decal_set_modulate() {
-    if (!this.#_bindings.method_decal_set_modulate) {
+    if (!this._bindings.method_decal_set_modulate) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("decal_set_modulate");
-      this.#_bindings.method_decal_set_modulate = internal.classdb_get_method_bind(
+      this._bindings.method_decal_set_modulate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2948539648
@@ -1970,10 +1970,10 @@ class _MethodBindings {
     }
   }
   static init_method_decal_set_cull_mask() {
-    if (!this.#_bindings.method_decal_set_cull_mask) {
+    if (!this._bindings.method_decal_set_cull_mask) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("decal_set_cull_mask");
-      this.#_bindings.method_decal_set_cull_mask = internal.classdb_get_method_bind(
+      this._bindings.method_decal_set_cull_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -1981,10 +1981,10 @@ class _MethodBindings {
     }
   }
   static init_method_decal_set_distance_fade() {
-    if (!this.#_bindings.method_decal_set_distance_fade) {
+    if (!this._bindings.method_decal_set_distance_fade) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("decal_set_distance_fade");
-      this.#_bindings.method_decal_set_distance_fade = internal.classdb_get_method_bind(
+      this._bindings.method_decal_set_distance_fade = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2972769666
@@ -1992,10 +1992,10 @@ class _MethodBindings {
     }
   }
   static init_method_decal_set_fade() {
-    if (!this.#_bindings.method_decal_set_fade) {
+    if (!this._bindings.method_decal_set_fade) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("decal_set_fade");
-      this.#_bindings.method_decal_set_fade = internal.classdb_get_method_bind(
+      this._bindings.method_decal_set_fade = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2513314492
@@ -2003,10 +2003,10 @@ class _MethodBindings {
     }
   }
   static init_method_decal_set_normal_fade() {
-    if (!this.#_bindings.method_decal_set_normal_fade) {
+    if (!this._bindings.method_decal_set_normal_fade) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("decal_set_normal_fade");
-      this.#_bindings.method_decal_set_normal_fade = internal.classdb_get_method_bind(
+      this._bindings.method_decal_set_normal_fade = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -2014,10 +2014,10 @@ class _MethodBindings {
     }
   }
   static init_method_decals_set_filter() {
-    if (!this.#_bindings.method_decals_set_filter) {
+    if (!this._bindings.method_decals_set_filter) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("decals_set_filter");
-      this.#_bindings.method_decals_set_filter = internal.classdb_get_method_bind(
+      this._bindings.method_decals_set_filter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3519875702
@@ -2025,10 +2025,10 @@ class _MethodBindings {
     }
   }
   static init_method_gi_set_use_half_resolution() {
-    if (!this.#_bindings.method_gi_set_use_half_resolution) {
+    if (!this._bindings.method_gi_set_use_half_resolution) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("gi_set_use_half_resolution");
-      this.#_bindings.method_gi_set_use_half_resolution = internal.classdb_get_method_bind(
+      this._bindings.method_gi_set_use_half_resolution = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -2036,10 +2036,10 @@ class _MethodBindings {
     }
   }
   static init_method_voxel_gi_create() {
-    if (!this.#_bindings.method_voxel_gi_create) {
+    if (!this._bindings.method_voxel_gi_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("voxel_gi_create");
-      this.#_bindings.method_voxel_gi_create = internal.classdb_get_method_bind(
+      this._bindings.method_voxel_gi_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -2047,10 +2047,10 @@ class _MethodBindings {
     }
   }
   static init_method_voxel_gi_allocate_data() {
-    if (!this.#_bindings.method_voxel_gi_allocate_data) {
+    if (!this._bindings.method_voxel_gi_allocate_data) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("voxel_gi_allocate_data");
-      this.#_bindings.method_voxel_gi_allocate_data = internal.classdb_get_method_bind(
+      this._bindings.method_voxel_gi_allocate_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4108223027
@@ -2058,10 +2058,10 @@ class _MethodBindings {
     }
   }
   static init_method_voxel_gi_get_octree_size() {
-    if (!this.#_bindings.method_voxel_gi_get_octree_size) {
+    if (!this._bindings.method_voxel_gi_get_octree_size) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("voxel_gi_get_octree_size");
-      this.#_bindings.method_voxel_gi_get_octree_size = internal.classdb_get_method_bind(
+      this._bindings.method_voxel_gi_get_octree_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2607699645
@@ -2069,10 +2069,10 @@ class _MethodBindings {
     }
   }
   static init_method_voxel_gi_get_octree_cells() {
-    if (!this.#_bindings.method_voxel_gi_get_octree_cells) {
+    if (!this._bindings.method_voxel_gi_get_octree_cells) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("voxel_gi_get_octree_cells");
-      this.#_bindings.method_voxel_gi_get_octree_cells = internal.classdb_get_method_bind(
+      this._bindings.method_voxel_gi_get_octree_cells = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3348040486
@@ -2080,10 +2080,10 @@ class _MethodBindings {
     }
   }
   static init_method_voxel_gi_get_data_cells() {
-    if (!this.#_bindings.method_voxel_gi_get_data_cells) {
+    if (!this._bindings.method_voxel_gi_get_data_cells) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("voxel_gi_get_data_cells");
-      this.#_bindings.method_voxel_gi_get_data_cells = internal.classdb_get_method_bind(
+      this._bindings.method_voxel_gi_get_data_cells = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3348040486
@@ -2091,10 +2091,10 @@ class _MethodBindings {
     }
   }
   static init_method_voxel_gi_get_distance_field() {
-    if (!this.#_bindings.method_voxel_gi_get_distance_field) {
+    if (!this._bindings.method_voxel_gi_get_distance_field) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("voxel_gi_get_distance_field");
-      this.#_bindings.method_voxel_gi_get_distance_field = internal.classdb_get_method_bind(
+      this._bindings.method_voxel_gi_get_distance_field = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3348040486
@@ -2102,10 +2102,10 @@ class _MethodBindings {
     }
   }
   static init_method_voxel_gi_get_level_counts() {
-    if (!this.#_bindings.method_voxel_gi_get_level_counts) {
+    if (!this._bindings.method_voxel_gi_get_level_counts) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("voxel_gi_get_level_counts");
-      this.#_bindings.method_voxel_gi_get_level_counts = internal.classdb_get_method_bind(
+      this._bindings.method_voxel_gi_get_level_counts = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         788230395
@@ -2113,10 +2113,10 @@ class _MethodBindings {
     }
   }
   static init_method_voxel_gi_get_to_cell_xform() {
-    if (!this.#_bindings.method_voxel_gi_get_to_cell_xform) {
+    if (!this._bindings.method_voxel_gi_get_to_cell_xform) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("voxel_gi_get_to_cell_xform");
-      this.#_bindings.method_voxel_gi_get_to_cell_xform = internal.classdb_get_method_bind(
+      this._bindings.method_voxel_gi_get_to_cell_xform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1128465797
@@ -2124,10 +2124,10 @@ class _MethodBindings {
     }
   }
   static init_method_voxel_gi_set_dynamic_range() {
-    if (!this.#_bindings.method_voxel_gi_set_dynamic_range) {
+    if (!this._bindings.method_voxel_gi_set_dynamic_range) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("voxel_gi_set_dynamic_range");
-      this.#_bindings.method_voxel_gi_set_dynamic_range = internal.classdb_get_method_bind(
+      this._bindings.method_voxel_gi_set_dynamic_range = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -2135,10 +2135,10 @@ class _MethodBindings {
     }
   }
   static init_method_voxel_gi_set_propagation() {
-    if (!this.#_bindings.method_voxel_gi_set_propagation) {
+    if (!this._bindings.method_voxel_gi_set_propagation) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("voxel_gi_set_propagation");
-      this.#_bindings.method_voxel_gi_set_propagation = internal.classdb_get_method_bind(
+      this._bindings.method_voxel_gi_set_propagation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -2146,10 +2146,10 @@ class _MethodBindings {
     }
   }
   static init_method_voxel_gi_set_energy() {
-    if (!this.#_bindings.method_voxel_gi_set_energy) {
+    if (!this._bindings.method_voxel_gi_set_energy) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("voxel_gi_set_energy");
-      this.#_bindings.method_voxel_gi_set_energy = internal.classdb_get_method_bind(
+      this._bindings.method_voxel_gi_set_energy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -2157,10 +2157,10 @@ class _MethodBindings {
     }
   }
   static init_method_voxel_gi_set_baked_exposure_normalization() {
-    if (!this.#_bindings.method_voxel_gi_set_baked_exposure_normalization) {
+    if (!this._bindings.method_voxel_gi_set_baked_exposure_normalization) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("voxel_gi_set_baked_exposure_normalization");
-      this.#_bindings.method_voxel_gi_set_baked_exposure_normalization = internal.classdb_get_method_bind(
+      this._bindings.method_voxel_gi_set_baked_exposure_normalization = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -2168,10 +2168,10 @@ class _MethodBindings {
     }
   }
   static init_method_voxel_gi_set_bias() {
-    if (!this.#_bindings.method_voxel_gi_set_bias) {
+    if (!this._bindings.method_voxel_gi_set_bias) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("voxel_gi_set_bias");
-      this.#_bindings.method_voxel_gi_set_bias = internal.classdb_get_method_bind(
+      this._bindings.method_voxel_gi_set_bias = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -2179,10 +2179,10 @@ class _MethodBindings {
     }
   }
   static init_method_voxel_gi_set_normal_bias() {
-    if (!this.#_bindings.method_voxel_gi_set_normal_bias) {
+    if (!this._bindings.method_voxel_gi_set_normal_bias) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("voxel_gi_set_normal_bias");
-      this.#_bindings.method_voxel_gi_set_normal_bias = internal.classdb_get_method_bind(
+      this._bindings.method_voxel_gi_set_normal_bias = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -2190,10 +2190,10 @@ class _MethodBindings {
     }
   }
   static init_method_voxel_gi_set_interior() {
-    if (!this.#_bindings.method_voxel_gi_set_interior) {
+    if (!this._bindings.method_voxel_gi_set_interior) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("voxel_gi_set_interior");
-      this.#_bindings.method_voxel_gi_set_interior = internal.classdb_get_method_bind(
+      this._bindings.method_voxel_gi_set_interior = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -2201,10 +2201,10 @@ class _MethodBindings {
     }
   }
   static init_method_voxel_gi_set_use_two_bounces() {
-    if (!this.#_bindings.method_voxel_gi_set_use_two_bounces) {
+    if (!this._bindings.method_voxel_gi_set_use_two_bounces) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("voxel_gi_set_use_two_bounces");
-      this.#_bindings.method_voxel_gi_set_use_two_bounces = internal.classdb_get_method_bind(
+      this._bindings.method_voxel_gi_set_use_two_bounces = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -2212,10 +2212,10 @@ class _MethodBindings {
     }
   }
   static init_method_voxel_gi_set_quality() {
-    if (!this.#_bindings.method_voxel_gi_set_quality) {
+    if (!this._bindings.method_voxel_gi_set_quality) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("voxel_gi_set_quality");
-      this.#_bindings.method_voxel_gi_set_quality = internal.classdb_get_method_bind(
+      this._bindings.method_voxel_gi_set_quality = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1538689978
@@ -2223,10 +2223,10 @@ class _MethodBindings {
     }
   }
   static init_method_lightmap_create() {
-    if (!this.#_bindings.method_lightmap_create) {
+    if (!this._bindings.method_lightmap_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("lightmap_create");
-      this.#_bindings.method_lightmap_create = internal.classdb_get_method_bind(
+      this._bindings.method_lightmap_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -2234,10 +2234,10 @@ class _MethodBindings {
     }
   }
   static init_method_lightmap_set_textures() {
-    if (!this.#_bindings.method_lightmap_set_textures) {
+    if (!this._bindings.method_lightmap_set_textures) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("lightmap_set_textures");
-      this.#_bindings.method_lightmap_set_textures = internal.classdb_get_method_bind(
+      this._bindings.method_lightmap_set_textures = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2646464759
@@ -2245,10 +2245,10 @@ class _MethodBindings {
     }
   }
   static init_method_lightmap_set_probe_bounds() {
-    if (!this.#_bindings.method_lightmap_set_probe_bounds) {
+    if (!this._bindings.method_lightmap_set_probe_bounds) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("lightmap_set_probe_bounds");
-      this.#_bindings.method_lightmap_set_probe_bounds = internal.classdb_get_method_bind(
+      this._bindings.method_lightmap_set_probe_bounds = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3696536120
@@ -2256,10 +2256,10 @@ class _MethodBindings {
     }
   }
   static init_method_lightmap_set_probe_interior() {
-    if (!this.#_bindings.method_lightmap_set_probe_interior) {
+    if (!this._bindings.method_lightmap_set_probe_interior) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("lightmap_set_probe_interior");
-      this.#_bindings.method_lightmap_set_probe_interior = internal.classdb_get_method_bind(
+      this._bindings.method_lightmap_set_probe_interior = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -2267,10 +2267,10 @@ class _MethodBindings {
     }
   }
   static init_method_lightmap_set_probe_capture_data() {
-    if (!this.#_bindings.method_lightmap_set_probe_capture_data) {
+    if (!this._bindings.method_lightmap_set_probe_capture_data) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("lightmap_set_probe_capture_data");
-      this.#_bindings.method_lightmap_set_probe_capture_data = internal.classdb_get_method_bind(
+      this._bindings.method_lightmap_set_probe_capture_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3217845880
@@ -2278,10 +2278,10 @@ class _MethodBindings {
     }
   }
   static init_method_lightmap_get_probe_capture_points() {
-    if (!this.#_bindings.method_lightmap_get_probe_capture_points) {
+    if (!this._bindings.method_lightmap_get_probe_capture_points) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("lightmap_get_probe_capture_points");
-      this.#_bindings.method_lightmap_get_probe_capture_points = internal.classdb_get_method_bind(
+      this._bindings.method_lightmap_get_probe_capture_points = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         808965560
@@ -2289,10 +2289,10 @@ class _MethodBindings {
     }
   }
   static init_method_lightmap_get_probe_capture_sh() {
-    if (!this.#_bindings.method_lightmap_get_probe_capture_sh) {
+    if (!this._bindings.method_lightmap_get_probe_capture_sh) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("lightmap_get_probe_capture_sh");
-      this.#_bindings.method_lightmap_get_probe_capture_sh = internal.classdb_get_method_bind(
+      this._bindings.method_lightmap_get_probe_capture_sh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1569415609
@@ -2300,10 +2300,10 @@ class _MethodBindings {
     }
   }
   static init_method_lightmap_get_probe_capture_tetrahedra() {
-    if (!this.#_bindings.method_lightmap_get_probe_capture_tetrahedra) {
+    if (!this._bindings.method_lightmap_get_probe_capture_tetrahedra) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("lightmap_get_probe_capture_tetrahedra");
-      this.#_bindings.method_lightmap_get_probe_capture_tetrahedra = internal.classdb_get_method_bind(
+      this._bindings.method_lightmap_get_probe_capture_tetrahedra = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         788230395
@@ -2311,10 +2311,10 @@ class _MethodBindings {
     }
   }
   static init_method_lightmap_get_probe_capture_bsp_tree() {
-    if (!this.#_bindings.method_lightmap_get_probe_capture_bsp_tree) {
+    if (!this._bindings.method_lightmap_get_probe_capture_bsp_tree) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("lightmap_get_probe_capture_bsp_tree");
-      this.#_bindings.method_lightmap_get_probe_capture_bsp_tree = internal.classdb_get_method_bind(
+      this._bindings.method_lightmap_get_probe_capture_bsp_tree = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         788230395
@@ -2322,10 +2322,10 @@ class _MethodBindings {
     }
   }
   static init_method_lightmap_set_baked_exposure_normalization() {
-    if (!this.#_bindings.method_lightmap_set_baked_exposure_normalization) {
+    if (!this._bindings.method_lightmap_set_baked_exposure_normalization) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("lightmap_set_baked_exposure_normalization");
-      this.#_bindings.method_lightmap_set_baked_exposure_normalization = internal.classdb_get_method_bind(
+      this._bindings.method_lightmap_set_baked_exposure_normalization = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -2333,10 +2333,10 @@ class _MethodBindings {
     }
   }
   static init_method_lightmap_set_probe_capture_update_speed() {
-    if (!this.#_bindings.method_lightmap_set_probe_capture_update_speed) {
+    if (!this._bindings.method_lightmap_set_probe_capture_update_speed) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("lightmap_set_probe_capture_update_speed");
-      this.#_bindings.method_lightmap_set_probe_capture_update_speed = internal.classdb_get_method_bind(
+      this._bindings.method_lightmap_set_probe_capture_update_speed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -2344,10 +2344,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_create() {
-    if (!this.#_bindings.method_particles_create) {
+    if (!this._bindings.method_particles_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_create");
-      this.#_bindings.method_particles_create = internal.classdb_get_method_bind(
+      this._bindings.method_particles_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -2355,10 +2355,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_mode() {
-    if (!this.#_bindings.method_particles_set_mode) {
+    if (!this._bindings.method_particles_set_mode) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_mode");
-      this.#_bindings.method_particles_set_mode = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3492270028
@@ -2366,10 +2366,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_emitting() {
-    if (!this.#_bindings.method_particles_set_emitting) {
+    if (!this._bindings.method_particles_set_emitting) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_emitting");
-      this.#_bindings.method_particles_set_emitting = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_emitting = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -2377,10 +2377,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_get_emitting() {
-    if (!this.#_bindings.method_particles_get_emitting) {
+    if (!this._bindings.method_particles_get_emitting) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_get_emitting");
-      this.#_bindings.method_particles_get_emitting = internal.classdb_get_method_bind(
+      this._bindings.method_particles_get_emitting = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3521089500
@@ -2388,10 +2388,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_amount() {
-    if (!this.#_bindings.method_particles_set_amount) {
+    if (!this._bindings.method_particles_set_amount) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_amount");
-      this.#_bindings.method_particles_set_amount = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_amount = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -2399,10 +2399,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_amount_ratio() {
-    if (!this.#_bindings.method_particles_set_amount_ratio) {
+    if (!this._bindings.method_particles_set_amount_ratio) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_amount_ratio");
-      this.#_bindings.method_particles_set_amount_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_amount_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -2410,10 +2410,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_lifetime() {
-    if (!this.#_bindings.method_particles_set_lifetime) {
+    if (!this._bindings.method_particles_set_lifetime) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_lifetime");
-      this.#_bindings.method_particles_set_lifetime = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_lifetime = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -2421,10 +2421,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_one_shot() {
-    if (!this.#_bindings.method_particles_set_one_shot) {
+    if (!this._bindings.method_particles_set_one_shot) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_one_shot");
-      this.#_bindings.method_particles_set_one_shot = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_one_shot = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -2432,10 +2432,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_pre_process_time() {
-    if (!this.#_bindings.method_particles_set_pre_process_time) {
+    if (!this._bindings.method_particles_set_pre_process_time) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_pre_process_time");
-      this.#_bindings.method_particles_set_pre_process_time = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_pre_process_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -2443,10 +2443,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_explosiveness_ratio() {
-    if (!this.#_bindings.method_particles_set_explosiveness_ratio) {
+    if (!this._bindings.method_particles_set_explosiveness_ratio) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_explosiveness_ratio");
-      this.#_bindings.method_particles_set_explosiveness_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_explosiveness_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -2454,10 +2454,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_randomness_ratio() {
-    if (!this.#_bindings.method_particles_set_randomness_ratio) {
+    if (!this._bindings.method_particles_set_randomness_ratio) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_randomness_ratio");
-      this.#_bindings.method_particles_set_randomness_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_randomness_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -2465,10 +2465,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_interp_to_end() {
-    if (!this.#_bindings.method_particles_set_interp_to_end) {
+    if (!this._bindings.method_particles_set_interp_to_end) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_interp_to_end");
-      this.#_bindings.method_particles_set_interp_to_end = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_interp_to_end = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -2476,10 +2476,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_emitter_velocity() {
-    if (!this.#_bindings.method_particles_set_emitter_velocity) {
+    if (!this._bindings.method_particles_set_emitter_velocity) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_emitter_velocity");
-      this.#_bindings.method_particles_set_emitter_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_emitter_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3227306858
@@ -2487,10 +2487,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_custom_aabb() {
-    if (!this.#_bindings.method_particles_set_custom_aabb) {
+    if (!this._bindings.method_particles_set_custom_aabb) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_custom_aabb");
-      this.#_bindings.method_particles_set_custom_aabb = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_custom_aabb = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3696536120
@@ -2498,10 +2498,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_speed_scale() {
-    if (!this.#_bindings.method_particles_set_speed_scale) {
+    if (!this._bindings.method_particles_set_speed_scale) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_speed_scale");
-      this.#_bindings.method_particles_set_speed_scale = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_speed_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -2509,10 +2509,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_use_local_coordinates() {
-    if (!this.#_bindings.method_particles_set_use_local_coordinates) {
+    if (!this._bindings.method_particles_set_use_local_coordinates) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_use_local_coordinates");
-      this.#_bindings.method_particles_set_use_local_coordinates = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_use_local_coordinates = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -2520,10 +2520,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_process_material() {
-    if (!this.#_bindings.method_particles_set_process_material) {
+    if (!this._bindings.method_particles_set_process_material) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_process_material");
-      this.#_bindings.method_particles_set_process_material = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_process_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -2531,10 +2531,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_fixed_fps() {
-    if (!this.#_bindings.method_particles_set_fixed_fps) {
+    if (!this._bindings.method_particles_set_fixed_fps) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_fixed_fps");
-      this.#_bindings.method_particles_set_fixed_fps = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_fixed_fps = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -2542,10 +2542,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_interpolate() {
-    if (!this.#_bindings.method_particles_set_interpolate) {
+    if (!this._bindings.method_particles_set_interpolate) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_interpolate");
-      this.#_bindings.method_particles_set_interpolate = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_interpolate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -2553,10 +2553,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_fractional_delta() {
-    if (!this.#_bindings.method_particles_set_fractional_delta) {
+    if (!this._bindings.method_particles_set_fractional_delta) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_fractional_delta");
-      this.#_bindings.method_particles_set_fractional_delta = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_fractional_delta = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -2564,10 +2564,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_collision_base_size() {
-    if (!this.#_bindings.method_particles_set_collision_base_size) {
+    if (!this._bindings.method_particles_set_collision_base_size) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_collision_base_size");
-      this.#_bindings.method_particles_set_collision_base_size = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_collision_base_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -2575,10 +2575,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_transform_align() {
-    if (!this.#_bindings.method_particles_set_transform_align) {
+    if (!this._bindings.method_particles_set_transform_align) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_transform_align");
-      this.#_bindings.method_particles_set_transform_align = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_transform_align = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3264971368
@@ -2586,10 +2586,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_trails() {
-    if (!this.#_bindings.method_particles_set_trails) {
+    if (!this._bindings.method_particles_set_trails) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_trails");
-      this.#_bindings.method_particles_set_trails = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_trails = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2010054925
@@ -2597,10 +2597,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_trail_bind_poses() {
-    if (!this.#_bindings.method_particles_set_trail_bind_poses) {
+    if (!this._bindings.method_particles_set_trail_bind_poses) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_trail_bind_poses");
-      this.#_bindings.method_particles_set_trail_bind_poses = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_trail_bind_poses = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         684822712
@@ -2608,10 +2608,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_is_inactive() {
-    if (!this.#_bindings.method_particles_is_inactive) {
+    if (!this._bindings.method_particles_is_inactive) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_is_inactive");
-      this.#_bindings.method_particles_is_inactive = internal.classdb_get_method_bind(
+      this._bindings.method_particles_is_inactive = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3521089500
@@ -2619,10 +2619,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_request_process() {
-    if (!this.#_bindings.method_particles_request_process) {
+    if (!this._bindings.method_particles_request_process) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_request_process");
-      this.#_bindings.method_particles_request_process = internal.classdb_get_method_bind(
+      this._bindings.method_particles_request_process = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2722037293
@@ -2630,10 +2630,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_restart() {
-    if (!this.#_bindings.method_particles_restart) {
+    if (!this._bindings.method_particles_restart) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_restart");
-      this.#_bindings.method_particles_restart = internal.classdb_get_method_bind(
+      this._bindings.method_particles_restart = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2722037293
@@ -2641,10 +2641,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_subemitter() {
-    if (!this.#_bindings.method_particles_set_subemitter) {
+    if (!this._bindings.method_particles_set_subemitter) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_subemitter");
-      this.#_bindings.method_particles_set_subemitter = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_subemitter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -2652,10 +2652,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_emit() {
-    if (!this.#_bindings.method_particles_emit) {
+    if (!this._bindings.method_particles_emit) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_emit");
-      this.#_bindings.method_particles_emit = internal.classdb_get_method_bind(
+      this._bindings.method_particles_emit = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4043136117
@@ -2663,10 +2663,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_draw_order() {
-    if (!this.#_bindings.method_particles_set_draw_order) {
+    if (!this._bindings.method_particles_set_draw_order) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_draw_order");
-      this.#_bindings.method_particles_set_draw_order = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_draw_order = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         935028487
@@ -2674,10 +2674,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_draw_passes() {
-    if (!this.#_bindings.method_particles_set_draw_passes) {
+    if (!this._bindings.method_particles_set_draw_passes) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_draw_passes");
-      this.#_bindings.method_particles_set_draw_passes = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_draw_passes = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -2685,10 +2685,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_draw_pass_mesh() {
-    if (!this.#_bindings.method_particles_set_draw_pass_mesh) {
+    if (!this._bindings.method_particles_set_draw_pass_mesh) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_draw_pass_mesh");
-      this.#_bindings.method_particles_set_draw_pass_mesh = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_draw_pass_mesh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2310537182
@@ -2696,10 +2696,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_get_current_aabb() {
-    if (!this.#_bindings.method_particles_get_current_aabb) {
+    if (!this._bindings.method_particles_get_current_aabb) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_get_current_aabb");
-      this.#_bindings.method_particles_get_current_aabb = internal.classdb_get_method_bind(
+      this._bindings.method_particles_get_current_aabb = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3952830260
@@ -2707,10 +2707,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_set_emission_transform() {
-    if (!this.#_bindings.method_particles_set_emission_transform) {
+    if (!this._bindings.method_particles_set_emission_transform) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_set_emission_transform");
-      this.#_bindings.method_particles_set_emission_transform = internal.classdb_get_method_bind(
+      this._bindings.method_particles_set_emission_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3935195649
@@ -2718,10 +2718,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_collision_create() {
-    if (!this.#_bindings.method_particles_collision_create) {
+    if (!this._bindings.method_particles_collision_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_collision_create");
-      this.#_bindings.method_particles_collision_create = internal.classdb_get_method_bind(
+      this._bindings.method_particles_collision_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -2729,10 +2729,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_collision_set_collision_type() {
-    if (!this.#_bindings.method_particles_collision_set_collision_type) {
+    if (!this._bindings.method_particles_collision_set_collision_type) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_collision_set_collision_type");
-      this.#_bindings.method_particles_collision_set_collision_type = internal.classdb_get_method_bind(
+      this._bindings.method_particles_collision_set_collision_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1497044930
@@ -2740,10 +2740,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_collision_set_cull_mask() {
-    if (!this.#_bindings.method_particles_collision_set_cull_mask) {
+    if (!this._bindings.method_particles_collision_set_cull_mask) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_collision_set_cull_mask");
-      this.#_bindings.method_particles_collision_set_cull_mask = internal.classdb_get_method_bind(
+      this._bindings.method_particles_collision_set_cull_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -2751,10 +2751,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_collision_set_sphere_radius() {
-    if (!this.#_bindings.method_particles_collision_set_sphere_radius) {
+    if (!this._bindings.method_particles_collision_set_sphere_radius) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_collision_set_sphere_radius");
-      this.#_bindings.method_particles_collision_set_sphere_radius = internal.classdb_get_method_bind(
+      this._bindings.method_particles_collision_set_sphere_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -2762,10 +2762,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_collision_set_box_extents() {
-    if (!this.#_bindings.method_particles_collision_set_box_extents) {
+    if (!this._bindings.method_particles_collision_set_box_extents) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_collision_set_box_extents");
-      this.#_bindings.method_particles_collision_set_box_extents = internal.classdb_get_method_bind(
+      this._bindings.method_particles_collision_set_box_extents = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3227306858
@@ -2773,10 +2773,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_collision_set_attractor_strength() {
-    if (!this.#_bindings.method_particles_collision_set_attractor_strength) {
+    if (!this._bindings.method_particles_collision_set_attractor_strength) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_collision_set_attractor_strength");
-      this.#_bindings.method_particles_collision_set_attractor_strength = internal.classdb_get_method_bind(
+      this._bindings.method_particles_collision_set_attractor_strength = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -2784,10 +2784,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_collision_set_attractor_directionality() {
-    if (!this.#_bindings.method_particles_collision_set_attractor_directionality) {
+    if (!this._bindings.method_particles_collision_set_attractor_directionality) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_collision_set_attractor_directionality");
-      this.#_bindings.method_particles_collision_set_attractor_directionality = internal.classdb_get_method_bind(
+      this._bindings.method_particles_collision_set_attractor_directionality = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -2795,10 +2795,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_collision_set_attractor_attenuation() {
-    if (!this.#_bindings.method_particles_collision_set_attractor_attenuation) {
+    if (!this._bindings.method_particles_collision_set_attractor_attenuation) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_collision_set_attractor_attenuation");
-      this.#_bindings.method_particles_collision_set_attractor_attenuation = internal.classdb_get_method_bind(
+      this._bindings.method_particles_collision_set_attractor_attenuation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -2806,10 +2806,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_collision_set_field_texture() {
-    if (!this.#_bindings.method_particles_collision_set_field_texture) {
+    if (!this._bindings.method_particles_collision_set_field_texture) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_collision_set_field_texture");
-      this.#_bindings.method_particles_collision_set_field_texture = internal.classdb_get_method_bind(
+      this._bindings.method_particles_collision_set_field_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -2817,10 +2817,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_collision_height_field_update() {
-    if (!this.#_bindings.method_particles_collision_height_field_update) {
+    if (!this._bindings.method_particles_collision_height_field_update) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_collision_height_field_update");
-      this.#_bindings.method_particles_collision_height_field_update = internal.classdb_get_method_bind(
+      this._bindings.method_particles_collision_height_field_update = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2722037293
@@ -2828,10 +2828,10 @@ class _MethodBindings {
     }
   }
   static init_method_particles_collision_set_height_field_resolution() {
-    if (!this.#_bindings.method_particles_collision_set_height_field_resolution) {
+    if (!this._bindings.method_particles_collision_set_height_field_resolution) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("particles_collision_set_height_field_resolution");
-      this.#_bindings.method_particles_collision_set_height_field_resolution = internal.classdb_get_method_bind(
+      this._bindings.method_particles_collision_set_height_field_resolution = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         962977297
@@ -2839,10 +2839,10 @@ class _MethodBindings {
     }
   }
   static init_method_fog_volume_create() {
-    if (!this.#_bindings.method_fog_volume_create) {
+    if (!this._bindings.method_fog_volume_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("fog_volume_create");
-      this.#_bindings.method_fog_volume_create = internal.classdb_get_method_bind(
+      this._bindings.method_fog_volume_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -2850,10 +2850,10 @@ class _MethodBindings {
     }
   }
   static init_method_fog_volume_set_shape() {
-    if (!this.#_bindings.method_fog_volume_set_shape) {
+    if (!this._bindings.method_fog_volume_set_shape) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("fog_volume_set_shape");
-      this.#_bindings.method_fog_volume_set_shape = internal.classdb_get_method_bind(
+      this._bindings.method_fog_volume_set_shape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3818703106
@@ -2861,10 +2861,10 @@ class _MethodBindings {
     }
   }
   static init_method_fog_volume_set_size() {
-    if (!this.#_bindings.method_fog_volume_set_size) {
+    if (!this._bindings.method_fog_volume_set_size) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("fog_volume_set_size");
-      this.#_bindings.method_fog_volume_set_size = internal.classdb_get_method_bind(
+      this._bindings.method_fog_volume_set_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3227306858
@@ -2872,10 +2872,10 @@ class _MethodBindings {
     }
   }
   static init_method_fog_volume_set_material() {
-    if (!this.#_bindings.method_fog_volume_set_material) {
+    if (!this._bindings.method_fog_volume_set_material) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("fog_volume_set_material");
-      this.#_bindings.method_fog_volume_set_material = internal.classdb_get_method_bind(
+      this._bindings.method_fog_volume_set_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -2883,10 +2883,10 @@ class _MethodBindings {
     }
   }
   static init_method_visibility_notifier_create() {
-    if (!this.#_bindings.method_visibility_notifier_create) {
+    if (!this._bindings.method_visibility_notifier_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("visibility_notifier_create");
-      this.#_bindings.method_visibility_notifier_create = internal.classdb_get_method_bind(
+      this._bindings.method_visibility_notifier_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -2894,10 +2894,10 @@ class _MethodBindings {
     }
   }
   static init_method_visibility_notifier_set_aabb() {
-    if (!this.#_bindings.method_visibility_notifier_set_aabb) {
+    if (!this._bindings.method_visibility_notifier_set_aabb) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("visibility_notifier_set_aabb");
-      this.#_bindings.method_visibility_notifier_set_aabb = internal.classdb_get_method_bind(
+      this._bindings.method_visibility_notifier_set_aabb = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3696536120
@@ -2905,10 +2905,10 @@ class _MethodBindings {
     }
   }
   static init_method_visibility_notifier_set_callbacks() {
-    if (!this.#_bindings.method_visibility_notifier_set_callbacks) {
+    if (!this._bindings.method_visibility_notifier_set_callbacks) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("visibility_notifier_set_callbacks");
-      this.#_bindings.method_visibility_notifier_set_callbacks = internal.classdb_get_method_bind(
+      this._bindings.method_visibility_notifier_set_callbacks = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2689735388
@@ -2916,10 +2916,10 @@ class _MethodBindings {
     }
   }
   static init_method_occluder_create() {
-    if (!this.#_bindings.method_occluder_create) {
+    if (!this._bindings.method_occluder_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("occluder_create");
-      this.#_bindings.method_occluder_create = internal.classdb_get_method_bind(
+      this._bindings.method_occluder_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -2927,10 +2927,10 @@ class _MethodBindings {
     }
   }
   static init_method_occluder_set_mesh() {
-    if (!this.#_bindings.method_occluder_set_mesh) {
+    if (!this._bindings.method_occluder_set_mesh) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("occluder_set_mesh");
-      this.#_bindings.method_occluder_set_mesh = internal.classdb_get_method_bind(
+      this._bindings.method_occluder_set_mesh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3854404263
@@ -2938,10 +2938,10 @@ class _MethodBindings {
     }
   }
   static init_method_camera_create() {
-    if (!this.#_bindings.method_camera_create) {
+    if (!this._bindings.method_camera_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("camera_create");
-      this.#_bindings.method_camera_create = internal.classdb_get_method_bind(
+      this._bindings.method_camera_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -2949,10 +2949,10 @@ class _MethodBindings {
     }
   }
   static init_method_camera_set_perspective() {
-    if (!this.#_bindings.method_camera_set_perspective) {
+    if (!this._bindings.method_camera_set_perspective) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("camera_set_perspective");
-      this.#_bindings.method_camera_set_perspective = internal.classdb_get_method_bind(
+      this._bindings.method_camera_set_perspective = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         157498339
@@ -2960,10 +2960,10 @@ class _MethodBindings {
     }
   }
   static init_method_camera_set_orthogonal() {
-    if (!this.#_bindings.method_camera_set_orthogonal) {
+    if (!this._bindings.method_camera_set_orthogonal) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("camera_set_orthogonal");
-      this.#_bindings.method_camera_set_orthogonal = internal.classdb_get_method_bind(
+      this._bindings.method_camera_set_orthogonal = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         157498339
@@ -2971,10 +2971,10 @@ class _MethodBindings {
     }
   }
   static init_method_camera_set_frustum() {
-    if (!this.#_bindings.method_camera_set_frustum) {
+    if (!this._bindings.method_camera_set_frustum) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("camera_set_frustum");
-      this.#_bindings.method_camera_set_frustum = internal.classdb_get_method_bind(
+      this._bindings.method_camera_set_frustum = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1889878953
@@ -2982,10 +2982,10 @@ class _MethodBindings {
     }
   }
   static init_method_camera_set_transform() {
-    if (!this.#_bindings.method_camera_set_transform) {
+    if (!this._bindings.method_camera_set_transform) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("camera_set_transform");
-      this.#_bindings.method_camera_set_transform = internal.classdb_get_method_bind(
+      this._bindings.method_camera_set_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3935195649
@@ -2993,10 +2993,10 @@ class _MethodBindings {
     }
   }
   static init_method_camera_set_cull_mask() {
-    if (!this.#_bindings.method_camera_set_cull_mask) {
+    if (!this._bindings.method_camera_set_cull_mask) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("camera_set_cull_mask");
-      this.#_bindings.method_camera_set_cull_mask = internal.classdb_get_method_bind(
+      this._bindings.method_camera_set_cull_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -3004,10 +3004,10 @@ class _MethodBindings {
     }
   }
   static init_method_camera_set_environment() {
-    if (!this.#_bindings.method_camera_set_environment) {
+    if (!this._bindings.method_camera_set_environment) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("camera_set_environment");
-      this.#_bindings.method_camera_set_environment = internal.classdb_get_method_bind(
+      this._bindings.method_camera_set_environment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -3015,10 +3015,10 @@ class _MethodBindings {
     }
   }
   static init_method_camera_set_camera_attributes() {
-    if (!this.#_bindings.method_camera_set_camera_attributes) {
+    if (!this._bindings.method_camera_set_camera_attributes) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("camera_set_camera_attributes");
-      this.#_bindings.method_camera_set_camera_attributes = internal.classdb_get_method_bind(
+      this._bindings.method_camera_set_camera_attributes = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -3026,10 +3026,10 @@ class _MethodBindings {
     }
   }
   static init_method_camera_set_compositor() {
-    if (!this.#_bindings.method_camera_set_compositor) {
+    if (!this._bindings.method_camera_set_compositor) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("camera_set_compositor");
-      this.#_bindings.method_camera_set_compositor = internal.classdb_get_method_bind(
+      this._bindings.method_camera_set_compositor = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -3037,10 +3037,10 @@ class _MethodBindings {
     }
   }
   static init_method_camera_set_use_vertical_aspect() {
-    if (!this.#_bindings.method_camera_set_use_vertical_aspect) {
+    if (!this._bindings.method_camera_set_use_vertical_aspect) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("camera_set_use_vertical_aspect");
-      this.#_bindings.method_camera_set_use_vertical_aspect = internal.classdb_get_method_bind(
+      this._bindings.method_camera_set_use_vertical_aspect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -3048,10 +3048,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_create() {
-    if (!this.#_bindings.method_viewport_create) {
+    if (!this._bindings.method_viewport_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_create");
-      this.#_bindings.method_viewport_create = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -3059,10 +3059,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_use_xr() {
-    if (!this.#_bindings.method_viewport_set_use_xr) {
+    if (!this._bindings.method_viewport_set_use_xr) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_use_xr");
-      this.#_bindings.method_viewport_set_use_xr = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_use_xr = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -3070,10 +3070,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_size() {
-    if (!this.#_bindings.method_viewport_set_size) {
+    if (!this._bindings.method_viewport_set_size) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_size");
-      this.#_bindings.method_viewport_set_size = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4288446313
@@ -3081,10 +3081,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_active() {
-    if (!this.#_bindings.method_viewport_set_active) {
+    if (!this._bindings.method_viewport_set_active) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_active");
-      this.#_bindings.method_viewport_set_active = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_active = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -3092,10 +3092,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_parent_viewport() {
-    if (!this.#_bindings.method_viewport_set_parent_viewport) {
+    if (!this._bindings.method_viewport_set_parent_viewport) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_parent_viewport");
-      this.#_bindings.method_viewport_set_parent_viewport = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_parent_viewport = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -3103,10 +3103,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_attach_to_screen() {
-    if (!this.#_bindings.method_viewport_attach_to_screen) {
+    if (!this._bindings.method_viewport_attach_to_screen) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_attach_to_screen");
-      this.#_bindings.method_viewport_attach_to_screen = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_attach_to_screen = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1062245816
@@ -3114,10 +3114,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_render_direct_to_screen() {
-    if (!this.#_bindings.method_viewport_set_render_direct_to_screen) {
+    if (!this._bindings.method_viewport_set_render_direct_to_screen) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_render_direct_to_screen");
-      this.#_bindings.method_viewport_set_render_direct_to_screen = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_render_direct_to_screen = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -3125,10 +3125,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_canvas_cull_mask() {
-    if (!this.#_bindings.method_viewport_set_canvas_cull_mask) {
+    if (!this._bindings.method_viewport_set_canvas_cull_mask) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_canvas_cull_mask");
-      this.#_bindings.method_viewport_set_canvas_cull_mask = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_canvas_cull_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -3136,10 +3136,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_scaling_3d_mode() {
-    if (!this.#_bindings.method_viewport_set_scaling_3d_mode) {
+    if (!this._bindings.method_viewport_set_scaling_3d_mode) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_scaling_3d_mode");
-      this.#_bindings.method_viewport_set_scaling_3d_mode = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_scaling_3d_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2386524376
@@ -3147,10 +3147,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_scaling_3d_scale() {
-    if (!this.#_bindings.method_viewport_set_scaling_3d_scale) {
+    if (!this._bindings.method_viewport_set_scaling_3d_scale) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_scaling_3d_scale");
-      this.#_bindings.method_viewport_set_scaling_3d_scale = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_scaling_3d_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -3158,10 +3158,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_fsr_sharpness() {
-    if (!this.#_bindings.method_viewport_set_fsr_sharpness) {
+    if (!this._bindings.method_viewport_set_fsr_sharpness) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_fsr_sharpness");
-      this.#_bindings.method_viewport_set_fsr_sharpness = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_fsr_sharpness = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -3169,10 +3169,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_texture_mipmap_bias() {
-    if (!this.#_bindings.method_viewport_set_texture_mipmap_bias) {
+    if (!this._bindings.method_viewport_set_texture_mipmap_bias) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_texture_mipmap_bias");
-      this.#_bindings.method_viewport_set_texture_mipmap_bias = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_texture_mipmap_bias = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -3180,10 +3180,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_update_mode() {
-    if (!this.#_bindings.method_viewport_set_update_mode) {
+    if (!this._bindings.method_viewport_set_update_mode) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_update_mode");
-      this.#_bindings.method_viewport_set_update_mode = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_update_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3161116010
@@ -3191,10 +3191,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_get_update_mode() {
-    if (!this.#_bindings.method_viewport_get_update_mode) {
+    if (!this._bindings.method_viewport_get_update_mode) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_get_update_mode");
-      this.#_bindings.method_viewport_get_update_mode = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_get_update_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3803901472
@@ -3202,10 +3202,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_clear_mode() {
-    if (!this.#_bindings.method_viewport_set_clear_mode) {
+    if (!this._bindings.method_viewport_set_clear_mode) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_clear_mode");
-      this.#_bindings.method_viewport_set_clear_mode = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_clear_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3628367896
@@ -3213,10 +3213,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_get_render_target() {
-    if (!this.#_bindings.method_viewport_get_render_target) {
+    if (!this._bindings.method_viewport_get_render_target) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_get_render_target");
-      this.#_bindings.method_viewport_get_render_target = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_get_render_target = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3814569979
@@ -3224,10 +3224,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_get_texture() {
-    if (!this.#_bindings.method_viewport_get_texture) {
+    if (!this._bindings.method_viewport_get_texture) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_get_texture");
-      this.#_bindings.method_viewport_get_texture = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_get_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3814569979
@@ -3235,10 +3235,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_disable_3d() {
-    if (!this.#_bindings.method_viewport_set_disable_3d) {
+    if (!this._bindings.method_viewport_set_disable_3d) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_disable_3d");
-      this.#_bindings.method_viewport_set_disable_3d = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_disable_3d = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -3246,10 +3246,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_disable_2d() {
-    if (!this.#_bindings.method_viewport_set_disable_2d) {
+    if (!this._bindings.method_viewport_set_disable_2d) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_disable_2d");
-      this.#_bindings.method_viewport_set_disable_2d = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_disable_2d = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -3257,10 +3257,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_environment_mode() {
-    if (!this.#_bindings.method_viewport_set_environment_mode) {
+    if (!this._bindings.method_viewport_set_environment_mode) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_environment_mode");
-      this.#_bindings.method_viewport_set_environment_mode = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_environment_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2196892182
@@ -3268,10 +3268,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_attach_camera() {
-    if (!this.#_bindings.method_viewport_attach_camera) {
+    if (!this._bindings.method_viewport_attach_camera) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_attach_camera");
-      this.#_bindings.method_viewport_attach_camera = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_attach_camera = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -3279,10 +3279,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_scenario() {
-    if (!this.#_bindings.method_viewport_set_scenario) {
+    if (!this._bindings.method_viewport_set_scenario) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_scenario");
-      this.#_bindings.method_viewport_set_scenario = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_scenario = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -3290,10 +3290,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_attach_canvas() {
-    if (!this.#_bindings.method_viewport_attach_canvas) {
+    if (!this._bindings.method_viewport_attach_canvas) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_attach_canvas");
-      this.#_bindings.method_viewport_attach_canvas = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_attach_canvas = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -3301,10 +3301,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_remove_canvas() {
-    if (!this.#_bindings.method_viewport_remove_canvas) {
+    if (!this._bindings.method_viewport_remove_canvas) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_remove_canvas");
-      this.#_bindings.method_viewport_remove_canvas = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_remove_canvas = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -3312,10 +3312,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_snap_2d_transforms_to_pixel() {
-    if (!this.#_bindings.method_viewport_set_snap_2d_transforms_to_pixel) {
+    if (!this._bindings.method_viewport_set_snap_2d_transforms_to_pixel) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_snap_2d_transforms_to_pixel");
-      this.#_bindings.method_viewport_set_snap_2d_transforms_to_pixel = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_snap_2d_transforms_to_pixel = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -3323,10 +3323,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_snap_2d_vertices_to_pixel() {
-    if (!this.#_bindings.method_viewport_set_snap_2d_vertices_to_pixel) {
+    if (!this._bindings.method_viewport_set_snap_2d_vertices_to_pixel) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_snap_2d_vertices_to_pixel");
-      this.#_bindings.method_viewport_set_snap_2d_vertices_to_pixel = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_snap_2d_vertices_to_pixel = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -3334,10 +3334,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_default_canvas_item_texture_filter() {
-    if (!this.#_bindings.method_viewport_set_default_canvas_item_texture_filter) {
+    if (!this._bindings.method_viewport_set_default_canvas_item_texture_filter) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_default_canvas_item_texture_filter");
-      this.#_bindings.method_viewport_set_default_canvas_item_texture_filter = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_default_canvas_item_texture_filter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1155129294
@@ -3345,10 +3345,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_default_canvas_item_texture_repeat() {
-    if (!this.#_bindings.method_viewport_set_default_canvas_item_texture_repeat) {
+    if (!this._bindings.method_viewport_set_default_canvas_item_texture_repeat) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_default_canvas_item_texture_repeat");
-      this.#_bindings.method_viewport_set_default_canvas_item_texture_repeat = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_default_canvas_item_texture_repeat = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1652956681
@@ -3356,10 +3356,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_canvas_transform() {
-    if (!this.#_bindings.method_viewport_set_canvas_transform) {
+    if (!this._bindings.method_viewport_set_canvas_transform) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_canvas_transform");
-      this.#_bindings.method_viewport_set_canvas_transform = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_canvas_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3608606053
@@ -3367,10 +3367,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_canvas_stacking() {
-    if (!this.#_bindings.method_viewport_set_canvas_stacking) {
+    if (!this._bindings.method_viewport_set_canvas_stacking) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_canvas_stacking");
-      this.#_bindings.method_viewport_set_canvas_stacking = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_canvas_stacking = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3713930247
@@ -3378,10 +3378,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_transparent_background() {
-    if (!this.#_bindings.method_viewport_set_transparent_background) {
+    if (!this._bindings.method_viewport_set_transparent_background) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_transparent_background");
-      this.#_bindings.method_viewport_set_transparent_background = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_transparent_background = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -3389,10 +3389,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_global_canvas_transform() {
-    if (!this.#_bindings.method_viewport_set_global_canvas_transform) {
+    if (!this._bindings.method_viewport_set_global_canvas_transform) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_global_canvas_transform");
-      this.#_bindings.method_viewport_set_global_canvas_transform = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_global_canvas_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1246044741
@@ -3400,10 +3400,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_sdf_oversize_and_scale() {
-    if (!this.#_bindings.method_viewport_set_sdf_oversize_and_scale) {
+    if (!this._bindings.method_viewport_set_sdf_oversize_and_scale) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_sdf_oversize_and_scale");
-      this.#_bindings.method_viewport_set_sdf_oversize_and_scale = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_sdf_oversize_and_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1329198632
@@ -3411,10 +3411,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_positional_shadow_atlas_size() {
-    if (!this.#_bindings.method_viewport_set_positional_shadow_atlas_size) {
+    if (!this._bindings.method_viewport_set_positional_shadow_atlas_size) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_positional_shadow_atlas_size");
-      this.#_bindings.method_viewport_set_positional_shadow_atlas_size = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_positional_shadow_atlas_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1904426712
@@ -3422,10 +3422,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_positional_shadow_atlas_quadrant_subdivision() {
-    if (!this.#_bindings.method_viewport_set_positional_shadow_atlas_quadrant_subdivision) {
+    if (!this._bindings.method_viewport_set_positional_shadow_atlas_quadrant_subdivision) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_positional_shadow_atlas_quadrant_subdivision");
-      this.#_bindings.method_viewport_set_positional_shadow_atlas_quadrant_subdivision = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_positional_shadow_atlas_quadrant_subdivision = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4288446313
@@ -3433,10 +3433,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_msaa_3d() {
-    if (!this.#_bindings.method_viewport_set_msaa_3d) {
+    if (!this._bindings.method_viewport_set_msaa_3d) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_msaa_3d");
-      this.#_bindings.method_viewport_set_msaa_3d = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_msaa_3d = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3764433340
@@ -3444,10 +3444,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_msaa_2d() {
-    if (!this.#_bindings.method_viewport_set_msaa_2d) {
+    if (!this._bindings.method_viewport_set_msaa_2d) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_msaa_2d");
-      this.#_bindings.method_viewport_set_msaa_2d = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_msaa_2d = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3764433340
@@ -3455,10 +3455,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_use_hdr_2d() {
-    if (!this.#_bindings.method_viewport_set_use_hdr_2d) {
+    if (!this._bindings.method_viewport_set_use_hdr_2d) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_use_hdr_2d");
-      this.#_bindings.method_viewport_set_use_hdr_2d = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_use_hdr_2d = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -3466,10 +3466,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_screen_space_aa() {
-    if (!this.#_bindings.method_viewport_set_screen_space_aa) {
+    if (!this._bindings.method_viewport_set_screen_space_aa) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_screen_space_aa");
-      this.#_bindings.method_viewport_set_screen_space_aa = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_screen_space_aa = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1447279591
@@ -3477,10 +3477,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_use_taa() {
-    if (!this.#_bindings.method_viewport_set_use_taa) {
+    if (!this._bindings.method_viewport_set_use_taa) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_use_taa");
-      this.#_bindings.method_viewport_set_use_taa = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_use_taa = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -3488,10 +3488,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_use_debanding() {
-    if (!this.#_bindings.method_viewport_set_use_debanding) {
+    if (!this._bindings.method_viewport_set_use_debanding) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_use_debanding");
-      this.#_bindings.method_viewport_set_use_debanding = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_use_debanding = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -3499,10 +3499,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_use_occlusion_culling() {
-    if (!this.#_bindings.method_viewport_set_use_occlusion_culling) {
+    if (!this._bindings.method_viewport_set_use_occlusion_culling) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_use_occlusion_culling");
-      this.#_bindings.method_viewport_set_use_occlusion_culling = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_use_occlusion_culling = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -3510,10 +3510,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_occlusion_rays_per_thread() {
-    if (!this.#_bindings.method_viewport_set_occlusion_rays_per_thread) {
+    if (!this._bindings.method_viewport_set_occlusion_rays_per_thread) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_occlusion_rays_per_thread");
-      this.#_bindings.method_viewport_set_occlusion_rays_per_thread = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_occlusion_rays_per_thread = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -3521,10 +3521,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_occlusion_culling_build_quality() {
-    if (!this.#_bindings.method_viewport_set_occlusion_culling_build_quality) {
+    if (!this._bindings.method_viewport_set_occlusion_culling_build_quality) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_occlusion_culling_build_quality");
-      this.#_bindings.method_viewport_set_occlusion_culling_build_quality = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_occlusion_culling_build_quality = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2069725696
@@ -3532,10 +3532,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_get_render_info() {
-    if (!this.#_bindings.method_viewport_get_render_info) {
+    if (!this._bindings.method_viewport_get_render_info) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_get_render_info");
-      this.#_bindings.method_viewport_get_render_info = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_get_render_info = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2041262392
@@ -3543,10 +3543,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_debug_draw() {
-    if (!this.#_bindings.method_viewport_set_debug_draw) {
+    if (!this._bindings.method_viewport_set_debug_draw) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_debug_draw");
-      this.#_bindings.method_viewport_set_debug_draw = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_debug_draw = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2089420930
@@ -3554,10 +3554,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_measure_render_time() {
-    if (!this.#_bindings.method_viewport_set_measure_render_time) {
+    if (!this._bindings.method_viewport_set_measure_render_time) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_measure_render_time");
-      this.#_bindings.method_viewport_set_measure_render_time = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_measure_render_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -3565,10 +3565,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_get_measured_render_time_cpu() {
-    if (!this.#_bindings.method_viewport_get_measured_render_time_cpu) {
+    if (!this._bindings.method_viewport_get_measured_render_time_cpu) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_get_measured_render_time_cpu");
-      this.#_bindings.method_viewport_get_measured_render_time_cpu = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_get_measured_render_time_cpu = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         866169185
@@ -3576,10 +3576,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_get_measured_render_time_gpu() {
-    if (!this.#_bindings.method_viewport_get_measured_render_time_gpu) {
+    if (!this._bindings.method_viewport_get_measured_render_time_gpu) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_get_measured_render_time_gpu");
-      this.#_bindings.method_viewport_get_measured_render_time_gpu = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_get_measured_render_time_gpu = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         866169185
@@ -3587,10 +3587,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_vrs_mode() {
-    if (!this.#_bindings.method_viewport_set_vrs_mode) {
+    if (!this._bindings.method_viewport_set_vrs_mode) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_vrs_mode");
-      this.#_bindings.method_viewport_set_vrs_mode = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_vrs_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         398809874
@@ -3598,10 +3598,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_vrs_update_mode() {
-    if (!this.#_bindings.method_viewport_set_vrs_update_mode) {
+    if (!this._bindings.method_viewport_set_vrs_update_mode) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_vrs_update_mode");
-      this.#_bindings.method_viewport_set_vrs_update_mode = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_vrs_update_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2696154815
@@ -3609,10 +3609,10 @@ class _MethodBindings {
     }
   }
   static init_method_viewport_set_vrs_texture() {
-    if (!this.#_bindings.method_viewport_set_vrs_texture) {
+    if (!this._bindings.method_viewport_set_vrs_texture) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("viewport_set_vrs_texture");
-      this.#_bindings.method_viewport_set_vrs_texture = internal.classdb_get_method_bind(
+      this._bindings.method_viewport_set_vrs_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -3620,10 +3620,10 @@ class _MethodBindings {
     }
   }
   static init_method_sky_create() {
-    if (!this.#_bindings.method_sky_create) {
+    if (!this._bindings.method_sky_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("sky_create");
-      this.#_bindings.method_sky_create = internal.classdb_get_method_bind(
+      this._bindings.method_sky_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -3631,10 +3631,10 @@ class _MethodBindings {
     }
   }
   static init_method_sky_set_radiance_size() {
-    if (!this.#_bindings.method_sky_set_radiance_size) {
+    if (!this._bindings.method_sky_set_radiance_size) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("sky_set_radiance_size");
-      this.#_bindings.method_sky_set_radiance_size = internal.classdb_get_method_bind(
+      this._bindings.method_sky_set_radiance_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -3642,10 +3642,10 @@ class _MethodBindings {
     }
   }
   static init_method_sky_set_mode() {
-    if (!this.#_bindings.method_sky_set_mode) {
+    if (!this._bindings.method_sky_set_mode) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("sky_set_mode");
-      this.#_bindings.method_sky_set_mode = internal.classdb_get_method_bind(
+      this._bindings.method_sky_set_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3279019937
@@ -3653,10 +3653,10 @@ class _MethodBindings {
     }
   }
   static init_method_sky_set_material() {
-    if (!this.#_bindings.method_sky_set_material) {
+    if (!this._bindings.method_sky_set_material) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("sky_set_material");
-      this.#_bindings.method_sky_set_material = internal.classdb_get_method_bind(
+      this._bindings.method_sky_set_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -3664,10 +3664,10 @@ class _MethodBindings {
     }
   }
   static init_method_sky_bake_panorama() {
-    if (!this.#_bindings.method_sky_bake_panorama) {
+    if (!this._bindings.method_sky_bake_panorama) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("sky_bake_panorama");
-      this.#_bindings.method_sky_bake_panorama = internal.classdb_get_method_bind(
+      this._bindings.method_sky_bake_panorama = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3875285818
@@ -3675,10 +3675,10 @@ class _MethodBindings {
     }
   }
   static init_method_compositor_effect_create() {
-    if (!this.#_bindings.method_compositor_effect_create) {
+    if (!this._bindings.method_compositor_effect_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("compositor_effect_create");
-      this.#_bindings.method_compositor_effect_create = internal.classdb_get_method_bind(
+      this._bindings.method_compositor_effect_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -3686,10 +3686,10 @@ class _MethodBindings {
     }
   }
   static init_method_compositor_effect_set_enabled() {
-    if (!this.#_bindings.method_compositor_effect_set_enabled) {
+    if (!this._bindings.method_compositor_effect_set_enabled) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("compositor_effect_set_enabled");
-      this.#_bindings.method_compositor_effect_set_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_compositor_effect_set_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -3697,10 +3697,10 @@ class _MethodBindings {
     }
   }
   static init_method_compositor_effect_set_callback() {
-    if (!this.#_bindings.method_compositor_effect_set_callback) {
+    if (!this._bindings.method_compositor_effect_set_callback) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("compositor_effect_set_callback");
-      this.#_bindings.method_compositor_effect_set_callback = internal.classdb_get_method_bind(
+      this._bindings.method_compositor_effect_set_callback = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         487412485
@@ -3708,10 +3708,10 @@ class _MethodBindings {
     }
   }
   static init_method_compositor_effect_set_flag() {
-    if (!this.#_bindings.method_compositor_effect_set_flag) {
+    if (!this._bindings.method_compositor_effect_set_flag) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("compositor_effect_set_flag");
-      this.#_bindings.method_compositor_effect_set_flag = internal.classdb_get_method_bind(
+      this._bindings.method_compositor_effect_set_flag = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3659527075
@@ -3719,10 +3719,10 @@ class _MethodBindings {
     }
   }
   static init_method_compositor_create() {
-    if (!this.#_bindings.method_compositor_create) {
+    if (!this._bindings.method_compositor_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("compositor_create");
-      this.#_bindings.method_compositor_create = internal.classdb_get_method_bind(
+      this._bindings.method_compositor_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -3730,10 +3730,10 @@ class _MethodBindings {
     }
   }
   static init_method_compositor_set_compositor_effects() {
-    if (!this.#_bindings.method_compositor_set_compositor_effects) {
+    if (!this._bindings.method_compositor_set_compositor_effects) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("compositor_set_compositor_effects");
-      this.#_bindings.method_compositor_set_compositor_effects = internal.classdb_get_method_bind(
+      this._bindings.method_compositor_set_compositor_effects = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         684822712
@@ -3741,10 +3741,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_create() {
-    if (!this.#_bindings.method_environment_create) {
+    if (!this._bindings.method_environment_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_create");
-      this.#_bindings.method_environment_create = internal.classdb_get_method_bind(
+      this._bindings.method_environment_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -3752,10 +3752,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_set_background() {
-    if (!this.#_bindings.method_environment_set_background) {
+    if (!this._bindings.method_environment_set_background) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_set_background");
-      this.#_bindings.method_environment_set_background = internal.classdb_get_method_bind(
+      this._bindings.method_environment_set_background = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937328877
@@ -3763,10 +3763,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_set_sky() {
-    if (!this.#_bindings.method_environment_set_sky) {
+    if (!this._bindings.method_environment_set_sky) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_set_sky");
-      this.#_bindings.method_environment_set_sky = internal.classdb_get_method_bind(
+      this._bindings.method_environment_set_sky = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -3774,10 +3774,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_set_sky_custom_fov() {
-    if (!this.#_bindings.method_environment_set_sky_custom_fov) {
+    if (!this._bindings.method_environment_set_sky_custom_fov) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_set_sky_custom_fov");
-      this.#_bindings.method_environment_set_sky_custom_fov = internal.classdb_get_method_bind(
+      this._bindings.method_environment_set_sky_custom_fov = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -3785,10 +3785,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_set_sky_orientation() {
-    if (!this.#_bindings.method_environment_set_sky_orientation) {
+    if (!this._bindings.method_environment_set_sky_orientation) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_set_sky_orientation");
-      this.#_bindings.method_environment_set_sky_orientation = internal.classdb_get_method_bind(
+      this._bindings.method_environment_set_sky_orientation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1735850857
@@ -3796,10 +3796,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_set_bg_color() {
-    if (!this.#_bindings.method_environment_set_bg_color) {
+    if (!this._bindings.method_environment_set_bg_color) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_set_bg_color");
-      this.#_bindings.method_environment_set_bg_color = internal.classdb_get_method_bind(
+      this._bindings.method_environment_set_bg_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2948539648
@@ -3807,10 +3807,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_set_bg_energy() {
-    if (!this.#_bindings.method_environment_set_bg_energy) {
+    if (!this._bindings.method_environment_set_bg_energy) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_set_bg_energy");
-      this.#_bindings.method_environment_set_bg_energy = internal.classdb_get_method_bind(
+      this._bindings.method_environment_set_bg_energy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2513314492
@@ -3818,10 +3818,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_set_canvas_max_layer() {
-    if (!this.#_bindings.method_environment_set_canvas_max_layer) {
+    if (!this._bindings.method_environment_set_canvas_max_layer) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_set_canvas_max_layer");
-      this.#_bindings.method_environment_set_canvas_max_layer = internal.classdb_get_method_bind(
+      this._bindings.method_environment_set_canvas_max_layer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -3829,10 +3829,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_set_ambient_light() {
-    if (!this.#_bindings.method_environment_set_ambient_light) {
+    if (!this._bindings.method_environment_set_ambient_light) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_set_ambient_light");
-      this.#_bindings.method_environment_set_ambient_light = internal.classdb_get_method_bind(
+      this._bindings.method_environment_set_ambient_light = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1214961493
@@ -3840,10 +3840,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_set_glow() {
-    if (!this.#_bindings.method_environment_set_glow) {
+    if (!this._bindings.method_environment_set_glow) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_set_glow");
-      this.#_bindings.method_environment_set_glow = internal.classdb_get_method_bind(
+      this._bindings.method_environment_set_glow = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2421724940
@@ -3851,10 +3851,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_set_tonemap() {
-    if (!this.#_bindings.method_environment_set_tonemap) {
+    if (!this._bindings.method_environment_set_tonemap) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_set_tonemap");
-      this.#_bindings.method_environment_set_tonemap = internal.classdb_get_method_bind(
+      this._bindings.method_environment_set_tonemap = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2914312638
@@ -3862,10 +3862,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_set_adjustment() {
-    if (!this.#_bindings.method_environment_set_adjustment) {
+    if (!this._bindings.method_environment_set_adjustment) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_set_adjustment");
-      this.#_bindings.method_environment_set_adjustment = internal.classdb_get_method_bind(
+      this._bindings.method_environment_set_adjustment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         876799838
@@ -3873,10 +3873,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_set_ssr() {
-    if (!this.#_bindings.method_environment_set_ssr) {
+    if (!this._bindings.method_environment_set_ssr) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_set_ssr");
-      this.#_bindings.method_environment_set_ssr = internal.classdb_get_method_bind(
+      this._bindings.method_environment_set_ssr = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3607294374
@@ -3884,10 +3884,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_set_ssao() {
-    if (!this.#_bindings.method_environment_set_ssao) {
+    if (!this._bindings.method_environment_set_ssao) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_set_ssao");
-      this.#_bindings.method_environment_set_ssao = internal.classdb_get_method_bind(
+      this._bindings.method_environment_set_ssao = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3994732740
@@ -3895,10 +3895,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_set_fog() {
-    if (!this.#_bindings.method_environment_set_fog) {
+    if (!this._bindings.method_environment_set_fog) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_set_fog");
-      this.#_bindings.method_environment_set_fog = internal.classdb_get_method_bind(
+      this._bindings.method_environment_set_fog = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         105051629
@@ -3906,10 +3906,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_set_sdfgi() {
-    if (!this.#_bindings.method_environment_set_sdfgi) {
+    if (!this._bindings.method_environment_set_sdfgi) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_set_sdfgi");
-      this.#_bindings.method_environment_set_sdfgi = internal.classdb_get_method_bind(
+      this._bindings.method_environment_set_sdfgi = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3519144388
@@ -3917,10 +3917,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_set_volumetric_fog() {
-    if (!this.#_bindings.method_environment_set_volumetric_fog) {
+    if (!this._bindings.method_environment_set_volumetric_fog) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_set_volumetric_fog");
-      this.#_bindings.method_environment_set_volumetric_fog = internal.classdb_get_method_bind(
+      this._bindings.method_environment_set_volumetric_fog = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1553633833
@@ -3928,10 +3928,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_glow_set_use_bicubic_upscale() {
-    if (!this.#_bindings.method_environment_glow_set_use_bicubic_upscale) {
+    if (!this._bindings.method_environment_glow_set_use_bicubic_upscale) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_glow_set_use_bicubic_upscale");
-      this.#_bindings.method_environment_glow_set_use_bicubic_upscale = internal.classdb_get_method_bind(
+      this._bindings.method_environment_glow_set_use_bicubic_upscale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -3939,10 +3939,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_set_ssr_roughness_quality() {
-    if (!this.#_bindings.method_environment_set_ssr_roughness_quality) {
+    if (!this._bindings.method_environment_set_ssr_roughness_quality) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_set_ssr_roughness_quality");
-      this.#_bindings.method_environment_set_ssr_roughness_quality = internal.classdb_get_method_bind(
+      this._bindings.method_environment_set_ssr_roughness_quality = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1190026788
@@ -3950,10 +3950,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_set_ssao_quality() {
-    if (!this.#_bindings.method_environment_set_ssao_quality) {
+    if (!this._bindings.method_environment_set_ssao_quality) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_set_ssao_quality");
-      this.#_bindings.method_environment_set_ssao_quality = internal.classdb_get_method_bind(
+      this._bindings.method_environment_set_ssao_quality = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         189753569
@@ -3961,10 +3961,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_set_ssil_quality() {
-    if (!this.#_bindings.method_environment_set_ssil_quality) {
+    if (!this._bindings.method_environment_set_ssil_quality) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_set_ssil_quality");
-      this.#_bindings.method_environment_set_ssil_quality = internal.classdb_get_method_bind(
+      this._bindings.method_environment_set_ssil_quality = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1713836683
@@ -3972,10 +3972,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_set_sdfgi_ray_count() {
-    if (!this.#_bindings.method_environment_set_sdfgi_ray_count) {
+    if (!this._bindings.method_environment_set_sdfgi_ray_count) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_set_sdfgi_ray_count");
-      this.#_bindings.method_environment_set_sdfgi_ray_count = internal.classdb_get_method_bind(
+      this._bindings.method_environment_set_sdfgi_ray_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         340137951
@@ -3983,10 +3983,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_set_sdfgi_frames_to_converge() {
-    if (!this.#_bindings.method_environment_set_sdfgi_frames_to_converge) {
+    if (!this._bindings.method_environment_set_sdfgi_frames_to_converge) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_set_sdfgi_frames_to_converge");
-      this.#_bindings.method_environment_set_sdfgi_frames_to_converge = internal.classdb_get_method_bind(
+      this._bindings.method_environment_set_sdfgi_frames_to_converge = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2182444374
@@ -3994,10 +3994,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_set_sdfgi_frames_to_update_light() {
-    if (!this.#_bindings.method_environment_set_sdfgi_frames_to_update_light) {
+    if (!this._bindings.method_environment_set_sdfgi_frames_to_update_light) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_set_sdfgi_frames_to_update_light");
-      this.#_bindings.method_environment_set_sdfgi_frames_to_update_light = internal.classdb_get_method_bind(
+      this._bindings.method_environment_set_sdfgi_frames_to_update_light = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1251144068
@@ -4005,10 +4005,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_set_volumetric_fog_volume_size() {
-    if (!this.#_bindings.method_environment_set_volumetric_fog_volume_size) {
+    if (!this._bindings.method_environment_set_volumetric_fog_volume_size) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_set_volumetric_fog_volume_size");
-      this.#_bindings.method_environment_set_volumetric_fog_volume_size = internal.classdb_get_method_bind(
+      this._bindings.method_environment_set_volumetric_fog_volume_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -4016,10 +4016,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_set_volumetric_fog_filter_active() {
-    if (!this.#_bindings.method_environment_set_volumetric_fog_filter_active) {
+    if (!this._bindings.method_environment_set_volumetric_fog_filter_active) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_set_volumetric_fog_filter_active");
-      this.#_bindings.method_environment_set_volumetric_fog_filter_active = internal.classdb_get_method_bind(
+      this._bindings.method_environment_set_volumetric_fog_filter_active = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -4027,10 +4027,10 @@ class _MethodBindings {
     }
   }
   static init_method_environment_bake_panorama() {
-    if (!this.#_bindings.method_environment_bake_panorama) {
+    if (!this._bindings.method_environment_bake_panorama) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("environment_bake_panorama");
-      this.#_bindings.method_environment_bake_panorama = internal.classdb_get_method_bind(
+      this._bindings.method_environment_bake_panorama = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2452908646
@@ -4038,10 +4038,10 @@ class _MethodBindings {
     }
   }
   static init_method_screen_space_roughness_limiter_set_active() {
-    if (!this.#_bindings.method_screen_space_roughness_limiter_set_active) {
+    if (!this._bindings.method_screen_space_roughness_limiter_set_active) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("screen_space_roughness_limiter_set_active");
-      this.#_bindings.method_screen_space_roughness_limiter_set_active = internal.classdb_get_method_bind(
+      this._bindings.method_screen_space_roughness_limiter_set_active = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         916716790
@@ -4049,10 +4049,10 @@ class _MethodBindings {
     }
   }
   static init_method_sub_surface_scattering_set_quality() {
-    if (!this.#_bindings.method_sub_surface_scattering_set_quality) {
+    if (!this._bindings.method_sub_surface_scattering_set_quality) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("sub_surface_scattering_set_quality");
-      this.#_bindings.method_sub_surface_scattering_set_quality = internal.classdb_get_method_bind(
+      this._bindings.method_sub_surface_scattering_set_quality = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         64571803
@@ -4060,10 +4060,10 @@ class _MethodBindings {
     }
   }
   static init_method_sub_surface_scattering_set_scale() {
-    if (!this.#_bindings.method_sub_surface_scattering_set_scale) {
+    if (!this._bindings.method_sub_surface_scattering_set_scale) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("sub_surface_scattering_set_scale");
-      this.#_bindings.method_sub_surface_scattering_set_scale = internal.classdb_get_method_bind(
+      this._bindings.method_sub_surface_scattering_set_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1017552074
@@ -4071,10 +4071,10 @@ class _MethodBindings {
     }
   }
   static init_method_camera_attributes_create() {
-    if (!this.#_bindings.method_camera_attributes_create) {
+    if (!this._bindings.method_camera_attributes_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("camera_attributes_create");
-      this.#_bindings.method_camera_attributes_create = internal.classdb_get_method_bind(
+      this._bindings.method_camera_attributes_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -4082,10 +4082,10 @@ class _MethodBindings {
     }
   }
   static init_method_camera_attributes_set_dof_blur_quality() {
-    if (!this.#_bindings.method_camera_attributes_set_dof_blur_quality) {
+    if (!this._bindings.method_camera_attributes_set_dof_blur_quality) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("camera_attributes_set_dof_blur_quality");
-      this.#_bindings.method_camera_attributes_set_dof_blur_quality = internal.classdb_get_method_bind(
+      this._bindings.method_camera_attributes_set_dof_blur_quality = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2220136795
@@ -4093,10 +4093,10 @@ class _MethodBindings {
     }
   }
   static init_method_camera_attributes_set_dof_blur_bokeh_shape() {
-    if (!this.#_bindings.method_camera_attributes_set_dof_blur_bokeh_shape) {
+    if (!this._bindings.method_camera_attributes_set_dof_blur_bokeh_shape) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("camera_attributes_set_dof_blur_bokeh_shape");
-      this.#_bindings.method_camera_attributes_set_dof_blur_bokeh_shape = internal.classdb_get_method_bind(
+      this._bindings.method_camera_attributes_set_dof_blur_bokeh_shape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1205058394
@@ -4104,10 +4104,10 @@ class _MethodBindings {
     }
   }
   static init_method_camera_attributes_set_dof_blur() {
-    if (!this.#_bindings.method_camera_attributes_set_dof_blur) {
+    if (!this._bindings.method_camera_attributes_set_dof_blur) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("camera_attributes_set_dof_blur");
-      this.#_bindings.method_camera_attributes_set_dof_blur = internal.classdb_get_method_bind(
+      this._bindings.method_camera_attributes_set_dof_blur = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         316272616
@@ -4115,10 +4115,10 @@ class _MethodBindings {
     }
   }
   static init_method_camera_attributes_set_exposure() {
-    if (!this.#_bindings.method_camera_attributes_set_exposure) {
+    if (!this._bindings.method_camera_attributes_set_exposure) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("camera_attributes_set_exposure");
-      this.#_bindings.method_camera_attributes_set_exposure = internal.classdb_get_method_bind(
+      this._bindings.method_camera_attributes_set_exposure = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2513314492
@@ -4126,10 +4126,10 @@ class _MethodBindings {
     }
   }
   static init_method_camera_attributes_set_auto_exposure() {
-    if (!this.#_bindings.method_camera_attributes_set_auto_exposure) {
+    if (!this._bindings.method_camera_attributes_set_auto_exposure) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("camera_attributes_set_auto_exposure");
-      this.#_bindings.method_camera_attributes_set_auto_exposure = internal.classdb_get_method_bind(
+      this._bindings.method_camera_attributes_set_auto_exposure = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4266986332
@@ -4137,10 +4137,10 @@ class _MethodBindings {
     }
   }
   static init_method_scenario_create() {
-    if (!this.#_bindings.method_scenario_create) {
+    if (!this._bindings.method_scenario_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("scenario_create");
-      this.#_bindings.method_scenario_create = internal.classdb_get_method_bind(
+      this._bindings.method_scenario_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -4148,10 +4148,10 @@ class _MethodBindings {
     }
   }
   static init_method_scenario_set_environment() {
-    if (!this.#_bindings.method_scenario_set_environment) {
+    if (!this._bindings.method_scenario_set_environment) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("scenario_set_environment");
-      this.#_bindings.method_scenario_set_environment = internal.classdb_get_method_bind(
+      this._bindings.method_scenario_set_environment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -4159,10 +4159,10 @@ class _MethodBindings {
     }
   }
   static init_method_scenario_set_fallback_environment() {
-    if (!this.#_bindings.method_scenario_set_fallback_environment) {
+    if (!this._bindings.method_scenario_set_fallback_environment) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("scenario_set_fallback_environment");
-      this.#_bindings.method_scenario_set_fallback_environment = internal.classdb_get_method_bind(
+      this._bindings.method_scenario_set_fallback_environment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -4170,10 +4170,10 @@ class _MethodBindings {
     }
   }
   static init_method_scenario_set_camera_attributes() {
-    if (!this.#_bindings.method_scenario_set_camera_attributes) {
+    if (!this._bindings.method_scenario_set_camera_attributes) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("scenario_set_camera_attributes");
-      this.#_bindings.method_scenario_set_camera_attributes = internal.classdb_get_method_bind(
+      this._bindings.method_scenario_set_camera_attributes = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -4181,10 +4181,10 @@ class _MethodBindings {
     }
   }
   static init_method_scenario_set_compositor() {
-    if (!this.#_bindings.method_scenario_set_compositor) {
+    if (!this._bindings.method_scenario_set_compositor) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("scenario_set_compositor");
-      this.#_bindings.method_scenario_set_compositor = internal.classdb_get_method_bind(
+      this._bindings.method_scenario_set_compositor = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -4192,10 +4192,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_create2() {
-    if (!this.#_bindings.method_instance_create2) {
+    if (!this._bindings.method_instance_create2) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_create2");
-      this.#_bindings.method_instance_create2 = internal.classdb_get_method_bind(
+      this._bindings.method_instance_create2 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         746547085
@@ -4203,10 +4203,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_create() {
-    if (!this.#_bindings.method_instance_create) {
+    if (!this._bindings.method_instance_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_create");
-      this.#_bindings.method_instance_create = internal.classdb_get_method_bind(
+      this._bindings.method_instance_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -4214,10 +4214,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_set_base() {
-    if (!this.#_bindings.method_instance_set_base) {
+    if (!this._bindings.method_instance_set_base) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_set_base");
-      this.#_bindings.method_instance_set_base = internal.classdb_get_method_bind(
+      this._bindings.method_instance_set_base = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -4225,10 +4225,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_set_scenario() {
-    if (!this.#_bindings.method_instance_set_scenario) {
+    if (!this._bindings.method_instance_set_scenario) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_set_scenario");
-      this.#_bindings.method_instance_set_scenario = internal.classdb_get_method_bind(
+      this._bindings.method_instance_set_scenario = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -4236,10 +4236,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_set_layer_mask() {
-    if (!this.#_bindings.method_instance_set_layer_mask) {
+    if (!this._bindings.method_instance_set_layer_mask) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_set_layer_mask");
-      this.#_bindings.method_instance_set_layer_mask = internal.classdb_get_method_bind(
+      this._bindings.method_instance_set_layer_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -4247,10 +4247,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_set_pivot_data() {
-    if (!this.#_bindings.method_instance_set_pivot_data) {
+    if (!this._bindings.method_instance_set_pivot_data) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_set_pivot_data");
-      this.#_bindings.method_instance_set_pivot_data = internal.classdb_get_method_bind(
+      this._bindings.method_instance_set_pivot_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1280615259
@@ -4258,10 +4258,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_set_transform() {
-    if (!this.#_bindings.method_instance_set_transform) {
+    if (!this._bindings.method_instance_set_transform) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_set_transform");
-      this.#_bindings.method_instance_set_transform = internal.classdb_get_method_bind(
+      this._bindings.method_instance_set_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3935195649
@@ -4269,10 +4269,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_attach_object_instance_id() {
-    if (!this.#_bindings.method_instance_attach_object_instance_id) {
+    if (!this._bindings.method_instance_attach_object_instance_id) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_attach_object_instance_id");
-      this.#_bindings.method_instance_attach_object_instance_id = internal.classdb_get_method_bind(
+      this._bindings.method_instance_attach_object_instance_id = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -4280,10 +4280,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_set_blend_shape_weight() {
-    if (!this.#_bindings.method_instance_set_blend_shape_weight) {
+    if (!this._bindings.method_instance_set_blend_shape_weight) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_set_blend_shape_weight");
-      this.#_bindings.method_instance_set_blend_shape_weight = internal.classdb_get_method_bind(
+      this._bindings.method_instance_set_blend_shape_weight = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1892459533
@@ -4291,10 +4291,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_set_surface_override_material() {
-    if (!this.#_bindings.method_instance_set_surface_override_material) {
+    if (!this._bindings.method_instance_set_surface_override_material) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_set_surface_override_material");
-      this.#_bindings.method_instance_set_surface_override_material = internal.classdb_get_method_bind(
+      this._bindings.method_instance_set_surface_override_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2310537182
@@ -4302,10 +4302,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_set_visible() {
-    if (!this.#_bindings.method_instance_set_visible) {
+    if (!this._bindings.method_instance_set_visible) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_set_visible");
-      this.#_bindings.method_instance_set_visible = internal.classdb_get_method_bind(
+      this._bindings.method_instance_set_visible = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -4313,10 +4313,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_geometry_set_transparency() {
-    if (!this.#_bindings.method_instance_geometry_set_transparency) {
+    if (!this._bindings.method_instance_geometry_set_transparency) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_geometry_set_transparency");
-      this.#_bindings.method_instance_geometry_set_transparency = internal.classdb_get_method_bind(
+      this._bindings.method_instance_geometry_set_transparency = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -4324,10 +4324,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_set_custom_aabb() {
-    if (!this.#_bindings.method_instance_set_custom_aabb) {
+    if (!this._bindings.method_instance_set_custom_aabb) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_set_custom_aabb");
-      this.#_bindings.method_instance_set_custom_aabb = internal.classdb_get_method_bind(
+      this._bindings.method_instance_set_custom_aabb = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3696536120
@@ -4335,10 +4335,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_attach_skeleton() {
-    if (!this.#_bindings.method_instance_attach_skeleton) {
+    if (!this._bindings.method_instance_attach_skeleton) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_attach_skeleton");
-      this.#_bindings.method_instance_attach_skeleton = internal.classdb_get_method_bind(
+      this._bindings.method_instance_attach_skeleton = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -4346,10 +4346,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_set_extra_visibility_margin() {
-    if (!this.#_bindings.method_instance_set_extra_visibility_margin) {
+    if (!this._bindings.method_instance_set_extra_visibility_margin) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_set_extra_visibility_margin");
-      this.#_bindings.method_instance_set_extra_visibility_margin = internal.classdb_get_method_bind(
+      this._bindings.method_instance_set_extra_visibility_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -4357,10 +4357,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_set_visibility_parent() {
-    if (!this.#_bindings.method_instance_set_visibility_parent) {
+    if (!this._bindings.method_instance_set_visibility_parent) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_set_visibility_parent");
-      this.#_bindings.method_instance_set_visibility_parent = internal.classdb_get_method_bind(
+      this._bindings.method_instance_set_visibility_parent = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -4368,10 +4368,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_set_ignore_culling() {
-    if (!this.#_bindings.method_instance_set_ignore_culling) {
+    if (!this._bindings.method_instance_set_ignore_culling) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_set_ignore_culling");
-      this.#_bindings.method_instance_set_ignore_culling = internal.classdb_get_method_bind(
+      this._bindings.method_instance_set_ignore_culling = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -4379,10 +4379,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_geometry_set_flag() {
-    if (!this.#_bindings.method_instance_geometry_set_flag) {
+    if (!this._bindings.method_instance_geometry_set_flag) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_geometry_set_flag");
-      this.#_bindings.method_instance_geometry_set_flag = internal.classdb_get_method_bind(
+      this._bindings.method_instance_geometry_set_flag = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1014989537
@@ -4390,10 +4390,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_geometry_set_cast_shadows_setting() {
-    if (!this.#_bindings.method_instance_geometry_set_cast_shadows_setting) {
+    if (!this._bindings.method_instance_geometry_set_cast_shadows_setting) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_geometry_set_cast_shadows_setting");
-      this.#_bindings.method_instance_geometry_set_cast_shadows_setting = internal.classdb_get_method_bind(
+      this._bindings.method_instance_geometry_set_cast_shadows_setting = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3768836020
@@ -4401,10 +4401,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_geometry_set_material_override() {
-    if (!this.#_bindings.method_instance_geometry_set_material_override) {
+    if (!this._bindings.method_instance_geometry_set_material_override) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_geometry_set_material_override");
-      this.#_bindings.method_instance_geometry_set_material_override = internal.classdb_get_method_bind(
+      this._bindings.method_instance_geometry_set_material_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -4412,10 +4412,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_geometry_set_material_overlay() {
-    if (!this.#_bindings.method_instance_geometry_set_material_overlay) {
+    if (!this._bindings.method_instance_geometry_set_material_overlay) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_geometry_set_material_overlay");
-      this.#_bindings.method_instance_geometry_set_material_overlay = internal.classdb_get_method_bind(
+      this._bindings.method_instance_geometry_set_material_overlay = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -4423,10 +4423,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_geometry_set_visibility_range() {
-    if (!this.#_bindings.method_instance_geometry_set_visibility_range) {
+    if (!this._bindings.method_instance_geometry_set_visibility_range) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_geometry_set_visibility_range");
-      this.#_bindings.method_instance_geometry_set_visibility_range = internal.classdb_get_method_bind(
+      this._bindings.method_instance_geometry_set_visibility_range = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4263925858
@@ -4434,10 +4434,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_geometry_set_lightmap() {
-    if (!this.#_bindings.method_instance_geometry_set_lightmap) {
+    if (!this._bindings.method_instance_geometry_set_lightmap) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_geometry_set_lightmap");
-      this.#_bindings.method_instance_geometry_set_lightmap = internal.classdb_get_method_bind(
+      this._bindings.method_instance_geometry_set_lightmap = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         536974962
@@ -4445,10 +4445,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_geometry_set_lod_bias() {
-    if (!this.#_bindings.method_instance_geometry_set_lod_bias) {
+    if (!this._bindings.method_instance_geometry_set_lod_bias) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_geometry_set_lod_bias");
-      this.#_bindings.method_instance_geometry_set_lod_bias = internal.classdb_get_method_bind(
+      this._bindings.method_instance_geometry_set_lod_bias = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -4456,10 +4456,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_geometry_set_shader_parameter() {
-    if (!this.#_bindings.method_instance_geometry_set_shader_parameter) {
+    if (!this._bindings.method_instance_geometry_set_shader_parameter) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_geometry_set_shader_parameter");
-      this.#_bindings.method_instance_geometry_set_shader_parameter = internal.classdb_get_method_bind(
+      this._bindings.method_instance_geometry_set_shader_parameter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3477296213
@@ -4467,10 +4467,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_geometry_get_shader_parameter() {
-    if (!this.#_bindings.method_instance_geometry_get_shader_parameter) {
+    if (!this._bindings.method_instance_geometry_get_shader_parameter) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_geometry_get_shader_parameter");
-      this.#_bindings.method_instance_geometry_get_shader_parameter = internal.classdb_get_method_bind(
+      this._bindings.method_instance_geometry_get_shader_parameter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2621281810
@@ -4478,10 +4478,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_geometry_get_shader_parameter_default_value() {
-    if (!this.#_bindings.method_instance_geometry_get_shader_parameter_default_value) {
+    if (!this._bindings.method_instance_geometry_get_shader_parameter_default_value) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_geometry_get_shader_parameter_default_value");
-      this.#_bindings.method_instance_geometry_get_shader_parameter_default_value = internal.classdb_get_method_bind(
+      this._bindings.method_instance_geometry_get_shader_parameter_default_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2621281810
@@ -4489,10 +4489,10 @@ class _MethodBindings {
     }
   }
   static init_method_instance_geometry_get_shader_parameter_list() {
-    if (!this.#_bindings.method_instance_geometry_get_shader_parameter_list) {
+    if (!this._bindings.method_instance_geometry_get_shader_parameter_list) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instance_geometry_get_shader_parameter_list");
-      this.#_bindings.method_instance_geometry_get_shader_parameter_list = internal.classdb_get_method_bind(
+      this._bindings.method_instance_geometry_get_shader_parameter_list = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2684255073
@@ -4500,10 +4500,10 @@ class _MethodBindings {
     }
   }
   static init_method_instances_cull_aabb() {
-    if (!this.#_bindings.method_instances_cull_aabb) {
+    if (!this._bindings.method_instances_cull_aabb) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instances_cull_aabb");
-      this.#_bindings.method_instances_cull_aabb = internal.classdb_get_method_bind(
+      this._bindings.method_instances_cull_aabb = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2570105777
@@ -4511,10 +4511,10 @@ class _MethodBindings {
     }
   }
   static init_method_instances_cull_ray() {
-    if (!this.#_bindings.method_instances_cull_ray) {
+    if (!this._bindings.method_instances_cull_ray) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instances_cull_ray");
-      this.#_bindings.method_instances_cull_ray = internal.classdb_get_method_bind(
+      this._bindings.method_instances_cull_ray = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2208759584
@@ -4522,10 +4522,10 @@ class _MethodBindings {
     }
   }
   static init_method_instances_cull_convex() {
-    if (!this.#_bindings.method_instances_cull_convex) {
+    if (!this._bindings.method_instances_cull_convex) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("instances_cull_convex");
-      this.#_bindings.method_instances_cull_convex = internal.classdb_get_method_bind(
+      this._bindings.method_instances_cull_convex = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2488539944
@@ -4533,10 +4533,10 @@ class _MethodBindings {
     }
   }
   static init_method_bake_render_uv2() {
-    if (!this.#_bindings.method_bake_render_uv2) {
+    if (!this._bindings.method_bake_render_uv2) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("bake_render_uv2");
-      this.#_bindings.method_bake_render_uv2 = internal.classdb_get_method_bind(
+      this._bindings.method_bake_render_uv2 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1904608558
@@ -4544,10 +4544,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_create() {
-    if (!this.#_bindings.method_canvas_create) {
+    if (!this._bindings.method_canvas_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_create");
-      this.#_bindings.method_canvas_create = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -4555,10 +4555,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_set_item_mirroring() {
-    if (!this.#_bindings.method_canvas_set_item_mirroring) {
+    if (!this._bindings.method_canvas_set_item_mirroring) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_set_item_mirroring");
-      this.#_bindings.method_canvas_set_item_mirroring = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_set_item_mirroring = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2343975398
@@ -4566,10 +4566,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_set_item_repeat() {
-    if (!this.#_bindings.method_canvas_set_item_repeat) {
+    if (!this._bindings.method_canvas_set_item_repeat) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_set_item_repeat");
-      this.#_bindings.method_canvas_set_item_repeat = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_set_item_repeat = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1739512717
@@ -4577,10 +4577,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_set_modulate() {
-    if (!this.#_bindings.method_canvas_set_modulate) {
+    if (!this._bindings.method_canvas_set_modulate) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_set_modulate");
-      this.#_bindings.method_canvas_set_modulate = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_set_modulate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2948539648
@@ -4588,10 +4588,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_set_disable_scale() {
-    if (!this.#_bindings.method_canvas_set_disable_scale) {
+    if (!this._bindings.method_canvas_set_disable_scale) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_set_disable_scale");
-      this.#_bindings.method_canvas_set_disable_scale = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_set_disable_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -4599,10 +4599,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_texture_create() {
-    if (!this.#_bindings.method_canvas_texture_create) {
+    if (!this._bindings.method_canvas_texture_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_texture_create");
-      this.#_bindings.method_canvas_texture_create = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_texture_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -4610,10 +4610,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_texture_set_channel() {
-    if (!this.#_bindings.method_canvas_texture_set_channel) {
+    if (!this._bindings.method_canvas_texture_set_channel) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_texture_set_channel");
-      this.#_bindings.method_canvas_texture_set_channel = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_texture_set_channel = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3822119138
@@ -4621,10 +4621,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_texture_set_shading_parameters() {
-    if (!this.#_bindings.method_canvas_texture_set_shading_parameters) {
+    if (!this._bindings.method_canvas_texture_set_shading_parameters) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_texture_set_shading_parameters");
-      this.#_bindings.method_canvas_texture_set_shading_parameters = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_texture_set_shading_parameters = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2124967469
@@ -4632,10 +4632,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_texture_set_texture_filter() {
-    if (!this.#_bindings.method_canvas_texture_set_texture_filter) {
+    if (!this._bindings.method_canvas_texture_set_texture_filter) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_texture_set_texture_filter");
-      this.#_bindings.method_canvas_texture_set_texture_filter = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_texture_set_texture_filter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1155129294
@@ -4643,10 +4643,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_texture_set_texture_repeat() {
-    if (!this.#_bindings.method_canvas_texture_set_texture_repeat) {
+    if (!this._bindings.method_canvas_texture_set_texture_repeat) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_texture_set_texture_repeat");
-      this.#_bindings.method_canvas_texture_set_texture_repeat = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_texture_set_texture_repeat = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1652956681
@@ -4654,10 +4654,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_create() {
-    if (!this.#_bindings.method_canvas_item_create) {
+    if (!this._bindings.method_canvas_item_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_create");
-      this.#_bindings.method_canvas_item_create = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -4665,10 +4665,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_set_parent() {
-    if (!this.#_bindings.method_canvas_item_set_parent) {
+    if (!this._bindings.method_canvas_item_set_parent) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_set_parent");
-      this.#_bindings.method_canvas_item_set_parent = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_set_parent = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -4676,10 +4676,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_set_default_texture_filter() {
-    if (!this.#_bindings.method_canvas_item_set_default_texture_filter) {
+    if (!this._bindings.method_canvas_item_set_default_texture_filter) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_set_default_texture_filter");
-      this.#_bindings.method_canvas_item_set_default_texture_filter = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_set_default_texture_filter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1155129294
@@ -4687,10 +4687,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_set_default_texture_repeat() {
-    if (!this.#_bindings.method_canvas_item_set_default_texture_repeat) {
+    if (!this._bindings.method_canvas_item_set_default_texture_repeat) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_set_default_texture_repeat");
-      this.#_bindings.method_canvas_item_set_default_texture_repeat = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_set_default_texture_repeat = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1652956681
@@ -4698,10 +4698,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_set_visible() {
-    if (!this.#_bindings.method_canvas_item_set_visible) {
+    if (!this._bindings.method_canvas_item_set_visible) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_set_visible");
-      this.#_bindings.method_canvas_item_set_visible = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_set_visible = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -4709,10 +4709,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_set_light_mask() {
-    if (!this.#_bindings.method_canvas_item_set_light_mask) {
+    if (!this._bindings.method_canvas_item_set_light_mask) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_set_light_mask");
-      this.#_bindings.method_canvas_item_set_light_mask = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_set_light_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -4720,10 +4720,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_set_visibility_layer() {
-    if (!this.#_bindings.method_canvas_item_set_visibility_layer) {
+    if (!this._bindings.method_canvas_item_set_visibility_layer) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_set_visibility_layer");
-      this.#_bindings.method_canvas_item_set_visibility_layer = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_set_visibility_layer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -4731,10 +4731,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_set_transform() {
-    if (!this.#_bindings.method_canvas_item_set_transform) {
+    if (!this._bindings.method_canvas_item_set_transform) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_set_transform");
-      this.#_bindings.method_canvas_item_set_transform = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_set_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1246044741
@@ -4742,10 +4742,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_set_clip() {
-    if (!this.#_bindings.method_canvas_item_set_clip) {
+    if (!this._bindings.method_canvas_item_set_clip) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_set_clip");
-      this.#_bindings.method_canvas_item_set_clip = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_set_clip = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -4753,10 +4753,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_set_distance_field_mode() {
-    if (!this.#_bindings.method_canvas_item_set_distance_field_mode) {
+    if (!this._bindings.method_canvas_item_set_distance_field_mode) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_set_distance_field_mode");
-      this.#_bindings.method_canvas_item_set_distance_field_mode = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_set_distance_field_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -4764,10 +4764,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_set_custom_rect() {
-    if (!this.#_bindings.method_canvas_item_set_custom_rect) {
+    if (!this._bindings.method_canvas_item_set_custom_rect) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_set_custom_rect");
-      this.#_bindings.method_canvas_item_set_custom_rect = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_set_custom_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1333997032
@@ -4775,10 +4775,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_set_modulate() {
-    if (!this.#_bindings.method_canvas_item_set_modulate) {
+    if (!this._bindings.method_canvas_item_set_modulate) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_set_modulate");
-      this.#_bindings.method_canvas_item_set_modulate = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_set_modulate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2948539648
@@ -4786,10 +4786,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_set_self_modulate() {
-    if (!this.#_bindings.method_canvas_item_set_self_modulate) {
+    if (!this._bindings.method_canvas_item_set_self_modulate) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_set_self_modulate");
-      this.#_bindings.method_canvas_item_set_self_modulate = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_set_self_modulate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2948539648
@@ -4797,10 +4797,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_set_draw_behind_parent() {
-    if (!this.#_bindings.method_canvas_item_set_draw_behind_parent) {
+    if (!this._bindings.method_canvas_item_set_draw_behind_parent) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_set_draw_behind_parent");
-      this.#_bindings.method_canvas_item_set_draw_behind_parent = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_set_draw_behind_parent = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -4808,10 +4808,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_set_interpolated() {
-    if (!this.#_bindings.method_canvas_item_set_interpolated) {
+    if (!this._bindings.method_canvas_item_set_interpolated) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_set_interpolated");
-      this.#_bindings.method_canvas_item_set_interpolated = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_set_interpolated = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -4819,10 +4819,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_reset_physics_interpolation() {
-    if (!this.#_bindings.method_canvas_item_reset_physics_interpolation) {
+    if (!this._bindings.method_canvas_item_reset_physics_interpolation) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_reset_physics_interpolation");
-      this.#_bindings.method_canvas_item_reset_physics_interpolation = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_reset_physics_interpolation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2722037293
@@ -4830,10 +4830,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_transform_physics_interpolation() {
-    if (!this.#_bindings.method_canvas_item_transform_physics_interpolation) {
+    if (!this._bindings.method_canvas_item_transform_physics_interpolation) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_transform_physics_interpolation");
-      this.#_bindings.method_canvas_item_transform_physics_interpolation = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_transform_physics_interpolation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1246044741
@@ -4841,10 +4841,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_add_line() {
-    if (!this.#_bindings.method_canvas_item_add_line) {
+    if (!this._bindings.method_canvas_item_add_line) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_add_line");
-      this.#_bindings.method_canvas_item_add_line = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_add_line = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1819681853
@@ -4852,10 +4852,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_add_polyline() {
-    if (!this.#_bindings.method_canvas_item_add_polyline) {
+    if (!this._bindings.method_canvas_item_add_polyline) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_add_polyline");
-      this.#_bindings.method_canvas_item_add_polyline = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_add_polyline = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3098767073
@@ -4863,10 +4863,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_add_multiline() {
-    if (!this.#_bindings.method_canvas_item_add_multiline) {
+    if (!this._bindings.method_canvas_item_add_multiline) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_add_multiline");
-      this.#_bindings.method_canvas_item_add_multiline = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_add_multiline = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3098767073
@@ -4874,10 +4874,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_add_rect() {
-    if (!this.#_bindings.method_canvas_item_add_rect) {
+    if (!this._bindings.method_canvas_item_add_rect) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_add_rect");
-      this.#_bindings.method_canvas_item_add_rect = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_add_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3523446176
@@ -4885,10 +4885,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_add_circle() {
-    if (!this.#_bindings.method_canvas_item_add_circle) {
+    if (!this._bindings.method_canvas_item_add_circle) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_add_circle");
-      this.#_bindings.method_canvas_item_add_circle = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_add_circle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         333077949
@@ -4896,10 +4896,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_add_texture_rect() {
-    if (!this.#_bindings.method_canvas_item_add_texture_rect) {
+    if (!this._bindings.method_canvas_item_add_texture_rect) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_add_texture_rect");
-      this.#_bindings.method_canvas_item_add_texture_rect = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_add_texture_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         324864032
@@ -4907,10 +4907,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_add_msdf_texture_rect_region() {
-    if (!this.#_bindings.method_canvas_item_add_msdf_texture_rect_region) {
+    if (!this._bindings.method_canvas_item_add_msdf_texture_rect_region) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_add_msdf_texture_rect_region");
-      this.#_bindings.method_canvas_item_add_msdf_texture_rect_region = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_add_msdf_texture_rect_region = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         97408773
@@ -4918,10 +4918,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_add_lcd_texture_rect_region() {
-    if (!this.#_bindings.method_canvas_item_add_lcd_texture_rect_region) {
+    if (!this._bindings.method_canvas_item_add_lcd_texture_rect_region) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_add_lcd_texture_rect_region");
-      this.#_bindings.method_canvas_item_add_lcd_texture_rect_region = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_add_lcd_texture_rect_region = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         359793297
@@ -4929,10 +4929,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_add_texture_rect_region() {
-    if (!this.#_bindings.method_canvas_item_add_texture_rect_region) {
+    if (!this._bindings.method_canvas_item_add_texture_rect_region) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_add_texture_rect_region");
-      this.#_bindings.method_canvas_item_add_texture_rect_region = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_add_texture_rect_region = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         485157892
@@ -4940,10 +4940,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_add_nine_patch() {
-    if (!this.#_bindings.method_canvas_item_add_nine_patch) {
+    if (!this._bindings.method_canvas_item_add_nine_patch) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_add_nine_patch");
-      this.#_bindings.method_canvas_item_add_nine_patch = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_add_nine_patch = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         389957886
@@ -4951,10 +4951,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_add_primitive() {
-    if (!this.#_bindings.method_canvas_item_add_primitive) {
+    if (!this._bindings.method_canvas_item_add_primitive) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_add_primitive");
-      this.#_bindings.method_canvas_item_add_primitive = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_add_primitive = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3731601077
@@ -4962,10 +4962,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_add_polygon() {
-    if (!this.#_bindings.method_canvas_item_add_polygon) {
+    if (!this._bindings.method_canvas_item_add_polygon) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_add_polygon");
-      this.#_bindings.method_canvas_item_add_polygon = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_add_polygon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3580000528
@@ -4973,10 +4973,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_add_triangle_array() {
-    if (!this.#_bindings.method_canvas_item_add_triangle_array) {
+    if (!this._bindings.method_canvas_item_add_triangle_array) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_add_triangle_array");
-      this.#_bindings.method_canvas_item_add_triangle_array = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_add_triangle_array = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         660261329
@@ -4984,10 +4984,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_add_mesh() {
-    if (!this.#_bindings.method_canvas_item_add_mesh) {
+    if (!this._bindings.method_canvas_item_add_mesh) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_add_mesh");
-      this.#_bindings.method_canvas_item_add_mesh = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_add_mesh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         316450961
@@ -4995,10 +4995,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_add_multimesh() {
-    if (!this.#_bindings.method_canvas_item_add_multimesh) {
+    if (!this._bindings.method_canvas_item_add_multimesh) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_add_multimesh");
-      this.#_bindings.method_canvas_item_add_multimesh = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_add_multimesh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2131855138
@@ -5006,10 +5006,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_add_particles() {
-    if (!this.#_bindings.method_canvas_item_add_particles) {
+    if (!this._bindings.method_canvas_item_add_particles) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_add_particles");
-      this.#_bindings.method_canvas_item_add_particles = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_add_particles = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2575754278
@@ -5017,10 +5017,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_add_set_transform() {
-    if (!this.#_bindings.method_canvas_item_add_set_transform) {
+    if (!this._bindings.method_canvas_item_add_set_transform) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_add_set_transform");
-      this.#_bindings.method_canvas_item_add_set_transform = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_add_set_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1246044741
@@ -5028,10 +5028,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_add_clip_ignore() {
-    if (!this.#_bindings.method_canvas_item_add_clip_ignore) {
+    if (!this._bindings.method_canvas_item_add_clip_ignore) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_add_clip_ignore");
-      this.#_bindings.method_canvas_item_add_clip_ignore = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_add_clip_ignore = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -5039,10 +5039,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_add_animation_slice() {
-    if (!this.#_bindings.method_canvas_item_add_animation_slice) {
+    if (!this._bindings.method_canvas_item_add_animation_slice) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_add_animation_slice");
-      this.#_bindings.method_canvas_item_add_animation_slice = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_add_animation_slice = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2646834499
@@ -5050,10 +5050,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_set_sort_children_by_y() {
-    if (!this.#_bindings.method_canvas_item_set_sort_children_by_y) {
+    if (!this._bindings.method_canvas_item_set_sort_children_by_y) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_set_sort_children_by_y");
-      this.#_bindings.method_canvas_item_set_sort_children_by_y = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_set_sort_children_by_y = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -5061,10 +5061,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_set_z_index() {
-    if (!this.#_bindings.method_canvas_item_set_z_index) {
+    if (!this._bindings.method_canvas_item_set_z_index) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_set_z_index");
-      this.#_bindings.method_canvas_item_set_z_index = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_set_z_index = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -5072,10 +5072,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_set_z_as_relative_to_parent() {
-    if (!this.#_bindings.method_canvas_item_set_z_as_relative_to_parent) {
+    if (!this._bindings.method_canvas_item_set_z_as_relative_to_parent) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_set_z_as_relative_to_parent");
-      this.#_bindings.method_canvas_item_set_z_as_relative_to_parent = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_set_z_as_relative_to_parent = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -5083,10 +5083,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_set_copy_to_backbuffer() {
-    if (!this.#_bindings.method_canvas_item_set_copy_to_backbuffer) {
+    if (!this._bindings.method_canvas_item_set_copy_to_backbuffer) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_set_copy_to_backbuffer");
-      this.#_bindings.method_canvas_item_set_copy_to_backbuffer = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_set_copy_to_backbuffer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2429202503
@@ -5094,10 +5094,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_clear() {
-    if (!this.#_bindings.method_canvas_item_clear) {
+    if (!this._bindings.method_canvas_item_clear) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_clear");
-      this.#_bindings.method_canvas_item_clear = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_clear = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2722037293
@@ -5105,10 +5105,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_set_draw_index() {
-    if (!this.#_bindings.method_canvas_item_set_draw_index) {
+    if (!this._bindings.method_canvas_item_set_draw_index) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_set_draw_index");
-      this.#_bindings.method_canvas_item_set_draw_index = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_set_draw_index = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -5116,10 +5116,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_set_material() {
-    if (!this.#_bindings.method_canvas_item_set_material) {
+    if (!this._bindings.method_canvas_item_set_material) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_set_material");
-      this.#_bindings.method_canvas_item_set_material = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_set_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -5127,10 +5127,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_set_use_parent_material() {
-    if (!this.#_bindings.method_canvas_item_set_use_parent_material) {
+    if (!this._bindings.method_canvas_item_set_use_parent_material) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_set_use_parent_material");
-      this.#_bindings.method_canvas_item_set_use_parent_material = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_set_use_parent_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -5138,10 +5138,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_set_visibility_notifier() {
-    if (!this.#_bindings.method_canvas_item_set_visibility_notifier) {
+    if (!this._bindings.method_canvas_item_set_visibility_notifier) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_set_visibility_notifier");
-      this.#_bindings.method_canvas_item_set_visibility_notifier = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_set_visibility_notifier = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3568945579
@@ -5149,10 +5149,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_item_set_canvas_group_mode() {
-    if (!this.#_bindings.method_canvas_item_set_canvas_group_mode) {
+    if (!this._bindings.method_canvas_item_set_canvas_group_mode) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_item_set_canvas_group_mode");
-      this.#_bindings.method_canvas_item_set_canvas_group_mode = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_item_set_canvas_group_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3973586316
@@ -5160,10 +5160,10 @@ class _MethodBindings {
     }
   }
   static init_method_debug_canvas_item_get_rect() {
-    if (!this.#_bindings.method_debug_canvas_item_get_rect) {
+    if (!this._bindings.method_debug_canvas_item_get_rect) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("debug_canvas_item_get_rect");
-      this.#_bindings.method_debug_canvas_item_get_rect = internal.classdb_get_method_bind(
+      this._bindings.method_debug_canvas_item_get_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         624227424
@@ -5171,10 +5171,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_create() {
-    if (!this.#_bindings.method_canvas_light_create) {
+    if (!this._bindings.method_canvas_light_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_create");
-      this.#_bindings.method_canvas_light_create = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -5182,10 +5182,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_attach_to_canvas() {
-    if (!this.#_bindings.method_canvas_light_attach_to_canvas) {
+    if (!this._bindings.method_canvas_light_attach_to_canvas) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_attach_to_canvas");
-      this.#_bindings.method_canvas_light_attach_to_canvas = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_attach_to_canvas = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -5193,10 +5193,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_set_enabled() {
-    if (!this.#_bindings.method_canvas_light_set_enabled) {
+    if (!this._bindings.method_canvas_light_set_enabled) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_set_enabled");
-      this.#_bindings.method_canvas_light_set_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_set_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -5204,10 +5204,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_set_texture_scale() {
-    if (!this.#_bindings.method_canvas_light_set_texture_scale) {
+    if (!this._bindings.method_canvas_light_set_texture_scale) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_set_texture_scale");
-      this.#_bindings.method_canvas_light_set_texture_scale = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_set_texture_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -5215,10 +5215,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_set_transform() {
-    if (!this.#_bindings.method_canvas_light_set_transform) {
+    if (!this._bindings.method_canvas_light_set_transform) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_set_transform");
-      this.#_bindings.method_canvas_light_set_transform = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_set_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1246044741
@@ -5226,10 +5226,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_set_texture() {
-    if (!this.#_bindings.method_canvas_light_set_texture) {
+    if (!this._bindings.method_canvas_light_set_texture) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_set_texture");
-      this.#_bindings.method_canvas_light_set_texture = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_set_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -5237,10 +5237,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_set_texture_offset() {
-    if (!this.#_bindings.method_canvas_light_set_texture_offset) {
+    if (!this._bindings.method_canvas_light_set_texture_offset) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_set_texture_offset");
-      this.#_bindings.method_canvas_light_set_texture_offset = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_set_texture_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3201125042
@@ -5248,10 +5248,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_set_color() {
-    if (!this.#_bindings.method_canvas_light_set_color) {
+    if (!this._bindings.method_canvas_light_set_color) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_set_color");
-      this.#_bindings.method_canvas_light_set_color = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_set_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2948539648
@@ -5259,10 +5259,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_set_height() {
-    if (!this.#_bindings.method_canvas_light_set_height) {
+    if (!this._bindings.method_canvas_light_set_height) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_set_height");
-      this.#_bindings.method_canvas_light_set_height = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_set_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -5270,10 +5270,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_set_energy() {
-    if (!this.#_bindings.method_canvas_light_set_energy) {
+    if (!this._bindings.method_canvas_light_set_energy) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_set_energy");
-      this.#_bindings.method_canvas_light_set_energy = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_set_energy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -5281,10 +5281,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_set_z_range() {
-    if (!this.#_bindings.method_canvas_light_set_z_range) {
+    if (!this._bindings.method_canvas_light_set_z_range) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_set_z_range");
-      this.#_bindings.method_canvas_light_set_z_range = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_set_z_range = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4288446313
@@ -5292,10 +5292,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_set_layer_range() {
-    if (!this.#_bindings.method_canvas_light_set_layer_range) {
+    if (!this._bindings.method_canvas_light_set_layer_range) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_set_layer_range");
-      this.#_bindings.method_canvas_light_set_layer_range = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_set_layer_range = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4288446313
@@ -5303,10 +5303,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_set_item_cull_mask() {
-    if (!this.#_bindings.method_canvas_light_set_item_cull_mask) {
+    if (!this._bindings.method_canvas_light_set_item_cull_mask) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_set_item_cull_mask");
-      this.#_bindings.method_canvas_light_set_item_cull_mask = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_set_item_cull_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -5314,10 +5314,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_set_item_shadow_cull_mask() {
-    if (!this.#_bindings.method_canvas_light_set_item_shadow_cull_mask) {
+    if (!this._bindings.method_canvas_light_set_item_shadow_cull_mask) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_set_item_shadow_cull_mask");
-      this.#_bindings.method_canvas_light_set_item_shadow_cull_mask = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_set_item_shadow_cull_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -5325,10 +5325,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_set_mode() {
-    if (!this.#_bindings.method_canvas_light_set_mode) {
+    if (!this._bindings.method_canvas_light_set_mode) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_set_mode");
-      this.#_bindings.method_canvas_light_set_mode = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_set_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2957564891
@@ -5336,10 +5336,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_set_shadow_enabled() {
-    if (!this.#_bindings.method_canvas_light_set_shadow_enabled) {
+    if (!this._bindings.method_canvas_light_set_shadow_enabled) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_set_shadow_enabled");
-      this.#_bindings.method_canvas_light_set_shadow_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_set_shadow_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -5347,10 +5347,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_set_shadow_filter() {
-    if (!this.#_bindings.method_canvas_light_set_shadow_filter) {
+    if (!this._bindings.method_canvas_light_set_shadow_filter) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_set_shadow_filter");
-      this.#_bindings.method_canvas_light_set_shadow_filter = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_set_shadow_filter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         393119659
@@ -5358,10 +5358,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_set_shadow_color() {
-    if (!this.#_bindings.method_canvas_light_set_shadow_color) {
+    if (!this._bindings.method_canvas_light_set_shadow_color) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_set_shadow_color");
-      this.#_bindings.method_canvas_light_set_shadow_color = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_set_shadow_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2948539648
@@ -5369,10 +5369,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_set_shadow_smooth() {
-    if (!this.#_bindings.method_canvas_light_set_shadow_smooth) {
+    if (!this._bindings.method_canvas_light_set_shadow_smooth) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_set_shadow_smooth");
-      this.#_bindings.method_canvas_light_set_shadow_smooth = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_set_shadow_smooth = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1794382983
@@ -5380,10 +5380,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_set_blend_mode() {
-    if (!this.#_bindings.method_canvas_light_set_blend_mode) {
+    if (!this._bindings.method_canvas_light_set_blend_mode) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_set_blend_mode");
-      this.#_bindings.method_canvas_light_set_blend_mode = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_set_blend_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         804895945
@@ -5391,10 +5391,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_set_interpolated() {
-    if (!this.#_bindings.method_canvas_light_set_interpolated) {
+    if (!this._bindings.method_canvas_light_set_interpolated) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_set_interpolated");
-      this.#_bindings.method_canvas_light_set_interpolated = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_set_interpolated = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -5402,10 +5402,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_reset_physics_interpolation() {
-    if (!this.#_bindings.method_canvas_light_reset_physics_interpolation) {
+    if (!this._bindings.method_canvas_light_reset_physics_interpolation) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_reset_physics_interpolation");
-      this.#_bindings.method_canvas_light_reset_physics_interpolation = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_reset_physics_interpolation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2722037293
@@ -5413,10 +5413,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_transform_physics_interpolation() {
-    if (!this.#_bindings.method_canvas_light_transform_physics_interpolation) {
+    if (!this._bindings.method_canvas_light_transform_physics_interpolation) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_transform_physics_interpolation");
-      this.#_bindings.method_canvas_light_transform_physics_interpolation = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_transform_physics_interpolation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1246044741
@@ -5424,10 +5424,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_occluder_create() {
-    if (!this.#_bindings.method_canvas_light_occluder_create) {
+    if (!this._bindings.method_canvas_light_occluder_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_occluder_create");
-      this.#_bindings.method_canvas_light_occluder_create = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_occluder_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -5435,10 +5435,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_occluder_attach_to_canvas() {
-    if (!this.#_bindings.method_canvas_light_occluder_attach_to_canvas) {
+    if (!this._bindings.method_canvas_light_occluder_attach_to_canvas) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_occluder_attach_to_canvas");
-      this.#_bindings.method_canvas_light_occluder_attach_to_canvas = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_occluder_attach_to_canvas = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -5446,10 +5446,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_occluder_set_enabled() {
-    if (!this.#_bindings.method_canvas_light_occluder_set_enabled) {
+    if (!this._bindings.method_canvas_light_occluder_set_enabled) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_occluder_set_enabled");
-      this.#_bindings.method_canvas_light_occluder_set_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_occluder_set_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -5457,10 +5457,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_occluder_set_polygon() {
-    if (!this.#_bindings.method_canvas_light_occluder_set_polygon) {
+    if (!this._bindings.method_canvas_light_occluder_set_polygon) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_occluder_set_polygon");
-      this.#_bindings.method_canvas_light_occluder_set_polygon = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_occluder_set_polygon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         395945892
@@ -5468,10 +5468,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_occluder_set_as_sdf_collision() {
-    if (!this.#_bindings.method_canvas_light_occluder_set_as_sdf_collision) {
+    if (!this._bindings.method_canvas_light_occluder_set_as_sdf_collision) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_occluder_set_as_sdf_collision");
-      this.#_bindings.method_canvas_light_occluder_set_as_sdf_collision = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_occluder_set_as_sdf_collision = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -5479,10 +5479,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_occluder_set_transform() {
-    if (!this.#_bindings.method_canvas_light_occluder_set_transform) {
+    if (!this._bindings.method_canvas_light_occluder_set_transform) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_occluder_set_transform");
-      this.#_bindings.method_canvas_light_occluder_set_transform = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_occluder_set_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1246044741
@@ -5490,10 +5490,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_occluder_set_light_mask() {
-    if (!this.#_bindings.method_canvas_light_occluder_set_light_mask) {
+    if (!this._bindings.method_canvas_light_occluder_set_light_mask) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_occluder_set_light_mask");
-      this.#_bindings.method_canvas_light_occluder_set_light_mask = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_occluder_set_light_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3411492887
@@ -5501,10 +5501,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_occluder_set_interpolated() {
-    if (!this.#_bindings.method_canvas_light_occluder_set_interpolated) {
+    if (!this._bindings.method_canvas_light_occluder_set_interpolated) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_occluder_set_interpolated");
-      this.#_bindings.method_canvas_light_occluder_set_interpolated = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_occluder_set_interpolated = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1265174801
@@ -5512,10 +5512,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_occluder_reset_physics_interpolation() {
-    if (!this.#_bindings.method_canvas_light_occluder_reset_physics_interpolation) {
+    if (!this._bindings.method_canvas_light_occluder_reset_physics_interpolation) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_occluder_reset_physics_interpolation");
-      this.#_bindings.method_canvas_light_occluder_reset_physics_interpolation = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_occluder_reset_physics_interpolation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2722037293
@@ -5523,10 +5523,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_light_occluder_transform_physics_interpolation() {
-    if (!this.#_bindings.method_canvas_light_occluder_transform_physics_interpolation) {
+    if (!this._bindings.method_canvas_light_occluder_transform_physics_interpolation) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_light_occluder_transform_physics_interpolation");
-      this.#_bindings.method_canvas_light_occluder_transform_physics_interpolation = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_light_occluder_transform_physics_interpolation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1246044741
@@ -5534,10 +5534,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_occluder_polygon_create() {
-    if (!this.#_bindings.method_canvas_occluder_polygon_create) {
+    if (!this._bindings.method_canvas_occluder_polygon_create) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_occluder_polygon_create");
-      this.#_bindings.method_canvas_occluder_polygon_create = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_occluder_polygon_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -5545,10 +5545,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_occluder_polygon_set_shape() {
-    if (!this.#_bindings.method_canvas_occluder_polygon_set_shape) {
+    if (!this._bindings.method_canvas_occluder_polygon_set_shape) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_occluder_polygon_set_shape");
-      this.#_bindings.method_canvas_occluder_polygon_set_shape = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_occluder_polygon_set_shape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2103882027
@@ -5556,10 +5556,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_occluder_polygon_set_cull_mode() {
-    if (!this.#_bindings.method_canvas_occluder_polygon_set_cull_mode) {
+    if (!this._bindings.method_canvas_occluder_polygon_set_cull_mode) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_occluder_polygon_set_cull_mode");
-      this.#_bindings.method_canvas_occluder_polygon_set_cull_mode = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_occluder_polygon_set_cull_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1839404663
@@ -5567,10 +5567,10 @@ class _MethodBindings {
     }
   }
   static init_method_canvas_set_shadow_texture_size() {
-    if (!this.#_bindings.method_canvas_set_shadow_texture_size) {
+    if (!this._bindings.method_canvas_set_shadow_texture_size) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("canvas_set_shadow_texture_size");
-      this.#_bindings.method_canvas_set_shadow_texture_size = internal.classdb_get_method_bind(
+      this._bindings.method_canvas_set_shadow_texture_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -5578,10 +5578,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_shader_parameter_add() {
-    if (!this.#_bindings.method_global_shader_parameter_add) {
+    if (!this._bindings.method_global_shader_parameter_add) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("global_shader_parameter_add");
-      this.#_bindings.method_global_shader_parameter_add = internal.classdb_get_method_bind(
+      this._bindings.method_global_shader_parameter_add = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         463390080
@@ -5589,10 +5589,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_shader_parameter_remove() {
-    if (!this.#_bindings.method_global_shader_parameter_remove) {
+    if (!this._bindings.method_global_shader_parameter_remove) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("global_shader_parameter_remove");
-      this.#_bindings.method_global_shader_parameter_remove = internal.classdb_get_method_bind(
+      this._bindings.method_global_shader_parameter_remove = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -5600,10 +5600,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_shader_parameter_get_list() {
-    if (!this.#_bindings.method_global_shader_parameter_get_list) {
+    if (!this._bindings.method_global_shader_parameter_get_list) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("global_shader_parameter_get_list");
-      this.#_bindings.method_global_shader_parameter_get_list = internal.classdb_get_method_bind(
+      this._bindings.method_global_shader_parameter_get_list = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -5611,10 +5611,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_shader_parameter_set() {
-    if (!this.#_bindings.method_global_shader_parameter_set) {
+    if (!this._bindings.method_global_shader_parameter_set) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("global_shader_parameter_set");
-      this.#_bindings.method_global_shader_parameter_set = internal.classdb_get_method_bind(
+      this._bindings.method_global_shader_parameter_set = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3776071444
@@ -5622,10 +5622,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_shader_parameter_set_override() {
-    if (!this.#_bindings.method_global_shader_parameter_set_override) {
+    if (!this._bindings.method_global_shader_parameter_set_override) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("global_shader_parameter_set_override");
-      this.#_bindings.method_global_shader_parameter_set_override = internal.classdb_get_method_bind(
+      this._bindings.method_global_shader_parameter_set_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3776071444
@@ -5633,10 +5633,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_shader_parameter_get() {
-    if (!this.#_bindings.method_global_shader_parameter_get) {
+    if (!this._bindings.method_global_shader_parameter_get) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("global_shader_parameter_get");
-      this.#_bindings.method_global_shader_parameter_get = internal.classdb_get_method_bind(
+      this._bindings.method_global_shader_parameter_get = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2760726917
@@ -5644,10 +5644,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_shader_parameter_get_type() {
-    if (!this.#_bindings.method_global_shader_parameter_get_type) {
+    if (!this._bindings.method_global_shader_parameter_get_type) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("global_shader_parameter_get_type");
-      this.#_bindings.method_global_shader_parameter_get_type = internal.classdb_get_method_bind(
+      this._bindings.method_global_shader_parameter_get_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1601414142
@@ -5655,10 +5655,10 @@ class _MethodBindings {
     }
   }
   static init_method_free_rid() {
-    if (!this.#_bindings.method_free_rid) {
+    if (!this._bindings.method_free_rid) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("free_rid");
-      this.#_bindings.method_free_rid = internal.classdb_get_method_bind(
+      this._bindings.method_free_rid = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2722037293
@@ -5666,10 +5666,10 @@ class _MethodBindings {
     }
   }
   static init_method_request_frame_drawn_callback() {
-    if (!this.#_bindings.method_request_frame_drawn_callback) {
+    if (!this._bindings.method_request_frame_drawn_callback) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("request_frame_drawn_callback");
-      this.#_bindings.method_request_frame_drawn_callback = internal.classdb_get_method_bind(
+      this._bindings.method_request_frame_drawn_callback = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1611583062
@@ -5677,10 +5677,10 @@ class _MethodBindings {
     }
   }
   static init_method_has_changed() {
-    if (!this.#_bindings.method_has_changed) {
+    if (!this._bindings.method_has_changed) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("has_changed");
-      this.#_bindings.method_has_changed = internal.classdb_get_method_bind(
+      this._bindings.method_has_changed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -5688,10 +5688,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_rendering_info() {
-    if (!this.#_bindings.method_get_rendering_info) {
+    if (!this._bindings.method_get_rendering_info) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("get_rendering_info");
-      this.#_bindings.method_get_rendering_info = internal.classdb_get_method_bind(
+      this._bindings.method_get_rendering_info = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3763192241
@@ -5699,10 +5699,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_video_adapter_name() {
-    if (!this.#_bindings.method_get_video_adapter_name) {
+    if (!this._bindings.method_get_video_adapter_name) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("get_video_adapter_name");
-      this.#_bindings.method_get_video_adapter_name = internal.classdb_get_method_bind(
+      this._bindings.method_get_video_adapter_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -5710,10 +5710,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_video_adapter_vendor() {
-    if (!this.#_bindings.method_get_video_adapter_vendor) {
+    if (!this._bindings.method_get_video_adapter_vendor) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("get_video_adapter_vendor");
-      this.#_bindings.method_get_video_adapter_vendor = internal.classdb_get_method_bind(
+      this._bindings.method_get_video_adapter_vendor = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -5721,10 +5721,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_video_adapter_type() {
-    if (!this.#_bindings.method_get_video_adapter_type) {
+    if (!this._bindings.method_get_video_adapter_type) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("get_video_adapter_type");
-      this.#_bindings.method_get_video_adapter_type = internal.classdb_get_method_bind(
+      this._bindings.method_get_video_adapter_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3099547011
@@ -5732,10 +5732,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_video_adapter_api_version() {
-    if (!this.#_bindings.method_get_video_adapter_api_version) {
+    if (!this._bindings.method_get_video_adapter_api_version) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("get_video_adapter_api_version");
-      this.#_bindings.method_get_video_adapter_api_version = internal.classdb_get_method_bind(
+      this._bindings.method_get_video_adapter_api_version = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -5743,10 +5743,10 @@ class _MethodBindings {
     }
   }
   static init_method_make_sphere_mesh() {
-    if (!this.#_bindings.method_make_sphere_mesh) {
+    if (!this._bindings.method_make_sphere_mesh) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("make_sphere_mesh");
-      this.#_bindings.method_make_sphere_mesh = internal.classdb_get_method_bind(
+      this._bindings.method_make_sphere_mesh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2251015897
@@ -5754,10 +5754,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_test_cube() {
-    if (!this.#_bindings.method_get_test_cube) {
+    if (!this._bindings.method_get_test_cube) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("get_test_cube");
-      this.#_bindings.method_get_test_cube = internal.classdb_get_method_bind(
+      this._bindings.method_get_test_cube = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -5765,10 +5765,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_test_texture() {
-    if (!this.#_bindings.method_get_test_texture) {
+    if (!this._bindings.method_get_test_texture) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("get_test_texture");
-      this.#_bindings.method_get_test_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_test_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -5776,10 +5776,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_white_texture() {
-    if (!this.#_bindings.method_get_white_texture) {
+    if (!this._bindings.method_get_white_texture) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("get_white_texture");
-      this.#_bindings.method_get_white_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_white_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -5787,10 +5787,10 @@ class _MethodBindings {
     }
   }
   static init_method_set_boot_image() {
-    if (!this.#_bindings.method_set_boot_image) {
+    if (!this._bindings.method_set_boot_image) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("set_boot_image");
-      this.#_bindings.method_set_boot_image = internal.classdb_get_method_bind(
+      this._bindings.method_set_boot_image = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3759744527
@@ -5798,10 +5798,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_default_clear_color() {
-    if (!this.#_bindings.method_get_default_clear_color) {
+    if (!this._bindings.method_get_default_clear_color) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("get_default_clear_color");
-      this.#_bindings.method_get_default_clear_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_default_clear_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3200896285
@@ -5809,10 +5809,10 @@ class _MethodBindings {
     }
   }
   static init_method_set_default_clear_color() {
-    if (!this.#_bindings.method_set_default_clear_color) {
+    if (!this._bindings.method_set_default_clear_color) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("set_default_clear_color");
-      this.#_bindings.method_set_default_clear_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_default_clear_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -5820,10 +5820,10 @@ class _MethodBindings {
     }
   }
   static init_method_has_os_feature() {
-    if (!this.#_bindings.method_has_os_feature) {
+    if (!this._bindings.method_has_os_feature) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("has_os_feature");
-      this.#_bindings.method_has_os_feature = internal.classdb_get_method_bind(
+      this._bindings.method_has_os_feature = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3927539163
@@ -5831,10 +5831,10 @@ class _MethodBindings {
     }
   }
   static init_method_set_debug_generate_wireframes() {
-    if (!this.#_bindings.method_set_debug_generate_wireframes) {
+    if (!this._bindings.method_set_debug_generate_wireframes) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("set_debug_generate_wireframes");
-      this.#_bindings.method_set_debug_generate_wireframes = internal.classdb_get_method_bind(
+      this._bindings.method_set_debug_generate_wireframes = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -5842,10 +5842,10 @@ class _MethodBindings {
     }
   }
   static init_method_is_render_loop_enabled() {
-    if (!this.#_bindings.method_is_render_loop_enabled) {
+    if (!this._bindings.method_is_render_loop_enabled) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("is_render_loop_enabled");
-      this.#_bindings.method_is_render_loop_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_render_loop_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -5853,10 +5853,10 @@ class _MethodBindings {
     }
   }
   static init_method_set_render_loop_enabled() {
-    if (!this.#_bindings.method_set_render_loop_enabled) {
+    if (!this._bindings.method_set_render_loop_enabled) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("set_render_loop_enabled");
-      this.#_bindings.method_set_render_loop_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_render_loop_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -5864,10 +5864,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_frame_setup_time_cpu() {
-    if (!this.#_bindings.method_get_frame_setup_time_cpu) {
+    if (!this._bindings.method_get_frame_setup_time_cpu) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("get_frame_setup_time_cpu");
-      this.#_bindings.method_get_frame_setup_time_cpu = internal.classdb_get_method_bind(
+      this._bindings.method_get_frame_setup_time_cpu = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -5875,10 +5875,10 @@ class _MethodBindings {
     }
   }
   static init_method_force_sync() {
-    if (!this.#_bindings.method_force_sync) {
+    if (!this._bindings.method_force_sync) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("force_sync");
-      this.#_bindings.method_force_sync = internal.classdb_get_method_bind(
+      this._bindings.method_force_sync = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -5886,10 +5886,10 @@ class _MethodBindings {
     }
   }
   static init_method_force_draw() {
-    if (!this.#_bindings.method_force_draw) {
+    if (!this._bindings.method_force_draw) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("force_draw");
-      this.#_bindings.method_force_draw = internal.classdb_get_method_bind(
+      this._bindings.method_force_draw = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1076185472
@@ -5897,10 +5897,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_rendering_device() {
-    if (!this.#_bindings.method_get_rendering_device) {
+    if (!this._bindings.method_get_rendering_device) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("get_rendering_device");
-      this.#_bindings.method_get_rendering_device = internal.classdb_get_method_bind(
+      this._bindings.method_get_rendering_device = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1405107940
@@ -5908,10 +5908,10 @@ class _MethodBindings {
     }
   }
   static init_method_create_local_rendering_device() {
-    if (!this.#_bindings.method_create_local_rendering_device) {
+    if (!this._bindings.method_create_local_rendering_device) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("create_local_rendering_device");
-      this.#_bindings.method_create_local_rendering_device = internal.classdb_get_method_bind(
+      this._bindings.method_create_local_rendering_device = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1405107940
@@ -5919,10 +5919,10 @@ class _MethodBindings {
     }
   }
   static init_method_is_on_render_thread() {
-    if (!this.#_bindings.method_is_on_render_thread) {
+    if (!this._bindings.method_is_on_render_thread) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("is_on_render_thread");
-      this.#_bindings.method_is_on_render_thread = internal.classdb_get_method_bind(
+      this._bindings.method_is_on_render_thread = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2240911060
@@ -5930,10 +5930,10 @@ class _MethodBindings {
     }
   }
   static init_method_call_on_render_thread() {
-    if (!this.#_bindings.method_call_on_render_thread) {
+    if (!this._bindings.method_call_on_render_thread) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("call_on_render_thread");
-      this.#_bindings.method_call_on_render_thread = internal.classdb_get_method_bind(
+      this._bindings.method_call_on_render_thread = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1611583062
@@ -5941,10 +5941,10 @@ class _MethodBindings {
     }
   }
   static init_method_has_feature() {
-    if (!this.#_bindings.method_has_feature) {
+    if (!this._bindings.method_has_feature) {
       let classname = new StringName("RenderingServer");
       let methodname = new StringName("has_feature");
-      this.#_bindings.method_has_feature = internal.classdb_get_method_bind(
+      this._bindings.method_has_feature = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         598462696
@@ -5957,7 +5957,7 @@ class _MethodBindings {
   texture_2d_create(_image) {
     RenderingServer.init_method_texture_2d_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_texture_2d_create,
+      _RenderingServer._bindings.method_texture_2d_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -5968,7 +5968,7 @@ class _MethodBindings {
   texture_2d_layered_create(_layers, _layered_type) {
     RenderingServer.init_method_texture_2d_layered_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_texture_2d_layered_create,
+      _RenderingServer._bindings.method_texture_2d_layered_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -5979,7 +5979,7 @@ class _MethodBindings {
   texture_3d_create(_format, _width, _height, _depth, _mipmaps, _data) {
     RenderingServer.init_method_texture_3d_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_texture_3d_create,
+      _RenderingServer._bindings.method_texture_3d_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -5990,7 +5990,7 @@ class _MethodBindings {
   texture_proxy_create(_base) {
     RenderingServer.init_method_texture_proxy_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_texture_proxy_create,
+      _RenderingServer._bindings.method_texture_proxy_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -6001,7 +6001,7 @@ class _MethodBindings {
   texture_2d_update(_texture, _image, _layer) {
     RenderingServer.init_method_texture_2d_update();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_texture_2d_update,
+      _RenderingServer._bindings.method_texture_2d_update,
       this._owner,
       _texture, _image, _layer
     );
@@ -6010,7 +6010,7 @@ class _MethodBindings {
   texture_3d_update(_texture, _data) {
     RenderingServer.init_method_texture_3d_update();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_texture_3d_update,
+      _RenderingServer._bindings.method_texture_3d_update,
       this._owner,
       _texture, _data
     );
@@ -6019,7 +6019,7 @@ class _MethodBindings {
   texture_proxy_update(_texture, _proxy_to) {
     RenderingServer.init_method_texture_proxy_update();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_texture_proxy_update,
+      _RenderingServer._bindings.method_texture_proxy_update,
       this._owner,
       _texture, _proxy_to
     );
@@ -6028,7 +6028,7 @@ class _MethodBindings {
   texture_2d_placeholder_create() {
     RenderingServer.init_method_texture_2d_placeholder_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_texture_2d_placeholder_create,
+      _RenderingServer._bindings.method_texture_2d_placeholder_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -6039,7 +6039,7 @@ class _MethodBindings {
   texture_2d_layered_placeholder_create(_layered_type) {
     RenderingServer.init_method_texture_2d_layered_placeholder_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_texture_2d_layered_placeholder_create,
+      _RenderingServer._bindings.method_texture_2d_layered_placeholder_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -6050,7 +6050,7 @@ class _MethodBindings {
   texture_3d_placeholder_create() {
     RenderingServer.init_method_texture_3d_placeholder_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_texture_3d_placeholder_create,
+      _RenderingServer._bindings.method_texture_3d_placeholder_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -6061,7 +6061,7 @@ class _MethodBindings {
   texture_2d_get(_texture) {
     RenderingServer.init_method_texture_2d_get();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_texture_2d_get,
+      _RenderingServer._bindings.method_texture_2d_get,
       this._owner,
 			Variant.Type.OBJECT,
       _texture
@@ -6071,7 +6071,7 @@ class _MethodBindings {
   texture_2d_layer_get(_texture, _layer) {
     RenderingServer.init_method_texture_2d_layer_get();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_texture_2d_layer_get,
+      _RenderingServer._bindings.method_texture_2d_layer_get,
       this._owner,
 			Variant.Type.OBJECT,
       _texture, _layer
@@ -6081,7 +6081,7 @@ class _MethodBindings {
   texture_3d_get(_texture) {
     RenderingServer.init_method_texture_3d_get();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_texture_3d_get,
+      _RenderingServer._bindings.method_texture_3d_get,
       this._owner,
 			Variant.Type.ARRAY,
       _texture
@@ -6091,7 +6091,7 @@ class _MethodBindings {
   texture_replace(_texture, _by_texture) {
     RenderingServer.init_method_texture_replace();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_texture_replace,
+      _RenderingServer._bindings.method_texture_replace,
       this._owner,
       _texture, _by_texture
     );
@@ -6100,7 +6100,7 @@ class _MethodBindings {
   texture_set_size_override(_texture, _width, _height) {
     RenderingServer.init_method_texture_set_size_override();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_texture_set_size_override,
+      _RenderingServer._bindings.method_texture_set_size_override,
       this._owner,
       _texture, _width, _height
     );
@@ -6109,7 +6109,7 @@ class _MethodBindings {
   texture_set_path(_texture, _path) {
     RenderingServer.init_method_texture_set_path();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_texture_set_path,
+      _RenderingServer._bindings.method_texture_set_path,
       this._owner,
       _texture, _path
     );
@@ -6118,7 +6118,7 @@ class _MethodBindings {
   texture_get_path(_texture) {
     RenderingServer.init_method_texture_get_path();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_texture_get_path,
+      _RenderingServer._bindings.method_texture_get_path,
       this._owner,
 			Variant.Type.STRING,
     
@@ -6129,7 +6129,7 @@ class _MethodBindings {
   texture_get_format(_texture) {
     RenderingServer.init_method_texture_get_format();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_texture_get_format,
+      _RenderingServer._bindings.method_texture_get_format,
       this._owner,
 			Variant.Type.INT,
     
@@ -6140,7 +6140,7 @@ class _MethodBindings {
   texture_set_force_redraw_if_visible(_texture, _enable) {
     RenderingServer.init_method_texture_set_force_redraw_if_visible();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_texture_set_force_redraw_if_visible,
+      _RenderingServer._bindings.method_texture_set_force_redraw_if_visible,
       this._owner,
       _texture, _enable
     );
@@ -6149,7 +6149,7 @@ class _MethodBindings {
   texture_rd_create(_rd_texture, _layer_type) {
     RenderingServer.init_method_texture_rd_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_texture_rd_create,
+      _RenderingServer._bindings.method_texture_rd_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -6160,7 +6160,7 @@ class _MethodBindings {
   texture_get_rd_texture(_texture, _srgb) {
     RenderingServer.init_method_texture_get_rd_texture();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_texture_get_rd_texture,
+      _RenderingServer._bindings.method_texture_get_rd_texture,
       this._owner,
 			Variant.Type.RID,
     
@@ -6171,7 +6171,7 @@ class _MethodBindings {
   texture_get_native_handle(_texture, _srgb) {
     RenderingServer.init_method_texture_get_native_handle();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_texture_get_native_handle,
+      _RenderingServer._bindings.method_texture_get_native_handle,
       this._owner,
 			Variant.Type.INT,
     
@@ -6182,7 +6182,7 @@ class _MethodBindings {
   shader_create() {
     RenderingServer.init_method_shader_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_shader_create,
+      _RenderingServer._bindings.method_shader_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -6193,7 +6193,7 @@ class _MethodBindings {
   shader_set_code(_shader, _code) {
     RenderingServer.init_method_shader_set_code();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_shader_set_code,
+      _RenderingServer._bindings.method_shader_set_code,
       this._owner,
       _shader, _code
     );
@@ -6202,7 +6202,7 @@ class _MethodBindings {
   shader_set_path_hint(_shader, _path) {
     RenderingServer.init_method_shader_set_path_hint();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_shader_set_path_hint,
+      _RenderingServer._bindings.method_shader_set_path_hint,
       this._owner,
       _shader, _path
     );
@@ -6211,7 +6211,7 @@ class _MethodBindings {
   shader_get_code(_shader) {
     RenderingServer.init_method_shader_get_code();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_shader_get_code,
+      _RenderingServer._bindings.method_shader_get_code,
       this._owner,
 			Variant.Type.STRING,
     
@@ -6222,7 +6222,7 @@ class _MethodBindings {
   get_shader_parameter_list(_shader) {
     RenderingServer.init_method_get_shader_parameter_list();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_get_shader_parameter_list,
+      _RenderingServer._bindings.method_get_shader_parameter_list,
       this._owner,
 			Variant.Type.ARRAY,
       _shader
@@ -6232,7 +6232,7 @@ class _MethodBindings {
   shader_get_parameter_default(_shader, _name) {
     RenderingServer.init_method_shader_get_parameter_default();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_shader_get_parameter_default,
+      _RenderingServer._bindings.method_shader_get_parameter_default,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -6243,7 +6243,7 @@ class _MethodBindings {
   shader_set_default_texture_parameter(_shader, _name, _texture, _index) {
     RenderingServer.init_method_shader_set_default_texture_parameter();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_shader_set_default_texture_parameter,
+      _RenderingServer._bindings.method_shader_set_default_texture_parameter,
       this._owner,
       _shader, _name, _texture, _index
     );
@@ -6252,7 +6252,7 @@ class _MethodBindings {
   shader_get_default_texture_parameter(_shader, _name, _index) {
     RenderingServer.init_method_shader_get_default_texture_parameter();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_shader_get_default_texture_parameter,
+      _RenderingServer._bindings.method_shader_get_default_texture_parameter,
       this._owner,
 			Variant.Type.RID,
     
@@ -6263,7 +6263,7 @@ class _MethodBindings {
   material_create() {
     RenderingServer.init_method_material_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_material_create,
+      _RenderingServer._bindings.method_material_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -6274,7 +6274,7 @@ class _MethodBindings {
   material_set_shader(_shader_material, _shader) {
     RenderingServer.init_method_material_set_shader();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_material_set_shader,
+      _RenderingServer._bindings.method_material_set_shader,
       this._owner,
       _shader_material, _shader
     );
@@ -6283,7 +6283,7 @@ class _MethodBindings {
   material_set_param(_material, _parameter, _value) {
     RenderingServer.init_method_material_set_param();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_material_set_param,
+      _RenderingServer._bindings.method_material_set_param,
       this._owner,
       _material, _parameter, _value
     );
@@ -6292,7 +6292,7 @@ class _MethodBindings {
   material_get_param(_material, _parameter) {
     RenderingServer.init_method_material_get_param();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_material_get_param,
+      _RenderingServer._bindings.method_material_get_param,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -6303,7 +6303,7 @@ class _MethodBindings {
   material_set_render_priority(_material, _priority) {
     RenderingServer.init_method_material_set_render_priority();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_material_set_render_priority,
+      _RenderingServer._bindings.method_material_set_render_priority,
       this._owner,
       _material, _priority
     );
@@ -6312,7 +6312,7 @@ class _MethodBindings {
   material_set_next_pass(_material, _next_material) {
     RenderingServer.init_method_material_set_next_pass();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_material_set_next_pass,
+      _RenderingServer._bindings.method_material_set_next_pass,
       this._owner,
       _material, _next_material
     );
@@ -6321,7 +6321,7 @@ class _MethodBindings {
   mesh_create_from_surfaces(_surfaces, _blend_shape_count) {
     RenderingServer.init_method_mesh_create_from_surfaces();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_mesh_create_from_surfaces,
+      _RenderingServer._bindings.method_mesh_create_from_surfaces,
       this._owner,
 			Variant.Type.RID,
     
@@ -6332,7 +6332,7 @@ class _MethodBindings {
   mesh_create() {
     RenderingServer.init_method_mesh_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_mesh_create,
+      _RenderingServer._bindings.method_mesh_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -6343,7 +6343,7 @@ class _MethodBindings {
   mesh_surface_get_format_offset(_format, _vertex_count, _array_index) {
     RenderingServer.init_method_mesh_surface_get_format_offset();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_mesh_surface_get_format_offset,
+      _RenderingServer._bindings.method_mesh_surface_get_format_offset,
       this._owner,
 			Variant.Type.INT,
     
@@ -6354,7 +6354,7 @@ class _MethodBindings {
   mesh_surface_get_format_vertex_stride(_format, _vertex_count) {
     RenderingServer.init_method_mesh_surface_get_format_vertex_stride();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_mesh_surface_get_format_vertex_stride,
+      _RenderingServer._bindings.method_mesh_surface_get_format_vertex_stride,
       this._owner,
 			Variant.Type.INT,
     
@@ -6365,7 +6365,7 @@ class _MethodBindings {
   mesh_surface_get_format_normal_tangent_stride(_format, _vertex_count) {
     RenderingServer.init_method_mesh_surface_get_format_normal_tangent_stride();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_mesh_surface_get_format_normal_tangent_stride,
+      _RenderingServer._bindings.method_mesh_surface_get_format_normal_tangent_stride,
       this._owner,
 			Variant.Type.INT,
     
@@ -6376,7 +6376,7 @@ class _MethodBindings {
   mesh_surface_get_format_attribute_stride(_format, _vertex_count) {
     RenderingServer.init_method_mesh_surface_get_format_attribute_stride();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_mesh_surface_get_format_attribute_stride,
+      _RenderingServer._bindings.method_mesh_surface_get_format_attribute_stride,
       this._owner,
 			Variant.Type.INT,
     
@@ -6387,7 +6387,7 @@ class _MethodBindings {
   mesh_surface_get_format_skin_stride(_format, _vertex_count) {
     RenderingServer.init_method_mesh_surface_get_format_skin_stride();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_mesh_surface_get_format_skin_stride,
+      _RenderingServer._bindings.method_mesh_surface_get_format_skin_stride,
       this._owner,
 			Variant.Type.INT,
     
@@ -6398,7 +6398,7 @@ class _MethodBindings {
   mesh_add_surface(_mesh, _surface) {
     RenderingServer.init_method_mesh_add_surface();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_mesh_add_surface,
+      _RenderingServer._bindings.method_mesh_add_surface,
       this._owner,
       _mesh, _surface
     );
@@ -6407,7 +6407,7 @@ class _MethodBindings {
   mesh_add_surface_from_arrays(_mesh, _primitive, _arrays, _blend_shapes, _lods, _compress_format) {
     RenderingServer.init_method_mesh_add_surface_from_arrays();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_mesh_add_surface_from_arrays,
+      _RenderingServer._bindings.method_mesh_add_surface_from_arrays,
       this._owner,
       _mesh, _primitive, _arrays, _blend_shapes, _lods, _compress_format
     );
@@ -6416,7 +6416,7 @@ class _MethodBindings {
   mesh_get_blend_shape_count(_mesh) {
     RenderingServer.init_method_mesh_get_blend_shape_count();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_mesh_get_blend_shape_count,
+      _RenderingServer._bindings.method_mesh_get_blend_shape_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -6427,7 +6427,7 @@ class _MethodBindings {
   mesh_set_blend_shape_mode(_mesh, _mode) {
     RenderingServer.init_method_mesh_set_blend_shape_mode();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_mesh_set_blend_shape_mode,
+      _RenderingServer._bindings.method_mesh_set_blend_shape_mode,
       this._owner,
       _mesh, _mode
     );
@@ -6436,7 +6436,7 @@ class _MethodBindings {
   mesh_get_blend_shape_mode(_mesh) {
     RenderingServer.init_method_mesh_get_blend_shape_mode();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_mesh_get_blend_shape_mode,
+      _RenderingServer._bindings.method_mesh_get_blend_shape_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -6447,7 +6447,7 @@ class _MethodBindings {
   mesh_surface_set_material(_mesh, _surface, _material) {
     RenderingServer.init_method_mesh_surface_set_material();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_mesh_surface_set_material,
+      _RenderingServer._bindings.method_mesh_surface_set_material,
       this._owner,
       _mesh, _surface, _material
     );
@@ -6456,7 +6456,7 @@ class _MethodBindings {
   mesh_surface_get_material(_mesh, _surface) {
     RenderingServer.init_method_mesh_surface_get_material();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_mesh_surface_get_material,
+      _RenderingServer._bindings.method_mesh_surface_get_material,
       this._owner,
 			Variant.Type.RID,
     
@@ -6467,7 +6467,7 @@ class _MethodBindings {
   mesh_get_surface(_mesh, _surface) {
     RenderingServer.init_method_mesh_get_surface();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_mesh_get_surface,
+      _RenderingServer._bindings.method_mesh_get_surface,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -6478,7 +6478,7 @@ class _MethodBindings {
   mesh_surface_get_arrays(_mesh, _surface) {
     RenderingServer.init_method_mesh_surface_get_arrays();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_mesh_surface_get_arrays,
+      _RenderingServer._bindings.method_mesh_surface_get_arrays,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -6489,7 +6489,7 @@ class _MethodBindings {
   mesh_surface_get_blend_shape_arrays(_mesh, _surface) {
     RenderingServer.init_method_mesh_surface_get_blend_shape_arrays();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_mesh_surface_get_blend_shape_arrays,
+      _RenderingServer._bindings.method_mesh_surface_get_blend_shape_arrays,
       this._owner,
 			Variant.Type.ARRAY,
       _mesh, _surface
@@ -6499,7 +6499,7 @@ class _MethodBindings {
   mesh_get_surface_count(_mesh) {
     RenderingServer.init_method_mesh_get_surface_count();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_mesh_get_surface_count,
+      _RenderingServer._bindings.method_mesh_get_surface_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -6510,7 +6510,7 @@ class _MethodBindings {
   mesh_set_custom_aabb(_mesh, _aabb) {
     RenderingServer.init_method_mesh_set_custom_aabb();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_mesh_set_custom_aabb,
+      _RenderingServer._bindings.method_mesh_set_custom_aabb,
       this._owner,
       _mesh, _aabb
     );
@@ -6519,7 +6519,7 @@ class _MethodBindings {
   mesh_get_custom_aabb(_mesh) {
     RenderingServer.init_method_mesh_get_custom_aabb();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_mesh_get_custom_aabb,
+      _RenderingServer._bindings.method_mesh_get_custom_aabb,
       this._owner,
 			Variant.Type.AABB,
     
@@ -6530,7 +6530,7 @@ class _MethodBindings {
   mesh_clear(_mesh) {
     RenderingServer.init_method_mesh_clear();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_mesh_clear,
+      _RenderingServer._bindings.method_mesh_clear,
       this._owner,
       _mesh
     );
@@ -6539,7 +6539,7 @@ class _MethodBindings {
   mesh_surface_update_vertex_region(_mesh, _surface, _offset, _data) {
     RenderingServer.init_method_mesh_surface_update_vertex_region();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_mesh_surface_update_vertex_region,
+      _RenderingServer._bindings.method_mesh_surface_update_vertex_region,
       this._owner,
       _mesh, _surface, _offset, _data
     );
@@ -6548,7 +6548,7 @@ class _MethodBindings {
   mesh_surface_update_attribute_region(_mesh, _surface, _offset, _data) {
     RenderingServer.init_method_mesh_surface_update_attribute_region();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_mesh_surface_update_attribute_region,
+      _RenderingServer._bindings.method_mesh_surface_update_attribute_region,
       this._owner,
       _mesh, _surface, _offset, _data
     );
@@ -6557,7 +6557,7 @@ class _MethodBindings {
   mesh_surface_update_skin_region(_mesh, _surface, _offset, _data) {
     RenderingServer.init_method_mesh_surface_update_skin_region();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_mesh_surface_update_skin_region,
+      _RenderingServer._bindings.method_mesh_surface_update_skin_region,
       this._owner,
       _mesh, _surface, _offset, _data
     );
@@ -6566,7 +6566,7 @@ class _MethodBindings {
   mesh_set_shadow_mesh(_mesh, _shadow_mesh) {
     RenderingServer.init_method_mesh_set_shadow_mesh();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_mesh_set_shadow_mesh,
+      _RenderingServer._bindings.method_mesh_set_shadow_mesh,
       this._owner,
       _mesh, _shadow_mesh
     );
@@ -6575,7 +6575,7 @@ class _MethodBindings {
   multimesh_create() {
     RenderingServer.init_method_multimesh_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_multimesh_create,
+      _RenderingServer._bindings.method_multimesh_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -6586,7 +6586,7 @@ class _MethodBindings {
   multimesh_allocate_data(_multimesh, _instances, _transform_format, _color_format, _custom_data_format) {
     RenderingServer.init_method_multimesh_allocate_data();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_multimesh_allocate_data,
+      _RenderingServer._bindings.method_multimesh_allocate_data,
       this._owner,
       _multimesh, _instances, _transform_format, _color_format, _custom_data_format
     );
@@ -6595,7 +6595,7 @@ class _MethodBindings {
   multimesh_get_instance_count(_multimesh) {
     RenderingServer.init_method_multimesh_get_instance_count();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_multimesh_get_instance_count,
+      _RenderingServer._bindings.method_multimesh_get_instance_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -6606,7 +6606,7 @@ class _MethodBindings {
   multimesh_set_mesh(_multimesh, _mesh) {
     RenderingServer.init_method_multimesh_set_mesh();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_multimesh_set_mesh,
+      _RenderingServer._bindings.method_multimesh_set_mesh,
       this._owner,
       _multimesh, _mesh
     );
@@ -6615,7 +6615,7 @@ class _MethodBindings {
   multimesh_instance_set_transform(_multimesh, _index, _transform) {
     RenderingServer.init_method_multimesh_instance_set_transform();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_multimesh_instance_set_transform,
+      _RenderingServer._bindings.method_multimesh_instance_set_transform,
       this._owner,
       _multimesh, _index, _transform
     );
@@ -6624,7 +6624,7 @@ class _MethodBindings {
   multimesh_instance_set_transform_2d(_multimesh, _index, _transform) {
     RenderingServer.init_method_multimesh_instance_set_transform_2d();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_multimesh_instance_set_transform_2d,
+      _RenderingServer._bindings.method_multimesh_instance_set_transform_2d,
       this._owner,
       _multimesh, _index, _transform
     );
@@ -6633,7 +6633,7 @@ class _MethodBindings {
   multimesh_instance_set_color(_multimesh, _index, _color) {
     RenderingServer.init_method_multimesh_instance_set_color();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_multimesh_instance_set_color,
+      _RenderingServer._bindings.method_multimesh_instance_set_color,
       this._owner,
       _multimesh, _index, _color
     );
@@ -6642,7 +6642,7 @@ class _MethodBindings {
   multimesh_instance_set_custom_data(_multimesh, _index, _custom_data) {
     RenderingServer.init_method_multimesh_instance_set_custom_data();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_multimesh_instance_set_custom_data,
+      _RenderingServer._bindings.method_multimesh_instance_set_custom_data,
       this._owner,
       _multimesh, _index, _custom_data
     );
@@ -6651,7 +6651,7 @@ class _MethodBindings {
   multimesh_get_mesh(_multimesh) {
     RenderingServer.init_method_multimesh_get_mesh();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_multimesh_get_mesh,
+      _RenderingServer._bindings.method_multimesh_get_mesh,
       this._owner,
 			Variant.Type.RID,
     
@@ -6662,7 +6662,7 @@ class _MethodBindings {
   multimesh_get_aabb(_multimesh) {
     RenderingServer.init_method_multimesh_get_aabb();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_multimesh_get_aabb,
+      _RenderingServer._bindings.method_multimesh_get_aabb,
       this._owner,
 			Variant.Type.AABB,
     
@@ -6673,7 +6673,7 @@ class _MethodBindings {
   multimesh_set_custom_aabb(_multimesh, _aabb) {
     RenderingServer.init_method_multimesh_set_custom_aabb();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_multimesh_set_custom_aabb,
+      _RenderingServer._bindings.method_multimesh_set_custom_aabb,
       this._owner,
       _multimesh, _aabb
     );
@@ -6682,7 +6682,7 @@ class _MethodBindings {
   multimesh_get_custom_aabb(_multimesh) {
     RenderingServer.init_method_multimesh_get_custom_aabb();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_multimesh_get_custom_aabb,
+      _RenderingServer._bindings.method_multimesh_get_custom_aabb,
       this._owner,
 			Variant.Type.AABB,
     
@@ -6693,7 +6693,7 @@ class _MethodBindings {
   multimesh_instance_get_transform(_multimesh, _index) {
     RenderingServer.init_method_multimesh_instance_get_transform();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_multimesh_instance_get_transform,
+      _RenderingServer._bindings.method_multimesh_instance_get_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -6704,7 +6704,7 @@ class _MethodBindings {
   multimesh_instance_get_transform_2d(_multimesh, _index) {
     RenderingServer.init_method_multimesh_instance_get_transform_2d();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_multimesh_instance_get_transform_2d,
+      _RenderingServer._bindings.method_multimesh_instance_get_transform_2d,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -6715,7 +6715,7 @@ class _MethodBindings {
   multimesh_instance_get_color(_multimesh, _index) {
     RenderingServer.init_method_multimesh_instance_get_color();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_multimesh_instance_get_color,
+      _RenderingServer._bindings.method_multimesh_instance_get_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -6726,7 +6726,7 @@ class _MethodBindings {
   multimesh_instance_get_custom_data(_multimesh, _index) {
     RenderingServer.init_method_multimesh_instance_get_custom_data();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_multimesh_instance_get_custom_data,
+      _RenderingServer._bindings.method_multimesh_instance_get_custom_data,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -6737,7 +6737,7 @@ class _MethodBindings {
   multimesh_set_visible_instances(_multimesh, _visible) {
     RenderingServer.init_method_multimesh_set_visible_instances();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_multimesh_set_visible_instances,
+      _RenderingServer._bindings.method_multimesh_set_visible_instances,
       this._owner,
       _multimesh, _visible
     );
@@ -6746,7 +6746,7 @@ class _MethodBindings {
   multimesh_get_visible_instances(_multimesh) {
     RenderingServer.init_method_multimesh_get_visible_instances();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_multimesh_get_visible_instances,
+      _RenderingServer._bindings.method_multimesh_get_visible_instances,
       this._owner,
 			Variant.Type.INT,
     
@@ -6757,7 +6757,7 @@ class _MethodBindings {
   multimesh_set_buffer(_multimesh, _buffer) {
     RenderingServer.init_method_multimesh_set_buffer();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_multimesh_set_buffer,
+      _RenderingServer._bindings.method_multimesh_set_buffer,
       this._owner,
       _multimesh, _buffer
     );
@@ -6766,7 +6766,7 @@ class _MethodBindings {
   multimesh_get_buffer(_multimesh) {
     RenderingServer.init_method_multimesh_get_buffer();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_multimesh_get_buffer,
+      _RenderingServer._bindings.method_multimesh_get_buffer,
       this._owner,
 			Variant.Type.PACKED_FLOAT32_ARRAY,
     
@@ -6777,7 +6777,7 @@ class _MethodBindings {
   skeleton_create() {
     RenderingServer.init_method_skeleton_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_skeleton_create,
+      _RenderingServer._bindings.method_skeleton_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -6788,7 +6788,7 @@ class _MethodBindings {
   skeleton_allocate_data(_skeleton, _bones, _is_2d_skeleton) {
     RenderingServer.init_method_skeleton_allocate_data();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_skeleton_allocate_data,
+      _RenderingServer._bindings.method_skeleton_allocate_data,
       this._owner,
       _skeleton, _bones, _is_2d_skeleton
     );
@@ -6797,7 +6797,7 @@ class _MethodBindings {
   skeleton_get_bone_count(_skeleton) {
     RenderingServer.init_method_skeleton_get_bone_count();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_skeleton_get_bone_count,
+      _RenderingServer._bindings.method_skeleton_get_bone_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -6808,7 +6808,7 @@ class _MethodBindings {
   skeleton_bone_set_transform(_skeleton, _bone, _transform) {
     RenderingServer.init_method_skeleton_bone_set_transform();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_skeleton_bone_set_transform,
+      _RenderingServer._bindings.method_skeleton_bone_set_transform,
       this._owner,
       _skeleton, _bone, _transform
     );
@@ -6817,7 +6817,7 @@ class _MethodBindings {
   skeleton_bone_get_transform(_skeleton, _bone) {
     RenderingServer.init_method_skeleton_bone_get_transform();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_skeleton_bone_get_transform,
+      _RenderingServer._bindings.method_skeleton_bone_get_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -6828,7 +6828,7 @@ class _MethodBindings {
   skeleton_bone_set_transform_2d(_skeleton, _bone, _transform) {
     RenderingServer.init_method_skeleton_bone_set_transform_2d();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_skeleton_bone_set_transform_2d,
+      _RenderingServer._bindings.method_skeleton_bone_set_transform_2d,
       this._owner,
       _skeleton, _bone, _transform
     );
@@ -6837,7 +6837,7 @@ class _MethodBindings {
   skeleton_bone_get_transform_2d(_skeleton, _bone) {
     RenderingServer.init_method_skeleton_bone_get_transform_2d();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_skeleton_bone_get_transform_2d,
+      _RenderingServer._bindings.method_skeleton_bone_get_transform_2d,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -6848,7 +6848,7 @@ class _MethodBindings {
   skeleton_set_base_transform_2d(_skeleton, _base_transform) {
     RenderingServer.init_method_skeleton_set_base_transform_2d();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_skeleton_set_base_transform_2d,
+      _RenderingServer._bindings.method_skeleton_set_base_transform_2d,
       this._owner,
       _skeleton, _base_transform
     );
@@ -6857,7 +6857,7 @@ class _MethodBindings {
   directional_light_create() {
     RenderingServer.init_method_directional_light_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_directional_light_create,
+      _RenderingServer._bindings.method_directional_light_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -6868,7 +6868,7 @@ class _MethodBindings {
   omni_light_create() {
     RenderingServer.init_method_omni_light_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_omni_light_create,
+      _RenderingServer._bindings.method_omni_light_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -6879,7 +6879,7 @@ class _MethodBindings {
   spot_light_create() {
     RenderingServer.init_method_spot_light_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_spot_light_create,
+      _RenderingServer._bindings.method_spot_light_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -6890,7 +6890,7 @@ class _MethodBindings {
   light_set_color(_light, _color) {
     RenderingServer.init_method_light_set_color();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_light_set_color,
+      _RenderingServer._bindings.method_light_set_color,
       this._owner,
       _light, _color
     );
@@ -6899,7 +6899,7 @@ class _MethodBindings {
   light_set_param(_light, _param, _value) {
     RenderingServer.init_method_light_set_param();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_light_set_param,
+      _RenderingServer._bindings.method_light_set_param,
       this._owner,
       _light, _param, _value
     );
@@ -6908,7 +6908,7 @@ class _MethodBindings {
   light_set_shadow(_light, _enabled) {
     RenderingServer.init_method_light_set_shadow();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_light_set_shadow,
+      _RenderingServer._bindings.method_light_set_shadow,
       this._owner,
       _light, _enabled
     );
@@ -6917,7 +6917,7 @@ class _MethodBindings {
   light_set_projector(_light, _texture) {
     RenderingServer.init_method_light_set_projector();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_light_set_projector,
+      _RenderingServer._bindings.method_light_set_projector,
       this._owner,
       _light, _texture
     );
@@ -6926,7 +6926,7 @@ class _MethodBindings {
   light_set_negative(_light, _enable) {
     RenderingServer.init_method_light_set_negative();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_light_set_negative,
+      _RenderingServer._bindings.method_light_set_negative,
       this._owner,
       _light, _enable
     );
@@ -6935,7 +6935,7 @@ class _MethodBindings {
   light_set_cull_mask(_light, _mask) {
     RenderingServer.init_method_light_set_cull_mask();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_light_set_cull_mask,
+      _RenderingServer._bindings.method_light_set_cull_mask,
       this._owner,
       _light, _mask
     );
@@ -6944,7 +6944,7 @@ class _MethodBindings {
   light_set_distance_fade(_decal, _enabled, _begin, _shadow, _length) {
     RenderingServer.init_method_light_set_distance_fade();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_light_set_distance_fade,
+      _RenderingServer._bindings.method_light_set_distance_fade,
       this._owner,
       _decal, _enabled, _begin, _shadow, _length
     );
@@ -6953,7 +6953,7 @@ class _MethodBindings {
   light_set_reverse_cull_face_mode(_light, _enabled) {
     RenderingServer.init_method_light_set_reverse_cull_face_mode();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_light_set_reverse_cull_face_mode,
+      _RenderingServer._bindings.method_light_set_reverse_cull_face_mode,
       this._owner,
       _light, _enabled
     );
@@ -6962,7 +6962,7 @@ class _MethodBindings {
   light_set_bake_mode(_light, _bake_mode) {
     RenderingServer.init_method_light_set_bake_mode();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_light_set_bake_mode,
+      _RenderingServer._bindings.method_light_set_bake_mode,
       this._owner,
       _light, _bake_mode
     );
@@ -6971,7 +6971,7 @@ class _MethodBindings {
   light_set_max_sdfgi_cascade(_light, _cascade) {
     RenderingServer.init_method_light_set_max_sdfgi_cascade();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_light_set_max_sdfgi_cascade,
+      _RenderingServer._bindings.method_light_set_max_sdfgi_cascade,
       this._owner,
       _light, _cascade
     );
@@ -6980,7 +6980,7 @@ class _MethodBindings {
   light_omni_set_shadow_mode(_light, _mode) {
     RenderingServer.init_method_light_omni_set_shadow_mode();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_light_omni_set_shadow_mode,
+      _RenderingServer._bindings.method_light_omni_set_shadow_mode,
       this._owner,
       _light, _mode
     );
@@ -6989,7 +6989,7 @@ class _MethodBindings {
   light_directional_set_shadow_mode(_light, _mode) {
     RenderingServer.init_method_light_directional_set_shadow_mode();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_light_directional_set_shadow_mode,
+      _RenderingServer._bindings.method_light_directional_set_shadow_mode,
       this._owner,
       _light, _mode
     );
@@ -6998,7 +6998,7 @@ class _MethodBindings {
   light_directional_set_blend_splits(_light, _enable) {
     RenderingServer.init_method_light_directional_set_blend_splits();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_light_directional_set_blend_splits,
+      _RenderingServer._bindings.method_light_directional_set_blend_splits,
       this._owner,
       _light, _enable
     );
@@ -7007,7 +7007,7 @@ class _MethodBindings {
   light_directional_set_sky_mode(_light, _mode) {
     RenderingServer.init_method_light_directional_set_sky_mode();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_light_directional_set_sky_mode,
+      _RenderingServer._bindings.method_light_directional_set_sky_mode,
       this._owner,
       _light, _mode
     );
@@ -7016,7 +7016,7 @@ class _MethodBindings {
   light_projectors_set_filter(_filter) {
     RenderingServer.init_method_light_projectors_set_filter();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_light_projectors_set_filter,
+      _RenderingServer._bindings.method_light_projectors_set_filter,
       this._owner,
       _filter
     );
@@ -7025,7 +7025,7 @@ class _MethodBindings {
   positional_soft_shadow_filter_set_quality(_quality) {
     RenderingServer.init_method_positional_soft_shadow_filter_set_quality();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_positional_soft_shadow_filter_set_quality,
+      _RenderingServer._bindings.method_positional_soft_shadow_filter_set_quality,
       this._owner,
       _quality
     );
@@ -7034,7 +7034,7 @@ class _MethodBindings {
   directional_soft_shadow_filter_set_quality(_quality) {
     RenderingServer.init_method_directional_soft_shadow_filter_set_quality();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_directional_soft_shadow_filter_set_quality,
+      _RenderingServer._bindings.method_directional_soft_shadow_filter_set_quality,
       this._owner,
       _quality
     );
@@ -7043,7 +7043,7 @@ class _MethodBindings {
   directional_shadow_atlas_set_size(_size, _is_16bits) {
     RenderingServer.init_method_directional_shadow_atlas_set_size();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_directional_shadow_atlas_set_size,
+      _RenderingServer._bindings.method_directional_shadow_atlas_set_size,
       this._owner,
       _size, _is_16bits
     );
@@ -7052,7 +7052,7 @@ class _MethodBindings {
   reflection_probe_create() {
     RenderingServer.init_method_reflection_probe_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_reflection_probe_create,
+      _RenderingServer._bindings.method_reflection_probe_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -7063,7 +7063,7 @@ class _MethodBindings {
   reflection_probe_set_update_mode(_probe, _mode) {
     RenderingServer.init_method_reflection_probe_set_update_mode();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_reflection_probe_set_update_mode,
+      _RenderingServer._bindings.method_reflection_probe_set_update_mode,
       this._owner,
       _probe, _mode
     );
@@ -7072,7 +7072,7 @@ class _MethodBindings {
   reflection_probe_set_intensity(_probe, _intensity) {
     RenderingServer.init_method_reflection_probe_set_intensity();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_reflection_probe_set_intensity,
+      _RenderingServer._bindings.method_reflection_probe_set_intensity,
       this._owner,
       _probe, _intensity
     );
@@ -7081,7 +7081,7 @@ class _MethodBindings {
   reflection_probe_set_ambient_mode(_probe, _mode) {
     RenderingServer.init_method_reflection_probe_set_ambient_mode();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_reflection_probe_set_ambient_mode,
+      _RenderingServer._bindings.method_reflection_probe_set_ambient_mode,
       this._owner,
       _probe, _mode
     );
@@ -7090,7 +7090,7 @@ class _MethodBindings {
   reflection_probe_set_ambient_color(_probe, _color) {
     RenderingServer.init_method_reflection_probe_set_ambient_color();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_reflection_probe_set_ambient_color,
+      _RenderingServer._bindings.method_reflection_probe_set_ambient_color,
       this._owner,
       _probe, _color
     );
@@ -7099,7 +7099,7 @@ class _MethodBindings {
   reflection_probe_set_ambient_energy(_probe, _energy) {
     RenderingServer.init_method_reflection_probe_set_ambient_energy();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_reflection_probe_set_ambient_energy,
+      _RenderingServer._bindings.method_reflection_probe_set_ambient_energy,
       this._owner,
       _probe, _energy
     );
@@ -7108,7 +7108,7 @@ class _MethodBindings {
   reflection_probe_set_max_distance(_probe, _distance) {
     RenderingServer.init_method_reflection_probe_set_max_distance();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_reflection_probe_set_max_distance,
+      _RenderingServer._bindings.method_reflection_probe_set_max_distance,
       this._owner,
       _probe, _distance
     );
@@ -7117,7 +7117,7 @@ class _MethodBindings {
   reflection_probe_set_size(_probe, _size) {
     RenderingServer.init_method_reflection_probe_set_size();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_reflection_probe_set_size,
+      _RenderingServer._bindings.method_reflection_probe_set_size,
       this._owner,
       _probe, _size
     );
@@ -7126,7 +7126,7 @@ class _MethodBindings {
   reflection_probe_set_origin_offset(_probe, _offset) {
     RenderingServer.init_method_reflection_probe_set_origin_offset();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_reflection_probe_set_origin_offset,
+      _RenderingServer._bindings.method_reflection_probe_set_origin_offset,
       this._owner,
       _probe, _offset
     );
@@ -7135,7 +7135,7 @@ class _MethodBindings {
   reflection_probe_set_as_interior(_probe, _enable) {
     RenderingServer.init_method_reflection_probe_set_as_interior();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_reflection_probe_set_as_interior,
+      _RenderingServer._bindings.method_reflection_probe_set_as_interior,
       this._owner,
       _probe, _enable
     );
@@ -7144,7 +7144,7 @@ class _MethodBindings {
   reflection_probe_set_enable_box_projection(_probe, _enable) {
     RenderingServer.init_method_reflection_probe_set_enable_box_projection();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_reflection_probe_set_enable_box_projection,
+      _RenderingServer._bindings.method_reflection_probe_set_enable_box_projection,
       this._owner,
       _probe, _enable
     );
@@ -7153,7 +7153,7 @@ class _MethodBindings {
   reflection_probe_set_enable_shadows(_probe, _enable) {
     RenderingServer.init_method_reflection_probe_set_enable_shadows();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_reflection_probe_set_enable_shadows,
+      _RenderingServer._bindings.method_reflection_probe_set_enable_shadows,
       this._owner,
       _probe, _enable
     );
@@ -7162,7 +7162,7 @@ class _MethodBindings {
   reflection_probe_set_cull_mask(_probe, _layers) {
     RenderingServer.init_method_reflection_probe_set_cull_mask();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_reflection_probe_set_cull_mask,
+      _RenderingServer._bindings.method_reflection_probe_set_cull_mask,
       this._owner,
       _probe, _layers
     );
@@ -7171,7 +7171,7 @@ class _MethodBindings {
   reflection_probe_set_reflection_mask(_probe, _layers) {
     RenderingServer.init_method_reflection_probe_set_reflection_mask();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_reflection_probe_set_reflection_mask,
+      _RenderingServer._bindings.method_reflection_probe_set_reflection_mask,
       this._owner,
       _probe, _layers
     );
@@ -7180,7 +7180,7 @@ class _MethodBindings {
   reflection_probe_set_resolution(_probe, _resolution) {
     RenderingServer.init_method_reflection_probe_set_resolution();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_reflection_probe_set_resolution,
+      _RenderingServer._bindings.method_reflection_probe_set_resolution,
       this._owner,
       _probe, _resolution
     );
@@ -7189,7 +7189,7 @@ class _MethodBindings {
   reflection_probe_set_mesh_lod_threshold(_probe, _pixels) {
     RenderingServer.init_method_reflection_probe_set_mesh_lod_threshold();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_reflection_probe_set_mesh_lod_threshold,
+      _RenderingServer._bindings.method_reflection_probe_set_mesh_lod_threshold,
       this._owner,
       _probe, _pixels
     );
@@ -7198,7 +7198,7 @@ class _MethodBindings {
   decal_create() {
     RenderingServer.init_method_decal_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_decal_create,
+      _RenderingServer._bindings.method_decal_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -7209,7 +7209,7 @@ class _MethodBindings {
   decal_set_size(_decal, _size) {
     RenderingServer.init_method_decal_set_size();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_decal_set_size,
+      _RenderingServer._bindings.method_decal_set_size,
       this._owner,
       _decal, _size
     );
@@ -7218,7 +7218,7 @@ class _MethodBindings {
   decal_set_texture(_decal, _type, _texture) {
     RenderingServer.init_method_decal_set_texture();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_decal_set_texture,
+      _RenderingServer._bindings.method_decal_set_texture,
       this._owner,
       _decal, _type, _texture
     );
@@ -7227,7 +7227,7 @@ class _MethodBindings {
   decal_set_emission_energy(_decal, _energy) {
     RenderingServer.init_method_decal_set_emission_energy();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_decal_set_emission_energy,
+      _RenderingServer._bindings.method_decal_set_emission_energy,
       this._owner,
       _decal, _energy
     );
@@ -7236,7 +7236,7 @@ class _MethodBindings {
   decal_set_albedo_mix(_decal, _albedo_mix) {
     RenderingServer.init_method_decal_set_albedo_mix();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_decal_set_albedo_mix,
+      _RenderingServer._bindings.method_decal_set_albedo_mix,
       this._owner,
       _decal, _albedo_mix
     );
@@ -7245,7 +7245,7 @@ class _MethodBindings {
   decal_set_modulate(_decal, _color) {
     RenderingServer.init_method_decal_set_modulate();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_decal_set_modulate,
+      _RenderingServer._bindings.method_decal_set_modulate,
       this._owner,
       _decal, _color
     );
@@ -7254,7 +7254,7 @@ class _MethodBindings {
   decal_set_cull_mask(_decal, _mask) {
     RenderingServer.init_method_decal_set_cull_mask();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_decal_set_cull_mask,
+      _RenderingServer._bindings.method_decal_set_cull_mask,
       this._owner,
       _decal, _mask
     );
@@ -7263,7 +7263,7 @@ class _MethodBindings {
   decal_set_distance_fade(_decal, _enabled, _begin, _length) {
     RenderingServer.init_method_decal_set_distance_fade();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_decal_set_distance_fade,
+      _RenderingServer._bindings.method_decal_set_distance_fade,
       this._owner,
       _decal, _enabled, _begin, _length
     );
@@ -7272,7 +7272,7 @@ class _MethodBindings {
   decal_set_fade(_decal, _above, _below) {
     RenderingServer.init_method_decal_set_fade();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_decal_set_fade,
+      _RenderingServer._bindings.method_decal_set_fade,
       this._owner,
       _decal, _above, _below
     );
@@ -7281,7 +7281,7 @@ class _MethodBindings {
   decal_set_normal_fade(_decal, _fade) {
     RenderingServer.init_method_decal_set_normal_fade();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_decal_set_normal_fade,
+      _RenderingServer._bindings.method_decal_set_normal_fade,
       this._owner,
       _decal, _fade
     );
@@ -7290,7 +7290,7 @@ class _MethodBindings {
   decals_set_filter(_filter) {
     RenderingServer.init_method_decals_set_filter();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_decals_set_filter,
+      _RenderingServer._bindings.method_decals_set_filter,
       this._owner,
       _filter
     );
@@ -7299,7 +7299,7 @@ class _MethodBindings {
   gi_set_use_half_resolution(_half_resolution) {
     RenderingServer.init_method_gi_set_use_half_resolution();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_gi_set_use_half_resolution,
+      _RenderingServer._bindings.method_gi_set_use_half_resolution,
       this._owner,
       _half_resolution
     );
@@ -7308,7 +7308,7 @@ class _MethodBindings {
   voxel_gi_create() {
     RenderingServer.init_method_voxel_gi_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_voxel_gi_create,
+      _RenderingServer._bindings.method_voxel_gi_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -7319,7 +7319,7 @@ class _MethodBindings {
   voxel_gi_allocate_data(_voxel_gi, _to_cell_xform, _aabb, _octree_size, _octree_cells, _data_cells, _distance_field, _level_counts) {
     RenderingServer.init_method_voxel_gi_allocate_data();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_voxel_gi_allocate_data,
+      _RenderingServer._bindings.method_voxel_gi_allocate_data,
       this._owner,
       _voxel_gi, _to_cell_xform, _aabb, _octree_size, _octree_cells, _data_cells, _distance_field, _level_counts
     );
@@ -7328,7 +7328,7 @@ class _MethodBindings {
   voxel_gi_get_octree_size(_voxel_gi) {
     RenderingServer.init_method_voxel_gi_get_octree_size();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_voxel_gi_get_octree_size,
+      _RenderingServer._bindings.method_voxel_gi_get_octree_size,
       this._owner,
 			Variant.Type.VECTOR3I,
     
@@ -7339,7 +7339,7 @@ class _MethodBindings {
   voxel_gi_get_octree_cells(_voxel_gi) {
     RenderingServer.init_method_voxel_gi_get_octree_cells();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_voxel_gi_get_octree_cells,
+      _RenderingServer._bindings.method_voxel_gi_get_octree_cells,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -7350,7 +7350,7 @@ class _MethodBindings {
   voxel_gi_get_data_cells(_voxel_gi) {
     RenderingServer.init_method_voxel_gi_get_data_cells();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_voxel_gi_get_data_cells,
+      _RenderingServer._bindings.method_voxel_gi_get_data_cells,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -7361,7 +7361,7 @@ class _MethodBindings {
   voxel_gi_get_distance_field(_voxel_gi) {
     RenderingServer.init_method_voxel_gi_get_distance_field();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_voxel_gi_get_distance_field,
+      _RenderingServer._bindings.method_voxel_gi_get_distance_field,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -7372,7 +7372,7 @@ class _MethodBindings {
   voxel_gi_get_level_counts(_voxel_gi) {
     RenderingServer.init_method_voxel_gi_get_level_counts();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_voxel_gi_get_level_counts,
+      _RenderingServer._bindings.method_voxel_gi_get_level_counts,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -7383,7 +7383,7 @@ class _MethodBindings {
   voxel_gi_get_to_cell_xform(_voxel_gi) {
     RenderingServer.init_method_voxel_gi_get_to_cell_xform();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_voxel_gi_get_to_cell_xform,
+      _RenderingServer._bindings.method_voxel_gi_get_to_cell_xform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -7394,7 +7394,7 @@ class _MethodBindings {
   voxel_gi_set_dynamic_range(_voxel_gi, _range) {
     RenderingServer.init_method_voxel_gi_set_dynamic_range();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_voxel_gi_set_dynamic_range,
+      _RenderingServer._bindings.method_voxel_gi_set_dynamic_range,
       this._owner,
       _voxel_gi, _range
     );
@@ -7403,7 +7403,7 @@ class _MethodBindings {
   voxel_gi_set_propagation(_voxel_gi, _amount) {
     RenderingServer.init_method_voxel_gi_set_propagation();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_voxel_gi_set_propagation,
+      _RenderingServer._bindings.method_voxel_gi_set_propagation,
       this._owner,
       _voxel_gi, _amount
     );
@@ -7412,7 +7412,7 @@ class _MethodBindings {
   voxel_gi_set_energy(_voxel_gi, _energy) {
     RenderingServer.init_method_voxel_gi_set_energy();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_voxel_gi_set_energy,
+      _RenderingServer._bindings.method_voxel_gi_set_energy,
       this._owner,
       _voxel_gi, _energy
     );
@@ -7421,7 +7421,7 @@ class _MethodBindings {
   voxel_gi_set_baked_exposure_normalization(_voxel_gi, _baked_exposure) {
     RenderingServer.init_method_voxel_gi_set_baked_exposure_normalization();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_voxel_gi_set_baked_exposure_normalization,
+      _RenderingServer._bindings.method_voxel_gi_set_baked_exposure_normalization,
       this._owner,
       _voxel_gi, _baked_exposure
     );
@@ -7430,7 +7430,7 @@ class _MethodBindings {
   voxel_gi_set_bias(_voxel_gi, _bias) {
     RenderingServer.init_method_voxel_gi_set_bias();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_voxel_gi_set_bias,
+      _RenderingServer._bindings.method_voxel_gi_set_bias,
       this._owner,
       _voxel_gi, _bias
     );
@@ -7439,7 +7439,7 @@ class _MethodBindings {
   voxel_gi_set_normal_bias(_voxel_gi, _bias) {
     RenderingServer.init_method_voxel_gi_set_normal_bias();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_voxel_gi_set_normal_bias,
+      _RenderingServer._bindings.method_voxel_gi_set_normal_bias,
       this._owner,
       _voxel_gi, _bias
     );
@@ -7448,7 +7448,7 @@ class _MethodBindings {
   voxel_gi_set_interior(_voxel_gi, _enable) {
     RenderingServer.init_method_voxel_gi_set_interior();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_voxel_gi_set_interior,
+      _RenderingServer._bindings.method_voxel_gi_set_interior,
       this._owner,
       _voxel_gi, _enable
     );
@@ -7457,7 +7457,7 @@ class _MethodBindings {
   voxel_gi_set_use_two_bounces(_voxel_gi, _enable) {
     RenderingServer.init_method_voxel_gi_set_use_two_bounces();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_voxel_gi_set_use_two_bounces,
+      _RenderingServer._bindings.method_voxel_gi_set_use_two_bounces,
       this._owner,
       _voxel_gi, _enable
     );
@@ -7466,7 +7466,7 @@ class _MethodBindings {
   voxel_gi_set_quality(_quality) {
     RenderingServer.init_method_voxel_gi_set_quality();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_voxel_gi_set_quality,
+      _RenderingServer._bindings.method_voxel_gi_set_quality,
       this._owner,
       _quality
     );
@@ -7475,7 +7475,7 @@ class _MethodBindings {
   lightmap_create() {
     RenderingServer.init_method_lightmap_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_lightmap_create,
+      _RenderingServer._bindings.method_lightmap_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -7486,7 +7486,7 @@ class _MethodBindings {
   lightmap_set_textures(_lightmap, _light, _uses_sh) {
     RenderingServer.init_method_lightmap_set_textures();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_lightmap_set_textures,
+      _RenderingServer._bindings.method_lightmap_set_textures,
       this._owner,
       _lightmap, _light, _uses_sh
     );
@@ -7495,7 +7495,7 @@ class _MethodBindings {
   lightmap_set_probe_bounds(_lightmap, _bounds) {
     RenderingServer.init_method_lightmap_set_probe_bounds();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_lightmap_set_probe_bounds,
+      _RenderingServer._bindings.method_lightmap_set_probe_bounds,
       this._owner,
       _lightmap, _bounds
     );
@@ -7504,7 +7504,7 @@ class _MethodBindings {
   lightmap_set_probe_interior(_lightmap, _interior) {
     RenderingServer.init_method_lightmap_set_probe_interior();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_lightmap_set_probe_interior,
+      _RenderingServer._bindings.method_lightmap_set_probe_interior,
       this._owner,
       _lightmap, _interior
     );
@@ -7513,7 +7513,7 @@ class _MethodBindings {
   lightmap_set_probe_capture_data(_lightmap, _points, _point_sh, _tetrahedra, _bsp_tree) {
     RenderingServer.init_method_lightmap_set_probe_capture_data();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_lightmap_set_probe_capture_data,
+      _RenderingServer._bindings.method_lightmap_set_probe_capture_data,
       this._owner,
       _lightmap, _points, _point_sh, _tetrahedra, _bsp_tree
     );
@@ -7522,7 +7522,7 @@ class _MethodBindings {
   lightmap_get_probe_capture_points(_lightmap) {
     RenderingServer.init_method_lightmap_get_probe_capture_points();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_lightmap_get_probe_capture_points,
+      _RenderingServer._bindings.method_lightmap_get_probe_capture_points,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -7533,7 +7533,7 @@ class _MethodBindings {
   lightmap_get_probe_capture_sh(_lightmap) {
     RenderingServer.init_method_lightmap_get_probe_capture_sh();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_lightmap_get_probe_capture_sh,
+      _RenderingServer._bindings.method_lightmap_get_probe_capture_sh,
       this._owner,
 			Variant.Type.PACKED_COLOR_ARRAY,
     
@@ -7544,7 +7544,7 @@ class _MethodBindings {
   lightmap_get_probe_capture_tetrahedra(_lightmap) {
     RenderingServer.init_method_lightmap_get_probe_capture_tetrahedra();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_lightmap_get_probe_capture_tetrahedra,
+      _RenderingServer._bindings.method_lightmap_get_probe_capture_tetrahedra,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -7555,7 +7555,7 @@ class _MethodBindings {
   lightmap_get_probe_capture_bsp_tree(_lightmap) {
     RenderingServer.init_method_lightmap_get_probe_capture_bsp_tree();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_lightmap_get_probe_capture_bsp_tree,
+      _RenderingServer._bindings.method_lightmap_get_probe_capture_bsp_tree,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -7566,7 +7566,7 @@ class _MethodBindings {
   lightmap_set_baked_exposure_normalization(_lightmap, _baked_exposure) {
     RenderingServer.init_method_lightmap_set_baked_exposure_normalization();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_lightmap_set_baked_exposure_normalization,
+      _RenderingServer._bindings.method_lightmap_set_baked_exposure_normalization,
       this._owner,
       _lightmap, _baked_exposure
     );
@@ -7575,7 +7575,7 @@ class _MethodBindings {
   lightmap_set_probe_capture_update_speed(_speed) {
     RenderingServer.init_method_lightmap_set_probe_capture_update_speed();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_lightmap_set_probe_capture_update_speed,
+      _RenderingServer._bindings.method_lightmap_set_probe_capture_update_speed,
       this._owner,
       _speed
     );
@@ -7584,7 +7584,7 @@ class _MethodBindings {
   particles_create() {
     RenderingServer.init_method_particles_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_particles_create,
+      _RenderingServer._bindings.method_particles_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -7595,7 +7595,7 @@ class _MethodBindings {
   particles_set_mode(_particles, _mode) {
     RenderingServer.init_method_particles_set_mode();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_mode,
+      _RenderingServer._bindings.method_particles_set_mode,
       this._owner,
       _particles, _mode
     );
@@ -7604,7 +7604,7 @@ class _MethodBindings {
   particles_set_emitting(_particles, _emitting) {
     RenderingServer.init_method_particles_set_emitting();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_emitting,
+      _RenderingServer._bindings.method_particles_set_emitting,
       this._owner,
       _particles, _emitting
     );
@@ -7613,7 +7613,7 @@ class _MethodBindings {
   particles_get_emitting(_particles) {
     RenderingServer.init_method_particles_get_emitting();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_particles_get_emitting,
+      _RenderingServer._bindings.method_particles_get_emitting,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -7624,7 +7624,7 @@ class _MethodBindings {
   particles_set_amount(_particles, _amount) {
     RenderingServer.init_method_particles_set_amount();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_amount,
+      _RenderingServer._bindings.method_particles_set_amount,
       this._owner,
       _particles, _amount
     );
@@ -7633,7 +7633,7 @@ class _MethodBindings {
   particles_set_amount_ratio(_particles, _ratio) {
     RenderingServer.init_method_particles_set_amount_ratio();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_amount_ratio,
+      _RenderingServer._bindings.method_particles_set_amount_ratio,
       this._owner,
       _particles, _ratio
     );
@@ -7642,7 +7642,7 @@ class _MethodBindings {
   particles_set_lifetime(_particles, _lifetime) {
     RenderingServer.init_method_particles_set_lifetime();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_lifetime,
+      _RenderingServer._bindings.method_particles_set_lifetime,
       this._owner,
       _particles, _lifetime
     );
@@ -7651,7 +7651,7 @@ class _MethodBindings {
   particles_set_one_shot(_particles, _one_shot) {
     RenderingServer.init_method_particles_set_one_shot();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_one_shot,
+      _RenderingServer._bindings.method_particles_set_one_shot,
       this._owner,
       _particles, _one_shot
     );
@@ -7660,7 +7660,7 @@ class _MethodBindings {
   particles_set_pre_process_time(_particles, _time) {
     RenderingServer.init_method_particles_set_pre_process_time();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_pre_process_time,
+      _RenderingServer._bindings.method_particles_set_pre_process_time,
       this._owner,
       _particles, _time
     );
@@ -7669,7 +7669,7 @@ class _MethodBindings {
   particles_set_explosiveness_ratio(_particles, _ratio) {
     RenderingServer.init_method_particles_set_explosiveness_ratio();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_explosiveness_ratio,
+      _RenderingServer._bindings.method_particles_set_explosiveness_ratio,
       this._owner,
       _particles, _ratio
     );
@@ -7678,7 +7678,7 @@ class _MethodBindings {
   particles_set_randomness_ratio(_particles, _ratio) {
     RenderingServer.init_method_particles_set_randomness_ratio();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_randomness_ratio,
+      _RenderingServer._bindings.method_particles_set_randomness_ratio,
       this._owner,
       _particles, _ratio
     );
@@ -7687,7 +7687,7 @@ class _MethodBindings {
   particles_set_interp_to_end(_particles, _factor) {
     RenderingServer.init_method_particles_set_interp_to_end();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_interp_to_end,
+      _RenderingServer._bindings.method_particles_set_interp_to_end,
       this._owner,
       _particles, _factor
     );
@@ -7696,7 +7696,7 @@ class _MethodBindings {
   particles_set_emitter_velocity(_particles, _velocity) {
     RenderingServer.init_method_particles_set_emitter_velocity();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_emitter_velocity,
+      _RenderingServer._bindings.method_particles_set_emitter_velocity,
       this._owner,
       _particles, _velocity
     );
@@ -7705,7 +7705,7 @@ class _MethodBindings {
   particles_set_custom_aabb(_particles, _aabb) {
     RenderingServer.init_method_particles_set_custom_aabb();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_custom_aabb,
+      _RenderingServer._bindings.method_particles_set_custom_aabb,
       this._owner,
       _particles, _aabb
     );
@@ -7714,7 +7714,7 @@ class _MethodBindings {
   particles_set_speed_scale(_particles, _scale) {
     RenderingServer.init_method_particles_set_speed_scale();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_speed_scale,
+      _RenderingServer._bindings.method_particles_set_speed_scale,
       this._owner,
       _particles, _scale
     );
@@ -7723,7 +7723,7 @@ class _MethodBindings {
   particles_set_use_local_coordinates(_particles, _enable) {
     RenderingServer.init_method_particles_set_use_local_coordinates();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_use_local_coordinates,
+      _RenderingServer._bindings.method_particles_set_use_local_coordinates,
       this._owner,
       _particles, _enable
     );
@@ -7732,7 +7732,7 @@ class _MethodBindings {
   particles_set_process_material(_particles, _material) {
     RenderingServer.init_method_particles_set_process_material();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_process_material,
+      _RenderingServer._bindings.method_particles_set_process_material,
       this._owner,
       _particles, _material
     );
@@ -7741,7 +7741,7 @@ class _MethodBindings {
   particles_set_fixed_fps(_particles, _fps) {
     RenderingServer.init_method_particles_set_fixed_fps();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_fixed_fps,
+      _RenderingServer._bindings.method_particles_set_fixed_fps,
       this._owner,
       _particles, _fps
     );
@@ -7750,7 +7750,7 @@ class _MethodBindings {
   particles_set_interpolate(_particles, _enable) {
     RenderingServer.init_method_particles_set_interpolate();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_interpolate,
+      _RenderingServer._bindings.method_particles_set_interpolate,
       this._owner,
       _particles, _enable
     );
@@ -7759,7 +7759,7 @@ class _MethodBindings {
   particles_set_fractional_delta(_particles, _enable) {
     RenderingServer.init_method_particles_set_fractional_delta();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_fractional_delta,
+      _RenderingServer._bindings.method_particles_set_fractional_delta,
       this._owner,
       _particles, _enable
     );
@@ -7768,7 +7768,7 @@ class _MethodBindings {
   particles_set_collision_base_size(_particles, _size) {
     RenderingServer.init_method_particles_set_collision_base_size();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_collision_base_size,
+      _RenderingServer._bindings.method_particles_set_collision_base_size,
       this._owner,
       _particles, _size
     );
@@ -7777,7 +7777,7 @@ class _MethodBindings {
   particles_set_transform_align(_particles, _align) {
     RenderingServer.init_method_particles_set_transform_align();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_transform_align,
+      _RenderingServer._bindings.method_particles_set_transform_align,
       this._owner,
       _particles, _align
     );
@@ -7786,7 +7786,7 @@ class _MethodBindings {
   particles_set_trails(_particles, _enable, _length_sec) {
     RenderingServer.init_method_particles_set_trails();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_trails,
+      _RenderingServer._bindings.method_particles_set_trails,
       this._owner,
       _particles, _enable, _length_sec
     );
@@ -7795,7 +7795,7 @@ class _MethodBindings {
   particles_set_trail_bind_poses(_particles, _bind_poses) {
     RenderingServer.init_method_particles_set_trail_bind_poses();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_trail_bind_poses,
+      _RenderingServer._bindings.method_particles_set_trail_bind_poses,
       this._owner,
       _particles, _bind_poses
     );
@@ -7804,7 +7804,7 @@ class _MethodBindings {
   particles_is_inactive(_particles) {
     RenderingServer.init_method_particles_is_inactive();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_particles_is_inactive,
+      _RenderingServer._bindings.method_particles_is_inactive,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -7815,7 +7815,7 @@ class _MethodBindings {
   particles_request_process(_particles) {
     RenderingServer.init_method_particles_request_process();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_request_process,
+      _RenderingServer._bindings.method_particles_request_process,
       this._owner,
       _particles
     );
@@ -7824,7 +7824,7 @@ class _MethodBindings {
   particles_restart(_particles) {
     RenderingServer.init_method_particles_restart();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_restart,
+      _RenderingServer._bindings.method_particles_restart,
       this._owner,
       _particles
     );
@@ -7833,7 +7833,7 @@ class _MethodBindings {
   particles_set_subemitter(_particles, _subemitter_particles) {
     RenderingServer.init_method_particles_set_subemitter();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_subemitter,
+      _RenderingServer._bindings.method_particles_set_subemitter,
       this._owner,
       _particles, _subemitter_particles
     );
@@ -7842,7 +7842,7 @@ class _MethodBindings {
   particles_emit(_particles, _transform, _velocity, _color, _custom, _emit_flags) {
     RenderingServer.init_method_particles_emit();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_emit,
+      _RenderingServer._bindings.method_particles_emit,
       this._owner,
       _particles, _transform, _velocity, _color, _custom, _emit_flags
     );
@@ -7851,7 +7851,7 @@ class _MethodBindings {
   particles_set_draw_order(_particles, _order) {
     RenderingServer.init_method_particles_set_draw_order();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_draw_order,
+      _RenderingServer._bindings.method_particles_set_draw_order,
       this._owner,
       _particles, _order
     );
@@ -7860,7 +7860,7 @@ class _MethodBindings {
   particles_set_draw_passes(_particles, _count) {
     RenderingServer.init_method_particles_set_draw_passes();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_draw_passes,
+      _RenderingServer._bindings.method_particles_set_draw_passes,
       this._owner,
       _particles, _count
     );
@@ -7869,7 +7869,7 @@ class _MethodBindings {
   particles_set_draw_pass_mesh(_particles, _pass, _mesh) {
     RenderingServer.init_method_particles_set_draw_pass_mesh();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_draw_pass_mesh,
+      _RenderingServer._bindings.method_particles_set_draw_pass_mesh,
       this._owner,
       _particles, _pass, _mesh
     );
@@ -7878,7 +7878,7 @@ class _MethodBindings {
   particles_get_current_aabb(_particles) {
     RenderingServer.init_method_particles_get_current_aabb();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_particles_get_current_aabb,
+      _RenderingServer._bindings.method_particles_get_current_aabb,
       this._owner,
 			Variant.Type.AABB,
     
@@ -7889,7 +7889,7 @@ class _MethodBindings {
   particles_set_emission_transform(_particles, _transform) {
     RenderingServer.init_method_particles_set_emission_transform();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_set_emission_transform,
+      _RenderingServer._bindings.method_particles_set_emission_transform,
       this._owner,
       _particles, _transform
     );
@@ -7898,7 +7898,7 @@ class _MethodBindings {
   particles_collision_create() {
     RenderingServer.init_method_particles_collision_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_particles_collision_create,
+      _RenderingServer._bindings.method_particles_collision_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -7909,7 +7909,7 @@ class _MethodBindings {
   particles_collision_set_collision_type(_particles_collision, _type) {
     RenderingServer.init_method_particles_collision_set_collision_type();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_collision_set_collision_type,
+      _RenderingServer._bindings.method_particles_collision_set_collision_type,
       this._owner,
       _particles_collision, _type
     );
@@ -7918,7 +7918,7 @@ class _MethodBindings {
   particles_collision_set_cull_mask(_particles_collision, _mask) {
     RenderingServer.init_method_particles_collision_set_cull_mask();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_collision_set_cull_mask,
+      _RenderingServer._bindings.method_particles_collision_set_cull_mask,
       this._owner,
       _particles_collision, _mask
     );
@@ -7927,7 +7927,7 @@ class _MethodBindings {
   particles_collision_set_sphere_radius(_particles_collision, _radius) {
     RenderingServer.init_method_particles_collision_set_sphere_radius();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_collision_set_sphere_radius,
+      _RenderingServer._bindings.method_particles_collision_set_sphere_radius,
       this._owner,
       _particles_collision, _radius
     );
@@ -7936,7 +7936,7 @@ class _MethodBindings {
   particles_collision_set_box_extents(_particles_collision, _extents) {
     RenderingServer.init_method_particles_collision_set_box_extents();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_collision_set_box_extents,
+      _RenderingServer._bindings.method_particles_collision_set_box_extents,
       this._owner,
       _particles_collision, _extents
     );
@@ -7945,7 +7945,7 @@ class _MethodBindings {
   particles_collision_set_attractor_strength(_particles_collision, _strength) {
     RenderingServer.init_method_particles_collision_set_attractor_strength();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_collision_set_attractor_strength,
+      _RenderingServer._bindings.method_particles_collision_set_attractor_strength,
       this._owner,
       _particles_collision, _strength
     );
@@ -7954,7 +7954,7 @@ class _MethodBindings {
   particles_collision_set_attractor_directionality(_particles_collision, _amount) {
     RenderingServer.init_method_particles_collision_set_attractor_directionality();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_collision_set_attractor_directionality,
+      _RenderingServer._bindings.method_particles_collision_set_attractor_directionality,
       this._owner,
       _particles_collision, _amount
     );
@@ -7963,7 +7963,7 @@ class _MethodBindings {
   particles_collision_set_attractor_attenuation(_particles_collision, _curve) {
     RenderingServer.init_method_particles_collision_set_attractor_attenuation();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_collision_set_attractor_attenuation,
+      _RenderingServer._bindings.method_particles_collision_set_attractor_attenuation,
       this._owner,
       _particles_collision, _curve
     );
@@ -7972,7 +7972,7 @@ class _MethodBindings {
   particles_collision_set_field_texture(_particles_collision, _texture) {
     RenderingServer.init_method_particles_collision_set_field_texture();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_collision_set_field_texture,
+      _RenderingServer._bindings.method_particles_collision_set_field_texture,
       this._owner,
       _particles_collision, _texture
     );
@@ -7981,7 +7981,7 @@ class _MethodBindings {
   particles_collision_height_field_update(_particles_collision) {
     RenderingServer.init_method_particles_collision_height_field_update();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_collision_height_field_update,
+      _RenderingServer._bindings.method_particles_collision_height_field_update,
       this._owner,
       _particles_collision
     );
@@ -7990,7 +7990,7 @@ class _MethodBindings {
   particles_collision_set_height_field_resolution(_particles_collision, _resolution) {
     RenderingServer.init_method_particles_collision_set_height_field_resolution();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_particles_collision_set_height_field_resolution,
+      _RenderingServer._bindings.method_particles_collision_set_height_field_resolution,
       this._owner,
       _particles_collision, _resolution
     );
@@ -7999,7 +7999,7 @@ class _MethodBindings {
   fog_volume_create() {
     RenderingServer.init_method_fog_volume_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_fog_volume_create,
+      _RenderingServer._bindings.method_fog_volume_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -8010,7 +8010,7 @@ class _MethodBindings {
   fog_volume_set_shape(_fog_volume, _shape) {
     RenderingServer.init_method_fog_volume_set_shape();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_fog_volume_set_shape,
+      _RenderingServer._bindings.method_fog_volume_set_shape,
       this._owner,
       _fog_volume, _shape
     );
@@ -8019,7 +8019,7 @@ class _MethodBindings {
   fog_volume_set_size(_fog_volume, _size) {
     RenderingServer.init_method_fog_volume_set_size();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_fog_volume_set_size,
+      _RenderingServer._bindings.method_fog_volume_set_size,
       this._owner,
       _fog_volume, _size
     );
@@ -8028,7 +8028,7 @@ class _MethodBindings {
   fog_volume_set_material(_fog_volume, _material) {
     RenderingServer.init_method_fog_volume_set_material();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_fog_volume_set_material,
+      _RenderingServer._bindings.method_fog_volume_set_material,
       this._owner,
       _fog_volume, _material
     );
@@ -8037,7 +8037,7 @@ class _MethodBindings {
   visibility_notifier_create() {
     RenderingServer.init_method_visibility_notifier_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_visibility_notifier_create,
+      _RenderingServer._bindings.method_visibility_notifier_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -8048,7 +8048,7 @@ class _MethodBindings {
   visibility_notifier_set_aabb(_notifier, _aabb) {
     RenderingServer.init_method_visibility_notifier_set_aabb();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_visibility_notifier_set_aabb,
+      _RenderingServer._bindings.method_visibility_notifier_set_aabb,
       this._owner,
       _notifier, _aabb
     );
@@ -8057,7 +8057,7 @@ class _MethodBindings {
   visibility_notifier_set_callbacks(_notifier, _enter_callable, _exit_callable) {
     RenderingServer.init_method_visibility_notifier_set_callbacks();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_visibility_notifier_set_callbacks,
+      _RenderingServer._bindings.method_visibility_notifier_set_callbacks,
       this._owner,
       _notifier, _enter_callable, _exit_callable
     );
@@ -8066,7 +8066,7 @@ class _MethodBindings {
   occluder_create() {
     RenderingServer.init_method_occluder_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_occluder_create,
+      _RenderingServer._bindings.method_occluder_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -8077,7 +8077,7 @@ class _MethodBindings {
   occluder_set_mesh(_occluder, _vertices, _indices) {
     RenderingServer.init_method_occluder_set_mesh();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_occluder_set_mesh,
+      _RenderingServer._bindings.method_occluder_set_mesh,
       this._owner,
       _occluder, _vertices, _indices
     );
@@ -8086,7 +8086,7 @@ class _MethodBindings {
   camera_create() {
     RenderingServer.init_method_camera_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_camera_create,
+      _RenderingServer._bindings.method_camera_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -8097,7 +8097,7 @@ class _MethodBindings {
   camera_set_perspective(_camera, _fovy_degrees, _z_near, _z_far) {
     RenderingServer.init_method_camera_set_perspective();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_camera_set_perspective,
+      _RenderingServer._bindings.method_camera_set_perspective,
       this._owner,
       _camera, _fovy_degrees, _z_near, _z_far
     );
@@ -8106,7 +8106,7 @@ class _MethodBindings {
   camera_set_orthogonal(_camera, _size, _z_near, _z_far) {
     RenderingServer.init_method_camera_set_orthogonal();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_camera_set_orthogonal,
+      _RenderingServer._bindings.method_camera_set_orthogonal,
       this._owner,
       _camera, _size, _z_near, _z_far
     );
@@ -8115,7 +8115,7 @@ class _MethodBindings {
   camera_set_frustum(_camera, _size, _offset, _z_near, _z_far) {
     RenderingServer.init_method_camera_set_frustum();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_camera_set_frustum,
+      _RenderingServer._bindings.method_camera_set_frustum,
       this._owner,
       _camera, _size, _offset, _z_near, _z_far
     );
@@ -8124,7 +8124,7 @@ class _MethodBindings {
   camera_set_transform(_camera, _transform) {
     RenderingServer.init_method_camera_set_transform();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_camera_set_transform,
+      _RenderingServer._bindings.method_camera_set_transform,
       this._owner,
       _camera, _transform
     );
@@ -8133,7 +8133,7 @@ class _MethodBindings {
   camera_set_cull_mask(_camera, _layers) {
     RenderingServer.init_method_camera_set_cull_mask();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_camera_set_cull_mask,
+      _RenderingServer._bindings.method_camera_set_cull_mask,
       this._owner,
       _camera, _layers
     );
@@ -8142,7 +8142,7 @@ class _MethodBindings {
   camera_set_environment(_camera, _env) {
     RenderingServer.init_method_camera_set_environment();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_camera_set_environment,
+      _RenderingServer._bindings.method_camera_set_environment,
       this._owner,
       _camera, _env
     );
@@ -8151,7 +8151,7 @@ class _MethodBindings {
   camera_set_camera_attributes(_camera, _effects) {
     RenderingServer.init_method_camera_set_camera_attributes();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_camera_set_camera_attributes,
+      _RenderingServer._bindings.method_camera_set_camera_attributes,
       this._owner,
       _camera, _effects
     );
@@ -8160,7 +8160,7 @@ class _MethodBindings {
   camera_set_compositor(_camera, _compositor) {
     RenderingServer.init_method_camera_set_compositor();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_camera_set_compositor,
+      _RenderingServer._bindings.method_camera_set_compositor,
       this._owner,
       _camera, _compositor
     );
@@ -8169,7 +8169,7 @@ class _MethodBindings {
   camera_set_use_vertical_aspect(_camera, _enable) {
     RenderingServer.init_method_camera_set_use_vertical_aspect();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_camera_set_use_vertical_aspect,
+      _RenderingServer._bindings.method_camera_set_use_vertical_aspect,
       this._owner,
       _camera, _enable
     );
@@ -8178,7 +8178,7 @@ class _MethodBindings {
   viewport_create() {
     RenderingServer.init_method_viewport_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_viewport_create,
+      _RenderingServer._bindings.method_viewport_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -8189,7 +8189,7 @@ class _MethodBindings {
   viewport_set_use_xr(_viewport, _use_xr) {
     RenderingServer.init_method_viewport_set_use_xr();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_use_xr,
+      _RenderingServer._bindings.method_viewport_set_use_xr,
       this._owner,
       _viewport, _use_xr
     );
@@ -8198,7 +8198,7 @@ class _MethodBindings {
   viewport_set_size(_viewport, _width, _height) {
     RenderingServer.init_method_viewport_set_size();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_size,
+      _RenderingServer._bindings.method_viewport_set_size,
       this._owner,
       _viewport, _width, _height
     );
@@ -8207,7 +8207,7 @@ class _MethodBindings {
   viewport_set_active(_viewport, _active) {
     RenderingServer.init_method_viewport_set_active();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_active,
+      _RenderingServer._bindings.method_viewport_set_active,
       this._owner,
       _viewport, _active
     );
@@ -8216,7 +8216,7 @@ class _MethodBindings {
   viewport_set_parent_viewport(_viewport, _parent_viewport) {
     RenderingServer.init_method_viewport_set_parent_viewport();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_parent_viewport,
+      _RenderingServer._bindings.method_viewport_set_parent_viewport,
       this._owner,
       _viewport, _parent_viewport
     );
@@ -8225,7 +8225,7 @@ class _MethodBindings {
   viewport_attach_to_screen(_viewport, _rect, _screen) {
     RenderingServer.init_method_viewport_attach_to_screen();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_attach_to_screen,
+      _RenderingServer._bindings.method_viewport_attach_to_screen,
       this._owner,
       _viewport, _rect, _screen
     );
@@ -8234,7 +8234,7 @@ class _MethodBindings {
   viewport_set_render_direct_to_screen(_viewport, _enabled) {
     RenderingServer.init_method_viewport_set_render_direct_to_screen();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_render_direct_to_screen,
+      _RenderingServer._bindings.method_viewport_set_render_direct_to_screen,
       this._owner,
       _viewport, _enabled
     );
@@ -8243,7 +8243,7 @@ class _MethodBindings {
   viewport_set_canvas_cull_mask(_viewport, _canvas_cull_mask) {
     RenderingServer.init_method_viewport_set_canvas_cull_mask();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_canvas_cull_mask,
+      _RenderingServer._bindings.method_viewport_set_canvas_cull_mask,
       this._owner,
       _viewport, _canvas_cull_mask
     );
@@ -8252,7 +8252,7 @@ class _MethodBindings {
   viewport_set_scaling_3d_mode(_viewport, _scaling_3d_mode) {
     RenderingServer.init_method_viewport_set_scaling_3d_mode();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_scaling_3d_mode,
+      _RenderingServer._bindings.method_viewport_set_scaling_3d_mode,
       this._owner,
       _viewport, _scaling_3d_mode
     );
@@ -8261,7 +8261,7 @@ class _MethodBindings {
   viewport_set_scaling_3d_scale(_viewport, _scale) {
     RenderingServer.init_method_viewport_set_scaling_3d_scale();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_scaling_3d_scale,
+      _RenderingServer._bindings.method_viewport_set_scaling_3d_scale,
       this._owner,
       _viewport, _scale
     );
@@ -8270,7 +8270,7 @@ class _MethodBindings {
   viewport_set_fsr_sharpness(_viewport, _sharpness) {
     RenderingServer.init_method_viewport_set_fsr_sharpness();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_fsr_sharpness,
+      _RenderingServer._bindings.method_viewport_set_fsr_sharpness,
       this._owner,
       _viewport, _sharpness
     );
@@ -8279,7 +8279,7 @@ class _MethodBindings {
   viewport_set_texture_mipmap_bias(_viewport, _mipmap_bias) {
     RenderingServer.init_method_viewport_set_texture_mipmap_bias();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_texture_mipmap_bias,
+      _RenderingServer._bindings.method_viewport_set_texture_mipmap_bias,
       this._owner,
       _viewport, _mipmap_bias
     );
@@ -8288,7 +8288,7 @@ class _MethodBindings {
   viewport_set_update_mode(_viewport, _update_mode) {
     RenderingServer.init_method_viewport_set_update_mode();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_update_mode,
+      _RenderingServer._bindings.method_viewport_set_update_mode,
       this._owner,
       _viewport, _update_mode
     );
@@ -8297,7 +8297,7 @@ class _MethodBindings {
   viewport_get_update_mode(_viewport) {
     RenderingServer.init_method_viewport_get_update_mode();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_viewport_get_update_mode,
+      _RenderingServer._bindings.method_viewport_get_update_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -8308,7 +8308,7 @@ class _MethodBindings {
   viewport_set_clear_mode(_viewport, _clear_mode) {
     RenderingServer.init_method_viewport_set_clear_mode();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_clear_mode,
+      _RenderingServer._bindings.method_viewport_set_clear_mode,
       this._owner,
       _viewport, _clear_mode
     );
@@ -8317,7 +8317,7 @@ class _MethodBindings {
   viewport_get_render_target(_viewport) {
     RenderingServer.init_method_viewport_get_render_target();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_viewport_get_render_target,
+      _RenderingServer._bindings.method_viewport_get_render_target,
       this._owner,
 			Variant.Type.RID,
     
@@ -8328,7 +8328,7 @@ class _MethodBindings {
   viewport_get_texture(_viewport) {
     RenderingServer.init_method_viewport_get_texture();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_viewport_get_texture,
+      _RenderingServer._bindings.method_viewport_get_texture,
       this._owner,
 			Variant.Type.RID,
     
@@ -8339,7 +8339,7 @@ class _MethodBindings {
   viewport_set_disable_3d(_viewport, _disable) {
     RenderingServer.init_method_viewport_set_disable_3d();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_disable_3d,
+      _RenderingServer._bindings.method_viewport_set_disable_3d,
       this._owner,
       _viewport, _disable
     );
@@ -8348,7 +8348,7 @@ class _MethodBindings {
   viewport_set_disable_2d(_viewport, _disable) {
     RenderingServer.init_method_viewport_set_disable_2d();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_disable_2d,
+      _RenderingServer._bindings.method_viewport_set_disable_2d,
       this._owner,
       _viewport, _disable
     );
@@ -8357,7 +8357,7 @@ class _MethodBindings {
   viewport_set_environment_mode(_viewport, _mode) {
     RenderingServer.init_method_viewport_set_environment_mode();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_environment_mode,
+      _RenderingServer._bindings.method_viewport_set_environment_mode,
       this._owner,
       _viewport, _mode
     );
@@ -8366,7 +8366,7 @@ class _MethodBindings {
   viewport_attach_camera(_viewport, _camera) {
     RenderingServer.init_method_viewport_attach_camera();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_attach_camera,
+      _RenderingServer._bindings.method_viewport_attach_camera,
       this._owner,
       _viewport, _camera
     );
@@ -8375,7 +8375,7 @@ class _MethodBindings {
   viewport_set_scenario(_viewport, _scenario) {
     RenderingServer.init_method_viewport_set_scenario();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_scenario,
+      _RenderingServer._bindings.method_viewport_set_scenario,
       this._owner,
       _viewport, _scenario
     );
@@ -8384,7 +8384,7 @@ class _MethodBindings {
   viewport_attach_canvas(_viewport, _canvas) {
     RenderingServer.init_method_viewport_attach_canvas();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_attach_canvas,
+      _RenderingServer._bindings.method_viewport_attach_canvas,
       this._owner,
       _viewport, _canvas
     );
@@ -8393,7 +8393,7 @@ class _MethodBindings {
   viewport_remove_canvas(_viewport, _canvas) {
     RenderingServer.init_method_viewport_remove_canvas();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_remove_canvas,
+      _RenderingServer._bindings.method_viewport_remove_canvas,
       this._owner,
       _viewport, _canvas
     );
@@ -8402,7 +8402,7 @@ class _MethodBindings {
   viewport_set_snap_2d_transforms_to_pixel(_viewport, _enabled) {
     RenderingServer.init_method_viewport_set_snap_2d_transforms_to_pixel();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_snap_2d_transforms_to_pixel,
+      _RenderingServer._bindings.method_viewport_set_snap_2d_transforms_to_pixel,
       this._owner,
       _viewport, _enabled
     );
@@ -8411,7 +8411,7 @@ class _MethodBindings {
   viewport_set_snap_2d_vertices_to_pixel(_viewport, _enabled) {
     RenderingServer.init_method_viewport_set_snap_2d_vertices_to_pixel();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_snap_2d_vertices_to_pixel,
+      _RenderingServer._bindings.method_viewport_set_snap_2d_vertices_to_pixel,
       this._owner,
       _viewport, _enabled
     );
@@ -8420,7 +8420,7 @@ class _MethodBindings {
   viewport_set_default_canvas_item_texture_filter(_viewport, _filter) {
     RenderingServer.init_method_viewport_set_default_canvas_item_texture_filter();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_default_canvas_item_texture_filter,
+      _RenderingServer._bindings.method_viewport_set_default_canvas_item_texture_filter,
       this._owner,
       _viewport, _filter
     );
@@ -8429,7 +8429,7 @@ class _MethodBindings {
   viewport_set_default_canvas_item_texture_repeat(_viewport, _repeat) {
     RenderingServer.init_method_viewport_set_default_canvas_item_texture_repeat();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_default_canvas_item_texture_repeat,
+      _RenderingServer._bindings.method_viewport_set_default_canvas_item_texture_repeat,
       this._owner,
       _viewport, _repeat
     );
@@ -8438,7 +8438,7 @@ class _MethodBindings {
   viewport_set_canvas_transform(_viewport, _canvas, _offset) {
     RenderingServer.init_method_viewport_set_canvas_transform();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_canvas_transform,
+      _RenderingServer._bindings.method_viewport_set_canvas_transform,
       this._owner,
       _viewport, _canvas, _offset
     );
@@ -8447,7 +8447,7 @@ class _MethodBindings {
   viewport_set_canvas_stacking(_viewport, _canvas, _layer, _sublayer) {
     RenderingServer.init_method_viewport_set_canvas_stacking();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_canvas_stacking,
+      _RenderingServer._bindings.method_viewport_set_canvas_stacking,
       this._owner,
       _viewport, _canvas, _layer, _sublayer
     );
@@ -8456,7 +8456,7 @@ class _MethodBindings {
   viewport_set_transparent_background(_viewport, _enabled) {
     RenderingServer.init_method_viewport_set_transparent_background();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_transparent_background,
+      _RenderingServer._bindings.method_viewport_set_transparent_background,
       this._owner,
       _viewport, _enabled
     );
@@ -8465,7 +8465,7 @@ class _MethodBindings {
   viewport_set_global_canvas_transform(_viewport, _transform) {
     RenderingServer.init_method_viewport_set_global_canvas_transform();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_global_canvas_transform,
+      _RenderingServer._bindings.method_viewport_set_global_canvas_transform,
       this._owner,
       _viewport, _transform
     );
@@ -8474,7 +8474,7 @@ class _MethodBindings {
   viewport_set_sdf_oversize_and_scale(_viewport, _oversize, _scale) {
     RenderingServer.init_method_viewport_set_sdf_oversize_and_scale();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_sdf_oversize_and_scale,
+      _RenderingServer._bindings.method_viewport_set_sdf_oversize_and_scale,
       this._owner,
       _viewport, _oversize, _scale
     );
@@ -8483,7 +8483,7 @@ class _MethodBindings {
   viewport_set_positional_shadow_atlas_size(_viewport, _size, _use_16_bits) {
     RenderingServer.init_method_viewport_set_positional_shadow_atlas_size();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_positional_shadow_atlas_size,
+      _RenderingServer._bindings.method_viewport_set_positional_shadow_atlas_size,
       this._owner,
       _viewport, _size, _use_16_bits
     );
@@ -8492,7 +8492,7 @@ class _MethodBindings {
   viewport_set_positional_shadow_atlas_quadrant_subdivision(_viewport, _quadrant, _subdivision) {
     RenderingServer.init_method_viewport_set_positional_shadow_atlas_quadrant_subdivision();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_positional_shadow_atlas_quadrant_subdivision,
+      _RenderingServer._bindings.method_viewport_set_positional_shadow_atlas_quadrant_subdivision,
       this._owner,
       _viewport, _quadrant, _subdivision
     );
@@ -8501,7 +8501,7 @@ class _MethodBindings {
   viewport_set_msaa_3d(_viewport, _msaa) {
     RenderingServer.init_method_viewport_set_msaa_3d();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_msaa_3d,
+      _RenderingServer._bindings.method_viewport_set_msaa_3d,
       this._owner,
       _viewport, _msaa
     );
@@ -8510,7 +8510,7 @@ class _MethodBindings {
   viewport_set_msaa_2d(_viewport, _msaa) {
     RenderingServer.init_method_viewport_set_msaa_2d();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_msaa_2d,
+      _RenderingServer._bindings.method_viewport_set_msaa_2d,
       this._owner,
       _viewport, _msaa
     );
@@ -8519,7 +8519,7 @@ class _MethodBindings {
   viewport_set_use_hdr_2d(_viewport, _enabled) {
     RenderingServer.init_method_viewport_set_use_hdr_2d();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_use_hdr_2d,
+      _RenderingServer._bindings.method_viewport_set_use_hdr_2d,
       this._owner,
       _viewport, _enabled
     );
@@ -8528,7 +8528,7 @@ class _MethodBindings {
   viewport_set_screen_space_aa(_viewport, _mode) {
     RenderingServer.init_method_viewport_set_screen_space_aa();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_screen_space_aa,
+      _RenderingServer._bindings.method_viewport_set_screen_space_aa,
       this._owner,
       _viewport, _mode
     );
@@ -8537,7 +8537,7 @@ class _MethodBindings {
   viewport_set_use_taa(_viewport, _enable) {
     RenderingServer.init_method_viewport_set_use_taa();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_use_taa,
+      _RenderingServer._bindings.method_viewport_set_use_taa,
       this._owner,
       _viewport, _enable
     );
@@ -8546,7 +8546,7 @@ class _MethodBindings {
   viewport_set_use_debanding(_viewport, _enable) {
     RenderingServer.init_method_viewport_set_use_debanding();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_use_debanding,
+      _RenderingServer._bindings.method_viewport_set_use_debanding,
       this._owner,
       _viewport, _enable
     );
@@ -8555,7 +8555,7 @@ class _MethodBindings {
   viewport_set_use_occlusion_culling(_viewport, _enable) {
     RenderingServer.init_method_viewport_set_use_occlusion_culling();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_use_occlusion_culling,
+      _RenderingServer._bindings.method_viewport_set_use_occlusion_culling,
       this._owner,
       _viewport, _enable
     );
@@ -8564,7 +8564,7 @@ class _MethodBindings {
   viewport_set_occlusion_rays_per_thread(_rays_per_thread) {
     RenderingServer.init_method_viewport_set_occlusion_rays_per_thread();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_occlusion_rays_per_thread,
+      _RenderingServer._bindings.method_viewport_set_occlusion_rays_per_thread,
       this._owner,
       _rays_per_thread
     );
@@ -8573,7 +8573,7 @@ class _MethodBindings {
   viewport_set_occlusion_culling_build_quality(_quality) {
     RenderingServer.init_method_viewport_set_occlusion_culling_build_quality();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_occlusion_culling_build_quality,
+      _RenderingServer._bindings.method_viewport_set_occlusion_culling_build_quality,
       this._owner,
       _quality
     );
@@ -8582,7 +8582,7 @@ class _MethodBindings {
   viewport_get_render_info(_viewport, _type, _info) {
     RenderingServer.init_method_viewport_get_render_info();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_viewport_get_render_info,
+      _RenderingServer._bindings.method_viewport_get_render_info,
       this._owner,
 			Variant.Type.INT,
     
@@ -8593,7 +8593,7 @@ class _MethodBindings {
   viewport_set_debug_draw(_viewport, _draw) {
     RenderingServer.init_method_viewport_set_debug_draw();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_debug_draw,
+      _RenderingServer._bindings.method_viewport_set_debug_draw,
       this._owner,
       _viewport, _draw
     );
@@ -8602,7 +8602,7 @@ class _MethodBindings {
   viewport_set_measure_render_time(_viewport, _enable) {
     RenderingServer.init_method_viewport_set_measure_render_time();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_measure_render_time,
+      _RenderingServer._bindings.method_viewport_set_measure_render_time,
       this._owner,
       _viewport, _enable
     );
@@ -8611,7 +8611,7 @@ class _MethodBindings {
   viewport_get_measured_render_time_cpu(_viewport) {
     RenderingServer.init_method_viewport_get_measured_render_time_cpu();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_viewport_get_measured_render_time_cpu,
+      _RenderingServer._bindings.method_viewport_get_measured_render_time_cpu,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -8622,7 +8622,7 @@ class _MethodBindings {
   viewport_get_measured_render_time_gpu(_viewport) {
     RenderingServer.init_method_viewport_get_measured_render_time_gpu();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_viewport_get_measured_render_time_gpu,
+      _RenderingServer._bindings.method_viewport_get_measured_render_time_gpu,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -8633,7 +8633,7 @@ class _MethodBindings {
   viewport_set_vrs_mode(_viewport, _mode) {
     RenderingServer.init_method_viewport_set_vrs_mode();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_vrs_mode,
+      _RenderingServer._bindings.method_viewport_set_vrs_mode,
       this._owner,
       _viewport, _mode
     );
@@ -8642,7 +8642,7 @@ class _MethodBindings {
   viewport_set_vrs_update_mode(_viewport, _mode) {
     RenderingServer.init_method_viewport_set_vrs_update_mode();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_vrs_update_mode,
+      _RenderingServer._bindings.method_viewport_set_vrs_update_mode,
       this._owner,
       _viewport, _mode
     );
@@ -8651,7 +8651,7 @@ class _MethodBindings {
   viewport_set_vrs_texture(_viewport, _texture) {
     RenderingServer.init_method_viewport_set_vrs_texture();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_viewport_set_vrs_texture,
+      _RenderingServer._bindings.method_viewport_set_vrs_texture,
       this._owner,
       _viewport, _texture
     );
@@ -8660,7 +8660,7 @@ class _MethodBindings {
   sky_create() {
     RenderingServer.init_method_sky_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_sky_create,
+      _RenderingServer._bindings.method_sky_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -8671,7 +8671,7 @@ class _MethodBindings {
   sky_set_radiance_size(_sky, _radiance_size) {
     RenderingServer.init_method_sky_set_radiance_size();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_sky_set_radiance_size,
+      _RenderingServer._bindings.method_sky_set_radiance_size,
       this._owner,
       _sky, _radiance_size
     );
@@ -8680,7 +8680,7 @@ class _MethodBindings {
   sky_set_mode(_sky, _mode) {
     RenderingServer.init_method_sky_set_mode();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_sky_set_mode,
+      _RenderingServer._bindings.method_sky_set_mode,
       this._owner,
       _sky, _mode
     );
@@ -8689,7 +8689,7 @@ class _MethodBindings {
   sky_set_material(_sky, _material) {
     RenderingServer.init_method_sky_set_material();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_sky_set_material,
+      _RenderingServer._bindings.method_sky_set_material,
       this._owner,
       _sky, _material
     );
@@ -8698,7 +8698,7 @@ class _MethodBindings {
   sky_bake_panorama(_sky, _energy, _bake_irradiance, _size) {
     RenderingServer.init_method_sky_bake_panorama();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_sky_bake_panorama,
+      _RenderingServer._bindings.method_sky_bake_panorama,
       this._owner,
 			Variant.Type.OBJECT,
       _sky, _energy, _bake_irradiance, _size
@@ -8708,7 +8708,7 @@ class _MethodBindings {
   compositor_effect_create() {
     RenderingServer.init_method_compositor_effect_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_compositor_effect_create,
+      _RenderingServer._bindings.method_compositor_effect_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -8719,7 +8719,7 @@ class _MethodBindings {
   compositor_effect_set_enabled(_effect, _enabled) {
     RenderingServer.init_method_compositor_effect_set_enabled();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_compositor_effect_set_enabled,
+      _RenderingServer._bindings.method_compositor_effect_set_enabled,
       this._owner,
       _effect, _enabled
     );
@@ -8728,7 +8728,7 @@ class _MethodBindings {
   compositor_effect_set_callback(_effect, _callback_type, _callback) {
     RenderingServer.init_method_compositor_effect_set_callback();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_compositor_effect_set_callback,
+      _RenderingServer._bindings.method_compositor_effect_set_callback,
       this._owner,
       _effect, _callback_type, _callback
     );
@@ -8737,7 +8737,7 @@ class _MethodBindings {
   compositor_effect_set_flag(_effect, _flag, _set) {
     RenderingServer.init_method_compositor_effect_set_flag();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_compositor_effect_set_flag,
+      _RenderingServer._bindings.method_compositor_effect_set_flag,
       this._owner,
       _effect, _flag, _set
     );
@@ -8746,7 +8746,7 @@ class _MethodBindings {
   compositor_create() {
     RenderingServer.init_method_compositor_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_compositor_create,
+      _RenderingServer._bindings.method_compositor_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -8757,7 +8757,7 @@ class _MethodBindings {
   compositor_set_compositor_effects(_compositor, _effects) {
     RenderingServer.init_method_compositor_set_compositor_effects();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_compositor_set_compositor_effects,
+      _RenderingServer._bindings.method_compositor_set_compositor_effects,
       this._owner,
       _compositor, _effects
     );
@@ -8766,7 +8766,7 @@ class _MethodBindings {
   environment_create() {
     RenderingServer.init_method_environment_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_environment_create,
+      _RenderingServer._bindings.method_environment_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -8777,7 +8777,7 @@ class _MethodBindings {
   environment_set_background(_env, _bg) {
     RenderingServer.init_method_environment_set_background();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_set_background,
+      _RenderingServer._bindings.method_environment_set_background,
       this._owner,
       _env, _bg
     );
@@ -8786,7 +8786,7 @@ class _MethodBindings {
   environment_set_sky(_env, _sky) {
     RenderingServer.init_method_environment_set_sky();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_set_sky,
+      _RenderingServer._bindings.method_environment_set_sky,
       this._owner,
       _env, _sky
     );
@@ -8795,7 +8795,7 @@ class _MethodBindings {
   environment_set_sky_custom_fov(_env, _scale) {
     RenderingServer.init_method_environment_set_sky_custom_fov();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_set_sky_custom_fov,
+      _RenderingServer._bindings.method_environment_set_sky_custom_fov,
       this._owner,
       _env, _scale
     );
@@ -8804,7 +8804,7 @@ class _MethodBindings {
   environment_set_sky_orientation(_env, _orientation) {
     RenderingServer.init_method_environment_set_sky_orientation();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_set_sky_orientation,
+      _RenderingServer._bindings.method_environment_set_sky_orientation,
       this._owner,
       _env, _orientation
     );
@@ -8813,7 +8813,7 @@ class _MethodBindings {
   environment_set_bg_color(_env, _color) {
     RenderingServer.init_method_environment_set_bg_color();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_set_bg_color,
+      _RenderingServer._bindings.method_environment_set_bg_color,
       this._owner,
       _env, _color
     );
@@ -8822,7 +8822,7 @@ class _MethodBindings {
   environment_set_bg_energy(_env, _multiplier, _exposure_value) {
     RenderingServer.init_method_environment_set_bg_energy();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_set_bg_energy,
+      _RenderingServer._bindings.method_environment_set_bg_energy,
       this._owner,
       _env, _multiplier, _exposure_value
     );
@@ -8831,7 +8831,7 @@ class _MethodBindings {
   environment_set_canvas_max_layer(_env, _max_layer) {
     RenderingServer.init_method_environment_set_canvas_max_layer();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_set_canvas_max_layer,
+      _RenderingServer._bindings.method_environment_set_canvas_max_layer,
       this._owner,
       _env, _max_layer
     );
@@ -8840,7 +8840,7 @@ class _MethodBindings {
   environment_set_ambient_light(_env, _color, _ambient, _energy, _sky_contibution, _reflection_source) {
     RenderingServer.init_method_environment_set_ambient_light();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_set_ambient_light,
+      _RenderingServer._bindings.method_environment_set_ambient_light,
       this._owner,
       _env, _color, _ambient, _energy, _sky_contibution, _reflection_source
     );
@@ -8849,7 +8849,7 @@ class _MethodBindings {
   environment_set_glow(_env, _enable, _levels, _intensity, _strength, _mix, _bloom_threshold, _blend_mode, _hdr_bleed_threshold, _hdr_bleed_scale, _hdr_luminance_cap, _glow_map_strength, _glow_map) {
     RenderingServer.init_method_environment_set_glow();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_set_glow,
+      _RenderingServer._bindings.method_environment_set_glow,
       this._owner,
       _env, _enable, _levels, _intensity, _strength, _mix, _bloom_threshold, _blend_mode, _hdr_bleed_threshold, _hdr_bleed_scale, _hdr_luminance_cap, _glow_map_strength, _glow_map
     );
@@ -8858,7 +8858,7 @@ class _MethodBindings {
   environment_set_tonemap(_env, _tone_mapper, _exposure, _white) {
     RenderingServer.init_method_environment_set_tonemap();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_set_tonemap,
+      _RenderingServer._bindings.method_environment_set_tonemap,
       this._owner,
       _env, _tone_mapper, _exposure, _white
     );
@@ -8867,7 +8867,7 @@ class _MethodBindings {
   environment_set_adjustment(_env, _enable, _brightness, _contrast, _saturation, _use_1d_color_correction, _color_correction) {
     RenderingServer.init_method_environment_set_adjustment();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_set_adjustment,
+      _RenderingServer._bindings.method_environment_set_adjustment,
       this._owner,
       _env, _enable, _brightness, _contrast, _saturation, _use_1d_color_correction, _color_correction
     );
@@ -8876,7 +8876,7 @@ class _MethodBindings {
   environment_set_ssr(_env, _enable, _max_steps, _fade_in, _fade_out, _depth_tolerance) {
     RenderingServer.init_method_environment_set_ssr();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_set_ssr,
+      _RenderingServer._bindings.method_environment_set_ssr,
       this._owner,
       _env, _enable, _max_steps, _fade_in, _fade_out, _depth_tolerance
     );
@@ -8885,7 +8885,7 @@ class _MethodBindings {
   environment_set_ssao(_env, _enable, _radius, _intensity, _power, _detail, _horizon, _sharpness, _light_affect, _ao_channel_affect) {
     RenderingServer.init_method_environment_set_ssao();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_set_ssao,
+      _RenderingServer._bindings.method_environment_set_ssao,
       this._owner,
       _env, _enable, _radius, _intensity, _power, _detail, _horizon, _sharpness, _light_affect, _ao_channel_affect
     );
@@ -8894,7 +8894,7 @@ class _MethodBindings {
   environment_set_fog(_env, _enable, _light_color, _light_energy, _sun_scatter, _density, _height, _height_density, _aerial_perspective, _sky_affect, _fog_mode) {
     RenderingServer.init_method_environment_set_fog();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_set_fog,
+      _RenderingServer._bindings.method_environment_set_fog,
       this._owner,
       _env, _enable, _light_color, _light_energy, _sun_scatter, _density, _height, _height_density, _aerial_perspective, _sky_affect, _fog_mode
     );
@@ -8903,7 +8903,7 @@ class _MethodBindings {
   environment_set_sdfgi(_env, _enable, _cascades, _min_cell_size, _y_scale, _use_occlusion, _bounce_feedback, _read_sky, _energy, _normal_bias, _probe_bias) {
     RenderingServer.init_method_environment_set_sdfgi();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_set_sdfgi,
+      _RenderingServer._bindings.method_environment_set_sdfgi,
       this._owner,
       _env, _enable, _cascades, _min_cell_size, _y_scale, _use_occlusion, _bounce_feedback, _read_sky, _energy, _normal_bias, _probe_bias
     );
@@ -8912,7 +8912,7 @@ class _MethodBindings {
   environment_set_volumetric_fog(_env, _enable, _density, _albedo, _emission, _emission_energy, _anisotropy, _length, _p_detail_spread, _gi_inject, _temporal_reprojection, _temporal_reprojection_amount, _ambient_inject, _sky_affect) {
     RenderingServer.init_method_environment_set_volumetric_fog();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_set_volumetric_fog,
+      _RenderingServer._bindings.method_environment_set_volumetric_fog,
       this._owner,
       _env, _enable, _density, _albedo, _emission, _emission_energy, _anisotropy, _length, _p_detail_spread, _gi_inject, _temporal_reprojection, _temporal_reprojection_amount, _ambient_inject, _sky_affect
     );
@@ -8921,7 +8921,7 @@ class _MethodBindings {
   environment_glow_set_use_bicubic_upscale(_enable) {
     RenderingServer.init_method_environment_glow_set_use_bicubic_upscale();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_glow_set_use_bicubic_upscale,
+      _RenderingServer._bindings.method_environment_glow_set_use_bicubic_upscale,
       this._owner,
       _enable
     );
@@ -8930,7 +8930,7 @@ class _MethodBindings {
   environment_set_ssr_roughness_quality(_quality) {
     RenderingServer.init_method_environment_set_ssr_roughness_quality();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_set_ssr_roughness_quality,
+      _RenderingServer._bindings.method_environment_set_ssr_roughness_quality,
       this._owner,
       _quality
     );
@@ -8939,7 +8939,7 @@ class _MethodBindings {
   environment_set_ssao_quality(_quality, _half_size, _adaptive_target, _blur_passes, _fadeout_from, _fadeout_to) {
     RenderingServer.init_method_environment_set_ssao_quality();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_set_ssao_quality,
+      _RenderingServer._bindings.method_environment_set_ssao_quality,
       this._owner,
       _quality, _half_size, _adaptive_target, _blur_passes, _fadeout_from, _fadeout_to
     );
@@ -8948,7 +8948,7 @@ class _MethodBindings {
   environment_set_ssil_quality(_quality, _half_size, _adaptive_target, _blur_passes, _fadeout_from, _fadeout_to) {
     RenderingServer.init_method_environment_set_ssil_quality();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_set_ssil_quality,
+      _RenderingServer._bindings.method_environment_set_ssil_quality,
       this._owner,
       _quality, _half_size, _adaptive_target, _blur_passes, _fadeout_from, _fadeout_to
     );
@@ -8957,7 +8957,7 @@ class _MethodBindings {
   environment_set_sdfgi_ray_count(_ray_count) {
     RenderingServer.init_method_environment_set_sdfgi_ray_count();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_set_sdfgi_ray_count,
+      _RenderingServer._bindings.method_environment_set_sdfgi_ray_count,
       this._owner,
       _ray_count
     );
@@ -8966,7 +8966,7 @@ class _MethodBindings {
   environment_set_sdfgi_frames_to_converge(_frames) {
     RenderingServer.init_method_environment_set_sdfgi_frames_to_converge();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_set_sdfgi_frames_to_converge,
+      _RenderingServer._bindings.method_environment_set_sdfgi_frames_to_converge,
       this._owner,
       _frames
     );
@@ -8975,7 +8975,7 @@ class _MethodBindings {
   environment_set_sdfgi_frames_to_update_light(_frames) {
     RenderingServer.init_method_environment_set_sdfgi_frames_to_update_light();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_set_sdfgi_frames_to_update_light,
+      _RenderingServer._bindings.method_environment_set_sdfgi_frames_to_update_light,
       this._owner,
       _frames
     );
@@ -8984,7 +8984,7 @@ class _MethodBindings {
   environment_set_volumetric_fog_volume_size(_size, _depth) {
     RenderingServer.init_method_environment_set_volumetric_fog_volume_size();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_set_volumetric_fog_volume_size,
+      _RenderingServer._bindings.method_environment_set_volumetric_fog_volume_size,
       this._owner,
       _size, _depth
     );
@@ -8993,7 +8993,7 @@ class _MethodBindings {
   environment_set_volumetric_fog_filter_active(_active) {
     RenderingServer.init_method_environment_set_volumetric_fog_filter_active();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_environment_set_volumetric_fog_filter_active,
+      _RenderingServer._bindings.method_environment_set_volumetric_fog_filter_active,
       this._owner,
       _active
     );
@@ -9002,7 +9002,7 @@ class _MethodBindings {
   environment_bake_panorama(_environment, _bake_irradiance, _size) {
     RenderingServer.init_method_environment_bake_panorama();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_environment_bake_panorama,
+      _RenderingServer._bindings.method_environment_bake_panorama,
       this._owner,
 			Variant.Type.OBJECT,
       _environment, _bake_irradiance, _size
@@ -9012,7 +9012,7 @@ class _MethodBindings {
   screen_space_roughness_limiter_set_active(_enable, _amount, _limit) {
     RenderingServer.init_method_screen_space_roughness_limiter_set_active();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_screen_space_roughness_limiter_set_active,
+      _RenderingServer._bindings.method_screen_space_roughness_limiter_set_active,
       this._owner,
       _enable, _amount, _limit
     );
@@ -9021,7 +9021,7 @@ class _MethodBindings {
   sub_surface_scattering_set_quality(_quality) {
     RenderingServer.init_method_sub_surface_scattering_set_quality();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_sub_surface_scattering_set_quality,
+      _RenderingServer._bindings.method_sub_surface_scattering_set_quality,
       this._owner,
       _quality
     );
@@ -9030,7 +9030,7 @@ class _MethodBindings {
   sub_surface_scattering_set_scale(_scale, _depth_scale) {
     RenderingServer.init_method_sub_surface_scattering_set_scale();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_sub_surface_scattering_set_scale,
+      _RenderingServer._bindings.method_sub_surface_scattering_set_scale,
       this._owner,
       _scale, _depth_scale
     );
@@ -9039,7 +9039,7 @@ class _MethodBindings {
   camera_attributes_create() {
     RenderingServer.init_method_camera_attributes_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_camera_attributes_create,
+      _RenderingServer._bindings.method_camera_attributes_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -9050,7 +9050,7 @@ class _MethodBindings {
   camera_attributes_set_dof_blur_quality(_quality, _use_jitter) {
     RenderingServer.init_method_camera_attributes_set_dof_blur_quality();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_camera_attributes_set_dof_blur_quality,
+      _RenderingServer._bindings.method_camera_attributes_set_dof_blur_quality,
       this._owner,
       _quality, _use_jitter
     );
@@ -9059,7 +9059,7 @@ class _MethodBindings {
   camera_attributes_set_dof_blur_bokeh_shape(_shape) {
     RenderingServer.init_method_camera_attributes_set_dof_blur_bokeh_shape();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_camera_attributes_set_dof_blur_bokeh_shape,
+      _RenderingServer._bindings.method_camera_attributes_set_dof_blur_bokeh_shape,
       this._owner,
       _shape
     );
@@ -9068,7 +9068,7 @@ class _MethodBindings {
   camera_attributes_set_dof_blur(_camera_attributes, _far_enable, _far_distance, _far_transition, _near_enable, _near_distance, _near_transition, _amount) {
     RenderingServer.init_method_camera_attributes_set_dof_blur();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_camera_attributes_set_dof_blur,
+      _RenderingServer._bindings.method_camera_attributes_set_dof_blur,
       this._owner,
       _camera_attributes, _far_enable, _far_distance, _far_transition, _near_enable, _near_distance, _near_transition, _amount
     );
@@ -9077,7 +9077,7 @@ class _MethodBindings {
   camera_attributes_set_exposure(_camera_attributes, _multiplier, _normalization) {
     RenderingServer.init_method_camera_attributes_set_exposure();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_camera_attributes_set_exposure,
+      _RenderingServer._bindings.method_camera_attributes_set_exposure,
       this._owner,
       _camera_attributes, _multiplier, _normalization
     );
@@ -9086,7 +9086,7 @@ class _MethodBindings {
   camera_attributes_set_auto_exposure(_camera_attributes, _enable, _min_sensitivity, _max_sensitivity, _speed, _scale) {
     RenderingServer.init_method_camera_attributes_set_auto_exposure();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_camera_attributes_set_auto_exposure,
+      _RenderingServer._bindings.method_camera_attributes_set_auto_exposure,
       this._owner,
       _camera_attributes, _enable, _min_sensitivity, _max_sensitivity, _speed, _scale
     );
@@ -9095,7 +9095,7 @@ class _MethodBindings {
   scenario_create() {
     RenderingServer.init_method_scenario_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_scenario_create,
+      _RenderingServer._bindings.method_scenario_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -9106,7 +9106,7 @@ class _MethodBindings {
   scenario_set_environment(_scenario, _environment) {
     RenderingServer.init_method_scenario_set_environment();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_scenario_set_environment,
+      _RenderingServer._bindings.method_scenario_set_environment,
       this._owner,
       _scenario, _environment
     );
@@ -9115,7 +9115,7 @@ class _MethodBindings {
   scenario_set_fallback_environment(_scenario, _environment) {
     RenderingServer.init_method_scenario_set_fallback_environment();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_scenario_set_fallback_environment,
+      _RenderingServer._bindings.method_scenario_set_fallback_environment,
       this._owner,
       _scenario, _environment
     );
@@ -9124,7 +9124,7 @@ class _MethodBindings {
   scenario_set_camera_attributes(_scenario, _effects) {
     RenderingServer.init_method_scenario_set_camera_attributes();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_scenario_set_camera_attributes,
+      _RenderingServer._bindings.method_scenario_set_camera_attributes,
       this._owner,
       _scenario, _effects
     );
@@ -9133,7 +9133,7 @@ class _MethodBindings {
   scenario_set_compositor(_scenario, _compositor) {
     RenderingServer.init_method_scenario_set_compositor();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_scenario_set_compositor,
+      _RenderingServer._bindings.method_scenario_set_compositor,
       this._owner,
       _scenario, _compositor
     );
@@ -9142,7 +9142,7 @@ class _MethodBindings {
   instance_create2(_base, _scenario) {
     RenderingServer.init_method_instance_create2();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_instance_create2,
+      _RenderingServer._bindings.method_instance_create2,
       this._owner,
 			Variant.Type.RID,
     
@@ -9153,7 +9153,7 @@ class _MethodBindings {
   instance_create() {
     RenderingServer.init_method_instance_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_instance_create,
+      _RenderingServer._bindings.method_instance_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -9164,7 +9164,7 @@ class _MethodBindings {
   instance_set_base(_instance, _base) {
     RenderingServer.init_method_instance_set_base();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_instance_set_base,
+      _RenderingServer._bindings.method_instance_set_base,
       this._owner,
       _instance, _base
     );
@@ -9173,7 +9173,7 @@ class _MethodBindings {
   instance_set_scenario(_instance, _scenario) {
     RenderingServer.init_method_instance_set_scenario();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_instance_set_scenario,
+      _RenderingServer._bindings.method_instance_set_scenario,
       this._owner,
       _instance, _scenario
     );
@@ -9182,7 +9182,7 @@ class _MethodBindings {
   instance_set_layer_mask(_instance, _mask) {
     RenderingServer.init_method_instance_set_layer_mask();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_instance_set_layer_mask,
+      _RenderingServer._bindings.method_instance_set_layer_mask,
       this._owner,
       _instance, _mask
     );
@@ -9191,7 +9191,7 @@ class _MethodBindings {
   instance_set_pivot_data(_instance, _sorting_offset, _use_aabb_center) {
     RenderingServer.init_method_instance_set_pivot_data();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_instance_set_pivot_data,
+      _RenderingServer._bindings.method_instance_set_pivot_data,
       this._owner,
       _instance, _sorting_offset, _use_aabb_center
     );
@@ -9200,7 +9200,7 @@ class _MethodBindings {
   instance_set_transform(_instance, _transform) {
     RenderingServer.init_method_instance_set_transform();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_instance_set_transform,
+      _RenderingServer._bindings.method_instance_set_transform,
       this._owner,
       _instance, _transform
     );
@@ -9209,7 +9209,7 @@ class _MethodBindings {
   instance_attach_object_instance_id(_instance, _id) {
     RenderingServer.init_method_instance_attach_object_instance_id();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_instance_attach_object_instance_id,
+      _RenderingServer._bindings.method_instance_attach_object_instance_id,
       this._owner,
       _instance, _id
     );
@@ -9218,7 +9218,7 @@ class _MethodBindings {
   instance_set_blend_shape_weight(_instance, _shape, _weight) {
     RenderingServer.init_method_instance_set_blend_shape_weight();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_instance_set_blend_shape_weight,
+      _RenderingServer._bindings.method_instance_set_blend_shape_weight,
       this._owner,
       _instance, _shape, _weight
     );
@@ -9227,7 +9227,7 @@ class _MethodBindings {
   instance_set_surface_override_material(_instance, _surface, _material) {
     RenderingServer.init_method_instance_set_surface_override_material();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_instance_set_surface_override_material,
+      _RenderingServer._bindings.method_instance_set_surface_override_material,
       this._owner,
       _instance, _surface, _material
     );
@@ -9236,7 +9236,7 @@ class _MethodBindings {
   instance_set_visible(_instance, _visible) {
     RenderingServer.init_method_instance_set_visible();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_instance_set_visible,
+      _RenderingServer._bindings.method_instance_set_visible,
       this._owner,
       _instance, _visible
     );
@@ -9245,7 +9245,7 @@ class _MethodBindings {
   instance_geometry_set_transparency(_instance, _transparency) {
     RenderingServer.init_method_instance_geometry_set_transparency();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_instance_geometry_set_transparency,
+      _RenderingServer._bindings.method_instance_geometry_set_transparency,
       this._owner,
       _instance, _transparency
     );
@@ -9254,7 +9254,7 @@ class _MethodBindings {
   instance_set_custom_aabb(_instance, _aabb) {
     RenderingServer.init_method_instance_set_custom_aabb();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_instance_set_custom_aabb,
+      _RenderingServer._bindings.method_instance_set_custom_aabb,
       this._owner,
       _instance, _aabb
     );
@@ -9263,7 +9263,7 @@ class _MethodBindings {
   instance_attach_skeleton(_instance, _skeleton) {
     RenderingServer.init_method_instance_attach_skeleton();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_instance_attach_skeleton,
+      _RenderingServer._bindings.method_instance_attach_skeleton,
       this._owner,
       _instance, _skeleton
     );
@@ -9272,7 +9272,7 @@ class _MethodBindings {
   instance_set_extra_visibility_margin(_instance, _margin) {
     RenderingServer.init_method_instance_set_extra_visibility_margin();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_instance_set_extra_visibility_margin,
+      _RenderingServer._bindings.method_instance_set_extra_visibility_margin,
       this._owner,
       _instance, _margin
     );
@@ -9281,7 +9281,7 @@ class _MethodBindings {
   instance_set_visibility_parent(_instance, _parent) {
     RenderingServer.init_method_instance_set_visibility_parent();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_instance_set_visibility_parent,
+      _RenderingServer._bindings.method_instance_set_visibility_parent,
       this._owner,
       _instance, _parent
     );
@@ -9290,7 +9290,7 @@ class _MethodBindings {
   instance_set_ignore_culling(_instance, _enabled) {
     RenderingServer.init_method_instance_set_ignore_culling();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_instance_set_ignore_culling,
+      _RenderingServer._bindings.method_instance_set_ignore_culling,
       this._owner,
       _instance, _enabled
     );
@@ -9299,7 +9299,7 @@ class _MethodBindings {
   instance_geometry_set_flag(_instance, _flag, _enabled) {
     RenderingServer.init_method_instance_geometry_set_flag();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_instance_geometry_set_flag,
+      _RenderingServer._bindings.method_instance_geometry_set_flag,
       this._owner,
       _instance, _flag, _enabled
     );
@@ -9308,7 +9308,7 @@ class _MethodBindings {
   instance_geometry_set_cast_shadows_setting(_instance, _shadow_casting_setting) {
     RenderingServer.init_method_instance_geometry_set_cast_shadows_setting();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_instance_geometry_set_cast_shadows_setting,
+      _RenderingServer._bindings.method_instance_geometry_set_cast_shadows_setting,
       this._owner,
       _instance, _shadow_casting_setting
     );
@@ -9317,7 +9317,7 @@ class _MethodBindings {
   instance_geometry_set_material_override(_instance, _material) {
     RenderingServer.init_method_instance_geometry_set_material_override();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_instance_geometry_set_material_override,
+      _RenderingServer._bindings.method_instance_geometry_set_material_override,
       this._owner,
       _instance, _material
     );
@@ -9326,7 +9326,7 @@ class _MethodBindings {
   instance_geometry_set_material_overlay(_instance, _material) {
     RenderingServer.init_method_instance_geometry_set_material_overlay();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_instance_geometry_set_material_overlay,
+      _RenderingServer._bindings.method_instance_geometry_set_material_overlay,
       this._owner,
       _instance, _material
     );
@@ -9335,7 +9335,7 @@ class _MethodBindings {
   instance_geometry_set_visibility_range(_instance, _min, _max, _min_margin, _max_margin, _fade_mode) {
     RenderingServer.init_method_instance_geometry_set_visibility_range();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_instance_geometry_set_visibility_range,
+      _RenderingServer._bindings.method_instance_geometry_set_visibility_range,
       this._owner,
       _instance, _min, _max, _min_margin, _max_margin, _fade_mode
     );
@@ -9344,7 +9344,7 @@ class _MethodBindings {
   instance_geometry_set_lightmap(_instance, _lightmap, _lightmap_uv_scale, _lightmap_slice) {
     RenderingServer.init_method_instance_geometry_set_lightmap();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_instance_geometry_set_lightmap,
+      _RenderingServer._bindings.method_instance_geometry_set_lightmap,
       this._owner,
       _instance, _lightmap, _lightmap_uv_scale, _lightmap_slice
     );
@@ -9353,7 +9353,7 @@ class _MethodBindings {
   instance_geometry_set_lod_bias(_instance, _lod_bias) {
     RenderingServer.init_method_instance_geometry_set_lod_bias();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_instance_geometry_set_lod_bias,
+      _RenderingServer._bindings.method_instance_geometry_set_lod_bias,
       this._owner,
       _instance, _lod_bias
     );
@@ -9362,7 +9362,7 @@ class _MethodBindings {
   instance_geometry_set_shader_parameter(_instance, _parameter, _value) {
     RenderingServer.init_method_instance_geometry_set_shader_parameter();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_instance_geometry_set_shader_parameter,
+      _RenderingServer._bindings.method_instance_geometry_set_shader_parameter,
       this._owner,
       _instance, _parameter, _value
     );
@@ -9371,7 +9371,7 @@ class _MethodBindings {
   instance_geometry_get_shader_parameter(_instance, _parameter) {
     RenderingServer.init_method_instance_geometry_get_shader_parameter();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_instance_geometry_get_shader_parameter,
+      _RenderingServer._bindings.method_instance_geometry_get_shader_parameter,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -9382,7 +9382,7 @@ class _MethodBindings {
   instance_geometry_get_shader_parameter_default_value(_instance, _parameter) {
     RenderingServer.init_method_instance_geometry_get_shader_parameter_default_value();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_instance_geometry_get_shader_parameter_default_value,
+      _RenderingServer._bindings.method_instance_geometry_get_shader_parameter_default_value,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -9393,7 +9393,7 @@ class _MethodBindings {
   instance_geometry_get_shader_parameter_list(_instance) {
     RenderingServer.init_method_instance_geometry_get_shader_parameter_list();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_instance_geometry_get_shader_parameter_list,
+      _RenderingServer._bindings.method_instance_geometry_get_shader_parameter_list,
       this._owner,
 			Variant.Type.ARRAY,
       _instance
@@ -9403,7 +9403,7 @@ class _MethodBindings {
   instances_cull_aabb(_aabb, _scenario) {
     RenderingServer.init_method_instances_cull_aabb();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_instances_cull_aabb,
+      _RenderingServer._bindings.method_instances_cull_aabb,
       this._owner,
 			Variant.Type.PACKED_INT64_ARRAY,
     
@@ -9414,7 +9414,7 @@ class _MethodBindings {
   instances_cull_ray(_from, _to, _scenario) {
     RenderingServer.init_method_instances_cull_ray();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_instances_cull_ray,
+      _RenderingServer._bindings.method_instances_cull_ray,
       this._owner,
 			Variant.Type.PACKED_INT64_ARRAY,
     
@@ -9425,7 +9425,7 @@ class _MethodBindings {
   instances_cull_convex(_convex, _scenario) {
     RenderingServer.init_method_instances_cull_convex();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_instances_cull_convex,
+      _RenderingServer._bindings.method_instances_cull_convex,
       this._owner,
 			Variant.Type.PACKED_INT64_ARRAY,
     
@@ -9436,7 +9436,7 @@ class _MethodBindings {
   bake_render_uv2(_base, _material_overrides, _image_size) {
     RenderingServer.init_method_bake_render_uv2();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_bake_render_uv2,
+      _RenderingServer._bindings.method_bake_render_uv2,
       this._owner,
 			Variant.Type.ARRAY,
       _base, _material_overrides, _image_size
@@ -9446,7 +9446,7 @@ class _MethodBindings {
   canvas_create() {
     RenderingServer.init_method_canvas_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_canvas_create,
+      _RenderingServer._bindings.method_canvas_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -9457,7 +9457,7 @@ class _MethodBindings {
   canvas_set_item_mirroring(_canvas, _item, _mirroring) {
     RenderingServer.init_method_canvas_set_item_mirroring();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_set_item_mirroring,
+      _RenderingServer._bindings.method_canvas_set_item_mirroring,
       this._owner,
       _canvas, _item, _mirroring
     );
@@ -9466,7 +9466,7 @@ class _MethodBindings {
   canvas_set_item_repeat(_item, _repeat_size, _repeat_times) {
     RenderingServer.init_method_canvas_set_item_repeat();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_set_item_repeat,
+      _RenderingServer._bindings.method_canvas_set_item_repeat,
       this._owner,
       _item, _repeat_size, _repeat_times
     );
@@ -9475,7 +9475,7 @@ class _MethodBindings {
   canvas_set_modulate(_canvas, _color) {
     RenderingServer.init_method_canvas_set_modulate();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_set_modulate,
+      _RenderingServer._bindings.method_canvas_set_modulate,
       this._owner,
       _canvas, _color
     );
@@ -9484,7 +9484,7 @@ class _MethodBindings {
   canvas_set_disable_scale(_disable) {
     RenderingServer.init_method_canvas_set_disable_scale();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_set_disable_scale,
+      _RenderingServer._bindings.method_canvas_set_disable_scale,
       this._owner,
       _disable
     );
@@ -9493,7 +9493,7 @@ class _MethodBindings {
   canvas_texture_create() {
     RenderingServer.init_method_canvas_texture_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_canvas_texture_create,
+      _RenderingServer._bindings.method_canvas_texture_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -9504,7 +9504,7 @@ class _MethodBindings {
   canvas_texture_set_channel(_canvas_texture, _channel, _texture) {
     RenderingServer.init_method_canvas_texture_set_channel();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_texture_set_channel,
+      _RenderingServer._bindings.method_canvas_texture_set_channel,
       this._owner,
       _canvas_texture, _channel, _texture
     );
@@ -9513,7 +9513,7 @@ class _MethodBindings {
   canvas_texture_set_shading_parameters(_canvas_texture, _base_color, _shininess) {
     RenderingServer.init_method_canvas_texture_set_shading_parameters();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_texture_set_shading_parameters,
+      _RenderingServer._bindings.method_canvas_texture_set_shading_parameters,
       this._owner,
       _canvas_texture, _base_color, _shininess
     );
@@ -9522,7 +9522,7 @@ class _MethodBindings {
   canvas_texture_set_texture_filter(_canvas_texture, _filter) {
     RenderingServer.init_method_canvas_texture_set_texture_filter();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_texture_set_texture_filter,
+      _RenderingServer._bindings.method_canvas_texture_set_texture_filter,
       this._owner,
       _canvas_texture, _filter
     );
@@ -9531,7 +9531,7 @@ class _MethodBindings {
   canvas_texture_set_texture_repeat(_canvas_texture, _repeat) {
     RenderingServer.init_method_canvas_texture_set_texture_repeat();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_texture_set_texture_repeat,
+      _RenderingServer._bindings.method_canvas_texture_set_texture_repeat,
       this._owner,
       _canvas_texture, _repeat
     );
@@ -9540,7 +9540,7 @@ class _MethodBindings {
   canvas_item_create() {
     RenderingServer.init_method_canvas_item_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_canvas_item_create,
+      _RenderingServer._bindings.method_canvas_item_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -9551,7 +9551,7 @@ class _MethodBindings {
   canvas_item_set_parent(_item, _parent) {
     RenderingServer.init_method_canvas_item_set_parent();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_set_parent,
+      _RenderingServer._bindings.method_canvas_item_set_parent,
       this._owner,
       _item, _parent
     );
@@ -9560,7 +9560,7 @@ class _MethodBindings {
   canvas_item_set_default_texture_filter(_item, _filter) {
     RenderingServer.init_method_canvas_item_set_default_texture_filter();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_set_default_texture_filter,
+      _RenderingServer._bindings.method_canvas_item_set_default_texture_filter,
       this._owner,
       _item, _filter
     );
@@ -9569,7 +9569,7 @@ class _MethodBindings {
   canvas_item_set_default_texture_repeat(_item, _repeat) {
     RenderingServer.init_method_canvas_item_set_default_texture_repeat();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_set_default_texture_repeat,
+      _RenderingServer._bindings.method_canvas_item_set_default_texture_repeat,
       this._owner,
       _item, _repeat
     );
@@ -9578,7 +9578,7 @@ class _MethodBindings {
   canvas_item_set_visible(_item, _visible) {
     RenderingServer.init_method_canvas_item_set_visible();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_set_visible,
+      _RenderingServer._bindings.method_canvas_item_set_visible,
       this._owner,
       _item, _visible
     );
@@ -9587,7 +9587,7 @@ class _MethodBindings {
   canvas_item_set_light_mask(_item, _mask) {
     RenderingServer.init_method_canvas_item_set_light_mask();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_set_light_mask,
+      _RenderingServer._bindings.method_canvas_item_set_light_mask,
       this._owner,
       _item, _mask
     );
@@ -9596,7 +9596,7 @@ class _MethodBindings {
   canvas_item_set_visibility_layer(_item, _visibility_layer) {
     RenderingServer.init_method_canvas_item_set_visibility_layer();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_set_visibility_layer,
+      _RenderingServer._bindings.method_canvas_item_set_visibility_layer,
       this._owner,
       _item, _visibility_layer
     );
@@ -9605,7 +9605,7 @@ class _MethodBindings {
   canvas_item_set_transform(_item, _transform) {
     RenderingServer.init_method_canvas_item_set_transform();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_set_transform,
+      _RenderingServer._bindings.method_canvas_item_set_transform,
       this._owner,
       _item, _transform
     );
@@ -9614,7 +9614,7 @@ class _MethodBindings {
   canvas_item_set_clip(_item, _clip) {
     RenderingServer.init_method_canvas_item_set_clip();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_set_clip,
+      _RenderingServer._bindings.method_canvas_item_set_clip,
       this._owner,
       _item, _clip
     );
@@ -9623,7 +9623,7 @@ class _MethodBindings {
   canvas_item_set_distance_field_mode(_item, _enabled) {
     RenderingServer.init_method_canvas_item_set_distance_field_mode();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_set_distance_field_mode,
+      _RenderingServer._bindings.method_canvas_item_set_distance_field_mode,
       this._owner,
       _item, _enabled
     );
@@ -9632,7 +9632,7 @@ class _MethodBindings {
   canvas_item_set_custom_rect(_item, _use_custom_rect, _rect) {
     RenderingServer.init_method_canvas_item_set_custom_rect();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_set_custom_rect,
+      _RenderingServer._bindings.method_canvas_item_set_custom_rect,
       this._owner,
       _item, _use_custom_rect, _rect
     );
@@ -9641,7 +9641,7 @@ class _MethodBindings {
   canvas_item_set_modulate(_item, _color) {
     RenderingServer.init_method_canvas_item_set_modulate();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_set_modulate,
+      _RenderingServer._bindings.method_canvas_item_set_modulate,
       this._owner,
       _item, _color
     );
@@ -9650,7 +9650,7 @@ class _MethodBindings {
   canvas_item_set_self_modulate(_item, _color) {
     RenderingServer.init_method_canvas_item_set_self_modulate();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_set_self_modulate,
+      _RenderingServer._bindings.method_canvas_item_set_self_modulate,
       this._owner,
       _item, _color
     );
@@ -9659,7 +9659,7 @@ class _MethodBindings {
   canvas_item_set_draw_behind_parent(_item, _enabled) {
     RenderingServer.init_method_canvas_item_set_draw_behind_parent();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_set_draw_behind_parent,
+      _RenderingServer._bindings.method_canvas_item_set_draw_behind_parent,
       this._owner,
       _item, _enabled
     );
@@ -9668,7 +9668,7 @@ class _MethodBindings {
   canvas_item_set_interpolated(_item, _interpolated) {
     RenderingServer.init_method_canvas_item_set_interpolated();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_set_interpolated,
+      _RenderingServer._bindings.method_canvas_item_set_interpolated,
       this._owner,
       _item, _interpolated
     );
@@ -9677,7 +9677,7 @@ class _MethodBindings {
   canvas_item_reset_physics_interpolation(_item) {
     RenderingServer.init_method_canvas_item_reset_physics_interpolation();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_reset_physics_interpolation,
+      _RenderingServer._bindings.method_canvas_item_reset_physics_interpolation,
       this._owner,
       _item
     );
@@ -9686,7 +9686,7 @@ class _MethodBindings {
   canvas_item_transform_physics_interpolation(_item, _transform) {
     RenderingServer.init_method_canvas_item_transform_physics_interpolation();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_transform_physics_interpolation,
+      _RenderingServer._bindings.method_canvas_item_transform_physics_interpolation,
       this._owner,
       _item, _transform
     );
@@ -9695,7 +9695,7 @@ class _MethodBindings {
   canvas_item_add_line(_item, _from, _to, _color, _width, _antialiased) {
     RenderingServer.init_method_canvas_item_add_line();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_add_line,
+      _RenderingServer._bindings.method_canvas_item_add_line,
       this._owner,
       _item, _from, _to, _color, _width, _antialiased
     );
@@ -9704,7 +9704,7 @@ class _MethodBindings {
   canvas_item_add_polyline(_item, _points, _colors, _width, _antialiased) {
     RenderingServer.init_method_canvas_item_add_polyline();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_add_polyline,
+      _RenderingServer._bindings.method_canvas_item_add_polyline,
       this._owner,
       _item, _points, _colors, _width, _antialiased
     );
@@ -9713,7 +9713,7 @@ class _MethodBindings {
   canvas_item_add_multiline(_item, _points, _colors, _width, _antialiased) {
     RenderingServer.init_method_canvas_item_add_multiline();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_add_multiline,
+      _RenderingServer._bindings.method_canvas_item_add_multiline,
       this._owner,
       _item, _points, _colors, _width, _antialiased
     );
@@ -9722,7 +9722,7 @@ class _MethodBindings {
   canvas_item_add_rect(_item, _rect, _color, _antialiased) {
     RenderingServer.init_method_canvas_item_add_rect();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_add_rect,
+      _RenderingServer._bindings.method_canvas_item_add_rect,
       this._owner,
       _item, _rect, _color, _antialiased
     );
@@ -9731,7 +9731,7 @@ class _MethodBindings {
   canvas_item_add_circle(_item, _pos, _radius, _color, _antialiased) {
     RenderingServer.init_method_canvas_item_add_circle();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_add_circle,
+      _RenderingServer._bindings.method_canvas_item_add_circle,
       this._owner,
       _item, _pos, _radius, _color, _antialiased
     );
@@ -9740,7 +9740,7 @@ class _MethodBindings {
   canvas_item_add_texture_rect(_item, _rect, _texture, _tile, _modulate, _transpose) {
     RenderingServer.init_method_canvas_item_add_texture_rect();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_add_texture_rect,
+      _RenderingServer._bindings.method_canvas_item_add_texture_rect,
       this._owner,
       _item, _rect, _texture, _tile, _modulate, _transpose
     );
@@ -9749,7 +9749,7 @@ class _MethodBindings {
   canvas_item_add_msdf_texture_rect_region(_item, _rect, _texture, _src_rect, _modulate, _outline_size, _px_range, _scale) {
     RenderingServer.init_method_canvas_item_add_msdf_texture_rect_region();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_add_msdf_texture_rect_region,
+      _RenderingServer._bindings.method_canvas_item_add_msdf_texture_rect_region,
       this._owner,
       _item, _rect, _texture, _src_rect, _modulate, _outline_size, _px_range, _scale
     );
@@ -9758,7 +9758,7 @@ class _MethodBindings {
   canvas_item_add_lcd_texture_rect_region(_item, _rect, _texture, _src_rect, _modulate) {
     RenderingServer.init_method_canvas_item_add_lcd_texture_rect_region();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_add_lcd_texture_rect_region,
+      _RenderingServer._bindings.method_canvas_item_add_lcd_texture_rect_region,
       this._owner,
       _item, _rect, _texture, _src_rect, _modulate
     );
@@ -9767,7 +9767,7 @@ class _MethodBindings {
   canvas_item_add_texture_rect_region(_item, _rect, _texture, _src_rect, _modulate, _transpose, _clip_uv) {
     RenderingServer.init_method_canvas_item_add_texture_rect_region();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_add_texture_rect_region,
+      _RenderingServer._bindings.method_canvas_item_add_texture_rect_region,
       this._owner,
       _item, _rect, _texture, _src_rect, _modulate, _transpose, _clip_uv
     );
@@ -9776,7 +9776,7 @@ class _MethodBindings {
   canvas_item_add_nine_patch(_item, _rect, _source, _texture, _topleft, _bottomright, _x_axis_mode, _y_axis_mode, _draw_center, _modulate) {
     RenderingServer.init_method_canvas_item_add_nine_patch();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_add_nine_patch,
+      _RenderingServer._bindings.method_canvas_item_add_nine_patch,
       this._owner,
       _item, _rect, _source, _texture, _topleft, _bottomright, _x_axis_mode, _y_axis_mode, _draw_center, _modulate
     );
@@ -9785,7 +9785,7 @@ class _MethodBindings {
   canvas_item_add_primitive(_item, _points, _colors, _uvs, _texture) {
     RenderingServer.init_method_canvas_item_add_primitive();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_add_primitive,
+      _RenderingServer._bindings.method_canvas_item_add_primitive,
       this._owner,
       _item, _points, _colors, _uvs, _texture
     );
@@ -9794,7 +9794,7 @@ class _MethodBindings {
   canvas_item_add_polygon(_item, _points, _colors, _uvs, _texture) {
     RenderingServer.init_method_canvas_item_add_polygon();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_add_polygon,
+      _RenderingServer._bindings.method_canvas_item_add_polygon,
       this._owner,
       _item, _points, _colors, _uvs, _texture
     );
@@ -9803,7 +9803,7 @@ class _MethodBindings {
   canvas_item_add_triangle_array(_item, _indices, _points, _colors, _uvs, _bones, _weights, _texture, _count) {
     RenderingServer.init_method_canvas_item_add_triangle_array();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_add_triangle_array,
+      _RenderingServer._bindings.method_canvas_item_add_triangle_array,
       this._owner,
       _item, _indices, _points, _colors, _uvs, _bones, _weights, _texture, _count
     );
@@ -9812,7 +9812,7 @@ class _MethodBindings {
   canvas_item_add_mesh(_item, _mesh, _transform, _modulate, _texture) {
     RenderingServer.init_method_canvas_item_add_mesh();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_add_mesh,
+      _RenderingServer._bindings.method_canvas_item_add_mesh,
       this._owner,
       _item, _mesh, _transform, _modulate, _texture
     );
@@ -9821,7 +9821,7 @@ class _MethodBindings {
   canvas_item_add_multimesh(_item, _mesh, _texture) {
     RenderingServer.init_method_canvas_item_add_multimesh();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_add_multimesh,
+      _RenderingServer._bindings.method_canvas_item_add_multimesh,
       this._owner,
       _item, _mesh, _texture
     );
@@ -9830,7 +9830,7 @@ class _MethodBindings {
   canvas_item_add_particles(_item, _particles, _texture) {
     RenderingServer.init_method_canvas_item_add_particles();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_add_particles,
+      _RenderingServer._bindings.method_canvas_item_add_particles,
       this._owner,
       _item, _particles, _texture
     );
@@ -9839,7 +9839,7 @@ class _MethodBindings {
   canvas_item_add_set_transform(_item, _transform) {
     RenderingServer.init_method_canvas_item_add_set_transform();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_add_set_transform,
+      _RenderingServer._bindings.method_canvas_item_add_set_transform,
       this._owner,
       _item, _transform
     );
@@ -9848,7 +9848,7 @@ class _MethodBindings {
   canvas_item_add_clip_ignore(_item, _ignore) {
     RenderingServer.init_method_canvas_item_add_clip_ignore();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_add_clip_ignore,
+      _RenderingServer._bindings.method_canvas_item_add_clip_ignore,
       this._owner,
       _item, _ignore
     );
@@ -9857,7 +9857,7 @@ class _MethodBindings {
   canvas_item_add_animation_slice(_item, _animation_length, _slice_begin, _slice_end, _offset) {
     RenderingServer.init_method_canvas_item_add_animation_slice();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_add_animation_slice,
+      _RenderingServer._bindings.method_canvas_item_add_animation_slice,
       this._owner,
       _item, _animation_length, _slice_begin, _slice_end, _offset
     );
@@ -9866,7 +9866,7 @@ class _MethodBindings {
   canvas_item_set_sort_children_by_y(_item, _enabled) {
     RenderingServer.init_method_canvas_item_set_sort_children_by_y();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_set_sort_children_by_y,
+      _RenderingServer._bindings.method_canvas_item_set_sort_children_by_y,
       this._owner,
       _item, _enabled
     );
@@ -9875,7 +9875,7 @@ class _MethodBindings {
   canvas_item_set_z_index(_item, _z_index) {
     RenderingServer.init_method_canvas_item_set_z_index();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_set_z_index,
+      _RenderingServer._bindings.method_canvas_item_set_z_index,
       this._owner,
       _item, _z_index
     );
@@ -9884,7 +9884,7 @@ class _MethodBindings {
   canvas_item_set_z_as_relative_to_parent(_item, _enabled) {
     RenderingServer.init_method_canvas_item_set_z_as_relative_to_parent();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_set_z_as_relative_to_parent,
+      _RenderingServer._bindings.method_canvas_item_set_z_as_relative_to_parent,
       this._owner,
       _item, _enabled
     );
@@ -9893,7 +9893,7 @@ class _MethodBindings {
   canvas_item_set_copy_to_backbuffer(_item, _enabled, _rect) {
     RenderingServer.init_method_canvas_item_set_copy_to_backbuffer();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_set_copy_to_backbuffer,
+      _RenderingServer._bindings.method_canvas_item_set_copy_to_backbuffer,
       this._owner,
       _item, _enabled, _rect
     );
@@ -9902,7 +9902,7 @@ class _MethodBindings {
   canvas_item_clear(_item) {
     RenderingServer.init_method_canvas_item_clear();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_clear,
+      _RenderingServer._bindings.method_canvas_item_clear,
       this._owner,
       _item
     );
@@ -9911,7 +9911,7 @@ class _MethodBindings {
   canvas_item_set_draw_index(_item, _index) {
     RenderingServer.init_method_canvas_item_set_draw_index();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_set_draw_index,
+      _RenderingServer._bindings.method_canvas_item_set_draw_index,
       this._owner,
       _item, _index
     );
@@ -9920,7 +9920,7 @@ class _MethodBindings {
   canvas_item_set_material(_item, _material) {
     RenderingServer.init_method_canvas_item_set_material();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_set_material,
+      _RenderingServer._bindings.method_canvas_item_set_material,
       this._owner,
       _item, _material
     );
@@ -9929,7 +9929,7 @@ class _MethodBindings {
   canvas_item_set_use_parent_material(_item, _enabled) {
     RenderingServer.init_method_canvas_item_set_use_parent_material();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_set_use_parent_material,
+      _RenderingServer._bindings.method_canvas_item_set_use_parent_material,
       this._owner,
       _item, _enabled
     );
@@ -9938,7 +9938,7 @@ class _MethodBindings {
   canvas_item_set_visibility_notifier(_item, _enable, _area, _enter_callable, _exit_callable) {
     RenderingServer.init_method_canvas_item_set_visibility_notifier();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_set_visibility_notifier,
+      _RenderingServer._bindings.method_canvas_item_set_visibility_notifier,
       this._owner,
       _item, _enable, _area, _enter_callable, _exit_callable
     );
@@ -9947,7 +9947,7 @@ class _MethodBindings {
   canvas_item_set_canvas_group_mode(_item, _mode, _clear_margin, _fit_empty, _fit_margin, _blur_mipmaps) {
     RenderingServer.init_method_canvas_item_set_canvas_group_mode();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_item_set_canvas_group_mode,
+      _RenderingServer._bindings.method_canvas_item_set_canvas_group_mode,
       this._owner,
       _item, _mode, _clear_margin, _fit_empty, _fit_margin, _blur_mipmaps
     );
@@ -9956,7 +9956,7 @@ class _MethodBindings {
   debug_canvas_item_get_rect(_item) {
     RenderingServer.init_method_debug_canvas_item_get_rect();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_debug_canvas_item_get_rect,
+      _RenderingServer._bindings.method_debug_canvas_item_get_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -9967,7 +9967,7 @@ class _MethodBindings {
   canvas_light_create() {
     RenderingServer.init_method_canvas_light_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_canvas_light_create,
+      _RenderingServer._bindings.method_canvas_light_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -9978,7 +9978,7 @@ class _MethodBindings {
   canvas_light_attach_to_canvas(_light, _canvas) {
     RenderingServer.init_method_canvas_light_attach_to_canvas();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_attach_to_canvas,
+      _RenderingServer._bindings.method_canvas_light_attach_to_canvas,
       this._owner,
       _light, _canvas
     );
@@ -9987,7 +9987,7 @@ class _MethodBindings {
   canvas_light_set_enabled(_light, _enabled) {
     RenderingServer.init_method_canvas_light_set_enabled();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_set_enabled,
+      _RenderingServer._bindings.method_canvas_light_set_enabled,
       this._owner,
       _light, _enabled
     );
@@ -9996,7 +9996,7 @@ class _MethodBindings {
   canvas_light_set_texture_scale(_light, _scale) {
     RenderingServer.init_method_canvas_light_set_texture_scale();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_set_texture_scale,
+      _RenderingServer._bindings.method_canvas_light_set_texture_scale,
       this._owner,
       _light, _scale
     );
@@ -10005,7 +10005,7 @@ class _MethodBindings {
   canvas_light_set_transform(_light, _transform) {
     RenderingServer.init_method_canvas_light_set_transform();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_set_transform,
+      _RenderingServer._bindings.method_canvas_light_set_transform,
       this._owner,
       _light, _transform
     );
@@ -10014,7 +10014,7 @@ class _MethodBindings {
   canvas_light_set_texture(_light, _texture) {
     RenderingServer.init_method_canvas_light_set_texture();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_set_texture,
+      _RenderingServer._bindings.method_canvas_light_set_texture,
       this._owner,
       _light, _texture
     );
@@ -10023,7 +10023,7 @@ class _MethodBindings {
   canvas_light_set_texture_offset(_light, _offset) {
     RenderingServer.init_method_canvas_light_set_texture_offset();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_set_texture_offset,
+      _RenderingServer._bindings.method_canvas_light_set_texture_offset,
       this._owner,
       _light, _offset
     );
@@ -10032,7 +10032,7 @@ class _MethodBindings {
   canvas_light_set_color(_light, _color) {
     RenderingServer.init_method_canvas_light_set_color();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_set_color,
+      _RenderingServer._bindings.method_canvas_light_set_color,
       this._owner,
       _light, _color
     );
@@ -10041,7 +10041,7 @@ class _MethodBindings {
   canvas_light_set_height(_light, _height) {
     RenderingServer.init_method_canvas_light_set_height();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_set_height,
+      _RenderingServer._bindings.method_canvas_light_set_height,
       this._owner,
       _light, _height
     );
@@ -10050,7 +10050,7 @@ class _MethodBindings {
   canvas_light_set_energy(_light, _energy) {
     RenderingServer.init_method_canvas_light_set_energy();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_set_energy,
+      _RenderingServer._bindings.method_canvas_light_set_energy,
       this._owner,
       _light, _energy
     );
@@ -10059,7 +10059,7 @@ class _MethodBindings {
   canvas_light_set_z_range(_light, _min_z, _max_z) {
     RenderingServer.init_method_canvas_light_set_z_range();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_set_z_range,
+      _RenderingServer._bindings.method_canvas_light_set_z_range,
       this._owner,
       _light, _min_z, _max_z
     );
@@ -10068,7 +10068,7 @@ class _MethodBindings {
   canvas_light_set_layer_range(_light, _min_layer, _max_layer) {
     RenderingServer.init_method_canvas_light_set_layer_range();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_set_layer_range,
+      _RenderingServer._bindings.method_canvas_light_set_layer_range,
       this._owner,
       _light, _min_layer, _max_layer
     );
@@ -10077,7 +10077,7 @@ class _MethodBindings {
   canvas_light_set_item_cull_mask(_light, _mask) {
     RenderingServer.init_method_canvas_light_set_item_cull_mask();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_set_item_cull_mask,
+      _RenderingServer._bindings.method_canvas_light_set_item_cull_mask,
       this._owner,
       _light, _mask
     );
@@ -10086,7 +10086,7 @@ class _MethodBindings {
   canvas_light_set_item_shadow_cull_mask(_light, _mask) {
     RenderingServer.init_method_canvas_light_set_item_shadow_cull_mask();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_set_item_shadow_cull_mask,
+      _RenderingServer._bindings.method_canvas_light_set_item_shadow_cull_mask,
       this._owner,
       _light, _mask
     );
@@ -10095,7 +10095,7 @@ class _MethodBindings {
   canvas_light_set_mode(_light, _mode) {
     RenderingServer.init_method_canvas_light_set_mode();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_set_mode,
+      _RenderingServer._bindings.method_canvas_light_set_mode,
       this._owner,
       _light, _mode
     );
@@ -10104,7 +10104,7 @@ class _MethodBindings {
   canvas_light_set_shadow_enabled(_light, _enabled) {
     RenderingServer.init_method_canvas_light_set_shadow_enabled();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_set_shadow_enabled,
+      _RenderingServer._bindings.method_canvas_light_set_shadow_enabled,
       this._owner,
       _light, _enabled
     );
@@ -10113,7 +10113,7 @@ class _MethodBindings {
   canvas_light_set_shadow_filter(_light, _filter) {
     RenderingServer.init_method_canvas_light_set_shadow_filter();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_set_shadow_filter,
+      _RenderingServer._bindings.method_canvas_light_set_shadow_filter,
       this._owner,
       _light, _filter
     );
@@ -10122,7 +10122,7 @@ class _MethodBindings {
   canvas_light_set_shadow_color(_light, _color) {
     RenderingServer.init_method_canvas_light_set_shadow_color();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_set_shadow_color,
+      _RenderingServer._bindings.method_canvas_light_set_shadow_color,
       this._owner,
       _light, _color
     );
@@ -10131,7 +10131,7 @@ class _MethodBindings {
   canvas_light_set_shadow_smooth(_light, _smooth) {
     RenderingServer.init_method_canvas_light_set_shadow_smooth();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_set_shadow_smooth,
+      _RenderingServer._bindings.method_canvas_light_set_shadow_smooth,
       this._owner,
       _light, _smooth
     );
@@ -10140,7 +10140,7 @@ class _MethodBindings {
   canvas_light_set_blend_mode(_light, _mode) {
     RenderingServer.init_method_canvas_light_set_blend_mode();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_set_blend_mode,
+      _RenderingServer._bindings.method_canvas_light_set_blend_mode,
       this._owner,
       _light, _mode
     );
@@ -10149,7 +10149,7 @@ class _MethodBindings {
   canvas_light_set_interpolated(_light, _interpolated) {
     RenderingServer.init_method_canvas_light_set_interpolated();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_set_interpolated,
+      _RenderingServer._bindings.method_canvas_light_set_interpolated,
       this._owner,
       _light, _interpolated
     );
@@ -10158,7 +10158,7 @@ class _MethodBindings {
   canvas_light_reset_physics_interpolation(_light) {
     RenderingServer.init_method_canvas_light_reset_physics_interpolation();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_reset_physics_interpolation,
+      _RenderingServer._bindings.method_canvas_light_reset_physics_interpolation,
       this._owner,
       _light
     );
@@ -10167,7 +10167,7 @@ class _MethodBindings {
   canvas_light_transform_physics_interpolation(_light, _transform) {
     RenderingServer.init_method_canvas_light_transform_physics_interpolation();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_transform_physics_interpolation,
+      _RenderingServer._bindings.method_canvas_light_transform_physics_interpolation,
       this._owner,
       _light, _transform
     );
@@ -10176,7 +10176,7 @@ class _MethodBindings {
   canvas_light_occluder_create() {
     RenderingServer.init_method_canvas_light_occluder_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_canvas_light_occluder_create,
+      _RenderingServer._bindings.method_canvas_light_occluder_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -10187,7 +10187,7 @@ class _MethodBindings {
   canvas_light_occluder_attach_to_canvas(_occluder, _canvas) {
     RenderingServer.init_method_canvas_light_occluder_attach_to_canvas();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_occluder_attach_to_canvas,
+      _RenderingServer._bindings.method_canvas_light_occluder_attach_to_canvas,
       this._owner,
       _occluder, _canvas
     );
@@ -10196,7 +10196,7 @@ class _MethodBindings {
   canvas_light_occluder_set_enabled(_occluder, _enabled) {
     RenderingServer.init_method_canvas_light_occluder_set_enabled();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_occluder_set_enabled,
+      _RenderingServer._bindings.method_canvas_light_occluder_set_enabled,
       this._owner,
       _occluder, _enabled
     );
@@ -10205,7 +10205,7 @@ class _MethodBindings {
   canvas_light_occluder_set_polygon(_occluder, _polygon) {
     RenderingServer.init_method_canvas_light_occluder_set_polygon();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_occluder_set_polygon,
+      _RenderingServer._bindings.method_canvas_light_occluder_set_polygon,
       this._owner,
       _occluder, _polygon
     );
@@ -10214,7 +10214,7 @@ class _MethodBindings {
   canvas_light_occluder_set_as_sdf_collision(_occluder, _enable) {
     RenderingServer.init_method_canvas_light_occluder_set_as_sdf_collision();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_occluder_set_as_sdf_collision,
+      _RenderingServer._bindings.method_canvas_light_occluder_set_as_sdf_collision,
       this._owner,
       _occluder, _enable
     );
@@ -10223,7 +10223,7 @@ class _MethodBindings {
   canvas_light_occluder_set_transform(_occluder, _transform) {
     RenderingServer.init_method_canvas_light_occluder_set_transform();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_occluder_set_transform,
+      _RenderingServer._bindings.method_canvas_light_occluder_set_transform,
       this._owner,
       _occluder, _transform
     );
@@ -10232,7 +10232,7 @@ class _MethodBindings {
   canvas_light_occluder_set_light_mask(_occluder, _mask) {
     RenderingServer.init_method_canvas_light_occluder_set_light_mask();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_occluder_set_light_mask,
+      _RenderingServer._bindings.method_canvas_light_occluder_set_light_mask,
       this._owner,
       _occluder, _mask
     );
@@ -10241,7 +10241,7 @@ class _MethodBindings {
   canvas_light_occluder_set_interpolated(_occluder, _interpolated) {
     RenderingServer.init_method_canvas_light_occluder_set_interpolated();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_occluder_set_interpolated,
+      _RenderingServer._bindings.method_canvas_light_occluder_set_interpolated,
       this._owner,
       _occluder, _interpolated
     );
@@ -10250,7 +10250,7 @@ class _MethodBindings {
   canvas_light_occluder_reset_physics_interpolation(_occluder) {
     RenderingServer.init_method_canvas_light_occluder_reset_physics_interpolation();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_occluder_reset_physics_interpolation,
+      _RenderingServer._bindings.method_canvas_light_occluder_reset_physics_interpolation,
       this._owner,
       _occluder
     );
@@ -10259,7 +10259,7 @@ class _MethodBindings {
   canvas_light_occluder_transform_physics_interpolation(_occluder, _transform) {
     RenderingServer.init_method_canvas_light_occluder_transform_physics_interpolation();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_light_occluder_transform_physics_interpolation,
+      _RenderingServer._bindings.method_canvas_light_occluder_transform_physics_interpolation,
       this._owner,
       _occluder, _transform
     );
@@ -10268,7 +10268,7 @@ class _MethodBindings {
   canvas_occluder_polygon_create() {
     RenderingServer.init_method_canvas_occluder_polygon_create();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_canvas_occluder_polygon_create,
+      _RenderingServer._bindings.method_canvas_occluder_polygon_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -10279,7 +10279,7 @@ class _MethodBindings {
   canvas_occluder_polygon_set_shape(_occluder_polygon, _shape, _closed) {
     RenderingServer.init_method_canvas_occluder_polygon_set_shape();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_occluder_polygon_set_shape,
+      _RenderingServer._bindings.method_canvas_occluder_polygon_set_shape,
       this._owner,
       _occluder_polygon, _shape, _closed
     );
@@ -10288,7 +10288,7 @@ class _MethodBindings {
   canvas_occluder_polygon_set_cull_mode(_occluder_polygon, _mode) {
     RenderingServer.init_method_canvas_occluder_polygon_set_cull_mode();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_occluder_polygon_set_cull_mode,
+      _RenderingServer._bindings.method_canvas_occluder_polygon_set_cull_mode,
       this._owner,
       _occluder_polygon, _mode
     );
@@ -10297,7 +10297,7 @@ class _MethodBindings {
   canvas_set_shadow_texture_size(_size) {
     RenderingServer.init_method_canvas_set_shadow_texture_size();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_canvas_set_shadow_texture_size,
+      _RenderingServer._bindings.method_canvas_set_shadow_texture_size,
       this._owner,
       _size
     );
@@ -10306,7 +10306,7 @@ class _MethodBindings {
   global_shader_parameter_add(_name, _type, _default_value) {
     RenderingServer.init_method_global_shader_parameter_add();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_global_shader_parameter_add,
+      _RenderingServer._bindings.method_global_shader_parameter_add,
       this._owner,
       _name, _type, _default_value
     );
@@ -10315,7 +10315,7 @@ class _MethodBindings {
   global_shader_parameter_remove(_name) {
     RenderingServer.init_method_global_shader_parameter_remove();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_global_shader_parameter_remove,
+      _RenderingServer._bindings.method_global_shader_parameter_remove,
       this._owner,
       _name
     );
@@ -10324,7 +10324,7 @@ class _MethodBindings {
   global_shader_parameter_get_list() {
     RenderingServer.init_method_global_shader_parameter_get_list();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_global_shader_parameter_get_list,
+      _RenderingServer._bindings.method_global_shader_parameter_get_list,
       this._owner,
 			Variant.Type.ARRAY,
       
@@ -10334,7 +10334,7 @@ class _MethodBindings {
   global_shader_parameter_set(_name, _value) {
     RenderingServer.init_method_global_shader_parameter_set();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_global_shader_parameter_set,
+      _RenderingServer._bindings.method_global_shader_parameter_set,
       this._owner,
       _name, _value
     );
@@ -10343,7 +10343,7 @@ class _MethodBindings {
   global_shader_parameter_set_override(_name, _value) {
     RenderingServer.init_method_global_shader_parameter_set_override();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_global_shader_parameter_set_override,
+      _RenderingServer._bindings.method_global_shader_parameter_set_override,
       this._owner,
       _name, _value
     );
@@ -10352,7 +10352,7 @@ class _MethodBindings {
   global_shader_parameter_get(_name) {
     RenderingServer.init_method_global_shader_parameter_get();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_global_shader_parameter_get,
+      _RenderingServer._bindings.method_global_shader_parameter_get,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -10363,7 +10363,7 @@ class _MethodBindings {
   global_shader_parameter_get_type(_name) {
     RenderingServer.init_method_global_shader_parameter_get_type();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_global_shader_parameter_get_type,
+      _RenderingServer._bindings.method_global_shader_parameter_get_type,
       this._owner,
 			Variant.Type.INT,
     
@@ -10374,7 +10374,7 @@ class _MethodBindings {
   free_rid(_rid) {
     RenderingServer.init_method_free_rid();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_free_rid,
+      _RenderingServer._bindings.method_free_rid,
       this._owner,
       _rid
     );
@@ -10383,7 +10383,7 @@ class _MethodBindings {
   request_frame_drawn_callback(_callable) {
     RenderingServer.init_method_request_frame_drawn_callback();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_request_frame_drawn_callback,
+      _RenderingServer._bindings.method_request_frame_drawn_callback,
       this._owner,
       _callable
     );
@@ -10392,7 +10392,7 @@ class _MethodBindings {
   has_changed() {
     RenderingServer.init_method_has_changed();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_has_changed,
+      _RenderingServer._bindings.method_has_changed,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -10403,7 +10403,7 @@ class _MethodBindings {
   get_rendering_info(_info) {
     RenderingServer.init_method_get_rendering_info();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_get_rendering_info,
+      _RenderingServer._bindings.method_get_rendering_info,
       this._owner,
 			Variant.Type.INT,
     
@@ -10414,7 +10414,7 @@ class _MethodBindings {
   get_video_adapter_name() {
     RenderingServer.init_method_get_video_adapter_name();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_get_video_adapter_name,
+      _RenderingServer._bindings.method_get_video_adapter_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -10425,7 +10425,7 @@ class _MethodBindings {
   get_video_adapter_vendor() {
     RenderingServer.init_method_get_video_adapter_vendor();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_get_video_adapter_vendor,
+      _RenderingServer._bindings.method_get_video_adapter_vendor,
       this._owner,
 			Variant.Type.STRING,
     
@@ -10436,7 +10436,7 @@ class _MethodBindings {
   get_video_adapter_type() {
     RenderingServer.init_method_get_video_adapter_type();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_get_video_adapter_type,
+      _RenderingServer._bindings.method_get_video_adapter_type,
       this._owner,
 			Variant.Type.INT,
     
@@ -10447,7 +10447,7 @@ class _MethodBindings {
   get_video_adapter_api_version() {
     RenderingServer.init_method_get_video_adapter_api_version();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_get_video_adapter_api_version,
+      _RenderingServer._bindings.method_get_video_adapter_api_version,
       this._owner,
 			Variant.Type.STRING,
     
@@ -10458,7 +10458,7 @@ class _MethodBindings {
   make_sphere_mesh(_latitudes, _longitudes, _radius) {
     RenderingServer.init_method_make_sphere_mesh();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_make_sphere_mesh,
+      _RenderingServer._bindings.method_make_sphere_mesh,
       this._owner,
 			Variant.Type.RID,
     
@@ -10469,7 +10469,7 @@ class _MethodBindings {
   get_test_cube() {
     RenderingServer.init_method_get_test_cube();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_get_test_cube,
+      _RenderingServer._bindings.method_get_test_cube,
       this._owner,
 			Variant.Type.RID,
     
@@ -10480,7 +10480,7 @@ class _MethodBindings {
   get_test_texture() {
     RenderingServer.init_method_get_test_texture();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_get_test_texture,
+      _RenderingServer._bindings.method_get_test_texture,
       this._owner,
 			Variant.Type.RID,
     
@@ -10491,7 +10491,7 @@ class _MethodBindings {
   get_white_texture() {
     RenderingServer.init_method_get_white_texture();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_get_white_texture,
+      _RenderingServer._bindings.method_get_white_texture,
       this._owner,
 			Variant.Type.RID,
     
@@ -10502,7 +10502,7 @@ class _MethodBindings {
   set_boot_image(_image, _color, _scale, _use_filter) {
     RenderingServer.init_method_set_boot_image();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_set_boot_image,
+      _RenderingServer._bindings.method_set_boot_image,
       this._owner,
       _image, _color, _scale, _use_filter
     );
@@ -10511,7 +10511,7 @@ class _MethodBindings {
   get_default_clear_color() {
     RenderingServer.init_method_get_default_clear_color();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_get_default_clear_color,
+      _RenderingServer._bindings.method_get_default_clear_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -10522,7 +10522,7 @@ class _MethodBindings {
   set_default_clear_color(_color) {
     RenderingServer.init_method_set_default_clear_color();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_set_default_clear_color,
+      _RenderingServer._bindings.method_set_default_clear_color,
       this._owner,
       _color
     );
@@ -10531,7 +10531,7 @@ class _MethodBindings {
   has_os_feature(_feature) {
     RenderingServer.init_method_has_os_feature();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_has_os_feature,
+      _RenderingServer._bindings.method_has_os_feature,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -10542,7 +10542,7 @@ class _MethodBindings {
   set_debug_generate_wireframes(_generate) {
     RenderingServer.init_method_set_debug_generate_wireframes();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_set_debug_generate_wireframes,
+      _RenderingServer._bindings.method_set_debug_generate_wireframes,
       this._owner,
       _generate
     );
@@ -10551,7 +10551,7 @@ class _MethodBindings {
   is_render_loop_enabled() {
     RenderingServer.init_method_is_render_loop_enabled();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_is_render_loop_enabled,
+      _RenderingServer._bindings.method_is_render_loop_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -10562,7 +10562,7 @@ class _MethodBindings {
   set_render_loop_enabled(_enabled) {
     RenderingServer.init_method_set_render_loop_enabled();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_set_render_loop_enabled,
+      _RenderingServer._bindings.method_set_render_loop_enabled,
       this._owner,
       _enabled
     );
@@ -10571,7 +10571,7 @@ class _MethodBindings {
   get_frame_setup_time_cpu() {
     RenderingServer.init_method_get_frame_setup_time_cpu();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_get_frame_setup_time_cpu,
+      _RenderingServer._bindings.method_get_frame_setup_time_cpu,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -10582,7 +10582,7 @@ class _MethodBindings {
   force_sync() {
     RenderingServer.init_method_force_sync();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_force_sync,
+      _RenderingServer._bindings.method_force_sync,
       this._owner,
       
     );
@@ -10591,7 +10591,7 @@ class _MethodBindings {
   force_draw(_swap_buffers, _frame_step) {
     RenderingServer.init_method_force_draw();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_force_draw,
+      _RenderingServer._bindings.method_force_draw,
       this._owner,
       _swap_buffers, _frame_step
     );
@@ -10600,7 +10600,7 @@ class _MethodBindings {
   get_rendering_device() {
     RenderingServer.init_method_get_rendering_device();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_get_rendering_device,
+      _RenderingServer._bindings.method_get_rendering_device,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -10610,7 +10610,7 @@ class _MethodBindings {
   create_local_rendering_device() {
     RenderingServer.init_method_create_local_rendering_device();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_create_local_rendering_device,
+      _RenderingServer._bindings.method_create_local_rendering_device,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -10620,7 +10620,7 @@ class _MethodBindings {
   is_on_render_thread() {
     RenderingServer.init_method_is_on_render_thread();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_is_on_render_thread,
+      _RenderingServer._bindings.method_is_on_render_thread,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -10631,7 +10631,7 @@ class _MethodBindings {
   call_on_render_thread(_callable) {
     RenderingServer.init_method_call_on_render_thread();
     return _call_native_mb_no_ret(
-      _RenderingServer.#_bindings.method_call_on_render_thread,
+      _RenderingServer._bindings.method_call_on_render_thread,
       this._owner,
       _callable
     );
@@ -10640,7 +10640,7 @@ class _MethodBindings {
   has_feature(_feature) {
     RenderingServer.init_method_has_feature();
     return _call_native_mb_ret(
-      _RenderingServer.#_bindings.method_has_feature,
+      _RenderingServer._bindings.method_has_feature,
       this._owner,
 			Variant.Type.BOOL,
     

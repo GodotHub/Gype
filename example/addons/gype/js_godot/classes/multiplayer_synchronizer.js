@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Node } from '@js_godot/classes/node'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_root_path;
@@ -28,10 +29,10 @@ class _MethodBindings {
   method_set_visibility_for;
   method_get_visibility_for;
 }
+@GodotClass
 export class MultiplayerSynchronizer extends Node{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -41,10 +42,10 @@ export class MultiplayerSynchronizer extends Node{
     }
   }
   static init_method_set_root_path() {
-    if (!this.#_bindings.method_set_root_path) {
+    if (!this._bindings.method_set_root_path) {
       let classname = new StringName("MultiplayerSynchronizer");
       let methodname = new StringName("set_root_path");
-      this.#_bindings.method_set_root_path = internal.classdb_get_method_bind(
+      this._bindings.method_set_root_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1348162250
@@ -52,10 +53,10 @@ export class MultiplayerSynchronizer extends Node{
     }
   }
   static init_method_get_root_path() {
-    if (!this.#_bindings.method_get_root_path) {
+    if (!this._bindings.method_get_root_path) {
       let classname = new StringName("MultiplayerSynchronizer");
       let methodname = new StringName("get_root_path");
-      this.#_bindings.method_get_root_path = internal.classdb_get_method_bind(
+      this._bindings.method_get_root_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4075236667
@@ -63,10 +64,10 @@ export class MultiplayerSynchronizer extends Node{
     }
   }
   static init_method_set_replication_interval() {
-    if (!this.#_bindings.method_set_replication_interval) {
+    if (!this._bindings.method_set_replication_interval) {
       let classname = new StringName("MultiplayerSynchronizer");
       let methodname = new StringName("set_replication_interval");
-      this.#_bindings.method_set_replication_interval = internal.classdb_get_method_bind(
+      this._bindings.method_set_replication_interval = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -74,10 +75,10 @@ export class MultiplayerSynchronizer extends Node{
     }
   }
   static init_method_get_replication_interval() {
-    if (!this.#_bindings.method_get_replication_interval) {
+    if (!this._bindings.method_get_replication_interval) {
       let classname = new StringName("MultiplayerSynchronizer");
       let methodname = new StringName("get_replication_interval");
-      this.#_bindings.method_get_replication_interval = internal.classdb_get_method_bind(
+      this._bindings.method_get_replication_interval = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -85,10 +86,10 @@ export class MultiplayerSynchronizer extends Node{
     }
   }
   static init_method_set_delta_interval() {
-    if (!this.#_bindings.method_set_delta_interval) {
+    if (!this._bindings.method_set_delta_interval) {
       let classname = new StringName("MultiplayerSynchronizer");
       let methodname = new StringName("set_delta_interval");
-      this.#_bindings.method_set_delta_interval = internal.classdb_get_method_bind(
+      this._bindings.method_set_delta_interval = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -96,10 +97,10 @@ export class MultiplayerSynchronizer extends Node{
     }
   }
   static init_method_get_delta_interval() {
-    if (!this.#_bindings.method_get_delta_interval) {
+    if (!this._bindings.method_get_delta_interval) {
       let classname = new StringName("MultiplayerSynchronizer");
       let methodname = new StringName("get_delta_interval");
-      this.#_bindings.method_get_delta_interval = internal.classdb_get_method_bind(
+      this._bindings.method_get_delta_interval = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -107,10 +108,10 @@ export class MultiplayerSynchronizer extends Node{
     }
   }
   static init_method_set_replication_config() {
-    if (!this.#_bindings.method_set_replication_config) {
+    if (!this._bindings.method_set_replication_config) {
       let classname = new StringName("MultiplayerSynchronizer");
       let methodname = new StringName("set_replication_config");
-      this.#_bindings.method_set_replication_config = internal.classdb_get_method_bind(
+      this._bindings.method_set_replication_config = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3889206742
@@ -118,10 +119,10 @@ export class MultiplayerSynchronizer extends Node{
     }
   }
   static init_method_get_replication_config() {
-    if (!this.#_bindings.method_get_replication_config) {
+    if (!this._bindings.method_get_replication_config) {
       let classname = new StringName("MultiplayerSynchronizer");
       let methodname = new StringName("get_replication_config");
-      this.#_bindings.method_get_replication_config = internal.classdb_get_method_bind(
+      this._bindings.method_get_replication_config = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3200254614
@@ -129,10 +130,10 @@ export class MultiplayerSynchronizer extends Node{
     }
   }
   static init_method_set_visibility_update_mode() {
-    if (!this.#_bindings.method_set_visibility_update_mode) {
+    if (!this._bindings.method_set_visibility_update_mode) {
       let classname = new StringName("MultiplayerSynchronizer");
       let methodname = new StringName("set_visibility_update_mode");
-      this.#_bindings.method_set_visibility_update_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_visibility_update_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3494860300
@@ -140,10 +141,10 @@ export class MultiplayerSynchronizer extends Node{
     }
   }
   static init_method_get_visibility_update_mode() {
-    if (!this.#_bindings.method_get_visibility_update_mode) {
+    if (!this._bindings.method_get_visibility_update_mode) {
       let classname = new StringName("MultiplayerSynchronizer");
       let methodname = new StringName("get_visibility_update_mode");
-      this.#_bindings.method_get_visibility_update_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_visibility_update_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3352241418
@@ -151,10 +152,10 @@ export class MultiplayerSynchronizer extends Node{
     }
   }
   static init_method_update_visibility() {
-    if (!this.#_bindings.method_update_visibility) {
+    if (!this._bindings.method_update_visibility) {
       let classname = new StringName("MultiplayerSynchronizer");
       let methodname = new StringName("update_visibility");
-      this.#_bindings.method_update_visibility = internal.classdb_get_method_bind(
+      this._bindings.method_update_visibility = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1995695955
@@ -162,10 +163,10 @@ export class MultiplayerSynchronizer extends Node{
     }
   }
   static init_method_set_visibility_public() {
-    if (!this.#_bindings.method_set_visibility_public) {
+    if (!this._bindings.method_set_visibility_public) {
       let classname = new StringName("MultiplayerSynchronizer");
       let methodname = new StringName("set_visibility_public");
-      this.#_bindings.method_set_visibility_public = internal.classdb_get_method_bind(
+      this._bindings.method_set_visibility_public = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -173,10 +174,10 @@ export class MultiplayerSynchronizer extends Node{
     }
   }
   static init_method_is_visibility_public() {
-    if (!this.#_bindings.method_is_visibility_public) {
+    if (!this._bindings.method_is_visibility_public) {
       let classname = new StringName("MultiplayerSynchronizer");
       let methodname = new StringName("is_visibility_public");
-      this.#_bindings.method_is_visibility_public = internal.classdb_get_method_bind(
+      this._bindings.method_is_visibility_public = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -184,10 +185,10 @@ export class MultiplayerSynchronizer extends Node{
     }
   }
   static init_method_add_visibility_filter() {
-    if (!this.#_bindings.method_add_visibility_filter) {
+    if (!this._bindings.method_add_visibility_filter) {
       let classname = new StringName("MultiplayerSynchronizer");
       let methodname = new StringName("add_visibility_filter");
-      this.#_bindings.method_add_visibility_filter = internal.classdb_get_method_bind(
+      this._bindings.method_add_visibility_filter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1611583062
@@ -195,10 +196,10 @@ export class MultiplayerSynchronizer extends Node{
     }
   }
   static init_method_remove_visibility_filter() {
-    if (!this.#_bindings.method_remove_visibility_filter) {
+    if (!this._bindings.method_remove_visibility_filter) {
       let classname = new StringName("MultiplayerSynchronizer");
       let methodname = new StringName("remove_visibility_filter");
-      this.#_bindings.method_remove_visibility_filter = internal.classdb_get_method_bind(
+      this._bindings.method_remove_visibility_filter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1611583062
@@ -206,10 +207,10 @@ export class MultiplayerSynchronizer extends Node{
     }
   }
   static init_method_set_visibility_for() {
-    if (!this.#_bindings.method_set_visibility_for) {
+    if (!this._bindings.method_set_visibility_for) {
       let classname = new StringName("MultiplayerSynchronizer");
       let methodname = new StringName("set_visibility_for");
-      this.#_bindings.method_set_visibility_for = internal.classdb_get_method_bind(
+      this._bindings.method_set_visibility_for = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -217,10 +218,10 @@ export class MultiplayerSynchronizer extends Node{
     }
   }
   static init_method_get_visibility_for() {
-    if (!this.#_bindings.method_get_visibility_for) {
+    if (!this._bindings.method_get_visibility_for) {
       let classname = new StringName("MultiplayerSynchronizer");
       let methodname = new StringName("get_visibility_for");
-      this.#_bindings.method_get_visibility_for = internal.classdb_get_method_bind(
+      this._bindings.method_get_visibility_for = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -233,7 +234,7 @@ export class MultiplayerSynchronizer extends Node{
   set_root_path(_path) {
     MultiplayerSynchronizer.init_method_set_root_path();
     return _call_native_mb_no_ret(
-      MultiplayerSynchronizer.#_bindings.method_set_root_path,
+      MultiplayerSynchronizer._bindings.method_set_root_path,
       this._owner,
       _path
     );
@@ -242,7 +243,7 @@ export class MultiplayerSynchronizer extends Node{
   get_root_path() {
     MultiplayerSynchronizer.init_method_get_root_path();
     return _call_native_mb_ret(
-      MultiplayerSynchronizer.#_bindings.method_get_root_path,
+      MultiplayerSynchronizer._bindings.method_get_root_path,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -253,7 +254,7 @@ export class MultiplayerSynchronizer extends Node{
   set_replication_interval(_milliseconds) {
     MultiplayerSynchronizer.init_method_set_replication_interval();
     return _call_native_mb_no_ret(
-      MultiplayerSynchronizer.#_bindings.method_set_replication_interval,
+      MultiplayerSynchronizer._bindings.method_set_replication_interval,
       this._owner,
       _milliseconds
     );
@@ -262,7 +263,7 @@ export class MultiplayerSynchronizer extends Node{
   get_replication_interval() {
     MultiplayerSynchronizer.init_method_get_replication_interval();
     return _call_native_mb_ret(
-      MultiplayerSynchronizer.#_bindings.method_get_replication_interval,
+      MultiplayerSynchronizer._bindings.method_get_replication_interval,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -273,7 +274,7 @@ export class MultiplayerSynchronizer extends Node{
   set_delta_interval(_milliseconds) {
     MultiplayerSynchronizer.init_method_set_delta_interval();
     return _call_native_mb_no_ret(
-      MultiplayerSynchronizer.#_bindings.method_set_delta_interval,
+      MultiplayerSynchronizer._bindings.method_set_delta_interval,
       this._owner,
       _milliseconds
     );
@@ -282,7 +283,7 @@ export class MultiplayerSynchronizer extends Node{
   get_delta_interval() {
     MultiplayerSynchronizer.init_method_get_delta_interval();
     return _call_native_mb_ret(
-      MultiplayerSynchronizer.#_bindings.method_get_delta_interval,
+      MultiplayerSynchronizer._bindings.method_get_delta_interval,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -293,7 +294,7 @@ export class MultiplayerSynchronizer extends Node{
   set_replication_config(_config) {
     MultiplayerSynchronizer.init_method_set_replication_config();
     return _call_native_mb_no_ret(
-      MultiplayerSynchronizer.#_bindings.method_set_replication_config,
+      MultiplayerSynchronizer._bindings.method_set_replication_config,
       this._owner,
       _config
     );
@@ -302,7 +303,7 @@ export class MultiplayerSynchronizer extends Node{
   get_replication_config() {
     MultiplayerSynchronizer.init_method_get_replication_config();
     return _call_native_mb_ret(
-      MultiplayerSynchronizer.#_bindings.method_get_replication_config,
+      MultiplayerSynchronizer._bindings.method_get_replication_config,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -312,7 +313,7 @@ export class MultiplayerSynchronizer extends Node{
   set_visibility_update_mode(_mode) {
     MultiplayerSynchronizer.init_method_set_visibility_update_mode();
     return _call_native_mb_no_ret(
-      MultiplayerSynchronizer.#_bindings.method_set_visibility_update_mode,
+      MultiplayerSynchronizer._bindings.method_set_visibility_update_mode,
       this._owner,
       _mode
     );
@@ -321,7 +322,7 @@ export class MultiplayerSynchronizer extends Node{
   get_visibility_update_mode() {
     MultiplayerSynchronizer.init_method_get_visibility_update_mode();
     return _call_native_mb_ret(
-      MultiplayerSynchronizer.#_bindings.method_get_visibility_update_mode,
+      MultiplayerSynchronizer._bindings.method_get_visibility_update_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -332,7 +333,7 @@ export class MultiplayerSynchronizer extends Node{
   update_visibility(_for_peer) {
     MultiplayerSynchronizer.init_method_update_visibility();
     return _call_native_mb_no_ret(
-      MultiplayerSynchronizer.#_bindings.method_update_visibility,
+      MultiplayerSynchronizer._bindings.method_update_visibility,
       this._owner,
       _for_peer
     );
@@ -341,7 +342,7 @@ export class MultiplayerSynchronizer extends Node{
   set_visibility_public(_visible) {
     MultiplayerSynchronizer.init_method_set_visibility_public();
     return _call_native_mb_no_ret(
-      MultiplayerSynchronizer.#_bindings.method_set_visibility_public,
+      MultiplayerSynchronizer._bindings.method_set_visibility_public,
       this._owner,
       _visible
     );
@@ -350,7 +351,7 @@ export class MultiplayerSynchronizer extends Node{
   is_visibility_public() {
     MultiplayerSynchronizer.init_method_is_visibility_public();
     return _call_native_mb_ret(
-      MultiplayerSynchronizer.#_bindings.method_is_visibility_public,
+      MultiplayerSynchronizer._bindings.method_is_visibility_public,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -361,7 +362,7 @@ export class MultiplayerSynchronizer extends Node{
   add_visibility_filter(_filter) {
     MultiplayerSynchronizer.init_method_add_visibility_filter();
     return _call_native_mb_no_ret(
-      MultiplayerSynchronizer.#_bindings.method_add_visibility_filter,
+      MultiplayerSynchronizer._bindings.method_add_visibility_filter,
       this._owner,
       _filter
     );
@@ -370,7 +371,7 @@ export class MultiplayerSynchronizer extends Node{
   remove_visibility_filter(_filter) {
     MultiplayerSynchronizer.init_method_remove_visibility_filter();
     return _call_native_mb_no_ret(
-      MultiplayerSynchronizer.#_bindings.method_remove_visibility_filter,
+      MultiplayerSynchronizer._bindings.method_remove_visibility_filter,
       this._owner,
       _filter
     );
@@ -379,7 +380,7 @@ export class MultiplayerSynchronizer extends Node{
   set_visibility_for(_peer, _visible) {
     MultiplayerSynchronizer.init_method_set_visibility_for();
     return _call_native_mb_no_ret(
-      MultiplayerSynchronizer.#_bindings.method_set_visibility_for,
+      MultiplayerSynchronizer._bindings.method_set_visibility_for,
       this._owner,
       _peer, _visible
     );
@@ -388,7 +389,7 @@ export class MultiplayerSynchronizer extends Node{
   get_visibility_for(_peer) {
     MultiplayerSynchronizer.init_method_get_visibility_for();
     return _call_native_mb_ret(
-      MultiplayerSynchronizer.#_bindings.method_get_visibility_for,
+      MultiplayerSynchronizer._bindings.method_get_visibility_for,
       this._owner,
 			Variant.Type.BOOL,
     

@@ -1,14 +1,15 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_packet_data;
@@ -19,10 +20,10 @@ class _MethodBindings {
   method_get_sampling_rate;
   method_get_length;
 }
+@GodotClass
 export class OggPacketSequence extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -32,10 +33,10 @@ export class OggPacketSequence extends Resource{
     }
   }
   static init_method_set_packet_data() {
-    if (!this.#_bindings.method_set_packet_data) {
+    if (!this._bindings.method_set_packet_data) {
       let classname = new StringName("OggPacketSequence");
       let methodname = new StringName("set_packet_data");
-      this.#_bindings.method_set_packet_data = internal.classdb_get_method_bind(
+      this._bindings.method_set_packet_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         381264803
@@ -43,10 +44,10 @@ export class OggPacketSequence extends Resource{
     }
   }
   static init_method_get_packet_data() {
-    if (!this.#_bindings.method_get_packet_data) {
+    if (!this._bindings.method_get_packet_data) {
       let classname = new StringName("OggPacketSequence");
       let methodname = new StringName("get_packet_data");
-      this.#_bindings.method_get_packet_data = internal.classdb_get_method_bind(
+      this._bindings.method_get_packet_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -54,10 +55,10 @@ export class OggPacketSequence extends Resource{
     }
   }
   static init_method_set_packet_granule_positions() {
-    if (!this.#_bindings.method_set_packet_granule_positions) {
+    if (!this._bindings.method_set_packet_granule_positions) {
       let classname = new StringName("OggPacketSequence");
       let methodname = new StringName("set_packet_granule_positions");
-      this.#_bindings.method_set_packet_granule_positions = internal.classdb_get_method_bind(
+      this._bindings.method_set_packet_granule_positions = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3709968205
@@ -65,10 +66,10 @@ export class OggPacketSequence extends Resource{
     }
   }
   static init_method_get_packet_granule_positions() {
-    if (!this.#_bindings.method_get_packet_granule_positions) {
+    if (!this._bindings.method_get_packet_granule_positions) {
       let classname = new StringName("OggPacketSequence");
       let methodname = new StringName("get_packet_granule_positions");
-      this.#_bindings.method_get_packet_granule_positions = internal.classdb_get_method_bind(
+      this._bindings.method_get_packet_granule_positions = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         235988956
@@ -76,10 +77,10 @@ export class OggPacketSequence extends Resource{
     }
   }
   static init_method_set_sampling_rate() {
-    if (!this.#_bindings.method_set_sampling_rate) {
+    if (!this._bindings.method_set_sampling_rate) {
       let classname = new StringName("OggPacketSequence");
       let methodname = new StringName("set_sampling_rate");
-      this.#_bindings.method_set_sampling_rate = internal.classdb_get_method_bind(
+      this._bindings.method_set_sampling_rate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -87,10 +88,10 @@ export class OggPacketSequence extends Resource{
     }
   }
   static init_method_get_sampling_rate() {
-    if (!this.#_bindings.method_get_sampling_rate) {
+    if (!this._bindings.method_get_sampling_rate) {
       let classname = new StringName("OggPacketSequence");
       let methodname = new StringName("get_sampling_rate");
-      this.#_bindings.method_get_sampling_rate = internal.classdb_get_method_bind(
+      this._bindings.method_get_sampling_rate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -98,10 +99,10 @@ export class OggPacketSequence extends Resource{
     }
   }
   static init_method_get_length() {
-    if (!this.#_bindings.method_get_length) {
+    if (!this._bindings.method_get_length) {
       let classname = new StringName("OggPacketSequence");
       let methodname = new StringName("get_length");
-      this.#_bindings.method_get_length = internal.classdb_get_method_bind(
+      this._bindings.method_get_length = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -114,7 +115,7 @@ export class OggPacketSequence extends Resource{
   set_packet_data(_packet_data) {
     OggPacketSequence.init_method_set_packet_data();
     return _call_native_mb_no_ret(
-      OggPacketSequence.#_bindings.method_set_packet_data,
+      OggPacketSequence._bindings.method_set_packet_data,
       this._owner,
       _packet_data
     );
@@ -123,7 +124,7 @@ export class OggPacketSequence extends Resource{
   get_packet_data() {
     OggPacketSequence.init_method_get_packet_data();
     return _call_native_mb_ret(
-      OggPacketSequence.#_bindings.method_get_packet_data,
+      OggPacketSequence._bindings.method_get_packet_data,
       this._owner,
 			Variant.Type.ARRAY,
       
@@ -133,7 +134,7 @@ export class OggPacketSequence extends Resource{
   set_packet_granule_positions(_granule_positions) {
     OggPacketSequence.init_method_set_packet_granule_positions();
     return _call_native_mb_no_ret(
-      OggPacketSequence.#_bindings.method_set_packet_granule_positions,
+      OggPacketSequence._bindings.method_set_packet_granule_positions,
       this._owner,
       _granule_positions
     );
@@ -142,7 +143,7 @@ export class OggPacketSequence extends Resource{
   get_packet_granule_positions() {
     OggPacketSequence.init_method_get_packet_granule_positions();
     return _call_native_mb_ret(
-      OggPacketSequence.#_bindings.method_get_packet_granule_positions,
+      OggPacketSequence._bindings.method_get_packet_granule_positions,
       this._owner,
 			Variant.Type.PACKED_INT64_ARRAY,
     
@@ -153,7 +154,7 @@ export class OggPacketSequence extends Resource{
   set_sampling_rate(_sampling_rate) {
     OggPacketSequence.init_method_set_sampling_rate();
     return _call_native_mb_no_ret(
-      OggPacketSequence.#_bindings.method_set_sampling_rate,
+      OggPacketSequence._bindings.method_set_sampling_rate,
       this._owner,
       _sampling_rate
     );
@@ -162,7 +163,7 @@ export class OggPacketSequence extends Resource{
   get_sampling_rate() {
     OggPacketSequence.init_method_get_sampling_rate();
     return _call_native_mb_ret(
-      OggPacketSequence.#_bindings.method_get_sampling_rate,
+      OggPacketSequence._bindings.method_get_sampling_rate,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -173,7 +174,7 @@ export class OggPacketSequence extends Resource{
   get_length() {
     OggPacketSequence.init_method_get_length();
     return _call_native_mb_ret(
-      OggPacketSequence.#_bindings.method_get_length,
+      OggPacketSequence._bindings.method_get_length,
       this._owner,
 			Variant.Type.FLOAT,
     

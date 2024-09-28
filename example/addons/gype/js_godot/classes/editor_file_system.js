@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Node } from '@js_godot/classes/node'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_filesystem;
@@ -20,10 +21,10 @@ class _MethodBindings {
   method_get_file_type;
   method_reimport_files;
 }
+@GodotClass
 export class EditorFileSystem extends Node{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -33,10 +34,10 @@ export class EditorFileSystem extends Node{
     }
   }
   static init_method_get_filesystem() {
-    if (!this.#_bindings.method_get_filesystem) {
+    if (!this._bindings.method_get_filesystem) {
       let classname = new StringName("EditorFileSystem");
       let methodname = new StringName("get_filesystem");
-      this.#_bindings.method_get_filesystem = internal.classdb_get_method_bind(
+      this._bindings.method_get_filesystem = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         842323275
@@ -44,10 +45,10 @@ export class EditorFileSystem extends Node{
     }
   }
   static init_method_is_scanning() {
-    if (!this.#_bindings.method_is_scanning) {
+    if (!this._bindings.method_is_scanning) {
       let classname = new StringName("EditorFileSystem");
       let methodname = new StringName("is_scanning");
-      this.#_bindings.method_is_scanning = internal.classdb_get_method_bind(
+      this._bindings.method_is_scanning = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -55,10 +56,10 @@ export class EditorFileSystem extends Node{
     }
   }
   static init_method_get_scanning_progress() {
-    if (!this.#_bindings.method_get_scanning_progress) {
+    if (!this._bindings.method_get_scanning_progress) {
       let classname = new StringName("EditorFileSystem");
       let methodname = new StringName("get_scanning_progress");
-      this.#_bindings.method_get_scanning_progress = internal.classdb_get_method_bind(
+      this._bindings.method_get_scanning_progress = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -66,10 +67,10 @@ export class EditorFileSystem extends Node{
     }
   }
   static init_method_scan() {
-    if (!this.#_bindings.method_scan) {
+    if (!this._bindings.method_scan) {
       let classname = new StringName("EditorFileSystem");
       let methodname = new StringName("scan");
-      this.#_bindings.method_scan = internal.classdb_get_method_bind(
+      this._bindings.method_scan = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -77,10 +78,10 @@ export class EditorFileSystem extends Node{
     }
   }
   static init_method_scan_sources() {
-    if (!this.#_bindings.method_scan_sources) {
+    if (!this._bindings.method_scan_sources) {
       let classname = new StringName("EditorFileSystem");
       let methodname = new StringName("scan_sources");
-      this.#_bindings.method_scan_sources = internal.classdb_get_method_bind(
+      this._bindings.method_scan_sources = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -88,10 +89,10 @@ export class EditorFileSystem extends Node{
     }
   }
   static init_method_update_file() {
-    if (!this.#_bindings.method_update_file) {
+    if (!this._bindings.method_update_file) {
       let classname = new StringName("EditorFileSystem");
       let methodname = new StringName("update_file");
-      this.#_bindings.method_update_file = internal.classdb_get_method_bind(
+      this._bindings.method_update_file = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -99,10 +100,10 @@ export class EditorFileSystem extends Node{
     }
   }
   static init_method_get_filesystem_path() {
-    if (!this.#_bindings.method_get_filesystem_path) {
+    if (!this._bindings.method_get_filesystem_path) {
       let classname = new StringName("EditorFileSystem");
       let methodname = new StringName("get_filesystem_path");
-      this.#_bindings.method_get_filesystem_path = internal.classdb_get_method_bind(
+      this._bindings.method_get_filesystem_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3188521125
@@ -110,10 +111,10 @@ export class EditorFileSystem extends Node{
     }
   }
   static init_method_get_file_type() {
-    if (!this.#_bindings.method_get_file_type) {
+    if (!this._bindings.method_get_file_type) {
       let classname = new StringName("EditorFileSystem");
       let methodname = new StringName("get_file_type");
-      this.#_bindings.method_get_file_type = internal.classdb_get_method_bind(
+      this._bindings.method_get_file_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3135753539
@@ -121,10 +122,10 @@ export class EditorFileSystem extends Node{
     }
   }
   static init_method_reimport_files() {
-    if (!this.#_bindings.method_reimport_files) {
+    if (!this._bindings.method_reimport_files) {
       let classname = new StringName("EditorFileSystem");
       let methodname = new StringName("reimport_files");
-      this.#_bindings.method_reimport_files = internal.classdb_get_method_bind(
+      this._bindings.method_reimport_files = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4015028928
@@ -137,7 +138,7 @@ export class EditorFileSystem extends Node{
   get_filesystem() {
     EditorFileSystem.init_method_get_filesystem();
     return _call_native_mb_ret(
-      EditorFileSystem.#_bindings.method_get_filesystem,
+      EditorFileSystem._bindings.method_get_filesystem,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -147,7 +148,7 @@ export class EditorFileSystem extends Node{
   is_scanning() {
     EditorFileSystem.init_method_is_scanning();
     return _call_native_mb_ret(
-      EditorFileSystem.#_bindings.method_is_scanning,
+      EditorFileSystem._bindings.method_is_scanning,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -158,7 +159,7 @@ export class EditorFileSystem extends Node{
   get_scanning_progress() {
     EditorFileSystem.init_method_get_scanning_progress();
     return _call_native_mb_ret(
-      EditorFileSystem.#_bindings.method_get_scanning_progress,
+      EditorFileSystem._bindings.method_get_scanning_progress,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -169,7 +170,7 @@ export class EditorFileSystem extends Node{
   scan() {
     EditorFileSystem.init_method_scan();
     return _call_native_mb_no_ret(
-      EditorFileSystem.#_bindings.method_scan,
+      EditorFileSystem._bindings.method_scan,
       this._owner,
       
     );
@@ -178,7 +179,7 @@ export class EditorFileSystem extends Node{
   scan_sources() {
     EditorFileSystem.init_method_scan_sources();
     return _call_native_mb_no_ret(
-      EditorFileSystem.#_bindings.method_scan_sources,
+      EditorFileSystem._bindings.method_scan_sources,
       this._owner,
       
     );
@@ -187,7 +188,7 @@ export class EditorFileSystem extends Node{
   update_file(_path) {
     EditorFileSystem.init_method_update_file();
     return _call_native_mb_no_ret(
-      EditorFileSystem.#_bindings.method_update_file,
+      EditorFileSystem._bindings.method_update_file,
       this._owner,
       _path
     );
@@ -196,7 +197,7 @@ export class EditorFileSystem extends Node{
   get_filesystem_path(_path) {
     EditorFileSystem.init_method_get_filesystem_path();
     return _call_native_mb_ret(
-      EditorFileSystem.#_bindings.method_get_filesystem_path,
+      EditorFileSystem._bindings.method_get_filesystem_path,
       this._owner,
 			Variant.Type.OBJECT,
       _path
@@ -206,7 +207,7 @@ export class EditorFileSystem extends Node{
   get_file_type(_path) {
     EditorFileSystem.init_method_get_file_type();
     return _call_native_mb_ret(
-      EditorFileSystem.#_bindings.method_get_file_type,
+      EditorFileSystem._bindings.method_get_file_type,
       this._owner,
 			Variant.Type.STRING,
     
@@ -217,7 +218,7 @@ export class EditorFileSystem extends Node{
   reimport_files(_files) {
     EditorFileSystem.init_method_reimport_files();
     return _call_native_mb_no_ret(
-      EditorFileSystem.#_bindings.method_reimport_files,
+      EditorFileSystem._bindings.method_reimport_files,
       this._owner,
       _files
     );

@@ -11,7 +11,9 @@ add_library(quickjs STATIC ${SOURCE})
 
 target_include_directories(quickjs 
     PUBLIC 
-        ${PROJECT_SOURCE_DIR}/include)
+        ${PROJECT_SOURCE_DIR}/include
+    PRIVATE
+        ${CMAKE_SOURCE_DIR}/include)
 
 target_link_libraries(quickjs PUBLIC godot-cpp)
 
@@ -28,6 +30,6 @@ target_compile_definitions(quickjs PRIVATE
     -D_GNU_SOURCE
     -DCONFIG_BIGNUM
     # -DDUMP_PROMISE
-    -DDUMP_LEAKS
+    # -DDUMP_LEAKS
     # -DDUMP_MODULE_RESOLVE
     -DCONFIG_VERSION="2024-05-20")

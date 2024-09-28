@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GodotObject } from '@js_godot/classes/godot_object'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_vrs_min_radius;
@@ -16,10 +17,10 @@ class _MethodBindings {
   method_set_vrs_strength;
   method_make_vrs_texture;
 }
+@GodotClass
 export class XRVRS extends GodotObject{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -29,10 +30,10 @@ export class XRVRS extends GodotObject{
     }
   }
   static init_method_get_vrs_min_radius() {
-    if (!this.#_bindings.method_get_vrs_min_radius) {
+    if (!this._bindings.method_get_vrs_min_radius) {
       let classname = new StringName("XRVRS");
       let methodname = new StringName("get_vrs_min_radius");
-      this.#_bindings.method_get_vrs_min_radius = internal.classdb_get_method_bind(
+      this._bindings.method_get_vrs_min_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -40,10 +41,10 @@ export class XRVRS extends GodotObject{
     }
   }
   static init_method_set_vrs_min_radius() {
-    if (!this.#_bindings.method_set_vrs_min_radius) {
+    if (!this._bindings.method_set_vrs_min_radius) {
       let classname = new StringName("XRVRS");
       let methodname = new StringName("set_vrs_min_radius");
-      this.#_bindings.method_set_vrs_min_radius = internal.classdb_get_method_bind(
+      this._bindings.method_set_vrs_min_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -51,10 +52,10 @@ export class XRVRS extends GodotObject{
     }
   }
   static init_method_get_vrs_strength() {
-    if (!this.#_bindings.method_get_vrs_strength) {
+    if (!this._bindings.method_get_vrs_strength) {
       let classname = new StringName("XRVRS");
       let methodname = new StringName("get_vrs_strength");
-      this.#_bindings.method_get_vrs_strength = internal.classdb_get_method_bind(
+      this._bindings.method_get_vrs_strength = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -62,10 +63,10 @@ export class XRVRS extends GodotObject{
     }
   }
   static init_method_set_vrs_strength() {
-    if (!this.#_bindings.method_set_vrs_strength) {
+    if (!this._bindings.method_set_vrs_strength) {
       let classname = new StringName("XRVRS");
       let methodname = new StringName("set_vrs_strength");
-      this.#_bindings.method_set_vrs_strength = internal.classdb_get_method_bind(
+      this._bindings.method_set_vrs_strength = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -73,10 +74,10 @@ export class XRVRS extends GodotObject{
     }
   }
   static init_method_make_vrs_texture() {
-    if (!this.#_bindings.method_make_vrs_texture) {
+    if (!this._bindings.method_make_vrs_texture) {
       let classname = new StringName("XRVRS");
       let methodname = new StringName("make_vrs_texture");
-      this.#_bindings.method_make_vrs_texture = internal.classdb_get_method_bind(
+      this._bindings.method_make_vrs_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3647044786
@@ -89,7 +90,7 @@ export class XRVRS extends GodotObject{
   get_vrs_min_radius() {
     XRVRS.init_method_get_vrs_min_radius();
     return _call_native_mb_ret(
-      XRVRS.#_bindings.method_get_vrs_min_radius,
+      XRVRS._bindings.method_get_vrs_min_radius,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -100,7 +101,7 @@ export class XRVRS extends GodotObject{
   set_vrs_min_radius(_radius) {
     XRVRS.init_method_set_vrs_min_radius();
     return _call_native_mb_no_ret(
-      XRVRS.#_bindings.method_set_vrs_min_radius,
+      XRVRS._bindings.method_set_vrs_min_radius,
       this._owner,
       _radius
     );
@@ -109,7 +110,7 @@ export class XRVRS extends GodotObject{
   get_vrs_strength() {
     XRVRS.init_method_get_vrs_strength();
     return _call_native_mb_ret(
-      XRVRS.#_bindings.method_get_vrs_strength,
+      XRVRS._bindings.method_get_vrs_strength,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -120,7 +121,7 @@ export class XRVRS extends GodotObject{
   set_vrs_strength(_strength) {
     XRVRS.init_method_set_vrs_strength();
     return _call_native_mb_no_ret(
-      XRVRS.#_bindings.method_set_vrs_strength,
+      XRVRS._bindings.method_set_vrs_strength,
       this._owner,
       _strength
     );
@@ -129,7 +130,7 @@ export class XRVRS extends GodotObject{
   make_vrs_texture(_target_size, _eye_foci) {
     XRVRS.init_method_make_vrs_texture();
     return _call_native_mb_ret(
-      XRVRS.#_bindings.method_make_vrs_texture,
+      XRVRS._bindings.method_make_vrs_texture,
       this._owner,
 			Variant.Type.RID,
     

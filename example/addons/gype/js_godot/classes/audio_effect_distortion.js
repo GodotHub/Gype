@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { AudioEffect } from '@js_godot/classes/audio_effect'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_mode;
@@ -21,10 +22,10 @@ class _MethodBindings {
   method_set_post_gain;
   method_get_post_gain;
 }
+@GodotClass
 export class AudioEffectDistortion extends AudioEffect{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -34,10 +35,10 @@ export class AudioEffectDistortion extends AudioEffect{
     }
   }
   static init_method_set_mode() {
-    if (!this.#_bindings.method_set_mode) {
+    if (!this._bindings.method_set_mode) {
       let classname = new StringName("AudioEffectDistortion");
       let methodname = new StringName("set_mode");
-      this.#_bindings.method_set_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1314744793
@@ -45,10 +46,10 @@ export class AudioEffectDistortion extends AudioEffect{
     }
   }
   static init_method_get_mode() {
-    if (!this.#_bindings.method_get_mode) {
+    if (!this._bindings.method_get_mode) {
       let classname = new StringName("AudioEffectDistortion");
       let methodname = new StringName("get_mode");
-      this.#_bindings.method_get_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         809118343
@@ -56,10 +57,10 @@ export class AudioEffectDistortion extends AudioEffect{
     }
   }
   static init_method_set_pre_gain() {
-    if (!this.#_bindings.method_set_pre_gain) {
+    if (!this._bindings.method_set_pre_gain) {
       let classname = new StringName("AudioEffectDistortion");
       let methodname = new StringName("set_pre_gain");
-      this.#_bindings.method_set_pre_gain = internal.classdb_get_method_bind(
+      this._bindings.method_set_pre_gain = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -67,10 +68,10 @@ export class AudioEffectDistortion extends AudioEffect{
     }
   }
   static init_method_get_pre_gain() {
-    if (!this.#_bindings.method_get_pre_gain) {
+    if (!this._bindings.method_get_pre_gain) {
       let classname = new StringName("AudioEffectDistortion");
       let methodname = new StringName("get_pre_gain");
-      this.#_bindings.method_get_pre_gain = internal.classdb_get_method_bind(
+      this._bindings.method_get_pre_gain = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -78,10 +79,10 @@ export class AudioEffectDistortion extends AudioEffect{
     }
   }
   static init_method_set_keep_hf_hz() {
-    if (!this.#_bindings.method_set_keep_hf_hz) {
+    if (!this._bindings.method_set_keep_hf_hz) {
       let classname = new StringName("AudioEffectDistortion");
       let methodname = new StringName("set_keep_hf_hz");
-      this.#_bindings.method_set_keep_hf_hz = internal.classdb_get_method_bind(
+      this._bindings.method_set_keep_hf_hz = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -89,10 +90,10 @@ export class AudioEffectDistortion extends AudioEffect{
     }
   }
   static init_method_get_keep_hf_hz() {
-    if (!this.#_bindings.method_get_keep_hf_hz) {
+    if (!this._bindings.method_get_keep_hf_hz) {
       let classname = new StringName("AudioEffectDistortion");
       let methodname = new StringName("get_keep_hf_hz");
-      this.#_bindings.method_get_keep_hf_hz = internal.classdb_get_method_bind(
+      this._bindings.method_get_keep_hf_hz = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -100,10 +101,10 @@ export class AudioEffectDistortion extends AudioEffect{
     }
   }
   static init_method_set_drive() {
-    if (!this.#_bindings.method_set_drive) {
+    if (!this._bindings.method_set_drive) {
       let classname = new StringName("AudioEffectDistortion");
       let methodname = new StringName("set_drive");
-      this.#_bindings.method_set_drive = internal.classdb_get_method_bind(
+      this._bindings.method_set_drive = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -111,10 +112,10 @@ export class AudioEffectDistortion extends AudioEffect{
     }
   }
   static init_method_get_drive() {
-    if (!this.#_bindings.method_get_drive) {
+    if (!this._bindings.method_get_drive) {
       let classname = new StringName("AudioEffectDistortion");
       let methodname = new StringName("get_drive");
-      this.#_bindings.method_get_drive = internal.classdb_get_method_bind(
+      this._bindings.method_get_drive = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -122,10 +123,10 @@ export class AudioEffectDistortion extends AudioEffect{
     }
   }
   static init_method_set_post_gain() {
-    if (!this.#_bindings.method_set_post_gain) {
+    if (!this._bindings.method_set_post_gain) {
       let classname = new StringName("AudioEffectDistortion");
       let methodname = new StringName("set_post_gain");
-      this.#_bindings.method_set_post_gain = internal.classdb_get_method_bind(
+      this._bindings.method_set_post_gain = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -133,10 +134,10 @@ export class AudioEffectDistortion extends AudioEffect{
     }
   }
   static init_method_get_post_gain() {
-    if (!this.#_bindings.method_get_post_gain) {
+    if (!this._bindings.method_get_post_gain) {
       let classname = new StringName("AudioEffectDistortion");
       let methodname = new StringName("get_post_gain");
-      this.#_bindings.method_get_post_gain = internal.classdb_get_method_bind(
+      this._bindings.method_get_post_gain = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -149,7 +150,7 @@ export class AudioEffectDistortion extends AudioEffect{
   set_mode(_mode) {
     AudioEffectDistortion.init_method_set_mode();
     return _call_native_mb_no_ret(
-      AudioEffectDistortion.#_bindings.method_set_mode,
+      AudioEffectDistortion._bindings.method_set_mode,
       this._owner,
       _mode
     );
@@ -158,7 +159,7 @@ export class AudioEffectDistortion extends AudioEffect{
   get_mode() {
     AudioEffectDistortion.init_method_get_mode();
     return _call_native_mb_ret(
-      AudioEffectDistortion.#_bindings.method_get_mode,
+      AudioEffectDistortion._bindings.method_get_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -169,7 +170,7 @@ export class AudioEffectDistortion extends AudioEffect{
   set_pre_gain(_pre_gain) {
     AudioEffectDistortion.init_method_set_pre_gain();
     return _call_native_mb_no_ret(
-      AudioEffectDistortion.#_bindings.method_set_pre_gain,
+      AudioEffectDistortion._bindings.method_set_pre_gain,
       this._owner,
       _pre_gain
     );
@@ -178,7 +179,7 @@ export class AudioEffectDistortion extends AudioEffect{
   get_pre_gain() {
     AudioEffectDistortion.init_method_get_pre_gain();
     return _call_native_mb_ret(
-      AudioEffectDistortion.#_bindings.method_get_pre_gain,
+      AudioEffectDistortion._bindings.method_get_pre_gain,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -189,7 +190,7 @@ export class AudioEffectDistortion extends AudioEffect{
   set_keep_hf_hz(_keep_hf_hz) {
     AudioEffectDistortion.init_method_set_keep_hf_hz();
     return _call_native_mb_no_ret(
-      AudioEffectDistortion.#_bindings.method_set_keep_hf_hz,
+      AudioEffectDistortion._bindings.method_set_keep_hf_hz,
       this._owner,
       _keep_hf_hz
     );
@@ -198,7 +199,7 @@ export class AudioEffectDistortion extends AudioEffect{
   get_keep_hf_hz() {
     AudioEffectDistortion.init_method_get_keep_hf_hz();
     return _call_native_mb_ret(
-      AudioEffectDistortion.#_bindings.method_get_keep_hf_hz,
+      AudioEffectDistortion._bindings.method_get_keep_hf_hz,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -209,7 +210,7 @@ export class AudioEffectDistortion extends AudioEffect{
   set_drive(_drive) {
     AudioEffectDistortion.init_method_set_drive();
     return _call_native_mb_no_ret(
-      AudioEffectDistortion.#_bindings.method_set_drive,
+      AudioEffectDistortion._bindings.method_set_drive,
       this._owner,
       _drive
     );
@@ -218,7 +219,7 @@ export class AudioEffectDistortion extends AudioEffect{
   get_drive() {
     AudioEffectDistortion.init_method_get_drive();
     return _call_native_mb_ret(
-      AudioEffectDistortion.#_bindings.method_get_drive,
+      AudioEffectDistortion._bindings.method_get_drive,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -229,7 +230,7 @@ export class AudioEffectDistortion extends AudioEffect{
   set_post_gain(_post_gain) {
     AudioEffectDistortion.init_method_set_post_gain();
     return _call_native_mb_no_ret(
-      AudioEffectDistortion.#_bindings.method_set_post_gain,
+      AudioEffectDistortion._bindings.method_set_post_gain,
       this._owner,
       _post_gain
     );
@@ -238,7 +239,7 @@ export class AudioEffectDistortion extends AudioEffect{
   get_post_gain() {
     AudioEffectDistortion.init_method_get_post_gain();
     return _call_native_mb_ret(
-      AudioEffectDistortion.#_bindings.method_get_post_gain,
+      AudioEffectDistortion._bindings.method_get_post_gain,
       this._owner,
 			Variant.Type.FLOAT,
     

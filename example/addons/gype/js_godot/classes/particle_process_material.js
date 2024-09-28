@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Material } from '@js_godot/classes/material'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_direction;
@@ -103,10 +104,10 @@ class _MethodBindings {
   method_set_collision_bounce;
   method_get_collision_bounce;
 }
+@GodotClass
 export class ParticleProcessMaterial extends Material{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -116,10 +117,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_direction() {
-    if (!this.#_bindings.method_set_direction) {
+    if (!this._bindings.method_set_direction) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_direction");
-      this.#_bindings.method_set_direction = internal.classdb_get_method_bind(
+      this._bindings.method_set_direction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -127,10 +128,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_direction() {
-    if (!this.#_bindings.method_get_direction) {
+    if (!this._bindings.method_get_direction) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_direction");
-      this.#_bindings.method_get_direction = internal.classdb_get_method_bind(
+      this._bindings.method_get_direction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3360562783
@@ -138,10 +139,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_inherit_velocity_ratio() {
-    if (!this.#_bindings.method_set_inherit_velocity_ratio) {
+    if (!this._bindings.method_set_inherit_velocity_ratio) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_inherit_velocity_ratio");
-      this.#_bindings.method_set_inherit_velocity_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_set_inherit_velocity_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -149,10 +150,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_inherit_velocity_ratio() {
-    if (!this.#_bindings.method_get_inherit_velocity_ratio) {
+    if (!this._bindings.method_get_inherit_velocity_ratio) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_inherit_velocity_ratio");
-      this.#_bindings.method_get_inherit_velocity_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_get_inherit_velocity_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         191475506
@@ -160,10 +161,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_spread() {
-    if (!this.#_bindings.method_set_spread) {
+    if (!this._bindings.method_set_spread) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_spread");
-      this.#_bindings.method_set_spread = internal.classdb_get_method_bind(
+      this._bindings.method_set_spread = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -171,10 +172,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_spread() {
-    if (!this.#_bindings.method_get_spread) {
+    if (!this._bindings.method_get_spread) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_spread");
-      this.#_bindings.method_get_spread = internal.classdb_get_method_bind(
+      this._bindings.method_get_spread = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -182,10 +183,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_flatness() {
-    if (!this.#_bindings.method_set_flatness) {
+    if (!this._bindings.method_set_flatness) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_flatness");
-      this.#_bindings.method_set_flatness = internal.classdb_get_method_bind(
+      this._bindings.method_set_flatness = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -193,10 +194,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_flatness() {
-    if (!this.#_bindings.method_get_flatness) {
+    if (!this._bindings.method_get_flatness) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_flatness");
-      this.#_bindings.method_get_flatness = internal.classdb_get_method_bind(
+      this._bindings.method_get_flatness = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -204,10 +205,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_param() {
-    if (!this.#_bindings.method_set_param) {
+    if (!this._bindings.method_set_param) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_param");
-      this.#_bindings.method_set_param = internal.classdb_get_method_bind(
+      this._bindings.method_set_param = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         676779352
@@ -215,10 +216,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_param() {
-    if (!this.#_bindings.method_get_param) {
+    if (!this._bindings.method_get_param) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_param");
-      this.#_bindings.method_get_param = internal.classdb_get_method_bind(
+      this._bindings.method_get_param = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2623708480
@@ -226,10 +227,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_param_min() {
-    if (!this.#_bindings.method_set_param_min) {
+    if (!this._bindings.method_set_param_min) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_param_min");
-      this.#_bindings.method_set_param_min = internal.classdb_get_method_bind(
+      this._bindings.method_set_param_min = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2295964248
@@ -237,10 +238,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_param_min() {
-    if (!this.#_bindings.method_get_param_min) {
+    if (!this._bindings.method_get_param_min) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_param_min");
-      this.#_bindings.method_get_param_min = internal.classdb_get_method_bind(
+      this._bindings.method_get_param_min = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3903786503
@@ -248,10 +249,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_param_max() {
-    if (!this.#_bindings.method_set_param_max) {
+    if (!this._bindings.method_set_param_max) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_param_max");
-      this.#_bindings.method_set_param_max = internal.classdb_get_method_bind(
+      this._bindings.method_set_param_max = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2295964248
@@ -259,10 +260,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_param_max() {
-    if (!this.#_bindings.method_get_param_max) {
+    if (!this._bindings.method_get_param_max) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_param_max");
-      this.#_bindings.method_get_param_max = internal.classdb_get_method_bind(
+      this._bindings.method_get_param_max = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3903786503
@@ -270,10 +271,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_param_texture() {
-    if (!this.#_bindings.method_set_param_texture) {
+    if (!this._bindings.method_set_param_texture) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_param_texture");
-      this.#_bindings.method_set_param_texture = internal.classdb_get_method_bind(
+      this._bindings.method_set_param_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         526976089
@@ -281,10 +282,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_param_texture() {
-    if (!this.#_bindings.method_get_param_texture) {
+    if (!this._bindings.method_get_param_texture) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_param_texture");
-      this.#_bindings.method_get_param_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_param_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3489372978
@@ -292,10 +293,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_color() {
-    if (!this.#_bindings.method_set_color) {
+    if (!this._bindings.method_set_color) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_color");
-      this.#_bindings.method_set_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -303,10 +304,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_color() {
-    if (!this.#_bindings.method_get_color) {
+    if (!this._bindings.method_get_color) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_color");
-      this.#_bindings.method_get_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -314,10 +315,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_color_ramp() {
-    if (!this.#_bindings.method_set_color_ramp) {
+    if (!this._bindings.method_set_color_ramp) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_color_ramp");
-      this.#_bindings.method_set_color_ramp = internal.classdb_get_method_bind(
+      this._bindings.method_set_color_ramp = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4051416890
@@ -325,10 +326,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_color_ramp() {
-    if (!this.#_bindings.method_get_color_ramp) {
+    if (!this._bindings.method_get_color_ramp) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_color_ramp");
-      this.#_bindings.method_get_color_ramp = internal.classdb_get_method_bind(
+      this._bindings.method_get_color_ramp = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -336,10 +337,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_alpha_curve() {
-    if (!this.#_bindings.method_set_alpha_curve) {
+    if (!this._bindings.method_set_alpha_curve) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_alpha_curve");
-      this.#_bindings.method_set_alpha_curve = internal.classdb_get_method_bind(
+      this._bindings.method_set_alpha_curve = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4051416890
@@ -347,10 +348,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_alpha_curve() {
-    if (!this.#_bindings.method_get_alpha_curve) {
+    if (!this._bindings.method_get_alpha_curve) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_alpha_curve");
-      this.#_bindings.method_get_alpha_curve = internal.classdb_get_method_bind(
+      this._bindings.method_get_alpha_curve = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -358,10 +359,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_emission_curve() {
-    if (!this.#_bindings.method_set_emission_curve) {
+    if (!this._bindings.method_set_emission_curve) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_emission_curve");
-      this.#_bindings.method_set_emission_curve = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_curve = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4051416890
@@ -369,10 +370,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_emission_curve() {
-    if (!this.#_bindings.method_get_emission_curve) {
+    if (!this._bindings.method_get_emission_curve) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_emission_curve");
-      this.#_bindings.method_get_emission_curve = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_curve = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -380,10 +381,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_color_initial_ramp() {
-    if (!this.#_bindings.method_set_color_initial_ramp) {
+    if (!this._bindings.method_set_color_initial_ramp) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_color_initial_ramp");
-      this.#_bindings.method_set_color_initial_ramp = internal.classdb_get_method_bind(
+      this._bindings.method_set_color_initial_ramp = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4051416890
@@ -391,10 +392,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_color_initial_ramp() {
-    if (!this.#_bindings.method_get_color_initial_ramp) {
+    if (!this._bindings.method_get_color_initial_ramp) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_color_initial_ramp");
-      this.#_bindings.method_get_color_initial_ramp = internal.classdb_get_method_bind(
+      this._bindings.method_get_color_initial_ramp = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -402,10 +403,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_velocity_limit_curve() {
-    if (!this.#_bindings.method_set_velocity_limit_curve) {
+    if (!this._bindings.method_set_velocity_limit_curve) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_velocity_limit_curve");
-      this.#_bindings.method_set_velocity_limit_curve = internal.classdb_get_method_bind(
+      this._bindings.method_set_velocity_limit_curve = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4051416890
@@ -413,10 +414,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_velocity_limit_curve() {
-    if (!this.#_bindings.method_get_velocity_limit_curve) {
+    if (!this._bindings.method_get_velocity_limit_curve) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_velocity_limit_curve");
-      this.#_bindings.method_get_velocity_limit_curve = internal.classdb_get_method_bind(
+      this._bindings.method_get_velocity_limit_curve = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -424,10 +425,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_particle_flag() {
-    if (!this.#_bindings.method_set_particle_flag) {
+    if (!this._bindings.method_set_particle_flag) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_particle_flag");
-      this.#_bindings.method_set_particle_flag = internal.classdb_get_method_bind(
+      this._bindings.method_set_particle_flag = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1711815571
@@ -435,10 +436,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_particle_flag() {
-    if (!this.#_bindings.method_get_particle_flag) {
+    if (!this._bindings.method_get_particle_flag) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_particle_flag");
-      this.#_bindings.method_get_particle_flag = internal.classdb_get_method_bind(
+      this._bindings.method_get_particle_flag = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3895316907
@@ -446,10 +447,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_velocity_pivot() {
-    if (!this.#_bindings.method_set_velocity_pivot) {
+    if (!this._bindings.method_set_velocity_pivot) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_velocity_pivot");
-      this.#_bindings.method_set_velocity_pivot = internal.classdb_get_method_bind(
+      this._bindings.method_set_velocity_pivot = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -457,10 +458,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_velocity_pivot() {
-    if (!this.#_bindings.method_get_velocity_pivot) {
+    if (!this._bindings.method_get_velocity_pivot) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_velocity_pivot");
-      this.#_bindings.method_get_velocity_pivot = internal.classdb_get_method_bind(
+      this._bindings.method_get_velocity_pivot = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3783033775
@@ -468,10 +469,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_emission_shape() {
-    if (!this.#_bindings.method_set_emission_shape) {
+    if (!this._bindings.method_set_emission_shape) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_emission_shape");
-      this.#_bindings.method_set_emission_shape = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_shape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         461501442
@@ -479,10 +480,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_emission_shape() {
-    if (!this.#_bindings.method_get_emission_shape) {
+    if (!this._bindings.method_get_emission_shape) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_emission_shape");
-      this.#_bindings.method_get_emission_shape = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_shape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3719733018
@@ -490,10 +491,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_emission_sphere_radius() {
-    if (!this.#_bindings.method_set_emission_sphere_radius) {
+    if (!this._bindings.method_set_emission_sphere_radius) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_emission_sphere_radius");
-      this.#_bindings.method_set_emission_sphere_radius = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_sphere_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -501,10 +502,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_emission_sphere_radius() {
-    if (!this.#_bindings.method_get_emission_sphere_radius) {
+    if (!this._bindings.method_get_emission_sphere_radius) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_emission_sphere_radius");
-      this.#_bindings.method_get_emission_sphere_radius = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_sphere_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -512,10 +513,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_emission_box_extents() {
-    if (!this.#_bindings.method_set_emission_box_extents) {
+    if (!this._bindings.method_set_emission_box_extents) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_emission_box_extents");
-      this.#_bindings.method_set_emission_box_extents = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_box_extents = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -523,10 +524,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_emission_box_extents() {
-    if (!this.#_bindings.method_get_emission_box_extents) {
+    if (!this._bindings.method_get_emission_box_extents) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_emission_box_extents");
-      this.#_bindings.method_get_emission_box_extents = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_box_extents = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3360562783
@@ -534,10 +535,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_emission_point_texture() {
-    if (!this.#_bindings.method_set_emission_point_texture) {
+    if (!this._bindings.method_set_emission_point_texture) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_emission_point_texture");
-      this.#_bindings.method_set_emission_point_texture = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_point_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4051416890
@@ -545,10 +546,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_emission_point_texture() {
-    if (!this.#_bindings.method_get_emission_point_texture) {
+    if (!this._bindings.method_get_emission_point_texture) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_emission_point_texture");
-      this.#_bindings.method_get_emission_point_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_point_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -556,10 +557,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_emission_normal_texture() {
-    if (!this.#_bindings.method_set_emission_normal_texture) {
+    if (!this._bindings.method_set_emission_normal_texture) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_emission_normal_texture");
-      this.#_bindings.method_set_emission_normal_texture = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_normal_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4051416890
@@ -567,10 +568,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_emission_normal_texture() {
-    if (!this.#_bindings.method_get_emission_normal_texture) {
+    if (!this._bindings.method_get_emission_normal_texture) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_emission_normal_texture");
-      this.#_bindings.method_get_emission_normal_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_normal_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -578,10 +579,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_emission_color_texture() {
-    if (!this.#_bindings.method_set_emission_color_texture) {
+    if (!this._bindings.method_set_emission_color_texture) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_emission_color_texture");
-      this.#_bindings.method_set_emission_color_texture = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_color_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4051416890
@@ -589,10 +590,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_emission_color_texture() {
-    if (!this.#_bindings.method_get_emission_color_texture) {
+    if (!this._bindings.method_get_emission_color_texture) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_emission_color_texture");
-      this.#_bindings.method_get_emission_color_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_color_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -600,10 +601,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_emission_point_count() {
-    if (!this.#_bindings.method_set_emission_point_count) {
+    if (!this._bindings.method_set_emission_point_count) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_emission_point_count");
-      this.#_bindings.method_set_emission_point_count = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_point_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -611,10 +612,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_emission_point_count() {
-    if (!this.#_bindings.method_get_emission_point_count) {
+    if (!this._bindings.method_get_emission_point_count) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_emission_point_count");
-      this.#_bindings.method_get_emission_point_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_point_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -622,10 +623,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_emission_ring_axis() {
-    if (!this.#_bindings.method_set_emission_ring_axis) {
+    if (!this._bindings.method_set_emission_ring_axis) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_emission_ring_axis");
-      this.#_bindings.method_set_emission_ring_axis = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_ring_axis = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -633,10 +634,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_emission_ring_axis() {
-    if (!this.#_bindings.method_get_emission_ring_axis) {
+    if (!this._bindings.method_get_emission_ring_axis) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_emission_ring_axis");
-      this.#_bindings.method_get_emission_ring_axis = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_ring_axis = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3360562783
@@ -644,10 +645,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_emission_ring_height() {
-    if (!this.#_bindings.method_set_emission_ring_height) {
+    if (!this._bindings.method_set_emission_ring_height) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_emission_ring_height");
-      this.#_bindings.method_set_emission_ring_height = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_ring_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -655,10 +656,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_emission_ring_height() {
-    if (!this.#_bindings.method_get_emission_ring_height) {
+    if (!this._bindings.method_get_emission_ring_height) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_emission_ring_height");
-      this.#_bindings.method_get_emission_ring_height = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_ring_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -666,10 +667,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_emission_ring_radius() {
-    if (!this.#_bindings.method_set_emission_ring_radius) {
+    if (!this._bindings.method_set_emission_ring_radius) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_emission_ring_radius");
-      this.#_bindings.method_set_emission_ring_radius = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_ring_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -677,10 +678,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_emission_ring_radius() {
-    if (!this.#_bindings.method_get_emission_ring_radius) {
+    if (!this._bindings.method_get_emission_ring_radius) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_emission_ring_radius");
-      this.#_bindings.method_get_emission_ring_radius = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_ring_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -688,10 +689,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_emission_ring_inner_radius() {
-    if (!this.#_bindings.method_set_emission_ring_inner_radius) {
+    if (!this._bindings.method_set_emission_ring_inner_radius) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_emission_ring_inner_radius");
-      this.#_bindings.method_set_emission_ring_inner_radius = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_ring_inner_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -699,10 +700,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_emission_ring_inner_radius() {
-    if (!this.#_bindings.method_get_emission_ring_inner_radius) {
+    if (!this._bindings.method_get_emission_ring_inner_radius) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_emission_ring_inner_radius");
-      this.#_bindings.method_get_emission_ring_inner_radius = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_ring_inner_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -710,10 +711,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_emission_shape_offset() {
-    if (!this.#_bindings.method_set_emission_shape_offset) {
+    if (!this._bindings.method_set_emission_shape_offset) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_emission_shape_offset");
-      this.#_bindings.method_set_emission_shape_offset = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_shape_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -721,10 +722,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_emission_shape_offset() {
-    if (!this.#_bindings.method_get_emission_shape_offset) {
+    if (!this._bindings.method_get_emission_shape_offset) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_emission_shape_offset");
-      this.#_bindings.method_get_emission_shape_offset = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_shape_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3360562783
@@ -732,10 +733,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_emission_shape_scale() {
-    if (!this.#_bindings.method_set_emission_shape_scale) {
+    if (!this._bindings.method_set_emission_shape_scale) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_emission_shape_scale");
-      this.#_bindings.method_set_emission_shape_scale = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_shape_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -743,10 +744,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_emission_shape_scale() {
-    if (!this.#_bindings.method_get_emission_shape_scale) {
+    if (!this._bindings.method_get_emission_shape_scale) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_emission_shape_scale");
-      this.#_bindings.method_get_emission_shape_scale = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_shape_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3360562783
@@ -754,10 +755,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_turbulence_enabled() {
-    if (!this.#_bindings.method_get_turbulence_enabled) {
+    if (!this._bindings.method_get_turbulence_enabled) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_turbulence_enabled");
-      this.#_bindings.method_get_turbulence_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_get_turbulence_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -765,10 +766,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_turbulence_enabled() {
-    if (!this.#_bindings.method_set_turbulence_enabled) {
+    if (!this._bindings.method_set_turbulence_enabled) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_turbulence_enabled");
-      this.#_bindings.method_set_turbulence_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_turbulence_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -776,10 +777,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_turbulence_noise_strength() {
-    if (!this.#_bindings.method_get_turbulence_noise_strength) {
+    if (!this._bindings.method_get_turbulence_noise_strength) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_turbulence_noise_strength");
-      this.#_bindings.method_get_turbulence_noise_strength = internal.classdb_get_method_bind(
+      this._bindings.method_get_turbulence_noise_strength = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -787,10 +788,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_turbulence_noise_strength() {
-    if (!this.#_bindings.method_set_turbulence_noise_strength) {
+    if (!this._bindings.method_set_turbulence_noise_strength) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_turbulence_noise_strength");
-      this.#_bindings.method_set_turbulence_noise_strength = internal.classdb_get_method_bind(
+      this._bindings.method_set_turbulence_noise_strength = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -798,10 +799,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_turbulence_noise_scale() {
-    if (!this.#_bindings.method_get_turbulence_noise_scale) {
+    if (!this._bindings.method_get_turbulence_noise_scale) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_turbulence_noise_scale");
-      this.#_bindings.method_get_turbulence_noise_scale = internal.classdb_get_method_bind(
+      this._bindings.method_get_turbulence_noise_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -809,10 +810,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_turbulence_noise_scale() {
-    if (!this.#_bindings.method_set_turbulence_noise_scale) {
+    if (!this._bindings.method_set_turbulence_noise_scale) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_turbulence_noise_scale");
-      this.#_bindings.method_set_turbulence_noise_scale = internal.classdb_get_method_bind(
+      this._bindings.method_set_turbulence_noise_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -820,10 +821,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_turbulence_noise_speed_random() {
-    if (!this.#_bindings.method_get_turbulence_noise_speed_random) {
+    if (!this._bindings.method_get_turbulence_noise_speed_random) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_turbulence_noise_speed_random");
-      this.#_bindings.method_get_turbulence_noise_speed_random = internal.classdb_get_method_bind(
+      this._bindings.method_get_turbulence_noise_speed_random = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -831,10 +832,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_turbulence_noise_speed_random() {
-    if (!this.#_bindings.method_set_turbulence_noise_speed_random) {
+    if (!this._bindings.method_set_turbulence_noise_speed_random) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_turbulence_noise_speed_random");
-      this.#_bindings.method_set_turbulence_noise_speed_random = internal.classdb_get_method_bind(
+      this._bindings.method_set_turbulence_noise_speed_random = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -842,10 +843,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_turbulence_noise_speed() {
-    if (!this.#_bindings.method_get_turbulence_noise_speed) {
+    if (!this._bindings.method_get_turbulence_noise_speed) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_turbulence_noise_speed");
-      this.#_bindings.method_get_turbulence_noise_speed = internal.classdb_get_method_bind(
+      this._bindings.method_get_turbulence_noise_speed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3360562783
@@ -853,10 +854,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_turbulence_noise_speed() {
-    if (!this.#_bindings.method_set_turbulence_noise_speed) {
+    if (!this._bindings.method_set_turbulence_noise_speed) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_turbulence_noise_speed");
-      this.#_bindings.method_set_turbulence_noise_speed = internal.classdb_get_method_bind(
+      this._bindings.method_set_turbulence_noise_speed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -864,10 +865,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_gravity() {
-    if (!this.#_bindings.method_get_gravity) {
+    if (!this._bindings.method_get_gravity) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_gravity");
-      this.#_bindings.method_get_gravity = internal.classdb_get_method_bind(
+      this._bindings.method_get_gravity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3360562783
@@ -875,10 +876,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_gravity() {
-    if (!this.#_bindings.method_set_gravity) {
+    if (!this._bindings.method_set_gravity) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_gravity");
-      this.#_bindings.method_set_gravity = internal.classdb_get_method_bind(
+      this._bindings.method_set_gravity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -886,10 +887,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_lifetime_randomness() {
-    if (!this.#_bindings.method_set_lifetime_randomness) {
+    if (!this._bindings.method_set_lifetime_randomness) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_lifetime_randomness");
-      this.#_bindings.method_set_lifetime_randomness = internal.classdb_get_method_bind(
+      this._bindings.method_set_lifetime_randomness = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -897,10 +898,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_lifetime_randomness() {
-    if (!this.#_bindings.method_get_lifetime_randomness) {
+    if (!this._bindings.method_get_lifetime_randomness) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_lifetime_randomness");
-      this.#_bindings.method_get_lifetime_randomness = internal.classdb_get_method_bind(
+      this._bindings.method_get_lifetime_randomness = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -908,10 +909,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_sub_emitter_mode() {
-    if (!this.#_bindings.method_get_sub_emitter_mode) {
+    if (!this._bindings.method_get_sub_emitter_mode) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_sub_emitter_mode");
-      this.#_bindings.method_get_sub_emitter_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_sub_emitter_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2399052877
@@ -919,10 +920,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_sub_emitter_mode() {
-    if (!this.#_bindings.method_set_sub_emitter_mode) {
+    if (!this._bindings.method_set_sub_emitter_mode) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_sub_emitter_mode");
-      this.#_bindings.method_set_sub_emitter_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_sub_emitter_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2161806672
@@ -930,10 +931,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_sub_emitter_frequency() {
-    if (!this.#_bindings.method_get_sub_emitter_frequency) {
+    if (!this._bindings.method_get_sub_emitter_frequency) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_sub_emitter_frequency");
-      this.#_bindings.method_get_sub_emitter_frequency = internal.classdb_get_method_bind(
+      this._bindings.method_get_sub_emitter_frequency = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -941,10 +942,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_sub_emitter_frequency() {
-    if (!this.#_bindings.method_set_sub_emitter_frequency) {
+    if (!this._bindings.method_set_sub_emitter_frequency) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_sub_emitter_frequency");
-      this.#_bindings.method_set_sub_emitter_frequency = internal.classdb_get_method_bind(
+      this._bindings.method_set_sub_emitter_frequency = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -952,10 +953,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_sub_emitter_amount_at_end() {
-    if (!this.#_bindings.method_get_sub_emitter_amount_at_end) {
+    if (!this._bindings.method_get_sub_emitter_amount_at_end) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_sub_emitter_amount_at_end");
-      this.#_bindings.method_get_sub_emitter_amount_at_end = internal.classdb_get_method_bind(
+      this._bindings.method_get_sub_emitter_amount_at_end = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -963,10 +964,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_sub_emitter_amount_at_end() {
-    if (!this.#_bindings.method_set_sub_emitter_amount_at_end) {
+    if (!this._bindings.method_set_sub_emitter_amount_at_end) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_sub_emitter_amount_at_end");
-      this.#_bindings.method_set_sub_emitter_amount_at_end = internal.classdb_get_method_bind(
+      this._bindings.method_set_sub_emitter_amount_at_end = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -974,10 +975,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_sub_emitter_amount_at_collision() {
-    if (!this.#_bindings.method_get_sub_emitter_amount_at_collision) {
+    if (!this._bindings.method_get_sub_emitter_amount_at_collision) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_sub_emitter_amount_at_collision");
-      this.#_bindings.method_get_sub_emitter_amount_at_collision = internal.classdb_get_method_bind(
+      this._bindings.method_get_sub_emitter_amount_at_collision = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -985,10 +986,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_sub_emitter_amount_at_collision() {
-    if (!this.#_bindings.method_set_sub_emitter_amount_at_collision) {
+    if (!this._bindings.method_set_sub_emitter_amount_at_collision) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_sub_emitter_amount_at_collision");
-      this.#_bindings.method_set_sub_emitter_amount_at_collision = internal.classdb_get_method_bind(
+      this._bindings.method_set_sub_emitter_amount_at_collision = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -996,10 +997,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_sub_emitter_keep_velocity() {
-    if (!this.#_bindings.method_get_sub_emitter_keep_velocity) {
+    if (!this._bindings.method_get_sub_emitter_keep_velocity) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_sub_emitter_keep_velocity");
-      this.#_bindings.method_get_sub_emitter_keep_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_get_sub_emitter_keep_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -1007,10 +1008,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_sub_emitter_keep_velocity() {
-    if (!this.#_bindings.method_set_sub_emitter_keep_velocity) {
+    if (!this._bindings.method_set_sub_emitter_keep_velocity) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_sub_emitter_keep_velocity");
-      this.#_bindings.method_set_sub_emitter_keep_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_set_sub_emitter_keep_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -1018,10 +1019,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_attractor_interaction_enabled() {
-    if (!this.#_bindings.method_set_attractor_interaction_enabled) {
+    if (!this._bindings.method_set_attractor_interaction_enabled) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_attractor_interaction_enabled");
-      this.#_bindings.method_set_attractor_interaction_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_attractor_interaction_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -1029,10 +1030,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_is_attractor_interaction_enabled() {
-    if (!this.#_bindings.method_is_attractor_interaction_enabled) {
+    if (!this._bindings.method_is_attractor_interaction_enabled) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("is_attractor_interaction_enabled");
-      this.#_bindings.method_is_attractor_interaction_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_attractor_interaction_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -1040,10 +1041,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_collision_mode() {
-    if (!this.#_bindings.method_set_collision_mode) {
+    if (!this._bindings.method_set_collision_mode) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_collision_mode");
-      this.#_bindings.method_set_collision_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_collision_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         653804659
@@ -1051,10 +1052,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_collision_mode() {
-    if (!this.#_bindings.method_get_collision_mode) {
+    if (!this._bindings.method_get_collision_mode) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_collision_mode");
-      this.#_bindings.method_get_collision_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_collision_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         139371864
@@ -1062,10 +1063,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_collision_use_scale() {
-    if (!this.#_bindings.method_set_collision_use_scale) {
+    if (!this._bindings.method_set_collision_use_scale) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_collision_use_scale");
-      this.#_bindings.method_set_collision_use_scale = internal.classdb_get_method_bind(
+      this._bindings.method_set_collision_use_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -1073,10 +1074,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_is_collision_using_scale() {
-    if (!this.#_bindings.method_is_collision_using_scale) {
+    if (!this._bindings.method_is_collision_using_scale) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("is_collision_using_scale");
-      this.#_bindings.method_is_collision_using_scale = internal.classdb_get_method_bind(
+      this._bindings.method_is_collision_using_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -1084,10 +1085,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_collision_friction() {
-    if (!this.#_bindings.method_set_collision_friction) {
+    if (!this._bindings.method_set_collision_friction) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_collision_friction");
-      this.#_bindings.method_set_collision_friction = internal.classdb_get_method_bind(
+      this._bindings.method_set_collision_friction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -1095,10 +1096,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_collision_friction() {
-    if (!this.#_bindings.method_get_collision_friction) {
+    if (!this._bindings.method_get_collision_friction) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_collision_friction");
-      this.#_bindings.method_get_collision_friction = internal.classdb_get_method_bind(
+      this._bindings.method_get_collision_friction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -1106,10 +1107,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_set_collision_bounce() {
-    if (!this.#_bindings.method_set_collision_bounce) {
+    if (!this._bindings.method_set_collision_bounce) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("set_collision_bounce");
-      this.#_bindings.method_set_collision_bounce = internal.classdb_get_method_bind(
+      this._bindings.method_set_collision_bounce = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -1117,10 +1118,10 @@ export class ParticleProcessMaterial extends Material{
     }
   }
   static init_method_get_collision_bounce() {
-    if (!this.#_bindings.method_get_collision_bounce) {
+    if (!this._bindings.method_get_collision_bounce) {
       let classname = new StringName("ParticleProcessMaterial");
       let methodname = new StringName("get_collision_bounce");
-      this.#_bindings.method_get_collision_bounce = internal.classdb_get_method_bind(
+      this._bindings.method_get_collision_bounce = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -1133,7 +1134,7 @@ export class ParticleProcessMaterial extends Material{
   set_direction(_degrees) {
     ParticleProcessMaterial.init_method_set_direction();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_direction,
+      ParticleProcessMaterial._bindings.method_set_direction,
       this._owner,
       _degrees
     );
@@ -1142,7 +1143,7 @@ export class ParticleProcessMaterial extends Material{
   get_direction() {
     ParticleProcessMaterial.init_method_get_direction();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_direction,
+      ParticleProcessMaterial._bindings.method_get_direction,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1153,7 +1154,7 @@ export class ParticleProcessMaterial extends Material{
   set_inherit_velocity_ratio(_ratio) {
     ParticleProcessMaterial.init_method_set_inherit_velocity_ratio();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_inherit_velocity_ratio,
+      ParticleProcessMaterial._bindings.method_set_inherit_velocity_ratio,
       this._owner,
       _ratio
     );
@@ -1162,7 +1163,7 @@ export class ParticleProcessMaterial extends Material{
   get_inherit_velocity_ratio() {
     ParticleProcessMaterial.init_method_get_inherit_velocity_ratio();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_inherit_velocity_ratio,
+      ParticleProcessMaterial._bindings.method_get_inherit_velocity_ratio,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1173,7 +1174,7 @@ export class ParticleProcessMaterial extends Material{
   set_spread(_degrees) {
     ParticleProcessMaterial.init_method_set_spread();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_spread,
+      ParticleProcessMaterial._bindings.method_set_spread,
       this._owner,
       _degrees
     );
@@ -1182,7 +1183,7 @@ export class ParticleProcessMaterial extends Material{
   get_spread() {
     ParticleProcessMaterial.init_method_get_spread();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_spread,
+      ParticleProcessMaterial._bindings.method_get_spread,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1193,7 +1194,7 @@ export class ParticleProcessMaterial extends Material{
   set_flatness(_amount) {
     ParticleProcessMaterial.init_method_set_flatness();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_flatness,
+      ParticleProcessMaterial._bindings.method_set_flatness,
       this._owner,
       _amount
     );
@@ -1202,7 +1203,7 @@ export class ParticleProcessMaterial extends Material{
   get_flatness() {
     ParticleProcessMaterial.init_method_get_flatness();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_flatness,
+      ParticleProcessMaterial._bindings.method_get_flatness,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1213,7 +1214,7 @@ export class ParticleProcessMaterial extends Material{
   set_param(_param, _value) {
     ParticleProcessMaterial.init_method_set_param();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_param,
+      ParticleProcessMaterial._bindings.method_set_param,
       this._owner,
       _param, _value
     );
@@ -1222,7 +1223,7 @@ export class ParticleProcessMaterial extends Material{
   get_param(_param) {
     ParticleProcessMaterial.init_method_get_param();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_param,
+      ParticleProcessMaterial._bindings.method_get_param,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1233,7 +1234,7 @@ export class ParticleProcessMaterial extends Material{
   set_param_min(_param, _value) {
     ParticleProcessMaterial.init_method_set_param_min();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_param_min,
+      ParticleProcessMaterial._bindings.method_set_param_min,
       this._owner,
       _param, _value
     );
@@ -1242,7 +1243,7 @@ export class ParticleProcessMaterial extends Material{
   get_param_min(_param) {
     ParticleProcessMaterial.init_method_get_param_min();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_param_min,
+      ParticleProcessMaterial._bindings.method_get_param_min,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1253,7 +1254,7 @@ export class ParticleProcessMaterial extends Material{
   set_param_max(_param, _value) {
     ParticleProcessMaterial.init_method_set_param_max();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_param_max,
+      ParticleProcessMaterial._bindings.method_set_param_max,
       this._owner,
       _param, _value
     );
@@ -1262,7 +1263,7 @@ export class ParticleProcessMaterial extends Material{
   get_param_max(_param) {
     ParticleProcessMaterial.init_method_get_param_max();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_param_max,
+      ParticleProcessMaterial._bindings.method_get_param_max,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1273,7 +1274,7 @@ export class ParticleProcessMaterial extends Material{
   set_param_texture(_param, _texture) {
     ParticleProcessMaterial.init_method_set_param_texture();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_param_texture,
+      ParticleProcessMaterial._bindings.method_set_param_texture,
       this._owner,
       _param, _texture
     );
@@ -1282,7 +1283,7 @@ export class ParticleProcessMaterial extends Material{
   get_param_texture(_param) {
     ParticleProcessMaterial.init_method_get_param_texture();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_param_texture,
+      ParticleProcessMaterial._bindings.method_get_param_texture,
       this._owner,
 			Variant.Type.OBJECT,
       _param
@@ -1292,7 +1293,7 @@ export class ParticleProcessMaterial extends Material{
   set_color(_color) {
     ParticleProcessMaterial.init_method_set_color();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_color,
+      ParticleProcessMaterial._bindings.method_set_color,
       this._owner,
       _color
     );
@@ -1301,7 +1302,7 @@ export class ParticleProcessMaterial extends Material{
   get_color() {
     ParticleProcessMaterial.init_method_get_color();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_color,
+      ParticleProcessMaterial._bindings.method_get_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -1312,7 +1313,7 @@ export class ParticleProcessMaterial extends Material{
   set_color_ramp(_ramp) {
     ParticleProcessMaterial.init_method_set_color_ramp();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_color_ramp,
+      ParticleProcessMaterial._bindings.method_set_color_ramp,
       this._owner,
       _ramp
     );
@@ -1321,7 +1322,7 @@ export class ParticleProcessMaterial extends Material{
   get_color_ramp() {
     ParticleProcessMaterial.init_method_get_color_ramp();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_color_ramp,
+      ParticleProcessMaterial._bindings.method_get_color_ramp,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -1331,7 +1332,7 @@ export class ParticleProcessMaterial extends Material{
   set_alpha_curve(_curve) {
     ParticleProcessMaterial.init_method_set_alpha_curve();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_alpha_curve,
+      ParticleProcessMaterial._bindings.method_set_alpha_curve,
       this._owner,
       _curve
     );
@@ -1340,7 +1341,7 @@ export class ParticleProcessMaterial extends Material{
   get_alpha_curve() {
     ParticleProcessMaterial.init_method_get_alpha_curve();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_alpha_curve,
+      ParticleProcessMaterial._bindings.method_get_alpha_curve,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -1350,7 +1351,7 @@ export class ParticleProcessMaterial extends Material{
   set_emission_curve(_curve) {
     ParticleProcessMaterial.init_method_set_emission_curve();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_emission_curve,
+      ParticleProcessMaterial._bindings.method_set_emission_curve,
       this._owner,
       _curve
     );
@@ -1359,7 +1360,7 @@ export class ParticleProcessMaterial extends Material{
   get_emission_curve() {
     ParticleProcessMaterial.init_method_get_emission_curve();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_emission_curve,
+      ParticleProcessMaterial._bindings.method_get_emission_curve,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -1369,7 +1370,7 @@ export class ParticleProcessMaterial extends Material{
   set_color_initial_ramp(_ramp) {
     ParticleProcessMaterial.init_method_set_color_initial_ramp();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_color_initial_ramp,
+      ParticleProcessMaterial._bindings.method_set_color_initial_ramp,
       this._owner,
       _ramp
     );
@@ -1378,7 +1379,7 @@ export class ParticleProcessMaterial extends Material{
   get_color_initial_ramp() {
     ParticleProcessMaterial.init_method_get_color_initial_ramp();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_color_initial_ramp,
+      ParticleProcessMaterial._bindings.method_get_color_initial_ramp,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -1388,7 +1389,7 @@ export class ParticleProcessMaterial extends Material{
   set_velocity_limit_curve(_curve) {
     ParticleProcessMaterial.init_method_set_velocity_limit_curve();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_velocity_limit_curve,
+      ParticleProcessMaterial._bindings.method_set_velocity_limit_curve,
       this._owner,
       _curve
     );
@@ -1397,7 +1398,7 @@ export class ParticleProcessMaterial extends Material{
   get_velocity_limit_curve() {
     ParticleProcessMaterial.init_method_get_velocity_limit_curve();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_velocity_limit_curve,
+      ParticleProcessMaterial._bindings.method_get_velocity_limit_curve,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -1407,7 +1408,7 @@ export class ParticleProcessMaterial extends Material{
   set_particle_flag(_particle_flag, _enable) {
     ParticleProcessMaterial.init_method_set_particle_flag();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_particle_flag,
+      ParticleProcessMaterial._bindings.method_set_particle_flag,
       this._owner,
       _particle_flag, _enable
     );
@@ -1416,7 +1417,7 @@ export class ParticleProcessMaterial extends Material{
   get_particle_flag(_particle_flag) {
     ParticleProcessMaterial.init_method_get_particle_flag();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_particle_flag,
+      ParticleProcessMaterial._bindings.method_get_particle_flag,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1427,7 +1428,7 @@ export class ParticleProcessMaterial extends Material{
   set_velocity_pivot(_pivot) {
     ParticleProcessMaterial.init_method_set_velocity_pivot();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_velocity_pivot,
+      ParticleProcessMaterial._bindings.method_set_velocity_pivot,
       this._owner,
       _pivot
     );
@@ -1436,7 +1437,7 @@ export class ParticleProcessMaterial extends Material{
   get_velocity_pivot() {
     ParticleProcessMaterial.init_method_get_velocity_pivot();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_velocity_pivot,
+      ParticleProcessMaterial._bindings.method_get_velocity_pivot,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1447,7 +1448,7 @@ export class ParticleProcessMaterial extends Material{
   set_emission_shape(_shape) {
     ParticleProcessMaterial.init_method_set_emission_shape();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_emission_shape,
+      ParticleProcessMaterial._bindings.method_set_emission_shape,
       this._owner,
       _shape
     );
@@ -1456,7 +1457,7 @@ export class ParticleProcessMaterial extends Material{
   get_emission_shape() {
     ParticleProcessMaterial.init_method_get_emission_shape();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_emission_shape,
+      ParticleProcessMaterial._bindings.method_get_emission_shape,
       this._owner,
 			Variant.Type.INT,
     
@@ -1467,7 +1468,7 @@ export class ParticleProcessMaterial extends Material{
   set_emission_sphere_radius(_radius) {
     ParticleProcessMaterial.init_method_set_emission_sphere_radius();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_emission_sphere_radius,
+      ParticleProcessMaterial._bindings.method_set_emission_sphere_radius,
       this._owner,
       _radius
     );
@@ -1476,7 +1477,7 @@ export class ParticleProcessMaterial extends Material{
   get_emission_sphere_radius() {
     ParticleProcessMaterial.init_method_get_emission_sphere_radius();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_emission_sphere_radius,
+      ParticleProcessMaterial._bindings.method_get_emission_sphere_radius,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1487,7 +1488,7 @@ export class ParticleProcessMaterial extends Material{
   set_emission_box_extents(_extents) {
     ParticleProcessMaterial.init_method_set_emission_box_extents();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_emission_box_extents,
+      ParticleProcessMaterial._bindings.method_set_emission_box_extents,
       this._owner,
       _extents
     );
@@ -1496,7 +1497,7 @@ export class ParticleProcessMaterial extends Material{
   get_emission_box_extents() {
     ParticleProcessMaterial.init_method_get_emission_box_extents();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_emission_box_extents,
+      ParticleProcessMaterial._bindings.method_get_emission_box_extents,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1507,7 +1508,7 @@ export class ParticleProcessMaterial extends Material{
   set_emission_point_texture(_texture) {
     ParticleProcessMaterial.init_method_set_emission_point_texture();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_emission_point_texture,
+      ParticleProcessMaterial._bindings.method_set_emission_point_texture,
       this._owner,
       _texture
     );
@@ -1516,7 +1517,7 @@ export class ParticleProcessMaterial extends Material{
   get_emission_point_texture() {
     ParticleProcessMaterial.init_method_get_emission_point_texture();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_emission_point_texture,
+      ParticleProcessMaterial._bindings.method_get_emission_point_texture,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -1526,7 +1527,7 @@ export class ParticleProcessMaterial extends Material{
   set_emission_normal_texture(_texture) {
     ParticleProcessMaterial.init_method_set_emission_normal_texture();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_emission_normal_texture,
+      ParticleProcessMaterial._bindings.method_set_emission_normal_texture,
       this._owner,
       _texture
     );
@@ -1535,7 +1536,7 @@ export class ParticleProcessMaterial extends Material{
   get_emission_normal_texture() {
     ParticleProcessMaterial.init_method_get_emission_normal_texture();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_emission_normal_texture,
+      ParticleProcessMaterial._bindings.method_get_emission_normal_texture,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -1545,7 +1546,7 @@ export class ParticleProcessMaterial extends Material{
   set_emission_color_texture(_texture) {
     ParticleProcessMaterial.init_method_set_emission_color_texture();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_emission_color_texture,
+      ParticleProcessMaterial._bindings.method_set_emission_color_texture,
       this._owner,
       _texture
     );
@@ -1554,7 +1555,7 @@ export class ParticleProcessMaterial extends Material{
   get_emission_color_texture() {
     ParticleProcessMaterial.init_method_get_emission_color_texture();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_emission_color_texture,
+      ParticleProcessMaterial._bindings.method_get_emission_color_texture,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -1564,7 +1565,7 @@ export class ParticleProcessMaterial extends Material{
   set_emission_point_count(_point_count) {
     ParticleProcessMaterial.init_method_set_emission_point_count();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_emission_point_count,
+      ParticleProcessMaterial._bindings.method_set_emission_point_count,
       this._owner,
       _point_count
     );
@@ -1573,7 +1574,7 @@ export class ParticleProcessMaterial extends Material{
   get_emission_point_count() {
     ParticleProcessMaterial.init_method_get_emission_point_count();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_emission_point_count,
+      ParticleProcessMaterial._bindings.method_get_emission_point_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -1584,7 +1585,7 @@ export class ParticleProcessMaterial extends Material{
   set_emission_ring_axis(_axis) {
     ParticleProcessMaterial.init_method_set_emission_ring_axis();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_emission_ring_axis,
+      ParticleProcessMaterial._bindings.method_set_emission_ring_axis,
       this._owner,
       _axis
     );
@@ -1593,7 +1594,7 @@ export class ParticleProcessMaterial extends Material{
   get_emission_ring_axis() {
     ParticleProcessMaterial.init_method_get_emission_ring_axis();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_emission_ring_axis,
+      ParticleProcessMaterial._bindings.method_get_emission_ring_axis,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1604,7 +1605,7 @@ export class ParticleProcessMaterial extends Material{
   set_emission_ring_height(_height) {
     ParticleProcessMaterial.init_method_set_emission_ring_height();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_emission_ring_height,
+      ParticleProcessMaterial._bindings.method_set_emission_ring_height,
       this._owner,
       _height
     );
@@ -1613,7 +1614,7 @@ export class ParticleProcessMaterial extends Material{
   get_emission_ring_height() {
     ParticleProcessMaterial.init_method_get_emission_ring_height();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_emission_ring_height,
+      ParticleProcessMaterial._bindings.method_get_emission_ring_height,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1624,7 +1625,7 @@ export class ParticleProcessMaterial extends Material{
   set_emission_ring_radius(_radius) {
     ParticleProcessMaterial.init_method_set_emission_ring_radius();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_emission_ring_radius,
+      ParticleProcessMaterial._bindings.method_set_emission_ring_radius,
       this._owner,
       _radius
     );
@@ -1633,7 +1634,7 @@ export class ParticleProcessMaterial extends Material{
   get_emission_ring_radius() {
     ParticleProcessMaterial.init_method_get_emission_ring_radius();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_emission_ring_radius,
+      ParticleProcessMaterial._bindings.method_get_emission_ring_radius,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1644,7 +1645,7 @@ export class ParticleProcessMaterial extends Material{
   set_emission_ring_inner_radius(_inner_radius) {
     ParticleProcessMaterial.init_method_set_emission_ring_inner_radius();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_emission_ring_inner_radius,
+      ParticleProcessMaterial._bindings.method_set_emission_ring_inner_radius,
       this._owner,
       _inner_radius
     );
@@ -1653,7 +1654,7 @@ export class ParticleProcessMaterial extends Material{
   get_emission_ring_inner_radius() {
     ParticleProcessMaterial.init_method_get_emission_ring_inner_radius();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_emission_ring_inner_radius,
+      ParticleProcessMaterial._bindings.method_get_emission_ring_inner_radius,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1664,7 +1665,7 @@ export class ParticleProcessMaterial extends Material{
   set_emission_shape_offset(_emission_shape_offset) {
     ParticleProcessMaterial.init_method_set_emission_shape_offset();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_emission_shape_offset,
+      ParticleProcessMaterial._bindings.method_set_emission_shape_offset,
       this._owner,
       _emission_shape_offset
     );
@@ -1673,7 +1674,7 @@ export class ParticleProcessMaterial extends Material{
   get_emission_shape_offset() {
     ParticleProcessMaterial.init_method_get_emission_shape_offset();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_emission_shape_offset,
+      ParticleProcessMaterial._bindings.method_get_emission_shape_offset,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1684,7 +1685,7 @@ export class ParticleProcessMaterial extends Material{
   set_emission_shape_scale(_emission_shape_scale) {
     ParticleProcessMaterial.init_method_set_emission_shape_scale();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_emission_shape_scale,
+      ParticleProcessMaterial._bindings.method_set_emission_shape_scale,
       this._owner,
       _emission_shape_scale
     );
@@ -1693,7 +1694,7 @@ export class ParticleProcessMaterial extends Material{
   get_emission_shape_scale() {
     ParticleProcessMaterial.init_method_get_emission_shape_scale();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_emission_shape_scale,
+      ParticleProcessMaterial._bindings.method_get_emission_shape_scale,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1704,7 +1705,7 @@ export class ParticleProcessMaterial extends Material{
   get_turbulence_enabled() {
     ParticleProcessMaterial.init_method_get_turbulence_enabled();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_turbulence_enabled,
+      ParticleProcessMaterial._bindings.method_get_turbulence_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1715,7 +1716,7 @@ export class ParticleProcessMaterial extends Material{
   set_turbulence_enabled(_turbulence_enabled) {
     ParticleProcessMaterial.init_method_set_turbulence_enabled();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_turbulence_enabled,
+      ParticleProcessMaterial._bindings.method_set_turbulence_enabled,
       this._owner,
       _turbulence_enabled
     );
@@ -1724,7 +1725,7 @@ export class ParticleProcessMaterial extends Material{
   get_turbulence_noise_strength() {
     ParticleProcessMaterial.init_method_get_turbulence_noise_strength();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_turbulence_noise_strength,
+      ParticleProcessMaterial._bindings.method_get_turbulence_noise_strength,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1735,7 +1736,7 @@ export class ParticleProcessMaterial extends Material{
   set_turbulence_noise_strength(_turbulence_noise_strength) {
     ParticleProcessMaterial.init_method_set_turbulence_noise_strength();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_turbulence_noise_strength,
+      ParticleProcessMaterial._bindings.method_set_turbulence_noise_strength,
       this._owner,
       _turbulence_noise_strength
     );
@@ -1744,7 +1745,7 @@ export class ParticleProcessMaterial extends Material{
   get_turbulence_noise_scale() {
     ParticleProcessMaterial.init_method_get_turbulence_noise_scale();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_turbulence_noise_scale,
+      ParticleProcessMaterial._bindings.method_get_turbulence_noise_scale,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1755,7 +1756,7 @@ export class ParticleProcessMaterial extends Material{
   set_turbulence_noise_scale(_turbulence_noise_scale) {
     ParticleProcessMaterial.init_method_set_turbulence_noise_scale();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_turbulence_noise_scale,
+      ParticleProcessMaterial._bindings.method_set_turbulence_noise_scale,
       this._owner,
       _turbulence_noise_scale
     );
@@ -1764,7 +1765,7 @@ export class ParticleProcessMaterial extends Material{
   get_turbulence_noise_speed_random() {
     ParticleProcessMaterial.init_method_get_turbulence_noise_speed_random();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_turbulence_noise_speed_random,
+      ParticleProcessMaterial._bindings.method_get_turbulence_noise_speed_random,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1775,7 +1776,7 @@ export class ParticleProcessMaterial extends Material{
   set_turbulence_noise_speed_random(_turbulence_noise_speed_random) {
     ParticleProcessMaterial.init_method_set_turbulence_noise_speed_random();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_turbulence_noise_speed_random,
+      ParticleProcessMaterial._bindings.method_set_turbulence_noise_speed_random,
       this._owner,
       _turbulence_noise_speed_random
     );
@@ -1784,7 +1785,7 @@ export class ParticleProcessMaterial extends Material{
   get_turbulence_noise_speed() {
     ParticleProcessMaterial.init_method_get_turbulence_noise_speed();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_turbulence_noise_speed,
+      ParticleProcessMaterial._bindings.method_get_turbulence_noise_speed,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1795,7 +1796,7 @@ export class ParticleProcessMaterial extends Material{
   set_turbulence_noise_speed(_turbulence_noise_speed) {
     ParticleProcessMaterial.init_method_set_turbulence_noise_speed();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_turbulence_noise_speed,
+      ParticleProcessMaterial._bindings.method_set_turbulence_noise_speed,
       this._owner,
       _turbulence_noise_speed
     );
@@ -1804,7 +1805,7 @@ export class ParticleProcessMaterial extends Material{
   get_gravity() {
     ParticleProcessMaterial.init_method_get_gravity();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_gravity,
+      ParticleProcessMaterial._bindings.method_get_gravity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1815,7 +1816,7 @@ export class ParticleProcessMaterial extends Material{
   set_gravity(_accel_vec) {
     ParticleProcessMaterial.init_method_set_gravity();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_gravity,
+      ParticleProcessMaterial._bindings.method_set_gravity,
       this._owner,
       _accel_vec
     );
@@ -1824,7 +1825,7 @@ export class ParticleProcessMaterial extends Material{
   set_lifetime_randomness(_randomness) {
     ParticleProcessMaterial.init_method_set_lifetime_randomness();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_lifetime_randomness,
+      ParticleProcessMaterial._bindings.method_set_lifetime_randomness,
       this._owner,
       _randomness
     );
@@ -1833,7 +1834,7 @@ export class ParticleProcessMaterial extends Material{
   get_lifetime_randomness() {
     ParticleProcessMaterial.init_method_get_lifetime_randomness();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_lifetime_randomness,
+      ParticleProcessMaterial._bindings.method_get_lifetime_randomness,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1844,7 +1845,7 @@ export class ParticleProcessMaterial extends Material{
   get_sub_emitter_mode() {
     ParticleProcessMaterial.init_method_get_sub_emitter_mode();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_sub_emitter_mode,
+      ParticleProcessMaterial._bindings.method_get_sub_emitter_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -1855,7 +1856,7 @@ export class ParticleProcessMaterial extends Material{
   set_sub_emitter_mode(_mode) {
     ParticleProcessMaterial.init_method_set_sub_emitter_mode();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_sub_emitter_mode,
+      ParticleProcessMaterial._bindings.method_set_sub_emitter_mode,
       this._owner,
       _mode
     );
@@ -1864,7 +1865,7 @@ export class ParticleProcessMaterial extends Material{
   get_sub_emitter_frequency() {
     ParticleProcessMaterial.init_method_get_sub_emitter_frequency();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_sub_emitter_frequency,
+      ParticleProcessMaterial._bindings.method_get_sub_emitter_frequency,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1875,7 +1876,7 @@ export class ParticleProcessMaterial extends Material{
   set_sub_emitter_frequency(_hz) {
     ParticleProcessMaterial.init_method_set_sub_emitter_frequency();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_sub_emitter_frequency,
+      ParticleProcessMaterial._bindings.method_set_sub_emitter_frequency,
       this._owner,
       _hz
     );
@@ -1884,7 +1885,7 @@ export class ParticleProcessMaterial extends Material{
   get_sub_emitter_amount_at_end() {
     ParticleProcessMaterial.init_method_get_sub_emitter_amount_at_end();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_sub_emitter_amount_at_end,
+      ParticleProcessMaterial._bindings.method_get_sub_emitter_amount_at_end,
       this._owner,
 			Variant.Type.INT,
     
@@ -1895,7 +1896,7 @@ export class ParticleProcessMaterial extends Material{
   set_sub_emitter_amount_at_end(_amount) {
     ParticleProcessMaterial.init_method_set_sub_emitter_amount_at_end();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_sub_emitter_amount_at_end,
+      ParticleProcessMaterial._bindings.method_set_sub_emitter_amount_at_end,
       this._owner,
       _amount
     );
@@ -1904,7 +1905,7 @@ export class ParticleProcessMaterial extends Material{
   get_sub_emitter_amount_at_collision() {
     ParticleProcessMaterial.init_method_get_sub_emitter_amount_at_collision();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_sub_emitter_amount_at_collision,
+      ParticleProcessMaterial._bindings.method_get_sub_emitter_amount_at_collision,
       this._owner,
 			Variant.Type.INT,
     
@@ -1915,7 +1916,7 @@ export class ParticleProcessMaterial extends Material{
   set_sub_emitter_amount_at_collision(_amount) {
     ParticleProcessMaterial.init_method_set_sub_emitter_amount_at_collision();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_sub_emitter_amount_at_collision,
+      ParticleProcessMaterial._bindings.method_set_sub_emitter_amount_at_collision,
       this._owner,
       _amount
     );
@@ -1924,7 +1925,7 @@ export class ParticleProcessMaterial extends Material{
   get_sub_emitter_keep_velocity() {
     ParticleProcessMaterial.init_method_get_sub_emitter_keep_velocity();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_sub_emitter_keep_velocity,
+      ParticleProcessMaterial._bindings.method_get_sub_emitter_keep_velocity,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1935,7 +1936,7 @@ export class ParticleProcessMaterial extends Material{
   set_sub_emitter_keep_velocity(_enable) {
     ParticleProcessMaterial.init_method_set_sub_emitter_keep_velocity();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_sub_emitter_keep_velocity,
+      ParticleProcessMaterial._bindings.method_set_sub_emitter_keep_velocity,
       this._owner,
       _enable
     );
@@ -1944,7 +1945,7 @@ export class ParticleProcessMaterial extends Material{
   set_attractor_interaction_enabled(_enabled) {
     ParticleProcessMaterial.init_method_set_attractor_interaction_enabled();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_attractor_interaction_enabled,
+      ParticleProcessMaterial._bindings.method_set_attractor_interaction_enabled,
       this._owner,
       _enabled
     );
@@ -1953,7 +1954,7 @@ export class ParticleProcessMaterial extends Material{
   is_attractor_interaction_enabled() {
     ParticleProcessMaterial.init_method_is_attractor_interaction_enabled();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_is_attractor_interaction_enabled,
+      ParticleProcessMaterial._bindings.method_is_attractor_interaction_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1964,7 +1965,7 @@ export class ParticleProcessMaterial extends Material{
   set_collision_mode(_mode) {
     ParticleProcessMaterial.init_method_set_collision_mode();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_collision_mode,
+      ParticleProcessMaterial._bindings.method_set_collision_mode,
       this._owner,
       _mode
     );
@@ -1973,7 +1974,7 @@ export class ParticleProcessMaterial extends Material{
   get_collision_mode() {
     ParticleProcessMaterial.init_method_get_collision_mode();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_collision_mode,
+      ParticleProcessMaterial._bindings.method_get_collision_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -1984,7 +1985,7 @@ export class ParticleProcessMaterial extends Material{
   set_collision_use_scale(_radius) {
     ParticleProcessMaterial.init_method_set_collision_use_scale();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_collision_use_scale,
+      ParticleProcessMaterial._bindings.method_set_collision_use_scale,
       this._owner,
       _radius
     );
@@ -1993,7 +1994,7 @@ export class ParticleProcessMaterial extends Material{
   is_collision_using_scale() {
     ParticleProcessMaterial.init_method_is_collision_using_scale();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_is_collision_using_scale,
+      ParticleProcessMaterial._bindings.method_is_collision_using_scale,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2004,7 +2005,7 @@ export class ParticleProcessMaterial extends Material{
   set_collision_friction(_friction) {
     ParticleProcessMaterial.init_method_set_collision_friction();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_collision_friction,
+      ParticleProcessMaterial._bindings.method_set_collision_friction,
       this._owner,
       _friction
     );
@@ -2013,7 +2014,7 @@ export class ParticleProcessMaterial extends Material{
   get_collision_friction() {
     ParticleProcessMaterial.init_method_get_collision_friction();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_collision_friction,
+      ParticleProcessMaterial._bindings.method_get_collision_friction,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -2024,7 +2025,7 @@ export class ParticleProcessMaterial extends Material{
   set_collision_bounce(_bounce) {
     ParticleProcessMaterial.init_method_set_collision_bounce();
     return _call_native_mb_no_ret(
-      ParticleProcessMaterial.#_bindings.method_set_collision_bounce,
+      ParticleProcessMaterial._bindings.method_set_collision_bounce,
       this._owner,
       _bounce
     );
@@ -2033,7 +2034,7 @@ export class ParticleProcessMaterial extends Material{
   get_collision_bounce() {
     ParticleProcessMaterial.init_method_get_collision_bounce();
     return _call_native_mb_ret(
-      ParticleProcessMaterial.#_bindings.method_get_collision_bounce,
+      ParticleProcessMaterial._bindings.method_get_collision_bounce,
       this._owner,
 			Variant.Type.FLOAT,
     

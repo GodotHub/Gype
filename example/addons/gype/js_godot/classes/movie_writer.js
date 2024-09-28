@@ -1,21 +1,22 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GodotObject } from '@js_godot/classes/godot_object'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_add_writer;
 }
+@GodotClass
 export class MovieWriter extends GodotObject{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -25,10 +26,10 @@ export class MovieWriter extends GodotObject{
     }
   }
   static init_method_add_writer() {
-    if (!this.#_bindings.method_add_writer) {
+    if (!this._bindings.method_add_writer) {
       let classname = new StringName("MovieWriter");
       let methodname = new StringName("add_writer");
-      this.#_bindings.method_add_writer = internal.classdb_get_method_bind(
+      this._bindings.method_add_writer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4023702871
@@ -53,7 +54,7 @@ export class MovieWriter extends GodotObject{
   add_writer(_writer) {
     MovieWriter.init_method_add_writer();
     return _call_native_mb_no_ret(
-      MovieWriter.#_bindings.method_add_writer,
+      MovieWriter._bindings.method_add_writer,
       this._owner,
       _writer
     );

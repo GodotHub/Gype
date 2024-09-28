@@ -1,14 +1,15 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_lightmap_size_hint;
@@ -26,10 +27,10 @@ class _MethodBindings {
   method_create_outline;
   method_generate_triangle_mesh;
 }
+@GodotClass
 export class Mesh extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -39,10 +40,10 @@ export class Mesh extends Resource{
     }
   }
   static init_method_set_lightmap_size_hint() {
-    if (!this.#_bindings.method_set_lightmap_size_hint) {
+    if (!this._bindings.method_set_lightmap_size_hint) {
       let classname = new StringName("Mesh");
       let methodname = new StringName("set_lightmap_size_hint");
-      this.#_bindings.method_set_lightmap_size_hint = internal.classdb_get_method_bind(
+      this._bindings.method_set_lightmap_size_hint = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1130785943
@@ -50,10 +51,10 @@ export class Mesh extends Resource{
     }
   }
   static init_method_get_lightmap_size_hint() {
-    if (!this.#_bindings.method_get_lightmap_size_hint) {
+    if (!this._bindings.method_get_lightmap_size_hint) {
       let classname = new StringName("Mesh");
       let methodname = new StringName("get_lightmap_size_hint");
-      this.#_bindings.method_get_lightmap_size_hint = internal.classdb_get_method_bind(
+      this._bindings.method_get_lightmap_size_hint = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3690982128
@@ -61,10 +62,10 @@ export class Mesh extends Resource{
     }
   }
   static init_method_get_aabb() {
-    if (!this.#_bindings.method_get_aabb) {
+    if (!this._bindings.method_get_aabb) {
       let classname = new StringName("Mesh");
       let methodname = new StringName("get_aabb");
-      this.#_bindings.method_get_aabb = internal.classdb_get_method_bind(
+      this._bindings.method_get_aabb = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1068685055
@@ -72,10 +73,10 @@ export class Mesh extends Resource{
     }
   }
   static init_method_get_faces() {
-    if (!this.#_bindings.method_get_faces) {
+    if (!this._bindings.method_get_faces) {
       let classname = new StringName("Mesh");
       let methodname = new StringName("get_faces");
-      this.#_bindings.method_get_faces = internal.classdb_get_method_bind(
+      this._bindings.method_get_faces = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         497664490
@@ -83,10 +84,10 @@ export class Mesh extends Resource{
     }
   }
   static init_method_get_surface_count() {
-    if (!this.#_bindings.method_get_surface_count) {
+    if (!this._bindings.method_get_surface_count) {
       let classname = new StringName("Mesh");
       let methodname = new StringName("get_surface_count");
-      this.#_bindings.method_get_surface_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_surface_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -94,10 +95,10 @@ export class Mesh extends Resource{
     }
   }
   static init_method_surface_get_arrays() {
-    if (!this.#_bindings.method_surface_get_arrays) {
+    if (!this._bindings.method_surface_get_arrays) {
       let classname = new StringName("Mesh");
       let methodname = new StringName("surface_get_arrays");
-      this.#_bindings.method_surface_get_arrays = internal.classdb_get_method_bind(
+      this._bindings.method_surface_get_arrays = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         663333327
@@ -105,10 +106,10 @@ export class Mesh extends Resource{
     }
   }
   static init_method_surface_get_blend_shape_arrays() {
-    if (!this.#_bindings.method_surface_get_blend_shape_arrays) {
+    if (!this._bindings.method_surface_get_blend_shape_arrays) {
       let classname = new StringName("Mesh");
       let methodname = new StringName("surface_get_blend_shape_arrays");
-      this.#_bindings.method_surface_get_blend_shape_arrays = internal.classdb_get_method_bind(
+      this._bindings.method_surface_get_blend_shape_arrays = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         663333327
@@ -116,10 +117,10 @@ export class Mesh extends Resource{
     }
   }
   static init_method_surface_set_material() {
-    if (!this.#_bindings.method_surface_set_material) {
+    if (!this._bindings.method_surface_set_material) {
       let classname = new StringName("Mesh");
       let methodname = new StringName("surface_set_material");
-      this.#_bindings.method_surface_set_material = internal.classdb_get_method_bind(
+      this._bindings.method_surface_set_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3671737478
@@ -127,10 +128,10 @@ export class Mesh extends Resource{
     }
   }
   static init_method_surface_get_material() {
-    if (!this.#_bindings.method_surface_get_material) {
+    if (!this._bindings.method_surface_get_material) {
       let classname = new StringName("Mesh");
       let methodname = new StringName("surface_get_material");
-      this.#_bindings.method_surface_get_material = internal.classdb_get_method_bind(
+      this._bindings.method_surface_get_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2897466400
@@ -138,10 +139,10 @@ export class Mesh extends Resource{
     }
   }
   static init_method_create_placeholder() {
-    if (!this.#_bindings.method_create_placeholder) {
+    if (!this._bindings.method_create_placeholder) {
       let classname = new StringName("Mesh");
       let methodname = new StringName("create_placeholder");
-      this.#_bindings.method_create_placeholder = internal.classdb_get_method_bind(
+      this._bindings.method_create_placeholder = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         121922552
@@ -149,10 +150,10 @@ export class Mesh extends Resource{
     }
   }
   static init_method_create_trimesh_shape() {
-    if (!this.#_bindings.method_create_trimesh_shape) {
+    if (!this._bindings.method_create_trimesh_shape) {
       let classname = new StringName("Mesh");
       let methodname = new StringName("create_trimesh_shape");
-      this.#_bindings.method_create_trimesh_shape = internal.classdb_get_method_bind(
+      this._bindings.method_create_trimesh_shape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4160111210
@@ -160,10 +161,10 @@ export class Mesh extends Resource{
     }
   }
   static init_method_create_convex_shape() {
-    if (!this.#_bindings.method_create_convex_shape) {
+    if (!this._bindings.method_create_convex_shape) {
       let classname = new StringName("Mesh");
       let methodname = new StringName("create_convex_shape");
-      this.#_bindings.method_create_convex_shape = internal.classdb_get_method_bind(
+      this._bindings.method_create_convex_shape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2529984628
@@ -171,10 +172,10 @@ export class Mesh extends Resource{
     }
   }
   static init_method_create_outline() {
-    if (!this.#_bindings.method_create_outline) {
+    if (!this._bindings.method_create_outline) {
       let classname = new StringName("Mesh");
       let methodname = new StringName("create_outline");
-      this.#_bindings.method_create_outline = internal.classdb_get_method_bind(
+      this._bindings.method_create_outline = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1208642001
@@ -182,10 +183,10 @@ export class Mesh extends Resource{
     }
   }
   static init_method_generate_triangle_mesh() {
-    if (!this.#_bindings.method_generate_triangle_mesh) {
+    if (!this._bindings.method_generate_triangle_mesh) {
       let classname = new StringName("Mesh");
       let methodname = new StringName("generate_triangle_mesh");
-      this.#_bindings.method_generate_triangle_mesh = internal.classdb_get_method_bind(
+      this._bindings.method_generate_triangle_mesh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3476533166
@@ -226,7 +227,7 @@ export class Mesh extends Resource{
   set_lightmap_size_hint(_size) {
     Mesh.init_method_set_lightmap_size_hint();
     return _call_native_mb_no_ret(
-      Mesh.#_bindings.method_set_lightmap_size_hint,
+      Mesh._bindings.method_set_lightmap_size_hint,
       this._owner,
       _size
     );
@@ -235,7 +236,7 @@ export class Mesh extends Resource{
   get_lightmap_size_hint() {
     Mesh.init_method_get_lightmap_size_hint();
     return _call_native_mb_ret(
-      Mesh.#_bindings.method_get_lightmap_size_hint,
+      Mesh._bindings.method_get_lightmap_size_hint,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -246,7 +247,7 @@ export class Mesh extends Resource{
   get_aabb() {
     Mesh.init_method_get_aabb();
     return _call_native_mb_ret(
-      Mesh.#_bindings.method_get_aabb,
+      Mesh._bindings.method_get_aabb,
       this._owner,
 			Variant.Type.AABB,
     
@@ -257,7 +258,7 @@ export class Mesh extends Resource{
   get_faces() {
     Mesh.init_method_get_faces();
     return _call_native_mb_ret(
-      Mesh.#_bindings.method_get_faces,
+      Mesh._bindings.method_get_faces,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -268,7 +269,7 @@ export class Mesh extends Resource{
   get_surface_count() {
     Mesh.init_method_get_surface_count();
     return _call_native_mb_ret(
-      Mesh.#_bindings.method_get_surface_count,
+      Mesh._bindings.method_get_surface_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -279,7 +280,7 @@ export class Mesh extends Resource{
   surface_get_arrays(_surf_idx) {
     Mesh.init_method_surface_get_arrays();
     return _call_native_mb_ret(
-      Mesh.#_bindings.method_surface_get_arrays,
+      Mesh._bindings.method_surface_get_arrays,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -290,7 +291,7 @@ export class Mesh extends Resource{
   surface_get_blend_shape_arrays(_surf_idx) {
     Mesh.init_method_surface_get_blend_shape_arrays();
     return _call_native_mb_ret(
-      Mesh.#_bindings.method_surface_get_blend_shape_arrays,
+      Mesh._bindings.method_surface_get_blend_shape_arrays,
       this._owner,
 			Variant.Type.ARRAY,
       _surf_idx
@@ -300,7 +301,7 @@ export class Mesh extends Resource{
   surface_set_material(_surf_idx, _material) {
     Mesh.init_method_surface_set_material();
     return _call_native_mb_no_ret(
-      Mesh.#_bindings.method_surface_set_material,
+      Mesh._bindings.method_surface_set_material,
       this._owner,
       _surf_idx, _material
     );
@@ -309,7 +310,7 @@ export class Mesh extends Resource{
   surface_get_material(_surf_idx) {
     Mesh.init_method_surface_get_material();
     return _call_native_mb_ret(
-      Mesh.#_bindings.method_surface_get_material,
+      Mesh._bindings.method_surface_get_material,
       this._owner,
 			Variant.Type.OBJECT,
       _surf_idx
@@ -319,7 +320,7 @@ export class Mesh extends Resource{
   create_placeholder() {
     Mesh.init_method_create_placeholder();
     return _call_native_mb_ret(
-      Mesh.#_bindings.method_create_placeholder,
+      Mesh._bindings.method_create_placeholder,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -329,7 +330,7 @@ export class Mesh extends Resource{
   create_trimesh_shape() {
     Mesh.init_method_create_trimesh_shape();
     return _call_native_mb_ret(
-      Mesh.#_bindings.method_create_trimesh_shape,
+      Mesh._bindings.method_create_trimesh_shape,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -339,7 +340,7 @@ export class Mesh extends Resource{
   create_convex_shape(_clean, _simplify) {
     Mesh.init_method_create_convex_shape();
     return _call_native_mb_ret(
-      Mesh.#_bindings.method_create_convex_shape,
+      Mesh._bindings.method_create_convex_shape,
       this._owner,
 			Variant.Type.OBJECT,
       _clean, _simplify
@@ -349,7 +350,7 @@ export class Mesh extends Resource{
   create_outline(_margin) {
     Mesh.init_method_create_outline();
     return _call_native_mb_ret(
-      Mesh.#_bindings.method_create_outline,
+      Mesh._bindings.method_create_outline,
       this._owner,
 			Variant.Type.OBJECT,
       _margin
@@ -359,7 +360,7 @@ export class Mesh extends Resource{
   generate_triangle_mesh() {
     Mesh.init_method_generate_triangle_mesh();
     return _call_native_mb_ret(
-      Mesh.#_bindings.method_generate_triangle_mesh,
+      Mesh._bindings.method_generate_triangle_mesh,
       this._owner,
 			Variant.Type.OBJECT,
       

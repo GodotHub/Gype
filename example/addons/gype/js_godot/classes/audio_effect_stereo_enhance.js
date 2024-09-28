@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { AudioEffect } from '@js_godot/classes/audio_effect'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_pan_pullout;
@@ -17,10 +18,10 @@ class _MethodBindings {
   method_set_surround;
   method_get_surround;
 }
+@GodotClass
 export class AudioEffectStereoEnhance extends AudioEffect{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -30,10 +31,10 @@ export class AudioEffectStereoEnhance extends AudioEffect{
     }
   }
   static init_method_set_pan_pullout() {
-    if (!this.#_bindings.method_set_pan_pullout) {
+    if (!this._bindings.method_set_pan_pullout) {
       let classname = new StringName("AudioEffectStereoEnhance");
       let methodname = new StringName("set_pan_pullout");
-      this.#_bindings.method_set_pan_pullout = internal.classdb_get_method_bind(
+      this._bindings.method_set_pan_pullout = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -41,10 +42,10 @@ export class AudioEffectStereoEnhance extends AudioEffect{
     }
   }
   static init_method_get_pan_pullout() {
-    if (!this.#_bindings.method_get_pan_pullout) {
+    if (!this._bindings.method_get_pan_pullout) {
       let classname = new StringName("AudioEffectStereoEnhance");
       let methodname = new StringName("get_pan_pullout");
-      this.#_bindings.method_get_pan_pullout = internal.classdb_get_method_bind(
+      this._bindings.method_get_pan_pullout = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -52,10 +53,10 @@ export class AudioEffectStereoEnhance extends AudioEffect{
     }
   }
   static init_method_set_time_pullout() {
-    if (!this.#_bindings.method_set_time_pullout) {
+    if (!this._bindings.method_set_time_pullout) {
       let classname = new StringName("AudioEffectStereoEnhance");
       let methodname = new StringName("set_time_pullout");
-      this.#_bindings.method_set_time_pullout = internal.classdb_get_method_bind(
+      this._bindings.method_set_time_pullout = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -63,10 +64,10 @@ export class AudioEffectStereoEnhance extends AudioEffect{
     }
   }
   static init_method_get_time_pullout() {
-    if (!this.#_bindings.method_get_time_pullout) {
+    if (!this._bindings.method_get_time_pullout) {
       let classname = new StringName("AudioEffectStereoEnhance");
       let methodname = new StringName("get_time_pullout");
-      this.#_bindings.method_get_time_pullout = internal.classdb_get_method_bind(
+      this._bindings.method_get_time_pullout = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -74,10 +75,10 @@ export class AudioEffectStereoEnhance extends AudioEffect{
     }
   }
   static init_method_set_surround() {
-    if (!this.#_bindings.method_set_surround) {
+    if (!this._bindings.method_set_surround) {
       let classname = new StringName("AudioEffectStereoEnhance");
       let methodname = new StringName("set_surround");
-      this.#_bindings.method_set_surround = internal.classdb_get_method_bind(
+      this._bindings.method_set_surround = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -85,10 +86,10 @@ export class AudioEffectStereoEnhance extends AudioEffect{
     }
   }
   static init_method_get_surround() {
-    if (!this.#_bindings.method_get_surround) {
+    if (!this._bindings.method_get_surround) {
       let classname = new StringName("AudioEffectStereoEnhance");
       let methodname = new StringName("get_surround");
-      this.#_bindings.method_get_surround = internal.classdb_get_method_bind(
+      this._bindings.method_get_surround = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -101,7 +102,7 @@ export class AudioEffectStereoEnhance extends AudioEffect{
   set_pan_pullout(_amount) {
     AudioEffectStereoEnhance.init_method_set_pan_pullout();
     return _call_native_mb_no_ret(
-      AudioEffectStereoEnhance.#_bindings.method_set_pan_pullout,
+      AudioEffectStereoEnhance._bindings.method_set_pan_pullout,
       this._owner,
       _amount
     );
@@ -110,7 +111,7 @@ export class AudioEffectStereoEnhance extends AudioEffect{
   get_pan_pullout() {
     AudioEffectStereoEnhance.init_method_get_pan_pullout();
     return _call_native_mb_ret(
-      AudioEffectStereoEnhance.#_bindings.method_get_pan_pullout,
+      AudioEffectStereoEnhance._bindings.method_get_pan_pullout,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -121,7 +122,7 @@ export class AudioEffectStereoEnhance extends AudioEffect{
   set_time_pullout(_amount) {
     AudioEffectStereoEnhance.init_method_set_time_pullout();
     return _call_native_mb_no_ret(
-      AudioEffectStereoEnhance.#_bindings.method_set_time_pullout,
+      AudioEffectStereoEnhance._bindings.method_set_time_pullout,
       this._owner,
       _amount
     );
@@ -130,7 +131,7 @@ export class AudioEffectStereoEnhance extends AudioEffect{
   get_time_pullout() {
     AudioEffectStereoEnhance.init_method_get_time_pullout();
     return _call_native_mb_ret(
-      AudioEffectStereoEnhance.#_bindings.method_get_time_pullout,
+      AudioEffectStereoEnhance._bindings.method_get_time_pullout,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -141,7 +142,7 @@ export class AudioEffectStereoEnhance extends AudioEffect{
   set_surround(_amount) {
     AudioEffectStereoEnhance.init_method_set_surround();
     return _call_native_mb_no_ret(
-      AudioEffectStereoEnhance.#_bindings.method_set_surround,
+      AudioEffectStereoEnhance._bindings.method_set_surround,
       this._owner,
       _amount
     );
@@ -150,7 +151,7 @@ export class AudioEffectStereoEnhance extends AudioEffect{
   get_surround() {
     AudioEffectStereoEnhance.init_method_get_surround();
     return _call_native_mb_ret(
-      AudioEffectStereoEnhance.#_bindings.method_get_surround,
+      AudioEffectStereoEnhance._bindings.method_get_surround,
       this._owner,
 			Variant.Type.FLOAT,
     

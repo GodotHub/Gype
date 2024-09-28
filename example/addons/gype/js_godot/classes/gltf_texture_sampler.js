@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_mag_filter;
@@ -19,10 +20,10 @@ class _MethodBindings {
   method_get_wrap_t;
   method_set_wrap_t;
 }
+@GodotClass
 export class GLTFTextureSampler extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -32,10 +33,10 @@ export class GLTFTextureSampler extends Resource{
     }
   }
   static init_method_get_mag_filter() {
-    if (!this.#_bindings.method_get_mag_filter) {
+    if (!this._bindings.method_get_mag_filter) {
       let classname = new StringName("GLTFTextureSampler");
       let methodname = new StringName("get_mag_filter");
-      this.#_bindings.method_get_mag_filter = internal.classdb_get_method_bind(
+      this._bindings.method_get_mag_filter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -43,10 +44,10 @@ export class GLTFTextureSampler extends Resource{
     }
   }
   static init_method_set_mag_filter() {
-    if (!this.#_bindings.method_set_mag_filter) {
+    if (!this._bindings.method_set_mag_filter) {
       let classname = new StringName("GLTFTextureSampler");
       let methodname = new StringName("set_mag_filter");
-      this.#_bindings.method_set_mag_filter = internal.classdb_get_method_bind(
+      this._bindings.method_set_mag_filter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -54,10 +55,10 @@ export class GLTFTextureSampler extends Resource{
     }
   }
   static init_method_get_min_filter() {
-    if (!this.#_bindings.method_get_min_filter) {
+    if (!this._bindings.method_get_min_filter) {
       let classname = new StringName("GLTFTextureSampler");
       let methodname = new StringName("get_min_filter");
-      this.#_bindings.method_get_min_filter = internal.classdb_get_method_bind(
+      this._bindings.method_get_min_filter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -65,10 +66,10 @@ export class GLTFTextureSampler extends Resource{
     }
   }
   static init_method_set_min_filter() {
-    if (!this.#_bindings.method_set_min_filter) {
+    if (!this._bindings.method_set_min_filter) {
       let classname = new StringName("GLTFTextureSampler");
       let methodname = new StringName("set_min_filter");
-      this.#_bindings.method_set_min_filter = internal.classdb_get_method_bind(
+      this._bindings.method_set_min_filter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -76,10 +77,10 @@ export class GLTFTextureSampler extends Resource{
     }
   }
   static init_method_get_wrap_s() {
-    if (!this.#_bindings.method_get_wrap_s) {
+    if (!this._bindings.method_get_wrap_s) {
       let classname = new StringName("GLTFTextureSampler");
       let methodname = new StringName("get_wrap_s");
-      this.#_bindings.method_get_wrap_s = internal.classdb_get_method_bind(
+      this._bindings.method_get_wrap_s = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -87,10 +88,10 @@ export class GLTFTextureSampler extends Resource{
     }
   }
   static init_method_set_wrap_s() {
-    if (!this.#_bindings.method_set_wrap_s) {
+    if (!this._bindings.method_set_wrap_s) {
       let classname = new StringName("GLTFTextureSampler");
       let methodname = new StringName("set_wrap_s");
-      this.#_bindings.method_set_wrap_s = internal.classdb_get_method_bind(
+      this._bindings.method_set_wrap_s = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -98,10 +99,10 @@ export class GLTFTextureSampler extends Resource{
     }
   }
   static init_method_get_wrap_t() {
-    if (!this.#_bindings.method_get_wrap_t) {
+    if (!this._bindings.method_get_wrap_t) {
       let classname = new StringName("GLTFTextureSampler");
       let methodname = new StringName("get_wrap_t");
-      this.#_bindings.method_get_wrap_t = internal.classdb_get_method_bind(
+      this._bindings.method_get_wrap_t = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -109,10 +110,10 @@ export class GLTFTextureSampler extends Resource{
     }
   }
   static init_method_set_wrap_t() {
-    if (!this.#_bindings.method_set_wrap_t) {
+    if (!this._bindings.method_set_wrap_t) {
       let classname = new StringName("GLTFTextureSampler");
       let methodname = new StringName("set_wrap_t");
-      this.#_bindings.method_set_wrap_t = internal.classdb_get_method_bind(
+      this._bindings.method_set_wrap_t = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -125,7 +126,7 @@ export class GLTFTextureSampler extends Resource{
   get_mag_filter() {
     GLTFTextureSampler.init_method_get_mag_filter();
     return _call_native_mb_ret(
-      GLTFTextureSampler.#_bindings.method_get_mag_filter,
+      GLTFTextureSampler._bindings.method_get_mag_filter,
       this._owner,
 			Variant.Type.INT,
     
@@ -136,7 +137,7 @@ export class GLTFTextureSampler extends Resource{
   set_mag_filter(_filter_mode) {
     GLTFTextureSampler.init_method_set_mag_filter();
     return _call_native_mb_no_ret(
-      GLTFTextureSampler.#_bindings.method_set_mag_filter,
+      GLTFTextureSampler._bindings.method_set_mag_filter,
       this._owner,
       _filter_mode
     );
@@ -145,7 +146,7 @@ export class GLTFTextureSampler extends Resource{
   get_min_filter() {
     GLTFTextureSampler.init_method_get_min_filter();
     return _call_native_mb_ret(
-      GLTFTextureSampler.#_bindings.method_get_min_filter,
+      GLTFTextureSampler._bindings.method_get_min_filter,
       this._owner,
 			Variant.Type.INT,
     
@@ -156,7 +157,7 @@ export class GLTFTextureSampler extends Resource{
   set_min_filter(_filter_mode) {
     GLTFTextureSampler.init_method_set_min_filter();
     return _call_native_mb_no_ret(
-      GLTFTextureSampler.#_bindings.method_set_min_filter,
+      GLTFTextureSampler._bindings.method_set_min_filter,
       this._owner,
       _filter_mode
     );
@@ -165,7 +166,7 @@ export class GLTFTextureSampler extends Resource{
   get_wrap_s() {
     GLTFTextureSampler.init_method_get_wrap_s();
     return _call_native_mb_ret(
-      GLTFTextureSampler.#_bindings.method_get_wrap_s,
+      GLTFTextureSampler._bindings.method_get_wrap_s,
       this._owner,
 			Variant.Type.INT,
     
@@ -176,7 +177,7 @@ export class GLTFTextureSampler extends Resource{
   set_wrap_s(_wrap_mode) {
     GLTFTextureSampler.init_method_set_wrap_s();
     return _call_native_mb_no_ret(
-      GLTFTextureSampler.#_bindings.method_set_wrap_s,
+      GLTFTextureSampler._bindings.method_set_wrap_s,
       this._owner,
       _wrap_mode
     );
@@ -185,7 +186,7 @@ export class GLTFTextureSampler extends Resource{
   get_wrap_t() {
     GLTFTextureSampler.init_method_get_wrap_t();
     return _call_native_mb_ret(
-      GLTFTextureSampler.#_bindings.method_get_wrap_t,
+      GLTFTextureSampler._bindings.method_get_wrap_t,
       this._owner,
 			Variant.Type.INT,
     
@@ -196,7 +197,7 @@ export class GLTFTextureSampler extends Resource{
   set_wrap_t(_wrap_mode) {
     GLTFTextureSampler.init_method_set_wrap_t();
     return _call_native_mb_no_ret(
-      GLTFTextureSampler.#_bindings.method_set_wrap_t,
+      GLTFTextureSampler._bindings.method_set_wrap_t,
       this._owner,
       _wrap_mode
     );

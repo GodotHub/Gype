@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StyleBox } from '@js_godot/classes/style_box'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_bg_color;
@@ -43,10 +44,10 @@ class _MethodBindings {
   method_set_corner_detail;
   method_get_corner_detail;
 }
+@GodotClass
 export class StyleBoxFlat extends StyleBox{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -56,10 +57,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_set_bg_color() {
-    if (!this.#_bindings.method_set_bg_color) {
+    if (!this._bindings.method_set_bg_color) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("set_bg_color");
-      this.#_bindings.method_set_bg_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_bg_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -67,10 +68,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_get_bg_color() {
-    if (!this.#_bindings.method_get_bg_color) {
+    if (!this._bindings.method_get_bg_color) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("get_bg_color");
-      this.#_bindings.method_get_bg_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_bg_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -78,10 +79,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_set_border_color() {
-    if (!this.#_bindings.method_set_border_color) {
+    if (!this._bindings.method_set_border_color) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("set_border_color");
-      this.#_bindings.method_set_border_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_border_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -89,10 +90,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_get_border_color() {
-    if (!this.#_bindings.method_get_border_color) {
+    if (!this._bindings.method_get_border_color) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("get_border_color");
-      this.#_bindings.method_get_border_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_border_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -100,10 +101,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_set_border_width_all() {
-    if (!this.#_bindings.method_set_border_width_all) {
+    if (!this._bindings.method_set_border_width_all) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("set_border_width_all");
-      this.#_bindings.method_set_border_width_all = internal.classdb_get_method_bind(
+      this._bindings.method_set_border_width_all = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -111,10 +112,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_get_border_width_min() {
-    if (!this.#_bindings.method_get_border_width_min) {
+    if (!this._bindings.method_get_border_width_min) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("get_border_width_min");
-      this.#_bindings.method_get_border_width_min = internal.classdb_get_method_bind(
+      this._bindings.method_get_border_width_min = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -122,10 +123,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_set_border_width() {
-    if (!this.#_bindings.method_set_border_width) {
+    if (!this._bindings.method_set_border_width) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("set_border_width");
-      this.#_bindings.method_set_border_width = internal.classdb_get_method_bind(
+      this._bindings.method_set_border_width = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         437707142
@@ -133,10 +134,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_get_border_width() {
-    if (!this.#_bindings.method_get_border_width) {
+    if (!this._bindings.method_get_border_width) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("get_border_width");
-      this.#_bindings.method_get_border_width = internal.classdb_get_method_bind(
+      this._bindings.method_get_border_width = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1983885014
@@ -144,10 +145,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_set_border_blend() {
-    if (!this.#_bindings.method_set_border_blend) {
+    if (!this._bindings.method_set_border_blend) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("set_border_blend");
-      this.#_bindings.method_set_border_blend = internal.classdb_get_method_bind(
+      this._bindings.method_set_border_blend = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -155,10 +156,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_get_border_blend() {
-    if (!this.#_bindings.method_get_border_blend) {
+    if (!this._bindings.method_get_border_blend) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("get_border_blend");
-      this.#_bindings.method_get_border_blend = internal.classdb_get_method_bind(
+      this._bindings.method_get_border_blend = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -166,10 +167,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_set_corner_radius_all() {
-    if (!this.#_bindings.method_set_corner_radius_all) {
+    if (!this._bindings.method_set_corner_radius_all) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("set_corner_radius_all");
-      this.#_bindings.method_set_corner_radius_all = internal.classdb_get_method_bind(
+      this._bindings.method_set_corner_radius_all = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -177,10 +178,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_set_corner_radius() {
-    if (!this.#_bindings.method_set_corner_radius) {
+    if (!this._bindings.method_set_corner_radius) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("set_corner_radius");
-      this.#_bindings.method_set_corner_radius = internal.classdb_get_method_bind(
+      this._bindings.method_set_corner_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2696158768
@@ -188,10 +189,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_get_corner_radius() {
-    if (!this.#_bindings.method_get_corner_radius) {
+    if (!this._bindings.method_get_corner_radius) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("get_corner_radius");
-      this.#_bindings.method_get_corner_radius = internal.classdb_get_method_bind(
+      this._bindings.method_get_corner_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3982397690
@@ -199,10 +200,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_set_expand_margin() {
-    if (!this.#_bindings.method_set_expand_margin) {
+    if (!this._bindings.method_set_expand_margin) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("set_expand_margin");
-      this.#_bindings.method_set_expand_margin = internal.classdb_get_method_bind(
+      this._bindings.method_set_expand_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4290182280
@@ -210,10 +211,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_set_expand_margin_all() {
-    if (!this.#_bindings.method_set_expand_margin_all) {
+    if (!this._bindings.method_set_expand_margin_all) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("set_expand_margin_all");
-      this.#_bindings.method_set_expand_margin_all = internal.classdb_get_method_bind(
+      this._bindings.method_set_expand_margin_all = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -221,10 +222,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_get_expand_margin() {
-    if (!this.#_bindings.method_get_expand_margin) {
+    if (!this._bindings.method_get_expand_margin) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("get_expand_margin");
-      this.#_bindings.method_get_expand_margin = internal.classdb_get_method_bind(
+      this._bindings.method_get_expand_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2869120046
@@ -232,10 +233,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_set_draw_center() {
-    if (!this.#_bindings.method_set_draw_center) {
+    if (!this._bindings.method_set_draw_center) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("set_draw_center");
-      this.#_bindings.method_set_draw_center = internal.classdb_get_method_bind(
+      this._bindings.method_set_draw_center = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -243,10 +244,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_is_draw_center_enabled() {
-    if (!this.#_bindings.method_is_draw_center_enabled) {
+    if (!this._bindings.method_is_draw_center_enabled) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("is_draw_center_enabled");
-      this.#_bindings.method_is_draw_center_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_draw_center_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -254,10 +255,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_set_skew() {
-    if (!this.#_bindings.method_set_skew) {
+    if (!this._bindings.method_set_skew) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("set_skew");
-      this.#_bindings.method_set_skew = internal.classdb_get_method_bind(
+      this._bindings.method_set_skew = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -265,10 +266,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_get_skew() {
-    if (!this.#_bindings.method_get_skew) {
+    if (!this._bindings.method_get_skew) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("get_skew");
-      this.#_bindings.method_get_skew = internal.classdb_get_method_bind(
+      this._bindings.method_get_skew = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -276,10 +277,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_set_shadow_color() {
-    if (!this.#_bindings.method_set_shadow_color) {
+    if (!this._bindings.method_set_shadow_color) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("set_shadow_color");
-      this.#_bindings.method_set_shadow_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_shadow_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -287,10 +288,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_get_shadow_color() {
-    if (!this.#_bindings.method_get_shadow_color) {
+    if (!this._bindings.method_get_shadow_color) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("get_shadow_color");
-      this.#_bindings.method_get_shadow_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_shadow_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -298,10 +299,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_set_shadow_size() {
-    if (!this.#_bindings.method_set_shadow_size) {
+    if (!this._bindings.method_set_shadow_size) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("set_shadow_size");
-      this.#_bindings.method_set_shadow_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_shadow_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -309,10 +310,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_get_shadow_size() {
-    if (!this.#_bindings.method_get_shadow_size) {
+    if (!this._bindings.method_get_shadow_size) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("get_shadow_size");
-      this.#_bindings.method_get_shadow_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_shadow_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -320,10 +321,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_set_shadow_offset() {
-    if (!this.#_bindings.method_set_shadow_offset) {
+    if (!this._bindings.method_set_shadow_offset) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("set_shadow_offset");
-      this.#_bindings.method_set_shadow_offset = internal.classdb_get_method_bind(
+      this._bindings.method_set_shadow_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -331,10 +332,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_get_shadow_offset() {
-    if (!this.#_bindings.method_get_shadow_offset) {
+    if (!this._bindings.method_get_shadow_offset) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("get_shadow_offset");
-      this.#_bindings.method_get_shadow_offset = internal.classdb_get_method_bind(
+      this._bindings.method_get_shadow_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -342,10 +343,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_set_anti_aliased() {
-    if (!this.#_bindings.method_set_anti_aliased) {
+    if (!this._bindings.method_set_anti_aliased) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("set_anti_aliased");
-      this.#_bindings.method_set_anti_aliased = internal.classdb_get_method_bind(
+      this._bindings.method_set_anti_aliased = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -353,10 +354,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_is_anti_aliased() {
-    if (!this.#_bindings.method_is_anti_aliased) {
+    if (!this._bindings.method_is_anti_aliased) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("is_anti_aliased");
-      this.#_bindings.method_is_anti_aliased = internal.classdb_get_method_bind(
+      this._bindings.method_is_anti_aliased = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -364,10 +365,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_set_aa_size() {
-    if (!this.#_bindings.method_set_aa_size) {
+    if (!this._bindings.method_set_aa_size) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("set_aa_size");
-      this.#_bindings.method_set_aa_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_aa_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -375,10 +376,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_get_aa_size() {
-    if (!this.#_bindings.method_get_aa_size) {
+    if (!this._bindings.method_get_aa_size) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("get_aa_size");
-      this.#_bindings.method_get_aa_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_aa_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -386,10 +387,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_set_corner_detail() {
-    if (!this.#_bindings.method_set_corner_detail) {
+    if (!this._bindings.method_set_corner_detail) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("set_corner_detail");
-      this.#_bindings.method_set_corner_detail = internal.classdb_get_method_bind(
+      this._bindings.method_set_corner_detail = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -397,10 +398,10 @@ export class StyleBoxFlat extends StyleBox{
     }
   }
   static init_method_get_corner_detail() {
-    if (!this.#_bindings.method_get_corner_detail) {
+    if (!this._bindings.method_get_corner_detail) {
       let classname = new StringName("StyleBoxFlat");
       let methodname = new StringName("get_corner_detail");
-      this.#_bindings.method_get_corner_detail = internal.classdb_get_method_bind(
+      this._bindings.method_get_corner_detail = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -413,7 +414,7 @@ export class StyleBoxFlat extends StyleBox{
   set_bg_color(_color) {
     StyleBoxFlat.init_method_set_bg_color();
     return _call_native_mb_no_ret(
-      StyleBoxFlat.#_bindings.method_set_bg_color,
+      StyleBoxFlat._bindings.method_set_bg_color,
       this._owner,
       _color
     );
@@ -422,7 +423,7 @@ export class StyleBoxFlat extends StyleBox{
   get_bg_color() {
     StyleBoxFlat.init_method_get_bg_color();
     return _call_native_mb_ret(
-      StyleBoxFlat.#_bindings.method_get_bg_color,
+      StyleBoxFlat._bindings.method_get_bg_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -433,7 +434,7 @@ export class StyleBoxFlat extends StyleBox{
   set_border_color(_color) {
     StyleBoxFlat.init_method_set_border_color();
     return _call_native_mb_no_ret(
-      StyleBoxFlat.#_bindings.method_set_border_color,
+      StyleBoxFlat._bindings.method_set_border_color,
       this._owner,
       _color
     );
@@ -442,7 +443,7 @@ export class StyleBoxFlat extends StyleBox{
   get_border_color() {
     StyleBoxFlat.init_method_get_border_color();
     return _call_native_mb_ret(
-      StyleBoxFlat.#_bindings.method_get_border_color,
+      StyleBoxFlat._bindings.method_get_border_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -453,7 +454,7 @@ export class StyleBoxFlat extends StyleBox{
   set_border_width_all(_width) {
     StyleBoxFlat.init_method_set_border_width_all();
     return _call_native_mb_no_ret(
-      StyleBoxFlat.#_bindings.method_set_border_width_all,
+      StyleBoxFlat._bindings.method_set_border_width_all,
       this._owner,
       _width
     );
@@ -462,7 +463,7 @@ export class StyleBoxFlat extends StyleBox{
   get_border_width_min() {
     StyleBoxFlat.init_method_get_border_width_min();
     return _call_native_mb_ret(
-      StyleBoxFlat.#_bindings.method_get_border_width_min,
+      StyleBoxFlat._bindings.method_get_border_width_min,
       this._owner,
 			Variant.Type.INT,
     
@@ -473,7 +474,7 @@ export class StyleBoxFlat extends StyleBox{
   set_border_width(_margin, _width) {
     StyleBoxFlat.init_method_set_border_width();
     return _call_native_mb_no_ret(
-      StyleBoxFlat.#_bindings.method_set_border_width,
+      StyleBoxFlat._bindings.method_set_border_width,
       this._owner,
       _margin, _width
     );
@@ -482,7 +483,7 @@ export class StyleBoxFlat extends StyleBox{
   get_border_width(_margin) {
     StyleBoxFlat.init_method_get_border_width();
     return _call_native_mb_ret(
-      StyleBoxFlat.#_bindings.method_get_border_width,
+      StyleBoxFlat._bindings.method_get_border_width,
       this._owner,
 			Variant.Type.INT,
     
@@ -493,7 +494,7 @@ export class StyleBoxFlat extends StyleBox{
   set_border_blend(_blend) {
     StyleBoxFlat.init_method_set_border_blend();
     return _call_native_mb_no_ret(
-      StyleBoxFlat.#_bindings.method_set_border_blend,
+      StyleBoxFlat._bindings.method_set_border_blend,
       this._owner,
       _blend
     );
@@ -502,7 +503,7 @@ export class StyleBoxFlat extends StyleBox{
   get_border_blend() {
     StyleBoxFlat.init_method_get_border_blend();
     return _call_native_mb_ret(
-      StyleBoxFlat.#_bindings.method_get_border_blend,
+      StyleBoxFlat._bindings.method_get_border_blend,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -513,7 +514,7 @@ export class StyleBoxFlat extends StyleBox{
   set_corner_radius_all(_radius) {
     StyleBoxFlat.init_method_set_corner_radius_all();
     return _call_native_mb_no_ret(
-      StyleBoxFlat.#_bindings.method_set_corner_radius_all,
+      StyleBoxFlat._bindings.method_set_corner_radius_all,
       this._owner,
       _radius
     );
@@ -522,7 +523,7 @@ export class StyleBoxFlat extends StyleBox{
   set_corner_radius(_corner, _radius) {
     StyleBoxFlat.init_method_set_corner_radius();
     return _call_native_mb_no_ret(
-      StyleBoxFlat.#_bindings.method_set_corner_radius,
+      StyleBoxFlat._bindings.method_set_corner_radius,
       this._owner,
       _corner, _radius
     );
@@ -531,7 +532,7 @@ export class StyleBoxFlat extends StyleBox{
   get_corner_radius(_corner) {
     StyleBoxFlat.init_method_get_corner_radius();
     return _call_native_mb_ret(
-      StyleBoxFlat.#_bindings.method_get_corner_radius,
+      StyleBoxFlat._bindings.method_get_corner_radius,
       this._owner,
 			Variant.Type.INT,
     
@@ -542,7 +543,7 @@ export class StyleBoxFlat extends StyleBox{
   set_expand_margin(_margin, _size) {
     StyleBoxFlat.init_method_set_expand_margin();
     return _call_native_mb_no_ret(
-      StyleBoxFlat.#_bindings.method_set_expand_margin,
+      StyleBoxFlat._bindings.method_set_expand_margin,
       this._owner,
       _margin, _size
     );
@@ -551,7 +552,7 @@ export class StyleBoxFlat extends StyleBox{
   set_expand_margin_all(_size) {
     StyleBoxFlat.init_method_set_expand_margin_all();
     return _call_native_mb_no_ret(
-      StyleBoxFlat.#_bindings.method_set_expand_margin_all,
+      StyleBoxFlat._bindings.method_set_expand_margin_all,
       this._owner,
       _size
     );
@@ -560,7 +561,7 @@ export class StyleBoxFlat extends StyleBox{
   get_expand_margin(_margin) {
     StyleBoxFlat.init_method_get_expand_margin();
     return _call_native_mb_ret(
-      StyleBoxFlat.#_bindings.method_get_expand_margin,
+      StyleBoxFlat._bindings.method_get_expand_margin,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -571,7 +572,7 @@ export class StyleBoxFlat extends StyleBox{
   set_draw_center(_draw_center) {
     StyleBoxFlat.init_method_set_draw_center();
     return _call_native_mb_no_ret(
-      StyleBoxFlat.#_bindings.method_set_draw_center,
+      StyleBoxFlat._bindings.method_set_draw_center,
       this._owner,
       _draw_center
     );
@@ -580,7 +581,7 @@ export class StyleBoxFlat extends StyleBox{
   is_draw_center_enabled() {
     StyleBoxFlat.init_method_is_draw_center_enabled();
     return _call_native_mb_ret(
-      StyleBoxFlat.#_bindings.method_is_draw_center_enabled,
+      StyleBoxFlat._bindings.method_is_draw_center_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -591,7 +592,7 @@ export class StyleBoxFlat extends StyleBox{
   set_skew(_skew) {
     StyleBoxFlat.init_method_set_skew();
     return _call_native_mb_no_ret(
-      StyleBoxFlat.#_bindings.method_set_skew,
+      StyleBoxFlat._bindings.method_set_skew,
       this._owner,
       _skew
     );
@@ -600,7 +601,7 @@ export class StyleBoxFlat extends StyleBox{
   get_skew() {
     StyleBoxFlat.init_method_get_skew();
     return _call_native_mb_ret(
-      StyleBoxFlat.#_bindings.method_get_skew,
+      StyleBoxFlat._bindings.method_get_skew,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -611,7 +612,7 @@ export class StyleBoxFlat extends StyleBox{
   set_shadow_color(_color) {
     StyleBoxFlat.init_method_set_shadow_color();
     return _call_native_mb_no_ret(
-      StyleBoxFlat.#_bindings.method_set_shadow_color,
+      StyleBoxFlat._bindings.method_set_shadow_color,
       this._owner,
       _color
     );
@@ -620,7 +621,7 @@ export class StyleBoxFlat extends StyleBox{
   get_shadow_color() {
     StyleBoxFlat.init_method_get_shadow_color();
     return _call_native_mb_ret(
-      StyleBoxFlat.#_bindings.method_get_shadow_color,
+      StyleBoxFlat._bindings.method_get_shadow_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -631,7 +632,7 @@ export class StyleBoxFlat extends StyleBox{
   set_shadow_size(_size) {
     StyleBoxFlat.init_method_set_shadow_size();
     return _call_native_mb_no_ret(
-      StyleBoxFlat.#_bindings.method_set_shadow_size,
+      StyleBoxFlat._bindings.method_set_shadow_size,
       this._owner,
       _size
     );
@@ -640,7 +641,7 @@ export class StyleBoxFlat extends StyleBox{
   get_shadow_size() {
     StyleBoxFlat.init_method_get_shadow_size();
     return _call_native_mb_ret(
-      StyleBoxFlat.#_bindings.method_get_shadow_size,
+      StyleBoxFlat._bindings.method_get_shadow_size,
       this._owner,
 			Variant.Type.INT,
     
@@ -651,7 +652,7 @@ export class StyleBoxFlat extends StyleBox{
   set_shadow_offset(_offset) {
     StyleBoxFlat.init_method_set_shadow_offset();
     return _call_native_mb_no_ret(
-      StyleBoxFlat.#_bindings.method_set_shadow_offset,
+      StyleBoxFlat._bindings.method_set_shadow_offset,
       this._owner,
       _offset
     );
@@ -660,7 +661,7 @@ export class StyleBoxFlat extends StyleBox{
   get_shadow_offset() {
     StyleBoxFlat.init_method_get_shadow_offset();
     return _call_native_mb_ret(
-      StyleBoxFlat.#_bindings.method_get_shadow_offset,
+      StyleBoxFlat._bindings.method_get_shadow_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -671,7 +672,7 @@ export class StyleBoxFlat extends StyleBox{
   set_anti_aliased(_anti_aliased) {
     StyleBoxFlat.init_method_set_anti_aliased();
     return _call_native_mb_no_ret(
-      StyleBoxFlat.#_bindings.method_set_anti_aliased,
+      StyleBoxFlat._bindings.method_set_anti_aliased,
       this._owner,
       _anti_aliased
     );
@@ -680,7 +681,7 @@ export class StyleBoxFlat extends StyleBox{
   is_anti_aliased() {
     StyleBoxFlat.init_method_is_anti_aliased();
     return _call_native_mb_ret(
-      StyleBoxFlat.#_bindings.method_is_anti_aliased,
+      StyleBoxFlat._bindings.method_is_anti_aliased,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -691,7 +692,7 @@ export class StyleBoxFlat extends StyleBox{
   set_aa_size(_size) {
     StyleBoxFlat.init_method_set_aa_size();
     return _call_native_mb_no_ret(
-      StyleBoxFlat.#_bindings.method_set_aa_size,
+      StyleBoxFlat._bindings.method_set_aa_size,
       this._owner,
       _size
     );
@@ -700,7 +701,7 @@ export class StyleBoxFlat extends StyleBox{
   get_aa_size() {
     StyleBoxFlat.init_method_get_aa_size();
     return _call_native_mb_ret(
-      StyleBoxFlat.#_bindings.method_get_aa_size,
+      StyleBoxFlat._bindings.method_get_aa_size,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -711,7 +712,7 @@ export class StyleBoxFlat extends StyleBox{
   set_corner_detail(_detail) {
     StyleBoxFlat.init_method_set_corner_detail();
     return _call_native_mb_no_ret(
-      StyleBoxFlat.#_bindings.method_set_corner_detail,
+      StyleBoxFlat._bindings.method_set_corner_detail,
       this._owner,
       _detail
     );
@@ -720,7 +721,7 @@ export class StyleBoxFlat extends StyleBox{
   get_corner_detail() {
     StyleBoxFlat.init_method_get_corner_detail();
     return _call_native_mb_ret(
-      StyleBoxFlat.#_bindings.method_get_corner_detail,
+      StyleBoxFlat._bindings.method_get_corner_detail,
       this._owner,
 			Variant.Type.INT,
     

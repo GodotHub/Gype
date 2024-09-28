@@ -1,14 +1,15 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_pressed_button;
@@ -16,10 +17,10 @@ class _MethodBindings {
   method_set_allow_unpress;
   method_is_allow_unpress;
 }
+@GodotClass
 export class ButtonGroup extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -29,10 +30,10 @@ export class ButtonGroup extends Resource{
     }
   }
   static init_method_get_pressed_button() {
-    if (!this.#_bindings.method_get_pressed_button) {
+    if (!this._bindings.method_get_pressed_button) {
       let classname = new StringName("ButtonGroup");
       let methodname = new StringName("get_pressed_button");
-      this.#_bindings.method_get_pressed_button = internal.classdb_get_method_bind(
+      this._bindings.method_get_pressed_button = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3886434893
@@ -40,10 +41,10 @@ export class ButtonGroup extends Resource{
     }
   }
   static init_method_get_buttons() {
-    if (!this.#_bindings.method_get_buttons) {
+    if (!this._bindings.method_get_buttons) {
       let classname = new StringName("ButtonGroup");
       let methodname = new StringName("get_buttons");
-      this.#_bindings.method_get_buttons = internal.classdb_get_method_bind(
+      this._bindings.method_get_buttons = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2915620761
@@ -51,10 +52,10 @@ export class ButtonGroup extends Resource{
     }
   }
   static init_method_set_allow_unpress() {
-    if (!this.#_bindings.method_set_allow_unpress) {
+    if (!this._bindings.method_set_allow_unpress) {
       let classname = new StringName("ButtonGroup");
       let methodname = new StringName("set_allow_unpress");
-      this.#_bindings.method_set_allow_unpress = internal.classdb_get_method_bind(
+      this._bindings.method_set_allow_unpress = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -62,10 +63,10 @@ export class ButtonGroup extends Resource{
     }
   }
   static init_method_is_allow_unpress() {
-    if (!this.#_bindings.method_is_allow_unpress) {
+    if (!this._bindings.method_is_allow_unpress) {
       let classname = new StringName("ButtonGroup");
       let methodname = new StringName("is_allow_unpress");
-      this.#_bindings.method_is_allow_unpress = internal.classdb_get_method_bind(
+      this._bindings.method_is_allow_unpress = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2240911060
@@ -78,7 +79,7 @@ export class ButtonGroup extends Resource{
   get_pressed_button() {
     ButtonGroup.init_method_get_pressed_button();
     return _call_native_mb_ret(
-      ButtonGroup.#_bindings.method_get_pressed_button,
+      ButtonGroup._bindings.method_get_pressed_button,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -88,7 +89,7 @@ export class ButtonGroup extends Resource{
   get_buttons() {
     ButtonGroup.init_method_get_buttons();
     return _call_native_mb_ret(
-      ButtonGroup.#_bindings.method_get_buttons,
+      ButtonGroup._bindings.method_get_buttons,
       this._owner,
 			Variant.Type.ARRAY,
       
@@ -98,7 +99,7 @@ export class ButtonGroup extends Resource{
   set_allow_unpress(_enabled) {
     ButtonGroup.init_method_set_allow_unpress();
     return _call_native_mb_no_ret(
-      ButtonGroup.#_bindings.method_set_allow_unpress,
+      ButtonGroup._bindings.method_set_allow_unpress,
       this._owner,
       _enabled
     );
@@ -107,7 +108,7 @@ export class ButtonGroup extends Resource{
   is_allow_unpress() {
     ButtonGroup.init_method_is_allow_unpress();
     return _call_native_mb_ret(
-      ButtonGroup.#_bindings.method_is_allow_unpress,
+      ButtonGroup._bindings.method_is_allow_unpress,
       this._owner,
 			Variant.Type.BOOL,
     

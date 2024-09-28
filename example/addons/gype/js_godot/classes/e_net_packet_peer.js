@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_peer_disconnect;
@@ -26,10 +27,10 @@ class _MethodBindings {
   method_get_channels;
   method_is_active;
 }
+@GodotClass
 export class ENetPacketPeer extends PacketPeer{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -39,10 +40,10 @@ export class ENetPacketPeer extends PacketPeer{
     }
   }
   static init_method_peer_disconnect() {
-    if (!this.#_bindings.method_peer_disconnect) {
+    if (!this._bindings.method_peer_disconnect) {
       let classname = new StringName("ENetPacketPeer");
       let methodname = new StringName("peer_disconnect");
-      this.#_bindings.method_peer_disconnect = internal.classdb_get_method_bind(
+      this._bindings.method_peer_disconnect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1995695955
@@ -50,10 +51,10 @@ export class ENetPacketPeer extends PacketPeer{
     }
   }
   static init_method_peer_disconnect_later() {
-    if (!this.#_bindings.method_peer_disconnect_later) {
+    if (!this._bindings.method_peer_disconnect_later) {
       let classname = new StringName("ENetPacketPeer");
       let methodname = new StringName("peer_disconnect_later");
-      this.#_bindings.method_peer_disconnect_later = internal.classdb_get_method_bind(
+      this._bindings.method_peer_disconnect_later = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1995695955
@@ -61,10 +62,10 @@ export class ENetPacketPeer extends PacketPeer{
     }
   }
   static init_method_peer_disconnect_now() {
-    if (!this.#_bindings.method_peer_disconnect_now) {
+    if (!this._bindings.method_peer_disconnect_now) {
       let classname = new StringName("ENetPacketPeer");
       let methodname = new StringName("peer_disconnect_now");
-      this.#_bindings.method_peer_disconnect_now = internal.classdb_get_method_bind(
+      this._bindings.method_peer_disconnect_now = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1995695955
@@ -72,10 +73,10 @@ export class ENetPacketPeer extends PacketPeer{
     }
   }
   static init_method_ping() {
-    if (!this.#_bindings.method_ping) {
+    if (!this._bindings.method_ping) {
       let classname = new StringName("ENetPacketPeer");
       let methodname = new StringName("ping");
-      this.#_bindings.method_ping = internal.classdb_get_method_bind(
+      this._bindings.method_ping = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -83,10 +84,10 @@ export class ENetPacketPeer extends PacketPeer{
     }
   }
   static init_method_ping_interval() {
-    if (!this.#_bindings.method_ping_interval) {
+    if (!this._bindings.method_ping_interval) {
       let classname = new StringName("ENetPacketPeer");
       let methodname = new StringName("ping_interval");
-      this.#_bindings.method_ping_interval = internal.classdb_get_method_bind(
+      this._bindings.method_ping_interval = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -94,10 +95,10 @@ export class ENetPacketPeer extends PacketPeer{
     }
   }
   static init_method_reset() {
-    if (!this.#_bindings.method_reset) {
+    if (!this._bindings.method_reset) {
       let classname = new StringName("ENetPacketPeer");
       let methodname = new StringName("reset");
-      this.#_bindings.method_reset = internal.classdb_get_method_bind(
+      this._bindings.method_reset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -105,10 +106,10 @@ export class ENetPacketPeer extends PacketPeer{
     }
   }
   static init_method_send() {
-    if (!this.#_bindings.method_send) {
+    if (!this._bindings.method_send) {
       let classname = new StringName("ENetPacketPeer");
       let methodname = new StringName("send");
-      this.#_bindings.method_send = internal.classdb_get_method_bind(
+      this._bindings.method_send = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         120522849
@@ -116,10 +117,10 @@ export class ENetPacketPeer extends PacketPeer{
     }
   }
   static init_method_throttle_configure() {
-    if (!this.#_bindings.method_throttle_configure) {
+    if (!this._bindings.method_throttle_configure) {
       let classname = new StringName("ENetPacketPeer");
       let methodname = new StringName("throttle_configure");
-      this.#_bindings.method_throttle_configure = internal.classdb_get_method_bind(
+      this._bindings.method_throttle_configure = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1649997291
@@ -127,10 +128,10 @@ export class ENetPacketPeer extends PacketPeer{
     }
   }
   static init_method_set_timeout() {
-    if (!this.#_bindings.method_set_timeout) {
+    if (!this._bindings.method_set_timeout) {
       let classname = new StringName("ENetPacketPeer");
       let methodname = new StringName("set_timeout");
-      this.#_bindings.method_set_timeout = internal.classdb_get_method_bind(
+      this._bindings.method_set_timeout = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1649997291
@@ -138,10 +139,10 @@ export class ENetPacketPeer extends PacketPeer{
     }
   }
   static init_method_get_remote_address() {
-    if (!this.#_bindings.method_get_remote_address) {
+    if (!this._bindings.method_get_remote_address) {
       let classname = new StringName("ENetPacketPeer");
       let methodname = new StringName("get_remote_address");
-      this.#_bindings.method_get_remote_address = internal.classdb_get_method_bind(
+      this._bindings.method_get_remote_address = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -149,10 +150,10 @@ export class ENetPacketPeer extends PacketPeer{
     }
   }
   static init_method_get_remote_port() {
-    if (!this.#_bindings.method_get_remote_port) {
+    if (!this._bindings.method_get_remote_port) {
       let classname = new StringName("ENetPacketPeer");
       let methodname = new StringName("get_remote_port");
-      this.#_bindings.method_get_remote_port = internal.classdb_get_method_bind(
+      this._bindings.method_get_remote_port = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -160,10 +161,10 @@ export class ENetPacketPeer extends PacketPeer{
     }
   }
   static init_method_get_statistic() {
-    if (!this.#_bindings.method_get_statistic) {
+    if (!this._bindings.method_get_statistic) {
       let classname = new StringName("ENetPacketPeer");
       let methodname = new StringName("get_statistic");
-      this.#_bindings.method_get_statistic = internal.classdb_get_method_bind(
+      this._bindings.method_get_statistic = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1642578323
@@ -171,10 +172,10 @@ export class ENetPacketPeer extends PacketPeer{
     }
   }
   static init_method_get_state() {
-    if (!this.#_bindings.method_get_state) {
+    if (!this._bindings.method_get_state) {
       let classname = new StringName("ENetPacketPeer");
       let methodname = new StringName("get_state");
-      this.#_bindings.method_get_state = internal.classdb_get_method_bind(
+      this._bindings.method_get_state = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         711068532
@@ -182,10 +183,10 @@ export class ENetPacketPeer extends PacketPeer{
     }
   }
   static init_method_get_channels() {
-    if (!this.#_bindings.method_get_channels) {
+    if (!this._bindings.method_get_channels) {
       let classname = new StringName("ENetPacketPeer");
       let methodname = new StringName("get_channels");
-      this.#_bindings.method_get_channels = internal.classdb_get_method_bind(
+      this._bindings.method_get_channels = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -193,10 +194,10 @@ export class ENetPacketPeer extends PacketPeer{
     }
   }
   static init_method_is_active() {
-    if (!this.#_bindings.method_is_active) {
+    if (!this._bindings.method_is_active) {
       let classname = new StringName("ENetPacketPeer");
       let methodname = new StringName("is_active");
-      this.#_bindings.method_is_active = internal.classdb_get_method_bind(
+      this._bindings.method_is_active = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -209,7 +210,7 @@ export class ENetPacketPeer extends PacketPeer{
   peer_disconnect(_data) {
     ENetPacketPeer.init_method_peer_disconnect();
     return _call_native_mb_no_ret(
-      ENetPacketPeer.#_bindings.method_peer_disconnect,
+      ENetPacketPeer._bindings.method_peer_disconnect,
       this._owner,
       _data
     );
@@ -218,7 +219,7 @@ export class ENetPacketPeer extends PacketPeer{
   peer_disconnect_later(_data) {
     ENetPacketPeer.init_method_peer_disconnect_later();
     return _call_native_mb_no_ret(
-      ENetPacketPeer.#_bindings.method_peer_disconnect_later,
+      ENetPacketPeer._bindings.method_peer_disconnect_later,
       this._owner,
       _data
     );
@@ -227,7 +228,7 @@ export class ENetPacketPeer extends PacketPeer{
   peer_disconnect_now(_data) {
     ENetPacketPeer.init_method_peer_disconnect_now();
     return _call_native_mb_no_ret(
-      ENetPacketPeer.#_bindings.method_peer_disconnect_now,
+      ENetPacketPeer._bindings.method_peer_disconnect_now,
       this._owner,
       _data
     );
@@ -236,7 +237,7 @@ export class ENetPacketPeer extends PacketPeer{
   ping() {
     ENetPacketPeer.init_method_ping();
     return _call_native_mb_no_ret(
-      ENetPacketPeer.#_bindings.method_ping,
+      ENetPacketPeer._bindings.method_ping,
       this._owner,
       
     );
@@ -245,7 +246,7 @@ export class ENetPacketPeer extends PacketPeer{
   ping_interval(_ping_interval) {
     ENetPacketPeer.init_method_ping_interval();
     return _call_native_mb_no_ret(
-      ENetPacketPeer.#_bindings.method_ping_interval,
+      ENetPacketPeer._bindings.method_ping_interval,
       this._owner,
       _ping_interval
     );
@@ -254,7 +255,7 @@ export class ENetPacketPeer extends PacketPeer{
   reset() {
     ENetPacketPeer.init_method_reset();
     return _call_native_mb_no_ret(
-      ENetPacketPeer.#_bindings.method_reset,
+      ENetPacketPeer._bindings.method_reset,
       this._owner,
       
     );
@@ -263,7 +264,7 @@ export class ENetPacketPeer extends PacketPeer{
   send(_channel, _packet, _flags) {
     ENetPacketPeer.init_method_send();
     return _call_native_mb_ret(
-      ENetPacketPeer.#_bindings.method_send,
+      ENetPacketPeer._bindings.method_send,
       this._owner,
 			Variant.Type.INT,
     
@@ -274,7 +275,7 @@ export class ENetPacketPeer extends PacketPeer{
   throttle_configure(_interval, _acceleration, _deceleration) {
     ENetPacketPeer.init_method_throttle_configure();
     return _call_native_mb_no_ret(
-      ENetPacketPeer.#_bindings.method_throttle_configure,
+      ENetPacketPeer._bindings.method_throttle_configure,
       this._owner,
       _interval, _acceleration, _deceleration
     );
@@ -283,7 +284,7 @@ export class ENetPacketPeer extends PacketPeer{
   set_timeout(_timeout, _timeout_min, _timeout_max) {
     ENetPacketPeer.init_method_set_timeout();
     return _call_native_mb_no_ret(
-      ENetPacketPeer.#_bindings.method_set_timeout,
+      ENetPacketPeer._bindings.method_set_timeout,
       this._owner,
       _timeout, _timeout_min, _timeout_max
     );
@@ -292,7 +293,7 @@ export class ENetPacketPeer extends PacketPeer{
   get_remote_address() {
     ENetPacketPeer.init_method_get_remote_address();
     return _call_native_mb_ret(
-      ENetPacketPeer.#_bindings.method_get_remote_address,
+      ENetPacketPeer._bindings.method_get_remote_address,
       this._owner,
 			Variant.Type.STRING,
     
@@ -303,7 +304,7 @@ export class ENetPacketPeer extends PacketPeer{
   get_remote_port() {
     ENetPacketPeer.init_method_get_remote_port();
     return _call_native_mb_ret(
-      ENetPacketPeer.#_bindings.method_get_remote_port,
+      ENetPacketPeer._bindings.method_get_remote_port,
       this._owner,
 			Variant.Type.INT,
     
@@ -314,7 +315,7 @@ export class ENetPacketPeer extends PacketPeer{
   get_statistic(_statistic) {
     ENetPacketPeer.init_method_get_statistic();
     return _call_native_mb_ret(
-      ENetPacketPeer.#_bindings.method_get_statistic,
+      ENetPacketPeer._bindings.method_get_statistic,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -325,7 +326,7 @@ export class ENetPacketPeer extends PacketPeer{
   get_state() {
     ENetPacketPeer.init_method_get_state();
     return _call_native_mb_ret(
-      ENetPacketPeer.#_bindings.method_get_state,
+      ENetPacketPeer._bindings.method_get_state,
       this._owner,
 			Variant.Type.INT,
     
@@ -336,7 +337,7 @@ export class ENetPacketPeer extends PacketPeer{
   get_channels() {
     ENetPacketPeer.init_method_get_channels();
     return _call_native_mb_ret(
-      ENetPacketPeer.#_bindings.method_get_channels,
+      ENetPacketPeer._bindings.method_get_channels,
       this._owner,
 			Variant.Type.INT,
     
@@ -347,7 +348,7 @@ export class ENetPacketPeer extends PacketPeer{
   is_active() {
     ENetPacketPeer.init_method_is_active();
     return _call_native_mb_ret(
-      ENetPacketPeer.#_bindings.method_is_active,
+      ENetPacketPeer._bindings.method_is_active,
       this._owner,
 			Variant.Type.BOOL,
     

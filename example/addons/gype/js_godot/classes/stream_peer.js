@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_put_data;
@@ -44,10 +45,10 @@ class _MethodBindings {
   method_get_utf8_string;
   method_get_var;
 }
+@GodotClass
 export class StreamPeer extends RefCounted{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -57,10 +58,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_put_data() {
-    if (!this.#_bindings.method_put_data) {
+    if (!this._bindings.method_put_data) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("put_data");
-      this.#_bindings.method_put_data = internal.classdb_get_method_bind(
+      this._bindings.method_put_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         680677267
@@ -68,10 +69,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_put_partial_data() {
-    if (!this.#_bindings.method_put_partial_data) {
+    if (!this._bindings.method_put_partial_data) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("put_partial_data");
-      this.#_bindings.method_put_partial_data = internal.classdb_get_method_bind(
+      this._bindings.method_put_partial_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2934048347
@@ -79,10 +80,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_get_data() {
-    if (!this.#_bindings.method_get_data) {
+    if (!this._bindings.method_get_data) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("get_data");
-      this.#_bindings.method_get_data = internal.classdb_get_method_bind(
+      this._bindings.method_get_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1171824711
@@ -90,10 +91,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_get_partial_data() {
-    if (!this.#_bindings.method_get_partial_data) {
+    if (!this._bindings.method_get_partial_data) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("get_partial_data");
-      this.#_bindings.method_get_partial_data = internal.classdb_get_method_bind(
+      this._bindings.method_get_partial_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1171824711
@@ -101,10 +102,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_get_available_bytes() {
-    if (!this.#_bindings.method_get_available_bytes) {
+    if (!this._bindings.method_get_available_bytes) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("get_available_bytes");
-      this.#_bindings.method_get_available_bytes = internal.classdb_get_method_bind(
+      this._bindings.method_get_available_bytes = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -112,10 +113,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_set_big_endian() {
-    if (!this.#_bindings.method_set_big_endian) {
+    if (!this._bindings.method_set_big_endian) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("set_big_endian");
-      this.#_bindings.method_set_big_endian = internal.classdb_get_method_bind(
+      this._bindings.method_set_big_endian = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -123,10 +124,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_is_big_endian_enabled() {
-    if (!this.#_bindings.method_is_big_endian_enabled) {
+    if (!this._bindings.method_is_big_endian_enabled) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("is_big_endian_enabled");
-      this.#_bindings.method_is_big_endian_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_big_endian_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -134,10 +135,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_put_8() {
-    if (!this.#_bindings.method_put_8) {
+    if (!this._bindings.method_put_8) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("put_8");
-      this.#_bindings.method_put_8 = internal.classdb_get_method_bind(
+      this._bindings.method_put_8 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -145,10 +146,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_put_u8() {
-    if (!this.#_bindings.method_put_u8) {
+    if (!this._bindings.method_put_u8) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("put_u8");
-      this.#_bindings.method_put_u8 = internal.classdb_get_method_bind(
+      this._bindings.method_put_u8 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -156,10 +157,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_put_16() {
-    if (!this.#_bindings.method_put_16) {
+    if (!this._bindings.method_put_16) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("put_16");
-      this.#_bindings.method_put_16 = internal.classdb_get_method_bind(
+      this._bindings.method_put_16 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -167,10 +168,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_put_u16() {
-    if (!this.#_bindings.method_put_u16) {
+    if (!this._bindings.method_put_u16) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("put_u16");
-      this.#_bindings.method_put_u16 = internal.classdb_get_method_bind(
+      this._bindings.method_put_u16 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -178,10 +179,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_put_32() {
-    if (!this.#_bindings.method_put_32) {
+    if (!this._bindings.method_put_32) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("put_32");
-      this.#_bindings.method_put_32 = internal.classdb_get_method_bind(
+      this._bindings.method_put_32 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -189,10 +190,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_put_u32() {
-    if (!this.#_bindings.method_put_u32) {
+    if (!this._bindings.method_put_u32) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("put_u32");
-      this.#_bindings.method_put_u32 = internal.classdb_get_method_bind(
+      this._bindings.method_put_u32 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -200,10 +201,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_put_64() {
-    if (!this.#_bindings.method_put_64) {
+    if (!this._bindings.method_put_64) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("put_64");
-      this.#_bindings.method_put_64 = internal.classdb_get_method_bind(
+      this._bindings.method_put_64 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -211,10 +212,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_put_u64() {
-    if (!this.#_bindings.method_put_u64) {
+    if (!this._bindings.method_put_u64) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("put_u64");
-      this.#_bindings.method_put_u64 = internal.classdb_get_method_bind(
+      this._bindings.method_put_u64 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -222,10 +223,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_put_float() {
-    if (!this.#_bindings.method_put_float) {
+    if (!this._bindings.method_put_float) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("put_float");
-      this.#_bindings.method_put_float = internal.classdb_get_method_bind(
+      this._bindings.method_put_float = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -233,10 +234,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_put_double() {
-    if (!this.#_bindings.method_put_double) {
+    if (!this._bindings.method_put_double) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("put_double");
-      this.#_bindings.method_put_double = internal.classdb_get_method_bind(
+      this._bindings.method_put_double = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -244,10 +245,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_put_string() {
-    if (!this.#_bindings.method_put_string) {
+    if (!this._bindings.method_put_string) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("put_string");
-      this.#_bindings.method_put_string = internal.classdb_get_method_bind(
+      this._bindings.method_put_string = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -255,10 +256,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_put_utf8_string() {
-    if (!this.#_bindings.method_put_utf8_string) {
+    if (!this._bindings.method_put_utf8_string) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("put_utf8_string");
-      this.#_bindings.method_put_utf8_string = internal.classdb_get_method_bind(
+      this._bindings.method_put_utf8_string = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -266,10 +267,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_put_var() {
-    if (!this.#_bindings.method_put_var) {
+    if (!this._bindings.method_put_var) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("put_var");
-      this.#_bindings.method_put_var = internal.classdb_get_method_bind(
+      this._bindings.method_put_var = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         738511890
@@ -277,10 +278,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_get_8() {
-    if (!this.#_bindings.method_get_8) {
+    if (!this._bindings.method_get_8) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("get_8");
-      this.#_bindings.method_get_8 = internal.classdb_get_method_bind(
+      this._bindings.method_get_8 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -288,10 +289,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_get_u8() {
-    if (!this.#_bindings.method_get_u8) {
+    if (!this._bindings.method_get_u8) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("get_u8");
-      this.#_bindings.method_get_u8 = internal.classdb_get_method_bind(
+      this._bindings.method_get_u8 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -299,10 +300,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_get_16() {
-    if (!this.#_bindings.method_get_16) {
+    if (!this._bindings.method_get_16) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("get_16");
-      this.#_bindings.method_get_16 = internal.classdb_get_method_bind(
+      this._bindings.method_get_16 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -310,10 +311,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_get_u16() {
-    if (!this.#_bindings.method_get_u16) {
+    if (!this._bindings.method_get_u16) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("get_u16");
-      this.#_bindings.method_get_u16 = internal.classdb_get_method_bind(
+      this._bindings.method_get_u16 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -321,10 +322,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_get_32() {
-    if (!this.#_bindings.method_get_32) {
+    if (!this._bindings.method_get_32) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("get_32");
-      this.#_bindings.method_get_32 = internal.classdb_get_method_bind(
+      this._bindings.method_get_32 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -332,10 +333,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_get_u32() {
-    if (!this.#_bindings.method_get_u32) {
+    if (!this._bindings.method_get_u32) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("get_u32");
-      this.#_bindings.method_get_u32 = internal.classdb_get_method_bind(
+      this._bindings.method_get_u32 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -343,10 +344,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_get_64() {
-    if (!this.#_bindings.method_get_64) {
+    if (!this._bindings.method_get_64) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("get_64");
-      this.#_bindings.method_get_64 = internal.classdb_get_method_bind(
+      this._bindings.method_get_64 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -354,10 +355,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_get_u64() {
-    if (!this.#_bindings.method_get_u64) {
+    if (!this._bindings.method_get_u64) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("get_u64");
-      this.#_bindings.method_get_u64 = internal.classdb_get_method_bind(
+      this._bindings.method_get_u64 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -365,10 +366,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_get_float() {
-    if (!this.#_bindings.method_get_float) {
+    if (!this._bindings.method_get_float) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("get_float");
-      this.#_bindings.method_get_float = internal.classdb_get_method_bind(
+      this._bindings.method_get_float = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         191475506
@@ -376,10 +377,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_get_double() {
-    if (!this.#_bindings.method_get_double) {
+    if (!this._bindings.method_get_double) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("get_double");
-      this.#_bindings.method_get_double = internal.classdb_get_method_bind(
+      this._bindings.method_get_double = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         191475506
@@ -387,10 +388,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_get_string() {
-    if (!this.#_bindings.method_get_string) {
+    if (!this._bindings.method_get_string) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("get_string");
-      this.#_bindings.method_get_string = internal.classdb_get_method_bind(
+      this._bindings.method_get_string = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2309358862
@@ -398,10 +399,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_get_utf8_string() {
-    if (!this.#_bindings.method_get_utf8_string) {
+    if (!this._bindings.method_get_utf8_string) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("get_utf8_string");
-      this.#_bindings.method_get_utf8_string = internal.classdb_get_method_bind(
+      this._bindings.method_get_utf8_string = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2309358862
@@ -409,10 +410,10 @@ export class StreamPeer extends RefCounted{
     }
   }
   static init_method_get_var() {
-    if (!this.#_bindings.method_get_var) {
+    if (!this._bindings.method_get_var) {
       let classname = new StringName("StreamPeer");
       let methodname = new StringName("get_var");
-      this.#_bindings.method_get_var = internal.classdb_get_method_bind(
+      this._bindings.method_get_var = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3442865206
@@ -425,7 +426,7 @@ export class StreamPeer extends RefCounted{
   put_data(_data) {
     StreamPeer.init_method_put_data();
     return _call_native_mb_ret(
-      StreamPeer.#_bindings.method_put_data,
+      StreamPeer._bindings.method_put_data,
       this._owner,
 			Variant.Type.INT,
     
@@ -436,7 +437,7 @@ export class StreamPeer extends RefCounted{
   put_partial_data(_data) {
     StreamPeer.init_method_put_partial_data();
     return _call_native_mb_ret(
-      StreamPeer.#_bindings.method_put_partial_data,
+      StreamPeer._bindings.method_put_partial_data,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -447,7 +448,7 @@ export class StreamPeer extends RefCounted{
   get_data(_bytes) {
     StreamPeer.init_method_get_data();
     return _call_native_mb_ret(
-      StreamPeer.#_bindings.method_get_data,
+      StreamPeer._bindings.method_get_data,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -458,7 +459,7 @@ export class StreamPeer extends RefCounted{
   get_partial_data(_bytes) {
     StreamPeer.init_method_get_partial_data();
     return _call_native_mb_ret(
-      StreamPeer.#_bindings.method_get_partial_data,
+      StreamPeer._bindings.method_get_partial_data,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -469,7 +470,7 @@ export class StreamPeer extends RefCounted{
   get_available_bytes() {
     StreamPeer.init_method_get_available_bytes();
     return _call_native_mb_ret(
-      StreamPeer.#_bindings.method_get_available_bytes,
+      StreamPeer._bindings.method_get_available_bytes,
       this._owner,
 			Variant.Type.INT,
     
@@ -480,7 +481,7 @@ export class StreamPeer extends RefCounted{
   set_big_endian(_enable) {
     StreamPeer.init_method_set_big_endian();
     return _call_native_mb_no_ret(
-      StreamPeer.#_bindings.method_set_big_endian,
+      StreamPeer._bindings.method_set_big_endian,
       this._owner,
       _enable
     );
@@ -489,7 +490,7 @@ export class StreamPeer extends RefCounted{
   is_big_endian_enabled() {
     StreamPeer.init_method_is_big_endian_enabled();
     return _call_native_mb_ret(
-      StreamPeer.#_bindings.method_is_big_endian_enabled,
+      StreamPeer._bindings.method_is_big_endian_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -500,7 +501,7 @@ export class StreamPeer extends RefCounted{
   put_8(_value) {
     StreamPeer.init_method_put_8();
     return _call_native_mb_no_ret(
-      StreamPeer.#_bindings.method_put_8,
+      StreamPeer._bindings.method_put_8,
       this._owner,
       _value
     );
@@ -509,7 +510,7 @@ export class StreamPeer extends RefCounted{
   put_u8(_value) {
     StreamPeer.init_method_put_u8();
     return _call_native_mb_no_ret(
-      StreamPeer.#_bindings.method_put_u8,
+      StreamPeer._bindings.method_put_u8,
       this._owner,
       _value
     );
@@ -518,7 +519,7 @@ export class StreamPeer extends RefCounted{
   put_16(_value) {
     StreamPeer.init_method_put_16();
     return _call_native_mb_no_ret(
-      StreamPeer.#_bindings.method_put_16,
+      StreamPeer._bindings.method_put_16,
       this._owner,
       _value
     );
@@ -527,7 +528,7 @@ export class StreamPeer extends RefCounted{
   put_u16(_value) {
     StreamPeer.init_method_put_u16();
     return _call_native_mb_no_ret(
-      StreamPeer.#_bindings.method_put_u16,
+      StreamPeer._bindings.method_put_u16,
       this._owner,
       _value
     );
@@ -536,7 +537,7 @@ export class StreamPeer extends RefCounted{
   put_32(_value) {
     StreamPeer.init_method_put_32();
     return _call_native_mb_no_ret(
-      StreamPeer.#_bindings.method_put_32,
+      StreamPeer._bindings.method_put_32,
       this._owner,
       _value
     );
@@ -545,7 +546,7 @@ export class StreamPeer extends RefCounted{
   put_u32(_value) {
     StreamPeer.init_method_put_u32();
     return _call_native_mb_no_ret(
-      StreamPeer.#_bindings.method_put_u32,
+      StreamPeer._bindings.method_put_u32,
       this._owner,
       _value
     );
@@ -554,7 +555,7 @@ export class StreamPeer extends RefCounted{
   put_64(_value) {
     StreamPeer.init_method_put_64();
     return _call_native_mb_no_ret(
-      StreamPeer.#_bindings.method_put_64,
+      StreamPeer._bindings.method_put_64,
       this._owner,
       _value
     );
@@ -563,7 +564,7 @@ export class StreamPeer extends RefCounted{
   put_u64(_value) {
     StreamPeer.init_method_put_u64();
     return _call_native_mb_no_ret(
-      StreamPeer.#_bindings.method_put_u64,
+      StreamPeer._bindings.method_put_u64,
       this._owner,
       _value
     );
@@ -572,7 +573,7 @@ export class StreamPeer extends RefCounted{
   put_float(_value) {
     StreamPeer.init_method_put_float();
     return _call_native_mb_no_ret(
-      StreamPeer.#_bindings.method_put_float,
+      StreamPeer._bindings.method_put_float,
       this._owner,
       _value
     );
@@ -581,7 +582,7 @@ export class StreamPeer extends RefCounted{
   put_double(_value) {
     StreamPeer.init_method_put_double();
     return _call_native_mb_no_ret(
-      StreamPeer.#_bindings.method_put_double,
+      StreamPeer._bindings.method_put_double,
       this._owner,
       _value
     );
@@ -590,7 +591,7 @@ export class StreamPeer extends RefCounted{
   put_string(_value) {
     StreamPeer.init_method_put_string();
     return _call_native_mb_no_ret(
-      StreamPeer.#_bindings.method_put_string,
+      StreamPeer._bindings.method_put_string,
       this._owner,
       _value
     );
@@ -599,7 +600,7 @@ export class StreamPeer extends RefCounted{
   put_utf8_string(_value) {
     StreamPeer.init_method_put_utf8_string();
     return _call_native_mb_no_ret(
-      StreamPeer.#_bindings.method_put_utf8_string,
+      StreamPeer._bindings.method_put_utf8_string,
       this._owner,
       _value
     );
@@ -608,7 +609,7 @@ export class StreamPeer extends RefCounted{
   put_var(_value, _full_objects) {
     StreamPeer.init_method_put_var();
     return _call_native_mb_no_ret(
-      StreamPeer.#_bindings.method_put_var,
+      StreamPeer._bindings.method_put_var,
       this._owner,
       _value, _full_objects
     );
@@ -617,7 +618,7 @@ export class StreamPeer extends RefCounted{
   get_8() {
     StreamPeer.init_method_get_8();
     return _call_native_mb_ret(
-      StreamPeer.#_bindings.method_get_8,
+      StreamPeer._bindings.method_get_8,
       this._owner,
 			Variant.Type.INT,
     
@@ -628,7 +629,7 @@ export class StreamPeer extends RefCounted{
   get_u8() {
     StreamPeer.init_method_get_u8();
     return _call_native_mb_ret(
-      StreamPeer.#_bindings.method_get_u8,
+      StreamPeer._bindings.method_get_u8,
       this._owner,
 			Variant.Type.INT,
     
@@ -639,7 +640,7 @@ export class StreamPeer extends RefCounted{
   get_16() {
     StreamPeer.init_method_get_16();
     return _call_native_mb_ret(
-      StreamPeer.#_bindings.method_get_16,
+      StreamPeer._bindings.method_get_16,
       this._owner,
 			Variant.Type.INT,
     
@@ -650,7 +651,7 @@ export class StreamPeer extends RefCounted{
   get_u16() {
     StreamPeer.init_method_get_u16();
     return _call_native_mb_ret(
-      StreamPeer.#_bindings.method_get_u16,
+      StreamPeer._bindings.method_get_u16,
       this._owner,
 			Variant.Type.INT,
     
@@ -661,7 +662,7 @@ export class StreamPeer extends RefCounted{
   get_32() {
     StreamPeer.init_method_get_32();
     return _call_native_mb_ret(
-      StreamPeer.#_bindings.method_get_32,
+      StreamPeer._bindings.method_get_32,
       this._owner,
 			Variant.Type.INT,
     
@@ -672,7 +673,7 @@ export class StreamPeer extends RefCounted{
   get_u32() {
     StreamPeer.init_method_get_u32();
     return _call_native_mb_ret(
-      StreamPeer.#_bindings.method_get_u32,
+      StreamPeer._bindings.method_get_u32,
       this._owner,
 			Variant.Type.INT,
     
@@ -683,7 +684,7 @@ export class StreamPeer extends RefCounted{
   get_64() {
     StreamPeer.init_method_get_64();
     return _call_native_mb_ret(
-      StreamPeer.#_bindings.method_get_64,
+      StreamPeer._bindings.method_get_64,
       this._owner,
 			Variant.Type.INT,
     
@@ -694,7 +695,7 @@ export class StreamPeer extends RefCounted{
   get_u64() {
     StreamPeer.init_method_get_u64();
     return _call_native_mb_ret(
-      StreamPeer.#_bindings.method_get_u64,
+      StreamPeer._bindings.method_get_u64,
       this._owner,
 			Variant.Type.INT,
     
@@ -705,7 +706,7 @@ export class StreamPeer extends RefCounted{
   get_float() {
     StreamPeer.init_method_get_float();
     return _call_native_mb_ret(
-      StreamPeer.#_bindings.method_get_float,
+      StreamPeer._bindings.method_get_float,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -716,7 +717,7 @@ export class StreamPeer extends RefCounted{
   get_double() {
     StreamPeer.init_method_get_double();
     return _call_native_mb_ret(
-      StreamPeer.#_bindings.method_get_double,
+      StreamPeer._bindings.method_get_double,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -727,7 +728,7 @@ export class StreamPeer extends RefCounted{
   get_string(_bytes) {
     StreamPeer.init_method_get_string();
     return _call_native_mb_ret(
-      StreamPeer.#_bindings.method_get_string,
+      StreamPeer._bindings.method_get_string,
       this._owner,
 			Variant.Type.STRING,
     
@@ -738,7 +739,7 @@ export class StreamPeer extends RefCounted{
   get_utf8_string(_bytes) {
     StreamPeer.init_method_get_utf8_string();
     return _call_native_mb_ret(
-      StreamPeer.#_bindings.method_get_utf8_string,
+      StreamPeer._bindings.method_get_utf8_string,
       this._owner,
 			Variant.Type.STRING,
     
@@ -749,7 +750,7 @@ export class StreamPeer extends RefCounted{
   get_var(_allow_objects) {
     StreamPeer.init_method_get_var();
     return _call_native_mb_ret(
-      StreamPeer.#_bindings.method_get_var,
+      StreamPeer._bindings.method_get_var,
       this._owner,
 			Variant.Type.VARIANT,
     

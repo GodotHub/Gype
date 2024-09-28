@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_ok_button;
@@ -27,10 +28,10 @@ class _MethodBindings {
   method_set_ok_button_text;
   method_get_ok_button_text;
 }
+@GodotClass
 export class AcceptDialog extends Window{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -40,10 +41,10 @@ export class AcceptDialog extends Window{
     }
   }
   static init_method_get_ok_button() {
-    if (!this.#_bindings.method_get_ok_button) {
+    if (!this._bindings.method_get_ok_button) {
       let classname = new StringName("AcceptDialog");
       let methodname = new StringName("get_ok_button");
-      this.#_bindings.method_get_ok_button = internal.classdb_get_method_bind(
+      this._bindings.method_get_ok_button = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1856205918
@@ -51,10 +52,10 @@ export class AcceptDialog extends Window{
     }
   }
   static init_method_get_label() {
-    if (!this.#_bindings.method_get_label) {
+    if (!this._bindings.method_get_label) {
       let classname = new StringName("AcceptDialog");
       let methodname = new StringName("get_label");
-      this.#_bindings.method_get_label = internal.classdb_get_method_bind(
+      this._bindings.method_get_label = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         566733104
@@ -62,10 +63,10 @@ export class AcceptDialog extends Window{
     }
   }
   static init_method_set_hide_on_ok() {
-    if (!this.#_bindings.method_set_hide_on_ok) {
+    if (!this._bindings.method_set_hide_on_ok) {
       let classname = new StringName("AcceptDialog");
       let methodname = new StringName("set_hide_on_ok");
-      this.#_bindings.method_set_hide_on_ok = internal.classdb_get_method_bind(
+      this._bindings.method_set_hide_on_ok = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -73,10 +74,10 @@ export class AcceptDialog extends Window{
     }
   }
   static init_method_get_hide_on_ok() {
-    if (!this.#_bindings.method_get_hide_on_ok) {
+    if (!this._bindings.method_get_hide_on_ok) {
       let classname = new StringName("AcceptDialog");
       let methodname = new StringName("get_hide_on_ok");
-      this.#_bindings.method_get_hide_on_ok = internal.classdb_get_method_bind(
+      this._bindings.method_get_hide_on_ok = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -84,10 +85,10 @@ export class AcceptDialog extends Window{
     }
   }
   static init_method_set_close_on_escape() {
-    if (!this.#_bindings.method_set_close_on_escape) {
+    if (!this._bindings.method_set_close_on_escape) {
       let classname = new StringName("AcceptDialog");
       let methodname = new StringName("set_close_on_escape");
-      this.#_bindings.method_set_close_on_escape = internal.classdb_get_method_bind(
+      this._bindings.method_set_close_on_escape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -95,10 +96,10 @@ export class AcceptDialog extends Window{
     }
   }
   static init_method_get_close_on_escape() {
-    if (!this.#_bindings.method_get_close_on_escape) {
+    if (!this._bindings.method_get_close_on_escape) {
       let classname = new StringName("AcceptDialog");
       let methodname = new StringName("get_close_on_escape");
-      this.#_bindings.method_get_close_on_escape = internal.classdb_get_method_bind(
+      this._bindings.method_get_close_on_escape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -106,10 +107,10 @@ export class AcceptDialog extends Window{
     }
   }
   static init_method_add_button() {
-    if (!this.#_bindings.method_add_button) {
+    if (!this._bindings.method_add_button) {
       let classname = new StringName("AcceptDialog");
       let methodname = new StringName("add_button");
-      this.#_bindings.method_add_button = internal.classdb_get_method_bind(
+      this._bindings.method_add_button = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3328440682
@@ -117,10 +118,10 @@ export class AcceptDialog extends Window{
     }
   }
   static init_method_add_cancel_button() {
-    if (!this.#_bindings.method_add_cancel_button) {
+    if (!this._bindings.method_add_cancel_button) {
       let classname = new StringName("AcceptDialog");
       let methodname = new StringName("add_cancel_button");
-      this.#_bindings.method_add_cancel_button = internal.classdb_get_method_bind(
+      this._bindings.method_add_cancel_button = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         242045556
@@ -128,10 +129,10 @@ export class AcceptDialog extends Window{
     }
   }
   static init_method_remove_button() {
-    if (!this.#_bindings.method_remove_button) {
+    if (!this._bindings.method_remove_button) {
       let classname = new StringName("AcceptDialog");
       let methodname = new StringName("remove_button");
-      this.#_bindings.method_remove_button = internal.classdb_get_method_bind(
+      this._bindings.method_remove_button = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2068354942
@@ -139,10 +140,10 @@ export class AcceptDialog extends Window{
     }
   }
   static init_method_register_text_enter() {
-    if (!this.#_bindings.method_register_text_enter) {
+    if (!this._bindings.method_register_text_enter) {
       let classname = new StringName("AcceptDialog");
       let methodname = new StringName("register_text_enter");
-      this.#_bindings.method_register_text_enter = internal.classdb_get_method_bind(
+      this._bindings.method_register_text_enter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3714008017
@@ -150,10 +151,10 @@ export class AcceptDialog extends Window{
     }
   }
   static init_method_set_text() {
-    if (!this.#_bindings.method_set_text) {
+    if (!this._bindings.method_set_text) {
       let classname = new StringName("AcceptDialog");
       let methodname = new StringName("set_text");
-      this.#_bindings.method_set_text = internal.classdb_get_method_bind(
+      this._bindings.method_set_text = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -161,10 +162,10 @@ export class AcceptDialog extends Window{
     }
   }
   static init_method_get_text() {
-    if (!this.#_bindings.method_get_text) {
+    if (!this._bindings.method_get_text) {
       let classname = new StringName("AcceptDialog");
       let methodname = new StringName("get_text");
-      this.#_bindings.method_get_text = internal.classdb_get_method_bind(
+      this._bindings.method_get_text = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -172,10 +173,10 @@ export class AcceptDialog extends Window{
     }
   }
   static init_method_set_autowrap() {
-    if (!this.#_bindings.method_set_autowrap) {
+    if (!this._bindings.method_set_autowrap) {
       let classname = new StringName("AcceptDialog");
       let methodname = new StringName("set_autowrap");
-      this.#_bindings.method_set_autowrap = internal.classdb_get_method_bind(
+      this._bindings.method_set_autowrap = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -183,10 +184,10 @@ export class AcceptDialog extends Window{
     }
   }
   static init_method_has_autowrap() {
-    if (!this.#_bindings.method_has_autowrap) {
+    if (!this._bindings.method_has_autowrap) {
       let classname = new StringName("AcceptDialog");
       let methodname = new StringName("has_autowrap");
-      this.#_bindings.method_has_autowrap = internal.classdb_get_method_bind(
+      this._bindings.method_has_autowrap = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2240911060
@@ -194,10 +195,10 @@ export class AcceptDialog extends Window{
     }
   }
   static init_method_set_ok_button_text() {
-    if (!this.#_bindings.method_set_ok_button_text) {
+    if (!this._bindings.method_set_ok_button_text) {
       let classname = new StringName("AcceptDialog");
       let methodname = new StringName("set_ok_button_text");
-      this.#_bindings.method_set_ok_button_text = internal.classdb_get_method_bind(
+      this._bindings.method_set_ok_button_text = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -205,10 +206,10 @@ export class AcceptDialog extends Window{
     }
   }
   static init_method_get_ok_button_text() {
-    if (!this.#_bindings.method_get_ok_button_text) {
+    if (!this._bindings.method_get_ok_button_text) {
       let classname = new StringName("AcceptDialog");
       let methodname = new StringName("get_ok_button_text");
-      this.#_bindings.method_get_ok_button_text = internal.classdb_get_method_bind(
+      this._bindings.method_get_ok_button_text = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -221,7 +222,7 @@ export class AcceptDialog extends Window{
   get_ok_button() {
     AcceptDialog.init_method_get_ok_button();
     return _call_native_mb_ret(
-      AcceptDialog.#_bindings.method_get_ok_button,
+      AcceptDialog._bindings.method_get_ok_button,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -231,7 +232,7 @@ export class AcceptDialog extends Window{
   get_label() {
     AcceptDialog.init_method_get_label();
     return _call_native_mb_ret(
-      AcceptDialog.#_bindings.method_get_label,
+      AcceptDialog._bindings.method_get_label,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -241,7 +242,7 @@ export class AcceptDialog extends Window{
   set_hide_on_ok(_enabled) {
     AcceptDialog.init_method_set_hide_on_ok();
     return _call_native_mb_no_ret(
-      AcceptDialog.#_bindings.method_set_hide_on_ok,
+      AcceptDialog._bindings.method_set_hide_on_ok,
       this._owner,
       _enabled
     );
@@ -250,7 +251,7 @@ export class AcceptDialog extends Window{
   get_hide_on_ok() {
     AcceptDialog.init_method_get_hide_on_ok();
     return _call_native_mb_ret(
-      AcceptDialog.#_bindings.method_get_hide_on_ok,
+      AcceptDialog._bindings.method_get_hide_on_ok,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -261,7 +262,7 @@ export class AcceptDialog extends Window{
   set_close_on_escape(_enabled) {
     AcceptDialog.init_method_set_close_on_escape();
     return _call_native_mb_no_ret(
-      AcceptDialog.#_bindings.method_set_close_on_escape,
+      AcceptDialog._bindings.method_set_close_on_escape,
       this._owner,
       _enabled
     );
@@ -270,7 +271,7 @@ export class AcceptDialog extends Window{
   get_close_on_escape() {
     AcceptDialog.init_method_get_close_on_escape();
     return _call_native_mb_ret(
-      AcceptDialog.#_bindings.method_get_close_on_escape,
+      AcceptDialog._bindings.method_get_close_on_escape,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -281,7 +282,7 @@ export class AcceptDialog extends Window{
   add_button(_text, _right, _action) {
     AcceptDialog.init_method_add_button();
     return _call_native_mb_ret(
-      AcceptDialog.#_bindings.method_add_button,
+      AcceptDialog._bindings.method_add_button,
       this._owner,
 			Variant.Type.OBJECT,
       _text, _right, _action
@@ -291,7 +292,7 @@ export class AcceptDialog extends Window{
   add_cancel_button(_name) {
     AcceptDialog.init_method_add_cancel_button();
     return _call_native_mb_ret(
-      AcceptDialog.#_bindings.method_add_cancel_button,
+      AcceptDialog._bindings.method_add_cancel_button,
       this._owner,
 			Variant.Type.OBJECT,
       _name
@@ -301,7 +302,7 @@ export class AcceptDialog extends Window{
   remove_button(_button) {
     AcceptDialog.init_method_remove_button();
     return _call_native_mb_no_ret(
-      AcceptDialog.#_bindings.method_remove_button,
+      AcceptDialog._bindings.method_remove_button,
       this._owner,
       _button
     );
@@ -310,7 +311,7 @@ export class AcceptDialog extends Window{
   register_text_enter(_line_edit) {
     AcceptDialog.init_method_register_text_enter();
     return _call_native_mb_no_ret(
-      AcceptDialog.#_bindings.method_register_text_enter,
+      AcceptDialog._bindings.method_register_text_enter,
       this._owner,
       _line_edit
     );
@@ -319,7 +320,7 @@ export class AcceptDialog extends Window{
   set_text(_text) {
     AcceptDialog.init_method_set_text();
     return _call_native_mb_no_ret(
-      AcceptDialog.#_bindings.method_set_text,
+      AcceptDialog._bindings.method_set_text,
       this._owner,
       _text
     );
@@ -328,7 +329,7 @@ export class AcceptDialog extends Window{
   get_text() {
     AcceptDialog.init_method_get_text();
     return _call_native_mb_ret(
-      AcceptDialog.#_bindings.method_get_text,
+      AcceptDialog._bindings.method_get_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -339,7 +340,7 @@ export class AcceptDialog extends Window{
   set_autowrap(_autowrap) {
     AcceptDialog.init_method_set_autowrap();
     return _call_native_mb_no_ret(
-      AcceptDialog.#_bindings.method_set_autowrap,
+      AcceptDialog._bindings.method_set_autowrap,
       this._owner,
       _autowrap
     );
@@ -348,7 +349,7 @@ export class AcceptDialog extends Window{
   has_autowrap() {
     AcceptDialog.init_method_has_autowrap();
     return _call_native_mb_ret(
-      AcceptDialog.#_bindings.method_has_autowrap,
+      AcceptDialog._bindings.method_has_autowrap,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -359,7 +360,7 @@ export class AcceptDialog extends Window{
   set_ok_button_text(_text) {
     AcceptDialog.init_method_set_ok_button_text();
     return _call_native_mb_no_ret(
-      AcceptDialog.#_bindings.method_set_ok_button_text,
+      AcceptDialog._bindings.method_set_ok_button_text,
       this._owner,
       _text
     );
@@ -368,7 +369,7 @@ export class AcceptDialog extends Window{
   get_ok_button_text() {
     AcceptDialog.init_method_get_ok_button_text();
     return _call_native_mb_ret(
-      AcceptDialog.#_bindings.method_get_ok_button_text,
+      AcceptDialog._bindings.method_get_ok_button_text,
       this._owner,
 			Variant.Type.STRING,
     

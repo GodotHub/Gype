@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_stage_source;
@@ -15,10 +16,10 @@ class _MethodBindings {
   method_set_language;
   method_get_language;
 }
+@GodotClass
 export class RDShaderSource extends RefCounted{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -28,10 +29,10 @@ export class RDShaderSource extends RefCounted{
     }
   }
   static init_method_set_stage_source() {
-    if (!this.#_bindings.method_set_stage_source) {
+    if (!this._bindings.method_set_stage_source) {
       let classname = new StringName("RDShaderSource");
       let methodname = new StringName("set_stage_source");
-      this.#_bindings.method_set_stage_source = internal.classdb_get_method_bind(
+      this._bindings.method_set_stage_source = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         620821314
@@ -39,10 +40,10 @@ export class RDShaderSource extends RefCounted{
     }
   }
   static init_method_get_stage_source() {
-    if (!this.#_bindings.method_get_stage_source) {
+    if (!this._bindings.method_get_stage_source) {
       let classname = new StringName("RDShaderSource");
       let methodname = new StringName("get_stage_source");
-      this.#_bindings.method_get_stage_source = internal.classdb_get_method_bind(
+      this._bindings.method_get_stage_source = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3354920045
@@ -50,10 +51,10 @@ export class RDShaderSource extends RefCounted{
     }
   }
   static init_method_set_language() {
-    if (!this.#_bindings.method_set_language) {
+    if (!this._bindings.method_set_language) {
       let classname = new StringName("RDShaderSource");
       let methodname = new StringName("set_language");
-      this.#_bindings.method_set_language = internal.classdb_get_method_bind(
+      this._bindings.method_set_language = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3422186742
@@ -61,10 +62,10 @@ export class RDShaderSource extends RefCounted{
     }
   }
   static init_method_get_language() {
-    if (!this.#_bindings.method_get_language) {
+    if (!this._bindings.method_get_language) {
       let classname = new StringName("RDShaderSource");
       let methodname = new StringName("get_language");
-      this.#_bindings.method_get_language = internal.classdb_get_method_bind(
+      this._bindings.method_get_language = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1063538261
@@ -77,7 +78,7 @@ export class RDShaderSource extends RefCounted{
   set_stage_source(_stage, _source) {
     RDShaderSource.init_method_set_stage_source();
     return _call_native_mb_no_ret(
-      RDShaderSource.#_bindings.method_set_stage_source,
+      RDShaderSource._bindings.method_set_stage_source,
       this._owner,
       _stage, _source
     );
@@ -86,7 +87,7 @@ export class RDShaderSource extends RefCounted{
   get_stage_source(_stage) {
     RDShaderSource.init_method_get_stage_source();
     return _call_native_mb_ret(
-      RDShaderSource.#_bindings.method_get_stage_source,
+      RDShaderSource._bindings.method_get_stage_source,
       this._owner,
 			Variant.Type.STRING,
     
@@ -97,7 +98,7 @@ export class RDShaderSource extends RefCounted{
   set_language(_language) {
     RDShaderSource.init_method_set_language();
     return _call_native_mb_no_ret(
-      RDShaderSource.#_bindings.method_set_language,
+      RDShaderSource._bindings.method_set_language,
       this._owner,
       _language
     );
@@ -106,7 +107,7 @@ export class RDShaderSource extends RefCounted{
   get_language() {
     RDShaderSource.init_method_get_language();
     return _call_native_mb_ret(
-      RDShaderSource.#_bindings.method_get_language,
+      RDShaderSource._bindings.method_get_language,
       this._owner,
 			Variant.Type.INT,
     

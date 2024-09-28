@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_vertices;
@@ -47,10 +48,10 @@ class _MethodBindings {
   method_get_baking_rect_offset;
   method_clear;
 }
+@GodotClass
 export class NavigationPolygon extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -60,10 +61,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_set_vertices() {
-    if (!this.#_bindings.method_set_vertices) {
+    if (!this._bindings.method_set_vertices) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("set_vertices");
-      this.#_bindings.method_set_vertices = internal.classdb_get_method_bind(
+      this._bindings.method_set_vertices = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1509147220
@@ -71,10 +72,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_get_vertices() {
-    if (!this.#_bindings.method_get_vertices) {
+    if (!this._bindings.method_get_vertices) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("get_vertices");
-      this.#_bindings.method_get_vertices = internal.classdb_get_method_bind(
+      this._bindings.method_get_vertices = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2961356807
@@ -82,10 +83,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_add_polygon() {
-    if (!this.#_bindings.method_add_polygon) {
+    if (!this._bindings.method_add_polygon) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("add_polygon");
-      this.#_bindings.method_add_polygon = internal.classdb_get_method_bind(
+      this._bindings.method_add_polygon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3614634198
@@ -93,10 +94,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_get_polygon_count() {
-    if (!this.#_bindings.method_get_polygon_count) {
+    if (!this._bindings.method_get_polygon_count) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("get_polygon_count");
-      this.#_bindings.method_get_polygon_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_polygon_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -104,10 +105,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_get_polygon() {
-    if (!this.#_bindings.method_get_polygon) {
+    if (!this._bindings.method_get_polygon) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("get_polygon");
-      this.#_bindings.method_get_polygon = internal.classdb_get_method_bind(
+      this._bindings.method_get_polygon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3668444399
@@ -115,10 +116,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_clear_polygons() {
-    if (!this.#_bindings.method_clear_polygons) {
+    if (!this._bindings.method_clear_polygons) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("clear_polygons");
-      this.#_bindings.method_clear_polygons = internal.classdb_get_method_bind(
+      this._bindings.method_clear_polygons = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -126,10 +127,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_get_navigation_mesh() {
-    if (!this.#_bindings.method_get_navigation_mesh) {
+    if (!this._bindings.method_get_navigation_mesh) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("get_navigation_mesh");
-      this.#_bindings.method_get_navigation_mesh = internal.classdb_get_method_bind(
+      this._bindings.method_get_navigation_mesh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         330232164
@@ -137,10 +138,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_add_outline() {
-    if (!this.#_bindings.method_add_outline) {
+    if (!this._bindings.method_add_outline) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("add_outline");
-      this.#_bindings.method_add_outline = internal.classdb_get_method_bind(
+      this._bindings.method_add_outline = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1509147220
@@ -148,10 +149,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_add_outline_at_index() {
-    if (!this.#_bindings.method_add_outline_at_index) {
+    if (!this._bindings.method_add_outline_at_index) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("add_outline_at_index");
-      this.#_bindings.method_add_outline_at_index = internal.classdb_get_method_bind(
+      this._bindings.method_add_outline_at_index = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1569738947
@@ -159,10 +160,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_get_outline_count() {
-    if (!this.#_bindings.method_get_outline_count) {
+    if (!this._bindings.method_get_outline_count) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("get_outline_count");
-      this.#_bindings.method_get_outline_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_outline_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -170,10 +171,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_set_outline() {
-    if (!this.#_bindings.method_set_outline) {
+    if (!this._bindings.method_set_outline) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("set_outline");
-      this.#_bindings.method_set_outline = internal.classdb_get_method_bind(
+      this._bindings.method_set_outline = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1201971903
@@ -181,10 +182,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_get_outline() {
-    if (!this.#_bindings.method_get_outline) {
+    if (!this._bindings.method_get_outline) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("get_outline");
-      this.#_bindings.method_get_outline = internal.classdb_get_method_bind(
+      this._bindings.method_get_outline = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3946907486
@@ -192,10 +193,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_remove_outline() {
-    if (!this.#_bindings.method_remove_outline) {
+    if (!this._bindings.method_remove_outline) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("remove_outline");
-      this.#_bindings.method_remove_outline = internal.classdb_get_method_bind(
+      this._bindings.method_remove_outline = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -203,10 +204,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_clear_outlines() {
-    if (!this.#_bindings.method_clear_outlines) {
+    if (!this._bindings.method_clear_outlines) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("clear_outlines");
-      this.#_bindings.method_clear_outlines = internal.classdb_get_method_bind(
+      this._bindings.method_clear_outlines = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -214,10 +215,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_make_polygons_from_outlines() {
-    if (!this.#_bindings.method_make_polygons_from_outlines) {
+    if (!this._bindings.method_make_polygons_from_outlines) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("make_polygons_from_outlines");
-      this.#_bindings.method_make_polygons_from_outlines = internal.classdb_get_method_bind(
+      this._bindings.method_make_polygons_from_outlines = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -225,10 +226,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_set_cell_size() {
-    if (!this.#_bindings.method_set_cell_size) {
+    if (!this._bindings.method_set_cell_size) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("set_cell_size");
-      this.#_bindings.method_set_cell_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_cell_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -236,10 +237,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_get_cell_size() {
-    if (!this.#_bindings.method_get_cell_size) {
+    if (!this._bindings.method_get_cell_size) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("get_cell_size");
-      this.#_bindings.method_get_cell_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_cell_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -247,10 +248,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_set_border_size() {
-    if (!this.#_bindings.method_set_border_size) {
+    if (!this._bindings.method_set_border_size) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("set_border_size");
-      this.#_bindings.method_set_border_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_border_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -258,10 +259,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_get_border_size() {
-    if (!this.#_bindings.method_get_border_size) {
+    if (!this._bindings.method_get_border_size) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("get_border_size");
-      this.#_bindings.method_get_border_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_border_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -269,10 +270,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_set_parsed_geometry_type() {
-    if (!this.#_bindings.method_set_parsed_geometry_type) {
+    if (!this._bindings.method_set_parsed_geometry_type) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("set_parsed_geometry_type");
-      this.#_bindings.method_set_parsed_geometry_type = internal.classdb_get_method_bind(
+      this._bindings.method_set_parsed_geometry_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2507971764
@@ -280,10 +281,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_get_parsed_geometry_type() {
-    if (!this.#_bindings.method_get_parsed_geometry_type) {
+    if (!this._bindings.method_get_parsed_geometry_type) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("get_parsed_geometry_type");
-      this.#_bindings.method_get_parsed_geometry_type = internal.classdb_get_method_bind(
+      this._bindings.method_get_parsed_geometry_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1073219508
@@ -291,10 +292,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_set_parsed_collision_mask() {
-    if (!this.#_bindings.method_set_parsed_collision_mask) {
+    if (!this._bindings.method_set_parsed_collision_mask) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("set_parsed_collision_mask");
-      this.#_bindings.method_set_parsed_collision_mask = internal.classdb_get_method_bind(
+      this._bindings.method_set_parsed_collision_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -302,10 +303,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_get_parsed_collision_mask() {
-    if (!this.#_bindings.method_get_parsed_collision_mask) {
+    if (!this._bindings.method_get_parsed_collision_mask) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("get_parsed_collision_mask");
-      this.#_bindings.method_get_parsed_collision_mask = internal.classdb_get_method_bind(
+      this._bindings.method_get_parsed_collision_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -313,10 +314,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_set_parsed_collision_mask_value() {
-    if (!this.#_bindings.method_set_parsed_collision_mask_value) {
+    if (!this._bindings.method_set_parsed_collision_mask_value) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("set_parsed_collision_mask_value");
-      this.#_bindings.method_set_parsed_collision_mask_value = internal.classdb_get_method_bind(
+      this._bindings.method_set_parsed_collision_mask_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -324,10 +325,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_get_parsed_collision_mask_value() {
-    if (!this.#_bindings.method_get_parsed_collision_mask_value) {
+    if (!this._bindings.method_get_parsed_collision_mask_value) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("get_parsed_collision_mask_value");
-      this.#_bindings.method_get_parsed_collision_mask_value = internal.classdb_get_method_bind(
+      this._bindings.method_get_parsed_collision_mask_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -335,10 +336,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_set_source_geometry_mode() {
-    if (!this.#_bindings.method_set_source_geometry_mode) {
+    if (!this._bindings.method_set_source_geometry_mode) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("set_source_geometry_mode");
-      this.#_bindings.method_set_source_geometry_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_source_geometry_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4002316705
@@ -346,10 +347,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_get_source_geometry_mode() {
-    if (!this.#_bindings.method_get_source_geometry_mode) {
+    if (!this._bindings.method_get_source_geometry_mode) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("get_source_geometry_mode");
-      this.#_bindings.method_get_source_geometry_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_source_geometry_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         459686762
@@ -357,10 +358,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_set_source_geometry_group_name() {
-    if (!this.#_bindings.method_set_source_geometry_group_name) {
+    if (!this._bindings.method_set_source_geometry_group_name) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("set_source_geometry_group_name");
-      this.#_bindings.method_set_source_geometry_group_name = internal.classdb_get_method_bind(
+      this._bindings.method_set_source_geometry_group_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -368,10 +369,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_get_source_geometry_group_name() {
-    if (!this.#_bindings.method_get_source_geometry_group_name) {
+    if (!this._bindings.method_get_source_geometry_group_name) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("get_source_geometry_group_name");
-      this.#_bindings.method_get_source_geometry_group_name = internal.classdb_get_method_bind(
+      this._bindings.method_get_source_geometry_group_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2002593661
@@ -379,10 +380,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_set_agent_radius() {
-    if (!this.#_bindings.method_set_agent_radius) {
+    if (!this._bindings.method_set_agent_radius) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("set_agent_radius");
-      this.#_bindings.method_set_agent_radius = internal.classdb_get_method_bind(
+      this._bindings.method_set_agent_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -390,10 +391,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_get_agent_radius() {
-    if (!this.#_bindings.method_get_agent_radius) {
+    if (!this._bindings.method_get_agent_radius) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("get_agent_radius");
-      this.#_bindings.method_get_agent_radius = internal.classdb_get_method_bind(
+      this._bindings.method_get_agent_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -401,10 +402,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_set_baking_rect() {
-    if (!this.#_bindings.method_set_baking_rect) {
+    if (!this._bindings.method_set_baking_rect) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("set_baking_rect");
-      this.#_bindings.method_set_baking_rect = internal.classdb_get_method_bind(
+      this._bindings.method_set_baking_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2046264180
@@ -412,10 +413,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_get_baking_rect() {
-    if (!this.#_bindings.method_get_baking_rect) {
+    if (!this._bindings.method_get_baking_rect) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("get_baking_rect");
-      this.#_bindings.method_get_baking_rect = internal.classdb_get_method_bind(
+      this._bindings.method_get_baking_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1639390495
@@ -423,10 +424,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_set_baking_rect_offset() {
-    if (!this.#_bindings.method_set_baking_rect_offset) {
+    if (!this._bindings.method_set_baking_rect_offset) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("set_baking_rect_offset");
-      this.#_bindings.method_set_baking_rect_offset = internal.classdb_get_method_bind(
+      this._bindings.method_set_baking_rect_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -434,10 +435,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_get_baking_rect_offset() {
-    if (!this.#_bindings.method_get_baking_rect_offset) {
+    if (!this._bindings.method_get_baking_rect_offset) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("get_baking_rect_offset");
-      this.#_bindings.method_get_baking_rect_offset = internal.classdb_get_method_bind(
+      this._bindings.method_get_baking_rect_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -445,10 +446,10 @@ export class NavigationPolygon extends Resource{
     }
   }
   static init_method_clear() {
-    if (!this.#_bindings.method_clear) {
+    if (!this._bindings.method_clear) {
       let classname = new StringName("NavigationPolygon");
       let methodname = new StringName("clear");
-      this.#_bindings.method_clear = internal.classdb_get_method_bind(
+      this._bindings.method_clear = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -461,7 +462,7 @@ export class NavigationPolygon extends Resource{
   set_vertices(_vertices) {
     NavigationPolygon.init_method_set_vertices();
     return _call_native_mb_no_ret(
-      NavigationPolygon.#_bindings.method_set_vertices,
+      NavigationPolygon._bindings.method_set_vertices,
       this._owner,
       _vertices
     );
@@ -470,7 +471,7 @@ export class NavigationPolygon extends Resource{
   get_vertices() {
     NavigationPolygon.init_method_get_vertices();
     return _call_native_mb_ret(
-      NavigationPolygon.#_bindings.method_get_vertices,
+      NavigationPolygon._bindings.method_get_vertices,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -481,7 +482,7 @@ export class NavigationPolygon extends Resource{
   add_polygon(_polygon) {
     NavigationPolygon.init_method_add_polygon();
     return _call_native_mb_no_ret(
-      NavigationPolygon.#_bindings.method_add_polygon,
+      NavigationPolygon._bindings.method_add_polygon,
       this._owner,
       _polygon
     );
@@ -490,7 +491,7 @@ export class NavigationPolygon extends Resource{
   get_polygon_count() {
     NavigationPolygon.init_method_get_polygon_count();
     return _call_native_mb_ret(
-      NavigationPolygon.#_bindings.method_get_polygon_count,
+      NavigationPolygon._bindings.method_get_polygon_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -501,7 +502,7 @@ export class NavigationPolygon extends Resource{
   get_polygon(_idx) {
     NavigationPolygon.init_method_get_polygon();
     return _call_native_mb_ret(
-      NavigationPolygon.#_bindings.method_get_polygon,
+      NavigationPolygon._bindings.method_get_polygon,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -512,7 +513,7 @@ export class NavigationPolygon extends Resource{
   clear_polygons() {
     NavigationPolygon.init_method_clear_polygons();
     return _call_native_mb_no_ret(
-      NavigationPolygon.#_bindings.method_clear_polygons,
+      NavigationPolygon._bindings.method_clear_polygons,
       this._owner,
       
     );
@@ -521,7 +522,7 @@ export class NavigationPolygon extends Resource{
   get_navigation_mesh() {
     NavigationPolygon.init_method_get_navigation_mesh();
     return _call_native_mb_ret(
-      NavigationPolygon.#_bindings.method_get_navigation_mesh,
+      NavigationPolygon._bindings.method_get_navigation_mesh,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -531,7 +532,7 @@ export class NavigationPolygon extends Resource{
   add_outline(_outline) {
     NavigationPolygon.init_method_add_outline();
     return _call_native_mb_no_ret(
-      NavigationPolygon.#_bindings.method_add_outline,
+      NavigationPolygon._bindings.method_add_outline,
       this._owner,
       _outline
     );
@@ -540,7 +541,7 @@ export class NavigationPolygon extends Resource{
   add_outline_at_index(_outline, _index) {
     NavigationPolygon.init_method_add_outline_at_index();
     return _call_native_mb_no_ret(
-      NavigationPolygon.#_bindings.method_add_outline_at_index,
+      NavigationPolygon._bindings.method_add_outline_at_index,
       this._owner,
       _outline, _index
     );
@@ -549,7 +550,7 @@ export class NavigationPolygon extends Resource{
   get_outline_count() {
     NavigationPolygon.init_method_get_outline_count();
     return _call_native_mb_ret(
-      NavigationPolygon.#_bindings.method_get_outline_count,
+      NavigationPolygon._bindings.method_get_outline_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -560,7 +561,7 @@ export class NavigationPolygon extends Resource{
   set_outline(_idx, _outline) {
     NavigationPolygon.init_method_set_outline();
     return _call_native_mb_no_ret(
-      NavigationPolygon.#_bindings.method_set_outline,
+      NavigationPolygon._bindings.method_set_outline,
       this._owner,
       _idx, _outline
     );
@@ -569,7 +570,7 @@ export class NavigationPolygon extends Resource{
   get_outline(_idx) {
     NavigationPolygon.init_method_get_outline();
     return _call_native_mb_ret(
-      NavigationPolygon.#_bindings.method_get_outline,
+      NavigationPolygon._bindings.method_get_outline,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -580,7 +581,7 @@ export class NavigationPolygon extends Resource{
   remove_outline(_idx) {
     NavigationPolygon.init_method_remove_outline();
     return _call_native_mb_no_ret(
-      NavigationPolygon.#_bindings.method_remove_outline,
+      NavigationPolygon._bindings.method_remove_outline,
       this._owner,
       _idx
     );
@@ -589,7 +590,7 @@ export class NavigationPolygon extends Resource{
   clear_outlines() {
     NavigationPolygon.init_method_clear_outlines();
     return _call_native_mb_no_ret(
-      NavigationPolygon.#_bindings.method_clear_outlines,
+      NavigationPolygon._bindings.method_clear_outlines,
       this._owner,
       
     );
@@ -598,7 +599,7 @@ export class NavigationPolygon extends Resource{
   make_polygons_from_outlines() {
     NavigationPolygon.init_method_make_polygons_from_outlines();
     return _call_native_mb_no_ret(
-      NavigationPolygon.#_bindings.method_make_polygons_from_outlines,
+      NavigationPolygon._bindings.method_make_polygons_from_outlines,
       this._owner,
       
     );
@@ -607,7 +608,7 @@ export class NavigationPolygon extends Resource{
   set_cell_size(_cell_size) {
     NavigationPolygon.init_method_set_cell_size();
     return _call_native_mb_no_ret(
-      NavigationPolygon.#_bindings.method_set_cell_size,
+      NavigationPolygon._bindings.method_set_cell_size,
       this._owner,
       _cell_size
     );
@@ -616,7 +617,7 @@ export class NavigationPolygon extends Resource{
   get_cell_size() {
     NavigationPolygon.init_method_get_cell_size();
     return _call_native_mb_ret(
-      NavigationPolygon.#_bindings.method_get_cell_size,
+      NavigationPolygon._bindings.method_get_cell_size,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -627,7 +628,7 @@ export class NavigationPolygon extends Resource{
   set_border_size(_border_size) {
     NavigationPolygon.init_method_set_border_size();
     return _call_native_mb_no_ret(
-      NavigationPolygon.#_bindings.method_set_border_size,
+      NavigationPolygon._bindings.method_set_border_size,
       this._owner,
       _border_size
     );
@@ -636,7 +637,7 @@ export class NavigationPolygon extends Resource{
   get_border_size() {
     NavigationPolygon.init_method_get_border_size();
     return _call_native_mb_ret(
-      NavigationPolygon.#_bindings.method_get_border_size,
+      NavigationPolygon._bindings.method_get_border_size,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -647,7 +648,7 @@ export class NavigationPolygon extends Resource{
   set_parsed_geometry_type(_geometry_type) {
     NavigationPolygon.init_method_set_parsed_geometry_type();
     return _call_native_mb_no_ret(
-      NavigationPolygon.#_bindings.method_set_parsed_geometry_type,
+      NavigationPolygon._bindings.method_set_parsed_geometry_type,
       this._owner,
       _geometry_type
     );
@@ -656,7 +657,7 @@ export class NavigationPolygon extends Resource{
   get_parsed_geometry_type() {
     NavigationPolygon.init_method_get_parsed_geometry_type();
     return _call_native_mb_ret(
-      NavigationPolygon.#_bindings.method_get_parsed_geometry_type,
+      NavigationPolygon._bindings.method_get_parsed_geometry_type,
       this._owner,
 			Variant.Type.INT,
     
@@ -667,7 +668,7 @@ export class NavigationPolygon extends Resource{
   set_parsed_collision_mask(_mask) {
     NavigationPolygon.init_method_set_parsed_collision_mask();
     return _call_native_mb_no_ret(
-      NavigationPolygon.#_bindings.method_set_parsed_collision_mask,
+      NavigationPolygon._bindings.method_set_parsed_collision_mask,
       this._owner,
       _mask
     );
@@ -676,7 +677,7 @@ export class NavigationPolygon extends Resource{
   get_parsed_collision_mask() {
     NavigationPolygon.init_method_get_parsed_collision_mask();
     return _call_native_mb_ret(
-      NavigationPolygon.#_bindings.method_get_parsed_collision_mask,
+      NavigationPolygon._bindings.method_get_parsed_collision_mask,
       this._owner,
 			Variant.Type.INT,
     
@@ -687,7 +688,7 @@ export class NavigationPolygon extends Resource{
   set_parsed_collision_mask_value(_layer_number, _value) {
     NavigationPolygon.init_method_set_parsed_collision_mask_value();
     return _call_native_mb_no_ret(
-      NavigationPolygon.#_bindings.method_set_parsed_collision_mask_value,
+      NavigationPolygon._bindings.method_set_parsed_collision_mask_value,
       this._owner,
       _layer_number, _value
     );
@@ -696,7 +697,7 @@ export class NavigationPolygon extends Resource{
   get_parsed_collision_mask_value(_layer_number) {
     NavigationPolygon.init_method_get_parsed_collision_mask_value();
     return _call_native_mb_ret(
-      NavigationPolygon.#_bindings.method_get_parsed_collision_mask_value,
+      NavigationPolygon._bindings.method_get_parsed_collision_mask_value,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -707,7 +708,7 @@ export class NavigationPolygon extends Resource{
   set_source_geometry_mode(_geometry_mode) {
     NavigationPolygon.init_method_set_source_geometry_mode();
     return _call_native_mb_no_ret(
-      NavigationPolygon.#_bindings.method_set_source_geometry_mode,
+      NavigationPolygon._bindings.method_set_source_geometry_mode,
       this._owner,
       _geometry_mode
     );
@@ -716,7 +717,7 @@ export class NavigationPolygon extends Resource{
   get_source_geometry_mode() {
     NavigationPolygon.init_method_get_source_geometry_mode();
     return _call_native_mb_ret(
-      NavigationPolygon.#_bindings.method_get_source_geometry_mode,
+      NavigationPolygon._bindings.method_get_source_geometry_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -727,7 +728,7 @@ export class NavigationPolygon extends Resource{
   set_source_geometry_group_name(_group_name) {
     NavigationPolygon.init_method_set_source_geometry_group_name();
     return _call_native_mb_no_ret(
-      NavigationPolygon.#_bindings.method_set_source_geometry_group_name,
+      NavigationPolygon._bindings.method_set_source_geometry_group_name,
       this._owner,
       _group_name
     );
@@ -736,7 +737,7 @@ export class NavigationPolygon extends Resource{
   get_source_geometry_group_name() {
     NavigationPolygon.init_method_get_source_geometry_group_name();
     return _call_native_mb_ret(
-      NavigationPolygon.#_bindings.method_get_source_geometry_group_name,
+      NavigationPolygon._bindings.method_get_source_geometry_group_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -747,7 +748,7 @@ export class NavigationPolygon extends Resource{
   set_agent_radius(_agent_radius) {
     NavigationPolygon.init_method_set_agent_radius();
     return _call_native_mb_no_ret(
-      NavigationPolygon.#_bindings.method_set_agent_radius,
+      NavigationPolygon._bindings.method_set_agent_radius,
       this._owner,
       _agent_radius
     );
@@ -756,7 +757,7 @@ export class NavigationPolygon extends Resource{
   get_agent_radius() {
     NavigationPolygon.init_method_get_agent_radius();
     return _call_native_mb_ret(
-      NavigationPolygon.#_bindings.method_get_agent_radius,
+      NavigationPolygon._bindings.method_get_agent_radius,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -767,7 +768,7 @@ export class NavigationPolygon extends Resource{
   set_baking_rect(_rect) {
     NavigationPolygon.init_method_set_baking_rect();
     return _call_native_mb_no_ret(
-      NavigationPolygon.#_bindings.method_set_baking_rect,
+      NavigationPolygon._bindings.method_set_baking_rect,
       this._owner,
       _rect
     );
@@ -776,7 +777,7 @@ export class NavigationPolygon extends Resource{
   get_baking_rect() {
     NavigationPolygon.init_method_get_baking_rect();
     return _call_native_mb_ret(
-      NavigationPolygon.#_bindings.method_get_baking_rect,
+      NavigationPolygon._bindings.method_get_baking_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -787,7 +788,7 @@ export class NavigationPolygon extends Resource{
   set_baking_rect_offset(_rect_offset) {
     NavigationPolygon.init_method_set_baking_rect_offset();
     return _call_native_mb_no_ret(
-      NavigationPolygon.#_bindings.method_set_baking_rect_offset,
+      NavigationPolygon._bindings.method_set_baking_rect_offset,
       this._owner,
       _rect_offset
     );
@@ -796,7 +797,7 @@ export class NavigationPolygon extends Resource{
   get_baking_rect_offset() {
     NavigationPolygon.init_method_get_baking_rect_offset();
     return _call_native_mb_ret(
-      NavigationPolygon.#_bindings.method_get_baking_rect_offset,
+      NavigationPolygon._bindings.method_get_baking_rect_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -807,7 +808,7 @@ export class NavigationPolygon extends Resource{
   clear() {
     NavigationPolygon.init_method_clear();
     return _call_native_mb_no_ret(
-      NavigationPolygon.#_bindings.method_clear,
+      NavigationPolygon._bindings.method_clear,
       this._owner,
       
     );

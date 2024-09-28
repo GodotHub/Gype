@@ -1,14 +1,15 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_skin_root;
@@ -32,10 +33,10 @@ class _MethodBindings {
   method_get_godot_skin;
   method_set_godot_skin;
 }
+@GodotClass
 export class GLTFSkin extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -45,10 +46,10 @@ export class GLTFSkin extends Resource{
     }
   }
   static init_method_get_skin_root() {
-    if (!this.#_bindings.method_get_skin_root) {
+    if (!this._bindings.method_get_skin_root) {
       let classname = new StringName("GLTFSkin");
       let methodname = new StringName("get_skin_root");
-      this.#_bindings.method_get_skin_root = internal.classdb_get_method_bind(
+      this._bindings.method_get_skin_root = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -56,10 +57,10 @@ export class GLTFSkin extends Resource{
     }
   }
   static init_method_set_skin_root() {
-    if (!this.#_bindings.method_set_skin_root) {
+    if (!this._bindings.method_set_skin_root) {
       let classname = new StringName("GLTFSkin");
       let methodname = new StringName("set_skin_root");
-      this.#_bindings.method_set_skin_root = internal.classdb_get_method_bind(
+      this._bindings.method_set_skin_root = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -67,10 +68,10 @@ export class GLTFSkin extends Resource{
     }
   }
   static init_method_get_joints_original() {
-    if (!this.#_bindings.method_get_joints_original) {
+    if (!this._bindings.method_get_joints_original) {
       let classname = new StringName("GLTFSkin");
       let methodname = new StringName("get_joints_original");
-      this.#_bindings.method_get_joints_original = internal.classdb_get_method_bind(
+      this._bindings.method_get_joints_original = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         969006518
@@ -78,10 +79,10 @@ export class GLTFSkin extends Resource{
     }
   }
   static init_method_set_joints_original() {
-    if (!this.#_bindings.method_set_joints_original) {
+    if (!this._bindings.method_set_joints_original) {
       let classname = new StringName("GLTFSkin");
       let methodname = new StringName("set_joints_original");
-      this.#_bindings.method_set_joints_original = internal.classdb_get_method_bind(
+      this._bindings.method_set_joints_original = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3614634198
@@ -89,10 +90,10 @@ export class GLTFSkin extends Resource{
     }
   }
   static init_method_get_inverse_binds() {
-    if (!this.#_bindings.method_get_inverse_binds) {
+    if (!this._bindings.method_get_inverse_binds) {
       let classname = new StringName("GLTFSkin");
       let methodname = new StringName("get_inverse_binds");
-      this.#_bindings.method_get_inverse_binds = internal.classdb_get_method_bind(
+      this._bindings.method_get_inverse_binds = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2915620761
@@ -100,10 +101,10 @@ export class GLTFSkin extends Resource{
     }
   }
   static init_method_set_inverse_binds() {
-    if (!this.#_bindings.method_set_inverse_binds) {
+    if (!this._bindings.method_set_inverse_binds) {
       let classname = new StringName("GLTFSkin");
       let methodname = new StringName("set_inverse_binds");
-      this.#_bindings.method_set_inverse_binds = internal.classdb_get_method_bind(
+      this._bindings.method_set_inverse_binds = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         381264803
@@ -111,10 +112,10 @@ export class GLTFSkin extends Resource{
     }
   }
   static init_method_get_joints() {
-    if (!this.#_bindings.method_get_joints) {
+    if (!this._bindings.method_get_joints) {
       let classname = new StringName("GLTFSkin");
       let methodname = new StringName("get_joints");
-      this.#_bindings.method_get_joints = internal.classdb_get_method_bind(
+      this._bindings.method_get_joints = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         969006518
@@ -122,10 +123,10 @@ export class GLTFSkin extends Resource{
     }
   }
   static init_method_set_joints() {
-    if (!this.#_bindings.method_set_joints) {
+    if (!this._bindings.method_set_joints) {
       let classname = new StringName("GLTFSkin");
       let methodname = new StringName("set_joints");
-      this.#_bindings.method_set_joints = internal.classdb_get_method_bind(
+      this._bindings.method_set_joints = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3614634198
@@ -133,10 +134,10 @@ export class GLTFSkin extends Resource{
     }
   }
   static init_method_get_non_joints() {
-    if (!this.#_bindings.method_get_non_joints) {
+    if (!this._bindings.method_get_non_joints) {
       let classname = new StringName("GLTFSkin");
       let methodname = new StringName("get_non_joints");
-      this.#_bindings.method_get_non_joints = internal.classdb_get_method_bind(
+      this._bindings.method_get_non_joints = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         969006518
@@ -144,10 +145,10 @@ export class GLTFSkin extends Resource{
     }
   }
   static init_method_set_non_joints() {
-    if (!this.#_bindings.method_set_non_joints) {
+    if (!this._bindings.method_set_non_joints) {
       let classname = new StringName("GLTFSkin");
       let methodname = new StringName("set_non_joints");
-      this.#_bindings.method_set_non_joints = internal.classdb_get_method_bind(
+      this._bindings.method_set_non_joints = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3614634198
@@ -155,10 +156,10 @@ export class GLTFSkin extends Resource{
     }
   }
   static init_method_get_roots() {
-    if (!this.#_bindings.method_get_roots) {
+    if (!this._bindings.method_get_roots) {
       let classname = new StringName("GLTFSkin");
       let methodname = new StringName("get_roots");
-      this.#_bindings.method_get_roots = internal.classdb_get_method_bind(
+      this._bindings.method_get_roots = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         969006518
@@ -166,10 +167,10 @@ export class GLTFSkin extends Resource{
     }
   }
   static init_method_set_roots() {
-    if (!this.#_bindings.method_set_roots) {
+    if (!this._bindings.method_set_roots) {
       let classname = new StringName("GLTFSkin");
       let methodname = new StringName("set_roots");
-      this.#_bindings.method_set_roots = internal.classdb_get_method_bind(
+      this._bindings.method_set_roots = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3614634198
@@ -177,10 +178,10 @@ export class GLTFSkin extends Resource{
     }
   }
   static init_method_get_skeleton() {
-    if (!this.#_bindings.method_get_skeleton) {
+    if (!this._bindings.method_get_skeleton) {
       let classname = new StringName("GLTFSkin");
       let methodname = new StringName("get_skeleton");
-      this.#_bindings.method_get_skeleton = internal.classdb_get_method_bind(
+      this._bindings.method_get_skeleton = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -188,10 +189,10 @@ export class GLTFSkin extends Resource{
     }
   }
   static init_method_set_skeleton() {
-    if (!this.#_bindings.method_set_skeleton) {
+    if (!this._bindings.method_set_skeleton) {
       let classname = new StringName("GLTFSkin");
       let methodname = new StringName("set_skeleton");
-      this.#_bindings.method_set_skeleton = internal.classdb_get_method_bind(
+      this._bindings.method_set_skeleton = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -199,10 +200,10 @@ export class GLTFSkin extends Resource{
     }
   }
   static init_method_get_joint_i_to_bone_i() {
-    if (!this.#_bindings.method_get_joint_i_to_bone_i) {
+    if (!this._bindings.method_get_joint_i_to_bone_i) {
       let classname = new StringName("GLTFSkin");
       let methodname = new StringName("get_joint_i_to_bone_i");
-      this.#_bindings.method_get_joint_i_to_bone_i = internal.classdb_get_method_bind(
+      this._bindings.method_get_joint_i_to_bone_i = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2382534195
@@ -210,10 +211,10 @@ export class GLTFSkin extends Resource{
     }
   }
   static init_method_set_joint_i_to_bone_i() {
-    if (!this.#_bindings.method_set_joint_i_to_bone_i) {
+    if (!this._bindings.method_set_joint_i_to_bone_i) {
       let classname = new StringName("GLTFSkin");
       let methodname = new StringName("set_joint_i_to_bone_i");
-      this.#_bindings.method_set_joint_i_to_bone_i = internal.classdb_get_method_bind(
+      this._bindings.method_set_joint_i_to_bone_i = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4155329257
@@ -221,10 +222,10 @@ export class GLTFSkin extends Resource{
     }
   }
   static init_method_get_joint_i_to_name() {
-    if (!this.#_bindings.method_get_joint_i_to_name) {
+    if (!this._bindings.method_get_joint_i_to_name) {
       let classname = new StringName("GLTFSkin");
       let methodname = new StringName("get_joint_i_to_name");
-      this.#_bindings.method_get_joint_i_to_name = internal.classdb_get_method_bind(
+      this._bindings.method_get_joint_i_to_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2382534195
@@ -232,10 +233,10 @@ export class GLTFSkin extends Resource{
     }
   }
   static init_method_set_joint_i_to_name() {
-    if (!this.#_bindings.method_set_joint_i_to_name) {
+    if (!this._bindings.method_set_joint_i_to_name) {
       let classname = new StringName("GLTFSkin");
       let methodname = new StringName("set_joint_i_to_name");
-      this.#_bindings.method_set_joint_i_to_name = internal.classdb_get_method_bind(
+      this._bindings.method_set_joint_i_to_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4155329257
@@ -243,10 +244,10 @@ export class GLTFSkin extends Resource{
     }
   }
   static init_method_get_godot_skin() {
-    if (!this.#_bindings.method_get_godot_skin) {
+    if (!this._bindings.method_get_godot_skin) {
       let classname = new StringName("GLTFSkin");
       let methodname = new StringName("get_godot_skin");
-      this.#_bindings.method_get_godot_skin = internal.classdb_get_method_bind(
+      this._bindings.method_get_godot_skin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1032037385
@@ -254,10 +255,10 @@ export class GLTFSkin extends Resource{
     }
   }
   static init_method_set_godot_skin() {
-    if (!this.#_bindings.method_set_godot_skin) {
+    if (!this._bindings.method_set_godot_skin) {
       let classname = new StringName("GLTFSkin");
       let methodname = new StringName("set_godot_skin");
-      this.#_bindings.method_set_godot_skin = internal.classdb_get_method_bind(
+      this._bindings.method_set_godot_skin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3971435618
@@ -270,7 +271,7 @@ export class GLTFSkin extends Resource{
   get_skin_root() {
     GLTFSkin.init_method_get_skin_root();
     return _call_native_mb_ret(
-      GLTFSkin.#_bindings.method_get_skin_root,
+      GLTFSkin._bindings.method_get_skin_root,
       this._owner,
 			Variant.Type.INT,
     
@@ -281,7 +282,7 @@ export class GLTFSkin extends Resource{
   set_skin_root(_skin_root) {
     GLTFSkin.init_method_set_skin_root();
     return _call_native_mb_no_ret(
-      GLTFSkin.#_bindings.method_set_skin_root,
+      GLTFSkin._bindings.method_set_skin_root,
       this._owner,
       _skin_root
     );
@@ -290,7 +291,7 @@ export class GLTFSkin extends Resource{
   get_joints_original() {
     GLTFSkin.init_method_get_joints_original();
     return _call_native_mb_ret(
-      GLTFSkin.#_bindings.method_get_joints_original,
+      GLTFSkin._bindings.method_get_joints_original,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -301,7 +302,7 @@ export class GLTFSkin extends Resource{
   set_joints_original(_joints_original) {
     GLTFSkin.init_method_set_joints_original();
     return _call_native_mb_no_ret(
-      GLTFSkin.#_bindings.method_set_joints_original,
+      GLTFSkin._bindings.method_set_joints_original,
       this._owner,
       _joints_original
     );
@@ -310,7 +311,7 @@ export class GLTFSkin extends Resource{
   get_inverse_binds() {
     GLTFSkin.init_method_get_inverse_binds();
     return _call_native_mb_ret(
-      GLTFSkin.#_bindings.method_get_inverse_binds,
+      GLTFSkin._bindings.method_get_inverse_binds,
       this._owner,
 			Variant.Type.ARRAY,
       
@@ -320,7 +321,7 @@ export class GLTFSkin extends Resource{
   set_inverse_binds(_inverse_binds) {
     GLTFSkin.init_method_set_inverse_binds();
     return _call_native_mb_no_ret(
-      GLTFSkin.#_bindings.method_set_inverse_binds,
+      GLTFSkin._bindings.method_set_inverse_binds,
       this._owner,
       _inverse_binds
     );
@@ -329,7 +330,7 @@ export class GLTFSkin extends Resource{
   get_joints() {
     GLTFSkin.init_method_get_joints();
     return _call_native_mb_ret(
-      GLTFSkin.#_bindings.method_get_joints,
+      GLTFSkin._bindings.method_get_joints,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -340,7 +341,7 @@ export class GLTFSkin extends Resource{
   set_joints(_joints) {
     GLTFSkin.init_method_set_joints();
     return _call_native_mb_no_ret(
-      GLTFSkin.#_bindings.method_set_joints,
+      GLTFSkin._bindings.method_set_joints,
       this._owner,
       _joints
     );
@@ -349,7 +350,7 @@ export class GLTFSkin extends Resource{
   get_non_joints() {
     GLTFSkin.init_method_get_non_joints();
     return _call_native_mb_ret(
-      GLTFSkin.#_bindings.method_get_non_joints,
+      GLTFSkin._bindings.method_get_non_joints,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -360,7 +361,7 @@ export class GLTFSkin extends Resource{
   set_non_joints(_non_joints) {
     GLTFSkin.init_method_set_non_joints();
     return _call_native_mb_no_ret(
-      GLTFSkin.#_bindings.method_set_non_joints,
+      GLTFSkin._bindings.method_set_non_joints,
       this._owner,
       _non_joints
     );
@@ -369,7 +370,7 @@ export class GLTFSkin extends Resource{
   get_roots() {
     GLTFSkin.init_method_get_roots();
     return _call_native_mb_ret(
-      GLTFSkin.#_bindings.method_get_roots,
+      GLTFSkin._bindings.method_get_roots,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -380,7 +381,7 @@ export class GLTFSkin extends Resource{
   set_roots(_roots) {
     GLTFSkin.init_method_set_roots();
     return _call_native_mb_no_ret(
-      GLTFSkin.#_bindings.method_set_roots,
+      GLTFSkin._bindings.method_set_roots,
       this._owner,
       _roots
     );
@@ -389,7 +390,7 @@ export class GLTFSkin extends Resource{
   get_skeleton() {
     GLTFSkin.init_method_get_skeleton();
     return _call_native_mb_ret(
-      GLTFSkin.#_bindings.method_get_skeleton,
+      GLTFSkin._bindings.method_get_skeleton,
       this._owner,
 			Variant.Type.INT,
     
@@ -400,7 +401,7 @@ export class GLTFSkin extends Resource{
   set_skeleton(_skeleton) {
     GLTFSkin.init_method_set_skeleton();
     return _call_native_mb_no_ret(
-      GLTFSkin.#_bindings.method_set_skeleton,
+      GLTFSkin._bindings.method_set_skeleton,
       this._owner,
       _skeleton
     );
@@ -409,7 +410,7 @@ export class GLTFSkin extends Resource{
   get_joint_i_to_bone_i() {
     GLTFSkin.init_method_get_joint_i_to_bone_i();
     return _call_native_mb_ret(
-      GLTFSkin.#_bindings.method_get_joint_i_to_bone_i,
+      GLTFSkin._bindings.method_get_joint_i_to_bone_i,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -420,7 +421,7 @@ export class GLTFSkin extends Resource{
   set_joint_i_to_bone_i(_joint_i_to_bone_i) {
     GLTFSkin.init_method_set_joint_i_to_bone_i();
     return _call_native_mb_no_ret(
-      GLTFSkin.#_bindings.method_set_joint_i_to_bone_i,
+      GLTFSkin._bindings.method_set_joint_i_to_bone_i,
       this._owner,
       _joint_i_to_bone_i
     );
@@ -429,7 +430,7 @@ export class GLTFSkin extends Resource{
   get_joint_i_to_name() {
     GLTFSkin.init_method_get_joint_i_to_name();
     return _call_native_mb_ret(
-      GLTFSkin.#_bindings.method_get_joint_i_to_name,
+      GLTFSkin._bindings.method_get_joint_i_to_name,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -440,7 +441,7 @@ export class GLTFSkin extends Resource{
   set_joint_i_to_name(_joint_i_to_name) {
     GLTFSkin.init_method_set_joint_i_to_name();
     return _call_native_mb_no_ret(
-      GLTFSkin.#_bindings.method_set_joint_i_to_name,
+      GLTFSkin._bindings.method_set_joint_i_to_name,
       this._owner,
       _joint_i_to_name
     );
@@ -449,7 +450,7 @@ export class GLTFSkin extends Resource{
   get_godot_skin() {
     GLTFSkin.init_method_get_godot_skin();
     return _call_native_mb_ret(
-      GLTFSkin.#_bindings.method_get_godot_skin,
+      GLTFSkin._bindings.method_get_godot_skin,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -459,7 +460,7 @@ export class GLTFSkin extends Resource{
   set_godot_skin(_godot_skin) {
     GLTFSkin.init_method_set_godot_skin();
     return _call_native_mb_no_ret(
-      GLTFSkin.#_bindings.method_set_godot_skin,
+      GLTFSkin._bindings.method_set_godot_skin,
       this._owner,
       _godot_skin
     );

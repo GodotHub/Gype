@@ -1,14 +1,15 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_create;
@@ -25,10 +26,10 @@ class _MethodBindings {
   method_convert_to_image;
   method_opaque_to_polygons;
 }
+@GodotClass
 export class BitMap extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -38,10 +39,10 @@ export class BitMap extends Resource{
     }
   }
   static init_method_create() {
-    if (!this.#_bindings.method_create) {
+    if (!this._bindings.method_create) {
       let classname = new StringName("BitMap");
       let methodname = new StringName("create");
-      this.#_bindings.method_create = internal.classdb_get_method_bind(
+      this._bindings.method_create = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1130785943
@@ -49,10 +50,10 @@ export class BitMap extends Resource{
     }
   }
   static init_method_create_from_image_alpha() {
-    if (!this.#_bindings.method_create_from_image_alpha) {
+    if (!this._bindings.method_create_from_image_alpha) {
       let classname = new StringName("BitMap");
       let methodname = new StringName("create_from_image_alpha");
-      this.#_bindings.method_create_from_image_alpha = internal.classdb_get_method_bind(
+      this._bindings.method_create_from_image_alpha = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         106271684
@@ -60,10 +61,10 @@ export class BitMap extends Resource{
     }
   }
   static init_method_set_bitv() {
-    if (!this.#_bindings.method_set_bitv) {
+    if (!this._bindings.method_set_bitv) {
       let classname = new StringName("BitMap");
       let methodname = new StringName("set_bitv");
-      this.#_bindings.method_set_bitv = internal.classdb_get_method_bind(
+      this._bindings.method_set_bitv = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4153096796
@@ -71,10 +72,10 @@ export class BitMap extends Resource{
     }
   }
   static init_method_set_bit() {
-    if (!this.#_bindings.method_set_bit) {
+    if (!this._bindings.method_set_bit) {
       let classname = new StringName("BitMap");
       let methodname = new StringName("set_bit");
-      this.#_bindings.method_set_bit = internal.classdb_get_method_bind(
+      this._bindings.method_set_bit = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1383440665
@@ -82,10 +83,10 @@ export class BitMap extends Resource{
     }
   }
   static init_method_get_bitv() {
-    if (!this.#_bindings.method_get_bitv) {
+    if (!this._bindings.method_get_bitv) {
       let classname = new StringName("BitMap");
       let methodname = new StringName("get_bitv");
-      this.#_bindings.method_get_bitv = internal.classdb_get_method_bind(
+      this._bindings.method_get_bitv = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3900751641
@@ -93,10 +94,10 @@ export class BitMap extends Resource{
     }
   }
   static init_method_get_bit() {
-    if (!this.#_bindings.method_get_bit) {
+    if (!this._bindings.method_get_bit) {
       let classname = new StringName("BitMap");
       let methodname = new StringName("get_bit");
-      this.#_bindings.method_get_bit = internal.classdb_get_method_bind(
+      this._bindings.method_get_bit = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2522259332
@@ -104,10 +105,10 @@ export class BitMap extends Resource{
     }
   }
   static init_method_set_bit_rect() {
-    if (!this.#_bindings.method_set_bit_rect) {
+    if (!this._bindings.method_set_bit_rect) {
       let classname = new StringName("BitMap");
       let methodname = new StringName("set_bit_rect");
-      this.#_bindings.method_set_bit_rect = internal.classdb_get_method_bind(
+      this._bindings.method_set_bit_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         472162941
@@ -115,10 +116,10 @@ export class BitMap extends Resource{
     }
   }
   static init_method_get_true_bit_count() {
-    if (!this.#_bindings.method_get_true_bit_count) {
+    if (!this._bindings.method_get_true_bit_count) {
       let classname = new StringName("BitMap");
       let methodname = new StringName("get_true_bit_count");
-      this.#_bindings.method_get_true_bit_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_true_bit_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -126,10 +127,10 @@ export class BitMap extends Resource{
     }
   }
   static init_method_get_size() {
-    if (!this.#_bindings.method_get_size) {
+    if (!this._bindings.method_get_size) {
       let classname = new StringName("BitMap");
       let methodname = new StringName("get_size");
-      this.#_bindings.method_get_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3690982128
@@ -137,10 +138,10 @@ export class BitMap extends Resource{
     }
   }
   static init_method_resize() {
-    if (!this.#_bindings.method_resize) {
+    if (!this._bindings.method_resize) {
       let classname = new StringName("BitMap");
       let methodname = new StringName("resize");
-      this.#_bindings.method_resize = internal.classdb_get_method_bind(
+      this._bindings.method_resize = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1130785943
@@ -148,10 +149,10 @@ export class BitMap extends Resource{
     }
   }
   static init_method_grow_mask() {
-    if (!this.#_bindings.method_grow_mask) {
+    if (!this._bindings.method_grow_mask) {
       let classname = new StringName("BitMap");
       let methodname = new StringName("grow_mask");
-      this.#_bindings.method_grow_mask = internal.classdb_get_method_bind(
+      this._bindings.method_grow_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3317281434
@@ -159,10 +160,10 @@ export class BitMap extends Resource{
     }
   }
   static init_method_convert_to_image() {
-    if (!this.#_bindings.method_convert_to_image) {
+    if (!this._bindings.method_convert_to_image) {
       let classname = new StringName("BitMap");
       let methodname = new StringName("convert_to_image");
-      this.#_bindings.method_convert_to_image = internal.classdb_get_method_bind(
+      this._bindings.method_convert_to_image = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4190603485
@@ -170,10 +171,10 @@ export class BitMap extends Resource{
     }
   }
   static init_method_opaque_to_polygons() {
-    if (!this.#_bindings.method_opaque_to_polygons) {
+    if (!this._bindings.method_opaque_to_polygons) {
       let classname = new StringName("BitMap");
       let methodname = new StringName("opaque_to_polygons");
-      this.#_bindings.method_opaque_to_polygons = internal.classdb_get_method_bind(
+      this._bindings.method_opaque_to_polygons = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         48478126
@@ -186,7 +187,7 @@ export class BitMap extends Resource{
   create(_size) {
     BitMap.init_method_create();
     return _call_native_mb_no_ret(
-      BitMap.#_bindings.method_create,
+      BitMap._bindings.method_create,
       this._owner,
       _size
     );
@@ -195,7 +196,7 @@ export class BitMap extends Resource{
   create_from_image_alpha(_image, _threshold) {
     BitMap.init_method_create_from_image_alpha();
     return _call_native_mb_no_ret(
-      BitMap.#_bindings.method_create_from_image_alpha,
+      BitMap._bindings.method_create_from_image_alpha,
       this._owner,
       _image, _threshold
     );
@@ -204,7 +205,7 @@ export class BitMap extends Resource{
   set_bitv(_position, _bit) {
     BitMap.init_method_set_bitv();
     return _call_native_mb_no_ret(
-      BitMap.#_bindings.method_set_bitv,
+      BitMap._bindings.method_set_bitv,
       this._owner,
       _position, _bit
     );
@@ -213,7 +214,7 @@ export class BitMap extends Resource{
   set_bit(_x, _y, _bit) {
     BitMap.init_method_set_bit();
     return _call_native_mb_no_ret(
-      BitMap.#_bindings.method_set_bit,
+      BitMap._bindings.method_set_bit,
       this._owner,
       _x, _y, _bit
     );
@@ -222,7 +223,7 @@ export class BitMap extends Resource{
   get_bitv(_position) {
     BitMap.init_method_get_bitv();
     return _call_native_mb_ret(
-      BitMap.#_bindings.method_get_bitv,
+      BitMap._bindings.method_get_bitv,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -233,7 +234,7 @@ export class BitMap extends Resource{
   get_bit(_x, _y) {
     BitMap.init_method_get_bit();
     return _call_native_mb_ret(
-      BitMap.#_bindings.method_get_bit,
+      BitMap._bindings.method_get_bit,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -244,7 +245,7 @@ export class BitMap extends Resource{
   set_bit_rect(_rect, _bit) {
     BitMap.init_method_set_bit_rect();
     return _call_native_mb_no_ret(
-      BitMap.#_bindings.method_set_bit_rect,
+      BitMap._bindings.method_set_bit_rect,
       this._owner,
       _rect, _bit
     );
@@ -253,7 +254,7 @@ export class BitMap extends Resource{
   get_true_bit_count() {
     BitMap.init_method_get_true_bit_count();
     return _call_native_mb_ret(
-      BitMap.#_bindings.method_get_true_bit_count,
+      BitMap._bindings.method_get_true_bit_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -264,7 +265,7 @@ export class BitMap extends Resource{
   get_size() {
     BitMap.init_method_get_size();
     return _call_native_mb_ret(
-      BitMap.#_bindings.method_get_size,
+      BitMap._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -275,7 +276,7 @@ export class BitMap extends Resource{
   resize(_new_size) {
     BitMap.init_method_resize();
     return _call_native_mb_no_ret(
-      BitMap.#_bindings.method_resize,
+      BitMap._bindings.method_resize,
       this._owner,
       _new_size
     );
@@ -284,7 +285,7 @@ export class BitMap extends Resource{
   grow_mask(_pixels, _rect) {
     BitMap.init_method_grow_mask();
     return _call_native_mb_no_ret(
-      BitMap.#_bindings.method_grow_mask,
+      BitMap._bindings.method_grow_mask,
       this._owner,
       _pixels, _rect
     );
@@ -293,7 +294,7 @@ export class BitMap extends Resource{
   convert_to_image() {
     BitMap.init_method_convert_to_image();
     return _call_native_mb_ret(
-      BitMap.#_bindings.method_convert_to_image,
+      BitMap._bindings.method_convert_to_image,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -303,7 +304,7 @@ export class BitMap extends Resource{
   opaque_to_polygons(_rect, _epsilon) {
     BitMap.init_method_opaque_to_polygons();
     return _call_native_mb_ret(
-      BitMap.#_bindings.method_opaque_to_polygons,
+      BitMap._bindings.method_opaque_to_polygons,
       this._owner,
 			Variant.Type.ARRAY,
       _rect, _epsilon

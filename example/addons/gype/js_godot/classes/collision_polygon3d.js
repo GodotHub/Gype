@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Node3D } from '@js_godot/classes/node3d'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_depth;
@@ -19,10 +20,10 @@ class _MethodBindings {
   method_set_margin;
   method_get_margin;
 }
+@GodotClass
 export class CollisionPolygon3D extends Node3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -32,10 +33,10 @@ export class CollisionPolygon3D extends Node3D{
     }
   }
   static init_method_set_depth() {
-    if (!this.#_bindings.method_set_depth) {
+    if (!this._bindings.method_set_depth) {
       let classname = new StringName("CollisionPolygon3D");
       let methodname = new StringName("set_depth");
-      this.#_bindings.method_set_depth = internal.classdb_get_method_bind(
+      this._bindings.method_set_depth = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -43,10 +44,10 @@ export class CollisionPolygon3D extends Node3D{
     }
   }
   static init_method_get_depth() {
-    if (!this.#_bindings.method_get_depth) {
+    if (!this._bindings.method_get_depth) {
       let classname = new StringName("CollisionPolygon3D");
       let methodname = new StringName("get_depth");
-      this.#_bindings.method_get_depth = internal.classdb_get_method_bind(
+      this._bindings.method_get_depth = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -54,10 +55,10 @@ export class CollisionPolygon3D extends Node3D{
     }
   }
   static init_method_set_polygon() {
-    if (!this.#_bindings.method_set_polygon) {
+    if (!this._bindings.method_set_polygon) {
       let classname = new StringName("CollisionPolygon3D");
       let methodname = new StringName("set_polygon");
-      this.#_bindings.method_set_polygon = internal.classdb_get_method_bind(
+      this._bindings.method_set_polygon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1509147220
@@ -65,10 +66,10 @@ export class CollisionPolygon3D extends Node3D{
     }
   }
   static init_method_get_polygon() {
-    if (!this.#_bindings.method_get_polygon) {
+    if (!this._bindings.method_get_polygon) {
       let classname = new StringName("CollisionPolygon3D");
       let methodname = new StringName("get_polygon");
-      this.#_bindings.method_get_polygon = internal.classdb_get_method_bind(
+      this._bindings.method_get_polygon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2961356807
@@ -76,10 +77,10 @@ export class CollisionPolygon3D extends Node3D{
     }
   }
   static init_method_set_disabled() {
-    if (!this.#_bindings.method_set_disabled) {
+    if (!this._bindings.method_set_disabled) {
       let classname = new StringName("CollisionPolygon3D");
       let methodname = new StringName("set_disabled");
-      this.#_bindings.method_set_disabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_disabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -87,10 +88,10 @@ export class CollisionPolygon3D extends Node3D{
     }
   }
   static init_method_is_disabled() {
-    if (!this.#_bindings.method_is_disabled) {
+    if (!this._bindings.method_is_disabled) {
       let classname = new StringName("CollisionPolygon3D");
       let methodname = new StringName("is_disabled");
-      this.#_bindings.method_is_disabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_disabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -98,10 +99,10 @@ export class CollisionPolygon3D extends Node3D{
     }
   }
   static init_method_set_margin() {
-    if (!this.#_bindings.method_set_margin) {
+    if (!this._bindings.method_set_margin) {
       let classname = new StringName("CollisionPolygon3D");
       let methodname = new StringName("set_margin");
-      this.#_bindings.method_set_margin = internal.classdb_get_method_bind(
+      this._bindings.method_set_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -109,10 +110,10 @@ export class CollisionPolygon3D extends Node3D{
     }
   }
   static init_method_get_margin() {
-    if (!this.#_bindings.method_get_margin) {
+    if (!this._bindings.method_get_margin) {
       let classname = new StringName("CollisionPolygon3D");
       let methodname = new StringName("get_margin");
-      this.#_bindings.method_get_margin = internal.classdb_get_method_bind(
+      this._bindings.method_get_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -125,7 +126,7 @@ export class CollisionPolygon3D extends Node3D{
   set_depth(_depth) {
     CollisionPolygon3D.init_method_set_depth();
     return _call_native_mb_no_ret(
-      CollisionPolygon3D.#_bindings.method_set_depth,
+      CollisionPolygon3D._bindings.method_set_depth,
       this._owner,
       _depth
     );
@@ -134,7 +135,7 @@ export class CollisionPolygon3D extends Node3D{
   get_depth() {
     CollisionPolygon3D.init_method_get_depth();
     return _call_native_mb_ret(
-      CollisionPolygon3D.#_bindings.method_get_depth,
+      CollisionPolygon3D._bindings.method_get_depth,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -145,7 +146,7 @@ export class CollisionPolygon3D extends Node3D{
   set_polygon(_polygon) {
     CollisionPolygon3D.init_method_set_polygon();
     return _call_native_mb_no_ret(
-      CollisionPolygon3D.#_bindings.method_set_polygon,
+      CollisionPolygon3D._bindings.method_set_polygon,
       this._owner,
       _polygon
     );
@@ -154,7 +155,7 @@ export class CollisionPolygon3D extends Node3D{
   get_polygon() {
     CollisionPolygon3D.init_method_get_polygon();
     return _call_native_mb_ret(
-      CollisionPolygon3D.#_bindings.method_get_polygon,
+      CollisionPolygon3D._bindings.method_get_polygon,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -165,7 +166,7 @@ export class CollisionPolygon3D extends Node3D{
   set_disabled(_disabled) {
     CollisionPolygon3D.init_method_set_disabled();
     return _call_native_mb_no_ret(
-      CollisionPolygon3D.#_bindings.method_set_disabled,
+      CollisionPolygon3D._bindings.method_set_disabled,
       this._owner,
       _disabled
     );
@@ -174,7 +175,7 @@ export class CollisionPolygon3D extends Node3D{
   is_disabled() {
     CollisionPolygon3D.init_method_is_disabled();
     return _call_native_mb_ret(
-      CollisionPolygon3D.#_bindings.method_is_disabled,
+      CollisionPolygon3D._bindings.method_is_disabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -185,7 +186,7 @@ export class CollisionPolygon3D extends Node3D{
   set_margin(_margin) {
     CollisionPolygon3D.init_method_set_margin();
     return _call_native_mb_no_ret(
-      CollisionPolygon3D.#_bindings.method_set_margin,
+      CollisionPolygon3D._bindings.method_set_margin,
       this._owner,
       _margin
     );
@@ -194,7 +195,7 @@ export class CollisionPolygon3D extends Node3D{
   get_margin() {
     CollisionPolygon3D.init_method_get_margin();
     return _call_native_mb_ret(
-      CollisionPolygon3D.#_bindings.method_get_margin,
+      CollisionPolygon3D._bindings.method_get_margin,
       this._owner,
 			Variant.Type.FLOAT,
     

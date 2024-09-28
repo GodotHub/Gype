@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Control } from '@js_godot/classes/control'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_stream;
@@ -39,10 +40,10 @@ class _MethodBindings {
   method_get_bus;
   method_get_video_texture;
 }
+@GodotClass
 export class VideoStreamPlayer extends Control{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -52,10 +53,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_set_stream() {
-    if (!this.#_bindings.method_set_stream) {
+    if (!this._bindings.method_set_stream) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("set_stream");
-      this.#_bindings.method_set_stream = internal.classdb_get_method_bind(
+      this._bindings.method_set_stream = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2317102564
@@ -63,10 +64,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_get_stream() {
-    if (!this.#_bindings.method_get_stream) {
+    if (!this._bindings.method_get_stream) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("get_stream");
-      this.#_bindings.method_get_stream = internal.classdb_get_method_bind(
+      this._bindings.method_get_stream = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         438621487
@@ -74,10 +75,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_play() {
-    if (!this.#_bindings.method_play) {
+    if (!this._bindings.method_play) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("play");
-      this.#_bindings.method_play = internal.classdb_get_method_bind(
+      this._bindings.method_play = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -85,10 +86,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_stop() {
-    if (!this.#_bindings.method_stop) {
+    if (!this._bindings.method_stop) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("stop");
-      this.#_bindings.method_stop = internal.classdb_get_method_bind(
+      this._bindings.method_stop = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -96,10 +97,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_is_playing() {
-    if (!this.#_bindings.method_is_playing) {
+    if (!this._bindings.method_is_playing) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("is_playing");
-      this.#_bindings.method_is_playing = internal.classdb_get_method_bind(
+      this._bindings.method_is_playing = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -107,10 +108,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_set_paused() {
-    if (!this.#_bindings.method_set_paused) {
+    if (!this._bindings.method_set_paused) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("set_paused");
-      this.#_bindings.method_set_paused = internal.classdb_get_method_bind(
+      this._bindings.method_set_paused = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -118,10 +119,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_is_paused() {
-    if (!this.#_bindings.method_is_paused) {
+    if (!this._bindings.method_is_paused) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("is_paused");
-      this.#_bindings.method_is_paused = internal.classdb_get_method_bind(
+      this._bindings.method_is_paused = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -129,10 +130,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_set_loop() {
-    if (!this.#_bindings.method_set_loop) {
+    if (!this._bindings.method_set_loop) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("set_loop");
-      this.#_bindings.method_set_loop = internal.classdb_get_method_bind(
+      this._bindings.method_set_loop = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -140,10 +141,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_has_loop() {
-    if (!this.#_bindings.method_has_loop) {
+    if (!this._bindings.method_has_loop) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("has_loop");
-      this.#_bindings.method_has_loop = internal.classdb_get_method_bind(
+      this._bindings.method_has_loop = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -151,10 +152,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_set_volume() {
-    if (!this.#_bindings.method_set_volume) {
+    if (!this._bindings.method_set_volume) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("set_volume");
-      this.#_bindings.method_set_volume = internal.classdb_get_method_bind(
+      this._bindings.method_set_volume = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -162,10 +163,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_get_volume() {
-    if (!this.#_bindings.method_get_volume) {
+    if (!this._bindings.method_get_volume) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("get_volume");
-      this.#_bindings.method_get_volume = internal.classdb_get_method_bind(
+      this._bindings.method_get_volume = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -173,10 +174,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_set_volume_db() {
-    if (!this.#_bindings.method_set_volume_db) {
+    if (!this._bindings.method_set_volume_db) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("set_volume_db");
-      this.#_bindings.method_set_volume_db = internal.classdb_get_method_bind(
+      this._bindings.method_set_volume_db = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -184,10 +185,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_get_volume_db() {
-    if (!this.#_bindings.method_get_volume_db) {
+    if (!this._bindings.method_get_volume_db) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("get_volume_db");
-      this.#_bindings.method_get_volume_db = internal.classdb_get_method_bind(
+      this._bindings.method_get_volume_db = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -195,10 +196,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_set_audio_track() {
-    if (!this.#_bindings.method_set_audio_track) {
+    if (!this._bindings.method_set_audio_track) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("set_audio_track");
-      this.#_bindings.method_set_audio_track = internal.classdb_get_method_bind(
+      this._bindings.method_set_audio_track = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -206,10 +207,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_get_audio_track() {
-    if (!this.#_bindings.method_get_audio_track) {
+    if (!this._bindings.method_get_audio_track) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("get_audio_track");
-      this.#_bindings.method_get_audio_track = internal.classdb_get_method_bind(
+      this._bindings.method_get_audio_track = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -217,10 +218,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_get_stream_name() {
-    if (!this.#_bindings.method_get_stream_name) {
+    if (!this._bindings.method_get_stream_name) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("get_stream_name");
-      this.#_bindings.method_get_stream_name = internal.classdb_get_method_bind(
+      this._bindings.method_get_stream_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -228,10 +229,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_get_stream_length() {
-    if (!this.#_bindings.method_get_stream_length) {
+    if (!this._bindings.method_get_stream_length) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("get_stream_length");
-      this.#_bindings.method_get_stream_length = internal.classdb_get_method_bind(
+      this._bindings.method_get_stream_length = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -239,10 +240,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_set_stream_position() {
-    if (!this.#_bindings.method_set_stream_position) {
+    if (!this._bindings.method_set_stream_position) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("set_stream_position");
-      this.#_bindings.method_set_stream_position = internal.classdb_get_method_bind(
+      this._bindings.method_set_stream_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -250,10 +251,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_get_stream_position() {
-    if (!this.#_bindings.method_get_stream_position) {
+    if (!this._bindings.method_get_stream_position) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("get_stream_position");
-      this.#_bindings.method_get_stream_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_stream_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -261,10 +262,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_set_autoplay() {
-    if (!this.#_bindings.method_set_autoplay) {
+    if (!this._bindings.method_set_autoplay) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("set_autoplay");
-      this.#_bindings.method_set_autoplay = internal.classdb_get_method_bind(
+      this._bindings.method_set_autoplay = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -272,10 +273,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_has_autoplay() {
-    if (!this.#_bindings.method_has_autoplay) {
+    if (!this._bindings.method_has_autoplay) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("has_autoplay");
-      this.#_bindings.method_has_autoplay = internal.classdb_get_method_bind(
+      this._bindings.method_has_autoplay = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -283,10 +284,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_set_expand() {
-    if (!this.#_bindings.method_set_expand) {
+    if (!this._bindings.method_set_expand) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("set_expand");
-      this.#_bindings.method_set_expand = internal.classdb_get_method_bind(
+      this._bindings.method_set_expand = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -294,10 +295,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_has_expand() {
-    if (!this.#_bindings.method_has_expand) {
+    if (!this._bindings.method_has_expand) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("has_expand");
-      this.#_bindings.method_has_expand = internal.classdb_get_method_bind(
+      this._bindings.method_has_expand = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -305,10 +306,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_set_buffering_msec() {
-    if (!this.#_bindings.method_set_buffering_msec) {
+    if (!this._bindings.method_set_buffering_msec) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("set_buffering_msec");
-      this.#_bindings.method_set_buffering_msec = internal.classdb_get_method_bind(
+      this._bindings.method_set_buffering_msec = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -316,10 +317,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_get_buffering_msec() {
-    if (!this.#_bindings.method_get_buffering_msec) {
+    if (!this._bindings.method_get_buffering_msec) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("get_buffering_msec");
-      this.#_bindings.method_get_buffering_msec = internal.classdb_get_method_bind(
+      this._bindings.method_get_buffering_msec = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -327,10 +328,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_set_bus() {
-    if (!this.#_bindings.method_set_bus) {
+    if (!this._bindings.method_set_bus) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("set_bus");
-      this.#_bindings.method_set_bus = internal.classdb_get_method_bind(
+      this._bindings.method_set_bus = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -338,10 +339,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_get_bus() {
-    if (!this.#_bindings.method_get_bus) {
+    if (!this._bindings.method_get_bus) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("get_bus");
-      this.#_bindings.method_get_bus = internal.classdb_get_method_bind(
+      this._bindings.method_get_bus = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2002593661
@@ -349,10 +350,10 @@ export class VideoStreamPlayer extends Control{
     }
   }
   static init_method_get_video_texture() {
-    if (!this.#_bindings.method_get_video_texture) {
+    if (!this._bindings.method_get_video_texture) {
       let classname = new StringName("VideoStreamPlayer");
       let methodname = new StringName("get_video_texture");
-      this.#_bindings.method_get_video_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_video_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -365,7 +366,7 @@ export class VideoStreamPlayer extends Control{
   set_stream(_stream) {
     VideoStreamPlayer.init_method_set_stream();
     return _call_native_mb_no_ret(
-      VideoStreamPlayer.#_bindings.method_set_stream,
+      VideoStreamPlayer._bindings.method_set_stream,
       this._owner,
       _stream
     );
@@ -374,7 +375,7 @@ export class VideoStreamPlayer extends Control{
   get_stream() {
     VideoStreamPlayer.init_method_get_stream();
     return _call_native_mb_ret(
-      VideoStreamPlayer.#_bindings.method_get_stream,
+      VideoStreamPlayer._bindings.method_get_stream,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -384,7 +385,7 @@ export class VideoStreamPlayer extends Control{
   play() {
     VideoStreamPlayer.init_method_play();
     return _call_native_mb_no_ret(
-      VideoStreamPlayer.#_bindings.method_play,
+      VideoStreamPlayer._bindings.method_play,
       this._owner,
       
     );
@@ -393,7 +394,7 @@ export class VideoStreamPlayer extends Control{
   stop() {
     VideoStreamPlayer.init_method_stop();
     return _call_native_mb_no_ret(
-      VideoStreamPlayer.#_bindings.method_stop,
+      VideoStreamPlayer._bindings.method_stop,
       this._owner,
       
     );
@@ -402,7 +403,7 @@ export class VideoStreamPlayer extends Control{
   is_playing() {
     VideoStreamPlayer.init_method_is_playing();
     return _call_native_mb_ret(
-      VideoStreamPlayer.#_bindings.method_is_playing,
+      VideoStreamPlayer._bindings.method_is_playing,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -413,7 +414,7 @@ export class VideoStreamPlayer extends Control{
   set_paused(_paused) {
     VideoStreamPlayer.init_method_set_paused();
     return _call_native_mb_no_ret(
-      VideoStreamPlayer.#_bindings.method_set_paused,
+      VideoStreamPlayer._bindings.method_set_paused,
       this._owner,
       _paused
     );
@@ -422,7 +423,7 @@ export class VideoStreamPlayer extends Control{
   is_paused() {
     VideoStreamPlayer.init_method_is_paused();
     return _call_native_mb_ret(
-      VideoStreamPlayer.#_bindings.method_is_paused,
+      VideoStreamPlayer._bindings.method_is_paused,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -433,7 +434,7 @@ export class VideoStreamPlayer extends Control{
   set_loop(_loop) {
     VideoStreamPlayer.init_method_set_loop();
     return _call_native_mb_no_ret(
-      VideoStreamPlayer.#_bindings.method_set_loop,
+      VideoStreamPlayer._bindings.method_set_loop,
       this._owner,
       _loop
     );
@@ -442,7 +443,7 @@ export class VideoStreamPlayer extends Control{
   has_loop() {
     VideoStreamPlayer.init_method_has_loop();
     return _call_native_mb_ret(
-      VideoStreamPlayer.#_bindings.method_has_loop,
+      VideoStreamPlayer._bindings.method_has_loop,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -453,7 +454,7 @@ export class VideoStreamPlayer extends Control{
   set_volume(_volume) {
     VideoStreamPlayer.init_method_set_volume();
     return _call_native_mb_no_ret(
-      VideoStreamPlayer.#_bindings.method_set_volume,
+      VideoStreamPlayer._bindings.method_set_volume,
       this._owner,
       _volume
     );
@@ -462,7 +463,7 @@ export class VideoStreamPlayer extends Control{
   get_volume() {
     VideoStreamPlayer.init_method_get_volume();
     return _call_native_mb_ret(
-      VideoStreamPlayer.#_bindings.method_get_volume,
+      VideoStreamPlayer._bindings.method_get_volume,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -473,7 +474,7 @@ export class VideoStreamPlayer extends Control{
   set_volume_db(_db) {
     VideoStreamPlayer.init_method_set_volume_db();
     return _call_native_mb_no_ret(
-      VideoStreamPlayer.#_bindings.method_set_volume_db,
+      VideoStreamPlayer._bindings.method_set_volume_db,
       this._owner,
       _db
     );
@@ -482,7 +483,7 @@ export class VideoStreamPlayer extends Control{
   get_volume_db() {
     VideoStreamPlayer.init_method_get_volume_db();
     return _call_native_mb_ret(
-      VideoStreamPlayer.#_bindings.method_get_volume_db,
+      VideoStreamPlayer._bindings.method_get_volume_db,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -493,7 +494,7 @@ export class VideoStreamPlayer extends Control{
   set_audio_track(_track) {
     VideoStreamPlayer.init_method_set_audio_track();
     return _call_native_mb_no_ret(
-      VideoStreamPlayer.#_bindings.method_set_audio_track,
+      VideoStreamPlayer._bindings.method_set_audio_track,
       this._owner,
       _track
     );
@@ -502,7 +503,7 @@ export class VideoStreamPlayer extends Control{
   get_audio_track() {
     VideoStreamPlayer.init_method_get_audio_track();
     return _call_native_mb_ret(
-      VideoStreamPlayer.#_bindings.method_get_audio_track,
+      VideoStreamPlayer._bindings.method_get_audio_track,
       this._owner,
 			Variant.Type.INT,
     
@@ -513,7 +514,7 @@ export class VideoStreamPlayer extends Control{
   get_stream_name() {
     VideoStreamPlayer.init_method_get_stream_name();
     return _call_native_mb_ret(
-      VideoStreamPlayer.#_bindings.method_get_stream_name,
+      VideoStreamPlayer._bindings.method_get_stream_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -524,7 +525,7 @@ export class VideoStreamPlayer extends Control{
   get_stream_length() {
     VideoStreamPlayer.init_method_get_stream_length();
     return _call_native_mb_ret(
-      VideoStreamPlayer.#_bindings.method_get_stream_length,
+      VideoStreamPlayer._bindings.method_get_stream_length,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -535,7 +536,7 @@ export class VideoStreamPlayer extends Control{
   set_stream_position(_position) {
     VideoStreamPlayer.init_method_set_stream_position();
     return _call_native_mb_no_ret(
-      VideoStreamPlayer.#_bindings.method_set_stream_position,
+      VideoStreamPlayer._bindings.method_set_stream_position,
       this._owner,
       _position
     );
@@ -544,7 +545,7 @@ export class VideoStreamPlayer extends Control{
   get_stream_position() {
     VideoStreamPlayer.init_method_get_stream_position();
     return _call_native_mb_ret(
-      VideoStreamPlayer.#_bindings.method_get_stream_position,
+      VideoStreamPlayer._bindings.method_get_stream_position,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -555,7 +556,7 @@ export class VideoStreamPlayer extends Control{
   set_autoplay(_enabled) {
     VideoStreamPlayer.init_method_set_autoplay();
     return _call_native_mb_no_ret(
-      VideoStreamPlayer.#_bindings.method_set_autoplay,
+      VideoStreamPlayer._bindings.method_set_autoplay,
       this._owner,
       _enabled
     );
@@ -564,7 +565,7 @@ export class VideoStreamPlayer extends Control{
   has_autoplay() {
     VideoStreamPlayer.init_method_has_autoplay();
     return _call_native_mb_ret(
-      VideoStreamPlayer.#_bindings.method_has_autoplay,
+      VideoStreamPlayer._bindings.method_has_autoplay,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -575,7 +576,7 @@ export class VideoStreamPlayer extends Control{
   set_expand(_enable) {
     VideoStreamPlayer.init_method_set_expand();
     return _call_native_mb_no_ret(
-      VideoStreamPlayer.#_bindings.method_set_expand,
+      VideoStreamPlayer._bindings.method_set_expand,
       this._owner,
       _enable
     );
@@ -584,7 +585,7 @@ export class VideoStreamPlayer extends Control{
   has_expand() {
     VideoStreamPlayer.init_method_has_expand();
     return _call_native_mb_ret(
-      VideoStreamPlayer.#_bindings.method_has_expand,
+      VideoStreamPlayer._bindings.method_has_expand,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -595,7 +596,7 @@ export class VideoStreamPlayer extends Control{
   set_buffering_msec(_msec) {
     VideoStreamPlayer.init_method_set_buffering_msec();
     return _call_native_mb_no_ret(
-      VideoStreamPlayer.#_bindings.method_set_buffering_msec,
+      VideoStreamPlayer._bindings.method_set_buffering_msec,
       this._owner,
       _msec
     );
@@ -604,7 +605,7 @@ export class VideoStreamPlayer extends Control{
   get_buffering_msec() {
     VideoStreamPlayer.init_method_get_buffering_msec();
     return _call_native_mb_ret(
-      VideoStreamPlayer.#_bindings.method_get_buffering_msec,
+      VideoStreamPlayer._bindings.method_get_buffering_msec,
       this._owner,
 			Variant.Type.INT,
     
@@ -615,7 +616,7 @@ export class VideoStreamPlayer extends Control{
   set_bus(_bus) {
     VideoStreamPlayer.init_method_set_bus();
     return _call_native_mb_no_ret(
-      VideoStreamPlayer.#_bindings.method_set_bus,
+      VideoStreamPlayer._bindings.method_set_bus,
       this._owner,
       _bus
     );
@@ -624,7 +625,7 @@ export class VideoStreamPlayer extends Control{
   get_bus() {
     VideoStreamPlayer.init_method_get_bus();
     return _call_native_mb_ret(
-      VideoStreamPlayer.#_bindings.method_get_bus,
+      VideoStreamPlayer._bindings.method_get_bus,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -635,7 +636,7 @@ export class VideoStreamPlayer extends Control{
   get_video_texture() {
     VideoStreamPlayer.init_method_get_video_texture();
     return _call_native_mb_ret(
-      VideoStreamPlayer.#_bindings.method_get_video_texture,
+      VideoStreamPlayer._bindings.method_get_video_texture,
       this._owner,
 			Variant.Type.OBJECT,
       

@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { Node2D } from '@js_godot/classes/node2d'
 import {
   call_utility_ret,
@@ -8,15 +8,16 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_gizmo_extents;
   method_get_gizmo_extents;
 }
+@GodotClass
 export class Marker2D extends Node2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -26,10 +27,10 @@ export class Marker2D extends Node2D{
     }
   }
   static init_method_set_gizmo_extents() {
-    if (!this.#_bindings.method_set_gizmo_extents) {
+    if (!this._bindings.method_set_gizmo_extents) {
       let classname = new StringName("Marker2D");
       let methodname = new StringName("set_gizmo_extents");
-      this.#_bindings.method_set_gizmo_extents = internal.classdb_get_method_bind(
+      this._bindings.method_set_gizmo_extents = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -37,10 +38,10 @@ export class Marker2D extends Node2D{
     }
   }
   static init_method_get_gizmo_extents() {
-    if (!this.#_bindings.method_get_gizmo_extents) {
+    if (!this._bindings.method_get_gizmo_extents) {
       let classname = new StringName("Marker2D");
       let methodname = new StringName("get_gizmo_extents");
-      this.#_bindings.method_get_gizmo_extents = internal.classdb_get_method_bind(
+      this._bindings.method_get_gizmo_extents = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -53,7 +54,7 @@ export class Marker2D extends Node2D{
   set_gizmo_extents(_extents) {
     Marker2D.init_method_set_gizmo_extents();
     return _call_native_mb_no_ret(
-      Marker2D.#_bindings.method_set_gizmo_extents,
+      Marker2D._bindings.method_set_gizmo_extents,
       this._owner,
       _extents
     );
@@ -62,7 +63,7 @@ export class Marker2D extends Node2D{
   get_gizmo_extents() {
     Marker2D.init_method_get_gizmo_extents();
     return _call_native_mb_ret(
-      Marker2D.#_bindings.method_get_gizmo_extents,
+      Marker2D._bindings.method_get_gizmo_extents,
       this._owner,
 			Variant.Type.FLOAT,
     

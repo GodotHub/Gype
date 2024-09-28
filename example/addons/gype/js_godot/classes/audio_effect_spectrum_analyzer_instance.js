@@ -1,21 +1,22 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { AudioEffectInstance } from '@js_godot/classes/audio_effect_instance'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_magnitude_for_frequency_range;
 }
+@GodotClass
 export class AudioEffectSpectrumAnalyzerInstance extends AudioEffectInstance{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -25,10 +26,10 @@ export class AudioEffectSpectrumAnalyzerInstance extends AudioEffectInstance{
     }
   }
   static init_method_get_magnitude_for_frequency_range() {
-    if (!this.#_bindings.method_get_magnitude_for_frequency_range) {
+    if (!this._bindings.method_get_magnitude_for_frequency_range) {
       let classname = new StringName("AudioEffectSpectrumAnalyzerInstance");
       let methodname = new StringName("get_magnitude_for_frequency_range");
-      this.#_bindings.method_get_magnitude_for_frequency_range = internal.classdb_get_method_bind(
+      this._bindings.method_get_magnitude_for_frequency_range = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         797993915
@@ -41,7 +42,7 @@ export class AudioEffectSpectrumAnalyzerInstance extends AudioEffectInstance{
   get_magnitude_for_frequency_range(_from_hz, _to_hz, _mode) {
     AudioEffectSpectrumAnalyzerInstance.init_method_get_magnitude_for_frequency_range();
     return _call_native_mb_ret(
-      AudioEffectSpectrumAnalyzerInstance.#_bindings.method_get_magnitude_for_frequency_range,
+      AudioEffectSpectrumAnalyzerInstance._bindings.method_get_magnitude_for_frequency_range,
       this._owner,
 			Variant.Type.VECTOR2,
     

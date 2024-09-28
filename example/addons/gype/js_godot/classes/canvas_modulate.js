@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { Node2D } from '@js_godot/classes/node2d'
 import {
   call_utility_ret,
@@ -8,15 +8,16 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_color;
   method_get_color;
 }
+@GodotClass
 export class CanvasModulate extends Node2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -26,10 +27,10 @@ export class CanvasModulate extends Node2D{
     }
   }
   static init_method_set_color() {
-    if (!this.#_bindings.method_set_color) {
+    if (!this._bindings.method_set_color) {
       let classname = new StringName("CanvasModulate");
       let methodname = new StringName("set_color");
-      this.#_bindings.method_set_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -37,10 +38,10 @@ export class CanvasModulate extends Node2D{
     }
   }
   static init_method_get_color() {
-    if (!this.#_bindings.method_get_color) {
+    if (!this._bindings.method_get_color) {
       let classname = new StringName("CanvasModulate");
       let methodname = new StringName("get_color");
-      this.#_bindings.method_get_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -53,7 +54,7 @@ export class CanvasModulate extends Node2D{
   set_color(_color) {
     CanvasModulate.init_method_set_color();
     return _call_native_mb_no_ret(
-      CanvasModulate.#_bindings.method_set_color,
+      CanvasModulate._bindings.method_set_color,
       this._owner,
       _color
     );
@@ -62,7 +63,7 @@ export class CanvasModulate extends Node2D{
   get_color() {
     CanvasModulate.init_method_get_color();
     return _call_native_mb_ret(
-      CanvasModulate.#_bindings.method_get_color,
+      CanvasModulate._bindings.method_get_color,
       this._owner,
 			Variant.Type.COLOR,
     

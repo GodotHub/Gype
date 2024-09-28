@@ -1,14 +1,15 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDArray } from '@js_godot/variant/gd_array'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_from;
@@ -28,10 +29,10 @@ class _MethodBindings {
   method_is_recovery_as_collision_enabled;
   method_set_recovery_as_collision_enabled;
 }
+@GodotClass
 export class PhysicsTestMotionParameters3D extends RefCounted{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -41,10 +42,10 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
     }
   }
   static init_method_get_from() {
-    if (!this.#_bindings.method_get_from) {
+    if (!this._bindings.method_get_from) {
       let classname = new StringName("PhysicsTestMotionParameters3D");
       let methodname = new StringName("get_from");
-      this.#_bindings.method_get_from = internal.classdb_get_method_bind(
+      this._bindings.method_get_from = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3229777777
@@ -52,10 +53,10 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
     }
   }
   static init_method_set_from() {
-    if (!this.#_bindings.method_set_from) {
+    if (!this._bindings.method_set_from) {
       let classname = new StringName("PhysicsTestMotionParameters3D");
       let methodname = new StringName("set_from");
-      this.#_bindings.method_set_from = internal.classdb_get_method_bind(
+      this._bindings.method_set_from = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2952846383
@@ -63,10 +64,10 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
     }
   }
   static init_method_get_motion() {
-    if (!this.#_bindings.method_get_motion) {
+    if (!this._bindings.method_get_motion) {
       let classname = new StringName("PhysicsTestMotionParameters3D");
       let methodname = new StringName("get_motion");
-      this.#_bindings.method_get_motion = internal.classdb_get_method_bind(
+      this._bindings.method_get_motion = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3360562783
@@ -74,10 +75,10 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
     }
   }
   static init_method_set_motion() {
-    if (!this.#_bindings.method_set_motion) {
+    if (!this._bindings.method_set_motion) {
       let classname = new StringName("PhysicsTestMotionParameters3D");
       let methodname = new StringName("set_motion");
-      this.#_bindings.method_set_motion = internal.classdb_get_method_bind(
+      this._bindings.method_set_motion = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -85,10 +86,10 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
     }
   }
   static init_method_get_margin() {
-    if (!this.#_bindings.method_get_margin) {
+    if (!this._bindings.method_get_margin) {
       let classname = new StringName("PhysicsTestMotionParameters3D");
       let methodname = new StringName("get_margin");
-      this.#_bindings.method_get_margin = internal.classdb_get_method_bind(
+      this._bindings.method_get_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -96,10 +97,10 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
     }
   }
   static init_method_set_margin() {
-    if (!this.#_bindings.method_set_margin) {
+    if (!this._bindings.method_set_margin) {
       let classname = new StringName("PhysicsTestMotionParameters3D");
       let methodname = new StringName("set_margin");
-      this.#_bindings.method_set_margin = internal.classdb_get_method_bind(
+      this._bindings.method_set_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -107,10 +108,10 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
     }
   }
   static init_method_get_max_collisions() {
-    if (!this.#_bindings.method_get_max_collisions) {
+    if (!this._bindings.method_get_max_collisions) {
       let classname = new StringName("PhysicsTestMotionParameters3D");
       let methodname = new StringName("get_max_collisions");
-      this.#_bindings.method_get_max_collisions = internal.classdb_get_method_bind(
+      this._bindings.method_get_max_collisions = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -118,10 +119,10 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
     }
   }
   static init_method_set_max_collisions() {
-    if (!this.#_bindings.method_set_max_collisions) {
+    if (!this._bindings.method_set_max_collisions) {
       let classname = new StringName("PhysicsTestMotionParameters3D");
       let methodname = new StringName("set_max_collisions");
-      this.#_bindings.method_set_max_collisions = internal.classdb_get_method_bind(
+      this._bindings.method_set_max_collisions = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -129,10 +130,10 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
     }
   }
   static init_method_is_collide_separation_ray_enabled() {
-    if (!this.#_bindings.method_is_collide_separation_ray_enabled) {
+    if (!this._bindings.method_is_collide_separation_ray_enabled) {
       let classname = new StringName("PhysicsTestMotionParameters3D");
       let methodname = new StringName("is_collide_separation_ray_enabled");
-      this.#_bindings.method_is_collide_separation_ray_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_collide_separation_ray_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -140,10 +141,10 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
     }
   }
   static init_method_set_collide_separation_ray_enabled() {
-    if (!this.#_bindings.method_set_collide_separation_ray_enabled) {
+    if (!this._bindings.method_set_collide_separation_ray_enabled) {
       let classname = new StringName("PhysicsTestMotionParameters3D");
       let methodname = new StringName("set_collide_separation_ray_enabled");
-      this.#_bindings.method_set_collide_separation_ray_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_collide_separation_ray_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -151,10 +152,10 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
     }
   }
   static init_method_get_exclude_bodies() {
-    if (!this.#_bindings.method_get_exclude_bodies) {
+    if (!this._bindings.method_get_exclude_bodies) {
       let classname = new StringName("PhysicsTestMotionParameters3D");
       let methodname = new StringName("get_exclude_bodies");
-      this.#_bindings.method_get_exclude_bodies = internal.classdb_get_method_bind(
+      this._bindings.method_get_exclude_bodies = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -162,10 +163,10 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
     }
   }
   static init_method_set_exclude_bodies() {
-    if (!this.#_bindings.method_set_exclude_bodies) {
+    if (!this._bindings.method_set_exclude_bodies) {
       let classname = new StringName("PhysicsTestMotionParameters3D");
       let methodname = new StringName("set_exclude_bodies");
-      this.#_bindings.method_set_exclude_bodies = internal.classdb_get_method_bind(
+      this._bindings.method_set_exclude_bodies = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         381264803
@@ -173,10 +174,10 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
     }
   }
   static init_method_get_exclude_objects() {
-    if (!this.#_bindings.method_get_exclude_objects) {
+    if (!this._bindings.method_get_exclude_objects) {
       let classname = new StringName("PhysicsTestMotionParameters3D");
       let methodname = new StringName("get_exclude_objects");
-      this.#_bindings.method_get_exclude_objects = internal.classdb_get_method_bind(
+      this._bindings.method_get_exclude_objects = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -184,10 +185,10 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
     }
   }
   static init_method_set_exclude_objects() {
-    if (!this.#_bindings.method_set_exclude_objects) {
+    if (!this._bindings.method_set_exclude_objects) {
       let classname = new StringName("PhysicsTestMotionParameters3D");
       let methodname = new StringName("set_exclude_objects");
-      this.#_bindings.method_set_exclude_objects = internal.classdb_get_method_bind(
+      this._bindings.method_set_exclude_objects = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         381264803
@@ -195,10 +196,10 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
     }
   }
   static init_method_is_recovery_as_collision_enabled() {
-    if (!this.#_bindings.method_is_recovery_as_collision_enabled) {
+    if (!this._bindings.method_is_recovery_as_collision_enabled) {
       let classname = new StringName("PhysicsTestMotionParameters3D");
       let methodname = new StringName("is_recovery_as_collision_enabled");
-      this.#_bindings.method_is_recovery_as_collision_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_recovery_as_collision_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -206,10 +207,10 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
     }
   }
   static init_method_set_recovery_as_collision_enabled() {
-    if (!this.#_bindings.method_set_recovery_as_collision_enabled) {
+    if (!this._bindings.method_set_recovery_as_collision_enabled) {
       let classname = new StringName("PhysicsTestMotionParameters3D");
       let methodname = new StringName("set_recovery_as_collision_enabled");
-      this.#_bindings.method_set_recovery_as_collision_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_recovery_as_collision_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -222,7 +223,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   get_from() {
     PhysicsTestMotionParameters3D.init_method_get_from();
     return _call_native_mb_ret(
-      PhysicsTestMotionParameters3D.#_bindings.method_get_from,
+      PhysicsTestMotionParameters3D._bindings.method_get_from,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -233,7 +234,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   set_from(_from) {
     PhysicsTestMotionParameters3D.init_method_set_from();
     return _call_native_mb_no_ret(
-      PhysicsTestMotionParameters3D.#_bindings.method_set_from,
+      PhysicsTestMotionParameters3D._bindings.method_set_from,
       this._owner,
       _from
     );
@@ -242,7 +243,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   get_motion() {
     PhysicsTestMotionParameters3D.init_method_get_motion();
     return _call_native_mb_ret(
-      PhysicsTestMotionParameters3D.#_bindings.method_get_motion,
+      PhysicsTestMotionParameters3D._bindings.method_get_motion,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -253,7 +254,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   set_motion(_motion) {
     PhysicsTestMotionParameters3D.init_method_set_motion();
     return _call_native_mb_no_ret(
-      PhysicsTestMotionParameters3D.#_bindings.method_set_motion,
+      PhysicsTestMotionParameters3D._bindings.method_set_motion,
       this._owner,
       _motion
     );
@@ -262,7 +263,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   get_margin() {
     PhysicsTestMotionParameters3D.init_method_get_margin();
     return _call_native_mb_ret(
-      PhysicsTestMotionParameters3D.#_bindings.method_get_margin,
+      PhysicsTestMotionParameters3D._bindings.method_get_margin,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -273,7 +274,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   set_margin(_margin) {
     PhysicsTestMotionParameters3D.init_method_set_margin();
     return _call_native_mb_no_ret(
-      PhysicsTestMotionParameters3D.#_bindings.method_set_margin,
+      PhysicsTestMotionParameters3D._bindings.method_set_margin,
       this._owner,
       _margin
     );
@@ -282,7 +283,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   get_max_collisions() {
     PhysicsTestMotionParameters3D.init_method_get_max_collisions();
     return _call_native_mb_ret(
-      PhysicsTestMotionParameters3D.#_bindings.method_get_max_collisions,
+      PhysicsTestMotionParameters3D._bindings.method_get_max_collisions,
       this._owner,
 			Variant.Type.INT,
     
@@ -293,7 +294,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   set_max_collisions(_max_collisions) {
     PhysicsTestMotionParameters3D.init_method_set_max_collisions();
     return _call_native_mb_no_ret(
-      PhysicsTestMotionParameters3D.#_bindings.method_set_max_collisions,
+      PhysicsTestMotionParameters3D._bindings.method_set_max_collisions,
       this._owner,
       _max_collisions
     );
@@ -302,7 +303,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   is_collide_separation_ray_enabled() {
     PhysicsTestMotionParameters3D.init_method_is_collide_separation_ray_enabled();
     return _call_native_mb_ret(
-      PhysicsTestMotionParameters3D.#_bindings.method_is_collide_separation_ray_enabled,
+      PhysicsTestMotionParameters3D._bindings.method_is_collide_separation_ray_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -313,7 +314,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   set_collide_separation_ray_enabled(_enabled) {
     PhysicsTestMotionParameters3D.init_method_set_collide_separation_ray_enabled();
     return _call_native_mb_no_ret(
-      PhysicsTestMotionParameters3D.#_bindings.method_set_collide_separation_ray_enabled,
+      PhysicsTestMotionParameters3D._bindings.method_set_collide_separation_ray_enabled,
       this._owner,
       _enabled
     );
@@ -322,7 +323,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   get_exclude_bodies() {
     PhysicsTestMotionParameters3D.init_method_get_exclude_bodies();
     return _call_native_mb_ret(
-      PhysicsTestMotionParameters3D.#_bindings.method_get_exclude_bodies,
+      PhysicsTestMotionParameters3D._bindings.method_get_exclude_bodies,
       this._owner,
 			Variant.Type.ARRAY,
       
@@ -332,7 +333,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   set_exclude_bodies(_exclude_list) {
     PhysicsTestMotionParameters3D.init_method_set_exclude_bodies();
     return _call_native_mb_no_ret(
-      PhysicsTestMotionParameters3D.#_bindings.method_set_exclude_bodies,
+      PhysicsTestMotionParameters3D._bindings.method_set_exclude_bodies,
       this._owner,
       _exclude_list
     );
@@ -341,7 +342,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   get_exclude_objects() {
     PhysicsTestMotionParameters3D.init_method_get_exclude_objects();
     return _call_native_mb_ret(
-      PhysicsTestMotionParameters3D.#_bindings.method_get_exclude_objects,
+      PhysicsTestMotionParameters3D._bindings.method_get_exclude_objects,
       this._owner,
 			Variant.Type.ARRAY,
       
@@ -351,7 +352,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   set_exclude_objects(_exclude_list) {
     PhysicsTestMotionParameters3D.init_method_set_exclude_objects();
     return _call_native_mb_no_ret(
-      PhysicsTestMotionParameters3D.#_bindings.method_set_exclude_objects,
+      PhysicsTestMotionParameters3D._bindings.method_set_exclude_objects,
       this._owner,
       _exclude_list
     );
@@ -360,7 +361,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   is_recovery_as_collision_enabled() {
     PhysicsTestMotionParameters3D.init_method_is_recovery_as_collision_enabled();
     return _call_native_mb_ret(
-      PhysicsTestMotionParameters3D.#_bindings.method_is_recovery_as_collision_enabled,
+      PhysicsTestMotionParameters3D._bindings.method_is_recovery_as_collision_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -371,7 +372,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   set_recovery_as_collision_enabled(_enabled) {
     PhysicsTestMotionParameters3D.init_method_set_recovery_as_collision_enabled();
     return _call_native_mb_no_ret(
-      PhysicsTestMotionParameters3D.#_bindings.method_set_recovery_as_collision_enabled,
+      PhysicsTestMotionParameters3D._bindings.method_set_recovery_as_collision_enabled,
       this._owner,
       _enabled
     );

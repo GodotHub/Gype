@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { Node2D } from '@js_godot/classes/node2d'
 import {
   call_utility_ret,
@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_bone_count;
@@ -19,10 +20,10 @@ class _MethodBindings {
   method_set_bone_local_pose_override;
   method_get_bone_local_pose_override;
 }
+@GodotClass
 export class Skeleton2D extends Node2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -32,10 +33,10 @@ export class Skeleton2D extends Node2D{
     }
   }
   static init_method_get_bone_count() {
-    if (!this.#_bindings.method_get_bone_count) {
+    if (!this._bindings.method_get_bone_count) {
       let classname = new StringName("Skeleton2D");
       let methodname = new StringName("get_bone_count");
-      this.#_bindings.method_get_bone_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_bone_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -43,10 +44,10 @@ export class Skeleton2D extends Node2D{
     }
   }
   static init_method_get_bone() {
-    if (!this.#_bindings.method_get_bone) {
+    if (!this._bindings.method_get_bone) {
       let classname = new StringName("Skeleton2D");
       let methodname = new StringName("get_bone");
-      this.#_bindings.method_get_bone = internal.classdb_get_method_bind(
+      this._bindings.method_get_bone = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2556267111
@@ -54,10 +55,10 @@ export class Skeleton2D extends Node2D{
     }
   }
   static init_method_get_skeleton() {
-    if (!this.#_bindings.method_get_skeleton) {
+    if (!this._bindings.method_get_skeleton) {
       let classname = new StringName("Skeleton2D");
       let methodname = new StringName("get_skeleton");
-      this.#_bindings.method_get_skeleton = internal.classdb_get_method_bind(
+      this._bindings.method_get_skeleton = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2944877500
@@ -65,10 +66,10 @@ export class Skeleton2D extends Node2D{
     }
   }
   static init_method_set_modification_stack() {
-    if (!this.#_bindings.method_set_modification_stack) {
+    if (!this._bindings.method_set_modification_stack) {
       let classname = new StringName("Skeleton2D");
       let methodname = new StringName("set_modification_stack");
-      this.#_bindings.method_set_modification_stack = internal.classdb_get_method_bind(
+      this._bindings.method_set_modification_stack = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3907307132
@@ -76,10 +77,10 @@ export class Skeleton2D extends Node2D{
     }
   }
   static init_method_get_modification_stack() {
-    if (!this.#_bindings.method_get_modification_stack) {
+    if (!this._bindings.method_get_modification_stack) {
       let classname = new StringName("Skeleton2D");
       let methodname = new StringName("get_modification_stack");
-      this.#_bindings.method_get_modification_stack = internal.classdb_get_method_bind(
+      this._bindings.method_get_modification_stack = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2107508396
@@ -87,10 +88,10 @@ export class Skeleton2D extends Node2D{
     }
   }
   static init_method_execute_modifications() {
-    if (!this.#_bindings.method_execute_modifications) {
+    if (!this._bindings.method_execute_modifications) {
       let classname = new StringName("Skeleton2D");
       let methodname = new StringName("execute_modifications");
-      this.#_bindings.method_execute_modifications = internal.classdb_get_method_bind(
+      this._bindings.method_execute_modifications = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1005356550
@@ -98,10 +99,10 @@ export class Skeleton2D extends Node2D{
     }
   }
   static init_method_set_bone_local_pose_override() {
-    if (!this.#_bindings.method_set_bone_local_pose_override) {
+    if (!this._bindings.method_set_bone_local_pose_override) {
       let classname = new StringName("Skeleton2D");
       let methodname = new StringName("set_bone_local_pose_override");
-      this.#_bindings.method_set_bone_local_pose_override = internal.classdb_get_method_bind(
+      this._bindings.method_set_bone_local_pose_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         555457532
@@ -109,10 +110,10 @@ export class Skeleton2D extends Node2D{
     }
   }
   static init_method_get_bone_local_pose_override() {
-    if (!this.#_bindings.method_get_bone_local_pose_override) {
+    if (!this._bindings.method_get_bone_local_pose_override) {
       let classname = new StringName("Skeleton2D");
       let methodname = new StringName("get_bone_local_pose_override");
-      this.#_bindings.method_get_bone_local_pose_override = internal.classdb_get_method_bind(
+      this._bindings.method_get_bone_local_pose_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2995540667
@@ -125,7 +126,7 @@ export class Skeleton2D extends Node2D{
   get_bone_count() {
     Skeleton2D.init_method_get_bone_count();
     return _call_native_mb_ret(
-      Skeleton2D.#_bindings.method_get_bone_count,
+      Skeleton2D._bindings.method_get_bone_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -136,7 +137,7 @@ export class Skeleton2D extends Node2D{
   get_bone(_idx) {
     Skeleton2D.init_method_get_bone();
     return _call_native_mb_ret(
-      Skeleton2D.#_bindings.method_get_bone,
+      Skeleton2D._bindings.method_get_bone,
       this._owner,
 			Variant.Type.OBJECT,
       _idx
@@ -146,7 +147,7 @@ export class Skeleton2D extends Node2D{
   get_skeleton() {
     Skeleton2D.init_method_get_skeleton();
     return _call_native_mb_ret(
-      Skeleton2D.#_bindings.method_get_skeleton,
+      Skeleton2D._bindings.method_get_skeleton,
       this._owner,
 			Variant.Type.RID,
     
@@ -157,7 +158,7 @@ export class Skeleton2D extends Node2D{
   set_modification_stack(_modification_stack) {
     Skeleton2D.init_method_set_modification_stack();
     return _call_native_mb_no_ret(
-      Skeleton2D.#_bindings.method_set_modification_stack,
+      Skeleton2D._bindings.method_set_modification_stack,
       this._owner,
       _modification_stack
     );
@@ -166,7 +167,7 @@ export class Skeleton2D extends Node2D{
   get_modification_stack() {
     Skeleton2D.init_method_get_modification_stack();
     return _call_native_mb_ret(
-      Skeleton2D.#_bindings.method_get_modification_stack,
+      Skeleton2D._bindings.method_get_modification_stack,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -176,7 +177,7 @@ export class Skeleton2D extends Node2D{
   execute_modifications(_delta, _execution_mode) {
     Skeleton2D.init_method_execute_modifications();
     return _call_native_mb_no_ret(
-      Skeleton2D.#_bindings.method_execute_modifications,
+      Skeleton2D._bindings.method_execute_modifications,
       this._owner,
       _delta, _execution_mode
     );
@@ -185,7 +186,7 @@ export class Skeleton2D extends Node2D{
   set_bone_local_pose_override(_bone_idx, _override_pose, _strength, _persistent) {
     Skeleton2D.init_method_set_bone_local_pose_override();
     return _call_native_mb_no_ret(
-      Skeleton2D.#_bindings.method_set_bone_local_pose_override,
+      Skeleton2D._bindings.method_set_bone_local_pose_override,
       this._owner,
       _bone_idx, _override_pose, _strength, _persistent
     );
@@ -194,7 +195,7 @@ export class Skeleton2D extends Node2D{
   get_bone_local_pose_override(_bone_idx) {
     Skeleton2D.init_method_get_bone_local_pose_override();
     return _call_native_mb_ret(
-      Skeleton2D.#_bindings.method_get_bone_local_pose_override,
+      Skeleton2D._bindings.method_get_bone_local_pose_override,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     

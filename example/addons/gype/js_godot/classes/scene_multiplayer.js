@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { MultiplayerAPI } from '@js_godot/classes/multiplayer_api'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_root_path;
@@ -33,10 +34,10 @@ class _MethodBindings {
   method_get_max_delta_packet_size;
   method_set_max_delta_packet_size;
 }
+@GodotClass
 export class SceneMultiplayer extends MultiplayerAPI{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -46,10 +47,10 @@ export class SceneMultiplayer extends MultiplayerAPI{
     }
   }
   static init_method_set_root_path() {
-    if (!this.#_bindings.method_set_root_path) {
+    if (!this._bindings.method_set_root_path) {
       let classname = new StringName("SceneMultiplayer");
       let methodname = new StringName("set_root_path");
-      this.#_bindings.method_set_root_path = internal.classdb_get_method_bind(
+      this._bindings.method_set_root_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1348162250
@@ -57,10 +58,10 @@ export class SceneMultiplayer extends MultiplayerAPI{
     }
   }
   static init_method_get_root_path() {
-    if (!this.#_bindings.method_get_root_path) {
+    if (!this._bindings.method_get_root_path) {
       let classname = new StringName("SceneMultiplayer");
       let methodname = new StringName("get_root_path");
-      this.#_bindings.method_get_root_path = internal.classdb_get_method_bind(
+      this._bindings.method_get_root_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4075236667
@@ -68,10 +69,10 @@ export class SceneMultiplayer extends MultiplayerAPI{
     }
   }
   static init_method_clear() {
-    if (!this.#_bindings.method_clear) {
+    if (!this._bindings.method_clear) {
       let classname = new StringName("SceneMultiplayer");
       let methodname = new StringName("clear");
-      this.#_bindings.method_clear = internal.classdb_get_method_bind(
+      this._bindings.method_clear = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -79,10 +80,10 @@ export class SceneMultiplayer extends MultiplayerAPI{
     }
   }
   static init_method_disconnect_peer() {
-    if (!this.#_bindings.method_disconnect_peer) {
+    if (!this._bindings.method_disconnect_peer) {
       let classname = new StringName("SceneMultiplayer");
       let methodname = new StringName("disconnect_peer");
-      this.#_bindings.method_disconnect_peer = internal.classdb_get_method_bind(
+      this._bindings.method_disconnect_peer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -90,10 +91,10 @@ export class SceneMultiplayer extends MultiplayerAPI{
     }
   }
   static init_method_get_authenticating_peers() {
-    if (!this.#_bindings.method_get_authenticating_peers) {
+    if (!this._bindings.method_get_authenticating_peers) {
       let classname = new StringName("SceneMultiplayer");
       let methodname = new StringName("get_authenticating_peers");
-      this.#_bindings.method_get_authenticating_peers = internal.classdb_get_method_bind(
+      this._bindings.method_get_authenticating_peers = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         969006518
@@ -101,10 +102,10 @@ export class SceneMultiplayer extends MultiplayerAPI{
     }
   }
   static init_method_send_auth() {
-    if (!this.#_bindings.method_send_auth) {
+    if (!this._bindings.method_send_auth) {
       let classname = new StringName("SceneMultiplayer");
       let methodname = new StringName("send_auth");
-      this.#_bindings.method_send_auth = internal.classdb_get_method_bind(
+      this._bindings.method_send_auth = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         506032537
@@ -112,10 +113,10 @@ export class SceneMultiplayer extends MultiplayerAPI{
     }
   }
   static init_method_complete_auth() {
-    if (!this.#_bindings.method_complete_auth) {
+    if (!this._bindings.method_complete_auth) {
       let classname = new StringName("SceneMultiplayer");
       let methodname = new StringName("complete_auth");
-      this.#_bindings.method_complete_auth = internal.classdb_get_method_bind(
+      this._bindings.method_complete_auth = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         844576869
@@ -123,10 +124,10 @@ export class SceneMultiplayer extends MultiplayerAPI{
     }
   }
   static init_method_set_auth_callback() {
-    if (!this.#_bindings.method_set_auth_callback) {
+    if (!this._bindings.method_set_auth_callback) {
       let classname = new StringName("SceneMultiplayer");
       let methodname = new StringName("set_auth_callback");
-      this.#_bindings.method_set_auth_callback = internal.classdb_get_method_bind(
+      this._bindings.method_set_auth_callback = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1611583062
@@ -134,10 +135,10 @@ export class SceneMultiplayer extends MultiplayerAPI{
     }
   }
   static init_method_get_auth_callback() {
-    if (!this.#_bindings.method_get_auth_callback) {
+    if (!this._bindings.method_get_auth_callback) {
       let classname = new StringName("SceneMultiplayer");
       let methodname = new StringName("get_auth_callback");
-      this.#_bindings.method_get_auth_callback = internal.classdb_get_method_bind(
+      this._bindings.method_get_auth_callback = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1307783378
@@ -145,10 +146,10 @@ export class SceneMultiplayer extends MultiplayerAPI{
     }
   }
   static init_method_set_auth_timeout() {
-    if (!this.#_bindings.method_set_auth_timeout) {
+    if (!this._bindings.method_set_auth_timeout) {
       let classname = new StringName("SceneMultiplayer");
       let methodname = new StringName("set_auth_timeout");
-      this.#_bindings.method_set_auth_timeout = internal.classdb_get_method_bind(
+      this._bindings.method_set_auth_timeout = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -156,10 +157,10 @@ export class SceneMultiplayer extends MultiplayerAPI{
     }
   }
   static init_method_get_auth_timeout() {
-    if (!this.#_bindings.method_get_auth_timeout) {
+    if (!this._bindings.method_get_auth_timeout) {
       let classname = new StringName("SceneMultiplayer");
       let methodname = new StringName("get_auth_timeout");
-      this.#_bindings.method_get_auth_timeout = internal.classdb_get_method_bind(
+      this._bindings.method_get_auth_timeout = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -167,10 +168,10 @@ export class SceneMultiplayer extends MultiplayerAPI{
     }
   }
   static init_method_set_refuse_new_connections() {
-    if (!this.#_bindings.method_set_refuse_new_connections) {
+    if (!this._bindings.method_set_refuse_new_connections) {
       let classname = new StringName("SceneMultiplayer");
       let methodname = new StringName("set_refuse_new_connections");
-      this.#_bindings.method_set_refuse_new_connections = internal.classdb_get_method_bind(
+      this._bindings.method_set_refuse_new_connections = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -178,10 +179,10 @@ export class SceneMultiplayer extends MultiplayerAPI{
     }
   }
   static init_method_is_refusing_new_connections() {
-    if (!this.#_bindings.method_is_refusing_new_connections) {
+    if (!this._bindings.method_is_refusing_new_connections) {
       let classname = new StringName("SceneMultiplayer");
       let methodname = new StringName("is_refusing_new_connections");
-      this.#_bindings.method_is_refusing_new_connections = internal.classdb_get_method_bind(
+      this._bindings.method_is_refusing_new_connections = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -189,10 +190,10 @@ export class SceneMultiplayer extends MultiplayerAPI{
     }
   }
   static init_method_set_allow_object_decoding() {
-    if (!this.#_bindings.method_set_allow_object_decoding) {
+    if (!this._bindings.method_set_allow_object_decoding) {
       let classname = new StringName("SceneMultiplayer");
       let methodname = new StringName("set_allow_object_decoding");
-      this.#_bindings.method_set_allow_object_decoding = internal.classdb_get_method_bind(
+      this._bindings.method_set_allow_object_decoding = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -200,10 +201,10 @@ export class SceneMultiplayer extends MultiplayerAPI{
     }
   }
   static init_method_is_object_decoding_allowed() {
-    if (!this.#_bindings.method_is_object_decoding_allowed) {
+    if (!this._bindings.method_is_object_decoding_allowed) {
       let classname = new StringName("SceneMultiplayer");
       let methodname = new StringName("is_object_decoding_allowed");
-      this.#_bindings.method_is_object_decoding_allowed = internal.classdb_get_method_bind(
+      this._bindings.method_is_object_decoding_allowed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -211,10 +212,10 @@ export class SceneMultiplayer extends MultiplayerAPI{
     }
   }
   static init_method_set_server_relay_enabled() {
-    if (!this.#_bindings.method_set_server_relay_enabled) {
+    if (!this._bindings.method_set_server_relay_enabled) {
       let classname = new StringName("SceneMultiplayer");
       let methodname = new StringName("set_server_relay_enabled");
-      this.#_bindings.method_set_server_relay_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_server_relay_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -222,10 +223,10 @@ export class SceneMultiplayer extends MultiplayerAPI{
     }
   }
   static init_method_is_server_relay_enabled() {
-    if (!this.#_bindings.method_is_server_relay_enabled) {
+    if (!this._bindings.method_is_server_relay_enabled) {
       let classname = new StringName("SceneMultiplayer");
       let methodname = new StringName("is_server_relay_enabled");
-      this.#_bindings.method_is_server_relay_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_server_relay_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -233,10 +234,10 @@ export class SceneMultiplayer extends MultiplayerAPI{
     }
   }
   static init_method_send_bytes() {
-    if (!this.#_bindings.method_send_bytes) {
+    if (!this._bindings.method_send_bytes) {
       let classname = new StringName("SceneMultiplayer");
       let methodname = new StringName("send_bytes");
-      this.#_bindings.method_send_bytes = internal.classdb_get_method_bind(
+      this._bindings.method_send_bytes = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1307428718
@@ -244,10 +245,10 @@ export class SceneMultiplayer extends MultiplayerAPI{
     }
   }
   static init_method_get_max_sync_packet_size() {
-    if (!this.#_bindings.method_get_max_sync_packet_size) {
+    if (!this._bindings.method_get_max_sync_packet_size) {
       let classname = new StringName("SceneMultiplayer");
       let methodname = new StringName("get_max_sync_packet_size");
-      this.#_bindings.method_get_max_sync_packet_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_max_sync_packet_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -255,10 +256,10 @@ export class SceneMultiplayer extends MultiplayerAPI{
     }
   }
   static init_method_set_max_sync_packet_size() {
-    if (!this.#_bindings.method_set_max_sync_packet_size) {
+    if (!this._bindings.method_set_max_sync_packet_size) {
       let classname = new StringName("SceneMultiplayer");
       let methodname = new StringName("set_max_sync_packet_size");
-      this.#_bindings.method_set_max_sync_packet_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_max_sync_packet_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -266,10 +267,10 @@ export class SceneMultiplayer extends MultiplayerAPI{
     }
   }
   static init_method_get_max_delta_packet_size() {
-    if (!this.#_bindings.method_get_max_delta_packet_size) {
+    if (!this._bindings.method_get_max_delta_packet_size) {
       let classname = new StringName("SceneMultiplayer");
       let methodname = new StringName("get_max_delta_packet_size");
-      this.#_bindings.method_get_max_delta_packet_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_max_delta_packet_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -277,10 +278,10 @@ export class SceneMultiplayer extends MultiplayerAPI{
     }
   }
   static init_method_set_max_delta_packet_size() {
-    if (!this.#_bindings.method_set_max_delta_packet_size) {
+    if (!this._bindings.method_set_max_delta_packet_size) {
       let classname = new StringName("SceneMultiplayer");
       let methodname = new StringName("set_max_delta_packet_size");
-      this.#_bindings.method_set_max_delta_packet_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_max_delta_packet_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -293,7 +294,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   set_root_path(_path) {
     SceneMultiplayer.init_method_set_root_path();
     return _call_native_mb_no_ret(
-      SceneMultiplayer.#_bindings.method_set_root_path,
+      SceneMultiplayer._bindings.method_set_root_path,
       this._owner,
       _path
     );
@@ -302,7 +303,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   get_root_path() {
     SceneMultiplayer.init_method_get_root_path();
     return _call_native_mb_ret(
-      SceneMultiplayer.#_bindings.method_get_root_path,
+      SceneMultiplayer._bindings.method_get_root_path,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -313,7 +314,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   clear() {
     SceneMultiplayer.init_method_clear();
     return _call_native_mb_no_ret(
-      SceneMultiplayer.#_bindings.method_clear,
+      SceneMultiplayer._bindings.method_clear,
       this._owner,
       
     );
@@ -322,7 +323,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   disconnect_peer(_id) {
     SceneMultiplayer.init_method_disconnect_peer();
     return _call_native_mb_no_ret(
-      SceneMultiplayer.#_bindings.method_disconnect_peer,
+      SceneMultiplayer._bindings.method_disconnect_peer,
       this._owner,
       _id
     );
@@ -331,7 +332,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   get_authenticating_peers() {
     SceneMultiplayer.init_method_get_authenticating_peers();
     return _call_native_mb_ret(
-      SceneMultiplayer.#_bindings.method_get_authenticating_peers,
+      SceneMultiplayer._bindings.method_get_authenticating_peers,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -342,7 +343,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   send_auth(_id, _data) {
     SceneMultiplayer.init_method_send_auth();
     return _call_native_mb_ret(
-      SceneMultiplayer.#_bindings.method_send_auth,
+      SceneMultiplayer._bindings.method_send_auth,
       this._owner,
 			Variant.Type.INT,
     
@@ -353,7 +354,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   complete_auth(_id) {
     SceneMultiplayer.init_method_complete_auth();
     return _call_native_mb_ret(
-      SceneMultiplayer.#_bindings.method_complete_auth,
+      SceneMultiplayer._bindings.method_complete_auth,
       this._owner,
 			Variant.Type.INT,
     
@@ -364,7 +365,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   set_auth_callback(_callback) {
     SceneMultiplayer.init_method_set_auth_callback();
     return _call_native_mb_no_ret(
-      SceneMultiplayer.#_bindings.method_set_auth_callback,
+      SceneMultiplayer._bindings.method_set_auth_callback,
       this._owner,
       _callback
     );
@@ -373,7 +374,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   get_auth_callback() {
     SceneMultiplayer.init_method_get_auth_callback();
     return _call_native_mb_ret(
-      SceneMultiplayer.#_bindings.method_get_auth_callback,
+      SceneMultiplayer._bindings.method_get_auth_callback,
       this._owner,
 			Variant.Type.CALLABLE,
     
@@ -384,7 +385,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   set_auth_timeout(_timeout) {
     SceneMultiplayer.init_method_set_auth_timeout();
     return _call_native_mb_no_ret(
-      SceneMultiplayer.#_bindings.method_set_auth_timeout,
+      SceneMultiplayer._bindings.method_set_auth_timeout,
       this._owner,
       _timeout
     );
@@ -393,7 +394,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   get_auth_timeout() {
     SceneMultiplayer.init_method_get_auth_timeout();
     return _call_native_mb_ret(
-      SceneMultiplayer.#_bindings.method_get_auth_timeout,
+      SceneMultiplayer._bindings.method_get_auth_timeout,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -404,7 +405,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   set_refuse_new_connections(_refuse) {
     SceneMultiplayer.init_method_set_refuse_new_connections();
     return _call_native_mb_no_ret(
-      SceneMultiplayer.#_bindings.method_set_refuse_new_connections,
+      SceneMultiplayer._bindings.method_set_refuse_new_connections,
       this._owner,
       _refuse
     );
@@ -413,7 +414,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   is_refusing_new_connections() {
     SceneMultiplayer.init_method_is_refusing_new_connections();
     return _call_native_mb_ret(
-      SceneMultiplayer.#_bindings.method_is_refusing_new_connections,
+      SceneMultiplayer._bindings.method_is_refusing_new_connections,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -424,7 +425,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   set_allow_object_decoding(_enable) {
     SceneMultiplayer.init_method_set_allow_object_decoding();
     return _call_native_mb_no_ret(
-      SceneMultiplayer.#_bindings.method_set_allow_object_decoding,
+      SceneMultiplayer._bindings.method_set_allow_object_decoding,
       this._owner,
       _enable
     );
@@ -433,7 +434,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   is_object_decoding_allowed() {
     SceneMultiplayer.init_method_is_object_decoding_allowed();
     return _call_native_mb_ret(
-      SceneMultiplayer.#_bindings.method_is_object_decoding_allowed,
+      SceneMultiplayer._bindings.method_is_object_decoding_allowed,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -444,7 +445,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   set_server_relay_enabled(_enabled) {
     SceneMultiplayer.init_method_set_server_relay_enabled();
     return _call_native_mb_no_ret(
-      SceneMultiplayer.#_bindings.method_set_server_relay_enabled,
+      SceneMultiplayer._bindings.method_set_server_relay_enabled,
       this._owner,
       _enabled
     );
@@ -453,7 +454,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   is_server_relay_enabled() {
     SceneMultiplayer.init_method_is_server_relay_enabled();
     return _call_native_mb_ret(
-      SceneMultiplayer.#_bindings.method_is_server_relay_enabled,
+      SceneMultiplayer._bindings.method_is_server_relay_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -464,7 +465,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   send_bytes(_bytes, _id, _mode, _channel) {
     SceneMultiplayer.init_method_send_bytes();
     return _call_native_mb_ret(
-      SceneMultiplayer.#_bindings.method_send_bytes,
+      SceneMultiplayer._bindings.method_send_bytes,
       this._owner,
 			Variant.Type.INT,
     
@@ -475,7 +476,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   get_max_sync_packet_size() {
     SceneMultiplayer.init_method_get_max_sync_packet_size();
     return _call_native_mb_ret(
-      SceneMultiplayer.#_bindings.method_get_max_sync_packet_size,
+      SceneMultiplayer._bindings.method_get_max_sync_packet_size,
       this._owner,
 			Variant.Type.INT,
     
@@ -486,7 +487,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   set_max_sync_packet_size(_size) {
     SceneMultiplayer.init_method_set_max_sync_packet_size();
     return _call_native_mb_no_ret(
-      SceneMultiplayer.#_bindings.method_set_max_sync_packet_size,
+      SceneMultiplayer._bindings.method_set_max_sync_packet_size,
       this._owner,
       _size
     );
@@ -495,7 +496,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   get_max_delta_packet_size() {
     SceneMultiplayer.init_method_get_max_delta_packet_size();
     return _call_native_mb_ret(
-      SceneMultiplayer.#_bindings.method_get_max_delta_packet_size,
+      SceneMultiplayer._bindings.method_get_max_delta_packet_size,
       this._owner,
 			Variant.Type.INT,
     
@@ -506,7 +507,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   set_max_delta_packet_size(_size) {
     SceneMultiplayer.init_method_set_max_delta_packet_size();
     return _call_native_mb_no_ret(
-      SceneMultiplayer.#_bindings.method_set_max_delta_packet_size,
+      SceneMultiplayer._bindings.method_set_max_delta_packet_size,
       this._owner,
       _size
     );

@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_light_data;
@@ -49,10 +50,10 @@ class _MethodBindings {
   method_set_camera_attributes;
   method_get_camera_attributes;
 }
+@GodotClass
 export class LightmapGI extends VisualInstance3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -62,10 +63,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_set_light_data() {
-    if (!this.#_bindings.method_set_light_data) {
+    if (!this._bindings.method_set_light_data) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("set_light_data");
-      this.#_bindings.method_set_light_data = internal.classdb_get_method_bind(
+      this._bindings.method_set_light_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1790597277
@@ -73,10 +74,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_get_light_data() {
-    if (!this.#_bindings.method_get_light_data) {
+    if (!this._bindings.method_get_light_data) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("get_light_data");
-      this.#_bindings.method_get_light_data = internal.classdb_get_method_bind(
+      this._bindings.method_get_light_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         290354153
@@ -84,10 +85,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_set_bake_quality() {
-    if (!this.#_bindings.method_set_bake_quality) {
+    if (!this._bindings.method_set_bake_quality) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("set_bake_quality");
-      this.#_bindings.method_set_bake_quality = internal.classdb_get_method_bind(
+      this._bindings.method_set_bake_quality = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1192215803
@@ -95,10 +96,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_get_bake_quality() {
-    if (!this.#_bindings.method_get_bake_quality) {
+    if (!this._bindings.method_get_bake_quality) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("get_bake_quality");
-      this.#_bindings.method_get_bake_quality = internal.classdb_get_method_bind(
+      this._bindings.method_get_bake_quality = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         688832735
@@ -106,10 +107,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_set_bounces() {
-    if (!this.#_bindings.method_set_bounces) {
+    if (!this._bindings.method_set_bounces) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("set_bounces");
-      this.#_bindings.method_set_bounces = internal.classdb_get_method_bind(
+      this._bindings.method_set_bounces = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -117,10 +118,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_get_bounces() {
-    if (!this.#_bindings.method_get_bounces) {
+    if (!this._bindings.method_get_bounces) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("get_bounces");
-      this.#_bindings.method_get_bounces = internal.classdb_get_method_bind(
+      this._bindings.method_get_bounces = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -128,10 +129,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_set_bounce_indirect_energy() {
-    if (!this.#_bindings.method_set_bounce_indirect_energy) {
+    if (!this._bindings.method_set_bounce_indirect_energy) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("set_bounce_indirect_energy");
-      this.#_bindings.method_set_bounce_indirect_energy = internal.classdb_get_method_bind(
+      this._bindings.method_set_bounce_indirect_energy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -139,10 +140,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_get_bounce_indirect_energy() {
-    if (!this.#_bindings.method_get_bounce_indirect_energy) {
+    if (!this._bindings.method_get_bounce_indirect_energy) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("get_bounce_indirect_energy");
-      this.#_bindings.method_get_bounce_indirect_energy = internal.classdb_get_method_bind(
+      this._bindings.method_get_bounce_indirect_energy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -150,10 +151,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_set_generate_probes() {
-    if (!this.#_bindings.method_set_generate_probes) {
+    if (!this._bindings.method_set_generate_probes) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("set_generate_probes");
-      this.#_bindings.method_set_generate_probes = internal.classdb_get_method_bind(
+      this._bindings.method_set_generate_probes = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         549981046
@@ -161,10 +162,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_get_generate_probes() {
-    if (!this.#_bindings.method_get_generate_probes) {
+    if (!this._bindings.method_get_generate_probes) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("get_generate_probes");
-      this.#_bindings.method_get_generate_probes = internal.classdb_get_method_bind(
+      this._bindings.method_get_generate_probes = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3930596226
@@ -172,10 +173,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_set_bias() {
-    if (!this.#_bindings.method_set_bias) {
+    if (!this._bindings.method_set_bias) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("set_bias");
-      this.#_bindings.method_set_bias = internal.classdb_get_method_bind(
+      this._bindings.method_set_bias = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -183,10 +184,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_get_bias() {
-    if (!this.#_bindings.method_get_bias) {
+    if (!this._bindings.method_get_bias) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("get_bias");
-      this.#_bindings.method_get_bias = internal.classdb_get_method_bind(
+      this._bindings.method_get_bias = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -194,10 +195,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_set_environment_mode() {
-    if (!this.#_bindings.method_set_environment_mode) {
+    if (!this._bindings.method_set_environment_mode) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("set_environment_mode");
-      this.#_bindings.method_set_environment_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_environment_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2282650285
@@ -205,10 +206,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_get_environment_mode() {
-    if (!this.#_bindings.method_get_environment_mode) {
+    if (!this._bindings.method_get_environment_mode) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("get_environment_mode");
-      this.#_bindings.method_get_environment_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_environment_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4128646479
@@ -216,10 +217,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_set_environment_custom_sky() {
-    if (!this.#_bindings.method_set_environment_custom_sky) {
+    if (!this._bindings.method_set_environment_custom_sky) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("set_environment_custom_sky");
-      this.#_bindings.method_set_environment_custom_sky = internal.classdb_get_method_bind(
+      this._bindings.method_set_environment_custom_sky = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3336722921
@@ -227,10 +228,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_get_environment_custom_sky() {
-    if (!this.#_bindings.method_get_environment_custom_sky) {
+    if (!this._bindings.method_get_environment_custom_sky) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("get_environment_custom_sky");
-      this.#_bindings.method_get_environment_custom_sky = internal.classdb_get_method_bind(
+      this._bindings.method_get_environment_custom_sky = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1177136966
@@ -238,10 +239,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_set_environment_custom_color() {
-    if (!this.#_bindings.method_set_environment_custom_color) {
+    if (!this._bindings.method_set_environment_custom_color) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("set_environment_custom_color");
-      this.#_bindings.method_set_environment_custom_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_environment_custom_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -249,10 +250,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_get_environment_custom_color() {
-    if (!this.#_bindings.method_get_environment_custom_color) {
+    if (!this._bindings.method_get_environment_custom_color) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("get_environment_custom_color");
-      this.#_bindings.method_get_environment_custom_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_environment_custom_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -260,10 +261,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_set_environment_custom_energy() {
-    if (!this.#_bindings.method_set_environment_custom_energy) {
+    if (!this._bindings.method_set_environment_custom_energy) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("set_environment_custom_energy");
-      this.#_bindings.method_set_environment_custom_energy = internal.classdb_get_method_bind(
+      this._bindings.method_set_environment_custom_energy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -271,10 +272,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_get_environment_custom_energy() {
-    if (!this.#_bindings.method_get_environment_custom_energy) {
+    if (!this._bindings.method_get_environment_custom_energy) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("get_environment_custom_energy");
-      this.#_bindings.method_get_environment_custom_energy = internal.classdb_get_method_bind(
+      this._bindings.method_get_environment_custom_energy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -282,10 +283,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_set_texel_scale() {
-    if (!this.#_bindings.method_set_texel_scale) {
+    if (!this._bindings.method_set_texel_scale) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("set_texel_scale");
-      this.#_bindings.method_set_texel_scale = internal.classdb_get_method_bind(
+      this._bindings.method_set_texel_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -293,10 +294,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_get_texel_scale() {
-    if (!this.#_bindings.method_get_texel_scale) {
+    if (!this._bindings.method_get_texel_scale) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("get_texel_scale");
-      this.#_bindings.method_get_texel_scale = internal.classdb_get_method_bind(
+      this._bindings.method_get_texel_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -304,10 +305,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_set_max_texture_size() {
-    if (!this.#_bindings.method_set_max_texture_size) {
+    if (!this._bindings.method_set_max_texture_size) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("set_max_texture_size");
-      this.#_bindings.method_set_max_texture_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_max_texture_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -315,10 +316,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_get_max_texture_size() {
-    if (!this.#_bindings.method_get_max_texture_size) {
+    if (!this._bindings.method_get_max_texture_size) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("get_max_texture_size");
-      this.#_bindings.method_get_max_texture_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_max_texture_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -326,10 +327,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_set_use_denoiser() {
-    if (!this.#_bindings.method_set_use_denoiser) {
+    if (!this._bindings.method_set_use_denoiser) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("set_use_denoiser");
-      this.#_bindings.method_set_use_denoiser = internal.classdb_get_method_bind(
+      this._bindings.method_set_use_denoiser = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -337,10 +338,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_is_using_denoiser() {
-    if (!this.#_bindings.method_is_using_denoiser) {
+    if (!this._bindings.method_is_using_denoiser) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("is_using_denoiser");
-      this.#_bindings.method_is_using_denoiser = internal.classdb_get_method_bind(
+      this._bindings.method_is_using_denoiser = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -348,10 +349,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_set_denoiser_strength() {
-    if (!this.#_bindings.method_set_denoiser_strength) {
+    if (!this._bindings.method_set_denoiser_strength) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("set_denoiser_strength");
-      this.#_bindings.method_set_denoiser_strength = internal.classdb_get_method_bind(
+      this._bindings.method_set_denoiser_strength = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -359,10 +360,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_get_denoiser_strength() {
-    if (!this.#_bindings.method_get_denoiser_strength) {
+    if (!this._bindings.method_get_denoiser_strength) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("get_denoiser_strength");
-      this.#_bindings.method_get_denoiser_strength = internal.classdb_get_method_bind(
+      this._bindings.method_get_denoiser_strength = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -370,10 +371,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_set_denoiser_range() {
-    if (!this.#_bindings.method_set_denoiser_range) {
+    if (!this._bindings.method_set_denoiser_range) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("set_denoiser_range");
-      this.#_bindings.method_set_denoiser_range = internal.classdb_get_method_bind(
+      this._bindings.method_set_denoiser_range = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -381,10 +382,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_get_denoiser_range() {
-    if (!this.#_bindings.method_get_denoiser_range) {
+    if (!this._bindings.method_get_denoiser_range) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("get_denoiser_range");
-      this.#_bindings.method_get_denoiser_range = internal.classdb_get_method_bind(
+      this._bindings.method_get_denoiser_range = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -392,10 +393,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_set_interior() {
-    if (!this.#_bindings.method_set_interior) {
+    if (!this._bindings.method_set_interior) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("set_interior");
-      this.#_bindings.method_set_interior = internal.classdb_get_method_bind(
+      this._bindings.method_set_interior = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -403,10 +404,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_is_interior() {
-    if (!this.#_bindings.method_is_interior) {
+    if (!this._bindings.method_is_interior) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("is_interior");
-      this.#_bindings.method_is_interior = internal.classdb_get_method_bind(
+      this._bindings.method_is_interior = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -414,10 +415,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_set_directional() {
-    if (!this.#_bindings.method_set_directional) {
+    if (!this._bindings.method_set_directional) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("set_directional");
-      this.#_bindings.method_set_directional = internal.classdb_get_method_bind(
+      this._bindings.method_set_directional = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -425,10 +426,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_is_directional() {
-    if (!this.#_bindings.method_is_directional) {
+    if (!this._bindings.method_is_directional) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("is_directional");
-      this.#_bindings.method_is_directional = internal.classdb_get_method_bind(
+      this._bindings.method_is_directional = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -436,10 +437,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_set_use_texture_for_bounces() {
-    if (!this.#_bindings.method_set_use_texture_for_bounces) {
+    if (!this._bindings.method_set_use_texture_for_bounces) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("set_use_texture_for_bounces");
-      this.#_bindings.method_set_use_texture_for_bounces = internal.classdb_get_method_bind(
+      this._bindings.method_set_use_texture_for_bounces = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -447,10 +448,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_is_using_texture_for_bounces() {
-    if (!this.#_bindings.method_is_using_texture_for_bounces) {
+    if (!this._bindings.method_is_using_texture_for_bounces) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("is_using_texture_for_bounces");
-      this.#_bindings.method_is_using_texture_for_bounces = internal.classdb_get_method_bind(
+      this._bindings.method_is_using_texture_for_bounces = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -458,10 +459,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_set_camera_attributes() {
-    if (!this.#_bindings.method_set_camera_attributes) {
+    if (!this._bindings.method_set_camera_attributes) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("set_camera_attributes");
-      this.#_bindings.method_set_camera_attributes = internal.classdb_get_method_bind(
+      this._bindings.method_set_camera_attributes = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2817810567
@@ -469,10 +470,10 @@ export class LightmapGI extends VisualInstance3D{
     }
   }
   static init_method_get_camera_attributes() {
-    if (!this.#_bindings.method_get_camera_attributes) {
+    if (!this._bindings.method_get_camera_attributes) {
       let classname = new StringName("LightmapGI");
       let methodname = new StringName("get_camera_attributes");
-      this.#_bindings.method_get_camera_attributes = internal.classdb_get_method_bind(
+      this._bindings.method_get_camera_attributes = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3921283215
@@ -485,7 +486,7 @@ export class LightmapGI extends VisualInstance3D{
   set_light_data(_data) {
     LightmapGI.init_method_set_light_data();
     return _call_native_mb_no_ret(
-      LightmapGI.#_bindings.method_set_light_data,
+      LightmapGI._bindings.method_set_light_data,
       this._owner,
       _data
     );
@@ -494,7 +495,7 @@ export class LightmapGI extends VisualInstance3D{
   get_light_data() {
     LightmapGI.init_method_get_light_data();
     return _call_native_mb_ret(
-      LightmapGI.#_bindings.method_get_light_data,
+      LightmapGI._bindings.method_get_light_data,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -504,7 +505,7 @@ export class LightmapGI extends VisualInstance3D{
   set_bake_quality(_bake_quality) {
     LightmapGI.init_method_set_bake_quality();
     return _call_native_mb_no_ret(
-      LightmapGI.#_bindings.method_set_bake_quality,
+      LightmapGI._bindings.method_set_bake_quality,
       this._owner,
       _bake_quality
     );
@@ -513,7 +514,7 @@ export class LightmapGI extends VisualInstance3D{
   get_bake_quality() {
     LightmapGI.init_method_get_bake_quality();
     return _call_native_mb_ret(
-      LightmapGI.#_bindings.method_get_bake_quality,
+      LightmapGI._bindings.method_get_bake_quality,
       this._owner,
 			Variant.Type.INT,
     
@@ -524,7 +525,7 @@ export class LightmapGI extends VisualInstance3D{
   set_bounces(_bounces) {
     LightmapGI.init_method_set_bounces();
     return _call_native_mb_no_ret(
-      LightmapGI.#_bindings.method_set_bounces,
+      LightmapGI._bindings.method_set_bounces,
       this._owner,
       _bounces
     );
@@ -533,7 +534,7 @@ export class LightmapGI extends VisualInstance3D{
   get_bounces() {
     LightmapGI.init_method_get_bounces();
     return _call_native_mb_ret(
-      LightmapGI.#_bindings.method_get_bounces,
+      LightmapGI._bindings.method_get_bounces,
       this._owner,
 			Variant.Type.INT,
     
@@ -544,7 +545,7 @@ export class LightmapGI extends VisualInstance3D{
   set_bounce_indirect_energy(_bounce_indirect_energy) {
     LightmapGI.init_method_set_bounce_indirect_energy();
     return _call_native_mb_no_ret(
-      LightmapGI.#_bindings.method_set_bounce_indirect_energy,
+      LightmapGI._bindings.method_set_bounce_indirect_energy,
       this._owner,
       _bounce_indirect_energy
     );
@@ -553,7 +554,7 @@ export class LightmapGI extends VisualInstance3D{
   get_bounce_indirect_energy() {
     LightmapGI.init_method_get_bounce_indirect_energy();
     return _call_native_mb_ret(
-      LightmapGI.#_bindings.method_get_bounce_indirect_energy,
+      LightmapGI._bindings.method_get_bounce_indirect_energy,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -564,7 +565,7 @@ export class LightmapGI extends VisualInstance3D{
   set_generate_probes(_subdivision) {
     LightmapGI.init_method_set_generate_probes();
     return _call_native_mb_no_ret(
-      LightmapGI.#_bindings.method_set_generate_probes,
+      LightmapGI._bindings.method_set_generate_probes,
       this._owner,
       _subdivision
     );
@@ -573,7 +574,7 @@ export class LightmapGI extends VisualInstance3D{
   get_generate_probes() {
     LightmapGI.init_method_get_generate_probes();
     return _call_native_mb_ret(
-      LightmapGI.#_bindings.method_get_generate_probes,
+      LightmapGI._bindings.method_get_generate_probes,
       this._owner,
 			Variant.Type.INT,
     
@@ -584,7 +585,7 @@ export class LightmapGI extends VisualInstance3D{
   set_bias(_bias) {
     LightmapGI.init_method_set_bias();
     return _call_native_mb_no_ret(
-      LightmapGI.#_bindings.method_set_bias,
+      LightmapGI._bindings.method_set_bias,
       this._owner,
       _bias
     );
@@ -593,7 +594,7 @@ export class LightmapGI extends VisualInstance3D{
   get_bias() {
     LightmapGI.init_method_get_bias();
     return _call_native_mb_ret(
-      LightmapGI.#_bindings.method_get_bias,
+      LightmapGI._bindings.method_get_bias,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -604,7 +605,7 @@ export class LightmapGI extends VisualInstance3D{
   set_environment_mode(_mode) {
     LightmapGI.init_method_set_environment_mode();
     return _call_native_mb_no_ret(
-      LightmapGI.#_bindings.method_set_environment_mode,
+      LightmapGI._bindings.method_set_environment_mode,
       this._owner,
       _mode
     );
@@ -613,7 +614,7 @@ export class LightmapGI extends VisualInstance3D{
   get_environment_mode() {
     LightmapGI.init_method_get_environment_mode();
     return _call_native_mb_ret(
-      LightmapGI.#_bindings.method_get_environment_mode,
+      LightmapGI._bindings.method_get_environment_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -624,7 +625,7 @@ export class LightmapGI extends VisualInstance3D{
   set_environment_custom_sky(_sky) {
     LightmapGI.init_method_set_environment_custom_sky();
     return _call_native_mb_no_ret(
-      LightmapGI.#_bindings.method_set_environment_custom_sky,
+      LightmapGI._bindings.method_set_environment_custom_sky,
       this._owner,
       _sky
     );
@@ -633,7 +634,7 @@ export class LightmapGI extends VisualInstance3D{
   get_environment_custom_sky() {
     LightmapGI.init_method_get_environment_custom_sky();
     return _call_native_mb_ret(
-      LightmapGI.#_bindings.method_get_environment_custom_sky,
+      LightmapGI._bindings.method_get_environment_custom_sky,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -643,7 +644,7 @@ export class LightmapGI extends VisualInstance3D{
   set_environment_custom_color(_color) {
     LightmapGI.init_method_set_environment_custom_color();
     return _call_native_mb_no_ret(
-      LightmapGI.#_bindings.method_set_environment_custom_color,
+      LightmapGI._bindings.method_set_environment_custom_color,
       this._owner,
       _color
     );
@@ -652,7 +653,7 @@ export class LightmapGI extends VisualInstance3D{
   get_environment_custom_color() {
     LightmapGI.init_method_get_environment_custom_color();
     return _call_native_mb_ret(
-      LightmapGI.#_bindings.method_get_environment_custom_color,
+      LightmapGI._bindings.method_get_environment_custom_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -663,7 +664,7 @@ export class LightmapGI extends VisualInstance3D{
   set_environment_custom_energy(_energy) {
     LightmapGI.init_method_set_environment_custom_energy();
     return _call_native_mb_no_ret(
-      LightmapGI.#_bindings.method_set_environment_custom_energy,
+      LightmapGI._bindings.method_set_environment_custom_energy,
       this._owner,
       _energy
     );
@@ -672,7 +673,7 @@ export class LightmapGI extends VisualInstance3D{
   get_environment_custom_energy() {
     LightmapGI.init_method_get_environment_custom_energy();
     return _call_native_mb_ret(
-      LightmapGI.#_bindings.method_get_environment_custom_energy,
+      LightmapGI._bindings.method_get_environment_custom_energy,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -683,7 +684,7 @@ export class LightmapGI extends VisualInstance3D{
   set_texel_scale(_texel_scale) {
     LightmapGI.init_method_set_texel_scale();
     return _call_native_mb_no_ret(
-      LightmapGI.#_bindings.method_set_texel_scale,
+      LightmapGI._bindings.method_set_texel_scale,
       this._owner,
       _texel_scale
     );
@@ -692,7 +693,7 @@ export class LightmapGI extends VisualInstance3D{
   get_texel_scale() {
     LightmapGI.init_method_get_texel_scale();
     return _call_native_mb_ret(
-      LightmapGI.#_bindings.method_get_texel_scale,
+      LightmapGI._bindings.method_get_texel_scale,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -703,7 +704,7 @@ export class LightmapGI extends VisualInstance3D{
   set_max_texture_size(_max_texture_size) {
     LightmapGI.init_method_set_max_texture_size();
     return _call_native_mb_no_ret(
-      LightmapGI.#_bindings.method_set_max_texture_size,
+      LightmapGI._bindings.method_set_max_texture_size,
       this._owner,
       _max_texture_size
     );
@@ -712,7 +713,7 @@ export class LightmapGI extends VisualInstance3D{
   get_max_texture_size() {
     LightmapGI.init_method_get_max_texture_size();
     return _call_native_mb_ret(
-      LightmapGI.#_bindings.method_get_max_texture_size,
+      LightmapGI._bindings.method_get_max_texture_size,
       this._owner,
 			Variant.Type.INT,
     
@@ -723,7 +724,7 @@ export class LightmapGI extends VisualInstance3D{
   set_use_denoiser(_use_denoiser) {
     LightmapGI.init_method_set_use_denoiser();
     return _call_native_mb_no_ret(
-      LightmapGI.#_bindings.method_set_use_denoiser,
+      LightmapGI._bindings.method_set_use_denoiser,
       this._owner,
       _use_denoiser
     );
@@ -732,7 +733,7 @@ export class LightmapGI extends VisualInstance3D{
   is_using_denoiser() {
     LightmapGI.init_method_is_using_denoiser();
     return _call_native_mb_ret(
-      LightmapGI.#_bindings.method_is_using_denoiser,
+      LightmapGI._bindings.method_is_using_denoiser,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -743,7 +744,7 @@ export class LightmapGI extends VisualInstance3D{
   set_denoiser_strength(_denoiser_strength) {
     LightmapGI.init_method_set_denoiser_strength();
     return _call_native_mb_no_ret(
-      LightmapGI.#_bindings.method_set_denoiser_strength,
+      LightmapGI._bindings.method_set_denoiser_strength,
       this._owner,
       _denoiser_strength
     );
@@ -752,7 +753,7 @@ export class LightmapGI extends VisualInstance3D{
   get_denoiser_strength() {
     LightmapGI.init_method_get_denoiser_strength();
     return _call_native_mb_ret(
-      LightmapGI.#_bindings.method_get_denoiser_strength,
+      LightmapGI._bindings.method_get_denoiser_strength,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -763,7 +764,7 @@ export class LightmapGI extends VisualInstance3D{
   set_denoiser_range(_denoiser_range) {
     LightmapGI.init_method_set_denoiser_range();
     return _call_native_mb_no_ret(
-      LightmapGI.#_bindings.method_set_denoiser_range,
+      LightmapGI._bindings.method_set_denoiser_range,
       this._owner,
       _denoiser_range
     );
@@ -772,7 +773,7 @@ export class LightmapGI extends VisualInstance3D{
   get_denoiser_range() {
     LightmapGI.init_method_get_denoiser_range();
     return _call_native_mb_ret(
-      LightmapGI.#_bindings.method_get_denoiser_range,
+      LightmapGI._bindings.method_get_denoiser_range,
       this._owner,
 			Variant.Type.INT,
     
@@ -783,7 +784,7 @@ export class LightmapGI extends VisualInstance3D{
   set_interior(_enable) {
     LightmapGI.init_method_set_interior();
     return _call_native_mb_no_ret(
-      LightmapGI.#_bindings.method_set_interior,
+      LightmapGI._bindings.method_set_interior,
       this._owner,
       _enable
     );
@@ -792,7 +793,7 @@ export class LightmapGI extends VisualInstance3D{
   is_interior() {
     LightmapGI.init_method_is_interior();
     return _call_native_mb_ret(
-      LightmapGI.#_bindings.method_is_interior,
+      LightmapGI._bindings.method_is_interior,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -803,7 +804,7 @@ export class LightmapGI extends VisualInstance3D{
   set_directional(_directional) {
     LightmapGI.init_method_set_directional();
     return _call_native_mb_no_ret(
-      LightmapGI.#_bindings.method_set_directional,
+      LightmapGI._bindings.method_set_directional,
       this._owner,
       _directional
     );
@@ -812,7 +813,7 @@ export class LightmapGI extends VisualInstance3D{
   is_directional() {
     LightmapGI.init_method_is_directional();
     return _call_native_mb_ret(
-      LightmapGI.#_bindings.method_is_directional,
+      LightmapGI._bindings.method_is_directional,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -823,7 +824,7 @@ export class LightmapGI extends VisualInstance3D{
   set_use_texture_for_bounces(_use_texture_for_bounces) {
     LightmapGI.init_method_set_use_texture_for_bounces();
     return _call_native_mb_no_ret(
-      LightmapGI.#_bindings.method_set_use_texture_for_bounces,
+      LightmapGI._bindings.method_set_use_texture_for_bounces,
       this._owner,
       _use_texture_for_bounces
     );
@@ -832,7 +833,7 @@ export class LightmapGI extends VisualInstance3D{
   is_using_texture_for_bounces() {
     LightmapGI.init_method_is_using_texture_for_bounces();
     return _call_native_mb_ret(
-      LightmapGI.#_bindings.method_is_using_texture_for_bounces,
+      LightmapGI._bindings.method_is_using_texture_for_bounces,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -843,7 +844,7 @@ export class LightmapGI extends VisualInstance3D{
   set_camera_attributes(_camera_attributes) {
     LightmapGI.init_method_set_camera_attributes();
     return _call_native_mb_no_ret(
-      LightmapGI.#_bindings.method_set_camera_attributes,
+      LightmapGI._bindings.method_set_camera_attributes,
       this._owner,
       _camera_attributes
     );
@@ -852,7 +853,7 @@ export class LightmapGI extends VisualInstance3D{
   get_camera_attributes() {
     LightmapGI.init_method_get_camera_attributes();
     return _call_native_mb_ret(
-      LightmapGI.#_bindings.method_get_camera_attributes,
+      LightmapGI._bindings.method_get_camera_attributes,
       this._owner,
 			Variant.Type.OBJECT,
       

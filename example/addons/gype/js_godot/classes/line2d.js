@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { Node2D } from '@js_godot/classes/node2d'
 import {
   call_utility_ret,
@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_points;
@@ -45,10 +46,10 @@ class _MethodBindings {
   method_set_antialiased;
   method_get_antialiased;
 }
+@GodotClass
 export class Line2D extends Node2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -58,10 +59,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_set_points() {
-    if (!this.#_bindings.method_set_points) {
+    if (!this._bindings.method_set_points) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("set_points");
-      this.#_bindings.method_set_points = internal.classdb_get_method_bind(
+      this._bindings.method_set_points = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1509147220
@@ -69,10 +70,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_get_points() {
-    if (!this.#_bindings.method_get_points) {
+    if (!this._bindings.method_get_points) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("get_points");
-      this.#_bindings.method_get_points = internal.classdb_get_method_bind(
+      this._bindings.method_get_points = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2961356807
@@ -80,10 +81,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_set_point_position() {
-    if (!this.#_bindings.method_set_point_position) {
+    if (!this._bindings.method_set_point_position) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("set_point_position");
-      this.#_bindings.method_set_point_position = internal.classdb_get_method_bind(
+      this._bindings.method_set_point_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         163021252
@@ -91,10 +92,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_get_point_position() {
-    if (!this.#_bindings.method_get_point_position) {
+    if (!this._bindings.method_get_point_position) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("get_point_position");
-      this.#_bindings.method_get_point_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_point_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2299179447
@@ -102,10 +103,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_get_point_count() {
-    if (!this.#_bindings.method_get_point_count) {
+    if (!this._bindings.method_get_point_count) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("get_point_count");
-      this.#_bindings.method_get_point_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_point_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -113,10 +114,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_add_point() {
-    if (!this.#_bindings.method_add_point) {
+    if (!this._bindings.method_add_point) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("add_point");
-      this.#_bindings.method_add_point = internal.classdb_get_method_bind(
+      this._bindings.method_add_point = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2654014372
@@ -124,10 +125,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_remove_point() {
-    if (!this.#_bindings.method_remove_point) {
+    if (!this._bindings.method_remove_point) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("remove_point");
-      this.#_bindings.method_remove_point = internal.classdb_get_method_bind(
+      this._bindings.method_remove_point = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -135,10 +136,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_clear_points() {
-    if (!this.#_bindings.method_clear_points) {
+    if (!this._bindings.method_clear_points) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("clear_points");
-      this.#_bindings.method_clear_points = internal.classdb_get_method_bind(
+      this._bindings.method_clear_points = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -146,10 +147,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_set_closed() {
-    if (!this.#_bindings.method_set_closed) {
+    if (!this._bindings.method_set_closed) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("set_closed");
-      this.#_bindings.method_set_closed = internal.classdb_get_method_bind(
+      this._bindings.method_set_closed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -157,10 +158,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_is_closed() {
-    if (!this.#_bindings.method_is_closed) {
+    if (!this._bindings.method_is_closed) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("is_closed");
-      this.#_bindings.method_is_closed = internal.classdb_get_method_bind(
+      this._bindings.method_is_closed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -168,10 +169,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_set_width() {
-    if (!this.#_bindings.method_set_width) {
+    if (!this._bindings.method_set_width) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("set_width");
-      this.#_bindings.method_set_width = internal.classdb_get_method_bind(
+      this._bindings.method_set_width = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -179,10 +180,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_get_width() {
-    if (!this.#_bindings.method_get_width) {
+    if (!this._bindings.method_get_width) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("get_width");
-      this.#_bindings.method_get_width = internal.classdb_get_method_bind(
+      this._bindings.method_get_width = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -190,10 +191,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_set_curve() {
-    if (!this.#_bindings.method_set_curve) {
+    if (!this._bindings.method_set_curve) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("set_curve");
-      this.#_bindings.method_set_curve = internal.classdb_get_method_bind(
+      this._bindings.method_set_curve = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         270443179
@@ -201,10 +202,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_get_curve() {
-    if (!this.#_bindings.method_get_curve) {
+    if (!this._bindings.method_get_curve) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("get_curve");
-      this.#_bindings.method_get_curve = internal.classdb_get_method_bind(
+      this._bindings.method_get_curve = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2460114913
@@ -212,10 +213,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_set_default_color() {
-    if (!this.#_bindings.method_set_default_color) {
+    if (!this._bindings.method_set_default_color) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("set_default_color");
-      this.#_bindings.method_set_default_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_default_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -223,10 +224,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_get_default_color() {
-    if (!this.#_bindings.method_get_default_color) {
+    if (!this._bindings.method_get_default_color) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("get_default_color");
-      this.#_bindings.method_get_default_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_default_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -234,10 +235,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_set_gradient() {
-    if (!this.#_bindings.method_set_gradient) {
+    if (!this._bindings.method_set_gradient) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("set_gradient");
-      this.#_bindings.method_set_gradient = internal.classdb_get_method_bind(
+      this._bindings.method_set_gradient = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2756054477
@@ -245,10 +246,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_get_gradient() {
-    if (!this.#_bindings.method_get_gradient) {
+    if (!this._bindings.method_get_gradient) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("get_gradient");
-      this.#_bindings.method_get_gradient = internal.classdb_get_method_bind(
+      this._bindings.method_get_gradient = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         132272999
@@ -256,10 +257,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_set_texture() {
-    if (!this.#_bindings.method_set_texture) {
+    if (!this._bindings.method_set_texture) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("set_texture");
-      this.#_bindings.method_set_texture = internal.classdb_get_method_bind(
+      this._bindings.method_set_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4051416890
@@ -267,10 +268,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_get_texture() {
-    if (!this.#_bindings.method_get_texture) {
+    if (!this._bindings.method_get_texture) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("get_texture");
-      this.#_bindings.method_get_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -278,10 +279,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_set_texture_mode() {
-    if (!this.#_bindings.method_set_texture_mode) {
+    if (!this._bindings.method_set_texture_mode) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("set_texture_mode");
-      this.#_bindings.method_set_texture_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_texture_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1952559516
@@ -289,10 +290,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_get_texture_mode() {
-    if (!this.#_bindings.method_get_texture_mode) {
+    if (!this._bindings.method_get_texture_mode) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("get_texture_mode");
-      this.#_bindings.method_get_texture_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_texture_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2341040722
@@ -300,10 +301,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_set_joint_mode() {
-    if (!this.#_bindings.method_set_joint_mode) {
+    if (!this._bindings.method_set_joint_mode) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("set_joint_mode");
-      this.#_bindings.method_set_joint_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_joint_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         604292979
@@ -311,10 +312,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_get_joint_mode() {
-    if (!this.#_bindings.method_get_joint_mode) {
+    if (!this._bindings.method_get_joint_mode) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("get_joint_mode");
-      this.#_bindings.method_get_joint_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_joint_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2546544037
@@ -322,10 +323,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_set_begin_cap_mode() {
-    if (!this.#_bindings.method_set_begin_cap_mode) {
+    if (!this._bindings.method_set_begin_cap_mode) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("set_begin_cap_mode");
-      this.#_bindings.method_set_begin_cap_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_begin_cap_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1669024546
@@ -333,10 +334,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_get_begin_cap_mode() {
-    if (!this.#_bindings.method_get_begin_cap_mode) {
+    if (!this._bindings.method_get_begin_cap_mode) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("get_begin_cap_mode");
-      this.#_bindings.method_get_begin_cap_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_begin_cap_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1107511441
@@ -344,10 +345,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_set_end_cap_mode() {
-    if (!this.#_bindings.method_set_end_cap_mode) {
+    if (!this._bindings.method_set_end_cap_mode) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("set_end_cap_mode");
-      this.#_bindings.method_set_end_cap_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_end_cap_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1669024546
@@ -355,10 +356,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_get_end_cap_mode() {
-    if (!this.#_bindings.method_get_end_cap_mode) {
+    if (!this._bindings.method_get_end_cap_mode) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("get_end_cap_mode");
-      this.#_bindings.method_get_end_cap_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_end_cap_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1107511441
@@ -366,10 +367,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_set_sharp_limit() {
-    if (!this.#_bindings.method_set_sharp_limit) {
+    if (!this._bindings.method_set_sharp_limit) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("set_sharp_limit");
-      this.#_bindings.method_set_sharp_limit = internal.classdb_get_method_bind(
+      this._bindings.method_set_sharp_limit = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -377,10 +378,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_get_sharp_limit() {
-    if (!this.#_bindings.method_get_sharp_limit) {
+    if (!this._bindings.method_get_sharp_limit) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("get_sharp_limit");
-      this.#_bindings.method_get_sharp_limit = internal.classdb_get_method_bind(
+      this._bindings.method_get_sharp_limit = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -388,10 +389,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_set_round_precision() {
-    if (!this.#_bindings.method_set_round_precision) {
+    if (!this._bindings.method_set_round_precision) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("set_round_precision");
-      this.#_bindings.method_set_round_precision = internal.classdb_get_method_bind(
+      this._bindings.method_set_round_precision = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -399,10 +400,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_get_round_precision() {
-    if (!this.#_bindings.method_get_round_precision) {
+    if (!this._bindings.method_get_round_precision) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("get_round_precision");
-      this.#_bindings.method_get_round_precision = internal.classdb_get_method_bind(
+      this._bindings.method_get_round_precision = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -410,10 +411,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_set_antialiased() {
-    if (!this.#_bindings.method_set_antialiased) {
+    if (!this._bindings.method_set_antialiased) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("set_antialiased");
-      this.#_bindings.method_set_antialiased = internal.classdb_get_method_bind(
+      this._bindings.method_set_antialiased = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -421,10 +422,10 @@ export class Line2D extends Node2D{
     }
   }
   static init_method_get_antialiased() {
-    if (!this.#_bindings.method_get_antialiased) {
+    if (!this._bindings.method_get_antialiased) {
       let classname = new StringName("Line2D");
       let methodname = new StringName("get_antialiased");
-      this.#_bindings.method_get_antialiased = internal.classdb_get_method_bind(
+      this._bindings.method_get_antialiased = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -437,7 +438,7 @@ export class Line2D extends Node2D{
   set_points(_points) {
     Line2D.init_method_set_points();
     return _call_native_mb_no_ret(
-      Line2D.#_bindings.method_set_points,
+      Line2D._bindings.method_set_points,
       this._owner,
       _points
     );
@@ -446,7 +447,7 @@ export class Line2D extends Node2D{
   get_points() {
     Line2D.init_method_get_points();
     return _call_native_mb_ret(
-      Line2D.#_bindings.method_get_points,
+      Line2D._bindings.method_get_points,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -457,7 +458,7 @@ export class Line2D extends Node2D{
   set_point_position(_index, _position) {
     Line2D.init_method_set_point_position();
     return _call_native_mb_no_ret(
-      Line2D.#_bindings.method_set_point_position,
+      Line2D._bindings.method_set_point_position,
       this._owner,
       _index, _position
     );
@@ -466,7 +467,7 @@ export class Line2D extends Node2D{
   get_point_position(_index) {
     Line2D.init_method_get_point_position();
     return _call_native_mb_ret(
-      Line2D.#_bindings.method_get_point_position,
+      Line2D._bindings.method_get_point_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -477,7 +478,7 @@ export class Line2D extends Node2D{
   get_point_count() {
     Line2D.init_method_get_point_count();
     return _call_native_mb_ret(
-      Line2D.#_bindings.method_get_point_count,
+      Line2D._bindings.method_get_point_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -488,7 +489,7 @@ export class Line2D extends Node2D{
   add_point(_position, _index) {
     Line2D.init_method_add_point();
     return _call_native_mb_no_ret(
-      Line2D.#_bindings.method_add_point,
+      Line2D._bindings.method_add_point,
       this._owner,
       _position, _index
     );
@@ -497,7 +498,7 @@ export class Line2D extends Node2D{
   remove_point(_index) {
     Line2D.init_method_remove_point();
     return _call_native_mb_no_ret(
-      Line2D.#_bindings.method_remove_point,
+      Line2D._bindings.method_remove_point,
       this._owner,
       _index
     );
@@ -506,7 +507,7 @@ export class Line2D extends Node2D{
   clear_points() {
     Line2D.init_method_clear_points();
     return _call_native_mb_no_ret(
-      Line2D.#_bindings.method_clear_points,
+      Line2D._bindings.method_clear_points,
       this._owner,
       
     );
@@ -515,7 +516,7 @@ export class Line2D extends Node2D{
   set_closed(_closed) {
     Line2D.init_method_set_closed();
     return _call_native_mb_no_ret(
-      Line2D.#_bindings.method_set_closed,
+      Line2D._bindings.method_set_closed,
       this._owner,
       _closed
     );
@@ -524,7 +525,7 @@ export class Line2D extends Node2D{
   is_closed() {
     Line2D.init_method_is_closed();
     return _call_native_mb_ret(
-      Line2D.#_bindings.method_is_closed,
+      Line2D._bindings.method_is_closed,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -535,7 +536,7 @@ export class Line2D extends Node2D{
   set_width(_width) {
     Line2D.init_method_set_width();
     return _call_native_mb_no_ret(
-      Line2D.#_bindings.method_set_width,
+      Line2D._bindings.method_set_width,
       this._owner,
       _width
     );
@@ -544,7 +545,7 @@ export class Line2D extends Node2D{
   get_width() {
     Line2D.init_method_get_width();
     return _call_native_mb_ret(
-      Line2D.#_bindings.method_get_width,
+      Line2D._bindings.method_get_width,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -555,7 +556,7 @@ export class Line2D extends Node2D{
   set_curve(_curve) {
     Line2D.init_method_set_curve();
     return _call_native_mb_no_ret(
-      Line2D.#_bindings.method_set_curve,
+      Line2D._bindings.method_set_curve,
       this._owner,
       _curve
     );
@@ -564,7 +565,7 @@ export class Line2D extends Node2D{
   get_curve() {
     Line2D.init_method_get_curve();
     return _call_native_mb_ret(
-      Line2D.#_bindings.method_get_curve,
+      Line2D._bindings.method_get_curve,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -574,7 +575,7 @@ export class Line2D extends Node2D{
   set_default_color(_color) {
     Line2D.init_method_set_default_color();
     return _call_native_mb_no_ret(
-      Line2D.#_bindings.method_set_default_color,
+      Line2D._bindings.method_set_default_color,
       this._owner,
       _color
     );
@@ -583,7 +584,7 @@ export class Line2D extends Node2D{
   get_default_color() {
     Line2D.init_method_get_default_color();
     return _call_native_mb_ret(
-      Line2D.#_bindings.method_get_default_color,
+      Line2D._bindings.method_get_default_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -594,7 +595,7 @@ export class Line2D extends Node2D{
   set_gradient(_color) {
     Line2D.init_method_set_gradient();
     return _call_native_mb_no_ret(
-      Line2D.#_bindings.method_set_gradient,
+      Line2D._bindings.method_set_gradient,
       this._owner,
       _color
     );
@@ -603,7 +604,7 @@ export class Line2D extends Node2D{
   get_gradient() {
     Line2D.init_method_get_gradient();
     return _call_native_mb_ret(
-      Line2D.#_bindings.method_get_gradient,
+      Line2D._bindings.method_get_gradient,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -613,7 +614,7 @@ export class Line2D extends Node2D{
   set_texture(_texture) {
     Line2D.init_method_set_texture();
     return _call_native_mb_no_ret(
-      Line2D.#_bindings.method_set_texture,
+      Line2D._bindings.method_set_texture,
       this._owner,
       _texture
     );
@@ -622,7 +623,7 @@ export class Line2D extends Node2D{
   get_texture() {
     Line2D.init_method_get_texture();
     return _call_native_mb_ret(
-      Line2D.#_bindings.method_get_texture,
+      Line2D._bindings.method_get_texture,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -632,7 +633,7 @@ export class Line2D extends Node2D{
   set_texture_mode(_mode) {
     Line2D.init_method_set_texture_mode();
     return _call_native_mb_no_ret(
-      Line2D.#_bindings.method_set_texture_mode,
+      Line2D._bindings.method_set_texture_mode,
       this._owner,
       _mode
     );
@@ -641,7 +642,7 @@ export class Line2D extends Node2D{
   get_texture_mode() {
     Line2D.init_method_get_texture_mode();
     return _call_native_mb_ret(
-      Line2D.#_bindings.method_get_texture_mode,
+      Line2D._bindings.method_get_texture_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -652,7 +653,7 @@ export class Line2D extends Node2D{
   set_joint_mode(_mode) {
     Line2D.init_method_set_joint_mode();
     return _call_native_mb_no_ret(
-      Line2D.#_bindings.method_set_joint_mode,
+      Line2D._bindings.method_set_joint_mode,
       this._owner,
       _mode
     );
@@ -661,7 +662,7 @@ export class Line2D extends Node2D{
   get_joint_mode() {
     Line2D.init_method_get_joint_mode();
     return _call_native_mb_ret(
-      Line2D.#_bindings.method_get_joint_mode,
+      Line2D._bindings.method_get_joint_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -672,7 +673,7 @@ export class Line2D extends Node2D{
   set_begin_cap_mode(_mode) {
     Line2D.init_method_set_begin_cap_mode();
     return _call_native_mb_no_ret(
-      Line2D.#_bindings.method_set_begin_cap_mode,
+      Line2D._bindings.method_set_begin_cap_mode,
       this._owner,
       _mode
     );
@@ -681,7 +682,7 @@ export class Line2D extends Node2D{
   get_begin_cap_mode() {
     Line2D.init_method_get_begin_cap_mode();
     return _call_native_mb_ret(
-      Line2D.#_bindings.method_get_begin_cap_mode,
+      Line2D._bindings.method_get_begin_cap_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -692,7 +693,7 @@ export class Line2D extends Node2D{
   set_end_cap_mode(_mode) {
     Line2D.init_method_set_end_cap_mode();
     return _call_native_mb_no_ret(
-      Line2D.#_bindings.method_set_end_cap_mode,
+      Line2D._bindings.method_set_end_cap_mode,
       this._owner,
       _mode
     );
@@ -701,7 +702,7 @@ export class Line2D extends Node2D{
   get_end_cap_mode() {
     Line2D.init_method_get_end_cap_mode();
     return _call_native_mb_ret(
-      Line2D.#_bindings.method_get_end_cap_mode,
+      Line2D._bindings.method_get_end_cap_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -712,7 +713,7 @@ export class Line2D extends Node2D{
   set_sharp_limit(_limit) {
     Line2D.init_method_set_sharp_limit();
     return _call_native_mb_no_ret(
-      Line2D.#_bindings.method_set_sharp_limit,
+      Line2D._bindings.method_set_sharp_limit,
       this._owner,
       _limit
     );
@@ -721,7 +722,7 @@ export class Line2D extends Node2D{
   get_sharp_limit() {
     Line2D.init_method_get_sharp_limit();
     return _call_native_mb_ret(
-      Line2D.#_bindings.method_get_sharp_limit,
+      Line2D._bindings.method_get_sharp_limit,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -732,7 +733,7 @@ export class Line2D extends Node2D{
   set_round_precision(_precision) {
     Line2D.init_method_set_round_precision();
     return _call_native_mb_no_ret(
-      Line2D.#_bindings.method_set_round_precision,
+      Line2D._bindings.method_set_round_precision,
       this._owner,
       _precision
     );
@@ -741,7 +742,7 @@ export class Line2D extends Node2D{
   get_round_precision() {
     Line2D.init_method_get_round_precision();
     return _call_native_mb_ret(
-      Line2D.#_bindings.method_get_round_precision,
+      Line2D._bindings.method_get_round_precision,
       this._owner,
 			Variant.Type.INT,
     
@@ -752,7 +753,7 @@ export class Line2D extends Node2D{
   set_antialiased(_antialiased) {
     Line2D.init_method_set_antialiased();
     return _call_native_mb_no_ret(
-      Line2D.#_bindings.method_set_antialiased,
+      Line2D._bindings.method_set_antialiased,
       this._owner,
       _antialiased
     );
@@ -761,7 +762,7 @@ export class Line2D extends Node2D{
   get_antialiased() {
     Line2D.init_method_get_antialiased();
     return _call_native_mb_ret(
-      Line2D.#_bindings.method_get_antialiased,
+      Line2D._bindings.method_get_antialiased,
       this._owner,
 			Variant.Type.BOOL,
     

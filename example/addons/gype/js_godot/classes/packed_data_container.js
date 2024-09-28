@@ -1,22 +1,23 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_pack;
   method_size;
 }
+@GodotClass
 export class PackedDataContainer extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -26,10 +27,10 @@ export class PackedDataContainer extends Resource{
     }
   }
   static init_method_pack() {
-    if (!this.#_bindings.method_pack) {
+    if (!this._bindings.method_pack) {
       let classname = new StringName("PackedDataContainer");
       let methodname = new StringName("pack");
-      this.#_bindings.method_pack = internal.classdb_get_method_bind(
+      this._bindings.method_pack = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         966674026
@@ -37,10 +38,10 @@ export class PackedDataContainer extends Resource{
     }
   }
   static init_method_size() {
-    if (!this.#_bindings.method_size) {
+    if (!this._bindings.method_size) {
       let classname = new StringName("PackedDataContainer");
       let methodname = new StringName("size");
-      this.#_bindings.method_size = internal.classdb_get_method_bind(
+      this._bindings.method_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -53,7 +54,7 @@ export class PackedDataContainer extends Resource{
   pack(_value) {
     PackedDataContainer.init_method_pack();
     return _call_native_mb_ret(
-      PackedDataContainer.#_bindings.method_pack,
+      PackedDataContainer._bindings.method_pack,
       this._owner,
 			Variant.Type.INT,
     
@@ -64,7 +65,7 @@ export class PackedDataContainer extends Resource{
   size() {
     PackedDataContainer.init_method_size();
     return _call_native_mb_ret(
-      PackedDataContainer.#_bindings.method_size,
+      PackedDataContainer._bindings.method_size,
       this._owner,
 			Variant.Type.INT,
     

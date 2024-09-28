@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_locale;
@@ -21,10 +22,10 @@ class _MethodBindings {
   method_get_translated_message_list;
   method_get_message_count;
 }
+@GodotClass
 export class Translation extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -34,10 +35,10 @@ export class Translation extends Resource{
     }
   }
   static init_method_set_locale() {
-    if (!this.#_bindings.method_set_locale) {
+    if (!this._bindings.method_set_locale) {
       let classname = new StringName("Translation");
       let methodname = new StringName("set_locale");
-      this.#_bindings.method_set_locale = internal.classdb_get_method_bind(
+      this._bindings.method_set_locale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -45,10 +46,10 @@ export class Translation extends Resource{
     }
   }
   static init_method_get_locale() {
-    if (!this.#_bindings.method_get_locale) {
+    if (!this._bindings.method_get_locale) {
       let classname = new StringName("Translation");
       let methodname = new StringName("get_locale");
-      this.#_bindings.method_get_locale = internal.classdb_get_method_bind(
+      this._bindings.method_get_locale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -56,10 +57,10 @@ export class Translation extends Resource{
     }
   }
   static init_method_add_message() {
-    if (!this.#_bindings.method_add_message) {
+    if (!this._bindings.method_add_message) {
       let classname = new StringName("Translation");
       let methodname = new StringName("add_message");
-      this.#_bindings.method_add_message = internal.classdb_get_method_bind(
+      this._bindings.method_add_message = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         971803314
@@ -67,10 +68,10 @@ export class Translation extends Resource{
     }
   }
   static init_method_add_plural_message() {
-    if (!this.#_bindings.method_add_plural_message) {
+    if (!this._bindings.method_add_plural_message) {
       let classname = new StringName("Translation");
       let methodname = new StringName("add_plural_message");
-      this.#_bindings.method_add_plural_message = internal.classdb_get_method_bind(
+      this._bindings.method_add_plural_message = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         360316719
@@ -78,10 +79,10 @@ export class Translation extends Resource{
     }
   }
   static init_method_get_message() {
-    if (!this.#_bindings.method_get_message) {
+    if (!this._bindings.method_get_message) {
       let classname = new StringName("Translation");
       let methodname = new StringName("get_message");
-      this.#_bindings.method_get_message = internal.classdb_get_method_bind(
+      this._bindings.method_get_message = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         58037827
@@ -89,10 +90,10 @@ export class Translation extends Resource{
     }
   }
   static init_method_get_plural_message() {
-    if (!this.#_bindings.method_get_plural_message) {
+    if (!this._bindings.method_get_plural_message) {
       let classname = new StringName("Translation");
       let methodname = new StringName("get_plural_message");
-      this.#_bindings.method_get_plural_message = internal.classdb_get_method_bind(
+      this._bindings.method_get_plural_message = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1333931916
@@ -100,10 +101,10 @@ export class Translation extends Resource{
     }
   }
   static init_method_erase_message() {
-    if (!this.#_bindings.method_erase_message) {
+    if (!this._bindings.method_erase_message) {
       let classname = new StringName("Translation");
       let methodname = new StringName("erase_message");
-      this.#_bindings.method_erase_message = internal.classdb_get_method_bind(
+      this._bindings.method_erase_message = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3919944288
@@ -111,10 +112,10 @@ export class Translation extends Resource{
     }
   }
   static init_method_get_message_list() {
-    if (!this.#_bindings.method_get_message_list) {
+    if (!this._bindings.method_get_message_list) {
       let classname = new StringName("Translation");
       let methodname = new StringName("get_message_list");
-      this.#_bindings.method_get_message_list = internal.classdb_get_method_bind(
+      this._bindings.method_get_message_list = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1139954409
@@ -122,10 +123,10 @@ export class Translation extends Resource{
     }
   }
   static init_method_get_translated_message_list() {
-    if (!this.#_bindings.method_get_translated_message_list) {
+    if (!this._bindings.method_get_translated_message_list) {
       let classname = new StringName("Translation");
       let methodname = new StringName("get_translated_message_list");
-      this.#_bindings.method_get_translated_message_list = internal.classdb_get_method_bind(
+      this._bindings.method_get_translated_message_list = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1139954409
@@ -133,10 +134,10 @@ export class Translation extends Resource{
     }
   }
   static init_method_get_message_count() {
-    if (!this.#_bindings.method_get_message_count) {
+    if (!this._bindings.method_get_message_count) {
       let classname = new StringName("Translation");
       let methodname = new StringName("get_message_count");
-      this.#_bindings.method_get_message_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_message_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -153,7 +154,7 @@ export class Translation extends Resource{
   set_locale(_locale) {
     Translation.init_method_set_locale();
     return _call_native_mb_no_ret(
-      Translation.#_bindings.method_set_locale,
+      Translation._bindings.method_set_locale,
       this._owner,
       _locale
     );
@@ -162,7 +163,7 @@ export class Translation extends Resource{
   get_locale() {
     Translation.init_method_get_locale();
     return _call_native_mb_ret(
-      Translation.#_bindings.method_get_locale,
+      Translation._bindings.method_get_locale,
       this._owner,
 			Variant.Type.STRING,
     
@@ -173,7 +174,7 @@ export class Translation extends Resource{
   add_message(_src_message, _xlated_message, _context) {
     Translation.init_method_add_message();
     return _call_native_mb_no_ret(
-      Translation.#_bindings.method_add_message,
+      Translation._bindings.method_add_message,
       this._owner,
       _src_message, _xlated_message, _context
     );
@@ -182,7 +183,7 @@ export class Translation extends Resource{
   add_plural_message(_src_message, _xlated_messages, _context) {
     Translation.init_method_add_plural_message();
     return _call_native_mb_no_ret(
-      Translation.#_bindings.method_add_plural_message,
+      Translation._bindings.method_add_plural_message,
       this._owner,
       _src_message, _xlated_messages, _context
     );
@@ -191,7 +192,7 @@ export class Translation extends Resource{
   get_message(_src_message, _context) {
     Translation.init_method_get_message();
     return _call_native_mb_ret(
-      Translation.#_bindings.method_get_message,
+      Translation._bindings.method_get_message,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -202,7 +203,7 @@ export class Translation extends Resource{
   get_plural_message(_src_message, _src_plural_message, _n, _context) {
     Translation.init_method_get_plural_message();
     return _call_native_mb_ret(
-      Translation.#_bindings.method_get_plural_message,
+      Translation._bindings.method_get_plural_message,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -213,7 +214,7 @@ export class Translation extends Resource{
   erase_message(_src_message, _context) {
     Translation.init_method_erase_message();
     return _call_native_mb_no_ret(
-      Translation.#_bindings.method_erase_message,
+      Translation._bindings.method_erase_message,
       this._owner,
       _src_message, _context
     );
@@ -222,7 +223,7 @@ export class Translation extends Resource{
   get_message_list() {
     Translation.init_method_get_message_list();
     return _call_native_mb_ret(
-      Translation.#_bindings.method_get_message_list,
+      Translation._bindings.method_get_message_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -233,7 +234,7 @@ export class Translation extends Resource{
   get_translated_message_list() {
     Translation.init_method_get_translated_message_list();
     return _call_native_mb_ret(
-      Translation.#_bindings.method_get_translated_message_list,
+      Translation._bindings.method_get_translated_message_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -244,7 +245,7 @@ export class Translation extends Resource{
   get_message_count() {
     Translation.init_method_get_message_count();
     return _call_native_mb_ret(
-      Translation.#_bindings.method_get_message_count,
+      Translation._bindings.method_get_message_count,
       this._owner,
 			Variant.Type.INT,
     

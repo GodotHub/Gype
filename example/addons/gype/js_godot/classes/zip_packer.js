@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_open;
@@ -16,10 +17,10 @@ class _MethodBindings {
   method_close_file;
   method_close;
 }
+@GodotClass
 export class ZIPPacker extends RefCounted{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -29,10 +30,10 @@ export class ZIPPacker extends RefCounted{
     }
   }
   static init_method_open() {
-    if (!this.#_bindings.method_open) {
+    if (!this._bindings.method_open) {
       let classname = new StringName("ZIPPacker");
       let methodname = new StringName("open");
-      this.#_bindings.method_open = internal.classdb_get_method_bind(
+      this._bindings.method_open = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1936816515
@@ -40,10 +41,10 @@ export class ZIPPacker extends RefCounted{
     }
   }
   static init_method_start_file() {
-    if (!this.#_bindings.method_start_file) {
+    if (!this._bindings.method_start_file) {
       let classname = new StringName("ZIPPacker");
       let methodname = new StringName("start_file");
-      this.#_bindings.method_start_file = internal.classdb_get_method_bind(
+      this._bindings.method_start_file = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         166001499
@@ -51,10 +52,10 @@ export class ZIPPacker extends RefCounted{
     }
   }
   static init_method_write_file() {
-    if (!this.#_bindings.method_write_file) {
+    if (!this._bindings.method_write_file) {
       let classname = new StringName("ZIPPacker");
       let methodname = new StringName("write_file");
-      this.#_bindings.method_write_file = internal.classdb_get_method_bind(
+      this._bindings.method_write_file = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         680677267
@@ -62,10 +63,10 @@ export class ZIPPacker extends RefCounted{
     }
   }
   static init_method_close_file() {
-    if (!this.#_bindings.method_close_file) {
+    if (!this._bindings.method_close_file) {
       let classname = new StringName("ZIPPacker");
       let methodname = new StringName("close_file");
-      this.#_bindings.method_close_file = internal.classdb_get_method_bind(
+      this._bindings.method_close_file = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         166280745
@@ -73,10 +74,10 @@ export class ZIPPacker extends RefCounted{
     }
   }
   static init_method_close() {
-    if (!this.#_bindings.method_close) {
+    if (!this._bindings.method_close) {
       let classname = new StringName("ZIPPacker");
       let methodname = new StringName("close");
-      this.#_bindings.method_close = internal.classdb_get_method_bind(
+      this._bindings.method_close = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         166280745
@@ -89,7 +90,7 @@ export class ZIPPacker extends RefCounted{
   open(_path, _append) {
     ZIPPacker.init_method_open();
     return _call_native_mb_ret(
-      ZIPPacker.#_bindings.method_open,
+      ZIPPacker._bindings.method_open,
       this._owner,
 			Variant.Type.INT,
     
@@ -100,7 +101,7 @@ export class ZIPPacker extends RefCounted{
   start_file(_path) {
     ZIPPacker.init_method_start_file();
     return _call_native_mb_ret(
-      ZIPPacker.#_bindings.method_start_file,
+      ZIPPacker._bindings.method_start_file,
       this._owner,
 			Variant.Type.INT,
     
@@ -111,7 +112,7 @@ export class ZIPPacker extends RefCounted{
   write_file(_data) {
     ZIPPacker.init_method_write_file();
     return _call_native_mb_ret(
-      ZIPPacker.#_bindings.method_write_file,
+      ZIPPacker._bindings.method_write_file,
       this._owner,
 			Variant.Type.INT,
     
@@ -122,7 +123,7 @@ export class ZIPPacker extends RefCounted{
   close_file() {
     ZIPPacker.init_method_close_file();
     return _call_native_mb_ret(
-      ZIPPacker.#_bindings.method_close_file,
+      ZIPPacker._bindings.method_close_file,
       this._owner,
 			Variant.Type.INT,
     
@@ -133,7 +134,7 @@ export class ZIPPacker extends RefCounted{
   close() {
     ZIPPacker.init_method_close();
     return _call_native_mb_ret(
-      ZIPPacker.#_bindings.method_close,
+      ZIPPacker._bindings.method_close,
       this._owner,
 			Variant.Type.INT,
     

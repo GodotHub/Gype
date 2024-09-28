@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_exposure_multiplier;
@@ -21,10 +22,10 @@ class _MethodBindings {
   method_set_auto_exposure_scale;
   method_get_auto_exposure_scale;
 }
+@GodotClass
 export class CameraAttributes extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -34,10 +35,10 @@ export class CameraAttributes extends Resource{
     }
   }
   static init_method_set_exposure_multiplier() {
-    if (!this.#_bindings.method_set_exposure_multiplier) {
+    if (!this._bindings.method_set_exposure_multiplier) {
       let classname = new StringName("CameraAttributes");
       let methodname = new StringName("set_exposure_multiplier");
-      this.#_bindings.method_set_exposure_multiplier = internal.classdb_get_method_bind(
+      this._bindings.method_set_exposure_multiplier = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -45,10 +46,10 @@ export class CameraAttributes extends Resource{
     }
   }
   static init_method_get_exposure_multiplier() {
-    if (!this.#_bindings.method_get_exposure_multiplier) {
+    if (!this._bindings.method_get_exposure_multiplier) {
       let classname = new StringName("CameraAttributes");
       let methodname = new StringName("get_exposure_multiplier");
-      this.#_bindings.method_get_exposure_multiplier = internal.classdb_get_method_bind(
+      this._bindings.method_get_exposure_multiplier = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -56,10 +57,10 @@ export class CameraAttributes extends Resource{
     }
   }
   static init_method_set_exposure_sensitivity() {
-    if (!this.#_bindings.method_set_exposure_sensitivity) {
+    if (!this._bindings.method_set_exposure_sensitivity) {
       let classname = new StringName("CameraAttributes");
       let methodname = new StringName("set_exposure_sensitivity");
-      this.#_bindings.method_set_exposure_sensitivity = internal.classdb_get_method_bind(
+      this._bindings.method_set_exposure_sensitivity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -67,10 +68,10 @@ export class CameraAttributes extends Resource{
     }
   }
   static init_method_get_exposure_sensitivity() {
-    if (!this.#_bindings.method_get_exposure_sensitivity) {
+    if (!this._bindings.method_get_exposure_sensitivity) {
       let classname = new StringName("CameraAttributes");
       let methodname = new StringName("get_exposure_sensitivity");
-      this.#_bindings.method_get_exposure_sensitivity = internal.classdb_get_method_bind(
+      this._bindings.method_get_exposure_sensitivity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -78,10 +79,10 @@ export class CameraAttributes extends Resource{
     }
   }
   static init_method_set_auto_exposure_enabled() {
-    if (!this.#_bindings.method_set_auto_exposure_enabled) {
+    if (!this._bindings.method_set_auto_exposure_enabled) {
       let classname = new StringName("CameraAttributes");
       let methodname = new StringName("set_auto_exposure_enabled");
-      this.#_bindings.method_set_auto_exposure_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_auto_exposure_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -89,10 +90,10 @@ export class CameraAttributes extends Resource{
     }
   }
   static init_method_is_auto_exposure_enabled() {
-    if (!this.#_bindings.method_is_auto_exposure_enabled) {
+    if (!this._bindings.method_is_auto_exposure_enabled) {
       let classname = new StringName("CameraAttributes");
       let methodname = new StringName("is_auto_exposure_enabled");
-      this.#_bindings.method_is_auto_exposure_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_auto_exposure_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -100,10 +101,10 @@ export class CameraAttributes extends Resource{
     }
   }
   static init_method_set_auto_exposure_speed() {
-    if (!this.#_bindings.method_set_auto_exposure_speed) {
+    if (!this._bindings.method_set_auto_exposure_speed) {
       let classname = new StringName("CameraAttributes");
       let methodname = new StringName("set_auto_exposure_speed");
-      this.#_bindings.method_set_auto_exposure_speed = internal.classdb_get_method_bind(
+      this._bindings.method_set_auto_exposure_speed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -111,10 +112,10 @@ export class CameraAttributes extends Resource{
     }
   }
   static init_method_get_auto_exposure_speed() {
-    if (!this.#_bindings.method_get_auto_exposure_speed) {
+    if (!this._bindings.method_get_auto_exposure_speed) {
       let classname = new StringName("CameraAttributes");
       let methodname = new StringName("get_auto_exposure_speed");
-      this.#_bindings.method_get_auto_exposure_speed = internal.classdb_get_method_bind(
+      this._bindings.method_get_auto_exposure_speed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -122,10 +123,10 @@ export class CameraAttributes extends Resource{
     }
   }
   static init_method_set_auto_exposure_scale() {
-    if (!this.#_bindings.method_set_auto_exposure_scale) {
+    if (!this._bindings.method_set_auto_exposure_scale) {
       let classname = new StringName("CameraAttributes");
       let methodname = new StringName("set_auto_exposure_scale");
-      this.#_bindings.method_set_auto_exposure_scale = internal.classdb_get_method_bind(
+      this._bindings.method_set_auto_exposure_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -133,10 +134,10 @@ export class CameraAttributes extends Resource{
     }
   }
   static init_method_get_auto_exposure_scale() {
-    if (!this.#_bindings.method_get_auto_exposure_scale) {
+    if (!this._bindings.method_get_auto_exposure_scale) {
       let classname = new StringName("CameraAttributes");
       let methodname = new StringName("get_auto_exposure_scale");
-      this.#_bindings.method_get_auto_exposure_scale = internal.classdb_get_method_bind(
+      this._bindings.method_get_auto_exposure_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -149,7 +150,7 @@ export class CameraAttributes extends Resource{
   set_exposure_multiplier(_multiplier) {
     CameraAttributes.init_method_set_exposure_multiplier();
     return _call_native_mb_no_ret(
-      CameraAttributes.#_bindings.method_set_exposure_multiplier,
+      CameraAttributes._bindings.method_set_exposure_multiplier,
       this._owner,
       _multiplier
     );
@@ -158,7 +159,7 @@ export class CameraAttributes extends Resource{
   get_exposure_multiplier() {
     CameraAttributes.init_method_get_exposure_multiplier();
     return _call_native_mb_ret(
-      CameraAttributes.#_bindings.method_get_exposure_multiplier,
+      CameraAttributes._bindings.method_get_exposure_multiplier,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -169,7 +170,7 @@ export class CameraAttributes extends Resource{
   set_exposure_sensitivity(_sensitivity) {
     CameraAttributes.init_method_set_exposure_sensitivity();
     return _call_native_mb_no_ret(
-      CameraAttributes.#_bindings.method_set_exposure_sensitivity,
+      CameraAttributes._bindings.method_set_exposure_sensitivity,
       this._owner,
       _sensitivity
     );
@@ -178,7 +179,7 @@ export class CameraAttributes extends Resource{
   get_exposure_sensitivity() {
     CameraAttributes.init_method_get_exposure_sensitivity();
     return _call_native_mb_ret(
-      CameraAttributes.#_bindings.method_get_exposure_sensitivity,
+      CameraAttributes._bindings.method_get_exposure_sensitivity,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -189,7 +190,7 @@ export class CameraAttributes extends Resource{
   set_auto_exposure_enabled(_enabled) {
     CameraAttributes.init_method_set_auto_exposure_enabled();
     return _call_native_mb_no_ret(
-      CameraAttributes.#_bindings.method_set_auto_exposure_enabled,
+      CameraAttributes._bindings.method_set_auto_exposure_enabled,
       this._owner,
       _enabled
     );
@@ -198,7 +199,7 @@ export class CameraAttributes extends Resource{
   is_auto_exposure_enabled() {
     CameraAttributes.init_method_is_auto_exposure_enabled();
     return _call_native_mb_ret(
-      CameraAttributes.#_bindings.method_is_auto_exposure_enabled,
+      CameraAttributes._bindings.method_is_auto_exposure_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -209,7 +210,7 @@ export class CameraAttributes extends Resource{
   set_auto_exposure_speed(_exposure_speed) {
     CameraAttributes.init_method_set_auto_exposure_speed();
     return _call_native_mb_no_ret(
-      CameraAttributes.#_bindings.method_set_auto_exposure_speed,
+      CameraAttributes._bindings.method_set_auto_exposure_speed,
       this._owner,
       _exposure_speed
     );
@@ -218,7 +219,7 @@ export class CameraAttributes extends Resource{
   get_auto_exposure_speed() {
     CameraAttributes.init_method_get_auto_exposure_speed();
     return _call_native_mb_ret(
-      CameraAttributes.#_bindings.method_get_auto_exposure_speed,
+      CameraAttributes._bindings.method_get_auto_exposure_speed,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -229,7 +230,7 @@ export class CameraAttributes extends Resource{
   set_auto_exposure_scale(_exposure_grey) {
     CameraAttributes.init_method_set_auto_exposure_scale();
     return _call_native_mb_no_ret(
-      CameraAttributes.#_bindings.method_set_auto_exposure_scale,
+      CameraAttributes._bindings.method_set_auto_exposure_scale,
       this._owner,
       _exposure_grey
     );
@@ -238,7 +239,7 @@ export class CameraAttributes extends Resource{
   get_auto_exposure_scale() {
     CameraAttributes.init_method_get_auto_exposure_scale();
     return _call_native_mb_ret(
-      CameraAttributes.#_bindings.method_get_auto_exposure_scale,
+      CameraAttributes._bindings.method_get_auto_exposure_scale,
       this._owner,
 			Variant.Type.FLOAT,
     

@@ -1,14 +1,15 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { CollisionObject2D } from '@js_godot/classes/collision_object2d'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { CollisionObject2D } from '@js_godot/classes/collision_object2d'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_gravity_space_override_mode;
@@ -48,10 +49,10 @@ class _MethodBindings {
   method_set_audio_bus_override;
   method_is_overriding_audio_bus;
 }
+@GodotClass
 export class Area2D extends CollisionObject2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -61,10 +62,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_set_gravity_space_override_mode() {
-    if (!this.#_bindings.method_set_gravity_space_override_mode) {
+    if (!this._bindings.method_set_gravity_space_override_mode) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("set_gravity_space_override_mode");
-      this.#_bindings.method_set_gravity_space_override_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_gravity_space_override_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2879900038
@@ -72,10 +73,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_get_gravity_space_override_mode() {
-    if (!this.#_bindings.method_get_gravity_space_override_mode) {
+    if (!this._bindings.method_get_gravity_space_override_mode) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("get_gravity_space_override_mode");
-      this.#_bindings.method_get_gravity_space_override_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_gravity_space_override_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3990256304
@@ -83,10 +84,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_set_gravity_is_point() {
-    if (!this.#_bindings.method_set_gravity_is_point) {
+    if (!this._bindings.method_set_gravity_is_point) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("set_gravity_is_point");
-      this.#_bindings.method_set_gravity_is_point = internal.classdb_get_method_bind(
+      this._bindings.method_set_gravity_is_point = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -94,10 +95,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_is_gravity_a_point() {
-    if (!this.#_bindings.method_is_gravity_a_point) {
+    if (!this._bindings.method_is_gravity_a_point) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("is_gravity_a_point");
-      this.#_bindings.method_is_gravity_a_point = internal.classdb_get_method_bind(
+      this._bindings.method_is_gravity_a_point = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -105,10 +106,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_set_gravity_point_unit_distance() {
-    if (!this.#_bindings.method_set_gravity_point_unit_distance) {
+    if (!this._bindings.method_set_gravity_point_unit_distance) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("set_gravity_point_unit_distance");
-      this.#_bindings.method_set_gravity_point_unit_distance = internal.classdb_get_method_bind(
+      this._bindings.method_set_gravity_point_unit_distance = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -116,10 +117,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_get_gravity_point_unit_distance() {
-    if (!this.#_bindings.method_get_gravity_point_unit_distance) {
+    if (!this._bindings.method_get_gravity_point_unit_distance) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("get_gravity_point_unit_distance");
-      this.#_bindings.method_get_gravity_point_unit_distance = internal.classdb_get_method_bind(
+      this._bindings.method_get_gravity_point_unit_distance = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -127,10 +128,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_set_gravity_point_center() {
-    if (!this.#_bindings.method_set_gravity_point_center) {
+    if (!this._bindings.method_set_gravity_point_center) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("set_gravity_point_center");
-      this.#_bindings.method_set_gravity_point_center = internal.classdb_get_method_bind(
+      this._bindings.method_set_gravity_point_center = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -138,10 +139,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_get_gravity_point_center() {
-    if (!this.#_bindings.method_get_gravity_point_center) {
+    if (!this._bindings.method_get_gravity_point_center) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("get_gravity_point_center");
-      this.#_bindings.method_get_gravity_point_center = internal.classdb_get_method_bind(
+      this._bindings.method_get_gravity_point_center = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -149,10 +150,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_set_gravity_direction() {
-    if (!this.#_bindings.method_set_gravity_direction) {
+    if (!this._bindings.method_set_gravity_direction) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("set_gravity_direction");
-      this.#_bindings.method_set_gravity_direction = internal.classdb_get_method_bind(
+      this._bindings.method_set_gravity_direction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -160,10 +161,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_get_gravity_direction() {
-    if (!this.#_bindings.method_get_gravity_direction) {
+    if (!this._bindings.method_get_gravity_direction) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("get_gravity_direction");
-      this.#_bindings.method_get_gravity_direction = internal.classdb_get_method_bind(
+      this._bindings.method_get_gravity_direction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -171,10 +172,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_set_gravity() {
-    if (!this.#_bindings.method_set_gravity) {
+    if (!this._bindings.method_set_gravity) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("set_gravity");
-      this.#_bindings.method_set_gravity = internal.classdb_get_method_bind(
+      this._bindings.method_set_gravity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -182,10 +183,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_get_gravity() {
-    if (!this.#_bindings.method_get_gravity) {
+    if (!this._bindings.method_get_gravity) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("get_gravity");
-      this.#_bindings.method_get_gravity = internal.classdb_get_method_bind(
+      this._bindings.method_get_gravity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -193,10 +194,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_set_linear_damp_space_override_mode() {
-    if (!this.#_bindings.method_set_linear_damp_space_override_mode) {
+    if (!this._bindings.method_set_linear_damp_space_override_mode) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("set_linear_damp_space_override_mode");
-      this.#_bindings.method_set_linear_damp_space_override_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_linear_damp_space_override_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2879900038
@@ -204,10 +205,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_get_linear_damp_space_override_mode() {
-    if (!this.#_bindings.method_get_linear_damp_space_override_mode) {
+    if (!this._bindings.method_get_linear_damp_space_override_mode) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("get_linear_damp_space_override_mode");
-      this.#_bindings.method_get_linear_damp_space_override_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_linear_damp_space_override_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3990256304
@@ -215,10 +216,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_set_angular_damp_space_override_mode() {
-    if (!this.#_bindings.method_set_angular_damp_space_override_mode) {
+    if (!this._bindings.method_set_angular_damp_space_override_mode) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("set_angular_damp_space_override_mode");
-      this.#_bindings.method_set_angular_damp_space_override_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_angular_damp_space_override_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2879900038
@@ -226,10 +227,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_get_angular_damp_space_override_mode() {
-    if (!this.#_bindings.method_get_angular_damp_space_override_mode) {
+    if (!this._bindings.method_get_angular_damp_space_override_mode) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("get_angular_damp_space_override_mode");
-      this.#_bindings.method_get_angular_damp_space_override_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_angular_damp_space_override_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3990256304
@@ -237,10 +238,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_set_linear_damp() {
-    if (!this.#_bindings.method_set_linear_damp) {
+    if (!this._bindings.method_set_linear_damp) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("set_linear_damp");
-      this.#_bindings.method_set_linear_damp = internal.classdb_get_method_bind(
+      this._bindings.method_set_linear_damp = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -248,10 +249,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_get_linear_damp() {
-    if (!this.#_bindings.method_get_linear_damp) {
+    if (!this._bindings.method_get_linear_damp) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("get_linear_damp");
-      this.#_bindings.method_get_linear_damp = internal.classdb_get_method_bind(
+      this._bindings.method_get_linear_damp = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -259,10 +260,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_set_angular_damp() {
-    if (!this.#_bindings.method_set_angular_damp) {
+    if (!this._bindings.method_set_angular_damp) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("set_angular_damp");
-      this.#_bindings.method_set_angular_damp = internal.classdb_get_method_bind(
+      this._bindings.method_set_angular_damp = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -270,10 +271,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_get_angular_damp() {
-    if (!this.#_bindings.method_get_angular_damp) {
+    if (!this._bindings.method_get_angular_damp) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("get_angular_damp");
-      this.#_bindings.method_get_angular_damp = internal.classdb_get_method_bind(
+      this._bindings.method_get_angular_damp = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -281,10 +282,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_set_priority() {
-    if (!this.#_bindings.method_set_priority) {
+    if (!this._bindings.method_set_priority) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("set_priority");
-      this.#_bindings.method_set_priority = internal.classdb_get_method_bind(
+      this._bindings.method_set_priority = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -292,10 +293,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_get_priority() {
-    if (!this.#_bindings.method_get_priority) {
+    if (!this._bindings.method_get_priority) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("get_priority");
-      this.#_bindings.method_get_priority = internal.classdb_get_method_bind(
+      this._bindings.method_get_priority = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -303,10 +304,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_set_monitoring() {
-    if (!this.#_bindings.method_set_monitoring) {
+    if (!this._bindings.method_set_monitoring) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("set_monitoring");
-      this.#_bindings.method_set_monitoring = internal.classdb_get_method_bind(
+      this._bindings.method_set_monitoring = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -314,10 +315,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_is_monitoring() {
-    if (!this.#_bindings.method_is_monitoring) {
+    if (!this._bindings.method_is_monitoring) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("is_monitoring");
-      this.#_bindings.method_is_monitoring = internal.classdb_get_method_bind(
+      this._bindings.method_is_monitoring = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -325,10 +326,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_set_monitorable() {
-    if (!this.#_bindings.method_set_monitorable) {
+    if (!this._bindings.method_set_monitorable) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("set_monitorable");
-      this.#_bindings.method_set_monitorable = internal.classdb_get_method_bind(
+      this._bindings.method_set_monitorable = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -336,10 +337,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_is_monitorable() {
-    if (!this.#_bindings.method_is_monitorable) {
+    if (!this._bindings.method_is_monitorable) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("is_monitorable");
-      this.#_bindings.method_is_monitorable = internal.classdb_get_method_bind(
+      this._bindings.method_is_monitorable = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -347,10 +348,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_get_overlapping_bodies() {
-    if (!this.#_bindings.method_get_overlapping_bodies) {
+    if (!this._bindings.method_get_overlapping_bodies) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("get_overlapping_bodies");
-      this.#_bindings.method_get_overlapping_bodies = internal.classdb_get_method_bind(
+      this._bindings.method_get_overlapping_bodies = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -358,10 +359,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_get_overlapping_areas() {
-    if (!this.#_bindings.method_get_overlapping_areas) {
+    if (!this._bindings.method_get_overlapping_areas) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("get_overlapping_areas");
-      this.#_bindings.method_get_overlapping_areas = internal.classdb_get_method_bind(
+      this._bindings.method_get_overlapping_areas = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -369,10 +370,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_has_overlapping_bodies() {
-    if (!this.#_bindings.method_has_overlapping_bodies) {
+    if (!this._bindings.method_has_overlapping_bodies) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("has_overlapping_bodies");
-      this.#_bindings.method_has_overlapping_bodies = internal.classdb_get_method_bind(
+      this._bindings.method_has_overlapping_bodies = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -380,10 +381,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_has_overlapping_areas() {
-    if (!this.#_bindings.method_has_overlapping_areas) {
+    if (!this._bindings.method_has_overlapping_areas) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("has_overlapping_areas");
-      this.#_bindings.method_has_overlapping_areas = internal.classdb_get_method_bind(
+      this._bindings.method_has_overlapping_areas = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -391,10 +392,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_overlaps_body() {
-    if (!this.#_bindings.method_overlaps_body) {
+    if (!this._bindings.method_overlaps_body) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("overlaps_body");
-      this.#_bindings.method_overlaps_body = internal.classdb_get_method_bind(
+      this._bindings.method_overlaps_body = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3093956946
@@ -402,10 +403,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_overlaps_area() {
-    if (!this.#_bindings.method_overlaps_area) {
+    if (!this._bindings.method_overlaps_area) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("overlaps_area");
-      this.#_bindings.method_overlaps_area = internal.classdb_get_method_bind(
+      this._bindings.method_overlaps_area = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3093956946
@@ -413,10 +414,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_set_audio_bus_name() {
-    if (!this.#_bindings.method_set_audio_bus_name) {
+    if (!this._bindings.method_set_audio_bus_name) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("set_audio_bus_name");
-      this.#_bindings.method_set_audio_bus_name = internal.classdb_get_method_bind(
+      this._bindings.method_set_audio_bus_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -424,10 +425,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_get_audio_bus_name() {
-    if (!this.#_bindings.method_get_audio_bus_name) {
+    if (!this._bindings.method_get_audio_bus_name) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("get_audio_bus_name");
-      this.#_bindings.method_get_audio_bus_name = internal.classdb_get_method_bind(
+      this._bindings.method_get_audio_bus_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2002593661
@@ -435,10 +436,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_set_audio_bus_override() {
-    if (!this.#_bindings.method_set_audio_bus_override) {
+    if (!this._bindings.method_set_audio_bus_override) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("set_audio_bus_override");
-      this.#_bindings.method_set_audio_bus_override = internal.classdb_get_method_bind(
+      this._bindings.method_set_audio_bus_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -446,10 +447,10 @@ export class Area2D extends CollisionObject2D{
     }
   }
   static init_method_is_overriding_audio_bus() {
-    if (!this.#_bindings.method_is_overriding_audio_bus) {
+    if (!this._bindings.method_is_overriding_audio_bus) {
       let classname = new StringName("Area2D");
       let methodname = new StringName("is_overriding_audio_bus");
-      this.#_bindings.method_is_overriding_audio_bus = internal.classdb_get_method_bind(
+      this._bindings.method_is_overriding_audio_bus = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -462,7 +463,7 @@ export class Area2D extends CollisionObject2D{
   set_gravity_space_override_mode(_space_override_mode) {
     Area2D.init_method_set_gravity_space_override_mode();
     return _call_native_mb_no_ret(
-      Area2D.#_bindings.method_set_gravity_space_override_mode,
+      Area2D._bindings.method_set_gravity_space_override_mode,
       this._owner,
       _space_override_mode
     );
@@ -471,7 +472,7 @@ export class Area2D extends CollisionObject2D{
   get_gravity_space_override_mode() {
     Area2D.init_method_get_gravity_space_override_mode();
     return _call_native_mb_ret(
-      Area2D.#_bindings.method_get_gravity_space_override_mode,
+      Area2D._bindings.method_get_gravity_space_override_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -482,7 +483,7 @@ export class Area2D extends CollisionObject2D{
   set_gravity_is_point(_enable) {
     Area2D.init_method_set_gravity_is_point();
     return _call_native_mb_no_ret(
-      Area2D.#_bindings.method_set_gravity_is_point,
+      Area2D._bindings.method_set_gravity_is_point,
       this._owner,
       _enable
     );
@@ -491,7 +492,7 @@ export class Area2D extends CollisionObject2D{
   is_gravity_a_point() {
     Area2D.init_method_is_gravity_a_point();
     return _call_native_mb_ret(
-      Area2D.#_bindings.method_is_gravity_a_point,
+      Area2D._bindings.method_is_gravity_a_point,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -502,7 +503,7 @@ export class Area2D extends CollisionObject2D{
   set_gravity_point_unit_distance(_distance_scale) {
     Area2D.init_method_set_gravity_point_unit_distance();
     return _call_native_mb_no_ret(
-      Area2D.#_bindings.method_set_gravity_point_unit_distance,
+      Area2D._bindings.method_set_gravity_point_unit_distance,
       this._owner,
       _distance_scale
     );
@@ -511,7 +512,7 @@ export class Area2D extends CollisionObject2D{
   get_gravity_point_unit_distance() {
     Area2D.init_method_get_gravity_point_unit_distance();
     return _call_native_mb_ret(
-      Area2D.#_bindings.method_get_gravity_point_unit_distance,
+      Area2D._bindings.method_get_gravity_point_unit_distance,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -522,7 +523,7 @@ export class Area2D extends CollisionObject2D{
   set_gravity_point_center(_center) {
     Area2D.init_method_set_gravity_point_center();
     return _call_native_mb_no_ret(
-      Area2D.#_bindings.method_set_gravity_point_center,
+      Area2D._bindings.method_set_gravity_point_center,
       this._owner,
       _center
     );
@@ -531,7 +532,7 @@ export class Area2D extends CollisionObject2D{
   get_gravity_point_center() {
     Area2D.init_method_get_gravity_point_center();
     return _call_native_mb_ret(
-      Area2D.#_bindings.method_get_gravity_point_center,
+      Area2D._bindings.method_get_gravity_point_center,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -542,7 +543,7 @@ export class Area2D extends CollisionObject2D{
   set_gravity_direction(_direction) {
     Area2D.init_method_set_gravity_direction();
     return _call_native_mb_no_ret(
-      Area2D.#_bindings.method_set_gravity_direction,
+      Area2D._bindings.method_set_gravity_direction,
       this._owner,
       _direction
     );
@@ -551,7 +552,7 @@ export class Area2D extends CollisionObject2D{
   get_gravity_direction() {
     Area2D.init_method_get_gravity_direction();
     return _call_native_mb_ret(
-      Area2D.#_bindings.method_get_gravity_direction,
+      Area2D._bindings.method_get_gravity_direction,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -562,7 +563,7 @@ export class Area2D extends CollisionObject2D{
   set_gravity(_gravity) {
     Area2D.init_method_set_gravity();
     return _call_native_mb_no_ret(
-      Area2D.#_bindings.method_set_gravity,
+      Area2D._bindings.method_set_gravity,
       this._owner,
       _gravity
     );
@@ -571,7 +572,7 @@ export class Area2D extends CollisionObject2D{
   get_gravity() {
     Area2D.init_method_get_gravity();
     return _call_native_mb_ret(
-      Area2D.#_bindings.method_get_gravity,
+      Area2D._bindings.method_get_gravity,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -582,7 +583,7 @@ export class Area2D extends CollisionObject2D{
   set_linear_damp_space_override_mode(_space_override_mode) {
     Area2D.init_method_set_linear_damp_space_override_mode();
     return _call_native_mb_no_ret(
-      Area2D.#_bindings.method_set_linear_damp_space_override_mode,
+      Area2D._bindings.method_set_linear_damp_space_override_mode,
       this._owner,
       _space_override_mode
     );
@@ -591,7 +592,7 @@ export class Area2D extends CollisionObject2D{
   get_linear_damp_space_override_mode() {
     Area2D.init_method_get_linear_damp_space_override_mode();
     return _call_native_mb_ret(
-      Area2D.#_bindings.method_get_linear_damp_space_override_mode,
+      Area2D._bindings.method_get_linear_damp_space_override_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -602,7 +603,7 @@ export class Area2D extends CollisionObject2D{
   set_angular_damp_space_override_mode(_space_override_mode) {
     Area2D.init_method_set_angular_damp_space_override_mode();
     return _call_native_mb_no_ret(
-      Area2D.#_bindings.method_set_angular_damp_space_override_mode,
+      Area2D._bindings.method_set_angular_damp_space_override_mode,
       this._owner,
       _space_override_mode
     );
@@ -611,7 +612,7 @@ export class Area2D extends CollisionObject2D{
   get_angular_damp_space_override_mode() {
     Area2D.init_method_get_angular_damp_space_override_mode();
     return _call_native_mb_ret(
-      Area2D.#_bindings.method_get_angular_damp_space_override_mode,
+      Area2D._bindings.method_get_angular_damp_space_override_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -622,7 +623,7 @@ export class Area2D extends CollisionObject2D{
   set_linear_damp(_linear_damp) {
     Area2D.init_method_set_linear_damp();
     return _call_native_mb_no_ret(
-      Area2D.#_bindings.method_set_linear_damp,
+      Area2D._bindings.method_set_linear_damp,
       this._owner,
       _linear_damp
     );
@@ -631,7 +632,7 @@ export class Area2D extends CollisionObject2D{
   get_linear_damp() {
     Area2D.init_method_get_linear_damp();
     return _call_native_mb_ret(
-      Area2D.#_bindings.method_get_linear_damp,
+      Area2D._bindings.method_get_linear_damp,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -642,7 +643,7 @@ export class Area2D extends CollisionObject2D{
   set_angular_damp(_angular_damp) {
     Area2D.init_method_set_angular_damp();
     return _call_native_mb_no_ret(
-      Area2D.#_bindings.method_set_angular_damp,
+      Area2D._bindings.method_set_angular_damp,
       this._owner,
       _angular_damp
     );
@@ -651,7 +652,7 @@ export class Area2D extends CollisionObject2D{
   get_angular_damp() {
     Area2D.init_method_get_angular_damp();
     return _call_native_mb_ret(
-      Area2D.#_bindings.method_get_angular_damp,
+      Area2D._bindings.method_get_angular_damp,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -662,7 +663,7 @@ export class Area2D extends CollisionObject2D{
   set_priority(_priority) {
     Area2D.init_method_set_priority();
     return _call_native_mb_no_ret(
-      Area2D.#_bindings.method_set_priority,
+      Area2D._bindings.method_set_priority,
       this._owner,
       _priority
     );
@@ -671,7 +672,7 @@ export class Area2D extends CollisionObject2D{
   get_priority() {
     Area2D.init_method_get_priority();
     return _call_native_mb_ret(
-      Area2D.#_bindings.method_get_priority,
+      Area2D._bindings.method_get_priority,
       this._owner,
 			Variant.Type.INT,
     
@@ -682,7 +683,7 @@ export class Area2D extends CollisionObject2D{
   set_monitoring(_enable) {
     Area2D.init_method_set_monitoring();
     return _call_native_mb_no_ret(
-      Area2D.#_bindings.method_set_monitoring,
+      Area2D._bindings.method_set_monitoring,
       this._owner,
       _enable
     );
@@ -691,7 +692,7 @@ export class Area2D extends CollisionObject2D{
   is_monitoring() {
     Area2D.init_method_is_monitoring();
     return _call_native_mb_ret(
-      Area2D.#_bindings.method_is_monitoring,
+      Area2D._bindings.method_is_monitoring,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -702,7 +703,7 @@ export class Area2D extends CollisionObject2D{
   set_monitorable(_enable) {
     Area2D.init_method_set_monitorable();
     return _call_native_mb_no_ret(
-      Area2D.#_bindings.method_set_monitorable,
+      Area2D._bindings.method_set_monitorable,
       this._owner,
       _enable
     );
@@ -711,7 +712,7 @@ export class Area2D extends CollisionObject2D{
   is_monitorable() {
     Area2D.init_method_is_monitorable();
     return _call_native_mb_ret(
-      Area2D.#_bindings.method_is_monitorable,
+      Area2D._bindings.method_is_monitorable,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -722,7 +723,7 @@ export class Area2D extends CollisionObject2D{
   get_overlapping_bodies() {
     Area2D.init_method_get_overlapping_bodies();
     return _call_native_mb_ret(
-      Area2D.#_bindings.method_get_overlapping_bodies,
+      Area2D._bindings.method_get_overlapping_bodies,
       this._owner,
 			Variant.Type.ARRAY,
       
@@ -732,7 +733,7 @@ export class Area2D extends CollisionObject2D{
   get_overlapping_areas() {
     Area2D.init_method_get_overlapping_areas();
     return _call_native_mb_ret(
-      Area2D.#_bindings.method_get_overlapping_areas,
+      Area2D._bindings.method_get_overlapping_areas,
       this._owner,
 			Variant.Type.ARRAY,
       
@@ -742,7 +743,7 @@ export class Area2D extends CollisionObject2D{
   has_overlapping_bodies() {
     Area2D.init_method_has_overlapping_bodies();
     return _call_native_mb_ret(
-      Area2D.#_bindings.method_has_overlapping_bodies,
+      Area2D._bindings.method_has_overlapping_bodies,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -753,7 +754,7 @@ export class Area2D extends CollisionObject2D{
   has_overlapping_areas() {
     Area2D.init_method_has_overlapping_areas();
     return _call_native_mb_ret(
-      Area2D.#_bindings.method_has_overlapping_areas,
+      Area2D._bindings.method_has_overlapping_areas,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -764,7 +765,7 @@ export class Area2D extends CollisionObject2D{
   overlaps_body(_body) {
     Area2D.init_method_overlaps_body();
     return _call_native_mb_ret(
-      Area2D.#_bindings.method_overlaps_body,
+      Area2D._bindings.method_overlaps_body,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -775,7 +776,7 @@ export class Area2D extends CollisionObject2D{
   overlaps_area(_area) {
     Area2D.init_method_overlaps_area();
     return _call_native_mb_ret(
-      Area2D.#_bindings.method_overlaps_area,
+      Area2D._bindings.method_overlaps_area,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -786,7 +787,7 @@ export class Area2D extends CollisionObject2D{
   set_audio_bus_name(_name) {
     Area2D.init_method_set_audio_bus_name();
     return _call_native_mb_no_ret(
-      Area2D.#_bindings.method_set_audio_bus_name,
+      Area2D._bindings.method_set_audio_bus_name,
       this._owner,
       _name
     );
@@ -795,7 +796,7 @@ export class Area2D extends CollisionObject2D{
   get_audio_bus_name() {
     Area2D.init_method_get_audio_bus_name();
     return _call_native_mb_ret(
-      Area2D.#_bindings.method_get_audio_bus_name,
+      Area2D._bindings.method_get_audio_bus_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -806,7 +807,7 @@ export class Area2D extends CollisionObject2D{
   set_audio_bus_override(_enable) {
     Area2D.init_method_set_audio_bus_override();
     return _call_native_mb_no_ret(
-      Area2D.#_bindings.method_set_audio_bus_override,
+      Area2D._bindings.method_set_audio_bus_override,
       this._owner,
       _enable
     );
@@ -815,7 +816,7 @@ export class Area2D extends CollisionObject2D{
   is_overriding_audio_bus() {
     Area2D.init_method_is_overriding_audio_bus();
     return _call_native_mb_ret(
-      Area2D.#_bindings.method_is_overriding_audio_bus,
+      Area2D._bindings.method_is_overriding_audio_bus,
       this._owner,
 			Variant.Type.BOOL,
     

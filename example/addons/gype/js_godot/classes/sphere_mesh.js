@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { PrimitiveMesh } from '@js_godot/classes/primitive_mesh'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_radius;
@@ -21,10 +22,10 @@ class _MethodBindings {
   method_set_is_hemisphere;
   method_get_is_hemisphere;
 }
+@GodotClass
 export class SphereMesh extends PrimitiveMesh{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -34,10 +35,10 @@ export class SphereMesh extends PrimitiveMesh{
     }
   }
   static init_method_set_radius() {
-    if (!this.#_bindings.method_set_radius) {
+    if (!this._bindings.method_set_radius) {
       let classname = new StringName("SphereMesh");
       let methodname = new StringName("set_radius");
-      this.#_bindings.method_set_radius = internal.classdb_get_method_bind(
+      this._bindings.method_set_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -45,10 +46,10 @@ export class SphereMesh extends PrimitiveMesh{
     }
   }
   static init_method_get_radius() {
-    if (!this.#_bindings.method_get_radius) {
+    if (!this._bindings.method_get_radius) {
       let classname = new StringName("SphereMesh");
       let methodname = new StringName("get_radius");
-      this.#_bindings.method_get_radius = internal.classdb_get_method_bind(
+      this._bindings.method_get_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -56,10 +57,10 @@ export class SphereMesh extends PrimitiveMesh{
     }
   }
   static init_method_set_height() {
-    if (!this.#_bindings.method_set_height) {
+    if (!this._bindings.method_set_height) {
       let classname = new StringName("SphereMesh");
       let methodname = new StringName("set_height");
-      this.#_bindings.method_set_height = internal.classdb_get_method_bind(
+      this._bindings.method_set_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -67,10 +68,10 @@ export class SphereMesh extends PrimitiveMesh{
     }
   }
   static init_method_get_height() {
-    if (!this.#_bindings.method_get_height) {
+    if (!this._bindings.method_get_height) {
       let classname = new StringName("SphereMesh");
       let methodname = new StringName("get_height");
-      this.#_bindings.method_get_height = internal.classdb_get_method_bind(
+      this._bindings.method_get_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -78,10 +79,10 @@ export class SphereMesh extends PrimitiveMesh{
     }
   }
   static init_method_set_radial_segments() {
-    if (!this.#_bindings.method_set_radial_segments) {
+    if (!this._bindings.method_set_radial_segments) {
       let classname = new StringName("SphereMesh");
       let methodname = new StringName("set_radial_segments");
-      this.#_bindings.method_set_radial_segments = internal.classdb_get_method_bind(
+      this._bindings.method_set_radial_segments = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -89,10 +90,10 @@ export class SphereMesh extends PrimitiveMesh{
     }
   }
   static init_method_get_radial_segments() {
-    if (!this.#_bindings.method_get_radial_segments) {
+    if (!this._bindings.method_get_radial_segments) {
       let classname = new StringName("SphereMesh");
       let methodname = new StringName("get_radial_segments");
-      this.#_bindings.method_get_radial_segments = internal.classdb_get_method_bind(
+      this._bindings.method_get_radial_segments = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -100,10 +101,10 @@ export class SphereMesh extends PrimitiveMesh{
     }
   }
   static init_method_set_rings() {
-    if (!this.#_bindings.method_set_rings) {
+    if (!this._bindings.method_set_rings) {
       let classname = new StringName("SphereMesh");
       let methodname = new StringName("set_rings");
-      this.#_bindings.method_set_rings = internal.classdb_get_method_bind(
+      this._bindings.method_set_rings = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -111,10 +112,10 @@ export class SphereMesh extends PrimitiveMesh{
     }
   }
   static init_method_get_rings() {
-    if (!this.#_bindings.method_get_rings) {
+    if (!this._bindings.method_get_rings) {
       let classname = new StringName("SphereMesh");
       let methodname = new StringName("get_rings");
-      this.#_bindings.method_get_rings = internal.classdb_get_method_bind(
+      this._bindings.method_get_rings = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -122,10 +123,10 @@ export class SphereMesh extends PrimitiveMesh{
     }
   }
   static init_method_set_is_hemisphere() {
-    if (!this.#_bindings.method_set_is_hemisphere) {
+    if (!this._bindings.method_set_is_hemisphere) {
       let classname = new StringName("SphereMesh");
       let methodname = new StringName("set_is_hemisphere");
-      this.#_bindings.method_set_is_hemisphere = internal.classdb_get_method_bind(
+      this._bindings.method_set_is_hemisphere = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -133,10 +134,10 @@ export class SphereMesh extends PrimitiveMesh{
     }
   }
   static init_method_get_is_hemisphere() {
-    if (!this.#_bindings.method_get_is_hemisphere) {
+    if (!this._bindings.method_get_is_hemisphere) {
       let classname = new StringName("SphereMesh");
       let methodname = new StringName("get_is_hemisphere");
-      this.#_bindings.method_get_is_hemisphere = internal.classdb_get_method_bind(
+      this._bindings.method_get_is_hemisphere = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -149,7 +150,7 @@ export class SphereMesh extends PrimitiveMesh{
   set_radius(_radius) {
     SphereMesh.init_method_set_radius();
     return _call_native_mb_no_ret(
-      SphereMesh.#_bindings.method_set_radius,
+      SphereMesh._bindings.method_set_radius,
       this._owner,
       _radius
     );
@@ -158,7 +159,7 @@ export class SphereMesh extends PrimitiveMesh{
   get_radius() {
     SphereMesh.init_method_get_radius();
     return _call_native_mb_ret(
-      SphereMesh.#_bindings.method_get_radius,
+      SphereMesh._bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -169,7 +170,7 @@ export class SphereMesh extends PrimitiveMesh{
   set_height(_height) {
     SphereMesh.init_method_set_height();
     return _call_native_mb_no_ret(
-      SphereMesh.#_bindings.method_set_height,
+      SphereMesh._bindings.method_set_height,
       this._owner,
       _height
     );
@@ -178,7 +179,7 @@ export class SphereMesh extends PrimitiveMesh{
   get_height() {
     SphereMesh.init_method_get_height();
     return _call_native_mb_ret(
-      SphereMesh.#_bindings.method_get_height,
+      SphereMesh._bindings.method_get_height,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -189,7 +190,7 @@ export class SphereMesh extends PrimitiveMesh{
   set_radial_segments(_radial_segments) {
     SphereMesh.init_method_set_radial_segments();
     return _call_native_mb_no_ret(
-      SphereMesh.#_bindings.method_set_radial_segments,
+      SphereMesh._bindings.method_set_radial_segments,
       this._owner,
       _radial_segments
     );
@@ -198,7 +199,7 @@ export class SphereMesh extends PrimitiveMesh{
   get_radial_segments() {
     SphereMesh.init_method_get_radial_segments();
     return _call_native_mb_ret(
-      SphereMesh.#_bindings.method_get_radial_segments,
+      SphereMesh._bindings.method_get_radial_segments,
       this._owner,
 			Variant.Type.INT,
     
@@ -209,7 +210,7 @@ export class SphereMesh extends PrimitiveMesh{
   set_rings(_rings) {
     SphereMesh.init_method_set_rings();
     return _call_native_mb_no_ret(
-      SphereMesh.#_bindings.method_set_rings,
+      SphereMesh._bindings.method_set_rings,
       this._owner,
       _rings
     );
@@ -218,7 +219,7 @@ export class SphereMesh extends PrimitiveMesh{
   get_rings() {
     SphereMesh.init_method_get_rings();
     return _call_native_mb_ret(
-      SphereMesh.#_bindings.method_get_rings,
+      SphereMesh._bindings.method_get_rings,
       this._owner,
 			Variant.Type.INT,
     
@@ -229,7 +230,7 @@ export class SphereMesh extends PrimitiveMesh{
   set_is_hemisphere(_is_hemisphere) {
     SphereMesh.init_method_set_is_hemisphere();
     return _call_native_mb_no_ret(
-      SphereMesh.#_bindings.method_set_is_hemisphere,
+      SphereMesh._bindings.method_set_is_hemisphere,
       this._owner,
       _is_hemisphere
     );
@@ -238,7 +239,7 @@ export class SphereMesh extends PrimitiveMesh{
   get_is_hemisphere() {
     SphereMesh.init_method_get_is_hemisphere();
     return _call_native_mb_ret(
-      SphereMesh.#_bindings.method_get_is_hemisphere,
+      SphereMesh._bindings.method_get_is_hemisphere,
       this._owner,
 			Variant.Type.BOOL,
     

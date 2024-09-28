@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { XRInterface } from '@js_godot/classes/xr_interface'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_color_texture;
@@ -16,10 +17,10 @@ class _MethodBindings {
   method_add_blit;
   method_get_render_target_texture;
 }
+@GodotClass
 export class XRInterfaceExtension extends XRInterface{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -29,10 +30,10 @@ export class XRInterfaceExtension extends XRInterface{
     }
   }
   static init_method_get_color_texture() {
-    if (!this.#_bindings.method_get_color_texture) {
+    if (!this._bindings.method_get_color_texture) {
       let classname = new StringName("XRInterfaceExtension");
       let methodname = new StringName("get_color_texture");
-      this.#_bindings.method_get_color_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_color_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -40,10 +41,10 @@ export class XRInterfaceExtension extends XRInterface{
     }
   }
   static init_method_get_depth_texture() {
-    if (!this.#_bindings.method_get_depth_texture) {
+    if (!this._bindings.method_get_depth_texture) {
       let classname = new StringName("XRInterfaceExtension");
       let methodname = new StringName("get_depth_texture");
-      this.#_bindings.method_get_depth_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_depth_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -51,10 +52,10 @@ export class XRInterfaceExtension extends XRInterface{
     }
   }
   static init_method_get_velocity_texture() {
-    if (!this.#_bindings.method_get_velocity_texture) {
+    if (!this._bindings.method_get_velocity_texture) {
       let classname = new StringName("XRInterfaceExtension");
       let methodname = new StringName("get_velocity_texture");
-      this.#_bindings.method_get_velocity_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_velocity_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         529393457
@@ -62,10 +63,10 @@ export class XRInterfaceExtension extends XRInterface{
     }
   }
   static init_method_add_blit() {
-    if (!this.#_bindings.method_add_blit) {
+    if (!this._bindings.method_add_blit) {
       let classname = new StringName("XRInterfaceExtension");
       let methodname = new StringName("add_blit");
-      this.#_bindings.method_add_blit = internal.classdb_get_method_bind(
+      this._bindings.method_add_blit = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         258596971
@@ -73,10 +74,10 @@ export class XRInterfaceExtension extends XRInterface{
     }
   }
   static init_method_get_render_target_texture() {
-    if (!this.#_bindings.method_get_render_target_texture) {
+    if (!this._bindings.method_get_render_target_texture) {
       let classname = new StringName("XRInterfaceExtension");
       let methodname = new StringName("get_render_target_texture");
-      this.#_bindings.method_get_render_target_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_render_target_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         41030802
@@ -151,7 +152,7 @@ export class XRInterfaceExtension extends XRInterface{
   get_color_texture() {
     XRInterfaceExtension.init_method_get_color_texture();
     return _call_native_mb_ret(
-      XRInterfaceExtension.#_bindings.method_get_color_texture,
+      XRInterfaceExtension._bindings.method_get_color_texture,
       this._owner,
 			Variant.Type.RID,
     
@@ -162,7 +163,7 @@ export class XRInterfaceExtension extends XRInterface{
   get_depth_texture() {
     XRInterfaceExtension.init_method_get_depth_texture();
     return _call_native_mb_ret(
-      XRInterfaceExtension.#_bindings.method_get_depth_texture,
+      XRInterfaceExtension._bindings.method_get_depth_texture,
       this._owner,
 			Variant.Type.RID,
     
@@ -173,7 +174,7 @@ export class XRInterfaceExtension extends XRInterface{
   get_velocity_texture() {
     XRInterfaceExtension.init_method_get_velocity_texture();
     return _call_native_mb_ret(
-      XRInterfaceExtension.#_bindings.method_get_velocity_texture,
+      XRInterfaceExtension._bindings.method_get_velocity_texture,
       this._owner,
 			Variant.Type.RID,
     
@@ -184,7 +185,7 @@ export class XRInterfaceExtension extends XRInterface{
   add_blit(_render_target, _src_rect, _dst_rect, _use_layer, _layer, _apply_lens_distortion, _eye_center, _k1, _k2, _upscale, _aspect_ratio) {
     XRInterfaceExtension.init_method_add_blit();
     return _call_native_mb_no_ret(
-      XRInterfaceExtension.#_bindings.method_add_blit,
+      XRInterfaceExtension._bindings.method_add_blit,
       this._owner,
       _render_target, _src_rect, _dst_rect, _use_layer, _layer, _apply_lens_distortion, _eye_center, _k1, _k2, _upscale, _aspect_ratio
     );
@@ -193,7 +194,7 @@ export class XRInterfaceExtension extends XRInterface{
   get_render_target_texture(_render_target) {
     XRInterfaceExtension.init_method_get_render_target_texture();
     return _call_native_mb_ret(
-      XRInterfaceExtension.#_bindings.method_get_render_target_texture,
+      XRInterfaceExtension._bindings.method_get_render_target_texture,
       this._owner,
 			Variant.Type.RID,
     

@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { AnimationRootNode } from '@js_godot/classes/animation_root_node'
 import {
   call_utility_ret,
@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_add_node;
@@ -22,10 +23,10 @@ class _MethodBindings {
   method_set_graph_offset;
   method_get_graph_offset;
 }
+@GodotClass
 export class AnimationNodeBlendTree extends AnimationRootNode{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -35,10 +36,10 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
     }
   }
   static init_method_add_node() {
-    if (!this.#_bindings.method_add_node) {
+    if (!this._bindings.method_add_node) {
       let classname = new StringName("AnimationNodeBlendTree");
       let methodname = new StringName("add_node");
-      this.#_bindings.method_add_node = internal.classdb_get_method_bind(
+      this._bindings.method_add_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1980270704
@@ -46,10 +47,10 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
     }
   }
   static init_method_get_node() {
-    if (!this.#_bindings.method_get_node) {
+    if (!this._bindings.method_get_node) {
       let classname = new StringName("AnimationNodeBlendTree");
       let methodname = new StringName("get_node");
-      this.#_bindings.method_get_node = internal.classdb_get_method_bind(
+      this._bindings.method_get_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         625644256
@@ -57,10 +58,10 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
     }
   }
   static init_method_remove_node() {
-    if (!this.#_bindings.method_remove_node) {
+    if (!this._bindings.method_remove_node) {
       let classname = new StringName("AnimationNodeBlendTree");
       let methodname = new StringName("remove_node");
-      this.#_bindings.method_remove_node = internal.classdb_get_method_bind(
+      this._bindings.method_remove_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -68,10 +69,10 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
     }
   }
   static init_method_rename_node() {
-    if (!this.#_bindings.method_rename_node) {
+    if (!this._bindings.method_rename_node) {
       let classname = new StringName("AnimationNodeBlendTree");
       let methodname = new StringName("rename_node");
-      this.#_bindings.method_rename_node = internal.classdb_get_method_bind(
+      this._bindings.method_rename_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3740211285
@@ -79,10 +80,10 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
     }
   }
   static init_method_has_node() {
-    if (!this.#_bindings.method_has_node) {
+    if (!this._bindings.method_has_node) {
       let classname = new StringName("AnimationNodeBlendTree");
       let methodname = new StringName("has_node");
-      this.#_bindings.method_has_node = internal.classdb_get_method_bind(
+      this._bindings.method_has_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2619796661
@@ -90,10 +91,10 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
     }
   }
   static init_method_connect_node() {
-    if (!this.#_bindings.method_connect_node) {
+    if (!this._bindings.method_connect_node) {
       let classname = new StringName("AnimationNodeBlendTree");
       let methodname = new StringName("connect_node");
-      this.#_bindings.method_connect_node = internal.classdb_get_method_bind(
+      this._bindings.method_connect_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2168001410
@@ -101,10 +102,10 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
     }
   }
   static init_method_disconnect_node() {
-    if (!this.#_bindings.method_disconnect_node) {
+    if (!this._bindings.method_disconnect_node) {
       let classname = new StringName("AnimationNodeBlendTree");
       let methodname = new StringName("disconnect_node");
-      this.#_bindings.method_disconnect_node = internal.classdb_get_method_bind(
+      this._bindings.method_disconnect_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2415702435
@@ -112,10 +113,10 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
     }
   }
   static init_method_set_node_position() {
-    if (!this.#_bindings.method_set_node_position) {
+    if (!this._bindings.method_set_node_position) {
       let classname = new StringName("AnimationNodeBlendTree");
       let methodname = new StringName("set_node_position");
-      this.#_bindings.method_set_node_position = internal.classdb_get_method_bind(
+      this._bindings.method_set_node_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1999414630
@@ -123,10 +124,10 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
     }
   }
   static init_method_get_node_position() {
-    if (!this.#_bindings.method_get_node_position) {
+    if (!this._bindings.method_get_node_position) {
       let classname = new StringName("AnimationNodeBlendTree");
       let methodname = new StringName("get_node_position");
-      this.#_bindings.method_get_node_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_node_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3100822709
@@ -134,10 +135,10 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
     }
   }
   static init_method_set_graph_offset() {
-    if (!this.#_bindings.method_set_graph_offset) {
+    if (!this._bindings.method_set_graph_offset) {
       let classname = new StringName("AnimationNodeBlendTree");
       let methodname = new StringName("set_graph_offset");
-      this.#_bindings.method_set_graph_offset = internal.classdb_get_method_bind(
+      this._bindings.method_set_graph_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -145,10 +146,10 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
     }
   }
   static init_method_get_graph_offset() {
-    if (!this.#_bindings.method_get_graph_offset) {
+    if (!this._bindings.method_get_graph_offset) {
       let classname = new StringName("AnimationNodeBlendTree");
       let methodname = new StringName("get_graph_offset");
-      this.#_bindings.method_get_graph_offset = internal.classdb_get_method_bind(
+      this._bindings.method_get_graph_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -161,7 +162,7 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
   add_node(_name, _node, _position) {
     AnimationNodeBlendTree.init_method_add_node();
     return _call_native_mb_no_ret(
-      AnimationNodeBlendTree.#_bindings.method_add_node,
+      AnimationNodeBlendTree._bindings.method_add_node,
       this._owner,
       _name, _node, _position
     );
@@ -170,7 +171,7 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
   get_node(_name) {
     AnimationNodeBlendTree.init_method_get_node();
     return _call_native_mb_ret(
-      AnimationNodeBlendTree.#_bindings.method_get_node,
+      AnimationNodeBlendTree._bindings.method_get_node,
       this._owner,
 			Variant.Type.OBJECT,
       _name
@@ -180,7 +181,7 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
   remove_node(_name) {
     AnimationNodeBlendTree.init_method_remove_node();
     return _call_native_mb_no_ret(
-      AnimationNodeBlendTree.#_bindings.method_remove_node,
+      AnimationNodeBlendTree._bindings.method_remove_node,
       this._owner,
       _name
     );
@@ -189,7 +190,7 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
   rename_node(_name, _new_name) {
     AnimationNodeBlendTree.init_method_rename_node();
     return _call_native_mb_no_ret(
-      AnimationNodeBlendTree.#_bindings.method_rename_node,
+      AnimationNodeBlendTree._bindings.method_rename_node,
       this._owner,
       _name, _new_name
     );
@@ -198,7 +199,7 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
   has_node(_name) {
     AnimationNodeBlendTree.init_method_has_node();
     return _call_native_mb_ret(
-      AnimationNodeBlendTree.#_bindings.method_has_node,
+      AnimationNodeBlendTree._bindings.method_has_node,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -209,7 +210,7 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
   connect_node(_input_node, _input_index, _output_node) {
     AnimationNodeBlendTree.init_method_connect_node();
     return _call_native_mb_no_ret(
-      AnimationNodeBlendTree.#_bindings.method_connect_node,
+      AnimationNodeBlendTree._bindings.method_connect_node,
       this._owner,
       _input_node, _input_index, _output_node
     );
@@ -218,7 +219,7 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
   disconnect_node(_input_node, _input_index) {
     AnimationNodeBlendTree.init_method_disconnect_node();
     return _call_native_mb_no_ret(
-      AnimationNodeBlendTree.#_bindings.method_disconnect_node,
+      AnimationNodeBlendTree._bindings.method_disconnect_node,
       this._owner,
       _input_node, _input_index
     );
@@ -227,7 +228,7 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
   set_node_position(_name, _position) {
     AnimationNodeBlendTree.init_method_set_node_position();
     return _call_native_mb_no_ret(
-      AnimationNodeBlendTree.#_bindings.method_set_node_position,
+      AnimationNodeBlendTree._bindings.method_set_node_position,
       this._owner,
       _name, _position
     );
@@ -236,7 +237,7 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
   get_node_position(_name) {
     AnimationNodeBlendTree.init_method_get_node_position();
     return _call_native_mb_ret(
-      AnimationNodeBlendTree.#_bindings.method_get_node_position,
+      AnimationNodeBlendTree._bindings.method_get_node_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -247,7 +248,7 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
   set_graph_offset(_offset) {
     AnimationNodeBlendTree.init_method_set_graph_offset();
     return _call_native_mb_no_ret(
-      AnimationNodeBlendTree.#_bindings.method_set_graph_offset,
+      AnimationNodeBlendTree._bindings.method_set_graph_offset,
       this._owner,
       _offset
     );
@@ -256,7 +257,7 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
   get_graph_offset() {
     AnimationNodeBlendTree.init_method_get_graph_offset();
     return _call_native_mb_ret(
-      AnimationNodeBlendTree.#_bindings.method_get_graph_offset,
+      AnimationNodeBlendTree._bindings.method_get_graph_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     

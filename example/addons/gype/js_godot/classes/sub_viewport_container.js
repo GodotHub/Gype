@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Container } from '@js_godot/classes/container'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_stretch;
@@ -15,10 +16,10 @@ class _MethodBindings {
   method_set_stretch_shrink;
   method_get_stretch_shrink;
 }
+@GodotClass
 export class SubViewportContainer extends Container{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -28,10 +29,10 @@ export class SubViewportContainer extends Container{
     }
   }
   static init_method_set_stretch() {
-    if (!this.#_bindings.method_set_stretch) {
+    if (!this._bindings.method_set_stretch) {
       let classname = new StringName("SubViewportContainer");
       let methodname = new StringName("set_stretch");
-      this.#_bindings.method_set_stretch = internal.classdb_get_method_bind(
+      this._bindings.method_set_stretch = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -39,10 +40,10 @@ export class SubViewportContainer extends Container{
     }
   }
   static init_method_is_stretch_enabled() {
-    if (!this.#_bindings.method_is_stretch_enabled) {
+    if (!this._bindings.method_is_stretch_enabled) {
       let classname = new StringName("SubViewportContainer");
       let methodname = new StringName("is_stretch_enabled");
-      this.#_bindings.method_is_stretch_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_stretch_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -50,10 +51,10 @@ export class SubViewportContainer extends Container{
     }
   }
   static init_method_set_stretch_shrink() {
-    if (!this.#_bindings.method_set_stretch_shrink) {
+    if (!this._bindings.method_set_stretch_shrink) {
       let classname = new StringName("SubViewportContainer");
       let methodname = new StringName("set_stretch_shrink");
-      this.#_bindings.method_set_stretch_shrink = internal.classdb_get_method_bind(
+      this._bindings.method_set_stretch_shrink = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -61,10 +62,10 @@ export class SubViewportContainer extends Container{
     }
   }
   static init_method_get_stretch_shrink() {
-    if (!this.#_bindings.method_get_stretch_shrink) {
+    if (!this._bindings.method_get_stretch_shrink) {
       let classname = new StringName("SubViewportContainer");
       let methodname = new StringName("get_stretch_shrink");
-      this.#_bindings.method_get_stretch_shrink = internal.classdb_get_method_bind(
+      this._bindings.method_get_stretch_shrink = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -79,7 +80,7 @@ export class SubViewportContainer extends Container{
   set_stretch(_enable) {
     SubViewportContainer.init_method_set_stretch();
     return _call_native_mb_no_ret(
-      SubViewportContainer.#_bindings.method_set_stretch,
+      SubViewportContainer._bindings.method_set_stretch,
       this._owner,
       _enable
     );
@@ -88,7 +89,7 @@ export class SubViewportContainer extends Container{
   is_stretch_enabled() {
     SubViewportContainer.init_method_is_stretch_enabled();
     return _call_native_mb_ret(
-      SubViewportContainer.#_bindings.method_is_stretch_enabled,
+      SubViewportContainer._bindings.method_is_stretch_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -99,7 +100,7 @@ export class SubViewportContainer extends Container{
   set_stretch_shrink(_amount) {
     SubViewportContainer.init_method_set_stretch_shrink();
     return _call_native_mb_no_ret(
-      SubViewportContainer.#_bindings.method_set_stretch_shrink,
+      SubViewportContainer._bindings.method_set_stretch_shrink,
       this._owner,
       _amount
     );
@@ -108,7 +109,7 @@ export class SubViewportContainer extends Container{
   get_stretch_shrink() {
     SubViewportContainer.init_method_get_stretch_shrink();
     return _call_native_mb_ret(
-      SubViewportContainer.#_bindings.method_get_stretch_shrink,
+      SubViewportContainer._bindings.method_get_stretch_shrink,
       this._owner,
 			Variant.Type.INT,
     

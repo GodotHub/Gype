@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_length;
@@ -15,10 +16,10 @@ class _MethodBindings {
   method_set_slide_on_slope;
   method_get_slide_on_slope;
 }
+@GodotClass
 export class SeparationRayShape3D extends Shape3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -28,10 +29,10 @@ export class SeparationRayShape3D extends Shape3D{
     }
   }
   static init_method_set_length() {
-    if (!this.#_bindings.method_set_length) {
+    if (!this._bindings.method_set_length) {
       let classname = new StringName("SeparationRayShape3D");
       let methodname = new StringName("set_length");
-      this.#_bindings.method_set_length = internal.classdb_get_method_bind(
+      this._bindings.method_set_length = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -39,10 +40,10 @@ export class SeparationRayShape3D extends Shape3D{
     }
   }
   static init_method_get_length() {
-    if (!this.#_bindings.method_get_length) {
+    if (!this._bindings.method_get_length) {
       let classname = new StringName("SeparationRayShape3D");
       let methodname = new StringName("get_length");
-      this.#_bindings.method_get_length = internal.classdb_get_method_bind(
+      this._bindings.method_get_length = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -50,10 +51,10 @@ export class SeparationRayShape3D extends Shape3D{
     }
   }
   static init_method_set_slide_on_slope() {
-    if (!this.#_bindings.method_set_slide_on_slope) {
+    if (!this._bindings.method_set_slide_on_slope) {
       let classname = new StringName("SeparationRayShape3D");
       let methodname = new StringName("set_slide_on_slope");
-      this.#_bindings.method_set_slide_on_slope = internal.classdb_get_method_bind(
+      this._bindings.method_set_slide_on_slope = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -61,10 +62,10 @@ export class SeparationRayShape3D extends Shape3D{
     }
   }
   static init_method_get_slide_on_slope() {
-    if (!this.#_bindings.method_get_slide_on_slope) {
+    if (!this._bindings.method_get_slide_on_slope) {
       let classname = new StringName("SeparationRayShape3D");
       let methodname = new StringName("get_slide_on_slope");
-      this.#_bindings.method_get_slide_on_slope = internal.classdb_get_method_bind(
+      this._bindings.method_get_slide_on_slope = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -77,7 +78,7 @@ export class SeparationRayShape3D extends Shape3D{
   set_length(_length) {
     SeparationRayShape3D.init_method_set_length();
     return _call_native_mb_no_ret(
-      SeparationRayShape3D.#_bindings.method_set_length,
+      SeparationRayShape3D._bindings.method_set_length,
       this._owner,
       _length
     );
@@ -86,7 +87,7 @@ export class SeparationRayShape3D extends Shape3D{
   get_length() {
     SeparationRayShape3D.init_method_get_length();
     return _call_native_mb_ret(
-      SeparationRayShape3D.#_bindings.method_get_length,
+      SeparationRayShape3D._bindings.method_get_length,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -97,7 +98,7 @@ export class SeparationRayShape3D extends Shape3D{
   set_slide_on_slope(_active) {
     SeparationRayShape3D.init_method_set_slide_on_slope();
     return _call_native_mb_no_ret(
-      SeparationRayShape3D.#_bindings.method_set_slide_on_slope,
+      SeparationRayShape3D._bindings.method_set_slide_on_slope,
       this._owner,
       _active
     );
@@ -106,7 +107,7 @@ export class SeparationRayShape3D extends Shape3D{
   get_slide_on_slope() {
     SeparationRayShape3D.init_method_get_slide_on_slope();
     return _call_native_mb_ret(
-      SeparationRayShape3D.#_bindings.method_get_slide_on_slope,
+      SeparationRayShape3D._bindings.method_get_slide_on_slope,
       this._owner,
 			Variant.Type.BOOL,
     

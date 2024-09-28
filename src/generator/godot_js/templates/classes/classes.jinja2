@@ -16,6 +16,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   {%- for method in methods %}
@@ -32,8 +33,7 @@ class _MethodBindings {
 
 {{singleton_class_name(clazz, singletons)}} {{ 'extends ' + to_js_type(clazz['inherits']) if to_js_type(clazz['inherits']) else ''}}{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -46,10 +46,10 @@ class _MethodBindings {
   {%- for method in methods %}
     {%- if not method['is_virtual'] %}
   static init_method_{{method['name']}}() {
-    if (!this.#_bindings.method_{{method['name']}}) {
+    if (!this._bindings.method_{{method['name']}}) {
       let classname = new StringName("{{clazz['name']}}");
       let methodname = new StringName("{{method['name']}}");
-      this.#_bindings.method_{{method['name']}} = internal.classdb_get_method_bind(
+      this._bindings.method_{{method['name']}} = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         {{method['hash']}}
@@ -67,7 +67,7 @@ class _MethodBindings {
     {%- if not method['is_virtual'] %}
     {{to_js_type(clazz['name'])}}.init_method_{{method['name']}}();
     return _call_native_mb{{-'' if method['return_value'] else '_no'-}}_ret(
-      {{ '_'+clazz_name if clazz_name in singletons else clazz_name}}.#_bindings.method_{{method['name']}},
+      {{ '_'+clazz_name if clazz_name in singletons else clazz_name}}._bindings.method_{{method['name']}},
       this._owner,
       {%- if method['return_value'] -%}
       {{-type_enum(method['return_value'], '\t\t\t')-}}

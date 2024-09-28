@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Viewport } from '@js_godot/classes/viewport'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_title;
@@ -130,10 +131,10 @@ class _MethodBindings {
   method_popup_exclusive_centered_ratio;
   method_popup_exclusive_centered_clamped;
 }
+@GodotClass
 export class Window extends Viewport{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -143,10 +144,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_title() {
-    if (!this.#_bindings.method_set_title) {
+    if (!this._bindings.method_set_title) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_title");
-      this.#_bindings.method_set_title = internal.classdb_get_method_bind(
+      this._bindings.method_set_title = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -154,10 +155,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_title() {
-    if (!this.#_bindings.method_get_title) {
+    if (!this._bindings.method_get_title) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_title");
-      this.#_bindings.method_get_title = internal.classdb_get_method_bind(
+      this._bindings.method_get_title = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -165,10 +166,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_window_id() {
-    if (!this.#_bindings.method_get_window_id) {
+    if (!this._bindings.method_get_window_id) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_window_id");
-      this.#_bindings.method_get_window_id = internal.classdb_get_method_bind(
+      this._bindings.method_get_window_id = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -176,10 +177,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_initial_position() {
-    if (!this.#_bindings.method_set_initial_position) {
+    if (!this._bindings.method_set_initial_position) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_initial_position");
-      this.#_bindings.method_set_initial_position = internal.classdb_get_method_bind(
+      this._bindings.method_set_initial_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4084468099
@@ -187,10 +188,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_initial_position() {
-    if (!this.#_bindings.method_get_initial_position) {
+    if (!this._bindings.method_get_initial_position) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_initial_position");
-      this.#_bindings.method_get_initial_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_initial_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4294066647
@@ -198,10 +199,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_current_screen() {
-    if (!this.#_bindings.method_set_current_screen) {
+    if (!this._bindings.method_set_current_screen) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_current_screen");
-      this.#_bindings.method_set_current_screen = internal.classdb_get_method_bind(
+      this._bindings.method_set_current_screen = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -209,10 +210,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_current_screen() {
-    if (!this.#_bindings.method_get_current_screen) {
+    if (!this._bindings.method_get_current_screen) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_current_screen");
-      this.#_bindings.method_get_current_screen = internal.classdb_get_method_bind(
+      this._bindings.method_get_current_screen = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -220,10 +221,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_position() {
-    if (!this.#_bindings.method_set_position) {
+    if (!this._bindings.method_set_position) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_position");
-      this.#_bindings.method_set_position = internal.classdb_get_method_bind(
+      this._bindings.method_set_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1130785943
@@ -231,10 +232,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_position() {
-    if (!this.#_bindings.method_get_position) {
+    if (!this._bindings.method_get_position) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_position");
-      this.#_bindings.method_get_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3690982128
@@ -242,10 +243,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_move_to_center() {
-    if (!this.#_bindings.method_move_to_center) {
+    if (!this._bindings.method_move_to_center) {
       let classname = new StringName("Window");
       let methodname = new StringName("move_to_center");
-      this.#_bindings.method_move_to_center = internal.classdb_get_method_bind(
+      this._bindings.method_move_to_center = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -253,10 +254,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_size() {
-    if (!this.#_bindings.method_set_size) {
+    if (!this._bindings.method_set_size) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_size");
-      this.#_bindings.method_set_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1130785943
@@ -264,10 +265,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_size() {
-    if (!this.#_bindings.method_get_size) {
+    if (!this._bindings.method_get_size) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_size");
-      this.#_bindings.method_get_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3690982128
@@ -275,10 +276,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_reset_size() {
-    if (!this.#_bindings.method_reset_size) {
+    if (!this._bindings.method_reset_size) {
       let classname = new StringName("Window");
       let methodname = new StringName("reset_size");
-      this.#_bindings.method_reset_size = internal.classdb_get_method_bind(
+      this._bindings.method_reset_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -286,10 +287,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_position_with_decorations() {
-    if (!this.#_bindings.method_get_position_with_decorations) {
+    if (!this._bindings.method_get_position_with_decorations) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_position_with_decorations");
-      this.#_bindings.method_get_position_with_decorations = internal.classdb_get_method_bind(
+      this._bindings.method_get_position_with_decorations = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3690982128
@@ -297,10 +298,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_size_with_decorations() {
-    if (!this.#_bindings.method_get_size_with_decorations) {
+    if (!this._bindings.method_get_size_with_decorations) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_size_with_decorations");
-      this.#_bindings.method_get_size_with_decorations = internal.classdb_get_method_bind(
+      this._bindings.method_get_size_with_decorations = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3690982128
@@ -308,10 +309,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_max_size() {
-    if (!this.#_bindings.method_set_max_size) {
+    if (!this._bindings.method_set_max_size) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_max_size");
-      this.#_bindings.method_set_max_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_max_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1130785943
@@ -319,10 +320,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_max_size() {
-    if (!this.#_bindings.method_get_max_size) {
+    if (!this._bindings.method_get_max_size) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_max_size");
-      this.#_bindings.method_get_max_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_max_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3690982128
@@ -330,10 +331,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_min_size() {
-    if (!this.#_bindings.method_set_min_size) {
+    if (!this._bindings.method_set_min_size) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_min_size");
-      this.#_bindings.method_set_min_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_min_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1130785943
@@ -341,10 +342,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_min_size() {
-    if (!this.#_bindings.method_get_min_size) {
+    if (!this._bindings.method_get_min_size) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_min_size");
-      this.#_bindings.method_get_min_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_min_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3690982128
@@ -352,10 +353,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_mode() {
-    if (!this.#_bindings.method_set_mode) {
+    if (!this._bindings.method_set_mode) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_mode");
-      this.#_bindings.method_set_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3095236531
@@ -363,10 +364,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_mode() {
-    if (!this.#_bindings.method_get_mode) {
+    if (!this._bindings.method_get_mode) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_mode");
-      this.#_bindings.method_get_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2566346114
@@ -374,10 +375,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_flag() {
-    if (!this.#_bindings.method_set_flag) {
+    if (!this._bindings.method_set_flag) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_flag");
-      this.#_bindings.method_set_flag = internal.classdb_get_method_bind(
+      this._bindings.method_set_flag = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3426449779
@@ -385,10 +386,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_flag() {
-    if (!this.#_bindings.method_get_flag) {
+    if (!this._bindings.method_get_flag) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_flag");
-      this.#_bindings.method_get_flag = internal.classdb_get_method_bind(
+      this._bindings.method_get_flag = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3062752289
@@ -396,10 +397,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_is_maximize_allowed() {
-    if (!this.#_bindings.method_is_maximize_allowed) {
+    if (!this._bindings.method_is_maximize_allowed) {
       let classname = new StringName("Window");
       let methodname = new StringName("is_maximize_allowed");
-      this.#_bindings.method_is_maximize_allowed = internal.classdb_get_method_bind(
+      this._bindings.method_is_maximize_allowed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -407,10 +408,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_request_attention() {
-    if (!this.#_bindings.method_request_attention) {
+    if (!this._bindings.method_request_attention) {
       let classname = new StringName("Window");
       let methodname = new StringName("request_attention");
-      this.#_bindings.method_request_attention = internal.classdb_get_method_bind(
+      this._bindings.method_request_attention = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -418,10 +419,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_move_to_foreground() {
-    if (!this.#_bindings.method_move_to_foreground) {
+    if (!this._bindings.method_move_to_foreground) {
       let classname = new StringName("Window");
       let methodname = new StringName("move_to_foreground");
-      this.#_bindings.method_move_to_foreground = internal.classdb_get_method_bind(
+      this._bindings.method_move_to_foreground = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -429,10 +430,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_visible() {
-    if (!this.#_bindings.method_set_visible) {
+    if (!this._bindings.method_set_visible) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_visible");
-      this.#_bindings.method_set_visible = internal.classdb_get_method_bind(
+      this._bindings.method_set_visible = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -440,10 +441,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_is_visible() {
-    if (!this.#_bindings.method_is_visible) {
+    if (!this._bindings.method_is_visible) {
       let classname = new StringName("Window");
       let methodname = new StringName("is_visible");
-      this.#_bindings.method_is_visible = internal.classdb_get_method_bind(
+      this._bindings.method_is_visible = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -451,10 +452,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_hide() {
-    if (!this.#_bindings.method_hide) {
+    if (!this._bindings.method_hide) {
       let classname = new StringName("Window");
       let methodname = new StringName("hide");
-      this.#_bindings.method_hide = internal.classdb_get_method_bind(
+      this._bindings.method_hide = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -462,10 +463,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_show() {
-    if (!this.#_bindings.method_show) {
+    if (!this._bindings.method_show) {
       let classname = new StringName("Window");
       let methodname = new StringName("show");
-      this.#_bindings.method_show = internal.classdb_get_method_bind(
+      this._bindings.method_show = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -473,10 +474,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_transient() {
-    if (!this.#_bindings.method_set_transient) {
+    if (!this._bindings.method_set_transient) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_transient");
-      this.#_bindings.method_set_transient = internal.classdb_get_method_bind(
+      this._bindings.method_set_transient = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -484,10 +485,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_is_transient() {
-    if (!this.#_bindings.method_is_transient) {
+    if (!this._bindings.method_is_transient) {
       let classname = new StringName("Window");
       let methodname = new StringName("is_transient");
-      this.#_bindings.method_is_transient = internal.classdb_get_method_bind(
+      this._bindings.method_is_transient = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -495,10 +496,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_transient_to_focused() {
-    if (!this.#_bindings.method_set_transient_to_focused) {
+    if (!this._bindings.method_set_transient_to_focused) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_transient_to_focused");
-      this.#_bindings.method_set_transient_to_focused = internal.classdb_get_method_bind(
+      this._bindings.method_set_transient_to_focused = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -506,10 +507,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_is_transient_to_focused() {
-    if (!this.#_bindings.method_is_transient_to_focused) {
+    if (!this._bindings.method_is_transient_to_focused) {
       let classname = new StringName("Window");
       let methodname = new StringName("is_transient_to_focused");
-      this.#_bindings.method_is_transient_to_focused = internal.classdb_get_method_bind(
+      this._bindings.method_is_transient_to_focused = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -517,10 +518,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_exclusive() {
-    if (!this.#_bindings.method_set_exclusive) {
+    if (!this._bindings.method_set_exclusive) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_exclusive");
-      this.#_bindings.method_set_exclusive = internal.classdb_get_method_bind(
+      this._bindings.method_set_exclusive = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -528,10 +529,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_is_exclusive() {
-    if (!this.#_bindings.method_is_exclusive) {
+    if (!this._bindings.method_is_exclusive) {
       let classname = new StringName("Window");
       let methodname = new StringName("is_exclusive");
-      this.#_bindings.method_is_exclusive = internal.classdb_get_method_bind(
+      this._bindings.method_is_exclusive = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -539,10 +540,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_unparent_when_invisible() {
-    if (!this.#_bindings.method_set_unparent_when_invisible) {
+    if (!this._bindings.method_set_unparent_when_invisible) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_unparent_when_invisible");
-      this.#_bindings.method_set_unparent_when_invisible = internal.classdb_get_method_bind(
+      this._bindings.method_set_unparent_when_invisible = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -550,10 +551,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_can_draw() {
-    if (!this.#_bindings.method_can_draw) {
+    if (!this._bindings.method_can_draw) {
       let classname = new StringName("Window");
       let methodname = new StringName("can_draw");
-      this.#_bindings.method_can_draw = internal.classdb_get_method_bind(
+      this._bindings.method_can_draw = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -561,10 +562,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_has_focus() {
-    if (!this.#_bindings.method_has_focus) {
+    if (!this._bindings.method_has_focus) {
       let classname = new StringName("Window");
       let methodname = new StringName("has_focus");
-      this.#_bindings.method_has_focus = internal.classdb_get_method_bind(
+      this._bindings.method_has_focus = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -572,10 +573,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_grab_focus() {
-    if (!this.#_bindings.method_grab_focus) {
+    if (!this._bindings.method_grab_focus) {
       let classname = new StringName("Window");
       let methodname = new StringName("grab_focus");
-      this.#_bindings.method_grab_focus = internal.classdb_get_method_bind(
+      this._bindings.method_grab_focus = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -583,10 +584,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_ime_active() {
-    if (!this.#_bindings.method_set_ime_active) {
+    if (!this._bindings.method_set_ime_active) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_ime_active");
-      this.#_bindings.method_set_ime_active = internal.classdb_get_method_bind(
+      this._bindings.method_set_ime_active = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -594,10 +595,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_ime_position() {
-    if (!this.#_bindings.method_set_ime_position) {
+    if (!this._bindings.method_set_ime_position) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_ime_position");
-      this.#_bindings.method_set_ime_position = internal.classdb_get_method_bind(
+      this._bindings.method_set_ime_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1130785943
@@ -605,10 +606,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_is_embedded() {
-    if (!this.#_bindings.method_is_embedded) {
+    if (!this._bindings.method_is_embedded) {
       let classname = new StringName("Window");
       let methodname = new StringName("is_embedded");
-      this.#_bindings.method_is_embedded = internal.classdb_get_method_bind(
+      this._bindings.method_is_embedded = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -616,10 +617,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_contents_minimum_size() {
-    if (!this.#_bindings.method_get_contents_minimum_size) {
+    if (!this._bindings.method_get_contents_minimum_size) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_contents_minimum_size");
-      this.#_bindings.method_get_contents_minimum_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_contents_minimum_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -627,10 +628,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_force_native() {
-    if (!this.#_bindings.method_set_force_native) {
+    if (!this._bindings.method_set_force_native) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_force_native");
-      this.#_bindings.method_set_force_native = internal.classdb_get_method_bind(
+      this._bindings.method_set_force_native = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -638,10 +639,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_force_native() {
-    if (!this.#_bindings.method_get_force_native) {
+    if (!this._bindings.method_get_force_native) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_force_native");
-      this.#_bindings.method_get_force_native = internal.classdb_get_method_bind(
+      this._bindings.method_get_force_native = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -649,10 +650,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_content_scale_size() {
-    if (!this.#_bindings.method_set_content_scale_size) {
+    if (!this._bindings.method_set_content_scale_size) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_content_scale_size");
-      this.#_bindings.method_set_content_scale_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_content_scale_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1130785943
@@ -660,10 +661,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_content_scale_size() {
-    if (!this.#_bindings.method_get_content_scale_size) {
+    if (!this._bindings.method_get_content_scale_size) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_content_scale_size");
-      this.#_bindings.method_get_content_scale_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_content_scale_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3690982128
@@ -671,10 +672,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_content_scale_mode() {
-    if (!this.#_bindings.method_set_content_scale_mode) {
+    if (!this._bindings.method_set_content_scale_mode) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_content_scale_mode");
-      this.#_bindings.method_set_content_scale_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_content_scale_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2937716473
@@ -682,10 +683,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_content_scale_mode() {
-    if (!this.#_bindings.method_get_content_scale_mode) {
+    if (!this._bindings.method_get_content_scale_mode) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_content_scale_mode");
-      this.#_bindings.method_get_content_scale_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_content_scale_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         161585230
@@ -693,10 +694,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_content_scale_aspect() {
-    if (!this.#_bindings.method_set_content_scale_aspect) {
+    if (!this._bindings.method_set_content_scale_aspect) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_content_scale_aspect");
-      this.#_bindings.method_set_content_scale_aspect = internal.classdb_get_method_bind(
+      this._bindings.method_set_content_scale_aspect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2370399418
@@ -704,10 +705,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_content_scale_aspect() {
-    if (!this.#_bindings.method_get_content_scale_aspect) {
+    if (!this._bindings.method_get_content_scale_aspect) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_content_scale_aspect");
-      this.#_bindings.method_get_content_scale_aspect = internal.classdb_get_method_bind(
+      this._bindings.method_get_content_scale_aspect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4158790715
@@ -715,10 +716,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_content_scale_stretch() {
-    if (!this.#_bindings.method_set_content_scale_stretch) {
+    if (!this._bindings.method_set_content_scale_stretch) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_content_scale_stretch");
-      this.#_bindings.method_set_content_scale_stretch = internal.classdb_get_method_bind(
+      this._bindings.method_set_content_scale_stretch = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         349355940
@@ -726,10 +727,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_content_scale_stretch() {
-    if (!this.#_bindings.method_get_content_scale_stretch) {
+    if (!this._bindings.method_get_content_scale_stretch) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_content_scale_stretch");
-      this.#_bindings.method_get_content_scale_stretch = internal.classdb_get_method_bind(
+      this._bindings.method_get_content_scale_stretch = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         536857316
@@ -737,10 +738,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_keep_title_visible() {
-    if (!this.#_bindings.method_set_keep_title_visible) {
+    if (!this._bindings.method_set_keep_title_visible) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_keep_title_visible");
-      this.#_bindings.method_set_keep_title_visible = internal.classdb_get_method_bind(
+      this._bindings.method_set_keep_title_visible = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -748,10 +749,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_keep_title_visible() {
-    if (!this.#_bindings.method_get_keep_title_visible) {
+    if (!this._bindings.method_get_keep_title_visible) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_keep_title_visible");
-      this.#_bindings.method_get_keep_title_visible = internal.classdb_get_method_bind(
+      this._bindings.method_get_keep_title_visible = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -759,10 +760,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_content_scale_factor() {
-    if (!this.#_bindings.method_set_content_scale_factor) {
+    if (!this._bindings.method_set_content_scale_factor) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_content_scale_factor");
-      this.#_bindings.method_set_content_scale_factor = internal.classdb_get_method_bind(
+      this._bindings.method_set_content_scale_factor = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -770,10 +771,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_content_scale_factor() {
-    if (!this.#_bindings.method_get_content_scale_factor) {
+    if (!this._bindings.method_get_content_scale_factor) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_content_scale_factor");
-      this.#_bindings.method_get_content_scale_factor = internal.classdb_get_method_bind(
+      this._bindings.method_get_content_scale_factor = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -781,10 +782,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_use_font_oversampling() {
-    if (!this.#_bindings.method_set_use_font_oversampling) {
+    if (!this._bindings.method_set_use_font_oversampling) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_use_font_oversampling");
-      this.#_bindings.method_set_use_font_oversampling = internal.classdb_get_method_bind(
+      this._bindings.method_set_use_font_oversampling = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -792,10 +793,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_is_using_font_oversampling() {
-    if (!this.#_bindings.method_is_using_font_oversampling) {
+    if (!this._bindings.method_is_using_font_oversampling) {
       let classname = new StringName("Window");
       let methodname = new StringName("is_using_font_oversampling");
-      this.#_bindings.method_is_using_font_oversampling = internal.classdb_get_method_bind(
+      this._bindings.method_is_using_font_oversampling = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -803,10 +804,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_mouse_passthrough_polygon() {
-    if (!this.#_bindings.method_set_mouse_passthrough_polygon) {
+    if (!this._bindings.method_set_mouse_passthrough_polygon) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_mouse_passthrough_polygon");
-      this.#_bindings.method_set_mouse_passthrough_polygon = internal.classdb_get_method_bind(
+      this._bindings.method_set_mouse_passthrough_polygon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1509147220
@@ -814,10 +815,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_mouse_passthrough_polygon() {
-    if (!this.#_bindings.method_get_mouse_passthrough_polygon) {
+    if (!this._bindings.method_get_mouse_passthrough_polygon) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_mouse_passthrough_polygon");
-      this.#_bindings.method_get_mouse_passthrough_polygon = internal.classdb_get_method_bind(
+      this._bindings.method_get_mouse_passthrough_polygon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2961356807
@@ -825,10 +826,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_wrap_controls() {
-    if (!this.#_bindings.method_set_wrap_controls) {
+    if (!this._bindings.method_set_wrap_controls) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_wrap_controls");
-      this.#_bindings.method_set_wrap_controls = internal.classdb_get_method_bind(
+      this._bindings.method_set_wrap_controls = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -836,10 +837,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_is_wrapping_controls() {
-    if (!this.#_bindings.method_is_wrapping_controls) {
+    if (!this._bindings.method_is_wrapping_controls) {
       let classname = new StringName("Window");
       let methodname = new StringName("is_wrapping_controls");
-      this.#_bindings.method_is_wrapping_controls = internal.classdb_get_method_bind(
+      this._bindings.method_is_wrapping_controls = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -847,10 +848,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_child_controls_changed() {
-    if (!this.#_bindings.method_child_controls_changed) {
+    if (!this._bindings.method_child_controls_changed) {
       let classname = new StringName("Window");
       let methodname = new StringName("child_controls_changed");
-      this.#_bindings.method_child_controls_changed = internal.classdb_get_method_bind(
+      this._bindings.method_child_controls_changed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -858,10 +859,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_theme() {
-    if (!this.#_bindings.method_set_theme) {
+    if (!this._bindings.method_set_theme) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_theme");
-      this.#_bindings.method_set_theme = internal.classdb_get_method_bind(
+      this._bindings.method_set_theme = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2326690814
@@ -869,10 +870,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_theme() {
-    if (!this.#_bindings.method_get_theme) {
+    if (!this._bindings.method_get_theme) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_theme");
-      this.#_bindings.method_get_theme = internal.classdb_get_method_bind(
+      this._bindings.method_get_theme = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3846893731
@@ -880,10 +881,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_theme_type_variation() {
-    if (!this.#_bindings.method_set_theme_type_variation) {
+    if (!this._bindings.method_set_theme_type_variation) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_theme_type_variation");
-      this.#_bindings.method_set_theme_type_variation = internal.classdb_get_method_bind(
+      this._bindings.method_set_theme_type_variation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -891,10 +892,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_theme_type_variation() {
-    if (!this.#_bindings.method_get_theme_type_variation) {
+    if (!this._bindings.method_get_theme_type_variation) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_theme_type_variation");
-      this.#_bindings.method_get_theme_type_variation = internal.classdb_get_method_bind(
+      this._bindings.method_get_theme_type_variation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2002593661
@@ -902,10 +903,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_begin_bulk_theme_override() {
-    if (!this.#_bindings.method_begin_bulk_theme_override) {
+    if (!this._bindings.method_begin_bulk_theme_override) {
       let classname = new StringName("Window");
       let methodname = new StringName("begin_bulk_theme_override");
-      this.#_bindings.method_begin_bulk_theme_override = internal.classdb_get_method_bind(
+      this._bindings.method_begin_bulk_theme_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -913,10 +914,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_end_bulk_theme_override() {
-    if (!this.#_bindings.method_end_bulk_theme_override) {
+    if (!this._bindings.method_end_bulk_theme_override) {
       let classname = new StringName("Window");
       let methodname = new StringName("end_bulk_theme_override");
-      this.#_bindings.method_end_bulk_theme_override = internal.classdb_get_method_bind(
+      this._bindings.method_end_bulk_theme_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -924,10 +925,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_add_theme_icon_override() {
-    if (!this.#_bindings.method_add_theme_icon_override) {
+    if (!this._bindings.method_add_theme_icon_override) {
       let classname = new StringName("Window");
       let methodname = new StringName("add_theme_icon_override");
-      this.#_bindings.method_add_theme_icon_override = internal.classdb_get_method_bind(
+      this._bindings.method_add_theme_icon_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1373065600
@@ -935,10 +936,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_add_theme_stylebox_override() {
-    if (!this.#_bindings.method_add_theme_stylebox_override) {
+    if (!this._bindings.method_add_theme_stylebox_override) {
       let classname = new StringName("Window");
       let methodname = new StringName("add_theme_stylebox_override");
-      this.#_bindings.method_add_theme_stylebox_override = internal.classdb_get_method_bind(
+      this._bindings.method_add_theme_stylebox_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4188838905
@@ -946,10 +947,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_add_theme_font_override() {
-    if (!this.#_bindings.method_add_theme_font_override) {
+    if (!this._bindings.method_add_theme_font_override) {
       let classname = new StringName("Window");
       let methodname = new StringName("add_theme_font_override");
-      this.#_bindings.method_add_theme_font_override = internal.classdb_get_method_bind(
+      this._bindings.method_add_theme_font_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3518018674
@@ -957,10 +958,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_add_theme_font_size_override() {
-    if (!this.#_bindings.method_add_theme_font_size_override) {
+    if (!this._bindings.method_add_theme_font_size_override) {
       let classname = new StringName("Window");
       let methodname = new StringName("add_theme_font_size_override");
-      this.#_bindings.method_add_theme_font_size_override = internal.classdb_get_method_bind(
+      this._bindings.method_add_theme_font_size_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2415702435
@@ -968,10 +969,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_add_theme_color_override() {
-    if (!this.#_bindings.method_add_theme_color_override) {
+    if (!this._bindings.method_add_theme_color_override) {
       let classname = new StringName("Window");
       let methodname = new StringName("add_theme_color_override");
-      this.#_bindings.method_add_theme_color_override = internal.classdb_get_method_bind(
+      this._bindings.method_add_theme_color_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4260178595
@@ -979,10 +980,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_add_theme_constant_override() {
-    if (!this.#_bindings.method_add_theme_constant_override) {
+    if (!this._bindings.method_add_theme_constant_override) {
       let classname = new StringName("Window");
       let methodname = new StringName("add_theme_constant_override");
-      this.#_bindings.method_add_theme_constant_override = internal.classdb_get_method_bind(
+      this._bindings.method_add_theme_constant_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2415702435
@@ -990,10 +991,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_remove_theme_icon_override() {
-    if (!this.#_bindings.method_remove_theme_icon_override) {
+    if (!this._bindings.method_remove_theme_icon_override) {
       let classname = new StringName("Window");
       let methodname = new StringName("remove_theme_icon_override");
-      this.#_bindings.method_remove_theme_icon_override = internal.classdb_get_method_bind(
+      this._bindings.method_remove_theme_icon_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -1001,10 +1002,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_remove_theme_stylebox_override() {
-    if (!this.#_bindings.method_remove_theme_stylebox_override) {
+    if (!this._bindings.method_remove_theme_stylebox_override) {
       let classname = new StringName("Window");
       let methodname = new StringName("remove_theme_stylebox_override");
-      this.#_bindings.method_remove_theme_stylebox_override = internal.classdb_get_method_bind(
+      this._bindings.method_remove_theme_stylebox_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -1012,10 +1013,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_remove_theme_font_override() {
-    if (!this.#_bindings.method_remove_theme_font_override) {
+    if (!this._bindings.method_remove_theme_font_override) {
       let classname = new StringName("Window");
       let methodname = new StringName("remove_theme_font_override");
-      this.#_bindings.method_remove_theme_font_override = internal.classdb_get_method_bind(
+      this._bindings.method_remove_theme_font_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -1023,10 +1024,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_remove_theme_font_size_override() {
-    if (!this.#_bindings.method_remove_theme_font_size_override) {
+    if (!this._bindings.method_remove_theme_font_size_override) {
       let classname = new StringName("Window");
       let methodname = new StringName("remove_theme_font_size_override");
-      this.#_bindings.method_remove_theme_font_size_override = internal.classdb_get_method_bind(
+      this._bindings.method_remove_theme_font_size_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -1034,10 +1035,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_remove_theme_color_override() {
-    if (!this.#_bindings.method_remove_theme_color_override) {
+    if (!this._bindings.method_remove_theme_color_override) {
       let classname = new StringName("Window");
       let methodname = new StringName("remove_theme_color_override");
-      this.#_bindings.method_remove_theme_color_override = internal.classdb_get_method_bind(
+      this._bindings.method_remove_theme_color_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -1045,10 +1046,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_remove_theme_constant_override() {
-    if (!this.#_bindings.method_remove_theme_constant_override) {
+    if (!this._bindings.method_remove_theme_constant_override) {
       let classname = new StringName("Window");
       let methodname = new StringName("remove_theme_constant_override");
-      this.#_bindings.method_remove_theme_constant_override = internal.classdb_get_method_bind(
+      this._bindings.method_remove_theme_constant_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -1056,10 +1057,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_theme_icon() {
-    if (!this.#_bindings.method_get_theme_icon) {
+    if (!this._bindings.method_get_theme_icon) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_theme_icon");
-      this.#_bindings.method_get_theme_icon = internal.classdb_get_method_bind(
+      this._bindings.method_get_theme_icon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2336455395
@@ -1067,10 +1068,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_theme_stylebox() {
-    if (!this.#_bindings.method_get_theme_stylebox) {
+    if (!this._bindings.method_get_theme_stylebox) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_theme_stylebox");
-      this.#_bindings.method_get_theme_stylebox = internal.classdb_get_method_bind(
+      this._bindings.method_get_theme_stylebox = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2759935355
@@ -1078,10 +1079,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_theme_font() {
-    if (!this.#_bindings.method_get_theme_font) {
+    if (!this._bindings.method_get_theme_font) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_theme_font");
-      this.#_bindings.method_get_theme_font = internal.classdb_get_method_bind(
+      this._bindings.method_get_theme_font = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         387378635
@@ -1089,10 +1090,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_theme_font_size() {
-    if (!this.#_bindings.method_get_theme_font_size) {
+    if (!this._bindings.method_get_theme_font_size) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_theme_font_size");
-      this.#_bindings.method_get_theme_font_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_theme_font_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         229578101
@@ -1100,10 +1101,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_theme_color() {
-    if (!this.#_bindings.method_get_theme_color) {
+    if (!this._bindings.method_get_theme_color) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_theme_color");
-      this.#_bindings.method_get_theme_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_theme_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2377051548
@@ -1111,10 +1112,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_theme_constant() {
-    if (!this.#_bindings.method_get_theme_constant) {
+    if (!this._bindings.method_get_theme_constant) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_theme_constant");
-      this.#_bindings.method_get_theme_constant = internal.classdb_get_method_bind(
+      this._bindings.method_get_theme_constant = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         229578101
@@ -1122,10 +1123,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_has_theme_icon_override() {
-    if (!this.#_bindings.method_has_theme_icon_override) {
+    if (!this._bindings.method_has_theme_icon_override) {
       let classname = new StringName("Window");
       let methodname = new StringName("has_theme_icon_override");
-      this.#_bindings.method_has_theme_icon_override = internal.classdb_get_method_bind(
+      this._bindings.method_has_theme_icon_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2619796661
@@ -1133,10 +1134,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_has_theme_stylebox_override() {
-    if (!this.#_bindings.method_has_theme_stylebox_override) {
+    if (!this._bindings.method_has_theme_stylebox_override) {
       let classname = new StringName("Window");
       let methodname = new StringName("has_theme_stylebox_override");
-      this.#_bindings.method_has_theme_stylebox_override = internal.classdb_get_method_bind(
+      this._bindings.method_has_theme_stylebox_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2619796661
@@ -1144,10 +1145,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_has_theme_font_override() {
-    if (!this.#_bindings.method_has_theme_font_override) {
+    if (!this._bindings.method_has_theme_font_override) {
       let classname = new StringName("Window");
       let methodname = new StringName("has_theme_font_override");
-      this.#_bindings.method_has_theme_font_override = internal.classdb_get_method_bind(
+      this._bindings.method_has_theme_font_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2619796661
@@ -1155,10 +1156,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_has_theme_font_size_override() {
-    if (!this.#_bindings.method_has_theme_font_size_override) {
+    if (!this._bindings.method_has_theme_font_size_override) {
       let classname = new StringName("Window");
       let methodname = new StringName("has_theme_font_size_override");
-      this.#_bindings.method_has_theme_font_size_override = internal.classdb_get_method_bind(
+      this._bindings.method_has_theme_font_size_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2619796661
@@ -1166,10 +1167,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_has_theme_color_override() {
-    if (!this.#_bindings.method_has_theme_color_override) {
+    if (!this._bindings.method_has_theme_color_override) {
       let classname = new StringName("Window");
       let methodname = new StringName("has_theme_color_override");
-      this.#_bindings.method_has_theme_color_override = internal.classdb_get_method_bind(
+      this._bindings.method_has_theme_color_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2619796661
@@ -1177,10 +1178,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_has_theme_constant_override() {
-    if (!this.#_bindings.method_has_theme_constant_override) {
+    if (!this._bindings.method_has_theme_constant_override) {
       let classname = new StringName("Window");
       let methodname = new StringName("has_theme_constant_override");
-      this.#_bindings.method_has_theme_constant_override = internal.classdb_get_method_bind(
+      this._bindings.method_has_theme_constant_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2619796661
@@ -1188,10 +1189,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_has_theme_icon() {
-    if (!this.#_bindings.method_has_theme_icon) {
+    if (!this._bindings.method_has_theme_icon) {
       let classname = new StringName("Window");
       let methodname = new StringName("has_theme_icon");
-      this.#_bindings.method_has_theme_icon = internal.classdb_get_method_bind(
+      this._bindings.method_has_theme_icon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1187511791
@@ -1199,10 +1200,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_has_theme_stylebox() {
-    if (!this.#_bindings.method_has_theme_stylebox) {
+    if (!this._bindings.method_has_theme_stylebox) {
       let classname = new StringName("Window");
       let methodname = new StringName("has_theme_stylebox");
-      this.#_bindings.method_has_theme_stylebox = internal.classdb_get_method_bind(
+      this._bindings.method_has_theme_stylebox = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1187511791
@@ -1210,10 +1211,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_has_theme_font() {
-    if (!this.#_bindings.method_has_theme_font) {
+    if (!this._bindings.method_has_theme_font) {
       let classname = new StringName("Window");
       let methodname = new StringName("has_theme_font");
-      this.#_bindings.method_has_theme_font = internal.classdb_get_method_bind(
+      this._bindings.method_has_theme_font = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1187511791
@@ -1221,10 +1222,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_has_theme_font_size() {
-    if (!this.#_bindings.method_has_theme_font_size) {
+    if (!this._bindings.method_has_theme_font_size) {
       let classname = new StringName("Window");
       let methodname = new StringName("has_theme_font_size");
-      this.#_bindings.method_has_theme_font_size = internal.classdb_get_method_bind(
+      this._bindings.method_has_theme_font_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1187511791
@@ -1232,10 +1233,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_has_theme_color() {
-    if (!this.#_bindings.method_has_theme_color) {
+    if (!this._bindings.method_has_theme_color) {
       let classname = new StringName("Window");
       let methodname = new StringName("has_theme_color");
-      this.#_bindings.method_has_theme_color = internal.classdb_get_method_bind(
+      this._bindings.method_has_theme_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1187511791
@@ -1243,10 +1244,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_has_theme_constant() {
-    if (!this.#_bindings.method_has_theme_constant) {
+    if (!this._bindings.method_has_theme_constant) {
       let classname = new StringName("Window");
       let methodname = new StringName("has_theme_constant");
-      this.#_bindings.method_has_theme_constant = internal.classdb_get_method_bind(
+      this._bindings.method_has_theme_constant = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1187511791
@@ -1254,10 +1255,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_theme_default_base_scale() {
-    if (!this.#_bindings.method_get_theme_default_base_scale) {
+    if (!this._bindings.method_get_theme_default_base_scale) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_theme_default_base_scale");
-      this.#_bindings.method_get_theme_default_base_scale = internal.classdb_get_method_bind(
+      this._bindings.method_get_theme_default_base_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -1265,10 +1266,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_theme_default_font() {
-    if (!this.#_bindings.method_get_theme_default_font) {
+    if (!this._bindings.method_get_theme_default_font) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_theme_default_font");
-      this.#_bindings.method_get_theme_default_font = internal.classdb_get_method_bind(
+      this._bindings.method_get_theme_default_font = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3229501585
@@ -1276,10 +1277,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_theme_default_font_size() {
-    if (!this.#_bindings.method_get_theme_default_font_size) {
+    if (!this._bindings.method_get_theme_default_font_size) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_theme_default_font_size");
-      this.#_bindings.method_get_theme_default_font_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_theme_default_font_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -1287,10 +1288,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_layout_direction() {
-    if (!this.#_bindings.method_set_layout_direction) {
+    if (!this._bindings.method_set_layout_direction) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_layout_direction");
-      this.#_bindings.method_set_layout_direction = internal.classdb_get_method_bind(
+      this._bindings.method_set_layout_direction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3094704184
@@ -1298,10 +1299,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_get_layout_direction() {
-    if (!this.#_bindings.method_get_layout_direction) {
+    if (!this._bindings.method_get_layout_direction) {
       let classname = new StringName("Window");
       let methodname = new StringName("get_layout_direction");
-      this.#_bindings.method_get_layout_direction = internal.classdb_get_method_bind(
+      this._bindings.method_get_layout_direction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3909617982
@@ -1309,10 +1310,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_is_layout_rtl() {
-    if (!this.#_bindings.method_is_layout_rtl) {
+    if (!this._bindings.method_is_layout_rtl) {
       let classname = new StringName("Window");
       let methodname = new StringName("is_layout_rtl");
-      this.#_bindings.method_is_layout_rtl = internal.classdb_get_method_bind(
+      this._bindings.method_is_layout_rtl = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -1320,10 +1321,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_set_auto_translate() {
-    if (!this.#_bindings.method_set_auto_translate) {
+    if (!this._bindings.method_set_auto_translate) {
       let classname = new StringName("Window");
       let methodname = new StringName("set_auto_translate");
-      this.#_bindings.method_set_auto_translate = internal.classdb_get_method_bind(
+      this._bindings.method_set_auto_translate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -1331,10 +1332,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_is_auto_translating() {
-    if (!this.#_bindings.method_is_auto_translating) {
+    if (!this._bindings.method_is_auto_translating) {
       let classname = new StringName("Window");
       let methodname = new StringName("is_auto_translating");
-      this.#_bindings.method_is_auto_translating = internal.classdb_get_method_bind(
+      this._bindings.method_is_auto_translating = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -1342,10 +1343,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_popup() {
-    if (!this.#_bindings.method_popup) {
+    if (!this._bindings.method_popup) {
       let classname = new StringName("Window");
       let methodname = new StringName("popup");
-      this.#_bindings.method_popup = internal.classdb_get_method_bind(
+      this._bindings.method_popup = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1680304321
@@ -1353,10 +1354,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_popup_on_parent() {
-    if (!this.#_bindings.method_popup_on_parent) {
+    if (!this._bindings.method_popup_on_parent) {
       let classname = new StringName("Window");
       let methodname = new StringName("popup_on_parent");
-      this.#_bindings.method_popup_on_parent = internal.classdb_get_method_bind(
+      this._bindings.method_popup_on_parent = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1763793166
@@ -1364,10 +1365,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_popup_centered() {
-    if (!this.#_bindings.method_popup_centered) {
+    if (!this._bindings.method_popup_centered) {
       let classname = new StringName("Window");
       let methodname = new StringName("popup_centered");
-      this.#_bindings.method_popup_centered = internal.classdb_get_method_bind(
+      this._bindings.method_popup_centered = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3447975422
@@ -1375,10 +1376,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_popup_centered_ratio() {
-    if (!this.#_bindings.method_popup_centered_ratio) {
+    if (!this._bindings.method_popup_centered_ratio) {
       let classname = new StringName("Window");
       let methodname = new StringName("popup_centered_ratio");
-      this.#_bindings.method_popup_centered_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_popup_centered_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1014814997
@@ -1386,10 +1387,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_popup_centered_clamped() {
-    if (!this.#_bindings.method_popup_centered_clamped) {
+    if (!this._bindings.method_popup_centered_clamped) {
       let classname = new StringName("Window");
       let methodname = new StringName("popup_centered_clamped");
-      this.#_bindings.method_popup_centered_clamped = internal.classdb_get_method_bind(
+      this._bindings.method_popup_centered_clamped = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2613752477
@@ -1397,10 +1398,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_popup_exclusive() {
-    if (!this.#_bindings.method_popup_exclusive) {
+    if (!this._bindings.method_popup_exclusive) {
       let classname = new StringName("Window");
       let methodname = new StringName("popup_exclusive");
-      this.#_bindings.method_popup_exclusive = internal.classdb_get_method_bind(
+      this._bindings.method_popup_exclusive = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2134721627
@@ -1408,10 +1409,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_popup_exclusive_on_parent() {
-    if (!this.#_bindings.method_popup_exclusive_on_parent) {
+    if (!this._bindings.method_popup_exclusive_on_parent) {
       let classname = new StringName("Window");
       let methodname = new StringName("popup_exclusive_on_parent");
-      this.#_bindings.method_popup_exclusive_on_parent = internal.classdb_get_method_bind(
+      this._bindings.method_popup_exclusive_on_parent = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2344671043
@@ -1419,10 +1420,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_popup_exclusive_centered() {
-    if (!this.#_bindings.method_popup_exclusive_centered) {
+    if (!this._bindings.method_popup_exclusive_centered) {
       let classname = new StringName("Window");
       let methodname = new StringName("popup_exclusive_centered");
-      this.#_bindings.method_popup_exclusive_centered = internal.classdb_get_method_bind(
+      this._bindings.method_popup_exclusive_centered = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3357594017
@@ -1430,10 +1431,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_popup_exclusive_centered_ratio() {
-    if (!this.#_bindings.method_popup_exclusive_centered_ratio) {
+    if (!this._bindings.method_popup_exclusive_centered_ratio) {
       let classname = new StringName("Window");
       let methodname = new StringName("popup_exclusive_centered_ratio");
-      this.#_bindings.method_popup_exclusive_centered_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_popup_exclusive_centered_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2284776287
@@ -1441,10 +1442,10 @@ export class Window extends Viewport{
     }
   }
   static init_method_popup_exclusive_centered_clamped() {
-    if (!this.#_bindings.method_popup_exclusive_centered_clamped) {
+    if (!this._bindings.method_popup_exclusive_centered_clamped) {
       let classname = new StringName("Window");
       let methodname = new StringName("popup_exclusive_centered_clamped");
-      this.#_bindings.method_popup_exclusive_centered_clamped = internal.classdb_get_method_bind(
+      this._bindings.method_popup_exclusive_centered_clamped = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2612708785
@@ -1459,7 +1460,7 @@ export class Window extends Viewport{
   set_title(_title) {
     Window.init_method_set_title();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_title,
+      Window._bindings.method_set_title,
       this._owner,
       _title
     );
@@ -1468,7 +1469,7 @@ export class Window extends Viewport{
   get_title() {
     Window.init_method_get_title();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_title,
+      Window._bindings.method_get_title,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1479,7 +1480,7 @@ export class Window extends Viewport{
   get_window_id() {
     Window.init_method_get_window_id();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_window_id,
+      Window._bindings.method_get_window_id,
       this._owner,
 			Variant.Type.INT,
     
@@ -1490,7 +1491,7 @@ export class Window extends Viewport{
   set_initial_position(_initial_position) {
     Window.init_method_set_initial_position();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_initial_position,
+      Window._bindings.method_set_initial_position,
       this._owner,
       _initial_position
     );
@@ -1499,7 +1500,7 @@ export class Window extends Viewport{
   get_initial_position() {
     Window.init_method_get_initial_position();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_initial_position,
+      Window._bindings.method_get_initial_position,
       this._owner,
 			Variant.Type.INT,
     
@@ -1510,7 +1511,7 @@ export class Window extends Viewport{
   set_current_screen(_index) {
     Window.init_method_set_current_screen();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_current_screen,
+      Window._bindings.method_set_current_screen,
       this._owner,
       _index
     );
@@ -1519,7 +1520,7 @@ export class Window extends Viewport{
   get_current_screen() {
     Window.init_method_get_current_screen();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_current_screen,
+      Window._bindings.method_get_current_screen,
       this._owner,
 			Variant.Type.INT,
     
@@ -1530,7 +1531,7 @@ export class Window extends Viewport{
   set_position(_position) {
     Window.init_method_set_position();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_position,
+      Window._bindings.method_set_position,
       this._owner,
       _position
     );
@@ -1539,7 +1540,7 @@ export class Window extends Viewport{
   get_position() {
     Window.init_method_get_position();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_position,
+      Window._bindings.method_get_position,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -1550,7 +1551,7 @@ export class Window extends Viewport{
   move_to_center() {
     Window.init_method_move_to_center();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_move_to_center,
+      Window._bindings.method_move_to_center,
       this._owner,
       
     );
@@ -1559,7 +1560,7 @@ export class Window extends Viewport{
   set_size(_size) {
     Window.init_method_set_size();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_size,
+      Window._bindings.method_set_size,
       this._owner,
       _size
     );
@@ -1568,7 +1569,7 @@ export class Window extends Viewport{
   get_size() {
     Window.init_method_get_size();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_size,
+      Window._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -1579,7 +1580,7 @@ export class Window extends Viewport{
   reset_size() {
     Window.init_method_reset_size();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_reset_size,
+      Window._bindings.method_reset_size,
       this._owner,
       
     );
@@ -1588,7 +1589,7 @@ export class Window extends Viewport{
   get_position_with_decorations() {
     Window.init_method_get_position_with_decorations();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_position_with_decorations,
+      Window._bindings.method_get_position_with_decorations,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -1599,7 +1600,7 @@ export class Window extends Viewport{
   get_size_with_decorations() {
     Window.init_method_get_size_with_decorations();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_size_with_decorations,
+      Window._bindings.method_get_size_with_decorations,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -1610,7 +1611,7 @@ export class Window extends Viewport{
   set_max_size(_max_size) {
     Window.init_method_set_max_size();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_max_size,
+      Window._bindings.method_set_max_size,
       this._owner,
       _max_size
     );
@@ -1619,7 +1620,7 @@ export class Window extends Viewport{
   get_max_size() {
     Window.init_method_get_max_size();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_max_size,
+      Window._bindings.method_get_max_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -1630,7 +1631,7 @@ export class Window extends Viewport{
   set_min_size(_min_size) {
     Window.init_method_set_min_size();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_min_size,
+      Window._bindings.method_set_min_size,
       this._owner,
       _min_size
     );
@@ -1639,7 +1640,7 @@ export class Window extends Viewport{
   get_min_size() {
     Window.init_method_get_min_size();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_min_size,
+      Window._bindings.method_get_min_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -1650,7 +1651,7 @@ export class Window extends Viewport{
   set_mode(_mode) {
     Window.init_method_set_mode();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_mode,
+      Window._bindings.method_set_mode,
       this._owner,
       _mode
     );
@@ -1659,7 +1660,7 @@ export class Window extends Viewport{
   get_mode() {
     Window.init_method_get_mode();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_mode,
+      Window._bindings.method_get_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -1670,7 +1671,7 @@ export class Window extends Viewport{
   set_flag(_flag, _enabled) {
     Window.init_method_set_flag();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_flag,
+      Window._bindings.method_set_flag,
       this._owner,
       _flag, _enabled
     );
@@ -1679,7 +1680,7 @@ export class Window extends Viewport{
   get_flag(_flag) {
     Window.init_method_get_flag();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_flag,
+      Window._bindings.method_get_flag,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1690,7 +1691,7 @@ export class Window extends Viewport{
   is_maximize_allowed() {
     Window.init_method_is_maximize_allowed();
     return _call_native_mb_ret(
-      Window.#_bindings.method_is_maximize_allowed,
+      Window._bindings.method_is_maximize_allowed,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1701,7 +1702,7 @@ export class Window extends Viewport{
   request_attention() {
     Window.init_method_request_attention();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_request_attention,
+      Window._bindings.method_request_attention,
       this._owner,
       
     );
@@ -1710,7 +1711,7 @@ export class Window extends Viewport{
   move_to_foreground() {
     Window.init_method_move_to_foreground();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_move_to_foreground,
+      Window._bindings.method_move_to_foreground,
       this._owner,
       
     );
@@ -1719,7 +1720,7 @@ export class Window extends Viewport{
   set_visible(_visible) {
     Window.init_method_set_visible();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_visible,
+      Window._bindings.method_set_visible,
       this._owner,
       _visible
     );
@@ -1728,7 +1729,7 @@ export class Window extends Viewport{
   is_visible() {
     Window.init_method_is_visible();
     return _call_native_mb_ret(
-      Window.#_bindings.method_is_visible,
+      Window._bindings.method_is_visible,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1739,7 +1740,7 @@ export class Window extends Viewport{
   hide() {
     Window.init_method_hide();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_hide,
+      Window._bindings.method_hide,
       this._owner,
       
     );
@@ -1748,7 +1749,7 @@ export class Window extends Viewport{
   show() {
     Window.init_method_show();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_show,
+      Window._bindings.method_show,
       this._owner,
       
     );
@@ -1757,7 +1758,7 @@ export class Window extends Viewport{
   set_transient(_transient) {
     Window.init_method_set_transient();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_transient,
+      Window._bindings.method_set_transient,
       this._owner,
       _transient
     );
@@ -1766,7 +1767,7 @@ export class Window extends Viewport{
   is_transient() {
     Window.init_method_is_transient();
     return _call_native_mb_ret(
-      Window.#_bindings.method_is_transient,
+      Window._bindings.method_is_transient,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1777,7 +1778,7 @@ export class Window extends Viewport{
   set_transient_to_focused(_enable) {
     Window.init_method_set_transient_to_focused();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_transient_to_focused,
+      Window._bindings.method_set_transient_to_focused,
       this._owner,
       _enable
     );
@@ -1786,7 +1787,7 @@ export class Window extends Viewport{
   is_transient_to_focused() {
     Window.init_method_is_transient_to_focused();
     return _call_native_mb_ret(
-      Window.#_bindings.method_is_transient_to_focused,
+      Window._bindings.method_is_transient_to_focused,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1797,7 +1798,7 @@ export class Window extends Viewport{
   set_exclusive(_exclusive) {
     Window.init_method_set_exclusive();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_exclusive,
+      Window._bindings.method_set_exclusive,
       this._owner,
       _exclusive
     );
@@ -1806,7 +1807,7 @@ export class Window extends Viewport{
   is_exclusive() {
     Window.init_method_is_exclusive();
     return _call_native_mb_ret(
-      Window.#_bindings.method_is_exclusive,
+      Window._bindings.method_is_exclusive,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1817,7 +1818,7 @@ export class Window extends Viewport{
   set_unparent_when_invisible(_unparent) {
     Window.init_method_set_unparent_when_invisible();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_unparent_when_invisible,
+      Window._bindings.method_set_unparent_when_invisible,
       this._owner,
       _unparent
     );
@@ -1826,7 +1827,7 @@ export class Window extends Viewport{
   can_draw() {
     Window.init_method_can_draw();
     return _call_native_mb_ret(
-      Window.#_bindings.method_can_draw,
+      Window._bindings.method_can_draw,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1837,7 +1838,7 @@ export class Window extends Viewport{
   has_focus() {
     Window.init_method_has_focus();
     return _call_native_mb_ret(
-      Window.#_bindings.method_has_focus,
+      Window._bindings.method_has_focus,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1848,7 +1849,7 @@ export class Window extends Viewport{
   grab_focus() {
     Window.init_method_grab_focus();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_grab_focus,
+      Window._bindings.method_grab_focus,
       this._owner,
       
     );
@@ -1857,7 +1858,7 @@ export class Window extends Viewport{
   set_ime_active(_active) {
     Window.init_method_set_ime_active();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_ime_active,
+      Window._bindings.method_set_ime_active,
       this._owner,
       _active
     );
@@ -1866,7 +1867,7 @@ export class Window extends Viewport{
   set_ime_position(_position) {
     Window.init_method_set_ime_position();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_ime_position,
+      Window._bindings.method_set_ime_position,
       this._owner,
       _position
     );
@@ -1875,7 +1876,7 @@ export class Window extends Viewport{
   is_embedded() {
     Window.init_method_is_embedded();
     return _call_native_mb_ret(
-      Window.#_bindings.method_is_embedded,
+      Window._bindings.method_is_embedded,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1886,7 +1887,7 @@ export class Window extends Viewport{
   get_contents_minimum_size() {
     Window.init_method_get_contents_minimum_size();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_contents_minimum_size,
+      Window._bindings.method_get_contents_minimum_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1897,7 +1898,7 @@ export class Window extends Viewport{
   set_force_native(_force_native) {
     Window.init_method_set_force_native();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_force_native,
+      Window._bindings.method_set_force_native,
       this._owner,
       _force_native
     );
@@ -1906,7 +1907,7 @@ export class Window extends Viewport{
   get_force_native() {
     Window.init_method_get_force_native();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_force_native,
+      Window._bindings.method_get_force_native,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1917,7 +1918,7 @@ export class Window extends Viewport{
   set_content_scale_size(_size) {
     Window.init_method_set_content_scale_size();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_content_scale_size,
+      Window._bindings.method_set_content_scale_size,
       this._owner,
       _size
     );
@@ -1926,7 +1927,7 @@ export class Window extends Viewport{
   get_content_scale_size() {
     Window.init_method_get_content_scale_size();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_content_scale_size,
+      Window._bindings.method_get_content_scale_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -1937,7 +1938,7 @@ export class Window extends Viewport{
   set_content_scale_mode(_mode) {
     Window.init_method_set_content_scale_mode();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_content_scale_mode,
+      Window._bindings.method_set_content_scale_mode,
       this._owner,
       _mode
     );
@@ -1946,7 +1947,7 @@ export class Window extends Viewport{
   get_content_scale_mode() {
     Window.init_method_get_content_scale_mode();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_content_scale_mode,
+      Window._bindings.method_get_content_scale_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -1957,7 +1958,7 @@ export class Window extends Viewport{
   set_content_scale_aspect(_aspect) {
     Window.init_method_set_content_scale_aspect();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_content_scale_aspect,
+      Window._bindings.method_set_content_scale_aspect,
       this._owner,
       _aspect
     );
@@ -1966,7 +1967,7 @@ export class Window extends Viewport{
   get_content_scale_aspect() {
     Window.init_method_get_content_scale_aspect();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_content_scale_aspect,
+      Window._bindings.method_get_content_scale_aspect,
       this._owner,
 			Variant.Type.INT,
     
@@ -1977,7 +1978,7 @@ export class Window extends Viewport{
   set_content_scale_stretch(_stretch) {
     Window.init_method_set_content_scale_stretch();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_content_scale_stretch,
+      Window._bindings.method_set_content_scale_stretch,
       this._owner,
       _stretch
     );
@@ -1986,7 +1987,7 @@ export class Window extends Viewport{
   get_content_scale_stretch() {
     Window.init_method_get_content_scale_stretch();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_content_scale_stretch,
+      Window._bindings.method_get_content_scale_stretch,
       this._owner,
 			Variant.Type.INT,
     
@@ -1997,7 +1998,7 @@ export class Window extends Viewport{
   set_keep_title_visible(_title_visible) {
     Window.init_method_set_keep_title_visible();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_keep_title_visible,
+      Window._bindings.method_set_keep_title_visible,
       this._owner,
       _title_visible
     );
@@ -2006,7 +2007,7 @@ export class Window extends Viewport{
   get_keep_title_visible() {
     Window.init_method_get_keep_title_visible();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_keep_title_visible,
+      Window._bindings.method_get_keep_title_visible,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2017,7 +2018,7 @@ export class Window extends Viewport{
   set_content_scale_factor(_factor) {
     Window.init_method_set_content_scale_factor();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_content_scale_factor,
+      Window._bindings.method_set_content_scale_factor,
       this._owner,
       _factor
     );
@@ -2026,7 +2027,7 @@ export class Window extends Viewport{
   get_content_scale_factor() {
     Window.init_method_get_content_scale_factor();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_content_scale_factor,
+      Window._bindings.method_get_content_scale_factor,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -2037,7 +2038,7 @@ export class Window extends Viewport{
   set_use_font_oversampling(_enable) {
     Window.init_method_set_use_font_oversampling();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_use_font_oversampling,
+      Window._bindings.method_set_use_font_oversampling,
       this._owner,
       _enable
     );
@@ -2046,7 +2047,7 @@ export class Window extends Viewport{
   is_using_font_oversampling() {
     Window.init_method_is_using_font_oversampling();
     return _call_native_mb_ret(
-      Window.#_bindings.method_is_using_font_oversampling,
+      Window._bindings.method_is_using_font_oversampling,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2057,7 +2058,7 @@ export class Window extends Viewport{
   set_mouse_passthrough_polygon(_polygon) {
     Window.init_method_set_mouse_passthrough_polygon();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_mouse_passthrough_polygon,
+      Window._bindings.method_set_mouse_passthrough_polygon,
       this._owner,
       _polygon
     );
@@ -2066,7 +2067,7 @@ export class Window extends Viewport{
   get_mouse_passthrough_polygon() {
     Window.init_method_get_mouse_passthrough_polygon();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_mouse_passthrough_polygon,
+      Window._bindings.method_get_mouse_passthrough_polygon,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -2077,7 +2078,7 @@ export class Window extends Viewport{
   set_wrap_controls(_enable) {
     Window.init_method_set_wrap_controls();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_wrap_controls,
+      Window._bindings.method_set_wrap_controls,
       this._owner,
       _enable
     );
@@ -2086,7 +2087,7 @@ export class Window extends Viewport{
   is_wrapping_controls() {
     Window.init_method_is_wrapping_controls();
     return _call_native_mb_ret(
-      Window.#_bindings.method_is_wrapping_controls,
+      Window._bindings.method_is_wrapping_controls,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2097,7 +2098,7 @@ export class Window extends Viewport{
   child_controls_changed() {
     Window.init_method_child_controls_changed();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_child_controls_changed,
+      Window._bindings.method_child_controls_changed,
       this._owner,
       
     );
@@ -2106,7 +2107,7 @@ export class Window extends Viewport{
   set_theme(_theme) {
     Window.init_method_set_theme();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_theme,
+      Window._bindings.method_set_theme,
       this._owner,
       _theme
     );
@@ -2115,7 +2116,7 @@ export class Window extends Viewport{
   get_theme() {
     Window.init_method_get_theme();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_theme,
+      Window._bindings.method_get_theme,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -2125,7 +2126,7 @@ export class Window extends Viewport{
   set_theme_type_variation(_theme_type) {
     Window.init_method_set_theme_type_variation();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_theme_type_variation,
+      Window._bindings.method_set_theme_type_variation,
       this._owner,
       _theme_type
     );
@@ -2134,7 +2135,7 @@ export class Window extends Viewport{
   get_theme_type_variation() {
     Window.init_method_get_theme_type_variation();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_theme_type_variation,
+      Window._bindings.method_get_theme_type_variation,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -2145,7 +2146,7 @@ export class Window extends Viewport{
   begin_bulk_theme_override() {
     Window.init_method_begin_bulk_theme_override();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_begin_bulk_theme_override,
+      Window._bindings.method_begin_bulk_theme_override,
       this._owner,
       
     );
@@ -2154,7 +2155,7 @@ export class Window extends Viewport{
   end_bulk_theme_override() {
     Window.init_method_end_bulk_theme_override();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_end_bulk_theme_override,
+      Window._bindings.method_end_bulk_theme_override,
       this._owner,
       
     );
@@ -2163,7 +2164,7 @@ export class Window extends Viewport{
   add_theme_icon_override(_name, _texture) {
     Window.init_method_add_theme_icon_override();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_add_theme_icon_override,
+      Window._bindings.method_add_theme_icon_override,
       this._owner,
       _name, _texture
     );
@@ -2172,7 +2173,7 @@ export class Window extends Viewport{
   add_theme_stylebox_override(_name, _stylebox) {
     Window.init_method_add_theme_stylebox_override();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_add_theme_stylebox_override,
+      Window._bindings.method_add_theme_stylebox_override,
       this._owner,
       _name, _stylebox
     );
@@ -2181,7 +2182,7 @@ export class Window extends Viewport{
   add_theme_font_override(_name, _font) {
     Window.init_method_add_theme_font_override();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_add_theme_font_override,
+      Window._bindings.method_add_theme_font_override,
       this._owner,
       _name, _font
     );
@@ -2190,7 +2191,7 @@ export class Window extends Viewport{
   add_theme_font_size_override(_name, _font_size) {
     Window.init_method_add_theme_font_size_override();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_add_theme_font_size_override,
+      Window._bindings.method_add_theme_font_size_override,
       this._owner,
       _name, _font_size
     );
@@ -2199,7 +2200,7 @@ export class Window extends Viewport{
   add_theme_color_override(_name, _color) {
     Window.init_method_add_theme_color_override();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_add_theme_color_override,
+      Window._bindings.method_add_theme_color_override,
       this._owner,
       _name, _color
     );
@@ -2208,7 +2209,7 @@ export class Window extends Viewport{
   add_theme_constant_override(_name, _constant) {
     Window.init_method_add_theme_constant_override();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_add_theme_constant_override,
+      Window._bindings.method_add_theme_constant_override,
       this._owner,
       _name, _constant
     );
@@ -2217,7 +2218,7 @@ export class Window extends Viewport{
   remove_theme_icon_override(_name) {
     Window.init_method_remove_theme_icon_override();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_remove_theme_icon_override,
+      Window._bindings.method_remove_theme_icon_override,
       this._owner,
       _name
     );
@@ -2226,7 +2227,7 @@ export class Window extends Viewport{
   remove_theme_stylebox_override(_name) {
     Window.init_method_remove_theme_stylebox_override();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_remove_theme_stylebox_override,
+      Window._bindings.method_remove_theme_stylebox_override,
       this._owner,
       _name
     );
@@ -2235,7 +2236,7 @@ export class Window extends Viewport{
   remove_theme_font_override(_name) {
     Window.init_method_remove_theme_font_override();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_remove_theme_font_override,
+      Window._bindings.method_remove_theme_font_override,
       this._owner,
       _name
     );
@@ -2244,7 +2245,7 @@ export class Window extends Viewport{
   remove_theme_font_size_override(_name) {
     Window.init_method_remove_theme_font_size_override();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_remove_theme_font_size_override,
+      Window._bindings.method_remove_theme_font_size_override,
       this._owner,
       _name
     );
@@ -2253,7 +2254,7 @@ export class Window extends Viewport{
   remove_theme_color_override(_name) {
     Window.init_method_remove_theme_color_override();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_remove_theme_color_override,
+      Window._bindings.method_remove_theme_color_override,
       this._owner,
       _name
     );
@@ -2262,7 +2263,7 @@ export class Window extends Viewport{
   remove_theme_constant_override(_name) {
     Window.init_method_remove_theme_constant_override();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_remove_theme_constant_override,
+      Window._bindings.method_remove_theme_constant_override,
       this._owner,
       _name
     );
@@ -2271,7 +2272,7 @@ export class Window extends Viewport{
   get_theme_icon(_name, _theme_type) {
     Window.init_method_get_theme_icon();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_theme_icon,
+      Window._bindings.method_get_theme_icon,
       this._owner,
 			Variant.Type.OBJECT,
       _name, _theme_type
@@ -2281,7 +2282,7 @@ export class Window extends Viewport{
   get_theme_stylebox(_name, _theme_type) {
     Window.init_method_get_theme_stylebox();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_theme_stylebox,
+      Window._bindings.method_get_theme_stylebox,
       this._owner,
 			Variant.Type.OBJECT,
       _name, _theme_type
@@ -2291,7 +2292,7 @@ export class Window extends Viewport{
   get_theme_font(_name, _theme_type) {
     Window.init_method_get_theme_font();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_theme_font,
+      Window._bindings.method_get_theme_font,
       this._owner,
 			Variant.Type.OBJECT,
       _name, _theme_type
@@ -2301,7 +2302,7 @@ export class Window extends Viewport{
   get_theme_font_size(_name, _theme_type) {
     Window.init_method_get_theme_font_size();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_theme_font_size,
+      Window._bindings.method_get_theme_font_size,
       this._owner,
 			Variant.Type.INT,
     
@@ -2312,7 +2313,7 @@ export class Window extends Viewport{
   get_theme_color(_name, _theme_type) {
     Window.init_method_get_theme_color();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_theme_color,
+      Window._bindings.method_get_theme_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -2323,7 +2324,7 @@ export class Window extends Viewport{
   get_theme_constant(_name, _theme_type) {
     Window.init_method_get_theme_constant();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_theme_constant,
+      Window._bindings.method_get_theme_constant,
       this._owner,
 			Variant.Type.INT,
     
@@ -2334,7 +2335,7 @@ export class Window extends Viewport{
   has_theme_icon_override(_name) {
     Window.init_method_has_theme_icon_override();
     return _call_native_mb_ret(
-      Window.#_bindings.method_has_theme_icon_override,
+      Window._bindings.method_has_theme_icon_override,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2345,7 +2346,7 @@ export class Window extends Viewport{
   has_theme_stylebox_override(_name) {
     Window.init_method_has_theme_stylebox_override();
     return _call_native_mb_ret(
-      Window.#_bindings.method_has_theme_stylebox_override,
+      Window._bindings.method_has_theme_stylebox_override,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2356,7 +2357,7 @@ export class Window extends Viewport{
   has_theme_font_override(_name) {
     Window.init_method_has_theme_font_override();
     return _call_native_mb_ret(
-      Window.#_bindings.method_has_theme_font_override,
+      Window._bindings.method_has_theme_font_override,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2367,7 +2368,7 @@ export class Window extends Viewport{
   has_theme_font_size_override(_name) {
     Window.init_method_has_theme_font_size_override();
     return _call_native_mb_ret(
-      Window.#_bindings.method_has_theme_font_size_override,
+      Window._bindings.method_has_theme_font_size_override,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2378,7 +2379,7 @@ export class Window extends Viewport{
   has_theme_color_override(_name) {
     Window.init_method_has_theme_color_override();
     return _call_native_mb_ret(
-      Window.#_bindings.method_has_theme_color_override,
+      Window._bindings.method_has_theme_color_override,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2389,7 +2390,7 @@ export class Window extends Viewport{
   has_theme_constant_override(_name) {
     Window.init_method_has_theme_constant_override();
     return _call_native_mb_ret(
-      Window.#_bindings.method_has_theme_constant_override,
+      Window._bindings.method_has_theme_constant_override,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2400,7 +2401,7 @@ export class Window extends Viewport{
   has_theme_icon(_name, _theme_type) {
     Window.init_method_has_theme_icon();
     return _call_native_mb_ret(
-      Window.#_bindings.method_has_theme_icon,
+      Window._bindings.method_has_theme_icon,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2411,7 +2412,7 @@ export class Window extends Viewport{
   has_theme_stylebox(_name, _theme_type) {
     Window.init_method_has_theme_stylebox();
     return _call_native_mb_ret(
-      Window.#_bindings.method_has_theme_stylebox,
+      Window._bindings.method_has_theme_stylebox,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2422,7 +2423,7 @@ export class Window extends Viewport{
   has_theme_font(_name, _theme_type) {
     Window.init_method_has_theme_font();
     return _call_native_mb_ret(
-      Window.#_bindings.method_has_theme_font,
+      Window._bindings.method_has_theme_font,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2433,7 +2434,7 @@ export class Window extends Viewport{
   has_theme_font_size(_name, _theme_type) {
     Window.init_method_has_theme_font_size();
     return _call_native_mb_ret(
-      Window.#_bindings.method_has_theme_font_size,
+      Window._bindings.method_has_theme_font_size,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2444,7 +2445,7 @@ export class Window extends Viewport{
   has_theme_color(_name, _theme_type) {
     Window.init_method_has_theme_color();
     return _call_native_mb_ret(
-      Window.#_bindings.method_has_theme_color,
+      Window._bindings.method_has_theme_color,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2455,7 +2456,7 @@ export class Window extends Viewport{
   has_theme_constant(_name, _theme_type) {
     Window.init_method_has_theme_constant();
     return _call_native_mb_ret(
-      Window.#_bindings.method_has_theme_constant,
+      Window._bindings.method_has_theme_constant,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2466,7 +2467,7 @@ export class Window extends Viewport{
   get_theme_default_base_scale() {
     Window.init_method_get_theme_default_base_scale();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_theme_default_base_scale,
+      Window._bindings.method_get_theme_default_base_scale,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -2477,7 +2478,7 @@ export class Window extends Viewport{
   get_theme_default_font() {
     Window.init_method_get_theme_default_font();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_theme_default_font,
+      Window._bindings.method_get_theme_default_font,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -2487,7 +2488,7 @@ export class Window extends Viewport{
   get_theme_default_font_size() {
     Window.init_method_get_theme_default_font_size();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_theme_default_font_size,
+      Window._bindings.method_get_theme_default_font_size,
       this._owner,
 			Variant.Type.INT,
     
@@ -2498,7 +2499,7 @@ export class Window extends Viewport{
   set_layout_direction(_direction) {
     Window.init_method_set_layout_direction();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_layout_direction,
+      Window._bindings.method_set_layout_direction,
       this._owner,
       _direction
     );
@@ -2507,7 +2508,7 @@ export class Window extends Viewport{
   get_layout_direction() {
     Window.init_method_get_layout_direction();
     return _call_native_mb_ret(
-      Window.#_bindings.method_get_layout_direction,
+      Window._bindings.method_get_layout_direction,
       this._owner,
 			Variant.Type.INT,
     
@@ -2518,7 +2519,7 @@ export class Window extends Viewport{
   is_layout_rtl() {
     Window.init_method_is_layout_rtl();
     return _call_native_mb_ret(
-      Window.#_bindings.method_is_layout_rtl,
+      Window._bindings.method_is_layout_rtl,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2529,7 +2530,7 @@ export class Window extends Viewport{
   set_auto_translate(_enable) {
     Window.init_method_set_auto_translate();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_set_auto_translate,
+      Window._bindings.method_set_auto_translate,
       this._owner,
       _enable
     );
@@ -2538,7 +2539,7 @@ export class Window extends Viewport{
   is_auto_translating() {
     Window.init_method_is_auto_translating();
     return _call_native_mb_ret(
-      Window.#_bindings.method_is_auto_translating,
+      Window._bindings.method_is_auto_translating,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2549,7 +2550,7 @@ export class Window extends Viewport{
   popup(_rect) {
     Window.init_method_popup();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_popup,
+      Window._bindings.method_popup,
       this._owner,
       _rect
     );
@@ -2558,7 +2559,7 @@ export class Window extends Viewport{
   popup_on_parent(_parent_rect) {
     Window.init_method_popup_on_parent();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_popup_on_parent,
+      Window._bindings.method_popup_on_parent,
       this._owner,
       _parent_rect
     );
@@ -2567,7 +2568,7 @@ export class Window extends Viewport{
   popup_centered(_minsize) {
     Window.init_method_popup_centered();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_popup_centered,
+      Window._bindings.method_popup_centered,
       this._owner,
       _minsize
     );
@@ -2576,7 +2577,7 @@ export class Window extends Viewport{
   popup_centered_ratio(_ratio) {
     Window.init_method_popup_centered_ratio();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_popup_centered_ratio,
+      Window._bindings.method_popup_centered_ratio,
       this._owner,
       _ratio
     );
@@ -2585,7 +2586,7 @@ export class Window extends Viewport{
   popup_centered_clamped(_minsize, _fallback_ratio) {
     Window.init_method_popup_centered_clamped();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_popup_centered_clamped,
+      Window._bindings.method_popup_centered_clamped,
       this._owner,
       _minsize, _fallback_ratio
     );
@@ -2594,7 +2595,7 @@ export class Window extends Viewport{
   popup_exclusive(_from_node, _rect) {
     Window.init_method_popup_exclusive();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_popup_exclusive,
+      Window._bindings.method_popup_exclusive,
       this._owner,
       _from_node, _rect
     );
@@ -2603,7 +2604,7 @@ export class Window extends Viewport{
   popup_exclusive_on_parent(_from_node, _parent_rect) {
     Window.init_method_popup_exclusive_on_parent();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_popup_exclusive_on_parent,
+      Window._bindings.method_popup_exclusive_on_parent,
       this._owner,
       _from_node, _parent_rect
     );
@@ -2612,7 +2613,7 @@ export class Window extends Viewport{
   popup_exclusive_centered(_from_node, _minsize) {
     Window.init_method_popup_exclusive_centered();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_popup_exclusive_centered,
+      Window._bindings.method_popup_exclusive_centered,
       this._owner,
       _from_node, _minsize
     );
@@ -2621,7 +2622,7 @@ export class Window extends Viewport{
   popup_exclusive_centered_ratio(_from_node, _ratio) {
     Window.init_method_popup_exclusive_centered_ratio();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_popup_exclusive_centered_ratio,
+      Window._bindings.method_popup_exclusive_centered_ratio,
       this._owner,
       _from_node, _ratio
     );
@@ -2630,7 +2631,7 @@ export class Window extends Viewport{
   popup_exclusive_centered_clamped(_from_node, _minsize, _fallback_ratio) {
     Window.init_method_popup_exclusive_centered_clamped();
     return _call_native_mb_no_ret(
-      Window.#_bindings.method_popup_exclusive_centered_clamped,
+      Window._bindings.method_popup_exclusive_centered_clamped,
       this._owner,
       _from_node, _minsize, _fallback_ratio
     );

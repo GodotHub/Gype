@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Material } from '@js_godot/classes/material'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_shader;
@@ -15,10 +16,10 @@ class _MethodBindings {
   method_set_shader_parameter;
   method_get_shader_parameter;
 }
+@GodotClass
 export class ShaderMaterial extends Material{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -28,10 +29,10 @@ export class ShaderMaterial extends Material{
     }
   }
   static init_method_set_shader() {
-    if (!this.#_bindings.method_set_shader) {
+    if (!this._bindings.method_set_shader) {
       let classname = new StringName("ShaderMaterial");
       let methodname = new StringName("set_shader");
-      this.#_bindings.method_set_shader = internal.classdb_get_method_bind(
+      this._bindings.method_set_shader = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341921675
@@ -39,10 +40,10 @@ export class ShaderMaterial extends Material{
     }
   }
   static init_method_get_shader() {
-    if (!this.#_bindings.method_get_shader) {
+    if (!this._bindings.method_get_shader) {
       let classname = new StringName("ShaderMaterial");
       let methodname = new StringName("get_shader");
-      this.#_bindings.method_get_shader = internal.classdb_get_method_bind(
+      this._bindings.method_get_shader = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2078273437
@@ -50,10 +51,10 @@ export class ShaderMaterial extends Material{
     }
   }
   static init_method_set_shader_parameter() {
-    if (!this.#_bindings.method_set_shader_parameter) {
+    if (!this._bindings.method_set_shader_parameter) {
       let classname = new StringName("ShaderMaterial");
       let methodname = new StringName("set_shader_parameter");
-      this.#_bindings.method_set_shader_parameter = internal.classdb_get_method_bind(
+      this._bindings.method_set_shader_parameter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3776071444
@@ -61,10 +62,10 @@ export class ShaderMaterial extends Material{
     }
   }
   static init_method_get_shader_parameter() {
-    if (!this.#_bindings.method_get_shader_parameter) {
+    if (!this._bindings.method_get_shader_parameter) {
       let classname = new StringName("ShaderMaterial");
       let methodname = new StringName("get_shader_parameter");
-      this.#_bindings.method_get_shader_parameter = internal.classdb_get_method_bind(
+      this._bindings.method_get_shader_parameter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2760726917
@@ -77,7 +78,7 @@ export class ShaderMaterial extends Material{
   set_shader(_shader) {
     ShaderMaterial.init_method_set_shader();
     return _call_native_mb_no_ret(
-      ShaderMaterial.#_bindings.method_set_shader,
+      ShaderMaterial._bindings.method_set_shader,
       this._owner,
       _shader
     );
@@ -86,7 +87,7 @@ export class ShaderMaterial extends Material{
   get_shader() {
     ShaderMaterial.init_method_get_shader();
     return _call_native_mb_ret(
-      ShaderMaterial.#_bindings.method_get_shader,
+      ShaderMaterial._bindings.method_get_shader,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -96,7 +97,7 @@ export class ShaderMaterial extends Material{
   set_shader_parameter(_param, _value) {
     ShaderMaterial.init_method_set_shader_parameter();
     return _call_native_mb_no_ret(
-      ShaderMaterial.#_bindings.method_set_shader_parameter,
+      ShaderMaterial._bindings.method_set_shader_parameter,
       this._owner,
       _param, _value
     );
@@ -105,7 +106,7 @@ export class ShaderMaterial extends Material{
   get_shader_parameter(_param) {
     ShaderMaterial.init_method_get_shader_parameter();
     return _call_native_mb_ret(
-      ShaderMaterial.#_bindings.method_get_shader_parameter,
+      ShaderMaterial._bindings.method_get_shader_parameter,
       this._owner,
 			Variant.Type.VARIANT,
     

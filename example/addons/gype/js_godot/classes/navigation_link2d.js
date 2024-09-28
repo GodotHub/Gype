@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { Node2D } from '@js_godot/classes/node2d'
 import {
   call_utility_ret,
@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_rid;
@@ -32,10 +33,10 @@ class _MethodBindings {
   method_set_travel_cost;
   method_get_travel_cost;
 }
+@GodotClass
 export class NavigationLink2D extends Node2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -45,10 +46,10 @@ export class NavigationLink2D extends Node2D{
     }
   }
   static init_method_get_rid() {
-    if (!this.#_bindings.method_get_rid) {
+    if (!this._bindings.method_get_rid) {
       let classname = new StringName("NavigationLink2D");
       let methodname = new StringName("get_rid");
-      this.#_bindings.method_get_rid = internal.classdb_get_method_bind(
+      this._bindings.method_get_rid = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2944877500
@@ -56,10 +57,10 @@ export class NavigationLink2D extends Node2D{
     }
   }
   static init_method_set_enabled() {
-    if (!this.#_bindings.method_set_enabled) {
+    if (!this._bindings.method_set_enabled) {
       let classname = new StringName("NavigationLink2D");
       let methodname = new StringName("set_enabled");
-      this.#_bindings.method_set_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -67,10 +68,10 @@ export class NavigationLink2D extends Node2D{
     }
   }
   static init_method_is_enabled() {
-    if (!this.#_bindings.method_is_enabled) {
+    if (!this._bindings.method_is_enabled) {
       let classname = new StringName("NavigationLink2D");
       let methodname = new StringName("is_enabled");
-      this.#_bindings.method_is_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -78,10 +79,10 @@ export class NavigationLink2D extends Node2D{
     }
   }
   static init_method_set_bidirectional() {
-    if (!this.#_bindings.method_set_bidirectional) {
+    if (!this._bindings.method_set_bidirectional) {
       let classname = new StringName("NavigationLink2D");
       let methodname = new StringName("set_bidirectional");
-      this.#_bindings.method_set_bidirectional = internal.classdb_get_method_bind(
+      this._bindings.method_set_bidirectional = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -89,10 +90,10 @@ export class NavigationLink2D extends Node2D{
     }
   }
   static init_method_is_bidirectional() {
-    if (!this.#_bindings.method_is_bidirectional) {
+    if (!this._bindings.method_is_bidirectional) {
       let classname = new StringName("NavigationLink2D");
       let methodname = new StringName("is_bidirectional");
-      this.#_bindings.method_is_bidirectional = internal.classdb_get_method_bind(
+      this._bindings.method_is_bidirectional = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -100,10 +101,10 @@ export class NavigationLink2D extends Node2D{
     }
   }
   static init_method_set_navigation_layers() {
-    if (!this.#_bindings.method_set_navigation_layers) {
+    if (!this._bindings.method_set_navigation_layers) {
       let classname = new StringName("NavigationLink2D");
       let methodname = new StringName("set_navigation_layers");
-      this.#_bindings.method_set_navigation_layers = internal.classdb_get_method_bind(
+      this._bindings.method_set_navigation_layers = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -111,10 +112,10 @@ export class NavigationLink2D extends Node2D{
     }
   }
   static init_method_get_navigation_layers() {
-    if (!this.#_bindings.method_get_navigation_layers) {
+    if (!this._bindings.method_get_navigation_layers) {
       let classname = new StringName("NavigationLink2D");
       let methodname = new StringName("get_navigation_layers");
-      this.#_bindings.method_get_navigation_layers = internal.classdb_get_method_bind(
+      this._bindings.method_get_navigation_layers = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -122,10 +123,10 @@ export class NavigationLink2D extends Node2D{
     }
   }
   static init_method_set_navigation_layer_value() {
-    if (!this.#_bindings.method_set_navigation_layer_value) {
+    if (!this._bindings.method_set_navigation_layer_value) {
       let classname = new StringName("NavigationLink2D");
       let methodname = new StringName("set_navigation_layer_value");
-      this.#_bindings.method_set_navigation_layer_value = internal.classdb_get_method_bind(
+      this._bindings.method_set_navigation_layer_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -133,10 +134,10 @@ export class NavigationLink2D extends Node2D{
     }
   }
   static init_method_get_navigation_layer_value() {
-    if (!this.#_bindings.method_get_navigation_layer_value) {
+    if (!this._bindings.method_get_navigation_layer_value) {
       let classname = new StringName("NavigationLink2D");
       let methodname = new StringName("get_navigation_layer_value");
-      this.#_bindings.method_get_navigation_layer_value = internal.classdb_get_method_bind(
+      this._bindings.method_get_navigation_layer_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -144,10 +145,10 @@ export class NavigationLink2D extends Node2D{
     }
   }
   static init_method_set_start_position() {
-    if (!this.#_bindings.method_set_start_position) {
+    if (!this._bindings.method_set_start_position) {
       let classname = new StringName("NavigationLink2D");
       let methodname = new StringName("set_start_position");
-      this.#_bindings.method_set_start_position = internal.classdb_get_method_bind(
+      this._bindings.method_set_start_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -155,10 +156,10 @@ export class NavigationLink2D extends Node2D{
     }
   }
   static init_method_get_start_position() {
-    if (!this.#_bindings.method_get_start_position) {
+    if (!this._bindings.method_get_start_position) {
       let classname = new StringName("NavigationLink2D");
       let methodname = new StringName("get_start_position");
-      this.#_bindings.method_get_start_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_start_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -166,10 +167,10 @@ export class NavigationLink2D extends Node2D{
     }
   }
   static init_method_set_end_position() {
-    if (!this.#_bindings.method_set_end_position) {
+    if (!this._bindings.method_set_end_position) {
       let classname = new StringName("NavigationLink2D");
       let methodname = new StringName("set_end_position");
-      this.#_bindings.method_set_end_position = internal.classdb_get_method_bind(
+      this._bindings.method_set_end_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -177,10 +178,10 @@ export class NavigationLink2D extends Node2D{
     }
   }
   static init_method_get_end_position() {
-    if (!this.#_bindings.method_get_end_position) {
+    if (!this._bindings.method_get_end_position) {
       let classname = new StringName("NavigationLink2D");
       let methodname = new StringName("get_end_position");
-      this.#_bindings.method_get_end_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_end_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -188,10 +189,10 @@ export class NavigationLink2D extends Node2D{
     }
   }
   static init_method_set_global_start_position() {
-    if (!this.#_bindings.method_set_global_start_position) {
+    if (!this._bindings.method_set_global_start_position) {
       let classname = new StringName("NavigationLink2D");
       let methodname = new StringName("set_global_start_position");
-      this.#_bindings.method_set_global_start_position = internal.classdb_get_method_bind(
+      this._bindings.method_set_global_start_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -199,10 +200,10 @@ export class NavigationLink2D extends Node2D{
     }
   }
   static init_method_get_global_start_position() {
-    if (!this.#_bindings.method_get_global_start_position) {
+    if (!this._bindings.method_get_global_start_position) {
       let classname = new StringName("NavigationLink2D");
       let methodname = new StringName("get_global_start_position");
-      this.#_bindings.method_get_global_start_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_global_start_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -210,10 +211,10 @@ export class NavigationLink2D extends Node2D{
     }
   }
   static init_method_set_global_end_position() {
-    if (!this.#_bindings.method_set_global_end_position) {
+    if (!this._bindings.method_set_global_end_position) {
       let classname = new StringName("NavigationLink2D");
       let methodname = new StringName("set_global_end_position");
-      this.#_bindings.method_set_global_end_position = internal.classdb_get_method_bind(
+      this._bindings.method_set_global_end_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -221,10 +222,10 @@ export class NavigationLink2D extends Node2D{
     }
   }
   static init_method_get_global_end_position() {
-    if (!this.#_bindings.method_get_global_end_position) {
+    if (!this._bindings.method_get_global_end_position) {
       let classname = new StringName("NavigationLink2D");
       let methodname = new StringName("get_global_end_position");
-      this.#_bindings.method_get_global_end_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_global_end_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -232,10 +233,10 @@ export class NavigationLink2D extends Node2D{
     }
   }
   static init_method_set_enter_cost() {
-    if (!this.#_bindings.method_set_enter_cost) {
+    if (!this._bindings.method_set_enter_cost) {
       let classname = new StringName("NavigationLink2D");
       let methodname = new StringName("set_enter_cost");
-      this.#_bindings.method_set_enter_cost = internal.classdb_get_method_bind(
+      this._bindings.method_set_enter_cost = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -243,10 +244,10 @@ export class NavigationLink2D extends Node2D{
     }
   }
   static init_method_get_enter_cost() {
-    if (!this.#_bindings.method_get_enter_cost) {
+    if (!this._bindings.method_get_enter_cost) {
       let classname = new StringName("NavigationLink2D");
       let methodname = new StringName("get_enter_cost");
-      this.#_bindings.method_get_enter_cost = internal.classdb_get_method_bind(
+      this._bindings.method_get_enter_cost = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -254,10 +255,10 @@ export class NavigationLink2D extends Node2D{
     }
   }
   static init_method_set_travel_cost() {
-    if (!this.#_bindings.method_set_travel_cost) {
+    if (!this._bindings.method_set_travel_cost) {
       let classname = new StringName("NavigationLink2D");
       let methodname = new StringName("set_travel_cost");
-      this.#_bindings.method_set_travel_cost = internal.classdb_get_method_bind(
+      this._bindings.method_set_travel_cost = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -265,10 +266,10 @@ export class NavigationLink2D extends Node2D{
     }
   }
   static init_method_get_travel_cost() {
-    if (!this.#_bindings.method_get_travel_cost) {
+    if (!this._bindings.method_get_travel_cost) {
       let classname = new StringName("NavigationLink2D");
       let methodname = new StringName("get_travel_cost");
-      this.#_bindings.method_get_travel_cost = internal.classdb_get_method_bind(
+      this._bindings.method_get_travel_cost = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -281,7 +282,7 @@ export class NavigationLink2D extends Node2D{
   get_rid() {
     NavigationLink2D.init_method_get_rid();
     return _call_native_mb_ret(
-      NavigationLink2D.#_bindings.method_get_rid,
+      NavigationLink2D._bindings.method_get_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -292,7 +293,7 @@ export class NavigationLink2D extends Node2D{
   set_enabled(_enabled) {
     NavigationLink2D.init_method_set_enabled();
     return _call_native_mb_no_ret(
-      NavigationLink2D.#_bindings.method_set_enabled,
+      NavigationLink2D._bindings.method_set_enabled,
       this._owner,
       _enabled
     );
@@ -301,7 +302,7 @@ export class NavigationLink2D extends Node2D{
   is_enabled() {
     NavigationLink2D.init_method_is_enabled();
     return _call_native_mb_ret(
-      NavigationLink2D.#_bindings.method_is_enabled,
+      NavigationLink2D._bindings.method_is_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -312,7 +313,7 @@ export class NavigationLink2D extends Node2D{
   set_bidirectional(_bidirectional) {
     NavigationLink2D.init_method_set_bidirectional();
     return _call_native_mb_no_ret(
-      NavigationLink2D.#_bindings.method_set_bidirectional,
+      NavigationLink2D._bindings.method_set_bidirectional,
       this._owner,
       _bidirectional
     );
@@ -321,7 +322,7 @@ export class NavigationLink2D extends Node2D{
   is_bidirectional() {
     NavigationLink2D.init_method_is_bidirectional();
     return _call_native_mb_ret(
-      NavigationLink2D.#_bindings.method_is_bidirectional,
+      NavigationLink2D._bindings.method_is_bidirectional,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -332,7 +333,7 @@ export class NavigationLink2D extends Node2D{
   set_navigation_layers(_navigation_layers) {
     NavigationLink2D.init_method_set_navigation_layers();
     return _call_native_mb_no_ret(
-      NavigationLink2D.#_bindings.method_set_navigation_layers,
+      NavigationLink2D._bindings.method_set_navigation_layers,
       this._owner,
       _navigation_layers
     );
@@ -341,7 +342,7 @@ export class NavigationLink2D extends Node2D{
   get_navigation_layers() {
     NavigationLink2D.init_method_get_navigation_layers();
     return _call_native_mb_ret(
-      NavigationLink2D.#_bindings.method_get_navigation_layers,
+      NavigationLink2D._bindings.method_get_navigation_layers,
       this._owner,
 			Variant.Type.INT,
     
@@ -352,7 +353,7 @@ export class NavigationLink2D extends Node2D{
   set_navigation_layer_value(_layer_number, _value) {
     NavigationLink2D.init_method_set_navigation_layer_value();
     return _call_native_mb_no_ret(
-      NavigationLink2D.#_bindings.method_set_navigation_layer_value,
+      NavigationLink2D._bindings.method_set_navigation_layer_value,
       this._owner,
       _layer_number, _value
     );
@@ -361,7 +362,7 @@ export class NavigationLink2D extends Node2D{
   get_navigation_layer_value(_layer_number) {
     NavigationLink2D.init_method_get_navigation_layer_value();
     return _call_native_mb_ret(
-      NavigationLink2D.#_bindings.method_get_navigation_layer_value,
+      NavigationLink2D._bindings.method_get_navigation_layer_value,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -372,7 +373,7 @@ export class NavigationLink2D extends Node2D{
   set_start_position(_position) {
     NavigationLink2D.init_method_set_start_position();
     return _call_native_mb_no_ret(
-      NavigationLink2D.#_bindings.method_set_start_position,
+      NavigationLink2D._bindings.method_set_start_position,
       this._owner,
       _position
     );
@@ -381,7 +382,7 @@ export class NavigationLink2D extends Node2D{
   get_start_position() {
     NavigationLink2D.init_method_get_start_position();
     return _call_native_mb_ret(
-      NavigationLink2D.#_bindings.method_get_start_position,
+      NavigationLink2D._bindings.method_get_start_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -392,7 +393,7 @@ export class NavigationLink2D extends Node2D{
   set_end_position(_position) {
     NavigationLink2D.init_method_set_end_position();
     return _call_native_mb_no_ret(
-      NavigationLink2D.#_bindings.method_set_end_position,
+      NavigationLink2D._bindings.method_set_end_position,
       this._owner,
       _position
     );
@@ -401,7 +402,7 @@ export class NavigationLink2D extends Node2D{
   get_end_position() {
     NavigationLink2D.init_method_get_end_position();
     return _call_native_mb_ret(
-      NavigationLink2D.#_bindings.method_get_end_position,
+      NavigationLink2D._bindings.method_get_end_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -412,7 +413,7 @@ export class NavigationLink2D extends Node2D{
   set_global_start_position(_position) {
     NavigationLink2D.init_method_set_global_start_position();
     return _call_native_mb_no_ret(
-      NavigationLink2D.#_bindings.method_set_global_start_position,
+      NavigationLink2D._bindings.method_set_global_start_position,
       this._owner,
       _position
     );
@@ -421,7 +422,7 @@ export class NavigationLink2D extends Node2D{
   get_global_start_position() {
     NavigationLink2D.init_method_get_global_start_position();
     return _call_native_mb_ret(
-      NavigationLink2D.#_bindings.method_get_global_start_position,
+      NavigationLink2D._bindings.method_get_global_start_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -432,7 +433,7 @@ export class NavigationLink2D extends Node2D{
   set_global_end_position(_position) {
     NavigationLink2D.init_method_set_global_end_position();
     return _call_native_mb_no_ret(
-      NavigationLink2D.#_bindings.method_set_global_end_position,
+      NavigationLink2D._bindings.method_set_global_end_position,
       this._owner,
       _position
     );
@@ -441,7 +442,7 @@ export class NavigationLink2D extends Node2D{
   get_global_end_position() {
     NavigationLink2D.init_method_get_global_end_position();
     return _call_native_mb_ret(
-      NavigationLink2D.#_bindings.method_get_global_end_position,
+      NavigationLink2D._bindings.method_get_global_end_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -452,7 +453,7 @@ export class NavigationLink2D extends Node2D{
   set_enter_cost(_enter_cost) {
     NavigationLink2D.init_method_set_enter_cost();
     return _call_native_mb_no_ret(
-      NavigationLink2D.#_bindings.method_set_enter_cost,
+      NavigationLink2D._bindings.method_set_enter_cost,
       this._owner,
       _enter_cost
     );
@@ -461,7 +462,7 @@ export class NavigationLink2D extends Node2D{
   get_enter_cost() {
     NavigationLink2D.init_method_get_enter_cost();
     return _call_native_mb_ret(
-      NavigationLink2D.#_bindings.method_get_enter_cost,
+      NavigationLink2D._bindings.method_get_enter_cost,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -472,7 +473,7 @@ export class NavigationLink2D extends Node2D{
   set_travel_cost(_travel_cost) {
     NavigationLink2D.init_method_set_travel_cost();
     return _call_native_mb_no_ret(
-      NavigationLink2D.#_bindings.method_set_travel_cost,
+      NavigationLink2D._bindings.method_set_travel_cost,
       this._owner,
       _travel_cost
     );
@@ -481,7 +482,7 @@ export class NavigationLink2D extends Node2D{
   get_travel_cost() {
     NavigationLink2D.init_method_get_travel_cost();
     return _call_native_mb_ret(
-      NavigationLink2D.#_bindings.method_get_travel_cost,
+      NavigationLink2D._bindings.method_get_travel_cost,
       this._owner,
 			Variant.Type.FLOAT,
     

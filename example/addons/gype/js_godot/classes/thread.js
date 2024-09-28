@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_start;
@@ -17,10 +18,10 @@ class _MethodBindings {
   method_wait_to_finish;
   method_set_thread_safety_checks_enabled;
 }
+@GodotClass
 export class Thread extends RefCounted{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -30,10 +31,10 @@ export class Thread extends RefCounted{
     }
   }
   static init_method_start() {
-    if (!this.#_bindings.method_start) {
+    if (!this._bindings.method_start) {
       let classname = new StringName("Thread");
       let methodname = new StringName("start");
-      this.#_bindings.method_start = internal.classdb_get_method_bind(
+      this._bindings.method_start = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1327203254
@@ -41,10 +42,10 @@ export class Thread extends RefCounted{
     }
   }
   static init_method_get_id() {
-    if (!this.#_bindings.method_get_id) {
+    if (!this._bindings.method_get_id) {
       let classname = new StringName("Thread");
       let methodname = new StringName("get_id");
-      this.#_bindings.method_get_id = internal.classdb_get_method_bind(
+      this._bindings.method_get_id = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -52,10 +53,10 @@ export class Thread extends RefCounted{
     }
   }
   static init_method_is_started() {
-    if (!this.#_bindings.method_is_started) {
+    if (!this._bindings.method_is_started) {
       let classname = new StringName("Thread");
       let methodname = new StringName("is_started");
-      this.#_bindings.method_is_started = internal.classdb_get_method_bind(
+      this._bindings.method_is_started = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -63,10 +64,10 @@ export class Thread extends RefCounted{
     }
   }
   static init_method_is_alive() {
-    if (!this.#_bindings.method_is_alive) {
+    if (!this._bindings.method_is_alive) {
       let classname = new StringName("Thread");
       let methodname = new StringName("is_alive");
-      this.#_bindings.method_is_alive = internal.classdb_get_method_bind(
+      this._bindings.method_is_alive = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -74,10 +75,10 @@ export class Thread extends RefCounted{
     }
   }
   static init_method_wait_to_finish() {
-    if (!this.#_bindings.method_wait_to_finish) {
+    if (!this._bindings.method_wait_to_finish) {
       let classname = new StringName("Thread");
       let methodname = new StringName("wait_to_finish");
-      this.#_bindings.method_wait_to_finish = internal.classdb_get_method_bind(
+      this._bindings.method_wait_to_finish = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1460262497
@@ -85,10 +86,10 @@ export class Thread extends RefCounted{
     }
   }
   static init_method_set_thread_safety_checks_enabled() {
-    if (!this.#_bindings.method_set_thread_safety_checks_enabled) {
+    if (!this._bindings.method_set_thread_safety_checks_enabled) {
       let classname = new StringName("Thread");
       let methodname = new StringName("set_thread_safety_checks_enabled");
-      this.#_bindings.method_set_thread_safety_checks_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_thread_safety_checks_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -101,7 +102,7 @@ export class Thread extends RefCounted{
   start(_callable, _priority) {
     Thread.init_method_start();
     return _call_native_mb_ret(
-      Thread.#_bindings.method_start,
+      Thread._bindings.method_start,
       this._owner,
 			Variant.Type.INT,
     
@@ -112,7 +113,7 @@ export class Thread extends RefCounted{
   get_id() {
     Thread.init_method_get_id();
     return _call_native_mb_ret(
-      Thread.#_bindings.method_get_id,
+      Thread._bindings.method_get_id,
       this._owner,
 			Variant.Type.STRING,
     
@@ -123,7 +124,7 @@ export class Thread extends RefCounted{
   is_started() {
     Thread.init_method_is_started();
     return _call_native_mb_ret(
-      Thread.#_bindings.method_is_started,
+      Thread._bindings.method_is_started,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -134,7 +135,7 @@ export class Thread extends RefCounted{
   is_alive() {
     Thread.init_method_is_alive();
     return _call_native_mb_ret(
-      Thread.#_bindings.method_is_alive,
+      Thread._bindings.method_is_alive,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -145,7 +146,7 @@ export class Thread extends RefCounted{
   wait_to_finish() {
     Thread.init_method_wait_to_finish();
     return _call_native_mb_ret(
-      Thread.#_bindings.method_wait_to_finish,
+      Thread._bindings.method_wait_to_finish,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -156,7 +157,7 @@ export class Thread extends RefCounted{
   set_thread_safety_checks_enabled(_enabled) {
     Thread.init_method_set_thread_safety_checks_enabled();
     return _call_native_mb_no_ret(
-      Thread.#_bindings.method_set_thread_safety_checks_enabled,
+      Thread._bindings.method_set_thread_safety_checks_enabled,
       this._owner,
       _enabled
     );

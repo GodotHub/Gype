@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_render_target;
@@ -29,10 +30,10 @@ class _MethodBindings {
   method_get_texture_mipmap_bias;
   method_set_texture_mipmap_bias;
 }
+@GodotClass
 export class RenderSceneBuffersConfiguration extends RefCounted{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -42,10 +43,10 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
     }
   }
   static init_method_get_render_target() {
-    if (!this.#_bindings.method_get_render_target) {
+    if (!this._bindings.method_get_render_target) {
       let classname = new StringName("RenderSceneBuffersConfiguration");
       let methodname = new StringName("get_render_target");
-      this.#_bindings.method_get_render_target = internal.classdb_get_method_bind(
+      this._bindings.method_get_render_target = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2944877500
@@ -53,10 +54,10 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
     }
   }
   static init_method_set_render_target() {
-    if (!this.#_bindings.method_set_render_target) {
+    if (!this._bindings.method_set_render_target) {
       let classname = new StringName("RenderSceneBuffersConfiguration");
       let methodname = new StringName("set_render_target");
-      this.#_bindings.method_set_render_target = internal.classdb_get_method_bind(
+      this._bindings.method_set_render_target = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2722037293
@@ -64,10 +65,10 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
     }
   }
   static init_method_get_internal_size() {
-    if (!this.#_bindings.method_get_internal_size) {
+    if (!this._bindings.method_get_internal_size) {
       let classname = new StringName("RenderSceneBuffersConfiguration");
       let methodname = new StringName("get_internal_size");
-      this.#_bindings.method_get_internal_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_internal_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3690982128
@@ -75,10 +76,10 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
     }
   }
   static init_method_set_internal_size() {
-    if (!this.#_bindings.method_set_internal_size) {
+    if (!this._bindings.method_set_internal_size) {
       let classname = new StringName("RenderSceneBuffersConfiguration");
       let methodname = new StringName("set_internal_size");
-      this.#_bindings.method_set_internal_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_internal_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1130785943
@@ -86,10 +87,10 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
     }
   }
   static init_method_get_target_size() {
-    if (!this.#_bindings.method_get_target_size) {
+    if (!this._bindings.method_get_target_size) {
       let classname = new StringName("RenderSceneBuffersConfiguration");
       let methodname = new StringName("get_target_size");
-      this.#_bindings.method_get_target_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_target_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3690982128
@@ -97,10 +98,10 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
     }
   }
   static init_method_set_target_size() {
-    if (!this.#_bindings.method_set_target_size) {
+    if (!this._bindings.method_set_target_size) {
       let classname = new StringName("RenderSceneBuffersConfiguration");
       let methodname = new StringName("set_target_size");
-      this.#_bindings.method_set_target_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_target_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1130785943
@@ -108,10 +109,10 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
     }
   }
   static init_method_get_view_count() {
-    if (!this.#_bindings.method_get_view_count) {
+    if (!this._bindings.method_get_view_count) {
       let classname = new StringName("RenderSceneBuffersConfiguration");
       let methodname = new StringName("get_view_count");
-      this.#_bindings.method_get_view_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_view_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -119,10 +120,10 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
     }
   }
   static init_method_set_view_count() {
-    if (!this.#_bindings.method_set_view_count) {
+    if (!this._bindings.method_set_view_count) {
       let classname = new StringName("RenderSceneBuffersConfiguration");
       let methodname = new StringName("set_view_count");
-      this.#_bindings.method_set_view_count = internal.classdb_get_method_bind(
+      this._bindings.method_set_view_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -130,10 +131,10 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
     }
   }
   static init_method_get_scaling_3d_mode() {
-    if (!this.#_bindings.method_get_scaling_3d_mode) {
+    if (!this._bindings.method_get_scaling_3d_mode) {
       let classname = new StringName("RenderSceneBuffersConfiguration");
       let methodname = new StringName("get_scaling_3d_mode");
-      this.#_bindings.method_get_scaling_3d_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_scaling_3d_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         976778074
@@ -141,10 +142,10 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
     }
   }
   static init_method_set_scaling_3d_mode() {
-    if (!this.#_bindings.method_set_scaling_3d_mode) {
+    if (!this._bindings.method_set_scaling_3d_mode) {
       let classname = new StringName("RenderSceneBuffersConfiguration");
       let methodname = new StringName("set_scaling_3d_mode");
-      this.#_bindings.method_set_scaling_3d_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_scaling_3d_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         447477857
@@ -152,10 +153,10 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
     }
   }
   static init_method_get_msaa_3d() {
-    if (!this.#_bindings.method_get_msaa_3d) {
+    if (!this._bindings.method_get_msaa_3d) {
       let classname = new StringName("RenderSceneBuffersConfiguration");
       let methodname = new StringName("get_msaa_3d");
-      this.#_bindings.method_get_msaa_3d = internal.classdb_get_method_bind(
+      this._bindings.method_get_msaa_3d = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3109158617
@@ -163,10 +164,10 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
     }
   }
   static init_method_set_msaa_3d() {
-    if (!this.#_bindings.method_set_msaa_3d) {
+    if (!this._bindings.method_set_msaa_3d) {
       let classname = new StringName("RenderSceneBuffersConfiguration");
       let methodname = new StringName("set_msaa_3d");
-      this.#_bindings.method_set_msaa_3d = internal.classdb_get_method_bind(
+      this._bindings.method_set_msaa_3d = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3952630748
@@ -174,10 +175,10 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
     }
   }
   static init_method_get_screen_space_aa() {
-    if (!this.#_bindings.method_get_screen_space_aa) {
+    if (!this._bindings.method_get_screen_space_aa) {
       let classname = new StringName("RenderSceneBuffersConfiguration");
       let methodname = new StringName("get_screen_space_aa");
-      this.#_bindings.method_get_screen_space_aa = internal.classdb_get_method_bind(
+      this._bindings.method_get_screen_space_aa = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         641513172
@@ -185,10 +186,10 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
     }
   }
   static init_method_set_screen_space_aa() {
-    if (!this.#_bindings.method_set_screen_space_aa) {
+    if (!this._bindings.method_set_screen_space_aa) {
       let classname = new StringName("RenderSceneBuffersConfiguration");
       let methodname = new StringName("set_screen_space_aa");
-      this.#_bindings.method_set_screen_space_aa = internal.classdb_get_method_bind(
+      this._bindings.method_set_screen_space_aa = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         139543108
@@ -196,10 +197,10 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
     }
   }
   static init_method_get_fsr_sharpness() {
-    if (!this.#_bindings.method_get_fsr_sharpness) {
+    if (!this._bindings.method_get_fsr_sharpness) {
       let classname = new StringName("RenderSceneBuffersConfiguration");
       let methodname = new StringName("get_fsr_sharpness");
-      this.#_bindings.method_get_fsr_sharpness = internal.classdb_get_method_bind(
+      this._bindings.method_get_fsr_sharpness = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -207,10 +208,10 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
     }
   }
   static init_method_set_fsr_sharpness() {
-    if (!this.#_bindings.method_set_fsr_sharpness) {
+    if (!this._bindings.method_set_fsr_sharpness) {
       let classname = new StringName("RenderSceneBuffersConfiguration");
       let methodname = new StringName("set_fsr_sharpness");
-      this.#_bindings.method_set_fsr_sharpness = internal.classdb_get_method_bind(
+      this._bindings.method_set_fsr_sharpness = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -218,10 +219,10 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
     }
   }
   static init_method_get_texture_mipmap_bias() {
-    if (!this.#_bindings.method_get_texture_mipmap_bias) {
+    if (!this._bindings.method_get_texture_mipmap_bias) {
       let classname = new StringName("RenderSceneBuffersConfiguration");
       let methodname = new StringName("get_texture_mipmap_bias");
-      this.#_bindings.method_get_texture_mipmap_bias = internal.classdb_get_method_bind(
+      this._bindings.method_get_texture_mipmap_bias = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -229,10 +230,10 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
     }
   }
   static init_method_set_texture_mipmap_bias() {
-    if (!this.#_bindings.method_set_texture_mipmap_bias) {
+    if (!this._bindings.method_set_texture_mipmap_bias) {
       let classname = new StringName("RenderSceneBuffersConfiguration");
       let methodname = new StringName("set_texture_mipmap_bias");
-      this.#_bindings.method_set_texture_mipmap_bias = internal.classdb_get_method_bind(
+      this._bindings.method_set_texture_mipmap_bias = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -245,7 +246,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   get_render_target() {
     RenderSceneBuffersConfiguration.init_method_get_render_target();
     return _call_native_mb_ret(
-      RenderSceneBuffersConfiguration.#_bindings.method_get_render_target,
+      RenderSceneBuffersConfiguration._bindings.method_get_render_target,
       this._owner,
 			Variant.Type.RID,
     
@@ -256,7 +257,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   set_render_target(_render_target) {
     RenderSceneBuffersConfiguration.init_method_set_render_target();
     return _call_native_mb_no_ret(
-      RenderSceneBuffersConfiguration.#_bindings.method_set_render_target,
+      RenderSceneBuffersConfiguration._bindings.method_set_render_target,
       this._owner,
       _render_target
     );
@@ -265,7 +266,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   get_internal_size() {
     RenderSceneBuffersConfiguration.init_method_get_internal_size();
     return _call_native_mb_ret(
-      RenderSceneBuffersConfiguration.#_bindings.method_get_internal_size,
+      RenderSceneBuffersConfiguration._bindings.method_get_internal_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -276,7 +277,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   set_internal_size(_internal_size) {
     RenderSceneBuffersConfiguration.init_method_set_internal_size();
     return _call_native_mb_no_ret(
-      RenderSceneBuffersConfiguration.#_bindings.method_set_internal_size,
+      RenderSceneBuffersConfiguration._bindings.method_set_internal_size,
       this._owner,
       _internal_size
     );
@@ -285,7 +286,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   get_target_size() {
     RenderSceneBuffersConfiguration.init_method_get_target_size();
     return _call_native_mb_ret(
-      RenderSceneBuffersConfiguration.#_bindings.method_get_target_size,
+      RenderSceneBuffersConfiguration._bindings.method_get_target_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -296,7 +297,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   set_target_size(_target_size) {
     RenderSceneBuffersConfiguration.init_method_set_target_size();
     return _call_native_mb_no_ret(
-      RenderSceneBuffersConfiguration.#_bindings.method_set_target_size,
+      RenderSceneBuffersConfiguration._bindings.method_set_target_size,
       this._owner,
       _target_size
     );
@@ -305,7 +306,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   get_view_count() {
     RenderSceneBuffersConfiguration.init_method_get_view_count();
     return _call_native_mb_ret(
-      RenderSceneBuffersConfiguration.#_bindings.method_get_view_count,
+      RenderSceneBuffersConfiguration._bindings.method_get_view_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -316,7 +317,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   set_view_count(_view_count) {
     RenderSceneBuffersConfiguration.init_method_set_view_count();
     return _call_native_mb_no_ret(
-      RenderSceneBuffersConfiguration.#_bindings.method_set_view_count,
+      RenderSceneBuffersConfiguration._bindings.method_set_view_count,
       this._owner,
       _view_count
     );
@@ -325,7 +326,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   get_scaling_3d_mode() {
     RenderSceneBuffersConfiguration.init_method_get_scaling_3d_mode();
     return _call_native_mb_ret(
-      RenderSceneBuffersConfiguration.#_bindings.method_get_scaling_3d_mode,
+      RenderSceneBuffersConfiguration._bindings.method_get_scaling_3d_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -336,7 +337,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   set_scaling_3d_mode(_scaling_3d_mode) {
     RenderSceneBuffersConfiguration.init_method_set_scaling_3d_mode();
     return _call_native_mb_no_ret(
-      RenderSceneBuffersConfiguration.#_bindings.method_set_scaling_3d_mode,
+      RenderSceneBuffersConfiguration._bindings.method_set_scaling_3d_mode,
       this._owner,
       _scaling_3d_mode
     );
@@ -345,7 +346,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   get_msaa_3d() {
     RenderSceneBuffersConfiguration.init_method_get_msaa_3d();
     return _call_native_mb_ret(
-      RenderSceneBuffersConfiguration.#_bindings.method_get_msaa_3d,
+      RenderSceneBuffersConfiguration._bindings.method_get_msaa_3d,
       this._owner,
 			Variant.Type.INT,
     
@@ -356,7 +357,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   set_msaa_3d(_msaa_3d) {
     RenderSceneBuffersConfiguration.init_method_set_msaa_3d();
     return _call_native_mb_no_ret(
-      RenderSceneBuffersConfiguration.#_bindings.method_set_msaa_3d,
+      RenderSceneBuffersConfiguration._bindings.method_set_msaa_3d,
       this._owner,
       _msaa_3d
     );
@@ -365,7 +366,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   get_screen_space_aa() {
     RenderSceneBuffersConfiguration.init_method_get_screen_space_aa();
     return _call_native_mb_ret(
-      RenderSceneBuffersConfiguration.#_bindings.method_get_screen_space_aa,
+      RenderSceneBuffersConfiguration._bindings.method_get_screen_space_aa,
       this._owner,
 			Variant.Type.INT,
     
@@ -376,7 +377,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   set_screen_space_aa(_screen_space_aa) {
     RenderSceneBuffersConfiguration.init_method_set_screen_space_aa();
     return _call_native_mb_no_ret(
-      RenderSceneBuffersConfiguration.#_bindings.method_set_screen_space_aa,
+      RenderSceneBuffersConfiguration._bindings.method_set_screen_space_aa,
       this._owner,
       _screen_space_aa
     );
@@ -385,7 +386,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   get_fsr_sharpness() {
     RenderSceneBuffersConfiguration.init_method_get_fsr_sharpness();
     return _call_native_mb_ret(
-      RenderSceneBuffersConfiguration.#_bindings.method_get_fsr_sharpness,
+      RenderSceneBuffersConfiguration._bindings.method_get_fsr_sharpness,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -396,7 +397,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   set_fsr_sharpness(_fsr_sharpness) {
     RenderSceneBuffersConfiguration.init_method_set_fsr_sharpness();
     return _call_native_mb_no_ret(
-      RenderSceneBuffersConfiguration.#_bindings.method_set_fsr_sharpness,
+      RenderSceneBuffersConfiguration._bindings.method_set_fsr_sharpness,
       this._owner,
       _fsr_sharpness
     );
@@ -405,7 +406,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   get_texture_mipmap_bias() {
     RenderSceneBuffersConfiguration.init_method_get_texture_mipmap_bias();
     return _call_native_mb_ret(
-      RenderSceneBuffersConfiguration.#_bindings.method_get_texture_mipmap_bias,
+      RenderSceneBuffersConfiguration._bindings.method_get_texture_mipmap_bias,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -416,7 +417,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   set_texture_mipmap_bias(_texture_mipmap_bias) {
     RenderSceneBuffersConfiguration.init_method_set_texture_mipmap_bias();
     return _call_native_mb_no_ret(
-      RenderSceneBuffersConfiguration.#_bindings.method_set_texture_mipmap_bias,
+      RenderSceneBuffersConfiguration._bindings.method_set_texture_mipmap_bias,
       this._owner,
       _texture_mipmap_bias
     );

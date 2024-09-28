@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_engine_force;
@@ -17,10 +18,10 @@ class _MethodBindings {
   method_set_steering;
   method_get_steering;
 }
+@GodotClass
 export class VehicleBody3D extends RigidBody3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -30,10 +31,10 @@ export class VehicleBody3D extends RigidBody3D{
     }
   }
   static init_method_set_engine_force() {
-    if (!this.#_bindings.method_set_engine_force) {
+    if (!this._bindings.method_set_engine_force) {
       let classname = new StringName("VehicleBody3D");
       let methodname = new StringName("set_engine_force");
-      this.#_bindings.method_set_engine_force = internal.classdb_get_method_bind(
+      this._bindings.method_set_engine_force = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -41,10 +42,10 @@ export class VehicleBody3D extends RigidBody3D{
     }
   }
   static init_method_get_engine_force() {
-    if (!this.#_bindings.method_get_engine_force) {
+    if (!this._bindings.method_get_engine_force) {
       let classname = new StringName("VehicleBody3D");
       let methodname = new StringName("get_engine_force");
-      this.#_bindings.method_get_engine_force = internal.classdb_get_method_bind(
+      this._bindings.method_get_engine_force = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -52,10 +53,10 @@ export class VehicleBody3D extends RigidBody3D{
     }
   }
   static init_method_set_brake() {
-    if (!this.#_bindings.method_set_brake) {
+    if (!this._bindings.method_set_brake) {
       let classname = new StringName("VehicleBody3D");
       let methodname = new StringName("set_brake");
-      this.#_bindings.method_set_brake = internal.classdb_get_method_bind(
+      this._bindings.method_set_brake = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -63,10 +64,10 @@ export class VehicleBody3D extends RigidBody3D{
     }
   }
   static init_method_get_brake() {
-    if (!this.#_bindings.method_get_brake) {
+    if (!this._bindings.method_get_brake) {
       let classname = new StringName("VehicleBody3D");
       let methodname = new StringName("get_brake");
-      this.#_bindings.method_get_brake = internal.classdb_get_method_bind(
+      this._bindings.method_get_brake = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -74,10 +75,10 @@ export class VehicleBody3D extends RigidBody3D{
     }
   }
   static init_method_set_steering() {
-    if (!this.#_bindings.method_set_steering) {
+    if (!this._bindings.method_set_steering) {
       let classname = new StringName("VehicleBody3D");
       let methodname = new StringName("set_steering");
-      this.#_bindings.method_set_steering = internal.classdb_get_method_bind(
+      this._bindings.method_set_steering = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -85,10 +86,10 @@ export class VehicleBody3D extends RigidBody3D{
     }
   }
   static init_method_get_steering() {
-    if (!this.#_bindings.method_get_steering) {
+    if (!this._bindings.method_get_steering) {
       let classname = new StringName("VehicleBody3D");
       let methodname = new StringName("get_steering");
-      this.#_bindings.method_get_steering = internal.classdb_get_method_bind(
+      this._bindings.method_get_steering = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -101,7 +102,7 @@ export class VehicleBody3D extends RigidBody3D{
   set_engine_force(_engine_force) {
     VehicleBody3D.init_method_set_engine_force();
     return _call_native_mb_no_ret(
-      VehicleBody3D.#_bindings.method_set_engine_force,
+      VehicleBody3D._bindings.method_set_engine_force,
       this._owner,
       _engine_force
     );
@@ -110,7 +111,7 @@ export class VehicleBody3D extends RigidBody3D{
   get_engine_force() {
     VehicleBody3D.init_method_get_engine_force();
     return _call_native_mb_ret(
-      VehicleBody3D.#_bindings.method_get_engine_force,
+      VehicleBody3D._bindings.method_get_engine_force,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -121,7 +122,7 @@ export class VehicleBody3D extends RigidBody3D{
   set_brake(_brake) {
     VehicleBody3D.init_method_set_brake();
     return _call_native_mb_no_ret(
-      VehicleBody3D.#_bindings.method_set_brake,
+      VehicleBody3D._bindings.method_set_brake,
       this._owner,
       _brake
     );
@@ -130,7 +131,7 @@ export class VehicleBody3D extends RigidBody3D{
   get_brake() {
     VehicleBody3D.init_method_get_brake();
     return _call_native_mb_ret(
-      VehicleBody3D.#_bindings.method_get_brake,
+      VehicleBody3D._bindings.method_get_brake,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -141,7 +142,7 @@ export class VehicleBody3D extends RigidBody3D{
   set_steering(_steering) {
     VehicleBody3D.init_method_set_steering();
     return _call_native_mb_no_ret(
-      VehicleBody3D.#_bindings.method_set_steering,
+      VehicleBody3D._bindings.method_set_steering,
       this._owner,
       _steering
     );
@@ -150,7 +151,7 @@ export class VehicleBody3D extends RigidBody3D{
   get_steering() {
     VehicleBody3D.init_method_get_steering();
     return _call_native_mb_ret(
-      VehicleBody3D.#_bindings.method_get_steering,
+      VehicleBody3D._bindings.method_get_steering,
       this._owner,
 			Variant.Type.FLOAT,
     

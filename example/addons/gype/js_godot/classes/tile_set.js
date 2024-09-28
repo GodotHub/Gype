@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_next_source_id;
@@ -97,10 +98,10 @@ class _MethodBindings {
   method_remove_pattern;
   method_get_patterns_count;
 }
+@GodotClass
 export class TileSet extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -110,10 +111,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_next_source_id() {
-    if (!this.#_bindings.method_get_next_source_id) {
+    if (!this._bindings.method_get_next_source_id) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_next_source_id");
-      this.#_bindings.method_get_next_source_id = internal.classdb_get_method_bind(
+      this._bindings.method_get_next_source_id = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -121,10 +122,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_add_source() {
-    if (!this.#_bindings.method_add_source) {
+    if (!this._bindings.method_add_source) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("add_source");
-      this.#_bindings.method_add_source = internal.classdb_get_method_bind(
+      this._bindings.method_add_source = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1059186179
@@ -132,10 +133,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_remove_source() {
-    if (!this.#_bindings.method_remove_source) {
+    if (!this._bindings.method_remove_source) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("remove_source");
-      this.#_bindings.method_remove_source = internal.classdb_get_method_bind(
+      this._bindings.method_remove_source = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -143,10 +144,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_set_source_id() {
-    if (!this.#_bindings.method_set_source_id) {
+    if (!this._bindings.method_set_source_id) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("set_source_id");
-      this.#_bindings.method_set_source_id = internal.classdb_get_method_bind(
+      this._bindings.method_set_source_id = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -154,10 +155,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_source_count() {
-    if (!this.#_bindings.method_get_source_count) {
+    if (!this._bindings.method_get_source_count) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_source_count");
-      this.#_bindings.method_get_source_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_source_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -165,10 +166,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_source_id() {
-    if (!this.#_bindings.method_get_source_id) {
+    if (!this._bindings.method_get_source_id) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_source_id");
-      this.#_bindings.method_get_source_id = internal.classdb_get_method_bind(
+      this._bindings.method_get_source_id = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         923996154
@@ -176,10 +177,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_has_source() {
-    if (!this.#_bindings.method_has_source) {
+    if (!this._bindings.method_has_source) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("has_source");
-      this.#_bindings.method_has_source = internal.classdb_get_method_bind(
+      this._bindings.method_has_source = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -187,10 +188,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_source() {
-    if (!this.#_bindings.method_get_source) {
+    if (!this._bindings.method_get_source) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_source");
-      this.#_bindings.method_get_source = internal.classdb_get_method_bind(
+      this._bindings.method_get_source = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1763540252
@@ -198,10 +199,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_set_tile_shape() {
-    if (!this.#_bindings.method_set_tile_shape) {
+    if (!this._bindings.method_set_tile_shape) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("set_tile_shape");
-      this.#_bindings.method_set_tile_shape = internal.classdb_get_method_bind(
+      this._bindings.method_set_tile_shape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2131427112
@@ -209,10 +210,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_tile_shape() {
-    if (!this.#_bindings.method_get_tile_shape) {
+    if (!this._bindings.method_get_tile_shape) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_tile_shape");
-      this.#_bindings.method_get_tile_shape = internal.classdb_get_method_bind(
+      this._bindings.method_get_tile_shape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         716918169
@@ -220,10 +221,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_set_tile_layout() {
-    if (!this.#_bindings.method_set_tile_layout) {
+    if (!this._bindings.method_set_tile_layout) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("set_tile_layout");
-      this.#_bindings.method_set_tile_layout = internal.classdb_get_method_bind(
+      this._bindings.method_set_tile_layout = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1071216679
@@ -231,10 +232,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_tile_layout() {
-    if (!this.#_bindings.method_get_tile_layout) {
+    if (!this._bindings.method_get_tile_layout) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_tile_layout");
-      this.#_bindings.method_get_tile_layout = internal.classdb_get_method_bind(
+      this._bindings.method_get_tile_layout = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         194628839
@@ -242,10 +243,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_set_tile_offset_axis() {
-    if (!this.#_bindings.method_set_tile_offset_axis) {
+    if (!this._bindings.method_set_tile_offset_axis) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("set_tile_offset_axis");
-      this.#_bindings.method_set_tile_offset_axis = internal.classdb_get_method_bind(
+      this._bindings.method_set_tile_offset_axis = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3300198521
@@ -253,10 +254,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_tile_offset_axis() {
-    if (!this.#_bindings.method_get_tile_offset_axis) {
+    if (!this._bindings.method_get_tile_offset_axis) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_tile_offset_axis");
-      this.#_bindings.method_get_tile_offset_axis = internal.classdb_get_method_bind(
+      this._bindings.method_get_tile_offset_axis = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         762494114
@@ -264,10 +265,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_set_tile_size() {
-    if (!this.#_bindings.method_set_tile_size) {
+    if (!this._bindings.method_set_tile_size) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("set_tile_size");
-      this.#_bindings.method_set_tile_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_tile_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1130785943
@@ -275,10 +276,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_tile_size() {
-    if (!this.#_bindings.method_get_tile_size) {
+    if (!this._bindings.method_get_tile_size) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_tile_size");
-      this.#_bindings.method_get_tile_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_tile_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3690982128
@@ -286,10 +287,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_set_uv_clipping() {
-    if (!this.#_bindings.method_set_uv_clipping) {
+    if (!this._bindings.method_set_uv_clipping) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("set_uv_clipping");
-      this.#_bindings.method_set_uv_clipping = internal.classdb_get_method_bind(
+      this._bindings.method_set_uv_clipping = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -297,10 +298,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_is_uv_clipping() {
-    if (!this.#_bindings.method_is_uv_clipping) {
+    if (!this._bindings.method_is_uv_clipping) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("is_uv_clipping");
-      this.#_bindings.method_is_uv_clipping = internal.classdb_get_method_bind(
+      this._bindings.method_is_uv_clipping = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -308,10 +309,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_occlusion_layers_count() {
-    if (!this.#_bindings.method_get_occlusion_layers_count) {
+    if (!this._bindings.method_get_occlusion_layers_count) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_occlusion_layers_count");
-      this.#_bindings.method_get_occlusion_layers_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_occlusion_layers_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -319,10 +320,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_add_occlusion_layer() {
-    if (!this.#_bindings.method_add_occlusion_layer) {
+    if (!this._bindings.method_add_occlusion_layer) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("add_occlusion_layer");
-      this.#_bindings.method_add_occlusion_layer = internal.classdb_get_method_bind(
+      this._bindings.method_add_occlusion_layer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1025054187
@@ -330,10 +331,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_move_occlusion_layer() {
-    if (!this.#_bindings.method_move_occlusion_layer) {
+    if (!this._bindings.method_move_occlusion_layer) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("move_occlusion_layer");
-      this.#_bindings.method_move_occlusion_layer = internal.classdb_get_method_bind(
+      this._bindings.method_move_occlusion_layer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -341,10 +342,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_remove_occlusion_layer() {
-    if (!this.#_bindings.method_remove_occlusion_layer) {
+    if (!this._bindings.method_remove_occlusion_layer) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("remove_occlusion_layer");
-      this.#_bindings.method_remove_occlusion_layer = internal.classdb_get_method_bind(
+      this._bindings.method_remove_occlusion_layer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -352,10 +353,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_set_occlusion_layer_light_mask() {
-    if (!this.#_bindings.method_set_occlusion_layer_light_mask) {
+    if (!this._bindings.method_set_occlusion_layer_light_mask) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("set_occlusion_layer_light_mask");
-      this.#_bindings.method_set_occlusion_layer_light_mask = internal.classdb_get_method_bind(
+      this._bindings.method_set_occlusion_layer_light_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -363,10 +364,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_occlusion_layer_light_mask() {
-    if (!this.#_bindings.method_get_occlusion_layer_light_mask) {
+    if (!this._bindings.method_get_occlusion_layer_light_mask) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_occlusion_layer_light_mask");
-      this.#_bindings.method_get_occlusion_layer_light_mask = internal.classdb_get_method_bind(
+      this._bindings.method_get_occlusion_layer_light_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         923996154
@@ -374,10 +375,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_set_occlusion_layer_sdf_collision() {
-    if (!this.#_bindings.method_set_occlusion_layer_sdf_collision) {
+    if (!this._bindings.method_set_occlusion_layer_sdf_collision) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("set_occlusion_layer_sdf_collision");
-      this.#_bindings.method_set_occlusion_layer_sdf_collision = internal.classdb_get_method_bind(
+      this._bindings.method_set_occlusion_layer_sdf_collision = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -385,10 +386,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_occlusion_layer_sdf_collision() {
-    if (!this.#_bindings.method_get_occlusion_layer_sdf_collision) {
+    if (!this._bindings.method_get_occlusion_layer_sdf_collision) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_occlusion_layer_sdf_collision");
-      this.#_bindings.method_get_occlusion_layer_sdf_collision = internal.classdb_get_method_bind(
+      this._bindings.method_get_occlusion_layer_sdf_collision = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -396,10 +397,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_physics_layers_count() {
-    if (!this.#_bindings.method_get_physics_layers_count) {
+    if (!this._bindings.method_get_physics_layers_count) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_physics_layers_count");
-      this.#_bindings.method_get_physics_layers_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_physics_layers_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -407,10 +408,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_add_physics_layer() {
-    if (!this.#_bindings.method_add_physics_layer) {
+    if (!this._bindings.method_add_physics_layer) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("add_physics_layer");
-      this.#_bindings.method_add_physics_layer = internal.classdb_get_method_bind(
+      this._bindings.method_add_physics_layer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1025054187
@@ -418,10 +419,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_move_physics_layer() {
-    if (!this.#_bindings.method_move_physics_layer) {
+    if (!this._bindings.method_move_physics_layer) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("move_physics_layer");
-      this.#_bindings.method_move_physics_layer = internal.classdb_get_method_bind(
+      this._bindings.method_move_physics_layer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -429,10 +430,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_remove_physics_layer() {
-    if (!this.#_bindings.method_remove_physics_layer) {
+    if (!this._bindings.method_remove_physics_layer) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("remove_physics_layer");
-      this.#_bindings.method_remove_physics_layer = internal.classdb_get_method_bind(
+      this._bindings.method_remove_physics_layer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -440,10 +441,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_set_physics_layer_collision_layer() {
-    if (!this.#_bindings.method_set_physics_layer_collision_layer) {
+    if (!this._bindings.method_set_physics_layer_collision_layer) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("set_physics_layer_collision_layer");
-      this.#_bindings.method_set_physics_layer_collision_layer = internal.classdb_get_method_bind(
+      this._bindings.method_set_physics_layer_collision_layer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -451,10 +452,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_physics_layer_collision_layer() {
-    if (!this.#_bindings.method_get_physics_layer_collision_layer) {
+    if (!this._bindings.method_get_physics_layer_collision_layer) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_physics_layer_collision_layer");
-      this.#_bindings.method_get_physics_layer_collision_layer = internal.classdb_get_method_bind(
+      this._bindings.method_get_physics_layer_collision_layer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         923996154
@@ -462,10 +463,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_set_physics_layer_collision_mask() {
-    if (!this.#_bindings.method_set_physics_layer_collision_mask) {
+    if (!this._bindings.method_set_physics_layer_collision_mask) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("set_physics_layer_collision_mask");
-      this.#_bindings.method_set_physics_layer_collision_mask = internal.classdb_get_method_bind(
+      this._bindings.method_set_physics_layer_collision_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -473,10 +474,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_physics_layer_collision_mask() {
-    if (!this.#_bindings.method_get_physics_layer_collision_mask) {
+    if (!this._bindings.method_get_physics_layer_collision_mask) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_physics_layer_collision_mask");
-      this.#_bindings.method_get_physics_layer_collision_mask = internal.classdb_get_method_bind(
+      this._bindings.method_get_physics_layer_collision_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         923996154
@@ -484,10 +485,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_set_physics_layer_physics_material() {
-    if (!this.#_bindings.method_set_physics_layer_physics_material) {
+    if (!this._bindings.method_set_physics_layer_physics_material) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("set_physics_layer_physics_material");
-      this.#_bindings.method_set_physics_layer_physics_material = internal.classdb_get_method_bind(
+      this._bindings.method_set_physics_layer_physics_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1018687357
@@ -495,10 +496,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_physics_layer_physics_material() {
-    if (!this.#_bindings.method_get_physics_layer_physics_material) {
+    if (!this._bindings.method_get_physics_layer_physics_material) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_physics_layer_physics_material");
-      this.#_bindings.method_get_physics_layer_physics_material = internal.classdb_get_method_bind(
+      this._bindings.method_get_physics_layer_physics_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         788318639
@@ -506,10 +507,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_terrain_sets_count() {
-    if (!this.#_bindings.method_get_terrain_sets_count) {
+    if (!this._bindings.method_get_terrain_sets_count) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_terrain_sets_count");
-      this.#_bindings.method_get_terrain_sets_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_terrain_sets_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -517,10 +518,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_add_terrain_set() {
-    if (!this.#_bindings.method_add_terrain_set) {
+    if (!this._bindings.method_add_terrain_set) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("add_terrain_set");
-      this.#_bindings.method_add_terrain_set = internal.classdb_get_method_bind(
+      this._bindings.method_add_terrain_set = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1025054187
@@ -528,10 +529,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_move_terrain_set() {
-    if (!this.#_bindings.method_move_terrain_set) {
+    if (!this._bindings.method_move_terrain_set) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("move_terrain_set");
-      this.#_bindings.method_move_terrain_set = internal.classdb_get_method_bind(
+      this._bindings.method_move_terrain_set = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -539,10 +540,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_remove_terrain_set() {
-    if (!this.#_bindings.method_remove_terrain_set) {
+    if (!this._bindings.method_remove_terrain_set) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("remove_terrain_set");
-      this.#_bindings.method_remove_terrain_set = internal.classdb_get_method_bind(
+      this._bindings.method_remove_terrain_set = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -550,10 +551,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_set_terrain_set_mode() {
-    if (!this.#_bindings.method_set_terrain_set_mode) {
+    if (!this._bindings.method_set_terrain_set_mode) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("set_terrain_set_mode");
-      this.#_bindings.method_set_terrain_set_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_terrain_set_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3943003916
@@ -561,10 +562,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_terrain_set_mode() {
-    if (!this.#_bindings.method_get_terrain_set_mode) {
+    if (!this._bindings.method_get_terrain_set_mode) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_terrain_set_mode");
-      this.#_bindings.method_get_terrain_set_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_terrain_set_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2084469411
@@ -572,10 +573,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_terrains_count() {
-    if (!this.#_bindings.method_get_terrains_count) {
+    if (!this._bindings.method_get_terrains_count) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_terrains_count");
-      this.#_bindings.method_get_terrains_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_terrains_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         923996154
@@ -583,10 +584,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_add_terrain() {
-    if (!this.#_bindings.method_add_terrain) {
+    if (!this._bindings.method_add_terrain) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("add_terrain");
-      this.#_bindings.method_add_terrain = internal.classdb_get_method_bind(
+      this._bindings.method_add_terrain = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1230568737
@@ -594,10 +595,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_move_terrain() {
-    if (!this.#_bindings.method_move_terrain) {
+    if (!this._bindings.method_move_terrain) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("move_terrain");
-      this.#_bindings.method_move_terrain = internal.classdb_get_method_bind(
+      this._bindings.method_move_terrain = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1649997291
@@ -605,10 +606,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_remove_terrain() {
-    if (!this.#_bindings.method_remove_terrain) {
+    if (!this._bindings.method_remove_terrain) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("remove_terrain");
-      this.#_bindings.method_remove_terrain = internal.classdb_get_method_bind(
+      this._bindings.method_remove_terrain = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -616,10 +617,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_set_terrain_name() {
-    if (!this.#_bindings.method_set_terrain_name) {
+    if (!this._bindings.method_set_terrain_name) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("set_terrain_name");
-      this.#_bindings.method_set_terrain_name = internal.classdb_get_method_bind(
+      this._bindings.method_set_terrain_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2285447957
@@ -627,10 +628,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_terrain_name() {
-    if (!this.#_bindings.method_get_terrain_name) {
+    if (!this._bindings.method_get_terrain_name) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_terrain_name");
-      this.#_bindings.method_get_terrain_name = internal.classdb_get_method_bind(
+      this._bindings.method_get_terrain_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1391810591
@@ -638,10 +639,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_set_terrain_color() {
-    if (!this.#_bindings.method_set_terrain_color) {
+    if (!this._bindings.method_set_terrain_color) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("set_terrain_color");
-      this.#_bindings.method_set_terrain_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_terrain_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3733378741
@@ -649,10 +650,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_terrain_color() {
-    if (!this.#_bindings.method_get_terrain_color) {
+    if (!this._bindings.method_get_terrain_color) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_terrain_color");
-      this.#_bindings.method_get_terrain_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_terrain_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2165839948
@@ -660,10 +661,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_navigation_layers_count() {
-    if (!this.#_bindings.method_get_navigation_layers_count) {
+    if (!this._bindings.method_get_navigation_layers_count) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_navigation_layers_count");
-      this.#_bindings.method_get_navigation_layers_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_navigation_layers_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -671,10 +672,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_add_navigation_layer() {
-    if (!this.#_bindings.method_add_navigation_layer) {
+    if (!this._bindings.method_add_navigation_layer) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("add_navigation_layer");
-      this.#_bindings.method_add_navigation_layer = internal.classdb_get_method_bind(
+      this._bindings.method_add_navigation_layer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1025054187
@@ -682,10 +683,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_move_navigation_layer() {
-    if (!this.#_bindings.method_move_navigation_layer) {
+    if (!this._bindings.method_move_navigation_layer) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("move_navigation_layer");
-      this.#_bindings.method_move_navigation_layer = internal.classdb_get_method_bind(
+      this._bindings.method_move_navigation_layer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -693,10 +694,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_remove_navigation_layer() {
-    if (!this.#_bindings.method_remove_navigation_layer) {
+    if (!this._bindings.method_remove_navigation_layer) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("remove_navigation_layer");
-      this.#_bindings.method_remove_navigation_layer = internal.classdb_get_method_bind(
+      this._bindings.method_remove_navigation_layer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -704,10 +705,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_set_navigation_layer_layers() {
-    if (!this.#_bindings.method_set_navigation_layer_layers) {
+    if (!this._bindings.method_set_navigation_layer_layers) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("set_navigation_layer_layers");
-      this.#_bindings.method_set_navigation_layer_layers = internal.classdb_get_method_bind(
+      this._bindings.method_set_navigation_layer_layers = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -715,10 +716,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_navigation_layer_layers() {
-    if (!this.#_bindings.method_get_navigation_layer_layers) {
+    if (!this._bindings.method_get_navigation_layer_layers) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_navigation_layer_layers");
-      this.#_bindings.method_get_navigation_layer_layers = internal.classdb_get_method_bind(
+      this._bindings.method_get_navigation_layer_layers = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         923996154
@@ -726,10 +727,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_set_navigation_layer_layer_value() {
-    if (!this.#_bindings.method_set_navigation_layer_layer_value) {
+    if (!this._bindings.method_set_navigation_layer_layer_value) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("set_navigation_layer_layer_value");
-      this.#_bindings.method_set_navigation_layer_layer_value = internal.classdb_get_method_bind(
+      this._bindings.method_set_navigation_layer_layer_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1383440665
@@ -737,10 +738,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_navigation_layer_layer_value() {
-    if (!this.#_bindings.method_get_navigation_layer_layer_value) {
+    if (!this._bindings.method_get_navigation_layer_layer_value) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_navigation_layer_layer_value");
-      this.#_bindings.method_get_navigation_layer_layer_value = internal.classdb_get_method_bind(
+      this._bindings.method_get_navigation_layer_layer_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2522259332
@@ -748,10 +749,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_custom_data_layers_count() {
-    if (!this.#_bindings.method_get_custom_data_layers_count) {
+    if (!this._bindings.method_get_custom_data_layers_count) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_custom_data_layers_count");
-      this.#_bindings.method_get_custom_data_layers_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_custom_data_layers_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -759,10 +760,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_add_custom_data_layer() {
-    if (!this.#_bindings.method_add_custom_data_layer) {
+    if (!this._bindings.method_add_custom_data_layer) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("add_custom_data_layer");
-      this.#_bindings.method_add_custom_data_layer = internal.classdb_get_method_bind(
+      this._bindings.method_add_custom_data_layer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1025054187
@@ -770,10 +771,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_move_custom_data_layer() {
-    if (!this.#_bindings.method_move_custom_data_layer) {
+    if (!this._bindings.method_move_custom_data_layer) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("move_custom_data_layer");
-      this.#_bindings.method_move_custom_data_layer = internal.classdb_get_method_bind(
+      this._bindings.method_move_custom_data_layer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -781,10 +782,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_remove_custom_data_layer() {
-    if (!this.#_bindings.method_remove_custom_data_layer) {
+    if (!this._bindings.method_remove_custom_data_layer) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("remove_custom_data_layer");
-      this.#_bindings.method_remove_custom_data_layer = internal.classdb_get_method_bind(
+      this._bindings.method_remove_custom_data_layer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -792,10 +793,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_custom_data_layer_by_name() {
-    if (!this.#_bindings.method_get_custom_data_layer_by_name) {
+    if (!this._bindings.method_get_custom_data_layer_by_name) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_custom_data_layer_by_name");
-      this.#_bindings.method_get_custom_data_layer_by_name = internal.classdb_get_method_bind(
+      this._bindings.method_get_custom_data_layer_by_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1321353865
@@ -803,10 +804,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_set_custom_data_layer_name() {
-    if (!this.#_bindings.method_set_custom_data_layer_name) {
+    if (!this._bindings.method_set_custom_data_layer_name) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("set_custom_data_layer_name");
-      this.#_bindings.method_set_custom_data_layer_name = internal.classdb_get_method_bind(
+      this._bindings.method_set_custom_data_layer_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         501894301
@@ -814,10 +815,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_custom_data_layer_name() {
-    if (!this.#_bindings.method_get_custom_data_layer_name) {
+    if (!this._bindings.method_get_custom_data_layer_name) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_custom_data_layer_name");
-      this.#_bindings.method_get_custom_data_layer_name = internal.classdb_get_method_bind(
+      this._bindings.method_get_custom_data_layer_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         844755477
@@ -825,10 +826,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_set_custom_data_layer_type() {
-    if (!this.#_bindings.method_set_custom_data_layer_type) {
+    if (!this._bindings.method_set_custom_data_layer_type) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("set_custom_data_layer_type");
-      this.#_bindings.method_set_custom_data_layer_type = internal.classdb_get_method_bind(
+      this._bindings.method_set_custom_data_layer_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3492912874
@@ -836,10 +837,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_custom_data_layer_type() {
-    if (!this.#_bindings.method_get_custom_data_layer_type) {
+    if (!this._bindings.method_get_custom_data_layer_type) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_custom_data_layer_type");
-      this.#_bindings.method_get_custom_data_layer_type = internal.classdb_get_method_bind(
+      this._bindings.method_get_custom_data_layer_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2990820875
@@ -847,10 +848,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_set_source_level_tile_proxy() {
-    if (!this.#_bindings.method_set_source_level_tile_proxy) {
+    if (!this._bindings.method_set_source_level_tile_proxy) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("set_source_level_tile_proxy");
-      this.#_bindings.method_set_source_level_tile_proxy = internal.classdb_get_method_bind(
+      this._bindings.method_set_source_level_tile_proxy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -858,10 +859,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_source_level_tile_proxy() {
-    if (!this.#_bindings.method_get_source_level_tile_proxy) {
+    if (!this._bindings.method_get_source_level_tile_proxy) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_source_level_tile_proxy");
-      this.#_bindings.method_get_source_level_tile_proxy = internal.classdb_get_method_bind(
+      this._bindings.method_get_source_level_tile_proxy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3744713108
@@ -869,10 +870,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_has_source_level_tile_proxy() {
-    if (!this.#_bindings.method_has_source_level_tile_proxy) {
+    if (!this._bindings.method_has_source_level_tile_proxy) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("has_source_level_tile_proxy");
-      this.#_bindings.method_has_source_level_tile_proxy = internal.classdb_get_method_bind(
+      this._bindings.method_has_source_level_tile_proxy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3067735520
@@ -880,10 +881,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_remove_source_level_tile_proxy() {
-    if (!this.#_bindings.method_remove_source_level_tile_proxy) {
+    if (!this._bindings.method_remove_source_level_tile_proxy) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("remove_source_level_tile_proxy");
-      this.#_bindings.method_remove_source_level_tile_proxy = internal.classdb_get_method_bind(
+      this._bindings.method_remove_source_level_tile_proxy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -891,10 +892,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_set_coords_level_tile_proxy() {
-    if (!this.#_bindings.method_set_coords_level_tile_proxy) {
+    if (!this._bindings.method_set_coords_level_tile_proxy) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("set_coords_level_tile_proxy");
-      this.#_bindings.method_set_coords_level_tile_proxy = internal.classdb_get_method_bind(
+      this._bindings.method_set_coords_level_tile_proxy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1769939278
@@ -902,10 +903,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_coords_level_tile_proxy() {
-    if (!this.#_bindings.method_get_coords_level_tile_proxy) {
+    if (!this._bindings.method_get_coords_level_tile_proxy) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_coords_level_tile_proxy");
-      this.#_bindings.method_get_coords_level_tile_proxy = internal.classdb_get_method_bind(
+      this._bindings.method_get_coords_level_tile_proxy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2856536371
@@ -913,10 +914,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_has_coords_level_tile_proxy() {
-    if (!this.#_bindings.method_has_coords_level_tile_proxy) {
+    if (!this._bindings.method_has_coords_level_tile_proxy) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("has_coords_level_tile_proxy");
-      this.#_bindings.method_has_coords_level_tile_proxy = internal.classdb_get_method_bind(
+      this._bindings.method_has_coords_level_tile_proxy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3957903770
@@ -924,10 +925,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_remove_coords_level_tile_proxy() {
-    if (!this.#_bindings.method_remove_coords_level_tile_proxy) {
+    if (!this._bindings.method_remove_coords_level_tile_proxy) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("remove_coords_level_tile_proxy");
-      this.#_bindings.method_remove_coords_level_tile_proxy = internal.classdb_get_method_bind(
+      this._bindings.method_remove_coords_level_tile_proxy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2311374912
@@ -935,10 +936,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_set_alternative_level_tile_proxy() {
-    if (!this.#_bindings.method_set_alternative_level_tile_proxy) {
+    if (!this._bindings.method_set_alternative_level_tile_proxy) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("set_alternative_level_tile_proxy");
-      this.#_bindings.method_set_alternative_level_tile_proxy = internal.classdb_get_method_bind(
+      this._bindings.method_set_alternative_level_tile_proxy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3862385460
@@ -946,10 +947,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_alternative_level_tile_proxy() {
-    if (!this.#_bindings.method_get_alternative_level_tile_proxy) {
+    if (!this._bindings.method_get_alternative_level_tile_proxy) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_alternative_level_tile_proxy");
-      this.#_bindings.method_get_alternative_level_tile_proxy = internal.classdb_get_method_bind(
+      this._bindings.method_get_alternative_level_tile_proxy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2303761075
@@ -957,10 +958,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_has_alternative_level_tile_proxy() {
-    if (!this.#_bindings.method_has_alternative_level_tile_proxy) {
+    if (!this._bindings.method_has_alternative_level_tile_proxy) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("has_alternative_level_tile_proxy");
-      this.#_bindings.method_has_alternative_level_tile_proxy = internal.classdb_get_method_bind(
+      this._bindings.method_has_alternative_level_tile_proxy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         180086755
@@ -968,10 +969,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_remove_alternative_level_tile_proxy() {
-    if (!this.#_bindings.method_remove_alternative_level_tile_proxy) {
+    if (!this._bindings.method_remove_alternative_level_tile_proxy) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("remove_alternative_level_tile_proxy");
-      this.#_bindings.method_remove_alternative_level_tile_proxy = internal.classdb_get_method_bind(
+      this._bindings.method_remove_alternative_level_tile_proxy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2328951467
@@ -979,10 +980,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_map_tile_proxy() {
-    if (!this.#_bindings.method_map_tile_proxy) {
+    if (!this._bindings.method_map_tile_proxy) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("map_tile_proxy");
-      this.#_bindings.method_map_tile_proxy = internal.classdb_get_method_bind(
+      this._bindings.method_map_tile_proxy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4267935328
@@ -990,10 +991,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_cleanup_invalid_tile_proxies() {
-    if (!this.#_bindings.method_cleanup_invalid_tile_proxies) {
+    if (!this._bindings.method_cleanup_invalid_tile_proxies) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("cleanup_invalid_tile_proxies");
-      this.#_bindings.method_cleanup_invalid_tile_proxies = internal.classdb_get_method_bind(
+      this._bindings.method_cleanup_invalid_tile_proxies = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -1001,10 +1002,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_clear_tile_proxies() {
-    if (!this.#_bindings.method_clear_tile_proxies) {
+    if (!this._bindings.method_clear_tile_proxies) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("clear_tile_proxies");
-      this.#_bindings.method_clear_tile_proxies = internal.classdb_get_method_bind(
+      this._bindings.method_clear_tile_proxies = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -1012,10 +1013,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_add_pattern() {
-    if (!this.#_bindings.method_add_pattern) {
+    if (!this._bindings.method_add_pattern) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("add_pattern");
-      this.#_bindings.method_add_pattern = internal.classdb_get_method_bind(
+      this._bindings.method_add_pattern = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         763712015
@@ -1023,10 +1024,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_pattern() {
-    if (!this.#_bindings.method_get_pattern) {
+    if (!this._bindings.method_get_pattern) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_pattern");
-      this.#_bindings.method_get_pattern = internal.classdb_get_method_bind(
+      this._bindings.method_get_pattern = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4207737510
@@ -1034,10 +1035,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_remove_pattern() {
-    if (!this.#_bindings.method_remove_pattern) {
+    if (!this._bindings.method_remove_pattern) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("remove_pattern");
-      this.#_bindings.method_remove_pattern = internal.classdb_get_method_bind(
+      this._bindings.method_remove_pattern = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -1045,10 +1046,10 @@ export class TileSet extends Resource{
     }
   }
   static init_method_get_patterns_count() {
-    if (!this.#_bindings.method_get_patterns_count) {
+    if (!this._bindings.method_get_patterns_count) {
       let classname = new StringName("TileSet");
       let methodname = new StringName("get_patterns_count");
-      this.#_bindings.method_get_patterns_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_patterns_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -1061,7 +1062,7 @@ export class TileSet extends Resource{
   get_next_source_id() {
     TileSet.init_method_get_next_source_id();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_next_source_id,
+      TileSet._bindings.method_get_next_source_id,
       this._owner,
 			Variant.Type.INT,
     
@@ -1072,7 +1073,7 @@ export class TileSet extends Resource{
   add_source(_source, _atlas_source_id_override) {
     TileSet.init_method_add_source();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_add_source,
+      TileSet._bindings.method_add_source,
       this._owner,
 			Variant.Type.INT,
     
@@ -1083,7 +1084,7 @@ export class TileSet extends Resource{
   remove_source(_source_id) {
     TileSet.init_method_remove_source();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_remove_source,
+      TileSet._bindings.method_remove_source,
       this._owner,
       _source_id
     );
@@ -1092,7 +1093,7 @@ export class TileSet extends Resource{
   set_source_id(_source_id, _new_source_id) {
     TileSet.init_method_set_source_id();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_set_source_id,
+      TileSet._bindings.method_set_source_id,
       this._owner,
       _source_id, _new_source_id
     );
@@ -1101,7 +1102,7 @@ export class TileSet extends Resource{
   get_source_count() {
     TileSet.init_method_get_source_count();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_source_count,
+      TileSet._bindings.method_get_source_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -1112,7 +1113,7 @@ export class TileSet extends Resource{
   get_source_id(_index) {
     TileSet.init_method_get_source_id();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_source_id,
+      TileSet._bindings.method_get_source_id,
       this._owner,
 			Variant.Type.INT,
     
@@ -1123,7 +1124,7 @@ export class TileSet extends Resource{
   has_source(_source_id) {
     TileSet.init_method_has_source();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_has_source,
+      TileSet._bindings.method_has_source,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1134,7 +1135,7 @@ export class TileSet extends Resource{
   get_source(_source_id) {
     TileSet.init_method_get_source();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_source,
+      TileSet._bindings.method_get_source,
       this._owner,
 			Variant.Type.OBJECT,
       _source_id
@@ -1144,7 +1145,7 @@ export class TileSet extends Resource{
   set_tile_shape(_shape) {
     TileSet.init_method_set_tile_shape();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_set_tile_shape,
+      TileSet._bindings.method_set_tile_shape,
       this._owner,
       _shape
     );
@@ -1153,7 +1154,7 @@ export class TileSet extends Resource{
   get_tile_shape() {
     TileSet.init_method_get_tile_shape();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_tile_shape,
+      TileSet._bindings.method_get_tile_shape,
       this._owner,
 			Variant.Type.INT,
     
@@ -1164,7 +1165,7 @@ export class TileSet extends Resource{
   set_tile_layout(_layout) {
     TileSet.init_method_set_tile_layout();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_set_tile_layout,
+      TileSet._bindings.method_set_tile_layout,
       this._owner,
       _layout
     );
@@ -1173,7 +1174,7 @@ export class TileSet extends Resource{
   get_tile_layout() {
     TileSet.init_method_get_tile_layout();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_tile_layout,
+      TileSet._bindings.method_get_tile_layout,
       this._owner,
 			Variant.Type.INT,
     
@@ -1184,7 +1185,7 @@ export class TileSet extends Resource{
   set_tile_offset_axis(_alignment) {
     TileSet.init_method_set_tile_offset_axis();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_set_tile_offset_axis,
+      TileSet._bindings.method_set_tile_offset_axis,
       this._owner,
       _alignment
     );
@@ -1193,7 +1194,7 @@ export class TileSet extends Resource{
   get_tile_offset_axis() {
     TileSet.init_method_get_tile_offset_axis();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_tile_offset_axis,
+      TileSet._bindings.method_get_tile_offset_axis,
       this._owner,
 			Variant.Type.INT,
     
@@ -1204,7 +1205,7 @@ export class TileSet extends Resource{
   set_tile_size(_size) {
     TileSet.init_method_set_tile_size();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_set_tile_size,
+      TileSet._bindings.method_set_tile_size,
       this._owner,
       _size
     );
@@ -1213,7 +1214,7 @@ export class TileSet extends Resource{
   get_tile_size() {
     TileSet.init_method_get_tile_size();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_tile_size,
+      TileSet._bindings.method_get_tile_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -1224,7 +1225,7 @@ export class TileSet extends Resource{
   set_uv_clipping(_uv_clipping) {
     TileSet.init_method_set_uv_clipping();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_set_uv_clipping,
+      TileSet._bindings.method_set_uv_clipping,
       this._owner,
       _uv_clipping
     );
@@ -1233,7 +1234,7 @@ export class TileSet extends Resource{
   is_uv_clipping() {
     TileSet.init_method_is_uv_clipping();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_is_uv_clipping,
+      TileSet._bindings.method_is_uv_clipping,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1244,7 +1245,7 @@ export class TileSet extends Resource{
   get_occlusion_layers_count() {
     TileSet.init_method_get_occlusion_layers_count();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_occlusion_layers_count,
+      TileSet._bindings.method_get_occlusion_layers_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -1255,7 +1256,7 @@ export class TileSet extends Resource{
   add_occlusion_layer(_to_position) {
     TileSet.init_method_add_occlusion_layer();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_add_occlusion_layer,
+      TileSet._bindings.method_add_occlusion_layer,
       this._owner,
       _to_position
     );
@@ -1264,7 +1265,7 @@ export class TileSet extends Resource{
   move_occlusion_layer(_layer_index, _to_position) {
     TileSet.init_method_move_occlusion_layer();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_move_occlusion_layer,
+      TileSet._bindings.method_move_occlusion_layer,
       this._owner,
       _layer_index, _to_position
     );
@@ -1273,7 +1274,7 @@ export class TileSet extends Resource{
   remove_occlusion_layer(_layer_index) {
     TileSet.init_method_remove_occlusion_layer();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_remove_occlusion_layer,
+      TileSet._bindings.method_remove_occlusion_layer,
       this._owner,
       _layer_index
     );
@@ -1282,7 +1283,7 @@ export class TileSet extends Resource{
   set_occlusion_layer_light_mask(_layer_index, _light_mask) {
     TileSet.init_method_set_occlusion_layer_light_mask();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_set_occlusion_layer_light_mask,
+      TileSet._bindings.method_set_occlusion_layer_light_mask,
       this._owner,
       _layer_index, _light_mask
     );
@@ -1291,7 +1292,7 @@ export class TileSet extends Resource{
   get_occlusion_layer_light_mask(_layer_index) {
     TileSet.init_method_get_occlusion_layer_light_mask();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_occlusion_layer_light_mask,
+      TileSet._bindings.method_get_occlusion_layer_light_mask,
       this._owner,
 			Variant.Type.INT,
     
@@ -1302,7 +1303,7 @@ export class TileSet extends Resource{
   set_occlusion_layer_sdf_collision(_layer_index, _sdf_collision) {
     TileSet.init_method_set_occlusion_layer_sdf_collision();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_set_occlusion_layer_sdf_collision,
+      TileSet._bindings.method_set_occlusion_layer_sdf_collision,
       this._owner,
       _layer_index, _sdf_collision
     );
@@ -1311,7 +1312,7 @@ export class TileSet extends Resource{
   get_occlusion_layer_sdf_collision(_layer_index) {
     TileSet.init_method_get_occlusion_layer_sdf_collision();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_occlusion_layer_sdf_collision,
+      TileSet._bindings.method_get_occlusion_layer_sdf_collision,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1322,7 +1323,7 @@ export class TileSet extends Resource{
   get_physics_layers_count() {
     TileSet.init_method_get_physics_layers_count();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_physics_layers_count,
+      TileSet._bindings.method_get_physics_layers_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -1333,7 +1334,7 @@ export class TileSet extends Resource{
   add_physics_layer(_to_position) {
     TileSet.init_method_add_physics_layer();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_add_physics_layer,
+      TileSet._bindings.method_add_physics_layer,
       this._owner,
       _to_position
     );
@@ -1342,7 +1343,7 @@ export class TileSet extends Resource{
   move_physics_layer(_layer_index, _to_position) {
     TileSet.init_method_move_physics_layer();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_move_physics_layer,
+      TileSet._bindings.method_move_physics_layer,
       this._owner,
       _layer_index, _to_position
     );
@@ -1351,7 +1352,7 @@ export class TileSet extends Resource{
   remove_physics_layer(_layer_index) {
     TileSet.init_method_remove_physics_layer();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_remove_physics_layer,
+      TileSet._bindings.method_remove_physics_layer,
       this._owner,
       _layer_index
     );
@@ -1360,7 +1361,7 @@ export class TileSet extends Resource{
   set_physics_layer_collision_layer(_layer_index, _layer) {
     TileSet.init_method_set_physics_layer_collision_layer();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_set_physics_layer_collision_layer,
+      TileSet._bindings.method_set_physics_layer_collision_layer,
       this._owner,
       _layer_index, _layer
     );
@@ -1369,7 +1370,7 @@ export class TileSet extends Resource{
   get_physics_layer_collision_layer(_layer_index) {
     TileSet.init_method_get_physics_layer_collision_layer();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_physics_layer_collision_layer,
+      TileSet._bindings.method_get_physics_layer_collision_layer,
       this._owner,
 			Variant.Type.INT,
     
@@ -1380,7 +1381,7 @@ export class TileSet extends Resource{
   set_physics_layer_collision_mask(_layer_index, _mask) {
     TileSet.init_method_set_physics_layer_collision_mask();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_set_physics_layer_collision_mask,
+      TileSet._bindings.method_set_physics_layer_collision_mask,
       this._owner,
       _layer_index, _mask
     );
@@ -1389,7 +1390,7 @@ export class TileSet extends Resource{
   get_physics_layer_collision_mask(_layer_index) {
     TileSet.init_method_get_physics_layer_collision_mask();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_physics_layer_collision_mask,
+      TileSet._bindings.method_get_physics_layer_collision_mask,
       this._owner,
 			Variant.Type.INT,
     
@@ -1400,7 +1401,7 @@ export class TileSet extends Resource{
   set_physics_layer_physics_material(_layer_index, _physics_material) {
     TileSet.init_method_set_physics_layer_physics_material();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_set_physics_layer_physics_material,
+      TileSet._bindings.method_set_physics_layer_physics_material,
       this._owner,
       _layer_index, _physics_material
     );
@@ -1409,7 +1410,7 @@ export class TileSet extends Resource{
   get_physics_layer_physics_material(_layer_index) {
     TileSet.init_method_get_physics_layer_physics_material();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_physics_layer_physics_material,
+      TileSet._bindings.method_get_physics_layer_physics_material,
       this._owner,
 			Variant.Type.OBJECT,
       _layer_index
@@ -1419,7 +1420,7 @@ export class TileSet extends Resource{
   get_terrain_sets_count() {
     TileSet.init_method_get_terrain_sets_count();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_terrain_sets_count,
+      TileSet._bindings.method_get_terrain_sets_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -1430,7 +1431,7 @@ export class TileSet extends Resource{
   add_terrain_set(_to_position) {
     TileSet.init_method_add_terrain_set();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_add_terrain_set,
+      TileSet._bindings.method_add_terrain_set,
       this._owner,
       _to_position
     );
@@ -1439,7 +1440,7 @@ export class TileSet extends Resource{
   move_terrain_set(_terrain_set, _to_position) {
     TileSet.init_method_move_terrain_set();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_move_terrain_set,
+      TileSet._bindings.method_move_terrain_set,
       this._owner,
       _terrain_set, _to_position
     );
@@ -1448,7 +1449,7 @@ export class TileSet extends Resource{
   remove_terrain_set(_terrain_set) {
     TileSet.init_method_remove_terrain_set();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_remove_terrain_set,
+      TileSet._bindings.method_remove_terrain_set,
       this._owner,
       _terrain_set
     );
@@ -1457,7 +1458,7 @@ export class TileSet extends Resource{
   set_terrain_set_mode(_terrain_set, _mode) {
     TileSet.init_method_set_terrain_set_mode();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_set_terrain_set_mode,
+      TileSet._bindings.method_set_terrain_set_mode,
       this._owner,
       _terrain_set, _mode
     );
@@ -1466,7 +1467,7 @@ export class TileSet extends Resource{
   get_terrain_set_mode(_terrain_set) {
     TileSet.init_method_get_terrain_set_mode();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_terrain_set_mode,
+      TileSet._bindings.method_get_terrain_set_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -1477,7 +1478,7 @@ export class TileSet extends Resource{
   get_terrains_count(_terrain_set) {
     TileSet.init_method_get_terrains_count();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_terrains_count,
+      TileSet._bindings.method_get_terrains_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -1488,7 +1489,7 @@ export class TileSet extends Resource{
   add_terrain(_terrain_set, _to_position) {
     TileSet.init_method_add_terrain();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_add_terrain,
+      TileSet._bindings.method_add_terrain,
       this._owner,
       _terrain_set, _to_position
     );
@@ -1497,7 +1498,7 @@ export class TileSet extends Resource{
   move_terrain(_terrain_set, _terrain_index, _to_position) {
     TileSet.init_method_move_terrain();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_move_terrain,
+      TileSet._bindings.method_move_terrain,
       this._owner,
       _terrain_set, _terrain_index, _to_position
     );
@@ -1506,7 +1507,7 @@ export class TileSet extends Resource{
   remove_terrain(_terrain_set, _terrain_index) {
     TileSet.init_method_remove_terrain();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_remove_terrain,
+      TileSet._bindings.method_remove_terrain,
       this._owner,
       _terrain_set, _terrain_index
     );
@@ -1515,7 +1516,7 @@ export class TileSet extends Resource{
   set_terrain_name(_terrain_set, _terrain_index, _name) {
     TileSet.init_method_set_terrain_name();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_set_terrain_name,
+      TileSet._bindings.method_set_terrain_name,
       this._owner,
       _terrain_set, _terrain_index, _name
     );
@@ -1524,7 +1525,7 @@ export class TileSet extends Resource{
   get_terrain_name(_terrain_set, _terrain_index) {
     TileSet.init_method_get_terrain_name();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_terrain_name,
+      TileSet._bindings.method_get_terrain_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1535,7 +1536,7 @@ export class TileSet extends Resource{
   set_terrain_color(_terrain_set, _terrain_index, _color) {
     TileSet.init_method_set_terrain_color();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_set_terrain_color,
+      TileSet._bindings.method_set_terrain_color,
       this._owner,
       _terrain_set, _terrain_index, _color
     );
@@ -1544,7 +1545,7 @@ export class TileSet extends Resource{
   get_terrain_color(_terrain_set, _terrain_index) {
     TileSet.init_method_get_terrain_color();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_terrain_color,
+      TileSet._bindings.method_get_terrain_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -1555,7 +1556,7 @@ export class TileSet extends Resource{
   get_navigation_layers_count() {
     TileSet.init_method_get_navigation_layers_count();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_navigation_layers_count,
+      TileSet._bindings.method_get_navigation_layers_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -1566,7 +1567,7 @@ export class TileSet extends Resource{
   add_navigation_layer(_to_position) {
     TileSet.init_method_add_navigation_layer();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_add_navigation_layer,
+      TileSet._bindings.method_add_navigation_layer,
       this._owner,
       _to_position
     );
@@ -1575,7 +1576,7 @@ export class TileSet extends Resource{
   move_navigation_layer(_layer_index, _to_position) {
     TileSet.init_method_move_navigation_layer();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_move_navigation_layer,
+      TileSet._bindings.method_move_navigation_layer,
       this._owner,
       _layer_index, _to_position
     );
@@ -1584,7 +1585,7 @@ export class TileSet extends Resource{
   remove_navigation_layer(_layer_index) {
     TileSet.init_method_remove_navigation_layer();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_remove_navigation_layer,
+      TileSet._bindings.method_remove_navigation_layer,
       this._owner,
       _layer_index
     );
@@ -1593,7 +1594,7 @@ export class TileSet extends Resource{
   set_navigation_layer_layers(_layer_index, _layers) {
     TileSet.init_method_set_navigation_layer_layers();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_set_navigation_layer_layers,
+      TileSet._bindings.method_set_navigation_layer_layers,
       this._owner,
       _layer_index, _layers
     );
@@ -1602,7 +1603,7 @@ export class TileSet extends Resource{
   get_navigation_layer_layers(_layer_index) {
     TileSet.init_method_get_navigation_layer_layers();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_navigation_layer_layers,
+      TileSet._bindings.method_get_navigation_layer_layers,
       this._owner,
 			Variant.Type.INT,
     
@@ -1613,7 +1614,7 @@ export class TileSet extends Resource{
   set_navigation_layer_layer_value(_layer_index, _layer_number, _value) {
     TileSet.init_method_set_navigation_layer_layer_value();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_set_navigation_layer_layer_value,
+      TileSet._bindings.method_set_navigation_layer_layer_value,
       this._owner,
       _layer_index, _layer_number, _value
     );
@@ -1622,7 +1623,7 @@ export class TileSet extends Resource{
   get_navigation_layer_layer_value(_layer_index, _layer_number) {
     TileSet.init_method_get_navigation_layer_layer_value();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_navigation_layer_layer_value,
+      TileSet._bindings.method_get_navigation_layer_layer_value,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1633,7 +1634,7 @@ export class TileSet extends Resource{
   get_custom_data_layers_count() {
     TileSet.init_method_get_custom_data_layers_count();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_custom_data_layers_count,
+      TileSet._bindings.method_get_custom_data_layers_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -1644,7 +1645,7 @@ export class TileSet extends Resource{
   add_custom_data_layer(_to_position) {
     TileSet.init_method_add_custom_data_layer();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_add_custom_data_layer,
+      TileSet._bindings.method_add_custom_data_layer,
       this._owner,
       _to_position
     );
@@ -1653,7 +1654,7 @@ export class TileSet extends Resource{
   move_custom_data_layer(_layer_index, _to_position) {
     TileSet.init_method_move_custom_data_layer();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_move_custom_data_layer,
+      TileSet._bindings.method_move_custom_data_layer,
       this._owner,
       _layer_index, _to_position
     );
@@ -1662,7 +1663,7 @@ export class TileSet extends Resource{
   remove_custom_data_layer(_layer_index) {
     TileSet.init_method_remove_custom_data_layer();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_remove_custom_data_layer,
+      TileSet._bindings.method_remove_custom_data_layer,
       this._owner,
       _layer_index
     );
@@ -1671,7 +1672,7 @@ export class TileSet extends Resource{
   get_custom_data_layer_by_name(_layer_name) {
     TileSet.init_method_get_custom_data_layer_by_name();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_custom_data_layer_by_name,
+      TileSet._bindings.method_get_custom_data_layer_by_name,
       this._owner,
 			Variant.Type.INT,
     
@@ -1682,7 +1683,7 @@ export class TileSet extends Resource{
   set_custom_data_layer_name(_layer_index, _layer_name) {
     TileSet.init_method_set_custom_data_layer_name();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_set_custom_data_layer_name,
+      TileSet._bindings.method_set_custom_data_layer_name,
       this._owner,
       _layer_index, _layer_name
     );
@@ -1691,7 +1692,7 @@ export class TileSet extends Resource{
   get_custom_data_layer_name(_layer_index) {
     TileSet.init_method_get_custom_data_layer_name();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_custom_data_layer_name,
+      TileSet._bindings.method_get_custom_data_layer_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1702,7 +1703,7 @@ export class TileSet extends Resource{
   set_custom_data_layer_type(_layer_index, _layer_type) {
     TileSet.init_method_set_custom_data_layer_type();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_set_custom_data_layer_type,
+      TileSet._bindings.method_set_custom_data_layer_type,
       this._owner,
       _layer_index, _layer_type
     );
@@ -1711,7 +1712,7 @@ export class TileSet extends Resource{
   get_custom_data_layer_type(_layer_index) {
     TileSet.init_method_get_custom_data_layer_type();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_custom_data_layer_type,
+      TileSet._bindings.method_get_custom_data_layer_type,
       this._owner,
 			Variant.Type.INT,
     
@@ -1722,7 +1723,7 @@ export class TileSet extends Resource{
   set_source_level_tile_proxy(_source_from, _source_to) {
     TileSet.init_method_set_source_level_tile_proxy();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_set_source_level_tile_proxy,
+      TileSet._bindings.method_set_source_level_tile_proxy,
       this._owner,
       _source_from, _source_to
     );
@@ -1731,7 +1732,7 @@ export class TileSet extends Resource{
   get_source_level_tile_proxy(_source_from) {
     TileSet.init_method_get_source_level_tile_proxy();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_source_level_tile_proxy,
+      TileSet._bindings.method_get_source_level_tile_proxy,
       this._owner,
 			Variant.Type.INT,
     
@@ -1742,7 +1743,7 @@ export class TileSet extends Resource{
   has_source_level_tile_proxy(_source_from) {
     TileSet.init_method_has_source_level_tile_proxy();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_has_source_level_tile_proxy,
+      TileSet._bindings.method_has_source_level_tile_proxy,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1753,7 +1754,7 @@ export class TileSet extends Resource{
   remove_source_level_tile_proxy(_source_from) {
     TileSet.init_method_remove_source_level_tile_proxy();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_remove_source_level_tile_proxy,
+      TileSet._bindings.method_remove_source_level_tile_proxy,
       this._owner,
       _source_from
     );
@@ -1762,7 +1763,7 @@ export class TileSet extends Resource{
   set_coords_level_tile_proxy(_p_source_from, _coords_from, _source_to, _coords_to) {
     TileSet.init_method_set_coords_level_tile_proxy();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_set_coords_level_tile_proxy,
+      TileSet._bindings.method_set_coords_level_tile_proxy,
       this._owner,
       _p_source_from, _coords_from, _source_to, _coords_to
     );
@@ -1771,7 +1772,7 @@ export class TileSet extends Resource{
   get_coords_level_tile_proxy(_source_from, _coords_from) {
     TileSet.init_method_get_coords_level_tile_proxy();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_coords_level_tile_proxy,
+      TileSet._bindings.method_get_coords_level_tile_proxy,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -1782,7 +1783,7 @@ export class TileSet extends Resource{
   has_coords_level_tile_proxy(_source_from, _coords_from) {
     TileSet.init_method_has_coords_level_tile_proxy();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_has_coords_level_tile_proxy,
+      TileSet._bindings.method_has_coords_level_tile_proxy,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1793,7 +1794,7 @@ export class TileSet extends Resource{
   remove_coords_level_tile_proxy(_source_from, _coords_from) {
     TileSet.init_method_remove_coords_level_tile_proxy();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_remove_coords_level_tile_proxy,
+      TileSet._bindings.method_remove_coords_level_tile_proxy,
       this._owner,
       _source_from, _coords_from
     );
@@ -1802,7 +1803,7 @@ export class TileSet extends Resource{
   set_alternative_level_tile_proxy(_source_from, _coords_from, _alternative_from, _source_to, _coords_to, _alternative_to) {
     TileSet.init_method_set_alternative_level_tile_proxy();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_set_alternative_level_tile_proxy,
+      TileSet._bindings.method_set_alternative_level_tile_proxy,
       this._owner,
       _source_from, _coords_from, _alternative_from, _source_to, _coords_to, _alternative_to
     );
@@ -1811,7 +1812,7 @@ export class TileSet extends Resource{
   get_alternative_level_tile_proxy(_source_from, _coords_from, _alternative_from) {
     TileSet.init_method_get_alternative_level_tile_proxy();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_alternative_level_tile_proxy,
+      TileSet._bindings.method_get_alternative_level_tile_proxy,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -1822,7 +1823,7 @@ export class TileSet extends Resource{
   has_alternative_level_tile_proxy(_source_from, _coords_from, _alternative_from) {
     TileSet.init_method_has_alternative_level_tile_proxy();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_has_alternative_level_tile_proxy,
+      TileSet._bindings.method_has_alternative_level_tile_proxy,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1833,7 +1834,7 @@ export class TileSet extends Resource{
   remove_alternative_level_tile_proxy(_source_from, _coords_from, _alternative_from) {
     TileSet.init_method_remove_alternative_level_tile_proxy();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_remove_alternative_level_tile_proxy,
+      TileSet._bindings.method_remove_alternative_level_tile_proxy,
       this._owner,
       _source_from, _coords_from, _alternative_from
     );
@@ -1842,7 +1843,7 @@ export class TileSet extends Resource{
   map_tile_proxy(_source_from, _coords_from, _alternative_from) {
     TileSet.init_method_map_tile_proxy();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_map_tile_proxy,
+      TileSet._bindings.method_map_tile_proxy,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -1853,7 +1854,7 @@ export class TileSet extends Resource{
   cleanup_invalid_tile_proxies() {
     TileSet.init_method_cleanup_invalid_tile_proxies();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_cleanup_invalid_tile_proxies,
+      TileSet._bindings.method_cleanup_invalid_tile_proxies,
       this._owner,
       
     );
@@ -1862,7 +1863,7 @@ export class TileSet extends Resource{
   clear_tile_proxies() {
     TileSet.init_method_clear_tile_proxies();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_clear_tile_proxies,
+      TileSet._bindings.method_clear_tile_proxies,
       this._owner,
       
     );
@@ -1871,7 +1872,7 @@ export class TileSet extends Resource{
   add_pattern(_pattern, _index) {
     TileSet.init_method_add_pattern();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_add_pattern,
+      TileSet._bindings.method_add_pattern,
       this._owner,
 			Variant.Type.INT,
     
@@ -1882,7 +1883,7 @@ export class TileSet extends Resource{
   get_pattern(_index) {
     TileSet.init_method_get_pattern();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_pattern,
+      TileSet._bindings.method_get_pattern,
       this._owner,
 			Variant.Type.OBJECT,
       _index
@@ -1892,7 +1893,7 @@ export class TileSet extends Resource{
   remove_pattern(_index) {
     TileSet.init_method_remove_pattern();
     return _call_native_mb_no_ret(
-      TileSet.#_bindings.method_remove_pattern,
+      TileSet._bindings.method_remove_pattern,
       this._owner,
       _index
     );
@@ -1901,7 +1902,7 @@ export class TileSet extends Resource{
   get_patterns_count() {
     TileSet.init_method_get_patterns_count();
     return _call_native_mb_ret(
-      TileSet.#_bindings.method_get_patterns_count,
+      TileSet._bindings.method_get_patterns_count,
       this._owner,
 			Variant.Type.INT,
     

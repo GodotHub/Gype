@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { BaseButton } from '@js_godot/classes/base_button'
 import { StringName } from '@js_godot/variant/string_name'
+import { BaseButton } from '@js_godot/classes/base_button'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_text;
@@ -35,10 +36,10 @@ class _MethodBindings {
   method_set_expand_icon;
   method_is_expand_icon;
 }
+@GodotClass
 export class Button extends BaseButton{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -48,10 +49,10 @@ export class Button extends BaseButton{
     }
   }
   static init_method_set_text() {
-    if (!this.#_bindings.method_set_text) {
+    if (!this._bindings.method_set_text) {
       let classname = new StringName("Button");
       let methodname = new StringName("set_text");
-      this.#_bindings.method_set_text = internal.classdb_get_method_bind(
+      this._bindings.method_set_text = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -59,10 +60,10 @@ export class Button extends BaseButton{
     }
   }
   static init_method_get_text() {
-    if (!this.#_bindings.method_get_text) {
+    if (!this._bindings.method_get_text) {
       let classname = new StringName("Button");
       let methodname = new StringName("get_text");
-      this.#_bindings.method_get_text = internal.classdb_get_method_bind(
+      this._bindings.method_get_text = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -70,10 +71,10 @@ export class Button extends BaseButton{
     }
   }
   static init_method_set_text_overrun_behavior() {
-    if (!this.#_bindings.method_set_text_overrun_behavior) {
+    if (!this._bindings.method_set_text_overrun_behavior) {
       let classname = new StringName("Button");
       let methodname = new StringName("set_text_overrun_behavior");
-      this.#_bindings.method_set_text_overrun_behavior = internal.classdb_get_method_bind(
+      this._bindings.method_set_text_overrun_behavior = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1008890932
@@ -81,10 +82,10 @@ export class Button extends BaseButton{
     }
   }
   static init_method_get_text_overrun_behavior() {
-    if (!this.#_bindings.method_get_text_overrun_behavior) {
+    if (!this._bindings.method_get_text_overrun_behavior) {
       let classname = new StringName("Button");
       let methodname = new StringName("get_text_overrun_behavior");
-      this.#_bindings.method_get_text_overrun_behavior = internal.classdb_get_method_bind(
+      this._bindings.method_get_text_overrun_behavior = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3779142101
@@ -92,10 +93,10 @@ export class Button extends BaseButton{
     }
   }
   static init_method_set_autowrap_mode() {
-    if (!this.#_bindings.method_set_autowrap_mode) {
+    if (!this._bindings.method_set_autowrap_mode) {
       let classname = new StringName("Button");
       let methodname = new StringName("set_autowrap_mode");
-      this.#_bindings.method_set_autowrap_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_autowrap_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3289138044
@@ -103,10 +104,10 @@ export class Button extends BaseButton{
     }
   }
   static init_method_get_autowrap_mode() {
-    if (!this.#_bindings.method_get_autowrap_mode) {
+    if (!this._bindings.method_get_autowrap_mode) {
       let classname = new StringName("Button");
       let methodname = new StringName("get_autowrap_mode");
-      this.#_bindings.method_get_autowrap_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_autowrap_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1549071663
@@ -114,10 +115,10 @@ export class Button extends BaseButton{
     }
   }
   static init_method_set_text_direction() {
-    if (!this.#_bindings.method_set_text_direction) {
+    if (!this._bindings.method_set_text_direction) {
       let classname = new StringName("Button");
       let methodname = new StringName("set_text_direction");
-      this.#_bindings.method_set_text_direction = internal.classdb_get_method_bind(
+      this._bindings.method_set_text_direction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         119160795
@@ -125,10 +126,10 @@ export class Button extends BaseButton{
     }
   }
   static init_method_get_text_direction() {
-    if (!this.#_bindings.method_get_text_direction) {
+    if (!this._bindings.method_get_text_direction) {
       let classname = new StringName("Button");
       let methodname = new StringName("get_text_direction");
-      this.#_bindings.method_get_text_direction = internal.classdb_get_method_bind(
+      this._bindings.method_get_text_direction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         797257663
@@ -136,10 +137,10 @@ export class Button extends BaseButton{
     }
   }
   static init_method_set_language() {
-    if (!this.#_bindings.method_set_language) {
+    if (!this._bindings.method_set_language) {
       let classname = new StringName("Button");
       let methodname = new StringName("set_language");
-      this.#_bindings.method_set_language = internal.classdb_get_method_bind(
+      this._bindings.method_set_language = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -147,10 +148,10 @@ export class Button extends BaseButton{
     }
   }
   static init_method_get_language() {
-    if (!this.#_bindings.method_get_language) {
+    if (!this._bindings.method_get_language) {
       let classname = new StringName("Button");
       let methodname = new StringName("get_language");
-      this.#_bindings.method_get_language = internal.classdb_get_method_bind(
+      this._bindings.method_get_language = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -158,10 +159,10 @@ export class Button extends BaseButton{
     }
   }
   static init_method_set_button_icon() {
-    if (!this.#_bindings.method_set_button_icon) {
+    if (!this._bindings.method_set_button_icon) {
       let classname = new StringName("Button");
       let methodname = new StringName("set_button_icon");
-      this.#_bindings.method_set_button_icon = internal.classdb_get_method_bind(
+      this._bindings.method_set_button_icon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4051416890
@@ -169,10 +170,10 @@ export class Button extends BaseButton{
     }
   }
   static init_method_get_button_icon() {
-    if (!this.#_bindings.method_get_button_icon) {
+    if (!this._bindings.method_get_button_icon) {
       let classname = new StringName("Button");
       let methodname = new StringName("get_button_icon");
-      this.#_bindings.method_get_button_icon = internal.classdb_get_method_bind(
+      this._bindings.method_get_button_icon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -180,10 +181,10 @@ export class Button extends BaseButton{
     }
   }
   static init_method_set_flat() {
-    if (!this.#_bindings.method_set_flat) {
+    if (!this._bindings.method_set_flat) {
       let classname = new StringName("Button");
       let methodname = new StringName("set_flat");
-      this.#_bindings.method_set_flat = internal.classdb_get_method_bind(
+      this._bindings.method_set_flat = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -191,10 +192,10 @@ export class Button extends BaseButton{
     }
   }
   static init_method_is_flat() {
-    if (!this.#_bindings.method_is_flat) {
+    if (!this._bindings.method_is_flat) {
       let classname = new StringName("Button");
       let methodname = new StringName("is_flat");
-      this.#_bindings.method_is_flat = internal.classdb_get_method_bind(
+      this._bindings.method_is_flat = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -202,10 +203,10 @@ export class Button extends BaseButton{
     }
   }
   static init_method_set_clip_text() {
-    if (!this.#_bindings.method_set_clip_text) {
+    if (!this._bindings.method_set_clip_text) {
       let classname = new StringName("Button");
       let methodname = new StringName("set_clip_text");
-      this.#_bindings.method_set_clip_text = internal.classdb_get_method_bind(
+      this._bindings.method_set_clip_text = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -213,10 +214,10 @@ export class Button extends BaseButton{
     }
   }
   static init_method_get_clip_text() {
-    if (!this.#_bindings.method_get_clip_text) {
+    if (!this._bindings.method_get_clip_text) {
       let classname = new StringName("Button");
       let methodname = new StringName("get_clip_text");
-      this.#_bindings.method_get_clip_text = internal.classdb_get_method_bind(
+      this._bindings.method_get_clip_text = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -224,10 +225,10 @@ export class Button extends BaseButton{
     }
   }
   static init_method_set_text_alignment() {
-    if (!this.#_bindings.method_set_text_alignment) {
+    if (!this._bindings.method_set_text_alignment) {
       let classname = new StringName("Button");
       let methodname = new StringName("set_text_alignment");
-      this.#_bindings.method_set_text_alignment = internal.classdb_get_method_bind(
+      this._bindings.method_set_text_alignment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2312603777
@@ -235,10 +236,10 @@ export class Button extends BaseButton{
     }
   }
   static init_method_get_text_alignment() {
-    if (!this.#_bindings.method_get_text_alignment) {
+    if (!this._bindings.method_get_text_alignment) {
       let classname = new StringName("Button");
       let methodname = new StringName("get_text_alignment");
-      this.#_bindings.method_get_text_alignment = internal.classdb_get_method_bind(
+      this._bindings.method_get_text_alignment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         341400642
@@ -246,10 +247,10 @@ export class Button extends BaseButton{
     }
   }
   static init_method_set_icon_alignment() {
-    if (!this.#_bindings.method_set_icon_alignment) {
+    if (!this._bindings.method_set_icon_alignment) {
       let classname = new StringName("Button");
       let methodname = new StringName("set_icon_alignment");
-      this.#_bindings.method_set_icon_alignment = internal.classdb_get_method_bind(
+      this._bindings.method_set_icon_alignment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2312603777
@@ -257,10 +258,10 @@ export class Button extends BaseButton{
     }
   }
   static init_method_get_icon_alignment() {
-    if (!this.#_bindings.method_get_icon_alignment) {
+    if (!this._bindings.method_get_icon_alignment) {
       let classname = new StringName("Button");
       let methodname = new StringName("get_icon_alignment");
-      this.#_bindings.method_get_icon_alignment = internal.classdb_get_method_bind(
+      this._bindings.method_get_icon_alignment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         341400642
@@ -268,10 +269,10 @@ export class Button extends BaseButton{
     }
   }
   static init_method_set_vertical_icon_alignment() {
-    if (!this.#_bindings.method_set_vertical_icon_alignment) {
+    if (!this._bindings.method_set_vertical_icon_alignment) {
       let classname = new StringName("Button");
       let methodname = new StringName("set_vertical_icon_alignment");
-      this.#_bindings.method_set_vertical_icon_alignment = internal.classdb_get_method_bind(
+      this._bindings.method_set_vertical_icon_alignment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1796458609
@@ -279,10 +280,10 @@ export class Button extends BaseButton{
     }
   }
   static init_method_get_vertical_icon_alignment() {
-    if (!this.#_bindings.method_get_vertical_icon_alignment) {
+    if (!this._bindings.method_get_vertical_icon_alignment) {
       let classname = new StringName("Button");
       let methodname = new StringName("get_vertical_icon_alignment");
-      this.#_bindings.method_get_vertical_icon_alignment = internal.classdb_get_method_bind(
+      this._bindings.method_get_vertical_icon_alignment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3274884059
@@ -290,10 +291,10 @@ export class Button extends BaseButton{
     }
   }
   static init_method_set_expand_icon() {
-    if (!this.#_bindings.method_set_expand_icon) {
+    if (!this._bindings.method_set_expand_icon) {
       let classname = new StringName("Button");
       let methodname = new StringName("set_expand_icon");
-      this.#_bindings.method_set_expand_icon = internal.classdb_get_method_bind(
+      this._bindings.method_set_expand_icon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -301,10 +302,10 @@ export class Button extends BaseButton{
     }
   }
   static init_method_is_expand_icon() {
-    if (!this.#_bindings.method_is_expand_icon) {
+    if (!this._bindings.method_is_expand_icon) {
       let classname = new StringName("Button");
       let methodname = new StringName("is_expand_icon");
-      this.#_bindings.method_is_expand_icon = internal.classdb_get_method_bind(
+      this._bindings.method_is_expand_icon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -317,7 +318,7 @@ export class Button extends BaseButton{
   set_text(_text) {
     Button.init_method_set_text();
     return _call_native_mb_no_ret(
-      Button.#_bindings.method_set_text,
+      Button._bindings.method_set_text,
       this._owner,
       _text
     );
@@ -326,7 +327,7 @@ export class Button extends BaseButton{
   get_text() {
     Button.init_method_get_text();
     return _call_native_mb_ret(
-      Button.#_bindings.method_get_text,
+      Button._bindings.method_get_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -337,7 +338,7 @@ export class Button extends BaseButton{
   set_text_overrun_behavior(_overrun_behavior) {
     Button.init_method_set_text_overrun_behavior();
     return _call_native_mb_no_ret(
-      Button.#_bindings.method_set_text_overrun_behavior,
+      Button._bindings.method_set_text_overrun_behavior,
       this._owner,
       _overrun_behavior
     );
@@ -346,7 +347,7 @@ export class Button extends BaseButton{
   get_text_overrun_behavior() {
     Button.init_method_get_text_overrun_behavior();
     return _call_native_mb_ret(
-      Button.#_bindings.method_get_text_overrun_behavior,
+      Button._bindings.method_get_text_overrun_behavior,
       this._owner,
 			Variant.Type.INT,
     
@@ -357,7 +358,7 @@ export class Button extends BaseButton{
   set_autowrap_mode(_autowrap_mode) {
     Button.init_method_set_autowrap_mode();
     return _call_native_mb_no_ret(
-      Button.#_bindings.method_set_autowrap_mode,
+      Button._bindings.method_set_autowrap_mode,
       this._owner,
       _autowrap_mode
     );
@@ -366,7 +367,7 @@ export class Button extends BaseButton{
   get_autowrap_mode() {
     Button.init_method_get_autowrap_mode();
     return _call_native_mb_ret(
-      Button.#_bindings.method_get_autowrap_mode,
+      Button._bindings.method_get_autowrap_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -377,7 +378,7 @@ export class Button extends BaseButton{
   set_text_direction(_direction) {
     Button.init_method_set_text_direction();
     return _call_native_mb_no_ret(
-      Button.#_bindings.method_set_text_direction,
+      Button._bindings.method_set_text_direction,
       this._owner,
       _direction
     );
@@ -386,7 +387,7 @@ export class Button extends BaseButton{
   get_text_direction() {
     Button.init_method_get_text_direction();
     return _call_native_mb_ret(
-      Button.#_bindings.method_get_text_direction,
+      Button._bindings.method_get_text_direction,
       this._owner,
 			Variant.Type.INT,
     
@@ -397,7 +398,7 @@ export class Button extends BaseButton{
   set_language(_language) {
     Button.init_method_set_language();
     return _call_native_mb_no_ret(
-      Button.#_bindings.method_set_language,
+      Button._bindings.method_set_language,
       this._owner,
       _language
     );
@@ -406,7 +407,7 @@ export class Button extends BaseButton{
   get_language() {
     Button.init_method_get_language();
     return _call_native_mb_ret(
-      Button.#_bindings.method_get_language,
+      Button._bindings.method_get_language,
       this._owner,
 			Variant.Type.STRING,
     
@@ -417,7 +418,7 @@ export class Button extends BaseButton{
   set_button_icon(_texture) {
     Button.init_method_set_button_icon();
     return _call_native_mb_no_ret(
-      Button.#_bindings.method_set_button_icon,
+      Button._bindings.method_set_button_icon,
       this._owner,
       _texture
     );
@@ -426,7 +427,7 @@ export class Button extends BaseButton{
   get_button_icon() {
     Button.init_method_get_button_icon();
     return _call_native_mb_ret(
-      Button.#_bindings.method_get_button_icon,
+      Button._bindings.method_get_button_icon,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -436,7 +437,7 @@ export class Button extends BaseButton{
   set_flat(_enabled) {
     Button.init_method_set_flat();
     return _call_native_mb_no_ret(
-      Button.#_bindings.method_set_flat,
+      Button._bindings.method_set_flat,
       this._owner,
       _enabled
     );
@@ -445,7 +446,7 @@ export class Button extends BaseButton{
   is_flat() {
     Button.init_method_is_flat();
     return _call_native_mb_ret(
-      Button.#_bindings.method_is_flat,
+      Button._bindings.method_is_flat,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -456,7 +457,7 @@ export class Button extends BaseButton{
   set_clip_text(_enabled) {
     Button.init_method_set_clip_text();
     return _call_native_mb_no_ret(
-      Button.#_bindings.method_set_clip_text,
+      Button._bindings.method_set_clip_text,
       this._owner,
       _enabled
     );
@@ -465,7 +466,7 @@ export class Button extends BaseButton{
   get_clip_text() {
     Button.init_method_get_clip_text();
     return _call_native_mb_ret(
-      Button.#_bindings.method_get_clip_text,
+      Button._bindings.method_get_clip_text,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -476,7 +477,7 @@ export class Button extends BaseButton{
   set_text_alignment(_alignment) {
     Button.init_method_set_text_alignment();
     return _call_native_mb_no_ret(
-      Button.#_bindings.method_set_text_alignment,
+      Button._bindings.method_set_text_alignment,
       this._owner,
       _alignment
     );
@@ -485,7 +486,7 @@ export class Button extends BaseButton{
   get_text_alignment() {
     Button.init_method_get_text_alignment();
     return _call_native_mb_ret(
-      Button.#_bindings.method_get_text_alignment,
+      Button._bindings.method_get_text_alignment,
       this._owner,
 			Variant.Type.INT,
     
@@ -496,7 +497,7 @@ export class Button extends BaseButton{
   set_icon_alignment(_icon_alignment) {
     Button.init_method_set_icon_alignment();
     return _call_native_mb_no_ret(
-      Button.#_bindings.method_set_icon_alignment,
+      Button._bindings.method_set_icon_alignment,
       this._owner,
       _icon_alignment
     );
@@ -505,7 +506,7 @@ export class Button extends BaseButton{
   get_icon_alignment() {
     Button.init_method_get_icon_alignment();
     return _call_native_mb_ret(
-      Button.#_bindings.method_get_icon_alignment,
+      Button._bindings.method_get_icon_alignment,
       this._owner,
 			Variant.Type.INT,
     
@@ -516,7 +517,7 @@ export class Button extends BaseButton{
   set_vertical_icon_alignment(_vertical_icon_alignment) {
     Button.init_method_set_vertical_icon_alignment();
     return _call_native_mb_no_ret(
-      Button.#_bindings.method_set_vertical_icon_alignment,
+      Button._bindings.method_set_vertical_icon_alignment,
       this._owner,
       _vertical_icon_alignment
     );
@@ -525,7 +526,7 @@ export class Button extends BaseButton{
   get_vertical_icon_alignment() {
     Button.init_method_get_vertical_icon_alignment();
     return _call_native_mb_ret(
-      Button.#_bindings.method_get_vertical_icon_alignment,
+      Button._bindings.method_get_vertical_icon_alignment,
       this._owner,
 			Variant.Type.INT,
     
@@ -536,7 +537,7 @@ export class Button extends BaseButton{
   set_expand_icon(_enabled) {
     Button.init_method_set_expand_icon();
     return _call_native_mb_no_ret(
-      Button.#_bindings.method_set_expand_icon,
+      Button._bindings.method_set_expand_icon,
       this._owner,
       _enabled
     );
@@ -545,7 +546,7 @@ export class Button extends BaseButton{
   is_expand_icon() {
     Button.init_method_is_expand_icon();
     return _call_native_mb_ret(
-      Button.#_bindings.method_is_expand_icon,
+      Button._bindings.method_is_expand_icon,
       this._owner,
 			Variant.Type.BOOL,
     

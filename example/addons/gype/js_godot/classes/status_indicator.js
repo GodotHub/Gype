@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Node } from '@js_godot/classes/node'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_tooltip;
@@ -20,10 +21,10 @@ class _MethodBindings {
   method_get_menu;
   method_get_rect;
 }
+@GodotClass
 export class StatusIndicator extends Node{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -33,10 +34,10 @@ export class StatusIndicator extends Node{
     }
   }
   static init_method_set_tooltip() {
-    if (!this.#_bindings.method_set_tooltip) {
+    if (!this._bindings.method_set_tooltip) {
       let classname = new StringName("StatusIndicator");
       let methodname = new StringName("set_tooltip");
-      this.#_bindings.method_set_tooltip = internal.classdb_get_method_bind(
+      this._bindings.method_set_tooltip = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -44,10 +45,10 @@ export class StatusIndicator extends Node{
     }
   }
   static init_method_get_tooltip() {
-    if (!this.#_bindings.method_get_tooltip) {
+    if (!this._bindings.method_get_tooltip) {
       let classname = new StringName("StatusIndicator");
       let methodname = new StringName("get_tooltip");
-      this.#_bindings.method_get_tooltip = internal.classdb_get_method_bind(
+      this._bindings.method_get_tooltip = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -55,10 +56,10 @@ export class StatusIndicator extends Node{
     }
   }
   static init_method_set_icon() {
-    if (!this.#_bindings.method_set_icon) {
+    if (!this._bindings.method_set_icon) {
       let classname = new StringName("StatusIndicator");
       let methodname = new StringName("set_icon");
-      this.#_bindings.method_set_icon = internal.classdb_get_method_bind(
+      this._bindings.method_set_icon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4051416890
@@ -66,10 +67,10 @@ export class StatusIndicator extends Node{
     }
   }
   static init_method_get_icon() {
-    if (!this.#_bindings.method_get_icon) {
+    if (!this._bindings.method_get_icon) {
       let classname = new StringName("StatusIndicator");
       let methodname = new StringName("get_icon");
-      this.#_bindings.method_get_icon = internal.classdb_get_method_bind(
+      this._bindings.method_get_icon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -77,10 +78,10 @@ export class StatusIndicator extends Node{
     }
   }
   static init_method_set_visible() {
-    if (!this.#_bindings.method_set_visible) {
+    if (!this._bindings.method_set_visible) {
       let classname = new StringName("StatusIndicator");
       let methodname = new StringName("set_visible");
-      this.#_bindings.method_set_visible = internal.classdb_get_method_bind(
+      this._bindings.method_set_visible = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -88,10 +89,10 @@ export class StatusIndicator extends Node{
     }
   }
   static init_method_is_visible() {
-    if (!this.#_bindings.method_is_visible) {
+    if (!this._bindings.method_is_visible) {
       let classname = new StringName("StatusIndicator");
       let methodname = new StringName("is_visible");
-      this.#_bindings.method_is_visible = internal.classdb_get_method_bind(
+      this._bindings.method_is_visible = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -99,10 +100,10 @@ export class StatusIndicator extends Node{
     }
   }
   static init_method_set_menu() {
-    if (!this.#_bindings.method_set_menu) {
+    if (!this._bindings.method_set_menu) {
       let classname = new StringName("StatusIndicator");
       let methodname = new StringName("set_menu");
-      this.#_bindings.method_set_menu = internal.classdb_get_method_bind(
+      this._bindings.method_set_menu = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1348162250
@@ -110,10 +111,10 @@ export class StatusIndicator extends Node{
     }
   }
   static init_method_get_menu() {
-    if (!this.#_bindings.method_get_menu) {
+    if (!this._bindings.method_get_menu) {
       let classname = new StringName("StatusIndicator");
       let methodname = new StringName("get_menu");
-      this.#_bindings.method_get_menu = internal.classdb_get_method_bind(
+      this._bindings.method_get_menu = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4075236667
@@ -121,10 +122,10 @@ export class StatusIndicator extends Node{
     }
   }
   static init_method_get_rect() {
-    if (!this.#_bindings.method_get_rect) {
+    if (!this._bindings.method_get_rect) {
       let classname = new StringName("StatusIndicator");
       let methodname = new StringName("get_rect");
-      this.#_bindings.method_get_rect = internal.classdb_get_method_bind(
+      this._bindings.method_get_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1639390495
@@ -137,7 +138,7 @@ export class StatusIndicator extends Node{
   set_tooltip(_tooltip) {
     StatusIndicator.init_method_set_tooltip();
     return _call_native_mb_no_ret(
-      StatusIndicator.#_bindings.method_set_tooltip,
+      StatusIndicator._bindings.method_set_tooltip,
       this._owner,
       _tooltip
     );
@@ -146,7 +147,7 @@ export class StatusIndicator extends Node{
   get_tooltip() {
     StatusIndicator.init_method_get_tooltip();
     return _call_native_mb_ret(
-      StatusIndicator.#_bindings.method_get_tooltip,
+      StatusIndicator._bindings.method_get_tooltip,
       this._owner,
 			Variant.Type.STRING,
     
@@ -157,7 +158,7 @@ export class StatusIndicator extends Node{
   set_icon(_texture) {
     StatusIndicator.init_method_set_icon();
     return _call_native_mb_no_ret(
-      StatusIndicator.#_bindings.method_set_icon,
+      StatusIndicator._bindings.method_set_icon,
       this._owner,
       _texture
     );
@@ -166,7 +167,7 @@ export class StatusIndicator extends Node{
   get_icon() {
     StatusIndicator.init_method_get_icon();
     return _call_native_mb_ret(
-      StatusIndicator.#_bindings.method_get_icon,
+      StatusIndicator._bindings.method_get_icon,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -176,7 +177,7 @@ export class StatusIndicator extends Node{
   set_visible(_visible) {
     StatusIndicator.init_method_set_visible();
     return _call_native_mb_no_ret(
-      StatusIndicator.#_bindings.method_set_visible,
+      StatusIndicator._bindings.method_set_visible,
       this._owner,
       _visible
     );
@@ -185,7 +186,7 @@ export class StatusIndicator extends Node{
   is_visible() {
     StatusIndicator.init_method_is_visible();
     return _call_native_mb_ret(
-      StatusIndicator.#_bindings.method_is_visible,
+      StatusIndicator._bindings.method_is_visible,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -196,7 +197,7 @@ export class StatusIndicator extends Node{
   set_menu(_menu) {
     StatusIndicator.init_method_set_menu();
     return _call_native_mb_no_ret(
-      StatusIndicator.#_bindings.method_set_menu,
+      StatusIndicator._bindings.method_set_menu,
       this._owner,
       _menu
     );
@@ -205,7 +206,7 @@ export class StatusIndicator extends Node{
   get_menu() {
     StatusIndicator.init_method_get_menu();
     return _call_native_mb_ret(
-      StatusIndicator.#_bindings.method_get_menu,
+      StatusIndicator._bindings.method_get_menu,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -216,7 +217,7 @@ export class StatusIndicator extends Node{
   get_rect() {
     StatusIndicator.init_method_get_rect();
     return _call_native_mb_ret(
-      StatusIndicator.#_bindings.method_get_rect,
+      StatusIndicator._bindings.method_get_rect,
       this._owner,
 			Variant.Type.RECT2,
     

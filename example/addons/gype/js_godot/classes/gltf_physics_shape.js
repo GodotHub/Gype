@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_from_node;
@@ -31,10 +32,10 @@ class _MethodBindings {
   method_get_importer_mesh;
   method_set_importer_mesh;
 }
+@GodotClass
 export class GLTFPhysicsShape extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -44,10 +45,10 @@ export class GLTFPhysicsShape extends Resource{
     }
   }
   static init_method_from_node() {
-    if (!this.#_bindings.method_from_node) {
+    if (!this._bindings.method_from_node) {
       let classname = new StringName("GLTFPhysicsShape");
       let methodname = new StringName("from_node");
-      this.#_bindings.method_from_node = internal.classdb_get_method_bind(
+      this._bindings.method_from_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3613751275
@@ -55,10 +56,10 @@ export class GLTFPhysicsShape extends Resource{
     }
   }
   static init_method_to_node() {
-    if (!this.#_bindings.method_to_node) {
+    if (!this._bindings.method_to_node) {
       let classname = new StringName("GLTFPhysicsShape");
       let methodname = new StringName("to_node");
-      this.#_bindings.method_to_node = internal.classdb_get_method_bind(
+      this._bindings.method_to_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         563689933
@@ -66,10 +67,10 @@ export class GLTFPhysicsShape extends Resource{
     }
   }
   static init_method_from_resource() {
-    if (!this.#_bindings.method_from_resource) {
+    if (!this._bindings.method_from_resource) {
       let classname = new StringName("GLTFPhysicsShape");
       let methodname = new StringName("from_resource");
-      this.#_bindings.method_from_resource = internal.classdb_get_method_bind(
+      this._bindings.method_from_resource = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3845569786
@@ -77,10 +78,10 @@ export class GLTFPhysicsShape extends Resource{
     }
   }
   static init_method_to_resource() {
-    if (!this.#_bindings.method_to_resource) {
+    if (!this._bindings.method_to_resource) {
       let classname = new StringName("GLTFPhysicsShape");
       let methodname = new StringName("to_resource");
-      this.#_bindings.method_to_resource = internal.classdb_get_method_bind(
+      this._bindings.method_to_resource = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1913542110
@@ -88,10 +89,10 @@ export class GLTFPhysicsShape extends Resource{
     }
   }
   static init_method_from_dictionary() {
-    if (!this.#_bindings.method_from_dictionary) {
+    if (!this._bindings.method_from_dictionary) {
       let classname = new StringName("GLTFPhysicsShape");
       let methodname = new StringName("from_dictionary");
-      this.#_bindings.method_from_dictionary = internal.classdb_get_method_bind(
+      this._bindings.method_from_dictionary = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2390691823
@@ -99,10 +100,10 @@ export class GLTFPhysicsShape extends Resource{
     }
   }
   static init_method_to_dictionary() {
-    if (!this.#_bindings.method_to_dictionary) {
+    if (!this._bindings.method_to_dictionary) {
       let classname = new StringName("GLTFPhysicsShape");
       let methodname = new StringName("to_dictionary");
-      this.#_bindings.method_to_dictionary = internal.classdb_get_method_bind(
+      this._bindings.method_to_dictionary = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3102165223
@@ -110,10 +111,10 @@ export class GLTFPhysicsShape extends Resource{
     }
   }
   static init_method_get_shape_type() {
-    if (!this.#_bindings.method_get_shape_type) {
+    if (!this._bindings.method_get_shape_type) {
       let classname = new StringName("GLTFPhysicsShape");
       let methodname = new StringName("get_shape_type");
-      this.#_bindings.method_get_shape_type = internal.classdb_get_method_bind(
+      this._bindings.method_get_shape_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -121,10 +122,10 @@ export class GLTFPhysicsShape extends Resource{
     }
   }
   static init_method_set_shape_type() {
-    if (!this.#_bindings.method_set_shape_type) {
+    if (!this._bindings.method_set_shape_type) {
       let classname = new StringName("GLTFPhysicsShape");
       let methodname = new StringName("set_shape_type");
-      this.#_bindings.method_set_shape_type = internal.classdb_get_method_bind(
+      this._bindings.method_set_shape_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -132,10 +133,10 @@ export class GLTFPhysicsShape extends Resource{
     }
   }
   static init_method_get_size() {
-    if (!this.#_bindings.method_get_size) {
+    if (!this._bindings.method_get_size) {
       let classname = new StringName("GLTFPhysicsShape");
       let methodname = new StringName("get_size");
-      this.#_bindings.method_get_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3360562783
@@ -143,10 +144,10 @@ export class GLTFPhysicsShape extends Resource{
     }
   }
   static init_method_set_size() {
-    if (!this.#_bindings.method_set_size) {
+    if (!this._bindings.method_set_size) {
       let classname = new StringName("GLTFPhysicsShape");
       let methodname = new StringName("set_size");
-      this.#_bindings.method_set_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -154,10 +155,10 @@ export class GLTFPhysicsShape extends Resource{
     }
   }
   static init_method_get_radius() {
-    if (!this.#_bindings.method_get_radius) {
+    if (!this._bindings.method_get_radius) {
       let classname = new StringName("GLTFPhysicsShape");
       let methodname = new StringName("get_radius");
-      this.#_bindings.method_get_radius = internal.classdb_get_method_bind(
+      this._bindings.method_get_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -165,10 +166,10 @@ export class GLTFPhysicsShape extends Resource{
     }
   }
   static init_method_set_radius() {
-    if (!this.#_bindings.method_set_radius) {
+    if (!this._bindings.method_set_radius) {
       let classname = new StringName("GLTFPhysicsShape");
       let methodname = new StringName("set_radius");
-      this.#_bindings.method_set_radius = internal.classdb_get_method_bind(
+      this._bindings.method_set_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -176,10 +177,10 @@ export class GLTFPhysicsShape extends Resource{
     }
   }
   static init_method_get_height() {
-    if (!this.#_bindings.method_get_height) {
+    if (!this._bindings.method_get_height) {
       let classname = new StringName("GLTFPhysicsShape");
       let methodname = new StringName("get_height");
-      this.#_bindings.method_get_height = internal.classdb_get_method_bind(
+      this._bindings.method_get_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -187,10 +188,10 @@ export class GLTFPhysicsShape extends Resource{
     }
   }
   static init_method_set_height() {
-    if (!this.#_bindings.method_set_height) {
+    if (!this._bindings.method_set_height) {
       let classname = new StringName("GLTFPhysicsShape");
       let methodname = new StringName("set_height");
-      this.#_bindings.method_set_height = internal.classdb_get_method_bind(
+      this._bindings.method_set_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -198,10 +199,10 @@ export class GLTFPhysicsShape extends Resource{
     }
   }
   static init_method_get_is_trigger() {
-    if (!this.#_bindings.method_get_is_trigger) {
+    if (!this._bindings.method_get_is_trigger) {
       let classname = new StringName("GLTFPhysicsShape");
       let methodname = new StringName("get_is_trigger");
-      this.#_bindings.method_get_is_trigger = internal.classdb_get_method_bind(
+      this._bindings.method_get_is_trigger = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -209,10 +210,10 @@ export class GLTFPhysicsShape extends Resource{
     }
   }
   static init_method_set_is_trigger() {
-    if (!this.#_bindings.method_set_is_trigger) {
+    if (!this._bindings.method_set_is_trigger) {
       let classname = new StringName("GLTFPhysicsShape");
       let methodname = new StringName("set_is_trigger");
-      this.#_bindings.method_set_is_trigger = internal.classdb_get_method_bind(
+      this._bindings.method_set_is_trigger = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -220,10 +221,10 @@ export class GLTFPhysicsShape extends Resource{
     }
   }
   static init_method_get_mesh_index() {
-    if (!this.#_bindings.method_get_mesh_index) {
+    if (!this._bindings.method_get_mesh_index) {
       let classname = new StringName("GLTFPhysicsShape");
       let methodname = new StringName("get_mesh_index");
-      this.#_bindings.method_get_mesh_index = internal.classdb_get_method_bind(
+      this._bindings.method_get_mesh_index = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -231,10 +232,10 @@ export class GLTFPhysicsShape extends Resource{
     }
   }
   static init_method_set_mesh_index() {
-    if (!this.#_bindings.method_set_mesh_index) {
+    if (!this._bindings.method_set_mesh_index) {
       let classname = new StringName("GLTFPhysicsShape");
       let methodname = new StringName("set_mesh_index");
-      this.#_bindings.method_set_mesh_index = internal.classdb_get_method_bind(
+      this._bindings.method_set_mesh_index = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -242,10 +243,10 @@ export class GLTFPhysicsShape extends Resource{
     }
   }
   static init_method_get_importer_mesh() {
-    if (!this.#_bindings.method_get_importer_mesh) {
+    if (!this._bindings.method_get_importer_mesh) {
       let classname = new StringName("GLTFPhysicsShape");
       let methodname = new StringName("get_importer_mesh");
-      this.#_bindings.method_get_importer_mesh = internal.classdb_get_method_bind(
+      this._bindings.method_get_importer_mesh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3161779525
@@ -253,10 +254,10 @@ export class GLTFPhysicsShape extends Resource{
     }
   }
   static init_method_set_importer_mesh() {
-    if (!this.#_bindings.method_set_importer_mesh) {
+    if (!this._bindings.method_set_importer_mesh) {
       let classname = new StringName("GLTFPhysicsShape");
       let methodname = new StringName("set_importer_mesh");
-      this.#_bindings.method_set_importer_mesh = internal.classdb_get_method_bind(
+      this._bindings.method_set_importer_mesh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2255166972
@@ -269,7 +270,7 @@ export class GLTFPhysicsShape extends Resource{
   from_node(_shape_node) {
     GLTFPhysicsShape.init_method_from_node();
     return _call_native_mb_ret(
-      GLTFPhysicsShape.#_bindings.method_from_node,
+      GLTFPhysicsShape._bindings.method_from_node,
       this._owner,
 			Variant.Type.OBJECT,
       _shape_node
@@ -279,7 +280,7 @@ export class GLTFPhysicsShape extends Resource{
   to_node(_cache_shapes) {
     GLTFPhysicsShape.init_method_to_node();
     return _call_native_mb_ret(
-      GLTFPhysicsShape.#_bindings.method_to_node,
+      GLTFPhysicsShape._bindings.method_to_node,
       this._owner,
 			Variant.Type.OBJECT,
       _cache_shapes
@@ -289,7 +290,7 @@ export class GLTFPhysicsShape extends Resource{
   from_resource(_shape_resource) {
     GLTFPhysicsShape.init_method_from_resource();
     return _call_native_mb_ret(
-      GLTFPhysicsShape.#_bindings.method_from_resource,
+      GLTFPhysicsShape._bindings.method_from_resource,
       this._owner,
 			Variant.Type.OBJECT,
       _shape_resource
@@ -299,7 +300,7 @@ export class GLTFPhysicsShape extends Resource{
   to_resource(_cache_shapes) {
     GLTFPhysicsShape.init_method_to_resource();
     return _call_native_mb_ret(
-      GLTFPhysicsShape.#_bindings.method_to_resource,
+      GLTFPhysicsShape._bindings.method_to_resource,
       this._owner,
 			Variant.Type.OBJECT,
       _cache_shapes
@@ -309,7 +310,7 @@ export class GLTFPhysicsShape extends Resource{
   from_dictionary(_dictionary) {
     GLTFPhysicsShape.init_method_from_dictionary();
     return _call_native_mb_ret(
-      GLTFPhysicsShape.#_bindings.method_from_dictionary,
+      GLTFPhysicsShape._bindings.method_from_dictionary,
       this._owner,
 			Variant.Type.OBJECT,
       _dictionary
@@ -319,7 +320,7 @@ export class GLTFPhysicsShape extends Resource{
   to_dictionary() {
     GLTFPhysicsShape.init_method_to_dictionary();
     return _call_native_mb_ret(
-      GLTFPhysicsShape.#_bindings.method_to_dictionary,
+      GLTFPhysicsShape._bindings.method_to_dictionary,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -330,7 +331,7 @@ export class GLTFPhysicsShape extends Resource{
   get_shape_type() {
     GLTFPhysicsShape.init_method_get_shape_type();
     return _call_native_mb_ret(
-      GLTFPhysicsShape.#_bindings.method_get_shape_type,
+      GLTFPhysicsShape._bindings.method_get_shape_type,
       this._owner,
 			Variant.Type.STRING,
     
@@ -341,7 +342,7 @@ export class GLTFPhysicsShape extends Resource{
   set_shape_type(_shape_type) {
     GLTFPhysicsShape.init_method_set_shape_type();
     return _call_native_mb_no_ret(
-      GLTFPhysicsShape.#_bindings.method_set_shape_type,
+      GLTFPhysicsShape._bindings.method_set_shape_type,
       this._owner,
       _shape_type
     );
@@ -350,7 +351,7 @@ export class GLTFPhysicsShape extends Resource{
   get_size() {
     GLTFPhysicsShape.init_method_get_size();
     return _call_native_mb_ret(
-      GLTFPhysicsShape.#_bindings.method_get_size,
+      GLTFPhysicsShape._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -361,7 +362,7 @@ export class GLTFPhysicsShape extends Resource{
   set_size(_size) {
     GLTFPhysicsShape.init_method_set_size();
     return _call_native_mb_no_ret(
-      GLTFPhysicsShape.#_bindings.method_set_size,
+      GLTFPhysicsShape._bindings.method_set_size,
       this._owner,
       _size
     );
@@ -370,7 +371,7 @@ export class GLTFPhysicsShape extends Resource{
   get_radius() {
     GLTFPhysicsShape.init_method_get_radius();
     return _call_native_mb_ret(
-      GLTFPhysicsShape.#_bindings.method_get_radius,
+      GLTFPhysicsShape._bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -381,7 +382,7 @@ export class GLTFPhysicsShape extends Resource{
   set_radius(_radius) {
     GLTFPhysicsShape.init_method_set_radius();
     return _call_native_mb_no_ret(
-      GLTFPhysicsShape.#_bindings.method_set_radius,
+      GLTFPhysicsShape._bindings.method_set_radius,
       this._owner,
       _radius
     );
@@ -390,7 +391,7 @@ export class GLTFPhysicsShape extends Resource{
   get_height() {
     GLTFPhysicsShape.init_method_get_height();
     return _call_native_mb_ret(
-      GLTFPhysicsShape.#_bindings.method_get_height,
+      GLTFPhysicsShape._bindings.method_get_height,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -401,7 +402,7 @@ export class GLTFPhysicsShape extends Resource{
   set_height(_height) {
     GLTFPhysicsShape.init_method_set_height();
     return _call_native_mb_no_ret(
-      GLTFPhysicsShape.#_bindings.method_set_height,
+      GLTFPhysicsShape._bindings.method_set_height,
       this._owner,
       _height
     );
@@ -410,7 +411,7 @@ export class GLTFPhysicsShape extends Resource{
   get_is_trigger() {
     GLTFPhysicsShape.init_method_get_is_trigger();
     return _call_native_mb_ret(
-      GLTFPhysicsShape.#_bindings.method_get_is_trigger,
+      GLTFPhysicsShape._bindings.method_get_is_trigger,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -421,7 +422,7 @@ export class GLTFPhysicsShape extends Resource{
   set_is_trigger(_is_trigger) {
     GLTFPhysicsShape.init_method_set_is_trigger();
     return _call_native_mb_no_ret(
-      GLTFPhysicsShape.#_bindings.method_set_is_trigger,
+      GLTFPhysicsShape._bindings.method_set_is_trigger,
       this._owner,
       _is_trigger
     );
@@ -430,7 +431,7 @@ export class GLTFPhysicsShape extends Resource{
   get_mesh_index() {
     GLTFPhysicsShape.init_method_get_mesh_index();
     return _call_native_mb_ret(
-      GLTFPhysicsShape.#_bindings.method_get_mesh_index,
+      GLTFPhysicsShape._bindings.method_get_mesh_index,
       this._owner,
 			Variant.Type.INT,
     
@@ -441,7 +442,7 @@ export class GLTFPhysicsShape extends Resource{
   set_mesh_index(_mesh_index) {
     GLTFPhysicsShape.init_method_set_mesh_index();
     return _call_native_mb_no_ret(
-      GLTFPhysicsShape.#_bindings.method_set_mesh_index,
+      GLTFPhysicsShape._bindings.method_set_mesh_index,
       this._owner,
       _mesh_index
     );
@@ -450,7 +451,7 @@ export class GLTFPhysicsShape extends Resource{
   get_importer_mesh() {
     GLTFPhysicsShape.init_method_get_importer_mesh();
     return _call_native_mb_ret(
-      GLTFPhysicsShape.#_bindings.method_get_importer_mesh,
+      GLTFPhysicsShape._bindings.method_get_importer_mesh,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -460,7 +461,7 @@ export class GLTFPhysicsShape extends Resource{
   set_importer_mesh(_importer_mesh) {
     GLTFPhysicsShape.init_method_set_importer_mesh();
     return _call_native_mb_no_ret(
-      GLTFPhysicsShape.#_bindings.method_set_importer_mesh,
+      GLTFPhysicsShape._bindings.method_set_importer_mesh,
       this._owner,
       _importer_mesh
     );

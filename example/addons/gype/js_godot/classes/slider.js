@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Range } from '@js_godot/classes/range'
 import { StringName } from '@js_godot/variant/string_name'
+import { Range } from '@js_godot/classes/range'
 import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_ticks;
@@ -19,10 +20,10 @@ class _MethodBindings {
   method_set_scrollable;
   method_is_scrollable;
 }
+@GodotClass
 export class Slider extends Range{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -32,10 +33,10 @@ export class Slider extends Range{
     }
   }
   static init_method_set_ticks() {
-    if (!this.#_bindings.method_set_ticks) {
+    if (!this._bindings.method_set_ticks) {
       let classname = new StringName("Slider");
       let methodname = new StringName("set_ticks");
-      this.#_bindings.method_set_ticks = internal.classdb_get_method_bind(
+      this._bindings.method_set_ticks = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -43,10 +44,10 @@ export class Slider extends Range{
     }
   }
   static init_method_get_ticks() {
-    if (!this.#_bindings.method_get_ticks) {
+    if (!this._bindings.method_get_ticks) {
       let classname = new StringName("Slider");
       let methodname = new StringName("get_ticks");
-      this.#_bindings.method_get_ticks = internal.classdb_get_method_bind(
+      this._bindings.method_get_ticks = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -54,10 +55,10 @@ export class Slider extends Range{
     }
   }
   static init_method_get_ticks_on_borders() {
-    if (!this.#_bindings.method_get_ticks_on_borders) {
+    if (!this._bindings.method_get_ticks_on_borders) {
       let classname = new StringName("Slider");
       let methodname = new StringName("get_ticks_on_borders");
-      this.#_bindings.method_get_ticks_on_borders = internal.classdb_get_method_bind(
+      this._bindings.method_get_ticks_on_borders = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -65,10 +66,10 @@ export class Slider extends Range{
     }
   }
   static init_method_set_ticks_on_borders() {
-    if (!this.#_bindings.method_set_ticks_on_borders) {
+    if (!this._bindings.method_set_ticks_on_borders) {
       let classname = new StringName("Slider");
       let methodname = new StringName("set_ticks_on_borders");
-      this.#_bindings.method_set_ticks_on_borders = internal.classdb_get_method_bind(
+      this._bindings.method_set_ticks_on_borders = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -76,10 +77,10 @@ export class Slider extends Range{
     }
   }
   static init_method_set_editable() {
-    if (!this.#_bindings.method_set_editable) {
+    if (!this._bindings.method_set_editable) {
       let classname = new StringName("Slider");
       let methodname = new StringName("set_editable");
-      this.#_bindings.method_set_editable = internal.classdb_get_method_bind(
+      this._bindings.method_set_editable = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -87,10 +88,10 @@ export class Slider extends Range{
     }
   }
   static init_method_is_editable() {
-    if (!this.#_bindings.method_is_editable) {
+    if (!this._bindings.method_is_editable) {
       let classname = new StringName("Slider");
       let methodname = new StringName("is_editable");
-      this.#_bindings.method_is_editable = internal.classdb_get_method_bind(
+      this._bindings.method_is_editable = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -98,10 +99,10 @@ export class Slider extends Range{
     }
   }
   static init_method_set_scrollable() {
-    if (!this.#_bindings.method_set_scrollable) {
+    if (!this._bindings.method_set_scrollable) {
       let classname = new StringName("Slider");
       let methodname = new StringName("set_scrollable");
-      this.#_bindings.method_set_scrollable = internal.classdb_get_method_bind(
+      this._bindings.method_set_scrollable = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -109,10 +110,10 @@ export class Slider extends Range{
     }
   }
   static init_method_is_scrollable() {
-    if (!this.#_bindings.method_is_scrollable) {
+    if (!this._bindings.method_is_scrollable) {
       let classname = new StringName("Slider");
       let methodname = new StringName("is_scrollable");
-      this.#_bindings.method_is_scrollable = internal.classdb_get_method_bind(
+      this._bindings.method_is_scrollable = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -125,7 +126,7 @@ export class Slider extends Range{
   set_ticks(_count) {
     Slider.init_method_set_ticks();
     return _call_native_mb_no_ret(
-      Slider.#_bindings.method_set_ticks,
+      Slider._bindings.method_set_ticks,
       this._owner,
       _count
     );
@@ -134,7 +135,7 @@ export class Slider extends Range{
   get_ticks() {
     Slider.init_method_get_ticks();
     return _call_native_mb_ret(
-      Slider.#_bindings.method_get_ticks,
+      Slider._bindings.method_get_ticks,
       this._owner,
 			Variant.Type.INT,
     
@@ -145,7 +146,7 @@ export class Slider extends Range{
   get_ticks_on_borders() {
     Slider.init_method_get_ticks_on_borders();
     return _call_native_mb_ret(
-      Slider.#_bindings.method_get_ticks_on_borders,
+      Slider._bindings.method_get_ticks_on_borders,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -156,7 +157,7 @@ export class Slider extends Range{
   set_ticks_on_borders(_ticks_on_border) {
     Slider.init_method_set_ticks_on_borders();
     return _call_native_mb_no_ret(
-      Slider.#_bindings.method_set_ticks_on_borders,
+      Slider._bindings.method_set_ticks_on_borders,
       this._owner,
       _ticks_on_border
     );
@@ -165,7 +166,7 @@ export class Slider extends Range{
   set_editable(_editable) {
     Slider.init_method_set_editable();
     return _call_native_mb_no_ret(
-      Slider.#_bindings.method_set_editable,
+      Slider._bindings.method_set_editable,
       this._owner,
       _editable
     );
@@ -174,7 +175,7 @@ export class Slider extends Range{
   is_editable() {
     Slider.init_method_is_editable();
     return _call_native_mb_ret(
-      Slider.#_bindings.method_is_editable,
+      Slider._bindings.method_is_editable,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -185,7 +186,7 @@ export class Slider extends Range{
   set_scrollable(_scrollable) {
     Slider.init_method_set_scrollable();
     return _call_native_mb_no_ret(
-      Slider.#_bindings.method_set_scrollable,
+      Slider._bindings.method_set_scrollable,
       this._owner,
       _scrollable
     );
@@ -194,7 +195,7 @@ export class Slider extends Range{
   is_scrollable() {
     Slider.init_method_is_scrollable();
     return _call_native_mb_ret(
-      Slider.#_bindings.method_is_scrollable,
+      Slider._bindings.method_is_scrollable,
       this._owner,
 			Variant.Type.BOOL,
     

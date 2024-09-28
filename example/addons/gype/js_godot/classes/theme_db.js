@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GodotObject } from '@js_godot/classes/godot_object'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_default_theme;
@@ -24,8 +25,7 @@ class _MethodBindings {
   method_get_fallback_stylebox;
 }class _ThemeDB extends GodotObject{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -35,10 +35,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_default_theme() {
-    if (!this.#_bindings.method_get_default_theme) {
+    if (!this._bindings.method_get_default_theme) {
       let classname = new StringName("ThemeDB");
       let methodname = new StringName("get_default_theme");
-      this.#_bindings.method_get_default_theme = internal.classdb_get_method_bind(
+      this._bindings.method_get_default_theme = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         754276358
@@ -46,10 +46,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_project_theme() {
-    if (!this.#_bindings.method_get_project_theme) {
+    if (!this._bindings.method_get_project_theme) {
       let classname = new StringName("ThemeDB");
       let methodname = new StringName("get_project_theme");
-      this.#_bindings.method_get_project_theme = internal.classdb_get_method_bind(
+      this._bindings.method_get_project_theme = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         754276358
@@ -57,10 +57,10 @@ class _MethodBindings {
     }
   }
   static init_method_set_fallback_base_scale() {
-    if (!this.#_bindings.method_set_fallback_base_scale) {
+    if (!this._bindings.method_set_fallback_base_scale) {
       let classname = new StringName("ThemeDB");
       let methodname = new StringName("set_fallback_base_scale");
-      this.#_bindings.method_set_fallback_base_scale = internal.classdb_get_method_bind(
+      this._bindings.method_set_fallback_base_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -68,10 +68,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_fallback_base_scale() {
-    if (!this.#_bindings.method_get_fallback_base_scale) {
+    if (!this._bindings.method_get_fallback_base_scale) {
       let classname = new StringName("ThemeDB");
       let methodname = new StringName("get_fallback_base_scale");
-      this.#_bindings.method_get_fallback_base_scale = internal.classdb_get_method_bind(
+      this._bindings.method_get_fallback_base_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         191475506
@@ -79,10 +79,10 @@ class _MethodBindings {
     }
   }
   static init_method_set_fallback_font() {
-    if (!this.#_bindings.method_set_fallback_font) {
+    if (!this._bindings.method_set_fallback_font) {
       let classname = new StringName("ThemeDB");
       let methodname = new StringName("set_fallback_font");
-      this.#_bindings.method_set_fallback_font = internal.classdb_get_method_bind(
+      this._bindings.method_set_fallback_font = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1262170328
@@ -90,10 +90,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_fallback_font() {
-    if (!this.#_bindings.method_get_fallback_font) {
+    if (!this._bindings.method_get_fallback_font) {
       let classname = new StringName("ThemeDB");
       let methodname = new StringName("get_fallback_font");
-      this.#_bindings.method_get_fallback_font = internal.classdb_get_method_bind(
+      this._bindings.method_get_fallback_font = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3656929885
@@ -101,10 +101,10 @@ class _MethodBindings {
     }
   }
   static init_method_set_fallback_font_size() {
-    if (!this.#_bindings.method_set_fallback_font_size) {
+    if (!this._bindings.method_set_fallback_font_size) {
       let classname = new StringName("ThemeDB");
       let methodname = new StringName("set_fallback_font_size");
-      this.#_bindings.method_set_fallback_font_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_fallback_font_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -112,10 +112,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_fallback_font_size() {
-    if (!this.#_bindings.method_get_fallback_font_size) {
+    if (!this._bindings.method_get_fallback_font_size) {
       let classname = new StringName("ThemeDB");
       let methodname = new StringName("get_fallback_font_size");
-      this.#_bindings.method_get_fallback_font_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_fallback_font_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -123,10 +123,10 @@ class _MethodBindings {
     }
   }
   static init_method_set_fallback_icon() {
-    if (!this.#_bindings.method_set_fallback_icon) {
+    if (!this._bindings.method_set_fallback_icon) {
       let classname = new StringName("ThemeDB");
       let methodname = new StringName("set_fallback_icon");
-      this.#_bindings.method_set_fallback_icon = internal.classdb_get_method_bind(
+      this._bindings.method_set_fallback_icon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4051416890
@@ -134,10 +134,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_fallback_icon() {
-    if (!this.#_bindings.method_get_fallback_icon) {
+    if (!this._bindings.method_get_fallback_icon) {
       let classname = new StringName("ThemeDB");
       let methodname = new StringName("get_fallback_icon");
-      this.#_bindings.method_get_fallback_icon = internal.classdb_get_method_bind(
+      this._bindings.method_get_fallback_icon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         255860311
@@ -145,10 +145,10 @@ class _MethodBindings {
     }
   }
   static init_method_set_fallback_stylebox() {
-    if (!this.#_bindings.method_set_fallback_stylebox) {
+    if (!this._bindings.method_set_fallback_stylebox) {
       let classname = new StringName("ThemeDB");
       let methodname = new StringName("set_fallback_stylebox");
-      this.#_bindings.method_set_fallback_stylebox = internal.classdb_get_method_bind(
+      this._bindings.method_set_fallback_stylebox = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2797200388
@@ -156,10 +156,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_fallback_stylebox() {
-    if (!this.#_bindings.method_get_fallback_stylebox) {
+    if (!this._bindings.method_get_fallback_stylebox) {
       let classname = new StringName("ThemeDB");
       let methodname = new StringName("get_fallback_stylebox");
-      this.#_bindings.method_get_fallback_stylebox = internal.classdb_get_method_bind(
+      this._bindings.method_get_fallback_stylebox = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         496040854
@@ -172,7 +172,7 @@ class _MethodBindings {
   get_default_theme() {
     ThemeDB.init_method_get_default_theme();
     return _call_native_mb_ret(
-      _ThemeDB.#_bindings.method_get_default_theme,
+      _ThemeDB._bindings.method_get_default_theme,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -182,7 +182,7 @@ class _MethodBindings {
   get_project_theme() {
     ThemeDB.init_method_get_project_theme();
     return _call_native_mb_ret(
-      _ThemeDB.#_bindings.method_get_project_theme,
+      _ThemeDB._bindings.method_get_project_theme,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -192,7 +192,7 @@ class _MethodBindings {
   set_fallback_base_scale(_base_scale) {
     ThemeDB.init_method_set_fallback_base_scale();
     return _call_native_mb_no_ret(
-      _ThemeDB.#_bindings.method_set_fallback_base_scale,
+      _ThemeDB._bindings.method_set_fallback_base_scale,
       this._owner,
       _base_scale
     );
@@ -201,7 +201,7 @@ class _MethodBindings {
   get_fallback_base_scale() {
     ThemeDB.init_method_get_fallback_base_scale();
     return _call_native_mb_ret(
-      _ThemeDB.#_bindings.method_get_fallback_base_scale,
+      _ThemeDB._bindings.method_get_fallback_base_scale,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -212,7 +212,7 @@ class _MethodBindings {
   set_fallback_font(_font) {
     ThemeDB.init_method_set_fallback_font();
     return _call_native_mb_no_ret(
-      _ThemeDB.#_bindings.method_set_fallback_font,
+      _ThemeDB._bindings.method_set_fallback_font,
       this._owner,
       _font
     );
@@ -221,7 +221,7 @@ class _MethodBindings {
   get_fallback_font() {
     ThemeDB.init_method_get_fallback_font();
     return _call_native_mb_ret(
-      _ThemeDB.#_bindings.method_get_fallback_font,
+      _ThemeDB._bindings.method_get_fallback_font,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -231,7 +231,7 @@ class _MethodBindings {
   set_fallback_font_size(_font_size) {
     ThemeDB.init_method_set_fallback_font_size();
     return _call_native_mb_no_ret(
-      _ThemeDB.#_bindings.method_set_fallback_font_size,
+      _ThemeDB._bindings.method_set_fallback_font_size,
       this._owner,
       _font_size
     );
@@ -240,7 +240,7 @@ class _MethodBindings {
   get_fallback_font_size() {
     ThemeDB.init_method_get_fallback_font_size();
     return _call_native_mb_ret(
-      _ThemeDB.#_bindings.method_get_fallback_font_size,
+      _ThemeDB._bindings.method_get_fallback_font_size,
       this._owner,
 			Variant.Type.INT,
     
@@ -251,7 +251,7 @@ class _MethodBindings {
   set_fallback_icon(_icon) {
     ThemeDB.init_method_set_fallback_icon();
     return _call_native_mb_no_ret(
-      _ThemeDB.#_bindings.method_set_fallback_icon,
+      _ThemeDB._bindings.method_set_fallback_icon,
       this._owner,
       _icon
     );
@@ -260,7 +260,7 @@ class _MethodBindings {
   get_fallback_icon() {
     ThemeDB.init_method_get_fallback_icon();
     return _call_native_mb_ret(
-      _ThemeDB.#_bindings.method_get_fallback_icon,
+      _ThemeDB._bindings.method_get_fallback_icon,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -270,7 +270,7 @@ class _MethodBindings {
   set_fallback_stylebox(_stylebox) {
     ThemeDB.init_method_set_fallback_stylebox();
     return _call_native_mb_no_ret(
-      _ThemeDB.#_bindings.method_set_fallback_stylebox,
+      _ThemeDB._bindings.method_set_fallback_stylebox,
       this._owner,
       _stylebox
     );
@@ -279,7 +279,7 @@ class _MethodBindings {
   get_fallback_stylebox() {
     ThemeDB.init_method_get_fallback_stylebox();
     return _call_native_mb_ret(
-      _ThemeDB.#_bindings.method_get_fallback_stylebox,
+      _ThemeDB._bindings.method_get_fallback_stylebox,
       this._owner,
 			Variant.Type.OBJECT,
       

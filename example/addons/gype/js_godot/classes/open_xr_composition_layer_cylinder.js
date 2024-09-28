@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_radius;
@@ -19,10 +20,10 @@ class _MethodBindings {
   method_set_fallback_segments;
   method_get_fallback_segments;
 }
+@GodotClass
 export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -32,10 +33,10 @@ export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
     }
   }
   static init_method_set_radius() {
-    if (!this.#_bindings.method_set_radius) {
+    if (!this._bindings.method_set_radius) {
       let classname = new StringName("OpenXRCompositionLayerCylinder");
       let methodname = new StringName("set_radius");
-      this.#_bindings.method_set_radius = internal.classdb_get_method_bind(
+      this._bindings.method_set_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -43,10 +44,10 @@ export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
     }
   }
   static init_method_get_radius() {
-    if (!this.#_bindings.method_get_radius) {
+    if (!this._bindings.method_get_radius) {
       let classname = new StringName("OpenXRCompositionLayerCylinder");
       let methodname = new StringName("get_radius");
-      this.#_bindings.method_get_radius = internal.classdb_get_method_bind(
+      this._bindings.method_get_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -54,10 +55,10 @@ export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
     }
   }
   static init_method_set_aspect_ratio() {
-    if (!this.#_bindings.method_set_aspect_ratio) {
+    if (!this._bindings.method_set_aspect_ratio) {
       let classname = new StringName("OpenXRCompositionLayerCylinder");
       let methodname = new StringName("set_aspect_ratio");
-      this.#_bindings.method_set_aspect_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_set_aspect_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -65,10 +66,10 @@ export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
     }
   }
   static init_method_get_aspect_ratio() {
-    if (!this.#_bindings.method_get_aspect_ratio) {
+    if (!this._bindings.method_get_aspect_ratio) {
       let classname = new StringName("OpenXRCompositionLayerCylinder");
       let methodname = new StringName("get_aspect_ratio");
-      this.#_bindings.method_get_aspect_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_get_aspect_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -76,10 +77,10 @@ export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
     }
   }
   static init_method_set_central_angle() {
-    if (!this.#_bindings.method_set_central_angle) {
+    if (!this._bindings.method_set_central_angle) {
       let classname = new StringName("OpenXRCompositionLayerCylinder");
       let methodname = new StringName("set_central_angle");
-      this.#_bindings.method_set_central_angle = internal.classdb_get_method_bind(
+      this._bindings.method_set_central_angle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -87,10 +88,10 @@ export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
     }
   }
   static init_method_get_central_angle() {
-    if (!this.#_bindings.method_get_central_angle) {
+    if (!this._bindings.method_get_central_angle) {
       let classname = new StringName("OpenXRCompositionLayerCylinder");
       let methodname = new StringName("get_central_angle");
-      this.#_bindings.method_get_central_angle = internal.classdb_get_method_bind(
+      this._bindings.method_get_central_angle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -98,10 +99,10 @@ export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
     }
   }
   static init_method_set_fallback_segments() {
-    if (!this.#_bindings.method_set_fallback_segments) {
+    if (!this._bindings.method_set_fallback_segments) {
       let classname = new StringName("OpenXRCompositionLayerCylinder");
       let methodname = new StringName("set_fallback_segments");
-      this.#_bindings.method_set_fallback_segments = internal.classdb_get_method_bind(
+      this._bindings.method_set_fallback_segments = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -109,10 +110,10 @@ export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
     }
   }
   static init_method_get_fallback_segments() {
-    if (!this.#_bindings.method_get_fallback_segments) {
+    if (!this._bindings.method_get_fallback_segments) {
       let classname = new StringName("OpenXRCompositionLayerCylinder");
       let methodname = new StringName("get_fallback_segments");
-      this.#_bindings.method_get_fallback_segments = internal.classdb_get_method_bind(
+      this._bindings.method_get_fallback_segments = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -125,7 +126,7 @@ export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
   set_radius(_radius) {
     OpenXRCompositionLayerCylinder.init_method_set_radius();
     return _call_native_mb_no_ret(
-      OpenXRCompositionLayerCylinder.#_bindings.method_set_radius,
+      OpenXRCompositionLayerCylinder._bindings.method_set_radius,
       this._owner,
       _radius
     );
@@ -134,7 +135,7 @@ export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
   get_radius() {
     OpenXRCompositionLayerCylinder.init_method_get_radius();
     return _call_native_mb_ret(
-      OpenXRCompositionLayerCylinder.#_bindings.method_get_radius,
+      OpenXRCompositionLayerCylinder._bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -145,7 +146,7 @@ export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
   set_aspect_ratio(_aspect_ratio) {
     OpenXRCompositionLayerCylinder.init_method_set_aspect_ratio();
     return _call_native_mb_no_ret(
-      OpenXRCompositionLayerCylinder.#_bindings.method_set_aspect_ratio,
+      OpenXRCompositionLayerCylinder._bindings.method_set_aspect_ratio,
       this._owner,
       _aspect_ratio
     );
@@ -154,7 +155,7 @@ export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
   get_aspect_ratio() {
     OpenXRCompositionLayerCylinder.init_method_get_aspect_ratio();
     return _call_native_mb_ret(
-      OpenXRCompositionLayerCylinder.#_bindings.method_get_aspect_ratio,
+      OpenXRCompositionLayerCylinder._bindings.method_get_aspect_ratio,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -165,7 +166,7 @@ export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
   set_central_angle(_angle) {
     OpenXRCompositionLayerCylinder.init_method_set_central_angle();
     return _call_native_mb_no_ret(
-      OpenXRCompositionLayerCylinder.#_bindings.method_set_central_angle,
+      OpenXRCompositionLayerCylinder._bindings.method_set_central_angle,
       this._owner,
       _angle
     );
@@ -174,7 +175,7 @@ export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
   get_central_angle() {
     OpenXRCompositionLayerCylinder.init_method_get_central_angle();
     return _call_native_mb_ret(
-      OpenXRCompositionLayerCylinder.#_bindings.method_get_central_angle,
+      OpenXRCompositionLayerCylinder._bindings.method_get_central_angle,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -185,7 +186,7 @@ export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
   set_fallback_segments(_segments) {
     OpenXRCompositionLayerCylinder.init_method_set_fallback_segments();
     return _call_native_mb_no_ret(
-      OpenXRCompositionLayerCylinder.#_bindings.method_set_fallback_segments,
+      OpenXRCompositionLayerCylinder._bindings.method_set_fallback_segments,
       this._owner,
       _segments
     );
@@ -194,7 +195,7 @@ export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
   get_fallback_segments() {
     OpenXRCompositionLayerCylinder.init_method_get_fallback_segments();
     return _call_native_mb_ret(
-      OpenXRCompositionLayerCylinder.#_bindings.method_get_fallback_segments,
+      OpenXRCompositionLayerCylinder._bindings.method_get_fallback_segments,
       this._owner,
 			Variant.Type.INT,
     

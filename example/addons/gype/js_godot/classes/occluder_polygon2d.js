@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_closed;
@@ -17,10 +18,10 @@ class _MethodBindings {
   method_set_polygon;
   method_get_polygon;
 }
+@GodotClass
 export class OccluderPolygon2D extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -30,10 +31,10 @@ export class OccluderPolygon2D extends Resource{
     }
   }
   static init_method_set_closed() {
-    if (!this.#_bindings.method_set_closed) {
+    if (!this._bindings.method_set_closed) {
       let classname = new StringName("OccluderPolygon2D");
       let methodname = new StringName("set_closed");
-      this.#_bindings.method_set_closed = internal.classdb_get_method_bind(
+      this._bindings.method_set_closed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -41,10 +42,10 @@ export class OccluderPolygon2D extends Resource{
     }
   }
   static init_method_is_closed() {
-    if (!this.#_bindings.method_is_closed) {
+    if (!this._bindings.method_is_closed) {
       let classname = new StringName("OccluderPolygon2D");
       let methodname = new StringName("is_closed");
-      this.#_bindings.method_is_closed = internal.classdb_get_method_bind(
+      this._bindings.method_is_closed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -52,10 +53,10 @@ export class OccluderPolygon2D extends Resource{
     }
   }
   static init_method_set_cull_mode() {
-    if (!this.#_bindings.method_set_cull_mode) {
+    if (!this._bindings.method_set_cull_mode) {
       let classname = new StringName("OccluderPolygon2D");
       let methodname = new StringName("set_cull_mode");
-      this.#_bindings.method_set_cull_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_cull_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3500863002
@@ -63,10 +64,10 @@ export class OccluderPolygon2D extends Resource{
     }
   }
   static init_method_get_cull_mode() {
-    if (!this.#_bindings.method_get_cull_mode) {
+    if (!this._bindings.method_get_cull_mode) {
       let classname = new StringName("OccluderPolygon2D");
       let methodname = new StringName("get_cull_mode");
-      this.#_bindings.method_get_cull_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_cull_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         33931036
@@ -74,10 +75,10 @@ export class OccluderPolygon2D extends Resource{
     }
   }
   static init_method_set_polygon() {
-    if (!this.#_bindings.method_set_polygon) {
+    if (!this._bindings.method_set_polygon) {
       let classname = new StringName("OccluderPolygon2D");
       let methodname = new StringName("set_polygon");
-      this.#_bindings.method_set_polygon = internal.classdb_get_method_bind(
+      this._bindings.method_set_polygon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1509147220
@@ -85,10 +86,10 @@ export class OccluderPolygon2D extends Resource{
     }
   }
   static init_method_get_polygon() {
-    if (!this.#_bindings.method_get_polygon) {
+    if (!this._bindings.method_get_polygon) {
       let classname = new StringName("OccluderPolygon2D");
       let methodname = new StringName("get_polygon");
-      this.#_bindings.method_get_polygon = internal.classdb_get_method_bind(
+      this._bindings.method_get_polygon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2961356807
@@ -101,7 +102,7 @@ export class OccluderPolygon2D extends Resource{
   set_closed(_closed) {
     OccluderPolygon2D.init_method_set_closed();
     return _call_native_mb_no_ret(
-      OccluderPolygon2D.#_bindings.method_set_closed,
+      OccluderPolygon2D._bindings.method_set_closed,
       this._owner,
       _closed
     );
@@ -110,7 +111,7 @@ export class OccluderPolygon2D extends Resource{
   is_closed() {
     OccluderPolygon2D.init_method_is_closed();
     return _call_native_mb_ret(
-      OccluderPolygon2D.#_bindings.method_is_closed,
+      OccluderPolygon2D._bindings.method_is_closed,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -121,7 +122,7 @@ export class OccluderPolygon2D extends Resource{
   set_cull_mode(_cull_mode) {
     OccluderPolygon2D.init_method_set_cull_mode();
     return _call_native_mb_no_ret(
-      OccluderPolygon2D.#_bindings.method_set_cull_mode,
+      OccluderPolygon2D._bindings.method_set_cull_mode,
       this._owner,
       _cull_mode
     );
@@ -130,7 +131,7 @@ export class OccluderPolygon2D extends Resource{
   get_cull_mode() {
     OccluderPolygon2D.init_method_get_cull_mode();
     return _call_native_mb_ret(
-      OccluderPolygon2D.#_bindings.method_get_cull_mode,
+      OccluderPolygon2D._bindings.method_get_cull_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -141,7 +142,7 @@ export class OccluderPolygon2D extends Resource{
   set_polygon(_polygon) {
     OccluderPolygon2D.init_method_set_polygon();
     return _call_native_mb_no_ret(
-      OccluderPolygon2D.#_bindings.method_set_polygon,
+      OccluderPolygon2D._bindings.method_set_polygon,
       this._owner,
       _polygon
     );
@@ -150,7 +151,7 @@ export class OccluderPolygon2D extends Resource{
   get_polygon() {
     OccluderPolygon2D.init_method_get_polygon();
     return _call_native_mb_ret(
-      OccluderPolygon2D.#_bindings.method_get_polygon,
+      OccluderPolygon2D._bindings.method_get_polygon,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     

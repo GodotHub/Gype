@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_pick_color;
@@ -17,10 +18,10 @@ class _MethodBindings {
   method_set_edit_alpha;
   method_is_editing_alpha;
 }
+@GodotClass
 export class ColorPickerButton extends Button{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -30,10 +31,10 @@ export class ColorPickerButton extends Button{
     }
   }
   static init_method_set_pick_color() {
-    if (!this.#_bindings.method_set_pick_color) {
+    if (!this._bindings.method_set_pick_color) {
       let classname = new StringName("ColorPickerButton");
       let methodname = new StringName("set_pick_color");
-      this.#_bindings.method_set_pick_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_pick_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -41,10 +42,10 @@ export class ColorPickerButton extends Button{
     }
   }
   static init_method_get_pick_color() {
-    if (!this.#_bindings.method_get_pick_color) {
+    if (!this._bindings.method_get_pick_color) {
       let classname = new StringName("ColorPickerButton");
       let methodname = new StringName("get_pick_color");
-      this.#_bindings.method_get_pick_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_pick_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -52,10 +53,10 @@ export class ColorPickerButton extends Button{
     }
   }
   static init_method_get_picker() {
-    if (!this.#_bindings.method_get_picker) {
+    if (!this._bindings.method_get_picker) {
       let classname = new StringName("ColorPickerButton");
       let methodname = new StringName("get_picker");
-      this.#_bindings.method_get_picker = internal.classdb_get_method_bind(
+      this._bindings.method_get_picker = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         331835996
@@ -63,10 +64,10 @@ export class ColorPickerButton extends Button{
     }
   }
   static init_method_get_popup() {
-    if (!this.#_bindings.method_get_popup) {
+    if (!this._bindings.method_get_popup) {
       let classname = new StringName("ColorPickerButton");
       let methodname = new StringName("get_popup");
-      this.#_bindings.method_get_popup = internal.classdb_get_method_bind(
+      this._bindings.method_get_popup = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1322440207
@@ -74,10 +75,10 @@ export class ColorPickerButton extends Button{
     }
   }
   static init_method_set_edit_alpha() {
-    if (!this.#_bindings.method_set_edit_alpha) {
+    if (!this._bindings.method_set_edit_alpha) {
       let classname = new StringName("ColorPickerButton");
       let methodname = new StringName("set_edit_alpha");
-      this.#_bindings.method_set_edit_alpha = internal.classdb_get_method_bind(
+      this._bindings.method_set_edit_alpha = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -85,10 +86,10 @@ export class ColorPickerButton extends Button{
     }
   }
   static init_method_is_editing_alpha() {
-    if (!this.#_bindings.method_is_editing_alpha) {
+    if (!this._bindings.method_is_editing_alpha) {
       let classname = new StringName("ColorPickerButton");
       let methodname = new StringName("is_editing_alpha");
-      this.#_bindings.method_is_editing_alpha = internal.classdb_get_method_bind(
+      this._bindings.method_is_editing_alpha = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -101,7 +102,7 @@ export class ColorPickerButton extends Button{
   set_pick_color(_color) {
     ColorPickerButton.init_method_set_pick_color();
     return _call_native_mb_no_ret(
-      ColorPickerButton.#_bindings.method_set_pick_color,
+      ColorPickerButton._bindings.method_set_pick_color,
       this._owner,
       _color
     );
@@ -110,7 +111,7 @@ export class ColorPickerButton extends Button{
   get_pick_color() {
     ColorPickerButton.init_method_get_pick_color();
     return _call_native_mb_ret(
-      ColorPickerButton.#_bindings.method_get_pick_color,
+      ColorPickerButton._bindings.method_get_pick_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -121,7 +122,7 @@ export class ColorPickerButton extends Button{
   get_picker() {
     ColorPickerButton.init_method_get_picker();
     return _call_native_mb_ret(
-      ColorPickerButton.#_bindings.method_get_picker,
+      ColorPickerButton._bindings.method_get_picker,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -131,7 +132,7 @@ export class ColorPickerButton extends Button{
   get_popup() {
     ColorPickerButton.init_method_get_popup();
     return _call_native_mb_ret(
-      ColorPickerButton.#_bindings.method_get_popup,
+      ColorPickerButton._bindings.method_get_popup,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -141,7 +142,7 @@ export class ColorPickerButton extends Button{
   set_edit_alpha(_show) {
     ColorPickerButton.init_method_set_edit_alpha();
     return _call_native_mb_no_ret(
-      ColorPickerButton.#_bindings.method_set_edit_alpha,
+      ColorPickerButton._bindings.method_set_edit_alpha,
       this._owner,
       _show
     );
@@ -150,7 +151,7 @@ export class ColorPickerButton extends Button{
   is_editing_alpha() {
     ColorPickerButton.init_method_is_editing_alpha();
     return _call_native_mb_ret(
-      ColorPickerButton.#_bindings.method_is_editing_alpha,
+      ColorPickerButton._bindings.method_is_editing_alpha,
       this._owner,
 			Variant.Type.BOOL,
     

@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { AnimationRootNode } from '@js_godot/classes/animation_root_node'
 import {
   call_utility_ret,
@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_animation;
@@ -25,10 +26,10 @@ class _MethodBindings {
   method_set_loop_mode;
   method_get_loop_mode;
 }
+@GodotClass
 export class AnimationNodeAnimation extends AnimationRootNode{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -38,10 +39,10 @@ export class AnimationNodeAnimation extends AnimationRootNode{
     }
   }
   static init_method_set_animation() {
-    if (!this.#_bindings.method_set_animation) {
+    if (!this._bindings.method_set_animation) {
       let classname = new StringName("AnimationNodeAnimation");
       let methodname = new StringName("set_animation");
-      this.#_bindings.method_set_animation = internal.classdb_get_method_bind(
+      this._bindings.method_set_animation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -49,10 +50,10 @@ export class AnimationNodeAnimation extends AnimationRootNode{
     }
   }
   static init_method_get_animation() {
-    if (!this.#_bindings.method_get_animation) {
+    if (!this._bindings.method_get_animation) {
       let classname = new StringName("AnimationNodeAnimation");
       let methodname = new StringName("get_animation");
-      this.#_bindings.method_get_animation = internal.classdb_get_method_bind(
+      this._bindings.method_get_animation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2002593661
@@ -60,10 +61,10 @@ export class AnimationNodeAnimation extends AnimationRootNode{
     }
   }
   static init_method_set_play_mode() {
-    if (!this.#_bindings.method_set_play_mode) {
+    if (!this._bindings.method_set_play_mode) {
       let classname = new StringName("AnimationNodeAnimation");
       let methodname = new StringName("set_play_mode");
-      this.#_bindings.method_set_play_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_play_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3347718873
@@ -71,10 +72,10 @@ export class AnimationNodeAnimation extends AnimationRootNode{
     }
   }
   static init_method_get_play_mode() {
-    if (!this.#_bindings.method_get_play_mode) {
+    if (!this._bindings.method_get_play_mode) {
       let classname = new StringName("AnimationNodeAnimation");
       let methodname = new StringName("get_play_mode");
-      this.#_bindings.method_get_play_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_play_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2061244637
@@ -82,10 +83,10 @@ export class AnimationNodeAnimation extends AnimationRootNode{
     }
   }
   static init_method_set_use_custom_timeline() {
-    if (!this.#_bindings.method_set_use_custom_timeline) {
+    if (!this._bindings.method_set_use_custom_timeline) {
       let classname = new StringName("AnimationNodeAnimation");
       let methodname = new StringName("set_use_custom_timeline");
-      this.#_bindings.method_set_use_custom_timeline = internal.classdb_get_method_bind(
+      this._bindings.method_set_use_custom_timeline = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -93,10 +94,10 @@ export class AnimationNodeAnimation extends AnimationRootNode{
     }
   }
   static init_method_is_using_custom_timeline() {
-    if (!this.#_bindings.method_is_using_custom_timeline) {
+    if (!this._bindings.method_is_using_custom_timeline) {
       let classname = new StringName("AnimationNodeAnimation");
       let methodname = new StringName("is_using_custom_timeline");
-      this.#_bindings.method_is_using_custom_timeline = internal.classdb_get_method_bind(
+      this._bindings.method_is_using_custom_timeline = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -104,10 +105,10 @@ export class AnimationNodeAnimation extends AnimationRootNode{
     }
   }
   static init_method_set_timeline_length() {
-    if (!this.#_bindings.method_set_timeline_length) {
+    if (!this._bindings.method_set_timeline_length) {
       let classname = new StringName("AnimationNodeAnimation");
       let methodname = new StringName("set_timeline_length");
-      this.#_bindings.method_set_timeline_length = internal.classdb_get_method_bind(
+      this._bindings.method_set_timeline_length = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -115,10 +116,10 @@ export class AnimationNodeAnimation extends AnimationRootNode{
     }
   }
   static init_method_get_timeline_length() {
-    if (!this.#_bindings.method_get_timeline_length) {
+    if (!this._bindings.method_get_timeline_length) {
       let classname = new StringName("AnimationNodeAnimation");
       let methodname = new StringName("get_timeline_length");
-      this.#_bindings.method_get_timeline_length = internal.classdb_get_method_bind(
+      this._bindings.method_get_timeline_length = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -126,10 +127,10 @@ export class AnimationNodeAnimation extends AnimationRootNode{
     }
   }
   static init_method_set_stretch_time_scale() {
-    if (!this.#_bindings.method_set_stretch_time_scale) {
+    if (!this._bindings.method_set_stretch_time_scale) {
       let classname = new StringName("AnimationNodeAnimation");
       let methodname = new StringName("set_stretch_time_scale");
-      this.#_bindings.method_set_stretch_time_scale = internal.classdb_get_method_bind(
+      this._bindings.method_set_stretch_time_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -137,10 +138,10 @@ export class AnimationNodeAnimation extends AnimationRootNode{
     }
   }
   static init_method_is_stretching_time_scale() {
-    if (!this.#_bindings.method_is_stretching_time_scale) {
+    if (!this._bindings.method_is_stretching_time_scale) {
       let classname = new StringName("AnimationNodeAnimation");
       let methodname = new StringName("is_stretching_time_scale");
-      this.#_bindings.method_is_stretching_time_scale = internal.classdb_get_method_bind(
+      this._bindings.method_is_stretching_time_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -148,10 +149,10 @@ export class AnimationNodeAnimation extends AnimationRootNode{
     }
   }
   static init_method_set_start_offset() {
-    if (!this.#_bindings.method_set_start_offset) {
+    if (!this._bindings.method_set_start_offset) {
       let classname = new StringName("AnimationNodeAnimation");
       let methodname = new StringName("set_start_offset");
-      this.#_bindings.method_set_start_offset = internal.classdb_get_method_bind(
+      this._bindings.method_set_start_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -159,10 +160,10 @@ export class AnimationNodeAnimation extends AnimationRootNode{
     }
   }
   static init_method_get_start_offset() {
-    if (!this.#_bindings.method_get_start_offset) {
+    if (!this._bindings.method_get_start_offset) {
       let classname = new StringName("AnimationNodeAnimation");
       let methodname = new StringName("get_start_offset");
-      this.#_bindings.method_get_start_offset = internal.classdb_get_method_bind(
+      this._bindings.method_get_start_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -170,10 +171,10 @@ export class AnimationNodeAnimation extends AnimationRootNode{
     }
   }
   static init_method_set_loop_mode() {
-    if (!this.#_bindings.method_set_loop_mode) {
+    if (!this._bindings.method_set_loop_mode) {
       let classname = new StringName("AnimationNodeAnimation");
       let methodname = new StringName("set_loop_mode");
-      this.#_bindings.method_set_loop_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_loop_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3155355575
@@ -181,10 +182,10 @@ export class AnimationNodeAnimation extends AnimationRootNode{
     }
   }
   static init_method_get_loop_mode() {
-    if (!this.#_bindings.method_get_loop_mode) {
+    if (!this._bindings.method_get_loop_mode) {
       let classname = new StringName("AnimationNodeAnimation");
       let methodname = new StringName("get_loop_mode");
-      this.#_bindings.method_get_loop_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_loop_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1988889481
@@ -197,7 +198,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   set_animation(_name) {
     AnimationNodeAnimation.init_method_set_animation();
     return _call_native_mb_no_ret(
-      AnimationNodeAnimation.#_bindings.method_set_animation,
+      AnimationNodeAnimation._bindings.method_set_animation,
       this._owner,
       _name
     );
@@ -206,7 +207,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   get_animation() {
     AnimationNodeAnimation.init_method_get_animation();
     return _call_native_mb_ret(
-      AnimationNodeAnimation.#_bindings.method_get_animation,
+      AnimationNodeAnimation._bindings.method_get_animation,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -217,7 +218,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   set_play_mode(_mode) {
     AnimationNodeAnimation.init_method_set_play_mode();
     return _call_native_mb_no_ret(
-      AnimationNodeAnimation.#_bindings.method_set_play_mode,
+      AnimationNodeAnimation._bindings.method_set_play_mode,
       this._owner,
       _mode
     );
@@ -226,7 +227,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   get_play_mode() {
     AnimationNodeAnimation.init_method_get_play_mode();
     return _call_native_mb_ret(
-      AnimationNodeAnimation.#_bindings.method_get_play_mode,
+      AnimationNodeAnimation._bindings.method_get_play_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -237,7 +238,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   set_use_custom_timeline(_use_custom_timeline) {
     AnimationNodeAnimation.init_method_set_use_custom_timeline();
     return _call_native_mb_no_ret(
-      AnimationNodeAnimation.#_bindings.method_set_use_custom_timeline,
+      AnimationNodeAnimation._bindings.method_set_use_custom_timeline,
       this._owner,
       _use_custom_timeline
     );
@@ -246,7 +247,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   is_using_custom_timeline() {
     AnimationNodeAnimation.init_method_is_using_custom_timeline();
     return _call_native_mb_ret(
-      AnimationNodeAnimation.#_bindings.method_is_using_custom_timeline,
+      AnimationNodeAnimation._bindings.method_is_using_custom_timeline,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -257,7 +258,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   set_timeline_length(_timeline_length) {
     AnimationNodeAnimation.init_method_set_timeline_length();
     return _call_native_mb_no_ret(
-      AnimationNodeAnimation.#_bindings.method_set_timeline_length,
+      AnimationNodeAnimation._bindings.method_set_timeline_length,
       this._owner,
       _timeline_length
     );
@@ -266,7 +267,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   get_timeline_length() {
     AnimationNodeAnimation.init_method_get_timeline_length();
     return _call_native_mb_ret(
-      AnimationNodeAnimation.#_bindings.method_get_timeline_length,
+      AnimationNodeAnimation._bindings.method_get_timeline_length,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -277,7 +278,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   set_stretch_time_scale(_stretch_time_scale) {
     AnimationNodeAnimation.init_method_set_stretch_time_scale();
     return _call_native_mb_no_ret(
-      AnimationNodeAnimation.#_bindings.method_set_stretch_time_scale,
+      AnimationNodeAnimation._bindings.method_set_stretch_time_scale,
       this._owner,
       _stretch_time_scale
     );
@@ -286,7 +287,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   is_stretching_time_scale() {
     AnimationNodeAnimation.init_method_is_stretching_time_scale();
     return _call_native_mb_ret(
-      AnimationNodeAnimation.#_bindings.method_is_stretching_time_scale,
+      AnimationNodeAnimation._bindings.method_is_stretching_time_scale,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -297,7 +298,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   set_start_offset(_start_offset) {
     AnimationNodeAnimation.init_method_set_start_offset();
     return _call_native_mb_no_ret(
-      AnimationNodeAnimation.#_bindings.method_set_start_offset,
+      AnimationNodeAnimation._bindings.method_set_start_offset,
       this._owner,
       _start_offset
     );
@@ -306,7 +307,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   get_start_offset() {
     AnimationNodeAnimation.init_method_get_start_offset();
     return _call_native_mb_ret(
-      AnimationNodeAnimation.#_bindings.method_get_start_offset,
+      AnimationNodeAnimation._bindings.method_get_start_offset,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -317,7 +318,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   set_loop_mode(_loop_mode) {
     AnimationNodeAnimation.init_method_set_loop_mode();
     return _call_native_mb_no_ret(
-      AnimationNodeAnimation.#_bindings.method_set_loop_mode,
+      AnimationNodeAnimation._bindings.method_set_loop_mode,
       this._owner,
       _loop_mode
     );
@@ -326,7 +327,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   get_loop_mode() {
     AnimationNodeAnimation.init_method_get_loop_mode();
     return _call_native_mb_ret(
-      AnimationNodeAnimation.#_bindings.method_get_loop_mode,
+      AnimationNodeAnimation._bindings.method_get_loop_mode,
       this._owner,
 			Variant.Type.INT,
     

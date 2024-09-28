@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { Texture2D } from '@js_godot/classes/texture2d'
 import {
   call_utility_ret,
@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_camera_feed_id;
@@ -17,10 +18,10 @@ class _MethodBindings {
   method_set_camera_active;
   method_get_camera_active;
 }
+@GodotClass
 export class CameraTexture extends Texture2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -30,10 +31,10 @@ export class CameraTexture extends Texture2D{
     }
   }
   static init_method_set_camera_feed_id() {
-    if (!this.#_bindings.method_set_camera_feed_id) {
+    if (!this._bindings.method_set_camera_feed_id) {
       let classname = new StringName("CameraTexture");
       let methodname = new StringName("set_camera_feed_id");
-      this.#_bindings.method_set_camera_feed_id = internal.classdb_get_method_bind(
+      this._bindings.method_set_camera_feed_id = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -41,10 +42,10 @@ export class CameraTexture extends Texture2D{
     }
   }
   static init_method_get_camera_feed_id() {
-    if (!this.#_bindings.method_get_camera_feed_id) {
+    if (!this._bindings.method_get_camera_feed_id) {
       let classname = new StringName("CameraTexture");
       let methodname = new StringName("get_camera_feed_id");
-      this.#_bindings.method_get_camera_feed_id = internal.classdb_get_method_bind(
+      this._bindings.method_get_camera_feed_id = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -52,10 +53,10 @@ export class CameraTexture extends Texture2D{
     }
   }
   static init_method_set_which_feed() {
-    if (!this.#_bindings.method_set_which_feed) {
+    if (!this._bindings.method_set_which_feed) {
       let classname = new StringName("CameraTexture");
       let methodname = new StringName("set_which_feed");
-      this.#_bindings.method_set_which_feed = internal.classdb_get_method_bind(
+      this._bindings.method_set_which_feed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1595299230
@@ -63,10 +64,10 @@ export class CameraTexture extends Texture2D{
     }
   }
   static init_method_get_which_feed() {
-    if (!this.#_bindings.method_get_which_feed) {
+    if (!this._bindings.method_get_which_feed) {
       let classname = new StringName("CameraTexture");
       let methodname = new StringName("get_which_feed");
-      this.#_bindings.method_get_which_feed = internal.classdb_get_method_bind(
+      this._bindings.method_get_which_feed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         91039457
@@ -74,10 +75,10 @@ export class CameraTexture extends Texture2D{
     }
   }
   static init_method_set_camera_active() {
-    if (!this.#_bindings.method_set_camera_active) {
+    if (!this._bindings.method_set_camera_active) {
       let classname = new StringName("CameraTexture");
       let methodname = new StringName("set_camera_active");
-      this.#_bindings.method_set_camera_active = internal.classdb_get_method_bind(
+      this._bindings.method_set_camera_active = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -85,10 +86,10 @@ export class CameraTexture extends Texture2D{
     }
   }
   static init_method_get_camera_active() {
-    if (!this.#_bindings.method_get_camera_active) {
+    if (!this._bindings.method_get_camera_active) {
       let classname = new StringName("CameraTexture");
       let methodname = new StringName("get_camera_active");
-      this.#_bindings.method_get_camera_active = internal.classdb_get_method_bind(
+      this._bindings.method_get_camera_active = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -101,7 +102,7 @@ export class CameraTexture extends Texture2D{
   set_camera_feed_id(_feed_id) {
     CameraTexture.init_method_set_camera_feed_id();
     return _call_native_mb_no_ret(
-      CameraTexture.#_bindings.method_set_camera_feed_id,
+      CameraTexture._bindings.method_set_camera_feed_id,
       this._owner,
       _feed_id
     );
@@ -110,7 +111,7 @@ export class CameraTexture extends Texture2D{
   get_camera_feed_id() {
     CameraTexture.init_method_get_camera_feed_id();
     return _call_native_mb_ret(
-      CameraTexture.#_bindings.method_get_camera_feed_id,
+      CameraTexture._bindings.method_get_camera_feed_id,
       this._owner,
 			Variant.Type.INT,
     
@@ -121,7 +122,7 @@ export class CameraTexture extends Texture2D{
   set_which_feed(_which_feed) {
     CameraTexture.init_method_set_which_feed();
     return _call_native_mb_no_ret(
-      CameraTexture.#_bindings.method_set_which_feed,
+      CameraTexture._bindings.method_set_which_feed,
       this._owner,
       _which_feed
     );
@@ -130,7 +131,7 @@ export class CameraTexture extends Texture2D{
   get_which_feed() {
     CameraTexture.init_method_get_which_feed();
     return _call_native_mb_ret(
-      CameraTexture.#_bindings.method_get_which_feed,
+      CameraTexture._bindings.method_get_which_feed,
       this._owner,
 			Variant.Type.INT,
     
@@ -141,7 +142,7 @@ export class CameraTexture extends Texture2D{
   set_camera_active(_active) {
     CameraTexture.init_method_set_camera_active();
     return _call_native_mb_no_ret(
-      CameraTexture.#_bindings.method_set_camera_active,
+      CameraTexture._bindings.method_set_camera_active,
       this._owner,
       _active
     );
@@ -150,7 +151,7 @@ export class CameraTexture extends Texture2D{
   get_camera_active() {
     CameraTexture.init_method_get_camera_active();
     return _call_native_mb_ret(
-      CameraTexture.#_bindings.method_get_camera_active,
+      CameraTexture._bindings.method_get_camera_active,
       this._owner,
 			Variant.Type.BOOL,
     

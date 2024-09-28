@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_next_pass;
@@ -17,10 +18,10 @@ class _MethodBindings {
   method_inspect_native_shader_code;
   method_create_placeholder;
 }
+@GodotClass
 export class Material extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -30,10 +31,10 @@ export class Material extends Resource{
     }
   }
   static init_method_set_next_pass() {
-    if (!this.#_bindings.method_set_next_pass) {
+    if (!this._bindings.method_set_next_pass) {
       let classname = new StringName("Material");
       let methodname = new StringName("set_next_pass");
-      this.#_bindings.method_set_next_pass = internal.classdb_get_method_bind(
+      this._bindings.method_set_next_pass = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2757459619
@@ -41,10 +42,10 @@ export class Material extends Resource{
     }
   }
   static init_method_get_next_pass() {
-    if (!this.#_bindings.method_get_next_pass) {
+    if (!this._bindings.method_get_next_pass) {
       let classname = new StringName("Material");
       let methodname = new StringName("get_next_pass");
-      this.#_bindings.method_get_next_pass = internal.classdb_get_method_bind(
+      this._bindings.method_get_next_pass = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         5934680
@@ -52,10 +53,10 @@ export class Material extends Resource{
     }
   }
   static init_method_set_render_priority() {
-    if (!this.#_bindings.method_set_render_priority) {
+    if (!this._bindings.method_set_render_priority) {
       let classname = new StringName("Material");
       let methodname = new StringName("set_render_priority");
-      this.#_bindings.method_set_render_priority = internal.classdb_get_method_bind(
+      this._bindings.method_set_render_priority = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -63,10 +64,10 @@ export class Material extends Resource{
     }
   }
   static init_method_get_render_priority() {
-    if (!this.#_bindings.method_get_render_priority) {
+    if (!this._bindings.method_get_render_priority) {
       let classname = new StringName("Material");
       let methodname = new StringName("get_render_priority");
-      this.#_bindings.method_get_render_priority = internal.classdb_get_method_bind(
+      this._bindings.method_get_render_priority = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -74,10 +75,10 @@ export class Material extends Resource{
     }
   }
   static init_method_inspect_native_shader_code() {
-    if (!this.#_bindings.method_inspect_native_shader_code) {
+    if (!this._bindings.method_inspect_native_shader_code) {
       let classname = new StringName("Material");
       let methodname = new StringName("inspect_native_shader_code");
-      this.#_bindings.method_inspect_native_shader_code = internal.classdb_get_method_bind(
+      this._bindings.method_inspect_native_shader_code = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -85,10 +86,10 @@ export class Material extends Resource{
     }
   }
   static init_method_create_placeholder() {
-    if (!this.#_bindings.method_create_placeholder) {
+    if (!this._bindings.method_create_placeholder) {
       let classname = new StringName("Material");
       let methodname = new StringName("create_placeholder");
-      this.#_bindings.method_create_placeholder = internal.classdb_get_method_bind(
+      this._bindings.method_create_placeholder = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         121922552
@@ -109,7 +110,7 @@ export class Material extends Resource{
   set_next_pass(_next_pass) {
     Material.init_method_set_next_pass();
     return _call_native_mb_no_ret(
-      Material.#_bindings.method_set_next_pass,
+      Material._bindings.method_set_next_pass,
       this._owner,
       _next_pass
     );
@@ -118,7 +119,7 @@ export class Material extends Resource{
   get_next_pass() {
     Material.init_method_get_next_pass();
     return _call_native_mb_ret(
-      Material.#_bindings.method_get_next_pass,
+      Material._bindings.method_get_next_pass,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -128,7 +129,7 @@ export class Material extends Resource{
   set_render_priority(_priority) {
     Material.init_method_set_render_priority();
     return _call_native_mb_no_ret(
-      Material.#_bindings.method_set_render_priority,
+      Material._bindings.method_set_render_priority,
       this._owner,
       _priority
     );
@@ -137,7 +138,7 @@ export class Material extends Resource{
   get_render_priority() {
     Material.init_method_get_render_priority();
     return _call_native_mb_ret(
-      Material.#_bindings.method_get_render_priority,
+      Material._bindings.method_get_render_priority,
       this._owner,
 			Variant.Type.INT,
     
@@ -148,7 +149,7 @@ export class Material extends Resource{
   inspect_native_shader_code() {
     Material.init_method_inspect_native_shader_code();
     return _call_native_mb_no_ret(
-      Material.#_bindings.method_inspect_native_shader_code,
+      Material._bindings.method_inspect_native_shader_code,
       this._owner,
       
     );
@@ -157,7 +158,7 @@ export class Material extends Resource{
   create_placeholder() {
     Material.init_method_create_placeholder();
     return _call_native_mb_ret(
-      Material.#_bindings.method_create_placeholder,
+      Material._bindings.method_create_placeholder,
       this._owner,
 			Variant.Type.OBJECT,
       

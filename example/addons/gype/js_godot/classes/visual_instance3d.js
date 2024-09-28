@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Node3D } from '@js_godot/classes/node3d'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_base;
@@ -23,10 +24,10 @@ class _MethodBindings {
   method_is_sorting_use_aabb_center;
   method_get_aabb;
 }
+@GodotClass
 export class VisualInstance3D extends Node3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -36,10 +37,10 @@ export class VisualInstance3D extends Node3D{
     }
   }
   static init_method_set_base() {
-    if (!this.#_bindings.method_set_base) {
+    if (!this._bindings.method_set_base) {
       let classname = new StringName("VisualInstance3D");
       let methodname = new StringName("set_base");
-      this.#_bindings.method_set_base = internal.classdb_get_method_bind(
+      this._bindings.method_set_base = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2722037293
@@ -47,10 +48,10 @@ export class VisualInstance3D extends Node3D{
     }
   }
   static init_method_get_base() {
-    if (!this.#_bindings.method_get_base) {
+    if (!this._bindings.method_get_base) {
       let classname = new StringName("VisualInstance3D");
       let methodname = new StringName("get_base");
-      this.#_bindings.method_get_base = internal.classdb_get_method_bind(
+      this._bindings.method_get_base = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2944877500
@@ -58,10 +59,10 @@ export class VisualInstance3D extends Node3D{
     }
   }
   static init_method_get_instance() {
-    if (!this.#_bindings.method_get_instance) {
+    if (!this._bindings.method_get_instance) {
       let classname = new StringName("VisualInstance3D");
       let methodname = new StringName("get_instance");
-      this.#_bindings.method_get_instance = internal.classdb_get_method_bind(
+      this._bindings.method_get_instance = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2944877500
@@ -69,10 +70,10 @@ export class VisualInstance3D extends Node3D{
     }
   }
   static init_method_set_layer_mask() {
-    if (!this.#_bindings.method_set_layer_mask) {
+    if (!this._bindings.method_set_layer_mask) {
       let classname = new StringName("VisualInstance3D");
       let methodname = new StringName("set_layer_mask");
-      this.#_bindings.method_set_layer_mask = internal.classdb_get_method_bind(
+      this._bindings.method_set_layer_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -80,10 +81,10 @@ export class VisualInstance3D extends Node3D{
     }
   }
   static init_method_get_layer_mask() {
-    if (!this.#_bindings.method_get_layer_mask) {
+    if (!this._bindings.method_get_layer_mask) {
       let classname = new StringName("VisualInstance3D");
       let methodname = new StringName("get_layer_mask");
-      this.#_bindings.method_get_layer_mask = internal.classdb_get_method_bind(
+      this._bindings.method_get_layer_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -91,10 +92,10 @@ export class VisualInstance3D extends Node3D{
     }
   }
   static init_method_set_layer_mask_value() {
-    if (!this.#_bindings.method_set_layer_mask_value) {
+    if (!this._bindings.method_set_layer_mask_value) {
       let classname = new StringName("VisualInstance3D");
       let methodname = new StringName("set_layer_mask_value");
-      this.#_bindings.method_set_layer_mask_value = internal.classdb_get_method_bind(
+      this._bindings.method_set_layer_mask_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -102,10 +103,10 @@ export class VisualInstance3D extends Node3D{
     }
   }
   static init_method_get_layer_mask_value() {
-    if (!this.#_bindings.method_get_layer_mask_value) {
+    if (!this._bindings.method_get_layer_mask_value) {
       let classname = new StringName("VisualInstance3D");
       let methodname = new StringName("get_layer_mask_value");
-      this.#_bindings.method_get_layer_mask_value = internal.classdb_get_method_bind(
+      this._bindings.method_get_layer_mask_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -113,10 +114,10 @@ export class VisualInstance3D extends Node3D{
     }
   }
   static init_method_set_sorting_offset() {
-    if (!this.#_bindings.method_set_sorting_offset) {
+    if (!this._bindings.method_set_sorting_offset) {
       let classname = new StringName("VisualInstance3D");
       let methodname = new StringName("set_sorting_offset");
-      this.#_bindings.method_set_sorting_offset = internal.classdb_get_method_bind(
+      this._bindings.method_set_sorting_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -124,10 +125,10 @@ export class VisualInstance3D extends Node3D{
     }
   }
   static init_method_get_sorting_offset() {
-    if (!this.#_bindings.method_get_sorting_offset) {
+    if (!this._bindings.method_get_sorting_offset) {
       let classname = new StringName("VisualInstance3D");
       let methodname = new StringName("get_sorting_offset");
-      this.#_bindings.method_get_sorting_offset = internal.classdb_get_method_bind(
+      this._bindings.method_get_sorting_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -135,10 +136,10 @@ export class VisualInstance3D extends Node3D{
     }
   }
   static init_method_set_sorting_use_aabb_center() {
-    if (!this.#_bindings.method_set_sorting_use_aabb_center) {
+    if (!this._bindings.method_set_sorting_use_aabb_center) {
       let classname = new StringName("VisualInstance3D");
       let methodname = new StringName("set_sorting_use_aabb_center");
-      this.#_bindings.method_set_sorting_use_aabb_center = internal.classdb_get_method_bind(
+      this._bindings.method_set_sorting_use_aabb_center = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -146,10 +147,10 @@ export class VisualInstance3D extends Node3D{
     }
   }
   static init_method_is_sorting_use_aabb_center() {
-    if (!this.#_bindings.method_is_sorting_use_aabb_center) {
+    if (!this._bindings.method_is_sorting_use_aabb_center) {
       let classname = new StringName("VisualInstance3D");
       let methodname = new StringName("is_sorting_use_aabb_center");
-      this.#_bindings.method_is_sorting_use_aabb_center = internal.classdb_get_method_bind(
+      this._bindings.method_is_sorting_use_aabb_center = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -157,10 +158,10 @@ export class VisualInstance3D extends Node3D{
     }
   }
   static init_method_get_aabb() {
-    if (!this.#_bindings.method_get_aabb) {
+    if (!this._bindings.method_get_aabb) {
       let classname = new StringName("VisualInstance3D");
       let methodname = new StringName("get_aabb");
-      this.#_bindings.method_get_aabb = internal.classdb_get_method_bind(
+      this._bindings.method_get_aabb = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1068685055
@@ -175,7 +176,7 @@ export class VisualInstance3D extends Node3D{
   set_base(_base) {
     VisualInstance3D.init_method_set_base();
     return _call_native_mb_no_ret(
-      VisualInstance3D.#_bindings.method_set_base,
+      VisualInstance3D._bindings.method_set_base,
       this._owner,
       _base
     );
@@ -184,7 +185,7 @@ export class VisualInstance3D extends Node3D{
   get_base() {
     VisualInstance3D.init_method_get_base();
     return _call_native_mb_ret(
-      VisualInstance3D.#_bindings.method_get_base,
+      VisualInstance3D._bindings.method_get_base,
       this._owner,
 			Variant.Type.RID,
     
@@ -195,7 +196,7 @@ export class VisualInstance3D extends Node3D{
   get_instance() {
     VisualInstance3D.init_method_get_instance();
     return _call_native_mb_ret(
-      VisualInstance3D.#_bindings.method_get_instance,
+      VisualInstance3D._bindings.method_get_instance,
       this._owner,
 			Variant.Type.RID,
     
@@ -206,7 +207,7 @@ export class VisualInstance3D extends Node3D{
   set_layer_mask(_mask) {
     VisualInstance3D.init_method_set_layer_mask();
     return _call_native_mb_no_ret(
-      VisualInstance3D.#_bindings.method_set_layer_mask,
+      VisualInstance3D._bindings.method_set_layer_mask,
       this._owner,
       _mask
     );
@@ -215,7 +216,7 @@ export class VisualInstance3D extends Node3D{
   get_layer_mask() {
     VisualInstance3D.init_method_get_layer_mask();
     return _call_native_mb_ret(
-      VisualInstance3D.#_bindings.method_get_layer_mask,
+      VisualInstance3D._bindings.method_get_layer_mask,
       this._owner,
 			Variant.Type.INT,
     
@@ -226,7 +227,7 @@ export class VisualInstance3D extends Node3D{
   set_layer_mask_value(_layer_number, _value) {
     VisualInstance3D.init_method_set_layer_mask_value();
     return _call_native_mb_no_ret(
-      VisualInstance3D.#_bindings.method_set_layer_mask_value,
+      VisualInstance3D._bindings.method_set_layer_mask_value,
       this._owner,
       _layer_number, _value
     );
@@ -235,7 +236,7 @@ export class VisualInstance3D extends Node3D{
   get_layer_mask_value(_layer_number) {
     VisualInstance3D.init_method_get_layer_mask_value();
     return _call_native_mb_ret(
-      VisualInstance3D.#_bindings.method_get_layer_mask_value,
+      VisualInstance3D._bindings.method_get_layer_mask_value,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -246,7 +247,7 @@ export class VisualInstance3D extends Node3D{
   set_sorting_offset(_offset) {
     VisualInstance3D.init_method_set_sorting_offset();
     return _call_native_mb_no_ret(
-      VisualInstance3D.#_bindings.method_set_sorting_offset,
+      VisualInstance3D._bindings.method_set_sorting_offset,
       this._owner,
       _offset
     );
@@ -255,7 +256,7 @@ export class VisualInstance3D extends Node3D{
   get_sorting_offset() {
     VisualInstance3D.init_method_get_sorting_offset();
     return _call_native_mb_ret(
-      VisualInstance3D.#_bindings.method_get_sorting_offset,
+      VisualInstance3D._bindings.method_get_sorting_offset,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -266,7 +267,7 @@ export class VisualInstance3D extends Node3D{
   set_sorting_use_aabb_center(_enabled) {
     VisualInstance3D.init_method_set_sorting_use_aabb_center();
     return _call_native_mb_no_ret(
-      VisualInstance3D.#_bindings.method_set_sorting_use_aabb_center,
+      VisualInstance3D._bindings.method_set_sorting_use_aabb_center,
       this._owner,
       _enabled
     );
@@ -275,7 +276,7 @@ export class VisualInstance3D extends Node3D{
   is_sorting_use_aabb_center() {
     VisualInstance3D.init_method_is_sorting_use_aabb_center();
     return _call_native_mb_ret(
-      VisualInstance3D.#_bindings.method_is_sorting_use_aabb_center,
+      VisualInstance3D._bindings.method_is_sorting_use_aabb_center,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -286,7 +287,7 @@ export class VisualInstance3D extends Node3D{
   get_aabb() {
     VisualInstance3D.init_method_get_aabb();
     return _call_native_mb_ret(
-      VisualInstance3D.#_bindings.method_get_aabb,
+      VisualInstance3D._bindings.method_get_aabb,
       this._owner,
 			Variant.Type.AABB,
     

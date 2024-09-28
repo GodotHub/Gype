@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_localized_name;
@@ -17,10 +18,10 @@ class _MethodBindings {
   method_set_toplevel_paths;
   method_get_toplevel_paths;
 }
+@GodotClass
 export class OpenXRAction extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -30,10 +31,10 @@ export class OpenXRAction extends Resource{
     }
   }
   static init_method_set_localized_name() {
-    if (!this.#_bindings.method_set_localized_name) {
+    if (!this._bindings.method_set_localized_name) {
       let classname = new StringName("OpenXRAction");
       let methodname = new StringName("set_localized_name");
-      this.#_bindings.method_set_localized_name = internal.classdb_get_method_bind(
+      this._bindings.method_set_localized_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -41,10 +42,10 @@ export class OpenXRAction extends Resource{
     }
   }
   static init_method_get_localized_name() {
-    if (!this.#_bindings.method_get_localized_name) {
+    if (!this._bindings.method_get_localized_name) {
       let classname = new StringName("OpenXRAction");
       let methodname = new StringName("get_localized_name");
-      this.#_bindings.method_get_localized_name = internal.classdb_get_method_bind(
+      this._bindings.method_get_localized_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -52,10 +53,10 @@ export class OpenXRAction extends Resource{
     }
   }
   static init_method_set_action_type() {
-    if (!this.#_bindings.method_set_action_type) {
+    if (!this._bindings.method_set_action_type) {
       let classname = new StringName("OpenXRAction");
       let methodname = new StringName("set_action_type");
-      this.#_bindings.method_set_action_type = internal.classdb_get_method_bind(
+      this._bindings.method_set_action_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1675238366
@@ -63,10 +64,10 @@ export class OpenXRAction extends Resource{
     }
   }
   static init_method_get_action_type() {
-    if (!this.#_bindings.method_get_action_type) {
+    if (!this._bindings.method_get_action_type) {
       let classname = new StringName("OpenXRAction");
       let methodname = new StringName("get_action_type");
-      this.#_bindings.method_get_action_type = internal.classdb_get_method_bind(
+      this._bindings.method_get_action_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3536542431
@@ -74,10 +75,10 @@ export class OpenXRAction extends Resource{
     }
   }
   static init_method_set_toplevel_paths() {
-    if (!this.#_bindings.method_set_toplevel_paths) {
+    if (!this._bindings.method_set_toplevel_paths) {
       let classname = new StringName("OpenXRAction");
       let methodname = new StringName("set_toplevel_paths");
-      this.#_bindings.method_set_toplevel_paths = internal.classdb_get_method_bind(
+      this._bindings.method_set_toplevel_paths = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4015028928
@@ -85,10 +86,10 @@ export class OpenXRAction extends Resource{
     }
   }
   static init_method_get_toplevel_paths() {
-    if (!this.#_bindings.method_get_toplevel_paths) {
+    if (!this._bindings.method_get_toplevel_paths) {
       let classname = new StringName("OpenXRAction");
       let methodname = new StringName("get_toplevel_paths");
-      this.#_bindings.method_get_toplevel_paths = internal.classdb_get_method_bind(
+      this._bindings.method_get_toplevel_paths = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1139954409
@@ -101,7 +102,7 @@ export class OpenXRAction extends Resource{
   set_localized_name(_localized_name) {
     OpenXRAction.init_method_set_localized_name();
     return _call_native_mb_no_ret(
-      OpenXRAction.#_bindings.method_set_localized_name,
+      OpenXRAction._bindings.method_set_localized_name,
       this._owner,
       _localized_name
     );
@@ -110,7 +111,7 @@ export class OpenXRAction extends Resource{
   get_localized_name() {
     OpenXRAction.init_method_get_localized_name();
     return _call_native_mb_ret(
-      OpenXRAction.#_bindings.method_get_localized_name,
+      OpenXRAction._bindings.method_get_localized_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -121,7 +122,7 @@ export class OpenXRAction extends Resource{
   set_action_type(_action_type) {
     OpenXRAction.init_method_set_action_type();
     return _call_native_mb_no_ret(
-      OpenXRAction.#_bindings.method_set_action_type,
+      OpenXRAction._bindings.method_set_action_type,
       this._owner,
       _action_type
     );
@@ -130,7 +131,7 @@ export class OpenXRAction extends Resource{
   get_action_type() {
     OpenXRAction.init_method_get_action_type();
     return _call_native_mb_ret(
-      OpenXRAction.#_bindings.method_get_action_type,
+      OpenXRAction._bindings.method_get_action_type,
       this._owner,
 			Variant.Type.INT,
     
@@ -141,7 +142,7 @@ export class OpenXRAction extends Resource{
   set_toplevel_paths(_toplevel_paths) {
     OpenXRAction.init_method_set_toplevel_paths();
     return _call_native_mb_no_ret(
-      OpenXRAction.#_bindings.method_set_toplevel_paths,
+      OpenXRAction._bindings.method_set_toplevel_paths,
       this._owner,
       _toplevel_paths
     );
@@ -150,7 +151,7 @@ export class OpenXRAction extends Resource{
   get_toplevel_paths() {
     OpenXRAction.init_method_get_toplevel_paths();
     return _call_native_mb_ret(
-      OpenXRAction.#_bindings.method_get_toplevel_paths,
+      OpenXRAction._bindings.method_get_toplevel_paths,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     

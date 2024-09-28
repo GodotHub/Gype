@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
+import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
-import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_parameter_name;
@@ -15,10 +16,10 @@ class _MethodBindings {
   method_set_qualifier;
   method_get_qualifier;
 }
+@GodotClass
 export class VisualShaderNodeParameter extends VisualShaderNode{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -28,10 +29,10 @@ export class VisualShaderNodeParameter extends VisualShaderNode{
     }
   }
   static init_method_set_parameter_name() {
-    if (!this.#_bindings.method_set_parameter_name) {
+    if (!this._bindings.method_set_parameter_name) {
       let classname = new StringName("VisualShaderNodeParameter");
       let methodname = new StringName("set_parameter_name");
-      this.#_bindings.method_set_parameter_name = internal.classdb_get_method_bind(
+      this._bindings.method_set_parameter_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -39,10 +40,10 @@ export class VisualShaderNodeParameter extends VisualShaderNode{
     }
   }
   static init_method_get_parameter_name() {
-    if (!this.#_bindings.method_get_parameter_name) {
+    if (!this._bindings.method_get_parameter_name) {
       let classname = new StringName("VisualShaderNodeParameter");
       let methodname = new StringName("get_parameter_name");
-      this.#_bindings.method_get_parameter_name = internal.classdb_get_method_bind(
+      this._bindings.method_get_parameter_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -50,10 +51,10 @@ export class VisualShaderNodeParameter extends VisualShaderNode{
     }
   }
   static init_method_set_qualifier() {
-    if (!this.#_bindings.method_set_qualifier) {
+    if (!this._bindings.method_set_qualifier) {
       let classname = new StringName("VisualShaderNodeParameter");
       let methodname = new StringName("set_qualifier");
-      this.#_bindings.method_set_qualifier = internal.classdb_get_method_bind(
+      this._bindings.method_set_qualifier = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1276489447
@@ -61,10 +62,10 @@ export class VisualShaderNodeParameter extends VisualShaderNode{
     }
   }
   static init_method_get_qualifier() {
-    if (!this.#_bindings.method_get_qualifier) {
+    if (!this._bindings.method_get_qualifier) {
       let classname = new StringName("VisualShaderNodeParameter");
       let methodname = new StringName("get_qualifier");
-      this.#_bindings.method_get_qualifier = internal.classdb_get_method_bind(
+      this._bindings.method_get_qualifier = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3558406205
@@ -77,7 +78,7 @@ export class VisualShaderNodeParameter extends VisualShaderNode{
   set_parameter_name(_name) {
     VisualShaderNodeParameter.init_method_set_parameter_name();
     return _call_native_mb_no_ret(
-      VisualShaderNodeParameter.#_bindings.method_set_parameter_name,
+      VisualShaderNodeParameter._bindings.method_set_parameter_name,
       this._owner,
       _name
     );
@@ -86,7 +87,7 @@ export class VisualShaderNodeParameter extends VisualShaderNode{
   get_parameter_name() {
     VisualShaderNodeParameter.init_method_get_parameter_name();
     return _call_native_mb_ret(
-      VisualShaderNodeParameter.#_bindings.method_get_parameter_name,
+      VisualShaderNodeParameter._bindings.method_get_parameter_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -97,7 +98,7 @@ export class VisualShaderNodeParameter extends VisualShaderNode{
   set_qualifier(_qualifier) {
     VisualShaderNodeParameter.init_method_set_qualifier();
     return _call_native_mb_no_ret(
-      VisualShaderNodeParameter.#_bindings.method_set_qualifier,
+      VisualShaderNodeParameter._bindings.method_set_qualifier,
       this._owner,
       _qualifier
     );
@@ -106,7 +107,7 @@ export class VisualShaderNodeParameter extends VisualShaderNode{
   get_qualifier() {
     VisualShaderNodeParameter.init_method_get_qualifier();
     return _call_native_mb_ret(
-      VisualShaderNodeParameter.#_bindings.method_get_qualifier,
+      VisualShaderNodeParameter._bindings.method_get_qualifier,
       this._owner,
 			Variant.Type.INT,
     

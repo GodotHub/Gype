@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Control } from '@js_godot/classes/control'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_texture;
@@ -21,10 +22,10 @@ class _MethodBindings {
   method_set_stretch_mode;
   method_get_stretch_mode;
 }
+@GodotClass
 export class TextureRect extends Control{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -34,10 +35,10 @@ export class TextureRect extends Control{
     }
   }
   static init_method_set_texture() {
-    if (!this.#_bindings.method_set_texture) {
+    if (!this._bindings.method_set_texture) {
       let classname = new StringName("TextureRect");
       let methodname = new StringName("set_texture");
-      this.#_bindings.method_set_texture = internal.classdb_get_method_bind(
+      this._bindings.method_set_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4051416890
@@ -45,10 +46,10 @@ export class TextureRect extends Control{
     }
   }
   static init_method_get_texture() {
-    if (!this.#_bindings.method_get_texture) {
+    if (!this._bindings.method_get_texture) {
       let classname = new StringName("TextureRect");
       let methodname = new StringName("get_texture");
-      this.#_bindings.method_get_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -56,10 +57,10 @@ export class TextureRect extends Control{
     }
   }
   static init_method_set_expand_mode() {
-    if (!this.#_bindings.method_set_expand_mode) {
+    if (!this._bindings.method_set_expand_mode) {
       let classname = new StringName("TextureRect");
       let methodname = new StringName("set_expand_mode");
-      this.#_bindings.method_set_expand_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_expand_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1870766882
@@ -67,10 +68,10 @@ export class TextureRect extends Control{
     }
   }
   static init_method_get_expand_mode() {
-    if (!this.#_bindings.method_get_expand_mode) {
+    if (!this._bindings.method_get_expand_mode) {
       let classname = new StringName("TextureRect");
       let methodname = new StringName("get_expand_mode");
-      this.#_bindings.method_get_expand_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_expand_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3863824733
@@ -78,10 +79,10 @@ export class TextureRect extends Control{
     }
   }
   static init_method_set_flip_h() {
-    if (!this.#_bindings.method_set_flip_h) {
+    if (!this._bindings.method_set_flip_h) {
       let classname = new StringName("TextureRect");
       let methodname = new StringName("set_flip_h");
-      this.#_bindings.method_set_flip_h = internal.classdb_get_method_bind(
+      this._bindings.method_set_flip_h = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -89,10 +90,10 @@ export class TextureRect extends Control{
     }
   }
   static init_method_is_flipped_h() {
-    if (!this.#_bindings.method_is_flipped_h) {
+    if (!this._bindings.method_is_flipped_h) {
       let classname = new StringName("TextureRect");
       let methodname = new StringName("is_flipped_h");
-      this.#_bindings.method_is_flipped_h = internal.classdb_get_method_bind(
+      this._bindings.method_is_flipped_h = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -100,10 +101,10 @@ export class TextureRect extends Control{
     }
   }
   static init_method_set_flip_v() {
-    if (!this.#_bindings.method_set_flip_v) {
+    if (!this._bindings.method_set_flip_v) {
       let classname = new StringName("TextureRect");
       let methodname = new StringName("set_flip_v");
-      this.#_bindings.method_set_flip_v = internal.classdb_get_method_bind(
+      this._bindings.method_set_flip_v = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -111,10 +112,10 @@ export class TextureRect extends Control{
     }
   }
   static init_method_is_flipped_v() {
-    if (!this.#_bindings.method_is_flipped_v) {
+    if (!this._bindings.method_is_flipped_v) {
       let classname = new StringName("TextureRect");
       let methodname = new StringName("is_flipped_v");
-      this.#_bindings.method_is_flipped_v = internal.classdb_get_method_bind(
+      this._bindings.method_is_flipped_v = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -122,10 +123,10 @@ export class TextureRect extends Control{
     }
   }
   static init_method_set_stretch_mode() {
-    if (!this.#_bindings.method_set_stretch_mode) {
+    if (!this._bindings.method_set_stretch_mode) {
       let classname = new StringName("TextureRect");
       let methodname = new StringName("set_stretch_mode");
-      this.#_bindings.method_set_stretch_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_stretch_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         58788729
@@ -133,10 +134,10 @@ export class TextureRect extends Control{
     }
   }
   static init_method_get_stretch_mode() {
-    if (!this.#_bindings.method_get_stretch_mode) {
+    if (!this._bindings.method_get_stretch_mode) {
       let classname = new StringName("TextureRect");
       let methodname = new StringName("get_stretch_mode");
-      this.#_bindings.method_get_stretch_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_stretch_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         346396079
@@ -149,7 +150,7 @@ export class TextureRect extends Control{
   set_texture(_texture) {
     TextureRect.init_method_set_texture();
     return _call_native_mb_no_ret(
-      TextureRect.#_bindings.method_set_texture,
+      TextureRect._bindings.method_set_texture,
       this._owner,
       _texture
     );
@@ -158,7 +159,7 @@ export class TextureRect extends Control{
   get_texture() {
     TextureRect.init_method_get_texture();
     return _call_native_mb_ret(
-      TextureRect.#_bindings.method_get_texture,
+      TextureRect._bindings.method_get_texture,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -168,7 +169,7 @@ export class TextureRect extends Control{
   set_expand_mode(_expand_mode) {
     TextureRect.init_method_set_expand_mode();
     return _call_native_mb_no_ret(
-      TextureRect.#_bindings.method_set_expand_mode,
+      TextureRect._bindings.method_set_expand_mode,
       this._owner,
       _expand_mode
     );
@@ -177,7 +178,7 @@ export class TextureRect extends Control{
   get_expand_mode() {
     TextureRect.init_method_get_expand_mode();
     return _call_native_mb_ret(
-      TextureRect.#_bindings.method_get_expand_mode,
+      TextureRect._bindings.method_get_expand_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -188,7 +189,7 @@ export class TextureRect extends Control{
   set_flip_h(_enable) {
     TextureRect.init_method_set_flip_h();
     return _call_native_mb_no_ret(
-      TextureRect.#_bindings.method_set_flip_h,
+      TextureRect._bindings.method_set_flip_h,
       this._owner,
       _enable
     );
@@ -197,7 +198,7 @@ export class TextureRect extends Control{
   is_flipped_h() {
     TextureRect.init_method_is_flipped_h();
     return _call_native_mb_ret(
-      TextureRect.#_bindings.method_is_flipped_h,
+      TextureRect._bindings.method_is_flipped_h,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -208,7 +209,7 @@ export class TextureRect extends Control{
   set_flip_v(_enable) {
     TextureRect.init_method_set_flip_v();
     return _call_native_mb_no_ret(
-      TextureRect.#_bindings.method_set_flip_v,
+      TextureRect._bindings.method_set_flip_v,
       this._owner,
       _enable
     );
@@ -217,7 +218,7 @@ export class TextureRect extends Control{
   is_flipped_v() {
     TextureRect.init_method_is_flipped_v();
     return _call_native_mb_ret(
-      TextureRect.#_bindings.method_is_flipped_v,
+      TextureRect._bindings.method_is_flipped_v,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -228,7 +229,7 @@ export class TextureRect extends Control{
   set_stretch_mode(_stretch_mode) {
     TextureRect.init_method_set_stretch_mode();
     return _call_native_mb_no_ret(
-      TextureRect.#_bindings.method_set_stretch_mode,
+      TextureRect._bindings.method_set_stretch_mode,
       this._owner,
       _stretch_mode
     );
@@ -237,7 +238,7 @@ export class TextureRect extends Control{
   get_stretch_mode() {
     TextureRect.init_method_get_stretch_mode();
     return _call_native_mb_ret(
-      TextureRect.#_bindings.method_get_stretch_mode,
+      TextureRect._bindings.method_get_stretch_mode,
       this._owner,
 			Variant.Type.INT,
     

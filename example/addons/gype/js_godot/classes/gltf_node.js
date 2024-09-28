@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_original_name;
@@ -39,10 +40,10 @@ class _MethodBindings {
   method_get_additional_data;
   method_set_additional_data;
 }
+@GodotClass
 export class GLTFNode extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -52,10 +53,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_get_original_name() {
-    if (!this.#_bindings.method_get_original_name) {
+    if (!this._bindings.method_get_original_name) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("get_original_name");
-      this.#_bindings.method_get_original_name = internal.classdb_get_method_bind(
+      this._bindings.method_get_original_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2841200299
@@ -63,10 +64,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_set_original_name() {
-    if (!this.#_bindings.method_set_original_name) {
+    if (!this._bindings.method_set_original_name) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("set_original_name");
-      this.#_bindings.method_set_original_name = internal.classdb_get_method_bind(
+      this._bindings.method_set_original_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -74,10 +75,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_get_parent() {
-    if (!this.#_bindings.method_get_parent) {
+    if (!this._bindings.method_get_parent) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("get_parent");
-      this.#_bindings.method_get_parent = internal.classdb_get_method_bind(
+      this._bindings.method_get_parent = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -85,10 +86,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_set_parent() {
-    if (!this.#_bindings.method_set_parent) {
+    if (!this._bindings.method_set_parent) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("set_parent");
-      this.#_bindings.method_set_parent = internal.classdb_get_method_bind(
+      this._bindings.method_set_parent = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -96,10 +97,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_get_height() {
-    if (!this.#_bindings.method_get_height) {
+    if (!this._bindings.method_get_height) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("get_height");
-      this.#_bindings.method_get_height = internal.classdb_get_method_bind(
+      this._bindings.method_get_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -107,10 +108,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_set_height() {
-    if (!this.#_bindings.method_set_height) {
+    if (!this._bindings.method_set_height) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("set_height");
-      this.#_bindings.method_set_height = internal.classdb_get_method_bind(
+      this._bindings.method_set_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -118,10 +119,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_get_xform() {
-    if (!this.#_bindings.method_get_xform) {
+    if (!this._bindings.method_get_xform) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("get_xform");
-      this.#_bindings.method_get_xform = internal.classdb_get_method_bind(
+      this._bindings.method_get_xform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4183770049
@@ -129,10 +130,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_set_xform() {
-    if (!this.#_bindings.method_set_xform) {
+    if (!this._bindings.method_set_xform) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("set_xform");
-      this.#_bindings.method_set_xform = internal.classdb_get_method_bind(
+      this._bindings.method_set_xform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2952846383
@@ -140,10 +141,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_get_mesh() {
-    if (!this.#_bindings.method_get_mesh) {
+    if (!this._bindings.method_get_mesh) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("get_mesh");
-      this.#_bindings.method_get_mesh = internal.classdb_get_method_bind(
+      this._bindings.method_get_mesh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -151,10 +152,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_set_mesh() {
-    if (!this.#_bindings.method_set_mesh) {
+    if (!this._bindings.method_set_mesh) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("set_mesh");
-      this.#_bindings.method_set_mesh = internal.classdb_get_method_bind(
+      this._bindings.method_set_mesh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -162,10 +163,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_get_camera() {
-    if (!this.#_bindings.method_get_camera) {
+    if (!this._bindings.method_get_camera) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("get_camera");
-      this.#_bindings.method_get_camera = internal.classdb_get_method_bind(
+      this._bindings.method_get_camera = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -173,10 +174,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_set_camera() {
-    if (!this.#_bindings.method_set_camera) {
+    if (!this._bindings.method_set_camera) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("set_camera");
-      this.#_bindings.method_set_camera = internal.classdb_get_method_bind(
+      this._bindings.method_set_camera = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -184,10 +185,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_get_skin() {
-    if (!this.#_bindings.method_get_skin) {
+    if (!this._bindings.method_get_skin) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("get_skin");
-      this.#_bindings.method_get_skin = internal.classdb_get_method_bind(
+      this._bindings.method_get_skin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -195,10 +196,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_set_skin() {
-    if (!this.#_bindings.method_set_skin) {
+    if (!this._bindings.method_set_skin) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("set_skin");
-      this.#_bindings.method_set_skin = internal.classdb_get_method_bind(
+      this._bindings.method_set_skin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -206,10 +207,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_get_skeleton() {
-    if (!this.#_bindings.method_get_skeleton) {
+    if (!this._bindings.method_get_skeleton) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("get_skeleton");
-      this.#_bindings.method_get_skeleton = internal.classdb_get_method_bind(
+      this._bindings.method_get_skeleton = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -217,10 +218,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_set_skeleton() {
-    if (!this.#_bindings.method_set_skeleton) {
+    if (!this._bindings.method_set_skeleton) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("set_skeleton");
-      this.#_bindings.method_set_skeleton = internal.classdb_get_method_bind(
+      this._bindings.method_set_skeleton = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -228,10 +229,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_get_position() {
-    if (!this.#_bindings.method_get_position) {
+    if (!this._bindings.method_get_position) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("get_position");
-      this.#_bindings.method_get_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3783033775
@@ -239,10 +240,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_set_position() {
-    if (!this.#_bindings.method_set_position) {
+    if (!this._bindings.method_set_position) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("set_position");
-      this.#_bindings.method_set_position = internal.classdb_get_method_bind(
+      this._bindings.method_set_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -250,10 +251,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_get_rotation() {
-    if (!this.#_bindings.method_get_rotation) {
+    if (!this._bindings.method_get_rotation) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("get_rotation");
-      this.#_bindings.method_get_rotation = internal.classdb_get_method_bind(
+      this._bindings.method_get_rotation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2916281908
@@ -261,10 +262,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_set_rotation() {
-    if (!this.#_bindings.method_set_rotation) {
+    if (!this._bindings.method_set_rotation) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("set_rotation");
-      this.#_bindings.method_set_rotation = internal.classdb_get_method_bind(
+      this._bindings.method_set_rotation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1727505552
@@ -272,10 +273,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_get_scale() {
-    if (!this.#_bindings.method_get_scale) {
+    if (!this._bindings.method_get_scale) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("get_scale");
-      this.#_bindings.method_get_scale = internal.classdb_get_method_bind(
+      this._bindings.method_get_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3783033775
@@ -283,10 +284,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_set_scale() {
-    if (!this.#_bindings.method_set_scale) {
+    if (!this._bindings.method_set_scale) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("set_scale");
-      this.#_bindings.method_set_scale = internal.classdb_get_method_bind(
+      this._bindings.method_set_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -294,10 +295,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_get_children() {
-    if (!this.#_bindings.method_get_children) {
+    if (!this._bindings.method_get_children) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("get_children");
-      this.#_bindings.method_get_children = internal.classdb_get_method_bind(
+      this._bindings.method_get_children = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         969006518
@@ -305,10 +306,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_set_children() {
-    if (!this.#_bindings.method_set_children) {
+    if (!this._bindings.method_set_children) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("set_children");
-      this.#_bindings.method_set_children = internal.classdb_get_method_bind(
+      this._bindings.method_set_children = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3614634198
@@ -316,10 +317,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_get_light() {
-    if (!this.#_bindings.method_get_light) {
+    if (!this._bindings.method_get_light) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("get_light");
-      this.#_bindings.method_get_light = internal.classdb_get_method_bind(
+      this._bindings.method_get_light = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -327,10 +328,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_set_light() {
-    if (!this.#_bindings.method_set_light) {
+    if (!this._bindings.method_set_light) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("set_light");
-      this.#_bindings.method_set_light = internal.classdb_get_method_bind(
+      this._bindings.method_set_light = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -338,10 +339,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_get_additional_data() {
-    if (!this.#_bindings.method_get_additional_data) {
+    if (!this._bindings.method_get_additional_data) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("get_additional_data");
-      this.#_bindings.method_get_additional_data = internal.classdb_get_method_bind(
+      this._bindings.method_get_additional_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2138907829
@@ -349,10 +350,10 @@ export class GLTFNode extends Resource{
     }
   }
   static init_method_set_additional_data() {
-    if (!this.#_bindings.method_set_additional_data) {
+    if (!this._bindings.method_set_additional_data) {
       let classname = new StringName("GLTFNode");
       let methodname = new StringName("set_additional_data");
-      this.#_bindings.method_set_additional_data = internal.classdb_get_method_bind(
+      this._bindings.method_set_additional_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3776071444
@@ -365,7 +366,7 @@ export class GLTFNode extends Resource{
   get_original_name() {
     GLTFNode.init_method_get_original_name();
     return _call_native_mb_ret(
-      GLTFNode.#_bindings.method_get_original_name,
+      GLTFNode._bindings.method_get_original_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -376,7 +377,7 @@ export class GLTFNode extends Resource{
   set_original_name(_original_name) {
     GLTFNode.init_method_set_original_name();
     return _call_native_mb_no_ret(
-      GLTFNode.#_bindings.method_set_original_name,
+      GLTFNode._bindings.method_set_original_name,
       this._owner,
       _original_name
     );
@@ -385,7 +386,7 @@ export class GLTFNode extends Resource{
   get_parent() {
     GLTFNode.init_method_get_parent();
     return _call_native_mb_ret(
-      GLTFNode.#_bindings.method_get_parent,
+      GLTFNode._bindings.method_get_parent,
       this._owner,
 			Variant.Type.INT,
     
@@ -396,7 +397,7 @@ export class GLTFNode extends Resource{
   set_parent(_parent) {
     GLTFNode.init_method_set_parent();
     return _call_native_mb_no_ret(
-      GLTFNode.#_bindings.method_set_parent,
+      GLTFNode._bindings.method_set_parent,
       this._owner,
       _parent
     );
@@ -405,7 +406,7 @@ export class GLTFNode extends Resource{
   get_height() {
     GLTFNode.init_method_get_height();
     return _call_native_mb_ret(
-      GLTFNode.#_bindings.method_get_height,
+      GLTFNode._bindings.method_get_height,
       this._owner,
 			Variant.Type.INT,
     
@@ -416,7 +417,7 @@ export class GLTFNode extends Resource{
   set_height(_height) {
     GLTFNode.init_method_set_height();
     return _call_native_mb_no_ret(
-      GLTFNode.#_bindings.method_set_height,
+      GLTFNode._bindings.method_set_height,
       this._owner,
       _height
     );
@@ -425,7 +426,7 @@ export class GLTFNode extends Resource{
   get_xform() {
     GLTFNode.init_method_get_xform();
     return _call_native_mb_ret(
-      GLTFNode.#_bindings.method_get_xform,
+      GLTFNode._bindings.method_get_xform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -436,7 +437,7 @@ export class GLTFNode extends Resource{
   set_xform(_xform) {
     GLTFNode.init_method_set_xform();
     return _call_native_mb_no_ret(
-      GLTFNode.#_bindings.method_set_xform,
+      GLTFNode._bindings.method_set_xform,
       this._owner,
       _xform
     );
@@ -445,7 +446,7 @@ export class GLTFNode extends Resource{
   get_mesh() {
     GLTFNode.init_method_get_mesh();
     return _call_native_mb_ret(
-      GLTFNode.#_bindings.method_get_mesh,
+      GLTFNode._bindings.method_get_mesh,
       this._owner,
 			Variant.Type.INT,
     
@@ -456,7 +457,7 @@ export class GLTFNode extends Resource{
   set_mesh(_mesh) {
     GLTFNode.init_method_set_mesh();
     return _call_native_mb_no_ret(
-      GLTFNode.#_bindings.method_set_mesh,
+      GLTFNode._bindings.method_set_mesh,
       this._owner,
       _mesh
     );
@@ -465,7 +466,7 @@ export class GLTFNode extends Resource{
   get_camera() {
     GLTFNode.init_method_get_camera();
     return _call_native_mb_ret(
-      GLTFNode.#_bindings.method_get_camera,
+      GLTFNode._bindings.method_get_camera,
       this._owner,
 			Variant.Type.INT,
     
@@ -476,7 +477,7 @@ export class GLTFNode extends Resource{
   set_camera(_camera) {
     GLTFNode.init_method_set_camera();
     return _call_native_mb_no_ret(
-      GLTFNode.#_bindings.method_set_camera,
+      GLTFNode._bindings.method_set_camera,
       this._owner,
       _camera
     );
@@ -485,7 +486,7 @@ export class GLTFNode extends Resource{
   get_skin() {
     GLTFNode.init_method_get_skin();
     return _call_native_mb_ret(
-      GLTFNode.#_bindings.method_get_skin,
+      GLTFNode._bindings.method_get_skin,
       this._owner,
 			Variant.Type.INT,
     
@@ -496,7 +497,7 @@ export class GLTFNode extends Resource{
   set_skin(_skin) {
     GLTFNode.init_method_set_skin();
     return _call_native_mb_no_ret(
-      GLTFNode.#_bindings.method_set_skin,
+      GLTFNode._bindings.method_set_skin,
       this._owner,
       _skin
     );
@@ -505,7 +506,7 @@ export class GLTFNode extends Resource{
   get_skeleton() {
     GLTFNode.init_method_get_skeleton();
     return _call_native_mb_ret(
-      GLTFNode.#_bindings.method_get_skeleton,
+      GLTFNode._bindings.method_get_skeleton,
       this._owner,
 			Variant.Type.INT,
     
@@ -516,7 +517,7 @@ export class GLTFNode extends Resource{
   set_skeleton(_skeleton) {
     GLTFNode.init_method_set_skeleton();
     return _call_native_mb_no_ret(
-      GLTFNode.#_bindings.method_set_skeleton,
+      GLTFNode._bindings.method_set_skeleton,
       this._owner,
       _skeleton
     );
@@ -525,7 +526,7 @@ export class GLTFNode extends Resource{
   get_position() {
     GLTFNode.init_method_get_position();
     return _call_native_mb_ret(
-      GLTFNode.#_bindings.method_get_position,
+      GLTFNode._bindings.method_get_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -536,7 +537,7 @@ export class GLTFNode extends Resource{
   set_position(_position) {
     GLTFNode.init_method_set_position();
     return _call_native_mb_no_ret(
-      GLTFNode.#_bindings.method_set_position,
+      GLTFNode._bindings.method_set_position,
       this._owner,
       _position
     );
@@ -545,7 +546,7 @@ export class GLTFNode extends Resource{
   get_rotation() {
     GLTFNode.init_method_get_rotation();
     return _call_native_mb_ret(
-      GLTFNode.#_bindings.method_get_rotation,
+      GLTFNode._bindings.method_get_rotation,
       this._owner,
 			Variant.Type.QUATERNION,
     
@@ -556,7 +557,7 @@ export class GLTFNode extends Resource{
   set_rotation(_rotation) {
     GLTFNode.init_method_set_rotation();
     return _call_native_mb_no_ret(
-      GLTFNode.#_bindings.method_set_rotation,
+      GLTFNode._bindings.method_set_rotation,
       this._owner,
       _rotation
     );
@@ -565,7 +566,7 @@ export class GLTFNode extends Resource{
   get_scale() {
     GLTFNode.init_method_get_scale();
     return _call_native_mb_ret(
-      GLTFNode.#_bindings.method_get_scale,
+      GLTFNode._bindings.method_get_scale,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -576,7 +577,7 @@ export class GLTFNode extends Resource{
   set_scale(_scale) {
     GLTFNode.init_method_set_scale();
     return _call_native_mb_no_ret(
-      GLTFNode.#_bindings.method_set_scale,
+      GLTFNode._bindings.method_set_scale,
       this._owner,
       _scale
     );
@@ -585,7 +586,7 @@ export class GLTFNode extends Resource{
   get_children() {
     GLTFNode.init_method_get_children();
     return _call_native_mb_ret(
-      GLTFNode.#_bindings.method_get_children,
+      GLTFNode._bindings.method_get_children,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -596,7 +597,7 @@ export class GLTFNode extends Resource{
   set_children(_children) {
     GLTFNode.init_method_set_children();
     return _call_native_mb_no_ret(
-      GLTFNode.#_bindings.method_set_children,
+      GLTFNode._bindings.method_set_children,
       this._owner,
       _children
     );
@@ -605,7 +606,7 @@ export class GLTFNode extends Resource{
   get_light() {
     GLTFNode.init_method_get_light();
     return _call_native_mb_ret(
-      GLTFNode.#_bindings.method_get_light,
+      GLTFNode._bindings.method_get_light,
       this._owner,
 			Variant.Type.INT,
     
@@ -616,7 +617,7 @@ export class GLTFNode extends Resource{
   set_light(_light) {
     GLTFNode.init_method_set_light();
     return _call_native_mb_no_ret(
-      GLTFNode.#_bindings.method_set_light,
+      GLTFNode._bindings.method_set_light,
       this._owner,
       _light
     );
@@ -625,7 +626,7 @@ export class GLTFNode extends Resource{
   get_additional_data(_extension_name) {
     GLTFNode.init_method_get_additional_data();
     return _call_native_mb_ret(
-      GLTFNode.#_bindings.method_get_additional_data,
+      GLTFNode._bindings.method_get_additional_data,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -636,7 +637,7 @@ export class GLTFNode extends Resource{
   set_additional_data(_extension_name, _additional_data) {
     GLTFNode.init_method_set_additional_data();
     return _call_native_mb_no_ret(
-      GLTFNode.#_bindings.method_set_additional_data,
+      GLTFNode._bindings.method_set_additional_data,
       this._owner,
       _extension_name, _additional_data
     );

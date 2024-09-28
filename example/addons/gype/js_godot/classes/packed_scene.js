@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_pack;
@@ -15,10 +16,10 @@ class _MethodBindings {
   method_can_instantiate;
   method_get_state;
 }
+@GodotClass
 export class PackedScene extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -28,10 +29,10 @@ export class PackedScene extends Resource{
     }
   }
   static init_method_pack() {
-    if (!this.#_bindings.method_pack) {
+    if (!this._bindings.method_pack) {
       let classname = new StringName("PackedScene");
       let methodname = new StringName("pack");
-      this.#_bindings.method_pack = internal.classdb_get_method_bind(
+      this._bindings.method_pack = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2584678054
@@ -39,10 +40,10 @@ export class PackedScene extends Resource{
     }
   }
   static init_method_instantiate() {
-    if (!this.#_bindings.method_instantiate) {
+    if (!this._bindings.method_instantiate) {
       let classname = new StringName("PackedScene");
       let methodname = new StringName("instantiate");
-      this.#_bindings.method_instantiate = internal.classdb_get_method_bind(
+      this._bindings.method_instantiate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2628778455
@@ -50,10 +51,10 @@ export class PackedScene extends Resource{
     }
   }
   static init_method_can_instantiate() {
-    if (!this.#_bindings.method_can_instantiate) {
+    if (!this._bindings.method_can_instantiate) {
       let classname = new StringName("PackedScene");
       let methodname = new StringName("can_instantiate");
-      this.#_bindings.method_can_instantiate = internal.classdb_get_method_bind(
+      this._bindings.method_can_instantiate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -61,10 +62,10 @@ export class PackedScene extends Resource{
     }
   }
   static init_method_get_state() {
-    if (!this.#_bindings.method_get_state) {
+    if (!this._bindings.method_get_state) {
       let classname = new StringName("PackedScene");
       let methodname = new StringName("get_state");
-      this.#_bindings.method_get_state = internal.classdb_get_method_bind(
+      this._bindings.method_get_state = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3479783971
@@ -77,7 +78,7 @@ export class PackedScene extends Resource{
   pack(_path) {
     PackedScene.init_method_pack();
     return _call_native_mb_ret(
-      PackedScene.#_bindings.method_pack,
+      PackedScene._bindings.method_pack,
       this._owner,
 			Variant.Type.INT,
     
@@ -88,7 +89,7 @@ export class PackedScene extends Resource{
   instantiate(_edit_state) {
     PackedScene.init_method_instantiate();
     return _call_native_mb_ret(
-      PackedScene.#_bindings.method_instantiate,
+      PackedScene._bindings.method_instantiate,
       this._owner,
 			Variant.Type.OBJECT,
       _edit_state
@@ -98,7 +99,7 @@ export class PackedScene extends Resource{
   can_instantiate() {
     PackedScene.init_method_can_instantiate();
     return _call_native_mb_ret(
-      PackedScene.#_bindings.method_can_instantiate,
+      PackedScene._bindings.method_can_instantiate,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -109,7 +110,7 @@ export class PackedScene extends Resource{
   get_state() {
     PackedScene.init_method_get_state();
     return _call_native_mb_ret(
-      PackedScene.#_bindings.method_get_state,
+      PackedScene._bindings.method_get_state,
       this._owner,
 			Variant.Type.OBJECT,
       

@@ -8,15 +8,16 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_radius;
   method_get_radius;
 }
+@GodotClass
 export class SphereShape3D extends Shape3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -26,10 +27,10 @@ export class SphereShape3D extends Shape3D{
     }
   }
   static init_method_set_radius() {
-    if (!this.#_bindings.method_set_radius) {
+    if (!this._bindings.method_set_radius) {
       let classname = new StringName("SphereShape3D");
       let methodname = new StringName("set_radius");
-      this.#_bindings.method_set_radius = internal.classdb_get_method_bind(
+      this._bindings.method_set_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -37,10 +38,10 @@ export class SphereShape3D extends Shape3D{
     }
   }
   static init_method_get_radius() {
-    if (!this.#_bindings.method_get_radius) {
+    if (!this._bindings.method_get_radius) {
       let classname = new StringName("SphereShape3D");
       let methodname = new StringName("get_radius");
-      this.#_bindings.method_get_radius = internal.classdb_get_method_bind(
+      this._bindings.method_get_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -53,7 +54,7 @@ export class SphereShape3D extends Shape3D{
   set_radius(_radius) {
     SphereShape3D.init_method_set_radius();
     return _call_native_mb_no_ret(
-      SphereShape3D.#_bindings.method_set_radius,
+      SphereShape3D._bindings.method_set_radius,
       this._owner,
       _radius
     );
@@ -62,7 +63,7 @@ export class SphereShape3D extends Shape3D{
   get_radius() {
     SphereShape3D.init_method_get_radius();
     return _call_native_mb_ret(
-      SphereShape3D.#_bindings.method_get_radius,
+      SphereShape3D._bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
     

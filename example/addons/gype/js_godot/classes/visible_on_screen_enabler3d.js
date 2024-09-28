@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_enable_mode;
@@ -15,10 +16,10 @@ class _MethodBindings {
   method_set_enable_node_path;
   method_get_enable_node_path;
 }
+@GodotClass
 export class VisibleOnScreenEnabler3D extends VisibleOnScreenNotifier3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -28,10 +29,10 @@ export class VisibleOnScreenEnabler3D extends VisibleOnScreenNotifier3D{
     }
   }
   static init_method_set_enable_mode() {
-    if (!this.#_bindings.method_set_enable_mode) {
+    if (!this._bindings.method_set_enable_mode) {
       let classname = new StringName("VisibleOnScreenEnabler3D");
       let methodname = new StringName("set_enable_mode");
-      this.#_bindings.method_set_enable_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_enable_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         320303646
@@ -39,10 +40,10 @@ export class VisibleOnScreenEnabler3D extends VisibleOnScreenNotifier3D{
     }
   }
   static init_method_get_enable_mode() {
-    if (!this.#_bindings.method_get_enable_mode) {
+    if (!this._bindings.method_get_enable_mode) {
       let classname = new StringName("VisibleOnScreenEnabler3D");
       let methodname = new StringName("get_enable_mode");
-      this.#_bindings.method_get_enable_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_enable_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3352990031
@@ -50,10 +51,10 @@ export class VisibleOnScreenEnabler3D extends VisibleOnScreenNotifier3D{
     }
   }
   static init_method_set_enable_node_path() {
-    if (!this.#_bindings.method_set_enable_node_path) {
+    if (!this._bindings.method_set_enable_node_path) {
       let classname = new StringName("VisibleOnScreenEnabler3D");
       let methodname = new StringName("set_enable_node_path");
-      this.#_bindings.method_set_enable_node_path = internal.classdb_get_method_bind(
+      this._bindings.method_set_enable_node_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1348162250
@@ -61,10 +62,10 @@ export class VisibleOnScreenEnabler3D extends VisibleOnScreenNotifier3D{
     }
   }
   static init_method_get_enable_node_path() {
-    if (!this.#_bindings.method_get_enable_node_path) {
+    if (!this._bindings.method_get_enable_node_path) {
       let classname = new StringName("VisibleOnScreenEnabler3D");
       let methodname = new StringName("get_enable_node_path");
-      this.#_bindings.method_get_enable_node_path = internal.classdb_get_method_bind(
+      this._bindings.method_get_enable_node_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         277076166
@@ -77,7 +78,7 @@ export class VisibleOnScreenEnabler3D extends VisibleOnScreenNotifier3D{
   set_enable_mode(_mode) {
     VisibleOnScreenEnabler3D.init_method_set_enable_mode();
     return _call_native_mb_no_ret(
-      VisibleOnScreenEnabler3D.#_bindings.method_set_enable_mode,
+      VisibleOnScreenEnabler3D._bindings.method_set_enable_mode,
       this._owner,
       _mode
     );
@@ -86,7 +87,7 @@ export class VisibleOnScreenEnabler3D extends VisibleOnScreenNotifier3D{
   get_enable_mode() {
     VisibleOnScreenEnabler3D.init_method_get_enable_mode();
     return _call_native_mb_ret(
-      VisibleOnScreenEnabler3D.#_bindings.method_get_enable_mode,
+      VisibleOnScreenEnabler3D._bindings.method_get_enable_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -97,7 +98,7 @@ export class VisibleOnScreenEnabler3D extends VisibleOnScreenNotifier3D{
   set_enable_node_path(_path) {
     VisibleOnScreenEnabler3D.init_method_set_enable_node_path();
     return _call_native_mb_no_ret(
-      VisibleOnScreenEnabler3D.#_bindings.method_set_enable_node_path,
+      VisibleOnScreenEnabler3D._bindings.method_set_enable_node_path,
       this._owner,
       _path
     );
@@ -106,7 +107,7 @@ export class VisibleOnScreenEnabler3D extends VisibleOnScreenNotifier3D{
   get_enable_node_path() {
     VisibleOnScreenEnabler3D.init_method_get_enable_node_path();
     return _call_native_mb_ret(
-      VisibleOnScreenEnabler3D.#_bindings.method_get_enable_node_path,
+      VisibleOnScreenEnabler3D._bindings.method_get_enable_node_path,
       this._owner,
 			Variant.Type.NODE_PATH,
     

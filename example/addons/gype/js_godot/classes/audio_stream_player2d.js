@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { Node2D } from '@js_godot/classes/node2d'
 import {
   call_utility_ret,
@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_stream;
@@ -42,10 +43,10 @@ class _MethodBindings {
   method_set_playback_type;
   method_get_playback_type;
 }
+@GodotClass
 export class AudioStreamPlayer2D extends Node2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -55,10 +56,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_set_stream() {
-    if (!this.#_bindings.method_set_stream) {
+    if (!this._bindings.method_set_stream) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("set_stream");
-      this.#_bindings.method_set_stream = internal.classdb_get_method_bind(
+      this._bindings.method_set_stream = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2210767741
@@ -66,10 +67,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_get_stream() {
-    if (!this.#_bindings.method_get_stream) {
+    if (!this._bindings.method_get_stream) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("get_stream");
-      this.#_bindings.method_get_stream = internal.classdb_get_method_bind(
+      this._bindings.method_get_stream = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         160907539
@@ -77,10 +78,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_set_volume_db() {
-    if (!this.#_bindings.method_set_volume_db) {
+    if (!this._bindings.method_set_volume_db) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("set_volume_db");
-      this.#_bindings.method_set_volume_db = internal.classdb_get_method_bind(
+      this._bindings.method_set_volume_db = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -88,10 +89,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_get_volume_db() {
-    if (!this.#_bindings.method_get_volume_db) {
+    if (!this._bindings.method_get_volume_db) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("get_volume_db");
-      this.#_bindings.method_get_volume_db = internal.classdb_get_method_bind(
+      this._bindings.method_get_volume_db = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -99,10 +100,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_set_pitch_scale() {
-    if (!this.#_bindings.method_set_pitch_scale) {
+    if (!this._bindings.method_set_pitch_scale) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("set_pitch_scale");
-      this.#_bindings.method_set_pitch_scale = internal.classdb_get_method_bind(
+      this._bindings.method_set_pitch_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -110,10 +111,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_get_pitch_scale() {
-    if (!this.#_bindings.method_get_pitch_scale) {
+    if (!this._bindings.method_get_pitch_scale) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("get_pitch_scale");
-      this.#_bindings.method_get_pitch_scale = internal.classdb_get_method_bind(
+      this._bindings.method_get_pitch_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -121,10 +122,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_play() {
-    if (!this.#_bindings.method_play) {
+    if (!this._bindings.method_play) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("play");
-      this.#_bindings.method_play = internal.classdb_get_method_bind(
+      this._bindings.method_play = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1958160172
@@ -132,10 +133,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_seek() {
-    if (!this.#_bindings.method_seek) {
+    if (!this._bindings.method_seek) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("seek");
-      this.#_bindings.method_seek = internal.classdb_get_method_bind(
+      this._bindings.method_seek = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -143,10 +144,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_stop() {
-    if (!this.#_bindings.method_stop) {
+    if (!this._bindings.method_stop) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("stop");
-      this.#_bindings.method_stop = internal.classdb_get_method_bind(
+      this._bindings.method_stop = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -154,10 +155,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_is_playing() {
-    if (!this.#_bindings.method_is_playing) {
+    if (!this._bindings.method_is_playing) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("is_playing");
-      this.#_bindings.method_is_playing = internal.classdb_get_method_bind(
+      this._bindings.method_is_playing = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -165,10 +166,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_get_playback_position() {
-    if (!this.#_bindings.method_get_playback_position) {
+    if (!this._bindings.method_get_playback_position) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("get_playback_position");
-      this.#_bindings.method_get_playback_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_playback_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         191475506
@@ -176,10 +177,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_set_bus() {
-    if (!this.#_bindings.method_set_bus) {
+    if (!this._bindings.method_set_bus) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("set_bus");
-      this.#_bindings.method_set_bus = internal.classdb_get_method_bind(
+      this._bindings.method_set_bus = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -187,10 +188,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_get_bus() {
-    if (!this.#_bindings.method_get_bus) {
+    if (!this._bindings.method_get_bus) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("get_bus");
-      this.#_bindings.method_get_bus = internal.classdb_get_method_bind(
+      this._bindings.method_get_bus = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2002593661
@@ -198,10 +199,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_set_autoplay() {
-    if (!this.#_bindings.method_set_autoplay) {
+    if (!this._bindings.method_set_autoplay) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("set_autoplay");
-      this.#_bindings.method_set_autoplay = internal.classdb_get_method_bind(
+      this._bindings.method_set_autoplay = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -209,10 +210,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_is_autoplay_enabled() {
-    if (!this.#_bindings.method_is_autoplay_enabled) {
+    if (!this._bindings.method_is_autoplay_enabled) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("is_autoplay_enabled");
-      this.#_bindings.method_is_autoplay_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_autoplay_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -220,10 +221,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_set_max_distance() {
-    if (!this.#_bindings.method_set_max_distance) {
+    if (!this._bindings.method_set_max_distance) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("set_max_distance");
-      this.#_bindings.method_set_max_distance = internal.classdb_get_method_bind(
+      this._bindings.method_set_max_distance = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -231,10 +232,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_get_max_distance() {
-    if (!this.#_bindings.method_get_max_distance) {
+    if (!this._bindings.method_get_max_distance) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("get_max_distance");
-      this.#_bindings.method_get_max_distance = internal.classdb_get_method_bind(
+      this._bindings.method_get_max_distance = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -242,10 +243,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_set_attenuation() {
-    if (!this.#_bindings.method_set_attenuation) {
+    if (!this._bindings.method_set_attenuation) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("set_attenuation");
-      this.#_bindings.method_set_attenuation = internal.classdb_get_method_bind(
+      this._bindings.method_set_attenuation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -253,10 +254,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_get_attenuation() {
-    if (!this.#_bindings.method_get_attenuation) {
+    if (!this._bindings.method_get_attenuation) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("get_attenuation");
-      this.#_bindings.method_get_attenuation = internal.classdb_get_method_bind(
+      this._bindings.method_get_attenuation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -264,10 +265,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_set_area_mask() {
-    if (!this.#_bindings.method_set_area_mask) {
+    if (!this._bindings.method_set_area_mask) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("set_area_mask");
-      this.#_bindings.method_set_area_mask = internal.classdb_get_method_bind(
+      this._bindings.method_set_area_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -275,10 +276,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_get_area_mask() {
-    if (!this.#_bindings.method_get_area_mask) {
+    if (!this._bindings.method_get_area_mask) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("get_area_mask");
-      this.#_bindings.method_get_area_mask = internal.classdb_get_method_bind(
+      this._bindings.method_get_area_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -286,10 +287,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_set_stream_paused() {
-    if (!this.#_bindings.method_set_stream_paused) {
+    if (!this._bindings.method_set_stream_paused) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("set_stream_paused");
-      this.#_bindings.method_set_stream_paused = internal.classdb_get_method_bind(
+      this._bindings.method_set_stream_paused = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -297,10 +298,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_get_stream_paused() {
-    if (!this.#_bindings.method_get_stream_paused) {
+    if (!this._bindings.method_get_stream_paused) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("get_stream_paused");
-      this.#_bindings.method_get_stream_paused = internal.classdb_get_method_bind(
+      this._bindings.method_get_stream_paused = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -308,10 +309,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_set_max_polyphony() {
-    if (!this.#_bindings.method_set_max_polyphony) {
+    if (!this._bindings.method_set_max_polyphony) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("set_max_polyphony");
-      this.#_bindings.method_set_max_polyphony = internal.classdb_get_method_bind(
+      this._bindings.method_set_max_polyphony = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -319,10 +320,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_get_max_polyphony() {
-    if (!this.#_bindings.method_get_max_polyphony) {
+    if (!this._bindings.method_get_max_polyphony) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("get_max_polyphony");
-      this.#_bindings.method_get_max_polyphony = internal.classdb_get_method_bind(
+      this._bindings.method_get_max_polyphony = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -330,10 +331,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_set_panning_strength() {
-    if (!this.#_bindings.method_set_panning_strength) {
+    if (!this._bindings.method_set_panning_strength) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("set_panning_strength");
-      this.#_bindings.method_set_panning_strength = internal.classdb_get_method_bind(
+      this._bindings.method_set_panning_strength = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -341,10 +342,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_get_panning_strength() {
-    if (!this.#_bindings.method_get_panning_strength) {
+    if (!this._bindings.method_get_panning_strength) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("get_panning_strength");
-      this.#_bindings.method_get_panning_strength = internal.classdb_get_method_bind(
+      this._bindings.method_get_panning_strength = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -352,10 +353,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_has_stream_playback() {
-    if (!this.#_bindings.method_has_stream_playback) {
+    if (!this._bindings.method_has_stream_playback) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("has_stream_playback");
-      this.#_bindings.method_has_stream_playback = internal.classdb_get_method_bind(
+      this._bindings.method_has_stream_playback = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2240911060
@@ -363,10 +364,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_get_stream_playback() {
-    if (!this.#_bindings.method_get_stream_playback) {
+    if (!this._bindings.method_get_stream_playback) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("get_stream_playback");
-      this.#_bindings.method_get_stream_playback = internal.classdb_get_method_bind(
+      this._bindings.method_get_stream_playback = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         210135309
@@ -374,10 +375,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_set_playback_type() {
-    if (!this.#_bindings.method_set_playback_type) {
+    if (!this._bindings.method_set_playback_type) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("set_playback_type");
-      this.#_bindings.method_set_playback_type = internal.classdb_get_method_bind(
+      this._bindings.method_set_playback_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         725473817
@@ -385,10 +386,10 @@ export class AudioStreamPlayer2D extends Node2D{
     }
   }
   static init_method_get_playback_type() {
-    if (!this.#_bindings.method_get_playback_type) {
+    if (!this._bindings.method_get_playback_type) {
       let classname = new StringName("AudioStreamPlayer2D");
       let methodname = new StringName("get_playback_type");
-      this.#_bindings.method_get_playback_type = internal.classdb_get_method_bind(
+      this._bindings.method_get_playback_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4011264623
@@ -401,7 +402,7 @@ export class AudioStreamPlayer2D extends Node2D{
   set_stream(_stream) {
     AudioStreamPlayer2D.init_method_set_stream();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer2D.#_bindings.method_set_stream,
+      AudioStreamPlayer2D._bindings.method_set_stream,
       this._owner,
       _stream
     );
@@ -410,7 +411,7 @@ export class AudioStreamPlayer2D extends Node2D{
   get_stream() {
     AudioStreamPlayer2D.init_method_get_stream();
     return _call_native_mb_ret(
-      AudioStreamPlayer2D.#_bindings.method_get_stream,
+      AudioStreamPlayer2D._bindings.method_get_stream,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -420,7 +421,7 @@ export class AudioStreamPlayer2D extends Node2D{
   set_volume_db(_volume_db) {
     AudioStreamPlayer2D.init_method_set_volume_db();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer2D.#_bindings.method_set_volume_db,
+      AudioStreamPlayer2D._bindings.method_set_volume_db,
       this._owner,
       _volume_db
     );
@@ -429,7 +430,7 @@ export class AudioStreamPlayer2D extends Node2D{
   get_volume_db() {
     AudioStreamPlayer2D.init_method_get_volume_db();
     return _call_native_mb_ret(
-      AudioStreamPlayer2D.#_bindings.method_get_volume_db,
+      AudioStreamPlayer2D._bindings.method_get_volume_db,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -440,7 +441,7 @@ export class AudioStreamPlayer2D extends Node2D{
   set_pitch_scale(_pitch_scale) {
     AudioStreamPlayer2D.init_method_set_pitch_scale();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer2D.#_bindings.method_set_pitch_scale,
+      AudioStreamPlayer2D._bindings.method_set_pitch_scale,
       this._owner,
       _pitch_scale
     );
@@ -449,7 +450,7 @@ export class AudioStreamPlayer2D extends Node2D{
   get_pitch_scale() {
     AudioStreamPlayer2D.init_method_get_pitch_scale();
     return _call_native_mb_ret(
-      AudioStreamPlayer2D.#_bindings.method_get_pitch_scale,
+      AudioStreamPlayer2D._bindings.method_get_pitch_scale,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -460,7 +461,7 @@ export class AudioStreamPlayer2D extends Node2D{
   play(_from_position) {
     AudioStreamPlayer2D.init_method_play();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer2D.#_bindings.method_play,
+      AudioStreamPlayer2D._bindings.method_play,
       this._owner,
       _from_position
     );
@@ -469,7 +470,7 @@ export class AudioStreamPlayer2D extends Node2D{
   seek(_to_position) {
     AudioStreamPlayer2D.init_method_seek();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer2D.#_bindings.method_seek,
+      AudioStreamPlayer2D._bindings.method_seek,
       this._owner,
       _to_position
     );
@@ -478,7 +479,7 @@ export class AudioStreamPlayer2D extends Node2D{
   stop() {
     AudioStreamPlayer2D.init_method_stop();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer2D.#_bindings.method_stop,
+      AudioStreamPlayer2D._bindings.method_stop,
       this._owner,
       
     );
@@ -487,7 +488,7 @@ export class AudioStreamPlayer2D extends Node2D{
   is_playing() {
     AudioStreamPlayer2D.init_method_is_playing();
     return _call_native_mb_ret(
-      AudioStreamPlayer2D.#_bindings.method_is_playing,
+      AudioStreamPlayer2D._bindings.method_is_playing,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -498,7 +499,7 @@ export class AudioStreamPlayer2D extends Node2D{
   get_playback_position() {
     AudioStreamPlayer2D.init_method_get_playback_position();
     return _call_native_mb_ret(
-      AudioStreamPlayer2D.#_bindings.method_get_playback_position,
+      AudioStreamPlayer2D._bindings.method_get_playback_position,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -509,7 +510,7 @@ export class AudioStreamPlayer2D extends Node2D{
   set_bus(_bus) {
     AudioStreamPlayer2D.init_method_set_bus();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer2D.#_bindings.method_set_bus,
+      AudioStreamPlayer2D._bindings.method_set_bus,
       this._owner,
       _bus
     );
@@ -518,7 +519,7 @@ export class AudioStreamPlayer2D extends Node2D{
   get_bus() {
     AudioStreamPlayer2D.init_method_get_bus();
     return _call_native_mb_ret(
-      AudioStreamPlayer2D.#_bindings.method_get_bus,
+      AudioStreamPlayer2D._bindings.method_get_bus,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -529,7 +530,7 @@ export class AudioStreamPlayer2D extends Node2D{
   set_autoplay(_enable) {
     AudioStreamPlayer2D.init_method_set_autoplay();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer2D.#_bindings.method_set_autoplay,
+      AudioStreamPlayer2D._bindings.method_set_autoplay,
       this._owner,
       _enable
     );
@@ -538,7 +539,7 @@ export class AudioStreamPlayer2D extends Node2D{
   is_autoplay_enabled() {
     AudioStreamPlayer2D.init_method_is_autoplay_enabled();
     return _call_native_mb_ret(
-      AudioStreamPlayer2D.#_bindings.method_is_autoplay_enabled,
+      AudioStreamPlayer2D._bindings.method_is_autoplay_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -549,7 +550,7 @@ export class AudioStreamPlayer2D extends Node2D{
   set_max_distance(_pixels) {
     AudioStreamPlayer2D.init_method_set_max_distance();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer2D.#_bindings.method_set_max_distance,
+      AudioStreamPlayer2D._bindings.method_set_max_distance,
       this._owner,
       _pixels
     );
@@ -558,7 +559,7 @@ export class AudioStreamPlayer2D extends Node2D{
   get_max_distance() {
     AudioStreamPlayer2D.init_method_get_max_distance();
     return _call_native_mb_ret(
-      AudioStreamPlayer2D.#_bindings.method_get_max_distance,
+      AudioStreamPlayer2D._bindings.method_get_max_distance,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -569,7 +570,7 @@ export class AudioStreamPlayer2D extends Node2D{
   set_attenuation(_curve) {
     AudioStreamPlayer2D.init_method_set_attenuation();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer2D.#_bindings.method_set_attenuation,
+      AudioStreamPlayer2D._bindings.method_set_attenuation,
       this._owner,
       _curve
     );
@@ -578,7 +579,7 @@ export class AudioStreamPlayer2D extends Node2D{
   get_attenuation() {
     AudioStreamPlayer2D.init_method_get_attenuation();
     return _call_native_mb_ret(
-      AudioStreamPlayer2D.#_bindings.method_get_attenuation,
+      AudioStreamPlayer2D._bindings.method_get_attenuation,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -589,7 +590,7 @@ export class AudioStreamPlayer2D extends Node2D{
   set_area_mask(_mask) {
     AudioStreamPlayer2D.init_method_set_area_mask();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer2D.#_bindings.method_set_area_mask,
+      AudioStreamPlayer2D._bindings.method_set_area_mask,
       this._owner,
       _mask
     );
@@ -598,7 +599,7 @@ export class AudioStreamPlayer2D extends Node2D{
   get_area_mask() {
     AudioStreamPlayer2D.init_method_get_area_mask();
     return _call_native_mb_ret(
-      AudioStreamPlayer2D.#_bindings.method_get_area_mask,
+      AudioStreamPlayer2D._bindings.method_get_area_mask,
       this._owner,
 			Variant.Type.INT,
     
@@ -609,7 +610,7 @@ export class AudioStreamPlayer2D extends Node2D{
   set_stream_paused(_pause) {
     AudioStreamPlayer2D.init_method_set_stream_paused();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer2D.#_bindings.method_set_stream_paused,
+      AudioStreamPlayer2D._bindings.method_set_stream_paused,
       this._owner,
       _pause
     );
@@ -618,7 +619,7 @@ export class AudioStreamPlayer2D extends Node2D{
   get_stream_paused() {
     AudioStreamPlayer2D.init_method_get_stream_paused();
     return _call_native_mb_ret(
-      AudioStreamPlayer2D.#_bindings.method_get_stream_paused,
+      AudioStreamPlayer2D._bindings.method_get_stream_paused,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -629,7 +630,7 @@ export class AudioStreamPlayer2D extends Node2D{
   set_max_polyphony(_max_polyphony) {
     AudioStreamPlayer2D.init_method_set_max_polyphony();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer2D.#_bindings.method_set_max_polyphony,
+      AudioStreamPlayer2D._bindings.method_set_max_polyphony,
       this._owner,
       _max_polyphony
     );
@@ -638,7 +639,7 @@ export class AudioStreamPlayer2D extends Node2D{
   get_max_polyphony() {
     AudioStreamPlayer2D.init_method_get_max_polyphony();
     return _call_native_mb_ret(
-      AudioStreamPlayer2D.#_bindings.method_get_max_polyphony,
+      AudioStreamPlayer2D._bindings.method_get_max_polyphony,
       this._owner,
 			Variant.Type.INT,
     
@@ -649,7 +650,7 @@ export class AudioStreamPlayer2D extends Node2D{
   set_panning_strength(_panning_strength) {
     AudioStreamPlayer2D.init_method_set_panning_strength();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer2D.#_bindings.method_set_panning_strength,
+      AudioStreamPlayer2D._bindings.method_set_panning_strength,
       this._owner,
       _panning_strength
     );
@@ -658,7 +659,7 @@ export class AudioStreamPlayer2D extends Node2D{
   get_panning_strength() {
     AudioStreamPlayer2D.init_method_get_panning_strength();
     return _call_native_mb_ret(
-      AudioStreamPlayer2D.#_bindings.method_get_panning_strength,
+      AudioStreamPlayer2D._bindings.method_get_panning_strength,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -669,7 +670,7 @@ export class AudioStreamPlayer2D extends Node2D{
   has_stream_playback() {
     AudioStreamPlayer2D.init_method_has_stream_playback();
     return _call_native_mb_ret(
-      AudioStreamPlayer2D.#_bindings.method_has_stream_playback,
+      AudioStreamPlayer2D._bindings.method_has_stream_playback,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -680,7 +681,7 @@ export class AudioStreamPlayer2D extends Node2D{
   get_stream_playback() {
     AudioStreamPlayer2D.init_method_get_stream_playback();
     return _call_native_mb_ret(
-      AudioStreamPlayer2D.#_bindings.method_get_stream_playback,
+      AudioStreamPlayer2D._bindings.method_get_stream_playback,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -690,7 +691,7 @@ export class AudioStreamPlayer2D extends Node2D{
   set_playback_type(_playback_type) {
     AudioStreamPlayer2D.init_method_set_playback_type();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer2D.#_bindings.method_set_playback_type,
+      AudioStreamPlayer2D._bindings.method_set_playback_type,
       this._owner,
       _playback_type
     );
@@ -699,7 +700,7 @@ export class AudioStreamPlayer2D extends Node2D{
   get_playback_type() {
     AudioStreamPlayer2D.init_method_get_playback_type();
     return _call_native_mb_ret(
-      AudioStreamPlayer2D.#_bindings.method_get_playback_type,
+      AudioStreamPlayer2D._bindings.method_get_playback_type,
       this._owner,
 			Variant.Type.INT,
     

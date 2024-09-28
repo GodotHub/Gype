@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Mesh } from '@js_godot/classes/mesh'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_material;
@@ -23,10 +24,10 @@ class _MethodBindings {
   method_get_uv2_padding;
   method_request_update;
 }
+@GodotClass
 export class PrimitiveMesh extends Mesh{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -36,10 +37,10 @@ export class PrimitiveMesh extends Mesh{
     }
   }
   static init_method_set_material() {
-    if (!this.#_bindings.method_set_material) {
+    if (!this._bindings.method_set_material) {
       let classname = new StringName("PrimitiveMesh");
       let methodname = new StringName("set_material");
-      this.#_bindings.method_set_material = internal.classdb_get_method_bind(
+      this._bindings.method_set_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2757459619
@@ -47,10 +48,10 @@ export class PrimitiveMesh extends Mesh{
     }
   }
   static init_method_get_material() {
-    if (!this.#_bindings.method_get_material) {
+    if (!this._bindings.method_get_material) {
       let classname = new StringName("PrimitiveMesh");
       let methodname = new StringName("get_material");
-      this.#_bindings.method_get_material = internal.classdb_get_method_bind(
+      this._bindings.method_get_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         5934680
@@ -58,10 +59,10 @@ export class PrimitiveMesh extends Mesh{
     }
   }
   static init_method_get_mesh_arrays() {
-    if (!this.#_bindings.method_get_mesh_arrays) {
+    if (!this._bindings.method_get_mesh_arrays) {
       let classname = new StringName("PrimitiveMesh");
       let methodname = new StringName("get_mesh_arrays");
-      this.#_bindings.method_get_mesh_arrays = internal.classdb_get_method_bind(
+      this._bindings.method_get_mesh_arrays = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -69,10 +70,10 @@ export class PrimitiveMesh extends Mesh{
     }
   }
   static init_method_set_custom_aabb() {
-    if (!this.#_bindings.method_set_custom_aabb) {
+    if (!this._bindings.method_set_custom_aabb) {
       let classname = new StringName("PrimitiveMesh");
       let methodname = new StringName("set_custom_aabb");
-      this.#_bindings.method_set_custom_aabb = internal.classdb_get_method_bind(
+      this._bindings.method_set_custom_aabb = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         259215842
@@ -80,10 +81,10 @@ export class PrimitiveMesh extends Mesh{
     }
   }
   static init_method_get_custom_aabb() {
-    if (!this.#_bindings.method_get_custom_aabb) {
+    if (!this._bindings.method_get_custom_aabb) {
       let classname = new StringName("PrimitiveMesh");
       let methodname = new StringName("get_custom_aabb");
-      this.#_bindings.method_get_custom_aabb = internal.classdb_get_method_bind(
+      this._bindings.method_get_custom_aabb = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1068685055
@@ -91,10 +92,10 @@ export class PrimitiveMesh extends Mesh{
     }
   }
   static init_method_set_flip_faces() {
-    if (!this.#_bindings.method_set_flip_faces) {
+    if (!this._bindings.method_set_flip_faces) {
       let classname = new StringName("PrimitiveMesh");
       let methodname = new StringName("set_flip_faces");
-      this.#_bindings.method_set_flip_faces = internal.classdb_get_method_bind(
+      this._bindings.method_set_flip_faces = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -102,10 +103,10 @@ export class PrimitiveMesh extends Mesh{
     }
   }
   static init_method_get_flip_faces() {
-    if (!this.#_bindings.method_get_flip_faces) {
+    if (!this._bindings.method_get_flip_faces) {
       let classname = new StringName("PrimitiveMesh");
       let methodname = new StringName("get_flip_faces");
-      this.#_bindings.method_get_flip_faces = internal.classdb_get_method_bind(
+      this._bindings.method_get_flip_faces = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -113,10 +114,10 @@ export class PrimitiveMesh extends Mesh{
     }
   }
   static init_method_set_add_uv2() {
-    if (!this.#_bindings.method_set_add_uv2) {
+    if (!this._bindings.method_set_add_uv2) {
       let classname = new StringName("PrimitiveMesh");
       let methodname = new StringName("set_add_uv2");
-      this.#_bindings.method_set_add_uv2 = internal.classdb_get_method_bind(
+      this._bindings.method_set_add_uv2 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -124,10 +125,10 @@ export class PrimitiveMesh extends Mesh{
     }
   }
   static init_method_get_add_uv2() {
-    if (!this.#_bindings.method_get_add_uv2) {
+    if (!this._bindings.method_get_add_uv2) {
       let classname = new StringName("PrimitiveMesh");
       let methodname = new StringName("get_add_uv2");
-      this.#_bindings.method_get_add_uv2 = internal.classdb_get_method_bind(
+      this._bindings.method_get_add_uv2 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -135,10 +136,10 @@ export class PrimitiveMesh extends Mesh{
     }
   }
   static init_method_set_uv2_padding() {
-    if (!this.#_bindings.method_set_uv2_padding) {
+    if (!this._bindings.method_set_uv2_padding) {
       let classname = new StringName("PrimitiveMesh");
       let methodname = new StringName("set_uv2_padding");
-      this.#_bindings.method_set_uv2_padding = internal.classdb_get_method_bind(
+      this._bindings.method_set_uv2_padding = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -146,10 +147,10 @@ export class PrimitiveMesh extends Mesh{
     }
   }
   static init_method_get_uv2_padding() {
-    if (!this.#_bindings.method_get_uv2_padding) {
+    if (!this._bindings.method_get_uv2_padding) {
       let classname = new StringName("PrimitiveMesh");
       let methodname = new StringName("get_uv2_padding");
-      this.#_bindings.method_get_uv2_padding = internal.classdb_get_method_bind(
+      this._bindings.method_get_uv2_padding = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -157,10 +158,10 @@ export class PrimitiveMesh extends Mesh{
     }
   }
   static init_method_request_update() {
-    if (!this.#_bindings.method_request_update) {
+    if (!this._bindings.method_request_update) {
       let classname = new StringName("PrimitiveMesh");
       let methodname = new StringName("request_update");
-      this.#_bindings.method_request_update = internal.classdb_get_method_bind(
+      this._bindings.method_request_update = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -175,7 +176,7 @@ export class PrimitiveMesh extends Mesh{
   set_material(_material) {
     PrimitiveMesh.init_method_set_material();
     return _call_native_mb_no_ret(
-      PrimitiveMesh.#_bindings.method_set_material,
+      PrimitiveMesh._bindings.method_set_material,
       this._owner,
       _material
     );
@@ -184,7 +185,7 @@ export class PrimitiveMesh extends Mesh{
   get_material() {
     PrimitiveMesh.init_method_get_material();
     return _call_native_mb_ret(
-      PrimitiveMesh.#_bindings.method_get_material,
+      PrimitiveMesh._bindings.method_get_material,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -194,7 +195,7 @@ export class PrimitiveMesh extends Mesh{
   get_mesh_arrays() {
     PrimitiveMesh.init_method_get_mesh_arrays();
     return _call_native_mb_ret(
-      PrimitiveMesh.#_bindings.method_get_mesh_arrays,
+      PrimitiveMesh._bindings.method_get_mesh_arrays,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -205,7 +206,7 @@ export class PrimitiveMesh extends Mesh{
   set_custom_aabb(_aabb) {
     PrimitiveMesh.init_method_set_custom_aabb();
     return _call_native_mb_no_ret(
-      PrimitiveMesh.#_bindings.method_set_custom_aabb,
+      PrimitiveMesh._bindings.method_set_custom_aabb,
       this._owner,
       _aabb
     );
@@ -214,7 +215,7 @@ export class PrimitiveMesh extends Mesh{
   get_custom_aabb() {
     PrimitiveMesh.init_method_get_custom_aabb();
     return _call_native_mb_ret(
-      PrimitiveMesh.#_bindings.method_get_custom_aabb,
+      PrimitiveMesh._bindings.method_get_custom_aabb,
       this._owner,
 			Variant.Type.AABB,
     
@@ -225,7 +226,7 @@ export class PrimitiveMesh extends Mesh{
   set_flip_faces(_flip_faces) {
     PrimitiveMesh.init_method_set_flip_faces();
     return _call_native_mb_no_ret(
-      PrimitiveMesh.#_bindings.method_set_flip_faces,
+      PrimitiveMesh._bindings.method_set_flip_faces,
       this._owner,
       _flip_faces
     );
@@ -234,7 +235,7 @@ export class PrimitiveMesh extends Mesh{
   get_flip_faces() {
     PrimitiveMesh.init_method_get_flip_faces();
     return _call_native_mb_ret(
-      PrimitiveMesh.#_bindings.method_get_flip_faces,
+      PrimitiveMesh._bindings.method_get_flip_faces,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -245,7 +246,7 @@ export class PrimitiveMesh extends Mesh{
   set_add_uv2(_add_uv2) {
     PrimitiveMesh.init_method_set_add_uv2();
     return _call_native_mb_no_ret(
-      PrimitiveMesh.#_bindings.method_set_add_uv2,
+      PrimitiveMesh._bindings.method_set_add_uv2,
       this._owner,
       _add_uv2
     );
@@ -254,7 +255,7 @@ export class PrimitiveMesh extends Mesh{
   get_add_uv2() {
     PrimitiveMesh.init_method_get_add_uv2();
     return _call_native_mb_ret(
-      PrimitiveMesh.#_bindings.method_get_add_uv2,
+      PrimitiveMesh._bindings.method_get_add_uv2,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -265,7 +266,7 @@ export class PrimitiveMesh extends Mesh{
   set_uv2_padding(_uv2_padding) {
     PrimitiveMesh.init_method_set_uv2_padding();
     return _call_native_mb_no_ret(
-      PrimitiveMesh.#_bindings.method_set_uv2_padding,
+      PrimitiveMesh._bindings.method_set_uv2_padding,
       this._owner,
       _uv2_padding
     );
@@ -274,7 +275,7 @@ export class PrimitiveMesh extends Mesh{
   get_uv2_padding() {
     PrimitiveMesh.init_method_get_uv2_padding();
     return _call_native_mb_ret(
-      PrimitiveMesh.#_bindings.method_get_uv2_padding,
+      PrimitiveMesh._bindings.method_get_uv2_padding,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -285,7 +286,7 @@ export class PrimitiveMesh extends Mesh{
   request_update() {
     PrimitiveMesh.init_method_request_update();
     return _call_native_mb_no_ret(
-      PrimitiveMesh.#_bindings.method_request_update,
+      PrimitiveMesh._bindings.method_request_update,
       this._owner,
       
     );

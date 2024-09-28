@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_poll;
@@ -15,10 +16,10 @@ class _MethodBindings {
   method_get_status;
   method_disconnect_from_peer;
 }
+@GodotClass
 export class PacketPeerDTLS extends PacketPeer{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -28,10 +29,10 @@ export class PacketPeerDTLS extends PacketPeer{
     }
   }
   static init_method_poll() {
-    if (!this.#_bindings.method_poll) {
+    if (!this._bindings.method_poll) {
       let classname = new StringName("PacketPeerDTLS");
       let methodname = new StringName("poll");
-      this.#_bindings.method_poll = internal.classdb_get_method_bind(
+      this._bindings.method_poll = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -39,10 +40,10 @@ export class PacketPeerDTLS extends PacketPeer{
     }
   }
   static init_method_connect_to_peer() {
-    if (!this.#_bindings.method_connect_to_peer) {
+    if (!this._bindings.method_connect_to_peer) {
       let classname = new StringName("PacketPeerDTLS");
       let methodname = new StringName("connect_to_peer");
-      this.#_bindings.method_connect_to_peer = internal.classdb_get_method_bind(
+      this._bindings.method_connect_to_peer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2880188099
@@ -50,10 +51,10 @@ export class PacketPeerDTLS extends PacketPeer{
     }
   }
   static init_method_get_status() {
-    if (!this.#_bindings.method_get_status) {
+    if (!this._bindings.method_get_status) {
       let classname = new StringName("PacketPeerDTLS");
       let methodname = new StringName("get_status");
-      this.#_bindings.method_get_status = internal.classdb_get_method_bind(
+      this._bindings.method_get_status = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3248654679
@@ -61,10 +62,10 @@ export class PacketPeerDTLS extends PacketPeer{
     }
   }
   static init_method_disconnect_from_peer() {
-    if (!this.#_bindings.method_disconnect_from_peer) {
+    if (!this._bindings.method_disconnect_from_peer) {
       let classname = new StringName("PacketPeerDTLS");
       let methodname = new StringName("disconnect_from_peer");
-      this.#_bindings.method_disconnect_from_peer = internal.classdb_get_method_bind(
+      this._bindings.method_disconnect_from_peer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -77,7 +78,7 @@ export class PacketPeerDTLS extends PacketPeer{
   poll() {
     PacketPeerDTLS.init_method_poll();
     return _call_native_mb_no_ret(
-      PacketPeerDTLS.#_bindings.method_poll,
+      PacketPeerDTLS._bindings.method_poll,
       this._owner,
       
     );
@@ -86,7 +87,7 @@ export class PacketPeerDTLS extends PacketPeer{
   connect_to_peer(_packet_peer, _hostname, _client_options) {
     PacketPeerDTLS.init_method_connect_to_peer();
     return _call_native_mb_ret(
-      PacketPeerDTLS.#_bindings.method_connect_to_peer,
+      PacketPeerDTLS._bindings.method_connect_to_peer,
       this._owner,
 			Variant.Type.INT,
     
@@ -97,7 +98,7 @@ export class PacketPeerDTLS extends PacketPeer{
   get_status() {
     PacketPeerDTLS.init_method_get_status();
     return _call_native_mb_ret(
-      PacketPeerDTLS.#_bindings.method_get_status,
+      PacketPeerDTLS._bindings.method_get_status,
       this._owner,
 			Variant.Type.INT,
     
@@ -108,7 +109,7 @@ export class PacketPeerDTLS extends PacketPeer{
   disconnect_from_peer() {
     PacketPeerDTLS.init_method_disconnect_from_peer();
     return _call_native_mb_no_ret(
-      PacketPeerDTLS.#_bindings.method_disconnect_from_peer,
+      PacketPeerDTLS._bindings.method_disconnect_from_peer,
       this._owner,
       
     );

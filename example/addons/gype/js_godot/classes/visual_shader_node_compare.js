@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
+import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
-import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_comparison_type;
@@ -17,10 +18,10 @@ class _MethodBindings {
   method_set_condition;
   method_get_condition;
 }
+@GodotClass
 export class VisualShaderNodeCompare extends VisualShaderNode{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -30,10 +31,10 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
     }
   }
   static init_method_set_comparison_type() {
-    if (!this.#_bindings.method_set_comparison_type) {
+    if (!this._bindings.method_set_comparison_type) {
       let classname = new StringName("VisualShaderNodeCompare");
       let methodname = new StringName("set_comparison_type");
-      this.#_bindings.method_set_comparison_type = internal.classdb_get_method_bind(
+      this._bindings.method_set_comparison_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         516558320
@@ -41,10 +42,10 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
     }
   }
   static init_method_get_comparison_type() {
-    if (!this.#_bindings.method_get_comparison_type) {
+    if (!this._bindings.method_get_comparison_type) {
       let classname = new StringName("VisualShaderNodeCompare");
       let methodname = new StringName("get_comparison_type");
-      this.#_bindings.method_get_comparison_type = internal.classdb_get_method_bind(
+      this._bindings.method_get_comparison_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3495315961
@@ -52,10 +53,10 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
     }
   }
   static init_method_set_function() {
-    if (!this.#_bindings.method_set_function) {
+    if (!this._bindings.method_set_function) {
       let classname = new StringName("VisualShaderNodeCompare");
       let methodname = new StringName("set_function");
-      this.#_bindings.method_set_function = internal.classdb_get_method_bind(
+      this._bindings.method_set_function = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2370951349
@@ -63,10 +64,10 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
     }
   }
   static init_method_get_function() {
-    if (!this.#_bindings.method_get_function) {
+    if (!this._bindings.method_get_function) {
       let classname = new StringName("VisualShaderNodeCompare");
       let methodname = new StringName("get_function");
-      this.#_bindings.method_get_function = internal.classdb_get_method_bind(
+      this._bindings.method_get_function = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4089164265
@@ -74,10 +75,10 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
     }
   }
   static init_method_set_condition() {
-    if (!this.#_bindings.method_set_condition) {
+    if (!this._bindings.method_set_condition) {
       let classname = new StringName("VisualShaderNodeCompare");
       let methodname = new StringName("set_condition");
-      this.#_bindings.method_set_condition = internal.classdb_get_method_bind(
+      this._bindings.method_set_condition = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         918742392
@@ -85,10 +86,10 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
     }
   }
   static init_method_get_condition() {
-    if (!this.#_bindings.method_get_condition) {
+    if (!this._bindings.method_get_condition) {
       let classname = new StringName("VisualShaderNodeCompare");
       let methodname = new StringName("get_condition");
-      this.#_bindings.method_get_condition = internal.classdb_get_method_bind(
+      this._bindings.method_get_condition = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3281078941
@@ -101,7 +102,7 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
   set_comparison_type(_type) {
     VisualShaderNodeCompare.init_method_set_comparison_type();
     return _call_native_mb_no_ret(
-      VisualShaderNodeCompare.#_bindings.method_set_comparison_type,
+      VisualShaderNodeCompare._bindings.method_set_comparison_type,
       this._owner,
       _type
     );
@@ -110,7 +111,7 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
   get_comparison_type() {
     VisualShaderNodeCompare.init_method_get_comparison_type();
     return _call_native_mb_ret(
-      VisualShaderNodeCompare.#_bindings.method_get_comparison_type,
+      VisualShaderNodeCompare._bindings.method_get_comparison_type,
       this._owner,
 			Variant.Type.INT,
     
@@ -121,7 +122,7 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
   set_function(_func) {
     VisualShaderNodeCompare.init_method_set_function();
     return _call_native_mb_no_ret(
-      VisualShaderNodeCompare.#_bindings.method_set_function,
+      VisualShaderNodeCompare._bindings.method_set_function,
       this._owner,
       _func
     );
@@ -130,7 +131,7 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
   get_function() {
     VisualShaderNodeCompare.init_method_get_function();
     return _call_native_mb_ret(
-      VisualShaderNodeCompare.#_bindings.method_get_function,
+      VisualShaderNodeCompare._bindings.method_get_function,
       this._owner,
 			Variant.Type.INT,
     
@@ -141,7 +142,7 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
   set_condition(_condition) {
     VisualShaderNodeCompare.init_method_set_condition();
     return _call_native_mb_no_ret(
-      VisualShaderNodeCompare.#_bindings.method_set_condition,
+      VisualShaderNodeCompare._bindings.method_set_condition,
       this._owner,
       _condition
     );
@@ -150,7 +151,7 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
   get_condition() {
     VisualShaderNodeCompare.init_method_get_condition();
     return _call_native_mb_ret(
-      VisualShaderNodeCompare.#_bindings.method_get_condition,
+      VisualShaderNodeCompare._bindings.method_get_condition,
       this._owner,
 			Variant.Type.INT,
     

@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { MultiplayerPeer } from '@js_godot/classes/multiplayer_peer'
 import { StringName } from '@js_godot/variant/string_name'
+import { MultiplayerPeer } from '@js_godot/classes/multiplayer_peer'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_create_server;
@@ -18,10 +19,10 @@ class _MethodBindings {
   method_get_host;
   method_get_peer;
 }
+@GodotClass
 export class ENetMultiplayerPeer extends MultiplayerPeer{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -31,10 +32,10 @@ export class ENetMultiplayerPeer extends MultiplayerPeer{
     }
   }
   static init_method_create_server() {
-    if (!this.#_bindings.method_create_server) {
+    if (!this._bindings.method_create_server) {
       let classname = new StringName("ENetMultiplayerPeer");
       let methodname = new StringName("create_server");
-      this.#_bindings.method_create_server = internal.classdb_get_method_bind(
+      this._bindings.method_create_server = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2917761309
@@ -42,10 +43,10 @@ export class ENetMultiplayerPeer extends MultiplayerPeer{
     }
   }
   static init_method_create_client() {
-    if (!this.#_bindings.method_create_client) {
+    if (!this._bindings.method_create_client) {
       let classname = new StringName("ENetMultiplayerPeer");
       let methodname = new StringName("create_client");
-      this.#_bindings.method_create_client = internal.classdb_get_method_bind(
+      this._bindings.method_create_client = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2327163476
@@ -53,10 +54,10 @@ export class ENetMultiplayerPeer extends MultiplayerPeer{
     }
   }
   static init_method_create_mesh() {
-    if (!this.#_bindings.method_create_mesh) {
+    if (!this._bindings.method_create_mesh) {
       let classname = new StringName("ENetMultiplayerPeer");
       let methodname = new StringName("create_mesh");
-      this.#_bindings.method_create_mesh = internal.classdb_get_method_bind(
+      this._bindings.method_create_mesh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         844576869
@@ -64,10 +65,10 @@ export class ENetMultiplayerPeer extends MultiplayerPeer{
     }
   }
   static init_method_add_mesh_peer() {
-    if (!this.#_bindings.method_add_mesh_peer) {
+    if (!this._bindings.method_add_mesh_peer) {
       let classname = new StringName("ENetMultiplayerPeer");
       let methodname = new StringName("add_mesh_peer");
-      this.#_bindings.method_add_mesh_peer = internal.classdb_get_method_bind(
+      this._bindings.method_add_mesh_peer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1293458335
@@ -75,10 +76,10 @@ export class ENetMultiplayerPeer extends MultiplayerPeer{
     }
   }
   static init_method_set_bind_ip() {
-    if (!this.#_bindings.method_set_bind_ip) {
+    if (!this._bindings.method_set_bind_ip) {
       let classname = new StringName("ENetMultiplayerPeer");
       let methodname = new StringName("set_bind_ip");
-      this.#_bindings.method_set_bind_ip = internal.classdb_get_method_bind(
+      this._bindings.method_set_bind_ip = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -86,10 +87,10 @@ export class ENetMultiplayerPeer extends MultiplayerPeer{
     }
   }
   static init_method_get_host() {
-    if (!this.#_bindings.method_get_host) {
+    if (!this._bindings.method_get_host) {
       let classname = new StringName("ENetMultiplayerPeer");
       let methodname = new StringName("get_host");
-      this.#_bindings.method_get_host = internal.classdb_get_method_bind(
+      this._bindings.method_get_host = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4103238886
@@ -97,10 +98,10 @@ export class ENetMultiplayerPeer extends MultiplayerPeer{
     }
   }
   static init_method_get_peer() {
-    if (!this.#_bindings.method_get_peer) {
+    if (!this._bindings.method_get_peer) {
       let classname = new StringName("ENetMultiplayerPeer");
       let methodname = new StringName("get_peer");
-      this.#_bindings.method_get_peer = internal.classdb_get_method_bind(
+      this._bindings.method_get_peer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3793311544
@@ -113,7 +114,7 @@ export class ENetMultiplayerPeer extends MultiplayerPeer{
   create_server(_port, _max_clients, _max_channels, _in_bandwidth, _out_bandwidth) {
     ENetMultiplayerPeer.init_method_create_server();
     return _call_native_mb_ret(
-      ENetMultiplayerPeer.#_bindings.method_create_server,
+      ENetMultiplayerPeer._bindings.method_create_server,
       this._owner,
 			Variant.Type.INT,
     
@@ -124,7 +125,7 @@ export class ENetMultiplayerPeer extends MultiplayerPeer{
   create_client(_address, _port, _channel_count, _in_bandwidth, _out_bandwidth, _local_port) {
     ENetMultiplayerPeer.init_method_create_client();
     return _call_native_mb_ret(
-      ENetMultiplayerPeer.#_bindings.method_create_client,
+      ENetMultiplayerPeer._bindings.method_create_client,
       this._owner,
 			Variant.Type.INT,
     
@@ -135,7 +136,7 @@ export class ENetMultiplayerPeer extends MultiplayerPeer{
   create_mesh(_unique_id) {
     ENetMultiplayerPeer.init_method_create_mesh();
     return _call_native_mb_ret(
-      ENetMultiplayerPeer.#_bindings.method_create_mesh,
+      ENetMultiplayerPeer._bindings.method_create_mesh,
       this._owner,
 			Variant.Type.INT,
     
@@ -146,7 +147,7 @@ export class ENetMultiplayerPeer extends MultiplayerPeer{
   add_mesh_peer(_peer_id, _host) {
     ENetMultiplayerPeer.init_method_add_mesh_peer();
     return _call_native_mb_ret(
-      ENetMultiplayerPeer.#_bindings.method_add_mesh_peer,
+      ENetMultiplayerPeer._bindings.method_add_mesh_peer,
       this._owner,
 			Variant.Type.INT,
     
@@ -157,7 +158,7 @@ export class ENetMultiplayerPeer extends MultiplayerPeer{
   set_bind_ip(_ip) {
     ENetMultiplayerPeer.init_method_set_bind_ip();
     return _call_native_mb_no_ret(
-      ENetMultiplayerPeer.#_bindings.method_set_bind_ip,
+      ENetMultiplayerPeer._bindings.method_set_bind_ip,
       this._owner,
       _ip
     );
@@ -166,7 +167,7 @@ export class ENetMultiplayerPeer extends MultiplayerPeer{
   get_host() {
     ENetMultiplayerPeer.init_method_get_host();
     return _call_native_mb_ret(
-      ENetMultiplayerPeer.#_bindings.method_get_host,
+      ENetMultiplayerPeer._bindings.method_get_host,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -176,7 +177,7 @@ export class ENetMultiplayerPeer extends MultiplayerPeer{
   get_peer(_id) {
     ENetMultiplayerPeer.init_method_get_peer();
     return _call_native_mb_ret(
-      ENetMultiplayerPeer.#_bindings.method_get_peer,
+      ENetMultiplayerPeer._bindings.method_get_peer,
       this._owner,
 			Variant.Type.OBJECT,
       _id

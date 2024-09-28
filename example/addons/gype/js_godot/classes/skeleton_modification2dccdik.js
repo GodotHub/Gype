@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { SkeletonModification2D } from '@js_godot/classes/skeleton_modification2d'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_target_node;
@@ -31,10 +32,10 @@ class _MethodBindings {
   method_set_ccdik_joint_constraint_angle_invert;
   method_get_ccdik_joint_constraint_angle_invert;
 }
+@GodotClass
 export class SkeletonModification2DCCDIK extends SkeletonModification2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -44,10 +45,10 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
     }
   }
   static init_method_set_target_node() {
-    if (!this.#_bindings.method_set_target_node) {
+    if (!this._bindings.method_set_target_node) {
       let classname = new StringName("SkeletonModification2DCCDIK");
       let methodname = new StringName("set_target_node");
-      this.#_bindings.method_set_target_node = internal.classdb_get_method_bind(
+      this._bindings.method_set_target_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1348162250
@@ -55,10 +56,10 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
     }
   }
   static init_method_get_target_node() {
-    if (!this.#_bindings.method_get_target_node) {
+    if (!this._bindings.method_get_target_node) {
       let classname = new StringName("SkeletonModification2DCCDIK");
       let methodname = new StringName("get_target_node");
-      this.#_bindings.method_get_target_node = internal.classdb_get_method_bind(
+      this._bindings.method_get_target_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4075236667
@@ -66,10 +67,10 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
     }
   }
   static init_method_set_tip_node() {
-    if (!this.#_bindings.method_set_tip_node) {
+    if (!this._bindings.method_set_tip_node) {
       let classname = new StringName("SkeletonModification2DCCDIK");
       let methodname = new StringName("set_tip_node");
-      this.#_bindings.method_set_tip_node = internal.classdb_get_method_bind(
+      this._bindings.method_set_tip_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1348162250
@@ -77,10 +78,10 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
     }
   }
   static init_method_get_tip_node() {
-    if (!this.#_bindings.method_get_tip_node) {
+    if (!this._bindings.method_get_tip_node) {
       let classname = new StringName("SkeletonModification2DCCDIK");
       let methodname = new StringName("get_tip_node");
-      this.#_bindings.method_get_tip_node = internal.classdb_get_method_bind(
+      this._bindings.method_get_tip_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4075236667
@@ -88,10 +89,10 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
     }
   }
   static init_method_set_ccdik_data_chain_length() {
-    if (!this.#_bindings.method_set_ccdik_data_chain_length) {
+    if (!this._bindings.method_set_ccdik_data_chain_length) {
       let classname = new StringName("SkeletonModification2DCCDIK");
       let methodname = new StringName("set_ccdik_data_chain_length");
-      this.#_bindings.method_set_ccdik_data_chain_length = internal.classdb_get_method_bind(
+      this._bindings.method_set_ccdik_data_chain_length = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -99,10 +100,10 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
     }
   }
   static init_method_get_ccdik_data_chain_length() {
-    if (!this.#_bindings.method_get_ccdik_data_chain_length) {
+    if (!this._bindings.method_get_ccdik_data_chain_length) {
       let classname = new StringName("SkeletonModification2DCCDIK");
       let methodname = new StringName("get_ccdik_data_chain_length");
-      this.#_bindings.method_get_ccdik_data_chain_length = internal.classdb_get_method_bind(
+      this._bindings.method_get_ccdik_data_chain_length = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -110,10 +111,10 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
     }
   }
   static init_method_set_ccdik_joint_bone2d_node() {
-    if (!this.#_bindings.method_set_ccdik_joint_bone2d_node) {
+    if (!this._bindings.method_set_ccdik_joint_bone2d_node) {
       let classname = new StringName("SkeletonModification2DCCDIK");
       let methodname = new StringName("set_ccdik_joint_bone2d_node");
-      this.#_bindings.method_set_ccdik_joint_bone2d_node = internal.classdb_get_method_bind(
+      this._bindings.method_set_ccdik_joint_bone2d_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2761262315
@@ -121,10 +122,10 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
     }
   }
   static init_method_get_ccdik_joint_bone2d_node() {
-    if (!this.#_bindings.method_get_ccdik_joint_bone2d_node) {
+    if (!this._bindings.method_get_ccdik_joint_bone2d_node) {
       let classname = new StringName("SkeletonModification2DCCDIK");
       let methodname = new StringName("get_ccdik_joint_bone2d_node");
-      this.#_bindings.method_get_ccdik_joint_bone2d_node = internal.classdb_get_method_bind(
+      this._bindings.method_get_ccdik_joint_bone2d_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         408788394
@@ -132,10 +133,10 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
     }
   }
   static init_method_set_ccdik_joint_bone_index() {
-    if (!this.#_bindings.method_set_ccdik_joint_bone_index) {
+    if (!this._bindings.method_set_ccdik_joint_bone_index) {
       let classname = new StringName("SkeletonModification2DCCDIK");
       let methodname = new StringName("set_ccdik_joint_bone_index");
-      this.#_bindings.method_set_ccdik_joint_bone_index = internal.classdb_get_method_bind(
+      this._bindings.method_set_ccdik_joint_bone_index = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -143,10 +144,10 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
     }
   }
   static init_method_get_ccdik_joint_bone_index() {
-    if (!this.#_bindings.method_get_ccdik_joint_bone_index) {
+    if (!this._bindings.method_get_ccdik_joint_bone_index) {
       let classname = new StringName("SkeletonModification2DCCDIK");
       let methodname = new StringName("get_ccdik_joint_bone_index");
-      this.#_bindings.method_get_ccdik_joint_bone_index = internal.classdb_get_method_bind(
+      this._bindings.method_get_ccdik_joint_bone_index = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         923996154
@@ -154,10 +155,10 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
     }
   }
   static init_method_set_ccdik_joint_rotate_from_joint() {
-    if (!this.#_bindings.method_set_ccdik_joint_rotate_from_joint) {
+    if (!this._bindings.method_set_ccdik_joint_rotate_from_joint) {
       let classname = new StringName("SkeletonModification2DCCDIK");
       let methodname = new StringName("set_ccdik_joint_rotate_from_joint");
-      this.#_bindings.method_set_ccdik_joint_rotate_from_joint = internal.classdb_get_method_bind(
+      this._bindings.method_set_ccdik_joint_rotate_from_joint = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -165,10 +166,10 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
     }
   }
   static init_method_get_ccdik_joint_rotate_from_joint() {
-    if (!this.#_bindings.method_get_ccdik_joint_rotate_from_joint) {
+    if (!this._bindings.method_get_ccdik_joint_rotate_from_joint) {
       let classname = new StringName("SkeletonModification2DCCDIK");
       let methodname = new StringName("get_ccdik_joint_rotate_from_joint");
-      this.#_bindings.method_get_ccdik_joint_rotate_from_joint = internal.classdb_get_method_bind(
+      this._bindings.method_get_ccdik_joint_rotate_from_joint = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -176,10 +177,10 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
     }
   }
   static init_method_set_ccdik_joint_enable_constraint() {
-    if (!this.#_bindings.method_set_ccdik_joint_enable_constraint) {
+    if (!this._bindings.method_set_ccdik_joint_enable_constraint) {
       let classname = new StringName("SkeletonModification2DCCDIK");
       let methodname = new StringName("set_ccdik_joint_enable_constraint");
-      this.#_bindings.method_set_ccdik_joint_enable_constraint = internal.classdb_get_method_bind(
+      this._bindings.method_set_ccdik_joint_enable_constraint = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -187,10 +188,10 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
     }
   }
   static init_method_get_ccdik_joint_enable_constraint() {
-    if (!this.#_bindings.method_get_ccdik_joint_enable_constraint) {
+    if (!this._bindings.method_get_ccdik_joint_enable_constraint) {
       let classname = new StringName("SkeletonModification2DCCDIK");
       let methodname = new StringName("get_ccdik_joint_enable_constraint");
-      this.#_bindings.method_get_ccdik_joint_enable_constraint = internal.classdb_get_method_bind(
+      this._bindings.method_get_ccdik_joint_enable_constraint = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -198,10 +199,10 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
     }
   }
   static init_method_set_ccdik_joint_constraint_angle_min() {
-    if (!this.#_bindings.method_set_ccdik_joint_constraint_angle_min) {
+    if (!this._bindings.method_set_ccdik_joint_constraint_angle_min) {
       let classname = new StringName("SkeletonModification2DCCDIK");
       let methodname = new StringName("set_ccdik_joint_constraint_angle_min");
-      this.#_bindings.method_set_ccdik_joint_constraint_angle_min = internal.classdb_get_method_bind(
+      this._bindings.method_set_ccdik_joint_constraint_angle_min = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1602489585
@@ -209,10 +210,10 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
     }
   }
   static init_method_get_ccdik_joint_constraint_angle_min() {
-    if (!this.#_bindings.method_get_ccdik_joint_constraint_angle_min) {
+    if (!this._bindings.method_get_ccdik_joint_constraint_angle_min) {
       let classname = new StringName("SkeletonModification2DCCDIK");
       let methodname = new StringName("get_ccdik_joint_constraint_angle_min");
-      this.#_bindings.method_get_ccdik_joint_constraint_angle_min = internal.classdb_get_method_bind(
+      this._bindings.method_get_ccdik_joint_constraint_angle_min = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2339986948
@@ -220,10 +221,10 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
     }
   }
   static init_method_set_ccdik_joint_constraint_angle_max() {
-    if (!this.#_bindings.method_set_ccdik_joint_constraint_angle_max) {
+    if (!this._bindings.method_set_ccdik_joint_constraint_angle_max) {
       let classname = new StringName("SkeletonModification2DCCDIK");
       let methodname = new StringName("set_ccdik_joint_constraint_angle_max");
-      this.#_bindings.method_set_ccdik_joint_constraint_angle_max = internal.classdb_get_method_bind(
+      this._bindings.method_set_ccdik_joint_constraint_angle_max = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1602489585
@@ -231,10 +232,10 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
     }
   }
   static init_method_get_ccdik_joint_constraint_angle_max() {
-    if (!this.#_bindings.method_get_ccdik_joint_constraint_angle_max) {
+    if (!this._bindings.method_get_ccdik_joint_constraint_angle_max) {
       let classname = new StringName("SkeletonModification2DCCDIK");
       let methodname = new StringName("get_ccdik_joint_constraint_angle_max");
-      this.#_bindings.method_get_ccdik_joint_constraint_angle_max = internal.classdb_get_method_bind(
+      this._bindings.method_get_ccdik_joint_constraint_angle_max = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2339986948
@@ -242,10 +243,10 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
     }
   }
   static init_method_set_ccdik_joint_constraint_angle_invert() {
-    if (!this.#_bindings.method_set_ccdik_joint_constraint_angle_invert) {
+    if (!this._bindings.method_set_ccdik_joint_constraint_angle_invert) {
       let classname = new StringName("SkeletonModification2DCCDIK");
       let methodname = new StringName("set_ccdik_joint_constraint_angle_invert");
-      this.#_bindings.method_set_ccdik_joint_constraint_angle_invert = internal.classdb_get_method_bind(
+      this._bindings.method_set_ccdik_joint_constraint_angle_invert = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -253,10 +254,10 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
     }
   }
   static init_method_get_ccdik_joint_constraint_angle_invert() {
-    if (!this.#_bindings.method_get_ccdik_joint_constraint_angle_invert) {
+    if (!this._bindings.method_get_ccdik_joint_constraint_angle_invert) {
       let classname = new StringName("SkeletonModification2DCCDIK");
       let methodname = new StringName("get_ccdik_joint_constraint_angle_invert");
-      this.#_bindings.method_get_ccdik_joint_constraint_angle_invert = internal.classdb_get_method_bind(
+      this._bindings.method_get_ccdik_joint_constraint_angle_invert = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -269,7 +270,7 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
   set_target_node(_target_nodepath) {
     SkeletonModification2DCCDIK.init_method_set_target_node();
     return _call_native_mb_no_ret(
-      SkeletonModification2DCCDIK.#_bindings.method_set_target_node,
+      SkeletonModification2DCCDIK._bindings.method_set_target_node,
       this._owner,
       _target_nodepath
     );
@@ -278,7 +279,7 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
   get_target_node() {
     SkeletonModification2DCCDIK.init_method_get_target_node();
     return _call_native_mb_ret(
-      SkeletonModification2DCCDIK.#_bindings.method_get_target_node,
+      SkeletonModification2DCCDIK._bindings.method_get_target_node,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -289,7 +290,7 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
   set_tip_node(_tip_nodepath) {
     SkeletonModification2DCCDIK.init_method_set_tip_node();
     return _call_native_mb_no_ret(
-      SkeletonModification2DCCDIK.#_bindings.method_set_tip_node,
+      SkeletonModification2DCCDIK._bindings.method_set_tip_node,
       this._owner,
       _tip_nodepath
     );
@@ -298,7 +299,7 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
   get_tip_node() {
     SkeletonModification2DCCDIK.init_method_get_tip_node();
     return _call_native_mb_ret(
-      SkeletonModification2DCCDIK.#_bindings.method_get_tip_node,
+      SkeletonModification2DCCDIK._bindings.method_get_tip_node,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -309,7 +310,7 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
   set_ccdik_data_chain_length(_length) {
     SkeletonModification2DCCDIK.init_method_set_ccdik_data_chain_length();
     return _call_native_mb_no_ret(
-      SkeletonModification2DCCDIK.#_bindings.method_set_ccdik_data_chain_length,
+      SkeletonModification2DCCDIK._bindings.method_set_ccdik_data_chain_length,
       this._owner,
       _length
     );
@@ -318,7 +319,7 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
   get_ccdik_data_chain_length() {
     SkeletonModification2DCCDIK.init_method_get_ccdik_data_chain_length();
     return _call_native_mb_ret(
-      SkeletonModification2DCCDIK.#_bindings.method_get_ccdik_data_chain_length,
+      SkeletonModification2DCCDIK._bindings.method_get_ccdik_data_chain_length,
       this._owner,
 			Variant.Type.INT,
     
@@ -329,7 +330,7 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
   set_ccdik_joint_bone2d_node(_joint_idx, _bone2d_nodepath) {
     SkeletonModification2DCCDIK.init_method_set_ccdik_joint_bone2d_node();
     return _call_native_mb_no_ret(
-      SkeletonModification2DCCDIK.#_bindings.method_set_ccdik_joint_bone2d_node,
+      SkeletonModification2DCCDIK._bindings.method_set_ccdik_joint_bone2d_node,
       this._owner,
       _joint_idx, _bone2d_nodepath
     );
@@ -338,7 +339,7 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
   get_ccdik_joint_bone2d_node(_joint_idx) {
     SkeletonModification2DCCDIK.init_method_get_ccdik_joint_bone2d_node();
     return _call_native_mb_ret(
-      SkeletonModification2DCCDIK.#_bindings.method_get_ccdik_joint_bone2d_node,
+      SkeletonModification2DCCDIK._bindings.method_get_ccdik_joint_bone2d_node,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -349,7 +350,7 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
   set_ccdik_joint_bone_index(_joint_idx, _bone_idx) {
     SkeletonModification2DCCDIK.init_method_set_ccdik_joint_bone_index();
     return _call_native_mb_no_ret(
-      SkeletonModification2DCCDIK.#_bindings.method_set_ccdik_joint_bone_index,
+      SkeletonModification2DCCDIK._bindings.method_set_ccdik_joint_bone_index,
       this._owner,
       _joint_idx, _bone_idx
     );
@@ -358,7 +359,7 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
   get_ccdik_joint_bone_index(_joint_idx) {
     SkeletonModification2DCCDIK.init_method_get_ccdik_joint_bone_index();
     return _call_native_mb_ret(
-      SkeletonModification2DCCDIK.#_bindings.method_get_ccdik_joint_bone_index,
+      SkeletonModification2DCCDIK._bindings.method_get_ccdik_joint_bone_index,
       this._owner,
 			Variant.Type.INT,
     
@@ -369,7 +370,7 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
   set_ccdik_joint_rotate_from_joint(_joint_idx, _rotate_from_joint) {
     SkeletonModification2DCCDIK.init_method_set_ccdik_joint_rotate_from_joint();
     return _call_native_mb_no_ret(
-      SkeletonModification2DCCDIK.#_bindings.method_set_ccdik_joint_rotate_from_joint,
+      SkeletonModification2DCCDIK._bindings.method_set_ccdik_joint_rotate_from_joint,
       this._owner,
       _joint_idx, _rotate_from_joint
     );
@@ -378,7 +379,7 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
   get_ccdik_joint_rotate_from_joint(_joint_idx) {
     SkeletonModification2DCCDIK.init_method_get_ccdik_joint_rotate_from_joint();
     return _call_native_mb_ret(
-      SkeletonModification2DCCDIK.#_bindings.method_get_ccdik_joint_rotate_from_joint,
+      SkeletonModification2DCCDIK._bindings.method_get_ccdik_joint_rotate_from_joint,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -389,7 +390,7 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
   set_ccdik_joint_enable_constraint(_joint_idx, _enable_constraint) {
     SkeletonModification2DCCDIK.init_method_set_ccdik_joint_enable_constraint();
     return _call_native_mb_no_ret(
-      SkeletonModification2DCCDIK.#_bindings.method_set_ccdik_joint_enable_constraint,
+      SkeletonModification2DCCDIK._bindings.method_set_ccdik_joint_enable_constraint,
       this._owner,
       _joint_idx, _enable_constraint
     );
@@ -398,7 +399,7 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
   get_ccdik_joint_enable_constraint(_joint_idx) {
     SkeletonModification2DCCDIK.init_method_get_ccdik_joint_enable_constraint();
     return _call_native_mb_ret(
-      SkeletonModification2DCCDIK.#_bindings.method_get_ccdik_joint_enable_constraint,
+      SkeletonModification2DCCDIK._bindings.method_get_ccdik_joint_enable_constraint,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -409,7 +410,7 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
   set_ccdik_joint_constraint_angle_min(_joint_idx, _angle_min) {
     SkeletonModification2DCCDIK.init_method_set_ccdik_joint_constraint_angle_min();
     return _call_native_mb_no_ret(
-      SkeletonModification2DCCDIK.#_bindings.method_set_ccdik_joint_constraint_angle_min,
+      SkeletonModification2DCCDIK._bindings.method_set_ccdik_joint_constraint_angle_min,
       this._owner,
       _joint_idx, _angle_min
     );
@@ -418,7 +419,7 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
   get_ccdik_joint_constraint_angle_min(_joint_idx) {
     SkeletonModification2DCCDIK.init_method_get_ccdik_joint_constraint_angle_min();
     return _call_native_mb_ret(
-      SkeletonModification2DCCDIK.#_bindings.method_get_ccdik_joint_constraint_angle_min,
+      SkeletonModification2DCCDIK._bindings.method_get_ccdik_joint_constraint_angle_min,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -429,7 +430,7 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
   set_ccdik_joint_constraint_angle_max(_joint_idx, _angle_max) {
     SkeletonModification2DCCDIK.init_method_set_ccdik_joint_constraint_angle_max();
     return _call_native_mb_no_ret(
-      SkeletonModification2DCCDIK.#_bindings.method_set_ccdik_joint_constraint_angle_max,
+      SkeletonModification2DCCDIK._bindings.method_set_ccdik_joint_constraint_angle_max,
       this._owner,
       _joint_idx, _angle_max
     );
@@ -438,7 +439,7 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
   get_ccdik_joint_constraint_angle_max(_joint_idx) {
     SkeletonModification2DCCDIK.init_method_get_ccdik_joint_constraint_angle_max();
     return _call_native_mb_ret(
-      SkeletonModification2DCCDIK.#_bindings.method_get_ccdik_joint_constraint_angle_max,
+      SkeletonModification2DCCDIK._bindings.method_get_ccdik_joint_constraint_angle_max,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -449,7 +450,7 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
   set_ccdik_joint_constraint_angle_invert(_joint_idx, _invert) {
     SkeletonModification2DCCDIK.init_method_set_ccdik_joint_constraint_angle_invert();
     return _call_native_mb_no_ret(
-      SkeletonModification2DCCDIK.#_bindings.method_set_ccdik_joint_constraint_angle_invert,
+      SkeletonModification2DCCDIK._bindings.method_set_ccdik_joint_constraint_angle_invert,
       this._owner,
       _joint_idx, _invert
     );
@@ -458,7 +459,7 @@ export class SkeletonModification2DCCDIK extends SkeletonModification2D{
   get_ccdik_joint_constraint_angle_invert(_joint_idx) {
     SkeletonModification2DCCDIK.init_method_get_ccdik_joint_constraint_angle_invert();
     return _call_native_mb_ret(
-      SkeletonModification2DCCDIK.#_bindings.method_get_ccdik_joint_constraint_angle_invert,
+      SkeletonModification2DCCDIK._bindings.method_get_ccdik_joint_constraint_angle_invert,
       this._owner,
 			Variant.Type.BOOL,
     

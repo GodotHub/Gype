@@ -1,6 +1,6 @@
 {%- set enums = gde_json['global_enums'] -%}
 #include "register/register_enums.h"
-#include "quickjs/env.h"
+#include "utils/env.h"
 
 void register_enums() {
 {%- for enum in enums %}

@@ -1,14 +1,15 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_joints;
@@ -23,10 +24,10 @@ class _MethodBindings {
   method_get_bone_attachment_count;
   method_get_bone_attachment;
 }
+@GodotClass
 export class GLTFSkeleton extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -36,10 +37,10 @@ export class GLTFSkeleton extends Resource{
     }
   }
   static init_method_get_joints() {
-    if (!this.#_bindings.method_get_joints) {
+    if (!this._bindings.method_get_joints) {
       let classname = new StringName("GLTFSkeleton");
       let methodname = new StringName("get_joints");
-      this.#_bindings.method_get_joints = internal.classdb_get_method_bind(
+      this._bindings.method_get_joints = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         969006518
@@ -47,10 +48,10 @@ export class GLTFSkeleton extends Resource{
     }
   }
   static init_method_set_joints() {
-    if (!this.#_bindings.method_set_joints) {
+    if (!this._bindings.method_set_joints) {
       let classname = new StringName("GLTFSkeleton");
       let methodname = new StringName("set_joints");
-      this.#_bindings.method_set_joints = internal.classdb_get_method_bind(
+      this._bindings.method_set_joints = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3614634198
@@ -58,10 +59,10 @@ export class GLTFSkeleton extends Resource{
     }
   }
   static init_method_get_roots() {
-    if (!this.#_bindings.method_get_roots) {
+    if (!this._bindings.method_get_roots) {
       let classname = new StringName("GLTFSkeleton");
       let methodname = new StringName("get_roots");
-      this.#_bindings.method_get_roots = internal.classdb_get_method_bind(
+      this._bindings.method_get_roots = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         969006518
@@ -69,10 +70,10 @@ export class GLTFSkeleton extends Resource{
     }
   }
   static init_method_set_roots() {
-    if (!this.#_bindings.method_set_roots) {
+    if (!this._bindings.method_set_roots) {
       let classname = new StringName("GLTFSkeleton");
       let methodname = new StringName("set_roots");
-      this.#_bindings.method_set_roots = internal.classdb_get_method_bind(
+      this._bindings.method_set_roots = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3614634198
@@ -80,10 +81,10 @@ export class GLTFSkeleton extends Resource{
     }
   }
   static init_method_get_godot_skeleton() {
-    if (!this.#_bindings.method_get_godot_skeleton) {
+    if (!this._bindings.method_get_godot_skeleton) {
       let classname = new StringName("GLTFSkeleton");
       let methodname = new StringName("get_godot_skeleton");
-      this.#_bindings.method_get_godot_skeleton = internal.classdb_get_method_bind(
+      this._bindings.method_get_godot_skeleton = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1814733083
@@ -91,10 +92,10 @@ export class GLTFSkeleton extends Resource{
     }
   }
   static init_method_get_unique_names() {
-    if (!this.#_bindings.method_get_unique_names) {
+    if (!this._bindings.method_get_unique_names) {
       let classname = new StringName("GLTFSkeleton");
       let methodname = new StringName("get_unique_names");
-      this.#_bindings.method_get_unique_names = internal.classdb_get_method_bind(
+      this._bindings.method_get_unique_names = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2915620761
@@ -102,10 +103,10 @@ export class GLTFSkeleton extends Resource{
     }
   }
   static init_method_set_unique_names() {
-    if (!this.#_bindings.method_set_unique_names) {
+    if (!this._bindings.method_set_unique_names) {
       let classname = new StringName("GLTFSkeleton");
       let methodname = new StringName("set_unique_names");
-      this.#_bindings.method_set_unique_names = internal.classdb_get_method_bind(
+      this._bindings.method_set_unique_names = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         381264803
@@ -113,10 +114,10 @@ export class GLTFSkeleton extends Resource{
     }
   }
   static init_method_get_godot_bone_node() {
-    if (!this.#_bindings.method_get_godot_bone_node) {
+    if (!this._bindings.method_get_godot_bone_node) {
       let classname = new StringName("GLTFSkeleton");
       let methodname = new StringName("get_godot_bone_node");
-      this.#_bindings.method_get_godot_bone_node = internal.classdb_get_method_bind(
+      this._bindings.method_get_godot_bone_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2382534195
@@ -124,10 +125,10 @@ export class GLTFSkeleton extends Resource{
     }
   }
   static init_method_set_godot_bone_node() {
-    if (!this.#_bindings.method_set_godot_bone_node) {
+    if (!this._bindings.method_set_godot_bone_node) {
       let classname = new StringName("GLTFSkeleton");
       let methodname = new StringName("set_godot_bone_node");
-      this.#_bindings.method_set_godot_bone_node = internal.classdb_get_method_bind(
+      this._bindings.method_set_godot_bone_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4155329257
@@ -135,10 +136,10 @@ export class GLTFSkeleton extends Resource{
     }
   }
   static init_method_get_bone_attachment_count() {
-    if (!this.#_bindings.method_get_bone_attachment_count) {
+    if (!this._bindings.method_get_bone_attachment_count) {
       let classname = new StringName("GLTFSkeleton");
       let methodname = new StringName("get_bone_attachment_count");
-      this.#_bindings.method_get_bone_attachment_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_bone_attachment_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -146,10 +147,10 @@ export class GLTFSkeleton extends Resource{
     }
   }
   static init_method_get_bone_attachment() {
-    if (!this.#_bindings.method_get_bone_attachment) {
+    if (!this._bindings.method_get_bone_attachment) {
       let classname = new StringName("GLTFSkeleton");
       let methodname = new StringName("get_bone_attachment");
-      this.#_bindings.method_get_bone_attachment = internal.classdb_get_method_bind(
+      this._bindings.method_get_bone_attachment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         945440495
@@ -162,7 +163,7 @@ export class GLTFSkeleton extends Resource{
   get_joints() {
     GLTFSkeleton.init_method_get_joints();
     return _call_native_mb_ret(
-      GLTFSkeleton.#_bindings.method_get_joints,
+      GLTFSkeleton._bindings.method_get_joints,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -173,7 +174,7 @@ export class GLTFSkeleton extends Resource{
   set_joints(_joints) {
     GLTFSkeleton.init_method_set_joints();
     return _call_native_mb_no_ret(
-      GLTFSkeleton.#_bindings.method_set_joints,
+      GLTFSkeleton._bindings.method_set_joints,
       this._owner,
       _joints
     );
@@ -182,7 +183,7 @@ export class GLTFSkeleton extends Resource{
   get_roots() {
     GLTFSkeleton.init_method_get_roots();
     return _call_native_mb_ret(
-      GLTFSkeleton.#_bindings.method_get_roots,
+      GLTFSkeleton._bindings.method_get_roots,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -193,7 +194,7 @@ export class GLTFSkeleton extends Resource{
   set_roots(_roots) {
     GLTFSkeleton.init_method_set_roots();
     return _call_native_mb_no_ret(
-      GLTFSkeleton.#_bindings.method_set_roots,
+      GLTFSkeleton._bindings.method_set_roots,
       this._owner,
       _roots
     );
@@ -202,7 +203,7 @@ export class GLTFSkeleton extends Resource{
   get_godot_skeleton() {
     GLTFSkeleton.init_method_get_godot_skeleton();
     return _call_native_mb_ret(
-      GLTFSkeleton.#_bindings.method_get_godot_skeleton,
+      GLTFSkeleton._bindings.method_get_godot_skeleton,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -212,7 +213,7 @@ export class GLTFSkeleton extends Resource{
   get_unique_names() {
     GLTFSkeleton.init_method_get_unique_names();
     return _call_native_mb_ret(
-      GLTFSkeleton.#_bindings.method_get_unique_names,
+      GLTFSkeleton._bindings.method_get_unique_names,
       this._owner,
 			Variant.Type.ARRAY,
       
@@ -222,7 +223,7 @@ export class GLTFSkeleton extends Resource{
   set_unique_names(_unique_names) {
     GLTFSkeleton.init_method_set_unique_names();
     return _call_native_mb_no_ret(
-      GLTFSkeleton.#_bindings.method_set_unique_names,
+      GLTFSkeleton._bindings.method_set_unique_names,
       this._owner,
       _unique_names
     );
@@ -231,7 +232,7 @@ export class GLTFSkeleton extends Resource{
   get_godot_bone_node() {
     GLTFSkeleton.init_method_get_godot_bone_node();
     return _call_native_mb_ret(
-      GLTFSkeleton.#_bindings.method_get_godot_bone_node,
+      GLTFSkeleton._bindings.method_get_godot_bone_node,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -242,7 +243,7 @@ export class GLTFSkeleton extends Resource{
   set_godot_bone_node(_godot_bone_node) {
     GLTFSkeleton.init_method_set_godot_bone_node();
     return _call_native_mb_no_ret(
-      GLTFSkeleton.#_bindings.method_set_godot_bone_node,
+      GLTFSkeleton._bindings.method_set_godot_bone_node,
       this._owner,
       _godot_bone_node
     );
@@ -251,7 +252,7 @@ export class GLTFSkeleton extends Resource{
   get_bone_attachment_count() {
     GLTFSkeleton.init_method_get_bone_attachment_count();
     return _call_native_mb_ret(
-      GLTFSkeleton.#_bindings.method_get_bone_attachment_count,
+      GLTFSkeleton._bindings.method_get_bone_attachment_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -262,7 +263,7 @@ export class GLTFSkeleton extends Resource{
   get_bone_attachment(_idx) {
     GLTFSkeleton.init_method_get_bone_attachment();
     return _call_native_mb_ret(
-      GLTFSkeleton.#_bindings.method_get_bone_attachment,
+      GLTFSkeleton._bindings.method_get_bone_attachment,
       this._owner,
 			Variant.Type.OBJECT,
       _idx

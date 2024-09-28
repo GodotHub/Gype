@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { Node2D } from '@js_godot/classes/node2d'
 import {
   call_utility_ret,
@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_node_a;
@@ -20,10 +21,10 @@ class _MethodBindings {
   method_get_exclude_nodes_from_collision;
   method_get_rid;
 }
+@GodotClass
 export class Joint2D extends Node2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -33,10 +34,10 @@ export class Joint2D extends Node2D{
     }
   }
   static init_method_set_node_a() {
-    if (!this.#_bindings.method_set_node_a) {
+    if (!this._bindings.method_set_node_a) {
       let classname = new StringName("Joint2D");
       let methodname = new StringName("set_node_a");
-      this.#_bindings.method_set_node_a = internal.classdb_get_method_bind(
+      this._bindings.method_set_node_a = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1348162250
@@ -44,10 +45,10 @@ export class Joint2D extends Node2D{
     }
   }
   static init_method_get_node_a() {
-    if (!this.#_bindings.method_get_node_a) {
+    if (!this._bindings.method_get_node_a) {
       let classname = new StringName("Joint2D");
       let methodname = new StringName("get_node_a");
-      this.#_bindings.method_get_node_a = internal.classdb_get_method_bind(
+      this._bindings.method_get_node_a = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4075236667
@@ -55,10 +56,10 @@ export class Joint2D extends Node2D{
     }
   }
   static init_method_set_node_b() {
-    if (!this.#_bindings.method_set_node_b) {
+    if (!this._bindings.method_set_node_b) {
       let classname = new StringName("Joint2D");
       let methodname = new StringName("set_node_b");
-      this.#_bindings.method_set_node_b = internal.classdb_get_method_bind(
+      this._bindings.method_set_node_b = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1348162250
@@ -66,10 +67,10 @@ export class Joint2D extends Node2D{
     }
   }
   static init_method_get_node_b() {
-    if (!this.#_bindings.method_get_node_b) {
+    if (!this._bindings.method_get_node_b) {
       let classname = new StringName("Joint2D");
       let methodname = new StringName("get_node_b");
-      this.#_bindings.method_get_node_b = internal.classdb_get_method_bind(
+      this._bindings.method_get_node_b = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4075236667
@@ -77,10 +78,10 @@ export class Joint2D extends Node2D{
     }
   }
   static init_method_set_bias() {
-    if (!this.#_bindings.method_set_bias) {
+    if (!this._bindings.method_set_bias) {
       let classname = new StringName("Joint2D");
       let methodname = new StringName("set_bias");
-      this.#_bindings.method_set_bias = internal.classdb_get_method_bind(
+      this._bindings.method_set_bias = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -88,10 +89,10 @@ export class Joint2D extends Node2D{
     }
   }
   static init_method_get_bias() {
-    if (!this.#_bindings.method_get_bias) {
+    if (!this._bindings.method_get_bias) {
       let classname = new StringName("Joint2D");
       let methodname = new StringName("get_bias");
-      this.#_bindings.method_get_bias = internal.classdb_get_method_bind(
+      this._bindings.method_get_bias = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -99,10 +100,10 @@ export class Joint2D extends Node2D{
     }
   }
   static init_method_set_exclude_nodes_from_collision() {
-    if (!this.#_bindings.method_set_exclude_nodes_from_collision) {
+    if (!this._bindings.method_set_exclude_nodes_from_collision) {
       let classname = new StringName("Joint2D");
       let methodname = new StringName("set_exclude_nodes_from_collision");
-      this.#_bindings.method_set_exclude_nodes_from_collision = internal.classdb_get_method_bind(
+      this._bindings.method_set_exclude_nodes_from_collision = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -110,10 +111,10 @@ export class Joint2D extends Node2D{
     }
   }
   static init_method_get_exclude_nodes_from_collision() {
-    if (!this.#_bindings.method_get_exclude_nodes_from_collision) {
+    if (!this._bindings.method_get_exclude_nodes_from_collision) {
       let classname = new StringName("Joint2D");
       let methodname = new StringName("get_exclude_nodes_from_collision");
-      this.#_bindings.method_get_exclude_nodes_from_collision = internal.classdb_get_method_bind(
+      this._bindings.method_get_exclude_nodes_from_collision = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -121,10 +122,10 @@ export class Joint2D extends Node2D{
     }
   }
   static init_method_get_rid() {
-    if (!this.#_bindings.method_get_rid) {
+    if (!this._bindings.method_get_rid) {
       let classname = new StringName("Joint2D");
       let methodname = new StringName("get_rid");
-      this.#_bindings.method_get_rid = internal.classdb_get_method_bind(
+      this._bindings.method_get_rid = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2944877500
@@ -137,7 +138,7 @@ export class Joint2D extends Node2D{
   set_node_a(_node) {
     Joint2D.init_method_set_node_a();
     return _call_native_mb_no_ret(
-      Joint2D.#_bindings.method_set_node_a,
+      Joint2D._bindings.method_set_node_a,
       this._owner,
       _node
     );
@@ -146,7 +147,7 @@ export class Joint2D extends Node2D{
   get_node_a() {
     Joint2D.init_method_get_node_a();
     return _call_native_mb_ret(
-      Joint2D.#_bindings.method_get_node_a,
+      Joint2D._bindings.method_get_node_a,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -157,7 +158,7 @@ export class Joint2D extends Node2D{
   set_node_b(_node) {
     Joint2D.init_method_set_node_b();
     return _call_native_mb_no_ret(
-      Joint2D.#_bindings.method_set_node_b,
+      Joint2D._bindings.method_set_node_b,
       this._owner,
       _node
     );
@@ -166,7 +167,7 @@ export class Joint2D extends Node2D{
   get_node_b() {
     Joint2D.init_method_get_node_b();
     return _call_native_mb_ret(
-      Joint2D.#_bindings.method_get_node_b,
+      Joint2D._bindings.method_get_node_b,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -177,7 +178,7 @@ export class Joint2D extends Node2D{
   set_bias(_bias) {
     Joint2D.init_method_set_bias();
     return _call_native_mb_no_ret(
-      Joint2D.#_bindings.method_set_bias,
+      Joint2D._bindings.method_set_bias,
       this._owner,
       _bias
     );
@@ -186,7 +187,7 @@ export class Joint2D extends Node2D{
   get_bias() {
     Joint2D.init_method_get_bias();
     return _call_native_mb_ret(
-      Joint2D.#_bindings.method_get_bias,
+      Joint2D._bindings.method_get_bias,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -197,7 +198,7 @@ export class Joint2D extends Node2D{
   set_exclude_nodes_from_collision(_enable) {
     Joint2D.init_method_set_exclude_nodes_from_collision();
     return _call_native_mb_no_ret(
-      Joint2D.#_bindings.method_set_exclude_nodes_from_collision,
+      Joint2D._bindings.method_set_exclude_nodes_from_collision,
       this._owner,
       _enable
     );
@@ -206,7 +207,7 @@ export class Joint2D extends Node2D{
   get_exclude_nodes_from_collision() {
     Joint2D.init_method_get_exclude_nodes_from_collision();
     return _call_native_mb_ret(
-      Joint2D.#_bindings.method_get_exclude_nodes_from_collision,
+      Joint2D._bindings.method_get_exclude_nodes_from_collision,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -217,7 +218,7 @@ export class Joint2D extends Node2D{
   get_rid() {
     Joint2D.init_method_get_rid();
     return _call_native_mb_ret(
-      Joint2D.#_bindings.method_get_rid,
+      Joint2D._bindings.method_get_rid,
       this._owner,
 			Variant.Type.RID,
     

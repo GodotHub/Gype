@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { XRInterface } from '@js_godot/classes/xr_interface'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_eye_height;
@@ -31,10 +32,10 @@ class _MethodBindings {
   method_get_vrs_strength;
   method_set_vrs_strength;
 }
+@GodotClass
 export class MobileVRInterface extends XRInterface{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -44,10 +45,10 @@ export class MobileVRInterface extends XRInterface{
     }
   }
   static init_method_set_eye_height() {
-    if (!this.#_bindings.method_set_eye_height) {
+    if (!this._bindings.method_set_eye_height) {
       let classname = new StringName("MobileVRInterface");
       let methodname = new StringName("set_eye_height");
-      this.#_bindings.method_set_eye_height = internal.classdb_get_method_bind(
+      this._bindings.method_set_eye_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -55,10 +56,10 @@ export class MobileVRInterface extends XRInterface{
     }
   }
   static init_method_get_eye_height() {
-    if (!this.#_bindings.method_get_eye_height) {
+    if (!this._bindings.method_get_eye_height) {
       let classname = new StringName("MobileVRInterface");
       let methodname = new StringName("get_eye_height");
-      this.#_bindings.method_get_eye_height = internal.classdb_get_method_bind(
+      this._bindings.method_get_eye_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -66,10 +67,10 @@ export class MobileVRInterface extends XRInterface{
     }
   }
   static init_method_set_iod() {
-    if (!this.#_bindings.method_set_iod) {
+    if (!this._bindings.method_set_iod) {
       let classname = new StringName("MobileVRInterface");
       let methodname = new StringName("set_iod");
-      this.#_bindings.method_set_iod = internal.classdb_get_method_bind(
+      this._bindings.method_set_iod = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -77,10 +78,10 @@ export class MobileVRInterface extends XRInterface{
     }
   }
   static init_method_get_iod() {
-    if (!this.#_bindings.method_get_iod) {
+    if (!this._bindings.method_get_iod) {
       let classname = new StringName("MobileVRInterface");
       let methodname = new StringName("get_iod");
-      this.#_bindings.method_get_iod = internal.classdb_get_method_bind(
+      this._bindings.method_get_iod = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -88,10 +89,10 @@ export class MobileVRInterface extends XRInterface{
     }
   }
   static init_method_set_display_width() {
-    if (!this.#_bindings.method_set_display_width) {
+    if (!this._bindings.method_set_display_width) {
       let classname = new StringName("MobileVRInterface");
       let methodname = new StringName("set_display_width");
-      this.#_bindings.method_set_display_width = internal.classdb_get_method_bind(
+      this._bindings.method_set_display_width = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -99,10 +100,10 @@ export class MobileVRInterface extends XRInterface{
     }
   }
   static init_method_get_display_width() {
-    if (!this.#_bindings.method_get_display_width) {
+    if (!this._bindings.method_get_display_width) {
       let classname = new StringName("MobileVRInterface");
       let methodname = new StringName("get_display_width");
-      this.#_bindings.method_get_display_width = internal.classdb_get_method_bind(
+      this._bindings.method_get_display_width = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -110,10 +111,10 @@ export class MobileVRInterface extends XRInterface{
     }
   }
   static init_method_set_display_to_lens() {
-    if (!this.#_bindings.method_set_display_to_lens) {
+    if (!this._bindings.method_set_display_to_lens) {
       let classname = new StringName("MobileVRInterface");
       let methodname = new StringName("set_display_to_lens");
-      this.#_bindings.method_set_display_to_lens = internal.classdb_get_method_bind(
+      this._bindings.method_set_display_to_lens = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -121,10 +122,10 @@ export class MobileVRInterface extends XRInterface{
     }
   }
   static init_method_get_display_to_lens() {
-    if (!this.#_bindings.method_get_display_to_lens) {
+    if (!this._bindings.method_get_display_to_lens) {
       let classname = new StringName("MobileVRInterface");
       let methodname = new StringName("get_display_to_lens");
-      this.#_bindings.method_get_display_to_lens = internal.classdb_get_method_bind(
+      this._bindings.method_get_display_to_lens = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -132,10 +133,10 @@ export class MobileVRInterface extends XRInterface{
     }
   }
   static init_method_set_offset_rect() {
-    if (!this.#_bindings.method_set_offset_rect) {
+    if (!this._bindings.method_set_offset_rect) {
       let classname = new StringName("MobileVRInterface");
       let methodname = new StringName("set_offset_rect");
-      this.#_bindings.method_set_offset_rect = internal.classdb_get_method_bind(
+      this._bindings.method_set_offset_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2046264180
@@ -143,10 +144,10 @@ export class MobileVRInterface extends XRInterface{
     }
   }
   static init_method_get_offset_rect() {
-    if (!this.#_bindings.method_get_offset_rect) {
+    if (!this._bindings.method_get_offset_rect) {
       let classname = new StringName("MobileVRInterface");
       let methodname = new StringName("get_offset_rect");
-      this.#_bindings.method_get_offset_rect = internal.classdb_get_method_bind(
+      this._bindings.method_get_offset_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1639390495
@@ -154,10 +155,10 @@ export class MobileVRInterface extends XRInterface{
     }
   }
   static init_method_set_oversample() {
-    if (!this.#_bindings.method_set_oversample) {
+    if (!this._bindings.method_set_oversample) {
       let classname = new StringName("MobileVRInterface");
       let methodname = new StringName("set_oversample");
-      this.#_bindings.method_set_oversample = internal.classdb_get_method_bind(
+      this._bindings.method_set_oversample = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -165,10 +166,10 @@ export class MobileVRInterface extends XRInterface{
     }
   }
   static init_method_get_oversample() {
-    if (!this.#_bindings.method_get_oversample) {
+    if (!this._bindings.method_get_oversample) {
       let classname = new StringName("MobileVRInterface");
       let methodname = new StringName("get_oversample");
-      this.#_bindings.method_get_oversample = internal.classdb_get_method_bind(
+      this._bindings.method_get_oversample = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -176,10 +177,10 @@ export class MobileVRInterface extends XRInterface{
     }
   }
   static init_method_set_k1() {
-    if (!this.#_bindings.method_set_k1) {
+    if (!this._bindings.method_set_k1) {
       let classname = new StringName("MobileVRInterface");
       let methodname = new StringName("set_k1");
-      this.#_bindings.method_set_k1 = internal.classdb_get_method_bind(
+      this._bindings.method_set_k1 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -187,10 +188,10 @@ export class MobileVRInterface extends XRInterface{
     }
   }
   static init_method_get_k1() {
-    if (!this.#_bindings.method_get_k1) {
+    if (!this._bindings.method_get_k1) {
       let classname = new StringName("MobileVRInterface");
       let methodname = new StringName("get_k1");
-      this.#_bindings.method_get_k1 = internal.classdb_get_method_bind(
+      this._bindings.method_get_k1 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -198,10 +199,10 @@ export class MobileVRInterface extends XRInterface{
     }
   }
   static init_method_set_k2() {
-    if (!this.#_bindings.method_set_k2) {
+    if (!this._bindings.method_set_k2) {
       let classname = new StringName("MobileVRInterface");
       let methodname = new StringName("set_k2");
-      this.#_bindings.method_set_k2 = internal.classdb_get_method_bind(
+      this._bindings.method_set_k2 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -209,10 +210,10 @@ export class MobileVRInterface extends XRInterface{
     }
   }
   static init_method_get_k2() {
-    if (!this.#_bindings.method_get_k2) {
+    if (!this._bindings.method_get_k2) {
       let classname = new StringName("MobileVRInterface");
       let methodname = new StringName("get_k2");
-      this.#_bindings.method_get_k2 = internal.classdb_get_method_bind(
+      this._bindings.method_get_k2 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -220,10 +221,10 @@ export class MobileVRInterface extends XRInterface{
     }
   }
   static init_method_get_vrs_min_radius() {
-    if (!this.#_bindings.method_get_vrs_min_radius) {
+    if (!this._bindings.method_get_vrs_min_radius) {
       let classname = new StringName("MobileVRInterface");
       let methodname = new StringName("get_vrs_min_radius");
-      this.#_bindings.method_get_vrs_min_radius = internal.classdb_get_method_bind(
+      this._bindings.method_get_vrs_min_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -231,10 +232,10 @@ export class MobileVRInterface extends XRInterface{
     }
   }
   static init_method_set_vrs_min_radius() {
-    if (!this.#_bindings.method_set_vrs_min_radius) {
+    if (!this._bindings.method_set_vrs_min_radius) {
       let classname = new StringName("MobileVRInterface");
       let methodname = new StringName("set_vrs_min_radius");
-      this.#_bindings.method_set_vrs_min_radius = internal.classdb_get_method_bind(
+      this._bindings.method_set_vrs_min_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -242,10 +243,10 @@ export class MobileVRInterface extends XRInterface{
     }
   }
   static init_method_get_vrs_strength() {
-    if (!this.#_bindings.method_get_vrs_strength) {
+    if (!this._bindings.method_get_vrs_strength) {
       let classname = new StringName("MobileVRInterface");
       let methodname = new StringName("get_vrs_strength");
-      this.#_bindings.method_get_vrs_strength = internal.classdb_get_method_bind(
+      this._bindings.method_get_vrs_strength = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -253,10 +254,10 @@ export class MobileVRInterface extends XRInterface{
     }
   }
   static init_method_set_vrs_strength() {
-    if (!this.#_bindings.method_set_vrs_strength) {
+    if (!this._bindings.method_set_vrs_strength) {
       let classname = new StringName("MobileVRInterface");
       let methodname = new StringName("set_vrs_strength");
-      this.#_bindings.method_set_vrs_strength = internal.classdb_get_method_bind(
+      this._bindings.method_set_vrs_strength = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -269,7 +270,7 @@ export class MobileVRInterface extends XRInterface{
   set_eye_height(_eye_height) {
     MobileVRInterface.init_method_set_eye_height();
     return _call_native_mb_no_ret(
-      MobileVRInterface.#_bindings.method_set_eye_height,
+      MobileVRInterface._bindings.method_set_eye_height,
       this._owner,
       _eye_height
     );
@@ -278,7 +279,7 @@ export class MobileVRInterface extends XRInterface{
   get_eye_height() {
     MobileVRInterface.init_method_get_eye_height();
     return _call_native_mb_ret(
-      MobileVRInterface.#_bindings.method_get_eye_height,
+      MobileVRInterface._bindings.method_get_eye_height,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -289,7 +290,7 @@ export class MobileVRInterface extends XRInterface{
   set_iod(_iod) {
     MobileVRInterface.init_method_set_iod();
     return _call_native_mb_no_ret(
-      MobileVRInterface.#_bindings.method_set_iod,
+      MobileVRInterface._bindings.method_set_iod,
       this._owner,
       _iod
     );
@@ -298,7 +299,7 @@ export class MobileVRInterface extends XRInterface{
   get_iod() {
     MobileVRInterface.init_method_get_iod();
     return _call_native_mb_ret(
-      MobileVRInterface.#_bindings.method_get_iod,
+      MobileVRInterface._bindings.method_get_iod,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -309,7 +310,7 @@ export class MobileVRInterface extends XRInterface{
   set_display_width(_display_width) {
     MobileVRInterface.init_method_set_display_width();
     return _call_native_mb_no_ret(
-      MobileVRInterface.#_bindings.method_set_display_width,
+      MobileVRInterface._bindings.method_set_display_width,
       this._owner,
       _display_width
     );
@@ -318,7 +319,7 @@ export class MobileVRInterface extends XRInterface{
   get_display_width() {
     MobileVRInterface.init_method_get_display_width();
     return _call_native_mb_ret(
-      MobileVRInterface.#_bindings.method_get_display_width,
+      MobileVRInterface._bindings.method_get_display_width,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -329,7 +330,7 @@ export class MobileVRInterface extends XRInterface{
   set_display_to_lens(_display_to_lens) {
     MobileVRInterface.init_method_set_display_to_lens();
     return _call_native_mb_no_ret(
-      MobileVRInterface.#_bindings.method_set_display_to_lens,
+      MobileVRInterface._bindings.method_set_display_to_lens,
       this._owner,
       _display_to_lens
     );
@@ -338,7 +339,7 @@ export class MobileVRInterface extends XRInterface{
   get_display_to_lens() {
     MobileVRInterface.init_method_get_display_to_lens();
     return _call_native_mb_ret(
-      MobileVRInterface.#_bindings.method_get_display_to_lens,
+      MobileVRInterface._bindings.method_get_display_to_lens,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -349,7 +350,7 @@ export class MobileVRInterface extends XRInterface{
   set_offset_rect(_offset_rect) {
     MobileVRInterface.init_method_set_offset_rect();
     return _call_native_mb_no_ret(
-      MobileVRInterface.#_bindings.method_set_offset_rect,
+      MobileVRInterface._bindings.method_set_offset_rect,
       this._owner,
       _offset_rect
     );
@@ -358,7 +359,7 @@ export class MobileVRInterface extends XRInterface{
   get_offset_rect() {
     MobileVRInterface.init_method_get_offset_rect();
     return _call_native_mb_ret(
-      MobileVRInterface.#_bindings.method_get_offset_rect,
+      MobileVRInterface._bindings.method_get_offset_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -369,7 +370,7 @@ export class MobileVRInterface extends XRInterface{
   set_oversample(_oversample) {
     MobileVRInterface.init_method_set_oversample();
     return _call_native_mb_no_ret(
-      MobileVRInterface.#_bindings.method_set_oversample,
+      MobileVRInterface._bindings.method_set_oversample,
       this._owner,
       _oversample
     );
@@ -378,7 +379,7 @@ export class MobileVRInterface extends XRInterface{
   get_oversample() {
     MobileVRInterface.init_method_get_oversample();
     return _call_native_mb_ret(
-      MobileVRInterface.#_bindings.method_get_oversample,
+      MobileVRInterface._bindings.method_get_oversample,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -389,7 +390,7 @@ export class MobileVRInterface extends XRInterface{
   set_k1(_k) {
     MobileVRInterface.init_method_set_k1();
     return _call_native_mb_no_ret(
-      MobileVRInterface.#_bindings.method_set_k1,
+      MobileVRInterface._bindings.method_set_k1,
       this._owner,
       _k
     );
@@ -398,7 +399,7 @@ export class MobileVRInterface extends XRInterface{
   get_k1() {
     MobileVRInterface.init_method_get_k1();
     return _call_native_mb_ret(
-      MobileVRInterface.#_bindings.method_get_k1,
+      MobileVRInterface._bindings.method_get_k1,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -409,7 +410,7 @@ export class MobileVRInterface extends XRInterface{
   set_k2(_k) {
     MobileVRInterface.init_method_set_k2();
     return _call_native_mb_no_ret(
-      MobileVRInterface.#_bindings.method_set_k2,
+      MobileVRInterface._bindings.method_set_k2,
       this._owner,
       _k
     );
@@ -418,7 +419,7 @@ export class MobileVRInterface extends XRInterface{
   get_k2() {
     MobileVRInterface.init_method_get_k2();
     return _call_native_mb_ret(
-      MobileVRInterface.#_bindings.method_get_k2,
+      MobileVRInterface._bindings.method_get_k2,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -429,7 +430,7 @@ export class MobileVRInterface extends XRInterface{
   get_vrs_min_radius() {
     MobileVRInterface.init_method_get_vrs_min_radius();
     return _call_native_mb_ret(
-      MobileVRInterface.#_bindings.method_get_vrs_min_radius,
+      MobileVRInterface._bindings.method_get_vrs_min_radius,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -440,7 +441,7 @@ export class MobileVRInterface extends XRInterface{
   set_vrs_min_radius(_radius) {
     MobileVRInterface.init_method_set_vrs_min_radius();
     return _call_native_mb_no_ret(
-      MobileVRInterface.#_bindings.method_set_vrs_min_radius,
+      MobileVRInterface._bindings.method_set_vrs_min_radius,
       this._owner,
       _radius
     );
@@ -449,7 +450,7 @@ export class MobileVRInterface extends XRInterface{
   get_vrs_strength() {
     MobileVRInterface.init_method_get_vrs_strength();
     return _call_native_mb_ret(
-      MobileVRInterface.#_bindings.method_get_vrs_strength,
+      MobileVRInterface._bindings.method_get_vrs_strength,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -460,7 +461,7 @@ export class MobileVRInterface extends XRInterface{
   set_vrs_strength(_strength) {
     MobileVRInterface.init_method_set_vrs_strength();
     return _call_native_mb_no_ret(
-      MobileVRInterface.#_bindings.method_set_vrs_strength,
+      MobileVRInterface._bindings.method_set_vrs_strength,
       this._owner,
       _strength
     );

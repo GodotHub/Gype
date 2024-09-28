@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_radiance_size;
@@ -17,10 +18,10 @@ class _MethodBindings {
   method_set_material;
   method_get_material;
 }
+@GodotClass
 export class Sky extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -30,10 +31,10 @@ export class Sky extends Resource{
     }
   }
   static init_method_set_radiance_size() {
-    if (!this.#_bindings.method_set_radiance_size) {
+    if (!this._bindings.method_set_radiance_size) {
       let classname = new StringName("Sky");
       let methodname = new StringName("set_radiance_size");
-      this.#_bindings.method_set_radiance_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_radiance_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1512957179
@@ -41,10 +42,10 @@ export class Sky extends Resource{
     }
   }
   static init_method_get_radiance_size() {
-    if (!this.#_bindings.method_get_radiance_size) {
+    if (!this._bindings.method_get_radiance_size) {
       let classname = new StringName("Sky");
       let methodname = new StringName("get_radiance_size");
-      this.#_bindings.method_get_radiance_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_radiance_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2708733976
@@ -52,10 +53,10 @@ export class Sky extends Resource{
     }
   }
   static init_method_set_process_mode() {
-    if (!this.#_bindings.method_set_process_mode) {
+    if (!this._bindings.method_set_process_mode) {
       let classname = new StringName("Sky");
       let methodname = new StringName("set_process_mode");
-      this.#_bindings.method_set_process_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_process_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         875986769
@@ -63,10 +64,10 @@ export class Sky extends Resource{
     }
   }
   static init_method_get_process_mode() {
-    if (!this.#_bindings.method_get_process_mode) {
+    if (!this._bindings.method_get_process_mode) {
       let classname = new StringName("Sky");
       let methodname = new StringName("get_process_mode");
-      this.#_bindings.method_get_process_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_process_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         731245043
@@ -74,10 +75,10 @@ export class Sky extends Resource{
     }
   }
   static init_method_set_material() {
-    if (!this.#_bindings.method_set_material) {
+    if (!this._bindings.method_set_material) {
       let classname = new StringName("Sky");
       let methodname = new StringName("set_material");
-      this.#_bindings.method_set_material = internal.classdb_get_method_bind(
+      this._bindings.method_set_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2757459619
@@ -85,10 +86,10 @@ export class Sky extends Resource{
     }
   }
   static init_method_get_material() {
-    if (!this.#_bindings.method_get_material) {
+    if (!this._bindings.method_get_material) {
       let classname = new StringName("Sky");
       let methodname = new StringName("get_material");
-      this.#_bindings.method_get_material = internal.classdb_get_method_bind(
+      this._bindings.method_get_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         5934680
@@ -101,7 +102,7 @@ export class Sky extends Resource{
   set_radiance_size(_size) {
     Sky.init_method_set_radiance_size();
     return _call_native_mb_no_ret(
-      Sky.#_bindings.method_set_radiance_size,
+      Sky._bindings.method_set_radiance_size,
       this._owner,
       _size
     );
@@ -110,7 +111,7 @@ export class Sky extends Resource{
   get_radiance_size() {
     Sky.init_method_get_radiance_size();
     return _call_native_mb_ret(
-      Sky.#_bindings.method_get_radiance_size,
+      Sky._bindings.method_get_radiance_size,
       this._owner,
 			Variant.Type.INT,
     
@@ -121,7 +122,7 @@ export class Sky extends Resource{
   set_process_mode(_mode) {
     Sky.init_method_set_process_mode();
     return _call_native_mb_no_ret(
-      Sky.#_bindings.method_set_process_mode,
+      Sky._bindings.method_set_process_mode,
       this._owner,
       _mode
     );
@@ -130,7 +131,7 @@ export class Sky extends Resource{
   get_process_mode() {
     Sky.init_method_get_process_mode();
     return _call_native_mb_ret(
-      Sky.#_bindings.method_get_process_mode,
+      Sky._bindings.method_get_process_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -141,7 +142,7 @@ export class Sky extends Resource{
   set_material(_material) {
     Sky.init_method_set_material();
     return _call_native_mb_no_ret(
-      Sky.#_bindings.method_set_material,
+      Sky._bindings.method_set_material,
       this._owner,
       _material
     );
@@ -150,7 +151,7 @@ export class Sky extends Resource{
   get_material() {
     Sky.init_method_get_material();
     return _call_native_mb_ret(
-      Sky.#_bindings.method_get_material,
+      Sky._bindings.method_get_material,
       this._owner,
 			Variant.Type.OBJECT,
       

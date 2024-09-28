@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_position;
@@ -24,10 +25,10 @@ class _MethodBindings {
   method_get_collider_shape_index;
   method_get_collider_velocity;
 }
+@GodotClass
 export class KinematicCollision2D extends RefCounted{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -37,10 +38,10 @@ export class KinematicCollision2D extends RefCounted{
     }
   }
   static init_method_get_position() {
-    if (!this.#_bindings.method_get_position) {
+    if (!this._bindings.method_get_position) {
       let classname = new StringName("KinematicCollision2D");
       let methodname = new StringName("get_position");
-      this.#_bindings.method_get_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -48,10 +49,10 @@ export class KinematicCollision2D extends RefCounted{
     }
   }
   static init_method_get_normal() {
-    if (!this.#_bindings.method_get_normal) {
+    if (!this._bindings.method_get_normal) {
       let classname = new StringName("KinematicCollision2D");
       let methodname = new StringName("get_normal");
-      this.#_bindings.method_get_normal = internal.classdb_get_method_bind(
+      this._bindings.method_get_normal = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -59,10 +60,10 @@ export class KinematicCollision2D extends RefCounted{
     }
   }
   static init_method_get_travel() {
-    if (!this.#_bindings.method_get_travel) {
+    if (!this._bindings.method_get_travel) {
       let classname = new StringName("KinematicCollision2D");
       let methodname = new StringName("get_travel");
-      this.#_bindings.method_get_travel = internal.classdb_get_method_bind(
+      this._bindings.method_get_travel = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -70,10 +71,10 @@ export class KinematicCollision2D extends RefCounted{
     }
   }
   static init_method_get_remainder() {
-    if (!this.#_bindings.method_get_remainder) {
+    if (!this._bindings.method_get_remainder) {
       let classname = new StringName("KinematicCollision2D");
       let methodname = new StringName("get_remainder");
-      this.#_bindings.method_get_remainder = internal.classdb_get_method_bind(
+      this._bindings.method_get_remainder = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -81,10 +82,10 @@ export class KinematicCollision2D extends RefCounted{
     }
   }
   static init_method_get_angle() {
-    if (!this.#_bindings.method_get_angle) {
+    if (!this._bindings.method_get_angle) {
       let classname = new StringName("KinematicCollision2D");
       let methodname = new StringName("get_angle");
-      this.#_bindings.method_get_angle = internal.classdb_get_method_bind(
+      this._bindings.method_get_angle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2841063350
@@ -92,10 +93,10 @@ export class KinematicCollision2D extends RefCounted{
     }
   }
   static init_method_get_depth() {
-    if (!this.#_bindings.method_get_depth) {
+    if (!this._bindings.method_get_depth) {
       let classname = new StringName("KinematicCollision2D");
       let methodname = new StringName("get_depth");
-      this.#_bindings.method_get_depth = internal.classdb_get_method_bind(
+      this._bindings.method_get_depth = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -103,10 +104,10 @@ export class KinematicCollision2D extends RefCounted{
     }
   }
   static init_method_get_local_shape() {
-    if (!this.#_bindings.method_get_local_shape) {
+    if (!this._bindings.method_get_local_shape) {
       let classname = new StringName("KinematicCollision2D");
       let methodname = new StringName("get_local_shape");
-      this.#_bindings.method_get_local_shape = internal.classdb_get_method_bind(
+      this._bindings.method_get_local_shape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1981248198
@@ -114,10 +115,10 @@ export class KinematicCollision2D extends RefCounted{
     }
   }
   static init_method_get_collider() {
-    if (!this.#_bindings.method_get_collider) {
+    if (!this._bindings.method_get_collider) {
       let classname = new StringName("KinematicCollision2D");
       let methodname = new StringName("get_collider");
-      this.#_bindings.method_get_collider = internal.classdb_get_method_bind(
+      this._bindings.method_get_collider = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1981248198
@@ -125,10 +126,10 @@ export class KinematicCollision2D extends RefCounted{
     }
   }
   static init_method_get_collider_id() {
-    if (!this.#_bindings.method_get_collider_id) {
+    if (!this._bindings.method_get_collider_id) {
       let classname = new StringName("KinematicCollision2D");
       let methodname = new StringName("get_collider_id");
-      this.#_bindings.method_get_collider_id = internal.classdb_get_method_bind(
+      this._bindings.method_get_collider_id = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -136,10 +137,10 @@ export class KinematicCollision2D extends RefCounted{
     }
   }
   static init_method_get_collider_rid() {
-    if (!this.#_bindings.method_get_collider_rid) {
+    if (!this._bindings.method_get_collider_rid) {
       let classname = new StringName("KinematicCollision2D");
       let methodname = new StringName("get_collider_rid");
-      this.#_bindings.method_get_collider_rid = internal.classdb_get_method_bind(
+      this._bindings.method_get_collider_rid = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2944877500
@@ -147,10 +148,10 @@ export class KinematicCollision2D extends RefCounted{
     }
   }
   static init_method_get_collider_shape() {
-    if (!this.#_bindings.method_get_collider_shape) {
+    if (!this._bindings.method_get_collider_shape) {
       let classname = new StringName("KinematicCollision2D");
       let methodname = new StringName("get_collider_shape");
-      this.#_bindings.method_get_collider_shape = internal.classdb_get_method_bind(
+      this._bindings.method_get_collider_shape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1981248198
@@ -158,10 +159,10 @@ export class KinematicCollision2D extends RefCounted{
     }
   }
   static init_method_get_collider_shape_index() {
-    if (!this.#_bindings.method_get_collider_shape_index) {
+    if (!this._bindings.method_get_collider_shape_index) {
       let classname = new StringName("KinematicCollision2D");
       let methodname = new StringName("get_collider_shape_index");
-      this.#_bindings.method_get_collider_shape_index = internal.classdb_get_method_bind(
+      this._bindings.method_get_collider_shape_index = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -169,10 +170,10 @@ export class KinematicCollision2D extends RefCounted{
     }
   }
   static init_method_get_collider_velocity() {
-    if (!this.#_bindings.method_get_collider_velocity) {
+    if (!this._bindings.method_get_collider_velocity) {
       let classname = new StringName("KinematicCollision2D");
       let methodname = new StringName("get_collider_velocity");
-      this.#_bindings.method_get_collider_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_get_collider_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -185,7 +186,7 @@ export class KinematicCollision2D extends RefCounted{
   get_position() {
     KinematicCollision2D.init_method_get_position();
     return _call_native_mb_ret(
-      KinematicCollision2D.#_bindings.method_get_position,
+      KinematicCollision2D._bindings.method_get_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -196,7 +197,7 @@ export class KinematicCollision2D extends RefCounted{
   get_normal() {
     KinematicCollision2D.init_method_get_normal();
     return _call_native_mb_ret(
-      KinematicCollision2D.#_bindings.method_get_normal,
+      KinematicCollision2D._bindings.method_get_normal,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -207,7 +208,7 @@ export class KinematicCollision2D extends RefCounted{
   get_travel() {
     KinematicCollision2D.init_method_get_travel();
     return _call_native_mb_ret(
-      KinematicCollision2D.#_bindings.method_get_travel,
+      KinematicCollision2D._bindings.method_get_travel,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -218,7 +219,7 @@ export class KinematicCollision2D extends RefCounted{
   get_remainder() {
     KinematicCollision2D.init_method_get_remainder();
     return _call_native_mb_ret(
-      KinematicCollision2D.#_bindings.method_get_remainder,
+      KinematicCollision2D._bindings.method_get_remainder,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -229,7 +230,7 @@ export class KinematicCollision2D extends RefCounted{
   get_angle(_up_direction) {
     KinematicCollision2D.init_method_get_angle();
     return _call_native_mb_ret(
-      KinematicCollision2D.#_bindings.method_get_angle,
+      KinematicCollision2D._bindings.method_get_angle,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -240,7 +241,7 @@ export class KinematicCollision2D extends RefCounted{
   get_depth() {
     KinematicCollision2D.init_method_get_depth();
     return _call_native_mb_ret(
-      KinematicCollision2D.#_bindings.method_get_depth,
+      KinematicCollision2D._bindings.method_get_depth,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -251,7 +252,7 @@ export class KinematicCollision2D extends RefCounted{
   get_local_shape() {
     KinematicCollision2D.init_method_get_local_shape();
     return _call_native_mb_ret(
-      KinematicCollision2D.#_bindings.method_get_local_shape,
+      KinematicCollision2D._bindings.method_get_local_shape,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -261,7 +262,7 @@ export class KinematicCollision2D extends RefCounted{
   get_collider() {
     KinematicCollision2D.init_method_get_collider();
     return _call_native_mb_ret(
-      KinematicCollision2D.#_bindings.method_get_collider,
+      KinematicCollision2D._bindings.method_get_collider,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -271,7 +272,7 @@ export class KinematicCollision2D extends RefCounted{
   get_collider_id() {
     KinematicCollision2D.init_method_get_collider_id();
     return _call_native_mb_ret(
-      KinematicCollision2D.#_bindings.method_get_collider_id,
+      KinematicCollision2D._bindings.method_get_collider_id,
       this._owner,
 			Variant.Type.INT,
     
@@ -282,7 +283,7 @@ export class KinematicCollision2D extends RefCounted{
   get_collider_rid() {
     KinematicCollision2D.init_method_get_collider_rid();
     return _call_native_mb_ret(
-      KinematicCollision2D.#_bindings.method_get_collider_rid,
+      KinematicCollision2D._bindings.method_get_collider_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -293,7 +294,7 @@ export class KinematicCollision2D extends RefCounted{
   get_collider_shape() {
     KinematicCollision2D.init_method_get_collider_shape();
     return _call_native_mb_ret(
-      KinematicCollision2D.#_bindings.method_get_collider_shape,
+      KinematicCollision2D._bindings.method_get_collider_shape,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -303,7 +304,7 @@ export class KinematicCollision2D extends RefCounted{
   get_collider_shape_index() {
     KinematicCollision2D.init_method_get_collider_shape_index();
     return _call_native_mb_ret(
-      KinematicCollision2D.#_bindings.method_get_collider_shape_index,
+      KinematicCollision2D._bindings.method_get_collider_shape_index,
       this._owner,
 			Variant.Type.INT,
     
@@ -314,7 +315,7 @@ export class KinematicCollision2D extends RefCounted{
   get_collider_velocity() {
     KinematicCollision2D.init_method_get_collider_velocity();
     return _call_native_mb_ret(
-      KinematicCollision2D.#_bindings.method_get_collider_velocity,
+      KinematicCollision2D._bindings.method_get_collider_velocity,
       this._owner,
 			Variant.Type.VECTOR2,
     

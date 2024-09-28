@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GodotObject } from '@js_godot/classes/godot_object'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_datetime_dict_from_unix_time;
@@ -33,8 +34,7 @@ class _MethodBindings {
   method_get_ticks_usec;
 }class _Time extends GodotObject{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -44,10 +44,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_datetime_dict_from_unix_time() {
-    if (!this.#_bindings.method_get_datetime_dict_from_unix_time) {
+    if (!this._bindings.method_get_datetime_dict_from_unix_time) {
       let classname = new StringName("Time");
       let methodname = new StringName("get_datetime_dict_from_unix_time");
-      this.#_bindings.method_get_datetime_dict_from_unix_time = internal.classdb_get_method_bind(
+      this._bindings.method_get_datetime_dict_from_unix_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3485342025
@@ -55,10 +55,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_date_dict_from_unix_time() {
-    if (!this.#_bindings.method_get_date_dict_from_unix_time) {
+    if (!this._bindings.method_get_date_dict_from_unix_time) {
       let classname = new StringName("Time");
       let methodname = new StringName("get_date_dict_from_unix_time");
-      this.#_bindings.method_get_date_dict_from_unix_time = internal.classdb_get_method_bind(
+      this._bindings.method_get_date_dict_from_unix_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3485342025
@@ -66,10 +66,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_time_dict_from_unix_time() {
-    if (!this.#_bindings.method_get_time_dict_from_unix_time) {
+    if (!this._bindings.method_get_time_dict_from_unix_time) {
       let classname = new StringName("Time");
       let methodname = new StringName("get_time_dict_from_unix_time");
-      this.#_bindings.method_get_time_dict_from_unix_time = internal.classdb_get_method_bind(
+      this._bindings.method_get_time_dict_from_unix_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3485342025
@@ -77,10 +77,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_datetime_string_from_unix_time() {
-    if (!this.#_bindings.method_get_datetime_string_from_unix_time) {
+    if (!this._bindings.method_get_datetime_string_from_unix_time) {
       let classname = new StringName("Time");
       let methodname = new StringName("get_datetime_string_from_unix_time");
-      this.#_bindings.method_get_datetime_string_from_unix_time = internal.classdb_get_method_bind(
+      this._bindings.method_get_datetime_string_from_unix_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2311239925
@@ -88,10 +88,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_date_string_from_unix_time() {
-    if (!this.#_bindings.method_get_date_string_from_unix_time) {
+    if (!this._bindings.method_get_date_string_from_unix_time) {
       let classname = new StringName("Time");
       let methodname = new StringName("get_date_string_from_unix_time");
-      this.#_bindings.method_get_date_string_from_unix_time = internal.classdb_get_method_bind(
+      this._bindings.method_get_date_string_from_unix_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         844755477
@@ -99,10 +99,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_time_string_from_unix_time() {
-    if (!this.#_bindings.method_get_time_string_from_unix_time) {
+    if (!this._bindings.method_get_time_string_from_unix_time) {
       let classname = new StringName("Time");
       let methodname = new StringName("get_time_string_from_unix_time");
-      this.#_bindings.method_get_time_string_from_unix_time = internal.classdb_get_method_bind(
+      this._bindings.method_get_time_string_from_unix_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         844755477
@@ -110,10 +110,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_datetime_dict_from_datetime_string() {
-    if (!this.#_bindings.method_get_datetime_dict_from_datetime_string) {
+    if (!this._bindings.method_get_datetime_dict_from_datetime_string) {
       let classname = new StringName("Time");
       let methodname = new StringName("get_datetime_dict_from_datetime_string");
-      this.#_bindings.method_get_datetime_dict_from_datetime_string = internal.classdb_get_method_bind(
+      this._bindings.method_get_datetime_dict_from_datetime_string = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3253569256
@@ -121,10 +121,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_datetime_string_from_datetime_dict() {
-    if (!this.#_bindings.method_get_datetime_string_from_datetime_dict) {
+    if (!this._bindings.method_get_datetime_string_from_datetime_dict) {
       let classname = new StringName("Time");
       let methodname = new StringName("get_datetime_string_from_datetime_dict");
-      this.#_bindings.method_get_datetime_string_from_datetime_dict = internal.classdb_get_method_bind(
+      this._bindings.method_get_datetime_string_from_datetime_dict = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1898123706
@@ -132,10 +132,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_unix_time_from_datetime_dict() {
-    if (!this.#_bindings.method_get_unix_time_from_datetime_dict) {
+    if (!this._bindings.method_get_unix_time_from_datetime_dict) {
       let classname = new StringName("Time");
       let methodname = new StringName("get_unix_time_from_datetime_dict");
-      this.#_bindings.method_get_unix_time_from_datetime_dict = internal.classdb_get_method_bind(
+      this._bindings.method_get_unix_time_from_datetime_dict = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3021115443
@@ -143,10 +143,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_unix_time_from_datetime_string() {
-    if (!this.#_bindings.method_get_unix_time_from_datetime_string) {
+    if (!this._bindings.method_get_unix_time_from_datetime_string) {
       let classname = new StringName("Time");
       let methodname = new StringName("get_unix_time_from_datetime_string");
-      this.#_bindings.method_get_unix_time_from_datetime_string = internal.classdb_get_method_bind(
+      this._bindings.method_get_unix_time_from_datetime_string = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1321353865
@@ -154,10 +154,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_offset_string_from_offset_minutes() {
-    if (!this.#_bindings.method_get_offset_string_from_offset_minutes) {
+    if (!this._bindings.method_get_offset_string_from_offset_minutes) {
       let classname = new StringName("Time");
       let methodname = new StringName("get_offset_string_from_offset_minutes");
-      this.#_bindings.method_get_offset_string_from_offset_minutes = internal.classdb_get_method_bind(
+      this._bindings.method_get_offset_string_from_offset_minutes = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         844755477
@@ -165,10 +165,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_datetime_dict_from_system() {
-    if (!this.#_bindings.method_get_datetime_dict_from_system) {
+    if (!this._bindings.method_get_datetime_dict_from_system) {
       let classname = new StringName("Time");
       let methodname = new StringName("get_datetime_dict_from_system");
-      this.#_bindings.method_get_datetime_dict_from_system = internal.classdb_get_method_bind(
+      this._bindings.method_get_datetime_dict_from_system = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         205769976
@@ -176,10 +176,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_date_dict_from_system() {
-    if (!this.#_bindings.method_get_date_dict_from_system) {
+    if (!this._bindings.method_get_date_dict_from_system) {
       let classname = new StringName("Time");
       let methodname = new StringName("get_date_dict_from_system");
-      this.#_bindings.method_get_date_dict_from_system = internal.classdb_get_method_bind(
+      this._bindings.method_get_date_dict_from_system = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         205769976
@@ -187,10 +187,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_time_dict_from_system() {
-    if (!this.#_bindings.method_get_time_dict_from_system) {
+    if (!this._bindings.method_get_time_dict_from_system) {
       let classname = new StringName("Time");
       let methodname = new StringName("get_time_dict_from_system");
-      this.#_bindings.method_get_time_dict_from_system = internal.classdb_get_method_bind(
+      this._bindings.method_get_time_dict_from_system = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         205769976
@@ -198,10 +198,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_datetime_string_from_system() {
-    if (!this.#_bindings.method_get_datetime_string_from_system) {
+    if (!this._bindings.method_get_datetime_string_from_system) {
       let classname = new StringName("Time");
       let methodname = new StringName("get_datetime_string_from_system");
-      this.#_bindings.method_get_datetime_string_from_system = internal.classdb_get_method_bind(
+      this._bindings.method_get_datetime_string_from_system = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1136425492
@@ -209,10 +209,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_date_string_from_system() {
-    if (!this.#_bindings.method_get_date_string_from_system) {
+    if (!this._bindings.method_get_date_string_from_system) {
       let classname = new StringName("Time");
       let methodname = new StringName("get_date_string_from_system");
-      this.#_bindings.method_get_date_string_from_system = internal.classdb_get_method_bind(
+      this._bindings.method_get_date_string_from_system = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1162154673
@@ -220,10 +220,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_time_string_from_system() {
-    if (!this.#_bindings.method_get_time_string_from_system) {
+    if (!this._bindings.method_get_time_string_from_system) {
       let classname = new StringName("Time");
       let methodname = new StringName("get_time_string_from_system");
-      this.#_bindings.method_get_time_string_from_system = internal.classdb_get_method_bind(
+      this._bindings.method_get_time_string_from_system = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1162154673
@@ -231,10 +231,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_time_zone_from_system() {
-    if (!this.#_bindings.method_get_time_zone_from_system) {
+    if (!this._bindings.method_get_time_zone_from_system) {
       let classname = new StringName("Time");
       let methodname = new StringName("get_time_zone_from_system");
-      this.#_bindings.method_get_time_zone_from_system = internal.classdb_get_method_bind(
+      this._bindings.method_get_time_zone_from_system = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3102165223
@@ -242,10 +242,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_unix_time_from_system() {
-    if (!this.#_bindings.method_get_unix_time_from_system) {
+    if (!this._bindings.method_get_unix_time_from_system) {
       let classname = new StringName("Time");
       let methodname = new StringName("get_unix_time_from_system");
-      this.#_bindings.method_get_unix_time_from_system = internal.classdb_get_method_bind(
+      this._bindings.method_get_unix_time_from_system = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -253,10 +253,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_ticks_msec() {
-    if (!this.#_bindings.method_get_ticks_msec) {
+    if (!this._bindings.method_get_ticks_msec) {
       let classname = new StringName("Time");
       let methodname = new StringName("get_ticks_msec");
-      this.#_bindings.method_get_ticks_msec = internal.classdb_get_method_bind(
+      this._bindings.method_get_ticks_msec = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -264,10 +264,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_ticks_usec() {
-    if (!this.#_bindings.method_get_ticks_usec) {
+    if (!this._bindings.method_get_ticks_usec) {
       let classname = new StringName("Time");
       let methodname = new StringName("get_ticks_usec");
-      this.#_bindings.method_get_ticks_usec = internal.classdb_get_method_bind(
+      this._bindings.method_get_ticks_usec = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -280,7 +280,7 @@ class _MethodBindings {
   get_datetime_dict_from_unix_time(_unix_time_val) {
     Time.init_method_get_datetime_dict_from_unix_time();
     return _call_native_mb_ret(
-      _Time.#_bindings.method_get_datetime_dict_from_unix_time,
+      _Time._bindings.method_get_datetime_dict_from_unix_time,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -291,7 +291,7 @@ class _MethodBindings {
   get_date_dict_from_unix_time(_unix_time_val) {
     Time.init_method_get_date_dict_from_unix_time();
     return _call_native_mb_ret(
-      _Time.#_bindings.method_get_date_dict_from_unix_time,
+      _Time._bindings.method_get_date_dict_from_unix_time,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -302,7 +302,7 @@ class _MethodBindings {
   get_time_dict_from_unix_time(_unix_time_val) {
     Time.init_method_get_time_dict_from_unix_time();
     return _call_native_mb_ret(
-      _Time.#_bindings.method_get_time_dict_from_unix_time,
+      _Time._bindings.method_get_time_dict_from_unix_time,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -313,7 +313,7 @@ class _MethodBindings {
   get_datetime_string_from_unix_time(_unix_time_val, _use_space) {
     Time.init_method_get_datetime_string_from_unix_time();
     return _call_native_mb_ret(
-      _Time.#_bindings.method_get_datetime_string_from_unix_time,
+      _Time._bindings.method_get_datetime_string_from_unix_time,
       this._owner,
 			Variant.Type.STRING,
     
@@ -324,7 +324,7 @@ class _MethodBindings {
   get_date_string_from_unix_time(_unix_time_val) {
     Time.init_method_get_date_string_from_unix_time();
     return _call_native_mb_ret(
-      _Time.#_bindings.method_get_date_string_from_unix_time,
+      _Time._bindings.method_get_date_string_from_unix_time,
       this._owner,
 			Variant.Type.STRING,
     
@@ -335,7 +335,7 @@ class _MethodBindings {
   get_time_string_from_unix_time(_unix_time_val) {
     Time.init_method_get_time_string_from_unix_time();
     return _call_native_mb_ret(
-      _Time.#_bindings.method_get_time_string_from_unix_time,
+      _Time._bindings.method_get_time_string_from_unix_time,
       this._owner,
 			Variant.Type.STRING,
     
@@ -346,7 +346,7 @@ class _MethodBindings {
   get_datetime_dict_from_datetime_string(_datetime, _weekday) {
     Time.init_method_get_datetime_dict_from_datetime_string();
     return _call_native_mb_ret(
-      _Time.#_bindings.method_get_datetime_dict_from_datetime_string,
+      _Time._bindings.method_get_datetime_dict_from_datetime_string,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -357,7 +357,7 @@ class _MethodBindings {
   get_datetime_string_from_datetime_dict(_datetime, _use_space) {
     Time.init_method_get_datetime_string_from_datetime_dict();
     return _call_native_mb_ret(
-      _Time.#_bindings.method_get_datetime_string_from_datetime_dict,
+      _Time._bindings.method_get_datetime_string_from_datetime_dict,
       this._owner,
 			Variant.Type.STRING,
     
@@ -368,7 +368,7 @@ class _MethodBindings {
   get_unix_time_from_datetime_dict(_datetime) {
     Time.init_method_get_unix_time_from_datetime_dict();
     return _call_native_mb_ret(
-      _Time.#_bindings.method_get_unix_time_from_datetime_dict,
+      _Time._bindings.method_get_unix_time_from_datetime_dict,
       this._owner,
 			Variant.Type.INT,
     
@@ -379,7 +379,7 @@ class _MethodBindings {
   get_unix_time_from_datetime_string(_datetime) {
     Time.init_method_get_unix_time_from_datetime_string();
     return _call_native_mb_ret(
-      _Time.#_bindings.method_get_unix_time_from_datetime_string,
+      _Time._bindings.method_get_unix_time_from_datetime_string,
       this._owner,
 			Variant.Type.INT,
     
@@ -390,7 +390,7 @@ class _MethodBindings {
   get_offset_string_from_offset_minutes(_offset_minutes) {
     Time.init_method_get_offset_string_from_offset_minutes();
     return _call_native_mb_ret(
-      _Time.#_bindings.method_get_offset_string_from_offset_minutes,
+      _Time._bindings.method_get_offset_string_from_offset_minutes,
       this._owner,
 			Variant.Type.STRING,
     
@@ -401,7 +401,7 @@ class _MethodBindings {
   get_datetime_dict_from_system(_utc) {
     Time.init_method_get_datetime_dict_from_system();
     return _call_native_mb_ret(
-      _Time.#_bindings.method_get_datetime_dict_from_system,
+      _Time._bindings.method_get_datetime_dict_from_system,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -412,7 +412,7 @@ class _MethodBindings {
   get_date_dict_from_system(_utc) {
     Time.init_method_get_date_dict_from_system();
     return _call_native_mb_ret(
-      _Time.#_bindings.method_get_date_dict_from_system,
+      _Time._bindings.method_get_date_dict_from_system,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -423,7 +423,7 @@ class _MethodBindings {
   get_time_dict_from_system(_utc) {
     Time.init_method_get_time_dict_from_system();
     return _call_native_mb_ret(
-      _Time.#_bindings.method_get_time_dict_from_system,
+      _Time._bindings.method_get_time_dict_from_system,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -434,7 +434,7 @@ class _MethodBindings {
   get_datetime_string_from_system(_utc, _use_space) {
     Time.init_method_get_datetime_string_from_system();
     return _call_native_mb_ret(
-      _Time.#_bindings.method_get_datetime_string_from_system,
+      _Time._bindings.method_get_datetime_string_from_system,
       this._owner,
 			Variant.Type.STRING,
     
@@ -445,7 +445,7 @@ class _MethodBindings {
   get_date_string_from_system(_utc) {
     Time.init_method_get_date_string_from_system();
     return _call_native_mb_ret(
-      _Time.#_bindings.method_get_date_string_from_system,
+      _Time._bindings.method_get_date_string_from_system,
       this._owner,
 			Variant.Type.STRING,
     
@@ -456,7 +456,7 @@ class _MethodBindings {
   get_time_string_from_system(_utc) {
     Time.init_method_get_time_string_from_system();
     return _call_native_mb_ret(
-      _Time.#_bindings.method_get_time_string_from_system,
+      _Time._bindings.method_get_time_string_from_system,
       this._owner,
 			Variant.Type.STRING,
     
@@ -467,7 +467,7 @@ class _MethodBindings {
   get_time_zone_from_system() {
     Time.init_method_get_time_zone_from_system();
     return _call_native_mb_ret(
-      _Time.#_bindings.method_get_time_zone_from_system,
+      _Time._bindings.method_get_time_zone_from_system,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -478,7 +478,7 @@ class _MethodBindings {
   get_unix_time_from_system() {
     Time.init_method_get_unix_time_from_system();
     return _call_native_mb_ret(
-      _Time.#_bindings.method_get_unix_time_from_system,
+      _Time._bindings.method_get_unix_time_from_system,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -489,7 +489,7 @@ class _MethodBindings {
   get_ticks_msec() {
     Time.init_method_get_ticks_msec();
     return _call_native_mb_ret(
-      _Time.#_bindings.method_get_ticks_msec,
+      _Time._bindings.method_get_ticks_msec,
       this._owner,
 			Variant.Type.INT,
     
@@ -500,7 +500,7 @@ class _MethodBindings {
   get_ticks_usec() {
     Time.init_method_get_ticks_usec();
     return _call_native_mb_ret(
-      _Time.#_bindings.method_get_ticks_usec,
+      _Time._bindings.method_get_ticks_usec,
       this._owner,
 			Variant.Type.INT,
     

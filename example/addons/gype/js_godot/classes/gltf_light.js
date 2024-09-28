@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_from_node;
@@ -29,10 +30,10 @@ class _MethodBindings {
   method_get_additional_data;
   method_set_additional_data;
 }
+@GodotClass
 export class GLTFLight extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -42,10 +43,10 @@ export class GLTFLight extends Resource{
     }
   }
   static init_method_from_node() {
-    if (!this.#_bindings.method_from_node) {
+    if (!this._bindings.method_from_node) {
       let classname = new StringName("GLTFLight");
       let methodname = new StringName("from_node");
-      this.#_bindings.method_from_node = internal.classdb_get_method_bind(
+      this._bindings.method_from_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3907677874
@@ -53,10 +54,10 @@ export class GLTFLight extends Resource{
     }
   }
   static init_method_to_node() {
-    if (!this.#_bindings.method_to_node) {
+    if (!this._bindings.method_to_node) {
       let classname = new StringName("GLTFLight");
       let methodname = new StringName("to_node");
-      this.#_bindings.method_to_node = internal.classdb_get_method_bind(
+      this._bindings.method_to_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2040811672
@@ -64,10 +65,10 @@ export class GLTFLight extends Resource{
     }
   }
   static init_method_from_dictionary() {
-    if (!this.#_bindings.method_from_dictionary) {
+    if (!this._bindings.method_from_dictionary) {
       let classname = new StringName("GLTFLight");
       let methodname = new StringName("from_dictionary");
-      this.#_bindings.method_from_dictionary = internal.classdb_get_method_bind(
+      this._bindings.method_from_dictionary = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4057087208
@@ -75,10 +76,10 @@ export class GLTFLight extends Resource{
     }
   }
   static init_method_to_dictionary() {
-    if (!this.#_bindings.method_to_dictionary) {
+    if (!this._bindings.method_to_dictionary) {
       let classname = new StringName("GLTFLight");
       let methodname = new StringName("to_dictionary");
-      this.#_bindings.method_to_dictionary = internal.classdb_get_method_bind(
+      this._bindings.method_to_dictionary = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3102165223
@@ -86,10 +87,10 @@ export class GLTFLight extends Resource{
     }
   }
   static init_method_get_color() {
-    if (!this.#_bindings.method_get_color) {
+    if (!this._bindings.method_get_color) {
       let classname = new StringName("GLTFLight");
       let methodname = new StringName("get_color");
-      this.#_bindings.method_get_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3200896285
@@ -97,10 +98,10 @@ export class GLTFLight extends Resource{
     }
   }
   static init_method_set_color() {
-    if (!this.#_bindings.method_set_color) {
+    if (!this._bindings.method_set_color) {
       let classname = new StringName("GLTFLight");
       let methodname = new StringName("set_color");
-      this.#_bindings.method_set_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -108,10 +109,10 @@ export class GLTFLight extends Resource{
     }
   }
   static init_method_get_intensity() {
-    if (!this.#_bindings.method_get_intensity) {
+    if (!this._bindings.method_get_intensity) {
       let classname = new StringName("GLTFLight");
       let methodname = new StringName("get_intensity");
-      this.#_bindings.method_get_intensity = internal.classdb_get_method_bind(
+      this._bindings.method_get_intensity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         191475506
@@ -119,10 +120,10 @@ export class GLTFLight extends Resource{
     }
   }
   static init_method_set_intensity() {
-    if (!this.#_bindings.method_set_intensity) {
+    if (!this._bindings.method_set_intensity) {
       let classname = new StringName("GLTFLight");
       let methodname = new StringName("set_intensity");
-      this.#_bindings.method_set_intensity = internal.classdb_get_method_bind(
+      this._bindings.method_set_intensity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -130,10 +131,10 @@ export class GLTFLight extends Resource{
     }
   }
   static init_method_get_light_type() {
-    if (!this.#_bindings.method_get_light_type) {
+    if (!this._bindings.method_get_light_type) {
       let classname = new StringName("GLTFLight");
       let methodname = new StringName("get_light_type");
-      this.#_bindings.method_get_light_type = internal.classdb_get_method_bind(
+      this._bindings.method_get_light_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2841200299
@@ -141,10 +142,10 @@ export class GLTFLight extends Resource{
     }
   }
   static init_method_set_light_type() {
-    if (!this.#_bindings.method_set_light_type) {
+    if (!this._bindings.method_set_light_type) {
       let classname = new StringName("GLTFLight");
       let methodname = new StringName("set_light_type");
-      this.#_bindings.method_set_light_type = internal.classdb_get_method_bind(
+      this._bindings.method_set_light_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -152,10 +153,10 @@ export class GLTFLight extends Resource{
     }
   }
   static init_method_get_range() {
-    if (!this.#_bindings.method_get_range) {
+    if (!this._bindings.method_get_range) {
       let classname = new StringName("GLTFLight");
       let methodname = new StringName("get_range");
-      this.#_bindings.method_get_range = internal.classdb_get_method_bind(
+      this._bindings.method_get_range = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         191475506
@@ -163,10 +164,10 @@ export class GLTFLight extends Resource{
     }
   }
   static init_method_set_range() {
-    if (!this.#_bindings.method_set_range) {
+    if (!this._bindings.method_set_range) {
       let classname = new StringName("GLTFLight");
       let methodname = new StringName("set_range");
-      this.#_bindings.method_set_range = internal.classdb_get_method_bind(
+      this._bindings.method_set_range = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -174,10 +175,10 @@ export class GLTFLight extends Resource{
     }
   }
   static init_method_get_inner_cone_angle() {
-    if (!this.#_bindings.method_get_inner_cone_angle) {
+    if (!this._bindings.method_get_inner_cone_angle) {
       let classname = new StringName("GLTFLight");
       let methodname = new StringName("get_inner_cone_angle");
-      this.#_bindings.method_get_inner_cone_angle = internal.classdb_get_method_bind(
+      this._bindings.method_get_inner_cone_angle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         191475506
@@ -185,10 +186,10 @@ export class GLTFLight extends Resource{
     }
   }
   static init_method_set_inner_cone_angle() {
-    if (!this.#_bindings.method_set_inner_cone_angle) {
+    if (!this._bindings.method_set_inner_cone_angle) {
       let classname = new StringName("GLTFLight");
       let methodname = new StringName("set_inner_cone_angle");
-      this.#_bindings.method_set_inner_cone_angle = internal.classdb_get_method_bind(
+      this._bindings.method_set_inner_cone_angle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -196,10 +197,10 @@ export class GLTFLight extends Resource{
     }
   }
   static init_method_get_outer_cone_angle() {
-    if (!this.#_bindings.method_get_outer_cone_angle) {
+    if (!this._bindings.method_get_outer_cone_angle) {
       let classname = new StringName("GLTFLight");
       let methodname = new StringName("get_outer_cone_angle");
-      this.#_bindings.method_get_outer_cone_angle = internal.classdb_get_method_bind(
+      this._bindings.method_get_outer_cone_angle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         191475506
@@ -207,10 +208,10 @@ export class GLTFLight extends Resource{
     }
   }
   static init_method_set_outer_cone_angle() {
-    if (!this.#_bindings.method_set_outer_cone_angle) {
+    if (!this._bindings.method_set_outer_cone_angle) {
       let classname = new StringName("GLTFLight");
       let methodname = new StringName("set_outer_cone_angle");
-      this.#_bindings.method_set_outer_cone_angle = internal.classdb_get_method_bind(
+      this._bindings.method_set_outer_cone_angle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -218,10 +219,10 @@ export class GLTFLight extends Resource{
     }
   }
   static init_method_get_additional_data() {
-    if (!this.#_bindings.method_get_additional_data) {
+    if (!this._bindings.method_get_additional_data) {
       let classname = new StringName("GLTFLight");
       let methodname = new StringName("get_additional_data");
-      this.#_bindings.method_get_additional_data = internal.classdb_get_method_bind(
+      this._bindings.method_get_additional_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2138907829
@@ -229,10 +230,10 @@ export class GLTFLight extends Resource{
     }
   }
   static init_method_set_additional_data() {
-    if (!this.#_bindings.method_set_additional_data) {
+    if (!this._bindings.method_set_additional_data) {
       let classname = new StringName("GLTFLight");
       let methodname = new StringName("set_additional_data");
-      this.#_bindings.method_set_additional_data = internal.classdb_get_method_bind(
+      this._bindings.method_set_additional_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3776071444
@@ -245,7 +246,7 @@ export class GLTFLight extends Resource{
   from_node(_light_node) {
     GLTFLight.init_method_from_node();
     return _call_native_mb_ret(
-      GLTFLight.#_bindings.method_from_node,
+      GLTFLight._bindings.method_from_node,
       this._owner,
 			Variant.Type.OBJECT,
       _light_node
@@ -255,7 +256,7 @@ export class GLTFLight extends Resource{
   to_node() {
     GLTFLight.init_method_to_node();
     return _call_native_mb_ret(
-      GLTFLight.#_bindings.method_to_node,
+      GLTFLight._bindings.method_to_node,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -265,7 +266,7 @@ export class GLTFLight extends Resource{
   from_dictionary(_dictionary) {
     GLTFLight.init_method_from_dictionary();
     return _call_native_mb_ret(
-      GLTFLight.#_bindings.method_from_dictionary,
+      GLTFLight._bindings.method_from_dictionary,
       this._owner,
 			Variant.Type.OBJECT,
       _dictionary
@@ -275,7 +276,7 @@ export class GLTFLight extends Resource{
   to_dictionary() {
     GLTFLight.init_method_to_dictionary();
     return _call_native_mb_ret(
-      GLTFLight.#_bindings.method_to_dictionary,
+      GLTFLight._bindings.method_to_dictionary,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -286,7 +287,7 @@ export class GLTFLight extends Resource{
   get_color() {
     GLTFLight.init_method_get_color();
     return _call_native_mb_ret(
-      GLTFLight.#_bindings.method_get_color,
+      GLTFLight._bindings.method_get_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -297,7 +298,7 @@ export class GLTFLight extends Resource{
   set_color(_color) {
     GLTFLight.init_method_set_color();
     return _call_native_mb_no_ret(
-      GLTFLight.#_bindings.method_set_color,
+      GLTFLight._bindings.method_set_color,
       this._owner,
       _color
     );
@@ -306,7 +307,7 @@ export class GLTFLight extends Resource{
   get_intensity() {
     GLTFLight.init_method_get_intensity();
     return _call_native_mb_ret(
-      GLTFLight.#_bindings.method_get_intensity,
+      GLTFLight._bindings.method_get_intensity,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -317,7 +318,7 @@ export class GLTFLight extends Resource{
   set_intensity(_intensity) {
     GLTFLight.init_method_set_intensity();
     return _call_native_mb_no_ret(
-      GLTFLight.#_bindings.method_set_intensity,
+      GLTFLight._bindings.method_set_intensity,
       this._owner,
       _intensity
     );
@@ -326,7 +327,7 @@ export class GLTFLight extends Resource{
   get_light_type() {
     GLTFLight.init_method_get_light_type();
     return _call_native_mb_ret(
-      GLTFLight.#_bindings.method_get_light_type,
+      GLTFLight._bindings.method_get_light_type,
       this._owner,
 			Variant.Type.STRING,
     
@@ -337,7 +338,7 @@ export class GLTFLight extends Resource{
   set_light_type(_light_type) {
     GLTFLight.init_method_set_light_type();
     return _call_native_mb_no_ret(
-      GLTFLight.#_bindings.method_set_light_type,
+      GLTFLight._bindings.method_set_light_type,
       this._owner,
       _light_type
     );
@@ -346,7 +347,7 @@ export class GLTFLight extends Resource{
   get_range() {
     GLTFLight.init_method_get_range();
     return _call_native_mb_ret(
-      GLTFLight.#_bindings.method_get_range,
+      GLTFLight._bindings.method_get_range,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -357,7 +358,7 @@ export class GLTFLight extends Resource{
   set_range(_range) {
     GLTFLight.init_method_set_range();
     return _call_native_mb_no_ret(
-      GLTFLight.#_bindings.method_set_range,
+      GLTFLight._bindings.method_set_range,
       this._owner,
       _range
     );
@@ -366,7 +367,7 @@ export class GLTFLight extends Resource{
   get_inner_cone_angle() {
     GLTFLight.init_method_get_inner_cone_angle();
     return _call_native_mb_ret(
-      GLTFLight.#_bindings.method_get_inner_cone_angle,
+      GLTFLight._bindings.method_get_inner_cone_angle,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -377,7 +378,7 @@ export class GLTFLight extends Resource{
   set_inner_cone_angle(_inner_cone_angle) {
     GLTFLight.init_method_set_inner_cone_angle();
     return _call_native_mb_no_ret(
-      GLTFLight.#_bindings.method_set_inner_cone_angle,
+      GLTFLight._bindings.method_set_inner_cone_angle,
       this._owner,
       _inner_cone_angle
     );
@@ -386,7 +387,7 @@ export class GLTFLight extends Resource{
   get_outer_cone_angle() {
     GLTFLight.init_method_get_outer_cone_angle();
     return _call_native_mb_ret(
-      GLTFLight.#_bindings.method_get_outer_cone_angle,
+      GLTFLight._bindings.method_get_outer_cone_angle,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -397,7 +398,7 @@ export class GLTFLight extends Resource{
   set_outer_cone_angle(_outer_cone_angle) {
     GLTFLight.init_method_set_outer_cone_angle();
     return _call_native_mb_no_ret(
-      GLTFLight.#_bindings.method_set_outer_cone_angle,
+      GLTFLight._bindings.method_set_outer_cone_angle,
       this._owner,
       _outer_cone_angle
     );
@@ -406,7 +407,7 @@ export class GLTFLight extends Resource{
   get_additional_data(_extension_name) {
     GLTFLight.init_method_get_additional_data();
     return _call_native_mb_ret(
-      GLTFLight.#_bindings.method_get_additional_data,
+      GLTFLight._bindings.method_get_additional_data,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -417,7 +418,7 @@ export class GLTFLight extends Resource{
   set_additional_data(_extension_name, _additional_data) {
     GLTFLight.init_method_set_additional_data();
     return _call_native_mb_no_ret(
-      GLTFLight.#_bindings.method_set_additional_data,
+      GLTFLight._bindings.method_set_additional_data,
       this._owner,
       _extension_name, _additional_data
     );

@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StyleBox } from '@js_godot/classes/style_box'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_texture;
@@ -29,10 +30,10 @@ class _MethodBindings {
   method_set_v_axis_stretch_mode;
   method_get_v_axis_stretch_mode;
 }
+@GodotClass
 export class StyleBoxTexture extends StyleBox{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -42,10 +43,10 @@ export class StyleBoxTexture extends StyleBox{
     }
   }
   static init_method_set_texture() {
-    if (!this.#_bindings.method_set_texture) {
+    if (!this._bindings.method_set_texture) {
       let classname = new StringName("StyleBoxTexture");
       let methodname = new StringName("set_texture");
-      this.#_bindings.method_set_texture = internal.classdb_get_method_bind(
+      this._bindings.method_set_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4051416890
@@ -53,10 +54,10 @@ export class StyleBoxTexture extends StyleBox{
     }
   }
   static init_method_get_texture() {
-    if (!this.#_bindings.method_get_texture) {
+    if (!this._bindings.method_get_texture) {
       let classname = new StringName("StyleBoxTexture");
       let methodname = new StringName("get_texture");
-      this.#_bindings.method_get_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -64,10 +65,10 @@ export class StyleBoxTexture extends StyleBox{
     }
   }
   static init_method_set_texture_margin() {
-    if (!this.#_bindings.method_set_texture_margin) {
+    if (!this._bindings.method_set_texture_margin) {
       let classname = new StringName("StyleBoxTexture");
       let methodname = new StringName("set_texture_margin");
-      this.#_bindings.method_set_texture_margin = internal.classdb_get_method_bind(
+      this._bindings.method_set_texture_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4290182280
@@ -75,10 +76,10 @@ export class StyleBoxTexture extends StyleBox{
     }
   }
   static init_method_set_texture_margin_all() {
-    if (!this.#_bindings.method_set_texture_margin_all) {
+    if (!this._bindings.method_set_texture_margin_all) {
       let classname = new StringName("StyleBoxTexture");
       let methodname = new StringName("set_texture_margin_all");
-      this.#_bindings.method_set_texture_margin_all = internal.classdb_get_method_bind(
+      this._bindings.method_set_texture_margin_all = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -86,10 +87,10 @@ export class StyleBoxTexture extends StyleBox{
     }
   }
   static init_method_get_texture_margin() {
-    if (!this.#_bindings.method_get_texture_margin) {
+    if (!this._bindings.method_get_texture_margin) {
       let classname = new StringName("StyleBoxTexture");
       let methodname = new StringName("get_texture_margin");
-      this.#_bindings.method_get_texture_margin = internal.classdb_get_method_bind(
+      this._bindings.method_get_texture_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2869120046
@@ -97,10 +98,10 @@ export class StyleBoxTexture extends StyleBox{
     }
   }
   static init_method_set_expand_margin() {
-    if (!this.#_bindings.method_set_expand_margin) {
+    if (!this._bindings.method_set_expand_margin) {
       let classname = new StringName("StyleBoxTexture");
       let methodname = new StringName("set_expand_margin");
-      this.#_bindings.method_set_expand_margin = internal.classdb_get_method_bind(
+      this._bindings.method_set_expand_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4290182280
@@ -108,10 +109,10 @@ export class StyleBoxTexture extends StyleBox{
     }
   }
   static init_method_set_expand_margin_all() {
-    if (!this.#_bindings.method_set_expand_margin_all) {
+    if (!this._bindings.method_set_expand_margin_all) {
       let classname = new StringName("StyleBoxTexture");
       let methodname = new StringName("set_expand_margin_all");
-      this.#_bindings.method_set_expand_margin_all = internal.classdb_get_method_bind(
+      this._bindings.method_set_expand_margin_all = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -119,10 +120,10 @@ export class StyleBoxTexture extends StyleBox{
     }
   }
   static init_method_get_expand_margin() {
-    if (!this.#_bindings.method_get_expand_margin) {
+    if (!this._bindings.method_get_expand_margin) {
       let classname = new StringName("StyleBoxTexture");
       let methodname = new StringName("get_expand_margin");
-      this.#_bindings.method_get_expand_margin = internal.classdb_get_method_bind(
+      this._bindings.method_get_expand_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2869120046
@@ -130,10 +131,10 @@ export class StyleBoxTexture extends StyleBox{
     }
   }
   static init_method_set_region_rect() {
-    if (!this.#_bindings.method_set_region_rect) {
+    if (!this._bindings.method_set_region_rect) {
       let classname = new StringName("StyleBoxTexture");
       let methodname = new StringName("set_region_rect");
-      this.#_bindings.method_set_region_rect = internal.classdb_get_method_bind(
+      this._bindings.method_set_region_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2046264180
@@ -141,10 +142,10 @@ export class StyleBoxTexture extends StyleBox{
     }
   }
   static init_method_get_region_rect() {
-    if (!this.#_bindings.method_get_region_rect) {
+    if (!this._bindings.method_get_region_rect) {
       let classname = new StringName("StyleBoxTexture");
       let methodname = new StringName("get_region_rect");
-      this.#_bindings.method_get_region_rect = internal.classdb_get_method_bind(
+      this._bindings.method_get_region_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1639390495
@@ -152,10 +153,10 @@ export class StyleBoxTexture extends StyleBox{
     }
   }
   static init_method_set_draw_center() {
-    if (!this.#_bindings.method_set_draw_center) {
+    if (!this._bindings.method_set_draw_center) {
       let classname = new StringName("StyleBoxTexture");
       let methodname = new StringName("set_draw_center");
-      this.#_bindings.method_set_draw_center = internal.classdb_get_method_bind(
+      this._bindings.method_set_draw_center = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -163,10 +164,10 @@ export class StyleBoxTexture extends StyleBox{
     }
   }
   static init_method_is_draw_center_enabled() {
-    if (!this.#_bindings.method_is_draw_center_enabled) {
+    if (!this._bindings.method_is_draw_center_enabled) {
       let classname = new StringName("StyleBoxTexture");
       let methodname = new StringName("is_draw_center_enabled");
-      this.#_bindings.method_is_draw_center_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_draw_center_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -174,10 +175,10 @@ export class StyleBoxTexture extends StyleBox{
     }
   }
   static init_method_set_modulate() {
-    if (!this.#_bindings.method_set_modulate) {
+    if (!this._bindings.method_set_modulate) {
       let classname = new StringName("StyleBoxTexture");
       let methodname = new StringName("set_modulate");
-      this.#_bindings.method_set_modulate = internal.classdb_get_method_bind(
+      this._bindings.method_set_modulate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -185,10 +186,10 @@ export class StyleBoxTexture extends StyleBox{
     }
   }
   static init_method_get_modulate() {
-    if (!this.#_bindings.method_get_modulate) {
+    if (!this._bindings.method_get_modulate) {
       let classname = new StringName("StyleBoxTexture");
       let methodname = new StringName("get_modulate");
-      this.#_bindings.method_get_modulate = internal.classdb_get_method_bind(
+      this._bindings.method_get_modulate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -196,10 +197,10 @@ export class StyleBoxTexture extends StyleBox{
     }
   }
   static init_method_set_h_axis_stretch_mode() {
-    if (!this.#_bindings.method_set_h_axis_stretch_mode) {
+    if (!this._bindings.method_set_h_axis_stretch_mode) {
       let classname = new StringName("StyleBoxTexture");
       let methodname = new StringName("set_h_axis_stretch_mode");
-      this.#_bindings.method_set_h_axis_stretch_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_h_axis_stretch_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2965538783
@@ -207,10 +208,10 @@ export class StyleBoxTexture extends StyleBox{
     }
   }
   static init_method_get_h_axis_stretch_mode() {
-    if (!this.#_bindings.method_get_h_axis_stretch_mode) {
+    if (!this._bindings.method_get_h_axis_stretch_mode) {
       let classname = new StringName("StyleBoxTexture");
       let methodname = new StringName("get_h_axis_stretch_mode");
-      this.#_bindings.method_get_h_axis_stretch_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_h_axis_stretch_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3807744063
@@ -218,10 +219,10 @@ export class StyleBoxTexture extends StyleBox{
     }
   }
   static init_method_set_v_axis_stretch_mode() {
-    if (!this.#_bindings.method_set_v_axis_stretch_mode) {
+    if (!this._bindings.method_set_v_axis_stretch_mode) {
       let classname = new StringName("StyleBoxTexture");
       let methodname = new StringName("set_v_axis_stretch_mode");
-      this.#_bindings.method_set_v_axis_stretch_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_v_axis_stretch_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2965538783
@@ -229,10 +230,10 @@ export class StyleBoxTexture extends StyleBox{
     }
   }
   static init_method_get_v_axis_stretch_mode() {
-    if (!this.#_bindings.method_get_v_axis_stretch_mode) {
+    if (!this._bindings.method_get_v_axis_stretch_mode) {
       let classname = new StringName("StyleBoxTexture");
       let methodname = new StringName("get_v_axis_stretch_mode");
-      this.#_bindings.method_get_v_axis_stretch_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_v_axis_stretch_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3807744063
@@ -245,7 +246,7 @@ export class StyleBoxTexture extends StyleBox{
   set_texture(_texture) {
     StyleBoxTexture.init_method_set_texture();
     return _call_native_mb_no_ret(
-      StyleBoxTexture.#_bindings.method_set_texture,
+      StyleBoxTexture._bindings.method_set_texture,
       this._owner,
       _texture
     );
@@ -254,7 +255,7 @@ export class StyleBoxTexture extends StyleBox{
   get_texture() {
     StyleBoxTexture.init_method_get_texture();
     return _call_native_mb_ret(
-      StyleBoxTexture.#_bindings.method_get_texture,
+      StyleBoxTexture._bindings.method_get_texture,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -264,7 +265,7 @@ export class StyleBoxTexture extends StyleBox{
   set_texture_margin(_margin, _size) {
     StyleBoxTexture.init_method_set_texture_margin();
     return _call_native_mb_no_ret(
-      StyleBoxTexture.#_bindings.method_set_texture_margin,
+      StyleBoxTexture._bindings.method_set_texture_margin,
       this._owner,
       _margin, _size
     );
@@ -273,7 +274,7 @@ export class StyleBoxTexture extends StyleBox{
   set_texture_margin_all(_size) {
     StyleBoxTexture.init_method_set_texture_margin_all();
     return _call_native_mb_no_ret(
-      StyleBoxTexture.#_bindings.method_set_texture_margin_all,
+      StyleBoxTexture._bindings.method_set_texture_margin_all,
       this._owner,
       _size
     );
@@ -282,7 +283,7 @@ export class StyleBoxTexture extends StyleBox{
   get_texture_margin(_margin) {
     StyleBoxTexture.init_method_get_texture_margin();
     return _call_native_mb_ret(
-      StyleBoxTexture.#_bindings.method_get_texture_margin,
+      StyleBoxTexture._bindings.method_get_texture_margin,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -293,7 +294,7 @@ export class StyleBoxTexture extends StyleBox{
   set_expand_margin(_margin, _size) {
     StyleBoxTexture.init_method_set_expand_margin();
     return _call_native_mb_no_ret(
-      StyleBoxTexture.#_bindings.method_set_expand_margin,
+      StyleBoxTexture._bindings.method_set_expand_margin,
       this._owner,
       _margin, _size
     );
@@ -302,7 +303,7 @@ export class StyleBoxTexture extends StyleBox{
   set_expand_margin_all(_size) {
     StyleBoxTexture.init_method_set_expand_margin_all();
     return _call_native_mb_no_ret(
-      StyleBoxTexture.#_bindings.method_set_expand_margin_all,
+      StyleBoxTexture._bindings.method_set_expand_margin_all,
       this._owner,
       _size
     );
@@ -311,7 +312,7 @@ export class StyleBoxTexture extends StyleBox{
   get_expand_margin(_margin) {
     StyleBoxTexture.init_method_get_expand_margin();
     return _call_native_mb_ret(
-      StyleBoxTexture.#_bindings.method_get_expand_margin,
+      StyleBoxTexture._bindings.method_get_expand_margin,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -322,7 +323,7 @@ export class StyleBoxTexture extends StyleBox{
   set_region_rect(_region) {
     StyleBoxTexture.init_method_set_region_rect();
     return _call_native_mb_no_ret(
-      StyleBoxTexture.#_bindings.method_set_region_rect,
+      StyleBoxTexture._bindings.method_set_region_rect,
       this._owner,
       _region
     );
@@ -331,7 +332,7 @@ export class StyleBoxTexture extends StyleBox{
   get_region_rect() {
     StyleBoxTexture.init_method_get_region_rect();
     return _call_native_mb_ret(
-      StyleBoxTexture.#_bindings.method_get_region_rect,
+      StyleBoxTexture._bindings.method_get_region_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -342,7 +343,7 @@ export class StyleBoxTexture extends StyleBox{
   set_draw_center(_enable) {
     StyleBoxTexture.init_method_set_draw_center();
     return _call_native_mb_no_ret(
-      StyleBoxTexture.#_bindings.method_set_draw_center,
+      StyleBoxTexture._bindings.method_set_draw_center,
       this._owner,
       _enable
     );
@@ -351,7 +352,7 @@ export class StyleBoxTexture extends StyleBox{
   is_draw_center_enabled() {
     StyleBoxTexture.init_method_is_draw_center_enabled();
     return _call_native_mb_ret(
-      StyleBoxTexture.#_bindings.method_is_draw_center_enabled,
+      StyleBoxTexture._bindings.method_is_draw_center_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -362,7 +363,7 @@ export class StyleBoxTexture extends StyleBox{
   set_modulate(_color) {
     StyleBoxTexture.init_method_set_modulate();
     return _call_native_mb_no_ret(
-      StyleBoxTexture.#_bindings.method_set_modulate,
+      StyleBoxTexture._bindings.method_set_modulate,
       this._owner,
       _color
     );
@@ -371,7 +372,7 @@ export class StyleBoxTexture extends StyleBox{
   get_modulate() {
     StyleBoxTexture.init_method_get_modulate();
     return _call_native_mb_ret(
-      StyleBoxTexture.#_bindings.method_get_modulate,
+      StyleBoxTexture._bindings.method_get_modulate,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -382,7 +383,7 @@ export class StyleBoxTexture extends StyleBox{
   set_h_axis_stretch_mode(_mode) {
     StyleBoxTexture.init_method_set_h_axis_stretch_mode();
     return _call_native_mb_no_ret(
-      StyleBoxTexture.#_bindings.method_set_h_axis_stretch_mode,
+      StyleBoxTexture._bindings.method_set_h_axis_stretch_mode,
       this._owner,
       _mode
     );
@@ -391,7 +392,7 @@ export class StyleBoxTexture extends StyleBox{
   get_h_axis_stretch_mode() {
     StyleBoxTexture.init_method_get_h_axis_stretch_mode();
     return _call_native_mb_ret(
-      StyleBoxTexture.#_bindings.method_get_h_axis_stretch_mode,
+      StyleBoxTexture._bindings.method_get_h_axis_stretch_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -402,7 +403,7 @@ export class StyleBoxTexture extends StyleBox{
   set_v_axis_stretch_mode(_mode) {
     StyleBoxTexture.init_method_set_v_axis_stretch_mode();
     return _call_native_mb_no_ret(
-      StyleBoxTexture.#_bindings.method_set_v_axis_stretch_mode,
+      StyleBoxTexture._bindings.method_set_v_axis_stretch_mode,
       this._owner,
       _mode
     );
@@ -411,7 +412,7 @@ export class StyleBoxTexture extends StyleBox{
   get_v_axis_stretch_mode() {
     StyleBoxTexture.init_method_get_v_axis_stretch_mode();
     return _call_native_mb_ret(
-      StyleBoxTexture.#_bindings.method_get_v_axis_stretch_mode,
+      StyleBoxTexture._bindings.method_get_v_axis_stretch_mode,
       this._owner,
 			Variant.Type.INT,
     

@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Light3D } from '@js_godot/classes/light3d'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_shadow_mode;
@@ -17,10 +18,10 @@ class _MethodBindings {
   method_set_sky_mode;
   method_get_sky_mode;
 }
+@GodotClass
 export class DirectionalLight3D extends Light3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -30,10 +31,10 @@ export class DirectionalLight3D extends Light3D{
     }
   }
   static init_method_set_shadow_mode() {
-    if (!this.#_bindings.method_set_shadow_mode) {
+    if (!this._bindings.method_set_shadow_mode) {
       let classname = new StringName("DirectionalLight3D");
       let methodname = new StringName("set_shadow_mode");
-      this.#_bindings.method_set_shadow_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_shadow_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1261211726
@@ -41,10 +42,10 @@ export class DirectionalLight3D extends Light3D{
     }
   }
   static init_method_get_shadow_mode() {
-    if (!this.#_bindings.method_get_shadow_mode) {
+    if (!this._bindings.method_get_shadow_mode) {
       let classname = new StringName("DirectionalLight3D");
       let methodname = new StringName("get_shadow_mode");
-      this.#_bindings.method_get_shadow_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_shadow_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2765228544
@@ -52,10 +53,10 @@ export class DirectionalLight3D extends Light3D{
     }
   }
   static init_method_set_blend_splits() {
-    if (!this.#_bindings.method_set_blend_splits) {
+    if (!this._bindings.method_set_blend_splits) {
       let classname = new StringName("DirectionalLight3D");
       let methodname = new StringName("set_blend_splits");
-      this.#_bindings.method_set_blend_splits = internal.classdb_get_method_bind(
+      this._bindings.method_set_blend_splits = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -63,10 +64,10 @@ export class DirectionalLight3D extends Light3D{
     }
   }
   static init_method_is_blend_splits_enabled() {
-    if (!this.#_bindings.method_is_blend_splits_enabled) {
+    if (!this._bindings.method_is_blend_splits_enabled) {
       let classname = new StringName("DirectionalLight3D");
       let methodname = new StringName("is_blend_splits_enabled");
-      this.#_bindings.method_is_blend_splits_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_blend_splits_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -74,10 +75,10 @@ export class DirectionalLight3D extends Light3D{
     }
   }
   static init_method_set_sky_mode() {
-    if (!this.#_bindings.method_set_sky_mode) {
+    if (!this._bindings.method_set_sky_mode) {
       let classname = new StringName("DirectionalLight3D");
       let methodname = new StringName("set_sky_mode");
-      this.#_bindings.method_set_sky_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_sky_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2691194817
@@ -85,10 +86,10 @@ export class DirectionalLight3D extends Light3D{
     }
   }
   static init_method_get_sky_mode() {
-    if (!this.#_bindings.method_get_sky_mode) {
+    if (!this._bindings.method_get_sky_mode) {
       let classname = new StringName("DirectionalLight3D");
       let methodname = new StringName("get_sky_mode");
-      this.#_bindings.method_get_sky_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_sky_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3819982774
@@ -101,7 +102,7 @@ export class DirectionalLight3D extends Light3D{
   set_shadow_mode(_mode) {
     DirectionalLight3D.init_method_set_shadow_mode();
     return _call_native_mb_no_ret(
-      DirectionalLight3D.#_bindings.method_set_shadow_mode,
+      DirectionalLight3D._bindings.method_set_shadow_mode,
       this._owner,
       _mode
     );
@@ -110,7 +111,7 @@ export class DirectionalLight3D extends Light3D{
   get_shadow_mode() {
     DirectionalLight3D.init_method_get_shadow_mode();
     return _call_native_mb_ret(
-      DirectionalLight3D.#_bindings.method_get_shadow_mode,
+      DirectionalLight3D._bindings.method_get_shadow_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -121,7 +122,7 @@ export class DirectionalLight3D extends Light3D{
   set_blend_splits(_enabled) {
     DirectionalLight3D.init_method_set_blend_splits();
     return _call_native_mb_no_ret(
-      DirectionalLight3D.#_bindings.method_set_blend_splits,
+      DirectionalLight3D._bindings.method_set_blend_splits,
       this._owner,
       _enabled
     );
@@ -130,7 +131,7 @@ export class DirectionalLight3D extends Light3D{
   is_blend_splits_enabled() {
     DirectionalLight3D.init_method_is_blend_splits_enabled();
     return _call_native_mb_ret(
-      DirectionalLight3D.#_bindings.method_is_blend_splits_enabled,
+      DirectionalLight3D._bindings.method_is_blend_splits_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -141,7 +142,7 @@ export class DirectionalLight3D extends Light3D{
   set_sky_mode(_mode) {
     DirectionalLight3D.init_method_set_sky_mode();
     return _call_native_mb_no_ret(
-      DirectionalLight3D.#_bindings.method_set_sky_mode,
+      DirectionalLight3D._bindings.method_set_sky_mode,
       this._owner,
       _mode
     );
@@ -150,7 +151,7 @@ export class DirectionalLight3D extends Light3D{
   get_sky_mode() {
     DirectionalLight3D.init_method_get_sky_mode();
     return _call_native_mb_ret(
-      DirectionalLight3D.#_bindings.method_get_sky_mode,
+      DirectionalLight3D._bindings.method_get_sky_mode,
       this._owner,
 			Variant.Type.INT,
     

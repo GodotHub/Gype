@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Popup } from '@js_godot/classes/popup'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_activate_item_by_event;
@@ -98,10 +99,10 @@ class _MethodBindings {
   method_set_system_menu;
   method_get_system_menu;
 }
+@GodotClass
 export class PopupMenu extends Popup{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -111,10 +112,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_activate_item_by_event() {
-    if (!this.#_bindings.method_activate_item_by_event) {
+    if (!this._bindings.method_activate_item_by_event) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("activate_item_by_event");
-      this.#_bindings.method_activate_item_by_event = internal.classdb_get_method_bind(
+      this._bindings.method_activate_item_by_event = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3716412023
@@ -122,10 +123,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_prefer_native_menu() {
-    if (!this.#_bindings.method_set_prefer_native_menu) {
+    if (!this._bindings.method_set_prefer_native_menu) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_prefer_native_menu");
-      this.#_bindings.method_set_prefer_native_menu = internal.classdb_get_method_bind(
+      this._bindings.method_set_prefer_native_menu = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -133,10 +134,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_is_prefer_native_menu() {
-    if (!this.#_bindings.method_is_prefer_native_menu) {
+    if (!this._bindings.method_is_prefer_native_menu) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("is_prefer_native_menu");
-      this.#_bindings.method_is_prefer_native_menu = internal.classdb_get_method_bind(
+      this._bindings.method_is_prefer_native_menu = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -144,10 +145,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_is_native_menu() {
-    if (!this.#_bindings.method_is_native_menu) {
+    if (!this._bindings.method_is_native_menu) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("is_native_menu");
-      this.#_bindings.method_is_native_menu = internal.classdb_get_method_bind(
+      this._bindings.method_is_native_menu = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -155,10 +156,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_add_item() {
-    if (!this.#_bindings.method_add_item) {
+    if (!this._bindings.method_add_item) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("add_item");
-      this.#_bindings.method_add_item = internal.classdb_get_method_bind(
+      this._bindings.method_add_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3674230041
@@ -166,10 +167,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_add_icon_item() {
-    if (!this.#_bindings.method_add_icon_item) {
+    if (!this._bindings.method_add_icon_item) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("add_icon_item");
-      this.#_bindings.method_add_icon_item = internal.classdb_get_method_bind(
+      this._bindings.method_add_icon_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1086190128
@@ -177,10 +178,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_add_check_item() {
-    if (!this.#_bindings.method_add_check_item) {
+    if (!this._bindings.method_add_check_item) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("add_check_item");
-      this.#_bindings.method_add_check_item = internal.classdb_get_method_bind(
+      this._bindings.method_add_check_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3674230041
@@ -188,10 +189,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_add_icon_check_item() {
-    if (!this.#_bindings.method_add_icon_check_item) {
+    if (!this._bindings.method_add_icon_check_item) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("add_icon_check_item");
-      this.#_bindings.method_add_icon_check_item = internal.classdb_get_method_bind(
+      this._bindings.method_add_icon_check_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1086190128
@@ -199,10 +200,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_add_radio_check_item() {
-    if (!this.#_bindings.method_add_radio_check_item) {
+    if (!this._bindings.method_add_radio_check_item) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("add_radio_check_item");
-      this.#_bindings.method_add_radio_check_item = internal.classdb_get_method_bind(
+      this._bindings.method_add_radio_check_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3674230041
@@ -210,10 +211,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_add_icon_radio_check_item() {
-    if (!this.#_bindings.method_add_icon_radio_check_item) {
+    if (!this._bindings.method_add_icon_radio_check_item) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("add_icon_radio_check_item");
-      this.#_bindings.method_add_icon_radio_check_item = internal.classdb_get_method_bind(
+      this._bindings.method_add_icon_radio_check_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1086190128
@@ -221,10 +222,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_add_multistate_item() {
-    if (!this.#_bindings.method_add_multistate_item) {
+    if (!this._bindings.method_add_multistate_item) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("add_multistate_item");
-      this.#_bindings.method_add_multistate_item = internal.classdb_get_method_bind(
+      this._bindings.method_add_multistate_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         150780458
@@ -232,10 +233,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_add_shortcut() {
-    if (!this.#_bindings.method_add_shortcut) {
+    if (!this._bindings.method_add_shortcut) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("add_shortcut");
-      this.#_bindings.method_add_shortcut = internal.classdb_get_method_bind(
+      this._bindings.method_add_shortcut = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3451850107
@@ -243,10 +244,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_add_icon_shortcut() {
-    if (!this.#_bindings.method_add_icon_shortcut) {
+    if (!this._bindings.method_add_icon_shortcut) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("add_icon_shortcut");
-      this.#_bindings.method_add_icon_shortcut = internal.classdb_get_method_bind(
+      this._bindings.method_add_icon_shortcut = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2997871092
@@ -254,10 +255,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_add_check_shortcut() {
-    if (!this.#_bindings.method_add_check_shortcut) {
+    if (!this._bindings.method_add_check_shortcut) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("add_check_shortcut");
-      this.#_bindings.method_add_check_shortcut = internal.classdb_get_method_bind(
+      this._bindings.method_add_check_shortcut = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1642193386
@@ -265,10 +266,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_add_icon_check_shortcut() {
-    if (!this.#_bindings.method_add_icon_check_shortcut) {
+    if (!this._bindings.method_add_icon_check_shortcut) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("add_icon_check_shortcut");
-      this.#_bindings.method_add_icon_check_shortcut = internal.classdb_get_method_bind(
+      this._bindings.method_add_icon_check_shortcut = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3856247530
@@ -276,10 +277,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_add_radio_check_shortcut() {
-    if (!this.#_bindings.method_add_radio_check_shortcut) {
+    if (!this._bindings.method_add_radio_check_shortcut) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("add_radio_check_shortcut");
-      this.#_bindings.method_add_radio_check_shortcut = internal.classdb_get_method_bind(
+      this._bindings.method_add_radio_check_shortcut = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1642193386
@@ -287,10 +288,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_add_icon_radio_check_shortcut() {
-    if (!this.#_bindings.method_add_icon_radio_check_shortcut) {
+    if (!this._bindings.method_add_icon_radio_check_shortcut) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("add_icon_radio_check_shortcut");
-      this.#_bindings.method_add_icon_radio_check_shortcut = internal.classdb_get_method_bind(
+      this._bindings.method_add_icon_radio_check_shortcut = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3856247530
@@ -298,10 +299,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_add_submenu_item() {
-    if (!this.#_bindings.method_add_submenu_item) {
+    if (!this._bindings.method_add_submenu_item) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("add_submenu_item");
-      this.#_bindings.method_add_submenu_item = internal.classdb_get_method_bind(
+      this._bindings.method_add_submenu_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2979222410
@@ -309,10 +310,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_add_submenu_node_item() {
-    if (!this.#_bindings.method_add_submenu_node_item) {
+    if (!this._bindings.method_add_submenu_node_item) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("add_submenu_node_item");
-      this.#_bindings.method_add_submenu_node_item = internal.classdb_get_method_bind(
+      this._bindings.method_add_submenu_node_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1325455216
@@ -320,10 +321,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_item_text() {
-    if (!this.#_bindings.method_set_item_text) {
+    if (!this._bindings.method_set_item_text) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_item_text");
-      this.#_bindings.method_set_item_text = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_text = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         501894301
@@ -331,10 +332,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_item_text_direction() {
-    if (!this.#_bindings.method_set_item_text_direction) {
+    if (!this._bindings.method_set_item_text_direction) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_item_text_direction");
-      this.#_bindings.method_set_item_text_direction = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_text_direction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1707680378
@@ -342,10 +343,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_item_language() {
-    if (!this.#_bindings.method_set_item_language) {
+    if (!this._bindings.method_set_item_language) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_item_language");
-      this.#_bindings.method_set_item_language = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_language = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         501894301
@@ -353,10 +354,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_item_icon() {
-    if (!this.#_bindings.method_set_item_icon) {
+    if (!this._bindings.method_set_item_icon) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_item_icon");
-      this.#_bindings.method_set_item_icon = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_icon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         666127730
@@ -364,10 +365,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_item_icon_max_width() {
-    if (!this.#_bindings.method_set_item_icon_max_width) {
+    if (!this._bindings.method_set_item_icon_max_width) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_item_icon_max_width");
-      this.#_bindings.method_set_item_icon_max_width = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_icon_max_width = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -375,10 +376,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_item_icon_modulate() {
-    if (!this.#_bindings.method_set_item_icon_modulate) {
+    if (!this._bindings.method_set_item_icon_modulate) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_item_icon_modulate");
-      this.#_bindings.method_set_item_icon_modulate = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_icon_modulate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2878471219
@@ -386,10 +387,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_item_checked() {
-    if (!this.#_bindings.method_set_item_checked) {
+    if (!this._bindings.method_set_item_checked) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_item_checked");
-      this.#_bindings.method_set_item_checked = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_checked = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -397,10 +398,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_item_id() {
-    if (!this.#_bindings.method_set_item_id) {
+    if (!this._bindings.method_set_item_id) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_item_id");
-      this.#_bindings.method_set_item_id = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_id = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -408,10 +409,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_item_accelerator() {
-    if (!this.#_bindings.method_set_item_accelerator) {
+    if (!this._bindings.method_set_item_accelerator) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_item_accelerator");
-      this.#_bindings.method_set_item_accelerator = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_accelerator = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2992817551
@@ -419,10 +420,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_item_metadata() {
-    if (!this.#_bindings.method_set_item_metadata) {
+    if (!this._bindings.method_set_item_metadata) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_item_metadata");
-      this.#_bindings.method_set_item_metadata = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_metadata = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2152698145
@@ -430,10 +431,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_item_disabled() {
-    if (!this.#_bindings.method_set_item_disabled) {
+    if (!this._bindings.method_set_item_disabled) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_item_disabled");
-      this.#_bindings.method_set_item_disabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_disabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -441,10 +442,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_item_submenu() {
-    if (!this.#_bindings.method_set_item_submenu) {
+    if (!this._bindings.method_set_item_submenu) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_item_submenu");
-      this.#_bindings.method_set_item_submenu = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_submenu = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         501894301
@@ -452,10 +453,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_item_submenu_node() {
-    if (!this.#_bindings.method_set_item_submenu_node) {
+    if (!this._bindings.method_set_item_submenu_node) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_item_submenu_node");
-      this.#_bindings.method_set_item_submenu_node = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_submenu_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1068370740
@@ -463,10 +464,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_item_as_separator() {
-    if (!this.#_bindings.method_set_item_as_separator) {
+    if (!this._bindings.method_set_item_as_separator) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_item_as_separator");
-      this.#_bindings.method_set_item_as_separator = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_as_separator = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -474,10 +475,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_item_as_checkable() {
-    if (!this.#_bindings.method_set_item_as_checkable) {
+    if (!this._bindings.method_set_item_as_checkable) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_item_as_checkable");
-      this.#_bindings.method_set_item_as_checkable = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_as_checkable = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -485,10 +486,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_item_as_radio_checkable() {
-    if (!this.#_bindings.method_set_item_as_radio_checkable) {
+    if (!this._bindings.method_set_item_as_radio_checkable) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_item_as_radio_checkable");
-      this.#_bindings.method_set_item_as_radio_checkable = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_as_radio_checkable = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -496,10 +497,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_item_tooltip() {
-    if (!this.#_bindings.method_set_item_tooltip) {
+    if (!this._bindings.method_set_item_tooltip) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_item_tooltip");
-      this.#_bindings.method_set_item_tooltip = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_tooltip = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         501894301
@@ -507,10 +508,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_item_shortcut() {
-    if (!this.#_bindings.method_set_item_shortcut) {
+    if (!this._bindings.method_set_item_shortcut) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_item_shortcut");
-      this.#_bindings.method_set_item_shortcut = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_shortcut = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         825127832
@@ -518,10 +519,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_item_indent() {
-    if (!this.#_bindings.method_set_item_indent) {
+    if (!this._bindings.method_set_item_indent) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_item_indent");
-      this.#_bindings.method_set_item_indent = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_indent = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -529,10 +530,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_item_multistate() {
-    if (!this.#_bindings.method_set_item_multistate) {
+    if (!this._bindings.method_set_item_multistate) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_item_multistate");
-      this.#_bindings.method_set_item_multistate = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_multistate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -540,10 +541,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_item_multistate_max() {
-    if (!this.#_bindings.method_set_item_multistate_max) {
+    if (!this._bindings.method_set_item_multistate_max) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_item_multistate_max");
-      this.#_bindings.method_set_item_multistate_max = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_multistate_max = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -551,10 +552,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_item_shortcut_disabled() {
-    if (!this.#_bindings.method_set_item_shortcut_disabled) {
+    if (!this._bindings.method_set_item_shortcut_disabled) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_item_shortcut_disabled");
-      this.#_bindings.method_set_item_shortcut_disabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_shortcut_disabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -562,10 +563,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_toggle_item_checked() {
-    if (!this.#_bindings.method_toggle_item_checked) {
+    if (!this._bindings.method_toggle_item_checked) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("toggle_item_checked");
-      this.#_bindings.method_toggle_item_checked = internal.classdb_get_method_bind(
+      this._bindings.method_toggle_item_checked = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -573,10 +574,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_toggle_item_multistate() {
-    if (!this.#_bindings.method_toggle_item_multistate) {
+    if (!this._bindings.method_toggle_item_multistate) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("toggle_item_multistate");
-      this.#_bindings.method_toggle_item_multistate = internal.classdb_get_method_bind(
+      this._bindings.method_toggle_item_multistate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -584,10 +585,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_get_item_text() {
-    if (!this.#_bindings.method_get_item_text) {
+    if (!this._bindings.method_get_item_text) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("get_item_text");
-      this.#_bindings.method_get_item_text = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_text = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         844755477
@@ -595,10 +596,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_get_item_text_direction() {
-    if (!this.#_bindings.method_get_item_text_direction) {
+    if (!this._bindings.method_get_item_text_direction) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("get_item_text_direction");
-      this.#_bindings.method_get_item_text_direction = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_text_direction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4235602388
@@ -606,10 +607,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_get_item_language() {
-    if (!this.#_bindings.method_get_item_language) {
+    if (!this._bindings.method_get_item_language) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("get_item_language");
-      this.#_bindings.method_get_item_language = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_language = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         844755477
@@ -617,10 +618,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_get_item_icon() {
-    if (!this.#_bindings.method_get_item_icon) {
+    if (!this._bindings.method_get_item_icon) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("get_item_icon");
-      this.#_bindings.method_get_item_icon = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_icon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3536238170
@@ -628,10 +629,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_get_item_icon_max_width() {
-    if (!this.#_bindings.method_get_item_icon_max_width) {
+    if (!this._bindings.method_get_item_icon_max_width) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("get_item_icon_max_width");
-      this.#_bindings.method_get_item_icon_max_width = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_icon_max_width = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         923996154
@@ -639,10 +640,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_get_item_icon_modulate() {
-    if (!this.#_bindings.method_get_item_icon_modulate) {
+    if (!this._bindings.method_get_item_icon_modulate) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("get_item_icon_modulate");
-      this.#_bindings.method_get_item_icon_modulate = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_icon_modulate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3457211756
@@ -650,10 +651,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_is_item_checked() {
-    if (!this.#_bindings.method_is_item_checked) {
+    if (!this._bindings.method_is_item_checked) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("is_item_checked");
-      this.#_bindings.method_is_item_checked = internal.classdb_get_method_bind(
+      this._bindings.method_is_item_checked = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -661,10 +662,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_get_item_id() {
-    if (!this.#_bindings.method_get_item_id) {
+    if (!this._bindings.method_get_item_id) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("get_item_id");
-      this.#_bindings.method_get_item_id = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_id = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         923996154
@@ -672,10 +673,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_get_item_index() {
-    if (!this.#_bindings.method_get_item_index) {
+    if (!this._bindings.method_get_item_index) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("get_item_index");
-      this.#_bindings.method_get_item_index = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_index = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         923996154
@@ -683,10 +684,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_get_item_accelerator() {
-    if (!this.#_bindings.method_get_item_accelerator) {
+    if (!this._bindings.method_get_item_accelerator) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("get_item_accelerator");
-      this.#_bindings.method_get_item_accelerator = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_accelerator = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         253789942
@@ -694,10 +695,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_get_item_metadata() {
-    if (!this.#_bindings.method_get_item_metadata) {
+    if (!this._bindings.method_get_item_metadata) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("get_item_metadata");
-      this.#_bindings.method_get_item_metadata = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_metadata = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4227898402
@@ -705,10 +706,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_is_item_disabled() {
-    if (!this.#_bindings.method_is_item_disabled) {
+    if (!this._bindings.method_is_item_disabled) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("is_item_disabled");
-      this.#_bindings.method_is_item_disabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_item_disabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -716,10 +717,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_get_item_submenu() {
-    if (!this.#_bindings.method_get_item_submenu) {
+    if (!this._bindings.method_get_item_submenu) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("get_item_submenu");
-      this.#_bindings.method_get_item_submenu = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_submenu = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         844755477
@@ -727,10 +728,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_get_item_submenu_node() {
-    if (!this.#_bindings.method_get_item_submenu_node) {
+    if (!this._bindings.method_get_item_submenu_node) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("get_item_submenu_node");
-      this.#_bindings.method_get_item_submenu_node = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_submenu_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2100501353
@@ -738,10 +739,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_is_item_separator() {
-    if (!this.#_bindings.method_is_item_separator) {
+    if (!this._bindings.method_is_item_separator) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("is_item_separator");
-      this.#_bindings.method_is_item_separator = internal.classdb_get_method_bind(
+      this._bindings.method_is_item_separator = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -749,10 +750,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_is_item_checkable() {
-    if (!this.#_bindings.method_is_item_checkable) {
+    if (!this._bindings.method_is_item_checkable) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("is_item_checkable");
-      this.#_bindings.method_is_item_checkable = internal.classdb_get_method_bind(
+      this._bindings.method_is_item_checkable = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -760,10 +761,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_is_item_radio_checkable() {
-    if (!this.#_bindings.method_is_item_radio_checkable) {
+    if (!this._bindings.method_is_item_radio_checkable) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("is_item_radio_checkable");
-      this.#_bindings.method_is_item_radio_checkable = internal.classdb_get_method_bind(
+      this._bindings.method_is_item_radio_checkable = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -771,10 +772,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_is_item_shortcut_disabled() {
-    if (!this.#_bindings.method_is_item_shortcut_disabled) {
+    if (!this._bindings.method_is_item_shortcut_disabled) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("is_item_shortcut_disabled");
-      this.#_bindings.method_is_item_shortcut_disabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_item_shortcut_disabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -782,10 +783,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_get_item_tooltip() {
-    if (!this.#_bindings.method_get_item_tooltip) {
+    if (!this._bindings.method_get_item_tooltip) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("get_item_tooltip");
-      this.#_bindings.method_get_item_tooltip = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_tooltip = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         844755477
@@ -793,10 +794,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_get_item_shortcut() {
-    if (!this.#_bindings.method_get_item_shortcut) {
+    if (!this._bindings.method_get_item_shortcut) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("get_item_shortcut");
-      this.#_bindings.method_get_item_shortcut = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_shortcut = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1449483325
@@ -804,10 +805,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_get_item_indent() {
-    if (!this.#_bindings.method_get_item_indent) {
+    if (!this._bindings.method_get_item_indent) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("get_item_indent");
-      this.#_bindings.method_get_item_indent = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_indent = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         923996154
@@ -815,10 +816,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_get_item_multistate_max() {
-    if (!this.#_bindings.method_get_item_multistate_max) {
+    if (!this._bindings.method_get_item_multistate_max) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("get_item_multistate_max");
-      this.#_bindings.method_get_item_multistate_max = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_multistate_max = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         923996154
@@ -826,10 +827,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_get_item_multistate() {
-    if (!this.#_bindings.method_get_item_multistate) {
+    if (!this._bindings.method_get_item_multistate) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("get_item_multistate");
-      this.#_bindings.method_get_item_multistate = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_multistate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         923996154
@@ -837,10 +838,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_focused_item() {
-    if (!this.#_bindings.method_set_focused_item) {
+    if (!this._bindings.method_set_focused_item) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_focused_item");
-      this.#_bindings.method_set_focused_item = internal.classdb_get_method_bind(
+      this._bindings.method_set_focused_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -848,10 +849,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_get_focused_item() {
-    if (!this.#_bindings.method_get_focused_item) {
+    if (!this._bindings.method_get_focused_item) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("get_focused_item");
-      this.#_bindings.method_get_focused_item = internal.classdb_get_method_bind(
+      this._bindings.method_get_focused_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -859,10 +860,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_item_count() {
-    if (!this.#_bindings.method_set_item_count) {
+    if (!this._bindings.method_set_item_count) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_item_count");
-      this.#_bindings.method_set_item_count = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -870,10 +871,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_get_item_count() {
-    if (!this.#_bindings.method_get_item_count) {
+    if (!this._bindings.method_get_item_count) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("get_item_count");
-      this.#_bindings.method_get_item_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -881,10 +882,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_scroll_to_item() {
-    if (!this.#_bindings.method_scroll_to_item) {
+    if (!this._bindings.method_scroll_to_item) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("scroll_to_item");
-      this.#_bindings.method_scroll_to_item = internal.classdb_get_method_bind(
+      this._bindings.method_scroll_to_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -892,10 +893,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_remove_item() {
-    if (!this.#_bindings.method_remove_item) {
+    if (!this._bindings.method_remove_item) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("remove_item");
-      this.#_bindings.method_remove_item = internal.classdb_get_method_bind(
+      this._bindings.method_remove_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -903,10 +904,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_add_separator() {
-    if (!this.#_bindings.method_add_separator) {
+    if (!this._bindings.method_add_separator) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("add_separator");
-      this.#_bindings.method_add_separator = internal.classdb_get_method_bind(
+      this._bindings.method_add_separator = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2266703459
@@ -914,10 +915,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_clear() {
-    if (!this.#_bindings.method_clear) {
+    if (!this._bindings.method_clear) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("clear");
-      this.#_bindings.method_clear = internal.classdb_get_method_bind(
+      this._bindings.method_clear = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         107499316
@@ -925,10 +926,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_hide_on_item_selection() {
-    if (!this.#_bindings.method_set_hide_on_item_selection) {
+    if (!this._bindings.method_set_hide_on_item_selection) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_hide_on_item_selection");
-      this.#_bindings.method_set_hide_on_item_selection = internal.classdb_get_method_bind(
+      this._bindings.method_set_hide_on_item_selection = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -936,10 +937,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_is_hide_on_item_selection() {
-    if (!this.#_bindings.method_is_hide_on_item_selection) {
+    if (!this._bindings.method_is_hide_on_item_selection) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("is_hide_on_item_selection");
-      this.#_bindings.method_is_hide_on_item_selection = internal.classdb_get_method_bind(
+      this._bindings.method_is_hide_on_item_selection = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -947,10 +948,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_hide_on_checkable_item_selection() {
-    if (!this.#_bindings.method_set_hide_on_checkable_item_selection) {
+    if (!this._bindings.method_set_hide_on_checkable_item_selection) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_hide_on_checkable_item_selection");
-      this.#_bindings.method_set_hide_on_checkable_item_selection = internal.classdb_get_method_bind(
+      this._bindings.method_set_hide_on_checkable_item_selection = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -958,10 +959,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_is_hide_on_checkable_item_selection() {
-    if (!this.#_bindings.method_is_hide_on_checkable_item_selection) {
+    if (!this._bindings.method_is_hide_on_checkable_item_selection) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("is_hide_on_checkable_item_selection");
-      this.#_bindings.method_is_hide_on_checkable_item_selection = internal.classdb_get_method_bind(
+      this._bindings.method_is_hide_on_checkable_item_selection = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -969,10 +970,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_hide_on_state_item_selection() {
-    if (!this.#_bindings.method_set_hide_on_state_item_selection) {
+    if (!this._bindings.method_set_hide_on_state_item_selection) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_hide_on_state_item_selection");
-      this.#_bindings.method_set_hide_on_state_item_selection = internal.classdb_get_method_bind(
+      this._bindings.method_set_hide_on_state_item_selection = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -980,10 +981,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_is_hide_on_state_item_selection() {
-    if (!this.#_bindings.method_is_hide_on_state_item_selection) {
+    if (!this._bindings.method_is_hide_on_state_item_selection) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("is_hide_on_state_item_selection");
-      this.#_bindings.method_is_hide_on_state_item_selection = internal.classdb_get_method_bind(
+      this._bindings.method_is_hide_on_state_item_selection = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -991,10 +992,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_submenu_popup_delay() {
-    if (!this.#_bindings.method_set_submenu_popup_delay) {
+    if (!this._bindings.method_set_submenu_popup_delay) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_submenu_popup_delay");
-      this.#_bindings.method_set_submenu_popup_delay = internal.classdb_get_method_bind(
+      this._bindings.method_set_submenu_popup_delay = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -1002,10 +1003,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_get_submenu_popup_delay() {
-    if (!this.#_bindings.method_get_submenu_popup_delay) {
+    if (!this._bindings.method_get_submenu_popup_delay) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("get_submenu_popup_delay");
-      this.#_bindings.method_get_submenu_popup_delay = internal.classdb_get_method_bind(
+      this._bindings.method_get_submenu_popup_delay = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -1013,10 +1014,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_allow_search() {
-    if (!this.#_bindings.method_set_allow_search) {
+    if (!this._bindings.method_set_allow_search) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_allow_search");
-      this.#_bindings.method_set_allow_search = internal.classdb_get_method_bind(
+      this._bindings.method_set_allow_search = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -1024,10 +1025,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_get_allow_search() {
-    if (!this.#_bindings.method_get_allow_search) {
+    if (!this._bindings.method_get_allow_search) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("get_allow_search");
-      this.#_bindings.method_get_allow_search = internal.classdb_get_method_bind(
+      this._bindings.method_get_allow_search = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -1035,10 +1036,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_is_system_menu() {
-    if (!this.#_bindings.method_is_system_menu) {
+    if (!this._bindings.method_is_system_menu) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("is_system_menu");
-      this.#_bindings.method_is_system_menu = internal.classdb_get_method_bind(
+      this._bindings.method_is_system_menu = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -1046,10 +1047,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_set_system_menu() {
-    if (!this.#_bindings.method_set_system_menu) {
+    if (!this._bindings.method_set_system_menu) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("set_system_menu");
-      this.#_bindings.method_set_system_menu = internal.classdb_get_method_bind(
+      this._bindings.method_set_system_menu = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         600639674
@@ -1057,10 +1058,10 @@ export class PopupMenu extends Popup{
     }
   }
   static init_method_get_system_menu() {
-    if (!this.#_bindings.method_get_system_menu) {
+    if (!this._bindings.method_get_system_menu) {
       let classname = new StringName("PopupMenu");
       let methodname = new StringName("get_system_menu");
-      this.#_bindings.method_get_system_menu = internal.classdb_get_method_bind(
+      this._bindings.method_get_system_menu = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1222557358
@@ -1073,7 +1074,7 @@ export class PopupMenu extends Popup{
   activate_item_by_event(_event, _for_global_only) {
     PopupMenu.init_method_activate_item_by_event();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_activate_item_by_event,
+      PopupMenu._bindings.method_activate_item_by_event,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1084,7 +1085,7 @@ export class PopupMenu extends Popup{
   set_prefer_native_menu(_enabled) {
     PopupMenu.init_method_set_prefer_native_menu();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_prefer_native_menu,
+      PopupMenu._bindings.method_set_prefer_native_menu,
       this._owner,
       _enabled
     );
@@ -1093,7 +1094,7 @@ export class PopupMenu extends Popup{
   is_prefer_native_menu() {
     PopupMenu.init_method_is_prefer_native_menu();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_is_prefer_native_menu,
+      PopupMenu._bindings.method_is_prefer_native_menu,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1104,7 +1105,7 @@ export class PopupMenu extends Popup{
   is_native_menu() {
     PopupMenu.init_method_is_native_menu();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_is_native_menu,
+      PopupMenu._bindings.method_is_native_menu,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1115,7 +1116,7 @@ export class PopupMenu extends Popup{
   add_item(_label, _id, _accel) {
     PopupMenu.init_method_add_item();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_add_item,
+      PopupMenu._bindings.method_add_item,
       this._owner,
       _label, _id, _accel
     );
@@ -1124,7 +1125,7 @@ export class PopupMenu extends Popup{
   add_icon_item(_texture, _label, _id, _accel) {
     PopupMenu.init_method_add_icon_item();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_add_icon_item,
+      PopupMenu._bindings.method_add_icon_item,
       this._owner,
       _texture, _label, _id, _accel
     );
@@ -1133,7 +1134,7 @@ export class PopupMenu extends Popup{
   add_check_item(_label, _id, _accel) {
     PopupMenu.init_method_add_check_item();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_add_check_item,
+      PopupMenu._bindings.method_add_check_item,
       this._owner,
       _label, _id, _accel
     );
@@ -1142,7 +1143,7 @@ export class PopupMenu extends Popup{
   add_icon_check_item(_texture, _label, _id, _accel) {
     PopupMenu.init_method_add_icon_check_item();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_add_icon_check_item,
+      PopupMenu._bindings.method_add_icon_check_item,
       this._owner,
       _texture, _label, _id, _accel
     );
@@ -1151,7 +1152,7 @@ export class PopupMenu extends Popup{
   add_radio_check_item(_label, _id, _accel) {
     PopupMenu.init_method_add_radio_check_item();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_add_radio_check_item,
+      PopupMenu._bindings.method_add_radio_check_item,
       this._owner,
       _label, _id, _accel
     );
@@ -1160,7 +1161,7 @@ export class PopupMenu extends Popup{
   add_icon_radio_check_item(_texture, _label, _id, _accel) {
     PopupMenu.init_method_add_icon_radio_check_item();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_add_icon_radio_check_item,
+      PopupMenu._bindings.method_add_icon_radio_check_item,
       this._owner,
       _texture, _label, _id, _accel
     );
@@ -1169,7 +1170,7 @@ export class PopupMenu extends Popup{
   add_multistate_item(_label, _max_states, _default_state, _id, _accel) {
     PopupMenu.init_method_add_multistate_item();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_add_multistate_item,
+      PopupMenu._bindings.method_add_multistate_item,
       this._owner,
       _label, _max_states, _default_state, _id, _accel
     );
@@ -1178,7 +1179,7 @@ export class PopupMenu extends Popup{
   add_shortcut(_shortcut, _id, _global, _allow_echo) {
     PopupMenu.init_method_add_shortcut();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_add_shortcut,
+      PopupMenu._bindings.method_add_shortcut,
       this._owner,
       _shortcut, _id, _global, _allow_echo
     );
@@ -1187,7 +1188,7 @@ export class PopupMenu extends Popup{
   add_icon_shortcut(_texture, _shortcut, _id, _global, _allow_echo) {
     PopupMenu.init_method_add_icon_shortcut();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_add_icon_shortcut,
+      PopupMenu._bindings.method_add_icon_shortcut,
       this._owner,
       _texture, _shortcut, _id, _global, _allow_echo
     );
@@ -1196,7 +1197,7 @@ export class PopupMenu extends Popup{
   add_check_shortcut(_shortcut, _id, _global) {
     PopupMenu.init_method_add_check_shortcut();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_add_check_shortcut,
+      PopupMenu._bindings.method_add_check_shortcut,
       this._owner,
       _shortcut, _id, _global
     );
@@ -1205,7 +1206,7 @@ export class PopupMenu extends Popup{
   add_icon_check_shortcut(_texture, _shortcut, _id, _global) {
     PopupMenu.init_method_add_icon_check_shortcut();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_add_icon_check_shortcut,
+      PopupMenu._bindings.method_add_icon_check_shortcut,
       this._owner,
       _texture, _shortcut, _id, _global
     );
@@ -1214,7 +1215,7 @@ export class PopupMenu extends Popup{
   add_radio_check_shortcut(_shortcut, _id, _global) {
     PopupMenu.init_method_add_radio_check_shortcut();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_add_radio_check_shortcut,
+      PopupMenu._bindings.method_add_radio_check_shortcut,
       this._owner,
       _shortcut, _id, _global
     );
@@ -1223,7 +1224,7 @@ export class PopupMenu extends Popup{
   add_icon_radio_check_shortcut(_texture, _shortcut, _id, _global) {
     PopupMenu.init_method_add_icon_radio_check_shortcut();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_add_icon_radio_check_shortcut,
+      PopupMenu._bindings.method_add_icon_radio_check_shortcut,
       this._owner,
       _texture, _shortcut, _id, _global
     );
@@ -1232,7 +1233,7 @@ export class PopupMenu extends Popup{
   add_submenu_item(_label, _submenu, _id) {
     PopupMenu.init_method_add_submenu_item();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_add_submenu_item,
+      PopupMenu._bindings.method_add_submenu_item,
       this._owner,
       _label, _submenu, _id
     );
@@ -1241,7 +1242,7 @@ export class PopupMenu extends Popup{
   add_submenu_node_item(_label, _submenu, _id) {
     PopupMenu.init_method_add_submenu_node_item();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_add_submenu_node_item,
+      PopupMenu._bindings.method_add_submenu_node_item,
       this._owner,
       _label, _submenu, _id
     );
@@ -1250,7 +1251,7 @@ export class PopupMenu extends Popup{
   set_item_text(_index, _text) {
     PopupMenu.init_method_set_item_text();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_item_text,
+      PopupMenu._bindings.method_set_item_text,
       this._owner,
       _index, _text
     );
@@ -1259,7 +1260,7 @@ export class PopupMenu extends Popup{
   set_item_text_direction(_index, _direction) {
     PopupMenu.init_method_set_item_text_direction();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_item_text_direction,
+      PopupMenu._bindings.method_set_item_text_direction,
       this._owner,
       _index, _direction
     );
@@ -1268,7 +1269,7 @@ export class PopupMenu extends Popup{
   set_item_language(_index, _language) {
     PopupMenu.init_method_set_item_language();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_item_language,
+      PopupMenu._bindings.method_set_item_language,
       this._owner,
       _index, _language
     );
@@ -1277,7 +1278,7 @@ export class PopupMenu extends Popup{
   set_item_icon(_index, _icon) {
     PopupMenu.init_method_set_item_icon();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_item_icon,
+      PopupMenu._bindings.method_set_item_icon,
       this._owner,
       _index, _icon
     );
@@ -1286,7 +1287,7 @@ export class PopupMenu extends Popup{
   set_item_icon_max_width(_index, _width) {
     PopupMenu.init_method_set_item_icon_max_width();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_item_icon_max_width,
+      PopupMenu._bindings.method_set_item_icon_max_width,
       this._owner,
       _index, _width
     );
@@ -1295,7 +1296,7 @@ export class PopupMenu extends Popup{
   set_item_icon_modulate(_index, _modulate) {
     PopupMenu.init_method_set_item_icon_modulate();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_item_icon_modulate,
+      PopupMenu._bindings.method_set_item_icon_modulate,
       this._owner,
       _index, _modulate
     );
@@ -1304,7 +1305,7 @@ export class PopupMenu extends Popup{
   set_item_checked(_index, _checked) {
     PopupMenu.init_method_set_item_checked();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_item_checked,
+      PopupMenu._bindings.method_set_item_checked,
       this._owner,
       _index, _checked
     );
@@ -1313,7 +1314,7 @@ export class PopupMenu extends Popup{
   set_item_id(_index, _id) {
     PopupMenu.init_method_set_item_id();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_item_id,
+      PopupMenu._bindings.method_set_item_id,
       this._owner,
       _index, _id
     );
@@ -1322,7 +1323,7 @@ export class PopupMenu extends Popup{
   set_item_accelerator(_index, _accel) {
     PopupMenu.init_method_set_item_accelerator();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_item_accelerator,
+      PopupMenu._bindings.method_set_item_accelerator,
       this._owner,
       _index, _accel
     );
@@ -1331,7 +1332,7 @@ export class PopupMenu extends Popup{
   set_item_metadata(_index, _metadata) {
     PopupMenu.init_method_set_item_metadata();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_item_metadata,
+      PopupMenu._bindings.method_set_item_metadata,
       this._owner,
       _index, _metadata
     );
@@ -1340,7 +1341,7 @@ export class PopupMenu extends Popup{
   set_item_disabled(_index, _disabled) {
     PopupMenu.init_method_set_item_disabled();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_item_disabled,
+      PopupMenu._bindings.method_set_item_disabled,
       this._owner,
       _index, _disabled
     );
@@ -1349,7 +1350,7 @@ export class PopupMenu extends Popup{
   set_item_submenu(_index, _submenu) {
     PopupMenu.init_method_set_item_submenu();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_item_submenu,
+      PopupMenu._bindings.method_set_item_submenu,
       this._owner,
       _index, _submenu
     );
@@ -1358,7 +1359,7 @@ export class PopupMenu extends Popup{
   set_item_submenu_node(_index, _submenu) {
     PopupMenu.init_method_set_item_submenu_node();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_item_submenu_node,
+      PopupMenu._bindings.method_set_item_submenu_node,
       this._owner,
       _index, _submenu
     );
@@ -1367,7 +1368,7 @@ export class PopupMenu extends Popup{
   set_item_as_separator(_index, _enable) {
     PopupMenu.init_method_set_item_as_separator();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_item_as_separator,
+      PopupMenu._bindings.method_set_item_as_separator,
       this._owner,
       _index, _enable
     );
@@ -1376,7 +1377,7 @@ export class PopupMenu extends Popup{
   set_item_as_checkable(_index, _enable) {
     PopupMenu.init_method_set_item_as_checkable();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_item_as_checkable,
+      PopupMenu._bindings.method_set_item_as_checkable,
       this._owner,
       _index, _enable
     );
@@ -1385,7 +1386,7 @@ export class PopupMenu extends Popup{
   set_item_as_radio_checkable(_index, _enable) {
     PopupMenu.init_method_set_item_as_radio_checkable();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_item_as_radio_checkable,
+      PopupMenu._bindings.method_set_item_as_radio_checkable,
       this._owner,
       _index, _enable
     );
@@ -1394,7 +1395,7 @@ export class PopupMenu extends Popup{
   set_item_tooltip(_index, _tooltip) {
     PopupMenu.init_method_set_item_tooltip();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_item_tooltip,
+      PopupMenu._bindings.method_set_item_tooltip,
       this._owner,
       _index, _tooltip
     );
@@ -1403,7 +1404,7 @@ export class PopupMenu extends Popup{
   set_item_shortcut(_index, _shortcut, _global) {
     PopupMenu.init_method_set_item_shortcut();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_item_shortcut,
+      PopupMenu._bindings.method_set_item_shortcut,
       this._owner,
       _index, _shortcut, _global
     );
@@ -1412,7 +1413,7 @@ export class PopupMenu extends Popup{
   set_item_indent(_index, _indent) {
     PopupMenu.init_method_set_item_indent();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_item_indent,
+      PopupMenu._bindings.method_set_item_indent,
       this._owner,
       _index, _indent
     );
@@ -1421,7 +1422,7 @@ export class PopupMenu extends Popup{
   set_item_multistate(_index, _state) {
     PopupMenu.init_method_set_item_multistate();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_item_multistate,
+      PopupMenu._bindings.method_set_item_multistate,
       this._owner,
       _index, _state
     );
@@ -1430,7 +1431,7 @@ export class PopupMenu extends Popup{
   set_item_multistate_max(_index, _max_states) {
     PopupMenu.init_method_set_item_multistate_max();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_item_multistate_max,
+      PopupMenu._bindings.method_set_item_multistate_max,
       this._owner,
       _index, _max_states
     );
@@ -1439,7 +1440,7 @@ export class PopupMenu extends Popup{
   set_item_shortcut_disabled(_index, _disabled) {
     PopupMenu.init_method_set_item_shortcut_disabled();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_item_shortcut_disabled,
+      PopupMenu._bindings.method_set_item_shortcut_disabled,
       this._owner,
       _index, _disabled
     );
@@ -1448,7 +1449,7 @@ export class PopupMenu extends Popup{
   toggle_item_checked(_index) {
     PopupMenu.init_method_toggle_item_checked();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_toggle_item_checked,
+      PopupMenu._bindings.method_toggle_item_checked,
       this._owner,
       _index
     );
@@ -1457,7 +1458,7 @@ export class PopupMenu extends Popup{
   toggle_item_multistate(_index) {
     PopupMenu.init_method_toggle_item_multistate();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_toggle_item_multistate,
+      PopupMenu._bindings.method_toggle_item_multistate,
       this._owner,
       _index
     );
@@ -1466,7 +1467,7 @@ export class PopupMenu extends Popup{
   get_item_text(_index) {
     PopupMenu.init_method_get_item_text();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_get_item_text,
+      PopupMenu._bindings.method_get_item_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1477,7 +1478,7 @@ export class PopupMenu extends Popup{
   get_item_text_direction(_index) {
     PopupMenu.init_method_get_item_text_direction();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_get_item_text_direction,
+      PopupMenu._bindings.method_get_item_text_direction,
       this._owner,
 			Variant.Type.INT,
     
@@ -1488,7 +1489,7 @@ export class PopupMenu extends Popup{
   get_item_language(_index) {
     PopupMenu.init_method_get_item_language();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_get_item_language,
+      PopupMenu._bindings.method_get_item_language,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1499,7 +1500,7 @@ export class PopupMenu extends Popup{
   get_item_icon(_index) {
     PopupMenu.init_method_get_item_icon();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_get_item_icon,
+      PopupMenu._bindings.method_get_item_icon,
       this._owner,
 			Variant.Type.OBJECT,
       _index
@@ -1509,7 +1510,7 @@ export class PopupMenu extends Popup{
   get_item_icon_max_width(_index) {
     PopupMenu.init_method_get_item_icon_max_width();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_get_item_icon_max_width,
+      PopupMenu._bindings.method_get_item_icon_max_width,
       this._owner,
 			Variant.Type.INT,
     
@@ -1520,7 +1521,7 @@ export class PopupMenu extends Popup{
   get_item_icon_modulate(_index) {
     PopupMenu.init_method_get_item_icon_modulate();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_get_item_icon_modulate,
+      PopupMenu._bindings.method_get_item_icon_modulate,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -1531,7 +1532,7 @@ export class PopupMenu extends Popup{
   is_item_checked(_index) {
     PopupMenu.init_method_is_item_checked();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_is_item_checked,
+      PopupMenu._bindings.method_is_item_checked,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1542,7 +1543,7 @@ export class PopupMenu extends Popup{
   get_item_id(_index) {
     PopupMenu.init_method_get_item_id();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_get_item_id,
+      PopupMenu._bindings.method_get_item_id,
       this._owner,
 			Variant.Type.INT,
     
@@ -1553,7 +1554,7 @@ export class PopupMenu extends Popup{
   get_item_index(_id) {
     PopupMenu.init_method_get_item_index();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_get_item_index,
+      PopupMenu._bindings.method_get_item_index,
       this._owner,
 			Variant.Type.INT,
     
@@ -1564,7 +1565,7 @@ export class PopupMenu extends Popup{
   get_item_accelerator(_index) {
     PopupMenu.init_method_get_item_accelerator();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_get_item_accelerator,
+      PopupMenu._bindings.method_get_item_accelerator,
       this._owner,
 			Variant.Type.INT,
     
@@ -1575,7 +1576,7 @@ export class PopupMenu extends Popup{
   get_item_metadata(_index) {
     PopupMenu.init_method_get_item_metadata();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_get_item_metadata,
+      PopupMenu._bindings.method_get_item_metadata,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -1586,7 +1587,7 @@ export class PopupMenu extends Popup{
   is_item_disabled(_index) {
     PopupMenu.init_method_is_item_disabled();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_is_item_disabled,
+      PopupMenu._bindings.method_is_item_disabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1597,7 +1598,7 @@ export class PopupMenu extends Popup{
   get_item_submenu(_index) {
     PopupMenu.init_method_get_item_submenu();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_get_item_submenu,
+      PopupMenu._bindings.method_get_item_submenu,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1608,7 +1609,7 @@ export class PopupMenu extends Popup{
   get_item_submenu_node(_index) {
     PopupMenu.init_method_get_item_submenu_node();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_get_item_submenu_node,
+      PopupMenu._bindings.method_get_item_submenu_node,
       this._owner,
 			Variant.Type.OBJECT,
       _index
@@ -1618,7 +1619,7 @@ export class PopupMenu extends Popup{
   is_item_separator(_index) {
     PopupMenu.init_method_is_item_separator();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_is_item_separator,
+      PopupMenu._bindings.method_is_item_separator,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1629,7 +1630,7 @@ export class PopupMenu extends Popup{
   is_item_checkable(_index) {
     PopupMenu.init_method_is_item_checkable();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_is_item_checkable,
+      PopupMenu._bindings.method_is_item_checkable,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1640,7 +1641,7 @@ export class PopupMenu extends Popup{
   is_item_radio_checkable(_index) {
     PopupMenu.init_method_is_item_radio_checkable();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_is_item_radio_checkable,
+      PopupMenu._bindings.method_is_item_radio_checkable,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1651,7 +1652,7 @@ export class PopupMenu extends Popup{
   is_item_shortcut_disabled(_index) {
     PopupMenu.init_method_is_item_shortcut_disabled();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_is_item_shortcut_disabled,
+      PopupMenu._bindings.method_is_item_shortcut_disabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1662,7 +1663,7 @@ export class PopupMenu extends Popup{
   get_item_tooltip(_index) {
     PopupMenu.init_method_get_item_tooltip();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_get_item_tooltip,
+      PopupMenu._bindings.method_get_item_tooltip,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1673,7 +1674,7 @@ export class PopupMenu extends Popup{
   get_item_shortcut(_index) {
     PopupMenu.init_method_get_item_shortcut();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_get_item_shortcut,
+      PopupMenu._bindings.method_get_item_shortcut,
       this._owner,
 			Variant.Type.OBJECT,
       _index
@@ -1683,7 +1684,7 @@ export class PopupMenu extends Popup{
   get_item_indent(_index) {
     PopupMenu.init_method_get_item_indent();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_get_item_indent,
+      PopupMenu._bindings.method_get_item_indent,
       this._owner,
 			Variant.Type.INT,
     
@@ -1694,7 +1695,7 @@ export class PopupMenu extends Popup{
   get_item_multistate_max(_index) {
     PopupMenu.init_method_get_item_multistate_max();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_get_item_multistate_max,
+      PopupMenu._bindings.method_get_item_multistate_max,
       this._owner,
 			Variant.Type.INT,
     
@@ -1705,7 +1706,7 @@ export class PopupMenu extends Popup{
   get_item_multistate(_index) {
     PopupMenu.init_method_get_item_multistate();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_get_item_multistate,
+      PopupMenu._bindings.method_get_item_multistate,
       this._owner,
 			Variant.Type.INT,
     
@@ -1716,7 +1717,7 @@ export class PopupMenu extends Popup{
   set_focused_item(_index) {
     PopupMenu.init_method_set_focused_item();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_focused_item,
+      PopupMenu._bindings.method_set_focused_item,
       this._owner,
       _index
     );
@@ -1725,7 +1726,7 @@ export class PopupMenu extends Popup{
   get_focused_item() {
     PopupMenu.init_method_get_focused_item();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_get_focused_item,
+      PopupMenu._bindings.method_get_focused_item,
       this._owner,
 			Variant.Type.INT,
     
@@ -1736,7 +1737,7 @@ export class PopupMenu extends Popup{
   set_item_count(_count) {
     PopupMenu.init_method_set_item_count();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_item_count,
+      PopupMenu._bindings.method_set_item_count,
       this._owner,
       _count
     );
@@ -1745,7 +1746,7 @@ export class PopupMenu extends Popup{
   get_item_count() {
     PopupMenu.init_method_get_item_count();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_get_item_count,
+      PopupMenu._bindings.method_get_item_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -1756,7 +1757,7 @@ export class PopupMenu extends Popup{
   scroll_to_item(_index) {
     PopupMenu.init_method_scroll_to_item();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_scroll_to_item,
+      PopupMenu._bindings.method_scroll_to_item,
       this._owner,
       _index
     );
@@ -1765,7 +1766,7 @@ export class PopupMenu extends Popup{
   remove_item(_index) {
     PopupMenu.init_method_remove_item();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_remove_item,
+      PopupMenu._bindings.method_remove_item,
       this._owner,
       _index
     );
@@ -1774,7 +1775,7 @@ export class PopupMenu extends Popup{
   add_separator(_label, _id) {
     PopupMenu.init_method_add_separator();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_add_separator,
+      PopupMenu._bindings.method_add_separator,
       this._owner,
       _label, _id
     );
@@ -1783,7 +1784,7 @@ export class PopupMenu extends Popup{
   clear(_free_submenus) {
     PopupMenu.init_method_clear();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_clear,
+      PopupMenu._bindings.method_clear,
       this._owner,
       _free_submenus
     );
@@ -1792,7 +1793,7 @@ export class PopupMenu extends Popup{
   set_hide_on_item_selection(_enable) {
     PopupMenu.init_method_set_hide_on_item_selection();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_hide_on_item_selection,
+      PopupMenu._bindings.method_set_hide_on_item_selection,
       this._owner,
       _enable
     );
@@ -1801,7 +1802,7 @@ export class PopupMenu extends Popup{
   is_hide_on_item_selection() {
     PopupMenu.init_method_is_hide_on_item_selection();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_is_hide_on_item_selection,
+      PopupMenu._bindings.method_is_hide_on_item_selection,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1812,7 +1813,7 @@ export class PopupMenu extends Popup{
   set_hide_on_checkable_item_selection(_enable) {
     PopupMenu.init_method_set_hide_on_checkable_item_selection();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_hide_on_checkable_item_selection,
+      PopupMenu._bindings.method_set_hide_on_checkable_item_selection,
       this._owner,
       _enable
     );
@@ -1821,7 +1822,7 @@ export class PopupMenu extends Popup{
   is_hide_on_checkable_item_selection() {
     PopupMenu.init_method_is_hide_on_checkable_item_selection();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_is_hide_on_checkable_item_selection,
+      PopupMenu._bindings.method_is_hide_on_checkable_item_selection,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1832,7 +1833,7 @@ export class PopupMenu extends Popup{
   set_hide_on_state_item_selection(_enable) {
     PopupMenu.init_method_set_hide_on_state_item_selection();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_hide_on_state_item_selection,
+      PopupMenu._bindings.method_set_hide_on_state_item_selection,
       this._owner,
       _enable
     );
@@ -1841,7 +1842,7 @@ export class PopupMenu extends Popup{
   is_hide_on_state_item_selection() {
     PopupMenu.init_method_is_hide_on_state_item_selection();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_is_hide_on_state_item_selection,
+      PopupMenu._bindings.method_is_hide_on_state_item_selection,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1852,7 +1853,7 @@ export class PopupMenu extends Popup{
   set_submenu_popup_delay(_seconds) {
     PopupMenu.init_method_set_submenu_popup_delay();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_submenu_popup_delay,
+      PopupMenu._bindings.method_set_submenu_popup_delay,
       this._owner,
       _seconds
     );
@@ -1861,7 +1862,7 @@ export class PopupMenu extends Popup{
   get_submenu_popup_delay() {
     PopupMenu.init_method_get_submenu_popup_delay();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_get_submenu_popup_delay,
+      PopupMenu._bindings.method_get_submenu_popup_delay,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1872,7 +1873,7 @@ export class PopupMenu extends Popup{
   set_allow_search(_allow) {
     PopupMenu.init_method_set_allow_search();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_allow_search,
+      PopupMenu._bindings.method_set_allow_search,
       this._owner,
       _allow
     );
@@ -1881,7 +1882,7 @@ export class PopupMenu extends Popup{
   get_allow_search() {
     PopupMenu.init_method_get_allow_search();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_get_allow_search,
+      PopupMenu._bindings.method_get_allow_search,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1892,7 +1893,7 @@ export class PopupMenu extends Popup{
   is_system_menu() {
     PopupMenu.init_method_is_system_menu();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_is_system_menu,
+      PopupMenu._bindings.method_is_system_menu,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1903,7 +1904,7 @@ export class PopupMenu extends Popup{
   set_system_menu(_system_menu_id) {
     PopupMenu.init_method_set_system_menu();
     return _call_native_mb_no_ret(
-      PopupMenu.#_bindings.method_set_system_menu,
+      PopupMenu._bindings.method_set_system_menu,
       this._owner,
       _system_menu_id
     );
@@ -1912,7 +1913,7 @@ export class PopupMenu extends Popup{
   get_system_menu() {
     PopupMenu.init_method_get_system_menu();
     return _call_native_mb_ret(
-      PopupMenu.#_bindings.method_get_system_menu,
+      PopupMenu._bindings.method_get_system_menu,
       this._owner,
 			Variant.Type.INT,
     

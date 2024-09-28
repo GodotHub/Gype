@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { CSGPrimitive3D } from '@js_godot/classes/csg_primitive3d'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_radius;
@@ -23,10 +24,10 @@ class _MethodBindings {
   method_set_smooth_faces;
   method_get_smooth_faces;
 }
+@GodotClass
 export class CSGCylinder3D extends CSGPrimitive3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -36,10 +37,10 @@ export class CSGCylinder3D extends CSGPrimitive3D{
     }
   }
   static init_method_set_radius() {
-    if (!this.#_bindings.method_set_radius) {
+    if (!this._bindings.method_set_radius) {
       let classname = new StringName("CSGCylinder3D");
       let methodname = new StringName("set_radius");
-      this.#_bindings.method_set_radius = internal.classdb_get_method_bind(
+      this._bindings.method_set_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -47,10 +48,10 @@ export class CSGCylinder3D extends CSGPrimitive3D{
     }
   }
   static init_method_get_radius() {
-    if (!this.#_bindings.method_get_radius) {
+    if (!this._bindings.method_get_radius) {
       let classname = new StringName("CSGCylinder3D");
       let methodname = new StringName("get_radius");
-      this.#_bindings.method_get_radius = internal.classdb_get_method_bind(
+      this._bindings.method_get_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -58,10 +59,10 @@ export class CSGCylinder3D extends CSGPrimitive3D{
     }
   }
   static init_method_set_height() {
-    if (!this.#_bindings.method_set_height) {
+    if (!this._bindings.method_set_height) {
       let classname = new StringName("CSGCylinder3D");
       let methodname = new StringName("set_height");
-      this.#_bindings.method_set_height = internal.classdb_get_method_bind(
+      this._bindings.method_set_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -69,10 +70,10 @@ export class CSGCylinder3D extends CSGPrimitive3D{
     }
   }
   static init_method_get_height() {
-    if (!this.#_bindings.method_get_height) {
+    if (!this._bindings.method_get_height) {
       let classname = new StringName("CSGCylinder3D");
       let methodname = new StringName("get_height");
-      this.#_bindings.method_get_height = internal.classdb_get_method_bind(
+      this._bindings.method_get_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -80,10 +81,10 @@ export class CSGCylinder3D extends CSGPrimitive3D{
     }
   }
   static init_method_set_sides() {
-    if (!this.#_bindings.method_set_sides) {
+    if (!this._bindings.method_set_sides) {
       let classname = new StringName("CSGCylinder3D");
       let methodname = new StringName("set_sides");
-      this.#_bindings.method_set_sides = internal.classdb_get_method_bind(
+      this._bindings.method_set_sides = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -91,10 +92,10 @@ export class CSGCylinder3D extends CSGPrimitive3D{
     }
   }
   static init_method_get_sides() {
-    if (!this.#_bindings.method_get_sides) {
+    if (!this._bindings.method_get_sides) {
       let classname = new StringName("CSGCylinder3D");
       let methodname = new StringName("get_sides");
-      this.#_bindings.method_get_sides = internal.classdb_get_method_bind(
+      this._bindings.method_get_sides = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -102,10 +103,10 @@ export class CSGCylinder3D extends CSGPrimitive3D{
     }
   }
   static init_method_set_cone() {
-    if (!this.#_bindings.method_set_cone) {
+    if (!this._bindings.method_set_cone) {
       let classname = new StringName("CSGCylinder3D");
       let methodname = new StringName("set_cone");
-      this.#_bindings.method_set_cone = internal.classdb_get_method_bind(
+      this._bindings.method_set_cone = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -113,10 +114,10 @@ export class CSGCylinder3D extends CSGPrimitive3D{
     }
   }
   static init_method_is_cone() {
-    if (!this.#_bindings.method_is_cone) {
+    if (!this._bindings.method_is_cone) {
       let classname = new StringName("CSGCylinder3D");
       let methodname = new StringName("is_cone");
-      this.#_bindings.method_is_cone = internal.classdb_get_method_bind(
+      this._bindings.method_is_cone = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -124,10 +125,10 @@ export class CSGCylinder3D extends CSGPrimitive3D{
     }
   }
   static init_method_set_material() {
-    if (!this.#_bindings.method_set_material) {
+    if (!this._bindings.method_set_material) {
       let classname = new StringName("CSGCylinder3D");
       let methodname = new StringName("set_material");
-      this.#_bindings.method_set_material = internal.classdb_get_method_bind(
+      this._bindings.method_set_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2757459619
@@ -135,10 +136,10 @@ export class CSGCylinder3D extends CSGPrimitive3D{
     }
   }
   static init_method_get_material() {
-    if (!this.#_bindings.method_get_material) {
+    if (!this._bindings.method_get_material) {
       let classname = new StringName("CSGCylinder3D");
       let methodname = new StringName("get_material");
-      this.#_bindings.method_get_material = internal.classdb_get_method_bind(
+      this._bindings.method_get_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         5934680
@@ -146,10 +147,10 @@ export class CSGCylinder3D extends CSGPrimitive3D{
     }
   }
   static init_method_set_smooth_faces() {
-    if (!this.#_bindings.method_set_smooth_faces) {
+    if (!this._bindings.method_set_smooth_faces) {
       let classname = new StringName("CSGCylinder3D");
       let methodname = new StringName("set_smooth_faces");
-      this.#_bindings.method_set_smooth_faces = internal.classdb_get_method_bind(
+      this._bindings.method_set_smooth_faces = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -157,10 +158,10 @@ export class CSGCylinder3D extends CSGPrimitive3D{
     }
   }
   static init_method_get_smooth_faces() {
-    if (!this.#_bindings.method_get_smooth_faces) {
+    if (!this._bindings.method_get_smooth_faces) {
       let classname = new StringName("CSGCylinder3D");
       let methodname = new StringName("get_smooth_faces");
-      this.#_bindings.method_get_smooth_faces = internal.classdb_get_method_bind(
+      this._bindings.method_get_smooth_faces = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -173,7 +174,7 @@ export class CSGCylinder3D extends CSGPrimitive3D{
   set_radius(_radius) {
     CSGCylinder3D.init_method_set_radius();
     return _call_native_mb_no_ret(
-      CSGCylinder3D.#_bindings.method_set_radius,
+      CSGCylinder3D._bindings.method_set_radius,
       this._owner,
       _radius
     );
@@ -182,7 +183,7 @@ export class CSGCylinder3D extends CSGPrimitive3D{
   get_radius() {
     CSGCylinder3D.init_method_get_radius();
     return _call_native_mb_ret(
-      CSGCylinder3D.#_bindings.method_get_radius,
+      CSGCylinder3D._bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -193,7 +194,7 @@ export class CSGCylinder3D extends CSGPrimitive3D{
   set_height(_height) {
     CSGCylinder3D.init_method_set_height();
     return _call_native_mb_no_ret(
-      CSGCylinder3D.#_bindings.method_set_height,
+      CSGCylinder3D._bindings.method_set_height,
       this._owner,
       _height
     );
@@ -202,7 +203,7 @@ export class CSGCylinder3D extends CSGPrimitive3D{
   get_height() {
     CSGCylinder3D.init_method_get_height();
     return _call_native_mb_ret(
-      CSGCylinder3D.#_bindings.method_get_height,
+      CSGCylinder3D._bindings.method_get_height,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -213,7 +214,7 @@ export class CSGCylinder3D extends CSGPrimitive3D{
   set_sides(_sides) {
     CSGCylinder3D.init_method_set_sides();
     return _call_native_mb_no_ret(
-      CSGCylinder3D.#_bindings.method_set_sides,
+      CSGCylinder3D._bindings.method_set_sides,
       this._owner,
       _sides
     );
@@ -222,7 +223,7 @@ export class CSGCylinder3D extends CSGPrimitive3D{
   get_sides() {
     CSGCylinder3D.init_method_get_sides();
     return _call_native_mb_ret(
-      CSGCylinder3D.#_bindings.method_get_sides,
+      CSGCylinder3D._bindings.method_get_sides,
       this._owner,
 			Variant.Type.INT,
     
@@ -233,7 +234,7 @@ export class CSGCylinder3D extends CSGPrimitive3D{
   set_cone(_cone) {
     CSGCylinder3D.init_method_set_cone();
     return _call_native_mb_no_ret(
-      CSGCylinder3D.#_bindings.method_set_cone,
+      CSGCylinder3D._bindings.method_set_cone,
       this._owner,
       _cone
     );
@@ -242,7 +243,7 @@ export class CSGCylinder3D extends CSGPrimitive3D{
   is_cone() {
     CSGCylinder3D.init_method_is_cone();
     return _call_native_mb_ret(
-      CSGCylinder3D.#_bindings.method_is_cone,
+      CSGCylinder3D._bindings.method_is_cone,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -253,7 +254,7 @@ export class CSGCylinder3D extends CSGPrimitive3D{
   set_material(_material) {
     CSGCylinder3D.init_method_set_material();
     return _call_native_mb_no_ret(
-      CSGCylinder3D.#_bindings.method_set_material,
+      CSGCylinder3D._bindings.method_set_material,
       this._owner,
       _material
     );
@@ -262,7 +263,7 @@ export class CSGCylinder3D extends CSGPrimitive3D{
   get_material() {
     CSGCylinder3D.init_method_get_material();
     return _call_native_mb_ret(
-      CSGCylinder3D.#_bindings.method_get_material,
+      CSGCylinder3D._bindings.method_get_material,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -272,7 +273,7 @@ export class CSGCylinder3D extends CSGPrimitive3D{
   set_smooth_faces(_smooth_faces) {
     CSGCylinder3D.init_method_set_smooth_faces();
     return _call_native_mb_no_ret(
-      CSGCylinder3D.#_bindings.method_set_smooth_faces,
+      CSGCylinder3D._bindings.method_set_smooth_faces,
       this._owner,
       _smooth_faces
     );
@@ -281,7 +282,7 @@ export class CSGCylinder3D extends CSGPrimitive3D{
   get_smooth_faces() {
     CSGCylinder3D.init_method_get_smooth_faces();
     return _call_native_mb_ret(
-      CSGCylinder3D.#_bindings.method_get_smooth_faces,
+      CSGCylinder3D._bindings.method_get_smooth_faces,
       this._owner,
 			Variant.Type.BOOL,
     

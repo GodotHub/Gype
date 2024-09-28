@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { CameraAttributes } from '@js_godot/classes/camera_attributes'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_aperture;
@@ -28,10 +29,10 @@ class _MethodBindings {
   method_set_auto_exposure_min_exposure_value;
   method_get_auto_exposure_min_exposure_value;
 }
+@GodotClass
 export class CameraAttributesPhysical extends CameraAttributes{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -41,10 +42,10 @@ export class CameraAttributesPhysical extends CameraAttributes{
     }
   }
   static init_method_set_aperture() {
-    if (!this.#_bindings.method_set_aperture) {
+    if (!this._bindings.method_set_aperture) {
       let classname = new StringName("CameraAttributesPhysical");
       let methodname = new StringName("set_aperture");
-      this.#_bindings.method_set_aperture = internal.classdb_get_method_bind(
+      this._bindings.method_set_aperture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -52,10 +53,10 @@ export class CameraAttributesPhysical extends CameraAttributes{
     }
   }
   static init_method_get_aperture() {
-    if (!this.#_bindings.method_get_aperture) {
+    if (!this._bindings.method_get_aperture) {
       let classname = new StringName("CameraAttributesPhysical");
       let methodname = new StringName("get_aperture");
-      this.#_bindings.method_get_aperture = internal.classdb_get_method_bind(
+      this._bindings.method_get_aperture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -63,10 +64,10 @@ export class CameraAttributesPhysical extends CameraAttributes{
     }
   }
   static init_method_set_shutter_speed() {
-    if (!this.#_bindings.method_set_shutter_speed) {
+    if (!this._bindings.method_set_shutter_speed) {
       let classname = new StringName("CameraAttributesPhysical");
       let methodname = new StringName("set_shutter_speed");
-      this.#_bindings.method_set_shutter_speed = internal.classdb_get_method_bind(
+      this._bindings.method_set_shutter_speed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -74,10 +75,10 @@ export class CameraAttributesPhysical extends CameraAttributes{
     }
   }
   static init_method_get_shutter_speed() {
-    if (!this.#_bindings.method_get_shutter_speed) {
+    if (!this._bindings.method_get_shutter_speed) {
       let classname = new StringName("CameraAttributesPhysical");
       let methodname = new StringName("get_shutter_speed");
-      this.#_bindings.method_get_shutter_speed = internal.classdb_get_method_bind(
+      this._bindings.method_get_shutter_speed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -85,10 +86,10 @@ export class CameraAttributesPhysical extends CameraAttributes{
     }
   }
   static init_method_set_focal_length() {
-    if (!this.#_bindings.method_set_focal_length) {
+    if (!this._bindings.method_set_focal_length) {
       let classname = new StringName("CameraAttributesPhysical");
       let methodname = new StringName("set_focal_length");
-      this.#_bindings.method_set_focal_length = internal.classdb_get_method_bind(
+      this._bindings.method_set_focal_length = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -96,10 +97,10 @@ export class CameraAttributesPhysical extends CameraAttributes{
     }
   }
   static init_method_get_focal_length() {
-    if (!this.#_bindings.method_get_focal_length) {
+    if (!this._bindings.method_get_focal_length) {
       let classname = new StringName("CameraAttributesPhysical");
       let methodname = new StringName("get_focal_length");
-      this.#_bindings.method_get_focal_length = internal.classdb_get_method_bind(
+      this._bindings.method_get_focal_length = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -107,10 +108,10 @@ export class CameraAttributesPhysical extends CameraAttributes{
     }
   }
   static init_method_set_focus_distance() {
-    if (!this.#_bindings.method_set_focus_distance) {
+    if (!this._bindings.method_set_focus_distance) {
       let classname = new StringName("CameraAttributesPhysical");
       let methodname = new StringName("set_focus_distance");
-      this.#_bindings.method_set_focus_distance = internal.classdb_get_method_bind(
+      this._bindings.method_set_focus_distance = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -118,10 +119,10 @@ export class CameraAttributesPhysical extends CameraAttributes{
     }
   }
   static init_method_get_focus_distance() {
-    if (!this.#_bindings.method_get_focus_distance) {
+    if (!this._bindings.method_get_focus_distance) {
       let classname = new StringName("CameraAttributesPhysical");
       let methodname = new StringName("get_focus_distance");
-      this.#_bindings.method_get_focus_distance = internal.classdb_get_method_bind(
+      this._bindings.method_get_focus_distance = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -129,10 +130,10 @@ export class CameraAttributesPhysical extends CameraAttributes{
     }
   }
   static init_method_set_near() {
-    if (!this.#_bindings.method_set_near) {
+    if (!this._bindings.method_set_near) {
       let classname = new StringName("CameraAttributesPhysical");
       let methodname = new StringName("set_near");
-      this.#_bindings.method_set_near = internal.classdb_get_method_bind(
+      this._bindings.method_set_near = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -140,10 +141,10 @@ export class CameraAttributesPhysical extends CameraAttributes{
     }
   }
   static init_method_get_near() {
-    if (!this.#_bindings.method_get_near) {
+    if (!this._bindings.method_get_near) {
       let classname = new StringName("CameraAttributesPhysical");
       let methodname = new StringName("get_near");
-      this.#_bindings.method_get_near = internal.classdb_get_method_bind(
+      this._bindings.method_get_near = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -151,10 +152,10 @@ export class CameraAttributesPhysical extends CameraAttributes{
     }
   }
   static init_method_set_far() {
-    if (!this.#_bindings.method_set_far) {
+    if (!this._bindings.method_set_far) {
       let classname = new StringName("CameraAttributesPhysical");
       let methodname = new StringName("set_far");
-      this.#_bindings.method_set_far = internal.classdb_get_method_bind(
+      this._bindings.method_set_far = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -162,10 +163,10 @@ export class CameraAttributesPhysical extends CameraAttributes{
     }
   }
   static init_method_get_far() {
-    if (!this.#_bindings.method_get_far) {
+    if (!this._bindings.method_get_far) {
       let classname = new StringName("CameraAttributesPhysical");
       let methodname = new StringName("get_far");
-      this.#_bindings.method_get_far = internal.classdb_get_method_bind(
+      this._bindings.method_get_far = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -173,10 +174,10 @@ export class CameraAttributesPhysical extends CameraAttributes{
     }
   }
   static init_method_get_fov() {
-    if (!this.#_bindings.method_get_fov) {
+    if (!this._bindings.method_get_fov) {
       let classname = new StringName("CameraAttributesPhysical");
       let methodname = new StringName("get_fov");
-      this.#_bindings.method_get_fov = internal.classdb_get_method_bind(
+      this._bindings.method_get_fov = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -184,10 +185,10 @@ export class CameraAttributesPhysical extends CameraAttributes{
     }
   }
   static init_method_set_auto_exposure_max_exposure_value() {
-    if (!this.#_bindings.method_set_auto_exposure_max_exposure_value) {
+    if (!this._bindings.method_set_auto_exposure_max_exposure_value) {
       let classname = new StringName("CameraAttributesPhysical");
       let methodname = new StringName("set_auto_exposure_max_exposure_value");
-      this.#_bindings.method_set_auto_exposure_max_exposure_value = internal.classdb_get_method_bind(
+      this._bindings.method_set_auto_exposure_max_exposure_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -195,10 +196,10 @@ export class CameraAttributesPhysical extends CameraAttributes{
     }
   }
   static init_method_get_auto_exposure_max_exposure_value() {
-    if (!this.#_bindings.method_get_auto_exposure_max_exposure_value) {
+    if (!this._bindings.method_get_auto_exposure_max_exposure_value) {
       let classname = new StringName("CameraAttributesPhysical");
       let methodname = new StringName("get_auto_exposure_max_exposure_value");
-      this.#_bindings.method_get_auto_exposure_max_exposure_value = internal.classdb_get_method_bind(
+      this._bindings.method_get_auto_exposure_max_exposure_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -206,10 +207,10 @@ export class CameraAttributesPhysical extends CameraAttributes{
     }
   }
   static init_method_set_auto_exposure_min_exposure_value() {
-    if (!this.#_bindings.method_set_auto_exposure_min_exposure_value) {
+    if (!this._bindings.method_set_auto_exposure_min_exposure_value) {
       let classname = new StringName("CameraAttributesPhysical");
       let methodname = new StringName("set_auto_exposure_min_exposure_value");
-      this.#_bindings.method_set_auto_exposure_min_exposure_value = internal.classdb_get_method_bind(
+      this._bindings.method_set_auto_exposure_min_exposure_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -217,10 +218,10 @@ export class CameraAttributesPhysical extends CameraAttributes{
     }
   }
   static init_method_get_auto_exposure_min_exposure_value() {
-    if (!this.#_bindings.method_get_auto_exposure_min_exposure_value) {
+    if (!this._bindings.method_get_auto_exposure_min_exposure_value) {
       let classname = new StringName("CameraAttributesPhysical");
       let methodname = new StringName("get_auto_exposure_min_exposure_value");
-      this.#_bindings.method_get_auto_exposure_min_exposure_value = internal.classdb_get_method_bind(
+      this._bindings.method_get_auto_exposure_min_exposure_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -233,7 +234,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   set_aperture(_aperture) {
     CameraAttributesPhysical.init_method_set_aperture();
     return _call_native_mb_no_ret(
-      CameraAttributesPhysical.#_bindings.method_set_aperture,
+      CameraAttributesPhysical._bindings.method_set_aperture,
       this._owner,
       _aperture
     );
@@ -242,7 +243,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   get_aperture() {
     CameraAttributesPhysical.init_method_get_aperture();
     return _call_native_mb_ret(
-      CameraAttributesPhysical.#_bindings.method_get_aperture,
+      CameraAttributesPhysical._bindings.method_get_aperture,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -253,7 +254,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   set_shutter_speed(_shutter_speed) {
     CameraAttributesPhysical.init_method_set_shutter_speed();
     return _call_native_mb_no_ret(
-      CameraAttributesPhysical.#_bindings.method_set_shutter_speed,
+      CameraAttributesPhysical._bindings.method_set_shutter_speed,
       this._owner,
       _shutter_speed
     );
@@ -262,7 +263,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   get_shutter_speed() {
     CameraAttributesPhysical.init_method_get_shutter_speed();
     return _call_native_mb_ret(
-      CameraAttributesPhysical.#_bindings.method_get_shutter_speed,
+      CameraAttributesPhysical._bindings.method_get_shutter_speed,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -273,7 +274,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   set_focal_length(_focal_length) {
     CameraAttributesPhysical.init_method_set_focal_length();
     return _call_native_mb_no_ret(
-      CameraAttributesPhysical.#_bindings.method_set_focal_length,
+      CameraAttributesPhysical._bindings.method_set_focal_length,
       this._owner,
       _focal_length
     );
@@ -282,7 +283,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   get_focal_length() {
     CameraAttributesPhysical.init_method_get_focal_length();
     return _call_native_mb_ret(
-      CameraAttributesPhysical.#_bindings.method_get_focal_length,
+      CameraAttributesPhysical._bindings.method_get_focal_length,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -293,7 +294,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   set_focus_distance(_focus_distance) {
     CameraAttributesPhysical.init_method_set_focus_distance();
     return _call_native_mb_no_ret(
-      CameraAttributesPhysical.#_bindings.method_set_focus_distance,
+      CameraAttributesPhysical._bindings.method_set_focus_distance,
       this._owner,
       _focus_distance
     );
@@ -302,7 +303,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   get_focus_distance() {
     CameraAttributesPhysical.init_method_get_focus_distance();
     return _call_native_mb_ret(
-      CameraAttributesPhysical.#_bindings.method_get_focus_distance,
+      CameraAttributesPhysical._bindings.method_get_focus_distance,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -313,7 +314,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   set_near(_near) {
     CameraAttributesPhysical.init_method_set_near();
     return _call_native_mb_no_ret(
-      CameraAttributesPhysical.#_bindings.method_set_near,
+      CameraAttributesPhysical._bindings.method_set_near,
       this._owner,
       _near
     );
@@ -322,7 +323,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   get_near() {
     CameraAttributesPhysical.init_method_get_near();
     return _call_native_mb_ret(
-      CameraAttributesPhysical.#_bindings.method_get_near,
+      CameraAttributesPhysical._bindings.method_get_near,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -333,7 +334,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   set_far(_far) {
     CameraAttributesPhysical.init_method_set_far();
     return _call_native_mb_no_ret(
-      CameraAttributesPhysical.#_bindings.method_set_far,
+      CameraAttributesPhysical._bindings.method_set_far,
       this._owner,
       _far
     );
@@ -342,7 +343,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   get_far() {
     CameraAttributesPhysical.init_method_get_far();
     return _call_native_mb_ret(
-      CameraAttributesPhysical.#_bindings.method_get_far,
+      CameraAttributesPhysical._bindings.method_get_far,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -353,7 +354,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   get_fov() {
     CameraAttributesPhysical.init_method_get_fov();
     return _call_native_mb_ret(
-      CameraAttributesPhysical.#_bindings.method_get_fov,
+      CameraAttributesPhysical._bindings.method_get_fov,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -364,7 +365,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   set_auto_exposure_max_exposure_value(_exposure_value_max) {
     CameraAttributesPhysical.init_method_set_auto_exposure_max_exposure_value();
     return _call_native_mb_no_ret(
-      CameraAttributesPhysical.#_bindings.method_set_auto_exposure_max_exposure_value,
+      CameraAttributesPhysical._bindings.method_set_auto_exposure_max_exposure_value,
       this._owner,
       _exposure_value_max
     );
@@ -373,7 +374,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   get_auto_exposure_max_exposure_value() {
     CameraAttributesPhysical.init_method_get_auto_exposure_max_exposure_value();
     return _call_native_mb_ret(
-      CameraAttributesPhysical.#_bindings.method_get_auto_exposure_max_exposure_value,
+      CameraAttributesPhysical._bindings.method_get_auto_exposure_max_exposure_value,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -384,7 +385,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   set_auto_exposure_min_exposure_value(_exposure_value_min) {
     CameraAttributesPhysical.init_method_set_auto_exposure_min_exposure_value();
     return _call_native_mb_no_ret(
-      CameraAttributesPhysical.#_bindings.method_set_auto_exposure_min_exposure_value,
+      CameraAttributesPhysical._bindings.method_set_auto_exposure_min_exposure_value,
       this._owner,
       _exposure_value_min
     );
@@ -393,7 +394,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   get_auto_exposure_min_exposure_value() {
     CameraAttributesPhysical.init_method_get_auto_exposure_min_exposure_value();
     return _call_native_mb_ret(
-      CameraAttributesPhysical.#_bindings.method_get_auto_exposure_min_exposure_value,
+      CameraAttributesPhysical._bindings.method_get_auto_exposure_min_exposure_value,
       this._owner,
 			Variant.Type.FLOAT,
     

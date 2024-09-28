@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { Wrapped } from '@js_godot/classes/wrapped'
 import {
   call_utility_ret,
@@ -9,6 +9,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_class;
@@ -58,10 +59,10 @@ class _MethodBindings {
   method_is_queued_for_deletion;
   method_cancel_free;
 }
+@GodotClass
 export class GodotObject extends Wrapped{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -71,10 +72,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_get_class() {
-    if (!this.#_bindings.method_get_class) {
+    if (!this._bindings.method_get_class) {
       let classname = new StringName("Object");
       let methodname = new StringName("get_class");
-      this.#_bindings.method_get_class = internal.classdb_get_method_bind(
+      this._bindings.method_get_class = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -82,10 +83,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_is_class() {
-    if (!this.#_bindings.method_is_class) {
+    if (!this._bindings.method_is_class) {
       let classname = new StringName("Object");
       let methodname = new StringName("is_class");
-      this.#_bindings.method_is_class = internal.classdb_get_method_bind(
+      this._bindings.method_is_class = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3927539163
@@ -93,10 +94,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_set() {
-    if (!this.#_bindings.method_set) {
+    if (!this._bindings.method_set) {
       let classname = new StringName("Object");
       let methodname = new StringName("set");
-      this.#_bindings.method_set = internal.classdb_get_method_bind(
+      this._bindings.method_set = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3776071444
@@ -104,10 +105,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_get() {
-    if (!this.#_bindings.method_get) {
+    if (!this._bindings.method_get) {
       let classname = new StringName("Object");
       let methodname = new StringName("get");
-      this.#_bindings.method_get = internal.classdb_get_method_bind(
+      this._bindings.method_get = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2760726917
@@ -115,10 +116,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_set_indexed() {
-    if (!this.#_bindings.method_set_indexed) {
+    if (!this._bindings.method_set_indexed) {
       let classname = new StringName("Object");
       let methodname = new StringName("set_indexed");
-      this.#_bindings.method_set_indexed = internal.classdb_get_method_bind(
+      this._bindings.method_set_indexed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3500910842
@@ -126,10 +127,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_get_indexed() {
-    if (!this.#_bindings.method_get_indexed) {
+    if (!this._bindings.method_get_indexed) {
       let classname = new StringName("Object");
       let methodname = new StringName("get_indexed");
-      this.#_bindings.method_get_indexed = internal.classdb_get_method_bind(
+      this._bindings.method_get_indexed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4006125091
@@ -137,10 +138,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_get_property_list() {
-    if (!this.#_bindings.method_get_property_list) {
+    if (!this._bindings.method_get_property_list) {
       let classname = new StringName("Object");
       let methodname = new StringName("get_property_list");
-      this.#_bindings.method_get_property_list = internal.classdb_get_method_bind(
+      this._bindings.method_get_property_list = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -148,10 +149,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_get_method_list() {
-    if (!this.#_bindings.method_get_method_list) {
+    if (!this._bindings.method_get_method_list) {
       let classname = new StringName("Object");
       let methodname = new StringName("get_method_list");
-      this.#_bindings.method_get_method_list = internal.classdb_get_method_bind(
+      this._bindings.method_get_method_list = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -159,10 +160,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_property_can_revert() {
-    if (!this.#_bindings.method_property_can_revert) {
+    if (!this._bindings.method_property_can_revert) {
       let classname = new StringName("Object");
       let methodname = new StringName("property_can_revert");
-      this.#_bindings.method_property_can_revert = internal.classdb_get_method_bind(
+      this._bindings.method_property_can_revert = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2619796661
@@ -170,10 +171,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_property_get_revert() {
-    if (!this.#_bindings.method_property_get_revert) {
+    if (!this._bindings.method_property_get_revert) {
       let classname = new StringName("Object");
       let methodname = new StringName("property_get_revert");
-      this.#_bindings.method_property_get_revert = internal.classdb_get_method_bind(
+      this._bindings.method_property_get_revert = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2760726917
@@ -181,10 +182,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_notification() {
-    if (!this.#_bindings.method_notification) {
+    if (!this._bindings.method_notification) {
       let classname = new StringName("Object");
       let methodname = new StringName("notification");
-      this.#_bindings.method_notification = internal.classdb_get_method_bind(
+      this._bindings.method_notification = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4023243586
@@ -192,10 +193,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_to_string() {
-    if (!this.#_bindings.method_to_string) {
+    if (!this._bindings.method_to_string) {
       let classname = new StringName("Object");
       let methodname = new StringName("to_string");
-      this.#_bindings.method_to_string = internal.classdb_get_method_bind(
+      this._bindings.method_to_string = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2841200299
@@ -203,10 +204,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_get_instance_id() {
-    if (!this.#_bindings.method_get_instance_id) {
+    if (!this._bindings.method_get_instance_id) {
       let classname = new StringName("Object");
       let methodname = new StringName("get_instance_id");
-      this.#_bindings.method_get_instance_id = internal.classdb_get_method_bind(
+      this._bindings.method_get_instance_id = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -214,10 +215,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_set_script() {
-    if (!this.#_bindings.method_set_script) {
+    if (!this._bindings.method_set_script) {
       let classname = new StringName("Object");
       let methodname = new StringName("set_script");
-      this.#_bindings.method_set_script = internal.classdb_get_method_bind(
+      this._bindings.method_set_script = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1114965689
@@ -225,10 +226,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_get_script() {
-    if (!this.#_bindings.method_get_script) {
+    if (!this._bindings.method_get_script) {
       let classname = new StringName("Object");
       let methodname = new StringName("get_script");
-      this.#_bindings.method_get_script = internal.classdb_get_method_bind(
+      this._bindings.method_get_script = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1214101251
@@ -236,10 +237,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_set_meta() {
-    if (!this.#_bindings.method_set_meta) {
+    if (!this._bindings.method_set_meta) {
       let classname = new StringName("Object");
       let methodname = new StringName("set_meta");
-      this.#_bindings.method_set_meta = internal.classdb_get_method_bind(
+      this._bindings.method_set_meta = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3776071444
@@ -247,10 +248,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_remove_meta() {
-    if (!this.#_bindings.method_remove_meta) {
+    if (!this._bindings.method_remove_meta) {
       let classname = new StringName("Object");
       let methodname = new StringName("remove_meta");
-      this.#_bindings.method_remove_meta = internal.classdb_get_method_bind(
+      this._bindings.method_remove_meta = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -258,10 +259,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_get_meta() {
-    if (!this.#_bindings.method_get_meta) {
+    if (!this._bindings.method_get_meta) {
       let classname = new StringName("Object");
       let methodname = new StringName("get_meta");
-      this.#_bindings.method_get_meta = internal.classdb_get_method_bind(
+      this._bindings.method_get_meta = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3990617847
@@ -269,10 +270,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_has_meta() {
-    if (!this.#_bindings.method_has_meta) {
+    if (!this._bindings.method_has_meta) {
       let classname = new StringName("Object");
       let methodname = new StringName("has_meta");
-      this.#_bindings.method_has_meta = internal.classdb_get_method_bind(
+      this._bindings.method_has_meta = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2619796661
@@ -280,10 +281,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_get_meta_list() {
-    if (!this.#_bindings.method_get_meta_list) {
+    if (!this._bindings.method_get_meta_list) {
       let classname = new StringName("Object");
       let methodname = new StringName("get_meta_list");
-      this.#_bindings.method_get_meta_list = internal.classdb_get_method_bind(
+      this._bindings.method_get_meta_list = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -291,10 +292,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_add_user_signal() {
-    if (!this.#_bindings.method_add_user_signal) {
+    if (!this._bindings.method_add_user_signal) {
       let classname = new StringName("Object");
       let methodname = new StringName("add_user_signal");
-      this.#_bindings.method_add_user_signal = internal.classdb_get_method_bind(
+      this._bindings.method_add_user_signal = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         85656714
@@ -302,10 +303,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_has_user_signal() {
-    if (!this.#_bindings.method_has_user_signal) {
+    if (!this._bindings.method_has_user_signal) {
       let classname = new StringName("Object");
       let methodname = new StringName("has_user_signal");
-      this.#_bindings.method_has_user_signal = internal.classdb_get_method_bind(
+      this._bindings.method_has_user_signal = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2619796661
@@ -313,10 +314,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_remove_user_signal() {
-    if (!this.#_bindings.method_remove_user_signal) {
+    if (!this._bindings.method_remove_user_signal) {
       let classname = new StringName("Object");
       let methodname = new StringName("remove_user_signal");
-      this.#_bindings.method_remove_user_signal = internal.classdb_get_method_bind(
+      this._bindings.method_remove_user_signal = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -324,10 +325,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_emit_signal() {
-    if (!this.#_bindings.method_emit_signal) {
+    if (!this._bindings.method_emit_signal) {
       let classname = new StringName("Object");
       let methodname = new StringName("emit_signal");
-      this.#_bindings.method_emit_signal = internal.classdb_get_method_bind(
+      this._bindings.method_emit_signal = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4047867050
@@ -335,10 +336,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_call() {
-    if (!this.#_bindings.method_call) {
+    if (!this._bindings.method_call) {
       let classname = new StringName("Object");
       let methodname = new StringName("call");
-      this.#_bindings.method_call = internal.classdb_get_method_bind(
+      this._bindings.method_call = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3400424181
@@ -346,10 +347,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_call_deferred() {
-    if (!this.#_bindings.method_call_deferred) {
+    if (!this._bindings.method_call_deferred) {
       let classname = new StringName("Object");
       let methodname = new StringName("call_deferred");
-      this.#_bindings.method_call_deferred = internal.classdb_get_method_bind(
+      this._bindings.method_call_deferred = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3400424181
@@ -357,10 +358,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_set_deferred() {
-    if (!this.#_bindings.method_set_deferred) {
+    if (!this._bindings.method_set_deferred) {
       let classname = new StringName("Object");
       let methodname = new StringName("set_deferred");
-      this.#_bindings.method_set_deferred = internal.classdb_get_method_bind(
+      this._bindings.method_set_deferred = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3776071444
@@ -368,10 +369,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_callv() {
-    if (!this.#_bindings.method_callv) {
+    if (!this._bindings.method_callv) {
       let classname = new StringName("Object");
       let methodname = new StringName("callv");
-      this.#_bindings.method_callv = internal.classdb_get_method_bind(
+      this._bindings.method_callv = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1260104456
@@ -379,10 +380,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_has_method() {
-    if (!this.#_bindings.method_has_method) {
+    if (!this._bindings.method_has_method) {
       let classname = new StringName("Object");
       let methodname = new StringName("has_method");
-      this.#_bindings.method_has_method = internal.classdb_get_method_bind(
+      this._bindings.method_has_method = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2619796661
@@ -390,10 +391,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_get_method_argument_count() {
-    if (!this.#_bindings.method_get_method_argument_count) {
+    if (!this._bindings.method_get_method_argument_count) {
       let classname = new StringName("Object");
       let methodname = new StringName("get_method_argument_count");
-      this.#_bindings.method_get_method_argument_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_method_argument_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2458036349
@@ -401,10 +402,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_has_signal() {
-    if (!this.#_bindings.method_has_signal) {
+    if (!this._bindings.method_has_signal) {
       let classname = new StringName("Object");
       let methodname = new StringName("has_signal");
-      this.#_bindings.method_has_signal = internal.classdb_get_method_bind(
+      this._bindings.method_has_signal = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2619796661
@@ -412,10 +413,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_get_signal_list() {
-    if (!this.#_bindings.method_get_signal_list) {
+    if (!this._bindings.method_get_signal_list) {
       let classname = new StringName("Object");
       let methodname = new StringName("get_signal_list");
-      this.#_bindings.method_get_signal_list = internal.classdb_get_method_bind(
+      this._bindings.method_get_signal_list = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -423,10 +424,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_get_signal_connection_list() {
-    if (!this.#_bindings.method_get_signal_connection_list) {
+    if (!this._bindings.method_get_signal_connection_list) {
       let classname = new StringName("Object");
       let methodname = new StringName("get_signal_connection_list");
-      this.#_bindings.method_get_signal_connection_list = internal.classdb_get_method_bind(
+      this._bindings.method_get_signal_connection_list = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3147814860
@@ -434,10 +435,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_get_incoming_connections() {
-    if (!this.#_bindings.method_get_incoming_connections) {
+    if (!this._bindings.method_get_incoming_connections) {
       let classname = new StringName("Object");
       let methodname = new StringName("get_incoming_connections");
-      this.#_bindings.method_get_incoming_connections = internal.classdb_get_method_bind(
+      this._bindings.method_get_incoming_connections = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -445,10 +446,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_connect() {
-    if (!this.#_bindings.method_connect) {
+    if (!this._bindings.method_connect) {
       let classname = new StringName("Object");
       let methodname = new StringName("connect");
-      this.#_bindings.method_connect = internal.classdb_get_method_bind(
+      this._bindings.method_connect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1518946055
@@ -456,10 +457,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_disconnect() {
-    if (!this.#_bindings.method_disconnect) {
+    if (!this._bindings.method_disconnect) {
       let classname = new StringName("Object");
       let methodname = new StringName("disconnect");
-      this.#_bindings.method_disconnect = internal.classdb_get_method_bind(
+      this._bindings.method_disconnect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1874754934
@@ -467,10 +468,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_is_connected() {
-    if (!this.#_bindings.method_is_connected) {
+    if (!this._bindings.method_is_connected) {
       let classname = new StringName("Object");
       let methodname = new StringName("is_connected");
-      this.#_bindings.method_is_connected = internal.classdb_get_method_bind(
+      this._bindings.method_is_connected = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         768136979
@@ -478,10 +479,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_set_block_signals() {
-    if (!this.#_bindings.method_set_block_signals) {
+    if (!this._bindings.method_set_block_signals) {
       let classname = new StringName("Object");
       let methodname = new StringName("set_block_signals");
-      this.#_bindings.method_set_block_signals = internal.classdb_get_method_bind(
+      this._bindings.method_set_block_signals = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -489,10 +490,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_is_blocking_signals() {
-    if (!this.#_bindings.method_is_blocking_signals) {
+    if (!this._bindings.method_is_blocking_signals) {
       let classname = new StringName("Object");
       let methodname = new StringName("is_blocking_signals");
-      this.#_bindings.method_is_blocking_signals = internal.classdb_get_method_bind(
+      this._bindings.method_is_blocking_signals = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -500,10 +501,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_notify_property_list_changed() {
-    if (!this.#_bindings.method_notify_property_list_changed) {
+    if (!this._bindings.method_notify_property_list_changed) {
       let classname = new StringName("Object");
       let methodname = new StringName("notify_property_list_changed");
-      this.#_bindings.method_notify_property_list_changed = internal.classdb_get_method_bind(
+      this._bindings.method_notify_property_list_changed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -511,10 +512,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_set_message_translation() {
-    if (!this.#_bindings.method_set_message_translation) {
+    if (!this._bindings.method_set_message_translation) {
       let classname = new StringName("Object");
       let methodname = new StringName("set_message_translation");
-      this.#_bindings.method_set_message_translation = internal.classdb_get_method_bind(
+      this._bindings.method_set_message_translation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -522,10 +523,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_can_translate_messages() {
-    if (!this.#_bindings.method_can_translate_messages) {
+    if (!this._bindings.method_can_translate_messages) {
       let classname = new StringName("Object");
       let methodname = new StringName("can_translate_messages");
-      this.#_bindings.method_can_translate_messages = internal.classdb_get_method_bind(
+      this._bindings.method_can_translate_messages = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -533,10 +534,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_tr() {
-    if (!this.#_bindings.method_tr) {
+    if (!this._bindings.method_tr) {
       let classname = new StringName("Object");
       let methodname = new StringName("tr");
-      this.#_bindings.method_tr = internal.classdb_get_method_bind(
+      this._bindings.method_tr = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2475554935
@@ -544,10 +545,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_tr_n() {
-    if (!this.#_bindings.method_tr_n) {
+    if (!this._bindings.method_tr_n) {
       let classname = new StringName("Object");
       let methodname = new StringName("tr_n");
-      this.#_bindings.method_tr_n = internal.classdb_get_method_bind(
+      this._bindings.method_tr_n = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4021311862
@@ -555,10 +556,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_is_queued_for_deletion() {
-    if (!this.#_bindings.method_is_queued_for_deletion) {
+    if (!this._bindings.method_is_queued_for_deletion) {
       let classname = new StringName("Object");
       let methodname = new StringName("is_queued_for_deletion");
-      this.#_bindings.method_is_queued_for_deletion = internal.classdb_get_method_bind(
+      this._bindings.method_is_queued_for_deletion = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -566,10 +567,10 @@ export class GodotObject extends Wrapped{
     }
   }
   static init_method_cancel_free() {
-    if (!this.#_bindings.method_cancel_free) {
+    if (!this._bindings.method_cancel_free) {
       let classname = new StringName("Object");
       let methodname = new StringName("cancel_free");
-      this.#_bindings.method_cancel_free = internal.classdb_get_method_bind(
+      this._bindings.method_cancel_free = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -582,7 +583,7 @@ export class GodotObject extends Wrapped{
   get_class() {
     GodotObject.init_method_get_class();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_get_class,
+      GodotObject._bindings.method_get_class,
       this._owner,
 			Variant.Type.STRING,
     
@@ -593,7 +594,7 @@ export class GodotObject extends Wrapped{
   is_class(_class) {
     GodotObject.init_method_is_class();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_is_class,
+      GodotObject._bindings.method_is_class,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -604,7 +605,7 @@ export class GodotObject extends Wrapped{
   set(_property, _value) {
     GodotObject.init_method_set();
     return _call_native_mb_no_ret(
-      GodotObject.#_bindings.method_set,
+      GodotObject._bindings.method_set,
       this._owner,
       _property, _value
     );
@@ -613,7 +614,7 @@ export class GodotObject extends Wrapped{
   get(_property) {
     GodotObject.init_method_get();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_get,
+      GodotObject._bindings.method_get,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -624,7 +625,7 @@ export class GodotObject extends Wrapped{
   set_indexed(_property_path, _value) {
     GodotObject.init_method_set_indexed();
     return _call_native_mb_no_ret(
-      GodotObject.#_bindings.method_set_indexed,
+      GodotObject._bindings.method_set_indexed,
       this._owner,
       _property_path, _value
     );
@@ -633,7 +634,7 @@ export class GodotObject extends Wrapped{
   get_indexed(_property_path) {
     GodotObject.init_method_get_indexed();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_get_indexed,
+      GodotObject._bindings.method_get_indexed,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -644,7 +645,7 @@ export class GodotObject extends Wrapped{
   get_property_list() {
     GodotObject.init_method_get_property_list();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_get_property_list,
+      GodotObject._bindings.method_get_property_list,
       this._owner,
 			Variant.Type.ARRAY,
       
@@ -654,7 +655,7 @@ export class GodotObject extends Wrapped{
   get_method_list() {
     GodotObject.init_method_get_method_list();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_get_method_list,
+      GodotObject._bindings.method_get_method_list,
       this._owner,
 			Variant.Type.ARRAY,
       
@@ -664,7 +665,7 @@ export class GodotObject extends Wrapped{
   property_can_revert(_property) {
     GodotObject.init_method_property_can_revert();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_property_can_revert,
+      GodotObject._bindings.method_property_can_revert,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -675,7 +676,7 @@ export class GodotObject extends Wrapped{
   property_get_revert(_property) {
     GodotObject.init_method_property_get_revert();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_property_get_revert,
+      GodotObject._bindings.method_property_get_revert,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -686,7 +687,7 @@ export class GodotObject extends Wrapped{
   notification(_what, _reversed) {
     GodotObject.init_method_notification();
     return _call_native_mb_no_ret(
-      GodotObject.#_bindings.method_notification,
+      GodotObject._bindings.method_notification,
       this._owner,
       _what, _reversed
     );
@@ -695,7 +696,7 @@ export class GodotObject extends Wrapped{
   to_string() {
     GodotObject.init_method_to_string();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_to_string,
+      GodotObject._bindings.method_to_string,
       this._owner,
 			Variant.Type.STRING,
     
@@ -706,7 +707,7 @@ export class GodotObject extends Wrapped{
   get_instance_id() {
     GodotObject.init_method_get_instance_id();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_get_instance_id,
+      GodotObject._bindings.method_get_instance_id,
       this._owner,
 			Variant.Type.INT,
     
@@ -717,7 +718,7 @@ export class GodotObject extends Wrapped{
   set_script(_script) {
     GodotObject.init_method_set_script();
     return _call_native_mb_no_ret(
-      GodotObject.#_bindings.method_set_script,
+      GodotObject._bindings.method_set_script,
       this._owner,
       _script
     );
@@ -726,7 +727,7 @@ export class GodotObject extends Wrapped{
   get_script() {
     GodotObject.init_method_get_script();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_get_script,
+      GodotObject._bindings.method_get_script,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -737,7 +738,7 @@ export class GodotObject extends Wrapped{
   set_meta(_name, _value) {
     GodotObject.init_method_set_meta();
     return _call_native_mb_no_ret(
-      GodotObject.#_bindings.method_set_meta,
+      GodotObject._bindings.method_set_meta,
       this._owner,
       _name, _value
     );
@@ -746,7 +747,7 @@ export class GodotObject extends Wrapped{
   remove_meta(_name) {
     GodotObject.init_method_remove_meta();
     return _call_native_mb_no_ret(
-      GodotObject.#_bindings.method_remove_meta,
+      GodotObject._bindings.method_remove_meta,
       this._owner,
       _name
     );
@@ -755,7 +756,7 @@ export class GodotObject extends Wrapped{
   get_meta(_name, _default) {
     GodotObject.init_method_get_meta();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_get_meta,
+      GodotObject._bindings.method_get_meta,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -766,7 +767,7 @@ export class GodotObject extends Wrapped{
   has_meta(_name) {
     GodotObject.init_method_has_meta();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_has_meta,
+      GodotObject._bindings.method_has_meta,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -777,7 +778,7 @@ export class GodotObject extends Wrapped{
   get_meta_list() {
     GodotObject.init_method_get_meta_list();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_get_meta_list,
+      GodotObject._bindings.method_get_meta_list,
       this._owner,
 			Variant.Type.ARRAY,
       
@@ -787,7 +788,7 @@ export class GodotObject extends Wrapped{
   add_user_signal(_signal, _arguments) {
     GodotObject.init_method_add_user_signal();
     return _call_native_mb_no_ret(
-      GodotObject.#_bindings.method_add_user_signal,
+      GodotObject._bindings.method_add_user_signal,
       this._owner,
       _signal, _arguments
     );
@@ -796,7 +797,7 @@ export class GodotObject extends Wrapped{
   has_user_signal(_signal) {
     GodotObject.init_method_has_user_signal();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_has_user_signal,
+      GodotObject._bindings.method_has_user_signal,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -807,7 +808,7 @@ export class GodotObject extends Wrapped{
   remove_user_signal(_signal) {
     GodotObject.init_method_remove_user_signal();
     return _call_native_mb_no_ret(
-      GodotObject.#_bindings.method_remove_user_signal,
+      GodotObject._bindings.method_remove_user_signal,
       this._owner,
       _signal
     );
@@ -816,7 +817,7 @@ export class GodotObject extends Wrapped{
   emit_signal(_signal) {
     GodotObject.init_method_emit_signal();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_emit_signal,
+      GodotObject._bindings.method_emit_signal,
       this._owner,
 			Variant.Type.INT,
     
@@ -827,7 +828,7 @@ export class GodotObject extends Wrapped{
   call(_method) {
     GodotObject.init_method_call();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_call,
+      GodotObject._bindings.method_call,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -838,7 +839,7 @@ export class GodotObject extends Wrapped{
   call_deferred(_method) {
     GodotObject.init_method_call_deferred();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_call_deferred,
+      GodotObject._bindings.method_call_deferred,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -849,7 +850,7 @@ export class GodotObject extends Wrapped{
   set_deferred(_property, _value) {
     GodotObject.init_method_set_deferred();
     return _call_native_mb_no_ret(
-      GodotObject.#_bindings.method_set_deferred,
+      GodotObject._bindings.method_set_deferred,
       this._owner,
       _property, _value
     );
@@ -858,7 +859,7 @@ export class GodotObject extends Wrapped{
   callv(_method, _arg_array) {
     GodotObject.init_method_callv();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_callv,
+      GodotObject._bindings.method_callv,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -869,7 +870,7 @@ export class GodotObject extends Wrapped{
   has_method(_method) {
     GodotObject.init_method_has_method();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_has_method,
+      GodotObject._bindings.method_has_method,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -880,7 +881,7 @@ export class GodotObject extends Wrapped{
   get_method_argument_count(_method) {
     GodotObject.init_method_get_method_argument_count();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_get_method_argument_count,
+      GodotObject._bindings.method_get_method_argument_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -891,7 +892,7 @@ export class GodotObject extends Wrapped{
   has_signal(_signal) {
     GodotObject.init_method_has_signal();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_has_signal,
+      GodotObject._bindings.method_has_signal,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -902,7 +903,7 @@ export class GodotObject extends Wrapped{
   get_signal_list() {
     GodotObject.init_method_get_signal_list();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_get_signal_list,
+      GodotObject._bindings.method_get_signal_list,
       this._owner,
 			Variant.Type.ARRAY,
       
@@ -912,7 +913,7 @@ export class GodotObject extends Wrapped{
   get_signal_connection_list(_signal) {
     GodotObject.init_method_get_signal_connection_list();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_get_signal_connection_list,
+      GodotObject._bindings.method_get_signal_connection_list,
       this._owner,
 			Variant.Type.ARRAY,
       _signal
@@ -922,7 +923,7 @@ export class GodotObject extends Wrapped{
   get_incoming_connections() {
     GodotObject.init_method_get_incoming_connections();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_get_incoming_connections,
+      GodotObject._bindings.method_get_incoming_connections,
       this._owner,
 			Variant.Type.ARRAY,
       
@@ -932,7 +933,7 @@ export class GodotObject extends Wrapped{
   connect(_signal, _callable, _flags) {
     GodotObject.init_method_connect();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_connect,
+      GodotObject._bindings.method_connect,
       this._owner,
 			Variant.Type.INT,
     
@@ -943,7 +944,7 @@ export class GodotObject extends Wrapped{
   disconnect(_signal, _callable) {
     GodotObject.init_method_disconnect();
     return _call_native_mb_no_ret(
-      GodotObject.#_bindings.method_disconnect,
+      GodotObject._bindings.method_disconnect,
       this._owner,
       _signal, _callable
     );
@@ -952,7 +953,7 @@ export class GodotObject extends Wrapped{
   is_connected(_signal, _callable) {
     GodotObject.init_method_is_connected();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_is_connected,
+      GodotObject._bindings.method_is_connected,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -963,7 +964,7 @@ export class GodotObject extends Wrapped{
   set_block_signals(_enable) {
     GodotObject.init_method_set_block_signals();
     return _call_native_mb_no_ret(
-      GodotObject.#_bindings.method_set_block_signals,
+      GodotObject._bindings.method_set_block_signals,
       this._owner,
       _enable
     );
@@ -972,7 +973,7 @@ export class GodotObject extends Wrapped{
   is_blocking_signals() {
     GodotObject.init_method_is_blocking_signals();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_is_blocking_signals,
+      GodotObject._bindings.method_is_blocking_signals,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -983,7 +984,7 @@ export class GodotObject extends Wrapped{
   notify_property_list_changed() {
     GodotObject.init_method_notify_property_list_changed();
     return _call_native_mb_no_ret(
-      GodotObject.#_bindings.method_notify_property_list_changed,
+      GodotObject._bindings.method_notify_property_list_changed,
       this._owner,
       
     );
@@ -992,7 +993,7 @@ export class GodotObject extends Wrapped{
   set_message_translation(_enable) {
     GodotObject.init_method_set_message_translation();
     return _call_native_mb_no_ret(
-      GodotObject.#_bindings.method_set_message_translation,
+      GodotObject._bindings.method_set_message_translation,
       this._owner,
       _enable
     );
@@ -1001,7 +1002,7 @@ export class GodotObject extends Wrapped{
   can_translate_messages() {
     GodotObject.init_method_can_translate_messages();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_can_translate_messages,
+      GodotObject._bindings.method_can_translate_messages,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1012,7 +1013,7 @@ export class GodotObject extends Wrapped{
   tr(_message, _context) {
     GodotObject.init_method_tr();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_tr,
+      GodotObject._bindings.method_tr,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1023,7 +1024,7 @@ export class GodotObject extends Wrapped{
   tr_n(_message, _plural_message, _n, _context) {
     GodotObject.init_method_tr_n();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_tr_n,
+      GodotObject._bindings.method_tr_n,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1034,7 +1035,7 @@ export class GodotObject extends Wrapped{
   is_queued_for_deletion() {
     GodotObject.init_method_is_queued_for_deletion();
     return _call_native_mb_ret(
-      GodotObject.#_bindings.method_is_queued_for_deletion,
+      GodotObject._bindings.method_is_queued_for_deletion,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1045,7 +1046,7 @@ export class GodotObject extends Wrapped{
   cancel_free() {
     GodotObject.init_method_cancel_free();
     return _call_native_mb_no_ret(
-      GodotObject.#_bindings.method_cancel_free,
+      GodotObject._bindings.method_cancel_free,
       this._owner,
       
     );

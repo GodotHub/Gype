@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Node3D } from '@js_godot/classes/node3d'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_skeleton;
@@ -16,10 +17,10 @@ class _MethodBindings {
   method_set_influence;
   method_get_influence;
 }
+@GodotClass
 export class SkeletonModifier3D extends Node3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -29,10 +30,10 @@ export class SkeletonModifier3D extends Node3D{
     }
   }
   static init_method_get_skeleton() {
-    if (!this.#_bindings.method_get_skeleton) {
+    if (!this._bindings.method_get_skeleton) {
       let classname = new StringName("SkeletonModifier3D");
       let methodname = new StringName("get_skeleton");
-      this.#_bindings.method_get_skeleton = internal.classdb_get_method_bind(
+      this._bindings.method_get_skeleton = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1488626673
@@ -40,10 +41,10 @@ export class SkeletonModifier3D extends Node3D{
     }
   }
   static init_method_set_active() {
-    if (!this.#_bindings.method_set_active) {
+    if (!this._bindings.method_set_active) {
       let classname = new StringName("SkeletonModifier3D");
       let methodname = new StringName("set_active");
-      this.#_bindings.method_set_active = internal.classdb_get_method_bind(
+      this._bindings.method_set_active = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -51,10 +52,10 @@ export class SkeletonModifier3D extends Node3D{
     }
   }
   static init_method_is_active() {
-    if (!this.#_bindings.method_is_active) {
+    if (!this._bindings.method_is_active) {
       let classname = new StringName("SkeletonModifier3D");
       let methodname = new StringName("is_active");
-      this.#_bindings.method_is_active = internal.classdb_get_method_bind(
+      this._bindings.method_is_active = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -62,10 +63,10 @@ export class SkeletonModifier3D extends Node3D{
     }
   }
   static init_method_set_influence() {
-    if (!this.#_bindings.method_set_influence) {
+    if (!this._bindings.method_set_influence) {
       let classname = new StringName("SkeletonModifier3D");
       let methodname = new StringName("set_influence");
-      this.#_bindings.method_set_influence = internal.classdb_get_method_bind(
+      this._bindings.method_set_influence = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -73,10 +74,10 @@ export class SkeletonModifier3D extends Node3D{
     }
   }
   static init_method_get_influence() {
-    if (!this.#_bindings.method_get_influence) {
+    if (!this._bindings.method_get_influence) {
       let classname = new StringName("SkeletonModifier3D");
       let methodname = new StringName("get_influence");
-      this.#_bindings.method_get_influence = internal.classdb_get_method_bind(
+      this._bindings.method_get_influence = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -91,7 +92,7 @@ export class SkeletonModifier3D extends Node3D{
   get_skeleton() {
     SkeletonModifier3D.init_method_get_skeleton();
     return _call_native_mb_ret(
-      SkeletonModifier3D.#_bindings.method_get_skeleton,
+      SkeletonModifier3D._bindings.method_get_skeleton,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -101,7 +102,7 @@ export class SkeletonModifier3D extends Node3D{
   set_active(_active) {
     SkeletonModifier3D.init_method_set_active();
     return _call_native_mb_no_ret(
-      SkeletonModifier3D.#_bindings.method_set_active,
+      SkeletonModifier3D._bindings.method_set_active,
       this._owner,
       _active
     );
@@ -110,7 +111,7 @@ export class SkeletonModifier3D extends Node3D{
   is_active() {
     SkeletonModifier3D.init_method_is_active();
     return _call_native_mb_ret(
-      SkeletonModifier3D.#_bindings.method_is_active,
+      SkeletonModifier3D._bindings.method_is_active,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -121,7 +122,7 @@ export class SkeletonModifier3D extends Node3D{
   set_influence(_influence) {
     SkeletonModifier3D.init_method_set_influence();
     return _call_native_mb_no_ret(
-      SkeletonModifier3D.#_bindings.method_set_influence,
+      SkeletonModifier3D._bindings.method_set_influence,
       this._owner,
       _influence
     );
@@ -130,7 +131,7 @@ export class SkeletonModifier3D extends Node3D{
   get_influence() {
     SkeletonModifier3D.init_method_get_influence();
     return _call_native_mb_ret(
-      SkeletonModifier3D.#_bindings.method_get_influence,
+      SkeletonModifier3D._bindings.method_get_influence,
       this._owner,
 			Variant.Type.FLOAT,
     

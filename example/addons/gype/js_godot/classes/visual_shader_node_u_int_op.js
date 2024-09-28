@@ -1,22 +1,23 @@
 import * as internal from '__internal__';
+import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
-import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_operator;
   method_get_operator;
 }
+@GodotClass
 export class VisualShaderNodeUIntOp extends VisualShaderNode{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -26,10 +27,10 @@ export class VisualShaderNodeUIntOp extends VisualShaderNode{
     }
   }
   static init_method_set_operator() {
-    if (!this.#_bindings.method_set_operator) {
+    if (!this._bindings.method_set_operator) {
       let classname = new StringName("VisualShaderNodeUIntOp");
       let methodname = new StringName("set_operator");
-      this.#_bindings.method_set_operator = internal.classdb_get_method_bind(
+      this._bindings.method_set_operator = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3463048345
@@ -37,10 +38,10 @@ export class VisualShaderNodeUIntOp extends VisualShaderNode{
     }
   }
   static init_method_get_operator() {
-    if (!this.#_bindings.method_get_operator) {
+    if (!this._bindings.method_get_operator) {
       let classname = new StringName("VisualShaderNodeUIntOp");
       let methodname = new StringName("get_operator");
-      this.#_bindings.method_get_operator = internal.classdb_get_method_bind(
+      this._bindings.method_get_operator = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         256631461
@@ -53,7 +54,7 @@ export class VisualShaderNodeUIntOp extends VisualShaderNode{
   set_operator(_op) {
     VisualShaderNodeUIntOp.init_method_set_operator();
     return _call_native_mb_no_ret(
-      VisualShaderNodeUIntOp.#_bindings.method_set_operator,
+      VisualShaderNodeUIntOp._bindings.method_set_operator,
       this._owner,
       _op
     );
@@ -62,7 +63,7 @@ export class VisualShaderNodeUIntOp extends VisualShaderNode{
   get_operator() {
     VisualShaderNodeUIntOp.init_method_get_operator();
     return _call_native_mb_ret(
-      VisualShaderNodeUIntOp.#_bindings.method_get_operator,
+      VisualShaderNodeUIntOp._bindings.method_get_operator,
       this._owner,
 			Variant.Type.INT,
     

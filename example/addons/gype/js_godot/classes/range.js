@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Control } from '@js_godot/classes/control'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_value;
@@ -34,10 +35,10 @@ class _MethodBindings {
   method_share;
   method_unshare;
 }
+@GodotClass
 export class Range extends Control{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -47,10 +48,10 @@ export class Range extends Control{
     }
   }
   static init_method_get_value() {
-    if (!this.#_bindings.method_get_value) {
+    if (!this._bindings.method_get_value) {
       let classname = new StringName("Range");
       let methodname = new StringName("get_value");
-      this.#_bindings.method_get_value = internal.classdb_get_method_bind(
+      this._bindings.method_get_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -58,10 +59,10 @@ export class Range extends Control{
     }
   }
   static init_method_get_min() {
-    if (!this.#_bindings.method_get_min) {
+    if (!this._bindings.method_get_min) {
       let classname = new StringName("Range");
       let methodname = new StringName("get_min");
-      this.#_bindings.method_get_min = internal.classdb_get_method_bind(
+      this._bindings.method_get_min = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -69,10 +70,10 @@ export class Range extends Control{
     }
   }
   static init_method_get_max() {
-    if (!this.#_bindings.method_get_max) {
+    if (!this._bindings.method_get_max) {
       let classname = new StringName("Range");
       let methodname = new StringName("get_max");
-      this.#_bindings.method_get_max = internal.classdb_get_method_bind(
+      this._bindings.method_get_max = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -80,10 +81,10 @@ export class Range extends Control{
     }
   }
   static init_method_get_step() {
-    if (!this.#_bindings.method_get_step) {
+    if (!this._bindings.method_get_step) {
       let classname = new StringName("Range");
       let methodname = new StringName("get_step");
-      this.#_bindings.method_get_step = internal.classdb_get_method_bind(
+      this._bindings.method_get_step = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -91,10 +92,10 @@ export class Range extends Control{
     }
   }
   static init_method_get_page() {
-    if (!this.#_bindings.method_get_page) {
+    if (!this._bindings.method_get_page) {
       let classname = new StringName("Range");
       let methodname = new StringName("get_page");
-      this.#_bindings.method_get_page = internal.classdb_get_method_bind(
+      this._bindings.method_get_page = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -102,10 +103,10 @@ export class Range extends Control{
     }
   }
   static init_method_get_as_ratio() {
-    if (!this.#_bindings.method_get_as_ratio) {
+    if (!this._bindings.method_get_as_ratio) {
       let classname = new StringName("Range");
       let methodname = new StringName("get_as_ratio");
-      this.#_bindings.method_get_as_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_get_as_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -113,10 +114,10 @@ export class Range extends Control{
     }
   }
   static init_method_set_value() {
-    if (!this.#_bindings.method_set_value) {
+    if (!this._bindings.method_set_value) {
       let classname = new StringName("Range");
       let methodname = new StringName("set_value");
-      this.#_bindings.method_set_value = internal.classdb_get_method_bind(
+      this._bindings.method_set_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -124,10 +125,10 @@ export class Range extends Control{
     }
   }
   static init_method_set_value_no_signal() {
-    if (!this.#_bindings.method_set_value_no_signal) {
+    if (!this._bindings.method_set_value_no_signal) {
       let classname = new StringName("Range");
       let methodname = new StringName("set_value_no_signal");
-      this.#_bindings.method_set_value_no_signal = internal.classdb_get_method_bind(
+      this._bindings.method_set_value_no_signal = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -135,10 +136,10 @@ export class Range extends Control{
     }
   }
   static init_method_set_min() {
-    if (!this.#_bindings.method_set_min) {
+    if (!this._bindings.method_set_min) {
       let classname = new StringName("Range");
       let methodname = new StringName("set_min");
-      this.#_bindings.method_set_min = internal.classdb_get_method_bind(
+      this._bindings.method_set_min = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -146,10 +147,10 @@ export class Range extends Control{
     }
   }
   static init_method_set_max() {
-    if (!this.#_bindings.method_set_max) {
+    if (!this._bindings.method_set_max) {
       let classname = new StringName("Range");
       let methodname = new StringName("set_max");
-      this.#_bindings.method_set_max = internal.classdb_get_method_bind(
+      this._bindings.method_set_max = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -157,10 +158,10 @@ export class Range extends Control{
     }
   }
   static init_method_set_step() {
-    if (!this.#_bindings.method_set_step) {
+    if (!this._bindings.method_set_step) {
       let classname = new StringName("Range");
       let methodname = new StringName("set_step");
-      this.#_bindings.method_set_step = internal.classdb_get_method_bind(
+      this._bindings.method_set_step = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -168,10 +169,10 @@ export class Range extends Control{
     }
   }
   static init_method_set_page() {
-    if (!this.#_bindings.method_set_page) {
+    if (!this._bindings.method_set_page) {
       let classname = new StringName("Range");
       let methodname = new StringName("set_page");
-      this.#_bindings.method_set_page = internal.classdb_get_method_bind(
+      this._bindings.method_set_page = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -179,10 +180,10 @@ export class Range extends Control{
     }
   }
   static init_method_set_as_ratio() {
-    if (!this.#_bindings.method_set_as_ratio) {
+    if (!this._bindings.method_set_as_ratio) {
       let classname = new StringName("Range");
       let methodname = new StringName("set_as_ratio");
-      this.#_bindings.method_set_as_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_set_as_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -190,10 +191,10 @@ export class Range extends Control{
     }
   }
   static init_method_set_use_rounded_values() {
-    if (!this.#_bindings.method_set_use_rounded_values) {
+    if (!this._bindings.method_set_use_rounded_values) {
       let classname = new StringName("Range");
       let methodname = new StringName("set_use_rounded_values");
-      this.#_bindings.method_set_use_rounded_values = internal.classdb_get_method_bind(
+      this._bindings.method_set_use_rounded_values = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -201,10 +202,10 @@ export class Range extends Control{
     }
   }
   static init_method_is_using_rounded_values() {
-    if (!this.#_bindings.method_is_using_rounded_values) {
+    if (!this._bindings.method_is_using_rounded_values) {
       let classname = new StringName("Range");
       let methodname = new StringName("is_using_rounded_values");
-      this.#_bindings.method_is_using_rounded_values = internal.classdb_get_method_bind(
+      this._bindings.method_is_using_rounded_values = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -212,10 +213,10 @@ export class Range extends Control{
     }
   }
   static init_method_set_exp_ratio() {
-    if (!this.#_bindings.method_set_exp_ratio) {
+    if (!this._bindings.method_set_exp_ratio) {
       let classname = new StringName("Range");
       let methodname = new StringName("set_exp_ratio");
-      this.#_bindings.method_set_exp_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_set_exp_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -223,10 +224,10 @@ export class Range extends Control{
     }
   }
   static init_method_is_ratio_exp() {
-    if (!this.#_bindings.method_is_ratio_exp) {
+    if (!this._bindings.method_is_ratio_exp) {
       let classname = new StringName("Range");
       let methodname = new StringName("is_ratio_exp");
-      this.#_bindings.method_is_ratio_exp = internal.classdb_get_method_bind(
+      this._bindings.method_is_ratio_exp = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -234,10 +235,10 @@ export class Range extends Control{
     }
   }
   static init_method_set_allow_greater() {
-    if (!this.#_bindings.method_set_allow_greater) {
+    if (!this._bindings.method_set_allow_greater) {
       let classname = new StringName("Range");
       let methodname = new StringName("set_allow_greater");
-      this.#_bindings.method_set_allow_greater = internal.classdb_get_method_bind(
+      this._bindings.method_set_allow_greater = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -245,10 +246,10 @@ export class Range extends Control{
     }
   }
   static init_method_is_greater_allowed() {
-    if (!this.#_bindings.method_is_greater_allowed) {
+    if (!this._bindings.method_is_greater_allowed) {
       let classname = new StringName("Range");
       let methodname = new StringName("is_greater_allowed");
-      this.#_bindings.method_is_greater_allowed = internal.classdb_get_method_bind(
+      this._bindings.method_is_greater_allowed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -256,10 +257,10 @@ export class Range extends Control{
     }
   }
   static init_method_set_allow_lesser() {
-    if (!this.#_bindings.method_set_allow_lesser) {
+    if (!this._bindings.method_set_allow_lesser) {
       let classname = new StringName("Range");
       let methodname = new StringName("set_allow_lesser");
-      this.#_bindings.method_set_allow_lesser = internal.classdb_get_method_bind(
+      this._bindings.method_set_allow_lesser = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -267,10 +268,10 @@ export class Range extends Control{
     }
   }
   static init_method_is_lesser_allowed() {
-    if (!this.#_bindings.method_is_lesser_allowed) {
+    if (!this._bindings.method_is_lesser_allowed) {
       let classname = new StringName("Range");
       let methodname = new StringName("is_lesser_allowed");
-      this.#_bindings.method_is_lesser_allowed = internal.classdb_get_method_bind(
+      this._bindings.method_is_lesser_allowed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -278,10 +279,10 @@ export class Range extends Control{
     }
   }
   static init_method_share() {
-    if (!this.#_bindings.method_share) {
+    if (!this._bindings.method_share) {
       let classname = new StringName("Range");
       let methodname = new StringName("share");
-      this.#_bindings.method_share = internal.classdb_get_method_bind(
+      this._bindings.method_share = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1078189570
@@ -289,10 +290,10 @@ export class Range extends Control{
     }
   }
   static init_method_unshare() {
-    if (!this.#_bindings.method_unshare) {
+    if (!this._bindings.method_unshare) {
       let classname = new StringName("Range");
       let methodname = new StringName("unshare");
-      this.#_bindings.method_unshare = internal.classdb_get_method_bind(
+      this._bindings.method_unshare = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -307,7 +308,7 @@ export class Range extends Control{
   get_value() {
     Range.init_method_get_value();
     return _call_native_mb_ret(
-      Range.#_bindings.method_get_value,
+      Range._bindings.method_get_value,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -318,7 +319,7 @@ export class Range extends Control{
   get_min() {
     Range.init_method_get_min();
     return _call_native_mb_ret(
-      Range.#_bindings.method_get_min,
+      Range._bindings.method_get_min,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -329,7 +330,7 @@ export class Range extends Control{
   get_max() {
     Range.init_method_get_max();
     return _call_native_mb_ret(
-      Range.#_bindings.method_get_max,
+      Range._bindings.method_get_max,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -340,7 +341,7 @@ export class Range extends Control{
   get_step() {
     Range.init_method_get_step();
     return _call_native_mb_ret(
-      Range.#_bindings.method_get_step,
+      Range._bindings.method_get_step,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -351,7 +352,7 @@ export class Range extends Control{
   get_page() {
     Range.init_method_get_page();
     return _call_native_mb_ret(
-      Range.#_bindings.method_get_page,
+      Range._bindings.method_get_page,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -362,7 +363,7 @@ export class Range extends Control{
   get_as_ratio() {
     Range.init_method_get_as_ratio();
     return _call_native_mb_ret(
-      Range.#_bindings.method_get_as_ratio,
+      Range._bindings.method_get_as_ratio,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -373,7 +374,7 @@ export class Range extends Control{
   set_value(_value) {
     Range.init_method_set_value();
     return _call_native_mb_no_ret(
-      Range.#_bindings.method_set_value,
+      Range._bindings.method_set_value,
       this._owner,
       _value
     );
@@ -382,7 +383,7 @@ export class Range extends Control{
   set_value_no_signal(_value) {
     Range.init_method_set_value_no_signal();
     return _call_native_mb_no_ret(
-      Range.#_bindings.method_set_value_no_signal,
+      Range._bindings.method_set_value_no_signal,
       this._owner,
       _value
     );
@@ -391,7 +392,7 @@ export class Range extends Control{
   set_min(_minimum) {
     Range.init_method_set_min();
     return _call_native_mb_no_ret(
-      Range.#_bindings.method_set_min,
+      Range._bindings.method_set_min,
       this._owner,
       _minimum
     );
@@ -400,7 +401,7 @@ export class Range extends Control{
   set_max(_maximum) {
     Range.init_method_set_max();
     return _call_native_mb_no_ret(
-      Range.#_bindings.method_set_max,
+      Range._bindings.method_set_max,
       this._owner,
       _maximum
     );
@@ -409,7 +410,7 @@ export class Range extends Control{
   set_step(_step) {
     Range.init_method_set_step();
     return _call_native_mb_no_ret(
-      Range.#_bindings.method_set_step,
+      Range._bindings.method_set_step,
       this._owner,
       _step
     );
@@ -418,7 +419,7 @@ export class Range extends Control{
   set_page(_pagesize) {
     Range.init_method_set_page();
     return _call_native_mb_no_ret(
-      Range.#_bindings.method_set_page,
+      Range._bindings.method_set_page,
       this._owner,
       _pagesize
     );
@@ -427,7 +428,7 @@ export class Range extends Control{
   set_as_ratio(_value) {
     Range.init_method_set_as_ratio();
     return _call_native_mb_no_ret(
-      Range.#_bindings.method_set_as_ratio,
+      Range._bindings.method_set_as_ratio,
       this._owner,
       _value
     );
@@ -436,7 +437,7 @@ export class Range extends Control{
   set_use_rounded_values(_enabled) {
     Range.init_method_set_use_rounded_values();
     return _call_native_mb_no_ret(
-      Range.#_bindings.method_set_use_rounded_values,
+      Range._bindings.method_set_use_rounded_values,
       this._owner,
       _enabled
     );
@@ -445,7 +446,7 @@ export class Range extends Control{
   is_using_rounded_values() {
     Range.init_method_is_using_rounded_values();
     return _call_native_mb_ret(
-      Range.#_bindings.method_is_using_rounded_values,
+      Range._bindings.method_is_using_rounded_values,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -456,7 +457,7 @@ export class Range extends Control{
   set_exp_ratio(_enabled) {
     Range.init_method_set_exp_ratio();
     return _call_native_mb_no_ret(
-      Range.#_bindings.method_set_exp_ratio,
+      Range._bindings.method_set_exp_ratio,
       this._owner,
       _enabled
     );
@@ -465,7 +466,7 @@ export class Range extends Control{
   is_ratio_exp() {
     Range.init_method_is_ratio_exp();
     return _call_native_mb_ret(
-      Range.#_bindings.method_is_ratio_exp,
+      Range._bindings.method_is_ratio_exp,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -476,7 +477,7 @@ export class Range extends Control{
   set_allow_greater(_allow) {
     Range.init_method_set_allow_greater();
     return _call_native_mb_no_ret(
-      Range.#_bindings.method_set_allow_greater,
+      Range._bindings.method_set_allow_greater,
       this._owner,
       _allow
     );
@@ -485,7 +486,7 @@ export class Range extends Control{
   is_greater_allowed() {
     Range.init_method_is_greater_allowed();
     return _call_native_mb_ret(
-      Range.#_bindings.method_is_greater_allowed,
+      Range._bindings.method_is_greater_allowed,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -496,7 +497,7 @@ export class Range extends Control{
   set_allow_lesser(_allow) {
     Range.init_method_set_allow_lesser();
     return _call_native_mb_no_ret(
-      Range.#_bindings.method_set_allow_lesser,
+      Range._bindings.method_set_allow_lesser,
       this._owner,
       _allow
     );
@@ -505,7 +506,7 @@ export class Range extends Control{
   is_lesser_allowed() {
     Range.init_method_is_lesser_allowed();
     return _call_native_mb_ret(
-      Range.#_bindings.method_is_lesser_allowed,
+      Range._bindings.method_is_lesser_allowed,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -516,7 +517,7 @@ export class Range extends Control{
   share(_with) {
     Range.init_method_share();
     return _call_native_mb_no_ret(
-      Range.#_bindings.method_share,
+      Range._bindings.method_share,
       this._owner,
       _with
     );
@@ -525,7 +526,7 @@ export class Range extends Control{
   unshare() {
     Range.init_method_unshare();
     return _call_native_mb_no_ret(
-      Range.#_bindings.method_unshare,
+      Range._bindings.method_unshare,
       this._owner,
       
     );

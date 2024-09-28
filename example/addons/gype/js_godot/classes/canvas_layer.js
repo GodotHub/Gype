@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Node } from '@js_godot/classes/node'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_layer;
@@ -33,10 +34,10 @@ class _MethodBindings {
   method_get_custom_viewport;
   method_get_canvas;
 }
+@GodotClass
 export class CanvasLayer extends Node{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -46,10 +47,10 @@ export class CanvasLayer extends Node{
     }
   }
   static init_method_set_layer() {
-    if (!this.#_bindings.method_set_layer) {
+    if (!this._bindings.method_set_layer) {
       let classname = new StringName("CanvasLayer");
       let methodname = new StringName("set_layer");
-      this.#_bindings.method_set_layer = internal.classdb_get_method_bind(
+      this._bindings.method_set_layer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -57,10 +58,10 @@ export class CanvasLayer extends Node{
     }
   }
   static init_method_get_layer() {
-    if (!this.#_bindings.method_get_layer) {
+    if (!this._bindings.method_get_layer) {
       let classname = new StringName("CanvasLayer");
       let methodname = new StringName("get_layer");
-      this.#_bindings.method_get_layer = internal.classdb_get_method_bind(
+      this._bindings.method_get_layer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -68,10 +69,10 @@ export class CanvasLayer extends Node{
     }
   }
   static init_method_set_visible() {
-    if (!this.#_bindings.method_set_visible) {
+    if (!this._bindings.method_set_visible) {
       let classname = new StringName("CanvasLayer");
       let methodname = new StringName("set_visible");
-      this.#_bindings.method_set_visible = internal.classdb_get_method_bind(
+      this._bindings.method_set_visible = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -79,10 +80,10 @@ export class CanvasLayer extends Node{
     }
   }
   static init_method_is_visible() {
-    if (!this.#_bindings.method_is_visible) {
+    if (!this._bindings.method_is_visible) {
       let classname = new StringName("CanvasLayer");
       let methodname = new StringName("is_visible");
-      this.#_bindings.method_is_visible = internal.classdb_get_method_bind(
+      this._bindings.method_is_visible = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -90,10 +91,10 @@ export class CanvasLayer extends Node{
     }
   }
   static init_method_show() {
-    if (!this.#_bindings.method_show) {
+    if (!this._bindings.method_show) {
       let classname = new StringName("CanvasLayer");
       let methodname = new StringName("show");
-      this.#_bindings.method_show = internal.classdb_get_method_bind(
+      this._bindings.method_show = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -101,10 +102,10 @@ export class CanvasLayer extends Node{
     }
   }
   static init_method_hide() {
-    if (!this.#_bindings.method_hide) {
+    if (!this._bindings.method_hide) {
       let classname = new StringName("CanvasLayer");
       let methodname = new StringName("hide");
-      this.#_bindings.method_hide = internal.classdb_get_method_bind(
+      this._bindings.method_hide = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -112,10 +113,10 @@ export class CanvasLayer extends Node{
     }
   }
   static init_method_set_transform() {
-    if (!this.#_bindings.method_set_transform) {
+    if (!this._bindings.method_set_transform) {
       let classname = new StringName("CanvasLayer");
       let methodname = new StringName("set_transform");
-      this.#_bindings.method_set_transform = internal.classdb_get_method_bind(
+      this._bindings.method_set_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2761652528
@@ -123,10 +124,10 @@ export class CanvasLayer extends Node{
     }
   }
   static init_method_get_transform() {
-    if (!this.#_bindings.method_get_transform) {
+    if (!this._bindings.method_get_transform) {
       let classname = new StringName("CanvasLayer");
       let methodname = new StringName("get_transform");
-      this.#_bindings.method_get_transform = internal.classdb_get_method_bind(
+      this._bindings.method_get_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3814499831
@@ -134,10 +135,10 @@ export class CanvasLayer extends Node{
     }
   }
   static init_method_get_final_transform() {
-    if (!this.#_bindings.method_get_final_transform) {
+    if (!this._bindings.method_get_final_transform) {
       let classname = new StringName("CanvasLayer");
       let methodname = new StringName("get_final_transform");
-      this.#_bindings.method_get_final_transform = internal.classdb_get_method_bind(
+      this._bindings.method_get_final_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3814499831
@@ -145,10 +146,10 @@ export class CanvasLayer extends Node{
     }
   }
   static init_method_set_offset() {
-    if (!this.#_bindings.method_set_offset) {
+    if (!this._bindings.method_set_offset) {
       let classname = new StringName("CanvasLayer");
       let methodname = new StringName("set_offset");
-      this.#_bindings.method_set_offset = internal.classdb_get_method_bind(
+      this._bindings.method_set_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -156,10 +157,10 @@ export class CanvasLayer extends Node{
     }
   }
   static init_method_get_offset() {
-    if (!this.#_bindings.method_get_offset) {
+    if (!this._bindings.method_get_offset) {
       let classname = new StringName("CanvasLayer");
       let methodname = new StringName("get_offset");
-      this.#_bindings.method_get_offset = internal.classdb_get_method_bind(
+      this._bindings.method_get_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -167,10 +168,10 @@ export class CanvasLayer extends Node{
     }
   }
   static init_method_set_rotation() {
-    if (!this.#_bindings.method_set_rotation) {
+    if (!this._bindings.method_set_rotation) {
       let classname = new StringName("CanvasLayer");
       let methodname = new StringName("set_rotation");
-      this.#_bindings.method_set_rotation = internal.classdb_get_method_bind(
+      this._bindings.method_set_rotation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -178,10 +179,10 @@ export class CanvasLayer extends Node{
     }
   }
   static init_method_get_rotation() {
-    if (!this.#_bindings.method_get_rotation) {
+    if (!this._bindings.method_get_rotation) {
       let classname = new StringName("CanvasLayer");
       let methodname = new StringName("get_rotation");
-      this.#_bindings.method_get_rotation = internal.classdb_get_method_bind(
+      this._bindings.method_get_rotation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -189,10 +190,10 @@ export class CanvasLayer extends Node{
     }
   }
   static init_method_set_scale() {
-    if (!this.#_bindings.method_set_scale) {
+    if (!this._bindings.method_set_scale) {
       let classname = new StringName("CanvasLayer");
       let methodname = new StringName("set_scale");
-      this.#_bindings.method_set_scale = internal.classdb_get_method_bind(
+      this._bindings.method_set_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -200,10 +201,10 @@ export class CanvasLayer extends Node{
     }
   }
   static init_method_get_scale() {
-    if (!this.#_bindings.method_get_scale) {
+    if (!this._bindings.method_get_scale) {
       let classname = new StringName("CanvasLayer");
       let methodname = new StringName("get_scale");
-      this.#_bindings.method_get_scale = internal.classdb_get_method_bind(
+      this._bindings.method_get_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -211,10 +212,10 @@ export class CanvasLayer extends Node{
     }
   }
   static init_method_set_follow_viewport() {
-    if (!this.#_bindings.method_set_follow_viewport) {
+    if (!this._bindings.method_set_follow_viewport) {
       let classname = new StringName("CanvasLayer");
       let methodname = new StringName("set_follow_viewport");
-      this.#_bindings.method_set_follow_viewport = internal.classdb_get_method_bind(
+      this._bindings.method_set_follow_viewport = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -222,10 +223,10 @@ export class CanvasLayer extends Node{
     }
   }
   static init_method_is_following_viewport() {
-    if (!this.#_bindings.method_is_following_viewport) {
+    if (!this._bindings.method_is_following_viewport) {
       let classname = new StringName("CanvasLayer");
       let methodname = new StringName("is_following_viewport");
-      this.#_bindings.method_is_following_viewport = internal.classdb_get_method_bind(
+      this._bindings.method_is_following_viewport = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -233,10 +234,10 @@ export class CanvasLayer extends Node{
     }
   }
   static init_method_set_follow_viewport_scale() {
-    if (!this.#_bindings.method_set_follow_viewport_scale) {
+    if (!this._bindings.method_set_follow_viewport_scale) {
       let classname = new StringName("CanvasLayer");
       let methodname = new StringName("set_follow_viewport_scale");
-      this.#_bindings.method_set_follow_viewport_scale = internal.classdb_get_method_bind(
+      this._bindings.method_set_follow_viewport_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -244,10 +245,10 @@ export class CanvasLayer extends Node{
     }
   }
   static init_method_get_follow_viewport_scale() {
-    if (!this.#_bindings.method_get_follow_viewport_scale) {
+    if (!this._bindings.method_get_follow_viewport_scale) {
       let classname = new StringName("CanvasLayer");
       let methodname = new StringName("get_follow_viewport_scale");
-      this.#_bindings.method_get_follow_viewport_scale = internal.classdb_get_method_bind(
+      this._bindings.method_get_follow_viewport_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -255,10 +256,10 @@ export class CanvasLayer extends Node{
     }
   }
   static init_method_set_custom_viewport() {
-    if (!this.#_bindings.method_set_custom_viewport) {
+    if (!this._bindings.method_set_custom_viewport) {
       let classname = new StringName("CanvasLayer");
       let methodname = new StringName("set_custom_viewport");
-      this.#_bindings.method_set_custom_viewport = internal.classdb_get_method_bind(
+      this._bindings.method_set_custom_viewport = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1078189570
@@ -266,10 +267,10 @@ export class CanvasLayer extends Node{
     }
   }
   static init_method_get_custom_viewport() {
-    if (!this.#_bindings.method_get_custom_viewport) {
+    if (!this._bindings.method_get_custom_viewport) {
       let classname = new StringName("CanvasLayer");
       let methodname = new StringName("get_custom_viewport");
-      this.#_bindings.method_get_custom_viewport = internal.classdb_get_method_bind(
+      this._bindings.method_get_custom_viewport = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3160264692
@@ -277,10 +278,10 @@ export class CanvasLayer extends Node{
     }
   }
   static init_method_get_canvas() {
-    if (!this.#_bindings.method_get_canvas) {
+    if (!this._bindings.method_get_canvas) {
       let classname = new StringName("CanvasLayer");
       let methodname = new StringName("get_canvas");
-      this.#_bindings.method_get_canvas = internal.classdb_get_method_bind(
+      this._bindings.method_get_canvas = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2944877500
@@ -293,7 +294,7 @@ export class CanvasLayer extends Node{
   set_layer(_layer) {
     CanvasLayer.init_method_set_layer();
     return _call_native_mb_no_ret(
-      CanvasLayer.#_bindings.method_set_layer,
+      CanvasLayer._bindings.method_set_layer,
       this._owner,
       _layer
     );
@@ -302,7 +303,7 @@ export class CanvasLayer extends Node{
   get_layer() {
     CanvasLayer.init_method_get_layer();
     return _call_native_mb_ret(
-      CanvasLayer.#_bindings.method_get_layer,
+      CanvasLayer._bindings.method_get_layer,
       this._owner,
 			Variant.Type.INT,
     
@@ -313,7 +314,7 @@ export class CanvasLayer extends Node{
   set_visible(_visible) {
     CanvasLayer.init_method_set_visible();
     return _call_native_mb_no_ret(
-      CanvasLayer.#_bindings.method_set_visible,
+      CanvasLayer._bindings.method_set_visible,
       this._owner,
       _visible
     );
@@ -322,7 +323,7 @@ export class CanvasLayer extends Node{
   is_visible() {
     CanvasLayer.init_method_is_visible();
     return _call_native_mb_ret(
-      CanvasLayer.#_bindings.method_is_visible,
+      CanvasLayer._bindings.method_is_visible,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -333,7 +334,7 @@ export class CanvasLayer extends Node{
   show() {
     CanvasLayer.init_method_show();
     return _call_native_mb_no_ret(
-      CanvasLayer.#_bindings.method_show,
+      CanvasLayer._bindings.method_show,
       this._owner,
       
     );
@@ -342,7 +343,7 @@ export class CanvasLayer extends Node{
   hide() {
     CanvasLayer.init_method_hide();
     return _call_native_mb_no_ret(
-      CanvasLayer.#_bindings.method_hide,
+      CanvasLayer._bindings.method_hide,
       this._owner,
       
     );
@@ -351,7 +352,7 @@ export class CanvasLayer extends Node{
   set_transform(_transform) {
     CanvasLayer.init_method_set_transform();
     return _call_native_mb_no_ret(
-      CanvasLayer.#_bindings.method_set_transform,
+      CanvasLayer._bindings.method_set_transform,
       this._owner,
       _transform
     );
@@ -360,7 +361,7 @@ export class CanvasLayer extends Node{
   get_transform() {
     CanvasLayer.init_method_get_transform();
     return _call_native_mb_ret(
-      CanvasLayer.#_bindings.method_get_transform,
+      CanvasLayer._bindings.method_get_transform,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -371,7 +372,7 @@ export class CanvasLayer extends Node{
   get_final_transform() {
     CanvasLayer.init_method_get_final_transform();
     return _call_native_mb_ret(
-      CanvasLayer.#_bindings.method_get_final_transform,
+      CanvasLayer._bindings.method_get_final_transform,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -382,7 +383,7 @@ export class CanvasLayer extends Node{
   set_offset(_offset) {
     CanvasLayer.init_method_set_offset();
     return _call_native_mb_no_ret(
-      CanvasLayer.#_bindings.method_set_offset,
+      CanvasLayer._bindings.method_set_offset,
       this._owner,
       _offset
     );
@@ -391,7 +392,7 @@ export class CanvasLayer extends Node{
   get_offset() {
     CanvasLayer.init_method_get_offset();
     return _call_native_mb_ret(
-      CanvasLayer.#_bindings.method_get_offset,
+      CanvasLayer._bindings.method_get_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -402,7 +403,7 @@ export class CanvasLayer extends Node{
   set_rotation(_radians) {
     CanvasLayer.init_method_set_rotation();
     return _call_native_mb_no_ret(
-      CanvasLayer.#_bindings.method_set_rotation,
+      CanvasLayer._bindings.method_set_rotation,
       this._owner,
       _radians
     );
@@ -411,7 +412,7 @@ export class CanvasLayer extends Node{
   get_rotation() {
     CanvasLayer.init_method_get_rotation();
     return _call_native_mb_ret(
-      CanvasLayer.#_bindings.method_get_rotation,
+      CanvasLayer._bindings.method_get_rotation,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -422,7 +423,7 @@ export class CanvasLayer extends Node{
   set_scale(_scale) {
     CanvasLayer.init_method_set_scale();
     return _call_native_mb_no_ret(
-      CanvasLayer.#_bindings.method_set_scale,
+      CanvasLayer._bindings.method_set_scale,
       this._owner,
       _scale
     );
@@ -431,7 +432,7 @@ export class CanvasLayer extends Node{
   get_scale() {
     CanvasLayer.init_method_get_scale();
     return _call_native_mb_ret(
-      CanvasLayer.#_bindings.method_get_scale,
+      CanvasLayer._bindings.method_get_scale,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -442,7 +443,7 @@ export class CanvasLayer extends Node{
   set_follow_viewport(_enable) {
     CanvasLayer.init_method_set_follow_viewport();
     return _call_native_mb_no_ret(
-      CanvasLayer.#_bindings.method_set_follow_viewport,
+      CanvasLayer._bindings.method_set_follow_viewport,
       this._owner,
       _enable
     );
@@ -451,7 +452,7 @@ export class CanvasLayer extends Node{
   is_following_viewport() {
     CanvasLayer.init_method_is_following_viewport();
     return _call_native_mb_ret(
-      CanvasLayer.#_bindings.method_is_following_viewport,
+      CanvasLayer._bindings.method_is_following_viewport,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -462,7 +463,7 @@ export class CanvasLayer extends Node{
   set_follow_viewport_scale(_scale) {
     CanvasLayer.init_method_set_follow_viewport_scale();
     return _call_native_mb_no_ret(
-      CanvasLayer.#_bindings.method_set_follow_viewport_scale,
+      CanvasLayer._bindings.method_set_follow_viewport_scale,
       this._owner,
       _scale
     );
@@ -471,7 +472,7 @@ export class CanvasLayer extends Node{
   get_follow_viewport_scale() {
     CanvasLayer.init_method_get_follow_viewport_scale();
     return _call_native_mb_ret(
-      CanvasLayer.#_bindings.method_get_follow_viewport_scale,
+      CanvasLayer._bindings.method_get_follow_viewport_scale,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -482,7 +483,7 @@ export class CanvasLayer extends Node{
   set_custom_viewport(_viewport) {
     CanvasLayer.init_method_set_custom_viewport();
     return _call_native_mb_no_ret(
-      CanvasLayer.#_bindings.method_set_custom_viewport,
+      CanvasLayer._bindings.method_set_custom_viewport,
       this._owner,
       _viewport
     );
@@ -491,7 +492,7 @@ export class CanvasLayer extends Node{
   get_custom_viewport() {
     CanvasLayer.init_method_get_custom_viewport();
     return _call_native_mb_ret(
-      CanvasLayer.#_bindings.method_get_custom_viewport,
+      CanvasLayer._bindings.method_get_custom_viewport,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -501,7 +502,7 @@ export class CanvasLayer extends Node{
   get_canvas() {
     CanvasLayer.init_method_get_canvas();
     return _call_native_mb_ret(
-      CanvasLayer.#_bindings.method_get_canvas,
+      CanvasLayer._bindings.method_get_canvas,
       this._owner,
 			Variant.Type.RID,
     

@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Control } from '@js_godot/classes/control'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_border_color;
@@ -17,10 +18,10 @@ class _MethodBindings {
   method_get_editor_only;
   method_set_editor_only;
 }
+@GodotClass
 export class ReferenceRect extends Control{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -30,10 +31,10 @@ export class ReferenceRect extends Control{
     }
   }
   static init_method_get_border_color() {
-    if (!this.#_bindings.method_get_border_color) {
+    if (!this._bindings.method_get_border_color) {
       let classname = new StringName("ReferenceRect");
       let methodname = new StringName("get_border_color");
-      this.#_bindings.method_get_border_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_border_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -41,10 +42,10 @@ export class ReferenceRect extends Control{
     }
   }
   static init_method_set_border_color() {
-    if (!this.#_bindings.method_set_border_color) {
+    if (!this._bindings.method_set_border_color) {
       let classname = new StringName("ReferenceRect");
       let methodname = new StringName("set_border_color");
-      this.#_bindings.method_set_border_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_border_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -52,10 +53,10 @@ export class ReferenceRect extends Control{
     }
   }
   static init_method_get_border_width() {
-    if (!this.#_bindings.method_get_border_width) {
+    if (!this._bindings.method_get_border_width) {
       let classname = new StringName("ReferenceRect");
       let methodname = new StringName("get_border_width");
-      this.#_bindings.method_get_border_width = internal.classdb_get_method_bind(
+      this._bindings.method_get_border_width = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -63,10 +64,10 @@ export class ReferenceRect extends Control{
     }
   }
   static init_method_set_border_width() {
-    if (!this.#_bindings.method_set_border_width) {
+    if (!this._bindings.method_set_border_width) {
       let classname = new StringName("ReferenceRect");
       let methodname = new StringName("set_border_width");
-      this.#_bindings.method_set_border_width = internal.classdb_get_method_bind(
+      this._bindings.method_set_border_width = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -74,10 +75,10 @@ export class ReferenceRect extends Control{
     }
   }
   static init_method_get_editor_only() {
-    if (!this.#_bindings.method_get_editor_only) {
+    if (!this._bindings.method_get_editor_only) {
       let classname = new StringName("ReferenceRect");
       let methodname = new StringName("get_editor_only");
-      this.#_bindings.method_get_editor_only = internal.classdb_get_method_bind(
+      this._bindings.method_get_editor_only = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -85,10 +86,10 @@ export class ReferenceRect extends Control{
     }
   }
   static init_method_set_editor_only() {
-    if (!this.#_bindings.method_set_editor_only) {
+    if (!this._bindings.method_set_editor_only) {
       let classname = new StringName("ReferenceRect");
       let methodname = new StringName("set_editor_only");
-      this.#_bindings.method_set_editor_only = internal.classdb_get_method_bind(
+      this._bindings.method_set_editor_only = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -101,7 +102,7 @@ export class ReferenceRect extends Control{
   get_border_color() {
     ReferenceRect.init_method_get_border_color();
     return _call_native_mb_ret(
-      ReferenceRect.#_bindings.method_get_border_color,
+      ReferenceRect._bindings.method_get_border_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -112,7 +113,7 @@ export class ReferenceRect extends Control{
   set_border_color(_color) {
     ReferenceRect.init_method_set_border_color();
     return _call_native_mb_no_ret(
-      ReferenceRect.#_bindings.method_set_border_color,
+      ReferenceRect._bindings.method_set_border_color,
       this._owner,
       _color
     );
@@ -121,7 +122,7 @@ export class ReferenceRect extends Control{
   get_border_width() {
     ReferenceRect.init_method_get_border_width();
     return _call_native_mb_ret(
-      ReferenceRect.#_bindings.method_get_border_width,
+      ReferenceRect._bindings.method_get_border_width,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -132,7 +133,7 @@ export class ReferenceRect extends Control{
   set_border_width(_width) {
     ReferenceRect.init_method_set_border_width();
     return _call_native_mb_no_ret(
-      ReferenceRect.#_bindings.method_set_border_width,
+      ReferenceRect._bindings.method_set_border_width,
       this._owner,
       _width
     );
@@ -141,7 +142,7 @@ export class ReferenceRect extends Control{
   get_editor_only() {
     ReferenceRect.init_method_get_editor_only();
     return _call_native_mb_ret(
-      ReferenceRect.#_bindings.method_get_editor_only,
+      ReferenceRect._bindings.method_get_editor_only,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -152,7 +153,7 @@ export class ReferenceRect extends Control{
   set_editor_only(_enabled) {
     ReferenceRect.init_method_set_editor_only();
     return _call_native_mb_no_ret(
-      ReferenceRect.#_bindings.method_set_editor_only,
+      ReferenceRect._bindings.method_set_editor_only,
       this._owner,
       _enabled
     );

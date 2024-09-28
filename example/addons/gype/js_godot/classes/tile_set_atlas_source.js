@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
+import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { TileSetSource } from '@js_godot/classes/tile_set_source'
-import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_texture;
@@ -52,10 +53,10 @@ class _MethodBindings {
   method_get_runtime_texture;
   method_get_runtime_tile_texture_region;
 }
+@GodotClass
 export class TileSetAtlasSource extends TileSetSource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -65,10 +66,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_set_texture() {
-    if (!this.#_bindings.method_set_texture) {
+    if (!this._bindings.method_set_texture) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("set_texture");
-      this.#_bindings.method_set_texture = internal.classdb_get_method_bind(
+      this._bindings.method_set_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4051416890
@@ -76,10 +77,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_get_texture() {
-    if (!this.#_bindings.method_get_texture) {
+    if (!this._bindings.method_get_texture) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("get_texture");
-      this.#_bindings.method_get_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -87,10 +88,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_set_margins() {
-    if (!this.#_bindings.method_set_margins) {
+    if (!this._bindings.method_set_margins) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("set_margins");
-      this.#_bindings.method_set_margins = internal.classdb_get_method_bind(
+      this._bindings.method_set_margins = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1130785943
@@ -98,10 +99,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_get_margins() {
-    if (!this.#_bindings.method_get_margins) {
+    if (!this._bindings.method_get_margins) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("get_margins");
-      this.#_bindings.method_get_margins = internal.classdb_get_method_bind(
+      this._bindings.method_get_margins = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3690982128
@@ -109,10 +110,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_set_separation() {
-    if (!this.#_bindings.method_set_separation) {
+    if (!this._bindings.method_set_separation) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("set_separation");
-      this.#_bindings.method_set_separation = internal.classdb_get_method_bind(
+      this._bindings.method_set_separation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1130785943
@@ -120,10 +121,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_get_separation() {
-    if (!this.#_bindings.method_get_separation) {
+    if (!this._bindings.method_get_separation) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("get_separation");
-      this.#_bindings.method_get_separation = internal.classdb_get_method_bind(
+      this._bindings.method_get_separation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3690982128
@@ -131,10 +132,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_set_texture_region_size() {
-    if (!this.#_bindings.method_set_texture_region_size) {
+    if (!this._bindings.method_set_texture_region_size) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("set_texture_region_size");
-      this.#_bindings.method_set_texture_region_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_texture_region_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1130785943
@@ -142,10 +143,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_get_texture_region_size() {
-    if (!this.#_bindings.method_get_texture_region_size) {
+    if (!this._bindings.method_get_texture_region_size) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("get_texture_region_size");
-      this.#_bindings.method_get_texture_region_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_texture_region_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3690982128
@@ -153,10 +154,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_set_use_texture_padding() {
-    if (!this.#_bindings.method_set_use_texture_padding) {
+    if (!this._bindings.method_set_use_texture_padding) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("set_use_texture_padding");
-      this.#_bindings.method_set_use_texture_padding = internal.classdb_get_method_bind(
+      this._bindings.method_set_use_texture_padding = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -164,10 +165,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_get_use_texture_padding() {
-    if (!this.#_bindings.method_get_use_texture_padding) {
+    if (!this._bindings.method_get_use_texture_padding) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("get_use_texture_padding");
-      this.#_bindings.method_get_use_texture_padding = internal.classdb_get_method_bind(
+      this._bindings.method_get_use_texture_padding = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -175,10 +176,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_create_tile() {
-    if (!this.#_bindings.method_create_tile) {
+    if (!this._bindings.method_create_tile) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("create_tile");
-      this.#_bindings.method_create_tile = internal.classdb_get_method_bind(
+      this._bindings.method_create_tile = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         190528769
@@ -186,10 +187,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_remove_tile() {
-    if (!this.#_bindings.method_remove_tile) {
+    if (!this._bindings.method_remove_tile) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("remove_tile");
-      this.#_bindings.method_remove_tile = internal.classdb_get_method_bind(
+      this._bindings.method_remove_tile = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1130785943
@@ -197,10 +198,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_move_tile_in_atlas() {
-    if (!this.#_bindings.method_move_tile_in_atlas) {
+    if (!this._bindings.method_move_tile_in_atlas) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("move_tile_in_atlas");
-      this.#_bindings.method_move_tile_in_atlas = internal.classdb_get_method_bind(
+      this._bindings.method_move_tile_in_atlas = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3870111920
@@ -208,10 +209,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_get_tile_size_in_atlas() {
-    if (!this.#_bindings.method_get_tile_size_in_atlas) {
+    if (!this._bindings.method_get_tile_size_in_atlas) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("get_tile_size_in_atlas");
-      this.#_bindings.method_get_tile_size_in_atlas = internal.classdb_get_method_bind(
+      this._bindings.method_get_tile_size_in_atlas = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3050897911
@@ -219,10 +220,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_has_room_for_tile() {
-    if (!this.#_bindings.method_has_room_for_tile) {
+    if (!this._bindings.method_has_room_for_tile) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("has_room_for_tile");
-      this.#_bindings.method_has_room_for_tile = internal.classdb_get_method_bind(
+      this._bindings.method_has_room_for_tile = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3018597268
@@ -230,10 +231,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_get_tiles_to_be_removed_on_change() {
-    if (!this.#_bindings.method_get_tiles_to_be_removed_on_change) {
+    if (!this._bindings.method_get_tiles_to_be_removed_on_change) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("get_tiles_to_be_removed_on_change");
-      this.#_bindings.method_get_tiles_to_be_removed_on_change = internal.classdb_get_method_bind(
+      this._bindings.method_get_tiles_to_be_removed_on_change = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1240378054
@@ -241,10 +242,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_get_tile_at_coords() {
-    if (!this.#_bindings.method_get_tile_at_coords) {
+    if (!this._bindings.method_get_tile_at_coords) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("get_tile_at_coords");
-      this.#_bindings.method_get_tile_at_coords = internal.classdb_get_method_bind(
+      this._bindings.method_get_tile_at_coords = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3050897911
@@ -252,10 +253,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_has_tiles_outside_texture() {
-    if (!this.#_bindings.method_has_tiles_outside_texture) {
+    if (!this._bindings.method_has_tiles_outside_texture) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("has_tiles_outside_texture");
-      this.#_bindings.method_has_tiles_outside_texture = internal.classdb_get_method_bind(
+      this._bindings.method_has_tiles_outside_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -263,10 +264,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_clear_tiles_outside_texture() {
-    if (!this.#_bindings.method_clear_tiles_outside_texture) {
+    if (!this._bindings.method_clear_tiles_outside_texture) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("clear_tiles_outside_texture");
-      this.#_bindings.method_clear_tiles_outside_texture = internal.classdb_get_method_bind(
+      this._bindings.method_clear_tiles_outside_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -274,10 +275,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_set_tile_animation_columns() {
-    if (!this.#_bindings.method_set_tile_animation_columns) {
+    if (!this._bindings.method_set_tile_animation_columns) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("set_tile_animation_columns");
-      this.#_bindings.method_set_tile_animation_columns = internal.classdb_get_method_bind(
+      this._bindings.method_set_tile_animation_columns = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3200960707
@@ -285,10 +286,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_get_tile_animation_columns() {
-    if (!this.#_bindings.method_get_tile_animation_columns) {
+    if (!this._bindings.method_get_tile_animation_columns) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("get_tile_animation_columns");
-      this.#_bindings.method_get_tile_animation_columns = internal.classdb_get_method_bind(
+      this._bindings.method_get_tile_animation_columns = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2485466453
@@ -296,10 +297,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_set_tile_animation_separation() {
-    if (!this.#_bindings.method_set_tile_animation_separation) {
+    if (!this._bindings.method_set_tile_animation_separation) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("set_tile_animation_separation");
-      this.#_bindings.method_set_tile_animation_separation = internal.classdb_get_method_bind(
+      this._bindings.method_set_tile_animation_separation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1941061099
@@ -307,10 +308,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_get_tile_animation_separation() {
-    if (!this.#_bindings.method_get_tile_animation_separation) {
+    if (!this._bindings.method_get_tile_animation_separation) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("get_tile_animation_separation");
-      this.#_bindings.method_get_tile_animation_separation = internal.classdb_get_method_bind(
+      this._bindings.method_get_tile_animation_separation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3050897911
@@ -318,10 +319,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_set_tile_animation_speed() {
-    if (!this.#_bindings.method_set_tile_animation_speed) {
+    if (!this._bindings.method_set_tile_animation_speed) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("set_tile_animation_speed");
-      this.#_bindings.method_set_tile_animation_speed = internal.classdb_get_method_bind(
+      this._bindings.method_set_tile_animation_speed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2262553149
@@ -329,10 +330,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_get_tile_animation_speed() {
-    if (!this.#_bindings.method_get_tile_animation_speed) {
+    if (!this._bindings.method_get_tile_animation_speed) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("get_tile_animation_speed");
-      this.#_bindings.method_get_tile_animation_speed = internal.classdb_get_method_bind(
+      this._bindings.method_get_tile_animation_speed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         719993801
@@ -340,10 +341,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_set_tile_animation_mode() {
-    if (!this.#_bindings.method_set_tile_animation_mode) {
+    if (!this._bindings.method_set_tile_animation_mode) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("set_tile_animation_mode");
-      this.#_bindings.method_set_tile_animation_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_tile_animation_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3192753483
@@ -351,10 +352,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_get_tile_animation_mode() {
-    if (!this.#_bindings.method_get_tile_animation_mode) {
+    if (!this._bindings.method_get_tile_animation_mode) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("get_tile_animation_mode");
-      this.#_bindings.method_get_tile_animation_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_tile_animation_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4025349959
@@ -362,10 +363,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_set_tile_animation_frames_count() {
-    if (!this.#_bindings.method_set_tile_animation_frames_count) {
+    if (!this._bindings.method_set_tile_animation_frames_count) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("set_tile_animation_frames_count");
-      this.#_bindings.method_set_tile_animation_frames_count = internal.classdb_get_method_bind(
+      this._bindings.method_set_tile_animation_frames_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3200960707
@@ -373,10 +374,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_get_tile_animation_frames_count() {
-    if (!this.#_bindings.method_get_tile_animation_frames_count) {
+    if (!this._bindings.method_get_tile_animation_frames_count) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("get_tile_animation_frames_count");
-      this.#_bindings.method_get_tile_animation_frames_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_tile_animation_frames_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2485466453
@@ -384,10 +385,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_set_tile_animation_frame_duration() {
-    if (!this.#_bindings.method_set_tile_animation_frame_duration) {
+    if (!this._bindings.method_set_tile_animation_frame_duration) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("set_tile_animation_frame_duration");
-      this.#_bindings.method_set_tile_animation_frame_duration = internal.classdb_get_method_bind(
+      this._bindings.method_set_tile_animation_frame_duration = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2843487787
@@ -395,10 +396,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_get_tile_animation_frame_duration() {
-    if (!this.#_bindings.method_get_tile_animation_frame_duration) {
+    if (!this._bindings.method_get_tile_animation_frame_duration) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("get_tile_animation_frame_duration");
-      this.#_bindings.method_get_tile_animation_frame_duration = internal.classdb_get_method_bind(
+      this._bindings.method_get_tile_animation_frame_duration = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1802448425
@@ -406,10 +407,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_get_tile_animation_total_duration() {
-    if (!this.#_bindings.method_get_tile_animation_total_duration) {
+    if (!this._bindings.method_get_tile_animation_total_duration) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("get_tile_animation_total_duration");
-      this.#_bindings.method_get_tile_animation_total_duration = internal.classdb_get_method_bind(
+      this._bindings.method_get_tile_animation_total_duration = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         719993801
@@ -417,10 +418,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_create_alternative_tile() {
-    if (!this.#_bindings.method_create_alternative_tile) {
+    if (!this._bindings.method_create_alternative_tile) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("create_alternative_tile");
-      this.#_bindings.method_create_alternative_tile = internal.classdb_get_method_bind(
+      this._bindings.method_create_alternative_tile = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2226298068
@@ -428,10 +429,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_remove_alternative_tile() {
-    if (!this.#_bindings.method_remove_alternative_tile) {
+    if (!this._bindings.method_remove_alternative_tile) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("remove_alternative_tile");
-      this.#_bindings.method_remove_alternative_tile = internal.classdb_get_method_bind(
+      this._bindings.method_remove_alternative_tile = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3200960707
@@ -439,10 +440,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_set_alternative_tile_id() {
-    if (!this.#_bindings.method_set_alternative_tile_id) {
+    if (!this._bindings.method_set_alternative_tile_id) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("set_alternative_tile_id");
-      this.#_bindings.method_set_alternative_tile_id = internal.classdb_get_method_bind(
+      this._bindings.method_set_alternative_tile_id = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1499785778
@@ -450,10 +451,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_get_next_alternative_tile_id() {
-    if (!this.#_bindings.method_get_next_alternative_tile_id) {
+    if (!this._bindings.method_get_next_alternative_tile_id) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("get_next_alternative_tile_id");
-      this.#_bindings.method_get_next_alternative_tile_id = internal.classdb_get_method_bind(
+      this._bindings.method_get_next_alternative_tile_id = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2485466453
@@ -461,10 +462,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_get_tile_data() {
-    if (!this.#_bindings.method_get_tile_data) {
+    if (!this._bindings.method_get_tile_data) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("get_tile_data");
-      this.#_bindings.method_get_tile_data = internal.classdb_get_method_bind(
+      this._bindings.method_get_tile_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3534028207
@@ -472,10 +473,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_get_atlas_grid_size() {
-    if (!this.#_bindings.method_get_atlas_grid_size) {
+    if (!this._bindings.method_get_atlas_grid_size) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("get_atlas_grid_size");
-      this.#_bindings.method_get_atlas_grid_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_atlas_grid_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3690982128
@@ -483,10 +484,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_get_tile_texture_region() {
-    if (!this.#_bindings.method_get_tile_texture_region) {
+    if (!this._bindings.method_get_tile_texture_region) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("get_tile_texture_region");
-      this.#_bindings.method_get_tile_texture_region = internal.classdb_get_method_bind(
+      this._bindings.method_get_tile_texture_region = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         241857547
@@ -494,10 +495,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_get_runtime_texture() {
-    if (!this.#_bindings.method_get_runtime_texture) {
+    if (!this._bindings.method_get_runtime_texture) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("get_runtime_texture");
-      this.#_bindings.method_get_runtime_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_runtime_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -505,10 +506,10 @@ export class TileSetAtlasSource extends TileSetSource{
     }
   }
   static init_method_get_runtime_tile_texture_region() {
-    if (!this.#_bindings.method_get_runtime_tile_texture_region) {
+    if (!this._bindings.method_get_runtime_tile_texture_region) {
       let classname = new StringName("TileSetAtlasSource");
       let methodname = new StringName("get_runtime_tile_texture_region");
-      this.#_bindings.method_get_runtime_tile_texture_region = internal.classdb_get_method_bind(
+      this._bindings.method_get_runtime_tile_texture_region = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         104874263
@@ -521,7 +522,7 @@ export class TileSetAtlasSource extends TileSetSource{
   set_texture(_texture) {
     TileSetAtlasSource.init_method_set_texture();
     return _call_native_mb_no_ret(
-      TileSetAtlasSource.#_bindings.method_set_texture,
+      TileSetAtlasSource._bindings.method_set_texture,
       this._owner,
       _texture
     );
@@ -530,7 +531,7 @@ export class TileSetAtlasSource extends TileSetSource{
   get_texture() {
     TileSetAtlasSource.init_method_get_texture();
     return _call_native_mb_ret(
-      TileSetAtlasSource.#_bindings.method_get_texture,
+      TileSetAtlasSource._bindings.method_get_texture,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -540,7 +541,7 @@ export class TileSetAtlasSource extends TileSetSource{
   set_margins(_margins) {
     TileSetAtlasSource.init_method_set_margins();
     return _call_native_mb_no_ret(
-      TileSetAtlasSource.#_bindings.method_set_margins,
+      TileSetAtlasSource._bindings.method_set_margins,
       this._owner,
       _margins
     );
@@ -549,7 +550,7 @@ export class TileSetAtlasSource extends TileSetSource{
   get_margins() {
     TileSetAtlasSource.init_method_get_margins();
     return _call_native_mb_ret(
-      TileSetAtlasSource.#_bindings.method_get_margins,
+      TileSetAtlasSource._bindings.method_get_margins,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -560,7 +561,7 @@ export class TileSetAtlasSource extends TileSetSource{
   set_separation(_separation) {
     TileSetAtlasSource.init_method_set_separation();
     return _call_native_mb_no_ret(
-      TileSetAtlasSource.#_bindings.method_set_separation,
+      TileSetAtlasSource._bindings.method_set_separation,
       this._owner,
       _separation
     );
@@ -569,7 +570,7 @@ export class TileSetAtlasSource extends TileSetSource{
   get_separation() {
     TileSetAtlasSource.init_method_get_separation();
     return _call_native_mb_ret(
-      TileSetAtlasSource.#_bindings.method_get_separation,
+      TileSetAtlasSource._bindings.method_get_separation,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -580,7 +581,7 @@ export class TileSetAtlasSource extends TileSetSource{
   set_texture_region_size(_texture_region_size) {
     TileSetAtlasSource.init_method_set_texture_region_size();
     return _call_native_mb_no_ret(
-      TileSetAtlasSource.#_bindings.method_set_texture_region_size,
+      TileSetAtlasSource._bindings.method_set_texture_region_size,
       this._owner,
       _texture_region_size
     );
@@ -589,7 +590,7 @@ export class TileSetAtlasSource extends TileSetSource{
   get_texture_region_size() {
     TileSetAtlasSource.init_method_get_texture_region_size();
     return _call_native_mb_ret(
-      TileSetAtlasSource.#_bindings.method_get_texture_region_size,
+      TileSetAtlasSource._bindings.method_get_texture_region_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -600,7 +601,7 @@ export class TileSetAtlasSource extends TileSetSource{
   set_use_texture_padding(_use_texture_padding) {
     TileSetAtlasSource.init_method_set_use_texture_padding();
     return _call_native_mb_no_ret(
-      TileSetAtlasSource.#_bindings.method_set_use_texture_padding,
+      TileSetAtlasSource._bindings.method_set_use_texture_padding,
       this._owner,
       _use_texture_padding
     );
@@ -609,7 +610,7 @@ export class TileSetAtlasSource extends TileSetSource{
   get_use_texture_padding() {
     TileSetAtlasSource.init_method_get_use_texture_padding();
     return _call_native_mb_ret(
-      TileSetAtlasSource.#_bindings.method_get_use_texture_padding,
+      TileSetAtlasSource._bindings.method_get_use_texture_padding,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -620,7 +621,7 @@ export class TileSetAtlasSource extends TileSetSource{
   create_tile(_atlas_coords, _size) {
     TileSetAtlasSource.init_method_create_tile();
     return _call_native_mb_no_ret(
-      TileSetAtlasSource.#_bindings.method_create_tile,
+      TileSetAtlasSource._bindings.method_create_tile,
       this._owner,
       _atlas_coords, _size
     );
@@ -629,7 +630,7 @@ export class TileSetAtlasSource extends TileSetSource{
   remove_tile(_atlas_coords) {
     TileSetAtlasSource.init_method_remove_tile();
     return _call_native_mb_no_ret(
-      TileSetAtlasSource.#_bindings.method_remove_tile,
+      TileSetAtlasSource._bindings.method_remove_tile,
       this._owner,
       _atlas_coords
     );
@@ -638,7 +639,7 @@ export class TileSetAtlasSource extends TileSetSource{
   move_tile_in_atlas(_atlas_coords, _new_atlas_coords, _new_size) {
     TileSetAtlasSource.init_method_move_tile_in_atlas();
     return _call_native_mb_no_ret(
-      TileSetAtlasSource.#_bindings.method_move_tile_in_atlas,
+      TileSetAtlasSource._bindings.method_move_tile_in_atlas,
       this._owner,
       _atlas_coords, _new_atlas_coords, _new_size
     );
@@ -647,7 +648,7 @@ export class TileSetAtlasSource extends TileSetSource{
   get_tile_size_in_atlas(_atlas_coords) {
     TileSetAtlasSource.init_method_get_tile_size_in_atlas();
     return _call_native_mb_ret(
-      TileSetAtlasSource.#_bindings.method_get_tile_size_in_atlas,
+      TileSetAtlasSource._bindings.method_get_tile_size_in_atlas,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -658,7 +659,7 @@ export class TileSetAtlasSource extends TileSetSource{
   has_room_for_tile(_atlas_coords, _size, _animation_columns, _animation_separation, _frames_count, _ignored_tile) {
     TileSetAtlasSource.init_method_has_room_for_tile();
     return _call_native_mb_ret(
-      TileSetAtlasSource.#_bindings.method_has_room_for_tile,
+      TileSetAtlasSource._bindings.method_has_room_for_tile,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -669,7 +670,7 @@ export class TileSetAtlasSource extends TileSetSource{
   get_tiles_to_be_removed_on_change(_texture, _margins, _separation, _texture_region_size) {
     TileSetAtlasSource.init_method_get_tiles_to_be_removed_on_change();
     return _call_native_mb_ret(
-      TileSetAtlasSource.#_bindings.method_get_tiles_to_be_removed_on_change,
+      TileSetAtlasSource._bindings.method_get_tiles_to_be_removed_on_change,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -680,7 +681,7 @@ export class TileSetAtlasSource extends TileSetSource{
   get_tile_at_coords(_atlas_coords) {
     TileSetAtlasSource.init_method_get_tile_at_coords();
     return _call_native_mb_ret(
-      TileSetAtlasSource.#_bindings.method_get_tile_at_coords,
+      TileSetAtlasSource._bindings.method_get_tile_at_coords,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -691,7 +692,7 @@ export class TileSetAtlasSource extends TileSetSource{
   has_tiles_outside_texture() {
     TileSetAtlasSource.init_method_has_tiles_outside_texture();
     return _call_native_mb_ret(
-      TileSetAtlasSource.#_bindings.method_has_tiles_outside_texture,
+      TileSetAtlasSource._bindings.method_has_tiles_outside_texture,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -702,7 +703,7 @@ export class TileSetAtlasSource extends TileSetSource{
   clear_tiles_outside_texture() {
     TileSetAtlasSource.init_method_clear_tiles_outside_texture();
     return _call_native_mb_no_ret(
-      TileSetAtlasSource.#_bindings.method_clear_tiles_outside_texture,
+      TileSetAtlasSource._bindings.method_clear_tiles_outside_texture,
       this._owner,
       
     );
@@ -711,7 +712,7 @@ export class TileSetAtlasSource extends TileSetSource{
   set_tile_animation_columns(_atlas_coords, _frame_columns) {
     TileSetAtlasSource.init_method_set_tile_animation_columns();
     return _call_native_mb_no_ret(
-      TileSetAtlasSource.#_bindings.method_set_tile_animation_columns,
+      TileSetAtlasSource._bindings.method_set_tile_animation_columns,
       this._owner,
       _atlas_coords, _frame_columns
     );
@@ -720,7 +721,7 @@ export class TileSetAtlasSource extends TileSetSource{
   get_tile_animation_columns(_atlas_coords) {
     TileSetAtlasSource.init_method_get_tile_animation_columns();
     return _call_native_mb_ret(
-      TileSetAtlasSource.#_bindings.method_get_tile_animation_columns,
+      TileSetAtlasSource._bindings.method_get_tile_animation_columns,
       this._owner,
 			Variant.Type.INT,
     
@@ -731,7 +732,7 @@ export class TileSetAtlasSource extends TileSetSource{
   set_tile_animation_separation(_atlas_coords, _separation) {
     TileSetAtlasSource.init_method_set_tile_animation_separation();
     return _call_native_mb_no_ret(
-      TileSetAtlasSource.#_bindings.method_set_tile_animation_separation,
+      TileSetAtlasSource._bindings.method_set_tile_animation_separation,
       this._owner,
       _atlas_coords, _separation
     );
@@ -740,7 +741,7 @@ export class TileSetAtlasSource extends TileSetSource{
   get_tile_animation_separation(_atlas_coords) {
     TileSetAtlasSource.init_method_get_tile_animation_separation();
     return _call_native_mb_ret(
-      TileSetAtlasSource.#_bindings.method_get_tile_animation_separation,
+      TileSetAtlasSource._bindings.method_get_tile_animation_separation,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -751,7 +752,7 @@ export class TileSetAtlasSource extends TileSetSource{
   set_tile_animation_speed(_atlas_coords, _speed) {
     TileSetAtlasSource.init_method_set_tile_animation_speed();
     return _call_native_mb_no_ret(
-      TileSetAtlasSource.#_bindings.method_set_tile_animation_speed,
+      TileSetAtlasSource._bindings.method_set_tile_animation_speed,
       this._owner,
       _atlas_coords, _speed
     );
@@ -760,7 +761,7 @@ export class TileSetAtlasSource extends TileSetSource{
   get_tile_animation_speed(_atlas_coords) {
     TileSetAtlasSource.init_method_get_tile_animation_speed();
     return _call_native_mb_ret(
-      TileSetAtlasSource.#_bindings.method_get_tile_animation_speed,
+      TileSetAtlasSource._bindings.method_get_tile_animation_speed,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -771,7 +772,7 @@ export class TileSetAtlasSource extends TileSetSource{
   set_tile_animation_mode(_atlas_coords, _mode) {
     TileSetAtlasSource.init_method_set_tile_animation_mode();
     return _call_native_mb_no_ret(
-      TileSetAtlasSource.#_bindings.method_set_tile_animation_mode,
+      TileSetAtlasSource._bindings.method_set_tile_animation_mode,
       this._owner,
       _atlas_coords, _mode
     );
@@ -780,7 +781,7 @@ export class TileSetAtlasSource extends TileSetSource{
   get_tile_animation_mode(_atlas_coords) {
     TileSetAtlasSource.init_method_get_tile_animation_mode();
     return _call_native_mb_ret(
-      TileSetAtlasSource.#_bindings.method_get_tile_animation_mode,
+      TileSetAtlasSource._bindings.method_get_tile_animation_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -791,7 +792,7 @@ export class TileSetAtlasSource extends TileSetSource{
   set_tile_animation_frames_count(_atlas_coords, _frames_count) {
     TileSetAtlasSource.init_method_set_tile_animation_frames_count();
     return _call_native_mb_no_ret(
-      TileSetAtlasSource.#_bindings.method_set_tile_animation_frames_count,
+      TileSetAtlasSource._bindings.method_set_tile_animation_frames_count,
       this._owner,
       _atlas_coords, _frames_count
     );
@@ -800,7 +801,7 @@ export class TileSetAtlasSource extends TileSetSource{
   get_tile_animation_frames_count(_atlas_coords) {
     TileSetAtlasSource.init_method_get_tile_animation_frames_count();
     return _call_native_mb_ret(
-      TileSetAtlasSource.#_bindings.method_get_tile_animation_frames_count,
+      TileSetAtlasSource._bindings.method_get_tile_animation_frames_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -811,7 +812,7 @@ export class TileSetAtlasSource extends TileSetSource{
   set_tile_animation_frame_duration(_atlas_coords, _frame_index, _duration) {
     TileSetAtlasSource.init_method_set_tile_animation_frame_duration();
     return _call_native_mb_no_ret(
-      TileSetAtlasSource.#_bindings.method_set_tile_animation_frame_duration,
+      TileSetAtlasSource._bindings.method_set_tile_animation_frame_duration,
       this._owner,
       _atlas_coords, _frame_index, _duration
     );
@@ -820,7 +821,7 @@ export class TileSetAtlasSource extends TileSetSource{
   get_tile_animation_frame_duration(_atlas_coords, _frame_index) {
     TileSetAtlasSource.init_method_get_tile_animation_frame_duration();
     return _call_native_mb_ret(
-      TileSetAtlasSource.#_bindings.method_get_tile_animation_frame_duration,
+      TileSetAtlasSource._bindings.method_get_tile_animation_frame_duration,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -831,7 +832,7 @@ export class TileSetAtlasSource extends TileSetSource{
   get_tile_animation_total_duration(_atlas_coords) {
     TileSetAtlasSource.init_method_get_tile_animation_total_duration();
     return _call_native_mb_ret(
-      TileSetAtlasSource.#_bindings.method_get_tile_animation_total_duration,
+      TileSetAtlasSource._bindings.method_get_tile_animation_total_duration,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -842,7 +843,7 @@ export class TileSetAtlasSource extends TileSetSource{
   create_alternative_tile(_atlas_coords, _alternative_id_override) {
     TileSetAtlasSource.init_method_create_alternative_tile();
     return _call_native_mb_ret(
-      TileSetAtlasSource.#_bindings.method_create_alternative_tile,
+      TileSetAtlasSource._bindings.method_create_alternative_tile,
       this._owner,
 			Variant.Type.INT,
     
@@ -853,7 +854,7 @@ export class TileSetAtlasSource extends TileSetSource{
   remove_alternative_tile(_atlas_coords, _alternative_tile) {
     TileSetAtlasSource.init_method_remove_alternative_tile();
     return _call_native_mb_no_ret(
-      TileSetAtlasSource.#_bindings.method_remove_alternative_tile,
+      TileSetAtlasSource._bindings.method_remove_alternative_tile,
       this._owner,
       _atlas_coords, _alternative_tile
     );
@@ -862,7 +863,7 @@ export class TileSetAtlasSource extends TileSetSource{
   set_alternative_tile_id(_atlas_coords, _alternative_tile, _new_id) {
     TileSetAtlasSource.init_method_set_alternative_tile_id();
     return _call_native_mb_no_ret(
-      TileSetAtlasSource.#_bindings.method_set_alternative_tile_id,
+      TileSetAtlasSource._bindings.method_set_alternative_tile_id,
       this._owner,
       _atlas_coords, _alternative_tile, _new_id
     );
@@ -871,7 +872,7 @@ export class TileSetAtlasSource extends TileSetSource{
   get_next_alternative_tile_id(_atlas_coords) {
     TileSetAtlasSource.init_method_get_next_alternative_tile_id();
     return _call_native_mb_ret(
-      TileSetAtlasSource.#_bindings.method_get_next_alternative_tile_id,
+      TileSetAtlasSource._bindings.method_get_next_alternative_tile_id,
       this._owner,
 			Variant.Type.INT,
     
@@ -882,7 +883,7 @@ export class TileSetAtlasSource extends TileSetSource{
   get_tile_data(_atlas_coords, _alternative_tile) {
     TileSetAtlasSource.init_method_get_tile_data();
     return _call_native_mb_ret(
-      TileSetAtlasSource.#_bindings.method_get_tile_data,
+      TileSetAtlasSource._bindings.method_get_tile_data,
       this._owner,
 			Variant.Type.OBJECT,
       _atlas_coords, _alternative_tile
@@ -892,7 +893,7 @@ export class TileSetAtlasSource extends TileSetSource{
   get_atlas_grid_size() {
     TileSetAtlasSource.init_method_get_atlas_grid_size();
     return _call_native_mb_ret(
-      TileSetAtlasSource.#_bindings.method_get_atlas_grid_size,
+      TileSetAtlasSource._bindings.method_get_atlas_grid_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -903,7 +904,7 @@ export class TileSetAtlasSource extends TileSetSource{
   get_tile_texture_region(_atlas_coords, _frame) {
     TileSetAtlasSource.init_method_get_tile_texture_region();
     return _call_native_mb_ret(
-      TileSetAtlasSource.#_bindings.method_get_tile_texture_region,
+      TileSetAtlasSource._bindings.method_get_tile_texture_region,
       this._owner,
 			Variant.Type.RECT2I,
     
@@ -914,7 +915,7 @@ export class TileSetAtlasSource extends TileSetSource{
   get_runtime_texture() {
     TileSetAtlasSource.init_method_get_runtime_texture();
     return _call_native_mb_ret(
-      TileSetAtlasSource.#_bindings.method_get_runtime_texture,
+      TileSetAtlasSource._bindings.method_get_runtime_texture,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -924,7 +925,7 @@ export class TileSetAtlasSource extends TileSetSource{
   get_runtime_tile_texture_region(_atlas_coords, _frame) {
     TileSetAtlasSource.init_method_get_runtime_tile_texture_region();
     return _call_native_mb_ret(
-      TileSetAtlasSource.#_bindings.method_get_runtime_tile_texture_region,
+      TileSetAtlasSource._bindings.method_get_runtime_tile_texture_region,
       this._owner,
 			Variant.Type.RECT2I,
     

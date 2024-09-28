@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_action;
@@ -19,10 +20,10 @@ class _MethodBindings {
   method_add_path;
   method_remove_path;
 }
+@GodotClass
 export class OpenXRIPBinding extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -32,10 +33,10 @@ export class OpenXRIPBinding extends Resource{
     }
   }
   static init_method_set_action() {
-    if (!this.#_bindings.method_set_action) {
+    if (!this._bindings.method_set_action) {
       let classname = new StringName("OpenXRIPBinding");
       let methodname = new StringName("set_action");
-      this.#_bindings.method_set_action = internal.classdb_get_method_bind(
+      this._bindings.method_set_action = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         349361333
@@ -43,10 +44,10 @@ export class OpenXRIPBinding extends Resource{
     }
   }
   static init_method_get_action() {
-    if (!this.#_bindings.method_get_action) {
+    if (!this._bindings.method_get_action) {
       let classname = new StringName("OpenXRIPBinding");
       let methodname = new StringName("get_action");
-      this.#_bindings.method_get_action = internal.classdb_get_method_bind(
+      this._bindings.method_get_action = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4072409085
@@ -54,10 +55,10 @@ export class OpenXRIPBinding extends Resource{
     }
   }
   static init_method_get_path_count() {
-    if (!this.#_bindings.method_get_path_count) {
+    if (!this._bindings.method_get_path_count) {
       let classname = new StringName("OpenXRIPBinding");
       let methodname = new StringName("get_path_count");
-      this.#_bindings.method_get_path_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_path_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -65,10 +66,10 @@ export class OpenXRIPBinding extends Resource{
     }
   }
   static init_method_set_paths() {
-    if (!this.#_bindings.method_set_paths) {
+    if (!this._bindings.method_set_paths) {
       let classname = new StringName("OpenXRIPBinding");
       let methodname = new StringName("set_paths");
-      this.#_bindings.method_set_paths = internal.classdb_get_method_bind(
+      this._bindings.method_set_paths = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4015028928
@@ -76,10 +77,10 @@ export class OpenXRIPBinding extends Resource{
     }
   }
   static init_method_get_paths() {
-    if (!this.#_bindings.method_get_paths) {
+    if (!this._bindings.method_get_paths) {
       let classname = new StringName("OpenXRIPBinding");
       let methodname = new StringName("get_paths");
-      this.#_bindings.method_get_paths = internal.classdb_get_method_bind(
+      this._bindings.method_get_paths = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1139954409
@@ -87,10 +88,10 @@ export class OpenXRIPBinding extends Resource{
     }
   }
   static init_method_has_path() {
-    if (!this.#_bindings.method_has_path) {
+    if (!this._bindings.method_has_path) {
       let classname = new StringName("OpenXRIPBinding");
       let methodname = new StringName("has_path");
-      this.#_bindings.method_has_path = internal.classdb_get_method_bind(
+      this._bindings.method_has_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3927539163
@@ -98,10 +99,10 @@ export class OpenXRIPBinding extends Resource{
     }
   }
   static init_method_add_path() {
-    if (!this.#_bindings.method_add_path) {
+    if (!this._bindings.method_add_path) {
       let classname = new StringName("OpenXRIPBinding");
       let methodname = new StringName("add_path");
-      this.#_bindings.method_add_path = internal.classdb_get_method_bind(
+      this._bindings.method_add_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -109,10 +110,10 @@ export class OpenXRIPBinding extends Resource{
     }
   }
   static init_method_remove_path() {
-    if (!this.#_bindings.method_remove_path) {
+    if (!this._bindings.method_remove_path) {
       let classname = new StringName("OpenXRIPBinding");
       let methodname = new StringName("remove_path");
-      this.#_bindings.method_remove_path = internal.classdb_get_method_bind(
+      this._bindings.method_remove_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -125,7 +126,7 @@ export class OpenXRIPBinding extends Resource{
   set_action(_action) {
     OpenXRIPBinding.init_method_set_action();
     return _call_native_mb_no_ret(
-      OpenXRIPBinding.#_bindings.method_set_action,
+      OpenXRIPBinding._bindings.method_set_action,
       this._owner,
       _action
     );
@@ -134,7 +135,7 @@ export class OpenXRIPBinding extends Resource{
   get_action() {
     OpenXRIPBinding.init_method_get_action();
     return _call_native_mb_ret(
-      OpenXRIPBinding.#_bindings.method_get_action,
+      OpenXRIPBinding._bindings.method_get_action,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -144,7 +145,7 @@ export class OpenXRIPBinding extends Resource{
   get_path_count() {
     OpenXRIPBinding.init_method_get_path_count();
     return _call_native_mb_ret(
-      OpenXRIPBinding.#_bindings.method_get_path_count,
+      OpenXRIPBinding._bindings.method_get_path_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -155,7 +156,7 @@ export class OpenXRIPBinding extends Resource{
   set_paths(_paths) {
     OpenXRIPBinding.init_method_set_paths();
     return _call_native_mb_no_ret(
-      OpenXRIPBinding.#_bindings.method_set_paths,
+      OpenXRIPBinding._bindings.method_set_paths,
       this._owner,
       _paths
     );
@@ -164,7 +165,7 @@ export class OpenXRIPBinding extends Resource{
   get_paths() {
     OpenXRIPBinding.init_method_get_paths();
     return _call_native_mb_ret(
-      OpenXRIPBinding.#_bindings.method_get_paths,
+      OpenXRIPBinding._bindings.method_get_paths,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -175,7 +176,7 @@ export class OpenXRIPBinding extends Resource{
   has_path(_path) {
     OpenXRIPBinding.init_method_has_path();
     return _call_native_mb_ret(
-      OpenXRIPBinding.#_bindings.method_has_path,
+      OpenXRIPBinding._bindings.method_has_path,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -186,7 +187,7 @@ export class OpenXRIPBinding extends Resource{
   add_path(_path) {
     OpenXRIPBinding.init_method_add_path();
     return _call_native_mb_no_ret(
-      OpenXRIPBinding.#_bindings.method_add_path,
+      OpenXRIPBinding._bindings.method_add_path,
       this._owner,
       _path
     );
@@ -195,7 +196,7 @@ export class OpenXRIPBinding extends Resource{
   remove_path(_path) {
     OpenXRIPBinding.init_method_remove_path();
     return _call_native_mb_no_ret(
-      OpenXRIPBinding.#_bindings.method_remove_path,
+      OpenXRIPBinding._bindings.method_remove_path,
       this._owner,
       _path
     );

@@ -27,6 +27,7 @@ target_link_libraries(gype PRIVATE tree-sitter)
 
 target_include_directories(gype PUBLIC
 	${PROJECT_SOURCE_DIR}/include
+	${PROJECT_SOURCE_DIR}/quickjs/include
 	${PROJECT_SOURCE_DIR}/tree-sitter/src
 	${PROJECT_SOURCE_DIR}/test
 )
@@ -37,7 +38,7 @@ target_compile_features(${PROJECT_NAME}
 )
 
 target_compile_options(gype PUBLIC 
-	-Wall -O0 -g)
+	-Wall -O0 -g -DDEBUG_ENABLED)
 
 set_target_properties(gype PROPERTIES 
 	RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/example/addons/gype/extension

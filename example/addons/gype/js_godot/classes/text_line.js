@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_clear;
@@ -47,10 +48,10 @@ class _MethodBindings {
   method_draw_outline;
   method_hit_test;
 }
+@GodotClass
 export class TextLine extends RefCounted{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -60,10 +61,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_clear() {
-    if (!this.#_bindings.method_clear) {
+    if (!this._bindings.method_clear) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("clear");
-      this.#_bindings.method_clear = internal.classdb_get_method_bind(
+      this._bindings.method_clear = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -71,10 +72,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_set_direction() {
-    if (!this.#_bindings.method_set_direction) {
+    if (!this._bindings.method_set_direction) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("set_direction");
-      this.#_bindings.method_set_direction = internal.classdb_get_method_bind(
+      this._bindings.method_set_direction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1418190634
@@ -82,10 +83,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_get_direction() {
-    if (!this.#_bindings.method_get_direction) {
+    if (!this._bindings.method_get_direction) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("get_direction");
-      this.#_bindings.method_get_direction = internal.classdb_get_method_bind(
+      this._bindings.method_get_direction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2516697328
@@ -93,10 +94,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_set_orientation() {
-    if (!this.#_bindings.method_set_orientation) {
+    if (!this._bindings.method_set_orientation) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("set_orientation");
-      this.#_bindings.method_set_orientation = internal.classdb_get_method_bind(
+      this._bindings.method_set_orientation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         42823726
@@ -104,10 +105,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_get_orientation() {
-    if (!this.#_bindings.method_get_orientation) {
+    if (!this._bindings.method_get_orientation) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("get_orientation");
-      this.#_bindings.method_get_orientation = internal.classdb_get_method_bind(
+      this._bindings.method_get_orientation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         175768116
@@ -115,10 +116,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_set_preserve_invalid() {
-    if (!this.#_bindings.method_set_preserve_invalid) {
+    if (!this._bindings.method_set_preserve_invalid) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("set_preserve_invalid");
-      this.#_bindings.method_set_preserve_invalid = internal.classdb_get_method_bind(
+      this._bindings.method_set_preserve_invalid = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -126,10 +127,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_get_preserve_invalid() {
-    if (!this.#_bindings.method_get_preserve_invalid) {
+    if (!this._bindings.method_get_preserve_invalid) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("get_preserve_invalid");
-      this.#_bindings.method_get_preserve_invalid = internal.classdb_get_method_bind(
+      this._bindings.method_get_preserve_invalid = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -137,10 +138,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_set_preserve_control() {
-    if (!this.#_bindings.method_set_preserve_control) {
+    if (!this._bindings.method_set_preserve_control) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("set_preserve_control");
-      this.#_bindings.method_set_preserve_control = internal.classdb_get_method_bind(
+      this._bindings.method_set_preserve_control = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -148,10 +149,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_get_preserve_control() {
-    if (!this.#_bindings.method_get_preserve_control) {
+    if (!this._bindings.method_get_preserve_control) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("get_preserve_control");
-      this.#_bindings.method_get_preserve_control = internal.classdb_get_method_bind(
+      this._bindings.method_get_preserve_control = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -159,10 +160,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_set_bidi_override() {
-    if (!this.#_bindings.method_set_bidi_override) {
+    if (!this._bindings.method_set_bidi_override) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("set_bidi_override");
-      this.#_bindings.method_set_bidi_override = internal.classdb_get_method_bind(
+      this._bindings.method_set_bidi_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         381264803
@@ -170,10 +171,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_add_string() {
-    if (!this.#_bindings.method_add_string) {
+    if (!this._bindings.method_add_string) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("add_string");
-      this.#_bindings.method_add_string = internal.classdb_get_method_bind(
+      this._bindings.method_add_string = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         621426851
@@ -181,10 +182,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_add_object() {
-    if (!this.#_bindings.method_add_object) {
+    if (!this._bindings.method_add_object) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("add_object");
-      this.#_bindings.method_add_object = internal.classdb_get_method_bind(
+      this._bindings.method_add_object = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1316529304
@@ -192,10 +193,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_resize_object() {
-    if (!this.#_bindings.method_resize_object) {
+    if (!this._bindings.method_resize_object) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("resize_object");
-      this.#_bindings.method_resize_object = internal.classdb_get_method_bind(
+      this._bindings.method_resize_object = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2095776372
@@ -203,10 +204,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_set_width() {
-    if (!this.#_bindings.method_set_width) {
+    if (!this._bindings.method_set_width) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("set_width");
-      this.#_bindings.method_set_width = internal.classdb_get_method_bind(
+      this._bindings.method_set_width = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -214,10 +215,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_get_width() {
-    if (!this.#_bindings.method_get_width) {
+    if (!this._bindings.method_get_width) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("get_width");
-      this.#_bindings.method_get_width = internal.classdb_get_method_bind(
+      this._bindings.method_get_width = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -225,10 +226,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_set_horizontal_alignment() {
-    if (!this.#_bindings.method_set_horizontal_alignment) {
+    if (!this._bindings.method_set_horizontal_alignment) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("set_horizontal_alignment");
-      this.#_bindings.method_set_horizontal_alignment = internal.classdb_get_method_bind(
+      this._bindings.method_set_horizontal_alignment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2312603777
@@ -236,10 +237,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_get_horizontal_alignment() {
-    if (!this.#_bindings.method_get_horizontal_alignment) {
+    if (!this._bindings.method_get_horizontal_alignment) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("get_horizontal_alignment");
-      this.#_bindings.method_get_horizontal_alignment = internal.classdb_get_method_bind(
+      this._bindings.method_get_horizontal_alignment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         341400642
@@ -247,10 +248,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_tab_align() {
-    if (!this.#_bindings.method_tab_align) {
+    if (!this._bindings.method_tab_align) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("tab_align");
-      this.#_bindings.method_tab_align = internal.classdb_get_method_bind(
+      this._bindings.method_tab_align = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2899603908
@@ -258,10 +259,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_set_flags() {
-    if (!this.#_bindings.method_set_flags) {
+    if (!this._bindings.method_set_flags) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("set_flags");
-      this.#_bindings.method_set_flags = internal.classdb_get_method_bind(
+      this._bindings.method_set_flags = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2877345813
@@ -269,10 +270,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_get_flags() {
-    if (!this.#_bindings.method_get_flags) {
+    if (!this._bindings.method_get_flags) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("get_flags");
-      this.#_bindings.method_get_flags = internal.classdb_get_method_bind(
+      this._bindings.method_get_flags = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1583363614
@@ -280,10 +281,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_set_text_overrun_behavior() {
-    if (!this.#_bindings.method_set_text_overrun_behavior) {
+    if (!this._bindings.method_set_text_overrun_behavior) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("set_text_overrun_behavior");
-      this.#_bindings.method_set_text_overrun_behavior = internal.classdb_get_method_bind(
+      this._bindings.method_set_text_overrun_behavior = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1008890932
@@ -291,10 +292,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_get_text_overrun_behavior() {
-    if (!this.#_bindings.method_get_text_overrun_behavior) {
+    if (!this._bindings.method_get_text_overrun_behavior) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("get_text_overrun_behavior");
-      this.#_bindings.method_get_text_overrun_behavior = internal.classdb_get_method_bind(
+      this._bindings.method_get_text_overrun_behavior = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3779142101
@@ -302,10 +303,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_set_ellipsis_char() {
-    if (!this.#_bindings.method_set_ellipsis_char) {
+    if (!this._bindings.method_set_ellipsis_char) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("set_ellipsis_char");
-      this.#_bindings.method_set_ellipsis_char = internal.classdb_get_method_bind(
+      this._bindings.method_set_ellipsis_char = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -313,10 +314,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_get_ellipsis_char() {
-    if (!this.#_bindings.method_get_ellipsis_char) {
+    if (!this._bindings.method_get_ellipsis_char) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("get_ellipsis_char");
-      this.#_bindings.method_get_ellipsis_char = internal.classdb_get_method_bind(
+      this._bindings.method_get_ellipsis_char = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -324,10 +325,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_get_objects() {
-    if (!this.#_bindings.method_get_objects) {
+    if (!this._bindings.method_get_objects) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("get_objects");
-      this.#_bindings.method_get_objects = internal.classdb_get_method_bind(
+      this._bindings.method_get_objects = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -335,10 +336,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_get_object_rect() {
-    if (!this.#_bindings.method_get_object_rect) {
+    if (!this._bindings.method_get_object_rect) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("get_object_rect");
-      this.#_bindings.method_get_object_rect = internal.classdb_get_method_bind(
+      this._bindings.method_get_object_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1742700391
@@ -346,10 +347,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_get_size() {
-    if (!this.#_bindings.method_get_size) {
+    if (!this._bindings.method_get_size) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("get_size");
-      this.#_bindings.method_get_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -357,10 +358,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_get_rid() {
-    if (!this.#_bindings.method_get_rid) {
+    if (!this._bindings.method_get_rid) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("get_rid");
-      this.#_bindings.method_get_rid = internal.classdb_get_method_bind(
+      this._bindings.method_get_rid = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2944877500
@@ -368,10 +369,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_get_line_ascent() {
-    if (!this.#_bindings.method_get_line_ascent) {
+    if (!this._bindings.method_get_line_ascent) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("get_line_ascent");
-      this.#_bindings.method_get_line_ascent = internal.classdb_get_method_bind(
+      this._bindings.method_get_line_ascent = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -379,10 +380,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_get_line_descent() {
-    if (!this.#_bindings.method_get_line_descent) {
+    if (!this._bindings.method_get_line_descent) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("get_line_descent");
-      this.#_bindings.method_get_line_descent = internal.classdb_get_method_bind(
+      this._bindings.method_get_line_descent = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -390,10 +391,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_get_line_width() {
-    if (!this.#_bindings.method_get_line_width) {
+    if (!this._bindings.method_get_line_width) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("get_line_width");
-      this.#_bindings.method_get_line_width = internal.classdb_get_method_bind(
+      this._bindings.method_get_line_width = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -401,10 +402,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_get_line_underline_position() {
-    if (!this.#_bindings.method_get_line_underline_position) {
+    if (!this._bindings.method_get_line_underline_position) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("get_line_underline_position");
-      this.#_bindings.method_get_line_underline_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_line_underline_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -412,10 +413,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_get_line_underline_thickness() {
-    if (!this.#_bindings.method_get_line_underline_thickness) {
+    if (!this._bindings.method_get_line_underline_thickness) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("get_line_underline_thickness");
-      this.#_bindings.method_get_line_underline_thickness = internal.classdb_get_method_bind(
+      this._bindings.method_get_line_underline_thickness = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -423,10 +424,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_draw() {
-    if (!this.#_bindings.method_draw) {
+    if (!this._bindings.method_draw) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("draw");
-      this.#_bindings.method_draw = internal.classdb_get_method_bind(
+      this._bindings.method_draw = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         856975658
@@ -434,10 +435,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_draw_outline() {
-    if (!this.#_bindings.method_draw_outline) {
+    if (!this._bindings.method_draw_outline) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("draw_outline");
-      this.#_bindings.method_draw_outline = internal.classdb_get_method_bind(
+      this._bindings.method_draw_outline = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1343401456
@@ -445,10 +446,10 @@ export class TextLine extends RefCounted{
     }
   }
   static init_method_hit_test() {
-    if (!this.#_bindings.method_hit_test) {
+    if (!this._bindings.method_hit_test) {
       let classname = new StringName("TextLine");
       let methodname = new StringName("hit_test");
-      this.#_bindings.method_hit_test = internal.classdb_get_method_bind(
+      this._bindings.method_hit_test = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2401831903
@@ -461,7 +462,7 @@ export class TextLine extends RefCounted{
   clear() {
     TextLine.init_method_clear();
     return _call_native_mb_no_ret(
-      TextLine.#_bindings.method_clear,
+      TextLine._bindings.method_clear,
       this._owner,
       
     );
@@ -470,7 +471,7 @@ export class TextLine extends RefCounted{
   set_direction(_direction) {
     TextLine.init_method_set_direction();
     return _call_native_mb_no_ret(
-      TextLine.#_bindings.method_set_direction,
+      TextLine._bindings.method_set_direction,
       this._owner,
       _direction
     );
@@ -479,7 +480,7 @@ export class TextLine extends RefCounted{
   get_direction() {
     TextLine.init_method_get_direction();
     return _call_native_mb_ret(
-      TextLine.#_bindings.method_get_direction,
+      TextLine._bindings.method_get_direction,
       this._owner,
 			Variant.Type.INT,
     
@@ -490,7 +491,7 @@ export class TextLine extends RefCounted{
   set_orientation(_orientation) {
     TextLine.init_method_set_orientation();
     return _call_native_mb_no_ret(
-      TextLine.#_bindings.method_set_orientation,
+      TextLine._bindings.method_set_orientation,
       this._owner,
       _orientation
     );
@@ -499,7 +500,7 @@ export class TextLine extends RefCounted{
   get_orientation() {
     TextLine.init_method_get_orientation();
     return _call_native_mb_ret(
-      TextLine.#_bindings.method_get_orientation,
+      TextLine._bindings.method_get_orientation,
       this._owner,
 			Variant.Type.INT,
     
@@ -510,7 +511,7 @@ export class TextLine extends RefCounted{
   set_preserve_invalid(_enabled) {
     TextLine.init_method_set_preserve_invalid();
     return _call_native_mb_no_ret(
-      TextLine.#_bindings.method_set_preserve_invalid,
+      TextLine._bindings.method_set_preserve_invalid,
       this._owner,
       _enabled
     );
@@ -519,7 +520,7 @@ export class TextLine extends RefCounted{
   get_preserve_invalid() {
     TextLine.init_method_get_preserve_invalid();
     return _call_native_mb_ret(
-      TextLine.#_bindings.method_get_preserve_invalid,
+      TextLine._bindings.method_get_preserve_invalid,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -530,7 +531,7 @@ export class TextLine extends RefCounted{
   set_preserve_control(_enabled) {
     TextLine.init_method_set_preserve_control();
     return _call_native_mb_no_ret(
-      TextLine.#_bindings.method_set_preserve_control,
+      TextLine._bindings.method_set_preserve_control,
       this._owner,
       _enabled
     );
@@ -539,7 +540,7 @@ export class TextLine extends RefCounted{
   get_preserve_control() {
     TextLine.init_method_get_preserve_control();
     return _call_native_mb_ret(
-      TextLine.#_bindings.method_get_preserve_control,
+      TextLine._bindings.method_get_preserve_control,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -550,7 +551,7 @@ export class TextLine extends RefCounted{
   set_bidi_override(_override) {
     TextLine.init_method_set_bidi_override();
     return _call_native_mb_no_ret(
-      TextLine.#_bindings.method_set_bidi_override,
+      TextLine._bindings.method_set_bidi_override,
       this._owner,
       _override
     );
@@ -559,7 +560,7 @@ export class TextLine extends RefCounted{
   add_string(_text, _font, _font_size, _language, _meta) {
     TextLine.init_method_add_string();
     return _call_native_mb_ret(
-      TextLine.#_bindings.method_add_string,
+      TextLine._bindings.method_add_string,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -570,7 +571,7 @@ export class TextLine extends RefCounted{
   add_object(_key, _size, _inline_align, _length, _baseline) {
     TextLine.init_method_add_object();
     return _call_native_mb_ret(
-      TextLine.#_bindings.method_add_object,
+      TextLine._bindings.method_add_object,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -581,7 +582,7 @@ export class TextLine extends RefCounted{
   resize_object(_key, _size, _inline_align, _baseline) {
     TextLine.init_method_resize_object();
     return _call_native_mb_ret(
-      TextLine.#_bindings.method_resize_object,
+      TextLine._bindings.method_resize_object,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -592,7 +593,7 @@ export class TextLine extends RefCounted{
   set_width(_width) {
     TextLine.init_method_set_width();
     return _call_native_mb_no_ret(
-      TextLine.#_bindings.method_set_width,
+      TextLine._bindings.method_set_width,
       this._owner,
       _width
     );
@@ -601,7 +602,7 @@ export class TextLine extends RefCounted{
   get_width() {
     TextLine.init_method_get_width();
     return _call_native_mb_ret(
-      TextLine.#_bindings.method_get_width,
+      TextLine._bindings.method_get_width,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -612,7 +613,7 @@ export class TextLine extends RefCounted{
   set_horizontal_alignment(_alignment) {
     TextLine.init_method_set_horizontal_alignment();
     return _call_native_mb_no_ret(
-      TextLine.#_bindings.method_set_horizontal_alignment,
+      TextLine._bindings.method_set_horizontal_alignment,
       this._owner,
       _alignment
     );
@@ -621,7 +622,7 @@ export class TextLine extends RefCounted{
   get_horizontal_alignment() {
     TextLine.init_method_get_horizontal_alignment();
     return _call_native_mb_ret(
-      TextLine.#_bindings.method_get_horizontal_alignment,
+      TextLine._bindings.method_get_horizontal_alignment,
       this._owner,
 			Variant.Type.INT,
     
@@ -632,7 +633,7 @@ export class TextLine extends RefCounted{
   tab_align(_tab_stops) {
     TextLine.init_method_tab_align();
     return _call_native_mb_no_ret(
-      TextLine.#_bindings.method_tab_align,
+      TextLine._bindings.method_tab_align,
       this._owner,
       _tab_stops
     );
@@ -641,7 +642,7 @@ export class TextLine extends RefCounted{
   set_flags(_flags) {
     TextLine.init_method_set_flags();
     return _call_native_mb_no_ret(
-      TextLine.#_bindings.method_set_flags,
+      TextLine._bindings.method_set_flags,
       this._owner,
       _flags
     );
@@ -650,7 +651,7 @@ export class TextLine extends RefCounted{
   get_flags() {
     TextLine.init_method_get_flags();
     return _call_native_mb_ret(
-      TextLine.#_bindings.method_get_flags,
+      TextLine._bindings.method_get_flags,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -660,7 +661,7 @@ export class TextLine extends RefCounted{
   set_text_overrun_behavior(_overrun_behavior) {
     TextLine.init_method_set_text_overrun_behavior();
     return _call_native_mb_no_ret(
-      TextLine.#_bindings.method_set_text_overrun_behavior,
+      TextLine._bindings.method_set_text_overrun_behavior,
       this._owner,
       _overrun_behavior
     );
@@ -669,7 +670,7 @@ export class TextLine extends RefCounted{
   get_text_overrun_behavior() {
     TextLine.init_method_get_text_overrun_behavior();
     return _call_native_mb_ret(
-      TextLine.#_bindings.method_get_text_overrun_behavior,
+      TextLine._bindings.method_get_text_overrun_behavior,
       this._owner,
 			Variant.Type.INT,
     
@@ -680,7 +681,7 @@ export class TextLine extends RefCounted{
   set_ellipsis_char(_char) {
     TextLine.init_method_set_ellipsis_char();
     return _call_native_mb_no_ret(
-      TextLine.#_bindings.method_set_ellipsis_char,
+      TextLine._bindings.method_set_ellipsis_char,
       this._owner,
       _char
     );
@@ -689,7 +690,7 @@ export class TextLine extends RefCounted{
   get_ellipsis_char() {
     TextLine.init_method_get_ellipsis_char();
     return _call_native_mb_ret(
-      TextLine.#_bindings.method_get_ellipsis_char,
+      TextLine._bindings.method_get_ellipsis_char,
       this._owner,
 			Variant.Type.STRING,
     
@@ -700,7 +701,7 @@ export class TextLine extends RefCounted{
   get_objects() {
     TextLine.init_method_get_objects();
     return _call_native_mb_ret(
-      TextLine.#_bindings.method_get_objects,
+      TextLine._bindings.method_get_objects,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -711,7 +712,7 @@ export class TextLine extends RefCounted{
   get_object_rect(_key) {
     TextLine.init_method_get_object_rect();
     return _call_native_mb_ret(
-      TextLine.#_bindings.method_get_object_rect,
+      TextLine._bindings.method_get_object_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -722,7 +723,7 @@ export class TextLine extends RefCounted{
   get_size() {
     TextLine.init_method_get_size();
     return _call_native_mb_ret(
-      TextLine.#_bindings.method_get_size,
+      TextLine._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -733,7 +734,7 @@ export class TextLine extends RefCounted{
   get_rid() {
     TextLine.init_method_get_rid();
     return _call_native_mb_ret(
-      TextLine.#_bindings.method_get_rid,
+      TextLine._bindings.method_get_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -744,7 +745,7 @@ export class TextLine extends RefCounted{
   get_line_ascent() {
     TextLine.init_method_get_line_ascent();
     return _call_native_mb_ret(
-      TextLine.#_bindings.method_get_line_ascent,
+      TextLine._bindings.method_get_line_ascent,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -755,7 +756,7 @@ export class TextLine extends RefCounted{
   get_line_descent() {
     TextLine.init_method_get_line_descent();
     return _call_native_mb_ret(
-      TextLine.#_bindings.method_get_line_descent,
+      TextLine._bindings.method_get_line_descent,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -766,7 +767,7 @@ export class TextLine extends RefCounted{
   get_line_width() {
     TextLine.init_method_get_line_width();
     return _call_native_mb_ret(
-      TextLine.#_bindings.method_get_line_width,
+      TextLine._bindings.method_get_line_width,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -777,7 +778,7 @@ export class TextLine extends RefCounted{
   get_line_underline_position() {
     TextLine.init_method_get_line_underline_position();
     return _call_native_mb_ret(
-      TextLine.#_bindings.method_get_line_underline_position,
+      TextLine._bindings.method_get_line_underline_position,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -788,7 +789,7 @@ export class TextLine extends RefCounted{
   get_line_underline_thickness() {
     TextLine.init_method_get_line_underline_thickness();
     return _call_native_mb_ret(
-      TextLine.#_bindings.method_get_line_underline_thickness,
+      TextLine._bindings.method_get_line_underline_thickness,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -799,7 +800,7 @@ export class TextLine extends RefCounted{
   draw(_canvas, _pos, _color) {
     TextLine.init_method_draw();
     return _call_native_mb_no_ret(
-      TextLine.#_bindings.method_draw,
+      TextLine._bindings.method_draw,
       this._owner,
       _canvas, _pos, _color
     );
@@ -808,7 +809,7 @@ export class TextLine extends RefCounted{
   draw_outline(_canvas, _pos, _outline_size, _color) {
     TextLine.init_method_draw_outline();
     return _call_native_mb_no_ret(
-      TextLine.#_bindings.method_draw_outline,
+      TextLine._bindings.method_draw_outline,
       this._owner,
       _canvas, _pos, _outline_size, _color
     );
@@ -817,7 +818,7 @@ export class TextLine extends RefCounted{
   hit_test(_coords) {
     TextLine.init_method_hit_test();
     return _call_native_mb_ret(
-      TextLine.#_bindings.method_hit_test,
+      TextLine._bindings.method_hit_test,
       this._owner,
 			Variant.Type.INT,
     

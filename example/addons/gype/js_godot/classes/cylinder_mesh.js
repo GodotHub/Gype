@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { PrimitiveMesh } from '@js_godot/classes/primitive_mesh'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_top_radius;
@@ -25,10 +26,10 @@ class _MethodBindings {
   method_set_cap_bottom;
   method_is_cap_bottom;
 }
+@GodotClass
 export class CylinderMesh extends PrimitiveMesh{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -38,10 +39,10 @@ export class CylinderMesh extends PrimitiveMesh{
     }
   }
   static init_method_set_top_radius() {
-    if (!this.#_bindings.method_set_top_radius) {
+    if (!this._bindings.method_set_top_radius) {
       let classname = new StringName("CylinderMesh");
       let methodname = new StringName("set_top_radius");
-      this.#_bindings.method_set_top_radius = internal.classdb_get_method_bind(
+      this._bindings.method_set_top_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -49,10 +50,10 @@ export class CylinderMesh extends PrimitiveMesh{
     }
   }
   static init_method_get_top_radius() {
-    if (!this.#_bindings.method_get_top_radius) {
+    if (!this._bindings.method_get_top_radius) {
       let classname = new StringName("CylinderMesh");
       let methodname = new StringName("get_top_radius");
-      this.#_bindings.method_get_top_radius = internal.classdb_get_method_bind(
+      this._bindings.method_get_top_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -60,10 +61,10 @@ export class CylinderMesh extends PrimitiveMesh{
     }
   }
   static init_method_set_bottom_radius() {
-    if (!this.#_bindings.method_set_bottom_radius) {
+    if (!this._bindings.method_set_bottom_radius) {
       let classname = new StringName("CylinderMesh");
       let methodname = new StringName("set_bottom_radius");
-      this.#_bindings.method_set_bottom_radius = internal.classdb_get_method_bind(
+      this._bindings.method_set_bottom_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -71,10 +72,10 @@ export class CylinderMesh extends PrimitiveMesh{
     }
   }
   static init_method_get_bottom_radius() {
-    if (!this.#_bindings.method_get_bottom_radius) {
+    if (!this._bindings.method_get_bottom_radius) {
       let classname = new StringName("CylinderMesh");
       let methodname = new StringName("get_bottom_radius");
-      this.#_bindings.method_get_bottom_radius = internal.classdb_get_method_bind(
+      this._bindings.method_get_bottom_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -82,10 +83,10 @@ export class CylinderMesh extends PrimitiveMesh{
     }
   }
   static init_method_set_height() {
-    if (!this.#_bindings.method_set_height) {
+    if (!this._bindings.method_set_height) {
       let classname = new StringName("CylinderMesh");
       let methodname = new StringName("set_height");
-      this.#_bindings.method_set_height = internal.classdb_get_method_bind(
+      this._bindings.method_set_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -93,10 +94,10 @@ export class CylinderMesh extends PrimitiveMesh{
     }
   }
   static init_method_get_height() {
-    if (!this.#_bindings.method_get_height) {
+    if (!this._bindings.method_get_height) {
       let classname = new StringName("CylinderMesh");
       let methodname = new StringName("get_height");
-      this.#_bindings.method_get_height = internal.classdb_get_method_bind(
+      this._bindings.method_get_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -104,10 +105,10 @@ export class CylinderMesh extends PrimitiveMesh{
     }
   }
   static init_method_set_radial_segments() {
-    if (!this.#_bindings.method_set_radial_segments) {
+    if (!this._bindings.method_set_radial_segments) {
       let classname = new StringName("CylinderMesh");
       let methodname = new StringName("set_radial_segments");
-      this.#_bindings.method_set_radial_segments = internal.classdb_get_method_bind(
+      this._bindings.method_set_radial_segments = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -115,10 +116,10 @@ export class CylinderMesh extends PrimitiveMesh{
     }
   }
   static init_method_get_radial_segments() {
-    if (!this.#_bindings.method_get_radial_segments) {
+    if (!this._bindings.method_get_radial_segments) {
       let classname = new StringName("CylinderMesh");
       let methodname = new StringName("get_radial_segments");
-      this.#_bindings.method_get_radial_segments = internal.classdb_get_method_bind(
+      this._bindings.method_get_radial_segments = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -126,10 +127,10 @@ export class CylinderMesh extends PrimitiveMesh{
     }
   }
   static init_method_set_rings() {
-    if (!this.#_bindings.method_set_rings) {
+    if (!this._bindings.method_set_rings) {
       let classname = new StringName("CylinderMesh");
       let methodname = new StringName("set_rings");
-      this.#_bindings.method_set_rings = internal.classdb_get_method_bind(
+      this._bindings.method_set_rings = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -137,10 +138,10 @@ export class CylinderMesh extends PrimitiveMesh{
     }
   }
   static init_method_get_rings() {
-    if (!this.#_bindings.method_get_rings) {
+    if (!this._bindings.method_get_rings) {
       let classname = new StringName("CylinderMesh");
       let methodname = new StringName("get_rings");
-      this.#_bindings.method_get_rings = internal.classdb_get_method_bind(
+      this._bindings.method_get_rings = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -148,10 +149,10 @@ export class CylinderMesh extends PrimitiveMesh{
     }
   }
   static init_method_set_cap_top() {
-    if (!this.#_bindings.method_set_cap_top) {
+    if (!this._bindings.method_set_cap_top) {
       let classname = new StringName("CylinderMesh");
       let methodname = new StringName("set_cap_top");
-      this.#_bindings.method_set_cap_top = internal.classdb_get_method_bind(
+      this._bindings.method_set_cap_top = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -159,10 +160,10 @@ export class CylinderMesh extends PrimitiveMesh{
     }
   }
   static init_method_is_cap_top() {
-    if (!this.#_bindings.method_is_cap_top) {
+    if (!this._bindings.method_is_cap_top) {
       let classname = new StringName("CylinderMesh");
       let methodname = new StringName("is_cap_top");
-      this.#_bindings.method_is_cap_top = internal.classdb_get_method_bind(
+      this._bindings.method_is_cap_top = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -170,10 +171,10 @@ export class CylinderMesh extends PrimitiveMesh{
     }
   }
   static init_method_set_cap_bottom() {
-    if (!this.#_bindings.method_set_cap_bottom) {
+    if (!this._bindings.method_set_cap_bottom) {
       let classname = new StringName("CylinderMesh");
       let methodname = new StringName("set_cap_bottom");
-      this.#_bindings.method_set_cap_bottom = internal.classdb_get_method_bind(
+      this._bindings.method_set_cap_bottom = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -181,10 +182,10 @@ export class CylinderMesh extends PrimitiveMesh{
     }
   }
   static init_method_is_cap_bottom() {
-    if (!this.#_bindings.method_is_cap_bottom) {
+    if (!this._bindings.method_is_cap_bottom) {
       let classname = new StringName("CylinderMesh");
       let methodname = new StringName("is_cap_bottom");
-      this.#_bindings.method_is_cap_bottom = internal.classdb_get_method_bind(
+      this._bindings.method_is_cap_bottom = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -197,7 +198,7 @@ export class CylinderMesh extends PrimitiveMesh{
   set_top_radius(_radius) {
     CylinderMesh.init_method_set_top_radius();
     return _call_native_mb_no_ret(
-      CylinderMesh.#_bindings.method_set_top_radius,
+      CylinderMesh._bindings.method_set_top_radius,
       this._owner,
       _radius
     );
@@ -206,7 +207,7 @@ export class CylinderMesh extends PrimitiveMesh{
   get_top_radius() {
     CylinderMesh.init_method_get_top_radius();
     return _call_native_mb_ret(
-      CylinderMesh.#_bindings.method_get_top_radius,
+      CylinderMesh._bindings.method_get_top_radius,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -217,7 +218,7 @@ export class CylinderMesh extends PrimitiveMesh{
   set_bottom_radius(_radius) {
     CylinderMesh.init_method_set_bottom_radius();
     return _call_native_mb_no_ret(
-      CylinderMesh.#_bindings.method_set_bottom_radius,
+      CylinderMesh._bindings.method_set_bottom_radius,
       this._owner,
       _radius
     );
@@ -226,7 +227,7 @@ export class CylinderMesh extends PrimitiveMesh{
   get_bottom_radius() {
     CylinderMesh.init_method_get_bottom_radius();
     return _call_native_mb_ret(
-      CylinderMesh.#_bindings.method_get_bottom_radius,
+      CylinderMesh._bindings.method_get_bottom_radius,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -237,7 +238,7 @@ export class CylinderMesh extends PrimitiveMesh{
   set_height(_height) {
     CylinderMesh.init_method_set_height();
     return _call_native_mb_no_ret(
-      CylinderMesh.#_bindings.method_set_height,
+      CylinderMesh._bindings.method_set_height,
       this._owner,
       _height
     );
@@ -246,7 +247,7 @@ export class CylinderMesh extends PrimitiveMesh{
   get_height() {
     CylinderMesh.init_method_get_height();
     return _call_native_mb_ret(
-      CylinderMesh.#_bindings.method_get_height,
+      CylinderMesh._bindings.method_get_height,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -257,7 +258,7 @@ export class CylinderMesh extends PrimitiveMesh{
   set_radial_segments(_segments) {
     CylinderMesh.init_method_set_radial_segments();
     return _call_native_mb_no_ret(
-      CylinderMesh.#_bindings.method_set_radial_segments,
+      CylinderMesh._bindings.method_set_radial_segments,
       this._owner,
       _segments
     );
@@ -266,7 +267,7 @@ export class CylinderMesh extends PrimitiveMesh{
   get_radial_segments() {
     CylinderMesh.init_method_get_radial_segments();
     return _call_native_mb_ret(
-      CylinderMesh.#_bindings.method_get_radial_segments,
+      CylinderMesh._bindings.method_get_radial_segments,
       this._owner,
 			Variant.Type.INT,
     
@@ -277,7 +278,7 @@ export class CylinderMesh extends PrimitiveMesh{
   set_rings(_rings) {
     CylinderMesh.init_method_set_rings();
     return _call_native_mb_no_ret(
-      CylinderMesh.#_bindings.method_set_rings,
+      CylinderMesh._bindings.method_set_rings,
       this._owner,
       _rings
     );
@@ -286,7 +287,7 @@ export class CylinderMesh extends PrimitiveMesh{
   get_rings() {
     CylinderMesh.init_method_get_rings();
     return _call_native_mb_ret(
-      CylinderMesh.#_bindings.method_get_rings,
+      CylinderMesh._bindings.method_get_rings,
       this._owner,
 			Variant.Type.INT,
     
@@ -297,7 +298,7 @@ export class CylinderMesh extends PrimitiveMesh{
   set_cap_top(_cap_top) {
     CylinderMesh.init_method_set_cap_top();
     return _call_native_mb_no_ret(
-      CylinderMesh.#_bindings.method_set_cap_top,
+      CylinderMesh._bindings.method_set_cap_top,
       this._owner,
       _cap_top
     );
@@ -306,7 +307,7 @@ export class CylinderMesh extends PrimitiveMesh{
   is_cap_top() {
     CylinderMesh.init_method_is_cap_top();
     return _call_native_mb_ret(
-      CylinderMesh.#_bindings.method_is_cap_top,
+      CylinderMesh._bindings.method_is_cap_top,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -317,7 +318,7 @@ export class CylinderMesh extends PrimitiveMesh{
   set_cap_bottom(_cap_bottom) {
     CylinderMesh.init_method_set_cap_bottom();
     return _call_native_mb_no_ret(
-      CylinderMesh.#_bindings.method_set_cap_bottom,
+      CylinderMesh._bindings.method_set_cap_bottom,
       this._owner,
       _cap_bottom
     );
@@ -326,7 +327,7 @@ export class CylinderMesh extends PrimitiveMesh{
   is_cap_bottom() {
     CylinderMesh.init_method_is_cap_bottom();
     return _call_native_mb_ret(
-      CylinderMesh.#_bindings.method_is_cap_bottom,
+      CylinderMesh._bindings.method_is_cap_bottom,
       this._owner,
 			Variant.Type.BOOL,
     

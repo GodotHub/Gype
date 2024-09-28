@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_animation_path;
@@ -21,10 +22,10 @@ class _MethodBindings {
   method_set_zero_y;
   method_get_zero_y;
 }
+@GodotClass
 export class RootMotionView extends VisualInstance3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -34,10 +35,10 @@ export class RootMotionView extends VisualInstance3D{
     }
   }
   static init_method_set_animation_path() {
-    if (!this.#_bindings.method_set_animation_path) {
+    if (!this._bindings.method_set_animation_path) {
       let classname = new StringName("RootMotionView");
       let methodname = new StringName("set_animation_path");
-      this.#_bindings.method_set_animation_path = internal.classdb_get_method_bind(
+      this._bindings.method_set_animation_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1348162250
@@ -45,10 +46,10 @@ export class RootMotionView extends VisualInstance3D{
     }
   }
   static init_method_get_animation_path() {
-    if (!this.#_bindings.method_get_animation_path) {
+    if (!this._bindings.method_get_animation_path) {
       let classname = new StringName("RootMotionView");
       let methodname = new StringName("get_animation_path");
-      this.#_bindings.method_get_animation_path = internal.classdb_get_method_bind(
+      this._bindings.method_get_animation_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4075236667
@@ -56,10 +57,10 @@ export class RootMotionView extends VisualInstance3D{
     }
   }
   static init_method_set_color() {
-    if (!this.#_bindings.method_set_color) {
+    if (!this._bindings.method_set_color) {
       let classname = new StringName("RootMotionView");
       let methodname = new StringName("set_color");
-      this.#_bindings.method_set_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -67,10 +68,10 @@ export class RootMotionView extends VisualInstance3D{
     }
   }
   static init_method_get_color() {
-    if (!this.#_bindings.method_get_color) {
+    if (!this._bindings.method_get_color) {
       let classname = new StringName("RootMotionView");
       let methodname = new StringName("get_color");
-      this.#_bindings.method_get_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -78,10 +79,10 @@ export class RootMotionView extends VisualInstance3D{
     }
   }
   static init_method_set_cell_size() {
-    if (!this.#_bindings.method_set_cell_size) {
+    if (!this._bindings.method_set_cell_size) {
       let classname = new StringName("RootMotionView");
       let methodname = new StringName("set_cell_size");
-      this.#_bindings.method_set_cell_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_cell_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -89,10 +90,10 @@ export class RootMotionView extends VisualInstance3D{
     }
   }
   static init_method_get_cell_size() {
-    if (!this.#_bindings.method_get_cell_size) {
+    if (!this._bindings.method_get_cell_size) {
       let classname = new StringName("RootMotionView");
       let methodname = new StringName("get_cell_size");
-      this.#_bindings.method_get_cell_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_cell_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -100,10 +101,10 @@ export class RootMotionView extends VisualInstance3D{
     }
   }
   static init_method_set_radius() {
-    if (!this.#_bindings.method_set_radius) {
+    if (!this._bindings.method_set_radius) {
       let classname = new StringName("RootMotionView");
       let methodname = new StringName("set_radius");
-      this.#_bindings.method_set_radius = internal.classdb_get_method_bind(
+      this._bindings.method_set_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -111,10 +112,10 @@ export class RootMotionView extends VisualInstance3D{
     }
   }
   static init_method_get_radius() {
-    if (!this.#_bindings.method_get_radius) {
+    if (!this._bindings.method_get_radius) {
       let classname = new StringName("RootMotionView");
       let methodname = new StringName("get_radius");
-      this.#_bindings.method_get_radius = internal.classdb_get_method_bind(
+      this._bindings.method_get_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -122,10 +123,10 @@ export class RootMotionView extends VisualInstance3D{
     }
   }
   static init_method_set_zero_y() {
-    if (!this.#_bindings.method_set_zero_y) {
+    if (!this._bindings.method_set_zero_y) {
       let classname = new StringName("RootMotionView");
       let methodname = new StringName("set_zero_y");
-      this.#_bindings.method_set_zero_y = internal.classdb_get_method_bind(
+      this._bindings.method_set_zero_y = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -133,10 +134,10 @@ export class RootMotionView extends VisualInstance3D{
     }
   }
   static init_method_get_zero_y() {
-    if (!this.#_bindings.method_get_zero_y) {
+    if (!this._bindings.method_get_zero_y) {
       let classname = new StringName("RootMotionView");
       let methodname = new StringName("get_zero_y");
-      this.#_bindings.method_get_zero_y = internal.classdb_get_method_bind(
+      this._bindings.method_get_zero_y = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -149,7 +150,7 @@ export class RootMotionView extends VisualInstance3D{
   set_animation_path(_path) {
     RootMotionView.init_method_set_animation_path();
     return _call_native_mb_no_ret(
-      RootMotionView.#_bindings.method_set_animation_path,
+      RootMotionView._bindings.method_set_animation_path,
       this._owner,
       _path
     );
@@ -158,7 +159,7 @@ export class RootMotionView extends VisualInstance3D{
   get_animation_path() {
     RootMotionView.init_method_get_animation_path();
     return _call_native_mb_ret(
-      RootMotionView.#_bindings.method_get_animation_path,
+      RootMotionView._bindings.method_get_animation_path,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -169,7 +170,7 @@ export class RootMotionView extends VisualInstance3D{
   set_color(_color) {
     RootMotionView.init_method_set_color();
     return _call_native_mb_no_ret(
-      RootMotionView.#_bindings.method_set_color,
+      RootMotionView._bindings.method_set_color,
       this._owner,
       _color
     );
@@ -178,7 +179,7 @@ export class RootMotionView extends VisualInstance3D{
   get_color() {
     RootMotionView.init_method_get_color();
     return _call_native_mb_ret(
-      RootMotionView.#_bindings.method_get_color,
+      RootMotionView._bindings.method_get_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -189,7 +190,7 @@ export class RootMotionView extends VisualInstance3D{
   set_cell_size(_size) {
     RootMotionView.init_method_set_cell_size();
     return _call_native_mb_no_ret(
-      RootMotionView.#_bindings.method_set_cell_size,
+      RootMotionView._bindings.method_set_cell_size,
       this._owner,
       _size
     );
@@ -198,7 +199,7 @@ export class RootMotionView extends VisualInstance3D{
   get_cell_size() {
     RootMotionView.init_method_get_cell_size();
     return _call_native_mb_ret(
-      RootMotionView.#_bindings.method_get_cell_size,
+      RootMotionView._bindings.method_get_cell_size,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -209,7 +210,7 @@ export class RootMotionView extends VisualInstance3D{
   set_radius(_size) {
     RootMotionView.init_method_set_radius();
     return _call_native_mb_no_ret(
-      RootMotionView.#_bindings.method_set_radius,
+      RootMotionView._bindings.method_set_radius,
       this._owner,
       _size
     );
@@ -218,7 +219,7 @@ export class RootMotionView extends VisualInstance3D{
   get_radius() {
     RootMotionView.init_method_get_radius();
     return _call_native_mb_ret(
-      RootMotionView.#_bindings.method_get_radius,
+      RootMotionView._bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -229,7 +230,7 @@ export class RootMotionView extends VisualInstance3D{
   set_zero_y(_enable) {
     RootMotionView.init_method_set_zero_y();
     return _call_native_mb_no_ret(
-      RootMotionView.#_bindings.method_set_zero_y,
+      RootMotionView._bindings.method_set_zero_y,
       this._owner,
       _enable
     );
@@ -238,7 +239,7 @@ export class RootMotionView extends VisualInstance3D{
   get_zero_y() {
     RootMotionView.init_method_get_zero_y();
     return _call_native_mb_ret(
-      RootMotionView.#_bindings.method_get_zero_y,
+      RootMotionView._bindings.method_get_zero_y,
       this._owner,
 			Variant.Type.BOOL,
     

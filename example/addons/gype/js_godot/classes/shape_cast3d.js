@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Node3D } from '@js_godot/classes/node3d'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_resource_changed;
@@ -49,10 +50,10 @@ class _MethodBindings {
   method_set_debug_shape_custom_color;
   method_get_debug_shape_custom_color;
 }
+@GodotClass
 export class ShapeCast3D extends Node3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -62,10 +63,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_resource_changed() {
-    if (!this.#_bindings.method_resource_changed) {
+    if (!this._bindings.method_resource_changed) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("resource_changed");
-      this.#_bindings.method_resource_changed = internal.classdb_get_method_bind(
+      this._bindings.method_resource_changed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         968641751
@@ -73,10 +74,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_set_enabled() {
-    if (!this.#_bindings.method_set_enabled) {
+    if (!this._bindings.method_set_enabled) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("set_enabled");
-      this.#_bindings.method_set_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -84,10 +85,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_is_enabled() {
-    if (!this.#_bindings.method_is_enabled) {
+    if (!this._bindings.method_is_enabled) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("is_enabled");
-      this.#_bindings.method_is_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -95,10 +96,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_set_shape() {
-    if (!this.#_bindings.method_set_shape) {
+    if (!this._bindings.method_set_shape) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("set_shape");
-      this.#_bindings.method_set_shape = internal.classdb_get_method_bind(
+      this._bindings.method_set_shape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1549710052
@@ -106,10 +107,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_get_shape() {
-    if (!this.#_bindings.method_get_shape) {
+    if (!this._bindings.method_get_shape) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("get_shape");
-      this.#_bindings.method_get_shape = internal.classdb_get_method_bind(
+      this._bindings.method_get_shape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3214262478
@@ -117,10 +118,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_set_target_position() {
-    if (!this.#_bindings.method_set_target_position) {
+    if (!this._bindings.method_set_target_position) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("set_target_position");
-      this.#_bindings.method_set_target_position = internal.classdb_get_method_bind(
+      this._bindings.method_set_target_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -128,10 +129,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_get_target_position() {
-    if (!this.#_bindings.method_get_target_position) {
+    if (!this._bindings.method_get_target_position) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("get_target_position");
-      this.#_bindings.method_get_target_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_target_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3360562783
@@ -139,10 +140,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_set_margin() {
-    if (!this.#_bindings.method_set_margin) {
+    if (!this._bindings.method_set_margin) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("set_margin");
-      this.#_bindings.method_set_margin = internal.classdb_get_method_bind(
+      this._bindings.method_set_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -150,10 +151,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_get_margin() {
-    if (!this.#_bindings.method_get_margin) {
+    if (!this._bindings.method_get_margin) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("get_margin");
-      this.#_bindings.method_get_margin = internal.classdb_get_method_bind(
+      this._bindings.method_get_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -161,10 +162,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_set_max_results() {
-    if (!this.#_bindings.method_set_max_results) {
+    if (!this._bindings.method_set_max_results) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("set_max_results");
-      this.#_bindings.method_set_max_results = internal.classdb_get_method_bind(
+      this._bindings.method_set_max_results = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -172,10 +173,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_get_max_results() {
-    if (!this.#_bindings.method_get_max_results) {
+    if (!this._bindings.method_get_max_results) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("get_max_results");
-      this.#_bindings.method_get_max_results = internal.classdb_get_method_bind(
+      this._bindings.method_get_max_results = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -183,10 +184,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_is_colliding() {
-    if (!this.#_bindings.method_is_colliding) {
+    if (!this._bindings.method_is_colliding) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("is_colliding");
-      this.#_bindings.method_is_colliding = internal.classdb_get_method_bind(
+      this._bindings.method_is_colliding = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -194,10 +195,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_get_collision_count() {
-    if (!this.#_bindings.method_get_collision_count) {
+    if (!this._bindings.method_get_collision_count) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("get_collision_count");
-      this.#_bindings.method_get_collision_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_collision_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -205,10 +206,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_force_shapecast_update() {
-    if (!this.#_bindings.method_force_shapecast_update) {
+    if (!this._bindings.method_force_shapecast_update) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("force_shapecast_update");
-      this.#_bindings.method_force_shapecast_update = internal.classdb_get_method_bind(
+      this._bindings.method_force_shapecast_update = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -216,10 +217,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_get_collider() {
-    if (!this.#_bindings.method_get_collider) {
+    if (!this._bindings.method_get_collider) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("get_collider");
-      this.#_bindings.method_get_collider = internal.classdb_get_method_bind(
+      this._bindings.method_get_collider = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3332903315
@@ -227,10 +228,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_get_collider_rid() {
-    if (!this.#_bindings.method_get_collider_rid) {
+    if (!this._bindings.method_get_collider_rid) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("get_collider_rid");
-      this.#_bindings.method_get_collider_rid = internal.classdb_get_method_bind(
+      this._bindings.method_get_collider_rid = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         495598643
@@ -238,10 +239,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_get_collider_shape() {
-    if (!this.#_bindings.method_get_collider_shape) {
+    if (!this._bindings.method_get_collider_shape) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("get_collider_shape");
-      this.#_bindings.method_get_collider_shape = internal.classdb_get_method_bind(
+      this._bindings.method_get_collider_shape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         923996154
@@ -249,10 +250,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_get_collision_point() {
-    if (!this.#_bindings.method_get_collision_point) {
+    if (!this._bindings.method_get_collision_point) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("get_collision_point");
-      this.#_bindings.method_get_collision_point = internal.classdb_get_method_bind(
+      this._bindings.method_get_collision_point = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         711720468
@@ -260,10 +261,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_get_collision_normal() {
-    if (!this.#_bindings.method_get_collision_normal) {
+    if (!this._bindings.method_get_collision_normal) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("get_collision_normal");
-      this.#_bindings.method_get_collision_normal = internal.classdb_get_method_bind(
+      this._bindings.method_get_collision_normal = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         711720468
@@ -271,10 +272,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_get_closest_collision_safe_fraction() {
-    if (!this.#_bindings.method_get_closest_collision_safe_fraction) {
+    if (!this._bindings.method_get_closest_collision_safe_fraction) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("get_closest_collision_safe_fraction");
-      this.#_bindings.method_get_closest_collision_safe_fraction = internal.classdb_get_method_bind(
+      this._bindings.method_get_closest_collision_safe_fraction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -282,10 +283,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_get_closest_collision_unsafe_fraction() {
-    if (!this.#_bindings.method_get_closest_collision_unsafe_fraction) {
+    if (!this._bindings.method_get_closest_collision_unsafe_fraction) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("get_closest_collision_unsafe_fraction");
-      this.#_bindings.method_get_closest_collision_unsafe_fraction = internal.classdb_get_method_bind(
+      this._bindings.method_get_closest_collision_unsafe_fraction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -293,10 +294,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_add_exception_rid() {
-    if (!this.#_bindings.method_add_exception_rid) {
+    if (!this._bindings.method_add_exception_rid) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("add_exception_rid");
-      this.#_bindings.method_add_exception_rid = internal.classdb_get_method_bind(
+      this._bindings.method_add_exception_rid = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2722037293
@@ -304,10 +305,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_add_exception() {
-    if (!this.#_bindings.method_add_exception) {
+    if (!this._bindings.method_add_exception) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("add_exception");
-      this.#_bindings.method_add_exception = internal.classdb_get_method_bind(
+      this._bindings.method_add_exception = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1976431078
@@ -315,10 +316,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_remove_exception_rid() {
-    if (!this.#_bindings.method_remove_exception_rid) {
+    if (!this._bindings.method_remove_exception_rid) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("remove_exception_rid");
-      this.#_bindings.method_remove_exception_rid = internal.classdb_get_method_bind(
+      this._bindings.method_remove_exception_rid = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2722037293
@@ -326,10 +327,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_remove_exception() {
-    if (!this.#_bindings.method_remove_exception) {
+    if (!this._bindings.method_remove_exception) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("remove_exception");
-      this.#_bindings.method_remove_exception = internal.classdb_get_method_bind(
+      this._bindings.method_remove_exception = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1976431078
@@ -337,10 +338,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_clear_exceptions() {
-    if (!this.#_bindings.method_clear_exceptions) {
+    if (!this._bindings.method_clear_exceptions) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("clear_exceptions");
-      this.#_bindings.method_clear_exceptions = internal.classdb_get_method_bind(
+      this._bindings.method_clear_exceptions = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -348,10 +349,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_set_collision_mask() {
-    if (!this.#_bindings.method_set_collision_mask) {
+    if (!this._bindings.method_set_collision_mask) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("set_collision_mask");
-      this.#_bindings.method_set_collision_mask = internal.classdb_get_method_bind(
+      this._bindings.method_set_collision_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -359,10 +360,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_get_collision_mask() {
-    if (!this.#_bindings.method_get_collision_mask) {
+    if (!this._bindings.method_get_collision_mask) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("get_collision_mask");
-      this.#_bindings.method_get_collision_mask = internal.classdb_get_method_bind(
+      this._bindings.method_get_collision_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -370,10 +371,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_set_collision_mask_value() {
-    if (!this.#_bindings.method_set_collision_mask_value) {
+    if (!this._bindings.method_set_collision_mask_value) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("set_collision_mask_value");
-      this.#_bindings.method_set_collision_mask_value = internal.classdb_get_method_bind(
+      this._bindings.method_set_collision_mask_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -381,10 +382,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_get_collision_mask_value() {
-    if (!this.#_bindings.method_get_collision_mask_value) {
+    if (!this._bindings.method_get_collision_mask_value) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("get_collision_mask_value");
-      this.#_bindings.method_get_collision_mask_value = internal.classdb_get_method_bind(
+      this._bindings.method_get_collision_mask_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -392,10 +393,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_set_exclude_parent_body() {
-    if (!this.#_bindings.method_set_exclude_parent_body) {
+    if (!this._bindings.method_set_exclude_parent_body) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("set_exclude_parent_body");
-      this.#_bindings.method_set_exclude_parent_body = internal.classdb_get_method_bind(
+      this._bindings.method_set_exclude_parent_body = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -403,10 +404,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_get_exclude_parent_body() {
-    if (!this.#_bindings.method_get_exclude_parent_body) {
+    if (!this._bindings.method_get_exclude_parent_body) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("get_exclude_parent_body");
-      this.#_bindings.method_get_exclude_parent_body = internal.classdb_get_method_bind(
+      this._bindings.method_get_exclude_parent_body = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -414,10 +415,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_set_collide_with_areas() {
-    if (!this.#_bindings.method_set_collide_with_areas) {
+    if (!this._bindings.method_set_collide_with_areas) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("set_collide_with_areas");
-      this.#_bindings.method_set_collide_with_areas = internal.classdb_get_method_bind(
+      this._bindings.method_set_collide_with_areas = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -425,10 +426,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_is_collide_with_areas_enabled() {
-    if (!this.#_bindings.method_is_collide_with_areas_enabled) {
+    if (!this._bindings.method_is_collide_with_areas_enabled) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("is_collide_with_areas_enabled");
-      this.#_bindings.method_is_collide_with_areas_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_collide_with_areas_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -436,10 +437,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_set_collide_with_bodies() {
-    if (!this.#_bindings.method_set_collide_with_bodies) {
+    if (!this._bindings.method_set_collide_with_bodies) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("set_collide_with_bodies");
-      this.#_bindings.method_set_collide_with_bodies = internal.classdb_get_method_bind(
+      this._bindings.method_set_collide_with_bodies = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -447,10 +448,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_is_collide_with_bodies_enabled() {
-    if (!this.#_bindings.method_is_collide_with_bodies_enabled) {
+    if (!this._bindings.method_is_collide_with_bodies_enabled) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("is_collide_with_bodies_enabled");
-      this.#_bindings.method_is_collide_with_bodies_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_collide_with_bodies_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -458,10 +459,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_set_debug_shape_custom_color() {
-    if (!this.#_bindings.method_set_debug_shape_custom_color) {
+    if (!this._bindings.method_set_debug_shape_custom_color) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("set_debug_shape_custom_color");
-      this.#_bindings.method_set_debug_shape_custom_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_debug_shape_custom_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -469,10 +470,10 @@ export class ShapeCast3D extends Node3D{
     }
   }
   static init_method_get_debug_shape_custom_color() {
-    if (!this.#_bindings.method_get_debug_shape_custom_color) {
+    if (!this._bindings.method_get_debug_shape_custom_color) {
       let classname = new StringName("ShapeCast3D");
       let methodname = new StringName("get_debug_shape_custom_color");
-      this.#_bindings.method_get_debug_shape_custom_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_debug_shape_custom_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -485,7 +486,7 @@ export class ShapeCast3D extends Node3D{
   resource_changed(_resource) {
     ShapeCast3D.init_method_resource_changed();
     return _call_native_mb_no_ret(
-      ShapeCast3D.#_bindings.method_resource_changed,
+      ShapeCast3D._bindings.method_resource_changed,
       this._owner,
       _resource
     );
@@ -494,7 +495,7 @@ export class ShapeCast3D extends Node3D{
   set_enabled(_enabled) {
     ShapeCast3D.init_method_set_enabled();
     return _call_native_mb_no_ret(
-      ShapeCast3D.#_bindings.method_set_enabled,
+      ShapeCast3D._bindings.method_set_enabled,
       this._owner,
       _enabled
     );
@@ -503,7 +504,7 @@ export class ShapeCast3D extends Node3D{
   is_enabled() {
     ShapeCast3D.init_method_is_enabled();
     return _call_native_mb_ret(
-      ShapeCast3D.#_bindings.method_is_enabled,
+      ShapeCast3D._bindings.method_is_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -514,7 +515,7 @@ export class ShapeCast3D extends Node3D{
   set_shape(_shape) {
     ShapeCast3D.init_method_set_shape();
     return _call_native_mb_no_ret(
-      ShapeCast3D.#_bindings.method_set_shape,
+      ShapeCast3D._bindings.method_set_shape,
       this._owner,
       _shape
     );
@@ -523,7 +524,7 @@ export class ShapeCast3D extends Node3D{
   get_shape() {
     ShapeCast3D.init_method_get_shape();
     return _call_native_mb_ret(
-      ShapeCast3D.#_bindings.method_get_shape,
+      ShapeCast3D._bindings.method_get_shape,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -533,7 +534,7 @@ export class ShapeCast3D extends Node3D{
   set_target_position(_local_point) {
     ShapeCast3D.init_method_set_target_position();
     return _call_native_mb_no_ret(
-      ShapeCast3D.#_bindings.method_set_target_position,
+      ShapeCast3D._bindings.method_set_target_position,
       this._owner,
       _local_point
     );
@@ -542,7 +543,7 @@ export class ShapeCast3D extends Node3D{
   get_target_position() {
     ShapeCast3D.init_method_get_target_position();
     return _call_native_mb_ret(
-      ShapeCast3D.#_bindings.method_get_target_position,
+      ShapeCast3D._bindings.method_get_target_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -553,7 +554,7 @@ export class ShapeCast3D extends Node3D{
   set_margin(_margin) {
     ShapeCast3D.init_method_set_margin();
     return _call_native_mb_no_ret(
-      ShapeCast3D.#_bindings.method_set_margin,
+      ShapeCast3D._bindings.method_set_margin,
       this._owner,
       _margin
     );
@@ -562,7 +563,7 @@ export class ShapeCast3D extends Node3D{
   get_margin() {
     ShapeCast3D.init_method_get_margin();
     return _call_native_mb_ret(
-      ShapeCast3D.#_bindings.method_get_margin,
+      ShapeCast3D._bindings.method_get_margin,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -573,7 +574,7 @@ export class ShapeCast3D extends Node3D{
   set_max_results(_max_results) {
     ShapeCast3D.init_method_set_max_results();
     return _call_native_mb_no_ret(
-      ShapeCast3D.#_bindings.method_set_max_results,
+      ShapeCast3D._bindings.method_set_max_results,
       this._owner,
       _max_results
     );
@@ -582,7 +583,7 @@ export class ShapeCast3D extends Node3D{
   get_max_results() {
     ShapeCast3D.init_method_get_max_results();
     return _call_native_mb_ret(
-      ShapeCast3D.#_bindings.method_get_max_results,
+      ShapeCast3D._bindings.method_get_max_results,
       this._owner,
 			Variant.Type.INT,
     
@@ -593,7 +594,7 @@ export class ShapeCast3D extends Node3D{
   is_colliding() {
     ShapeCast3D.init_method_is_colliding();
     return _call_native_mb_ret(
-      ShapeCast3D.#_bindings.method_is_colliding,
+      ShapeCast3D._bindings.method_is_colliding,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -604,7 +605,7 @@ export class ShapeCast3D extends Node3D{
   get_collision_count() {
     ShapeCast3D.init_method_get_collision_count();
     return _call_native_mb_ret(
-      ShapeCast3D.#_bindings.method_get_collision_count,
+      ShapeCast3D._bindings.method_get_collision_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -615,7 +616,7 @@ export class ShapeCast3D extends Node3D{
   force_shapecast_update() {
     ShapeCast3D.init_method_force_shapecast_update();
     return _call_native_mb_no_ret(
-      ShapeCast3D.#_bindings.method_force_shapecast_update,
+      ShapeCast3D._bindings.method_force_shapecast_update,
       this._owner,
       
     );
@@ -624,7 +625,7 @@ export class ShapeCast3D extends Node3D{
   get_collider(_index) {
     ShapeCast3D.init_method_get_collider();
     return _call_native_mb_ret(
-      ShapeCast3D.#_bindings.method_get_collider,
+      ShapeCast3D._bindings.method_get_collider,
       this._owner,
 			Variant.Type.OBJECT,
       _index
@@ -634,7 +635,7 @@ export class ShapeCast3D extends Node3D{
   get_collider_rid(_index) {
     ShapeCast3D.init_method_get_collider_rid();
     return _call_native_mb_ret(
-      ShapeCast3D.#_bindings.method_get_collider_rid,
+      ShapeCast3D._bindings.method_get_collider_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -645,7 +646,7 @@ export class ShapeCast3D extends Node3D{
   get_collider_shape(_index) {
     ShapeCast3D.init_method_get_collider_shape();
     return _call_native_mb_ret(
-      ShapeCast3D.#_bindings.method_get_collider_shape,
+      ShapeCast3D._bindings.method_get_collider_shape,
       this._owner,
 			Variant.Type.INT,
     
@@ -656,7 +657,7 @@ export class ShapeCast3D extends Node3D{
   get_collision_point(_index) {
     ShapeCast3D.init_method_get_collision_point();
     return _call_native_mb_ret(
-      ShapeCast3D.#_bindings.method_get_collision_point,
+      ShapeCast3D._bindings.method_get_collision_point,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -667,7 +668,7 @@ export class ShapeCast3D extends Node3D{
   get_collision_normal(_index) {
     ShapeCast3D.init_method_get_collision_normal();
     return _call_native_mb_ret(
-      ShapeCast3D.#_bindings.method_get_collision_normal,
+      ShapeCast3D._bindings.method_get_collision_normal,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -678,7 +679,7 @@ export class ShapeCast3D extends Node3D{
   get_closest_collision_safe_fraction() {
     ShapeCast3D.init_method_get_closest_collision_safe_fraction();
     return _call_native_mb_ret(
-      ShapeCast3D.#_bindings.method_get_closest_collision_safe_fraction,
+      ShapeCast3D._bindings.method_get_closest_collision_safe_fraction,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -689,7 +690,7 @@ export class ShapeCast3D extends Node3D{
   get_closest_collision_unsafe_fraction() {
     ShapeCast3D.init_method_get_closest_collision_unsafe_fraction();
     return _call_native_mb_ret(
-      ShapeCast3D.#_bindings.method_get_closest_collision_unsafe_fraction,
+      ShapeCast3D._bindings.method_get_closest_collision_unsafe_fraction,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -700,7 +701,7 @@ export class ShapeCast3D extends Node3D{
   add_exception_rid(_rid) {
     ShapeCast3D.init_method_add_exception_rid();
     return _call_native_mb_no_ret(
-      ShapeCast3D.#_bindings.method_add_exception_rid,
+      ShapeCast3D._bindings.method_add_exception_rid,
       this._owner,
       _rid
     );
@@ -709,7 +710,7 @@ export class ShapeCast3D extends Node3D{
   add_exception(_node) {
     ShapeCast3D.init_method_add_exception();
     return _call_native_mb_no_ret(
-      ShapeCast3D.#_bindings.method_add_exception,
+      ShapeCast3D._bindings.method_add_exception,
       this._owner,
       _node
     );
@@ -718,7 +719,7 @@ export class ShapeCast3D extends Node3D{
   remove_exception_rid(_rid) {
     ShapeCast3D.init_method_remove_exception_rid();
     return _call_native_mb_no_ret(
-      ShapeCast3D.#_bindings.method_remove_exception_rid,
+      ShapeCast3D._bindings.method_remove_exception_rid,
       this._owner,
       _rid
     );
@@ -727,7 +728,7 @@ export class ShapeCast3D extends Node3D{
   remove_exception(_node) {
     ShapeCast3D.init_method_remove_exception();
     return _call_native_mb_no_ret(
-      ShapeCast3D.#_bindings.method_remove_exception,
+      ShapeCast3D._bindings.method_remove_exception,
       this._owner,
       _node
     );
@@ -736,7 +737,7 @@ export class ShapeCast3D extends Node3D{
   clear_exceptions() {
     ShapeCast3D.init_method_clear_exceptions();
     return _call_native_mb_no_ret(
-      ShapeCast3D.#_bindings.method_clear_exceptions,
+      ShapeCast3D._bindings.method_clear_exceptions,
       this._owner,
       
     );
@@ -745,7 +746,7 @@ export class ShapeCast3D extends Node3D{
   set_collision_mask(_mask) {
     ShapeCast3D.init_method_set_collision_mask();
     return _call_native_mb_no_ret(
-      ShapeCast3D.#_bindings.method_set_collision_mask,
+      ShapeCast3D._bindings.method_set_collision_mask,
       this._owner,
       _mask
     );
@@ -754,7 +755,7 @@ export class ShapeCast3D extends Node3D{
   get_collision_mask() {
     ShapeCast3D.init_method_get_collision_mask();
     return _call_native_mb_ret(
-      ShapeCast3D.#_bindings.method_get_collision_mask,
+      ShapeCast3D._bindings.method_get_collision_mask,
       this._owner,
 			Variant.Type.INT,
     
@@ -765,7 +766,7 @@ export class ShapeCast3D extends Node3D{
   set_collision_mask_value(_layer_number, _value) {
     ShapeCast3D.init_method_set_collision_mask_value();
     return _call_native_mb_no_ret(
-      ShapeCast3D.#_bindings.method_set_collision_mask_value,
+      ShapeCast3D._bindings.method_set_collision_mask_value,
       this._owner,
       _layer_number, _value
     );
@@ -774,7 +775,7 @@ export class ShapeCast3D extends Node3D{
   get_collision_mask_value(_layer_number) {
     ShapeCast3D.init_method_get_collision_mask_value();
     return _call_native_mb_ret(
-      ShapeCast3D.#_bindings.method_get_collision_mask_value,
+      ShapeCast3D._bindings.method_get_collision_mask_value,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -785,7 +786,7 @@ export class ShapeCast3D extends Node3D{
   set_exclude_parent_body(_mask) {
     ShapeCast3D.init_method_set_exclude_parent_body();
     return _call_native_mb_no_ret(
-      ShapeCast3D.#_bindings.method_set_exclude_parent_body,
+      ShapeCast3D._bindings.method_set_exclude_parent_body,
       this._owner,
       _mask
     );
@@ -794,7 +795,7 @@ export class ShapeCast3D extends Node3D{
   get_exclude_parent_body() {
     ShapeCast3D.init_method_get_exclude_parent_body();
     return _call_native_mb_ret(
-      ShapeCast3D.#_bindings.method_get_exclude_parent_body,
+      ShapeCast3D._bindings.method_get_exclude_parent_body,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -805,7 +806,7 @@ export class ShapeCast3D extends Node3D{
   set_collide_with_areas(_enable) {
     ShapeCast3D.init_method_set_collide_with_areas();
     return _call_native_mb_no_ret(
-      ShapeCast3D.#_bindings.method_set_collide_with_areas,
+      ShapeCast3D._bindings.method_set_collide_with_areas,
       this._owner,
       _enable
     );
@@ -814,7 +815,7 @@ export class ShapeCast3D extends Node3D{
   is_collide_with_areas_enabled() {
     ShapeCast3D.init_method_is_collide_with_areas_enabled();
     return _call_native_mb_ret(
-      ShapeCast3D.#_bindings.method_is_collide_with_areas_enabled,
+      ShapeCast3D._bindings.method_is_collide_with_areas_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -825,7 +826,7 @@ export class ShapeCast3D extends Node3D{
   set_collide_with_bodies(_enable) {
     ShapeCast3D.init_method_set_collide_with_bodies();
     return _call_native_mb_no_ret(
-      ShapeCast3D.#_bindings.method_set_collide_with_bodies,
+      ShapeCast3D._bindings.method_set_collide_with_bodies,
       this._owner,
       _enable
     );
@@ -834,7 +835,7 @@ export class ShapeCast3D extends Node3D{
   is_collide_with_bodies_enabled() {
     ShapeCast3D.init_method_is_collide_with_bodies_enabled();
     return _call_native_mb_ret(
-      ShapeCast3D.#_bindings.method_is_collide_with_bodies_enabled,
+      ShapeCast3D._bindings.method_is_collide_with_bodies_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -845,7 +846,7 @@ export class ShapeCast3D extends Node3D{
   set_debug_shape_custom_color(_debug_shape_custom_color) {
     ShapeCast3D.init_method_set_debug_shape_custom_color();
     return _call_native_mb_no_ret(
-      ShapeCast3D.#_bindings.method_set_debug_shape_custom_color,
+      ShapeCast3D._bindings.method_set_debug_shape_custom_color,
       this._owner,
       _debug_shape_custom_color
     );
@@ -854,7 +855,7 @@ export class ShapeCast3D extends Node3D{
   get_debug_shape_custom_color() {
     ShapeCast3D.init_method_get_debug_shape_custom_color();
     return _call_native_mb_ret(
-      ShapeCast3D.#_bindings.method_get_debug_shape_custom_color,
+      ShapeCast3D._bindings.method_get_debug_shape_custom_color,
       this._owner,
 			Variant.Type.COLOR,
     

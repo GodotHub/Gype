@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_material_override;
@@ -43,10 +44,10 @@ class _MethodBindings {
   method_set_custom_aabb;
   method_get_custom_aabb;
 }
+@GodotClass
 export class GeometryInstance3D extends VisualInstance3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -56,10 +57,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_set_material_override() {
-    if (!this.#_bindings.method_set_material_override) {
+    if (!this._bindings.method_set_material_override) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("set_material_override");
-      this.#_bindings.method_set_material_override = internal.classdb_get_method_bind(
+      this._bindings.method_set_material_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2757459619
@@ -67,10 +68,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_get_material_override() {
-    if (!this.#_bindings.method_get_material_override) {
+    if (!this._bindings.method_get_material_override) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("get_material_override");
-      this.#_bindings.method_get_material_override = internal.classdb_get_method_bind(
+      this._bindings.method_get_material_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         5934680
@@ -78,10 +79,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_set_material_overlay() {
-    if (!this.#_bindings.method_set_material_overlay) {
+    if (!this._bindings.method_set_material_overlay) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("set_material_overlay");
-      this.#_bindings.method_set_material_overlay = internal.classdb_get_method_bind(
+      this._bindings.method_set_material_overlay = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2757459619
@@ -89,10 +90,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_get_material_overlay() {
-    if (!this.#_bindings.method_get_material_overlay) {
+    if (!this._bindings.method_get_material_overlay) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("get_material_overlay");
-      this.#_bindings.method_get_material_overlay = internal.classdb_get_method_bind(
+      this._bindings.method_get_material_overlay = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         5934680
@@ -100,10 +101,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_set_cast_shadows_setting() {
-    if (!this.#_bindings.method_set_cast_shadows_setting) {
+    if (!this._bindings.method_set_cast_shadows_setting) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("set_cast_shadows_setting");
-      this.#_bindings.method_set_cast_shadows_setting = internal.classdb_get_method_bind(
+      this._bindings.method_set_cast_shadows_setting = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         856677339
@@ -111,10 +112,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_get_cast_shadows_setting() {
-    if (!this.#_bindings.method_get_cast_shadows_setting) {
+    if (!this._bindings.method_get_cast_shadows_setting) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("get_cast_shadows_setting");
-      this.#_bindings.method_get_cast_shadows_setting = internal.classdb_get_method_bind(
+      this._bindings.method_get_cast_shadows_setting = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3383019359
@@ -122,10 +123,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_set_lod_bias() {
-    if (!this.#_bindings.method_set_lod_bias) {
+    if (!this._bindings.method_set_lod_bias) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("set_lod_bias");
-      this.#_bindings.method_set_lod_bias = internal.classdb_get_method_bind(
+      this._bindings.method_set_lod_bias = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -133,10 +134,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_get_lod_bias() {
-    if (!this.#_bindings.method_get_lod_bias) {
+    if (!this._bindings.method_get_lod_bias) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("get_lod_bias");
-      this.#_bindings.method_get_lod_bias = internal.classdb_get_method_bind(
+      this._bindings.method_get_lod_bias = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -144,10 +145,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_set_transparency() {
-    if (!this.#_bindings.method_set_transparency) {
+    if (!this._bindings.method_set_transparency) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("set_transparency");
-      this.#_bindings.method_set_transparency = internal.classdb_get_method_bind(
+      this._bindings.method_set_transparency = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -155,10 +156,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_get_transparency() {
-    if (!this.#_bindings.method_get_transparency) {
+    if (!this._bindings.method_get_transparency) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("get_transparency");
-      this.#_bindings.method_get_transparency = internal.classdb_get_method_bind(
+      this._bindings.method_get_transparency = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -166,10 +167,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_set_visibility_range_end_margin() {
-    if (!this.#_bindings.method_set_visibility_range_end_margin) {
+    if (!this._bindings.method_set_visibility_range_end_margin) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("set_visibility_range_end_margin");
-      this.#_bindings.method_set_visibility_range_end_margin = internal.classdb_get_method_bind(
+      this._bindings.method_set_visibility_range_end_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -177,10 +178,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_get_visibility_range_end_margin() {
-    if (!this.#_bindings.method_get_visibility_range_end_margin) {
+    if (!this._bindings.method_get_visibility_range_end_margin) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("get_visibility_range_end_margin");
-      this.#_bindings.method_get_visibility_range_end_margin = internal.classdb_get_method_bind(
+      this._bindings.method_get_visibility_range_end_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -188,10 +189,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_set_visibility_range_end() {
-    if (!this.#_bindings.method_set_visibility_range_end) {
+    if (!this._bindings.method_set_visibility_range_end) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("set_visibility_range_end");
-      this.#_bindings.method_set_visibility_range_end = internal.classdb_get_method_bind(
+      this._bindings.method_set_visibility_range_end = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -199,10 +200,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_get_visibility_range_end() {
-    if (!this.#_bindings.method_get_visibility_range_end) {
+    if (!this._bindings.method_get_visibility_range_end) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("get_visibility_range_end");
-      this.#_bindings.method_get_visibility_range_end = internal.classdb_get_method_bind(
+      this._bindings.method_get_visibility_range_end = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -210,10 +211,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_set_visibility_range_begin_margin() {
-    if (!this.#_bindings.method_set_visibility_range_begin_margin) {
+    if (!this._bindings.method_set_visibility_range_begin_margin) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("set_visibility_range_begin_margin");
-      this.#_bindings.method_set_visibility_range_begin_margin = internal.classdb_get_method_bind(
+      this._bindings.method_set_visibility_range_begin_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -221,10 +222,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_get_visibility_range_begin_margin() {
-    if (!this.#_bindings.method_get_visibility_range_begin_margin) {
+    if (!this._bindings.method_get_visibility_range_begin_margin) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("get_visibility_range_begin_margin");
-      this.#_bindings.method_get_visibility_range_begin_margin = internal.classdb_get_method_bind(
+      this._bindings.method_get_visibility_range_begin_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -232,10 +233,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_set_visibility_range_begin() {
-    if (!this.#_bindings.method_set_visibility_range_begin) {
+    if (!this._bindings.method_set_visibility_range_begin) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("set_visibility_range_begin");
-      this.#_bindings.method_set_visibility_range_begin = internal.classdb_get_method_bind(
+      this._bindings.method_set_visibility_range_begin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -243,10 +244,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_get_visibility_range_begin() {
-    if (!this.#_bindings.method_get_visibility_range_begin) {
+    if (!this._bindings.method_get_visibility_range_begin) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("get_visibility_range_begin");
-      this.#_bindings.method_get_visibility_range_begin = internal.classdb_get_method_bind(
+      this._bindings.method_get_visibility_range_begin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -254,10 +255,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_set_visibility_range_fade_mode() {
-    if (!this.#_bindings.method_set_visibility_range_fade_mode) {
+    if (!this._bindings.method_set_visibility_range_fade_mode) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("set_visibility_range_fade_mode");
-      this.#_bindings.method_set_visibility_range_fade_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_visibility_range_fade_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1440117808
@@ -265,10 +266,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_get_visibility_range_fade_mode() {
-    if (!this.#_bindings.method_get_visibility_range_fade_mode) {
+    if (!this._bindings.method_get_visibility_range_fade_mode) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("get_visibility_range_fade_mode");
-      this.#_bindings.method_get_visibility_range_fade_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_visibility_range_fade_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2067221882
@@ -276,10 +277,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_set_instance_shader_parameter() {
-    if (!this.#_bindings.method_set_instance_shader_parameter) {
+    if (!this._bindings.method_set_instance_shader_parameter) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("set_instance_shader_parameter");
-      this.#_bindings.method_set_instance_shader_parameter = internal.classdb_get_method_bind(
+      this._bindings.method_set_instance_shader_parameter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3776071444
@@ -287,10 +288,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_get_instance_shader_parameter() {
-    if (!this.#_bindings.method_get_instance_shader_parameter) {
+    if (!this._bindings.method_get_instance_shader_parameter) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("get_instance_shader_parameter");
-      this.#_bindings.method_get_instance_shader_parameter = internal.classdb_get_method_bind(
+      this._bindings.method_get_instance_shader_parameter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2760726917
@@ -298,10 +299,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_set_extra_cull_margin() {
-    if (!this.#_bindings.method_set_extra_cull_margin) {
+    if (!this._bindings.method_set_extra_cull_margin) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("set_extra_cull_margin");
-      this.#_bindings.method_set_extra_cull_margin = internal.classdb_get_method_bind(
+      this._bindings.method_set_extra_cull_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -309,10 +310,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_get_extra_cull_margin() {
-    if (!this.#_bindings.method_get_extra_cull_margin) {
+    if (!this._bindings.method_get_extra_cull_margin) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("get_extra_cull_margin");
-      this.#_bindings.method_get_extra_cull_margin = internal.classdb_get_method_bind(
+      this._bindings.method_get_extra_cull_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -320,10 +321,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_set_lightmap_scale() {
-    if (!this.#_bindings.method_set_lightmap_scale) {
+    if (!this._bindings.method_set_lightmap_scale) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("set_lightmap_scale");
-      this.#_bindings.method_set_lightmap_scale = internal.classdb_get_method_bind(
+      this._bindings.method_set_lightmap_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2462696582
@@ -331,10 +332,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_get_lightmap_scale() {
-    if (!this.#_bindings.method_get_lightmap_scale) {
+    if (!this._bindings.method_get_lightmap_scale) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("get_lightmap_scale");
-      this.#_bindings.method_get_lightmap_scale = internal.classdb_get_method_bind(
+      this._bindings.method_get_lightmap_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         798767852
@@ -342,10 +343,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_set_gi_mode() {
-    if (!this.#_bindings.method_set_gi_mode) {
+    if (!this._bindings.method_set_gi_mode) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("set_gi_mode");
-      this.#_bindings.method_set_gi_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_gi_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2548557163
@@ -353,10 +354,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_get_gi_mode() {
-    if (!this.#_bindings.method_get_gi_mode) {
+    if (!this._bindings.method_get_gi_mode) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("get_gi_mode");
-      this.#_bindings.method_get_gi_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_gi_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2188566509
@@ -364,10 +365,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_set_ignore_occlusion_culling() {
-    if (!this.#_bindings.method_set_ignore_occlusion_culling) {
+    if (!this._bindings.method_set_ignore_occlusion_culling) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("set_ignore_occlusion_culling");
-      this.#_bindings.method_set_ignore_occlusion_culling = internal.classdb_get_method_bind(
+      this._bindings.method_set_ignore_occlusion_culling = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -375,10 +376,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_is_ignoring_occlusion_culling() {
-    if (!this.#_bindings.method_is_ignoring_occlusion_culling) {
+    if (!this._bindings.method_is_ignoring_occlusion_culling) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("is_ignoring_occlusion_culling");
-      this.#_bindings.method_is_ignoring_occlusion_culling = internal.classdb_get_method_bind(
+      this._bindings.method_is_ignoring_occlusion_culling = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2240911060
@@ -386,10 +387,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_set_custom_aabb() {
-    if (!this.#_bindings.method_set_custom_aabb) {
+    if (!this._bindings.method_set_custom_aabb) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("set_custom_aabb");
-      this.#_bindings.method_set_custom_aabb = internal.classdb_get_method_bind(
+      this._bindings.method_set_custom_aabb = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         259215842
@@ -397,10 +398,10 @@ export class GeometryInstance3D extends VisualInstance3D{
     }
   }
   static init_method_get_custom_aabb() {
-    if (!this.#_bindings.method_get_custom_aabb) {
+    if (!this._bindings.method_get_custom_aabb) {
       let classname = new StringName("GeometryInstance3D");
       let methodname = new StringName("get_custom_aabb");
-      this.#_bindings.method_get_custom_aabb = internal.classdb_get_method_bind(
+      this._bindings.method_get_custom_aabb = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1068685055
@@ -413,7 +414,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   set_material_override(_material) {
     GeometryInstance3D.init_method_set_material_override();
     return _call_native_mb_no_ret(
-      GeometryInstance3D.#_bindings.method_set_material_override,
+      GeometryInstance3D._bindings.method_set_material_override,
       this._owner,
       _material
     );
@@ -422,7 +423,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   get_material_override() {
     GeometryInstance3D.init_method_get_material_override();
     return _call_native_mb_ret(
-      GeometryInstance3D.#_bindings.method_get_material_override,
+      GeometryInstance3D._bindings.method_get_material_override,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -432,7 +433,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   set_material_overlay(_material) {
     GeometryInstance3D.init_method_set_material_overlay();
     return _call_native_mb_no_ret(
-      GeometryInstance3D.#_bindings.method_set_material_overlay,
+      GeometryInstance3D._bindings.method_set_material_overlay,
       this._owner,
       _material
     );
@@ -441,7 +442,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   get_material_overlay() {
     GeometryInstance3D.init_method_get_material_overlay();
     return _call_native_mb_ret(
-      GeometryInstance3D.#_bindings.method_get_material_overlay,
+      GeometryInstance3D._bindings.method_get_material_overlay,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -451,7 +452,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   set_cast_shadows_setting(_shadow_casting_setting) {
     GeometryInstance3D.init_method_set_cast_shadows_setting();
     return _call_native_mb_no_ret(
-      GeometryInstance3D.#_bindings.method_set_cast_shadows_setting,
+      GeometryInstance3D._bindings.method_set_cast_shadows_setting,
       this._owner,
       _shadow_casting_setting
     );
@@ -460,7 +461,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   get_cast_shadows_setting() {
     GeometryInstance3D.init_method_get_cast_shadows_setting();
     return _call_native_mb_ret(
-      GeometryInstance3D.#_bindings.method_get_cast_shadows_setting,
+      GeometryInstance3D._bindings.method_get_cast_shadows_setting,
       this._owner,
 			Variant.Type.INT,
     
@@ -471,7 +472,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   set_lod_bias(_bias) {
     GeometryInstance3D.init_method_set_lod_bias();
     return _call_native_mb_no_ret(
-      GeometryInstance3D.#_bindings.method_set_lod_bias,
+      GeometryInstance3D._bindings.method_set_lod_bias,
       this._owner,
       _bias
     );
@@ -480,7 +481,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   get_lod_bias() {
     GeometryInstance3D.init_method_get_lod_bias();
     return _call_native_mb_ret(
-      GeometryInstance3D.#_bindings.method_get_lod_bias,
+      GeometryInstance3D._bindings.method_get_lod_bias,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -491,7 +492,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   set_transparency(_transparency) {
     GeometryInstance3D.init_method_set_transparency();
     return _call_native_mb_no_ret(
-      GeometryInstance3D.#_bindings.method_set_transparency,
+      GeometryInstance3D._bindings.method_set_transparency,
       this._owner,
       _transparency
     );
@@ -500,7 +501,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   get_transparency() {
     GeometryInstance3D.init_method_get_transparency();
     return _call_native_mb_ret(
-      GeometryInstance3D.#_bindings.method_get_transparency,
+      GeometryInstance3D._bindings.method_get_transparency,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -511,7 +512,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   set_visibility_range_end_margin(_distance) {
     GeometryInstance3D.init_method_set_visibility_range_end_margin();
     return _call_native_mb_no_ret(
-      GeometryInstance3D.#_bindings.method_set_visibility_range_end_margin,
+      GeometryInstance3D._bindings.method_set_visibility_range_end_margin,
       this._owner,
       _distance
     );
@@ -520,7 +521,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   get_visibility_range_end_margin() {
     GeometryInstance3D.init_method_get_visibility_range_end_margin();
     return _call_native_mb_ret(
-      GeometryInstance3D.#_bindings.method_get_visibility_range_end_margin,
+      GeometryInstance3D._bindings.method_get_visibility_range_end_margin,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -531,7 +532,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   set_visibility_range_end(_distance) {
     GeometryInstance3D.init_method_set_visibility_range_end();
     return _call_native_mb_no_ret(
-      GeometryInstance3D.#_bindings.method_set_visibility_range_end,
+      GeometryInstance3D._bindings.method_set_visibility_range_end,
       this._owner,
       _distance
     );
@@ -540,7 +541,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   get_visibility_range_end() {
     GeometryInstance3D.init_method_get_visibility_range_end();
     return _call_native_mb_ret(
-      GeometryInstance3D.#_bindings.method_get_visibility_range_end,
+      GeometryInstance3D._bindings.method_get_visibility_range_end,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -551,7 +552,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   set_visibility_range_begin_margin(_distance) {
     GeometryInstance3D.init_method_set_visibility_range_begin_margin();
     return _call_native_mb_no_ret(
-      GeometryInstance3D.#_bindings.method_set_visibility_range_begin_margin,
+      GeometryInstance3D._bindings.method_set_visibility_range_begin_margin,
       this._owner,
       _distance
     );
@@ -560,7 +561,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   get_visibility_range_begin_margin() {
     GeometryInstance3D.init_method_get_visibility_range_begin_margin();
     return _call_native_mb_ret(
-      GeometryInstance3D.#_bindings.method_get_visibility_range_begin_margin,
+      GeometryInstance3D._bindings.method_get_visibility_range_begin_margin,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -571,7 +572,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   set_visibility_range_begin(_distance) {
     GeometryInstance3D.init_method_set_visibility_range_begin();
     return _call_native_mb_no_ret(
-      GeometryInstance3D.#_bindings.method_set_visibility_range_begin,
+      GeometryInstance3D._bindings.method_set_visibility_range_begin,
       this._owner,
       _distance
     );
@@ -580,7 +581,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   get_visibility_range_begin() {
     GeometryInstance3D.init_method_get_visibility_range_begin();
     return _call_native_mb_ret(
-      GeometryInstance3D.#_bindings.method_get_visibility_range_begin,
+      GeometryInstance3D._bindings.method_get_visibility_range_begin,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -591,7 +592,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   set_visibility_range_fade_mode(_mode) {
     GeometryInstance3D.init_method_set_visibility_range_fade_mode();
     return _call_native_mb_no_ret(
-      GeometryInstance3D.#_bindings.method_set_visibility_range_fade_mode,
+      GeometryInstance3D._bindings.method_set_visibility_range_fade_mode,
       this._owner,
       _mode
     );
@@ -600,7 +601,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   get_visibility_range_fade_mode() {
     GeometryInstance3D.init_method_get_visibility_range_fade_mode();
     return _call_native_mb_ret(
-      GeometryInstance3D.#_bindings.method_get_visibility_range_fade_mode,
+      GeometryInstance3D._bindings.method_get_visibility_range_fade_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -611,7 +612,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   set_instance_shader_parameter(_name, _value) {
     GeometryInstance3D.init_method_set_instance_shader_parameter();
     return _call_native_mb_no_ret(
-      GeometryInstance3D.#_bindings.method_set_instance_shader_parameter,
+      GeometryInstance3D._bindings.method_set_instance_shader_parameter,
       this._owner,
       _name, _value
     );
@@ -620,7 +621,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   get_instance_shader_parameter(_name) {
     GeometryInstance3D.init_method_get_instance_shader_parameter();
     return _call_native_mb_ret(
-      GeometryInstance3D.#_bindings.method_get_instance_shader_parameter,
+      GeometryInstance3D._bindings.method_get_instance_shader_parameter,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -631,7 +632,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   set_extra_cull_margin(_margin) {
     GeometryInstance3D.init_method_set_extra_cull_margin();
     return _call_native_mb_no_ret(
-      GeometryInstance3D.#_bindings.method_set_extra_cull_margin,
+      GeometryInstance3D._bindings.method_set_extra_cull_margin,
       this._owner,
       _margin
     );
@@ -640,7 +641,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   get_extra_cull_margin() {
     GeometryInstance3D.init_method_get_extra_cull_margin();
     return _call_native_mb_ret(
-      GeometryInstance3D.#_bindings.method_get_extra_cull_margin,
+      GeometryInstance3D._bindings.method_get_extra_cull_margin,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -651,7 +652,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   set_lightmap_scale(_scale) {
     GeometryInstance3D.init_method_set_lightmap_scale();
     return _call_native_mb_no_ret(
-      GeometryInstance3D.#_bindings.method_set_lightmap_scale,
+      GeometryInstance3D._bindings.method_set_lightmap_scale,
       this._owner,
       _scale
     );
@@ -660,7 +661,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   get_lightmap_scale() {
     GeometryInstance3D.init_method_get_lightmap_scale();
     return _call_native_mb_ret(
-      GeometryInstance3D.#_bindings.method_get_lightmap_scale,
+      GeometryInstance3D._bindings.method_get_lightmap_scale,
       this._owner,
 			Variant.Type.INT,
     
@@ -671,7 +672,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   set_gi_mode(_mode) {
     GeometryInstance3D.init_method_set_gi_mode();
     return _call_native_mb_no_ret(
-      GeometryInstance3D.#_bindings.method_set_gi_mode,
+      GeometryInstance3D._bindings.method_set_gi_mode,
       this._owner,
       _mode
     );
@@ -680,7 +681,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   get_gi_mode() {
     GeometryInstance3D.init_method_get_gi_mode();
     return _call_native_mb_ret(
-      GeometryInstance3D.#_bindings.method_get_gi_mode,
+      GeometryInstance3D._bindings.method_get_gi_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -691,7 +692,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   set_ignore_occlusion_culling(_ignore_culling) {
     GeometryInstance3D.init_method_set_ignore_occlusion_culling();
     return _call_native_mb_no_ret(
-      GeometryInstance3D.#_bindings.method_set_ignore_occlusion_culling,
+      GeometryInstance3D._bindings.method_set_ignore_occlusion_culling,
       this._owner,
       _ignore_culling
     );
@@ -700,7 +701,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   is_ignoring_occlusion_culling() {
     GeometryInstance3D.init_method_is_ignoring_occlusion_culling();
     return _call_native_mb_ret(
-      GeometryInstance3D.#_bindings.method_is_ignoring_occlusion_culling,
+      GeometryInstance3D._bindings.method_is_ignoring_occlusion_culling,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -711,7 +712,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   set_custom_aabb(_aabb) {
     GeometryInstance3D.init_method_set_custom_aabb();
     return _call_native_mb_no_ret(
-      GeometryInstance3D.#_bindings.method_set_custom_aabb,
+      GeometryInstance3D._bindings.method_set_custom_aabb,
       this._owner,
       _aabb
     );
@@ -720,7 +721,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   get_custom_aabb() {
     GeometryInstance3D.init_method_get_custom_aabb();
     return _call_native_mb_ret(
-      GeometryInstance3D.#_bindings.method_get_custom_aabb,
+      GeometryInstance3D._bindings.method_get_custom_aabb,
       this._owner,
 			Variant.Type.AABB,
     

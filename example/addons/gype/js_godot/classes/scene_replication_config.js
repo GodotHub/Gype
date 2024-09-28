@@ -1,14 +1,15 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_properties;
@@ -25,10 +26,10 @@ class _MethodBindings {
   method_property_get_watch;
   method_property_set_watch;
 }
+@GodotClass
 export class SceneReplicationConfig extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -38,10 +39,10 @@ export class SceneReplicationConfig extends Resource{
     }
   }
   static init_method_get_properties() {
-    if (!this.#_bindings.method_get_properties) {
+    if (!this._bindings.method_get_properties) {
       let classname = new StringName("SceneReplicationConfig");
       let methodname = new StringName("get_properties");
-      this.#_bindings.method_get_properties = internal.classdb_get_method_bind(
+      this._bindings.method_get_properties = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -49,10 +50,10 @@ export class SceneReplicationConfig extends Resource{
     }
   }
   static init_method_add_property() {
-    if (!this.#_bindings.method_add_property) {
+    if (!this._bindings.method_add_property) {
       let classname = new StringName("SceneReplicationConfig");
       let methodname = new StringName("add_property");
-      this.#_bindings.method_add_property = internal.classdb_get_method_bind(
+      this._bindings.method_add_property = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4094619021
@@ -60,10 +61,10 @@ export class SceneReplicationConfig extends Resource{
     }
   }
   static init_method_has_property() {
-    if (!this.#_bindings.method_has_property) {
+    if (!this._bindings.method_has_property) {
       let classname = new StringName("SceneReplicationConfig");
       let methodname = new StringName("has_property");
-      this.#_bindings.method_has_property = internal.classdb_get_method_bind(
+      this._bindings.method_has_property = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         861721659
@@ -71,10 +72,10 @@ export class SceneReplicationConfig extends Resource{
     }
   }
   static init_method_remove_property() {
-    if (!this.#_bindings.method_remove_property) {
+    if (!this._bindings.method_remove_property) {
       let classname = new StringName("SceneReplicationConfig");
       let methodname = new StringName("remove_property");
-      this.#_bindings.method_remove_property = internal.classdb_get_method_bind(
+      this._bindings.method_remove_property = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1348162250
@@ -82,10 +83,10 @@ export class SceneReplicationConfig extends Resource{
     }
   }
   static init_method_property_get_index() {
-    if (!this.#_bindings.method_property_get_index) {
+    if (!this._bindings.method_property_get_index) {
       let classname = new StringName("SceneReplicationConfig");
       let methodname = new StringName("property_get_index");
-      this.#_bindings.method_property_get_index = internal.classdb_get_method_bind(
+      this._bindings.method_property_get_index = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1382022557
@@ -93,10 +94,10 @@ export class SceneReplicationConfig extends Resource{
     }
   }
   static init_method_property_get_spawn() {
-    if (!this.#_bindings.method_property_get_spawn) {
+    if (!this._bindings.method_property_get_spawn) {
       let classname = new StringName("SceneReplicationConfig");
       let methodname = new StringName("property_get_spawn");
-      this.#_bindings.method_property_get_spawn = internal.classdb_get_method_bind(
+      this._bindings.method_property_get_spawn = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3456846888
@@ -104,10 +105,10 @@ export class SceneReplicationConfig extends Resource{
     }
   }
   static init_method_property_set_spawn() {
-    if (!this.#_bindings.method_property_set_spawn) {
+    if (!this._bindings.method_property_set_spawn) {
       let classname = new StringName("SceneReplicationConfig");
       let methodname = new StringName("property_set_spawn");
-      this.#_bindings.method_property_set_spawn = internal.classdb_get_method_bind(
+      this._bindings.method_property_set_spawn = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3868023870
@@ -115,10 +116,10 @@ export class SceneReplicationConfig extends Resource{
     }
   }
   static init_method_property_get_replication_mode() {
-    if (!this.#_bindings.method_property_get_replication_mode) {
+    if (!this._bindings.method_property_get_replication_mode) {
       let classname = new StringName("SceneReplicationConfig");
       let methodname = new StringName("property_get_replication_mode");
-      this.#_bindings.method_property_get_replication_mode = internal.classdb_get_method_bind(
+      this._bindings.method_property_get_replication_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2870606336
@@ -126,10 +127,10 @@ export class SceneReplicationConfig extends Resource{
     }
   }
   static init_method_property_set_replication_mode() {
-    if (!this.#_bindings.method_property_set_replication_mode) {
+    if (!this._bindings.method_property_set_replication_mode) {
       let classname = new StringName("SceneReplicationConfig");
       let methodname = new StringName("property_set_replication_mode");
-      this.#_bindings.method_property_set_replication_mode = internal.classdb_get_method_bind(
+      this._bindings.method_property_set_replication_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3200083865
@@ -137,10 +138,10 @@ export class SceneReplicationConfig extends Resource{
     }
   }
   static init_method_property_get_sync() {
-    if (!this.#_bindings.method_property_get_sync) {
+    if (!this._bindings.method_property_get_sync) {
       let classname = new StringName("SceneReplicationConfig");
       let methodname = new StringName("property_get_sync");
-      this.#_bindings.method_property_get_sync = internal.classdb_get_method_bind(
+      this._bindings.method_property_get_sync = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3456846888
@@ -148,10 +149,10 @@ export class SceneReplicationConfig extends Resource{
     }
   }
   static init_method_property_set_sync() {
-    if (!this.#_bindings.method_property_set_sync) {
+    if (!this._bindings.method_property_set_sync) {
       let classname = new StringName("SceneReplicationConfig");
       let methodname = new StringName("property_set_sync");
-      this.#_bindings.method_property_set_sync = internal.classdb_get_method_bind(
+      this._bindings.method_property_set_sync = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3868023870
@@ -159,10 +160,10 @@ export class SceneReplicationConfig extends Resource{
     }
   }
   static init_method_property_get_watch() {
-    if (!this.#_bindings.method_property_get_watch) {
+    if (!this._bindings.method_property_get_watch) {
       let classname = new StringName("SceneReplicationConfig");
       let methodname = new StringName("property_get_watch");
-      this.#_bindings.method_property_get_watch = internal.classdb_get_method_bind(
+      this._bindings.method_property_get_watch = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3456846888
@@ -170,10 +171,10 @@ export class SceneReplicationConfig extends Resource{
     }
   }
   static init_method_property_set_watch() {
-    if (!this.#_bindings.method_property_set_watch) {
+    if (!this._bindings.method_property_set_watch) {
       let classname = new StringName("SceneReplicationConfig");
       let methodname = new StringName("property_set_watch");
-      this.#_bindings.method_property_set_watch = internal.classdb_get_method_bind(
+      this._bindings.method_property_set_watch = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3868023870
@@ -186,7 +187,7 @@ export class SceneReplicationConfig extends Resource{
   get_properties() {
     SceneReplicationConfig.init_method_get_properties();
     return _call_native_mb_ret(
-      SceneReplicationConfig.#_bindings.method_get_properties,
+      SceneReplicationConfig._bindings.method_get_properties,
       this._owner,
 			Variant.Type.ARRAY,
       
@@ -196,7 +197,7 @@ export class SceneReplicationConfig extends Resource{
   add_property(_path, _index) {
     SceneReplicationConfig.init_method_add_property();
     return _call_native_mb_no_ret(
-      SceneReplicationConfig.#_bindings.method_add_property,
+      SceneReplicationConfig._bindings.method_add_property,
       this._owner,
       _path, _index
     );
@@ -205,7 +206,7 @@ export class SceneReplicationConfig extends Resource{
   has_property(_path) {
     SceneReplicationConfig.init_method_has_property();
     return _call_native_mb_ret(
-      SceneReplicationConfig.#_bindings.method_has_property,
+      SceneReplicationConfig._bindings.method_has_property,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -216,7 +217,7 @@ export class SceneReplicationConfig extends Resource{
   remove_property(_path) {
     SceneReplicationConfig.init_method_remove_property();
     return _call_native_mb_no_ret(
-      SceneReplicationConfig.#_bindings.method_remove_property,
+      SceneReplicationConfig._bindings.method_remove_property,
       this._owner,
       _path
     );
@@ -225,7 +226,7 @@ export class SceneReplicationConfig extends Resource{
   property_get_index(_path) {
     SceneReplicationConfig.init_method_property_get_index();
     return _call_native_mb_ret(
-      SceneReplicationConfig.#_bindings.method_property_get_index,
+      SceneReplicationConfig._bindings.method_property_get_index,
       this._owner,
 			Variant.Type.INT,
     
@@ -236,7 +237,7 @@ export class SceneReplicationConfig extends Resource{
   property_get_spawn(_path) {
     SceneReplicationConfig.init_method_property_get_spawn();
     return _call_native_mb_ret(
-      SceneReplicationConfig.#_bindings.method_property_get_spawn,
+      SceneReplicationConfig._bindings.method_property_get_spawn,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -247,7 +248,7 @@ export class SceneReplicationConfig extends Resource{
   property_set_spawn(_path, _enabled) {
     SceneReplicationConfig.init_method_property_set_spawn();
     return _call_native_mb_no_ret(
-      SceneReplicationConfig.#_bindings.method_property_set_spawn,
+      SceneReplicationConfig._bindings.method_property_set_spawn,
       this._owner,
       _path, _enabled
     );
@@ -256,7 +257,7 @@ export class SceneReplicationConfig extends Resource{
   property_get_replication_mode(_path) {
     SceneReplicationConfig.init_method_property_get_replication_mode();
     return _call_native_mb_ret(
-      SceneReplicationConfig.#_bindings.method_property_get_replication_mode,
+      SceneReplicationConfig._bindings.method_property_get_replication_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -267,7 +268,7 @@ export class SceneReplicationConfig extends Resource{
   property_set_replication_mode(_path, _mode) {
     SceneReplicationConfig.init_method_property_set_replication_mode();
     return _call_native_mb_no_ret(
-      SceneReplicationConfig.#_bindings.method_property_set_replication_mode,
+      SceneReplicationConfig._bindings.method_property_set_replication_mode,
       this._owner,
       _path, _mode
     );
@@ -276,7 +277,7 @@ export class SceneReplicationConfig extends Resource{
   property_get_sync(_path) {
     SceneReplicationConfig.init_method_property_get_sync();
     return _call_native_mb_ret(
-      SceneReplicationConfig.#_bindings.method_property_get_sync,
+      SceneReplicationConfig._bindings.method_property_get_sync,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -287,7 +288,7 @@ export class SceneReplicationConfig extends Resource{
   property_set_sync(_path, _enabled) {
     SceneReplicationConfig.init_method_property_set_sync();
     return _call_native_mb_no_ret(
-      SceneReplicationConfig.#_bindings.method_property_set_sync,
+      SceneReplicationConfig._bindings.method_property_set_sync,
       this._owner,
       _path, _enabled
     );
@@ -296,7 +297,7 @@ export class SceneReplicationConfig extends Resource{
   property_get_watch(_path) {
     SceneReplicationConfig.init_method_property_get_watch();
     return _call_native_mb_ret(
-      SceneReplicationConfig.#_bindings.method_property_get_watch,
+      SceneReplicationConfig._bindings.method_property_get_watch,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -307,7 +308,7 @@ export class SceneReplicationConfig extends Resource{
   property_set_watch(_path, _enabled) {
     SceneReplicationConfig.init_method_property_set_watch();
     return _call_native_mb_no_ret(
-      SceneReplicationConfig.#_bindings.method_property_set_watch,
+      SceneReplicationConfig._bindings.method_property_set_watch,
       this._owner,
       _path, _enabled
     );

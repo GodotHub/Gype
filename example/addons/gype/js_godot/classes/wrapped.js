@@ -1,9 +1,10 @@
-import { GDString } from "@js_godot/variant/gd_string";
-import { StringName } from "@js_godot/variant/string_name";
-import { Variant } from "@js_godot/variant/variant";
+import { to_variant } from "@js_godot/core/type_helper";
+
 export class Wrapped {
   _owner = null;
   class_name = "";
+  _to_variant = to_variant;
+
   // _constructing_extension_class_name = undefined;
   constructor(value) {
     if (typeof value == "string") {
@@ -48,17 +49,5 @@ export class Wrapped {
   _validate_property() {}
   _to_string() {
     return "test string";
-  }
-  _to_variant(src_type, opaque) {
-    switch (src_type) {
-      case Variant.Type.VARIANT:
-        return new Variant(opaque);
-      case Variant.Type.STRING:
-        return new GDString(opaque);
-      case Variant.Type.STRING_NAME:
-        return new StringName(opaque);
-      default:
-        break;
-    }
   }
 }

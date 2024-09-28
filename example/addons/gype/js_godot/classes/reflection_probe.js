@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_intensity;
@@ -39,10 +40,10 @@ class _MethodBindings {
   method_set_update_mode;
   method_get_update_mode;
 }
+@GodotClass
 export class ReflectionProbe extends VisualInstance3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -52,10 +53,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_set_intensity() {
-    if (!this.#_bindings.method_set_intensity) {
+    if (!this._bindings.method_set_intensity) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("set_intensity");
-      this.#_bindings.method_set_intensity = internal.classdb_get_method_bind(
+      this._bindings.method_set_intensity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -63,10 +64,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_get_intensity() {
-    if (!this.#_bindings.method_get_intensity) {
+    if (!this._bindings.method_get_intensity) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("get_intensity");
-      this.#_bindings.method_get_intensity = internal.classdb_get_method_bind(
+      this._bindings.method_get_intensity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -74,10 +75,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_set_ambient_mode() {
-    if (!this.#_bindings.method_set_ambient_mode) {
+    if (!this._bindings.method_set_ambient_mode) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("set_ambient_mode");
-      this.#_bindings.method_set_ambient_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_ambient_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1748981278
@@ -85,10 +86,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_get_ambient_mode() {
-    if (!this.#_bindings.method_get_ambient_mode) {
+    if (!this._bindings.method_get_ambient_mode) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("get_ambient_mode");
-      this.#_bindings.method_get_ambient_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_ambient_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1014607621
@@ -96,10 +97,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_set_ambient_color() {
-    if (!this.#_bindings.method_set_ambient_color) {
+    if (!this._bindings.method_set_ambient_color) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("set_ambient_color");
-      this.#_bindings.method_set_ambient_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_ambient_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -107,10 +108,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_get_ambient_color() {
-    if (!this.#_bindings.method_get_ambient_color) {
+    if (!this._bindings.method_get_ambient_color) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("get_ambient_color");
-      this.#_bindings.method_get_ambient_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_ambient_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -118,10 +119,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_set_ambient_color_energy() {
-    if (!this.#_bindings.method_set_ambient_color_energy) {
+    if (!this._bindings.method_set_ambient_color_energy) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("set_ambient_color_energy");
-      this.#_bindings.method_set_ambient_color_energy = internal.classdb_get_method_bind(
+      this._bindings.method_set_ambient_color_energy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -129,10 +130,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_get_ambient_color_energy() {
-    if (!this.#_bindings.method_get_ambient_color_energy) {
+    if (!this._bindings.method_get_ambient_color_energy) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("get_ambient_color_energy");
-      this.#_bindings.method_get_ambient_color_energy = internal.classdb_get_method_bind(
+      this._bindings.method_get_ambient_color_energy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -140,10 +141,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_set_max_distance() {
-    if (!this.#_bindings.method_set_max_distance) {
+    if (!this._bindings.method_set_max_distance) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("set_max_distance");
-      this.#_bindings.method_set_max_distance = internal.classdb_get_method_bind(
+      this._bindings.method_set_max_distance = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -151,10 +152,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_get_max_distance() {
-    if (!this.#_bindings.method_get_max_distance) {
+    if (!this._bindings.method_get_max_distance) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("get_max_distance");
-      this.#_bindings.method_get_max_distance = internal.classdb_get_method_bind(
+      this._bindings.method_get_max_distance = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -162,10 +163,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_set_mesh_lod_threshold() {
-    if (!this.#_bindings.method_set_mesh_lod_threshold) {
+    if (!this._bindings.method_set_mesh_lod_threshold) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("set_mesh_lod_threshold");
-      this.#_bindings.method_set_mesh_lod_threshold = internal.classdb_get_method_bind(
+      this._bindings.method_set_mesh_lod_threshold = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -173,10 +174,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_get_mesh_lod_threshold() {
-    if (!this.#_bindings.method_get_mesh_lod_threshold) {
+    if (!this._bindings.method_get_mesh_lod_threshold) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("get_mesh_lod_threshold");
-      this.#_bindings.method_get_mesh_lod_threshold = internal.classdb_get_method_bind(
+      this._bindings.method_get_mesh_lod_threshold = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -184,10 +185,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_set_size() {
-    if (!this.#_bindings.method_set_size) {
+    if (!this._bindings.method_set_size) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("set_size");
-      this.#_bindings.method_set_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -195,10 +196,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_get_size() {
-    if (!this.#_bindings.method_get_size) {
+    if (!this._bindings.method_get_size) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("get_size");
-      this.#_bindings.method_get_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3360562783
@@ -206,10 +207,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_set_origin_offset() {
-    if (!this.#_bindings.method_set_origin_offset) {
+    if (!this._bindings.method_set_origin_offset) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("set_origin_offset");
-      this.#_bindings.method_set_origin_offset = internal.classdb_get_method_bind(
+      this._bindings.method_set_origin_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -217,10 +218,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_get_origin_offset() {
-    if (!this.#_bindings.method_get_origin_offset) {
+    if (!this._bindings.method_get_origin_offset) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("get_origin_offset");
-      this.#_bindings.method_get_origin_offset = internal.classdb_get_method_bind(
+      this._bindings.method_get_origin_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3360562783
@@ -228,10 +229,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_set_as_interior() {
-    if (!this.#_bindings.method_set_as_interior) {
+    if (!this._bindings.method_set_as_interior) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("set_as_interior");
-      this.#_bindings.method_set_as_interior = internal.classdb_get_method_bind(
+      this._bindings.method_set_as_interior = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -239,10 +240,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_is_set_as_interior() {
-    if (!this.#_bindings.method_is_set_as_interior) {
+    if (!this._bindings.method_is_set_as_interior) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("is_set_as_interior");
-      this.#_bindings.method_is_set_as_interior = internal.classdb_get_method_bind(
+      this._bindings.method_is_set_as_interior = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -250,10 +251,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_set_enable_box_projection() {
-    if (!this.#_bindings.method_set_enable_box_projection) {
+    if (!this._bindings.method_set_enable_box_projection) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("set_enable_box_projection");
-      this.#_bindings.method_set_enable_box_projection = internal.classdb_get_method_bind(
+      this._bindings.method_set_enable_box_projection = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -261,10 +262,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_is_box_projection_enabled() {
-    if (!this.#_bindings.method_is_box_projection_enabled) {
+    if (!this._bindings.method_is_box_projection_enabled) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("is_box_projection_enabled");
-      this.#_bindings.method_is_box_projection_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_box_projection_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -272,10 +273,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_set_enable_shadows() {
-    if (!this.#_bindings.method_set_enable_shadows) {
+    if (!this._bindings.method_set_enable_shadows) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("set_enable_shadows");
-      this.#_bindings.method_set_enable_shadows = internal.classdb_get_method_bind(
+      this._bindings.method_set_enable_shadows = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -283,10 +284,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_are_shadows_enabled() {
-    if (!this.#_bindings.method_are_shadows_enabled) {
+    if (!this._bindings.method_are_shadows_enabled) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("are_shadows_enabled");
-      this.#_bindings.method_are_shadows_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_are_shadows_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -294,10 +295,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_set_cull_mask() {
-    if (!this.#_bindings.method_set_cull_mask) {
+    if (!this._bindings.method_set_cull_mask) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("set_cull_mask");
-      this.#_bindings.method_set_cull_mask = internal.classdb_get_method_bind(
+      this._bindings.method_set_cull_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -305,10 +306,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_get_cull_mask() {
-    if (!this.#_bindings.method_get_cull_mask) {
+    if (!this._bindings.method_get_cull_mask) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("get_cull_mask");
-      this.#_bindings.method_get_cull_mask = internal.classdb_get_method_bind(
+      this._bindings.method_get_cull_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -316,10 +317,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_set_reflection_mask() {
-    if (!this.#_bindings.method_set_reflection_mask) {
+    if (!this._bindings.method_set_reflection_mask) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("set_reflection_mask");
-      this.#_bindings.method_set_reflection_mask = internal.classdb_get_method_bind(
+      this._bindings.method_set_reflection_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -327,10 +328,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_get_reflection_mask() {
-    if (!this.#_bindings.method_get_reflection_mask) {
+    if (!this._bindings.method_get_reflection_mask) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("get_reflection_mask");
-      this.#_bindings.method_get_reflection_mask = internal.classdb_get_method_bind(
+      this._bindings.method_get_reflection_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -338,10 +339,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_set_update_mode() {
-    if (!this.#_bindings.method_set_update_mode) {
+    if (!this._bindings.method_set_update_mode) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("set_update_mode");
-      this.#_bindings.method_set_update_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_update_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4090221187
@@ -349,10 +350,10 @@ export class ReflectionProbe extends VisualInstance3D{
     }
   }
   static init_method_get_update_mode() {
-    if (!this.#_bindings.method_get_update_mode) {
+    if (!this._bindings.method_get_update_mode) {
       let classname = new StringName("ReflectionProbe");
       let methodname = new StringName("get_update_mode");
-      this.#_bindings.method_get_update_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_update_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2367550552
@@ -365,7 +366,7 @@ export class ReflectionProbe extends VisualInstance3D{
   set_intensity(_intensity) {
     ReflectionProbe.init_method_set_intensity();
     return _call_native_mb_no_ret(
-      ReflectionProbe.#_bindings.method_set_intensity,
+      ReflectionProbe._bindings.method_set_intensity,
       this._owner,
       _intensity
     );
@@ -374,7 +375,7 @@ export class ReflectionProbe extends VisualInstance3D{
   get_intensity() {
     ReflectionProbe.init_method_get_intensity();
     return _call_native_mb_ret(
-      ReflectionProbe.#_bindings.method_get_intensity,
+      ReflectionProbe._bindings.method_get_intensity,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -385,7 +386,7 @@ export class ReflectionProbe extends VisualInstance3D{
   set_ambient_mode(_ambient) {
     ReflectionProbe.init_method_set_ambient_mode();
     return _call_native_mb_no_ret(
-      ReflectionProbe.#_bindings.method_set_ambient_mode,
+      ReflectionProbe._bindings.method_set_ambient_mode,
       this._owner,
       _ambient
     );
@@ -394,7 +395,7 @@ export class ReflectionProbe extends VisualInstance3D{
   get_ambient_mode() {
     ReflectionProbe.init_method_get_ambient_mode();
     return _call_native_mb_ret(
-      ReflectionProbe.#_bindings.method_get_ambient_mode,
+      ReflectionProbe._bindings.method_get_ambient_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -405,7 +406,7 @@ export class ReflectionProbe extends VisualInstance3D{
   set_ambient_color(_ambient) {
     ReflectionProbe.init_method_set_ambient_color();
     return _call_native_mb_no_ret(
-      ReflectionProbe.#_bindings.method_set_ambient_color,
+      ReflectionProbe._bindings.method_set_ambient_color,
       this._owner,
       _ambient
     );
@@ -414,7 +415,7 @@ export class ReflectionProbe extends VisualInstance3D{
   get_ambient_color() {
     ReflectionProbe.init_method_get_ambient_color();
     return _call_native_mb_ret(
-      ReflectionProbe.#_bindings.method_get_ambient_color,
+      ReflectionProbe._bindings.method_get_ambient_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -425,7 +426,7 @@ export class ReflectionProbe extends VisualInstance3D{
   set_ambient_color_energy(_ambient_energy) {
     ReflectionProbe.init_method_set_ambient_color_energy();
     return _call_native_mb_no_ret(
-      ReflectionProbe.#_bindings.method_set_ambient_color_energy,
+      ReflectionProbe._bindings.method_set_ambient_color_energy,
       this._owner,
       _ambient_energy
     );
@@ -434,7 +435,7 @@ export class ReflectionProbe extends VisualInstance3D{
   get_ambient_color_energy() {
     ReflectionProbe.init_method_get_ambient_color_energy();
     return _call_native_mb_ret(
-      ReflectionProbe.#_bindings.method_get_ambient_color_energy,
+      ReflectionProbe._bindings.method_get_ambient_color_energy,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -445,7 +446,7 @@ export class ReflectionProbe extends VisualInstance3D{
   set_max_distance(_max_distance) {
     ReflectionProbe.init_method_set_max_distance();
     return _call_native_mb_no_ret(
-      ReflectionProbe.#_bindings.method_set_max_distance,
+      ReflectionProbe._bindings.method_set_max_distance,
       this._owner,
       _max_distance
     );
@@ -454,7 +455,7 @@ export class ReflectionProbe extends VisualInstance3D{
   get_max_distance() {
     ReflectionProbe.init_method_get_max_distance();
     return _call_native_mb_ret(
-      ReflectionProbe.#_bindings.method_get_max_distance,
+      ReflectionProbe._bindings.method_get_max_distance,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -465,7 +466,7 @@ export class ReflectionProbe extends VisualInstance3D{
   set_mesh_lod_threshold(_ratio) {
     ReflectionProbe.init_method_set_mesh_lod_threshold();
     return _call_native_mb_no_ret(
-      ReflectionProbe.#_bindings.method_set_mesh_lod_threshold,
+      ReflectionProbe._bindings.method_set_mesh_lod_threshold,
       this._owner,
       _ratio
     );
@@ -474,7 +475,7 @@ export class ReflectionProbe extends VisualInstance3D{
   get_mesh_lod_threshold() {
     ReflectionProbe.init_method_get_mesh_lod_threshold();
     return _call_native_mb_ret(
-      ReflectionProbe.#_bindings.method_get_mesh_lod_threshold,
+      ReflectionProbe._bindings.method_get_mesh_lod_threshold,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -485,7 +486,7 @@ export class ReflectionProbe extends VisualInstance3D{
   set_size(_size) {
     ReflectionProbe.init_method_set_size();
     return _call_native_mb_no_ret(
-      ReflectionProbe.#_bindings.method_set_size,
+      ReflectionProbe._bindings.method_set_size,
       this._owner,
       _size
     );
@@ -494,7 +495,7 @@ export class ReflectionProbe extends VisualInstance3D{
   get_size() {
     ReflectionProbe.init_method_get_size();
     return _call_native_mb_ret(
-      ReflectionProbe.#_bindings.method_get_size,
+      ReflectionProbe._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -505,7 +506,7 @@ export class ReflectionProbe extends VisualInstance3D{
   set_origin_offset(_origin_offset) {
     ReflectionProbe.init_method_set_origin_offset();
     return _call_native_mb_no_ret(
-      ReflectionProbe.#_bindings.method_set_origin_offset,
+      ReflectionProbe._bindings.method_set_origin_offset,
       this._owner,
       _origin_offset
     );
@@ -514,7 +515,7 @@ export class ReflectionProbe extends VisualInstance3D{
   get_origin_offset() {
     ReflectionProbe.init_method_get_origin_offset();
     return _call_native_mb_ret(
-      ReflectionProbe.#_bindings.method_get_origin_offset,
+      ReflectionProbe._bindings.method_get_origin_offset,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -525,7 +526,7 @@ export class ReflectionProbe extends VisualInstance3D{
   set_as_interior(_enable) {
     ReflectionProbe.init_method_set_as_interior();
     return _call_native_mb_no_ret(
-      ReflectionProbe.#_bindings.method_set_as_interior,
+      ReflectionProbe._bindings.method_set_as_interior,
       this._owner,
       _enable
     );
@@ -534,7 +535,7 @@ export class ReflectionProbe extends VisualInstance3D{
   is_set_as_interior() {
     ReflectionProbe.init_method_is_set_as_interior();
     return _call_native_mb_ret(
-      ReflectionProbe.#_bindings.method_is_set_as_interior,
+      ReflectionProbe._bindings.method_is_set_as_interior,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -545,7 +546,7 @@ export class ReflectionProbe extends VisualInstance3D{
   set_enable_box_projection(_enable) {
     ReflectionProbe.init_method_set_enable_box_projection();
     return _call_native_mb_no_ret(
-      ReflectionProbe.#_bindings.method_set_enable_box_projection,
+      ReflectionProbe._bindings.method_set_enable_box_projection,
       this._owner,
       _enable
     );
@@ -554,7 +555,7 @@ export class ReflectionProbe extends VisualInstance3D{
   is_box_projection_enabled() {
     ReflectionProbe.init_method_is_box_projection_enabled();
     return _call_native_mb_ret(
-      ReflectionProbe.#_bindings.method_is_box_projection_enabled,
+      ReflectionProbe._bindings.method_is_box_projection_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -565,7 +566,7 @@ export class ReflectionProbe extends VisualInstance3D{
   set_enable_shadows(_enable) {
     ReflectionProbe.init_method_set_enable_shadows();
     return _call_native_mb_no_ret(
-      ReflectionProbe.#_bindings.method_set_enable_shadows,
+      ReflectionProbe._bindings.method_set_enable_shadows,
       this._owner,
       _enable
     );
@@ -574,7 +575,7 @@ export class ReflectionProbe extends VisualInstance3D{
   are_shadows_enabled() {
     ReflectionProbe.init_method_are_shadows_enabled();
     return _call_native_mb_ret(
-      ReflectionProbe.#_bindings.method_are_shadows_enabled,
+      ReflectionProbe._bindings.method_are_shadows_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -585,7 +586,7 @@ export class ReflectionProbe extends VisualInstance3D{
   set_cull_mask(_layers) {
     ReflectionProbe.init_method_set_cull_mask();
     return _call_native_mb_no_ret(
-      ReflectionProbe.#_bindings.method_set_cull_mask,
+      ReflectionProbe._bindings.method_set_cull_mask,
       this._owner,
       _layers
     );
@@ -594,7 +595,7 @@ export class ReflectionProbe extends VisualInstance3D{
   get_cull_mask() {
     ReflectionProbe.init_method_get_cull_mask();
     return _call_native_mb_ret(
-      ReflectionProbe.#_bindings.method_get_cull_mask,
+      ReflectionProbe._bindings.method_get_cull_mask,
       this._owner,
 			Variant.Type.INT,
     
@@ -605,7 +606,7 @@ export class ReflectionProbe extends VisualInstance3D{
   set_reflection_mask(_layers) {
     ReflectionProbe.init_method_set_reflection_mask();
     return _call_native_mb_no_ret(
-      ReflectionProbe.#_bindings.method_set_reflection_mask,
+      ReflectionProbe._bindings.method_set_reflection_mask,
       this._owner,
       _layers
     );
@@ -614,7 +615,7 @@ export class ReflectionProbe extends VisualInstance3D{
   get_reflection_mask() {
     ReflectionProbe.init_method_get_reflection_mask();
     return _call_native_mb_ret(
-      ReflectionProbe.#_bindings.method_get_reflection_mask,
+      ReflectionProbe._bindings.method_get_reflection_mask,
       this._owner,
 			Variant.Type.INT,
     
@@ -625,7 +626,7 @@ export class ReflectionProbe extends VisualInstance3D{
   set_update_mode(_mode) {
     ReflectionProbe.init_method_set_update_mode();
     return _call_native_mb_no_ret(
-      ReflectionProbe.#_bindings.method_set_update_mode,
+      ReflectionProbe._bindings.method_set_update_mode,
       this._owner,
       _mode
     );
@@ -634,7 +635,7 @@ export class ReflectionProbe extends VisualInstance3D{
   get_update_mode() {
     ReflectionProbe.init_method_get_update_mode();
     return _call_native_mb_ret(
-      ReflectionProbe.#_bindings.method_get_update_mode,
+      ReflectionProbe._bindings.method_get_update_mode,
       this._owner,
 			Variant.Type.INT,
     

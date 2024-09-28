@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Container } from '@js_godot/classes/container'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_ratio;
@@ -19,10 +20,10 @@ class _MethodBindings {
   method_set_alignment_vertical;
   method_get_alignment_vertical;
 }
+@GodotClass
 export class AspectRatioContainer extends Container{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -32,10 +33,10 @@ export class AspectRatioContainer extends Container{
     }
   }
   static init_method_set_ratio() {
-    if (!this.#_bindings.method_set_ratio) {
+    if (!this._bindings.method_set_ratio) {
       let classname = new StringName("AspectRatioContainer");
       let methodname = new StringName("set_ratio");
-      this.#_bindings.method_set_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_set_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -43,10 +44,10 @@ export class AspectRatioContainer extends Container{
     }
   }
   static init_method_get_ratio() {
-    if (!this.#_bindings.method_get_ratio) {
+    if (!this._bindings.method_get_ratio) {
       let classname = new StringName("AspectRatioContainer");
       let methodname = new StringName("get_ratio");
-      this.#_bindings.method_get_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_get_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -54,10 +55,10 @@ export class AspectRatioContainer extends Container{
     }
   }
   static init_method_set_stretch_mode() {
-    if (!this.#_bindings.method_set_stretch_mode) {
+    if (!this._bindings.method_set_stretch_mode) {
       let classname = new StringName("AspectRatioContainer");
       let methodname = new StringName("set_stretch_mode");
-      this.#_bindings.method_set_stretch_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_stretch_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1876743467
@@ -65,10 +66,10 @@ export class AspectRatioContainer extends Container{
     }
   }
   static init_method_get_stretch_mode() {
-    if (!this.#_bindings.method_get_stretch_mode) {
+    if (!this._bindings.method_get_stretch_mode) {
       let classname = new StringName("AspectRatioContainer");
       let methodname = new StringName("get_stretch_mode");
-      this.#_bindings.method_get_stretch_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_stretch_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3416449033
@@ -76,10 +77,10 @@ export class AspectRatioContainer extends Container{
     }
   }
   static init_method_set_alignment_horizontal() {
-    if (!this.#_bindings.method_set_alignment_horizontal) {
+    if (!this._bindings.method_set_alignment_horizontal) {
       let classname = new StringName("AspectRatioContainer");
       let methodname = new StringName("set_alignment_horizontal");
-      this.#_bindings.method_set_alignment_horizontal = internal.classdb_get_method_bind(
+      this._bindings.method_set_alignment_horizontal = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2147829016
@@ -87,10 +88,10 @@ export class AspectRatioContainer extends Container{
     }
   }
   static init_method_get_alignment_horizontal() {
-    if (!this.#_bindings.method_get_alignment_horizontal) {
+    if (!this._bindings.method_get_alignment_horizontal) {
       let classname = new StringName("AspectRatioContainer");
       let methodname = new StringName("get_alignment_horizontal");
-      this.#_bindings.method_get_alignment_horizontal = internal.classdb_get_method_bind(
+      this._bindings.method_get_alignment_horizontal = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3838875429
@@ -98,10 +99,10 @@ export class AspectRatioContainer extends Container{
     }
   }
   static init_method_set_alignment_vertical() {
-    if (!this.#_bindings.method_set_alignment_vertical) {
+    if (!this._bindings.method_set_alignment_vertical) {
       let classname = new StringName("AspectRatioContainer");
       let methodname = new StringName("set_alignment_vertical");
-      this.#_bindings.method_set_alignment_vertical = internal.classdb_get_method_bind(
+      this._bindings.method_set_alignment_vertical = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2147829016
@@ -109,10 +110,10 @@ export class AspectRatioContainer extends Container{
     }
   }
   static init_method_get_alignment_vertical() {
-    if (!this.#_bindings.method_get_alignment_vertical) {
+    if (!this._bindings.method_get_alignment_vertical) {
       let classname = new StringName("AspectRatioContainer");
       let methodname = new StringName("get_alignment_vertical");
-      this.#_bindings.method_get_alignment_vertical = internal.classdb_get_method_bind(
+      this._bindings.method_get_alignment_vertical = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3838875429
@@ -125,7 +126,7 @@ export class AspectRatioContainer extends Container{
   set_ratio(_ratio) {
     AspectRatioContainer.init_method_set_ratio();
     return _call_native_mb_no_ret(
-      AspectRatioContainer.#_bindings.method_set_ratio,
+      AspectRatioContainer._bindings.method_set_ratio,
       this._owner,
       _ratio
     );
@@ -134,7 +135,7 @@ export class AspectRatioContainer extends Container{
   get_ratio() {
     AspectRatioContainer.init_method_get_ratio();
     return _call_native_mb_ret(
-      AspectRatioContainer.#_bindings.method_get_ratio,
+      AspectRatioContainer._bindings.method_get_ratio,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -145,7 +146,7 @@ export class AspectRatioContainer extends Container{
   set_stretch_mode(_stretch_mode) {
     AspectRatioContainer.init_method_set_stretch_mode();
     return _call_native_mb_no_ret(
-      AspectRatioContainer.#_bindings.method_set_stretch_mode,
+      AspectRatioContainer._bindings.method_set_stretch_mode,
       this._owner,
       _stretch_mode
     );
@@ -154,7 +155,7 @@ export class AspectRatioContainer extends Container{
   get_stretch_mode() {
     AspectRatioContainer.init_method_get_stretch_mode();
     return _call_native_mb_ret(
-      AspectRatioContainer.#_bindings.method_get_stretch_mode,
+      AspectRatioContainer._bindings.method_get_stretch_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -165,7 +166,7 @@ export class AspectRatioContainer extends Container{
   set_alignment_horizontal(_alignment_horizontal) {
     AspectRatioContainer.init_method_set_alignment_horizontal();
     return _call_native_mb_no_ret(
-      AspectRatioContainer.#_bindings.method_set_alignment_horizontal,
+      AspectRatioContainer._bindings.method_set_alignment_horizontal,
       this._owner,
       _alignment_horizontal
     );
@@ -174,7 +175,7 @@ export class AspectRatioContainer extends Container{
   get_alignment_horizontal() {
     AspectRatioContainer.init_method_get_alignment_horizontal();
     return _call_native_mb_ret(
-      AspectRatioContainer.#_bindings.method_get_alignment_horizontal,
+      AspectRatioContainer._bindings.method_get_alignment_horizontal,
       this._owner,
 			Variant.Type.INT,
     
@@ -185,7 +186,7 @@ export class AspectRatioContainer extends Container{
   set_alignment_vertical(_alignment_vertical) {
     AspectRatioContainer.init_method_set_alignment_vertical();
     return _call_native_mb_no_ret(
-      AspectRatioContainer.#_bindings.method_set_alignment_vertical,
+      AspectRatioContainer._bindings.method_set_alignment_vertical,
       this._owner,
       _alignment_vertical
     );
@@ -194,7 +195,7 @@ export class AspectRatioContainer extends Container{
   get_alignment_vertical() {
     AspectRatioContainer.init_method_get_alignment_vertical();
     return _call_native_mb_ret(
-      AspectRatioContainer.#_bindings.method_get_alignment_vertical,
+      AspectRatioContainer._bindings.method_get_alignment_vertical,
       this._owner,
 			Variant.Type.INT,
     

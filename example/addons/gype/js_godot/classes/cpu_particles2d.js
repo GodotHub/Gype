@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { Node2D } from '@js_godot/classes/node2d'
 import {
   call_utility_ret,
@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_emitting;
@@ -79,10 +80,10 @@ class _MethodBindings {
   method_set_scale_curve_y;
   method_convert_from_particles;
 }
+@GodotClass
 export class CPUParticles2D extends Node2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -92,10 +93,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_emitting() {
-    if (!this.#_bindings.method_set_emitting) {
+    if (!this._bindings.method_set_emitting) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_emitting");
-      this.#_bindings.method_set_emitting = internal.classdb_get_method_bind(
+      this._bindings.method_set_emitting = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -103,10 +104,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_amount() {
-    if (!this.#_bindings.method_set_amount) {
+    if (!this._bindings.method_set_amount) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_amount");
-      this.#_bindings.method_set_amount = internal.classdb_get_method_bind(
+      this._bindings.method_set_amount = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -114,10 +115,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_lifetime() {
-    if (!this.#_bindings.method_set_lifetime) {
+    if (!this._bindings.method_set_lifetime) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_lifetime");
-      this.#_bindings.method_set_lifetime = internal.classdb_get_method_bind(
+      this._bindings.method_set_lifetime = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -125,10 +126,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_one_shot() {
-    if (!this.#_bindings.method_set_one_shot) {
+    if (!this._bindings.method_set_one_shot) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_one_shot");
-      this.#_bindings.method_set_one_shot = internal.classdb_get_method_bind(
+      this._bindings.method_set_one_shot = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -136,10 +137,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_pre_process_time() {
-    if (!this.#_bindings.method_set_pre_process_time) {
+    if (!this._bindings.method_set_pre_process_time) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_pre_process_time");
-      this.#_bindings.method_set_pre_process_time = internal.classdb_get_method_bind(
+      this._bindings.method_set_pre_process_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -147,10 +148,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_explosiveness_ratio() {
-    if (!this.#_bindings.method_set_explosiveness_ratio) {
+    if (!this._bindings.method_set_explosiveness_ratio) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_explosiveness_ratio");
-      this.#_bindings.method_set_explosiveness_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_set_explosiveness_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -158,10 +159,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_randomness_ratio() {
-    if (!this.#_bindings.method_set_randomness_ratio) {
+    if (!this._bindings.method_set_randomness_ratio) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_randomness_ratio");
-      this.#_bindings.method_set_randomness_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_set_randomness_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -169,10 +170,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_lifetime_randomness() {
-    if (!this.#_bindings.method_set_lifetime_randomness) {
+    if (!this._bindings.method_set_lifetime_randomness) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_lifetime_randomness");
-      this.#_bindings.method_set_lifetime_randomness = internal.classdb_get_method_bind(
+      this._bindings.method_set_lifetime_randomness = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -180,10 +181,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_use_local_coordinates() {
-    if (!this.#_bindings.method_set_use_local_coordinates) {
+    if (!this._bindings.method_set_use_local_coordinates) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_use_local_coordinates");
-      this.#_bindings.method_set_use_local_coordinates = internal.classdb_get_method_bind(
+      this._bindings.method_set_use_local_coordinates = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -191,10 +192,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_fixed_fps() {
-    if (!this.#_bindings.method_set_fixed_fps) {
+    if (!this._bindings.method_set_fixed_fps) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_fixed_fps");
-      this.#_bindings.method_set_fixed_fps = internal.classdb_get_method_bind(
+      this._bindings.method_set_fixed_fps = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -202,10 +203,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_fractional_delta() {
-    if (!this.#_bindings.method_set_fractional_delta) {
+    if (!this._bindings.method_set_fractional_delta) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_fractional_delta");
-      this.#_bindings.method_set_fractional_delta = internal.classdb_get_method_bind(
+      this._bindings.method_set_fractional_delta = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -213,10 +214,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_speed_scale() {
-    if (!this.#_bindings.method_set_speed_scale) {
+    if (!this._bindings.method_set_speed_scale) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_speed_scale");
-      this.#_bindings.method_set_speed_scale = internal.classdb_get_method_bind(
+      this._bindings.method_set_speed_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -224,10 +225,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_is_emitting() {
-    if (!this.#_bindings.method_is_emitting) {
+    if (!this._bindings.method_is_emitting) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("is_emitting");
-      this.#_bindings.method_is_emitting = internal.classdb_get_method_bind(
+      this._bindings.method_is_emitting = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -235,10 +236,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_amount() {
-    if (!this.#_bindings.method_get_amount) {
+    if (!this._bindings.method_get_amount) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_amount");
-      this.#_bindings.method_get_amount = internal.classdb_get_method_bind(
+      this._bindings.method_get_amount = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -246,10 +247,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_lifetime() {
-    if (!this.#_bindings.method_get_lifetime) {
+    if (!this._bindings.method_get_lifetime) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_lifetime");
-      this.#_bindings.method_get_lifetime = internal.classdb_get_method_bind(
+      this._bindings.method_get_lifetime = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -257,10 +258,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_one_shot() {
-    if (!this.#_bindings.method_get_one_shot) {
+    if (!this._bindings.method_get_one_shot) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_one_shot");
-      this.#_bindings.method_get_one_shot = internal.classdb_get_method_bind(
+      this._bindings.method_get_one_shot = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -268,10 +269,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_pre_process_time() {
-    if (!this.#_bindings.method_get_pre_process_time) {
+    if (!this._bindings.method_get_pre_process_time) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_pre_process_time");
-      this.#_bindings.method_get_pre_process_time = internal.classdb_get_method_bind(
+      this._bindings.method_get_pre_process_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -279,10 +280,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_explosiveness_ratio() {
-    if (!this.#_bindings.method_get_explosiveness_ratio) {
+    if (!this._bindings.method_get_explosiveness_ratio) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_explosiveness_ratio");
-      this.#_bindings.method_get_explosiveness_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_get_explosiveness_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -290,10 +291,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_randomness_ratio() {
-    if (!this.#_bindings.method_get_randomness_ratio) {
+    if (!this._bindings.method_get_randomness_ratio) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_randomness_ratio");
-      this.#_bindings.method_get_randomness_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_get_randomness_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -301,10 +302,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_lifetime_randomness() {
-    if (!this.#_bindings.method_get_lifetime_randomness) {
+    if (!this._bindings.method_get_lifetime_randomness) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_lifetime_randomness");
-      this.#_bindings.method_get_lifetime_randomness = internal.classdb_get_method_bind(
+      this._bindings.method_get_lifetime_randomness = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -312,10 +313,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_use_local_coordinates() {
-    if (!this.#_bindings.method_get_use_local_coordinates) {
+    if (!this._bindings.method_get_use_local_coordinates) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_use_local_coordinates");
-      this.#_bindings.method_get_use_local_coordinates = internal.classdb_get_method_bind(
+      this._bindings.method_get_use_local_coordinates = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -323,10 +324,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_fixed_fps() {
-    if (!this.#_bindings.method_get_fixed_fps) {
+    if (!this._bindings.method_get_fixed_fps) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_fixed_fps");
-      this.#_bindings.method_get_fixed_fps = internal.classdb_get_method_bind(
+      this._bindings.method_get_fixed_fps = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -334,10 +335,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_fractional_delta() {
-    if (!this.#_bindings.method_get_fractional_delta) {
+    if (!this._bindings.method_get_fractional_delta) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_fractional_delta");
-      this.#_bindings.method_get_fractional_delta = internal.classdb_get_method_bind(
+      this._bindings.method_get_fractional_delta = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -345,10 +346,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_speed_scale() {
-    if (!this.#_bindings.method_get_speed_scale) {
+    if (!this._bindings.method_get_speed_scale) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_speed_scale");
-      this.#_bindings.method_get_speed_scale = internal.classdb_get_method_bind(
+      this._bindings.method_get_speed_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -356,10 +357,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_draw_order() {
-    if (!this.#_bindings.method_set_draw_order) {
+    if (!this._bindings.method_set_draw_order) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_draw_order");
-      this.#_bindings.method_set_draw_order = internal.classdb_get_method_bind(
+      this._bindings.method_set_draw_order = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4183193490
@@ -367,10 +368,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_draw_order() {
-    if (!this.#_bindings.method_get_draw_order) {
+    if (!this._bindings.method_get_draw_order) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_draw_order");
-      this.#_bindings.method_get_draw_order = internal.classdb_get_method_bind(
+      this._bindings.method_get_draw_order = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1668655735
@@ -378,10 +379,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_texture() {
-    if (!this.#_bindings.method_set_texture) {
+    if (!this._bindings.method_set_texture) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_texture");
-      this.#_bindings.method_set_texture = internal.classdb_get_method_bind(
+      this._bindings.method_set_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4051416890
@@ -389,10 +390,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_texture() {
-    if (!this.#_bindings.method_get_texture) {
+    if (!this._bindings.method_get_texture) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_texture");
-      this.#_bindings.method_get_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -400,10 +401,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_restart() {
-    if (!this.#_bindings.method_restart) {
+    if (!this._bindings.method_restart) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("restart");
-      this.#_bindings.method_restart = internal.classdb_get_method_bind(
+      this._bindings.method_restart = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -411,10 +412,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_direction() {
-    if (!this.#_bindings.method_set_direction) {
+    if (!this._bindings.method_set_direction) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_direction");
-      this.#_bindings.method_set_direction = internal.classdb_get_method_bind(
+      this._bindings.method_set_direction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -422,10 +423,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_direction() {
-    if (!this.#_bindings.method_get_direction) {
+    if (!this._bindings.method_get_direction) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_direction");
-      this.#_bindings.method_get_direction = internal.classdb_get_method_bind(
+      this._bindings.method_get_direction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -433,10 +434,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_spread() {
-    if (!this.#_bindings.method_set_spread) {
+    if (!this._bindings.method_set_spread) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_spread");
-      this.#_bindings.method_set_spread = internal.classdb_get_method_bind(
+      this._bindings.method_set_spread = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -444,10 +445,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_spread() {
-    if (!this.#_bindings.method_get_spread) {
+    if (!this._bindings.method_get_spread) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_spread");
-      this.#_bindings.method_get_spread = internal.classdb_get_method_bind(
+      this._bindings.method_get_spread = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -455,10 +456,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_param_min() {
-    if (!this.#_bindings.method_set_param_min) {
+    if (!this._bindings.method_set_param_min) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_param_min");
-      this.#_bindings.method_set_param_min = internal.classdb_get_method_bind(
+      this._bindings.method_set_param_min = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3320615296
@@ -466,10 +467,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_param_min() {
-    if (!this.#_bindings.method_get_param_min) {
+    if (!this._bindings.method_get_param_min) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_param_min");
-      this.#_bindings.method_get_param_min = internal.classdb_get_method_bind(
+      this._bindings.method_get_param_min = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2038050600
@@ -477,10 +478,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_param_max() {
-    if (!this.#_bindings.method_set_param_max) {
+    if (!this._bindings.method_set_param_max) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_param_max");
-      this.#_bindings.method_set_param_max = internal.classdb_get_method_bind(
+      this._bindings.method_set_param_max = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3320615296
@@ -488,10 +489,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_param_max() {
-    if (!this.#_bindings.method_get_param_max) {
+    if (!this._bindings.method_get_param_max) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_param_max");
-      this.#_bindings.method_get_param_max = internal.classdb_get_method_bind(
+      this._bindings.method_get_param_max = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2038050600
@@ -499,10 +500,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_param_curve() {
-    if (!this.#_bindings.method_set_param_curve) {
+    if (!this._bindings.method_set_param_curve) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_param_curve");
-      this.#_bindings.method_set_param_curve = internal.classdb_get_method_bind(
+      this._bindings.method_set_param_curve = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2959350143
@@ -510,10 +511,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_param_curve() {
-    if (!this.#_bindings.method_get_param_curve) {
+    if (!this._bindings.method_get_param_curve) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_param_curve");
-      this.#_bindings.method_get_param_curve = internal.classdb_get_method_bind(
+      this._bindings.method_get_param_curve = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2603158474
@@ -521,10 +522,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_color() {
-    if (!this.#_bindings.method_set_color) {
+    if (!this._bindings.method_set_color) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_color");
-      this.#_bindings.method_set_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -532,10 +533,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_color() {
-    if (!this.#_bindings.method_get_color) {
+    if (!this._bindings.method_get_color) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_color");
-      this.#_bindings.method_get_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -543,10 +544,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_color_ramp() {
-    if (!this.#_bindings.method_set_color_ramp) {
+    if (!this._bindings.method_set_color_ramp) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_color_ramp");
-      this.#_bindings.method_set_color_ramp = internal.classdb_get_method_bind(
+      this._bindings.method_set_color_ramp = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2756054477
@@ -554,10 +555,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_color_ramp() {
-    if (!this.#_bindings.method_get_color_ramp) {
+    if (!this._bindings.method_get_color_ramp) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_color_ramp");
-      this.#_bindings.method_get_color_ramp = internal.classdb_get_method_bind(
+      this._bindings.method_get_color_ramp = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         132272999
@@ -565,10 +566,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_color_initial_ramp() {
-    if (!this.#_bindings.method_set_color_initial_ramp) {
+    if (!this._bindings.method_set_color_initial_ramp) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_color_initial_ramp");
-      this.#_bindings.method_set_color_initial_ramp = internal.classdb_get_method_bind(
+      this._bindings.method_set_color_initial_ramp = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2756054477
@@ -576,10 +577,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_color_initial_ramp() {
-    if (!this.#_bindings.method_get_color_initial_ramp) {
+    if (!this._bindings.method_get_color_initial_ramp) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_color_initial_ramp");
-      this.#_bindings.method_get_color_initial_ramp = internal.classdb_get_method_bind(
+      this._bindings.method_get_color_initial_ramp = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         132272999
@@ -587,10 +588,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_particle_flag() {
-    if (!this.#_bindings.method_set_particle_flag) {
+    if (!this._bindings.method_set_particle_flag) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_particle_flag");
-      this.#_bindings.method_set_particle_flag = internal.classdb_get_method_bind(
+      this._bindings.method_set_particle_flag = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4178137949
@@ -598,10 +599,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_particle_flag() {
-    if (!this.#_bindings.method_get_particle_flag) {
+    if (!this._bindings.method_get_particle_flag) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_particle_flag");
-      this.#_bindings.method_get_particle_flag = internal.classdb_get_method_bind(
+      this._bindings.method_get_particle_flag = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2829976507
@@ -609,10 +610,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_emission_shape() {
-    if (!this.#_bindings.method_set_emission_shape) {
+    if (!this._bindings.method_set_emission_shape) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_emission_shape");
-      this.#_bindings.method_set_emission_shape = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_shape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         393763892
@@ -620,10 +621,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_emission_shape() {
-    if (!this.#_bindings.method_get_emission_shape) {
+    if (!this._bindings.method_get_emission_shape) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_emission_shape");
-      this.#_bindings.method_get_emission_shape = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_shape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740246024
@@ -631,10 +632,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_emission_sphere_radius() {
-    if (!this.#_bindings.method_set_emission_sphere_radius) {
+    if (!this._bindings.method_set_emission_sphere_radius) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_emission_sphere_radius");
-      this.#_bindings.method_set_emission_sphere_radius = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_sphere_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -642,10 +643,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_emission_sphere_radius() {
-    if (!this.#_bindings.method_get_emission_sphere_radius) {
+    if (!this._bindings.method_get_emission_sphere_radius) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_emission_sphere_radius");
-      this.#_bindings.method_get_emission_sphere_radius = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_sphere_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -653,10 +654,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_emission_rect_extents() {
-    if (!this.#_bindings.method_set_emission_rect_extents) {
+    if (!this._bindings.method_set_emission_rect_extents) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_emission_rect_extents");
-      this.#_bindings.method_set_emission_rect_extents = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_rect_extents = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -664,10 +665,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_emission_rect_extents() {
-    if (!this.#_bindings.method_get_emission_rect_extents) {
+    if (!this._bindings.method_get_emission_rect_extents) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_emission_rect_extents");
-      this.#_bindings.method_get_emission_rect_extents = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_rect_extents = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -675,10 +676,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_emission_points() {
-    if (!this.#_bindings.method_set_emission_points) {
+    if (!this._bindings.method_set_emission_points) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_emission_points");
-      this.#_bindings.method_set_emission_points = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_points = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1509147220
@@ -686,10 +687,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_emission_points() {
-    if (!this.#_bindings.method_get_emission_points) {
+    if (!this._bindings.method_get_emission_points) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_emission_points");
-      this.#_bindings.method_get_emission_points = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_points = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2961356807
@@ -697,10 +698,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_emission_normals() {
-    if (!this.#_bindings.method_set_emission_normals) {
+    if (!this._bindings.method_set_emission_normals) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_emission_normals");
-      this.#_bindings.method_set_emission_normals = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_normals = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1509147220
@@ -708,10 +709,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_emission_normals() {
-    if (!this.#_bindings.method_get_emission_normals) {
+    if (!this._bindings.method_get_emission_normals) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_emission_normals");
-      this.#_bindings.method_get_emission_normals = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_normals = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2961356807
@@ -719,10 +720,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_emission_colors() {
-    if (!this.#_bindings.method_set_emission_colors) {
+    if (!this._bindings.method_set_emission_colors) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_emission_colors");
-      this.#_bindings.method_set_emission_colors = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_colors = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3546319833
@@ -730,10 +731,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_emission_colors() {
-    if (!this.#_bindings.method_get_emission_colors) {
+    if (!this._bindings.method_get_emission_colors) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_emission_colors");
-      this.#_bindings.method_get_emission_colors = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_colors = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1392750486
@@ -741,10 +742,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_gravity() {
-    if (!this.#_bindings.method_get_gravity) {
+    if (!this._bindings.method_get_gravity) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_gravity");
-      this.#_bindings.method_get_gravity = internal.classdb_get_method_bind(
+      this._bindings.method_get_gravity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -752,10 +753,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_gravity() {
-    if (!this.#_bindings.method_set_gravity) {
+    if (!this._bindings.method_set_gravity) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_gravity");
-      this.#_bindings.method_set_gravity = internal.classdb_get_method_bind(
+      this._bindings.method_set_gravity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -763,10 +764,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_split_scale() {
-    if (!this.#_bindings.method_get_split_scale) {
+    if (!this._bindings.method_get_split_scale) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_split_scale");
-      this.#_bindings.method_get_split_scale = internal.classdb_get_method_bind(
+      this._bindings.method_get_split_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2240911060
@@ -774,10 +775,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_split_scale() {
-    if (!this.#_bindings.method_set_split_scale) {
+    if (!this._bindings.method_set_split_scale) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_split_scale");
-      this.#_bindings.method_set_split_scale = internal.classdb_get_method_bind(
+      this._bindings.method_set_split_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -785,10 +786,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_scale_curve_x() {
-    if (!this.#_bindings.method_get_scale_curve_x) {
+    if (!this._bindings.method_get_scale_curve_x) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_scale_curve_x");
-      this.#_bindings.method_get_scale_curve_x = internal.classdb_get_method_bind(
+      this._bindings.method_get_scale_curve_x = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2460114913
@@ -796,10 +797,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_scale_curve_x() {
-    if (!this.#_bindings.method_set_scale_curve_x) {
+    if (!this._bindings.method_set_scale_curve_x) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_scale_curve_x");
-      this.#_bindings.method_set_scale_curve_x = internal.classdb_get_method_bind(
+      this._bindings.method_set_scale_curve_x = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         270443179
@@ -807,10 +808,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_get_scale_curve_y() {
-    if (!this.#_bindings.method_get_scale_curve_y) {
+    if (!this._bindings.method_get_scale_curve_y) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("get_scale_curve_y");
-      this.#_bindings.method_get_scale_curve_y = internal.classdb_get_method_bind(
+      this._bindings.method_get_scale_curve_y = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2460114913
@@ -818,10 +819,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_set_scale_curve_y() {
-    if (!this.#_bindings.method_set_scale_curve_y) {
+    if (!this._bindings.method_set_scale_curve_y) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("set_scale_curve_y");
-      this.#_bindings.method_set_scale_curve_y = internal.classdb_get_method_bind(
+      this._bindings.method_set_scale_curve_y = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         270443179
@@ -829,10 +830,10 @@ export class CPUParticles2D extends Node2D{
     }
   }
   static init_method_convert_from_particles() {
-    if (!this.#_bindings.method_convert_from_particles) {
+    if (!this._bindings.method_convert_from_particles) {
       let classname = new StringName("CPUParticles2D");
       let methodname = new StringName("convert_from_particles");
-      this.#_bindings.method_convert_from_particles = internal.classdb_get_method_bind(
+      this._bindings.method_convert_from_particles = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1078189570
@@ -845,7 +846,7 @@ export class CPUParticles2D extends Node2D{
   set_emitting(_emitting) {
     CPUParticles2D.init_method_set_emitting();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_emitting,
+      CPUParticles2D._bindings.method_set_emitting,
       this._owner,
       _emitting
     );
@@ -854,7 +855,7 @@ export class CPUParticles2D extends Node2D{
   set_amount(_amount) {
     CPUParticles2D.init_method_set_amount();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_amount,
+      CPUParticles2D._bindings.method_set_amount,
       this._owner,
       _amount
     );
@@ -863,7 +864,7 @@ export class CPUParticles2D extends Node2D{
   set_lifetime(_secs) {
     CPUParticles2D.init_method_set_lifetime();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_lifetime,
+      CPUParticles2D._bindings.method_set_lifetime,
       this._owner,
       _secs
     );
@@ -872,7 +873,7 @@ export class CPUParticles2D extends Node2D{
   set_one_shot(_enable) {
     CPUParticles2D.init_method_set_one_shot();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_one_shot,
+      CPUParticles2D._bindings.method_set_one_shot,
       this._owner,
       _enable
     );
@@ -881,7 +882,7 @@ export class CPUParticles2D extends Node2D{
   set_pre_process_time(_secs) {
     CPUParticles2D.init_method_set_pre_process_time();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_pre_process_time,
+      CPUParticles2D._bindings.method_set_pre_process_time,
       this._owner,
       _secs
     );
@@ -890,7 +891,7 @@ export class CPUParticles2D extends Node2D{
   set_explosiveness_ratio(_ratio) {
     CPUParticles2D.init_method_set_explosiveness_ratio();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_explosiveness_ratio,
+      CPUParticles2D._bindings.method_set_explosiveness_ratio,
       this._owner,
       _ratio
     );
@@ -899,7 +900,7 @@ export class CPUParticles2D extends Node2D{
   set_randomness_ratio(_ratio) {
     CPUParticles2D.init_method_set_randomness_ratio();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_randomness_ratio,
+      CPUParticles2D._bindings.method_set_randomness_ratio,
       this._owner,
       _ratio
     );
@@ -908,7 +909,7 @@ export class CPUParticles2D extends Node2D{
   set_lifetime_randomness(_random) {
     CPUParticles2D.init_method_set_lifetime_randomness();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_lifetime_randomness,
+      CPUParticles2D._bindings.method_set_lifetime_randomness,
       this._owner,
       _random
     );
@@ -917,7 +918,7 @@ export class CPUParticles2D extends Node2D{
   set_use_local_coordinates(_enable) {
     CPUParticles2D.init_method_set_use_local_coordinates();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_use_local_coordinates,
+      CPUParticles2D._bindings.method_set_use_local_coordinates,
       this._owner,
       _enable
     );
@@ -926,7 +927,7 @@ export class CPUParticles2D extends Node2D{
   set_fixed_fps(_fps) {
     CPUParticles2D.init_method_set_fixed_fps();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_fixed_fps,
+      CPUParticles2D._bindings.method_set_fixed_fps,
       this._owner,
       _fps
     );
@@ -935,7 +936,7 @@ export class CPUParticles2D extends Node2D{
   set_fractional_delta(_enable) {
     CPUParticles2D.init_method_set_fractional_delta();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_fractional_delta,
+      CPUParticles2D._bindings.method_set_fractional_delta,
       this._owner,
       _enable
     );
@@ -944,7 +945,7 @@ export class CPUParticles2D extends Node2D{
   set_speed_scale(_scale) {
     CPUParticles2D.init_method_set_speed_scale();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_speed_scale,
+      CPUParticles2D._bindings.method_set_speed_scale,
       this._owner,
       _scale
     );
@@ -953,7 +954,7 @@ export class CPUParticles2D extends Node2D{
   is_emitting() {
     CPUParticles2D.init_method_is_emitting();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_is_emitting,
+      CPUParticles2D._bindings.method_is_emitting,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -964,7 +965,7 @@ export class CPUParticles2D extends Node2D{
   get_amount() {
     CPUParticles2D.init_method_get_amount();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_amount,
+      CPUParticles2D._bindings.method_get_amount,
       this._owner,
 			Variant.Type.INT,
     
@@ -975,7 +976,7 @@ export class CPUParticles2D extends Node2D{
   get_lifetime() {
     CPUParticles2D.init_method_get_lifetime();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_lifetime,
+      CPUParticles2D._bindings.method_get_lifetime,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -986,7 +987,7 @@ export class CPUParticles2D extends Node2D{
   get_one_shot() {
     CPUParticles2D.init_method_get_one_shot();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_one_shot,
+      CPUParticles2D._bindings.method_get_one_shot,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -997,7 +998,7 @@ export class CPUParticles2D extends Node2D{
   get_pre_process_time() {
     CPUParticles2D.init_method_get_pre_process_time();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_pre_process_time,
+      CPUParticles2D._bindings.method_get_pre_process_time,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1008,7 +1009,7 @@ export class CPUParticles2D extends Node2D{
   get_explosiveness_ratio() {
     CPUParticles2D.init_method_get_explosiveness_ratio();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_explosiveness_ratio,
+      CPUParticles2D._bindings.method_get_explosiveness_ratio,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1019,7 +1020,7 @@ export class CPUParticles2D extends Node2D{
   get_randomness_ratio() {
     CPUParticles2D.init_method_get_randomness_ratio();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_randomness_ratio,
+      CPUParticles2D._bindings.method_get_randomness_ratio,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1030,7 +1031,7 @@ export class CPUParticles2D extends Node2D{
   get_lifetime_randomness() {
     CPUParticles2D.init_method_get_lifetime_randomness();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_lifetime_randomness,
+      CPUParticles2D._bindings.method_get_lifetime_randomness,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1041,7 +1042,7 @@ export class CPUParticles2D extends Node2D{
   get_use_local_coordinates() {
     CPUParticles2D.init_method_get_use_local_coordinates();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_use_local_coordinates,
+      CPUParticles2D._bindings.method_get_use_local_coordinates,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1052,7 +1053,7 @@ export class CPUParticles2D extends Node2D{
   get_fixed_fps() {
     CPUParticles2D.init_method_get_fixed_fps();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_fixed_fps,
+      CPUParticles2D._bindings.method_get_fixed_fps,
       this._owner,
 			Variant.Type.INT,
     
@@ -1063,7 +1064,7 @@ export class CPUParticles2D extends Node2D{
   get_fractional_delta() {
     CPUParticles2D.init_method_get_fractional_delta();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_fractional_delta,
+      CPUParticles2D._bindings.method_get_fractional_delta,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1074,7 +1075,7 @@ export class CPUParticles2D extends Node2D{
   get_speed_scale() {
     CPUParticles2D.init_method_get_speed_scale();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_speed_scale,
+      CPUParticles2D._bindings.method_get_speed_scale,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1085,7 +1086,7 @@ export class CPUParticles2D extends Node2D{
   set_draw_order(_order) {
     CPUParticles2D.init_method_set_draw_order();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_draw_order,
+      CPUParticles2D._bindings.method_set_draw_order,
       this._owner,
       _order
     );
@@ -1094,7 +1095,7 @@ export class CPUParticles2D extends Node2D{
   get_draw_order() {
     CPUParticles2D.init_method_get_draw_order();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_draw_order,
+      CPUParticles2D._bindings.method_get_draw_order,
       this._owner,
 			Variant.Type.INT,
     
@@ -1105,7 +1106,7 @@ export class CPUParticles2D extends Node2D{
   set_texture(_texture) {
     CPUParticles2D.init_method_set_texture();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_texture,
+      CPUParticles2D._bindings.method_set_texture,
       this._owner,
       _texture
     );
@@ -1114,7 +1115,7 @@ export class CPUParticles2D extends Node2D{
   get_texture() {
     CPUParticles2D.init_method_get_texture();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_texture,
+      CPUParticles2D._bindings.method_get_texture,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -1124,7 +1125,7 @@ export class CPUParticles2D extends Node2D{
   restart() {
     CPUParticles2D.init_method_restart();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_restart,
+      CPUParticles2D._bindings.method_restart,
       this._owner,
       
     );
@@ -1133,7 +1134,7 @@ export class CPUParticles2D extends Node2D{
   set_direction(_direction) {
     CPUParticles2D.init_method_set_direction();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_direction,
+      CPUParticles2D._bindings.method_set_direction,
       this._owner,
       _direction
     );
@@ -1142,7 +1143,7 @@ export class CPUParticles2D extends Node2D{
   get_direction() {
     CPUParticles2D.init_method_get_direction();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_direction,
+      CPUParticles2D._bindings.method_get_direction,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1153,7 +1154,7 @@ export class CPUParticles2D extends Node2D{
   set_spread(_spread) {
     CPUParticles2D.init_method_set_spread();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_spread,
+      CPUParticles2D._bindings.method_set_spread,
       this._owner,
       _spread
     );
@@ -1162,7 +1163,7 @@ export class CPUParticles2D extends Node2D{
   get_spread() {
     CPUParticles2D.init_method_get_spread();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_spread,
+      CPUParticles2D._bindings.method_get_spread,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1173,7 +1174,7 @@ export class CPUParticles2D extends Node2D{
   set_param_min(_param, _value) {
     CPUParticles2D.init_method_set_param_min();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_param_min,
+      CPUParticles2D._bindings.method_set_param_min,
       this._owner,
       _param, _value
     );
@@ -1182,7 +1183,7 @@ export class CPUParticles2D extends Node2D{
   get_param_min(_param) {
     CPUParticles2D.init_method_get_param_min();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_param_min,
+      CPUParticles2D._bindings.method_get_param_min,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1193,7 +1194,7 @@ export class CPUParticles2D extends Node2D{
   set_param_max(_param, _value) {
     CPUParticles2D.init_method_set_param_max();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_param_max,
+      CPUParticles2D._bindings.method_set_param_max,
       this._owner,
       _param, _value
     );
@@ -1202,7 +1203,7 @@ export class CPUParticles2D extends Node2D{
   get_param_max(_param) {
     CPUParticles2D.init_method_get_param_max();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_param_max,
+      CPUParticles2D._bindings.method_get_param_max,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1213,7 +1214,7 @@ export class CPUParticles2D extends Node2D{
   set_param_curve(_param, _curve) {
     CPUParticles2D.init_method_set_param_curve();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_param_curve,
+      CPUParticles2D._bindings.method_set_param_curve,
       this._owner,
       _param, _curve
     );
@@ -1222,7 +1223,7 @@ export class CPUParticles2D extends Node2D{
   get_param_curve(_param) {
     CPUParticles2D.init_method_get_param_curve();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_param_curve,
+      CPUParticles2D._bindings.method_get_param_curve,
       this._owner,
 			Variant.Type.OBJECT,
       _param
@@ -1232,7 +1233,7 @@ export class CPUParticles2D extends Node2D{
   set_color(_color) {
     CPUParticles2D.init_method_set_color();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_color,
+      CPUParticles2D._bindings.method_set_color,
       this._owner,
       _color
     );
@@ -1241,7 +1242,7 @@ export class CPUParticles2D extends Node2D{
   get_color() {
     CPUParticles2D.init_method_get_color();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_color,
+      CPUParticles2D._bindings.method_get_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -1252,7 +1253,7 @@ export class CPUParticles2D extends Node2D{
   set_color_ramp(_ramp) {
     CPUParticles2D.init_method_set_color_ramp();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_color_ramp,
+      CPUParticles2D._bindings.method_set_color_ramp,
       this._owner,
       _ramp
     );
@@ -1261,7 +1262,7 @@ export class CPUParticles2D extends Node2D{
   get_color_ramp() {
     CPUParticles2D.init_method_get_color_ramp();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_color_ramp,
+      CPUParticles2D._bindings.method_get_color_ramp,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -1271,7 +1272,7 @@ export class CPUParticles2D extends Node2D{
   set_color_initial_ramp(_ramp) {
     CPUParticles2D.init_method_set_color_initial_ramp();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_color_initial_ramp,
+      CPUParticles2D._bindings.method_set_color_initial_ramp,
       this._owner,
       _ramp
     );
@@ -1280,7 +1281,7 @@ export class CPUParticles2D extends Node2D{
   get_color_initial_ramp() {
     CPUParticles2D.init_method_get_color_initial_ramp();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_color_initial_ramp,
+      CPUParticles2D._bindings.method_get_color_initial_ramp,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -1290,7 +1291,7 @@ export class CPUParticles2D extends Node2D{
   set_particle_flag(_particle_flag, _enable) {
     CPUParticles2D.init_method_set_particle_flag();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_particle_flag,
+      CPUParticles2D._bindings.method_set_particle_flag,
       this._owner,
       _particle_flag, _enable
     );
@@ -1299,7 +1300,7 @@ export class CPUParticles2D extends Node2D{
   get_particle_flag(_particle_flag) {
     CPUParticles2D.init_method_get_particle_flag();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_particle_flag,
+      CPUParticles2D._bindings.method_get_particle_flag,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1310,7 +1311,7 @@ export class CPUParticles2D extends Node2D{
   set_emission_shape(_shape) {
     CPUParticles2D.init_method_set_emission_shape();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_emission_shape,
+      CPUParticles2D._bindings.method_set_emission_shape,
       this._owner,
       _shape
     );
@@ -1319,7 +1320,7 @@ export class CPUParticles2D extends Node2D{
   get_emission_shape() {
     CPUParticles2D.init_method_get_emission_shape();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_emission_shape,
+      CPUParticles2D._bindings.method_get_emission_shape,
       this._owner,
 			Variant.Type.INT,
     
@@ -1330,7 +1331,7 @@ export class CPUParticles2D extends Node2D{
   set_emission_sphere_radius(_radius) {
     CPUParticles2D.init_method_set_emission_sphere_radius();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_emission_sphere_radius,
+      CPUParticles2D._bindings.method_set_emission_sphere_radius,
       this._owner,
       _radius
     );
@@ -1339,7 +1340,7 @@ export class CPUParticles2D extends Node2D{
   get_emission_sphere_radius() {
     CPUParticles2D.init_method_get_emission_sphere_radius();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_emission_sphere_radius,
+      CPUParticles2D._bindings.method_get_emission_sphere_radius,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1350,7 +1351,7 @@ export class CPUParticles2D extends Node2D{
   set_emission_rect_extents(_extents) {
     CPUParticles2D.init_method_set_emission_rect_extents();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_emission_rect_extents,
+      CPUParticles2D._bindings.method_set_emission_rect_extents,
       this._owner,
       _extents
     );
@@ -1359,7 +1360,7 @@ export class CPUParticles2D extends Node2D{
   get_emission_rect_extents() {
     CPUParticles2D.init_method_get_emission_rect_extents();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_emission_rect_extents,
+      CPUParticles2D._bindings.method_get_emission_rect_extents,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1370,7 +1371,7 @@ export class CPUParticles2D extends Node2D{
   set_emission_points(_array) {
     CPUParticles2D.init_method_set_emission_points();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_emission_points,
+      CPUParticles2D._bindings.method_set_emission_points,
       this._owner,
       _array
     );
@@ -1379,7 +1380,7 @@ export class CPUParticles2D extends Node2D{
   get_emission_points() {
     CPUParticles2D.init_method_get_emission_points();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_emission_points,
+      CPUParticles2D._bindings.method_get_emission_points,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -1390,7 +1391,7 @@ export class CPUParticles2D extends Node2D{
   set_emission_normals(_array) {
     CPUParticles2D.init_method_set_emission_normals();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_emission_normals,
+      CPUParticles2D._bindings.method_set_emission_normals,
       this._owner,
       _array
     );
@@ -1399,7 +1400,7 @@ export class CPUParticles2D extends Node2D{
   get_emission_normals() {
     CPUParticles2D.init_method_get_emission_normals();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_emission_normals,
+      CPUParticles2D._bindings.method_get_emission_normals,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -1410,7 +1411,7 @@ export class CPUParticles2D extends Node2D{
   set_emission_colors(_array) {
     CPUParticles2D.init_method_set_emission_colors();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_emission_colors,
+      CPUParticles2D._bindings.method_set_emission_colors,
       this._owner,
       _array
     );
@@ -1419,7 +1420,7 @@ export class CPUParticles2D extends Node2D{
   get_emission_colors() {
     CPUParticles2D.init_method_get_emission_colors();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_emission_colors,
+      CPUParticles2D._bindings.method_get_emission_colors,
       this._owner,
 			Variant.Type.PACKED_COLOR_ARRAY,
     
@@ -1430,7 +1431,7 @@ export class CPUParticles2D extends Node2D{
   get_gravity() {
     CPUParticles2D.init_method_get_gravity();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_gravity,
+      CPUParticles2D._bindings.method_get_gravity,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1441,7 +1442,7 @@ export class CPUParticles2D extends Node2D{
   set_gravity(_accel_vec) {
     CPUParticles2D.init_method_set_gravity();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_gravity,
+      CPUParticles2D._bindings.method_set_gravity,
       this._owner,
       _accel_vec
     );
@@ -1450,7 +1451,7 @@ export class CPUParticles2D extends Node2D{
   get_split_scale() {
     CPUParticles2D.init_method_get_split_scale();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_split_scale,
+      CPUParticles2D._bindings.method_get_split_scale,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1461,7 +1462,7 @@ export class CPUParticles2D extends Node2D{
   set_split_scale(_split_scale) {
     CPUParticles2D.init_method_set_split_scale();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_split_scale,
+      CPUParticles2D._bindings.method_set_split_scale,
       this._owner,
       _split_scale
     );
@@ -1470,7 +1471,7 @@ export class CPUParticles2D extends Node2D{
   get_scale_curve_x() {
     CPUParticles2D.init_method_get_scale_curve_x();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_scale_curve_x,
+      CPUParticles2D._bindings.method_get_scale_curve_x,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -1480,7 +1481,7 @@ export class CPUParticles2D extends Node2D{
   set_scale_curve_x(_scale_curve) {
     CPUParticles2D.init_method_set_scale_curve_x();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_scale_curve_x,
+      CPUParticles2D._bindings.method_set_scale_curve_x,
       this._owner,
       _scale_curve
     );
@@ -1489,7 +1490,7 @@ export class CPUParticles2D extends Node2D{
   get_scale_curve_y() {
     CPUParticles2D.init_method_get_scale_curve_y();
     return _call_native_mb_ret(
-      CPUParticles2D.#_bindings.method_get_scale_curve_y,
+      CPUParticles2D._bindings.method_get_scale_curve_y,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -1499,7 +1500,7 @@ export class CPUParticles2D extends Node2D{
   set_scale_curve_y(_scale_curve) {
     CPUParticles2D.init_method_set_scale_curve_y();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_set_scale_curve_y,
+      CPUParticles2D._bindings.method_set_scale_curve_y,
       this._owner,
       _scale_curve
     );
@@ -1508,7 +1509,7 @@ export class CPUParticles2D extends Node2D{
   convert_from_particles(_particles) {
     CPUParticles2D.init_method_convert_from_particles();
     return _call_native_mb_no_ret(
-      CPUParticles2D.#_bindings.method_convert_from_particles,
+      CPUParticles2D._bindings.method_convert_from_particles,
       this._owner,
       _particles
     );

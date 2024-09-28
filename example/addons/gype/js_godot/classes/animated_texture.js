@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { Texture2D } from '@js_godot/classes/texture2d'
 import {
   call_utility_ret,
@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_frames;
@@ -25,10 +26,10 @@ class _MethodBindings {
   method_set_frame_duration;
   method_get_frame_duration;
 }
+@GodotClass
 export class AnimatedTexture extends Texture2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -38,10 +39,10 @@ export class AnimatedTexture extends Texture2D{
     }
   }
   static init_method_set_frames() {
-    if (!this.#_bindings.method_set_frames) {
+    if (!this._bindings.method_set_frames) {
       let classname = new StringName("AnimatedTexture");
       let methodname = new StringName("set_frames");
-      this.#_bindings.method_set_frames = internal.classdb_get_method_bind(
+      this._bindings.method_set_frames = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -49,10 +50,10 @@ export class AnimatedTexture extends Texture2D{
     }
   }
   static init_method_get_frames() {
-    if (!this.#_bindings.method_get_frames) {
+    if (!this._bindings.method_get_frames) {
       let classname = new StringName("AnimatedTexture");
       let methodname = new StringName("get_frames");
-      this.#_bindings.method_get_frames = internal.classdb_get_method_bind(
+      this._bindings.method_get_frames = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -60,10 +61,10 @@ export class AnimatedTexture extends Texture2D{
     }
   }
   static init_method_set_current_frame() {
-    if (!this.#_bindings.method_set_current_frame) {
+    if (!this._bindings.method_set_current_frame) {
       let classname = new StringName("AnimatedTexture");
       let methodname = new StringName("set_current_frame");
-      this.#_bindings.method_set_current_frame = internal.classdb_get_method_bind(
+      this._bindings.method_set_current_frame = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -71,10 +72,10 @@ export class AnimatedTexture extends Texture2D{
     }
   }
   static init_method_get_current_frame() {
-    if (!this.#_bindings.method_get_current_frame) {
+    if (!this._bindings.method_get_current_frame) {
       let classname = new StringName("AnimatedTexture");
       let methodname = new StringName("get_current_frame");
-      this.#_bindings.method_get_current_frame = internal.classdb_get_method_bind(
+      this._bindings.method_get_current_frame = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -82,10 +83,10 @@ export class AnimatedTexture extends Texture2D{
     }
   }
   static init_method_set_pause() {
-    if (!this.#_bindings.method_set_pause) {
+    if (!this._bindings.method_set_pause) {
       let classname = new StringName("AnimatedTexture");
       let methodname = new StringName("set_pause");
-      this.#_bindings.method_set_pause = internal.classdb_get_method_bind(
+      this._bindings.method_set_pause = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -93,10 +94,10 @@ export class AnimatedTexture extends Texture2D{
     }
   }
   static init_method_get_pause() {
-    if (!this.#_bindings.method_get_pause) {
+    if (!this._bindings.method_get_pause) {
       let classname = new StringName("AnimatedTexture");
       let methodname = new StringName("get_pause");
-      this.#_bindings.method_get_pause = internal.classdb_get_method_bind(
+      this._bindings.method_get_pause = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -104,10 +105,10 @@ export class AnimatedTexture extends Texture2D{
     }
   }
   static init_method_set_one_shot() {
-    if (!this.#_bindings.method_set_one_shot) {
+    if (!this._bindings.method_set_one_shot) {
       let classname = new StringName("AnimatedTexture");
       let methodname = new StringName("set_one_shot");
-      this.#_bindings.method_set_one_shot = internal.classdb_get_method_bind(
+      this._bindings.method_set_one_shot = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -115,10 +116,10 @@ export class AnimatedTexture extends Texture2D{
     }
   }
   static init_method_get_one_shot() {
-    if (!this.#_bindings.method_get_one_shot) {
+    if (!this._bindings.method_get_one_shot) {
       let classname = new StringName("AnimatedTexture");
       let methodname = new StringName("get_one_shot");
-      this.#_bindings.method_get_one_shot = internal.classdb_get_method_bind(
+      this._bindings.method_get_one_shot = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -126,10 +127,10 @@ export class AnimatedTexture extends Texture2D{
     }
   }
   static init_method_set_speed_scale() {
-    if (!this.#_bindings.method_set_speed_scale) {
+    if (!this._bindings.method_set_speed_scale) {
       let classname = new StringName("AnimatedTexture");
       let methodname = new StringName("set_speed_scale");
-      this.#_bindings.method_set_speed_scale = internal.classdb_get_method_bind(
+      this._bindings.method_set_speed_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -137,10 +138,10 @@ export class AnimatedTexture extends Texture2D{
     }
   }
   static init_method_get_speed_scale() {
-    if (!this.#_bindings.method_get_speed_scale) {
+    if (!this._bindings.method_get_speed_scale) {
       let classname = new StringName("AnimatedTexture");
       let methodname = new StringName("get_speed_scale");
-      this.#_bindings.method_get_speed_scale = internal.classdb_get_method_bind(
+      this._bindings.method_get_speed_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -148,10 +149,10 @@ export class AnimatedTexture extends Texture2D{
     }
   }
   static init_method_set_frame_texture() {
-    if (!this.#_bindings.method_set_frame_texture) {
+    if (!this._bindings.method_set_frame_texture) {
       let classname = new StringName("AnimatedTexture");
       let methodname = new StringName("set_frame_texture");
-      this.#_bindings.method_set_frame_texture = internal.classdb_get_method_bind(
+      this._bindings.method_set_frame_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         666127730
@@ -159,10 +160,10 @@ export class AnimatedTexture extends Texture2D{
     }
   }
   static init_method_get_frame_texture() {
-    if (!this.#_bindings.method_get_frame_texture) {
+    if (!this._bindings.method_get_frame_texture) {
       let classname = new StringName("AnimatedTexture");
       let methodname = new StringName("get_frame_texture");
-      this.#_bindings.method_get_frame_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_frame_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3536238170
@@ -170,10 +171,10 @@ export class AnimatedTexture extends Texture2D{
     }
   }
   static init_method_set_frame_duration() {
-    if (!this.#_bindings.method_set_frame_duration) {
+    if (!this._bindings.method_set_frame_duration) {
       let classname = new StringName("AnimatedTexture");
       let methodname = new StringName("set_frame_duration");
-      this.#_bindings.method_set_frame_duration = internal.classdb_get_method_bind(
+      this._bindings.method_set_frame_duration = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1602489585
@@ -181,10 +182,10 @@ export class AnimatedTexture extends Texture2D{
     }
   }
   static init_method_get_frame_duration() {
-    if (!this.#_bindings.method_get_frame_duration) {
+    if (!this._bindings.method_get_frame_duration) {
       let classname = new StringName("AnimatedTexture");
       let methodname = new StringName("get_frame_duration");
-      this.#_bindings.method_get_frame_duration = internal.classdb_get_method_bind(
+      this._bindings.method_get_frame_duration = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2339986948
@@ -197,7 +198,7 @@ export class AnimatedTexture extends Texture2D{
   set_frames(_frames) {
     AnimatedTexture.init_method_set_frames();
     return _call_native_mb_no_ret(
-      AnimatedTexture.#_bindings.method_set_frames,
+      AnimatedTexture._bindings.method_set_frames,
       this._owner,
       _frames
     );
@@ -206,7 +207,7 @@ export class AnimatedTexture extends Texture2D{
   get_frames() {
     AnimatedTexture.init_method_get_frames();
     return _call_native_mb_ret(
-      AnimatedTexture.#_bindings.method_get_frames,
+      AnimatedTexture._bindings.method_get_frames,
       this._owner,
 			Variant.Type.INT,
     
@@ -217,7 +218,7 @@ export class AnimatedTexture extends Texture2D{
   set_current_frame(_frame) {
     AnimatedTexture.init_method_set_current_frame();
     return _call_native_mb_no_ret(
-      AnimatedTexture.#_bindings.method_set_current_frame,
+      AnimatedTexture._bindings.method_set_current_frame,
       this._owner,
       _frame
     );
@@ -226,7 +227,7 @@ export class AnimatedTexture extends Texture2D{
   get_current_frame() {
     AnimatedTexture.init_method_get_current_frame();
     return _call_native_mb_ret(
-      AnimatedTexture.#_bindings.method_get_current_frame,
+      AnimatedTexture._bindings.method_get_current_frame,
       this._owner,
 			Variant.Type.INT,
     
@@ -237,7 +238,7 @@ export class AnimatedTexture extends Texture2D{
   set_pause(_pause) {
     AnimatedTexture.init_method_set_pause();
     return _call_native_mb_no_ret(
-      AnimatedTexture.#_bindings.method_set_pause,
+      AnimatedTexture._bindings.method_set_pause,
       this._owner,
       _pause
     );
@@ -246,7 +247,7 @@ export class AnimatedTexture extends Texture2D{
   get_pause() {
     AnimatedTexture.init_method_get_pause();
     return _call_native_mb_ret(
-      AnimatedTexture.#_bindings.method_get_pause,
+      AnimatedTexture._bindings.method_get_pause,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -257,7 +258,7 @@ export class AnimatedTexture extends Texture2D{
   set_one_shot(_one_shot) {
     AnimatedTexture.init_method_set_one_shot();
     return _call_native_mb_no_ret(
-      AnimatedTexture.#_bindings.method_set_one_shot,
+      AnimatedTexture._bindings.method_set_one_shot,
       this._owner,
       _one_shot
     );
@@ -266,7 +267,7 @@ export class AnimatedTexture extends Texture2D{
   get_one_shot() {
     AnimatedTexture.init_method_get_one_shot();
     return _call_native_mb_ret(
-      AnimatedTexture.#_bindings.method_get_one_shot,
+      AnimatedTexture._bindings.method_get_one_shot,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -277,7 +278,7 @@ export class AnimatedTexture extends Texture2D{
   set_speed_scale(_scale) {
     AnimatedTexture.init_method_set_speed_scale();
     return _call_native_mb_no_ret(
-      AnimatedTexture.#_bindings.method_set_speed_scale,
+      AnimatedTexture._bindings.method_set_speed_scale,
       this._owner,
       _scale
     );
@@ -286,7 +287,7 @@ export class AnimatedTexture extends Texture2D{
   get_speed_scale() {
     AnimatedTexture.init_method_get_speed_scale();
     return _call_native_mb_ret(
-      AnimatedTexture.#_bindings.method_get_speed_scale,
+      AnimatedTexture._bindings.method_get_speed_scale,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -297,7 +298,7 @@ export class AnimatedTexture extends Texture2D{
   set_frame_texture(_frame, _texture) {
     AnimatedTexture.init_method_set_frame_texture();
     return _call_native_mb_no_ret(
-      AnimatedTexture.#_bindings.method_set_frame_texture,
+      AnimatedTexture._bindings.method_set_frame_texture,
       this._owner,
       _frame, _texture
     );
@@ -306,7 +307,7 @@ export class AnimatedTexture extends Texture2D{
   get_frame_texture(_frame) {
     AnimatedTexture.init_method_get_frame_texture();
     return _call_native_mb_ret(
-      AnimatedTexture.#_bindings.method_get_frame_texture,
+      AnimatedTexture._bindings.method_get_frame_texture,
       this._owner,
 			Variant.Type.OBJECT,
       _frame
@@ -316,7 +317,7 @@ export class AnimatedTexture extends Texture2D{
   set_frame_duration(_frame, _duration) {
     AnimatedTexture.init_method_set_frame_duration();
     return _call_native_mb_no_ret(
-      AnimatedTexture.#_bindings.method_set_frame_duration,
+      AnimatedTexture._bindings.method_set_frame_duration,
       this._owner,
       _frame, _duration
     );
@@ -325,7 +326,7 @@ export class AnimatedTexture extends Texture2D{
   get_frame_duration(_frame) {
     AnimatedTexture.init_method_get_frame_duration();
     return _call_native_mb_ret(
-      AnimatedTexture.#_bindings.method_get_frame_duration,
+      AnimatedTexture._bindings.method_get_frame_duration,
       this._owner,
 			Variant.Type.FLOAT,
     

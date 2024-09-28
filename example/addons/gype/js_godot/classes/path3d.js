@@ -1,22 +1,23 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Node3D } from '@js_godot/classes/node3d'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_curve;
   method_get_curve;
 }
+@GodotClass
 export class Path3D extends Node3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -26,10 +27,10 @@ export class Path3D extends Node3D{
     }
   }
   static init_method_set_curve() {
-    if (!this.#_bindings.method_set_curve) {
+    if (!this._bindings.method_set_curve) {
       let classname = new StringName("Path3D");
       let methodname = new StringName("set_curve");
-      this.#_bindings.method_set_curve = internal.classdb_get_method_bind(
+      this._bindings.method_set_curve = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         408955118
@@ -37,10 +38,10 @@ export class Path3D extends Node3D{
     }
   }
   static init_method_get_curve() {
-    if (!this.#_bindings.method_get_curve) {
+    if (!this._bindings.method_get_curve) {
       let classname = new StringName("Path3D");
       let methodname = new StringName("get_curve");
-      this.#_bindings.method_get_curve = internal.classdb_get_method_bind(
+      this._bindings.method_get_curve = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4244715212
@@ -53,7 +54,7 @@ export class Path3D extends Node3D{
   set_curve(_curve) {
     Path3D.init_method_set_curve();
     return _call_native_mb_no_ret(
-      Path3D.#_bindings.method_set_curve,
+      Path3D._bindings.method_set_curve,
       this._owner,
       _curve
     );
@@ -62,7 +63,7 @@ export class Path3D extends Node3D{
   get_curve() {
     Path3D.init_method_get_curve();
     return _call_native_mb_ret(
-      Path3D.#_bindings.method_get_curve,
+      Path3D._bindings.method_get_curve,
       this._owner,
 			Variant.Type.OBJECT,
       
