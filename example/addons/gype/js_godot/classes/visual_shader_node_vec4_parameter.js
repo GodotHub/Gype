@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { VisualShaderNodeParameter } from '@js_godot/classes/visual_shader_node_parameter'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_default_value_enabled;
@@ -15,10 +16,10 @@ class _MethodBindings {
   method_set_default_value;
   method_get_default_value;
 }
+@GodotClass
 export class VisualShaderNodeVec4Parameter extends VisualShaderNodeParameter{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -28,10 +29,10 @@ export class VisualShaderNodeVec4Parameter extends VisualShaderNodeParameter{
     }
   }
   static init_method_set_default_value_enabled() {
-    if (!this.#_bindings.method_set_default_value_enabled) {
+    if (!this._bindings.method_set_default_value_enabled) {
       let classname = new StringName("VisualShaderNodeVec4Parameter");
       let methodname = new StringName("set_default_value_enabled");
-      this.#_bindings.method_set_default_value_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_default_value_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -39,10 +40,10 @@ export class VisualShaderNodeVec4Parameter extends VisualShaderNodeParameter{
     }
   }
   static init_method_is_default_value_enabled() {
-    if (!this.#_bindings.method_is_default_value_enabled) {
+    if (!this._bindings.method_is_default_value_enabled) {
       let classname = new StringName("VisualShaderNodeVec4Parameter");
       let methodname = new StringName("is_default_value_enabled");
-      this.#_bindings.method_is_default_value_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_default_value_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -50,10 +51,10 @@ export class VisualShaderNodeVec4Parameter extends VisualShaderNodeParameter{
     }
   }
   static init_method_set_default_value() {
-    if (!this.#_bindings.method_set_default_value) {
+    if (!this._bindings.method_set_default_value) {
       let classname = new StringName("VisualShaderNodeVec4Parameter");
       let methodname = new StringName("set_default_value");
-      this.#_bindings.method_set_default_value = internal.classdb_get_method_bind(
+      this._bindings.method_set_default_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         643568085
@@ -61,10 +62,10 @@ export class VisualShaderNodeVec4Parameter extends VisualShaderNodeParameter{
     }
   }
   static init_method_get_default_value() {
-    if (!this.#_bindings.method_get_default_value) {
+    if (!this._bindings.method_get_default_value) {
       let classname = new StringName("VisualShaderNodeVec4Parameter");
       let methodname = new StringName("get_default_value");
-      this.#_bindings.method_get_default_value = internal.classdb_get_method_bind(
+      this._bindings.method_get_default_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2435802345
@@ -77,7 +78,7 @@ export class VisualShaderNodeVec4Parameter extends VisualShaderNodeParameter{
   set_default_value_enabled(_enabled) {
     VisualShaderNodeVec4Parameter.init_method_set_default_value_enabled();
     return _call_native_mb_no_ret(
-      VisualShaderNodeVec4Parameter.#_bindings.method_set_default_value_enabled,
+      VisualShaderNodeVec4Parameter._bindings.method_set_default_value_enabled,
       this._owner,
       _enabled
     );
@@ -86,7 +87,7 @@ export class VisualShaderNodeVec4Parameter extends VisualShaderNodeParameter{
   is_default_value_enabled() {
     VisualShaderNodeVec4Parameter.init_method_is_default_value_enabled();
     return _call_native_mb_ret(
-      VisualShaderNodeVec4Parameter.#_bindings.method_is_default_value_enabled,
+      VisualShaderNodeVec4Parameter._bindings.method_is_default_value_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -97,7 +98,7 @@ export class VisualShaderNodeVec4Parameter extends VisualShaderNodeParameter{
   set_default_value(_value) {
     VisualShaderNodeVec4Parameter.init_method_set_default_value();
     return _call_native_mb_no_ret(
-      VisualShaderNodeVec4Parameter.#_bindings.method_set_default_value,
+      VisualShaderNodeVec4Parameter._bindings.method_set_default_value,
       this._owner,
       _value
     );
@@ -106,7 +107,7 @@ export class VisualShaderNodeVec4Parameter extends VisualShaderNodeParameter{
   get_default_value() {
     VisualShaderNodeVec4Parameter.init_method_get_default_value();
     return _call_native_mb_ret(
-      VisualShaderNodeVec4Parameter.#_bindings.method_get_default_value,
+      VisualShaderNodeVec4Parameter._bindings.method_get_default_value,
       this._owner,
 			Variant.Type.VECTOR4,
     

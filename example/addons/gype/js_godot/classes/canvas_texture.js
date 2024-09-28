@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { Texture2D } from '@js_godot/classes/texture2d'
 import {
   call_utility_ret,
@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_diffuse_texture;
@@ -25,10 +26,10 @@ class _MethodBindings {
   method_set_texture_repeat;
   method_get_texture_repeat;
 }
+@GodotClass
 export class CanvasTexture extends Texture2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -38,10 +39,10 @@ export class CanvasTexture extends Texture2D{
     }
   }
   static init_method_set_diffuse_texture() {
-    if (!this.#_bindings.method_set_diffuse_texture) {
+    if (!this._bindings.method_set_diffuse_texture) {
       let classname = new StringName("CanvasTexture");
       let methodname = new StringName("set_diffuse_texture");
-      this.#_bindings.method_set_diffuse_texture = internal.classdb_get_method_bind(
+      this._bindings.method_set_diffuse_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4051416890
@@ -49,10 +50,10 @@ export class CanvasTexture extends Texture2D{
     }
   }
   static init_method_get_diffuse_texture() {
-    if (!this.#_bindings.method_get_diffuse_texture) {
+    if (!this._bindings.method_get_diffuse_texture) {
       let classname = new StringName("CanvasTexture");
       let methodname = new StringName("get_diffuse_texture");
-      this.#_bindings.method_get_diffuse_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_diffuse_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -60,10 +61,10 @@ export class CanvasTexture extends Texture2D{
     }
   }
   static init_method_set_normal_texture() {
-    if (!this.#_bindings.method_set_normal_texture) {
+    if (!this._bindings.method_set_normal_texture) {
       let classname = new StringName("CanvasTexture");
       let methodname = new StringName("set_normal_texture");
-      this.#_bindings.method_set_normal_texture = internal.classdb_get_method_bind(
+      this._bindings.method_set_normal_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4051416890
@@ -71,10 +72,10 @@ export class CanvasTexture extends Texture2D{
     }
   }
   static init_method_get_normal_texture() {
-    if (!this.#_bindings.method_get_normal_texture) {
+    if (!this._bindings.method_get_normal_texture) {
       let classname = new StringName("CanvasTexture");
       let methodname = new StringName("get_normal_texture");
-      this.#_bindings.method_get_normal_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_normal_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -82,10 +83,10 @@ export class CanvasTexture extends Texture2D{
     }
   }
   static init_method_set_specular_texture() {
-    if (!this.#_bindings.method_set_specular_texture) {
+    if (!this._bindings.method_set_specular_texture) {
       let classname = new StringName("CanvasTexture");
       let methodname = new StringName("set_specular_texture");
-      this.#_bindings.method_set_specular_texture = internal.classdb_get_method_bind(
+      this._bindings.method_set_specular_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4051416890
@@ -93,10 +94,10 @@ export class CanvasTexture extends Texture2D{
     }
   }
   static init_method_get_specular_texture() {
-    if (!this.#_bindings.method_get_specular_texture) {
+    if (!this._bindings.method_get_specular_texture) {
       let classname = new StringName("CanvasTexture");
       let methodname = new StringName("get_specular_texture");
-      this.#_bindings.method_get_specular_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_specular_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -104,10 +105,10 @@ export class CanvasTexture extends Texture2D{
     }
   }
   static init_method_set_specular_color() {
-    if (!this.#_bindings.method_set_specular_color) {
+    if (!this._bindings.method_set_specular_color) {
       let classname = new StringName("CanvasTexture");
       let methodname = new StringName("set_specular_color");
-      this.#_bindings.method_set_specular_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_specular_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -115,10 +116,10 @@ export class CanvasTexture extends Texture2D{
     }
   }
   static init_method_get_specular_color() {
-    if (!this.#_bindings.method_get_specular_color) {
+    if (!this._bindings.method_get_specular_color) {
       let classname = new StringName("CanvasTexture");
       let methodname = new StringName("get_specular_color");
-      this.#_bindings.method_get_specular_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_specular_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -126,10 +127,10 @@ export class CanvasTexture extends Texture2D{
     }
   }
   static init_method_set_specular_shininess() {
-    if (!this.#_bindings.method_set_specular_shininess) {
+    if (!this._bindings.method_set_specular_shininess) {
       let classname = new StringName("CanvasTexture");
       let methodname = new StringName("set_specular_shininess");
-      this.#_bindings.method_set_specular_shininess = internal.classdb_get_method_bind(
+      this._bindings.method_set_specular_shininess = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -137,10 +138,10 @@ export class CanvasTexture extends Texture2D{
     }
   }
   static init_method_get_specular_shininess() {
-    if (!this.#_bindings.method_get_specular_shininess) {
+    if (!this._bindings.method_get_specular_shininess) {
       let classname = new StringName("CanvasTexture");
       let methodname = new StringName("get_specular_shininess");
-      this.#_bindings.method_get_specular_shininess = internal.classdb_get_method_bind(
+      this._bindings.method_get_specular_shininess = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -148,10 +149,10 @@ export class CanvasTexture extends Texture2D{
     }
   }
   static init_method_set_texture_filter() {
-    if (!this.#_bindings.method_set_texture_filter) {
+    if (!this._bindings.method_set_texture_filter) {
       let classname = new StringName("CanvasTexture");
       let methodname = new StringName("set_texture_filter");
-      this.#_bindings.method_set_texture_filter = internal.classdb_get_method_bind(
+      this._bindings.method_set_texture_filter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1037999706
@@ -159,10 +160,10 @@ export class CanvasTexture extends Texture2D{
     }
   }
   static init_method_get_texture_filter() {
-    if (!this.#_bindings.method_get_texture_filter) {
+    if (!this._bindings.method_get_texture_filter) {
       let classname = new StringName("CanvasTexture");
       let methodname = new StringName("get_texture_filter");
-      this.#_bindings.method_get_texture_filter = internal.classdb_get_method_bind(
+      this._bindings.method_get_texture_filter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         121960042
@@ -170,10 +171,10 @@ export class CanvasTexture extends Texture2D{
     }
   }
   static init_method_set_texture_repeat() {
-    if (!this.#_bindings.method_set_texture_repeat) {
+    if (!this._bindings.method_set_texture_repeat) {
       let classname = new StringName("CanvasTexture");
       let methodname = new StringName("set_texture_repeat");
-      this.#_bindings.method_set_texture_repeat = internal.classdb_get_method_bind(
+      this._bindings.method_set_texture_repeat = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1716472974
@@ -181,10 +182,10 @@ export class CanvasTexture extends Texture2D{
     }
   }
   static init_method_get_texture_repeat() {
-    if (!this.#_bindings.method_get_texture_repeat) {
+    if (!this._bindings.method_get_texture_repeat) {
       let classname = new StringName("CanvasTexture");
       let methodname = new StringName("get_texture_repeat");
-      this.#_bindings.method_get_texture_repeat = internal.classdb_get_method_bind(
+      this._bindings.method_get_texture_repeat = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2667158319
@@ -197,7 +198,7 @@ export class CanvasTexture extends Texture2D{
   set_diffuse_texture(_texture) {
     CanvasTexture.init_method_set_diffuse_texture();
     return _call_native_mb_no_ret(
-      CanvasTexture.#_bindings.method_set_diffuse_texture,
+      CanvasTexture._bindings.method_set_diffuse_texture,
       this._owner,
       _texture
     );
@@ -206,7 +207,7 @@ export class CanvasTexture extends Texture2D{
   get_diffuse_texture() {
     CanvasTexture.init_method_get_diffuse_texture();
     return _call_native_mb_ret(
-      CanvasTexture.#_bindings.method_get_diffuse_texture,
+      CanvasTexture._bindings.method_get_diffuse_texture,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -216,7 +217,7 @@ export class CanvasTexture extends Texture2D{
   set_normal_texture(_texture) {
     CanvasTexture.init_method_set_normal_texture();
     return _call_native_mb_no_ret(
-      CanvasTexture.#_bindings.method_set_normal_texture,
+      CanvasTexture._bindings.method_set_normal_texture,
       this._owner,
       _texture
     );
@@ -225,7 +226,7 @@ export class CanvasTexture extends Texture2D{
   get_normal_texture() {
     CanvasTexture.init_method_get_normal_texture();
     return _call_native_mb_ret(
-      CanvasTexture.#_bindings.method_get_normal_texture,
+      CanvasTexture._bindings.method_get_normal_texture,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -235,7 +236,7 @@ export class CanvasTexture extends Texture2D{
   set_specular_texture(_texture) {
     CanvasTexture.init_method_set_specular_texture();
     return _call_native_mb_no_ret(
-      CanvasTexture.#_bindings.method_set_specular_texture,
+      CanvasTexture._bindings.method_set_specular_texture,
       this._owner,
       _texture
     );
@@ -244,7 +245,7 @@ export class CanvasTexture extends Texture2D{
   get_specular_texture() {
     CanvasTexture.init_method_get_specular_texture();
     return _call_native_mb_ret(
-      CanvasTexture.#_bindings.method_get_specular_texture,
+      CanvasTexture._bindings.method_get_specular_texture,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -254,7 +255,7 @@ export class CanvasTexture extends Texture2D{
   set_specular_color(_color) {
     CanvasTexture.init_method_set_specular_color();
     return _call_native_mb_no_ret(
-      CanvasTexture.#_bindings.method_set_specular_color,
+      CanvasTexture._bindings.method_set_specular_color,
       this._owner,
       _color
     );
@@ -263,7 +264,7 @@ export class CanvasTexture extends Texture2D{
   get_specular_color() {
     CanvasTexture.init_method_get_specular_color();
     return _call_native_mb_ret(
-      CanvasTexture.#_bindings.method_get_specular_color,
+      CanvasTexture._bindings.method_get_specular_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -274,7 +275,7 @@ export class CanvasTexture extends Texture2D{
   set_specular_shininess(_shininess) {
     CanvasTexture.init_method_set_specular_shininess();
     return _call_native_mb_no_ret(
-      CanvasTexture.#_bindings.method_set_specular_shininess,
+      CanvasTexture._bindings.method_set_specular_shininess,
       this._owner,
       _shininess
     );
@@ -283,7 +284,7 @@ export class CanvasTexture extends Texture2D{
   get_specular_shininess() {
     CanvasTexture.init_method_get_specular_shininess();
     return _call_native_mb_ret(
-      CanvasTexture.#_bindings.method_get_specular_shininess,
+      CanvasTexture._bindings.method_get_specular_shininess,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -294,7 +295,7 @@ export class CanvasTexture extends Texture2D{
   set_texture_filter(_filter) {
     CanvasTexture.init_method_set_texture_filter();
     return _call_native_mb_no_ret(
-      CanvasTexture.#_bindings.method_set_texture_filter,
+      CanvasTexture._bindings.method_set_texture_filter,
       this._owner,
       _filter
     );
@@ -303,7 +304,7 @@ export class CanvasTexture extends Texture2D{
   get_texture_filter() {
     CanvasTexture.init_method_get_texture_filter();
     return _call_native_mb_ret(
-      CanvasTexture.#_bindings.method_get_texture_filter,
+      CanvasTexture._bindings.method_get_texture_filter,
       this._owner,
 			Variant.Type.INT,
     
@@ -314,7 +315,7 @@ export class CanvasTexture extends Texture2D{
   set_texture_repeat(_repeat) {
     CanvasTexture.init_method_set_texture_repeat();
     return _call_native_mb_no_ret(
-      CanvasTexture.#_bindings.method_set_texture_repeat,
+      CanvasTexture._bindings.method_set_texture_repeat,
       this._owner,
       _repeat
     );
@@ -323,7 +324,7 @@ export class CanvasTexture extends Texture2D{
   get_texture_repeat() {
     CanvasTexture.init_method_get_texture_repeat();
     return _call_native_mb_ret(
-      CanvasTexture.#_bindings.method_get_texture_repeat,
+      CanvasTexture._bindings.method_get_texture_repeat,
       this._owner,
 			Variant.Type.INT,
     

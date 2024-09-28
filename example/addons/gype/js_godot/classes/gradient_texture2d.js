@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { Texture2D } from '@js_godot/classes/texture2d'
 import {
   call_utility_ret,
@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_gradient;
@@ -25,10 +26,10 @@ class _MethodBindings {
   method_set_repeat;
   method_get_repeat;
 }
+@GodotClass
 export class GradientTexture2D extends Texture2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -38,10 +39,10 @@ export class GradientTexture2D extends Texture2D{
     }
   }
   static init_method_set_gradient() {
-    if (!this.#_bindings.method_set_gradient) {
+    if (!this._bindings.method_set_gradient) {
       let classname = new StringName("GradientTexture2D");
       let methodname = new StringName("set_gradient");
-      this.#_bindings.method_set_gradient = internal.classdb_get_method_bind(
+      this._bindings.method_set_gradient = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2756054477
@@ -49,10 +50,10 @@ export class GradientTexture2D extends Texture2D{
     }
   }
   static init_method_get_gradient() {
-    if (!this.#_bindings.method_get_gradient) {
+    if (!this._bindings.method_get_gradient) {
       let classname = new StringName("GradientTexture2D");
       let methodname = new StringName("get_gradient");
-      this.#_bindings.method_get_gradient = internal.classdb_get_method_bind(
+      this._bindings.method_get_gradient = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         132272999
@@ -60,10 +61,10 @@ export class GradientTexture2D extends Texture2D{
     }
   }
   static init_method_set_width() {
-    if (!this.#_bindings.method_set_width) {
+    if (!this._bindings.method_set_width) {
       let classname = new StringName("GradientTexture2D");
       let methodname = new StringName("set_width");
-      this.#_bindings.method_set_width = internal.classdb_get_method_bind(
+      this._bindings.method_set_width = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -71,10 +72,10 @@ export class GradientTexture2D extends Texture2D{
     }
   }
   static init_method_set_height() {
-    if (!this.#_bindings.method_set_height) {
+    if (!this._bindings.method_set_height) {
       let classname = new StringName("GradientTexture2D");
       let methodname = new StringName("set_height");
-      this.#_bindings.method_set_height = internal.classdb_get_method_bind(
+      this._bindings.method_set_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -82,10 +83,10 @@ export class GradientTexture2D extends Texture2D{
     }
   }
   static init_method_set_use_hdr() {
-    if (!this.#_bindings.method_set_use_hdr) {
+    if (!this._bindings.method_set_use_hdr) {
       let classname = new StringName("GradientTexture2D");
       let methodname = new StringName("set_use_hdr");
-      this.#_bindings.method_set_use_hdr = internal.classdb_get_method_bind(
+      this._bindings.method_set_use_hdr = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -93,10 +94,10 @@ export class GradientTexture2D extends Texture2D{
     }
   }
   static init_method_is_using_hdr() {
-    if (!this.#_bindings.method_is_using_hdr) {
+    if (!this._bindings.method_is_using_hdr) {
       let classname = new StringName("GradientTexture2D");
       let methodname = new StringName("is_using_hdr");
-      this.#_bindings.method_is_using_hdr = internal.classdb_get_method_bind(
+      this._bindings.method_is_using_hdr = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -104,10 +105,10 @@ export class GradientTexture2D extends Texture2D{
     }
   }
   static init_method_set_fill() {
-    if (!this.#_bindings.method_set_fill) {
+    if (!this._bindings.method_set_fill) {
       let classname = new StringName("GradientTexture2D");
       let methodname = new StringName("set_fill");
-      this.#_bindings.method_set_fill = internal.classdb_get_method_bind(
+      this._bindings.method_set_fill = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3623927636
@@ -115,10 +116,10 @@ export class GradientTexture2D extends Texture2D{
     }
   }
   static init_method_get_fill() {
-    if (!this.#_bindings.method_get_fill) {
+    if (!this._bindings.method_get_fill) {
       let classname = new StringName("GradientTexture2D");
       let methodname = new StringName("get_fill");
-      this.#_bindings.method_get_fill = internal.classdb_get_method_bind(
+      this._bindings.method_get_fill = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1876227217
@@ -126,10 +127,10 @@ export class GradientTexture2D extends Texture2D{
     }
   }
   static init_method_set_fill_from() {
-    if (!this.#_bindings.method_set_fill_from) {
+    if (!this._bindings.method_set_fill_from) {
       let classname = new StringName("GradientTexture2D");
       let methodname = new StringName("set_fill_from");
-      this.#_bindings.method_set_fill_from = internal.classdb_get_method_bind(
+      this._bindings.method_set_fill_from = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -137,10 +138,10 @@ export class GradientTexture2D extends Texture2D{
     }
   }
   static init_method_get_fill_from() {
-    if (!this.#_bindings.method_get_fill_from) {
+    if (!this._bindings.method_get_fill_from) {
       let classname = new StringName("GradientTexture2D");
       let methodname = new StringName("get_fill_from");
-      this.#_bindings.method_get_fill_from = internal.classdb_get_method_bind(
+      this._bindings.method_get_fill_from = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -148,10 +149,10 @@ export class GradientTexture2D extends Texture2D{
     }
   }
   static init_method_set_fill_to() {
-    if (!this.#_bindings.method_set_fill_to) {
+    if (!this._bindings.method_set_fill_to) {
       let classname = new StringName("GradientTexture2D");
       let methodname = new StringName("set_fill_to");
-      this.#_bindings.method_set_fill_to = internal.classdb_get_method_bind(
+      this._bindings.method_set_fill_to = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -159,10 +160,10 @@ export class GradientTexture2D extends Texture2D{
     }
   }
   static init_method_get_fill_to() {
-    if (!this.#_bindings.method_get_fill_to) {
+    if (!this._bindings.method_get_fill_to) {
       let classname = new StringName("GradientTexture2D");
       let methodname = new StringName("get_fill_to");
-      this.#_bindings.method_get_fill_to = internal.classdb_get_method_bind(
+      this._bindings.method_get_fill_to = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -170,10 +171,10 @@ export class GradientTexture2D extends Texture2D{
     }
   }
   static init_method_set_repeat() {
-    if (!this.#_bindings.method_set_repeat) {
+    if (!this._bindings.method_set_repeat) {
       let classname = new StringName("GradientTexture2D");
       let methodname = new StringName("set_repeat");
-      this.#_bindings.method_set_repeat = internal.classdb_get_method_bind(
+      this._bindings.method_set_repeat = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1357597002
@@ -181,10 +182,10 @@ export class GradientTexture2D extends Texture2D{
     }
   }
   static init_method_get_repeat() {
-    if (!this.#_bindings.method_get_repeat) {
+    if (!this._bindings.method_get_repeat) {
       let classname = new StringName("GradientTexture2D");
       let methodname = new StringName("get_repeat");
-      this.#_bindings.method_get_repeat = internal.classdb_get_method_bind(
+      this._bindings.method_get_repeat = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3351758665
@@ -197,7 +198,7 @@ export class GradientTexture2D extends Texture2D{
   set_gradient(_gradient) {
     GradientTexture2D.init_method_set_gradient();
     return _call_native_mb_no_ret(
-      GradientTexture2D.#_bindings.method_set_gradient,
+      GradientTexture2D._bindings.method_set_gradient,
       this._owner,
       _gradient
     );
@@ -206,7 +207,7 @@ export class GradientTexture2D extends Texture2D{
   get_gradient() {
     GradientTexture2D.init_method_get_gradient();
     return _call_native_mb_ret(
-      GradientTexture2D.#_bindings.method_get_gradient,
+      GradientTexture2D._bindings.method_get_gradient,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -216,7 +217,7 @@ export class GradientTexture2D extends Texture2D{
   set_width(_width) {
     GradientTexture2D.init_method_set_width();
     return _call_native_mb_no_ret(
-      GradientTexture2D.#_bindings.method_set_width,
+      GradientTexture2D._bindings.method_set_width,
       this._owner,
       _width
     );
@@ -225,7 +226,7 @@ export class GradientTexture2D extends Texture2D{
   set_height(_height) {
     GradientTexture2D.init_method_set_height();
     return _call_native_mb_no_ret(
-      GradientTexture2D.#_bindings.method_set_height,
+      GradientTexture2D._bindings.method_set_height,
       this._owner,
       _height
     );
@@ -234,7 +235,7 @@ export class GradientTexture2D extends Texture2D{
   set_use_hdr(_enabled) {
     GradientTexture2D.init_method_set_use_hdr();
     return _call_native_mb_no_ret(
-      GradientTexture2D.#_bindings.method_set_use_hdr,
+      GradientTexture2D._bindings.method_set_use_hdr,
       this._owner,
       _enabled
     );
@@ -243,7 +244,7 @@ export class GradientTexture2D extends Texture2D{
   is_using_hdr() {
     GradientTexture2D.init_method_is_using_hdr();
     return _call_native_mb_ret(
-      GradientTexture2D.#_bindings.method_is_using_hdr,
+      GradientTexture2D._bindings.method_is_using_hdr,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -254,7 +255,7 @@ export class GradientTexture2D extends Texture2D{
   set_fill(_fill) {
     GradientTexture2D.init_method_set_fill();
     return _call_native_mb_no_ret(
-      GradientTexture2D.#_bindings.method_set_fill,
+      GradientTexture2D._bindings.method_set_fill,
       this._owner,
       _fill
     );
@@ -263,7 +264,7 @@ export class GradientTexture2D extends Texture2D{
   get_fill() {
     GradientTexture2D.init_method_get_fill();
     return _call_native_mb_ret(
-      GradientTexture2D.#_bindings.method_get_fill,
+      GradientTexture2D._bindings.method_get_fill,
       this._owner,
 			Variant.Type.INT,
     
@@ -274,7 +275,7 @@ export class GradientTexture2D extends Texture2D{
   set_fill_from(_fill_from) {
     GradientTexture2D.init_method_set_fill_from();
     return _call_native_mb_no_ret(
-      GradientTexture2D.#_bindings.method_set_fill_from,
+      GradientTexture2D._bindings.method_set_fill_from,
       this._owner,
       _fill_from
     );
@@ -283,7 +284,7 @@ export class GradientTexture2D extends Texture2D{
   get_fill_from() {
     GradientTexture2D.init_method_get_fill_from();
     return _call_native_mb_ret(
-      GradientTexture2D.#_bindings.method_get_fill_from,
+      GradientTexture2D._bindings.method_get_fill_from,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -294,7 +295,7 @@ export class GradientTexture2D extends Texture2D{
   set_fill_to(_fill_to) {
     GradientTexture2D.init_method_set_fill_to();
     return _call_native_mb_no_ret(
-      GradientTexture2D.#_bindings.method_set_fill_to,
+      GradientTexture2D._bindings.method_set_fill_to,
       this._owner,
       _fill_to
     );
@@ -303,7 +304,7 @@ export class GradientTexture2D extends Texture2D{
   get_fill_to() {
     GradientTexture2D.init_method_get_fill_to();
     return _call_native_mb_ret(
-      GradientTexture2D.#_bindings.method_get_fill_to,
+      GradientTexture2D._bindings.method_get_fill_to,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -314,7 +315,7 @@ export class GradientTexture2D extends Texture2D{
   set_repeat(_repeat) {
     GradientTexture2D.init_method_set_repeat();
     return _call_native_mb_no_ret(
-      GradientTexture2D.#_bindings.method_set_repeat,
+      GradientTexture2D._bindings.method_set_repeat,
       this._owner,
       _repeat
     );
@@ -323,7 +324,7 @@ export class GradientTexture2D extends Texture2D{
   get_repeat() {
     GradientTexture2D.init_method_get_repeat();
     return _call_native_mb_ret(
-      GradientTexture2D.#_bindings.method_get_repeat,
+      GradientTexture2D._bindings.method_get_repeat,
       this._owner,
 			Variant.Type.INT,
     

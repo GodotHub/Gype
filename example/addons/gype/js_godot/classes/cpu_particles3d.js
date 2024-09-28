@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GeometryInstance3D } from '@js_godot/classes/geometry_instance3d'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_emitting;
@@ -93,10 +94,10 @@ class _MethodBindings {
   method_set_scale_curve_z;
   method_convert_from_particles;
 }
+@GodotClass
 export class CPUParticles3D extends GeometryInstance3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -106,10 +107,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_emitting() {
-    if (!this.#_bindings.method_set_emitting) {
+    if (!this._bindings.method_set_emitting) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_emitting");
-      this.#_bindings.method_set_emitting = internal.classdb_get_method_bind(
+      this._bindings.method_set_emitting = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -117,10 +118,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_amount() {
-    if (!this.#_bindings.method_set_amount) {
+    if (!this._bindings.method_set_amount) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_amount");
-      this.#_bindings.method_set_amount = internal.classdb_get_method_bind(
+      this._bindings.method_set_amount = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -128,10 +129,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_lifetime() {
-    if (!this.#_bindings.method_set_lifetime) {
+    if (!this._bindings.method_set_lifetime) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_lifetime");
-      this.#_bindings.method_set_lifetime = internal.classdb_get_method_bind(
+      this._bindings.method_set_lifetime = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -139,10 +140,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_one_shot() {
-    if (!this.#_bindings.method_set_one_shot) {
+    if (!this._bindings.method_set_one_shot) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_one_shot");
-      this.#_bindings.method_set_one_shot = internal.classdb_get_method_bind(
+      this._bindings.method_set_one_shot = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -150,10 +151,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_pre_process_time() {
-    if (!this.#_bindings.method_set_pre_process_time) {
+    if (!this._bindings.method_set_pre_process_time) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_pre_process_time");
-      this.#_bindings.method_set_pre_process_time = internal.classdb_get_method_bind(
+      this._bindings.method_set_pre_process_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -161,10 +162,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_explosiveness_ratio() {
-    if (!this.#_bindings.method_set_explosiveness_ratio) {
+    if (!this._bindings.method_set_explosiveness_ratio) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_explosiveness_ratio");
-      this.#_bindings.method_set_explosiveness_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_set_explosiveness_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -172,10 +173,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_randomness_ratio() {
-    if (!this.#_bindings.method_set_randomness_ratio) {
+    if (!this._bindings.method_set_randomness_ratio) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_randomness_ratio");
-      this.#_bindings.method_set_randomness_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_set_randomness_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -183,10 +184,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_visibility_aabb() {
-    if (!this.#_bindings.method_set_visibility_aabb) {
+    if (!this._bindings.method_set_visibility_aabb) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_visibility_aabb");
-      this.#_bindings.method_set_visibility_aabb = internal.classdb_get_method_bind(
+      this._bindings.method_set_visibility_aabb = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         259215842
@@ -194,10 +195,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_lifetime_randomness() {
-    if (!this.#_bindings.method_set_lifetime_randomness) {
+    if (!this._bindings.method_set_lifetime_randomness) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_lifetime_randomness");
-      this.#_bindings.method_set_lifetime_randomness = internal.classdb_get_method_bind(
+      this._bindings.method_set_lifetime_randomness = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -205,10 +206,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_use_local_coordinates() {
-    if (!this.#_bindings.method_set_use_local_coordinates) {
+    if (!this._bindings.method_set_use_local_coordinates) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_use_local_coordinates");
-      this.#_bindings.method_set_use_local_coordinates = internal.classdb_get_method_bind(
+      this._bindings.method_set_use_local_coordinates = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -216,10 +217,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_fixed_fps() {
-    if (!this.#_bindings.method_set_fixed_fps) {
+    if (!this._bindings.method_set_fixed_fps) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_fixed_fps");
-      this.#_bindings.method_set_fixed_fps = internal.classdb_get_method_bind(
+      this._bindings.method_set_fixed_fps = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -227,10 +228,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_fractional_delta() {
-    if (!this.#_bindings.method_set_fractional_delta) {
+    if (!this._bindings.method_set_fractional_delta) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_fractional_delta");
-      this.#_bindings.method_set_fractional_delta = internal.classdb_get_method_bind(
+      this._bindings.method_set_fractional_delta = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -238,10 +239,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_speed_scale() {
-    if (!this.#_bindings.method_set_speed_scale) {
+    if (!this._bindings.method_set_speed_scale) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_speed_scale");
-      this.#_bindings.method_set_speed_scale = internal.classdb_get_method_bind(
+      this._bindings.method_set_speed_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -249,10 +250,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_is_emitting() {
-    if (!this.#_bindings.method_is_emitting) {
+    if (!this._bindings.method_is_emitting) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("is_emitting");
-      this.#_bindings.method_is_emitting = internal.classdb_get_method_bind(
+      this._bindings.method_is_emitting = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -260,10 +261,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_amount() {
-    if (!this.#_bindings.method_get_amount) {
+    if (!this._bindings.method_get_amount) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_amount");
-      this.#_bindings.method_get_amount = internal.classdb_get_method_bind(
+      this._bindings.method_get_amount = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -271,10 +272,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_lifetime() {
-    if (!this.#_bindings.method_get_lifetime) {
+    if (!this._bindings.method_get_lifetime) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_lifetime");
-      this.#_bindings.method_get_lifetime = internal.classdb_get_method_bind(
+      this._bindings.method_get_lifetime = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -282,10 +283,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_one_shot() {
-    if (!this.#_bindings.method_get_one_shot) {
+    if (!this._bindings.method_get_one_shot) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_one_shot");
-      this.#_bindings.method_get_one_shot = internal.classdb_get_method_bind(
+      this._bindings.method_get_one_shot = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -293,10 +294,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_pre_process_time() {
-    if (!this.#_bindings.method_get_pre_process_time) {
+    if (!this._bindings.method_get_pre_process_time) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_pre_process_time");
-      this.#_bindings.method_get_pre_process_time = internal.classdb_get_method_bind(
+      this._bindings.method_get_pre_process_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -304,10 +305,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_explosiveness_ratio() {
-    if (!this.#_bindings.method_get_explosiveness_ratio) {
+    if (!this._bindings.method_get_explosiveness_ratio) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_explosiveness_ratio");
-      this.#_bindings.method_get_explosiveness_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_get_explosiveness_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -315,10 +316,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_randomness_ratio() {
-    if (!this.#_bindings.method_get_randomness_ratio) {
+    if (!this._bindings.method_get_randomness_ratio) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_randomness_ratio");
-      this.#_bindings.method_get_randomness_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_get_randomness_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -326,10 +327,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_visibility_aabb() {
-    if (!this.#_bindings.method_get_visibility_aabb) {
+    if (!this._bindings.method_get_visibility_aabb) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_visibility_aabb");
-      this.#_bindings.method_get_visibility_aabb = internal.classdb_get_method_bind(
+      this._bindings.method_get_visibility_aabb = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1068685055
@@ -337,10 +338,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_lifetime_randomness() {
-    if (!this.#_bindings.method_get_lifetime_randomness) {
+    if (!this._bindings.method_get_lifetime_randomness) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_lifetime_randomness");
-      this.#_bindings.method_get_lifetime_randomness = internal.classdb_get_method_bind(
+      this._bindings.method_get_lifetime_randomness = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -348,10 +349,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_use_local_coordinates() {
-    if (!this.#_bindings.method_get_use_local_coordinates) {
+    if (!this._bindings.method_get_use_local_coordinates) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_use_local_coordinates");
-      this.#_bindings.method_get_use_local_coordinates = internal.classdb_get_method_bind(
+      this._bindings.method_get_use_local_coordinates = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -359,10 +360,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_fixed_fps() {
-    if (!this.#_bindings.method_get_fixed_fps) {
+    if (!this._bindings.method_get_fixed_fps) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_fixed_fps");
-      this.#_bindings.method_get_fixed_fps = internal.classdb_get_method_bind(
+      this._bindings.method_get_fixed_fps = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -370,10 +371,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_fractional_delta() {
-    if (!this.#_bindings.method_get_fractional_delta) {
+    if (!this._bindings.method_get_fractional_delta) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_fractional_delta");
-      this.#_bindings.method_get_fractional_delta = internal.classdb_get_method_bind(
+      this._bindings.method_get_fractional_delta = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -381,10 +382,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_speed_scale() {
-    if (!this.#_bindings.method_get_speed_scale) {
+    if (!this._bindings.method_get_speed_scale) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_speed_scale");
-      this.#_bindings.method_get_speed_scale = internal.classdb_get_method_bind(
+      this._bindings.method_get_speed_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -392,10 +393,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_draw_order() {
-    if (!this.#_bindings.method_set_draw_order) {
+    if (!this._bindings.method_set_draw_order) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_draw_order");
-      this.#_bindings.method_set_draw_order = internal.classdb_get_method_bind(
+      this._bindings.method_set_draw_order = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1427401774
@@ -403,10 +404,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_draw_order() {
-    if (!this.#_bindings.method_get_draw_order) {
+    if (!this._bindings.method_get_draw_order) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_draw_order");
-      this.#_bindings.method_get_draw_order = internal.classdb_get_method_bind(
+      this._bindings.method_get_draw_order = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1321900776
@@ -414,10 +415,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_mesh() {
-    if (!this.#_bindings.method_set_mesh) {
+    if (!this._bindings.method_set_mesh) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_mesh");
-      this.#_bindings.method_set_mesh = internal.classdb_get_method_bind(
+      this._bindings.method_set_mesh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         194775623
@@ -425,10 +426,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_mesh() {
-    if (!this.#_bindings.method_get_mesh) {
+    if (!this._bindings.method_get_mesh) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_mesh");
-      this.#_bindings.method_get_mesh = internal.classdb_get_method_bind(
+      this._bindings.method_get_mesh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1808005922
@@ -436,10 +437,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_restart() {
-    if (!this.#_bindings.method_restart) {
+    if (!this._bindings.method_restart) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("restart");
-      this.#_bindings.method_restart = internal.classdb_get_method_bind(
+      this._bindings.method_restart = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -447,10 +448,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_direction() {
-    if (!this.#_bindings.method_set_direction) {
+    if (!this._bindings.method_set_direction) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_direction");
-      this.#_bindings.method_set_direction = internal.classdb_get_method_bind(
+      this._bindings.method_set_direction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -458,10 +459,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_direction() {
-    if (!this.#_bindings.method_get_direction) {
+    if (!this._bindings.method_get_direction) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_direction");
-      this.#_bindings.method_get_direction = internal.classdb_get_method_bind(
+      this._bindings.method_get_direction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3360562783
@@ -469,10 +470,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_spread() {
-    if (!this.#_bindings.method_set_spread) {
+    if (!this._bindings.method_set_spread) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_spread");
-      this.#_bindings.method_set_spread = internal.classdb_get_method_bind(
+      this._bindings.method_set_spread = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -480,10 +481,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_spread() {
-    if (!this.#_bindings.method_get_spread) {
+    if (!this._bindings.method_get_spread) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_spread");
-      this.#_bindings.method_get_spread = internal.classdb_get_method_bind(
+      this._bindings.method_get_spread = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -491,10 +492,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_flatness() {
-    if (!this.#_bindings.method_set_flatness) {
+    if (!this._bindings.method_set_flatness) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_flatness");
-      this.#_bindings.method_set_flatness = internal.classdb_get_method_bind(
+      this._bindings.method_set_flatness = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -502,10 +503,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_flatness() {
-    if (!this.#_bindings.method_get_flatness) {
+    if (!this._bindings.method_get_flatness) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_flatness");
-      this.#_bindings.method_get_flatness = internal.classdb_get_method_bind(
+      this._bindings.method_get_flatness = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -513,10 +514,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_param_min() {
-    if (!this.#_bindings.method_set_param_min) {
+    if (!this._bindings.method_set_param_min) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_param_min");
-      this.#_bindings.method_set_param_min = internal.classdb_get_method_bind(
+      this._bindings.method_set_param_min = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         557936109
@@ -524,10 +525,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_param_min() {
-    if (!this.#_bindings.method_get_param_min) {
+    if (!this._bindings.method_get_param_min) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_param_min");
-      this.#_bindings.method_get_param_min = internal.classdb_get_method_bind(
+      this._bindings.method_get_param_min = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         597646162
@@ -535,10 +536,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_param_max() {
-    if (!this.#_bindings.method_set_param_max) {
+    if (!this._bindings.method_set_param_max) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_param_max");
-      this.#_bindings.method_set_param_max = internal.classdb_get_method_bind(
+      this._bindings.method_set_param_max = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         557936109
@@ -546,10 +547,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_param_max() {
-    if (!this.#_bindings.method_get_param_max) {
+    if (!this._bindings.method_get_param_max) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_param_max");
-      this.#_bindings.method_get_param_max = internal.classdb_get_method_bind(
+      this._bindings.method_get_param_max = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         597646162
@@ -557,10 +558,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_param_curve() {
-    if (!this.#_bindings.method_set_param_curve) {
+    if (!this._bindings.method_set_param_curve) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_param_curve");
-      this.#_bindings.method_set_param_curve = internal.classdb_get_method_bind(
+      this._bindings.method_set_param_curve = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4044142537
@@ -568,10 +569,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_param_curve() {
-    if (!this.#_bindings.method_get_param_curve) {
+    if (!this._bindings.method_get_param_curve) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_param_curve");
-      this.#_bindings.method_get_param_curve = internal.classdb_get_method_bind(
+      this._bindings.method_get_param_curve = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4132790277
@@ -579,10 +580,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_color() {
-    if (!this.#_bindings.method_set_color) {
+    if (!this._bindings.method_set_color) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_color");
-      this.#_bindings.method_set_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -590,10 +591,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_color() {
-    if (!this.#_bindings.method_get_color) {
+    if (!this._bindings.method_get_color) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_color");
-      this.#_bindings.method_get_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -601,10 +602,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_color_ramp() {
-    if (!this.#_bindings.method_set_color_ramp) {
+    if (!this._bindings.method_set_color_ramp) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_color_ramp");
-      this.#_bindings.method_set_color_ramp = internal.classdb_get_method_bind(
+      this._bindings.method_set_color_ramp = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2756054477
@@ -612,10 +613,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_color_ramp() {
-    if (!this.#_bindings.method_get_color_ramp) {
+    if (!this._bindings.method_get_color_ramp) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_color_ramp");
-      this.#_bindings.method_get_color_ramp = internal.classdb_get_method_bind(
+      this._bindings.method_get_color_ramp = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         132272999
@@ -623,10 +624,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_color_initial_ramp() {
-    if (!this.#_bindings.method_set_color_initial_ramp) {
+    if (!this._bindings.method_set_color_initial_ramp) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_color_initial_ramp");
-      this.#_bindings.method_set_color_initial_ramp = internal.classdb_get_method_bind(
+      this._bindings.method_set_color_initial_ramp = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2756054477
@@ -634,10 +635,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_color_initial_ramp() {
-    if (!this.#_bindings.method_get_color_initial_ramp) {
+    if (!this._bindings.method_get_color_initial_ramp) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_color_initial_ramp");
-      this.#_bindings.method_get_color_initial_ramp = internal.classdb_get_method_bind(
+      this._bindings.method_get_color_initial_ramp = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         132272999
@@ -645,10 +646,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_particle_flag() {
-    if (!this.#_bindings.method_set_particle_flag) {
+    if (!this._bindings.method_set_particle_flag) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_particle_flag");
-      this.#_bindings.method_set_particle_flag = internal.classdb_get_method_bind(
+      this._bindings.method_set_particle_flag = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3515406498
@@ -656,10 +657,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_particle_flag() {
-    if (!this.#_bindings.method_get_particle_flag) {
+    if (!this._bindings.method_get_particle_flag) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_particle_flag");
-      this.#_bindings.method_get_particle_flag = internal.classdb_get_method_bind(
+      this._bindings.method_get_particle_flag = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2845201987
@@ -667,10 +668,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_emission_shape() {
-    if (!this.#_bindings.method_set_emission_shape) {
+    if (!this._bindings.method_set_emission_shape) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_emission_shape");
-      this.#_bindings.method_set_emission_shape = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_shape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         491823814
@@ -678,10 +679,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_emission_shape() {
-    if (!this.#_bindings.method_get_emission_shape) {
+    if (!this._bindings.method_get_emission_shape) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_emission_shape");
-      this.#_bindings.method_get_emission_shape = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_shape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2961454842
@@ -689,10 +690,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_emission_sphere_radius() {
-    if (!this.#_bindings.method_set_emission_sphere_radius) {
+    if (!this._bindings.method_set_emission_sphere_radius) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_emission_sphere_radius");
-      this.#_bindings.method_set_emission_sphere_radius = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_sphere_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -700,10 +701,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_emission_sphere_radius() {
-    if (!this.#_bindings.method_get_emission_sphere_radius) {
+    if (!this._bindings.method_get_emission_sphere_radius) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_emission_sphere_radius");
-      this.#_bindings.method_get_emission_sphere_radius = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_sphere_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -711,10 +712,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_emission_box_extents() {
-    if (!this.#_bindings.method_set_emission_box_extents) {
+    if (!this._bindings.method_set_emission_box_extents) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_emission_box_extents");
-      this.#_bindings.method_set_emission_box_extents = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_box_extents = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -722,10 +723,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_emission_box_extents() {
-    if (!this.#_bindings.method_get_emission_box_extents) {
+    if (!this._bindings.method_get_emission_box_extents) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_emission_box_extents");
-      this.#_bindings.method_get_emission_box_extents = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_box_extents = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3360562783
@@ -733,10 +734,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_emission_points() {
-    if (!this.#_bindings.method_set_emission_points) {
+    if (!this._bindings.method_set_emission_points) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_emission_points");
-      this.#_bindings.method_set_emission_points = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_points = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         334873810
@@ -744,10 +745,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_emission_points() {
-    if (!this.#_bindings.method_get_emission_points) {
+    if (!this._bindings.method_get_emission_points) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_emission_points");
-      this.#_bindings.method_get_emission_points = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_points = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         497664490
@@ -755,10 +756,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_emission_normals() {
-    if (!this.#_bindings.method_set_emission_normals) {
+    if (!this._bindings.method_set_emission_normals) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_emission_normals");
-      this.#_bindings.method_set_emission_normals = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_normals = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         334873810
@@ -766,10 +767,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_emission_normals() {
-    if (!this.#_bindings.method_get_emission_normals) {
+    if (!this._bindings.method_get_emission_normals) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_emission_normals");
-      this.#_bindings.method_get_emission_normals = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_normals = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         497664490
@@ -777,10 +778,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_emission_colors() {
-    if (!this.#_bindings.method_set_emission_colors) {
+    if (!this._bindings.method_set_emission_colors) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_emission_colors");
-      this.#_bindings.method_set_emission_colors = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_colors = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3546319833
@@ -788,10 +789,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_emission_colors() {
-    if (!this.#_bindings.method_get_emission_colors) {
+    if (!this._bindings.method_get_emission_colors) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_emission_colors");
-      this.#_bindings.method_get_emission_colors = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_colors = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1392750486
@@ -799,10 +800,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_emission_ring_axis() {
-    if (!this.#_bindings.method_set_emission_ring_axis) {
+    if (!this._bindings.method_set_emission_ring_axis) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_emission_ring_axis");
-      this.#_bindings.method_set_emission_ring_axis = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_ring_axis = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -810,10 +811,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_emission_ring_axis() {
-    if (!this.#_bindings.method_get_emission_ring_axis) {
+    if (!this._bindings.method_get_emission_ring_axis) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_emission_ring_axis");
-      this.#_bindings.method_get_emission_ring_axis = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_ring_axis = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3360562783
@@ -821,10 +822,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_emission_ring_height() {
-    if (!this.#_bindings.method_set_emission_ring_height) {
+    if (!this._bindings.method_set_emission_ring_height) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_emission_ring_height");
-      this.#_bindings.method_set_emission_ring_height = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_ring_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -832,10 +833,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_emission_ring_height() {
-    if (!this.#_bindings.method_get_emission_ring_height) {
+    if (!this._bindings.method_get_emission_ring_height) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_emission_ring_height");
-      this.#_bindings.method_get_emission_ring_height = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_ring_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -843,10 +844,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_emission_ring_radius() {
-    if (!this.#_bindings.method_set_emission_ring_radius) {
+    if (!this._bindings.method_set_emission_ring_radius) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_emission_ring_radius");
-      this.#_bindings.method_set_emission_ring_radius = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_ring_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -854,10 +855,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_emission_ring_radius() {
-    if (!this.#_bindings.method_get_emission_ring_radius) {
+    if (!this._bindings.method_get_emission_ring_radius) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_emission_ring_radius");
-      this.#_bindings.method_get_emission_ring_radius = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_ring_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -865,10 +866,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_emission_ring_inner_radius() {
-    if (!this.#_bindings.method_set_emission_ring_inner_radius) {
+    if (!this._bindings.method_set_emission_ring_inner_radius) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_emission_ring_inner_radius");
-      this.#_bindings.method_set_emission_ring_inner_radius = internal.classdb_get_method_bind(
+      this._bindings.method_set_emission_ring_inner_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -876,10 +877,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_emission_ring_inner_radius() {
-    if (!this.#_bindings.method_get_emission_ring_inner_radius) {
+    if (!this._bindings.method_get_emission_ring_inner_radius) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_emission_ring_inner_radius");
-      this.#_bindings.method_get_emission_ring_inner_radius = internal.classdb_get_method_bind(
+      this._bindings.method_get_emission_ring_inner_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -887,10 +888,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_gravity() {
-    if (!this.#_bindings.method_get_gravity) {
+    if (!this._bindings.method_get_gravity) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_gravity");
-      this.#_bindings.method_get_gravity = internal.classdb_get_method_bind(
+      this._bindings.method_get_gravity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3360562783
@@ -898,10 +899,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_gravity() {
-    if (!this.#_bindings.method_set_gravity) {
+    if (!this._bindings.method_set_gravity) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_gravity");
-      this.#_bindings.method_set_gravity = internal.classdb_get_method_bind(
+      this._bindings.method_set_gravity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -909,10 +910,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_split_scale() {
-    if (!this.#_bindings.method_get_split_scale) {
+    if (!this._bindings.method_get_split_scale) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_split_scale");
-      this.#_bindings.method_get_split_scale = internal.classdb_get_method_bind(
+      this._bindings.method_get_split_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2240911060
@@ -920,10 +921,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_split_scale() {
-    if (!this.#_bindings.method_set_split_scale) {
+    if (!this._bindings.method_set_split_scale) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_split_scale");
-      this.#_bindings.method_set_split_scale = internal.classdb_get_method_bind(
+      this._bindings.method_set_split_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -931,10 +932,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_scale_curve_x() {
-    if (!this.#_bindings.method_get_scale_curve_x) {
+    if (!this._bindings.method_get_scale_curve_x) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_scale_curve_x");
-      this.#_bindings.method_get_scale_curve_x = internal.classdb_get_method_bind(
+      this._bindings.method_get_scale_curve_x = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2460114913
@@ -942,10 +943,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_scale_curve_x() {
-    if (!this.#_bindings.method_set_scale_curve_x) {
+    if (!this._bindings.method_set_scale_curve_x) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_scale_curve_x");
-      this.#_bindings.method_set_scale_curve_x = internal.classdb_get_method_bind(
+      this._bindings.method_set_scale_curve_x = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         270443179
@@ -953,10 +954,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_scale_curve_y() {
-    if (!this.#_bindings.method_get_scale_curve_y) {
+    if (!this._bindings.method_get_scale_curve_y) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_scale_curve_y");
-      this.#_bindings.method_get_scale_curve_y = internal.classdb_get_method_bind(
+      this._bindings.method_get_scale_curve_y = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2460114913
@@ -964,10 +965,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_scale_curve_y() {
-    if (!this.#_bindings.method_set_scale_curve_y) {
+    if (!this._bindings.method_set_scale_curve_y) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_scale_curve_y");
-      this.#_bindings.method_set_scale_curve_y = internal.classdb_get_method_bind(
+      this._bindings.method_set_scale_curve_y = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         270443179
@@ -975,10 +976,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_get_scale_curve_z() {
-    if (!this.#_bindings.method_get_scale_curve_z) {
+    if (!this._bindings.method_get_scale_curve_z) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("get_scale_curve_z");
-      this.#_bindings.method_get_scale_curve_z = internal.classdb_get_method_bind(
+      this._bindings.method_get_scale_curve_z = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2460114913
@@ -986,10 +987,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_set_scale_curve_z() {
-    if (!this.#_bindings.method_set_scale_curve_z) {
+    if (!this._bindings.method_set_scale_curve_z) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("set_scale_curve_z");
-      this.#_bindings.method_set_scale_curve_z = internal.classdb_get_method_bind(
+      this._bindings.method_set_scale_curve_z = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         270443179
@@ -997,10 +998,10 @@ export class CPUParticles3D extends GeometryInstance3D{
     }
   }
   static init_method_convert_from_particles() {
-    if (!this.#_bindings.method_convert_from_particles) {
+    if (!this._bindings.method_convert_from_particles) {
       let classname = new StringName("CPUParticles3D");
       let methodname = new StringName("convert_from_particles");
-      this.#_bindings.method_convert_from_particles = internal.classdb_get_method_bind(
+      this._bindings.method_convert_from_particles = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1078189570
@@ -1013,7 +1014,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_emitting(_emitting) {
     CPUParticles3D.init_method_set_emitting();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_emitting,
+      CPUParticles3D._bindings.method_set_emitting,
       this._owner,
       _emitting
     );
@@ -1022,7 +1023,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_amount(_amount) {
     CPUParticles3D.init_method_set_amount();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_amount,
+      CPUParticles3D._bindings.method_set_amount,
       this._owner,
       _amount
     );
@@ -1031,7 +1032,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_lifetime(_secs) {
     CPUParticles3D.init_method_set_lifetime();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_lifetime,
+      CPUParticles3D._bindings.method_set_lifetime,
       this._owner,
       _secs
     );
@@ -1040,7 +1041,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_one_shot(_enable) {
     CPUParticles3D.init_method_set_one_shot();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_one_shot,
+      CPUParticles3D._bindings.method_set_one_shot,
       this._owner,
       _enable
     );
@@ -1049,7 +1050,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_pre_process_time(_secs) {
     CPUParticles3D.init_method_set_pre_process_time();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_pre_process_time,
+      CPUParticles3D._bindings.method_set_pre_process_time,
       this._owner,
       _secs
     );
@@ -1058,7 +1059,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_explosiveness_ratio(_ratio) {
     CPUParticles3D.init_method_set_explosiveness_ratio();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_explosiveness_ratio,
+      CPUParticles3D._bindings.method_set_explosiveness_ratio,
       this._owner,
       _ratio
     );
@@ -1067,7 +1068,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_randomness_ratio(_ratio) {
     CPUParticles3D.init_method_set_randomness_ratio();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_randomness_ratio,
+      CPUParticles3D._bindings.method_set_randomness_ratio,
       this._owner,
       _ratio
     );
@@ -1076,7 +1077,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_visibility_aabb(_aabb) {
     CPUParticles3D.init_method_set_visibility_aabb();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_visibility_aabb,
+      CPUParticles3D._bindings.method_set_visibility_aabb,
       this._owner,
       _aabb
     );
@@ -1085,7 +1086,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_lifetime_randomness(_random) {
     CPUParticles3D.init_method_set_lifetime_randomness();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_lifetime_randomness,
+      CPUParticles3D._bindings.method_set_lifetime_randomness,
       this._owner,
       _random
     );
@@ -1094,7 +1095,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_use_local_coordinates(_enable) {
     CPUParticles3D.init_method_set_use_local_coordinates();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_use_local_coordinates,
+      CPUParticles3D._bindings.method_set_use_local_coordinates,
       this._owner,
       _enable
     );
@@ -1103,7 +1104,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_fixed_fps(_fps) {
     CPUParticles3D.init_method_set_fixed_fps();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_fixed_fps,
+      CPUParticles3D._bindings.method_set_fixed_fps,
       this._owner,
       _fps
     );
@@ -1112,7 +1113,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_fractional_delta(_enable) {
     CPUParticles3D.init_method_set_fractional_delta();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_fractional_delta,
+      CPUParticles3D._bindings.method_set_fractional_delta,
       this._owner,
       _enable
     );
@@ -1121,7 +1122,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_speed_scale(_scale) {
     CPUParticles3D.init_method_set_speed_scale();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_speed_scale,
+      CPUParticles3D._bindings.method_set_speed_scale,
       this._owner,
       _scale
     );
@@ -1130,7 +1131,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   is_emitting() {
     CPUParticles3D.init_method_is_emitting();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_is_emitting,
+      CPUParticles3D._bindings.method_is_emitting,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1141,7 +1142,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_amount() {
     CPUParticles3D.init_method_get_amount();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_amount,
+      CPUParticles3D._bindings.method_get_amount,
       this._owner,
 			Variant.Type.INT,
     
@@ -1152,7 +1153,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_lifetime() {
     CPUParticles3D.init_method_get_lifetime();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_lifetime,
+      CPUParticles3D._bindings.method_get_lifetime,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1163,7 +1164,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_one_shot() {
     CPUParticles3D.init_method_get_one_shot();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_one_shot,
+      CPUParticles3D._bindings.method_get_one_shot,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1174,7 +1175,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_pre_process_time() {
     CPUParticles3D.init_method_get_pre_process_time();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_pre_process_time,
+      CPUParticles3D._bindings.method_get_pre_process_time,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1185,7 +1186,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_explosiveness_ratio() {
     CPUParticles3D.init_method_get_explosiveness_ratio();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_explosiveness_ratio,
+      CPUParticles3D._bindings.method_get_explosiveness_ratio,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1196,7 +1197,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_randomness_ratio() {
     CPUParticles3D.init_method_get_randomness_ratio();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_randomness_ratio,
+      CPUParticles3D._bindings.method_get_randomness_ratio,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1207,7 +1208,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_visibility_aabb() {
     CPUParticles3D.init_method_get_visibility_aabb();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_visibility_aabb,
+      CPUParticles3D._bindings.method_get_visibility_aabb,
       this._owner,
 			Variant.Type.AABB,
     
@@ -1218,7 +1219,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_lifetime_randomness() {
     CPUParticles3D.init_method_get_lifetime_randomness();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_lifetime_randomness,
+      CPUParticles3D._bindings.method_get_lifetime_randomness,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1229,7 +1230,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_use_local_coordinates() {
     CPUParticles3D.init_method_get_use_local_coordinates();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_use_local_coordinates,
+      CPUParticles3D._bindings.method_get_use_local_coordinates,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1240,7 +1241,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_fixed_fps() {
     CPUParticles3D.init_method_get_fixed_fps();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_fixed_fps,
+      CPUParticles3D._bindings.method_get_fixed_fps,
       this._owner,
 			Variant.Type.INT,
     
@@ -1251,7 +1252,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_fractional_delta() {
     CPUParticles3D.init_method_get_fractional_delta();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_fractional_delta,
+      CPUParticles3D._bindings.method_get_fractional_delta,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1262,7 +1263,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_speed_scale() {
     CPUParticles3D.init_method_get_speed_scale();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_speed_scale,
+      CPUParticles3D._bindings.method_get_speed_scale,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1273,7 +1274,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_draw_order(_order) {
     CPUParticles3D.init_method_set_draw_order();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_draw_order,
+      CPUParticles3D._bindings.method_set_draw_order,
       this._owner,
       _order
     );
@@ -1282,7 +1283,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_draw_order() {
     CPUParticles3D.init_method_get_draw_order();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_draw_order,
+      CPUParticles3D._bindings.method_get_draw_order,
       this._owner,
 			Variant.Type.INT,
     
@@ -1293,7 +1294,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_mesh(_mesh) {
     CPUParticles3D.init_method_set_mesh();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_mesh,
+      CPUParticles3D._bindings.method_set_mesh,
       this._owner,
       _mesh
     );
@@ -1302,7 +1303,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_mesh() {
     CPUParticles3D.init_method_get_mesh();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_mesh,
+      CPUParticles3D._bindings.method_get_mesh,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -1312,7 +1313,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   restart() {
     CPUParticles3D.init_method_restart();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_restart,
+      CPUParticles3D._bindings.method_restart,
       this._owner,
       
     );
@@ -1321,7 +1322,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_direction(_direction) {
     CPUParticles3D.init_method_set_direction();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_direction,
+      CPUParticles3D._bindings.method_set_direction,
       this._owner,
       _direction
     );
@@ -1330,7 +1331,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_direction() {
     CPUParticles3D.init_method_get_direction();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_direction,
+      CPUParticles3D._bindings.method_get_direction,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1341,7 +1342,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_spread(_degrees) {
     CPUParticles3D.init_method_set_spread();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_spread,
+      CPUParticles3D._bindings.method_set_spread,
       this._owner,
       _degrees
     );
@@ -1350,7 +1351,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_spread() {
     CPUParticles3D.init_method_get_spread();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_spread,
+      CPUParticles3D._bindings.method_get_spread,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1361,7 +1362,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_flatness(_amount) {
     CPUParticles3D.init_method_set_flatness();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_flatness,
+      CPUParticles3D._bindings.method_set_flatness,
       this._owner,
       _amount
     );
@@ -1370,7 +1371,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_flatness() {
     CPUParticles3D.init_method_get_flatness();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_flatness,
+      CPUParticles3D._bindings.method_get_flatness,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1381,7 +1382,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_param_min(_param, _value) {
     CPUParticles3D.init_method_set_param_min();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_param_min,
+      CPUParticles3D._bindings.method_set_param_min,
       this._owner,
       _param, _value
     );
@@ -1390,7 +1391,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_param_min(_param) {
     CPUParticles3D.init_method_get_param_min();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_param_min,
+      CPUParticles3D._bindings.method_get_param_min,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1401,7 +1402,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_param_max(_param, _value) {
     CPUParticles3D.init_method_set_param_max();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_param_max,
+      CPUParticles3D._bindings.method_set_param_max,
       this._owner,
       _param, _value
     );
@@ -1410,7 +1411,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_param_max(_param) {
     CPUParticles3D.init_method_get_param_max();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_param_max,
+      CPUParticles3D._bindings.method_get_param_max,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1421,7 +1422,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_param_curve(_param, _curve) {
     CPUParticles3D.init_method_set_param_curve();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_param_curve,
+      CPUParticles3D._bindings.method_set_param_curve,
       this._owner,
       _param, _curve
     );
@@ -1430,7 +1431,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_param_curve(_param) {
     CPUParticles3D.init_method_get_param_curve();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_param_curve,
+      CPUParticles3D._bindings.method_get_param_curve,
       this._owner,
 			Variant.Type.OBJECT,
       _param
@@ -1440,7 +1441,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_color(_color) {
     CPUParticles3D.init_method_set_color();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_color,
+      CPUParticles3D._bindings.method_set_color,
       this._owner,
       _color
     );
@@ -1449,7 +1450,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_color() {
     CPUParticles3D.init_method_get_color();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_color,
+      CPUParticles3D._bindings.method_get_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -1460,7 +1461,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_color_ramp(_ramp) {
     CPUParticles3D.init_method_set_color_ramp();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_color_ramp,
+      CPUParticles3D._bindings.method_set_color_ramp,
       this._owner,
       _ramp
     );
@@ -1469,7 +1470,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_color_ramp() {
     CPUParticles3D.init_method_get_color_ramp();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_color_ramp,
+      CPUParticles3D._bindings.method_get_color_ramp,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -1479,7 +1480,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_color_initial_ramp(_ramp) {
     CPUParticles3D.init_method_set_color_initial_ramp();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_color_initial_ramp,
+      CPUParticles3D._bindings.method_set_color_initial_ramp,
       this._owner,
       _ramp
     );
@@ -1488,7 +1489,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_color_initial_ramp() {
     CPUParticles3D.init_method_get_color_initial_ramp();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_color_initial_ramp,
+      CPUParticles3D._bindings.method_get_color_initial_ramp,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -1498,7 +1499,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_particle_flag(_particle_flag, _enable) {
     CPUParticles3D.init_method_set_particle_flag();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_particle_flag,
+      CPUParticles3D._bindings.method_set_particle_flag,
       this._owner,
       _particle_flag, _enable
     );
@@ -1507,7 +1508,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_particle_flag(_particle_flag) {
     CPUParticles3D.init_method_get_particle_flag();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_particle_flag,
+      CPUParticles3D._bindings.method_get_particle_flag,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1518,7 +1519,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_emission_shape(_shape) {
     CPUParticles3D.init_method_set_emission_shape();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_emission_shape,
+      CPUParticles3D._bindings.method_set_emission_shape,
       this._owner,
       _shape
     );
@@ -1527,7 +1528,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_emission_shape() {
     CPUParticles3D.init_method_get_emission_shape();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_emission_shape,
+      CPUParticles3D._bindings.method_get_emission_shape,
       this._owner,
 			Variant.Type.INT,
     
@@ -1538,7 +1539,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_emission_sphere_radius(_radius) {
     CPUParticles3D.init_method_set_emission_sphere_radius();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_emission_sphere_radius,
+      CPUParticles3D._bindings.method_set_emission_sphere_radius,
       this._owner,
       _radius
     );
@@ -1547,7 +1548,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_emission_sphere_radius() {
     CPUParticles3D.init_method_get_emission_sphere_radius();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_emission_sphere_radius,
+      CPUParticles3D._bindings.method_get_emission_sphere_radius,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1558,7 +1559,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_emission_box_extents(_extents) {
     CPUParticles3D.init_method_set_emission_box_extents();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_emission_box_extents,
+      CPUParticles3D._bindings.method_set_emission_box_extents,
       this._owner,
       _extents
     );
@@ -1567,7 +1568,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_emission_box_extents() {
     CPUParticles3D.init_method_get_emission_box_extents();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_emission_box_extents,
+      CPUParticles3D._bindings.method_get_emission_box_extents,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1578,7 +1579,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_emission_points(_array) {
     CPUParticles3D.init_method_set_emission_points();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_emission_points,
+      CPUParticles3D._bindings.method_set_emission_points,
       this._owner,
       _array
     );
@@ -1587,7 +1588,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_emission_points() {
     CPUParticles3D.init_method_get_emission_points();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_emission_points,
+      CPUParticles3D._bindings.method_get_emission_points,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -1598,7 +1599,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_emission_normals(_array) {
     CPUParticles3D.init_method_set_emission_normals();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_emission_normals,
+      CPUParticles3D._bindings.method_set_emission_normals,
       this._owner,
       _array
     );
@@ -1607,7 +1608,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_emission_normals() {
     CPUParticles3D.init_method_get_emission_normals();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_emission_normals,
+      CPUParticles3D._bindings.method_get_emission_normals,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -1618,7 +1619,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_emission_colors(_array) {
     CPUParticles3D.init_method_set_emission_colors();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_emission_colors,
+      CPUParticles3D._bindings.method_set_emission_colors,
       this._owner,
       _array
     );
@@ -1627,7 +1628,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_emission_colors() {
     CPUParticles3D.init_method_get_emission_colors();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_emission_colors,
+      CPUParticles3D._bindings.method_get_emission_colors,
       this._owner,
 			Variant.Type.PACKED_COLOR_ARRAY,
     
@@ -1638,7 +1639,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_emission_ring_axis(_axis) {
     CPUParticles3D.init_method_set_emission_ring_axis();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_emission_ring_axis,
+      CPUParticles3D._bindings.method_set_emission_ring_axis,
       this._owner,
       _axis
     );
@@ -1647,7 +1648,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_emission_ring_axis() {
     CPUParticles3D.init_method_get_emission_ring_axis();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_emission_ring_axis,
+      CPUParticles3D._bindings.method_get_emission_ring_axis,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1658,7 +1659,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_emission_ring_height(_height) {
     CPUParticles3D.init_method_set_emission_ring_height();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_emission_ring_height,
+      CPUParticles3D._bindings.method_set_emission_ring_height,
       this._owner,
       _height
     );
@@ -1667,7 +1668,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_emission_ring_height() {
     CPUParticles3D.init_method_get_emission_ring_height();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_emission_ring_height,
+      CPUParticles3D._bindings.method_get_emission_ring_height,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1678,7 +1679,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_emission_ring_radius(_radius) {
     CPUParticles3D.init_method_set_emission_ring_radius();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_emission_ring_radius,
+      CPUParticles3D._bindings.method_set_emission_ring_radius,
       this._owner,
       _radius
     );
@@ -1687,7 +1688,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_emission_ring_radius() {
     CPUParticles3D.init_method_get_emission_ring_radius();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_emission_ring_radius,
+      CPUParticles3D._bindings.method_get_emission_ring_radius,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1698,7 +1699,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_emission_ring_inner_radius(_inner_radius) {
     CPUParticles3D.init_method_set_emission_ring_inner_radius();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_emission_ring_inner_radius,
+      CPUParticles3D._bindings.method_set_emission_ring_inner_radius,
       this._owner,
       _inner_radius
     );
@@ -1707,7 +1708,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_emission_ring_inner_radius() {
     CPUParticles3D.init_method_get_emission_ring_inner_radius();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_emission_ring_inner_radius,
+      CPUParticles3D._bindings.method_get_emission_ring_inner_radius,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1718,7 +1719,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_gravity() {
     CPUParticles3D.init_method_get_gravity();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_gravity,
+      CPUParticles3D._bindings.method_get_gravity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1729,7 +1730,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_gravity(_accel_vec) {
     CPUParticles3D.init_method_set_gravity();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_gravity,
+      CPUParticles3D._bindings.method_set_gravity,
       this._owner,
       _accel_vec
     );
@@ -1738,7 +1739,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_split_scale() {
     CPUParticles3D.init_method_get_split_scale();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_split_scale,
+      CPUParticles3D._bindings.method_get_split_scale,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1749,7 +1750,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_split_scale(_split_scale) {
     CPUParticles3D.init_method_set_split_scale();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_split_scale,
+      CPUParticles3D._bindings.method_set_split_scale,
       this._owner,
       _split_scale
     );
@@ -1758,7 +1759,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_scale_curve_x() {
     CPUParticles3D.init_method_get_scale_curve_x();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_scale_curve_x,
+      CPUParticles3D._bindings.method_get_scale_curve_x,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -1768,7 +1769,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_scale_curve_x(_scale_curve) {
     CPUParticles3D.init_method_set_scale_curve_x();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_scale_curve_x,
+      CPUParticles3D._bindings.method_set_scale_curve_x,
       this._owner,
       _scale_curve
     );
@@ -1777,7 +1778,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_scale_curve_y() {
     CPUParticles3D.init_method_get_scale_curve_y();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_scale_curve_y,
+      CPUParticles3D._bindings.method_get_scale_curve_y,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -1787,7 +1788,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_scale_curve_y(_scale_curve) {
     CPUParticles3D.init_method_set_scale_curve_y();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_scale_curve_y,
+      CPUParticles3D._bindings.method_set_scale_curve_y,
       this._owner,
       _scale_curve
     );
@@ -1796,7 +1797,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   get_scale_curve_z() {
     CPUParticles3D.init_method_get_scale_curve_z();
     return _call_native_mb_ret(
-      CPUParticles3D.#_bindings.method_get_scale_curve_z,
+      CPUParticles3D._bindings.method_get_scale_curve_z,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -1806,7 +1807,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   set_scale_curve_z(_scale_curve) {
     CPUParticles3D.init_method_set_scale_curve_z();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_set_scale_curve_z,
+      CPUParticles3D._bindings.method_set_scale_curve_z,
       this._owner,
       _scale_curve
     );
@@ -1815,7 +1816,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   convert_from_particles(_particles) {
     CPUParticles3D.init_method_convert_from_particles();
     return _call_native_mb_no_ret(
-      CPUParticles3D.#_bindings.method_convert_from_particles,
+      CPUParticles3D._bindings.method_convert_from_particles,
       this._owner,
       _particles
     );

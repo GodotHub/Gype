@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_vertices;
@@ -26,10 +27,10 @@ class _MethodBindings {
   method_set_projected_obstructions;
   method_get_projected_obstructions;
 }
+@GodotClass
 export class NavigationMeshSourceGeometryData3D extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -39,10 +40,10 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
     }
   }
   static init_method_set_vertices() {
-    if (!this.#_bindings.method_set_vertices) {
+    if (!this._bindings.method_set_vertices) {
       let classname = new StringName("NavigationMeshSourceGeometryData3D");
       let methodname = new StringName("set_vertices");
-      this.#_bindings.method_set_vertices = internal.classdb_get_method_bind(
+      this._bindings.method_set_vertices = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2899603908
@@ -50,10 +51,10 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
     }
   }
   static init_method_get_vertices() {
-    if (!this.#_bindings.method_get_vertices) {
+    if (!this._bindings.method_get_vertices) {
       let classname = new StringName("NavigationMeshSourceGeometryData3D");
       let methodname = new StringName("get_vertices");
-      this.#_bindings.method_get_vertices = internal.classdb_get_method_bind(
+      this._bindings.method_get_vertices = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         675695659
@@ -61,10 +62,10 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
     }
   }
   static init_method_set_indices() {
-    if (!this.#_bindings.method_set_indices) {
+    if (!this._bindings.method_set_indices) {
       let classname = new StringName("NavigationMeshSourceGeometryData3D");
       let methodname = new StringName("set_indices");
-      this.#_bindings.method_set_indices = internal.classdb_get_method_bind(
+      this._bindings.method_set_indices = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3614634198
@@ -72,10 +73,10 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
     }
   }
   static init_method_get_indices() {
-    if (!this.#_bindings.method_get_indices) {
+    if (!this._bindings.method_get_indices) {
       let classname = new StringName("NavigationMeshSourceGeometryData3D");
       let methodname = new StringName("get_indices");
-      this.#_bindings.method_get_indices = internal.classdb_get_method_bind(
+      this._bindings.method_get_indices = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1930428628
@@ -83,10 +84,10 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
     }
   }
   static init_method_append_arrays() {
-    if (!this.#_bindings.method_append_arrays) {
+    if (!this._bindings.method_append_arrays) {
       let classname = new StringName("NavigationMeshSourceGeometryData3D");
       let methodname = new StringName("append_arrays");
-      this.#_bindings.method_append_arrays = internal.classdb_get_method_bind(
+      this._bindings.method_append_arrays = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3117535015
@@ -94,10 +95,10 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
     }
   }
   static init_method_clear() {
-    if (!this.#_bindings.method_clear) {
+    if (!this._bindings.method_clear) {
       let classname = new StringName("NavigationMeshSourceGeometryData3D");
       let methodname = new StringName("clear");
-      this.#_bindings.method_clear = internal.classdb_get_method_bind(
+      this._bindings.method_clear = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -105,10 +106,10 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
     }
   }
   static init_method_has_data() {
-    if (!this.#_bindings.method_has_data) {
+    if (!this._bindings.method_has_data) {
       let classname = new StringName("NavigationMeshSourceGeometryData3D");
       let methodname = new StringName("has_data");
-      this.#_bindings.method_has_data = internal.classdb_get_method_bind(
+      this._bindings.method_has_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2240911060
@@ -116,10 +117,10 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
     }
   }
   static init_method_add_mesh() {
-    if (!this.#_bindings.method_add_mesh) {
+    if (!this._bindings.method_add_mesh) {
       let classname = new StringName("NavigationMeshSourceGeometryData3D");
       let methodname = new StringName("add_mesh");
-      this.#_bindings.method_add_mesh = internal.classdb_get_method_bind(
+      this._bindings.method_add_mesh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         975462459
@@ -127,10 +128,10 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
     }
   }
   static init_method_add_mesh_array() {
-    if (!this.#_bindings.method_add_mesh_array) {
+    if (!this._bindings.method_add_mesh_array) {
       let classname = new StringName("NavigationMeshSourceGeometryData3D");
       let methodname = new StringName("add_mesh_array");
-      this.#_bindings.method_add_mesh_array = internal.classdb_get_method_bind(
+      this._bindings.method_add_mesh_array = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4235710913
@@ -138,10 +139,10 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
     }
   }
   static init_method_add_faces() {
-    if (!this.#_bindings.method_add_faces) {
+    if (!this._bindings.method_add_faces) {
       let classname = new StringName("NavigationMeshSourceGeometryData3D");
       let methodname = new StringName("add_faces");
-      this.#_bindings.method_add_faces = internal.classdb_get_method_bind(
+      this._bindings.method_add_faces = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1440358797
@@ -149,10 +150,10 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
     }
   }
   static init_method_merge() {
-    if (!this.#_bindings.method_merge) {
+    if (!this._bindings.method_merge) {
       let classname = new StringName("NavigationMeshSourceGeometryData3D");
       let methodname = new StringName("merge");
-      this.#_bindings.method_merge = internal.classdb_get_method_bind(
+      this._bindings.method_merge = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         655828145
@@ -160,10 +161,10 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
     }
   }
   static init_method_add_projected_obstruction() {
-    if (!this.#_bindings.method_add_projected_obstruction) {
+    if (!this._bindings.method_add_projected_obstruction) {
       let classname = new StringName("NavigationMeshSourceGeometryData3D");
       let methodname = new StringName("add_projected_obstruction");
-      this.#_bindings.method_add_projected_obstruction = internal.classdb_get_method_bind(
+      this._bindings.method_add_projected_obstruction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3351846707
@@ -171,10 +172,10 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
     }
   }
   static init_method_clear_projected_obstructions() {
-    if (!this.#_bindings.method_clear_projected_obstructions) {
+    if (!this._bindings.method_clear_projected_obstructions) {
       let classname = new StringName("NavigationMeshSourceGeometryData3D");
       let methodname = new StringName("clear_projected_obstructions");
-      this.#_bindings.method_clear_projected_obstructions = internal.classdb_get_method_bind(
+      this._bindings.method_clear_projected_obstructions = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -182,10 +183,10 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
     }
   }
   static init_method_set_projected_obstructions() {
-    if (!this.#_bindings.method_set_projected_obstructions) {
+    if (!this._bindings.method_set_projected_obstructions) {
       let classname = new StringName("NavigationMeshSourceGeometryData3D");
       let methodname = new StringName("set_projected_obstructions");
-      this.#_bindings.method_set_projected_obstructions = internal.classdb_get_method_bind(
+      this._bindings.method_set_projected_obstructions = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         381264803
@@ -193,10 +194,10 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
     }
   }
   static init_method_get_projected_obstructions() {
-    if (!this.#_bindings.method_get_projected_obstructions) {
+    if (!this._bindings.method_get_projected_obstructions) {
       let classname = new StringName("NavigationMeshSourceGeometryData3D");
       let methodname = new StringName("get_projected_obstructions");
-      this.#_bindings.method_get_projected_obstructions = internal.classdb_get_method_bind(
+      this._bindings.method_get_projected_obstructions = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -209,7 +210,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   set_vertices(_vertices) {
     NavigationMeshSourceGeometryData3D.init_method_set_vertices();
     return _call_native_mb_no_ret(
-      NavigationMeshSourceGeometryData3D.#_bindings.method_set_vertices,
+      NavigationMeshSourceGeometryData3D._bindings.method_set_vertices,
       this._owner,
       _vertices
     );
@@ -218,7 +219,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   get_vertices() {
     NavigationMeshSourceGeometryData3D.init_method_get_vertices();
     return _call_native_mb_ret(
-      NavigationMeshSourceGeometryData3D.#_bindings.method_get_vertices,
+      NavigationMeshSourceGeometryData3D._bindings.method_get_vertices,
       this._owner,
 			Variant.Type.PACKED_FLOAT32_ARRAY,
     
@@ -229,7 +230,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   set_indices(_indices) {
     NavigationMeshSourceGeometryData3D.init_method_set_indices();
     return _call_native_mb_no_ret(
-      NavigationMeshSourceGeometryData3D.#_bindings.method_set_indices,
+      NavigationMeshSourceGeometryData3D._bindings.method_set_indices,
       this._owner,
       _indices
     );
@@ -238,7 +239,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   get_indices() {
     NavigationMeshSourceGeometryData3D.init_method_get_indices();
     return _call_native_mb_ret(
-      NavigationMeshSourceGeometryData3D.#_bindings.method_get_indices,
+      NavigationMeshSourceGeometryData3D._bindings.method_get_indices,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -249,7 +250,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   append_arrays(_vertices, _indices) {
     NavigationMeshSourceGeometryData3D.init_method_append_arrays();
     return _call_native_mb_no_ret(
-      NavigationMeshSourceGeometryData3D.#_bindings.method_append_arrays,
+      NavigationMeshSourceGeometryData3D._bindings.method_append_arrays,
       this._owner,
       _vertices, _indices
     );
@@ -258,7 +259,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   clear() {
     NavigationMeshSourceGeometryData3D.init_method_clear();
     return _call_native_mb_no_ret(
-      NavigationMeshSourceGeometryData3D.#_bindings.method_clear,
+      NavigationMeshSourceGeometryData3D._bindings.method_clear,
       this._owner,
       
     );
@@ -267,7 +268,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   has_data() {
     NavigationMeshSourceGeometryData3D.init_method_has_data();
     return _call_native_mb_ret(
-      NavigationMeshSourceGeometryData3D.#_bindings.method_has_data,
+      NavigationMeshSourceGeometryData3D._bindings.method_has_data,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -278,7 +279,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   add_mesh(_mesh, _xform) {
     NavigationMeshSourceGeometryData3D.init_method_add_mesh();
     return _call_native_mb_no_ret(
-      NavigationMeshSourceGeometryData3D.#_bindings.method_add_mesh,
+      NavigationMeshSourceGeometryData3D._bindings.method_add_mesh,
       this._owner,
       _mesh, _xform
     );
@@ -287,7 +288,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   add_mesh_array(_mesh_array, _xform) {
     NavigationMeshSourceGeometryData3D.init_method_add_mesh_array();
     return _call_native_mb_no_ret(
-      NavigationMeshSourceGeometryData3D.#_bindings.method_add_mesh_array,
+      NavigationMeshSourceGeometryData3D._bindings.method_add_mesh_array,
       this._owner,
       _mesh_array, _xform
     );
@@ -296,7 +297,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   add_faces(_faces, _xform) {
     NavigationMeshSourceGeometryData3D.init_method_add_faces();
     return _call_native_mb_no_ret(
-      NavigationMeshSourceGeometryData3D.#_bindings.method_add_faces,
+      NavigationMeshSourceGeometryData3D._bindings.method_add_faces,
       this._owner,
       _faces, _xform
     );
@@ -305,7 +306,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   merge(_other_geometry) {
     NavigationMeshSourceGeometryData3D.init_method_merge();
     return _call_native_mb_no_ret(
-      NavigationMeshSourceGeometryData3D.#_bindings.method_merge,
+      NavigationMeshSourceGeometryData3D._bindings.method_merge,
       this._owner,
       _other_geometry
     );
@@ -314,7 +315,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   add_projected_obstruction(_vertices, _elevation, _height, _carve) {
     NavigationMeshSourceGeometryData3D.init_method_add_projected_obstruction();
     return _call_native_mb_no_ret(
-      NavigationMeshSourceGeometryData3D.#_bindings.method_add_projected_obstruction,
+      NavigationMeshSourceGeometryData3D._bindings.method_add_projected_obstruction,
       this._owner,
       _vertices, _elevation, _height, _carve
     );
@@ -323,7 +324,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   clear_projected_obstructions() {
     NavigationMeshSourceGeometryData3D.init_method_clear_projected_obstructions();
     return _call_native_mb_no_ret(
-      NavigationMeshSourceGeometryData3D.#_bindings.method_clear_projected_obstructions,
+      NavigationMeshSourceGeometryData3D._bindings.method_clear_projected_obstructions,
       this._owner,
       
     );
@@ -332,7 +333,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   set_projected_obstructions(_projected_obstructions) {
     NavigationMeshSourceGeometryData3D.init_method_set_projected_obstructions();
     return _call_native_mb_no_ret(
-      NavigationMeshSourceGeometryData3D.#_bindings.method_set_projected_obstructions,
+      NavigationMeshSourceGeometryData3D._bindings.method_set_projected_obstructions,
       this._owner,
       _projected_obstructions
     );
@@ -341,7 +342,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   get_projected_obstructions() {
     NavigationMeshSourceGeometryData3D.init_method_get_projected_obstructions();
     return _call_native_mb_ret(
-      NavigationMeshSourceGeometryData3D.#_bindings.method_get_projected_obstructions,
+      NavigationMeshSourceGeometryData3D._bindings.method_get_projected_obstructions,
       this._owner,
 			Variant.Type.ARRAY,
     

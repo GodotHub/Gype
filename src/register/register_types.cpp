@@ -1,25 +1,15 @@
 #include "register/register_types.h"
-#include "quickjs/env.h"
-#include "register/register_enums.h"
-#include "register/register_internal_api.h"
+#include "register/register_utility_functions.h"
 #include "support/console_support.hpp"
-#include "support/javascript.hpp"
-#include "support/javascript_language.hpp"
-#include "support/javascript_loader.hpp"
-#include "support/javascript_saver.hpp"
-#include "support/module_loader.hpp"
+#include "utils/env.h"
+
 #include <gdextension_interface.h>
-#include <quickjs/finalizer.h>
-#include <godot_cpp/classes/engine.hpp>
-#include <godot_cpp/classes/resource_loader.hpp>
-#include <godot_cpp/classes/resource_saver.hpp>
-#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/defs.hpp>
 
 // bug 无法关闭程序
 // #ifdef DEBUG_ENABLED
 // #include "class_db_test/class_db_test.hpp"
-// #include "gdstring_test/gdstring_test.hpp"
+#include "gdstring_test/gdstring_test.hpp"
 // #include "node_path_test/node_path_test.hpp"
 // #include "variant_test/variant_test.hpp"
 
@@ -38,11 +28,10 @@ void initialize_tgds_types(godot::ModuleInitializationLevel p_level) {
 	}
 	RedirectIOToConsole();
 	printf("%s", "Quickjs start initialization\n");
-	init_language();
 	init_quickjs();
 #ifdef DEBUG_ENABLED
 	// test_variant();
-	// test_gdstring();
+	test_gdstring();
 	// test_node_path();
 	// test_class_db();
 #endif // DEBUG
@@ -53,42 +42,31 @@ void uninitialize_tgds_types(godot::ModuleInitializationLevel p_level) {
 	if (p_level != godot::ModuleInitializationLevel::MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
-	Engine::get_singleton()->unregister_script_language(JavaScriptLanguage::get_singleton());
-	ResourceSaver::get_singleton()->remove_resource_format_saver(JavaScriptSaver::get_singleton());
-	ResourceLoader::get_singleton()->remove_resource_format_loader(JavaScriptLoader::get_singleton());
+	// Engine::get_singleton()->unregister_script_language(JavaScriptLanguage::get_singleton());
+	// ResourceSaver::get_singleton()->remove_resource_format_saver(JavaScriptSaver::get_singleton());
+	// ResourceLoader::get_singleton()->remove_resource_format_loader(JavaScriptLoader::get_singleton());
 	printf("Quickjs close\n");
 }
 
 void init_quickjs() {
-	register_enums();
-	register_internal_api();
-	// js_init_module(context.ctx);
-	JS_AddIntrinsicOperators(context.ctx);
-	JS_SetModuleLoaderFunc(runtime.rt, NULL, module_loader, NULL);
-	JSValue ret = context.eval(R"xxx(
-		import { Variant } from "@js_godot/variant/variant";
-		Variant._init_bindings();
-	)xxx",
-			"<input>", JS_EVAL_TYPE_MODULE);
-	qjs::is_exception(context.ctx, ret);
-
-	// if (JS_IsException(ret)) {
-	// 	JSValue exp = JS_GetException(context.ctx);
-	// 	JSValue message = JS_GetPropertyStr(context.ctx, exp, "message");
-	// 	const char *message_str = JS_ToCString(context.ctx, message);
-	// 	printf("%s\n", message_str);
-	// }
-	// JS_FreeValue(context.ctx, ret);
+	rt = JS_NewRuntime();
+	ctx = JS_NewContext(rt);
+	register_utility_functions();
+	// register_enums();
+	// register_internal_api();
+	// js_init_module(ctx);
+	// JS_AddIntrinsicOperators(ctx);
+	// JS_SetModuleLoaderFunc(rt, NULL, module_loader, NULL);
 }
 
 void init_language() {
-	GDREGISTER_CLASS(JavaScriptLoader);
-	GDREGISTER_CLASS(JavaScriptSaver);
-	GDREGISTER_CLASS(JavaScriptLanguage);
-	GDREGISTER_CLASS(JavaScript);
-	Engine::get_singleton()->register_script_language(JavaScriptLanguage::get_singleton());
-	ResourceSaver::get_singleton()->add_resource_format_saver(JavaScriptSaver::get_singleton());
-	ResourceLoader::get_singleton()->add_resource_format_loader(JavaScriptLoader::get_singleton());
+	// GDREGISTER_CLASS(JavaScriptLoader);
+	// GDREGISTER_CLASS(JavaScriptSaver);
+	// GDREGISTER_CLASS(JavaScriptLanguage);
+	// GDREGISTER_CLASS(JavaScript);
+	// Engine::get_singleton()->register_script_language(JavaScriptLanguage::get_singleton());
+	// ResourceSaver::get_singleton()->add_resource_format_saver(JavaScriptSaver::get_singleton());
+	// ResourceLoader::get_singleton()->add_resource_format_loader(JavaScriptLoader::get_singleton());
 }
 
 extern "C" {

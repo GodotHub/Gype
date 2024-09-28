@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { VisualShaderNodeParameter } from '@js_godot/classes/visual_shader_node_parameter'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_hint;
@@ -23,10 +24,10 @@ class _MethodBindings {
   method_set_default_value;
   method_get_default_value;
 }
+@GodotClass
 export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -36,10 +37,10 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
     }
   }
   static init_method_set_hint() {
-    if (!this.#_bindings.method_set_hint) {
+    if (!this._bindings.method_set_hint) {
       let classname = new StringName("VisualShaderNodeIntParameter");
       let methodname = new StringName("set_hint");
-      this.#_bindings.method_set_hint = internal.classdb_get_method_bind(
+      this._bindings.method_set_hint = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2540512075
@@ -47,10 +48,10 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
     }
   }
   static init_method_get_hint() {
-    if (!this.#_bindings.method_get_hint) {
+    if (!this._bindings.method_get_hint) {
       let classname = new StringName("VisualShaderNodeIntParameter");
       let methodname = new StringName("get_hint");
-      this.#_bindings.method_get_hint = internal.classdb_get_method_bind(
+      this._bindings.method_get_hint = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4250814924
@@ -58,10 +59,10 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
     }
   }
   static init_method_set_min() {
-    if (!this.#_bindings.method_set_min) {
+    if (!this._bindings.method_set_min) {
       let classname = new StringName("VisualShaderNodeIntParameter");
       let methodname = new StringName("set_min");
-      this.#_bindings.method_set_min = internal.classdb_get_method_bind(
+      this._bindings.method_set_min = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -69,10 +70,10 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
     }
   }
   static init_method_get_min() {
-    if (!this.#_bindings.method_get_min) {
+    if (!this._bindings.method_get_min) {
       let classname = new StringName("VisualShaderNodeIntParameter");
       let methodname = new StringName("get_min");
-      this.#_bindings.method_get_min = internal.classdb_get_method_bind(
+      this._bindings.method_get_min = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -80,10 +81,10 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
     }
   }
   static init_method_set_max() {
-    if (!this.#_bindings.method_set_max) {
+    if (!this._bindings.method_set_max) {
       let classname = new StringName("VisualShaderNodeIntParameter");
       let methodname = new StringName("set_max");
-      this.#_bindings.method_set_max = internal.classdb_get_method_bind(
+      this._bindings.method_set_max = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -91,10 +92,10 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
     }
   }
   static init_method_get_max() {
-    if (!this.#_bindings.method_get_max) {
+    if (!this._bindings.method_get_max) {
       let classname = new StringName("VisualShaderNodeIntParameter");
       let methodname = new StringName("get_max");
-      this.#_bindings.method_get_max = internal.classdb_get_method_bind(
+      this._bindings.method_get_max = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -102,10 +103,10 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
     }
   }
   static init_method_set_step() {
-    if (!this.#_bindings.method_set_step) {
+    if (!this._bindings.method_set_step) {
       let classname = new StringName("VisualShaderNodeIntParameter");
       let methodname = new StringName("set_step");
-      this.#_bindings.method_set_step = internal.classdb_get_method_bind(
+      this._bindings.method_set_step = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -113,10 +114,10 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
     }
   }
   static init_method_get_step() {
-    if (!this.#_bindings.method_get_step) {
+    if (!this._bindings.method_get_step) {
       let classname = new StringName("VisualShaderNodeIntParameter");
       let methodname = new StringName("get_step");
-      this.#_bindings.method_get_step = internal.classdb_get_method_bind(
+      this._bindings.method_get_step = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -124,10 +125,10 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
     }
   }
   static init_method_set_default_value_enabled() {
-    if (!this.#_bindings.method_set_default_value_enabled) {
+    if (!this._bindings.method_set_default_value_enabled) {
       let classname = new StringName("VisualShaderNodeIntParameter");
       let methodname = new StringName("set_default_value_enabled");
-      this.#_bindings.method_set_default_value_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_default_value_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -135,10 +136,10 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
     }
   }
   static init_method_is_default_value_enabled() {
-    if (!this.#_bindings.method_is_default_value_enabled) {
+    if (!this._bindings.method_is_default_value_enabled) {
       let classname = new StringName("VisualShaderNodeIntParameter");
       let methodname = new StringName("is_default_value_enabled");
-      this.#_bindings.method_is_default_value_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_default_value_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -146,10 +147,10 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
     }
   }
   static init_method_set_default_value() {
-    if (!this.#_bindings.method_set_default_value) {
+    if (!this._bindings.method_set_default_value) {
       let classname = new StringName("VisualShaderNodeIntParameter");
       let methodname = new StringName("set_default_value");
-      this.#_bindings.method_set_default_value = internal.classdb_get_method_bind(
+      this._bindings.method_set_default_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -157,10 +158,10 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
     }
   }
   static init_method_get_default_value() {
-    if (!this.#_bindings.method_get_default_value) {
+    if (!this._bindings.method_get_default_value) {
       let classname = new StringName("VisualShaderNodeIntParameter");
       let methodname = new StringName("get_default_value");
-      this.#_bindings.method_get_default_value = internal.classdb_get_method_bind(
+      this._bindings.method_get_default_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -173,7 +174,7 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
   set_hint(_hint) {
     VisualShaderNodeIntParameter.init_method_set_hint();
     return _call_native_mb_no_ret(
-      VisualShaderNodeIntParameter.#_bindings.method_set_hint,
+      VisualShaderNodeIntParameter._bindings.method_set_hint,
       this._owner,
       _hint
     );
@@ -182,7 +183,7 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
   get_hint() {
     VisualShaderNodeIntParameter.init_method_get_hint();
     return _call_native_mb_ret(
-      VisualShaderNodeIntParameter.#_bindings.method_get_hint,
+      VisualShaderNodeIntParameter._bindings.method_get_hint,
       this._owner,
 			Variant.Type.INT,
     
@@ -193,7 +194,7 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
   set_min(_value) {
     VisualShaderNodeIntParameter.init_method_set_min();
     return _call_native_mb_no_ret(
-      VisualShaderNodeIntParameter.#_bindings.method_set_min,
+      VisualShaderNodeIntParameter._bindings.method_set_min,
       this._owner,
       _value
     );
@@ -202,7 +203,7 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
   get_min() {
     VisualShaderNodeIntParameter.init_method_get_min();
     return _call_native_mb_ret(
-      VisualShaderNodeIntParameter.#_bindings.method_get_min,
+      VisualShaderNodeIntParameter._bindings.method_get_min,
       this._owner,
 			Variant.Type.INT,
     
@@ -213,7 +214,7 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
   set_max(_value) {
     VisualShaderNodeIntParameter.init_method_set_max();
     return _call_native_mb_no_ret(
-      VisualShaderNodeIntParameter.#_bindings.method_set_max,
+      VisualShaderNodeIntParameter._bindings.method_set_max,
       this._owner,
       _value
     );
@@ -222,7 +223,7 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
   get_max() {
     VisualShaderNodeIntParameter.init_method_get_max();
     return _call_native_mb_ret(
-      VisualShaderNodeIntParameter.#_bindings.method_get_max,
+      VisualShaderNodeIntParameter._bindings.method_get_max,
       this._owner,
 			Variant.Type.INT,
     
@@ -233,7 +234,7 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
   set_step(_value) {
     VisualShaderNodeIntParameter.init_method_set_step();
     return _call_native_mb_no_ret(
-      VisualShaderNodeIntParameter.#_bindings.method_set_step,
+      VisualShaderNodeIntParameter._bindings.method_set_step,
       this._owner,
       _value
     );
@@ -242,7 +243,7 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
   get_step() {
     VisualShaderNodeIntParameter.init_method_get_step();
     return _call_native_mb_ret(
-      VisualShaderNodeIntParameter.#_bindings.method_get_step,
+      VisualShaderNodeIntParameter._bindings.method_get_step,
       this._owner,
 			Variant.Type.INT,
     
@@ -253,7 +254,7 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
   set_default_value_enabled(_enabled) {
     VisualShaderNodeIntParameter.init_method_set_default_value_enabled();
     return _call_native_mb_no_ret(
-      VisualShaderNodeIntParameter.#_bindings.method_set_default_value_enabled,
+      VisualShaderNodeIntParameter._bindings.method_set_default_value_enabled,
       this._owner,
       _enabled
     );
@@ -262,7 +263,7 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
   is_default_value_enabled() {
     VisualShaderNodeIntParameter.init_method_is_default_value_enabled();
     return _call_native_mb_ret(
-      VisualShaderNodeIntParameter.#_bindings.method_is_default_value_enabled,
+      VisualShaderNodeIntParameter._bindings.method_is_default_value_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -273,7 +274,7 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
   set_default_value(_value) {
     VisualShaderNodeIntParameter.init_method_set_default_value();
     return _call_native_mb_no_ret(
-      VisualShaderNodeIntParameter.#_bindings.method_set_default_value,
+      VisualShaderNodeIntParameter._bindings.method_set_default_value,
       this._owner,
       _value
     );
@@ -282,7 +283,7 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
   get_default_value() {
     VisualShaderNodeIntParameter.init_method_get_default_value();
     return _call_native_mb_ret(
-      VisualShaderNodeIntParameter.#_bindings.method_get_default_value,
+      VisualShaderNodeIntParameter._bindings.method_get_default_value,
       this._owner,
 			Variant.Type.INT,
     

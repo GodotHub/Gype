@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { SkeletonModifier3D } from '@js_godot/classes/skeleton_modifier3d'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_root_bone;
@@ -35,10 +36,10 @@ class _MethodBindings {
   method_set_interpolation;
   method_get_interpolation;
 }
+@GodotClass
 export class SkeletonIK3D extends SkeletonModifier3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -48,10 +49,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
     }
   }
   static init_method_set_root_bone() {
-    if (!this.#_bindings.method_set_root_bone) {
+    if (!this._bindings.method_set_root_bone) {
       let classname = new StringName("SkeletonIK3D");
       let methodname = new StringName("set_root_bone");
-      this.#_bindings.method_set_root_bone = internal.classdb_get_method_bind(
+      this._bindings.method_set_root_bone = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -59,10 +60,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
     }
   }
   static init_method_get_root_bone() {
-    if (!this.#_bindings.method_get_root_bone) {
+    if (!this._bindings.method_get_root_bone) {
       let classname = new StringName("SkeletonIK3D");
       let methodname = new StringName("get_root_bone");
-      this.#_bindings.method_get_root_bone = internal.classdb_get_method_bind(
+      this._bindings.method_get_root_bone = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2002593661
@@ -70,10 +71,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
     }
   }
   static init_method_set_tip_bone() {
-    if (!this.#_bindings.method_set_tip_bone) {
+    if (!this._bindings.method_set_tip_bone) {
       let classname = new StringName("SkeletonIK3D");
       let methodname = new StringName("set_tip_bone");
-      this.#_bindings.method_set_tip_bone = internal.classdb_get_method_bind(
+      this._bindings.method_set_tip_bone = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -81,10 +82,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
     }
   }
   static init_method_get_tip_bone() {
-    if (!this.#_bindings.method_get_tip_bone) {
+    if (!this._bindings.method_get_tip_bone) {
       let classname = new StringName("SkeletonIK3D");
       let methodname = new StringName("get_tip_bone");
-      this.#_bindings.method_get_tip_bone = internal.classdb_get_method_bind(
+      this._bindings.method_get_tip_bone = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2002593661
@@ -92,10 +93,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
     }
   }
   static init_method_set_target_transform() {
-    if (!this.#_bindings.method_set_target_transform) {
+    if (!this._bindings.method_set_target_transform) {
       let classname = new StringName("SkeletonIK3D");
       let methodname = new StringName("set_target_transform");
-      this.#_bindings.method_set_target_transform = internal.classdb_get_method_bind(
+      this._bindings.method_set_target_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2952846383
@@ -103,10 +104,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
     }
   }
   static init_method_get_target_transform() {
-    if (!this.#_bindings.method_get_target_transform) {
+    if (!this._bindings.method_get_target_transform) {
       let classname = new StringName("SkeletonIK3D");
       let methodname = new StringName("get_target_transform");
-      this.#_bindings.method_get_target_transform = internal.classdb_get_method_bind(
+      this._bindings.method_get_target_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3229777777
@@ -114,10 +115,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
     }
   }
   static init_method_set_target_node() {
-    if (!this.#_bindings.method_set_target_node) {
+    if (!this._bindings.method_set_target_node) {
       let classname = new StringName("SkeletonIK3D");
       let methodname = new StringName("set_target_node");
-      this.#_bindings.method_set_target_node = internal.classdb_get_method_bind(
+      this._bindings.method_set_target_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1348162250
@@ -125,10 +126,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
     }
   }
   static init_method_get_target_node() {
-    if (!this.#_bindings.method_get_target_node) {
+    if (!this._bindings.method_get_target_node) {
       let classname = new StringName("SkeletonIK3D");
       let methodname = new StringName("get_target_node");
-      this.#_bindings.method_get_target_node = internal.classdb_get_method_bind(
+      this._bindings.method_get_target_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         277076166
@@ -136,10 +137,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
     }
   }
   static init_method_set_override_tip_basis() {
-    if (!this.#_bindings.method_set_override_tip_basis) {
+    if (!this._bindings.method_set_override_tip_basis) {
       let classname = new StringName("SkeletonIK3D");
       let methodname = new StringName("set_override_tip_basis");
-      this.#_bindings.method_set_override_tip_basis = internal.classdb_get_method_bind(
+      this._bindings.method_set_override_tip_basis = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -147,10 +148,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
     }
   }
   static init_method_is_override_tip_basis() {
-    if (!this.#_bindings.method_is_override_tip_basis) {
+    if (!this._bindings.method_is_override_tip_basis) {
       let classname = new StringName("SkeletonIK3D");
       let methodname = new StringName("is_override_tip_basis");
-      this.#_bindings.method_is_override_tip_basis = internal.classdb_get_method_bind(
+      this._bindings.method_is_override_tip_basis = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -158,10 +159,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
     }
   }
   static init_method_set_use_magnet() {
-    if (!this.#_bindings.method_set_use_magnet) {
+    if (!this._bindings.method_set_use_magnet) {
       let classname = new StringName("SkeletonIK3D");
       let methodname = new StringName("set_use_magnet");
-      this.#_bindings.method_set_use_magnet = internal.classdb_get_method_bind(
+      this._bindings.method_set_use_magnet = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -169,10 +170,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
     }
   }
   static init_method_is_using_magnet() {
-    if (!this.#_bindings.method_is_using_magnet) {
+    if (!this._bindings.method_is_using_magnet) {
       let classname = new StringName("SkeletonIK3D");
       let methodname = new StringName("is_using_magnet");
-      this.#_bindings.method_is_using_magnet = internal.classdb_get_method_bind(
+      this._bindings.method_is_using_magnet = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -180,10 +181,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
     }
   }
   static init_method_set_magnet_position() {
-    if (!this.#_bindings.method_set_magnet_position) {
+    if (!this._bindings.method_set_magnet_position) {
       let classname = new StringName("SkeletonIK3D");
       let methodname = new StringName("set_magnet_position");
-      this.#_bindings.method_set_magnet_position = internal.classdb_get_method_bind(
+      this._bindings.method_set_magnet_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -191,10 +192,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
     }
   }
   static init_method_get_magnet_position() {
-    if (!this.#_bindings.method_get_magnet_position) {
+    if (!this._bindings.method_get_magnet_position) {
       let classname = new StringName("SkeletonIK3D");
       let methodname = new StringName("get_magnet_position");
-      this.#_bindings.method_get_magnet_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_magnet_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3360562783
@@ -202,10 +203,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
     }
   }
   static init_method_get_parent_skeleton() {
-    if (!this.#_bindings.method_get_parent_skeleton) {
+    if (!this._bindings.method_get_parent_skeleton) {
       let classname = new StringName("SkeletonIK3D");
       let methodname = new StringName("get_parent_skeleton");
-      this.#_bindings.method_get_parent_skeleton = internal.classdb_get_method_bind(
+      this._bindings.method_get_parent_skeleton = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1488626673
@@ -213,10 +214,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
     }
   }
   static init_method_is_running() {
-    if (!this.#_bindings.method_is_running) {
+    if (!this._bindings.method_is_running) {
       let classname = new StringName("SkeletonIK3D");
       let methodname = new StringName("is_running");
-      this.#_bindings.method_is_running = internal.classdb_get_method_bind(
+      this._bindings.method_is_running = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2240911060
@@ -224,10 +225,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
     }
   }
   static init_method_set_min_distance() {
-    if (!this.#_bindings.method_set_min_distance) {
+    if (!this._bindings.method_set_min_distance) {
       let classname = new StringName("SkeletonIK3D");
       let methodname = new StringName("set_min_distance");
-      this.#_bindings.method_set_min_distance = internal.classdb_get_method_bind(
+      this._bindings.method_set_min_distance = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -235,10 +236,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
     }
   }
   static init_method_get_min_distance() {
-    if (!this.#_bindings.method_get_min_distance) {
+    if (!this._bindings.method_get_min_distance) {
       let classname = new StringName("SkeletonIK3D");
       let methodname = new StringName("get_min_distance");
-      this.#_bindings.method_get_min_distance = internal.classdb_get_method_bind(
+      this._bindings.method_get_min_distance = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -246,10 +247,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
     }
   }
   static init_method_set_max_iterations() {
-    if (!this.#_bindings.method_set_max_iterations) {
+    if (!this._bindings.method_set_max_iterations) {
       let classname = new StringName("SkeletonIK3D");
       let methodname = new StringName("set_max_iterations");
-      this.#_bindings.method_set_max_iterations = internal.classdb_get_method_bind(
+      this._bindings.method_set_max_iterations = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -257,10 +258,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
     }
   }
   static init_method_get_max_iterations() {
-    if (!this.#_bindings.method_get_max_iterations) {
+    if (!this._bindings.method_get_max_iterations) {
       let classname = new StringName("SkeletonIK3D");
       let methodname = new StringName("get_max_iterations");
-      this.#_bindings.method_get_max_iterations = internal.classdb_get_method_bind(
+      this._bindings.method_get_max_iterations = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -268,10 +269,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
     }
   }
   static init_method_start() {
-    if (!this.#_bindings.method_start) {
+    if (!this._bindings.method_start) {
       let classname = new StringName("SkeletonIK3D");
       let methodname = new StringName("start");
-      this.#_bindings.method_start = internal.classdb_get_method_bind(
+      this._bindings.method_start = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         107499316
@@ -279,10 +280,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
     }
   }
   static init_method_stop() {
-    if (!this.#_bindings.method_stop) {
+    if (!this._bindings.method_stop) {
       let classname = new StringName("SkeletonIK3D");
       let methodname = new StringName("stop");
-      this.#_bindings.method_stop = internal.classdb_get_method_bind(
+      this._bindings.method_stop = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -290,10 +291,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
     }
   }
   static init_method_set_interpolation() {
-    if (!this.#_bindings.method_set_interpolation) {
+    if (!this._bindings.method_set_interpolation) {
       let classname = new StringName("SkeletonIK3D");
       let methodname = new StringName("set_interpolation");
-      this.#_bindings.method_set_interpolation = internal.classdb_get_method_bind(
+      this._bindings.method_set_interpolation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -301,10 +302,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
     }
   }
   static init_method_get_interpolation() {
-    if (!this.#_bindings.method_get_interpolation) {
+    if (!this._bindings.method_get_interpolation) {
       let classname = new StringName("SkeletonIK3D");
       let methodname = new StringName("get_interpolation");
-      this.#_bindings.method_get_interpolation = internal.classdb_get_method_bind(
+      this._bindings.method_get_interpolation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -317,7 +318,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   set_root_bone(_root_bone) {
     SkeletonIK3D.init_method_set_root_bone();
     return _call_native_mb_no_ret(
-      SkeletonIK3D.#_bindings.method_set_root_bone,
+      SkeletonIK3D._bindings.method_set_root_bone,
       this._owner,
       _root_bone
     );
@@ -326,7 +327,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   get_root_bone() {
     SkeletonIK3D.init_method_get_root_bone();
     return _call_native_mb_ret(
-      SkeletonIK3D.#_bindings.method_get_root_bone,
+      SkeletonIK3D._bindings.method_get_root_bone,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -337,7 +338,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   set_tip_bone(_tip_bone) {
     SkeletonIK3D.init_method_set_tip_bone();
     return _call_native_mb_no_ret(
-      SkeletonIK3D.#_bindings.method_set_tip_bone,
+      SkeletonIK3D._bindings.method_set_tip_bone,
       this._owner,
       _tip_bone
     );
@@ -346,7 +347,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   get_tip_bone() {
     SkeletonIK3D.init_method_get_tip_bone();
     return _call_native_mb_ret(
-      SkeletonIK3D.#_bindings.method_get_tip_bone,
+      SkeletonIK3D._bindings.method_get_tip_bone,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -357,7 +358,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   set_target_transform(_target) {
     SkeletonIK3D.init_method_set_target_transform();
     return _call_native_mb_no_ret(
-      SkeletonIK3D.#_bindings.method_set_target_transform,
+      SkeletonIK3D._bindings.method_set_target_transform,
       this._owner,
       _target
     );
@@ -366,7 +367,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   get_target_transform() {
     SkeletonIK3D.init_method_get_target_transform();
     return _call_native_mb_ret(
-      SkeletonIK3D.#_bindings.method_get_target_transform,
+      SkeletonIK3D._bindings.method_get_target_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -377,7 +378,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   set_target_node(_node) {
     SkeletonIK3D.init_method_set_target_node();
     return _call_native_mb_no_ret(
-      SkeletonIK3D.#_bindings.method_set_target_node,
+      SkeletonIK3D._bindings.method_set_target_node,
       this._owner,
       _node
     );
@@ -386,7 +387,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   get_target_node() {
     SkeletonIK3D.init_method_get_target_node();
     return _call_native_mb_ret(
-      SkeletonIK3D.#_bindings.method_get_target_node,
+      SkeletonIK3D._bindings.method_get_target_node,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -397,7 +398,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   set_override_tip_basis(_override) {
     SkeletonIK3D.init_method_set_override_tip_basis();
     return _call_native_mb_no_ret(
-      SkeletonIK3D.#_bindings.method_set_override_tip_basis,
+      SkeletonIK3D._bindings.method_set_override_tip_basis,
       this._owner,
       _override
     );
@@ -406,7 +407,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   is_override_tip_basis() {
     SkeletonIK3D.init_method_is_override_tip_basis();
     return _call_native_mb_ret(
-      SkeletonIK3D.#_bindings.method_is_override_tip_basis,
+      SkeletonIK3D._bindings.method_is_override_tip_basis,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -417,7 +418,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   set_use_magnet(_use) {
     SkeletonIK3D.init_method_set_use_magnet();
     return _call_native_mb_no_ret(
-      SkeletonIK3D.#_bindings.method_set_use_magnet,
+      SkeletonIK3D._bindings.method_set_use_magnet,
       this._owner,
       _use
     );
@@ -426,7 +427,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   is_using_magnet() {
     SkeletonIK3D.init_method_is_using_magnet();
     return _call_native_mb_ret(
-      SkeletonIK3D.#_bindings.method_is_using_magnet,
+      SkeletonIK3D._bindings.method_is_using_magnet,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -437,7 +438,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   set_magnet_position(_local_position) {
     SkeletonIK3D.init_method_set_magnet_position();
     return _call_native_mb_no_ret(
-      SkeletonIK3D.#_bindings.method_set_magnet_position,
+      SkeletonIK3D._bindings.method_set_magnet_position,
       this._owner,
       _local_position
     );
@@ -446,7 +447,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   get_magnet_position() {
     SkeletonIK3D.init_method_get_magnet_position();
     return _call_native_mb_ret(
-      SkeletonIK3D.#_bindings.method_get_magnet_position,
+      SkeletonIK3D._bindings.method_get_magnet_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -457,7 +458,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   get_parent_skeleton() {
     SkeletonIK3D.init_method_get_parent_skeleton();
     return _call_native_mb_ret(
-      SkeletonIK3D.#_bindings.method_get_parent_skeleton,
+      SkeletonIK3D._bindings.method_get_parent_skeleton,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -467,7 +468,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   is_running() {
     SkeletonIK3D.init_method_is_running();
     return _call_native_mb_ret(
-      SkeletonIK3D.#_bindings.method_is_running,
+      SkeletonIK3D._bindings.method_is_running,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -478,7 +479,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   set_min_distance(_min_distance) {
     SkeletonIK3D.init_method_set_min_distance();
     return _call_native_mb_no_ret(
-      SkeletonIK3D.#_bindings.method_set_min_distance,
+      SkeletonIK3D._bindings.method_set_min_distance,
       this._owner,
       _min_distance
     );
@@ -487,7 +488,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   get_min_distance() {
     SkeletonIK3D.init_method_get_min_distance();
     return _call_native_mb_ret(
-      SkeletonIK3D.#_bindings.method_get_min_distance,
+      SkeletonIK3D._bindings.method_get_min_distance,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -498,7 +499,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   set_max_iterations(_iterations) {
     SkeletonIK3D.init_method_set_max_iterations();
     return _call_native_mb_no_ret(
-      SkeletonIK3D.#_bindings.method_set_max_iterations,
+      SkeletonIK3D._bindings.method_set_max_iterations,
       this._owner,
       _iterations
     );
@@ -507,7 +508,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   get_max_iterations() {
     SkeletonIK3D.init_method_get_max_iterations();
     return _call_native_mb_ret(
-      SkeletonIK3D.#_bindings.method_get_max_iterations,
+      SkeletonIK3D._bindings.method_get_max_iterations,
       this._owner,
 			Variant.Type.INT,
     
@@ -518,7 +519,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   start(_one_time) {
     SkeletonIK3D.init_method_start();
     return _call_native_mb_no_ret(
-      SkeletonIK3D.#_bindings.method_start,
+      SkeletonIK3D._bindings.method_start,
       this._owner,
       _one_time
     );
@@ -527,7 +528,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   stop() {
     SkeletonIK3D.init_method_stop();
     return _call_native_mb_no_ret(
-      SkeletonIK3D.#_bindings.method_stop,
+      SkeletonIK3D._bindings.method_stop,
       this._owner,
       
     );
@@ -536,7 +537,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   set_interpolation(_interpolation) {
     SkeletonIK3D.init_method_set_interpolation();
     return _call_native_mb_no_ret(
-      SkeletonIK3D.#_bindings.method_set_interpolation,
+      SkeletonIK3D._bindings.method_set_interpolation,
       this._owner,
       _interpolation
     );
@@ -545,7 +546,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   get_interpolation() {
     SkeletonIK3D.init_method_get_interpolation();
     return _call_native_mb_ret(
-      SkeletonIK3D.#_bindings.method_get_interpolation,
+      SkeletonIK3D._bindings.method_get_interpolation,
       this._owner,
 			Variant.Type.FLOAT,
     

@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_tracker_type;
@@ -17,10 +18,10 @@ class _MethodBindings {
   method_get_tracker_desc;
   method_set_tracker_desc;
 }
+@GodotClass
 export class XRTracker extends RefCounted{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -30,10 +31,10 @@ export class XRTracker extends RefCounted{
     }
   }
   static init_method_get_tracker_type() {
-    if (!this.#_bindings.method_get_tracker_type) {
+    if (!this._bindings.method_get_tracker_type) {
       let classname = new StringName("XRTracker");
       let methodname = new StringName("get_tracker_type");
-      this.#_bindings.method_get_tracker_type = internal.classdb_get_method_bind(
+      this._bindings.method_get_tracker_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2784508102
@@ -41,10 +42,10 @@ export class XRTracker extends RefCounted{
     }
   }
   static init_method_set_tracker_type() {
-    if (!this.#_bindings.method_set_tracker_type) {
+    if (!this._bindings.method_set_tracker_type) {
       let classname = new StringName("XRTracker");
       let methodname = new StringName("set_tracker_type");
-      this.#_bindings.method_set_tracker_type = internal.classdb_get_method_bind(
+      this._bindings.method_set_tracker_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3055763575
@@ -52,10 +53,10 @@ export class XRTracker extends RefCounted{
     }
   }
   static init_method_get_tracker_name() {
-    if (!this.#_bindings.method_get_tracker_name) {
+    if (!this._bindings.method_get_tracker_name) {
       let classname = new StringName("XRTracker");
       let methodname = new StringName("get_tracker_name");
-      this.#_bindings.method_get_tracker_name = internal.classdb_get_method_bind(
+      this._bindings.method_get_tracker_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2002593661
@@ -63,10 +64,10 @@ export class XRTracker extends RefCounted{
     }
   }
   static init_method_set_tracker_name() {
-    if (!this.#_bindings.method_set_tracker_name) {
+    if (!this._bindings.method_set_tracker_name) {
       let classname = new StringName("XRTracker");
       let methodname = new StringName("set_tracker_name");
-      this.#_bindings.method_set_tracker_name = internal.classdb_get_method_bind(
+      this._bindings.method_set_tracker_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -74,10 +75,10 @@ export class XRTracker extends RefCounted{
     }
   }
   static init_method_get_tracker_desc() {
-    if (!this.#_bindings.method_get_tracker_desc) {
+    if (!this._bindings.method_get_tracker_desc) {
       let classname = new StringName("XRTracker");
       let methodname = new StringName("get_tracker_desc");
-      this.#_bindings.method_get_tracker_desc = internal.classdb_get_method_bind(
+      this._bindings.method_get_tracker_desc = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -85,10 +86,10 @@ export class XRTracker extends RefCounted{
     }
   }
   static init_method_set_tracker_desc() {
-    if (!this.#_bindings.method_set_tracker_desc) {
+    if (!this._bindings.method_set_tracker_desc) {
       let classname = new StringName("XRTracker");
       let methodname = new StringName("set_tracker_desc");
-      this.#_bindings.method_set_tracker_desc = internal.classdb_get_method_bind(
+      this._bindings.method_set_tracker_desc = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -101,7 +102,7 @@ export class XRTracker extends RefCounted{
   get_tracker_type() {
     XRTracker.init_method_get_tracker_type();
     return _call_native_mb_ret(
-      XRTracker.#_bindings.method_get_tracker_type,
+      XRTracker._bindings.method_get_tracker_type,
       this._owner,
 			Variant.Type.INT,
     
@@ -112,7 +113,7 @@ export class XRTracker extends RefCounted{
   set_tracker_type(_type) {
     XRTracker.init_method_set_tracker_type();
     return _call_native_mb_no_ret(
-      XRTracker.#_bindings.method_set_tracker_type,
+      XRTracker._bindings.method_set_tracker_type,
       this._owner,
       _type
     );
@@ -121,7 +122,7 @@ export class XRTracker extends RefCounted{
   get_tracker_name() {
     XRTracker.init_method_get_tracker_name();
     return _call_native_mb_ret(
-      XRTracker.#_bindings.method_get_tracker_name,
+      XRTracker._bindings.method_get_tracker_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -132,7 +133,7 @@ export class XRTracker extends RefCounted{
   set_tracker_name(_name) {
     XRTracker.init_method_set_tracker_name();
     return _call_native_mb_no_ret(
-      XRTracker.#_bindings.method_set_tracker_name,
+      XRTracker._bindings.method_set_tracker_name,
       this._owner,
       _name
     );
@@ -141,7 +142,7 @@ export class XRTracker extends RefCounted{
   get_tracker_desc() {
     XRTracker.init_method_get_tracker_desc();
     return _call_native_mb_ret(
-      XRTracker.#_bindings.method_get_tracker_desc,
+      XRTracker._bindings.method_get_tracker_desc,
       this._owner,
 			Variant.Type.STRING,
     
@@ -152,7 +153,7 @@ export class XRTracker extends RefCounted{
   set_tracker_desc(_description) {
     XRTracker.init_method_set_tracker_desc();
     return _call_native_mb_no_ret(
-      XRTracker.#_bindings.method_set_tracker_desc,
+      XRTracker._bindings.method_set_tracker_desc,
       this._owner,
       _description
     );

@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_default_input_port;
@@ -22,10 +23,10 @@ class _MethodBindings {
   method_set_frame;
   method_get_frame;
 }
+@GodotClass
 export class VisualShaderNode extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -35,10 +36,10 @@ export class VisualShaderNode extends Resource{
     }
   }
   static init_method_get_default_input_port() {
-    if (!this.#_bindings.method_get_default_input_port) {
+    if (!this._bindings.method_get_default_input_port) {
       let classname = new StringName("VisualShaderNode");
       let methodname = new StringName("get_default_input_port");
-      this.#_bindings.method_get_default_input_port = internal.classdb_get_method_bind(
+      this._bindings.method_get_default_input_port = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1894493699
@@ -46,10 +47,10 @@ export class VisualShaderNode extends Resource{
     }
   }
   static init_method_set_output_port_for_preview() {
-    if (!this.#_bindings.method_set_output_port_for_preview) {
+    if (!this._bindings.method_set_output_port_for_preview) {
       let classname = new StringName("VisualShaderNode");
       let methodname = new StringName("set_output_port_for_preview");
-      this.#_bindings.method_set_output_port_for_preview = internal.classdb_get_method_bind(
+      this._bindings.method_set_output_port_for_preview = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -57,10 +58,10 @@ export class VisualShaderNode extends Resource{
     }
   }
   static init_method_get_output_port_for_preview() {
-    if (!this.#_bindings.method_get_output_port_for_preview) {
+    if (!this._bindings.method_get_output_port_for_preview) {
       let classname = new StringName("VisualShaderNode");
       let methodname = new StringName("get_output_port_for_preview");
-      this.#_bindings.method_get_output_port_for_preview = internal.classdb_get_method_bind(
+      this._bindings.method_get_output_port_for_preview = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -68,10 +69,10 @@ export class VisualShaderNode extends Resource{
     }
   }
   static init_method_set_input_port_default_value() {
-    if (!this.#_bindings.method_set_input_port_default_value) {
+    if (!this._bindings.method_set_input_port_default_value) {
       let classname = new StringName("VisualShaderNode");
       let methodname = new StringName("set_input_port_default_value");
-      this.#_bindings.method_set_input_port_default_value = internal.classdb_get_method_bind(
+      this._bindings.method_set_input_port_default_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         150923387
@@ -79,10 +80,10 @@ export class VisualShaderNode extends Resource{
     }
   }
   static init_method_get_input_port_default_value() {
-    if (!this.#_bindings.method_get_input_port_default_value) {
+    if (!this._bindings.method_get_input_port_default_value) {
       let classname = new StringName("VisualShaderNode");
       let methodname = new StringName("get_input_port_default_value");
-      this.#_bindings.method_get_input_port_default_value = internal.classdb_get_method_bind(
+      this._bindings.method_get_input_port_default_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4227898402
@@ -90,10 +91,10 @@ export class VisualShaderNode extends Resource{
     }
   }
   static init_method_remove_input_port_default_value() {
-    if (!this.#_bindings.method_remove_input_port_default_value) {
+    if (!this._bindings.method_remove_input_port_default_value) {
       let classname = new StringName("VisualShaderNode");
       let methodname = new StringName("remove_input_port_default_value");
-      this.#_bindings.method_remove_input_port_default_value = internal.classdb_get_method_bind(
+      this._bindings.method_remove_input_port_default_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -101,10 +102,10 @@ export class VisualShaderNode extends Resource{
     }
   }
   static init_method_clear_default_input_values() {
-    if (!this.#_bindings.method_clear_default_input_values) {
+    if (!this._bindings.method_clear_default_input_values) {
       let classname = new StringName("VisualShaderNode");
       let methodname = new StringName("clear_default_input_values");
-      this.#_bindings.method_clear_default_input_values = internal.classdb_get_method_bind(
+      this._bindings.method_clear_default_input_values = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -112,10 +113,10 @@ export class VisualShaderNode extends Resource{
     }
   }
   static init_method_set_default_input_values() {
-    if (!this.#_bindings.method_set_default_input_values) {
+    if (!this._bindings.method_set_default_input_values) {
       let classname = new StringName("VisualShaderNode");
       let methodname = new StringName("set_default_input_values");
-      this.#_bindings.method_set_default_input_values = internal.classdb_get_method_bind(
+      this._bindings.method_set_default_input_values = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         381264803
@@ -123,10 +124,10 @@ export class VisualShaderNode extends Resource{
     }
   }
   static init_method_get_default_input_values() {
-    if (!this.#_bindings.method_get_default_input_values) {
+    if (!this._bindings.method_get_default_input_values) {
       let classname = new StringName("VisualShaderNode");
       let methodname = new StringName("get_default_input_values");
-      this.#_bindings.method_get_default_input_values = internal.classdb_get_method_bind(
+      this._bindings.method_get_default_input_values = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -134,10 +135,10 @@ export class VisualShaderNode extends Resource{
     }
   }
   static init_method_set_frame() {
-    if (!this.#_bindings.method_set_frame) {
+    if (!this._bindings.method_set_frame) {
       let classname = new StringName("VisualShaderNode");
       let methodname = new StringName("set_frame");
-      this.#_bindings.method_set_frame = internal.classdb_get_method_bind(
+      this._bindings.method_set_frame = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -145,10 +146,10 @@ export class VisualShaderNode extends Resource{
     }
   }
   static init_method_get_frame() {
-    if (!this.#_bindings.method_get_frame) {
+    if (!this._bindings.method_get_frame) {
       let classname = new StringName("VisualShaderNode");
       let methodname = new StringName("get_frame");
-      this.#_bindings.method_get_frame = internal.classdb_get_method_bind(
+      this._bindings.method_get_frame = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -161,7 +162,7 @@ export class VisualShaderNode extends Resource{
   get_default_input_port(_type) {
     VisualShaderNode.init_method_get_default_input_port();
     return _call_native_mb_ret(
-      VisualShaderNode.#_bindings.method_get_default_input_port,
+      VisualShaderNode._bindings.method_get_default_input_port,
       this._owner,
 			Variant.Type.INT,
     
@@ -172,7 +173,7 @@ export class VisualShaderNode extends Resource{
   set_output_port_for_preview(_port) {
     VisualShaderNode.init_method_set_output_port_for_preview();
     return _call_native_mb_no_ret(
-      VisualShaderNode.#_bindings.method_set_output_port_for_preview,
+      VisualShaderNode._bindings.method_set_output_port_for_preview,
       this._owner,
       _port
     );
@@ -181,7 +182,7 @@ export class VisualShaderNode extends Resource{
   get_output_port_for_preview() {
     VisualShaderNode.init_method_get_output_port_for_preview();
     return _call_native_mb_ret(
-      VisualShaderNode.#_bindings.method_get_output_port_for_preview,
+      VisualShaderNode._bindings.method_get_output_port_for_preview,
       this._owner,
 			Variant.Type.INT,
     
@@ -192,7 +193,7 @@ export class VisualShaderNode extends Resource{
   set_input_port_default_value(_port, _value, _prev_value) {
     VisualShaderNode.init_method_set_input_port_default_value();
     return _call_native_mb_no_ret(
-      VisualShaderNode.#_bindings.method_set_input_port_default_value,
+      VisualShaderNode._bindings.method_set_input_port_default_value,
       this._owner,
       _port, _value, _prev_value
     );
@@ -201,7 +202,7 @@ export class VisualShaderNode extends Resource{
   get_input_port_default_value(_port) {
     VisualShaderNode.init_method_get_input_port_default_value();
     return _call_native_mb_ret(
-      VisualShaderNode.#_bindings.method_get_input_port_default_value,
+      VisualShaderNode._bindings.method_get_input_port_default_value,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -212,7 +213,7 @@ export class VisualShaderNode extends Resource{
   remove_input_port_default_value(_port) {
     VisualShaderNode.init_method_remove_input_port_default_value();
     return _call_native_mb_no_ret(
-      VisualShaderNode.#_bindings.method_remove_input_port_default_value,
+      VisualShaderNode._bindings.method_remove_input_port_default_value,
       this._owner,
       _port
     );
@@ -221,7 +222,7 @@ export class VisualShaderNode extends Resource{
   clear_default_input_values() {
     VisualShaderNode.init_method_clear_default_input_values();
     return _call_native_mb_no_ret(
-      VisualShaderNode.#_bindings.method_clear_default_input_values,
+      VisualShaderNode._bindings.method_clear_default_input_values,
       this._owner,
       
     );
@@ -230,7 +231,7 @@ export class VisualShaderNode extends Resource{
   set_default_input_values(_values) {
     VisualShaderNode.init_method_set_default_input_values();
     return _call_native_mb_no_ret(
-      VisualShaderNode.#_bindings.method_set_default_input_values,
+      VisualShaderNode._bindings.method_set_default_input_values,
       this._owner,
       _values
     );
@@ -239,7 +240,7 @@ export class VisualShaderNode extends Resource{
   get_default_input_values() {
     VisualShaderNode.init_method_get_default_input_values();
     return _call_native_mb_ret(
-      VisualShaderNode.#_bindings.method_get_default_input_values,
+      VisualShaderNode._bindings.method_get_default_input_values,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -250,7 +251,7 @@ export class VisualShaderNode extends Resource{
   set_frame(_frame) {
     VisualShaderNode.init_method_set_frame();
     return _call_native_mb_no_ret(
-      VisualShaderNode.#_bindings.method_set_frame,
+      VisualShaderNode._bindings.method_set_frame,
       this._owner,
       _frame
     );
@@ -259,7 +260,7 @@ export class VisualShaderNode extends Resource{
   get_frame() {
     VisualShaderNode.init_method_get_frame();
     return _call_native_mb_ret(
-      VisualShaderNode.#_bindings.method_get_frame,
+      VisualShaderNode._bindings.method_get_frame,
       this._owner,
 			Variant.Type.INT,
     

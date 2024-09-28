@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Control } from '@js_godot/classes/control'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_horizontal_alignment;
@@ -56,10 +57,10 @@ class _MethodBindings {
   method_get_structured_text_bidi_override_options;
   method_get_character_bounds;
 }
+@GodotClass
 export class Label extends Control{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -69,10 +70,10 @@ export class Label extends Control{
     }
   }
   static init_method_set_horizontal_alignment() {
-    if (!this.#_bindings.method_set_horizontal_alignment) {
+    if (!this._bindings.method_set_horizontal_alignment) {
       let classname = new StringName("Label");
       let methodname = new StringName("set_horizontal_alignment");
-      this.#_bindings.method_set_horizontal_alignment = internal.classdb_get_method_bind(
+      this._bindings.method_set_horizontal_alignment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2312603777
@@ -80,10 +81,10 @@ export class Label extends Control{
     }
   }
   static init_method_get_horizontal_alignment() {
-    if (!this.#_bindings.method_get_horizontal_alignment) {
+    if (!this._bindings.method_get_horizontal_alignment) {
       let classname = new StringName("Label");
       let methodname = new StringName("get_horizontal_alignment");
-      this.#_bindings.method_get_horizontal_alignment = internal.classdb_get_method_bind(
+      this._bindings.method_get_horizontal_alignment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         341400642
@@ -91,10 +92,10 @@ export class Label extends Control{
     }
   }
   static init_method_set_vertical_alignment() {
-    if (!this.#_bindings.method_set_vertical_alignment) {
+    if (!this._bindings.method_set_vertical_alignment) {
       let classname = new StringName("Label");
       let methodname = new StringName("set_vertical_alignment");
-      this.#_bindings.method_set_vertical_alignment = internal.classdb_get_method_bind(
+      this._bindings.method_set_vertical_alignment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1796458609
@@ -102,10 +103,10 @@ export class Label extends Control{
     }
   }
   static init_method_get_vertical_alignment() {
-    if (!this.#_bindings.method_get_vertical_alignment) {
+    if (!this._bindings.method_get_vertical_alignment) {
       let classname = new StringName("Label");
       let methodname = new StringName("get_vertical_alignment");
-      this.#_bindings.method_get_vertical_alignment = internal.classdb_get_method_bind(
+      this._bindings.method_get_vertical_alignment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3274884059
@@ -113,10 +114,10 @@ export class Label extends Control{
     }
   }
   static init_method_set_text() {
-    if (!this.#_bindings.method_set_text) {
+    if (!this._bindings.method_set_text) {
       let classname = new StringName("Label");
       let methodname = new StringName("set_text");
-      this.#_bindings.method_set_text = internal.classdb_get_method_bind(
+      this._bindings.method_set_text = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -124,10 +125,10 @@ export class Label extends Control{
     }
   }
   static init_method_get_text() {
-    if (!this.#_bindings.method_get_text) {
+    if (!this._bindings.method_get_text) {
       let classname = new StringName("Label");
       let methodname = new StringName("get_text");
-      this.#_bindings.method_get_text = internal.classdb_get_method_bind(
+      this._bindings.method_get_text = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -135,10 +136,10 @@ export class Label extends Control{
     }
   }
   static init_method_set_label_settings() {
-    if (!this.#_bindings.method_set_label_settings) {
+    if (!this._bindings.method_set_label_settings) {
       let classname = new StringName("Label");
       let methodname = new StringName("set_label_settings");
-      this.#_bindings.method_set_label_settings = internal.classdb_get_method_bind(
+      this._bindings.method_set_label_settings = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1030653839
@@ -146,10 +147,10 @@ export class Label extends Control{
     }
   }
   static init_method_get_label_settings() {
-    if (!this.#_bindings.method_get_label_settings) {
+    if (!this._bindings.method_get_label_settings) {
       let classname = new StringName("Label");
       let methodname = new StringName("get_label_settings");
-      this.#_bindings.method_get_label_settings = internal.classdb_get_method_bind(
+      this._bindings.method_get_label_settings = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         826676056
@@ -157,10 +158,10 @@ export class Label extends Control{
     }
   }
   static init_method_set_text_direction() {
-    if (!this.#_bindings.method_set_text_direction) {
+    if (!this._bindings.method_set_text_direction) {
       let classname = new StringName("Label");
       let methodname = new StringName("set_text_direction");
-      this.#_bindings.method_set_text_direction = internal.classdb_get_method_bind(
+      this._bindings.method_set_text_direction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         119160795
@@ -168,10 +169,10 @@ export class Label extends Control{
     }
   }
   static init_method_get_text_direction() {
-    if (!this.#_bindings.method_get_text_direction) {
+    if (!this._bindings.method_get_text_direction) {
       let classname = new StringName("Label");
       let methodname = new StringName("get_text_direction");
-      this.#_bindings.method_get_text_direction = internal.classdb_get_method_bind(
+      this._bindings.method_get_text_direction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         797257663
@@ -179,10 +180,10 @@ export class Label extends Control{
     }
   }
   static init_method_set_language() {
-    if (!this.#_bindings.method_set_language) {
+    if (!this._bindings.method_set_language) {
       let classname = new StringName("Label");
       let methodname = new StringName("set_language");
-      this.#_bindings.method_set_language = internal.classdb_get_method_bind(
+      this._bindings.method_set_language = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -190,10 +191,10 @@ export class Label extends Control{
     }
   }
   static init_method_get_language() {
-    if (!this.#_bindings.method_get_language) {
+    if (!this._bindings.method_get_language) {
       let classname = new StringName("Label");
       let methodname = new StringName("get_language");
-      this.#_bindings.method_get_language = internal.classdb_get_method_bind(
+      this._bindings.method_get_language = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -201,10 +202,10 @@ export class Label extends Control{
     }
   }
   static init_method_set_autowrap_mode() {
-    if (!this.#_bindings.method_set_autowrap_mode) {
+    if (!this._bindings.method_set_autowrap_mode) {
       let classname = new StringName("Label");
       let methodname = new StringName("set_autowrap_mode");
-      this.#_bindings.method_set_autowrap_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_autowrap_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3289138044
@@ -212,10 +213,10 @@ export class Label extends Control{
     }
   }
   static init_method_get_autowrap_mode() {
-    if (!this.#_bindings.method_get_autowrap_mode) {
+    if (!this._bindings.method_get_autowrap_mode) {
       let classname = new StringName("Label");
       let methodname = new StringName("get_autowrap_mode");
-      this.#_bindings.method_get_autowrap_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_autowrap_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1549071663
@@ -223,10 +224,10 @@ export class Label extends Control{
     }
   }
   static init_method_set_justification_flags() {
-    if (!this.#_bindings.method_set_justification_flags) {
+    if (!this._bindings.method_set_justification_flags) {
       let classname = new StringName("Label");
       let methodname = new StringName("set_justification_flags");
-      this.#_bindings.method_set_justification_flags = internal.classdb_get_method_bind(
+      this._bindings.method_set_justification_flags = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2877345813
@@ -234,10 +235,10 @@ export class Label extends Control{
     }
   }
   static init_method_get_justification_flags() {
-    if (!this.#_bindings.method_get_justification_flags) {
+    if (!this._bindings.method_get_justification_flags) {
       let classname = new StringName("Label");
       let methodname = new StringName("get_justification_flags");
-      this.#_bindings.method_get_justification_flags = internal.classdb_get_method_bind(
+      this._bindings.method_get_justification_flags = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1583363614
@@ -245,10 +246,10 @@ export class Label extends Control{
     }
   }
   static init_method_set_clip_text() {
-    if (!this.#_bindings.method_set_clip_text) {
+    if (!this._bindings.method_set_clip_text) {
       let classname = new StringName("Label");
       let methodname = new StringName("set_clip_text");
-      this.#_bindings.method_set_clip_text = internal.classdb_get_method_bind(
+      this._bindings.method_set_clip_text = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -256,10 +257,10 @@ export class Label extends Control{
     }
   }
   static init_method_is_clipping_text() {
-    if (!this.#_bindings.method_is_clipping_text) {
+    if (!this._bindings.method_is_clipping_text) {
       let classname = new StringName("Label");
       let methodname = new StringName("is_clipping_text");
-      this.#_bindings.method_is_clipping_text = internal.classdb_get_method_bind(
+      this._bindings.method_is_clipping_text = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -267,10 +268,10 @@ export class Label extends Control{
     }
   }
   static init_method_set_tab_stops() {
-    if (!this.#_bindings.method_set_tab_stops) {
+    if (!this._bindings.method_set_tab_stops) {
       let classname = new StringName("Label");
       let methodname = new StringName("set_tab_stops");
-      this.#_bindings.method_set_tab_stops = internal.classdb_get_method_bind(
+      this._bindings.method_set_tab_stops = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2899603908
@@ -278,10 +279,10 @@ export class Label extends Control{
     }
   }
   static init_method_get_tab_stops() {
-    if (!this.#_bindings.method_get_tab_stops) {
+    if (!this._bindings.method_get_tab_stops) {
       let classname = new StringName("Label");
       let methodname = new StringName("get_tab_stops");
-      this.#_bindings.method_get_tab_stops = internal.classdb_get_method_bind(
+      this._bindings.method_get_tab_stops = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         675695659
@@ -289,10 +290,10 @@ export class Label extends Control{
     }
   }
   static init_method_set_text_overrun_behavior() {
-    if (!this.#_bindings.method_set_text_overrun_behavior) {
+    if (!this._bindings.method_set_text_overrun_behavior) {
       let classname = new StringName("Label");
       let methodname = new StringName("set_text_overrun_behavior");
-      this.#_bindings.method_set_text_overrun_behavior = internal.classdb_get_method_bind(
+      this._bindings.method_set_text_overrun_behavior = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1008890932
@@ -300,10 +301,10 @@ export class Label extends Control{
     }
   }
   static init_method_get_text_overrun_behavior() {
-    if (!this.#_bindings.method_get_text_overrun_behavior) {
+    if (!this._bindings.method_get_text_overrun_behavior) {
       let classname = new StringName("Label");
       let methodname = new StringName("get_text_overrun_behavior");
-      this.#_bindings.method_get_text_overrun_behavior = internal.classdb_get_method_bind(
+      this._bindings.method_get_text_overrun_behavior = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3779142101
@@ -311,10 +312,10 @@ export class Label extends Control{
     }
   }
   static init_method_set_ellipsis_char() {
-    if (!this.#_bindings.method_set_ellipsis_char) {
+    if (!this._bindings.method_set_ellipsis_char) {
       let classname = new StringName("Label");
       let methodname = new StringName("set_ellipsis_char");
-      this.#_bindings.method_set_ellipsis_char = internal.classdb_get_method_bind(
+      this._bindings.method_set_ellipsis_char = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -322,10 +323,10 @@ export class Label extends Control{
     }
   }
   static init_method_get_ellipsis_char() {
-    if (!this.#_bindings.method_get_ellipsis_char) {
+    if (!this._bindings.method_get_ellipsis_char) {
       let classname = new StringName("Label");
       let methodname = new StringName("get_ellipsis_char");
-      this.#_bindings.method_get_ellipsis_char = internal.classdb_get_method_bind(
+      this._bindings.method_get_ellipsis_char = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -333,10 +334,10 @@ export class Label extends Control{
     }
   }
   static init_method_set_uppercase() {
-    if (!this.#_bindings.method_set_uppercase) {
+    if (!this._bindings.method_set_uppercase) {
       let classname = new StringName("Label");
       let methodname = new StringName("set_uppercase");
-      this.#_bindings.method_set_uppercase = internal.classdb_get_method_bind(
+      this._bindings.method_set_uppercase = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -344,10 +345,10 @@ export class Label extends Control{
     }
   }
   static init_method_is_uppercase() {
-    if (!this.#_bindings.method_is_uppercase) {
+    if (!this._bindings.method_is_uppercase) {
       let classname = new StringName("Label");
       let methodname = new StringName("is_uppercase");
-      this.#_bindings.method_is_uppercase = internal.classdb_get_method_bind(
+      this._bindings.method_is_uppercase = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -355,10 +356,10 @@ export class Label extends Control{
     }
   }
   static init_method_get_line_height() {
-    if (!this.#_bindings.method_get_line_height) {
+    if (!this._bindings.method_get_line_height) {
       let classname = new StringName("Label");
       let methodname = new StringName("get_line_height");
-      this.#_bindings.method_get_line_height = internal.classdb_get_method_bind(
+      this._bindings.method_get_line_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         181039630
@@ -366,10 +367,10 @@ export class Label extends Control{
     }
   }
   static init_method_get_line_count() {
-    if (!this.#_bindings.method_get_line_count) {
+    if (!this._bindings.method_get_line_count) {
       let classname = new StringName("Label");
       let methodname = new StringName("get_line_count");
-      this.#_bindings.method_get_line_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_line_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -377,10 +378,10 @@ export class Label extends Control{
     }
   }
   static init_method_get_visible_line_count() {
-    if (!this.#_bindings.method_get_visible_line_count) {
+    if (!this._bindings.method_get_visible_line_count) {
       let classname = new StringName("Label");
       let methodname = new StringName("get_visible_line_count");
-      this.#_bindings.method_get_visible_line_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_visible_line_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -388,10 +389,10 @@ export class Label extends Control{
     }
   }
   static init_method_get_total_character_count() {
-    if (!this.#_bindings.method_get_total_character_count) {
+    if (!this._bindings.method_get_total_character_count) {
       let classname = new StringName("Label");
       let methodname = new StringName("get_total_character_count");
-      this.#_bindings.method_get_total_character_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_total_character_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -399,10 +400,10 @@ export class Label extends Control{
     }
   }
   static init_method_set_visible_characters() {
-    if (!this.#_bindings.method_set_visible_characters) {
+    if (!this._bindings.method_set_visible_characters) {
       let classname = new StringName("Label");
       let methodname = new StringName("set_visible_characters");
-      this.#_bindings.method_set_visible_characters = internal.classdb_get_method_bind(
+      this._bindings.method_set_visible_characters = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -410,10 +411,10 @@ export class Label extends Control{
     }
   }
   static init_method_get_visible_characters() {
-    if (!this.#_bindings.method_get_visible_characters) {
+    if (!this._bindings.method_get_visible_characters) {
       let classname = new StringName("Label");
       let methodname = new StringName("get_visible_characters");
-      this.#_bindings.method_get_visible_characters = internal.classdb_get_method_bind(
+      this._bindings.method_get_visible_characters = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -421,10 +422,10 @@ export class Label extends Control{
     }
   }
   static init_method_get_visible_characters_behavior() {
-    if (!this.#_bindings.method_get_visible_characters_behavior) {
+    if (!this._bindings.method_get_visible_characters_behavior) {
       let classname = new StringName("Label");
       let methodname = new StringName("get_visible_characters_behavior");
-      this.#_bindings.method_get_visible_characters_behavior = internal.classdb_get_method_bind(
+      this._bindings.method_get_visible_characters_behavior = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         258789322
@@ -432,10 +433,10 @@ export class Label extends Control{
     }
   }
   static init_method_set_visible_characters_behavior() {
-    if (!this.#_bindings.method_set_visible_characters_behavior) {
+    if (!this._bindings.method_set_visible_characters_behavior) {
       let classname = new StringName("Label");
       let methodname = new StringName("set_visible_characters_behavior");
-      this.#_bindings.method_set_visible_characters_behavior = internal.classdb_get_method_bind(
+      this._bindings.method_set_visible_characters_behavior = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3383839701
@@ -443,10 +444,10 @@ export class Label extends Control{
     }
   }
   static init_method_set_visible_ratio() {
-    if (!this.#_bindings.method_set_visible_ratio) {
+    if (!this._bindings.method_set_visible_ratio) {
       let classname = new StringName("Label");
       let methodname = new StringName("set_visible_ratio");
-      this.#_bindings.method_set_visible_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_set_visible_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -454,10 +455,10 @@ export class Label extends Control{
     }
   }
   static init_method_get_visible_ratio() {
-    if (!this.#_bindings.method_get_visible_ratio) {
+    if (!this._bindings.method_get_visible_ratio) {
       let classname = new StringName("Label");
       let methodname = new StringName("get_visible_ratio");
-      this.#_bindings.method_get_visible_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_get_visible_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -465,10 +466,10 @@ export class Label extends Control{
     }
   }
   static init_method_set_lines_skipped() {
-    if (!this.#_bindings.method_set_lines_skipped) {
+    if (!this._bindings.method_set_lines_skipped) {
       let classname = new StringName("Label");
       let methodname = new StringName("set_lines_skipped");
-      this.#_bindings.method_set_lines_skipped = internal.classdb_get_method_bind(
+      this._bindings.method_set_lines_skipped = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -476,10 +477,10 @@ export class Label extends Control{
     }
   }
   static init_method_get_lines_skipped() {
-    if (!this.#_bindings.method_get_lines_skipped) {
+    if (!this._bindings.method_get_lines_skipped) {
       let classname = new StringName("Label");
       let methodname = new StringName("get_lines_skipped");
-      this.#_bindings.method_get_lines_skipped = internal.classdb_get_method_bind(
+      this._bindings.method_get_lines_skipped = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -487,10 +488,10 @@ export class Label extends Control{
     }
   }
   static init_method_set_max_lines_visible() {
-    if (!this.#_bindings.method_set_max_lines_visible) {
+    if (!this._bindings.method_set_max_lines_visible) {
       let classname = new StringName("Label");
       let methodname = new StringName("set_max_lines_visible");
-      this.#_bindings.method_set_max_lines_visible = internal.classdb_get_method_bind(
+      this._bindings.method_set_max_lines_visible = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -498,10 +499,10 @@ export class Label extends Control{
     }
   }
   static init_method_get_max_lines_visible() {
-    if (!this.#_bindings.method_get_max_lines_visible) {
+    if (!this._bindings.method_get_max_lines_visible) {
       let classname = new StringName("Label");
       let methodname = new StringName("get_max_lines_visible");
-      this.#_bindings.method_get_max_lines_visible = internal.classdb_get_method_bind(
+      this._bindings.method_get_max_lines_visible = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -509,10 +510,10 @@ export class Label extends Control{
     }
   }
   static init_method_set_structured_text_bidi_override() {
-    if (!this.#_bindings.method_set_structured_text_bidi_override) {
+    if (!this._bindings.method_set_structured_text_bidi_override) {
       let classname = new StringName("Label");
       let methodname = new StringName("set_structured_text_bidi_override");
-      this.#_bindings.method_set_structured_text_bidi_override = internal.classdb_get_method_bind(
+      this._bindings.method_set_structured_text_bidi_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         55961453
@@ -520,10 +521,10 @@ export class Label extends Control{
     }
   }
   static init_method_get_structured_text_bidi_override() {
-    if (!this.#_bindings.method_get_structured_text_bidi_override) {
+    if (!this._bindings.method_get_structured_text_bidi_override) {
       let classname = new StringName("Label");
       let methodname = new StringName("get_structured_text_bidi_override");
-      this.#_bindings.method_get_structured_text_bidi_override = internal.classdb_get_method_bind(
+      this._bindings.method_get_structured_text_bidi_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3385126229
@@ -531,10 +532,10 @@ export class Label extends Control{
     }
   }
   static init_method_set_structured_text_bidi_override_options() {
-    if (!this.#_bindings.method_set_structured_text_bidi_override_options) {
+    if (!this._bindings.method_set_structured_text_bidi_override_options) {
       let classname = new StringName("Label");
       let methodname = new StringName("set_structured_text_bidi_override_options");
-      this.#_bindings.method_set_structured_text_bidi_override_options = internal.classdb_get_method_bind(
+      this._bindings.method_set_structured_text_bidi_override_options = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         381264803
@@ -542,10 +543,10 @@ export class Label extends Control{
     }
   }
   static init_method_get_structured_text_bidi_override_options() {
-    if (!this.#_bindings.method_get_structured_text_bidi_override_options) {
+    if (!this._bindings.method_get_structured_text_bidi_override_options) {
       let classname = new StringName("Label");
       let methodname = new StringName("get_structured_text_bidi_override_options");
-      this.#_bindings.method_get_structured_text_bidi_override_options = internal.classdb_get_method_bind(
+      this._bindings.method_get_structured_text_bidi_override_options = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -553,10 +554,10 @@ export class Label extends Control{
     }
   }
   static init_method_get_character_bounds() {
-    if (!this.#_bindings.method_get_character_bounds) {
+    if (!this._bindings.method_get_character_bounds) {
       let classname = new StringName("Label");
       let methodname = new StringName("get_character_bounds");
-      this.#_bindings.method_get_character_bounds = internal.classdb_get_method_bind(
+      this._bindings.method_get_character_bounds = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3327874267
@@ -569,7 +570,7 @@ export class Label extends Control{
   set_horizontal_alignment(_alignment) {
     Label.init_method_set_horizontal_alignment();
     return _call_native_mb_no_ret(
-      Label.#_bindings.method_set_horizontal_alignment,
+      Label._bindings.method_set_horizontal_alignment,
       this._owner,
       _alignment
     );
@@ -578,7 +579,7 @@ export class Label extends Control{
   get_horizontal_alignment() {
     Label.init_method_get_horizontal_alignment();
     return _call_native_mb_ret(
-      Label.#_bindings.method_get_horizontal_alignment,
+      Label._bindings.method_get_horizontal_alignment,
       this._owner,
 			Variant.Type.INT,
     
@@ -589,7 +590,7 @@ export class Label extends Control{
   set_vertical_alignment(_alignment) {
     Label.init_method_set_vertical_alignment();
     return _call_native_mb_no_ret(
-      Label.#_bindings.method_set_vertical_alignment,
+      Label._bindings.method_set_vertical_alignment,
       this._owner,
       _alignment
     );
@@ -598,7 +599,7 @@ export class Label extends Control{
   get_vertical_alignment() {
     Label.init_method_get_vertical_alignment();
     return _call_native_mb_ret(
-      Label.#_bindings.method_get_vertical_alignment,
+      Label._bindings.method_get_vertical_alignment,
       this._owner,
 			Variant.Type.INT,
     
@@ -609,7 +610,7 @@ export class Label extends Control{
   set_text(_text) {
     Label.init_method_set_text();
     return _call_native_mb_no_ret(
-      Label.#_bindings.method_set_text,
+      Label._bindings.method_set_text,
       this._owner,
       _text
     );
@@ -618,7 +619,7 @@ export class Label extends Control{
   get_text() {
     Label.init_method_get_text();
     return _call_native_mb_ret(
-      Label.#_bindings.method_get_text,
+      Label._bindings.method_get_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -629,7 +630,7 @@ export class Label extends Control{
   set_label_settings(_settings) {
     Label.init_method_set_label_settings();
     return _call_native_mb_no_ret(
-      Label.#_bindings.method_set_label_settings,
+      Label._bindings.method_set_label_settings,
       this._owner,
       _settings
     );
@@ -638,7 +639,7 @@ export class Label extends Control{
   get_label_settings() {
     Label.init_method_get_label_settings();
     return _call_native_mb_ret(
-      Label.#_bindings.method_get_label_settings,
+      Label._bindings.method_get_label_settings,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -648,7 +649,7 @@ export class Label extends Control{
   set_text_direction(_direction) {
     Label.init_method_set_text_direction();
     return _call_native_mb_no_ret(
-      Label.#_bindings.method_set_text_direction,
+      Label._bindings.method_set_text_direction,
       this._owner,
       _direction
     );
@@ -657,7 +658,7 @@ export class Label extends Control{
   get_text_direction() {
     Label.init_method_get_text_direction();
     return _call_native_mb_ret(
-      Label.#_bindings.method_get_text_direction,
+      Label._bindings.method_get_text_direction,
       this._owner,
 			Variant.Type.INT,
     
@@ -668,7 +669,7 @@ export class Label extends Control{
   set_language(_language) {
     Label.init_method_set_language();
     return _call_native_mb_no_ret(
-      Label.#_bindings.method_set_language,
+      Label._bindings.method_set_language,
       this._owner,
       _language
     );
@@ -677,7 +678,7 @@ export class Label extends Control{
   get_language() {
     Label.init_method_get_language();
     return _call_native_mb_ret(
-      Label.#_bindings.method_get_language,
+      Label._bindings.method_get_language,
       this._owner,
 			Variant.Type.STRING,
     
@@ -688,7 +689,7 @@ export class Label extends Control{
   set_autowrap_mode(_autowrap_mode) {
     Label.init_method_set_autowrap_mode();
     return _call_native_mb_no_ret(
-      Label.#_bindings.method_set_autowrap_mode,
+      Label._bindings.method_set_autowrap_mode,
       this._owner,
       _autowrap_mode
     );
@@ -697,7 +698,7 @@ export class Label extends Control{
   get_autowrap_mode() {
     Label.init_method_get_autowrap_mode();
     return _call_native_mb_ret(
-      Label.#_bindings.method_get_autowrap_mode,
+      Label._bindings.method_get_autowrap_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -708,7 +709,7 @@ export class Label extends Control{
   set_justification_flags(_justification_flags) {
     Label.init_method_set_justification_flags();
     return _call_native_mb_no_ret(
-      Label.#_bindings.method_set_justification_flags,
+      Label._bindings.method_set_justification_flags,
       this._owner,
       _justification_flags
     );
@@ -717,7 +718,7 @@ export class Label extends Control{
   get_justification_flags() {
     Label.init_method_get_justification_flags();
     return _call_native_mb_ret(
-      Label.#_bindings.method_get_justification_flags,
+      Label._bindings.method_get_justification_flags,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -727,7 +728,7 @@ export class Label extends Control{
   set_clip_text(_enable) {
     Label.init_method_set_clip_text();
     return _call_native_mb_no_ret(
-      Label.#_bindings.method_set_clip_text,
+      Label._bindings.method_set_clip_text,
       this._owner,
       _enable
     );
@@ -736,7 +737,7 @@ export class Label extends Control{
   is_clipping_text() {
     Label.init_method_is_clipping_text();
     return _call_native_mb_ret(
-      Label.#_bindings.method_is_clipping_text,
+      Label._bindings.method_is_clipping_text,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -747,7 +748,7 @@ export class Label extends Control{
   set_tab_stops(_tab_stops) {
     Label.init_method_set_tab_stops();
     return _call_native_mb_no_ret(
-      Label.#_bindings.method_set_tab_stops,
+      Label._bindings.method_set_tab_stops,
       this._owner,
       _tab_stops
     );
@@ -756,7 +757,7 @@ export class Label extends Control{
   get_tab_stops() {
     Label.init_method_get_tab_stops();
     return _call_native_mb_ret(
-      Label.#_bindings.method_get_tab_stops,
+      Label._bindings.method_get_tab_stops,
       this._owner,
 			Variant.Type.PACKED_FLOAT32_ARRAY,
     
@@ -767,7 +768,7 @@ export class Label extends Control{
   set_text_overrun_behavior(_overrun_behavior) {
     Label.init_method_set_text_overrun_behavior();
     return _call_native_mb_no_ret(
-      Label.#_bindings.method_set_text_overrun_behavior,
+      Label._bindings.method_set_text_overrun_behavior,
       this._owner,
       _overrun_behavior
     );
@@ -776,7 +777,7 @@ export class Label extends Control{
   get_text_overrun_behavior() {
     Label.init_method_get_text_overrun_behavior();
     return _call_native_mb_ret(
-      Label.#_bindings.method_get_text_overrun_behavior,
+      Label._bindings.method_get_text_overrun_behavior,
       this._owner,
 			Variant.Type.INT,
     
@@ -787,7 +788,7 @@ export class Label extends Control{
   set_ellipsis_char(_char) {
     Label.init_method_set_ellipsis_char();
     return _call_native_mb_no_ret(
-      Label.#_bindings.method_set_ellipsis_char,
+      Label._bindings.method_set_ellipsis_char,
       this._owner,
       _char
     );
@@ -796,7 +797,7 @@ export class Label extends Control{
   get_ellipsis_char() {
     Label.init_method_get_ellipsis_char();
     return _call_native_mb_ret(
-      Label.#_bindings.method_get_ellipsis_char,
+      Label._bindings.method_get_ellipsis_char,
       this._owner,
 			Variant.Type.STRING,
     
@@ -807,7 +808,7 @@ export class Label extends Control{
   set_uppercase(_enable) {
     Label.init_method_set_uppercase();
     return _call_native_mb_no_ret(
-      Label.#_bindings.method_set_uppercase,
+      Label._bindings.method_set_uppercase,
       this._owner,
       _enable
     );
@@ -816,7 +817,7 @@ export class Label extends Control{
   is_uppercase() {
     Label.init_method_is_uppercase();
     return _call_native_mb_ret(
-      Label.#_bindings.method_is_uppercase,
+      Label._bindings.method_is_uppercase,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -827,7 +828,7 @@ export class Label extends Control{
   get_line_height(_line) {
     Label.init_method_get_line_height();
     return _call_native_mb_ret(
-      Label.#_bindings.method_get_line_height,
+      Label._bindings.method_get_line_height,
       this._owner,
 			Variant.Type.INT,
     
@@ -838,7 +839,7 @@ export class Label extends Control{
   get_line_count() {
     Label.init_method_get_line_count();
     return _call_native_mb_ret(
-      Label.#_bindings.method_get_line_count,
+      Label._bindings.method_get_line_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -849,7 +850,7 @@ export class Label extends Control{
   get_visible_line_count() {
     Label.init_method_get_visible_line_count();
     return _call_native_mb_ret(
-      Label.#_bindings.method_get_visible_line_count,
+      Label._bindings.method_get_visible_line_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -860,7 +861,7 @@ export class Label extends Control{
   get_total_character_count() {
     Label.init_method_get_total_character_count();
     return _call_native_mb_ret(
-      Label.#_bindings.method_get_total_character_count,
+      Label._bindings.method_get_total_character_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -871,7 +872,7 @@ export class Label extends Control{
   set_visible_characters(_amount) {
     Label.init_method_set_visible_characters();
     return _call_native_mb_no_ret(
-      Label.#_bindings.method_set_visible_characters,
+      Label._bindings.method_set_visible_characters,
       this._owner,
       _amount
     );
@@ -880,7 +881,7 @@ export class Label extends Control{
   get_visible_characters() {
     Label.init_method_get_visible_characters();
     return _call_native_mb_ret(
-      Label.#_bindings.method_get_visible_characters,
+      Label._bindings.method_get_visible_characters,
       this._owner,
 			Variant.Type.INT,
     
@@ -891,7 +892,7 @@ export class Label extends Control{
   get_visible_characters_behavior() {
     Label.init_method_get_visible_characters_behavior();
     return _call_native_mb_ret(
-      Label.#_bindings.method_get_visible_characters_behavior,
+      Label._bindings.method_get_visible_characters_behavior,
       this._owner,
 			Variant.Type.INT,
     
@@ -902,7 +903,7 @@ export class Label extends Control{
   set_visible_characters_behavior(_behavior) {
     Label.init_method_set_visible_characters_behavior();
     return _call_native_mb_no_ret(
-      Label.#_bindings.method_set_visible_characters_behavior,
+      Label._bindings.method_set_visible_characters_behavior,
       this._owner,
       _behavior
     );
@@ -911,7 +912,7 @@ export class Label extends Control{
   set_visible_ratio(_ratio) {
     Label.init_method_set_visible_ratio();
     return _call_native_mb_no_ret(
-      Label.#_bindings.method_set_visible_ratio,
+      Label._bindings.method_set_visible_ratio,
       this._owner,
       _ratio
     );
@@ -920,7 +921,7 @@ export class Label extends Control{
   get_visible_ratio() {
     Label.init_method_get_visible_ratio();
     return _call_native_mb_ret(
-      Label.#_bindings.method_get_visible_ratio,
+      Label._bindings.method_get_visible_ratio,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -931,7 +932,7 @@ export class Label extends Control{
   set_lines_skipped(_lines_skipped) {
     Label.init_method_set_lines_skipped();
     return _call_native_mb_no_ret(
-      Label.#_bindings.method_set_lines_skipped,
+      Label._bindings.method_set_lines_skipped,
       this._owner,
       _lines_skipped
     );
@@ -940,7 +941,7 @@ export class Label extends Control{
   get_lines_skipped() {
     Label.init_method_get_lines_skipped();
     return _call_native_mb_ret(
-      Label.#_bindings.method_get_lines_skipped,
+      Label._bindings.method_get_lines_skipped,
       this._owner,
 			Variant.Type.INT,
     
@@ -951,7 +952,7 @@ export class Label extends Control{
   set_max_lines_visible(_lines_visible) {
     Label.init_method_set_max_lines_visible();
     return _call_native_mb_no_ret(
-      Label.#_bindings.method_set_max_lines_visible,
+      Label._bindings.method_set_max_lines_visible,
       this._owner,
       _lines_visible
     );
@@ -960,7 +961,7 @@ export class Label extends Control{
   get_max_lines_visible() {
     Label.init_method_get_max_lines_visible();
     return _call_native_mb_ret(
-      Label.#_bindings.method_get_max_lines_visible,
+      Label._bindings.method_get_max_lines_visible,
       this._owner,
 			Variant.Type.INT,
     
@@ -971,7 +972,7 @@ export class Label extends Control{
   set_structured_text_bidi_override(_parser) {
     Label.init_method_set_structured_text_bidi_override();
     return _call_native_mb_no_ret(
-      Label.#_bindings.method_set_structured_text_bidi_override,
+      Label._bindings.method_set_structured_text_bidi_override,
       this._owner,
       _parser
     );
@@ -980,7 +981,7 @@ export class Label extends Control{
   get_structured_text_bidi_override() {
     Label.init_method_get_structured_text_bidi_override();
     return _call_native_mb_ret(
-      Label.#_bindings.method_get_structured_text_bidi_override,
+      Label._bindings.method_get_structured_text_bidi_override,
       this._owner,
 			Variant.Type.INT,
     
@@ -991,7 +992,7 @@ export class Label extends Control{
   set_structured_text_bidi_override_options(_args) {
     Label.init_method_set_structured_text_bidi_override_options();
     return _call_native_mb_no_ret(
-      Label.#_bindings.method_set_structured_text_bidi_override_options,
+      Label._bindings.method_set_structured_text_bidi_override_options,
       this._owner,
       _args
     );
@@ -1000,7 +1001,7 @@ export class Label extends Control{
   get_structured_text_bidi_override_options() {
     Label.init_method_get_structured_text_bidi_override_options();
     return _call_native_mb_ret(
-      Label.#_bindings.method_get_structured_text_bidi_override_options,
+      Label._bindings.method_get_structured_text_bidi_override_options,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -1011,7 +1012,7 @@ export class Label extends Control{
   get_character_bounds(_pos) {
     Label.init_method_get_character_bounds();
     return _call_native_mb_ret(
-      Label.#_bindings.method_get_character_bounds,
+      Label._bindings.method_get_character_bounds,
       this._owner,
 			Variant.Type.RECT2,
     

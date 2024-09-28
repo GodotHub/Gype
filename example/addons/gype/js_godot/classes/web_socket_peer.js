@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_connect_to_url;
@@ -37,10 +38,10 @@ class _MethodBindings {
   method_set_max_queued_packets;
   method_get_max_queued_packets;
 }
+@GodotClass
 export class WebSocketPeer extends PacketPeer{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -50,10 +51,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_connect_to_url() {
-    if (!this.#_bindings.method_connect_to_url) {
+    if (!this._bindings.method_connect_to_url) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("connect_to_url");
-      this.#_bindings.method_connect_to_url = internal.classdb_get_method_bind(
+      this._bindings.method_connect_to_url = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1966198364
@@ -61,10 +62,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_accept_stream() {
-    if (!this.#_bindings.method_accept_stream) {
+    if (!this._bindings.method_accept_stream) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("accept_stream");
-      this.#_bindings.method_accept_stream = internal.classdb_get_method_bind(
+      this._bindings.method_accept_stream = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         255125695
@@ -72,10 +73,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_send() {
-    if (!this.#_bindings.method_send) {
+    if (!this._bindings.method_send) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("send");
-      this.#_bindings.method_send = internal.classdb_get_method_bind(
+      this._bindings.method_send = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2780360567
@@ -83,10 +84,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_send_text() {
-    if (!this.#_bindings.method_send_text) {
+    if (!this._bindings.method_send_text) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("send_text");
-      this.#_bindings.method_send_text = internal.classdb_get_method_bind(
+      this._bindings.method_send_text = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         166001499
@@ -94,10 +95,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_was_string_packet() {
-    if (!this.#_bindings.method_was_string_packet) {
+    if (!this._bindings.method_was_string_packet) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("was_string_packet");
-      this.#_bindings.method_was_string_packet = internal.classdb_get_method_bind(
+      this._bindings.method_was_string_packet = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -105,10 +106,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_poll() {
-    if (!this.#_bindings.method_poll) {
+    if (!this._bindings.method_poll) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("poll");
-      this.#_bindings.method_poll = internal.classdb_get_method_bind(
+      this._bindings.method_poll = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -116,10 +117,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_close() {
-    if (!this.#_bindings.method_close) {
+    if (!this._bindings.method_close) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("close");
-      this.#_bindings.method_close = internal.classdb_get_method_bind(
+      this._bindings.method_close = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1047156615
@@ -127,10 +128,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_get_connected_host() {
-    if (!this.#_bindings.method_get_connected_host) {
+    if (!this._bindings.method_get_connected_host) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("get_connected_host");
-      this.#_bindings.method_get_connected_host = internal.classdb_get_method_bind(
+      this._bindings.method_get_connected_host = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -138,10 +139,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_get_connected_port() {
-    if (!this.#_bindings.method_get_connected_port) {
+    if (!this._bindings.method_get_connected_port) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("get_connected_port");
-      this.#_bindings.method_get_connected_port = internal.classdb_get_method_bind(
+      this._bindings.method_get_connected_port = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -149,10 +150,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_get_selected_protocol() {
-    if (!this.#_bindings.method_get_selected_protocol) {
+    if (!this._bindings.method_get_selected_protocol) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("get_selected_protocol");
-      this.#_bindings.method_get_selected_protocol = internal.classdb_get_method_bind(
+      this._bindings.method_get_selected_protocol = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -160,10 +161,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_get_requested_url() {
-    if (!this.#_bindings.method_get_requested_url) {
+    if (!this._bindings.method_get_requested_url) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("get_requested_url");
-      this.#_bindings.method_get_requested_url = internal.classdb_get_method_bind(
+      this._bindings.method_get_requested_url = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -171,10 +172,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_set_no_delay() {
-    if (!this.#_bindings.method_set_no_delay) {
+    if (!this._bindings.method_set_no_delay) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("set_no_delay");
-      this.#_bindings.method_set_no_delay = internal.classdb_get_method_bind(
+      this._bindings.method_set_no_delay = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -182,10 +183,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_get_current_outbound_buffered_amount() {
-    if (!this.#_bindings.method_get_current_outbound_buffered_amount) {
+    if (!this._bindings.method_get_current_outbound_buffered_amount) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("get_current_outbound_buffered_amount");
-      this.#_bindings.method_get_current_outbound_buffered_amount = internal.classdb_get_method_bind(
+      this._bindings.method_get_current_outbound_buffered_amount = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -193,10 +194,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_get_ready_state() {
-    if (!this.#_bindings.method_get_ready_state) {
+    if (!this._bindings.method_get_ready_state) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("get_ready_state");
-      this.#_bindings.method_get_ready_state = internal.classdb_get_method_bind(
+      this._bindings.method_get_ready_state = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         346482985
@@ -204,10 +205,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_get_close_code() {
-    if (!this.#_bindings.method_get_close_code) {
+    if (!this._bindings.method_get_close_code) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("get_close_code");
-      this.#_bindings.method_get_close_code = internal.classdb_get_method_bind(
+      this._bindings.method_get_close_code = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -215,10 +216,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_get_close_reason() {
-    if (!this.#_bindings.method_get_close_reason) {
+    if (!this._bindings.method_get_close_reason) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("get_close_reason");
-      this.#_bindings.method_get_close_reason = internal.classdb_get_method_bind(
+      this._bindings.method_get_close_reason = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -226,10 +227,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_get_supported_protocols() {
-    if (!this.#_bindings.method_get_supported_protocols) {
+    if (!this._bindings.method_get_supported_protocols) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("get_supported_protocols");
-      this.#_bindings.method_get_supported_protocols = internal.classdb_get_method_bind(
+      this._bindings.method_get_supported_protocols = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1139954409
@@ -237,10 +238,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_set_supported_protocols() {
-    if (!this.#_bindings.method_set_supported_protocols) {
+    if (!this._bindings.method_set_supported_protocols) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("set_supported_protocols");
-      this.#_bindings.method_set_supported_protocols = internal.classdb_get_method_bind(
+      this._bindings.method_set_supported_protocols = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4015028928
@@ -248,10 +249,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_get_handshake_headers() {
-    if (!this.#_bindings.method_get_handshake_headers) {
+    if (!this._bindings.method_get_handshake_headers) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("get_handshake_headers");
-      this.#_bindings.method_get_handshake_headers = internal.classdb_get_method_bind(
+      this._bindings.method_get_handshake_headers = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1139954409
@@ -259,10 +260,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_set_handshake_headers() {
-    if (!this.#_bindings.method_set_handshake_headers) {
+    if (!this._bindings.method_set_handshake_headers) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("set_handshake_headers");
-      this.#_bindings.method_set_handshake_headers = internal.classdb_get_method_bind(
+      this._bindings.method_set_handshake_headers = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4015028928
@@ -270,10 +271,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_get_inbound_buffer_size() {
-    if (!this.#_bindings.method_get_inbound_buffer_size) {
+    if (!this._bindings.method_get_inbound_buffer_size) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("get_inbound_buffer_size");
-      this.#_bindings.method_get_inbound_buffer_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_inbound_buffer_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -281,10 +282,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_set_inbound_buffer_size() {
-    if (!this.#_bindings.method_set_inbound_buffer_size) {
+    if (!this._bindings.method_set_inbound_buffer_size) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("set_inbound_buffer_size");
-      this.#_bindings.method_set_inbound_buffer_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_inbound_buffer_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -292,10 +293,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_get_outbound_buffer_size() {
-    if (!this.#_bindings.method_get_outbound_buffer_size) {
+    if (!this._bindings.method_get_outbound_buffer_size) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("get_outbound_buffer_size");
-      this.#_bindings.method_get_outbound_buffer_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_outbound_buffer_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -303,10 +304,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_set_outbound_buffer_size() {
-    if (!this.#_bindings.method_set_outbound_buffer_size) {
+    if (!this._bindings.method_set_outbound_buffer_size) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("set_outbound_buffer_size");
-      this.#_bindings.method_set_outbound_buffer_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_outbound_buffer_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -314,10 +315,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_set_max_queued_packets() {
-    if (!this.#_bindings.method_set_max_queued_packets) {
+    if (!this._bindings.method_set_max_queued_packets) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("set_max_queued_packets");
-      this.#_bindings.method_set_max_queued_packets = internal.classdb_get_method_bind(
+      this._bindings.method_set_max_queued_packets = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -325,10 +326,10 @@ export class WebSocketPeer extends PacketPeer{
     }
   }
   static init_method_get_max_queued_packets() {
-    if (!this.#_bindings.method_get_max_queued_packets) {
+    if (!this._bindings.method_get_max_queued_packets) {
       let classname = new StringName("WebSocketPeer");
       let methodname = new StringName("get_max_queued_packets");
-      this.#_bindings.method_get_max_queued_packets = internal.classdb_get_method_bind(
+      this._bindings.method_get_max_queued_packets = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -341,7 +342,7 @@ export class WebSocketPeer extends PacketPeer{
   connect_to_url(_url, _tls_client_options) {
     WebSocketPeer.init_method_connect_to_url();
     return _call_native_mb_ret(
-      WebSocketPeer.#_bindings.method_connect_to_url,
+      WebSocketPeer._bindings.method_connect_to_url,
       this._owner,
 			Variant.Type.INT,
     
@@ -352,7 +353,7 @@ export class WebSocketPeer extends PacketPeer{
   accept_stream(_stream) {
     WebSocketPeer.init_method_accept_stream();
     return _call_native_mb_ret(
-      WebSocketPeer.#_bindings.method_accept_stream,
+      WebSocketPeer._bindings.method_accept_stream,
       this._owner,
 			Variant.Type.INT,
     
@@ -363,7 +364,7 @@ export class WebSocketPeer extends PacketPeer{
   send(_message, _write_mode) {
     WebSocketPeer.init_method_send();
     return _call_native_mb_ret(
-      WebSocketPeer.#_bindings.method_send,
+      WebSocketPeer._bindings.method_send,
       this._owner,
 			Variant.Type.INT,
     
@@ -374,7 +375,7 @@ export class WebSocketPeer extends PacketPeer{
   send_text(_message) {
     WebSocketPeer.init_method_send_text();
     return _call_native_mb_ret(
-      WebSocketPeer.#_bindings.method_send_text,
+      WebSocketPeer._bindings.method_send_text,
       this._owner,
 			Variant.Type.INT,
     
@@ -385,7 +386,7 @@ export class WebSocketPeer extends PacketPeer{
   was_string_packet() {
     WebSocketPeer.init_method_was_string_packet();
     return _call_native_mb_ret(
-      WebSocketPeer.#_bindings.method_was_string_packet,
+      WebSocketPeer._bindings.method_was_string_packet,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -396,7 +397,7 @@ export class WebSocketPeer extends PacketPeer{
   poll() {
     WebSocketPeer.init_method_poll();
     return _call_native_mb_no_ret(
-      WebSocketPeer.#_bindings.method_poll,
+      WebSocketPeer._bindings.method_poll,
       this._owner,
       
     );
@@ -405,7 +406,7 @@ export class WebSocketPeer extends PacketPeer{
   close(_code, _reason) {
     WebSocketPeer.init_method_close();
     return _call_native_mb_no_ret(
-      WebSocketPeer.#_bindings.method_close,
+      WebSocketPeer._bindings.method_close,
       this._owner,
       _code, _reason
     );
@@ -414,7 +415,7 @@ export class WebSocketPeer extends PacketPeer{
   get_connected_host() {
     WebSocketPeer.init_method_get_connected_host();
     return _call_native_mb_ret(
-      WebSocketPeer.#_bindings.method_get_connected_host,
+      WebSocketPeer._bindings.method_get_connected_host,
       this._owner,
 			Variant.Type.STRING,
     
@@ -425,7 +426,7 @@ export class WebSocketPeer extends PacketPeer{
   get_connected_port() {
     WebSocketPeer.init_method_get_connected_port();
     return _call_native_mb_ret(
-      WebSocketPeer.#_bindings.method_get_connected_port,
+      WebSocketPeer._bindings.method_get_connected_port,
       this._owner,
 			Variant.Type.INT,
     
@@ -436,7 +437,7 @@ export class WebSocketPeer extends PacketPeer{
   get_selected_protocol() {
     WebSocketPeer.init_method_get_selected_protocol();
     return _call_native_mb_ret(
-      WebSocketPeer.#_bindings.method_get_selected_protocol,
+      WebSocketPeer._bindings.method_get_selected_protocol,
       this._owner,
 			Variant.Type.STRING,
     
@@ -447,7 +448,7 @@ export class WebSocketPeer extends PacketPeer{
   get_requested_url() {
     WebSocketPeer.init_method_get_requested_url();
     return _call_native_mb_ret(
-      WebSocketPeer.#_bindings.method_get_requested_url,
+      WebSocketPeer._bindings.method_get_requested_url,
       this._owner,
 			Variant.Type.STRING,
     
@@ -458,7 +459,7 @@ export class WebSocketPeer extends PacketPeer{
   set_no_delay(_enabled) {
     WebSocketPeer.init_method_set_no_delay();
     return _call_native_mb_no_ret(
-      WebSocketPeer.#_bindings.method_set_no_delay,
+      WebSocketPeer._bindings.method_set_no_delay,
       this._owner,
       _enabled
     );
@@ -467,7 +468,7 @@ export class WebSocketPeer extends PacketPeer{
   get_current_outbound_buffered_amount() {
     WebSocketPeer.init_method_get_current_outbound_buffered_amount();
     return _call_native_mb_ret(
-      WebSocketPeer.#_bindings.method_get_current_outbound_buffered_amount,
+      WebSocketPeer._bindings.method_get_current_outbound_buffered_amount,
       this._owner,
 			Variant.Type.INT,
     
@@ -478,7 +479,7 @@ export class WebSocketPeer extends PacketPeer{
   get_ready_state() {
     WebSocketPeer.init_method_get_ready_state();
     return _call_native_mb_ret(
-      WebSocketPeer.#_bindings.method_get_ready_state,
+      WebSocketPeer._bindings.method_get_ready_state,
       this._owner,
 			Variant.Type.INT,
     
@@ -489,7 +490,7 @@ export class WebSocketPeer extends PacketPeer{
   get_close_code() {
     WebSocketPeer.init_method_get_close_code();
     return _call_native_mb_ret(
-      WebSocketPeer.#_bindings.method_get_close_code,
+      WebSocketPeer._bindings.method_get_close_code,
       this._owner,
 			Variant.Type.INT,
     
@@ -500,7 +501,7 @@ export class WebSocketPeer extends PacketPeer{
   get_close_reason() {
     WebSocketPeer.init_method_get_close_reason();
     return _call_native_mb_ret(
-      WebSocketPeer.#_bindings.method_get_close_reason,
+      WebSocketPeer._bindings.method_get_close_reason,
       this._owner,
 			Variant.Type.STRING,
     
@@ -511,7 +512,7 @@ export class WebSocketPeer extends PacketPeer{
   get_supported_protocols() {
     WebSocketPeer.init_method_get_supported_protocols();
     return _call_native_mb_ret(
-      WebSocketPeer.#_bindings.method_get_supported_protocols,
+      WebSocketPeer._bindings.method_get_supported_protocols,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -522,7 +523,7 @@ export class WebSocketPeer extends PacketPeer{
   set_supported_protocols(_protocols) {
     WebSocketPeer.init_method_set_supported_protocols();
     return _call_native_mb_no_ret(
-      WebSocketPeer.#_bindings.method_set_supported_protocols,
+      WebSocketPeer._bindings.method_set_supported_protocols,
       this._owner,
       _protocols
     );
@@ -531,7 +532,7 @@ export class WebSocketPeer extends PacketPeer{
   get_handshake_headers() {
     WebSocketPeer.init_method_get_handshake_headers();
     return _call_native_mb_ret(
-      WebSocketPeer.#_bindings.method_get_handshake_headers,
+      WebSocketPeer._bindings.method_get_handshake_headers,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -542,7 +543,7 @@ export class WebSocketPeer extends PacketPeer{
   set_handshake_headers(_protocols) {
     WebSocketPeer.init_method_set_handshake_headers();
     return _call_native_mb_no_ret(
-      WebSocketPeer.#_bindings.method_set_handshake_headers,
+      WebSocketPeer._bindings.method_set_handshake_headers,
       this._owner,
       _protocols
     );
@@ -551,7 +552,7 @@ export class WebSocketPeer extends PacketPeer{
   get_inbound_buffer_size() {
     WebSocketPeer.init_method_get_inbound_buffer_size();
     return _call_native_mb_ret(
-      WebSocketPeer.#_bindings.method_get_inbound_buffer_size,
+      WebSocketPeer._bindings.method_get_inbound_buffer_size,
       this._owner,
 			Variant.Type.INT,
     
@@ -562,7 +563,7 @@ export class WebSocketPeer extends PacketPeer{
   set_inbound_buffer_size(_buffer_size) {
     WebSocketPeer.init_method_set_inbound_buffer_size();
     return _call_native_mb_no_ret(
-      WebSocketPeer.#_bindings.method_set_inbound_buffer_size,
+      WebSocketPeer._bindings.method_set_inbound_buffer_size,
       this._owner,
       _buffer_size
     );
@@ -571,7 +572,7 @@ export class WebSocketPeer extends PacketPeer{
   get_outbound_buffer_size() {
     WebSocketPeer.init_method_get_outbound_buffer_size();
     return _call_native_mb_ret(
-      WebSocketPeer.#_bindings.method_get_outbound_buffer_size,
+      WebSocketPeer._bindings.method_get_outbound_buffer_size,
       this._owner,
 			Variant.Type.INT,
     
@@ -582,7 +583,7 @@ export class WebSocketPeer extends PacketPeer{
   set_outbound_buffer_size(_buffer_size) {
     WebSocketPeer.init_method_set_outbound_buffer_size();
     return _call_native_mb_no_ret(
-      WebSocketPeer.#_bindings.method_set_outbound_buffer_size,
+      WebSocketPeer._bindings.method_set_outbound_buffer_size,
       this._owner,
       _buffer_size
     );
@@ -591,7 +592,7 @@ export class WebSocketPeer extends PacketPeer{
   set_max_queued_packets(_buffer_size) {
     WebSocketPeer.init_method_set_max_queued_packets();
     return _call_native_mb_no_ret(
-      WebSocketPeer.#_bindings.method_set_max_queued_packets,
+      WebSocketPeer._bindings.method_set_max_queued_packets,
       this._owner,
       _buffer_size
     );
@@ -600,7 +601,7 @@ export class WebSocketPeer extends PacketPeer{
   get_max_queued_packets() {
     WebSocketPeer.init_method_get_max_queued_packets();
     return _call_native_mb_ret(
-      WebSocketPeer.#_bindings.method_get_max_queued_packets,
+      WebSocketPeer._bindings.method_get_max_queued_packets,
       this._owner,
 			Variant.Type.INT,
     

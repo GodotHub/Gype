@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_stringify;
@@ -19,10 +20,10 @@ class _MethodBindings {
   method_get_error_line;
   method_get_error_message;
 }
+@GodotClass
 export class JSON extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -32,10 +33,10 @@ export class JSON extends Resource{
     }
   }
   static init_method_stringify() {
-    if (!this.#_bindings.method_stringify) {
+    if (!this._bindings.method_stringify) {
       let classname = new StringName("JSON");
       let methodname = new StringName("stringify");
-      this.#_bindings.method_stringify = internal.classdb_get_method_bind(
+      this._bindings.method_stringify = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         462733549
@@ -43,10 +44,10 @@ export class JSON extends Resource{
     }
   }
   static init_method_parse_string() {
-    if (!this.#_bindings.method_parse_string) {
+    if (!this._bindings.method_parse_string) {
       let classname = new StringName("JSON");
       let methodname = new StringName("parse_string");
-      this.#_bindings.method_parse_string = internal.classdb_get_method_bind(
+      this._bindings.method_parse_string = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         309047738
@@ -54,10 +55,10 @@ export class JSON extends Resource{
     }
   }
   static init_method_parse() {
-    if (!this.#_bindings.method_parse) {
+    if (!this._bindings.method_parse) {
       let classname = new StringName("JSON");
       let methodname = new StringName("parse");
-      this.#_bindings.method_parse = internal.classdb_get_method_bind(
+      this._bindings.method_parse = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         885841341
@@ -65,10 +66,10 @@ export class JSON extends Resource{
     }
   }
   static init_method_get_data() {
-    if (!this.#_bindings.method_get_data) {
+    if (!this._bindings.method_get_data) {
       let classname = new StringName("JSON");
       let methodname = new StringName("get_data");
-      this.#_bindings.method_get_data = internal.classdb_get_method_bind(
+      this._bindings.method_get_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1214101251
@@ -76,10 +77,10 @@ export class JSON extends Resource{
     }
   }
   static init_method_set_data() {
-    if (!this.#_bindings.method_set_data) {
+    if (!this._bindings.method_set_data) {
       let classname = new StringName("JSON");
       let methodname = new StringName("set_data");
-      this.#_bindings.method_set_data = internal.classdb_get_method_bind(
+      this._bindings.method_set_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1114965689
@@ -87,10 +88,10 @@ export class JSON extends Resource{
     }
   }
   static init_method_get_parsed_text() {
-    if (!this.#_bindings.method_get_parsed_text) {
+    if (!this._bindings.method_get_parsed_text) {
       let classname = new StringName("JSON");
       let methodname = new StringName("get_parsed_text");
-      this.#_bindings.method_get_parsed_text = internal.classdb_get_method_bind(
+      this._bindings.method_get_parsed_text = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -98,10 +99,10 @@ export class JSON extends Resource{
     }
   }
   static init_method_get_error_line() {
-    if (!this.#_bindings.method_get_error_line) {
+    if (!this._bindings.method_get_error_line) {
       let classname = new StringName("JSON");
       let methodname = new StringName("get_error_line");
-      this.#_bindings.method_get_error_line = internal.classdb_get_method_bind(
+      this._bindings.method_get_error_line = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -109,10 +110,10 @@ export class JSON extends Resource{
     }
   }
   static init_method_get_error_message() {
-    if (!this.#_bindings.method_get_error_message) {
+    if (!this._bindings.method_get_error_message) {
       let classname = new StringName("JSON");
       let methodname = new StringName("get_error_message");
-      this.#_bindings.method_get_error_message = internal.classdb_get_method_bind(
+      this._bindings.method_get_error_message = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -125,7 +126,7 @@ export class JSON extends Resource{
   stringify(_data, _indent, _sort_keys, _full_precision) {
     JSON.init_method_stringify();
     return _call_native_mb_ret(
-      JSON.#_bindings.method_stringify,
+      JSON._bindings.method_stringify,
       this._owner,
 			Variant.Type.STRING,
     
@@ -136,7 +137,7 @@ export class JSON extends Resource{
   parse_string(_json_string) {
     JSON.init_method_parse_string();
     return _call_native_mb_ret(
-      JSON.#_bindings.method_parse_string,
+      JSON._bindings.method_parse_string,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -147,7 +148,7 @@ export class JSON extends Resource{
   parse(_json_text, _keep_text) {
     JSON.init_method_parse();
     return _call_native_mb_ret(
-      JSON.#_bindings.method_parse,
+      JSON._bindings.method_parse,
       this._owner,
 			Variant.Type.INT,
     
@@ -158,7 +159,7 @@ export class JSON extends Resource{
   get_data() {
     JSON.init_method_get_data();
     return _call_native_mb_ret(
-      JSON.#_bindings.method_get_data,
+      JSON._bindings.method_get_data,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -169,7 +170,7 @@ export class JSON extends Resource{
   set_data(_data) {
     JSON.init_method_set_data();
     return _call_native_mb_no_ret(
-      JSON.#_bindings.method_set_data,
+      JSON._bindings.method_set_data,
       this._owner,
       _data
     );
@@ -178,7 +179,7 @@ export class JSON extends Resource{
   get_parsed_text() {
     JSON.init_method_get_parsed_text();
     return _call_native_mb_ret(
-      JSON.#_bindings.method_get_parsed_text,
+      JSON._bindings.method_get_parsed_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -189,7 +190,7 @@ export class JSON extends Resource{
   get_error_line() {
     JSON.init_method_get_error_line();
     return _call_native_mb_ret(
-      JSON.#_bindings.method_get_error_line,
+      JSON._bindings.method_get_error_line,
       this._owner,
 			Variant.Type.INT,
     
@@ -200,7 +201,7 @@ export class JSON extends Resource{
   get_error_message() {
     JSON.init_method_get_error_message();
     return _call_native_mb_ret(
-      JSON.#_bindings.method_get_error_message,
+      JSON._bindings.method_get_error_message,
       this._owner,
 			Variant.Type.STRING,
     

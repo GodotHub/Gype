@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { AudioEffect } from '@js_godot/classes/audio_effect'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_voice_count;
@@ -29,10 +30,10 @@ class _MethodBindings {
   method_set_dry;
   method_get_dry;
 }
+@GodotClass
 export class AudioEffectChorus extends AudioEffect{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -42,10 +43,10 @@ export class AudioEffectChorus extends AudioEffect{
     }
   }
   static init_method_set_voice_count() {
-    if (!this.#_bindings.method_set_voice_count) {
+    if (!this._bindings.method_set_voice_count) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("set_voice_count");
-      this.#_bindings.method_set_voice_count = internal.classdb_get_method_bind(
+      this._bindings.method_set_voice_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -53,10 +54,10 @@ export class AudioEffectChorus extends AudioEffect{
     }
   }
   static init_method_get_voice_count() {
-    if (!this.#_bindings.method_get_voice_count) {
+    if (!this._bindings.method_get_voice_count) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("get_voice_count");
-      this.#_bindings.method_get_voice_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_voice_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -64,10 +65,10 @@ export class AudioEffectChorus extends AudioEffect{
     }
   }
   static init_method_set_voice_delay_ms() {
-    if (!this.#_bindings.method_set_voice_delay_ms) {
+    if (!this._bindings.method_set_voice_delay_ms) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("set_voice_delay_ms");
-      this.#_bindings.method_set_voice_delay_ms = internal.classdb_get_method_bind(
+      this._bindings.method_set_voice_delay_ms = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1602489585
@@ -75,10 +76,10 @@ export class AudioEffectChorus extends AudioEffect{
     }
   }
   static init_method_get_voice_delay_ms() {
-    if (!this.#_bindings.method_get_voice_delay_ms) {
+    if (!this._bindings.method_get_voice_delay_ms) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("get_voice_delay_ms");
-      this.#_bindings.method_get_voice_delay_ms = internal.classdb_get_method_bind(
+      this._bindings.method_get_voice_delay_ms = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2339986948
@@ -86,10 +87,10 @@ export class AudioEffectChorus extends AudioEffect{
     }
   }
   static init_method_set_voice_rate_hz() {
-    if (!this.#_bindings.method_set_voice_rate_hz) {
+    if (!this._bindings.method_set_voice_rate_hz) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("set_voice_rate_hz");
-      this.#_bindings.method_set_voice_rate_hz = internal.classdb_get_method_bind(
+      this._bindings.method_set_voice_rate_hz = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1602489585
@@ -97,10 +98,10 @@ export class AudioEffectChorus extends AudioEffect{
     }
   }
   static init_method_get_voice_rate_hz() {
-    if (!this.#_bindings.method_get_voice_rate_hz) {
+    if (!this._bindings.method_get_voice_rate_hz) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("get_voice_rate_hz");
-      this.#_bindings.method_get_voice_rate_hz = internal.classdb_get_method_bind(
+      this._bindings.method_get_voice_rate_hz = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2339986948
@@ -108,10 +109,10 @@ export class AudioEffectChorus extends AudioEffect{
     }
   }
   static init_method_set_voice_depth_ms() {
-    if (!this.#_bindings.method_set_voice_depth_ms) {
+    if (!this._bindings.method_set_voice_depth_ms) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("set_voice_depth_ms");
-      this.#_bindings.method_set_voice_depth_ms = internal.classdb_get_method_bind(
+      this._bindings.method_set_voice_depth_ms = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1602489585
@@ -119,10 +120,10 @@ export class AudioEffectChorus extends AudioEffect{
     }
   }
   static init_method_get_voice_depth_ms() {
-    if (!this.#_bindings.method_get_voice_depth_ms) {
+    if (!this._bindings.method_get_voice_depth_ms) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("get_voice_depth_ms");
-      this.#_bindings.method_get_voice_depth_ms = internal.classdb_get_method_bind(
+      this._bindings.method_get_voice_depth_ms = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2339986948
@@ -130,10 +131,10 @@ export class AudioEffectChorus extends AudioEffect{
     }
   }
   static init_method_set_voice_level_db() {
-    if (!this.#_bindings.method_set_voice_level_db) {
+    if (!this._bindings.method_set_voice_level_db) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("set_voice_level_db");
-      this.#_bindings.method_set_voice_level_db = internal.classdb_get_method_bind(
+      this._bindings.method_set_voice_level_db = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1602489585
@@ -141,10 +142,10 @@ export class AudioEffectChorus extends AudioEffect{
     }
   }
   static init_method_get_voice_level_db() {
-    if (!this.#_bindings.method_get_voice_level_db) {
+    if (!this._bindings.method_get_voice_level_db) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("get_voice_level_db");
-      this.#_bindings.method_get_voice_level_db = internal.classdb_get_method_bind(
+      this._bindings.method_get_voice_level_db = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2339986948
@@ -152,10 +153,10 @@ export class AudioEffectChorus extends AudioEffect{
     }
   }
   static init_method_set_voice_cutoff_hz() {
-    if (!this.#_bindings.method_set_voice_cutoff_hz) {
+    if (!this._bindings.method_set_voice_cutoff_hz) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("set_voice_cutoff_hz");
-      this.#_bindings.method_set_voice_cutoff_hz = internal.classdb_get_method_bind(
+      this._bindings.method_set_voice_cutoff_hz = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1602489585
@@ -163,10 +164,10 @@ export class AudioEffectChorus extends AudioEffect{
     }
   }
   static init_method_get_voice_cutoff_hz() {
-    if (!this.#_bindings.method_get_voice_cutoff_hz) {
+    if (!this._bindings.method_get_voice_cutoff_hz) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("get_voice_cutoff_hz");
-      this.#_bindings.method_get_voice_cutoff_hz = internal.classdb_get_method_bind(
+      this._bindings.method_get_voice_cutoff_hz = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2339986948
@@ -174,10 +175,10 @@ export class AudioEffectChorus extends AudioEffect{
     }
   }
   static init_method_set_voice_pan() {
-    if (!this.#_bindings.method_set_voice_pan) {
+    if (!this._bindings.method_set_voice_pan) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("set_voice_pan");
-      this.#_bindings.method_set_voice_pan = internal.classdb_get_method_bind(
+      this._bindings.method_set_voice_pan = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1602489585
@@ -185,10 +186,10 @@ export class AudioEffectChorus extends AudioEffect{
     }
   }
   static init_method_get_voice_pan() {
-    if (!this.#_bindings.method_get_voice_pan) {
+    if (!this._bindings.method_get_voice_pan) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("get_voice_pan");
-      this.#_bindings.method_get_voice_pan = internal.classdb_get_method_bind(
+      this._bindings.method_get_voice_pan = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2339986948
@@ -196,10 +197,10 @@ export class AudioEffectChorus extends AudioEffect{
     }
   }
   static init_method_set_wet() {
-    if (!this.#_bindings.method_set_wet) {
+    if (!this._bindings.method_set_wet) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("set_wet");
-      this.#_bindings.method_set_wet = internal.classdb_get_method_bind(
+      this._bindings.method_set_wet = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -207,10 +208,10 @@ export class AudioEffectChorus extends AudioEffect{
     }
   }
   static init_method_get_wet() {
-    if (!this.#_bindings.method_get_wet) {
+    if (!this._bindings.method_get_wet) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("get_wet");
-      this.#_bindings.method_get_wet = internal.classdb_get_method_bind(
+      this._bindings.method_get_wet = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -218,10 +219,10 @@ export class AudioEffectChorus extends AudioEffect{
     }
   }
   static init_method_set_dry() {
-    if (!this.#_bindings.method_set_dry) {
+    if (!this._bindings.method_set_dry) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("set_dry");
-      this.#_bindings.method_set_dry = internal.classdb_get_method_bind(
+      this._bindings.method_set_dry = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -229,10 +230,10 @@ export class AudioEffectChorus extends AudioEffect{
     }
   }
   static init_method_get_dry() {
-    if (!this.#_bindings.method_get_dry) {
+    if (!this._bindings.method_get_dry) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("get_dry");
-      this.#_bindings.method_get_dry = internal.classdb_get_method_bind(
+      this._bindings.method_get_dry = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -245,7 +246,7 @@ export class AudioEffectChorus extends AudioEffect{
   set_voice_count(_voices) {
     AudioEffectChorus.init_method_set_voice_count();
     return _call_native_mb_no_ret(
-      AudioEffectChorus.#_bindings.method_set_voice_count,
+      AudioEffectChorus._bindings.method_set_voice_count,
       this._owner,
       _voices
     );
@@ -254,7 +255,7 @@ export class AudioEffectChorus extends AudioEffect{
   get_voice_count() {
     AudioEffectChorus.init_method_get_voice_count();
     return _call_native_mb_ret(
-      AudioEffectChorus.#_bindings.method_get_voice_count,
+      AudioEffectChorus._bindings.method_get_voice_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -265,7 +266,7 @@ export class AudioEffectChorus extends AudioEffect{
   set_voice_delay_ms(_voice_idx, _delay_ms) {
     AudioEffectChorus.init_method_set_voice_delay_ms();
     return _call_native_mb_no_ret(
-      AudioEffectChorus.#_bindings.method_set_voice_delay_ms,
+      AudioEffectChorus._bindings.method_set_voice_delay_ms,
       this._owner,
       _voice_idx, _delay_ms
     );
@@ -274,7 +275,7 @@ export class AudioEffectChorus extends AudioEffect{
   get_voice_delay_ms(_voice_idx) {
     AudioEffectChorus.init_method_get_voice_delay_ms();
     return _call_native_mb_ret(
-      AudioEffectChorus.#_bindings.method_get_voice_delay_ms,
+      AudioEffectChorus._bindings.method_get_voice_delay_ms,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -285,7 +286,7 @@ export class AudioEffectChorus extends AudioEffect{
   set_voice_rate_hz(_voice_idx, _rate_hz) {
     AudioEffectChorus.init_method_set_voice_rate_hz();
     return _call_native_mb_no_ret(
-      AudioEffectChorus.#_bindings.method_set_voice_rate_hz,
+      AudioEffectChorus._bindings.method_set_voice_rate_hz,
       this._owner,
       _voice_idx, _rate_hz
     );
@@ -294,7 +295,7 @@ export class AudioEffectChorus extends AudioEffect{
   get_voice_rate_hz(_voice_idx) {
     AudioEffectChorus.init_method_get_voice_rate_hz();
     return _call_native_mb_ret(
-      AudioEffectChorus.#_bindings.method_get_voice_rate_hz,
+      AudioEffectChorus._bindings.method_get_voice_rate_hz,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -305,7 +306,7 @@ export class AudioEffectChorus extends AudioEffect{
   set_voice_depth_ms(_voice_idx, _depth_ms) {
     AudioEffectChorus.init_method_set_voice_depth_ms();
     return _call_native_mb_no_ret(
-      AudioEffectChorus.#_bindings.method_set_voice_depth_ms,
+      AudioEffectChorus._bindings.method_set_voice_depth_ms,
       this._owner,
       _voice_idx, _depth_ms
     );
@@ -314,7 +315,7 @@ export class AudioEffectChorus extends AudioEffect{
   get_voice_depth_ms(_voice_idx) {
     AudioEffectChorus.init_method_get_voice_depth_ms();
     return _call_native_mb_ret(
-      AudioEffectChorus.#_bindings.method_get_voice_depth_ms,
+      AudioEffectChorus._bindings.method_get_voice_depth_ms,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -325,7 +326,7 @@ export class AudioEffectChorus extends AudioEffect{
   set_voice_level_db(_voice_idx, _level_db) {
     AudioEffectChorus.init_method_set_voice_level_db();
     return _call_native_mb_no_ret(
-      AudioEffectChorus.#_bindings.method_set_voice_level_db,
+      AudioEffectChorus._bindings.method_set_voice_level_db,
       this._owner,
       _voice_idx, _level_db
     );
@@ -334,7 +335,7 @@ export class AudioEffectChorus extends AudioEffect{
   get_voice_level_db(_voice_idx) {
     AudioEffectChorus.init_method_get_voice_level_db();
     return _call_native_mb_ret(
-      AudioEffectChorus.#_bindings.method_get_voice_level_db,
+      AudioEffectChorus._bindings.method_get_voice_level_db,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -345,7 +346,7 @@ export class AudioEffectChorus extends AudioEffect{
   set_voice_cutoff_hz(_voice_idx, _cutoff_hz) {
     AudioEffectChorus.init_method_set_voice_cutoff_hz();
     return _call_native_mb_no_ret(
-      AudioEffectChorus.#_bindings.method_set_voice_cutoff_hz,
+      AudioEffectChorus._bindings.method_set_voice_cutoff_hz,
       this._owner,
       _voice_idx, _cutoff_hz
     );
@@ -354,7 +355,7 @@ export class AudioEffectChorus extends AudioEffect{
   get_voice_cutoff_hz(_voice_idx) {
     AudioEffectChorus.init_method_get_voice_cutoff_hz();
     return _call_native_mb_ret(
-      AudioEffectChorus.#_bindings.method_get_voice_cutoff_hz,
+      AudioEffectChorus._bindings.method_get_voice_cutoff_hz,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -365,7 +366,7 @@ export class AudioEffectChorus extends AudioEffect{
   set_voice_pan(_voice_idx, _pan) {
     AudioEffectChorus.init_method_set_voice_pan();
     return _call_native_mb_no_ret(
-      AudioEffectChorus.#_bindings.method_set_voice_pan,
+      AudioEffectChorus._bindings.method_set_voice_pan,
       this._owner,
       _voice_idx, _pan
     );
@@ -374,7 +375,7 @@ export class AudioEffectChorus extends AudioEffect{
   get_voice_pan(_voice_idx) {
     AudioEffectChorus.init_method_get_voice_pan();
     return _call_native_mb_ret(
-      AudioEffectChorus.#_bindings.method_get_voice_pan,
+      AudioEffectChorus._bindings.method_get_voice_pan,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -385,7 +386,7 @@ export class AudioEffectChorus extends AudioEffect{
   set_wet(_amount) {
     AudioEffectChorus.init_method_set_wet();
     return _call_native_mb_no_ret(
-      AudioEffectChorus.#_bindings.method_set_wet,
+      AudioEffectChorus._bindings.method_set_wet,
       this._owner,
       _amount
     );
@@ -394,7 +395,7 @@ export class AudioEffectChorus extends AudioEffect{
   get_wet() {
     AudioEffectChorus.init_method_get_wet();
     return _call_native_mb_ret(
-      AudioEffectChorus.#_bindings.method_get_wet,
+      AudioEffectChorus._bindings.method_get_wet,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -405,7 +406,7 @@ export class AudioEffectChorus extends AudioEffect{
   set_dry(_amount) {
     AudioEffectChorus.init_method_set_dry();
     return _call_native_mb_no_ret(
-      AudioEffectChorus.#_bindings.method_set_dry,
+      AudioEffectChorus._bindings.method_set_dry,
       this._owner,
       _amount
     );
@@ -414,7 +415,7 @@ export class AudioEffectChorus extends AudioEffect{
   get_dry() {
     AudioEffectChorus.init_method_get_dry();
     return _call_native_mb_ret(
-      AudioEffectChorus.#_bindings.method_get_dry,
+      AudioEffectChorus._bindings.method_get_dry,
       this._owner,
 			Variant.Type.FLOAT,
     

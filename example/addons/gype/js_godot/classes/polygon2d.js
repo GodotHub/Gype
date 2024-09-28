@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { Node2D } from '@js_godot/classes/node2d'
 import {
   call_utility_ret,
@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_polygon;
@@ -49,10 +50,10 @@ class _MethodBindings {
   method_set_internal_vertex_count;
   method_get_internal_vertex_count;
 }
+@GodotClass
 export class Polygon2D extends Node2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -62,10 +63,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_set_polygon() {
-    if (!this.#_bindings.method_set_polygon) {
+    if (!this._bindings.method_set_polygon) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("set_polygon");
-      this.#_bindings.method_set_polygon = internal.classdb_get_method_bind(
+      this._bindings.method_set_polygon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1509147220
@@ -73,10 +74,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_get_polygon() {
-    if (!this.#_bindings.method_get_polygon) {
+    if (!this._bindings.method_get_polygon) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("get_polygon");
-      this.#_bindings.method_get_polygon = internal.classdb_get_method_bind(
+      this._bindings.method_get_polygon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2961356807
@@ -84,10 +85,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_set_uv() {
-    if (!this.#_bindings.method_set_uv) {
+    if (!this._bindings.method_set_uv) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("set_uv");
-      this.#_bindings.method_set_uv = internal.classdb_get_method_bind(
+      this._bindings.method_set_uv = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1509147220
@@ -95,10 +96,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_get_uv() {
-    if (!this.#_bindings.method_get_uv) {
+    if (!this._bindings.method_get_uv) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("get_uv");
-      this.#_bindings.method_get_uv = internal.classdb_get_method_bind(
+      this._bindings.method_get_uv = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2961356807
@@ -106,10 +107,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_set_color() {
-    if (!this.#_bindings.method_set_color) {
+    if (!this._bindings.method_set_color) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("set_color");
-      this.#_bindings.method_set_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -117,10 +118,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_get_color() {
-    if (!this.#_bindings.method_get_color) {
+    if (!this._bindings.method_get_color) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("get_color");
-      this.#_bindings.method_get_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -128,10 +129,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_set_polygons() {
-    if (!this.#_bindings.method_set_polygons) {
+    if (!this._bindings.method_set_polygons) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("set_polygons");
-      this.#_bindings.method_set_polygons = internal.classdb_get_method_bind(
+      this._bindings.method_set_polygons = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         381264803
@@ -139,10 +140,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_get_polygons() {
-    if (!this.#_bindings.method_get_polygons) {
+    if (!this._bindings.method_get_polygons) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("get_polygons");
-      this.#_bindings.method_get_polygons = internal.classdb_get_method_bind(
+      this._bindings.method_get_polygons = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -150,10 +151,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_set_vertex_colors() {
-    if (!this.#_bindings.method_set_vertex_colors) {
+    if (!this._bindings.method_set_vertex_colors) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("set_vertex_colors");
-      this.#_bindings.method_set_vertex_colors = internal.classdb_get_method_bind(
+      this._bindings.method_set_vertex_colors = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3546319833
@@ -161,10 +162,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_get_vertex_colors() {
-    if (!this.#_bindings.method_get_vertex_colors) {
+    if (!this._bindings.method_get_vertex_colors) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("get_vertex_colors");
-      this.#_bindings.method_get_vertex_colors = internal.classdb_get_method_bind(
+      this._bindings.method_get_vertex_colors = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1392750486
@@ -172,10 +173,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_set_texture() {
-    if (!this.#_bindings.method_set_texture) {
+    if (!this._bindings.method_set_texture) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("set_texture");
-      this.#_bindings.method_set_texture = internal.classdb_get_method_bind(
+      this._bindings.method_set_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4051416890
@@ -183,10 +184,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_get_texture() {
-    if (!this.#_bindings.method_get_texture) {
+    if (!this._bindings.method_get_texture) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("get_texture");
-      this.#_bindings.method_get_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -194,10 +195,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_set_texture_offset() {
-    if (!this.#_bindings.method_set_texture_offset) {
+    if (!this._bindings.method_set_texture_offset) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("set_texture_offset");
-      this.#_bindings.method_set_texture_offset = internal.classdb_get_method_bind(
+      this._bindings.method_set_texture_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -205,10 +206,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_get_texture_offset() {
-    if (!this.#_bindings.method_get_texture_offset) {
+    if (!this._bindings.method_get_texture_offset) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("get_texture_offset");
-      this.#_bindings.method_get_texture_offset = internal.classdb_get_method_bind(
+      this._bindings.method_get_texture_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -216,10 +217,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_set_texture_rotation() {
-    if (!this.#_bindings.method_set_texture_rotation) {
+    if (!this._bindings.method_set_texture_rotation) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("set_texture_rotation");
-      this.#_bindings.method_set_texture_rotation = internal.classdb_get_method_bind(
+      this._bindings.method_set_texture_rotation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -227,10 +228,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_get_texture_rotation() {
-    if (!this.#_bindings.method_get_texture_rotation) {
+    if (!this._bindings.method_get_texture_rotation) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("get_texture_rotation");
-      this.#_bindings.method_get_texture_rotation = internal.classdb_get_method_bind(
+      this._bindings.method_get_texture_rotation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -238,10 +239,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_set_texture_scale() {
-    if (!this.#_bindings.method_set_texture_scale) {
+    if (!this._bindings.method_set_texture_scale) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("set_texture_scale");
-      this.#_bindings.method_set_texture_scale = internal.classdb_get_method_bind(
+      this._bindings.method_set_texture_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -249,10 +250,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_get_texture_scale() {
-    if (!this.#_bindings.method_get_texture_scale) {
+    if (!this._bindings.method_get_texture_scale) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("get_texture_scale");
-      this.#_bindings.method_get_texture_scale = internal.classdb_get_method_bind(
+      this._bindings.method_get_texture_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -260,10 +261,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_set_invert_enabled() {
-    if (!this.#_bindings.method_set_invert_enabled) {
+    if (!this._bindings.method_set_invert_enabled) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("set_invert_enabled");
-      this.#_bindings.method_set_invert_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_invert_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -271,10 +272,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_get_invert_enabled() {
-    if (!this.#_bindings.method_get_invert_enabled) {
+    if (!this._bindings.method_get_invert_enabled) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("get_invert_enabled");
-      this.#_bindings.method_get_invert_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_get_invert_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -282,10 +283,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_set_antialiased() {
-    if (!this.#_bindings.method_set_antialiased) {
+    if (!this._bindings.method_set_antialiased) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("set_antialiased");
-      this.#_bindings.method_set_antialiased = internal.classdb_get_method_bind(
+      this._bindings.method_set_antialiased = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -293,10 +294,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_get_antialiased() {
-    if (!this.#_bindings.method_get_antialiased) {
+    if (!this._bindings.method_get_antialiased) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("get_antialiased");
-      this.#_bindings.method_get_antialiased = internal.classdb_get_method_bind(
+      this._bindings.method_get_antialiased = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -304,10 +305,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_set_invert_border() {
-    if (!this.#_bindings.method_set_invert_border) {
+    if (!this._bindings.method_set_invert_border) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("set_invert_border");
-      this.#_bindings.method_set_invert_border = internal.classdb_get_method_bind(
+      this._bindings.method_set_invert_border = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -315,10 +316,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_get_invert_border() {
-    if (!this.#_bindings.method_get_invert_border) {
+    if (!this._bindings.method_get_invert_border) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("get_invert_border");
-      this.#_bindings.method_get_invert_border = internal.classdb_get_method_bind(
+      this._bindings.method_get_invert_border = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -326,10 +327,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_set_offset() {
-    if (!this.#_bindings.method_set_offset) {
+    if (!this._bindings.method_set_offset) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("set_offset");
-      this.#_bindings.method_set_offset = internal.classdb_get_method_bind(
+      this._bindings.method_set_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -337,10 +338,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_get_offset() {
-    if (!this.#_bindings.method_get_offset) {
+    if (!this._bindings.method_get_offset) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("get_offset");
-      this.#_bindings.method_get_offset = internal.classdb_get_method_bind(
+      this._bindings.method_get_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -348,10 +349,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_add_bone() {
-    if (!this.#_bindings.method_add_bone) {
+    if (!this._bindings.method_add_bone) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("add_bone");
-      this.#_bindings.method_add_bone = internal.classdb_get_method_bind(
+      this._bindings.method_add_bone = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         703042815
@@ -359,10 +360,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_get_bone_count() {
-    if (!this.#_bindings.method_get_bone_count) {
+    if (!this._bindings.method_get_bone_count) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("get_bone_count");
-      this.#_bindings.method_get_bone_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_bone_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -370,10 +371,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_get_bone_path() {
-    if (!this.#_bindings.method_get_bone_path) {
+    if (!this._bindings.method_get_bone_path) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("get_bone_path");
-      this.#_bindings.method_get_bone_path = internal.classdb_get_method_bind(
+      this._bindings.method_get_bone_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         408788394
@@ -381,10 +382,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_get_bone_weights() {
-    if (!this.#_bindings.method_get_bone_weights) {
+    if (!this._bindings.method_get_bone_weights) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("get_bone_weights");
-      this.#_bindings.method_get_bone_weights = internal.classdb_get_method_bind(
+      this._bindings.method_get_bone_weights = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1542882410
@@ -392,10 +393,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_erase_bone() {
-    if (!this.#_bindings.method_erase_bone) {
+    if (!this._bindings.method_erase_bone) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("erase_bone");
-      this.#_bindings.method_erase_bone = internal.classdb_get_method_bind(
+      this._bindings.method_erase_bone = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -403,10 +404,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_clear_bones() {
-    if (!this.#_bindings.method_clear_bones) {
+    if (!this._bindings.method_clear_bones) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("clear_bones");
-      this.#_bindings.method_clear_bones = internal.classdb_get_method_bind(
+      this._bindings.method_clear_bones = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -414,10 +415,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_set_bone_path() {
-    if (!this.#_bindings.method_set_bone_path) {
+    if (!this._bindings.method_set_bone_path) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("set_bone_path");
-      this.#_bindings.method_set_bone_path = internal.classdb_get_method_bind(
+      this._bindings.method_set_bone_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2761262315
@@ -425,10 +426,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_set_bone_weights() {
-    if (!this.#_bindings.method_set_bone_weights) {
+    if (!this._bindings.method_set_bone_weights) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("set_bone_weights");
-      this.#_bindings.method_set_bone_weights = internal.classdb_get_method_bind(
+      this._bindings.method_set_bone_weights = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1345852415
@@ -436,10 +437,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_set_skeleton() {
-    if (!this.#_bindings.method_set_skeleton) {
+    if (!this._bindings.method_set_skeleton) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("set_skeleton");
-      this.#_bindings.method_set_skeleton = internal.classdb_get_method_bind(
+      this._bindings.method_set_skeleton = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1348162250
@@ -447,10 +448,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_get_skeleton() {
-    if (!this.#_bindings.method_get_skeleton) {
+    if (!this._bindings.method_get_skeleton) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("get_skeleton");
-      this.#_bindings.method_get_skeleton = internal.classdb_get_method_bind(
+      this._bindings.method_get_skeleton = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4075236667
@@ -458,10 +459,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_set_internal_vertex_count() {
-    if (!this.#_bindings.method_set_internal_vertex_count) {
+    if (!this._bindings.method_set_internal_vertex_count) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("set_internal_vertex_count");
-      this.#_bindings.method_set_internal_vertex_count = internal.classdb_get_method_bind(
+      this._bindings.method_set_internal_vertex_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -469,10 +470,10 @@ export class Polygon2D extends Node2D{
     }
   }
   static init_method_get_internal_vertex_count() {
-    if (!this.#_bindings.method_get_internal_vertex_count) {
+    if (!this._bindings.method_get_internal_vertex_count) {
       let classname = new StringName("Polygon2D");
       let methodname = new StringName("get_internal_vertex_count");
-      this.#_bindings.method_get_internal_vertex_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_internal_vertex_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -485,7 +486,7 @@ export class Polygon2D extends Node2D{
   set_polygon(_polygon) {
     Polygon2D.init_method_set_polygon();
     return _call_native_mb_no_ret(
-      Polygon2D.#_bindings.method_set_polygon,
+      Polygon2D._bindings.method_set_polygon,
       this._owner,
       _polygon
     );
@@ -494,7 +495,7 @@ export class Polygon2D extends Node2D{
   get_polygon() {
     Polygon2D.init_method_get_polygon();
     return _call_native_mb_ret(
-      Polygon2D.#_bindings.method_get_polygon,
+      Polygon2D._bindings.method_get_polygon,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -505,7 +506,7 @@ export class Polygon2D extends Node2D{
   set_uv(_uv) {
     Polygon2D.init_method_set_uv();
     return _call_native_mb_no_ret(
-      Polygon2D.#_bindings.method_set_uv,
+      Polygon2D._bindings.method_set_uv,
       this._owner,
       _uv
     );
@@ -514,7 +515,7 @@ export class Polygon2D extends Node2D{
   get_uv() {
     Polygon2D.init_method_get_uv();
     return _call_native_mb_ret(
-      Polygon2D.#_bindings.method_get_uv,
+      Polygon2D._bindings.method_get_uv,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -525,7 +526,7 @@ export class Polygon2D extends Node2D{
   set_color(_color) {
     Polygon2D.init_method_set_color();
     return _call_native_mb_no_ret(
-      Polygon2D.#_bindings.method_set_color,
+      Polygon2D._bindings.method_set_color,
       this._owner,
       _color
     );
@@ -534,7 +535,7 @@ export class Polygon2D extends Node2D{
   get_color() {
     Polygon2D.init_method_get_color();
     return _call_native_mb_ret(
-      Polygon2D.#_bindings.method_get_color,
+      Polygon2D._bindings.method_get_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -545,7 +546,7 @@ export class Polygon2D extends Node2D{
   set_polygons(_polygons) {
     Polygon2D.init_method_set_polygons();
     return _call_native_mb_no_ret(
-      Polygon2D.#_bindings.method_set_polygons,
+      Polygon2D._bindings.method_set_polygons,
       this._owner,
       _polygons
     );
@@ -554,7 +555,7 @@ export class Polygon2D extends Node2D{
   get_polygons() {
     Polygon2D.init_method_get_polygons();
     return _call_native_mb_ret(
-      Polygon2D.#_bindings.method_get_polygons,
+      Polygon2D._bindings.method_get_polygons,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -565,7 +566,7 @@ export class Polygon2D extends Node2D{
   set_vertex_colors(_vertex_colors) {
     Polygon2D.init_method_set_vertex_colors();
     return _call_native_mb_no_ret(
-      Polygon2D.#_bindings.method_set_vertex_colors,
+      Polygon2D._bindings.method_set_vertex_colors,
       this._owner,
       _vertex_colors
     );
@@ -574,7 +575,7 @@ export class Polygon2D extends Node2D{
   get_vertex_colors() {
     Polygon2D.init_method_get_vertex_colors();
     return _call_native_mb_ret(
-      Polygon2D.#_bindings.method_get_vertex_colors,
+      Polygon2D._bindings.method_get_vertex_colors,
       this._owner,
 			Variant.Type.PACKED_COLOR_ARRAY,
     
@@ -585,7 +586,7 @@ export class Polygon2D extends Node2D{
   set_texture(_texture) {
     Polygon2D.init_method_set_texture();
     return _call_native_mb_no_ret(
-      Polygon2D.#_bindings.method_set_texture,
+      Polygon2D._bindings.method_set_texture,
       this._owner,
       _texture
     );
@@ -594,7 +595,7 @@ export class Polygon2D extends Node2D{
   get_texture() {
     Polygon2D.init_method_get_texture();
     return _call_native_mb_ret(
-      Polygon2D.#_bindings.method_get_texture,
+      Polygon2D._bindings.method_get_texture,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -604,7 +605,7 @@ export class Polygon2D extends Node2D{
   set_texture_offset(_texture_offset) {
     Polygon2D.init_method_set_texture_offset();
     return _call_native_mb_no_ret(
-      Polygon2D.#_bindings.method_set_texture_offset,
+      Polygon2D._bindings.method_set_texture_offset,
       this._owner,
       _texture_offset
     );
@@ -613,7 +614,7 @@ export class Polygon2D extends Node2D{
   get_texture_offset() {
     Polygon2D.init_method_get_texture_offset();
     return _call_native_mb_ret(
-      Polygon2D.#_bindings.method_get_texture_offset,
+      Polygon2D._bindings.method_get_texture_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -624,7 +625,7 @@ export class Polygon2D extends Node2D{
   set_texture_rotation(_texture_rotation) {
     Polygon2D.init_method_set_texture_rotation();
     return _call_native_mb_no_ret(
-      Polygon2D.#_bindings.method_set_texture_rotation,
+      Polygon2D._bindings.method_set_texture_rotation,
       this._owner,
       _texture_rotation
     );
@@ -633,7 +634,7 @@ export class Polygon2D extends Node2D{
   get_texture_rotation() {
     Polygon2D.init_method_get_texture_rotation();
     return _call_native_mb_ret(
-      Polygon2D.#_bindings.method_get_texture_rotation,
+      Polygon2D._bindings.method_get_texture_rotation,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -644,7 +645,7 @@ export class Polygon2D extends Node2D{
   set_texture_scale(_texture_scale) {
     Polygon2D.init_method_set_texture_scale();
     return _call_native_mb_no_ret(
-      Polygon2D.#_bindings.method_set_texture_scale,
+      Polygon2D._bindings.method_set_texture_scale,
       this._owner,
       _texture_scale
     );
@@ -653,7 +654,7 @@ export class Polygon2D extends Node2D{
   get_texture_scale() {
     Polygon2D.init_method_get_texture_scale();
     return _call_native_mb_ret(
-      Polygon2D.#_bindings.method_get_texture_scale,
+      Polygon2D._bindings.method_get_texture_scale,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -664,7 +665,7 @@ export class Polygon2D extends Node2D{
   set_invert_enabled(_invert) {
     Polygon2D.init_method_set_invert_enabled();
     return _call_native_mb_no_ret(
-      Polygon2D.#_bindings.method_set_invert_enabled,
+      Polygon2D._bindings.method_set_invert_enabled,
       this._owner,
       _invert
     );
@@ -673,7 +674,7 @@ export class Polygon2D extends Node2D{
   get_invert_enabled() {
     Polygon2D.init_method_get_invert_enabled();
     return _call_native_mb_ret(
-      Polygon2D.#_bindings.method_get_invert_enabled,
+      Polygon2D._bindings.method_get_invert_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -684,7 +685,7 @@ export class Polygon2D extends Node2D{
   set_antialiased(_antialiased) {
     Polygon2D.init_method_set_antialiased();
     return _call_native_mb_no_ret(
-      Polygon2D.#_bindings.method_set_antialiased,
+      Polygon2D._bindings.method_set_antialiased,
       this._owner,
       _antialiased
     );
@@ -693,7 +694,7 @@ export class Polygon2D extends Node2D{
   get_antialiased() {
     Polygon2D.init_method_get_antialiased();
     return _call_native_mb_ret(
-      Polygon2D.#_bindings.method_get_antialiased,
+      Polygon2D._bindings.method_get_antialiased,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -704,7 +705,7 @@ export class Polygon2D extends Node2D{
   set_invert_border(_invert_border) {
     Polygon2D.init_method_set_invert_border();
     return _call_native_mb_no_ret(
-      Polygon2D.#_bindings.method_set_invert_border,
+      Polygon2D._bindings.method_set_invert_border,
       this._owner,
       _invert_border
     );
@@ -713,7 +714,7 @@ export class Polygon2D extends Node2D{
   get_invert_border() {
     Polygon2D.init_method_get_invert_border();
     return _call_native_mb_ret(
-      Polygon2D.#_bindings.method_get_invert_border,
+      Polygon2D._bindings.method_get_invert_border,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -724,7 +725,7 @@ export class Polygon2D extends Node2D{
   set_offset(_offset) {
     Polygon2D.init_method_set_offset();
     return _call_native_mb_no_ret(
-      Polygon2D.#_bindings.method_set_offset,
+      Polygon2D._bindings.method_set_offset,
       this._owner,
       _offset
     );
@@ -733,7 +734,7 @@ export class Polygon2D extends Node2D{
   get_offset() {
     Polygon2D.init_method_get_offset();
     return _call_native_mb_ret(
-      Polygon2D.#_bindings.method_get_offset,
+      Polygon2D._bindings.method_get_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -744,7 +745,7 @@ export class Polygon2D extends Node2D{
   add_bone(_path, _weights) {
     Polygon2D.init_method_add_bone();
     return _call_native_mb_no_ret(
-      Polygon2D.#_bindings.method_add_bone,
+      Polygon2D._bindings.method_add_bone,
       this._owner,
       _path, _weights
     );
@@ -753,7 +754,7 @@ export class Polygon2D extends Node2D{
   get_bone_count() {
     Polygon2D.init_method_get_bone_count();
     return _call_native_mb_ret(
-      Polygon2D.#_bindings.method_get_bone_count,
+      Polygon2D._bindings.method_get_bone_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -764,7 +765,7 @@ export class Polygon2D extends Node2D{
   get_bone_path(_index) {
     Polygon2D.init_method_get_bone_path();
     return _call_native_mb_ret(
-      Polygon2D.#_bindings.method_get_bone_path,
+      Polygon2D._bindings.method_get_bone_path,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -775,7 +776,7 @@ export class Polygon2D extends Node2D{
   get_bone_weights(_index) {
     Polygon2D.init_method_get_bone_weights();
     return _call_native_mb_ret(
-      Polygon2D.#_bindings.method_get_bone_weights,
+      Polygon2D._bindings.method_get_bone_weights,
       this._owner,
 			Variant.Type.PACKED_FLOAT32_ARRAY,
     
@@ -786,7 +787,7 @@ export class Polygon2D extends Node2D{
   erase_bone(_index) {
     Polygon2D.init_method_erase_bone();
     return _call_native_mb_no_ret(
-      Polygon2D.#_bindings.method_erase_bone,
+      Polygon2D._bindings.method_erase_bone,
       this._owner,
       _index
     );
@@ -795,7 +796,7 @@ export class Polygon2D extends Node2D{
   clear_bones() {
     Polygon2D.init_method_clear_bones();
     return _call_native_mb_no_ret(
-      Polygon2D.#_bindings.method_clear_bones,
+      Polygon2D._bindings.method_clear_bones,
       this._owner,
       
     );
@@ -804,7 +805,7 @@ export class Polygon2D extends Node2D{
   set_bone_path(_index, _path) {
     Polygon2D.init_method_set_bone_path();
     return _call_native_mb_no_ret(
-      Polygon2D.#_bindings.method_set_bone_path,
+      Polygon2D._bindings.method_set_bone_path,
       this._owner,
       _index, _path
     );
@@ -813,7 +814,7 @@ export class Polygon2D extends Node2D{
   set_bone_weights(_index, _weights) {
     Polygon2D.init_method_set_bone_weights();
     return _call_native_mb_no_ret(
-      Polygon2D.#_bindings.method_set_bone_weights,
+      Polygon2D._bindings.method_set_bone_weights,
       this._owner,
       _index, _weights
     );
@@ -822,7 +823,7 @@ export class Polygon2D extends Node2D{
   set_skeleton(_skeleton) {
     Polygon2D.init_method_set_skeleton();
     return _call_native_mb_no_ret(
-      Polygon2D.#_bindings.method_set_skeleton,
+      Polygon2D._bindings.method_set_skeleton,
       this._owner,
       _skeleton
     );
@@ -831,7 +832,7 @@ export class Polygon2D extends Node2D{
   get_skeleton() {
     Polygon2D.init_method_get_skeleton();
     return _call_native_mb_ret(
-      Polygon2D.#_bindings.method_get_skeleton,
+      Polygon2D._bindings.method_get_skeleton,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -842,7 +843,7 @@ export class Polygon2D extends Node2D{
   set_internal_vertex_count(_internal_vertex_count) {
     Polygon2D.init_method_set_internal_vertex_count();
     return _call_native_mb_no_ret(
-      Polygon2D.#_bindings.method_set_internal_vertex_count,
+      Polygon2D._bindings.method_set_internal_vertex_count,
       this._owner,
       _internal_vertex_count
     );
@@ -851,7 +852,7 @@ export class Polygon2D extends Node2D{
   get_internal_vertex_count() {
     Polygon2D.init_method_get_internal_vertex_count();
     return _call_native_mb_ret(
-      Polygon2D.#_bindings.method_get_internal_vertex_count,
+      Polygon2D._bindings.method_get_internal_vertex_count,
       this._owner,
 			Variant.Type.INT,
     

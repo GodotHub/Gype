@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { Node2D } from '@js_godot/classes/node2d'
 import {
   call_utility_ret,
@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_enabled;
@@ -43,10 +44,10 @@ class _MethodBindings {
   method_set_height;
   method_get_height;
 }
+@GodotClass
 export class Light2D extends Node2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -56,10 +57,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_set_enabled() {
-    if (!this.#_bindings.method_set_enabled) {
+    if (!this._bindings.method_set_enabled) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("set_enabled");
-      this.#_bindings.method_set_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -67,10 +68,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_is_enabled() {
-    if (!this.#_bindings.method_is_enabled) {
+    if (!this._bindings.method_is_enabled) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("is_enabled");
-      this.#_bindings.method_is_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -78,10 +79,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_set_editor_only() {
-    if (!this.#_bindings.method_set_editor_only) {
+    if (!this._bindings.method_set_editor_only) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("set_editor_only");
-      this.#_bindings.method_set_editor_only = internal.classdb_get_method_bind(
+      this._bindings.method_set_editor_only = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -89,10 +90,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_is_editor_only() {
-    if (!this.#_bindings.method_is_editor_only) {
+    if (!this._bindings.method_is_editor_only) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("is_editor_only");
-      this.#_bindings.method_is_editor_only = internal.classdb_get_method_bind(
+      this._bindings.method_is_editor_only = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -100,10 +101,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_set_color() {
-    if (!this.#_bindings.method_set_color) {
+    if (!this._bindings.method_set_color) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("set_color");
-      this.#_bindings.method_set_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -111,10 +112,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_get_color() {
-    if (!this.#_bindings.method_get_color) {
+    if (!this._bindings.method_get_color) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("get_color");
-      this.#_bindings.method_get_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -122,10 +123,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_set_energy() {
-    if (!this.#_bindings.method_set_energy) {
+    if (!this._bindings.method_set_energy) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("set_energy");
-      this.#_bindings.method_set_energy = internal.classdb_get_method_bind(
+      this._bindings.method_set_energy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -133,10 +134,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_get_energy() {
-    if (!this.#_bindings.method_get_energy) {
+    if (!this._bindings.method_get_energy) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("get_energy");
-      this.#_bindings.method_get_energy = internal.classdb_get_method_bind(
+      this._bindings.method_get_energy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -144,10 +145,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_set_z_range_min() {
-    if (!this.#_bindings.method_set_z_range_min) {
+    if (!this._bindings.method_set_z_range_min) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("set_z_range_min");
-      this.#_bindings.method_set_z_range_min = internal.classdb_get_method_bind(
+      this._bindings.method_set_z_range_min = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -155,10 +156,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_get_z_range_min() {
-    if (!this.#_bindings.method_get_z_range_min) {
+    if (!this._bindings.method_get_z_range_min) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("get_z_range_min");
-      this.#_bindings.method_get_z_range_min = internal.classdb_get_method_bind(
+      this._bindings.method_get_z_range_min = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -166,10 +167,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_set_z_range_max() {
-    if (!this.#_bindings.method_set_z_range_max) {
+    if (!this._bindings.method_set_z_range_max) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("set_z_range_max");
-      this.#_bindings.method_set_z_range_max = internal.classdb_get_method_bind(
+      this._bindings.method_set_z_range_max = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -177,10 +178,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_get_z_range_max() {
-    if (!this.#_bindings.method_get_z_range_max) {
+    if (!this._bindings.method_get_z_range_max) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("get_z_range_max");
-      this.#_bindings.method_get_z_range_max = internal.classdb_get_method_bind(
+      this._bindings.method_get_z_range_max = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -188,10 +189,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_set_layer_range_min() {
-    if (!this.#_bindings.method_set_layer_range_min) {
+    if (!this._bindings.method_set_layer_range_min) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("set_layer_range_min");
-      this.#_bindings.method_set_layer_range_min = internal.classdb_get_method_bind(
+      this._bindings.method_set_layer_range_min = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -199,10 +200,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_get_layer_range_min() {
-    if (!this.#_bindings.method_get_layer_range_min) {
+    if (!this._bindings.method_get_layer_range_min) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("get_layer_range_min");
-      this.#_bindings.method_get_layer_range_min = internal.classdb_get_method_bind(
+      this._bindings.method_get_layer_range_min = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -210,10 +211,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_set_layer_range_max() {
-    if (!this.#_bindings.method_set_layer_range_max) {
+    if (!this._bindings.method_set_layer_range_max) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("set_layer_range_max");
-      this.#_bindings.method_set_layer_range_max = internal.classdb_get_method_bind(
+      this._bindings.method_set_layer_range_max = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -221,10 +222,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_get_layer_range_max() {
-    if (!this.#_bindings.method_get_layer_range_max) {
+    if (!this._bindings.method_get_layer_range_max) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("get_layer_range_max");
-      this.#_bindings.method_get_layer_range_max = internal.classdb_get_method_bind(
+      this._bindings.method_get_layer_range_max = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -232,10 +233,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_set_item_cull_mask() {
-    if (!this.#_bindings.method_set_item_cull_mask) {
+    if (!this._bindings.method_set_item_cull_mask) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("set_item_cull_mask");
-      this.#_bindings.method_set_item_cull_mask = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_cull_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -243,10 +244,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_get_item_cull_mask() {
-    if (!this.#_bindings.method_get_item_cull_mask) {
+    if (!this._bindings.method_get_item_cull_mask) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("get_item_cull_mask");
-      this.#_bindings.method_get_item_cull_mask = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_cull_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -254,10 +255,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_set_item_shadow_cull_mask() {
-    if (!this.#_bindings.method_set_item_shadow_cull_mask) {
+    if (!this._bindings.method_set_item_shadow_cull_mask) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("set_item_shadow_cull_mask");
-      this.#_bindings.method_set_item_shadow_cull_mask = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_shadow_cull_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -265,10 +266,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_get_item_shadow_cull_mask() {
-    if (!this.#_bindings.method_get_item_shadow_cull_mask) {
+    if (!this._bindings.method_get_item_shadow_cull_mask) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("get_item_shadow_cull_mask");
-      this.#_bindings.method_get_item_shadow_cull_mask = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_shadow_cull_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -276,10 +277,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_set_shadow_enabled() {
-    if (!this.#_bindings.method_set_shadow_enabled) {
+    if (!this._bindings.method_set_shadow_enabled) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("set_shadow_enabled");
-      this.#_bindings.method_set_shadow_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_shadow_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -287,10 +288,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_is_shadow_enabled() {
-    if (!this.#_bindings.method_is_shadow_enabled) {
+    if (!this._bindings.method_is_shadow_enabled) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("is_shadow_enabled");
-      this.#_bindings.method_is_shadow_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_shadow_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -298,10 +299,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_set_shadow_smooth() {
-    if (!this.#_bindings.method_set_shadow_smooth) {
+    if (!this._bindings.method_set_shadow_smooth) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("set_shadow_smooth");
-      this.#_bindings.method_set_shadow_smooth = internal.classdb_get_method_bind(
+      this._bindings.method_set_shadow_smooth = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -309,10 +310,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_get_shadow_smooth() {
-    if (!this.#_bindings.method_get_shadow_smooth) {
+    if (!this._bindings.method_get_shadow_smooth) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("get_shadow_smooth");
-      this.#_bindings.method_get_shadow_smooth = internal.classdb_get_method_bind(
+      this._bindings.method_get_shadow_smooth = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -320,10 +321,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_set_shadow_filter() {
-    if (!this.#_bindings.method_set_shadow_filter) {
+    if (!this._bindings.method_set_shadow_filter) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("set_shadow_filter");
-      this.#_bindings.method_set_shadow_filter = internal.classdb_get_method_bind(
+      this._bindings.method_set_shadow_filter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3209356555
@@ -331,10 +332,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_get_shadow_filter() {
-    if (!this.#_bindings.method_get_shadow_filter) {
+    if (!this._bindings.method_get_shadow_filter) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("get_shadow_filter");
-      this.#_bindings.method_get_shadow_filter = internal.classdb_get_method_bind(
+      this._bindings.method_get_shadow_filter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1973619177
@@ -342,10 +343,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_set_shadow_color() {
-    if (!this.#_bindings.method_set_shadow_color) {
+    if (!this._bindings.method_set_shadow_color) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("set_shadow_color");
-      this.#_bindings.method_set_shadow_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_shadow_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -353,10 +354,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_get_shadow_color() {
-    if (!this.#_bindings.method_get_shadow_color) {
+    if (!this._bindings.method_get_shadow_color) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("get_shadow_color");
-      this.#_bindings.method_get_shadow_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_shadow_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -364,10 +365,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_set_blend_mode() {
-    if (!this.#_bindings.method_set_blend_mode) {
+    if (!this._bindings.method_set_blend_mode) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("set_blend_mode");
-      this.#_bindings.method_set_blend_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_blend_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2916638796
@@ -375,10 +376,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_get_blend_mode() {
-    if (!this.#_bindings.method_get_blend_mode) {
+    if (!this._bindings.method_get_blend_mode) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("get_blend_mode");
-      this.#_bindings.method_get_blend_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_blend_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         936255250
@@ -386,10 +387,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_set_height() {
-    if (!this.#_bindings.method_set_height) {
+    if (!this._bindings.method_set_height) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("set_height");
-      this.#_bindings.method_set_height = internal.classdb_get_method_bind(
+      this._bindings.method_set_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -397,10 +398,10 @@ export class Light2D extends Node2D{
     }
   }
   static init_method_get_height() {
-    if (!this.#_bindings.method_get_height) {
+    if (!this._bindings.method_get_height) {
       let classname = new StringName("Light2D");
       let methodname = new StringName("get_height");
-      this.#_bindings.method_get_height = internal.classdb_get_method_bind(
+      this._bindings.method_get_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -413,7 +414,7 @@ export class Light2D extends Node2D{
   set_enabled(_enabled) {
     Light2D.init_method_set_enabled();
     return _call_native_mb_no_ret(
-      Light2D.#_bindings.method_set_enabled,
+      Light2D._bindings.method_set_enabled,
       this._owner,
       _enabled
     );
@@ -422,7 +423,7 @@ export class Light2D extends Node2D{
   is_enabled() {
     Light2D.init_method_is_enabled();
     return _call_native_mb_ret(
-      Light2D.#_bindings.method_is_enabled,
+      Light2D._bindings.method_is_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -433,7 +434,7 @@ export class Light2D extends Node2D{
   set_editor_only(_editor_only) {
     Light2D.init_method_set_editor_only();
     return _call_native_mb_no_ret(
-      Light2D.#_bindings.method_set_editor_only,
+      Light2D._bindings.method_set_editor_only,
       this._owner,
       _editor_only
     );
@@ -442,7 +443,7 @@ export class Light2D extends Node2D{
   is_editor_only() {
     Light2D.init_method_is_editor_only();
     return _call_native_mb_ret(
-      Light2D.#_bindings.method_is_editor_only,
+      Light2D._bindings.method_is_editor_only,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -453,7 +454,7 @@ export class Light2D extends Node2D{
   set_color(_color) {
     Light2D.init_method_set_color();
     return _call_native_mb_no_ret(
-      Light2D.#_bindings.method_set_color,
+      Light2D._bindings.method_set_color,
       this._owner,
       _color
     );
@@ -462,7 +463,7 @@ export class Light2D extends Node2D{
   get_color() {
     Light2D.init_method_get_color();
     return _call_native_mb_ret(
-      Light2D.#_bindings.method_get_color,
+      Light2D._bindings.method_get_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -473,7 +474,7 @@ export class Light2D extends Node2D{
   set_energy(_energy) {
     Light2D.init_method_set_energy();
     return _call_native_mb_no_ret(
-      Light2D.#_bindings.method_set_energy,
+      Light2D._bindings.method_set_energy,
       this._owner,
       _energy
     );
@@ -482,7 +483,7 @@ export class Light2D extends Node2D{
   get_energy() {
     Light2D.init_method_get_energy();
     return _call_native_mb_ret(
-      Light2D.#_bindings.method_get_energy,
+      Light2D._bindings.method_get_energy,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -493,7 +494,7 @@ export class Light2D extends Node2D{
   set_z_range_min(_z) {
     Light2D.init_method_set_z_range_min();
     return _call_native_mb_no_ret(
-      Light2D.#_bindings.method_set_z_range_min,
+      Light2D._bindings.method_set_z_range_min,
       this._owner,
       _z
     );
@@ -502,7 +503,7 @@ export class Light2D extends Node2D{
   get_z_range_min() {
     Light2D.init_method_get_z_range_min();
     return _call_native_mb_ret(
-      Light2D.#_bindings.method_get_z_range_min,
+      Light2D._bindings.method_get_z_range_min,
       this._owner,
 			Variant.Type.INT,
     
@@ -513,7 +514,7 @@ export class Light2D extends Node2D{
   set_z_range_max(_z) {
     Light2D.init_method_set_z_range_max();
     return _call_native_mb_no_ret(
-      Light2D.#_bindings.method_set_z_range_max,
+      Light2D._bindings.method_set_z_range_max,
       this._owner,
       _z
     );
@@ -522,7 +523,7 @@ export class Light2D extends Node2D{
   get_z_range_max() {
     Light2D.init_method_get_z_range_max();
     return _call_native_mb_ret(
-      Light2D.#_bindings.method_get_z_range_max,
+      Light2D._bindings.method_get_z_range_max,
       this._owner,
 			Variant.Type.INT,
     
@@ -533,7 +534,7 @@ export class Light2D extends Node2D{
   set_layer_range_min(_layer) {
     Light2D.init_method_set_layer_range_min();
     return _call_native_mb_no_ret(
-      Light2D.#_bindings.method_set_layer_range_min,
+      Light2D._bindings.method_set_layer_range_min,
       this._owner,
       _layer
     );
@@ -542,7 +543,7 @@ export class Light2D extends Node2D{
   get_layer_range_min() {
     Light2D.init_method_get_layer_range_min();
     return _call_native_mb_ret(
-      Light2D.#_bindings.method_get_layer_range_min,
+      Light2D._bindings.method_get_layer_range_min,
       this._owner,
 			Variant.Type.INT,
     
@@ -553,7 +554,7 @@ export class Light2D extends Node2D{
   set_layer_range_max(_layer) {
     Light2D.init_method_set_layer_range_max();
     return _call_native_mb_no_ret(
-      Light2D.#_bindings.method_set_layer_range_max,
+      Light2D._bindings.method_set_layer_range_max,
       this._owner,
       _layer
     );
@@ -562,7 +563,7 @@ export class Light2D extends Node2D{
   get_layer_range_max() {
     Light2D.init_method_get_layer_range_max();
     return _call_native_mb_ret(
-      Light2D.#_bindings.method_get_layer_range_max,
+      Light2D._bindings.method_get_layer_range_max,
       this._owner,
 			Variant.Type.INT,
     
@@ -573,7 +574,7 @@ export class Light2D extends Node2D{
   set_item_cull_mask(_item_cull_mask) {
     Light2D.init_method_set_item_cull_mask();
     return _call_native_mb_no_ret(
-      Light2D.#_bindings.method_set_item_cull_mask,
+      Light2D._bindings.method_set_item_cull_mask,
       this._owner,
       _item_cull_mask
     );
@@ -582,7 +583,7 @@ export class Light2D extends Node2D{
   get_item_cull_mask() {
     Light2D.init_method_get_item_cull_mask();
     return _call_native_mb_ret(
-      Light2D.#_bindings.method_get_item_cull_mask,
+      Light2D._bindings.method_get_item_cull_mask,
       this._owner,
 			Variant.Type.INT,
     
@@ -593,7 +594,7 @@ export class Light2D extends Node2D{
   set_item_shadow_cull_mask(_item_shadow_cull_mask) {
     Light2D.init_method_set_item_shadow_cull_mask();
     return _call_native_mb_no_ret(
-      Light2D.#_bindings.method_set_item_shadow_cull_mask,
+      Light2D._bindings.method_set_item_shadow_cull_mask,
       this._owner,
       _item_shadow_cull_mask
     );
@@ -602,7 +603,7 @@ export class Light2D extends Node2D{
   get_item_shadow_cull_mask() {
     Light2D.init_method_get_item_shadow_cull_mask();
     return _call_native_mb_ret(
-      Light2D.#_bindings.method_get_item_shadow_cull_mask,
+      Light2D._bindings.method_get_item_shadow_cull_mask,
       this._owner,
 			Variant.Type.INT,
     
@@ -613,7 +614,7 @@ export class Light2D extends Node2D{
   set_shadow_enabled(_enabled) {
     Light2D.init_method_set_shadow_enabled();
     return _call_native_mb_no_ret(
-      Light2D.#_bindings.method_set_shadow_enabled,
+      Light2D._bindings.method_set_shadow_enabled,
       this._owner,
       _enabled
     );
@@ -622,7 +623,7 @@ export class Light2D extends Node2D{
   is_shadow_enabled() {
     Light2D.init_method_is_shadow_enabled();
     return _call_native_mb_ret(
-      Light2D.#_bindings.method_is_shadow_enabled,
+      Light2D._bindings.method_is_shadow_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -633,7 +634,7 @@ export class Light2D extends Node2D{
   set_shadow_smooth(_smooth) {
     Light2D.init_method_set_shadow_smooth();
     return _call_native_mb_no_ret(
-      Light2D.#_bindings.method_set_shadow_smooth,
+      Light2D._bindings.method_set_shadow_smooth,
       this._owner,
       _smooth
     );
@@ -642,7 +643,7 @@ export class Light2D extends Node2D{
   get_shadow_smooth() {
     Light2D.init_method_get_shadow_smooth();
     return _call_native_mb_ret(
-      Light2D.#_bindings.method_get_shadow_smooth,
+      Light2D._bindings.method_get_shadow_smooth,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -653,7 +654,7 @@ export class Light2D extends Node2D{
   set_shadow_filter(_filter) {
     Light2D.init_method_set_shadow_filter();
     return _call_native_mb_no_ret(
-      Light2D.#_bindings.method_set_shadow_filter,
+      Light2D._bindings.method_set_shadow_filter,
       this._owner,
       _filter
     );
@@ -662,7 +663,7 @@ export class Light2D extends Node2D{
   get_shadow_filter() {
     Light2D.init_method_get_shadow_filter();
     return _call_native_mb_ret(
-      Light2D.#_bindings.method_get_shadow_filter,
+      Light2D._bindings.method_get_shadow_filter,
       this._owner,
 			Variant.Type.INT,
     
@@ -673,7 +674,7 @@ export class Light2D extends Node2D{
   set_shadow_color(_shadow_color) {
     Light2D.init_method_set_shadow_color();
     return _call_native_mb_no_ret(
-      Light2D.#_bindings.method_set_shadow_color,
+      Light2D._bindings.method_set_shadow_color,
       this._owner,
       _shadow_color
     );
@@ -682,7 +683,7 @@ export class Light2D extends Node2D{
   get_shadow_color() {
     Light2D.init_method_get_shadow_color();
     return _call_native_mb_ret(
-      Light2D.#_bindings.method_get_shadow_color,
+      Light2D._bindings.method_get_shadow_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -693,7 +694,7 @@ export class Light2D extends Node2D{
   set_blend_mode(_mode) {
     Light2D.init_method_set_blend_mode();
     return _call_native_mb_no_ret(
-      Light2D.#_bindings.method_set_blend_mode,
+      Light2D._bindings.method_set_blend_mode,
       this._owner,
       _mode
     );
@@ -702,7 +703,7 @@ export class Light2D extends Node2D{
   get_blend_mode() {
     Light2D.init_method_get_blend_mode();
     return _call_native_mb_ret(
-      Light2D.#_bindings.method_get_blend_mode,
+      Light2D._bindings.method_get_blend_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -713,7 +714,7 @@ export class Light2D extends Node2D{
   set_height(_height) {
     Light2D.init_method_set_height();
     return _call_native_mb_no_ret(
-      Light2D.#_bindings.method_set_height,
+      Light2D._bindings.method_set_height,
       this._owner,
       _height
     );
@@ -722,7 +723,7 @@ export class Light2D extends Node2D{
   get_height() {
     Light2D.init_method_get_height();
     return _call_native_mb_ret(
-      Light2D.#_bindings.method_get_height,
+      Light2D._bindings.method_get_height,
       this._owner,
 			Variant.Type.FLOAT,
     

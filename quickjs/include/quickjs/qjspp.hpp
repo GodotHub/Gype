@@ -1,9 +1,9 @@
 #pragma once
 
 #include <gdextension_interface.h>
-#include <quickjs/js_pointer.h>
 #include <quickjs/quickjs.h>
-#include <quickjs/str_utils.h>
+#include <utils/js_pointer.h>
+#include <utils/str_utils.h>
 #include <godot_cpp/variant/utility_functions.hpp>
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/variant_size.hpp>
@@ -59,7 +59,7 @@ GDExtensionInt encodeInt(JSContext *ctx, JSValue v);
 double encodeDouble(JSContext *ctx, JSValue v);
 bool encodeBool(JSContext *ctx, JSValue v);
 int variant_size(int type);
-JSValue to_js_u8arr(JSContext *ctx, GDExtensionVariantType type, void *value);
+JSValue to_js_arr(JSContext *ctx, GDExtensionVariantType type, void *value);
 void *to_c_pointer(JSContext *ctx, Pointer js_pointer);
 bool is_typed_array(JSValue value);
 bool is_int(JSValue value);
@@ -2588,6 +2588,38 @@ inline JSValue to_js_variant(JSContext *ctx, int type, JSValue opaque) {
 	return ret;
 }
 
+inline JSValue to_js_type(JSContext *ctx, int type, JSValue opaque) {
+	const char *md_name = to_js_type(type);
+	char code[1024];
+	std::string snake = camelToSnake(md_name);
+	if (type == GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_OBJECT ||
+			(type >= GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_NIL && type <= GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_FLOAT)) {
+		sprintf(code, "\
+		import { Variant } from \"@js_godot/variant/variant\";\n\
+		export function to_variant(opaque) {\
+			let variant = new Variant(opaque);\
+			return variant;\
+		}\n");
+	} else {
+		sprintf(code, "\
+		import { %s } from \"@js_godot/variant/%s\";\n\
+		import { Variant } from \"@js_godot/variant/variant\";\n\
+		export function to_variant(opaque) {\
+			let actual = new %s(opaque);\
+			let variant = new Variant(actual);\
+			return variant;\
+		}\n",
+				md_name, snake.c_str(), md_name);
+	}
+	JSValue js_module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE | JS_EVAL_FLAG_COMPILE_ONLY);
+	JSModuleDef *md = (JSModuleDef *)JS_VALUE_GET_PTR(js_module);
+	js_module = JS_EvalFunction(ctx, js_module);
+	JSValue ns = JS_GetModuleNamespace(ctx, md);
+	JSValue to_variant_func = JS_GetPropertyStr(ctx, ns, "to_variant");
+	JSValue js_variant = JS_Call(ctx, to_variant_func, js_module, 1, &opaque);
+	return js_variant;
+}
+
 inline JSValue to_js_variant(JSContext *ctx, int type, uint8_t *value) {
 	size_t len = variant_size(type);
 	JSValue buf = JS_NewArrayBuffer(ctx, value, len, NULL, NULL, false);
@@ -2596,7 +2628,7 @@ inline JSValue to_js_variant(JSContext *ctx, int type, uint8_t *value) {
 	return to_js_variant(ctx, type, opaque);
 }
 
-inline JSValue to_js_u8arr(JSContext *ctx, GDExtensionVariantType type, void *value) {
+inline JSValue to_js_arr(JSContext *ctx, GDExtensionVariantType type, void *value) {
 	int size = variant_size(type);
 	uint8_t *u8 = reinterpret_cast<uint8_t *>(value);
 	JSValue buf = JS_NewArrayBuffer(ctx, u8, size, NULL, NULL, false);
@@ -2729,7 +2761,7 @@ struct js_traits<GDExtensionPtrBuiltInMethod> {
 		void *r_return = malloc_variant(ctx, return_type);
 		int p_argument_count = args.size();
 		js_traits<std::function<void(GDExtensionTypePtr, const GDExtensionConstTypePtr *, GDExtensionTypePtr, int)>>::unwrap(ctx, *func_data)(p_base, p_args, r_return, p_argument_count);
-		return to_js_u8arr(ctx, return_type, r_return);
+		return to_js_arr(ctx, return_type, r_return);
 	}
 
 	static JSValue wrap(JSContext *ctx, GDExtensionPtrBuiltInMethod v) noexcept {

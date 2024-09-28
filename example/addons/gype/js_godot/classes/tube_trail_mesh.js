@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { PrimitiveMesh } from '@js_godot/classes/primitive_mesh'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_radius;
@@ -27,10 +28,10 @@ class _MethodBindings {
   method_set_curve;
   method_get_curve;
 }
+@GodotClass
 export class TubeTrailMesh extends PrimitiveMesh{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -40,10 +41,10 @@ export class TubeTrailMesh extends PrimitiveMesh{
     }
   }
   static init_method_set_radius() {
-    if (!this.#_bindings.method_set_radius) {
+    if (!this._bindings.method_set_radius) {
       let classname = new StringName("TubeTrailMesh");
       let methodname = new StringName("set_radius");
-      this.#_bindings.method_set_radius = internal.classdb_get_method_bind(
+      this._bindings.method_set_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -51,10 +52,10 @@ export class TubeTrailMesh extends PrimitiveMesh{
     }
   }
   static init_method_get_radius() {
-    if (!this.#_bindings.method_get_radius) {
+    if (!this._bindings.method_get_radius) {
       let classname = new StringName("TubeTrailMesh");
       let methodname = new StringName("get_radius");
-      this.#_bindings.method_get_radius = internal.classdb_get_method_bind(
+      this._bindings.method_get_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -62,10 +63,10 @@ export class TubeTrailMesh extends PrimitiveMesh{
     }
   }
   static init_method_set_radial_steps() {
-    if (!this.#_bindings.method_set_radial_steps) {
+    if (!this._bindings.method_set_radial_steps) {
       let classname = new StringName("TubeTrailMesh");
       let methodname = new StringName("set_radial_steps");
-      this.#_bindings.method_set_radial_steps = internal.classdb_get_method_bind(
+      this._bindings.method_set_radial_steps = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -73,10 +74,10 @@ export class TubeTrailMesh extends PrimitiveMesh{
     }
   }
   static init_method_get_radial_steps() {
-    if (!this.#_bindings.method_get_radial_steps) {
+    if (!this._bindings.method_get_radial_steps) {
       let classname = new StringName("TubeTrailMesh");
       let methodname = new StringName("get_radial_steps");
-      this.#_bindings.method_get_radial_steps = internal.classdb_get_method_bind(
+      this._bindings.method_get_radial_steps = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -84,10 +85,10 @@ export class TubeTrailMesh extends PrimitiveMesh{
     }
   }
   static init_method_set_sections() {
-    if (!this.#_bindings.method_set_sections) {
+    if (!this._bindings.method_set_sections) {
       let classname = new StringName("TubeTrailMesh");
       let methodname = new StringName("set_sections");
-      this.#_bindings.method_set_sections = internal.classdb_get_method_bind(
+      this._bindings.method_set_sections = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -95,10 +96,10 @@ export class TubeTrailMesh extends PrimitiveMesh{
     }
   }
   static init_method_get_sections() {
-    if (!this.#_bindings.method_get_sections) {
+    if (!this._bindings.method_get_sections) {
       let classname = new StringName("TubeTrailMesh");
       let methodname = new StringName("get_sections");
-      this.#_bindings.method_get_sections = internal.classdb_get_method_bind(
+      this._bindings.method_get_sections = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -106,10 +107,10 @@ export class TubeTrailMesh extends PrimitiveMesh{
     }
   }
   static init_method_set_section_length() {
-    if (!this.#_bindings.method_set_section_length) {
+    if (!this._bindings.method_set_section_length) {
       let classname = new StringName("TubeTrailMesh");
       let methodname = new StringName("set_section_length");
-      this.#_bindings.method_set_section_length = internal.classdb_get_method_bind(
+      this._bindings.method_set_section_length = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -117,10 +118,10 @@ export class TubeTrailMesh extends PrimitiveMesh{
     }
   }
   static init_method_get_section_length() {
-    if (!this.#_bindings.method_get_section_length) {
+    if (!this._bindings.method_get_section_length) {
       let classname = new StringName("TubeTrailMesh");
       let methodname = new StringName("get_section_length");
-      this.#_bindings.method_get_section_length = internal.classdb_get_method_bind(
+      this._bindings.method_get_section_length = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -128,10 +129,10 @@ export class TubeTrailMesh extends PrimitiveMesh{
     }
   }
   static init_method_set_section_rings() {
-    if (!this.#_bindings.method_set_section_rings) {
+    if (!this._bindings.method_set_section_rings) {
       let classname = new StringName("TubeTrailMesh");
       let methodname = new StringName("set_section_rings");
-      this.#_bindings.method_set_section_rings = internal.classdb_get_method_bind(
+      this._bindings.method_set_section_rings = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -139,10 +140,10 @@ export class TubeTrailMesh extends PrimitiveMesh{
     }
   }
   static init_method_get_section_rings() {
-    if (!this.#_bindings.method_get_section_rings) {
+    if (!this._bindings.method_get_section_rings) {
       let classname = new StringName("TubeTrailMesh");
       let methodname = new StringName("get_section_rings");
-      this.#_bindings.method_get_section_rings = internal.classdb_get_method_bind(
+      this._bindings.method_get_section_rings = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -150,10 +151,10 @@ export class TubeTrailMesh extends PrimitiveMesh{
     }
   }
   static init_method_set_cap_top() {
-    if (!this.#_bindings.method_set_cap_top) {
+    if (!this._bindings.method_set_cap_top) {
       let classname = new StringName("TubeTrailMesh");
       let methodname = new StringName("set_cap_top");
-      this.#_bindings.method_set_cap_top = internal.classdb_get_method_bind(
+      this._bindings.method_set_cap_top = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -161,10 +162,10 @@ export class TubeTrailMesh extends PrimitiveMesh{
     }
   }
   static init_method_is_cap_top() {
-    if (!this.#_bindings.method_is_cap_top) {
+    if (!this._bindings.method_is_cap_top) {
       let classname = new StringName("TubeTrailMesh");
       let methodname = new StringName("is_cap_top");
-      this.#_bindings.method_is_cap_top = internal.classdb_get_method_bind(
+      this._bindings.method_is_cap_top = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -172,10 +173,10 @@ export class TubeTrailMesh extends PrimitiveMesh{
     }
   }
   static init_method_set_cap_bottom() {
-    if (!this.#_bindings.method_set_cap_bottom) {
+    if (!this._bindings.method_set_cap_bottom) {
       let classname = new StringName("TubeTrailMesh");
       let methodname = new StringName("set_cap_bottom");
-      this.#_bindings.method_set_cap_bottom = internal.classdb_get_method_bind(
+      this._bindings.method_set_cap_bottom = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -183,10 +184,10 @@ export class TubeTrailMesh extends PrimitiveMesh{
     }
   }
   static init_method_is_cap_bottom() {
-    if (!this.#_bindings.method_is_cap_bottom) {
+    if (!this._bindings.method_is_cap_bottom) {
       let classname = new StringName("TubeTrailMesh");
       let methodname = new StringName("is_cap_bottom");
-      this.#_bindings.method_is_cap_bottom = internal.classdb_get_method_bind(
+      this._bindings.method_is_cap_bottom = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -194,10 +195,10 @@ export class TubeTrailMesh extends PrimitiveMesh{
     }
   }
   static init_method_set_curve() {
-    if (!this.#_bindings.method_set_curve) {
+    if (!this._bindings.method_set_curve) {
       let classname = new StringName("TubeTrailMesh");
       let methodname = new StringName("set_curve");
-      this.#_bindings.method_set_curve = internal.classdb_get_method_bind(
+      this._bindings.method_set_curve = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         270443179
@@ -205,10 +206,10 @@ export class TubeTrailMesh extends PrimitiveMesh{
     }
   }
   static init_method_get_curve() {
-    if (!this.#_bindings.method_get_curve) {
+    if (!this._bindings.method_get_curve) {
       let classname = new StringName("TubeTrailMesh");
       let methodname = new StringName("get_curve");
-      this.#_bindings.method_get_curve = internal.classdb_get_method_bind(
+      this._bindings.method_get_curve = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2460114913
@@ -221,7 +222,7 @@ export class TubeTrailMesh extends PrimitiveMesh{
   set_radius(_radius) {
     TubeTrailMesh.init_method_set_radius();
     return _call_native_mb_no_ret(
-      TubeTrailMesh.#_bindings.method_set_radius,
+      TubeTrailMesh._bindings.method_set_radius,
       this._owner,
       _radius
     );
@@ -230,7 +231,7 @@ export class TubeTrailMesh extends PrimitiveMesh{
   get_radius() {
     TubeTrailMesh.init_method_get_radius();
     return _call_native_mb_ret(
-      TubeTrailMesh.#_bindings.method_get_radius,
+      TubeTrailMesh._bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -241,7 +242,7 @@ export class TubeTrailMesh extends PrimitiveMesh{
   set_radial_steps(_radial_steps) {
     TubeTrailMesh.init_method_set_radial_steps();
     return _call_native_mb_no_ret(
-      TubeTrailMesh.#_bindings.method_set_radial_steps,
+      TubeTrailMesh._bindings.method_set_radial_steps,
       this._owner,
       _radial_steps
     );
@@ -250,7 +251,7 @@ export class TubeTrailMesh extends PrimitiveMesh{
   get_radial_steps() {
     TubeTrailMesh.init_method_get_radial_steps();
     return _call_native_mb_ret(
-      TubeTrailMesh.#_bindings.method_get_radial_steps,
+      TubeTrailMesh._bindings.method_get_radial_steps,
       this._owner,
 			Variant.Type.INT,
     
@@ -261,7 +262,7 @@ export class TubeTrailMesh extends PrimitiveMesh{
   set_sections(_sections) {
     TubeTrailMesh.init_method_set_sections();
     return _call_native_mb_no_ret(
-      TubeTrailMesh.#_bindings.method_set_sections,
+      TubeTrailMesh._bindings.method_set_sections,
       this._owner,
       _sections
     );
@@ -270,7 +271,7 @@ export class TubeTrailMesh extends PrimitiveMesh{
   get_sections() {
     TubeTrailMesh.init_method_get_sections();
     return _call_native_mb_ret(
-      TubeTrailMesh.#_bindings.method_get_sections,
+      TubeTrailMesh._bindings.method_get_sections,
       this._owner,
 			Variant.Type.INT,
     
@@ -281,7 +282,7 @@ export class TubeTrailMesh extends PrimitiveMesh{
   set_section_length(_section_length) {
     TubeTrailMesh.init_method_set_section_length();
     return _call_native_mb_no_ret(
-      TubeTrailMesh.#_bindings.method_set_section_length,
+      TubeTrailMesh._bindings.method_set_section_length,
       this._owner,
       _section_length
     );
@@ -290,7 +291,7 @@ export class TubeTrailMesh extends PrimitiveMesh{
   get_section_length() {
     TubeTrailMesh.init_method_get_section_length();
     return _call_native_mb_ret(
-      TubeTrailMesh.#_bindings.method_get_section_length,
+      TubeTrailMesh._bindings.method_get_section_length,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -301,7 +302,7 @@ export class TubeTrailMesh extends PrimitiveMesh{
   set_section_rings(_section_rings) {
     TubeTrailMesh.init_method_set_section_rings();
     return _call_native_mb_no_ret(
-      TubeTrailMesh.#_bindings.method_set_section_rings,
+      TubeTrailMesh._bindings.method_set_section_rings,
       this._owner,
       _section_rings
     );
@@ -310,7 +311,7 @@ export class TubeTrailMesh extends PrimitiveMesh{
   get_section_rings() {
     TubeTrailMesh.init_method_get_section_rings();
     return _call_native_mb_ret(
-      TubeTrailMesh.#_bindings.method_get_section_rings,
+      TubeTrailMesh._bindings.method_get_section_rings,
       this._owner,
 			Variant.Type.INT,
     
@@ -321,7 +322,7 @@ export class TubeTrailMesh extends PrimitiveMesh{
   set_cap_top(_cap_top) {
     TubeTrailMesh.init_method_set_cap_top();
     return _call_native_mb_no_ret(
-      TubeTrailMesh.#_bindings.method_set_cap_top,
+      TubeTrailMesh._bindings.method_set_cap_top,
       this._owner,
       _cap_top
     );
@@ -330,7 +331,7 @@ export class TubeTrailMesh extends PrimitiveMesh{
   is_cap_top() {
     TubeTrailMesh.init_method_is_cap_top();
     return _call_native_mb_ret(
-      TubeTrailMesh.#_bindings.method_is_cap_top,
+      TubeTrailMesh._bindings.method_is_cap_top,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -341,7 +342,7 @@ export class TubeTrailMesh extends PrimitiveMesh{
   set_cap_bottom(_cap_bottom) {
     TubeTrailMesh.init_method_set_cap_bottom();
     return _call_native_mb_no_ret(
-      TubeTrailMesh.#_bindings.method_set_cap_bottom,
+      TubeTrailMesh._bindings.method_set_cap_bottom,
       this._owner,
       _cap_bottom
     );
@@ -350,7 +351,7 @@ export class TubeTrailMesh extends PrimitiveMesh{
   is_cap_bottom() {
     TubeTrailMesh.init_method_is_cap_bottom();
     return _call_native_mb_ret(
-      TubeTrailMesh.#_bindings.method_is_cap_bottom,
+      TubeTrailMesh._bindings.method_is_cap_bottom,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -361,7 +362,7 @@ export class TubeTrailMesh extends PrimitiveMesh{
   set_curve(_curve) {
     TubeTrailMesh.init_method_set_curve();
     return _call_native_mb_no_ret(
-      TubeTrailMesh.#_bindings.method_set_curve,
+      TubeTrailMesh._bindings.method_set_curve,
       this._owner,
       _curve
     );
@@ -370,7 +371,7 @@ export class TubeTrailMesh extends PrimitiveMesh{
   get_curve() {
     TubeTrailMesh.init_method_get_curve();
     return _call_native_mb_ret(
-      TubeTrailMesh.#_bindings.method_get_curve,
+      TubeTrailMesh._bindings.method_get_curve,
       this._owner,
 			Variant.Type.OBJECT,
       

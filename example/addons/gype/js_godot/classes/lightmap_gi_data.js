@@ -1,14 +1,15 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_lightmap_textures;
@@ -22,10 +23,10 @@ class _MethodBindings {
   method_set_light_texture;
   method_get_light_texture;
 }
+@GodotClass
 export class LightmapGIData extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -35,10 +36,10 @@ export class LightmapGIData extends Resource{
     }
   }
   static init_method_set_lightmap_textures() {
-    if (!this.#_bindings.method_set_lightmap_textures) {
+    if (!this._bindings.method_set_lightmap_textures) {
       let classname = new StringName("LightmapGIData");
       let methodname = new StringName("set_lightmap_textures");
-      this.#_bindings.method_set_lightmap_textures = internal.classdb_get_method_bind(
+      this._bindings.method_set_lightmap_textures = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         381264803
@@ -46,10 +47,10 @@ export class LightmapGIData extends Resource{
     }
   }
   static init_method_get_lightmap_textures() {
-    if (!this.#_bindings.method_get_lightmap_textures) {
+    if (!this._bindings.method_get_lightmap_textures) {
       let classname = new StringName("LightmapGIData");
       let methodname = new StringName("get_lightmap_textures");
-      this.#_bindings.method_get_lightmap_textures = internal.classdb_get_method_bind(
+      this._bindings.method_get_lightmap_textures = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -57,10 +58,10 @@ export class LightmapGIData extends Resource{
     }
   }
   static init_method_set_uses_spherical_harmonics() {
-    if (!this.#_bindings.method_set_uses_spherical_harmonics) {
+    if (!this._bindings.method_set_uses_spherical_harmonics) {
       let classname = new StringName("LightmapGIData");
       let methodname = new StringName("set_uses_spherical_harmonics");
-      this.#_bindings.method_set_uses_spherical_harmonics = internal.classdb_get_method_bind(
+      this._bindings.method_set_uses_spherical_harmonics = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -68,10 +69,10 @@ export class LightmapGIData extends Resource{
     }
   }
   static init_method_is_using_spherical_harmonics() {
-    if (!this.#_bindings.method_is_using_spherical_harmonics) {
+    if (!this._bindings.method_is_using_spherical_harmonics) {
       let classname = new StringName("LightmapGIData");
       let methodname = new StringName("is_using_spherical_harmonics");
-      this.#_bindings.method_is_using_spherical_harmonics = internal.classdb_get_method_bind(
+      this._bindings.method_is_using_spherical_harmonics = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -79,10 +80,10 @@ export class LightmapGIData extends Resource{
     }
   }
   static init_method_add_user() {
-    if (!this.#_bindings.method_add_user) {
+    if (!this._bindings.method_add_user) {
       let classname = new StringName("LightmapGIData");
       let methodname = new StringName("add_user");
-      this.#_bindings.method_add_user = internal.classdb_get_method_bind(
+      this._bindings.method_add_user = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4272570515
@@ -90,10 +91,10 @@ export class LightmapGIData extends Resource{
     }
   }
   static init_method_get_user_count() {
-    if (!this.#_bindings.method_get_user_count) {
+    if (!this._bindings.method_get_user_count) {
       let classname = new StringName("LightmapGIData");
       let methodname = new StringName("get_user_count");
-      this.#_bindings.method_get_user_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_user_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -101,10 +102,10 @@ export class LightmapGIData extends Resource{
     }
   }
   static init_method_get_user_path() {
-    if (!this.#_bindings.method_get_user_path) {
+    if (!this._bindings.method_get_user_path) {
       let classname = new StringName("LightmapGIData");
       let methodname = new StringName("get_user_path");
-      this.#_bindings.method_get_user_path = internal.classdb_get_method_bind(
+      this._bindings.method_get_user_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         408788394
@@ -112,10 +113,10 @@ export class LightmapGIData extends Resource{
     }
   }
   static init_method_clear_users() {
-    if (!this.#_bindings.method_clear_users) {
+    if (!this._bindings.method_clear_users) {
       let classname = new StringName("LightmapGIData");
       let methodname = new StringName("clear_users");
-      this.#_bindings.method_clear_users = internal.classdb_get_method_bind(
+      this._bindings.method_clear_users = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -123,10 +124,10 @@ export class LightmapGIData extends Resource{
     }
   }
   static init_method_set_light_texture() {
-    if (!this.#_bindings.method_set_light_texture) {
+    if (!this._bindings.method_set_light_texture) {
       let classname = new StringName("LightmapGIData");
       let methodname = new StringName("set_light_texture");
-      this.#_bindings.method_set_light_texture = internal.classdb_get_method_bind(
+      this._bindings.method_set_light_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1278366092
@@ -134,10 +135,10 @@ export class LightmapGIData extends Resource{
     }
   }
   static init_method_get_light_texture() {
-    if (!this.#_bindings.method_get_light_texture) {
+    if (!this._bindings.method_get_light_texture) {
       let classname = new StringName("LightmapGIData");
       let methodname = new StringName("get_light_texture");
-      this.#_bindings.method_get_light_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_light_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3984243839
@@ -150,7 +151,7 @@ export class LightmapGIData extends Resource{
   set_lightmap_textures(_light_textures) {
     LightmapGIData.init_method_set_lightmap_textures();
     return _call_native_mb_no_ret(
-      LightmapGIData.#_bindings.method_set_lightmap_textures,
+      LightmapGIData._bindings.method_set_lightmap_textures,
       this._owner,
       _light_textures
     );
@@ -159,7 +160,7 @@ export class LightmapGIData extends Resource{
   get_lightmap_textures() {
     LightmapGIData.init_method_get_lightmap_textures();
     return _call_native_mb_ret(
-      LightmapGIData.#_bindings.method_get_lightmap_textures,
+      LightmapGIData._bindings.method_get_lightmap_textures,
       this._owner,
 			Variant.Type.ARRAY,
       
@@ -169,7 +170,7 @@ export class LightmapGIData extends Resource{
   set_uses_spherical_harmonics(_uses_spherical_harmonics) {
     LightmapGIData.init_method_set_uses_spherical_harmonics();
     return _call_native_mb_no_ret(
-      LightmapGIData.#_bindings.method_set_uses_spherical_harmonics,
+      LightmapGIData._bindings.method_set_uses_spherical_harmonics,
       this._owner,
       _uses_spherical_harmonics
     );
@@ -178,7 +179,7 @@ export class LightmapGIData extends Resource{
   is_using_spherical_harmonics() {
     LightmapGIData.init_method_is_using_spherical_harmonics();
     return _call_native_mb_ret(
-      LightmapGIData.#_bindings.method_is_using_spherical_harmonics,
+      LightmapGIData._bindings.method_is_using_spherical_harmonics,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -189,7 +190,7 @@ export class LightmapGIData extends Resource{
   add_user(_path, _uv_scale, _slice_index, _sub_instance) {
     LightmapGIData.init_method_add_user();
     return _call_native_mb_no_ret(
-      LightmapGIData.#_bindings.method_add_user,
+      LightmapGIData._bindings.method_add_user,
       this._owner,
       _path, _uv_scale, _slice_index, _sub_instance
     );
@@ -198,7 +199,7 @@ export class LightmapGIData extends Resource{
   get_user_count() {
     LightmapGIData.init_method_get_user_count();
     return _call_native_mb_ret(
-      LightmapGIData.#_bindings.method_get_user_count,
+      LightmapGIData._bindings.method_get_user_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -209,7 +210,7 @@ export class LightmapGIData extends Resource{
   get_user_path(_user_idx) {
     LightmapGIData.init_method_get_user_path();
     return _call_native_mb_ret(
-      LightmapGIData.#_bindings.method_get_user_path,
+      LightmapGIData._bindings.method_get_user_path,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -220,7 +221,7 @@ export class LightmapGIData extends Resource{
   clear_users() {
     LightmapGIData.init_method_clear_users();
     return _call_native_mb_no_ret(
-      LightmapGIData.#_bindings.method_clear_users,
+      LightmapGIData._bindings.method_clear_users,
       this._owner,
       
     );
@@ -229,7 +230,7 @@ export class LightmapGIData extends Resource{
   set_light_texture(_light_texture) {
     LightmapGIData.init_method_set_light_texture();
     return _call_native_mb_no_ret(
-      LightmapGIData.#_bindings.method_set_light_texture,
+      LightmapGIData._bindings.method_set_light_texture,
       this._owner,
       _light_texture
     );
@@ -238,7 +239,7 @@ export class LightmapGIData extends Resource{
   get_light_texture() {
     LightmapGIData.init_method_get_light_texture();
     return _call_native_mb_ret(
-      LightmapGIData.#_bindings.method_get_light_texture,
+      LightmapGIData._bindings.method_get_light_texture,
       this._owner,
 			Variant.Type.OBJECT,
       

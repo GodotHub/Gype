@@ -6,6 +6,7 @@ import {
   ClassInfo,
   classdb_register_extension_class3,
   classdb_register_extension_class_virtual_method,
+  bind_virtual_function,
 } from "__internal__";
 
 export function gd_class(target) {
@@ -47,20 +48,28 @@ export function extension_class(target) {
   target.prototype["initialize_class"] = () => {};
 }
 
+const _GDExtensionClass = Symbol("_GDExtensionClass");
+export function GDExtensionClass(class_name, base_name) {
+  return function (target) {
+    target[_GDExtensionClass] = true;
+    class_name = class_name ? class_name : target.name;
+    base_name = base_name ? Object.getPrototypeOf(target).name : base_name;
+    classdb_register_extension_class3(class_name, base_name, {
+      p_userdata: target,
+    });
+  };
+}
+
+const _GodotVirtualMethodSymbol = Symbol("_GodotVirtualMethod");
+export function GodotVirtualMethod(method_info) {
+  return function (target, key, descriptor) {
+    descriptor.value[_GodotVirtualMethodSymbol] = method_info;
+    bind_virtual_function(target.class_name);
+    return descriptor;
+  };
+}
+
 const _GodotClass = Symbol("_GodotClass");
 export function GodotClass(target) {
   target[_GodotClass] = true;
-
-  let class_name = target.name;
-  let base_name = Object.getPrototypeOf(target).name;
-  classdb_register_extension_class3(class_name, base_name, {
-    p_userdata: target,
-  });
-}
-
-const _VirtualMethod = Symbol("_VirtualMethod");
-export function VirtualMethod(method_info) {
-  return function VirtualMethodDescriptor(target, key, descriptor) {
-    descriptor.value[_VirtualMethod] = method_info;
-  };
 }

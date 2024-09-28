@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_open;
@@ -68,10 +69,10 @@ class _MethodBindings {
   method_set_read_only_attribute;
   method_get_read_only_attribute;
 }
+@GodotClass
 export class FileAccess extends RefCounted{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -81,10 +82,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_open() {
-    if (!this.#_bindings.method_open) {
+    if (!this._bindings.method_open) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("open");
-      this.#_bindings.method_open = internal.classdb_get_method_bind(
+      this._bindings.method_open = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1247358404
@@ -92,10 +93,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_open_encrypted() {
-    if (!this.#_bindings.method_open_encrypted) {
+    if (!this._bindings.method_open_encrypted) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("open_encrypted");
-      this.#_bindings.method_open_encrypted = internal.classdb_get_method_bind(
+      this._bindings.method_open_encrypted = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1482131466
@@ -103,10 +104,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_open_encrypted_with_pass() {
-    if (!this.#_bindings.method_open_encrypted_with_pass) {
+    if (!this._bindings.method_open_encrypted_with_pass) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("open_encrypted_with_pass");
-      this.#_bindings.method_open_encrypted_with_pass = internal.classdb_get_method_bind(
+      this._bindings.method_open_encrypted_with_pass = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         790283377
@@ -114,10 +115,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_open_compressed() {
-    if (!this.#_bindings.method_open_compressed) {
+    if (!this._bindings.method_open_compressed) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("open_compressed");
-      this.#_bindings.method_open_compressed = internal.classdb_get_method_bind(
+      this._bindings.method_open_compressed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3686439335
@@ -125,10 +126,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_open_error() {
-    if (!this.#_bindings.method_get_open_error) {
+    if (!this._bindings.method_get_open_error) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_open_error");
-      this.#_bindings.method_get_open_error = internal.classdb_get_method_bind(
+      this._bindings.method_get_open_error = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         166280745
@@ -136,10 +137,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_file_as_bytes() {
-    if (!this.#_bindings.method_get_file_as_bytes) {
+    if (!this._bindings.method_get_file_as_bytes) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_file_as_bytes");
-      this.#_bindings.method_get_file_as_bytes = internal.classdb_get_method_bind(
+      this._bindings.method_get_file_as_bytes = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         659035735
@@ -147,10 +148,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_file_as_string() {
-    if (!this.#_bindings.method_get_file_as_string) {
+    if (!this._bindings.method_get_file_as_string) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_file_as_string");
-      this.#_bindings.method_get_file_as_string = internal.classdb_get_method_bind(
+      this._bindings.method_get_file_as_string = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1703090593
@@ -158,10 +159,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_resize() {
-    if (!this.#_bindings.method_resize) {
+    if (!this._bindings.method_resize) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("resize");
-      this.#_bindings.method_resize = internal.classdb_get_method_bind(
+      this._bindings.method_resize = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         844576869
@@ -169,10 +170,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_flush() {
-    if (!this.#_bindings.method_flush) {
+    if (!this._bindings.method_flush) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("flush");
-      this.#_bindings.method_flush = internal.classdb_get_method_bind(
+      this._bindings.method_flush = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -180,10 +181,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_path() {
-    if (!this.#_bindings.method_get_path) {
+    if (!this._bindings.method_get_path) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_path");
-      this.#_bindings.method_get_path = internal.classdb_get_method_bind(
+      this._bindings.method_get_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -191,10 +192,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_path_absolute() {
-    if (!this.#_bindings.method_get_path_absolute) {
+    if (!this._bindings.method_get_path_absolute) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_path_absolute");
-      this.#_bindings.method_get_path_absolute = internal.classdb_get_method_bind(
+      this._bindings.method_get_path_absolute = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -202,10 +203,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_is_open() {
-    if (!this.#_bindings.method_is_open) {
+    if (!this._bindings.method_is_open) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("is_open");
-      this.#_bindings.method_is_open = internal.classdb_get_method_bind(
+      this._bindings.method_is_open = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -213,10 +214,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_seek() {
-    if (!this.#_bindings.method_seek) {
+    if (!this._bindings.method_seek) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("seek");
-      this.#_bindings.method_seek = internal.classdb_get_method_bind(
+      this._bindings.method_seek = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -224,10 +225,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_seek_end() {
-    if (!this.#_bindings.method_seek_end) {
+    if (!this._bindings.method_seek_end) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("seek_end");
-      this.#_bindings.method_seek_end = internal.classdb_get_method_bind(
+      this._bindings.method_seek_end = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1995695955
@@ -235,10 +236,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_position() {
-    if (!this.#_bindings.method_get_position) {
+    if (!this._bindings.method_get_position) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_position");
-      this.#_bindings.method_get_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -246,10 +247,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_length() {
-    if (!this.#_bindings.method_get_length) {
+    if (!this._bindings.method_get_length) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_length");
-      this.#_bindings.method_get_length = internal.classdb_get_method_bind(
+      this._bindings.method_get_length = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -257,10 +258,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_eof_reached() {
-    if (!this.#_bindings.method_eof_reached) {
+    if (!this._bindings.method_eof_reached) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("eof_reached");
-      this.#_bindings.method_eof_reached = internal.classdb_get_method_bind(
+      this._bindings.method_eof_reached = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -268,10 +269,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_8() {
-    if (!this.#_bindings.method_get_8) {
+    if (!this._bindings.method_get_8) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_8");
-      this.#_bindings.method_get_8 = internal.classdb_get_method_bind(
+      this._bindings.method_get_8 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -279,10 +280,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_16() {
-    if (!this.#_bindings.method_get_16) {
+    if (!this._bindings.method_get_16) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_16");
-      this.#_bindings.method_get_16 = internal.classdb_get_method_bind(
+      this._bindings.method_get_16 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -290,10 +291,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_32() {
-    if (!this.#_bindings.method_get_32) {
+    if (!this._bindings.method_get_32) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_32");
-      this.#_bindings.method_get_32 = internal.classdb_get_method_bind(
+      this._bindings.method_get_32 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -301,10 +302,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_64() {
-    if (!this.#_bindings.method_get_64) {
+    if (!this._bindings.method_get_64) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_64");
-      this.#_bindings.method_get_64 = internal.classdb_get_method_bind(
+      this._bindings.method_get_64 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -312,10 +313,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_float() {
-    if (!this.#_bindings.method_get_float) {
+    if (!this._bindings.method_get_float) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_float");
-      this.#_bindings.method_get_float = internal.classdb_get_method_bind(
+      this._bindings.method_get_float = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -323,10 +324,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_double() {
-    if (!this.#_bindings.method_get_double) {
+    if (!this._bindings.method_get_double) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_double");
-      this.#_bindings.method_get_double = internal.classdb_get_method_bind(
+      this._bindings.method_get_double = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -334,10 +335,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_real() {
-    if (!this.#_bindings.method_get_real) {
+    if (!this._bindings.method_get_real) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_real");
-      this.#_bindings.method_get_real = internal.classdb_get_method_bind(
+      this._bindings.method_get_real = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -345,10 +346,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_buffer() {
-    if (!this.#_bindings.method_get_buffer) {
+    if (!this._bindings.method_get_buffer) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_buffer");
-      this.#_bindings.method_get_buffer = internal.classdb_get_method_bind(
+      this._bindings.method_get_buffer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4131300905
@@ -356,10 +357,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_line() {
-    if (!this.#_bindings.method_get_line) {
+    if (!this._bindings.method_get_line) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_line");
-      this.#_bindings.method_get_line = internal.classdb_get_method_bind(
+      this._bindings.method_get_line = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -367,10 +368,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_csv_line() {
-    if (!this.#_bindings.method_get_csv_line) {
+    if (!this._bindings.method_get_csv_line) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_csv_line");
-      this.#_bindings.method_get_csv_line = internal.classdb_get_method_bind(
+      this._bindings.method_get_csv_line = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2358116058
@@ -378,10 +379,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_as_text() {
-    if (!this.#_bindings.method_get_as_text) {
+    if (!this._bindings.method_get_as_text) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_as_text");
-      this.#_bindings.method_get_as_text = internal.classdb_get_method_bind(
+      this._bindings.method_get_as_text = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1162154673
@@ -389,10 +390,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_md5() {
-    if (!this.#_bindings.method_get_md5) {
+    if (!this._bindings.method_get_md5) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_md5");
-      this.#_bindings.method_get_md5 = internal.classdb_get_method_bind(
+      this._bindings.method_get_md5 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1703090593
@@ -400,10 +401,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_sha256() {
-    if (!this.#_bindings.method_get_sha256) {
+    if (!this._bindings.method_get_sha256) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_sha256");
-      this.#_bindings.method_get_sha256 = internal.classdb_get_method_bind(
+      this._bindings.method_get_sha256 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1703090593
@@ -411,10 +412,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_is_big_endian() {
-    if (!this.#_bindings.method_is_big_endian) {
+    if (!this._bindings.method_is_big_endian) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("is_big_endian");
-      this.#_bindings.method_is_big_endian = internal.classdb_get_method_bind(
+      this._bindings.method_is_big_endian = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -422,10 +423,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_set_big_endian() {
-    if (!this.#_bindings.method_set_big_endian) {
+    if (!this._bindings.method_set_big_endian) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("set_big_endian");
-      this.#_bindings.method_set_big_endian = internal.classdb_get_method_bind(
+      this._bindings.method_set_big_endian = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -433,10 +434,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_error() {
-    if (!this.#_bindings.method_get_error) {
+    if (!this._bindings.method_get_error) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_error");
-      this.#_bindings.method_get_error = internal.classdb_get_method_bind(
+      this._bindings.method_get_error = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3185525595
@@ -444,10 +445,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_var() {
-    if (!this.#_bindings.method_get_var) {
+    if (!this._bindings.method_get_var) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_var");
-      this.#_bindings.method_get_var = internal.classdb_get_method_bind(
+      this._bindings.method_get_var = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         189129690
@@ -455,10 +456,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_store_8() {
-    if (!this.#_bindings.method_store_8) {
+    if (!this._bindings.method_store_8) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("store_8");
-      this.#_bindings.method_store_8 = internal.classdb_get_method_bind(
+      this._bindings.method_store_8 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -466,10 +467,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_store_16() {
-    if (!this.#_bindings.method_store_16) {
+    if (!this._bindings.method_store_16) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("store_16");
-      this.#_bindings.method_store_16 = internal.classdb_get_method_bind(
+      this._bindings.method_store_16 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -477,10 +478,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_store_32() {
-    if (!this.#_bindings.method_store_32) {
+    if (!this._bindings.method_store_32) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("store_32");
-      this.#_bindings.method_store_32 = internal.classdb_get_method_bind(
+      this._bindings.method_store_32 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -488,10 +489,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_store_64() {
-    if (!this.#_bindings.method_store_64) {
+    if (!this._bindings.method_store_64) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("store_64");
-      this.#_bindings.method_store_64 = internal.classdb_get_method_bind(
+      this._bindings.method_store_64 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -499,10 +500,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_store_float() {
-    if (!this.#_bindings.method_store_float) {
+    if (!this._bindings.method_store_float) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("store_float");
-      this.#_bindings.method_store_float = internal.classdb_get_method_bind(
+      this._bindings.method_store_float = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -510,10 +511,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_store_double() {
-    if (!this.#_bindings.method_store_double) {
+    if (!this._bindings.method_store_double) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("store_double");
-      this.#_bindings.method_store_double = internal.classdb_get_method_bind(
+      this._bindings.method_store_double = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -521,10 +522,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_store_real() {
-    if (!this.#_bindings.method_store_real) {
+    if (!this._bindings.method_store_real) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("store_real");
-      this.#_bindings.method_store_real = internal.classdb_get_method_bind(
+      this._bindings.method_store_real = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -532,10 +533,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_store_buffer() {
-    if (!this.#_bindings.method_store_buffer) {
+    if (!this._bindings.method_store_buffer) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("store_buffer");
-      this.#_bindings.method_store_buffer = internal.classdb_get_method_bind(
+      this._bindings.method_store_buffer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2971499966
@@ -543,10 +544,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_store_line() {
-    if (!this.#_bindings.method_store_line) {
+    if (!this._bindings.method_store_line) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("store_line");
-      this.#_bindings.method_store_line = internal.classdb_get_method_bind(
+      this._bindings.method_store_line = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -554,10 +555,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_store_csv_line() {
-    if (!this.#_bindings.method_store_csv_line) {
+    if (!this._bindings.method_store_csv_line) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("store_csv_line");
-      this.#_bindings.method_store_csv_line = internal.classdb_get_method_bind(
+      this._bindings.method_store_csv_line = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2173791505
@@ -565,10 +566,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_store_string() {
-    if (!this.#_bindings.method_store_string) {
+    if (!this._bindings.method_store_string) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("store_string");
-      this.#_bindings.method_store_string = internal.classdb_get_method_bind(
+      this._bindings.method_store_string = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -576,10 +577,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_store_var() {
-    if (!this.#_bindings.method_store_var) {
+    if (!this._bindings.method_store_var) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("store_var");
-      this.#_bindings.method_store_var = internal.classdb_get_method_bind(
+      this._bindings.method_store_var = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         738511890
@@ -587,10 +588,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_store_pascal_string() {
-    if (!this.#_bindings.method_store_pascal_string) {
+    if (!this._bindings.method_store_pascal_string) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("store_pascal_string");
-      this.#_bindings.method_store_pascal_string = internal.classdb_get_method_bind(
+      this._bindings.method_store_pascal_string = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -598,10 +599,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_pascal_string() {
-    if (!this.#_bindings.method_get_pascal_string) {
+    if (!this._bindings.method_get_pascal_string) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_pascal_string");
-      this.#_bindings.method_get_pascal_string = internal.classdb_get_method_bind(
+      this._bindings.method_get_pascal_string = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2841200299
@@ -609,10 +610,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_close() {
-    if (!this.#_bindings.method_close) {
+    if (!this._bindings.method_close) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("close");
-      this.#_bindings.method_close = internal.classdb_get_method_bind(
+      this._bindings.method_close = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -620,10 +621,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_file_exists() {
-    if (!this.#_bindings.method_file_exists) {
+    if (!this._bindings.method_file_exists) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("file_exists");
-      this.#_bindings.method_file_exists = internal.classdb_get_method_bind(
+      this._bindings.method_file_exists = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2323990056
@@ -631,10 +632,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_modified_time() {
-    if (!this.#_bindings.method_get_modified_time) {
+    if (!this._bindings.method_get_modified_time) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_modified_time");
-      this.#_bindings.method_get_modified_time = internal.classdb_get_method_bind(
+      this._bindings.method_get_modified_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1597066294
@@ -642,10 +643,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_unix_permissions() {
-    if (!this.#_bindings.method_get_unix_permissions) {
+    if (!this._bindings.method_get_unix_permissions) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_unix_permissions");
-      this.#_bindings.method_get_unix_permissions = internal.classdb_get_method_bind(
+      this._bindings.method_get_unix_permissions = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         524341837
@@ -653,10 +654,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_set_unix_permissions() {
-    if (!this.#_bindings.method_set_unix_permissions) {
+    if (!this._bindings.method_set_unix_permissions) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("set_unix_permissions");
-      this.#_bindings.method_set_unix_permissions = internal.classdb_get_method_bind(
+      this._bindings.method_set_unix_permissions = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         846038644
@@ -664,10 +665,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_hidden_attribute() {
-    if (!this.#_bindings.method_get_hidden_attribute) {
+    if (!this._bindings.method_get_hidden_attribute) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_hidden_attribute");
-      this.#_bindings.method_get_hidden_attribute = internal.classdb_get_method_bind(
+      this._bindings.method_get_hidden_attribute = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2323990056
@@ -675,10 +676,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_set_hidden_attribute() {
-    if (!this.#_bindings.method_set_hidden_attribute) {
+    if (!this._bindings.method_set_hidden_attribute) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("set_hidden_attribute");
-      this.#_bindings.method_set_hidden_attribute = internal.classdb_get_method_bind(
+      this._bindings.method_set_hidden_attribute = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2892558115
@@ -686,10 +687,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_set_read_only_attribute() {
-    if (!this.#_bindings.method_set_read_only_attribute) {
+    if (!this._bindings.method_set_read_only_attribute) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("set_read_only_attribute");
-      this.#_bindings.method_set_read_only_attribute = internal.classdb_get_method_bind(
+      this._bindings.method_set_read_only_attribute = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2892558115
@@ -697,10 +698,10 @@ export class FileAccess extends RefCounted{
     }
   }
   static init_method_get_read_only_attribute() {
-    if (!this.#_bindings.method_get_read_only_attribute) {
+    if (!this._bindings.method_get_read_only_attribute) {
       let classname = new StringName("FileAccess");
       let methodname = new StringName("get_read_only_attribute");
-      this.#_bindings.method_get_read_only_attribute = internal.classdb_get_method_bind(
+      this._bindings.method_get_read_only_attribute = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2323990056
@@ -713,7 +714,7 @@ export class FileAccess extends RefCounted{
   open(_path, _flags) {
     FileAccess.init_method_open();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_open,
+      FileAccess._bindings.method_open,
       this._owner,
 			Variant.Type.OBJECT,
       _path, _flags
@@ -723,7 +724,7 @@ export class FileAccess extends RefCounted{
   open_encrypted(_path, _mode_flags, _key) {
     FileAccess.init_method_open_encrypted();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_open_encrypted,
+      FileAccess._bindings.method_open_encrypted,
       this._owner,
 			Variant.Type.OBJECT,
       _path, _mode_flags, _key
@@ -733,7 +734,7 @@ export class FileAccess extends RefCounted{
   open_encrypted_with_pass(_path, _mode_flags, _pass) {
     FileAccess.init_method_open_encrypted_with_pass();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_open_encrypted_with_pass,
+      FileAccess._bindings.method_open_encrypted_with_pass,
       this._owner,
 			Variant.Type.OBJECT,
       _path, _mode_flags, _pass
@@ -743,7 +744,7 @@ export class FileAccess extends RefCounted{
   open_compressed(_path, _mode_flags, _compression_mode) {
     FileAccess.init_method_open_compressed();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_open_compressed,
+      FileAccess._bindings.method_open_compressed,
       this._owner,
 			Variant.Type.OBJECT,
       _path, _mode_flags, _compression_mode
@@ -753,7 +754,7 @@ export class FileAccess extends RefCounted{
   get_open_error() {
     FileAccess.init_method_get_open_error();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_open_error,
+      FileAccess._bindings.method_get_open_error,
       this._owner,
 			Variant.Type.INT,
     
@@ -764,7 +765,7 @@ export class FileAccess extends RefCounted{
   get_file_as_bytes(_path) {
     FileAccess.init_method_get_file_as_bytes();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_file_as_bytes,
+      FileAccess._bindings.method_get_file_as_bytes,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -775,7 +776,7 @@ export class FileAccess extends RefCounted{
   get_file_as_string(_path) {
     FileAccess.init_method_get_file_as_string();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_file_as_string,
+      FileAccess._bindings.method_get_file_as_string,
       this._owner,
 			Variant.Type.STRING,
     
@@ -786,7 +787,7 @@ export class FileAccess extends RefCounted{
   resize(_length) {
     FileAccess.init_method_resize();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_resize,
+      FileAccess._bindings.method_resize,
       this._owner,
 			Variant.Type.INT,
     
@@ -797,7 +798,7 @@ export class FileAccess extends RefCounted{
   flush() {
     FileAccess.init_method_flush();
     return _call_native_mb_no_ret(
-      FileAccess.#_bindings.method_flush,
+      FileAccess._bindings.method_flush,
       this._owner,
       
     );
@@ -806,7 +807,7 @@ export class FileAccess extends RefCounted{
   get_path() {
     FileAccess.init_method_get_path();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_path,
+      FileAccess._bindings.method_get_path,
       this._owner,
 			Variant.Type.STRING,
     
@@ -817,7 +818,7 @@ export class FileAccess extends RefCounted{
   get_path_absolute() {
     FileAccess.init_method_get_path_absolute();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_path_absolute,
+      FileAccess._bindings.method_get_path_absolute,
       this._owner,
 			Variant.Type.STRING,
     
@@ -828,7 +829,7 @@ export class FileAccess extends RefCounted{
   is_open() {
     FileAccess.init_method_is_open();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_is_open,
+      FileAccess._bindings.method_is_open,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -839,7 +840,7 @@ export class FileAccess extends RefCounted{
   seek(_position) {
     FileAccess.init_method_seek();
     return _call_native_mb_no_ret(
-      FileAccess.#_bindings.method_seek,
+      FileAccess._bindings.method_seek,
       this._owner,
       _position
     );
@@ -848,7 +849,7 @@ export class FileAccess extends RefCounted{
   seek_end(_position) {
     FileAccess.init_method_seek_end();
     return _call_native_mb_no_ret(
-      FileAccess.#_bindings.method_seek_end,
+      FileAccess._bindings.method_seek_end,
       this._owner,
       _position
     );
@@ -857,7 +858,7 @@ export class FileAccess extends RefCounted{
   get_position() {
     FileAccess.init_method_get_position();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_position,
+      FileAccess._bindings.method_get_position,
       this._owner,
 			Variant.Type.INT,
     
@@ -868,7 +869,7 @@ export class FileAccess extends RefCounted{
   get_length() {
     FileAccess.init_method_get_length();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_length,
+      FileAccess._bindings.method_get_length,
       this._owner,
 			Variant.Type.INT,
     
@@ -879,7 +880,7 @@ export class FileAccess extends RefCounted{
   eof_reached() {
     FileAccess.init_method_eof_reached();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_eof_reached,
+      FileAccess._bindings.method_eof_reached,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -890,7 +891,7 @@ export class FileAccess extends RefCounted{
   get_8() {
     FileAccess.init_method_get_8();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_8,
+      FileAccess._bindings.method_get_8,
       this._owner,
 			Variant.Type.INT,
     
@@ -901,7 +902,7 @@ export class FileAccess extends RefCounted{
   get_16() {
     FileAccess.init_method_get_16();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_16,
+      FileAccess._bindings.method_get_16,
       this._owner,
 			Variant.Type.INT,
     
@@ -912,7 +913,7 @@ export class FileAccess extends RefCounted{
   get_32() {
     FileAccess.init_method_get_32();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_32,
+      FileAccess._bindings.method_get_32,
       this._owner,
 			Variant.Type.INT,
     
@@ -923,7 +924,7 @@ export class FileAccess extends RefCounted{
   get_64() {
     FileAccess.init_method_get_64();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_64,
+      FileAccess._bindings.method_get_64,
       this._owner,
 			Variant.Type.INT,
     
@@ -934,7 +935,7 @@ export class FileAccess extends RefCounted{
   get_float() {
     FileAccess.init_method_get_float();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_float,
+      FileAccess._bindings.method_get_float,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -945,7 +946,7 @@ export class FileAccess extends RefCounted{
   get_double() {
     FileAccess.init_method_get_double();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_double,
+      FileAccess._bindings.method_get_double,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -956,7 +957,7 @@ export class FileAccess extends RefCounted{
   get_real() {
     FileAccess.init_method_get_real();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_real,
+      FileAccess._bindings.method_get_real,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -967,7 +968,7 @@ export class FileAccess extends RefCounted{
   get_buffer(_length) {
     FileAccess.init_method_get_buffer();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_buffer,
+      FileAccess._bindings.method_get_buffer,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -978,7 +979,7 @@ export class FileAccess extends RefCounted{
   get_line() {
     FileAccess.init_method_get_line();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_line,
+      FileAccess._bindings.method_get_line,
       this._owner,
 			Variant.Type.STRING,
     
@@ -989,7 +990,7 @@ export class FileAccess extends RefCounted{
   get_csv_line(_delim) {
     FileAccess.init_method_get_csv_line();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_csv_line,
+      FileAccess._bindings.method_get_csv_line,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -1000,7 +1001,7 @@ export class FileAccess extends RefCounted{
   get_as_text(_skip_cr) {
     FileAccess.init_method_get_as_text();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_as_text,
+      FileAccess._bindings.method_get_as_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1011,7 +1012,7 @@ export class FileAccess extends RefCounted{
   get_md5(_path) {
     FileAccess.init_method_get_md5();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_md5,
+      FileAccess._bindings.method_get_md5,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1022,7 +1023,7 @@ export class FileAccess extends RefCounted{
   get_sha256(_path) {
     FileAccess.init_method_get_sha256();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_sha256,
+      FileAccess._bindings.method_get_sha256,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1033,7 +1034,7 @@ export class FileAccess extends RefCounted{
   is_big_endian() {
     FileAccess.init_method_is_big_endian();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_is_big_endian,
+      FileAccess._bindings.method_is_big_endian,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1044,7 +1045,7 @@ export class FileAccess extends RefCounted{
   set_big_endian(_big_endian) {
     FileAccess.init_method_set_big_endian();
     return _call_native_mb_no_ret(
-      FileAccess.#_bindings.method_set_big_endian,
+      FileAccess._bindings.method_set_big_endian,
       this._owner,
       _big_endian
     );
@@ -1053,7 +1054,7 @@ export class FileAccess extends RefCounted{
   get_error() {
     FileAccess.init_method_get_error();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_error,
+      FileAccess._bindings.method_get_error,
       this._owner,
 			Variant.Type.INT,
     
@@ -1064,7 +1065,7 @@ export class FileAccess extends RefCounted{
   get_var(_allow_objects) {
     FileAccess.init_method_get_var();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_var,
+      FileAccess._bindings.method_get_var,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -1075,7 +1076,7 @@ export class FileAccess extends RefCounted{
   store_8(_value) {
     FileAccess.init_method_store_8();
     return _call_native_mb_no_ret(
-      FileAccess.#_bindings.method_store_8,
+      FileAccess._bindings.method_store_8,
       this._owner,
       _value
     );
@@ -1084,7 +1085,7 @@ export class FileAccess extends RefCounted{
   store_16(_value) {
     FileAccess.init_method_store_16();
     return _call_native_mb_no_ret(
-      FileAccess.#_bindings.method_store_16,
+      FileAccess._bindings.method_store_16,
       this._owner,
       _value
     );
@@ -1093,7 +1094,7 @@ export class FileAccess extends RefCounted{
   store_32(_value) {
     FileAccess.init_method_store_32();
     return _call_native_mb_no_ret(
-      FileAccess.#_bindings.method_store_32,
+      FileAccess._bindings.method_store_32,
       this._owner,
       _value
     );
@@ -1102,7 +1103,7 @@ export class FileAccess extends RefCounted{
   store_64(_value) {
     FileAccess.init_method_store_64();
     return _call_native_mb_no_ret(
-      FileAccess.#_bindings.method_store_64,
+      FileAccess._bindings.method_store_64,
       this._owner,
       _value
     );
@@ -1111,7 +1112,7 @@ export class FileAccess extends RefCounted{
   store_float(_value) {
     FileAccess.init_method_store_float();
     return _call_native_mb_no_ret(
-      FileAccess.#_bindings.method_store_float,
+      FileAccess._bindings.method_store_float,
       this._owner,
       _value
     );
@@ -1120,7 +1121,7 @@ export class FileAccess extends RefCounted{
   store_double(_value) {
     FileAccess.init_method_store_double();
     return _call_native_mb_no_ret(
-      FileAccess.#_bindings.method_store_double,
+      FileAccess._bindings.method_store_double,
       this._owner,
       _value
     );
@@ -1129,7 +1130,7 @@ export class FileAccess extends RefCounted{
   store_real(_value) {
     FileAccess.init_method_store_real();
     return _call_native_mb_no_ret(
-      FileAccess.#_bindings.method_store_real,
+      FileAccess._bindings.method_store_real,
       this._owner,
       _value
     );
@@ -1138,7 +1139,7 @@ export class FileAccess extends RefCounted{
   store_buffer(_buffer) {
     FileAccess.init_method_store_buffer();
     return _call_native_mb_no_ret(
-      FileAccess.#_bindings.method_store_buffer,
+      FileAccess._bindings.method_store_buffer,
       this._owner,
       _buffer
     );
@@ -1147,7 +1148,7 @@ export class FileAccess extends RefCounted{
   store_line(_line) {
     FileAccess.init_method_store_line();
     return _call_native_mb_no_ret(
-      FileAccess.#_bindings.method_store_line,
+      FileAccess._bindings.method_store_line,
       this._owner,
       _line
     );
@@ -1156,7 +1157,7 @@ export class FileAccess extends RefCounted{
   store_csv_line(_values, _delim) {
     FileAccess.init_method_store_csv_line();
     return _call_native_mb_no_ret(
-      FileAccess.#_bindings.method_store_csv_line,
+      FileAccess._bindings.method_store_csv_line,
       this._owner,
       _values, _delim
     );
@@ -1165,7 +1166,7 @@ export class FileAccess extends RefCounted{
   store_string(_string) {
     FileAccess.init_method_store_string();
     return _call_native_mb_no_ret(
-      FileAccess.#_bindings.method_store_string,
+      FileAccess._bindings.method_store_string,
       this._owner,
       _string
     );
@@ -1174,7 +1175,7 @@ export class FileAccess extends RefCounted{
   store_var(_value, _full_objects) {
     FileAccess.init_method_store_var();
     return _call_native_mb_no_ret(
-      FileAccess.#_bindings.method_store_var,
+      FileAccess._bindings.method_store_var,
       this._owner,
       _value, _full_objects
     );
@@ -1183,7 +1184,7 @@ export class FileAccess extends RefCounted{
   store_pascal_string(_string) {
     FileAccess.init_method_store_pascal_string();
     return _call_native_mb_no_ret(
-      FileAccess.#_bindings.method_store_pascal_string,
+      FileAccess._bindings.method_store_pascal_string,
       this._owner,
       _string
     );
@@ -1192,7 +1193,7 @@ export class FileAccess extends RefCounted{
   get_pascal_string() {
     FileAccess.init_method_get_pascal_string();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_pascal_string,
+      FileAccess._bindings.method_get_pascal_string,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1203,7 +1204,7 @@ export class FileAccess extends RefCounted{
   close() {
     FileAccess.init_method_close();
     return _call_native_mb_no_ret(
-      FileAccess.#_bindings.method_close,
+      FileAccess._bindings.method_close,
       this._owner,
       
     );
@@ -1212,7 +1213,7 @@ export class FileAccess extends RefCounted{
   file_exists(_path) {
     FileAccess.init_method_file_exists();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_file_exists,
+      FileAccess._bindings.method_file_exists,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1223,7 +1224,7 @@ export class FileAccess extends RefCounted{
   get_modified_time(_file) {
     FileAccess.init_method_get_modified_time();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_modified_time,
+      FileAccess._bindings.method_get_modified_time,
       this._owner,
 			Variant.Type.INT,
     
@@ -1234,7 +1235,7 @@ export class FileAccess extends RefCounted{
   get_unix_permissions(_file) {
     FileAccess.init_method_get_unix_permissions();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_unix_permissions,
+      FileAccess._bindings.method_get_unix_permissions,
       this._owner,
 			Variant.Type.OBJECT,
       _file
@@ -1244,7 +1245,7 @@ export class FileAccess extends RefCounted{
   set_unix_permissions(_file, _permissions) {
     FileAccess.init_method_set_unix_permissions();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_set_unix_permissions,
+      FileAccess._bindings.method_set_unix_permissions,
       this._owner,
 			Variant.Type.INT,
     
@@ -1255,7 +1256,7 @@ export class FileAccess extends RefCounted{
   get_hidden_attribute(_file) {
     FileAccess.init_method_get_hidden_attribute();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_hidden_attribute,
+      FileAccess._bindings.method_get_hidden_attribute,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1266,7 +1267,7 @@ export class FileAccess extends RefCounted{
   set_hidden_attribute(_file, _hidden) {
     FileAccess.init_method_set_hidden_attribute();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_set_hidden_attribute,
+      FileAccess._bindings.method_set_hidden_attribute,
       this._owner,
 			Variant.Type.INT,
     
@@ -1277,7 +1278,7 @@ export class FileAccess extends RefCounted{
   set_read_only_attribute(_file, _ro) {
     FileAccess.init_method_set_read_only_attribute();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_set_read_only_attribute,
+      FileAccess._bindings.method_set_read_only_attribute,
       this._owner,
 			Variant.Type.INT,
     
@@ -1288,7 +1289,7 @@ export class FileAccess extends RefCounted{
   get_read_only_attribute(_file) {
     FileAccess.init_method_get_read_only_attribute();
     return _call_native_mb_ret(
-      FileAccess.#_bindings.method_get_read_only_attribute,
+      FileAccess._bindings.method_get_read_only_attribute,
       this._owner,
 			Variant.Type.BOOL,
     

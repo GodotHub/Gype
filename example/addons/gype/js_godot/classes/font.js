@@ -1,14 +1,15 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_fallbacks;
@@ -46,10 +47,10 @@ class _MethodBindings {
   method_get_supported_variation_list;
   method_get_face_count;
 }
+@GodotClass
 export class Font extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -59,10 +60,10 @@ export class Font extends Resource{
     }
   }
   static init_method_set_fallbacks() {
-    if (!this.#_bindings.method_set_fallbacks) {
+    if (!this._bindings.method_set_fallbacks) {
       let classname = new StringName("Font");
       let methodname = new StringName("set_fallbacks");
-      this.#_bindings.method_set_fallbacks = internal.classdb_get_method_bind(
+      this._bindings.method_set_fallbacks = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         381264803
@@ -70,10 +71,10 @@ export class Font extends Resource{
     }
   }
   static init_method_get_fallbacks() {
-    if (!this.#_bindings.method_get_fallbacks) {
+    if (!this._bindings.method_get_fallbacks) {
       let classname = new StringName("Font");
       let methodname = new StringName("get_fallbacks");
-      this.#_bindings.method_get_fallbacks = internal.classdb_get_method_bind(
+      this._bindings.method_get_fallbacks = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -81,10 +82,10 @@ export class Font extends Resource{
     }
   }
   static init_method_find_variation() {
-    if (!this.#_bindings.method_find_variation) {
+    if (!this._bindings.method_find_variation) {
       let classname = new StringName("Font");
       let methodname = new StringName("find_variation");
-      this.#_bindings.method_find_variation = internal.classdb_get_method_bind(
+      this._bindings.method_find_variation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2553855095
@@ -92,10 +93,10 @@ export class Font extends Resource{
     }
   }
   static init_method_get_rids() {
-    if (!this.#_bindings.method_get_rids) {
+    if (!this._bindings.method_get_rids) {
       let classname = new StringName("Font");
       let methodname = new StringName("get_rids");
-      this.#_bindings.method_get_rids = internal.classdb_get_method_bind(
+      this._bindings.method_get_rids = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -103,10 +104,10 @@ export class Font extends Resource{
     }
   }
   static init_method_get_height() {
-    if (!this.#_bindings.method_get_height) {
+    if (!this._bindings.method_get_height) {
       let classname = new StringName("Font");
       let methodname = new StringName("get_height");
-      this.#_bindings.method_get_height = internal.classdb_get_method_bind(
+      this._bindings.method_get_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         378113874
@@ -114,10 +115,10 @@ export class Font extends Resource{
     }
   }
   static init_method_get_ascent() {
-    if (!this.#_bindings.method_get_ascent) {
+    if (!this._bindings.method_get_ascent) {
       let classname = new StringName("Font");
       let methodname = new StringName("get_ascent");
-      this.#_bindings.method_get_ascent = internal.classdb_get_method_bind(
+      this._bindings.method_get_ascent = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         378113874
@@ -125,10 +126,10 @@ export class Font extends Resource{
     }
   }
   static init_method_get_descent() {
-    if (!this.#_bindings.method_get_descent) {
+    if (!this._bindings.method_get_descent) {
       let classname = new StringName("Font");
       let methodname = new StringName("get_descent");
-      this.#_bindings.method_get_descent = internal.classdb_get_method_bind(
+      this._bindings.method_get_descent = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         378113874
@@ -136,10 +137,10 @@ export class Font extends Resource{
     }
   }
   static init_method_get_underline_position() {
-    if (!this.#_bindings.method_get_underline_position) {
+    if (!this._bindings.method_get_underline_position) {
       let classname = new StringName("Font");
       let methodname = new StringName("get_underline_position");
-      this.#_bindings.method_get_underline_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_underline_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         378113874
@@ -147,10 +148,10 @@ export class Font extends Resource{
     }
   }
   static init_method_get_underline_thickness() {
-    if (!this.#_bindings.method_get_underline_thickness) {
+    if (!this._bindings.method_get_underline_thickness) {
       let classname = new StringName("Font");
       let methodname = new StringName("get_underline_thickness");
-      this.#_bindings.method_get_underline_thickness = internal.classdb_get_method_bind(
+      this._bindings.method_get_underline_thickness = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         378113874
@@ -158,10 +159,10 @@ export class Font extends Resource{
     }
   }
   static init_method_get_font_name() {
-    if (!this.#_bindings.method_get_font_name) {
+    if (!this._bindings.method_get_font_name) {
       let classname = new StringName("Font");
       let methodname = new StringName("get_font_name");
-      this.#_bindings.method_get_font_name = internal.classdb_get_method_bind(
+      this._bindings.method_get_font_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -169,10 +170,10 @@ export class Font extends Resource{
     }
   }
   static init_method_get_font_style_name() {
-    if (!this.#_bindings.method_get_font_style_name) {
+    if (!this._bindings.method_get_font_style_name) {
       let classname = new StringName("Font");
       let methodname = new StringName("get_font_style_name");
-      this.#_bindings.method_get_font_style_name = internal.classdb_get_method_bind(
+      this._bindings.method_get_font_style_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -180,10 +181,10 @@ export class Font extends Resource{
     }
   }
   static init_method_get_ot_name_strings() {
-    if (!this.#_bindings.method_get_ot_name_strings) {
+    if (!this._bindings.method_get_ot_name_strings) {
       let classname = new StringName("Font");
       let methodname = new StringName("get_ot_name_strings");
-      this.#_bindings.method_get_ot_name_strings = internal.classdb_get_method_bind(
+      this._bindings.method_get_ot_name_strings = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3102165223
@@ -191,10 +192,10 @@ export class Font extends Resource{
     }
   }
   static init_method_get_font_style() {
-    if (!this.#_bindings.method_get_font_style) {
+    if (!this._bindings.method_get_font_style) {
       let classname = new StringName("Font");
       let methodname = new StringName("get_font_style");
-      this.#_bindings.method_get_font_style = internal.classdb_get_method_bind(
+      this._bindings.method_get_font_style = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2520224254
@@ -202,10 +203,10 @@ export class Font extends Resource{
     }
   }
   static init_method_get_font_weight() {
-    if (!this.#_bindings.method_get_font_weight) {
+    if (!this._bindings.method_get_font_weight) {
       let classname = new StringName("Font");
       let methodname = new StringName("get_font_weight");
-      this.#_bindings.method_get_font_weight = internal.classdb_get_method_bind(
+      this._bindings.method_get_font_weight = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -213,10 +214,10 @@ export class Font extends Resource{
     }
   }
   static init_method_get_font_stretch() {
-    if (!this.#_bindings.method_get_font_stretch) {
+    if (!this._bindings.method_get_font_stretch) {
       let classname = new StringName("Font");
       let methodname = new StringName("get_font_stretch");
-      this.#_bindings.method_get_font_stretch = internal.classdb_get_method_bind(
+      this._bindings.method_get_font_stretch = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -224,10 +225,10 @@ export class Font extends Resource{
     }
   }
   static init_method_get_spacing() {
-    if (!this.#_bindings.method_get_spacing) {
+    if (!this._bindings.method_get_spacing) {
       let classname = new StringName("Font");
       let methodname = new StringName("get_spacing");
-      this.#_bindings.method_get_spacing = internal.classdb_get_method_bind(
+      this._bindings.method_get_spacing = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1310880908
@@ -235,10 +236,10 @@ export class Font extends Resource{
     }
   }
   static init_method_get_opentype_features() {
-    if (!this.#_bindings.method_get_opentype_features) {
+    if (!this._bindings.method_get_opentype_features) {
       let classname = new StringName("Font");
       let methodname = new StringName("get_opentype_features");
-      this.#_bindings.method_get_opentype_features = internal.classdb_get_method_bind(
+      this._bindings.method_get_opentype_features = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3102165223
@@ -246,10 +247,10 @@ export class Font extends Resource{
     }
   }
   static init_method_set_cache_capacity() {
-    if (!this.#_bindings.method_set_cache_capacity) {
+    if (!this._bindings.method_set_cache_capacity) {
       let classname = new StringName("Font");
       let methodname = new StringName("set_cache_capacity");
-      this.#_bindings.method_set_cache_capacity = internal.classdb_get_method_bind(
+      this._bindings.method_set_cache_capacity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -257,10 +258,10 @@ export class Font extends Resource{
     }
   }
   static init_method_get_string_size() {
-    if (!this.#_bindings.method_get_string_size) {
+    if (!this._bindings.method_get_string_size) {
       let classname = new StringName("Font");
       let methodname = new StringName("get_string_size");
-      this.#_bindings.method_get_string_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_string_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1868866121
@@ -268,10 +269,10 @@ export class Font extends Resource{
     }
   }
   static init_method_get_multiline_string_size() {
-    if (!this.#_bindings.method_get_multiline_string_size) {
+    if (!this._bindings.method_get_multiline_string_size) {
       let classname = new StringName("Font");
       let methodname = new StringName("get_multiline_string_size");
-      this.#_bindings.method_get_multiline_string_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_multiline_string_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         519636710
@@ -279,10 +280,10 @@ export class Font extends Resource{
     }
   }
   static init_method_draw_string() {
-    if (!this.#_bindings.method_draw_string) {
+    if (!this._bindings.method_draw_string) {
       let classname = new StringName("Font");
       let methodname = new StringName("draw_string");
-      this.#_bindings.method_draw_string = internal.classdb_get_method_bind(
+      this._bindings.method_draw_string = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1983721962
@@ -290,10 +291,10 @@ export class Font extends Resource{
     }
   }
   static init_method_draw_multiline_string() {
-    if (!this.#_bindings.method_draw_multiline_string) {
+    if (!this._bindings.method_draw_multiline_string) {
       let classname = new StringName("Font");
       let methodname = new StringName("draw_multiline_string");
-      this.#_bindings.method_draw_multiline_string = internal.classdb_get_method_bind(
+      this._bindings.method_draw_multiline_string = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1171506176
@@ -301,10 +302,10 @@ export class Font extends Resource{
     }
   }
   static init_method_draw_string_outline() {
-    if (!this.#_bindings.method_draw_string_outline) {
+    if (!this._bindings.method_draw_string_outline) {
       let classname = new StringName("Font");
       let methodname = new StringName("draw_string_outline");
-      this.#_bindings.method_draw_string_outline = internal.classdb_get_method_bind(
+      this._bindings.method_draw_string_outline = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         623754045
@@ -312,10 +313,10 @@ export class Font extends Resource{
     }
   }
   static init_method_draw_multiline_string_outline() {
-    if (!this.#_bindings.method_draw_multiline_string_outline) {
+    if (!this._bindings.method_draw_multiline_string_outline) {
       let classname = new StringName("Font");
       let methodname = new StringName("draw_multiline_string_outline");
-      this.#_bindings.method_draw_multiline_string_outline = internal.classdb_get_method_bind(
+      this._bindings.method_draw_multiline_string_outline = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3206388178
@@ -323,10 +324,10 @@ export class Font extends Resource{
     }
   }
   static init_method_get_char_size() {
-    if (!this.#_bindings.method_get_char_size) {
+    if (!this._bindings.method_get_char_size) {
       let classname = new StringName("Font");
       let methodname = new StringName("get_char_size");
-      this.#_bindings.method_get_char_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_char_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3016396712
@@ -334,10 +335,10 @@ export class Font extends Resource{
     }
   }
   static init_method_draw_char() {
-    if (!this.#_bindings.method_draw_char) {
+    if (!this._bindings.method_draw_char) {
       let classname = new StringName("Font");
       let methodname = new StringName("draw_char");
-      this.#_bindings.method_draw_char = internal.classdb_get_method_bind(
+      this._bindings.method_draw_char = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3815617597
@@ -345,10 +346,10 @@ export class Font extends Resource{
     }
   }
   static init_method_draw_char_outline() {
-    if (!this.#_bindings.method_draw_char_outline) {
+    if (!this._bindings.method_draw_char_outline) {
       let classname = new StringName("Font");
       let methodname = new StringName("draw_char_outline");
-      this.#_bindings.method_draw_char_outline = internal.classdb_get_method_bind(
+      this._bindings.method_draw_char_outline = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         209525354
@@ -356,10 +357,10 @@ export class Font extends Resource{
     }
   }
   static init_method_has_char() {
-    if (!this.#_bindings.method_has_char) {
+    if (!this._bindings.method_has_char) {
       let classname = new StringName("Font");
       let methodname = new StringName("has_char");
-      this.#_bindings.method_has_char = internal.classdb_get_method_bind(
+      this._bindings.method_has_char = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -367,10 +368,10 @@ export class Font extends Resource{
     }
   }
   static init_method_get_supported_chars() {
-    if (!this.#_bindings.method_get_supported_chars) {
+    if (!this._bindings.method_get_supported_chars) {
       let classname = new StringName("Font");
       let methodname = new StringName("get_supported_chars");
-      this.#_bindings.method_get_supported_chars = internal.classdb_get_method_bind(
+      this._bindings.method_get_supported_chars = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -378,10 +379,10 @@ export class Font extends Resource{
     }
   }
   static init_method_is_language_supported() {
-    if (!this.#_bindings.method_is_language_supported) {
+    if (!this._bindings.method_is_language_supported) {
       let classname = new StringName("Font");
       let methodname = new StringName("is_language_supported");
-      this.#_bindings.method_is_language_supported = internal.classdb_get_method_bind(
+      this._bindings.method_is_language_supported = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3927539163
@@ -389,10 +390,10 @@ export class Font extends Resource{
     }
   }
   static init_method_is_script_supported() {
-    if (!this.#_bindings.method_is_script_supported) {
+    if (!this._bindings.method_is_script_supported) {
       let classname = new StringName("Font");
       let methodname = new StringName("is_script_supported");
-      this.#_bindings.method_is_script_supported = internal.classdb_get_method_bind(
+      this._bindings.method_is_script_supported = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3927539163
@@ -400,10 +401,10 @@ export class Font extends Resource{
     }
   }
   static init_method_get_supported_feature_list() {
-    if (!this.#_bindings.method_get_supported_feature_list) {
+    if (!this._bindings.method_get_supported_feature_list) {
       let classname = new StringName("Font");
       let methodname = new StringName("get_supported_feature_list");
-      this.#_bindings.method_get_supported_feature_list = internal.classdb_get_method_bind(
+      this._bindings.method_get_supported_feature_list = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3102165223
@@ -411,10 +412,10 @@ export class Font extends Resource{
     }
   }
   static init_method_get_supported_variation_list() {
-    if (!this.#_bindings.method_get_supported_variation_list) {
+    if (!this._bindings.method_get_supported_variation_list) {
       let classname = new StringName("Font");
       let methodname = new StringName("get_supported_variation_list");
-      this.#_bindings.method_get_supported_variation_list = internal.classdb_get_method_bind(
+      this._bindings.method_get_supported_variation_list = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3102165223
@@ -422,10 +423,10 @@ export class Font extends Resource{
     }
   }
   static init_method_get_face_count() {
-    if (!this.#_bindings.method_get_face_count) {
+    if (!this._bindings.method_get_face_count) {
       let classname = new StringName("Font");
       let methodname = new StringName("get_face_count");
-      this.#_bindings.method_get_face_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_face_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -438,7 +439,7 @@ export class Font extends Resource{
   set_fallbacks(_fallbacks) {
     Font.init_method_set_fallbacks();
     return _call_native_mb_no_ret(
-      Font.#_bindings.method_set_fallbacks,
+      Font._bindings.method_set_fallbacks,
       this._owner,
       _fallbacks
     );
@@ -447,7 +448,7 @@ export class Font extends Resource{
   get_fallbacks() {
     Font.init_method_get_fallbacks();
     return _call_native_mb_ret(
-      Font.#_bindings.method_get_fallbacks,
+      Font._bindings.method_get_fallbacks,
       this._owner,
 			Variant.Type.ARRAY,
       
@@ -457,7 +458,7 @@ export class Font extends Resource{
   find_variation(_variation_coordinates, _face_index, _strength, _transform, _spacing_top, _spacing_bottom, _spacing_space, _spacing_glyph, _baseline_offset) {
     Font.init_method_find_variation();
     return _call_native_mb_ret(
-      Font.#_bindings.method_find_variation,
+      Font._bindings.method_find_variation,
       this._owner,
 			Variant.Type.RID,
     
@@ -468,7 +469,7 @@ export class Font extends Resource{
   get_rids() {
     Font.init_method_get_rids();
     return _call_native_mb_ret(
-      Font.#_bindings.method_get_rids,
+      Font._bindings.method_get_rids,
       this._owner,
 			Variant.Type.ARRAY,
       
@@ -478,7 +479,7 @@ export class Font extends Resource{
   get_height(_font_size) {
     Font.init_method_get_height();
     return _call_native_mb_ret(
-      Font.#_bindings.method_get_height,
+      Font._bindings.method_get_height,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -489,7 +490,7 @@ export class Font extends Resource{
   get_ascent(_font_size) {
     Font.init_method_get_ascent();
     return _call_native_mb_ret(
-      Font.#_bindings.method_get_ascent,
+      Font._bindings.method_get_ascent,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -500,7 +501,7 @@ export class Font extends Resource{
   get_descent(_font_size) {
     Font.init_method_get_descent();
     return _call_native_mb_ret(
-      Font.#_bindings.method_get_descent,
+      Font._bindings.method_get_descent,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -511,7 +512,7 @@ export class Font extends Resource{
   get_underline_position(_font_size) {
     Font.init_method_get_underline_position();
     return _call_native_mb_ret(
-      Font.#_bindings.method_get_underline_position,
+      Font._bindings.method_get_underline_position,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -522,7 +523,7 @@ export class Font extends Resource{
   get_underline_thickness(_font_size) {
     Font.init_method_get_underline_thickness();
     return _call_native_mb_ret(
-      Font.#_bindings.method_get_underline_thickness,
+      Font._bindings.method_get_underline_thickness,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -533,7 +534,7 @@ export class Font extends Resource{
   get_font_name() {
     Font.init_method_get_font_name();
     return _call_native_mb_ret(
-      Font.#_bindings.method_get_font_name,
+      Font._bindings.method_get_font_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -544,7 +545,7 @@ export class Font extends Resource{
   get_font_style_name() {
     Font.init_method_get_font_style_name();
     return _call_native_mb_ret(
-      Font.#_bindings.method_get_font_style_name,
+      Font._bindings.method_get_font_style_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -555,7 +556,7 @@ export class Font extends Resource{
   get_ot_name_strings() {
     Font.init_method_get_ot_name_strings();
     return _call_native_mb_ret(
-      Font.#_bindings.method_get_ot_name_strings,
+      Font._bindings.method_get_ot_name_strings,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -566,7 +567,7 @@ export class Font extends Resource{
   get_font_style() {
     Font.init_method_get_font_style();
     return _call_native_mb_ret(
-      Font.#_bindings.method_get_font_style,
+      Font._bindings.method_get_font_style,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -576,7 +577,7 @@ export class Font extends Resource{
   get_font_weight() {
     Font.init_method_get_font_weight();
     return _call_native_mb_ret(
-      Font.#_bindings.method_get_font_weight,
+      Font._bindings.method_get_font_weight,
       this._owner,
 			Variant.Type.INT,
     
@@ -587,7 +588,7 @@ export class Font extends Resource{
   get_font_stretch() {
     Font.init_method_get_font_stretch();
     return _call_native_mb_ret(
-      Font.#_bindings.method_get_font_stretch,
+      Font._bindings.method_get_font_stretch,
       this._owner,
 			Variant.Type.INT,
     
@@ -598,7 +599,7 @@ export class Font extends Resource{
   get_spacing(_spacing) {
     Font.init_method_get_spacing();
     return _call_native_mb_ret(
-      Font.#_bindings.method_get_spacing,
+      Font._bindings.method_get_spacing,
       this._owner,
 			Variant.Type.INT,
     
@@ -609,7 +610,7 @@ export class Font extends Resource{
   get_opentype_features() {
     Font.init_method_get_opentype_features();
     return _call_native_mb_ret(
-      Font.#_bindings.method_get_opentype_features,
+      Font._bindings.method_get_opentype_features,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -620,7 +621,7 @@ export class Font extends Resource{
   set_cache_capacity(_single_line, _multi_line) {
     Font.init_method_set_cache_capacity();
     return _call_native_mb_no_ret(
-      Font.#_bindings.method_set_cache_capacity,
+      Font._bindings.method_set_cache_capacity,
       this._owner,
       _single_line, _multi_line
     );
@@ -629,7 +630,7 @@ export class Font extends Resource{
   get_string_size(_text, _alignment, _width, _font_size, _justification_flags, _direction, _orientation) {
     Font.init_method_get_string_size();
     return _call_native_mb_ret(
-      Font.#_bindings.method_get_string_size,
+      Font._bindings.method_get_string_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -640,7 +641,7 @@ export class Font extends Resource{
   get_multiline_string_size(_text, _alignment, _width, _font_size, _max_lines, _brk_flags, _justification_flags, _direction, _orientation) {
     Font.init_method_get_multiline_string_size();
     return _call_native_mb_ret(
-      Font.#_bindings.method_get_multiline_string_size,
+      Font._bindings.method_get_multiline_string_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -651,7 +652,7 @@ export class Font extends Resource{
   draw_string(_canvas_item, _pos, _text, _alignment, _width, _font_size, _modulate, _justification_flags, _direction, _orientation) {
     Font.init_method_draw_string();
     return _call_native_mb_no_ret(
-      Font.#_bindings.method_draw_string,
+      Font._bindings.method_draw_string,
       this._owner,
       _canvas_item, _pos, _text, _alignment, _width, _font_size, _modulate, _justification_flags, _direction, _orientation
     );
@@ -660,7 +661,7 @@ export class Font extends Resource{
   draw_multiline_string(_canvas_item, _pos, _text, _alignment, _width, _font_size, _max_lines, _modulate, _brk_flags, _justification_flags, _direction, _orientation) {
     Font.init_method_draw_multiline_string();
     return _call_native_mb_no_ret(
-      Font.#_bindings.method_draw_multiline_string,
+      Font._bindings.method_draw_multiline_string,
       this._owner,
       _canvas_item, _pos, _text, _alignment, _width, _font_size, _max_lines, _modulate, _brk_flags, _justification_flags, _direction, _orientation
     );
@@ -669,7 +670,7 @@ export class Font extends Resource{
   draw_string_outline(_canvas_item, _pos, _text, _alignment, _width, _font_size, _size, _modulate, _justification_flags, _direction, _orientation) {
     Font.init_method_draw_string_outline();
     return _call_native_mb_no_ret(
-      Font.#_bindings.method_draw_string_outline,
+      Font._bindings.method_draw_string_outline,
       this._owner,
       _canvas_item, _pos, _text, _alignment, _width, _font_size, _size, _modulate, _justification_flags, _direction, _orientation
     );
@@ -678,7 +679,7 @@ export class Font extends Resource{
   draw_multiline_string_outline(_canvas_item, _pos, _text, _alignment, _width, _font_size, _max_lines, _size, _modulate, _brk_flags, _justification_flags, _direction, _orientation) {
     Font.init_method_draw_multiline_string_outline();
     return _call_native_mb_no_ret(
-      Font.#_bindings.method_draw_multiline_string_outline,
+      Font._bindings.method_draw_multiline_string_outline,
       this._owner,
       _canvas_item, _pos, _text, _alignment, _width, _font_size, _max_lines, _size, _modulate, _brk_flags, _justification_flags, _direction, _orientation
     );
@@ -687,7 +688,7 @@ export class Font extends Resource{
   get_char_size(_char, _font_size) {
     Font.init_method_get_char_size();
     return _call_native_mb_ret(
-      Font.#_bindings.method_get_char_size,
+      Font._bindings.method_get_char_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -698,7 +699,7 @@ export class Font extends Resource{
   draw_char(_canvas_item, _pos, _char, _font_size, _modulate) {
     Font.init_method_draw_char();
     return _call_native_mb_ret(
-      Font.#_bindings.method_draw_char,
+      Font._bindings.method_draw_char,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -709,7 +710,7 @@ export class Font extends Resource{
   draw_char_outline(_canvas_item, _pos, _char, _font_size, _size, _modulate) {
     Font.init_method_draw_char_outline();
     return _call_native_mb_ret(
-      Font.#_bindings.method_draw_char_outline,
+      Font._bindings.method_draw_char_outline,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -720,7 +721,7 @@ export class Font extends Resource{
   has_char(_char) {
     Font.init_method_has_char();
     return _call_native_mb_ret(
-      Font.#_bindings.method_has_char,
+      Font._bindings.method_has_char,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -731,7 +732,7 @@ export class Font extends Resource{
   get_supported_chars() {
     Font.init_method_get_supported_chars();
     return _call_native_mb_ret(
-      Font.#_bindings.method_get_supported_chars,
+      Font._bindings.method_get_supported_chars,
       this._owner,
 			Variant.Type.STRING,
     
@@ -742,7 +743,7 @@ export class Font extends Resource{
   is_language_supported(_language) {
     Font.init_method_is_language_supported();
     return _call_native_mb_ret(
-      Font.#_bindings.method_is_language_supported,
+      Font._bindings.method_is_language_supported,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -753,7 +754,7 @@ export class Font extends Resource{
   is_script_supported(_script) {
     Font.init_method_is_script_supported();
     return _call_native_mb_ret(
-      Font.#_bindings.method_is_script_supported,
+      Font._bindings.method_is_script_supported,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -764,7 +765,7 @@ export class Font extends Resource{
   get_supported_feature_list() {
     Font.init_method_get_supported_feature_list();
     return _call_native_mb_ret(
-      Font.#_bindings.method_get_supported_feature_list,
+      Font._bindings.method_get_supported_feature_list,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -775,7 +776,7 @@ export class Font extends Resource{
   get_supported_variation_list() {
     Font.init_method_get_supported_variation_list();
     return _call_native_mb_ret(
-      Font.#_bindings.method_get_supported_variation_list,
+      Font._bindings.method_get_supported_variation_list,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -786,7 +787,7 @@ export class Font extends Resource{
   get_face_count() {
     Font.init_method_get_face_count();
     return _call_native_mb_ret(
-      Font.#_bindings.method_get_face_count,
+      Font._bindings.method_get_face_count,
       this._owner,
 			Variant.Type.INT,
     

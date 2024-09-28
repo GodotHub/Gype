@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { CanvasItem } from '@js_godot/classes/canvas_item'
 import {
   call_utility_ret,
@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_position;
@@ -44,10 +45,10 @@ class _MethodBindings {
   method_to_global;
   method_get_relative_transform_to_parent;
 }
+@GodotClass
 export class Node2D extends CanvasItem{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -57,10 +58,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_set_position() {
-    if (!this.#_bindings.method_set_position) {
+    if (!this._bindings.method_set_position) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("set_position");
-      this.#_bindings.method_set_position = internal.classdb_get_method_bind(
+      this._bindings.method_set_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -68,10 +69,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_set_rotation() {
-    if (!this.#_bindings.method_set_rotation) {
+    if (!this._bindings.method_set_rotation) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("set_rotation");
-      this.#_bindings.method_set_rotation = internal.classdb_get_method_bind(
+      this._bindings.method_set_rotation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -79,10 +80,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_set_rotation_degrees() {
-    if (!this.#_bindings.method_set_rotation_degrees) {
+    if (!this._bindings.method_set_rotation_degrees) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("set_rotation_degrees");
-      this.#_bindings.method_set_rotation_degrees = internal.classdb_get_method_bind(
+      this._bindings.method_set_rotation_degrees = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -90,10 +91,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_set_skew() {
-    if (!this.#_bindings.method_set_skew) {
+    if (!this._bindings.method_set_skew) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("set_skew");
-      this.#_bindings.method_set_skew = internal.classdb_get_method_bind(
+      this._bindings.method_set_skew = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -101,10 +102,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_set_scale() {
-    if (!this.#_bindings.method_set_scale) {
+    if (!this._bindings.method_set_scale) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("set_scale");
-      this.#_bindings.method_set_scale = internal.classdb_get_method_bind(
+      this._bindings.method_set_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -112,10 +113,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_get_position() {
-    if (!this.#_bindings.method_get_position) {
+    if (!this._bindings.method_get_position) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("get_position");
-      this.#_bindings.method_get_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -123,10 +124,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_get_rotation() {
-    if (!this.#_bindings.method_get_rotation) {
+    if (!this._bindings.method_get_rotation) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("get_rotation");
-      this.#_bindings.method_get_rotation = internal.classdb_get_method_bind(
+      this._bindings.method_get_rotation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -134,10 +135,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_get_rotation_degrees() {
-    if (!this.#_bindings.method_get_rotation_degrees) {
+    if (!this._bindings.method_get_rotation_degrees) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("get_rotation_degrees");
-      this.#_bindings.method_get_rotation_degrees = internal.classdb_get_method_bind(
+      this._bindings.method_get_rotation_degrees = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -145,10 +146,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_get_skew() {
-    if (!this.#_bindings.method_get_skew) {
+    if (!this._bindings.method_get_skew) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("get_skew");
-      this.#_bindings.method_get_skew = internal.classdb_get_method_bind(
+      this._bindings.method_get_skew = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -156,10 +157,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_get_scale() {
-    if (!this.#_bindings.method_get_scale) {
+    if (!this._bindings.method_get_scale) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("get_scale");
-      this.#_bindings.method_get_scale = internal.classdb_get_method_bind(
+      this._bindings.method_get_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -167,10 +168,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_rotate() {
-    if (!this.#_bindings.method_rotate) {
+    if (!this._bindings.method_rotate) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("rotate");
-      this.#_bindings.method_rotate = internal.classdb_get_method_bind(
+      this._bindings.method_rotate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -178,10 +179,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_move_local_x() {
-    if (!this.#_bindings.method_move_local_x) {
+    if (!this._bindings.method_move_local_x) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("move_local_x");
-      this.#_bindings.method_move_local_x = internal.classdb_get_method_bind(
+      this._bindings.method_move_local_x = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2087892650
@@ -189,10 +190,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_move_local_y() {
-    if (!this.#_bindings.method_move_local_y) {
+    if (!this._bindings.method_move_local_y) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("move_local_y");
-      this.#_bindings.method_move_local_y = internal.classdb_get_method_bind(
+      this._bindings.method_move_local_y = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2087892650
@@ -200,10 +201,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_translate() {
-    if (!this.#_bindings.method_translate) {
+    if (!this._bindings.method_translate) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("translate");
-      this.#_bindings.method_translate = internal.classdb_get_method_bind(
+      this._bindings.method_translate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -211,10 +212,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_global_translate() {
-    if (!this.#_bindings.method_global_translate) {
+    if (!this._bindings.method_global_translate) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("global_translate");
-      this.#_bindings.method_global_translate = internal.classdb_get_method_bind(
+      this._bindings.method_global_translate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -222,10 +223,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_apply_scale() {
-    if (!this.#_bindings.method_apply_scale) {
+    if (!this._bindings.method_apply_scale) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("apply_scale");
-      this.#_bindings.method_apply_scale = internal.classdb_get_method_bind(
+      this._bindings.method_apply_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -233,10 +234,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_set_global_position() {
-    if (!this.#_bindings.method_set_global_position) {
+    if (!this._bindings.method_set_global_position) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("set_global_position");
-      this.#_bindings.method_set_global_position = internal.classdb_get_method_bind(
+      this._bindings.method_set_global_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -244,10 +245,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_get_global_position() {
-    if (!this.#_bindings.method_get_global_position) {
+    if (!this._bindings.method_get_global_position) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("get_global_position");
-      this.#_bindings.method_get_global_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_global_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -255,10 +256,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_set_global_rotation() {
-    if (!this.#_bindings.method_set_global_rotation) {
+    if (!this._bindings.method_set_global_rotation) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("set_global_rotation");
-      this.#_bindings.method_set_global_rotation = internal.classdb_get_method_bind(
+      this._bindings.method_set_global_rotation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -266,10 +267,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_set_global_rotation_degrees() {
-    if (!this.#_bindings.method_set_global_rotation_degrees) {
+    if (!this._bindings.method_set_global_rotation_degrees) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("set_global_rotation_degrees");
-      this.#_bindings.method_set_global_rotation_degrees = internal.classdb_get_method_bind(
+      this._bindings.method_set_global_rotation_degrees = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -277,10 +278,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_get_global_rotation() {
-    if (!this.#_bindings.method_get_global_rotation) {
+    if (!this._bindings.method_get_global_rotation) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("get_global_rotation");
-      this.#_bindings.method_get_global_rotation = internal.classdb_get_method_bind(
+      this._bindings.method_get_global_rotation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -288,10 +289,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_get_global_rotation_degrees() {
-    if (!this.#_bindings.method_get_global_rotation_degrees) {
+    if (!this._bindings.method_get_global_rotation_degrees) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("get_global_rotation_degrees");
-      this.#_bindings.method_get_global_rotation_degrees = internal.classdb_get_method_bind(
+      this._bindings.method_get_global_rotation_degrees = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -299,10 +300,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_set_global_skew() {
-    if (!this.#_bindings.method_set_global_skew) {
+    if (!this._bindings.method_set_global_skew) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("set_global_skew");
-      this.#_bindings.method_set_global_skew = internal.classdb_get_method_bind(
+      this._bindings.method_set_global_skew = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -310,10 +311,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_get_global_skew() {
-    if (!this.#_bindings.method_get_global_skew) {
+    if (!this._bindings.method_get_global_skew) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("get_global_skew");
-      this.#_bindings.method_get_global_skew = internal.classdb_get_method_bind(
+      this._bindings.method_get_global_skew = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -321,10 +322,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_set_global_scale() {
-    if (!this.#_bindings.method_set_global_scale) {
+    if (!this._bindings.method_set_global_scale) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("set_global_scale");
-      this.#_bindings.method_set_global_scale = internal.classdb_get_method_bind(
+      this._bindings.method_set_global_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -332,10 +333,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_get_global_scale() {
-    if (!this.#_bindings.method_get_global_scale) {
+    if (!this._bindings.method_get_global_scale) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("get_global_scale");
-      this.#_bindings.method_get_global_scale = internal.classdb_get_method_bind(
+      this._bindings.method_get_global_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -343,10 +344,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_set_transform() {
-    if (!this.#_bindings.method_set_transform) {
+    if (!this._bindings.method_set_transform) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("set_transform");
-      this.#_bindings.method_set_transform = internal.classdb_get_method_bind(
+      this._bindings.method_set_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2761652528
@@ -354,10 +355,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_set_global_transform() {
-    if (!this.#_bindings.method_set_global_transform) {
+    if (!this._bindings.method_set_global_transform) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("set_global_transform");
-      this.#_bindings.method_set_global_transform = internal.classdb_get_method_bind(
+      this._bindings.method_set_global_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2761652528
@@ -365,10 +366,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_look_at() {
-    if (!this.#_bindings.method_look_at) {
+    if (!this._bindings.method_look_at) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("look_at");
-      this.#_bindings.method_look_at = internal.classdb_get_method_bind(
+      this._bindings.method_look_at = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -376,10 +377,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_get_angle_to() {
-    if (!this.#_bindings.method_get_angle_to) {
+    if (!this._bindings.method_get_angle_to) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("get_angle_to");
-      this.#_bindings.method_get_angle_to = internal.classdb_get_method_bind(
+      this._bindings.method_get_angle_to = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2276447920
@@ -387,10 +388,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_to_local() {
-    if (!this.#_bindings.method_to_local) {
+    if (!this._bindings.method_to_local) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("to_local");
-      this.#_bindings.method_to_local = internal.classdb_get_method_bind(
+      this._bindings.method_to_local = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2656412154
@@ -398,10 +399,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_to_global() {
-    if (!this.#_bindings.method_to_global) {
+    if (!this._bindings.method_to_global) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("to_global");
-      this.#_bindings.method_to_global = internal.classdb_get_method_bind(
+      this._bindings.method_to_global = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2656412154
@@ -409,10 +410,10 @@ export class Node2D extends CanvasItem{
     }
   }
   static init_method_get_relative_transform_to_parent() {
-    if (!this.#_bindings.method_get_relative_transform_to_parent) {
+    if (!this._bindings.method_get_relative_transform_to_parent) {
       let classname = new StringName("Node2D");
       let methodname = new StringName("get_relative_transform_to_parent");
-      this.#_bindings.method_get_relative_transform_to_parent = internal.classdb_get_method_bind(
+      this._bindings.method_get_relative_transform_to_parent = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         904556875
@@ -425,7 +426,7 @@ export class Node2D extends CanvasItem{
   set_position(_position) {
     Node2D.init_method_set_position();
     return _call_native_mb_no_ret(
-      Node2D.#_bindings.method_set_position,
+      Node2D._bindings.method_set_position,
       this._owner,
       _position
     );
@@ -434,7 +435,7 @@ export class Node2D extends CanvasItem{
   set_rotation(_radians) {
     Node2D.init_method_set_rotation();
     return _call_native_mb_no_ret(
-      Node2D.#_bindings.method_set_rotation,
+      Node2D._bindings.method_set_rotation,
       this._owner,
       _radians
     );
@@ -443,7 +444,7 @@ export class Node2D extends CanvasItem{
   set_rotation_degrees(_degrees) {
     Node2D.init_method_set_rotation_degrees();
     return _call_native_mb_no_ret(
-      Node2D.#_bindings.method_set_rotation_degrees,
+      Node2D._bindings.method_set_rotation_degrees,
       this._owner,
       _degrees
     );
@@ -452,7 +453,7 @@ export class Node2D extends CanvasItem{
   set_skew(_radians) {
     Node2D.init_method_set_skew();
     return _call_native_mb_no_ret(
-      Node2D.#_bindings.method_set_skew,
+      Node2D._bindings.method_set_skew,
       this._owner,
       _radians
     );
@@ -461,7 +462,7 @@ export class Node2D extends CanvasItem{
   set_scale(_scale) {
     Node2D.init_method_set_scale();
     return _call_native_mb_no_ret(
-      Node2D.#_bindings.method_set_scale,
+      Node2D._bindings.method_set_scale,
       this._owner,
       _scale
     );
@@ -470,7 +471,7 @@ export class Node2D extends CanvasItem{
   get_position() {
     Node2D.init_method_get_position();
     return _call_native_mb_ret(
-      Node2D.#_bindings.method_get_position,
+      Node2D._bindings.method_get_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -481,7 +482,7 @@ export class Node2D extends CanvasItem{
   get_rotation() {
     Node2D.init_method_get_rotation();
     return _call_native_mb_ret(
-      Node2D.#_bindings.method_get_rotation,
+      Node2D._bindings.method_get_rotation,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -492,7 +493,7 @@ export class Node2D extends CanvasItem{
   get_rotation_degrees() {
     Node2D.init_method_get_rotation_degrees();
     return _call_native_mb_ret(
-      Node2D.#_bindings.method_get_rotation_degrees,
+      Node2D._bindings.method_get_rotation_degrees,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -503,7 +504,7 @@ export class Node2D extends CanvasItem{
   get_skew() {
     Node2D.init_method_get_skew();
     return _call_native_mb_ret(
-      Node2D.#_bindings.method_get_skew,
+      Node2D._bindings.method_get_skew,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -514,7 +515,7 @@ export class Node2D extends CanvasItem{
   get_scale() {
     Node2D.init_method_get_scale();
     return _call_native_mb_ret(
-      Node2D.#_bindings.method_get_scale,
+      Node2D._bindings.method_get_scale,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -525,7 +526,7 @@ export class Node2D extends CanvasItem{
   rotate(_radians) {
     Node2D.init_method_rotate();
     return _call_native_mb_no_ret(
-      Node2D.#_bindings.method_rotate,
+      Node2D._bindings.method_rotate,
       this._owner,
       _radians
     );
@@ -534,7 +535,7 @@ export class Node2D extends CanvasItem{
   move_local_x(_delta, _scaled) {
     Node2D.init_method_move_local_x();
     return _call_native_mb_no_ret(
-      Node2D.#_bindings.method_move_local_x,
+      Node2D._bindings.method_move_local_x,
       this._owner,
       _delta, _scaled
     );
@@ -543,7 +544,7 @@ export class Node2D extends CanvasItem{
   move_local_y(_delta, _scaled) {
     Node2D.init_method_move_local_y();
     return _call_native_mb_no_ret(
-      Node2D.#_bindings.method_move_local_y,
+      Node2D._bindings.method_move_local_y,
       this._owner,
       _delta, _scaled
     );
@@ -552,7 +553,7 @@ export class Node2D extends CanvasItem{
   translate(_offset) {
     Node2D.init_method_translate();
     return _call_native_mb_no_ret(
-      Node2D.#_bindings.method_translate,
+      Node2D._bindings.method_translate,
       this._owner,
       _offset
     );
@@ -561,7 +562,7 @@ export class Node2D extends CanvasItem{
   global_translate(_offset) {
     Node2D.init_method_global_translate();
     return _call_native_mb_no_ret(
-      Node2D.#_bindings.method_global_translate,
+      Node2D._bindings.method_global_translate,
       this._owner,
       _offset
     );
@@ -570,7 +571,7 @@ export class Node2D extends CanvasItem{
   apply_scale(_ratio) {
     Node2D.init_method_apply_scale();
     return _call_native_mb_no_ret(
-      Node2D.#_bindings.method_apply_scale,
+      Node2D._bindings.method_apply_scale,
       this._owner,
       _ratio
     );
@@ -579,7 +580,7 @@ export class Node2D extends CanvasItem{
   set_global_position(_position) {
     Node2D.init_method_set_global_position();
     return _call_native_mb_no_ret(
-      Node2D.#_bindings.method_set_global_position,
+      Node2D._bindings.method_set_global_position,
       this._owner,
       _position
     );
@@ -588,7 +589,7 @@ export class Node2D extends CanvasItem{
   get_global_position() {
     Node2D.init_method_get_global_position();
     return _call_native_mb_ret(
-      Node2D.#_bindings.method_get_global_position,
+      Node2D._bindings.method_get_global_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -599,7 +600,7 @@ export class Node2D extends CanvasItem{
   set_global_rotation(_radians) {
     Node2D.init_method_set_global_rotation();
     return _call_native_mb_no_ret(
-      Node2D.#_bindings.method_set_global_rotation,
+      Node2D._bindings.method_set_global_rotation,
       this._owner,
       _radians
     );
@@ -608,7 +609,7 @@ export class Node2D extends CanvasItem{
   set_global_rotation_degrees(_degrees) {
     Node2D.init_method_set_global_rotation_degrees();
     return _call_native_mb_no_ret(
-      Node2D.#_bindings.method_set_global_rotation_degrees,
+      Node2D._bindings.method_set_global_rotation_degrees,
       this._owner,
       _degrees
     );
@@ -617,7 +618,7 @@ export class Node2D extends CanvasItem{
   get_global_rotation() {
     Node2D.init_method_get_global_rotation();
     return _call_native_mb_ret(
-      Node2D.#_bindings.method_get_global_rotation,
+      Node2D._bindings.method_get_global_rotation,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -628,7 +629,7 @@ export class Node2D extends CanvasItem{
   get_global_rotation_degrees() {
     Node2D.init_method_get_global_rotation_degrees();
     return _call_native_mb_ret(
-      Node2D.#_bindings.method_get_global_rotation_degrees,
+      Node2D._bindings.method_get_global_rotation_degrees,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -639,7 +640,7 @@ export class Node2D extends CanvasItem{
   set_global_skew(_radians) {
     Node2D.init_method_set_global_skew();
     return _call_native_mb_no_ret(
-      Node2D.#_bindings.method_set_global_skew,
+      Node2D._bindings.method_set_global_skew,
       this._owner,
       _radians
     );
@@ -648,7 +649,7 @@ export class Node2D extends CanvasItem{
   get_global_skew() {
     Node2D.init_method_get_global_skew();
     return _call_native_mb_ret(
-      Node2D.#_bindings.method_get_global_skew,
+      Node2D._bindings.method_get_global_skew,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -659,7 +660,7 @@ export class Node2D extends CanvasItem{
   set_global_scale(_scale) {
     Node2D.init_method_set_global_scale();
     return _call_native_mb_no_ret(
-      Node2D.#_bindings.method_set_global_scale,
+      Node2D._bindings.method_set_global_scale,
       this._owner,
       _scale
     );
@@ -668,7 +669,7 @@ export class Node2D extends CanvasItem{
   get_global_scale() {
     Node2D.init_method_get_global_scale();
     return _call_native_mb_ret(
-      Node2D.#_bindings.method_get_global_scale,
+      Node2D._bindings.method_get_global_scale,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -679,7 +680,7 @@ export class Node2D extends CanvasItem{
   set_transform(_xform) {
     Node2D.init_method_set_transform();
     return _call_native_mb_no_ret(
-      Node2D.#_bindings.method_set_transform,
+      Node2D._bindings.method_set_transform,
       this._owner,
       _xform
     );
@@ -688,7 +689,7 @@ export class Node2D extends CanvasItem{
   set_global_transform(_xform) {
     Node2D.init_method_set_global_transform();
     return _call_native_mb_no_ret(
-      Node2D.#_bindings.method_set_global_transform,
+      Node2D._bindings.method_set_global_transform,
       this._owner,
       _xform
     );
@@ -697,7 +698,7 @@ export class Node2D extends CanvasItem{
   look_at(_point) {
     Node2D.init_method_look_at();
     return _call_native_mb_no_ret(
-      Node2D.#_bindings.method_look_at,
+      Node2D._bindings.method_look_at,
       this._owner,
       _point
     );
@@ -706,7 +707,7 @@ export class Node2D extends CanvasItem{
   get_angle_to(_point) {
     Node2D.init_method_get_angle_to();
     return _call_native_mb_ret(
-      Node2D.#_bindings.method_get_angle_to,
+      Node2D._bindings.method_get_angle_to,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -717,7 +718,7 @@ export class Node2D extends CanvasItem{
   to_local(_global_point) {
     Node2D.init_method_to_local();
     return _call_native_mb_ret(
-      Node2D.#_bindings.method_to_local,
+      Node2D._bindings.method_to_local,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -728,7 +729,7 @@ export class Node2D extends CanvasItem{
   to_global(_local_point) {
     Node2D.init_method_to_global();
     return _call_native_mb_ret(
-      Node2D.#_bindings.method_to_global,
+      Node2D._bindings.method_to_global,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -739,7 +740,7 @@ export class Node2D extends CanvasItem{
   get_relative_transform_to_parent(_parent) {
     Node2D.init_method_get_relative_transform_to_parent();
     return _call_native_mb_ret(
-      Node2D.#_bindings.method_get_relative_transform_to_parent,
+      Node2D._bindings.method_get_relative_transform_to_parent,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     

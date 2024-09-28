@@ -1,23 +1,24 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_compositor_effects;
   method_get_compositor_effects;
 }
+@GodotClass
 export class Compositor extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -27,10 +28,10 @@ export class Compositor extends Resource{
     }
   }
   static init_method_set_compositor_effects() {
-    if (!this.#_bindings.method_set_compositor_effects) {
+    if (!this._bindings.method_set_compositor_effects) {
       let classname = new StringName("Compositor");
       let methodname = new StringName("set_compositor_effects");
-      this.#_bindings.method_set_compositor_effects = internal.classdb_get_method_bind(
+      this._bindings.method_set_compositor_effects = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         381264803
@@ -38,10 +39,10 @@ export class Compositor extends Resource{
     }
   }
   static init_method_get_compositor_effects() {
-    if (!this.#_bindings.method_get_compositor_effects) {
+    if (!this._bindings.method_get_compositor_effects) {
       let classname = new StringName("Compositor");
       let methodname = new StringName("get_compositor_effects");
-      this.#_bindings.method_get_compositor_effects = internal.classdb_get_method_bind(
+      this._bindings.method_get_compositor_effects = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -54,7 +55,7 @@ export class Compositor extends Resource{
   set_compositor_effects(_compositor_effects) {
     Compositor.init_method_set_compositor_effects();
     return _call_native_mb_no_ret(
-      Compositor.#_bindings.method_set_compositor_effects,
+      Compositor._bindings.method_set_compositor_effects,
       this._owner,
       _compositor_effects
     );
@@ -63,7 +64,7 @@ export class Compositor extends Resource{
   get_compositor_effects() {
     Compositor.init_method_get_compositor_effects();
     return _call_native_mb_ret(
-      Compositor.#_bindings.method_get_compositor_effects,
+      Compositor._bindings.method_get_compositor_effects,
       this._owner,
 			Variant.Type.ARRAY,
       

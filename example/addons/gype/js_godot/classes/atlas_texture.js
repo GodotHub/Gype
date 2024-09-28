@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { Texture2D } from '@js_godot/classes/texture2d'
 import {
   call_utility_ret,
@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_atlas;
@@ -19,10 +20,10 @@ class _MethodBindings {
   method_set_filter_clip;
   method_has_filter_clip;
 }
+@GodotClass
 export class AtlasTexture extends Texture2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -32,10 +33,10 @@ export class AtlasTexture extends Texture2D{
     }
   }
   static init_method_set_atlas() {
-    if (!this.#_bindings.method_set_atlas) {
+    if (!this._bindings.method_set_atlas) {
       let classname = new StringName("AtlasTexture");
       let methodname = new StringName("set_atlas");
-      this.#_bindings.method_set_atlas = internal.classdb_get_method_bind(
+      this._bindings.method_set_atlas = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4051416890
@@ -43,10 +44,10 @@ export class AtlasTexture extends Texture2D{
     }
   }
   static init_method_get_atlas() {
-    if (!this.#_bindings.method_get_atlas) {
+    if (!this._bindings.method_get_atlas) {
       let classname = new StringName("AtlasTexture");
       let methodname = new StringName("get_atlas");
-      this.#_bindings.method_get_atlas = internal.classdb_get_method_bind(
+      this._bindings.method_get_atlas = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -54,10 +55,10 @@ export class AtlasTexture extends Texture2D{
     }
   }
   static init_method_set_region() {
-    if (!this.#_bindings.method_set_region) {
+    if (!this._bindings.method_set_region) {
       let classname = new StringName("AtlasTexture");
       let methodname = new StringName("set_region");
-      this.#_bindings.method_set_region = internal.classdb_get_method_bind(
+      this._bindings.method_set_region = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2046264180
@@ -65,10 +66,10 @@ export class AtlasTexture extends Texture2D{
     }
   }
   static init_method_get_region() {
-    if (!this.#_bindings.method_get_region) {
+    if (!this._bindings.method_get_region) {
       let classname = new StringName("AtlasTexture");
       let methodname = new StringName("get_region");
-      this.#_bindings.method_get_region = internal.classdb_get_method_bind(
+      this._bindings.method_get_region = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1639390495
@@ -76,10 +77,10 @@ export class AtlasTexture extends Texture2D{
     }
   }
   static init_method_set_margin() {
-    if (!this.#_bindings.method_set_margin) {
+    if (!this._bindings.method_set_margin) {
       let classname = new StringName("AtlasTexture");
       let methodname = new StringName("set_margin");
-      this.#_bindings.method_set_margin = internal.classdb_get_method_bind(
+      this._bindings.method_set_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2046264180
@@ -87,10 +88,10 @@ export class AtlasTexture extends Texture2D{
     }
   }
   static init_method_get_margin() {
-    if (!this.#_bindings.method_get_margin) {
+    if (!this._bindings.method_get_margin) {
       let classname = new StringName("AtlasTexture");
       let methodname = new StringName("get_margin");
-      this.#_bindings.method_get_margin = internal.classdb_get_method_bind(
+      this._bindings.method_get_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1639390495
@@ -98,10 +99,10 @@ export class AtlasTexture extends Texture2D{
     }
   }
   static init_method_set_filter_clip() {
-    if (!this.#_bindings.method_set_filter_clip) {
+    if (!this._bindings.method_set_filter_clip) {
       let classname = new StringName("AtlasTexture");
       let methodname = new StringName("set_filter_clip");
-      this.#_bindings.method_set_filter_clip = internal.classdb_get_method_bind(
+      this._bindings.method_set_filter_clip = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -109,10 +110,10 @@ export class AtlasTexture extends Texture2D{
     }
   }
   static init_method_has_filter_clip() {
-    if (!this.#_bindings.method_has_filter_clip) {
+    if (!this._bindings.method_has_filter_clip) {
       let classname = new StringName("AtlasTexture");
       let methodname = new StringName("has_filter_clip");
-      this.#_bindings.method_has_filter_clip = internal.classdb_get_method_bind(
+      this._bindings.method_has_filter_clip = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -125,7 +126,7 @@ export class AtlasTexture extends Texture2D{
   set_atlas(_atlas) {
     AtlasTexture.init_method_set_atlas();
     return _call_native_mb_no_ret(
-      AtlasTexture.#_bindings.method_set_atlas,
+      AtlasTexture._bindings.method_set_atlas,
       this._owner,
       _atlas
     );
@@ -134,7 +135,7 @@ export class AtlasTexture extends Texture2D{
   get_atlas() {
     AtlasTexture.init_method_get_atlas();
     return _call_native_mb_ret(
-      AtlasTexture.#_bindings.method_get_atlas,
+      AtlasTexture._bindings.method_get_atlas,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -144,7 +145,7 @@ export class AtlasTexture extends Texture2D{
   set_region(_region) {
     AtlasTexture.init_method_set_region();
     return _call_native_mb_no_ret(
-      AtlasTexture.#_bindings.method_set_region,
+      AtlasTexture._bindings.method_set_region,
       this._owner,
       _region
     );
@@ -153,7 +154,7 @@ export class AtlasTexture extends Texture2D{
   get_region() {
     AtlasTexture.init_method_get_region();
     return _call_native_mb_ret(
-      AtlasTexture.#_bindings.method_get_region,
+      AtlasTexture._bindings.method_get_region,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -164,7 +165,7 @@ export class AtlasTexture extends Texture2D{
   set_margin(_margin) {
     AtlasTexture.init_method_set_margin();
     return _call_native_mb_no_ret(
-      AtlasTexture.#_bindings.method_set_margin,
+      AtlasTexture._bindings.method_set_margin,
       this._owner,
       _margin
     );
@@ -173,7 +174,7 @@ export class AtlasTexture extends Texture2D{
   get_margin() {
     AtlasTexture.init_method_get_margin();
     return _call_native_mb_ret(
-      AtlasTexture.#_bindings.method_get_margin,
+      AtlasTexture._bindings.method_get_margin,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -184,7 +185,7 @@ export class AtlasTexture extends Texture2D{
   set_filter_clip(_enable) {
     AtlasTexture.init_method_set_filter_clip();
     return _call_native_mb_no_ret(
-      AtlasTexture.#_bindings.method_set_filter_clip,
+      AtlasTexture._bindings.method_set_filter_clip,
       this._owner,
       _enable
     );
@@ -193,7 +194,7 @@ export class AtlasTexture extends Texture2D{
   has_filter_clip() {
     AtlasTexture.init_method_has_filter_clip();
     return _call_native_mb_ret(
-      AtlasTexture.#_bindings.method_has_filter_clip,
+      AtlasTexture._bindings.method_has_filter_clip,
       this._owner,
 			Variant.Type.BOOL,
     

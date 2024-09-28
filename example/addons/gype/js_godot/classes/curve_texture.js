@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { Texture2D } from '@js_godot/classes/texture2d'
 import {
   call_utility_ret,
@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_width;
@@ -16,10 +17,10 @@ class _MethodBindings {
   method_set_texture_mode;
   method_get_texture_mode;
 }
+@GodotClass
 export class CurveTexture extends Texture2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -29,10 +30,10 @@ export class CurveTexture extends Texture2D{
     }
   }
   static init_method_set_width() {
-    if (!this.#_bindings.method_set_width) {
+    if (!this._bindings.method_set_width) {
       let classname = new StringName("CurveTexture");
       let methodname = new StringName("set_width");
-      this.#_bindings.method_set_width = internal.classdb_get_method_bind(
+      this._bindings.method_set_width = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -40,10 +41,10 @@ export class CurveTexture extends Texture2D{
     }
   }
   static init_method_set_curve() {
-    if (!this.#_bindings.method_set_curve) {
+    if (!this._bindings.method_set_curve) {
       let classname = new StringName("CurveTexture");
       let methodname = new StringName("set_curve");
-      this.#_bindings.method_set_curve = internal.classdb_get_method_bind(
+      this._bindings.method_set_curve = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         270443179
@@ -51,10 +52,10 @@ export class CurveTexture extends Texture2D{
     }
   }
   static init_method_get_curve() {
-    if (!this.#_bindings.method_get_curve) {
+    if (!this._bindings.method_get_curve) {
       let classname = new StringName("CurveTexture");
       let methodname = new StringName("get_curve");
-      this.#_bindings.method_get_curve = internal.classdb_get_method_bind(
+      this._bindings.method_get_curve = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2460114913
@@ -62,10 +63,10 @@ export class CurveTexture extends Texture2D{
     }
   }
   static init_method_set_texture_mode() {
-    if (!this.#_bindings.method_set_texture_mode) {
+    if (!this._bindings.method_set_texture_mode) {
       let classname = new StringName("CurveTexture");
       let methodname = new StringName("set_texture_mode");
-      this.#_bindings.method_set_texture_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_texture_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1321955367
@@ -73,10 +74,10 @@ export class CurveTexture extends Texture2D{
     }
   }
   static init_method_get_texture_mode() {
-    if (!this.#_bindings.method_get_texture_mode) {
+    if (!this._bindings.method_get_texture_mode) {
       let classname = new StringName("CurveTexture");
       let methodname = new StringName("get_texture_mode");
-      this.#_bindings.method_get_texture_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_texture_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         715756376
@@ -89,7 +90,7 @@ export class CurveTexture extends Texture2D{
   set_width(_width) {
     CurveTexture.init_method_set_width();
     return _call_native_mb_no_ret(
-      CurveTexture.#_bindings.method_set_width,
+      CurveTexture._bindings.method_set_width,
       this._owner,
       _width
     );
@@ -98,7 +99,7 @@ export class CurveTexture extends Texture2D{
   set_curve(_curve) {
     CurveTexture.init_method_set_curve();
     return _call_native_mb_no_ret(
-      CurveTexture.#_bindings.method_set_curve,
+      CurveTexture._bindings.method_set_curve,
       this._owner,
       _curve
     );
@@ -107,7 +108,7 @@ export class CurveTexture extends Texture2D{
   get_curve() {
     CurveTexture.init_method_get_curve();
     return _call_native_mb_ret(
-      CurveTexture.#_bindings.method_get_curve,
+      CurveTexture._bindings.method_get_curve,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -117,7 +118,7 @@ export class CurveTexture extends Texture2D{
   set_texture_mode(_texture_mode) {
     CurveTexture.init_method_set_texture_mode();
     return _call_native_mb_no_ret(
-      CurveTexture.#_bindings.method_set_texture_mode,
+      CurveTexture._bindings.method_set_texture_mode,
       this._owner,
       _texture_mode
     );
@@ -126,7 +127,7 @@ export class CurveTexture extends Texture2D{
   get_texture_mode() {
     CurveTexture.init_method_get_texture_mode();
     return _call_native_mb_ret(
-      CurveTexture.#_bindings.method_get_texture_mode,
+      CurveTexture._bindings.method_get_texture_mode,
       this._owner,
 			Variant.Type.INT,
     

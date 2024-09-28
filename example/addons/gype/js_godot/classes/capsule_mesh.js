@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { PrimitiveMesh } from '@js_godot/classes/primitive_mesh'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_radius;
@@ -19,10 +20,10 @@ class _MethodBindings {
   method_set_rings;
   method_get_rings;
 }
+@GodotClass
 export class CapsuleMesh extends PrimitiveMesh{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -32,10 +33,10 @@ export class CapsuleMesh extends PrimitiveMesh{
     }
   }
   static init_method_set_radius() {
-    if (!this.#_bindings.method_set_radius) {
+    if (!this._bindings.method_set_radius) {
       let classname = new StringName("CapsuleMesh");
       let methodname = new StringName("set_radius");
-      this.#_bindings.method_set_radius = internal.classdb_get_method_bind(
+      this._bindings.method_set_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -43,10 +44,10 @@ export class CapsuleMesh extends PrimitiveMesh{
     }
   }
   static init_method_get_radius() {
-    if (!this.#_bindings.method_get_radius) {
+    if (!this._bindings.method_get_radius) {
       let classname = new StringName("CapsuleMesh");
       let methodname = new StringName("get_radius");
-      this.#_bindings.method_get_radius = internal.classdb_get_method_bind(
+      this._bindings.method_get_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -54,10 +55,10 @@ export class CapsuleMesh extends PrimitiveMesh{
     }
   }
   static init_method_set_height() {
-    if (!this.#_bindings.method_set_height) {
+    if (!this._bindings.method_set_height) {
       let classname = new StringName("CapsuleMesh");
       let methodname = new StringName("set_height");
-      this.#_bindings.method_set_height = internal.classdb_get_method_bind(
+      this._bindings.method_set_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -65,10 +66,10 @@ export class CapsuleMesh extends PrimitiveMesh{
     }
   }
   static init_method_get_height() {
-    if (!this.#_bindings.method_get_height) {
+    if (!this._bindings.method_get_height) {
       let classname = new StringName("CapsuleMesh");
       let methodname = new StringName("get_height");
-      this.#_bindings.method_get_height = internal.classdb_get_method_bind(
+      this._bindings.method_get_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -76,10 +77,10 @@ export class CapsuleMesh extends PrimitiveMesh{
     }
   }
   static init_method_set_radial_segments() {
-    if (!this.#_bindings.method_set_radial_segments) {
+    if (!this._bindings.method_set_radial_segments) {
       let classname = new StringName("CapsuleMesh");
       let methodname = new StringName("set_radial_segments");
-      this.#_bindings.method_set_radial_segments = internal.classdb_get_method_bind(
+      this._bindings.method_set_radial_segments = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -87,10 +88,10 @@ export class CapsuleMesh extends PrimitiveMesh{
     }
   }
   static init_method_get_radial_segments() {
-    if (!this.#_bindings.method_get_radial_segments) {
+    if (!this._bindings.method_get_radial_segments) {
       let classname = new StringName("CapsuleMesh");
       let methodname = new StringName("get_radial_segments");
-      this.#_bindings.method_get_radial_segments = internal.classdb_get_method_bind(
+      this._bindings.method_get_radial_segments = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -98,10 +99,10 @@ export class CapsuleMesh extends PrimitiveMesh{
     }
   }
   static init_method_set_rings() {
-    if (!this.#_bindings.method_set_rings) {
+    if (!this._bindings.method_set_rings) {
       let classname = new StringName("CapsuleMesh");
       let methodname = new StringName("set_rings");
-      this.#_bindings.method_set_rings = internal.classdb_get_method_bind(
+      this._bindings.method_set_rings = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -109,10 +110,10 @@ export class CapsuleMesh extends PrimitiveMesh{
     }
   }
   static init_method_get_rings() {
-    if (!this.#_bindings.method_get_rings) {
+    if (!this._bindings.method_get_rings) {
       let classname = new StringName("CapsuleMesh");
       let methodname = new StringName("get_rings");
-      this.#_bindings.method_get_rings = internal.classdb_get_method_bind(
+      this._bindings.method_get_rings = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -125,7 +126,7 @@ export class CapsuleMesh extends PrimitiveMesh{
   set_radius(_radius) {
     CapsuleMesh.init_method_set_radius();
     return _call_native_mb_no_ret(
-      CapsuleMesh.#_bindings.method_set_radius,
+      CapsuleMesh._bindings.method_set_radius,
       this._owner,
       _radius
     );
@@ -134,7 +135,7 @@ export class CapsuleMesh extends PrimitiveMesh{
   get_radius() {
     CapsuleMesh.init_method_get_radius();
     return _call_native_mb_ret(
-      CapsuleMesh.#_bindings.method_get_radius,
+      CapsuleMesh._bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -145,7 +146,7 @@ export class CapsuleMesh extends PrimitiveMesh{
   set_height(_height) {
     CapsuleMesh.init_method_set_height();
     return _call_native_mb_no_ret(
-      CapsuleMesh.#_bindings.method_set_height,
+      CapsuleMesh._bindings.method_set_height,
       this._owner,
       _height
     );
@@ -154,7 +155,7 @@ export class CapsuleMesh extends PrimitiveMesh{
   get_height() {
     CapsuleMesh.init_method_get_height();
     return _call_native_mb_ret(
-      CapsuleMesh.#_bindings.method_get_height,
+      CapsuleMesh._bindings.method_get_height,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -165,7 +166,7 @@ export class CapsuleMesh extends PrimitiveMesh{
   set_radial_segments(_segments) {
     CapsuleMesh.init_method_set_radial_segments();
     return _call_native_mb_no_ret(
-      CapsuleMesh.#_bindings.method_set_radial_segments,
+      CapsuleMesh._bindings.method_set_radial_segments,
       this._owner,
       _segments
     );
@@ -174,7 +175,7 @@ export class CapsuleMesh extends PrimitiveMesh{
   get_radial_segments() {
     CapsuleMesh.init_method_get_radial_segments();
     return _call_native_mb_ret(
-      CapsuleMesh.#_bindings.method_get_radial_segments,
+      CapsuleMesh._bindings.method_get_radial_segments,
       this._owner,
 			Variant.Type.INT,
     
@@ -185,7 +186,7 @@ export class CapsuleMesh extends PrimitiveMesh{
   set_rings(_rings) {
     CapsuleMesh.init_method_set_rings();
     return _call_native_mb_no_ret(
-      CapsuleMesh.#_bindings.method_set_rings,
+      CapsuleMesh._bindings.method_set_rings,
       this._owner,
       _rings
     );
@@ -194,7 +195,7 @@ export class CapsuleMesh extends PrimitiveMesh{
   get_rings() {
     CapsuleMesh.init_method_get_rings();
     return _call_native_mb_ret(
-      CapsuleMesh.#_bindings.method_get_rings,
+      CapsuleMesh._bindings.method_get_rings,
       this._owner,
 			Variant.Type.INT,
     

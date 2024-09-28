@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { Texture2D } from '@js_godot/classes/texture2d'
 import {
   call_utility_ret,
@@ -8,15 +8,16 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_viewport_path_in_scene;
   method_get_viewport_path_in_scene;
 }
+@GodotClass
 export class ViewportTexture extends Texture2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -26,10 +27,10 @@ export class ViewportTexture extends Texture2D{
     }
   }
   static init_method_set_viewport_path_in_scene() {
-    if (!this.#_bindings.method_set_viewport_path_in_scene) {
+    if (!this._bindings.method_set_viewport_path_in_scene) {
       let classname = new StringName("ViewportTexture");
       let methodname = new StringName("set_viewport_path_in_scene");
-      this.#_bindings.method_set_viewport_path_in_scene = internal.classdb_get_method_bind(
+      this._bindings.method_set_viewport_path_in_scene = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1348162250
@@ -37,10 +38,10 @@ export class ViewportTexture extends Texture2D{
     }
   }
   static init_method_get_viewport_path_in_scene() {
-    if (!this.#_bindings.method_get_viewport_path_in_scene) {
+    if (!this._bindings.method_get_viewport_path_in_scene) {
       let classname = new StringName("ViewportTexture");
       let methodname = new StringName("get_viewport_path_in_scene");
-      this.#_bindings.method_get_viewport_path_in_scene = internal.classdb_get_method_bind(
+      this._bindings.method_get_viewport_path_in_scene = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4075236667
@@ -53,7 +54,7 @@ export class ViewportTexture extends Texture2D{
   set_viewport_path_in_scene(_path) {
     ViewportTexture.init_method_set_viewport_path_in_scene();
     return _call_native_mb_no_ret(
-      ViewportTexture.#_bindings.method_set_viewport_path_in_scene,
+      ViewportTexture._bindings.method_set_viewport_path_in_scene,
       this._owner,
       _path
     );
@@ -62,7 +63,7 @@ export class ViewportTexture extends Texture2D{
   get_viewport_path_in_scene() {
     ViewportTexture.init_method_get_viewport_path_in_scene();
     return _call_native_mb_ret(
-      ViewportTexture.#_bindings.method_get_viewport_path_in_scene,
+      ViewportTexture._bindings.method_get_viewport_path_in_scene,
       this._owner,
 			Variant.Type.NODE_PATH,
     

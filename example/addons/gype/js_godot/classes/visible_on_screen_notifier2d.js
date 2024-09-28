@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { Node2D } from '@js_godot/classes/node2d'
 import {
   call_utility_ret,
@@ -8,16 +8,17 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_rect;
   method_get_rect;
   method_is_on_screen;
 }
+@GodotClass
 export class VisibleOnScreenNotifier2D extends Node2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -27,10 +28,10 @@ export class VisibleOnScreenNotifier2D extends Node2D{
     }
   }
   static init_method_set_rect() {
-    if (!this.#_bindings.method_set_rect) {
+    if (!this._bindings.method_set_rect) {
       let classname = new StringName("VisibleOnScreenNotifier2D");
       let methodname = new StringName("set_rect");
-      this.#_bindings.method_set_rect = internal.classdb_get_method_bind(
+      this._bindings.method_set_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2046264180
@@ -38,10 +39,10 @@ export class VisibleOnScreenNotifier2D extends Node2D{
     }
   }
   static init_method_get_rect() {
-    if (!this.#_bindings.method_get_rect) {
+    if (!this._bindings.method_get_rect) {
       let classname = new StringName("VisibleOnScreenNotifier2D");
       let methodname = new StringName("get_rect");
-      this.#_bindings.method_get_rect = internal.classdb_get_method_bind(
+      this._bindings.method_get_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1639390495
@@ -49,10 +50,10 @@ export class VisibleOnScreenNotifier2D extends Node2D{
     }
   }
   static init_method_is_on_screen() {
-    if (!this.#_bindings.method_is_on_screen) {
+    if (!this._bindings.method_is_on_screen) {
       let classname = new StringName("VisibleOnScreenNotifier2D");
       let methodname = new StringName("is_on_screen");
-      this.#_bindings.method_is_on_screen = internal.classdb_get_method_bind(
+      this._bindings.method_is_on_screen = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -65,7 +66,7 @@ export class VisibleOnScreenNotifier2D extends Node2D{
   set_rect(_rect) {
     VisibleOnScreenNotifier2D.init_method_set_rect();
     return _call_native_mb_no_ret(
-      VisibleOnScreenNotifier2D.#_bindings.method_set_rect,
+      VisibleOnScreenNotifier2D._bindings.method_set_rect,
       this._owner,
       _rect
     );
@@ -74,7 +75,7 @@ export class VisibleOnScreenNotifier2D extends Node2D{
   get_rect() {
     VisibleOnScreenNotifier2D.init_method_get_rect();
     return _call_native_mb_ret(
-      VisibleOnScreenNotifier2D.#_bindings.method_get_rect,
+      VisibleOnScreenNotifier2D._bindings.method_get_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -85,7 +86,7 @@ export class VisibleOnScreenNotifier2D extends Node2D{
   is_on_screen() {
     VisibleOnScreenNotifier2D.init_method_is_on_screen();
     return _call_native_mb_ret(
-      VisibleOnScreenNotifier2D.#_bindings.method_is_on_screen,
+      VisibleOnScreenNotifier2D._bindings.method_is_on_screen,
       this._owner,
 			Variant.Type.BOOL,
     

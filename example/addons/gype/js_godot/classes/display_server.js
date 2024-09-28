@@ -1,14 +1,15 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { GodotObject } from '@js_godot/classes/godot_object'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_has_feature;
@@ -197,8 +198,7 @@ class _MethodBindings {
   method_has_additional_outputs;
 }class _DisplayServer extends GodotObject{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -208,10 +208,10 @@ class _MethodBindings {
     }
   }
   static init_method_has_feature() {
-    if (!this.#_bindings.method_has_feature) {
+    if (!this._bindings.method_has_feature) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("has_feature");
-      this.#_bindings.method_has_feature = internal.classdb_get_method_bind(
+      this._bindings.method_has_feature = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         334065950
@@ -219,10 +219,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_name() {
-    if (!this.#_bindings.method_get_name) {
+    if (!this._bindings.method_get_name) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("get_name");
-      this.#_bindings.method_get_name = internal.classdb_get_method_bind(
+      this._bindings.method_get_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -230,10 +230,10 @@ class _MethodBindings {
     }
   }
   static init_method_help_set_search_callbacks() {
-    if (!this.#_bindings.method_help_set_search_callbacks) {
+    if (!this._bindings.method_help_set_search_callbacks) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("help_set_search_callbacks");
-      this.#_bindings.method_help_set_search_callbacks = internal.classdb_get_method_bind(
+      this._bindings.method_help_set_search_callbacks = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1687350599
@@ -241,10 +241,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_set_popup_callbacks() {
-    if (!this.#_bindings.method_global_menu_set_popup_callbacks) {
+    if (!this._bindings.method_global_menu_set_popup_callbacks) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_set_popup_callbacks");
-      this.#_bindings.method_global_menu_set_popup_callbacks = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_set_popup_callbacks = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3893727526
@@ -252,10 +252,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_add_submenu_item() {
-    if (!this.#_bindings.method_global_menu_add_submenu_item) {
+    if (!this._bindings.method_global_menu_add_submenu_item) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_add_submenu_item");
-      this.#_bindings.method_global_menu_add_submenu_item = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_add_submenu_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2828985934
@@ -263,10 +263,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_add_item() {
-    if (!this.#_bindings.method_global_menu_add_item) {
+    if (!this._bindings.method_global_menu_add_item) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_add_item");
-      this.#_bindings.method_global_menu_add_item = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_add_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3401266716
@@ -274,10 +274,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_add_check_item() {
-    if (!this.#_bindings.method_global_menu_add_check_item) {
+    if (!this._bindings.method_global_menu_add_check_item) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_add_check_item");
-      this.#_bindings.method_global_menu_add_check_item = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_add_check_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3401266716
@@ -285,10 +285,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_add_icon_item() {
-    if (!this.#_bindings.method_global_menu_add_icon_item) {
+    if (!this._bindings.method_global_menu_add_icon_item) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_add_icon_item");
-      this.#_bindings.method_global_menu_add_icon_item = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_add_icon_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4245856523
@@ -296,10 +296,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_add_icon_check_item() {
-    if (!this.#_bindings.method_global_menu_add_icon_check_item) {
+    if (!this._bindings.method_global_menu_add_icon_check_item) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_add_icon_check_item");
-      this.#_bindings.method_global_menu_add_icon_check_item = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_add_icon_check_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4245856523
@@ -307,10 +307,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_add_radio_check_item() {
-    if (!this.#_bindings.method_global_menu_add_radio_check_item) {
+    if (!this._bindings.method_global_menu_add_radio_check_item) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_add_radio_check_item");
-      this.#_bindings.method_global_menu_add_radio_check_item = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_add_radio_check_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3401266716
@@ -318,10 +318,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_add_icon_radio_check_item() {
-    if (!this.#_bindings.method_global_menu_add_icon_radio_check_item) {
+    if (!this._bindings.method_global_menu_add_icon_radio_check_item) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_add_icon_radio_check_item");
-      this.#_bindings.method_global_menu_add_icon_radio_check_item = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_add_icon_radio_check_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4245856523
@@ -329,10 +329,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_add_multistate_item() {
-    if (!this.#_bindings.method_global_menu_add_multistate_item) {
+    if (!this._bindings.method_global_menu_add_multistate_item) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_add_multistate_item");
-      this.#_bindings.method_global_menu_add_multistate_item = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_add_multistate_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3431222859
@@ -340,10 +340,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_add_separator() {
-    if (!this.#_bindings.method_global_menu_add_separator) {
+    if (!this._bindings.method_global_menu_add_separator) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_add_separator");
-      this.#_bindings.method_global_menu_add_separator = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_add_separator = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3214812433
@@ -351,10 +351,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_get_item_index_from_text() {
-    if (!this.#_bindings.method_global_menu_get_item_index_from_text) {
+    if (!this._bindings.method_global_menu_get_item_index_from_text) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_get_item_index_from_text");
-      this.#_bindings.method_global_menu_get_item_index_from_text = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_get_item_index_from_text = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2878152881
@@ -362,10 +362,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_get_item_index_from_tag() {
-    if (!this.#_bindings.method_global_menu_get_item_index_from_tag) {
+    if (!this._bindings.method_global_menu_get_item_index_from_tag) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_get_item_index_from_tag");
-      this.#_bindings.method_global_menu_get_item_index_from_tag = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_get_item_index_from_tag = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2941063483
@@ -373,10 +373,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_is_item_checked() {
-    if (!this.#_bindings.method_global_menu_is_item_checked) {
+    if (!this._bindings.method_global_menu_is_item_checked) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_is_item_checked");
-      this.#_bindings.method_global_menu_is_item_checked = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_is_item_checked = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3511468594
@@ -384,10 +384,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_is_item_checkable() {
-    if (!this.#_bindings.method_global_menu_is_item_checkable) {
+    if (!this._bindings.method_global_menu_is_item_checkable) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_is_item_checkable");
-      this.#_bindings.method_global_menu_is_item_checkable = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_is_item_checkable = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3511468594
@@ -395,10 +395,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_is_item_radio_checkable() {
-    if (!this.#_bindings.method_global_menu_is_item_radio_checkable) {
+    if (!this._bindings.method_global_menu_is_item_radio_checkable) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_is_item_radio_checkable");
-      this.#_bindings.method_global_menu_is_item_radio_checkable = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_is_item_radio_checkable = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3511468594
@@ -406,10 +406,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_get_item_callback() {
-    if (!this.#_bindings.method_global_menu_get_item_callback) {
+    if (!this._bindings.method_global_menu_get_item_callback) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_get_item_callback");
-      this.#_bindings.method_global_menu_get_item_callback = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_get_item_callback = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         748666903
@@ -417,10 +417,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_get_item_key_callback() {
-    if (!this.#_bindings.method_global_menu_get_item_key_callback) {
+    if (!this._bindings.method_global_menu_get_item_key_callback) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_get_item_key_callback");
-      this.#_bindings.method_global_menu_get_item_key_callback = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_get_item_key_callback = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         748666903
@@ -428,10 +428,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_get_item_tag() {
-    if (!this.#_bindings.method_global_menu_get_item_tag) {
+    if (!this._bindings.method_global_menu_get_item_tag) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_get_item_tag");
-      this.#_bindings.method_global_menu_get_item_tag = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_get_item_tag = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         330672633
@@ -439,10 +439,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_get_item_text() {
-    if (!this.#_bindings.method_global_menu_get_item_text) {
+    if (!this._bindings.method_global_menu_get_item_text) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_get_item_text");
-      this.#_bindings.method_global_menu_get_item_text = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_get_item_text = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         591067909
@@ -450,10 +450,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_get_item_submenu() {
-    if (!this.#_bindings.method_global_menu_get_item_submenu) {
+    if (!this._bindings.method_global_menu_get_item_submenu) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_get_item_submenu");
-      this.#_bindings.method_global_menu_get_item_submenu = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_get_item_submenu = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         591067909
@@ -461,10 +461,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_get_item_accelerator() {
-    if (!this.#_bindings.method_global_menu_get_item_accelerator) {
+    if (!this._bindings.method_global_menu_get_item_accelerator) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_get_item_accelerator");
-      this.#_bindings.method_global_menu_get_item_accelerator = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_get_item_accelerator = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         936065394
@@ -472,10 +472,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_is_item_disabled() {
-    if (!this.#_bindings.method_global_menu_is_item_disabled) {
+    if (!this._bindings.method_global_menu_is_item_disabled) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_is_item_disabled");
-      this.#_bindings.method_global_menu_is_item_disabled = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_is_item_disabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3511468594
@@ -483,10 +483,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_is_item_hidden() {
-    if (!this.#_bindings.method_global_menu_is_item_hidden) {
+    if (!this._bindings.method_global_menu_is_item_hidden) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_is_item_hidden");
-      this.#_bindings.method_global_menu_is_item_hidden = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_is_item_hidden = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3511468594
@@ -494,10 +494,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_get_item_tooltip() {
-    if (!this.#_bindings.method_global_menu_get_item_tooltip) {
+    if (!this._bindings.method_global_menu_get_item_tooltip) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_get_item_tooltip");
-      this.#_bindings.method_global_menu_get_item_tooltip = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_get_item_tooltip = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         591067909
@@ -505,10 +505,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_get_item_state() {
-    if (!this.#_bindings.method_global_menu_get_item_state) {
+    if (!this._bindings.method_global_menu_get_item_state) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_get_item_state");
-      this.#_bindings.method_global_menu_get_item_state = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_get_item_state = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3422818498
@@ -516,10 +516,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_get_item_max_states() {
-    if (!this.#_bindings.method_global_menu_get_item_max_states) {
+    if (!this._bindings.method_global_menu_get_item_max_states) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_get_item_max_states");
-      this.#_bindings.method_global_menu_get_item_max_states = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_get_item_max_states = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3422818498
@@ -527,10 +527,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_get_item_icon() {
-    if (!this.#_bindings.method_global_menu_get_item_icon) {
+    if (!this._bindings.method_global_menu_get_item_icon) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_get_item_icon");
-      this.#_bindings.method_global_menu_get_item_icon = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_get_item_icon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3591713183
@@ -538,10 +538,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_get_item_indentation_level() {
-    if (!this.#_bindings.method_global_menu_get_item_indentation_level) {
+    if (!this._bindings.method_global_menu_get_item_indentation_level) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_get_item_indentation_level");
-      this.#_bindings.method_global_menu_get_item_indentation_level = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_get_item_indentation_level = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3422818498
@@ -549,10 +549,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_set_item_checked() {
-    if (!this.#_bindings.method_global_menu_set_item_checked) {
+    if (!this._bindings.method_global_menu_set_item_checked) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_set_item_checked");
-      this.#_bindings.method_global_menu_set_item_checked = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_set_item_checked = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4108344793
@@ -560,10 +560,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_set_item_checkable() {
-    if (!this.#_bindings.method_global_menu_set_item_checkable) {
+    if (!this._bindings.method_global_menu_set_item_checkable) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_set_item_checkable");
-      this.#_bindings.method_global_menu_set_item_checkable = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_set_item_checkable = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4108344793
@@ -571,10 +571,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_set_item_radio_checkable() {
-    if (!this.#_bindings.method_global_menu_set_item_radio_checkable) {
+    if (!this._bindings.method_global_menu_set_item_radio_checkable) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_set_item_radio_checkable");
-      this.#_bindings.method_global_menu_set_item_radio_checkable = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_set_item_radio_checkable = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4108344793
@@ -582,10 +582,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_set_item_callback() {
-    if (!this.#_bindings.method_global_menu_set_item_callback) {
+    if (!this._bindings.method_global_menu_set_item_callback) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_set_item_callback");
-      this.#_bindings.method_global_menu_set_item_callback = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_set_item_callback = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3809915389
@@ -593,10 +593,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_set_item_hover_callbacks() {
-    if (!this.#_bindings.method_global_menu_set_item_hover_callbacks) {
+    if (!this._bindings.method_global_menu_set_item_hover_callbacks) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_set_item_hover_callbacks");
-      this.#_bindings.method_global_menu_set_item_hover_callbacks = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_set_item_hover_callbacks = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3809915389
@@ -604,10 +604,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_set_item_key_callback() {
-    if (!this.#_bindings.method_global_menu_set_item_key_callback) {
+    if (!this._bindings.method_global_menu_set_item_key_callback) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_set_item_key_callback");
-      this.#_bindings.method_global_menu_set_item_key_callback = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_set_item_key_callback = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3809915389
@@ -615,10 +615,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_set_item_tag() {
-    if (!this.#_bindings.method_global_menu_set_item_tag) {
+    if (!this._bindings.method_global_menu_set_item_tag) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_set_item_tag");
-      this.#_bindings.method_global_menu_set_item_tag = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_set_item_tag = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         453659863
@@ -626,10 +626,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_set_item_text() {
-    if (!this.#_bindings.method_global_menu_set_item_text) {
+    if (!this._bindings.method_global_menu_set_item_text) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_set_item_text");
-      this.#_bindings.method_global_menu_set_item_text = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_set_item_text = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         965966136
@@ -637,10 +637,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_set_item_submenu() {
-    if (!this.#_bindings.method_global_menu_set_item_submenu) {
+    if (!this._bindings.method_global_menu_set_item_submenu) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_set_item_submenu");
-      this.#_bindings.method_global_menu_set_item_submenu = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_set_item_submenu = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         965966136
@@ -648,10 +648,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_set_item_accelerator() {
-    if (!this.#_bindings.method_global_menu_set_item_accelerator) {
+    if (!this._bindings.method_global_menu_set_item_accelerator) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_set_item_accelerator");
-      this.#_bindings.method_global_menu_set_item_accelerator = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_set_item_accelerator = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         566943293
@@ -659,10 +659,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_set_item_disabled() {
-    if (!this.#_bindings.method_global_menu_set_item_disabled) {
+    if (!this._bindings.method_global_menu_set_item_disabled) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_set_item_disabled");
-      this.#_bindings.method_global_menu_set_item_disabled = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_set_item_disabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4108344793
@@ -670,10 +670,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_set_item_hidden() {
-    if (!this.#_bindings.method_global_menu_set_item_hidden) {
+    if (!this._bindings.method_global_menu_set_item_hidden) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_set_item_hidden");
-      this.#_bindings.method_global_menu_set_item_hidden = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_set_item_hidden = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4108344793
@@ -681,10 +681,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_set_item_tooltip() {
-    if (!this.#_bindings.method_global_menu_set_item_tooltip) {
+    if (!this._bindings.method_global_menu_set_item_tooltip) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_set_item_tooltip");
-      this.#_bindings.method_global_menu_set_item_tooltip = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_set_item_tooltip = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         965966136
@@ -692,10 +692,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_set_item_state() {
-    if (!this.#_bindings.method_global_menu_set_item_state) {
+    if (!this._bindings.method_global_menu_set_item_state) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_set_item_state");
-      this.#_bindings.method_global_menu_set_item_state = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_set_item_state = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3474840532
@@ -703,10 +703,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_set_item_max_states() {
-    if (!this.#_bindings.method_global_menu_set_item_max_states) {
+    if (!this._bindings.method_global_menu_set_item_max_states) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_set_item_max_states");
-      this.#_bindings.method_global_menu_set_item_max_states = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_set_item_max_states = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3474840532
@@ -714,10 +714,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_set_item_icon() {
-    if (!this.#_bindings.method_global_menu_set_item_icon) {
+    if (!this._bindings.method_global_menu_set_item_icon) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_set_item_icon");
-      this.#_bindings.method_global_menu_set_item_icon = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_set_item_icon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3201338066
@@ -725,10 +725,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_set_item_indentation_level() {
-    if (!this.#_bindings.method_global_menu_set_item_indentation_level) {
+    if (!this._bindings.method_global_menu_set_item_indentation_level) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_set_item_indentation_level");
-      this.#_bindings.method_global_menu_set_item_indentation_level = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_set_item_indentation_level = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3474840532
@@ -736,10 +736,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_get_item_count() {
-    if (!this.#_bindings.method_global_menu_get_item_count) {
+    if (!this._bindings.method_global_menu_get_item_count) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_get_item_count");
-      this.#_bindings.method_global_menu_get_item_count = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_get_item_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1321353865
@@ -747,10 +747,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_remove_item() {
-    if (!this.#_bindings.method_global_menu_remove_item) {
+    if (!this._bindings.method_global_menu_remove_item) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_remove_item");
-      this.#_bindings.method_global_menu_remove_item = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_remove_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2956805083
@@ -758,10 +758,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_clear() {
-    if (!this.#_bindings.method_global_menu_clear) {
+    if (!this._bindings.method_global_menu_clear) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_clear");
-      this.#_bindings.method_global_menu_clear = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_clear = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -769,10 +769,10 @@ class _MethodBindings {
     }
   }
   static init_method_global_menu_get_system_menu_roots() {
-    if (!this.#_bindings.method_global_menu_get_system_menu_roots) {
+    if (!this._bindings.method_global_menu_get_system_menu_roots) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("global_menu_get_system_menu_roots");
-      this.#_bindings.method_global_menu_get_system_menu_roots = internal.classdb_get_method_bind(
+      this._bindings.method_global_menu_get_system_menu_roots = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3102165223
@@ -780,10 +780,10 @@ class _MethodBindings {
     }
   }
   static init_method_tts_is_speaking() {
-    if (!this.#_bindings.method_tts_is_speaking) {
+    if (!this._bindings.method_tts_is_speaking) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("tts_is_speaking");
-      this.#_bindings.method_tts_is_speaking = internal.classdb_get_method_bind(
+      this._bindings.method_tts_is_speaking = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -791,10 +791,10 @@ class _MethodBindings {
     }
   }
   static init_method_tts_is_paused() {
-    if (!this.#_bindings.method_tts_is_paused) {
+    if (!this._bindings.method_tts_is_paused) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("tts_is_paused");
-      this.#_bindings.method_tts_is_paused = internal.classdb_get_method_bind(
+      this._bindings.method_tts_is_paused = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -802,10 +802,10 @@ class _MethodBindings {
     }
   }
   static init_method_tts_get_voices() {
-    if (!this.#_bindings.method_tts_get_voices) {
+    if (!this._bindings.method_tts_get_voices) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("tts_get_voices");
-      this.#_bindings.method_tts_get_voices = internal.classdb_get_method_bind(
+      this._bindings.method_tts_get_voices = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -813,10 +813,10 @@ class _MethodBindings {
     }
   }
   static init_method_tts_get_voices_for_language() {
-    if (!this.#_bindings.method_tts_get_voices_for_language) {
+    if (!this._bindings.method_tts_get_voices_for_language) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("tts_get_voices_for_language");
-      this.#_bindings.method_tts_get_voices_for_language = internal.classdb_get_method_bind(
+      this._bindings.method_tts_get_voices_for_language = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4291131558
@@ -824,10 +824,10 @@ class _MethodBindings {
     }
   }
   static init_method_tts_speak() {
-    if (!this.#_bindings.method_tts_speak) {
+    if (!this._bindings.method_tts_speak) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("tts_speak");
-      this.#_bindings.method_tts_speak = internal.classdb_get_method_bind(
+      this._bindings.method_tts_speak = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         903992738
@@ -835,10 +835,10 @@ class _MethodBindings {
     }
   }
   static init_method_tts_pause() {
-    if (!this.#_bindings.method_tts_pause) {
+    if (!this._bindings.method_tts_pause) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("tts_pause");
-      this.#_bindings.method_tts_pause = internal.classdb_get_method_bind(
+      this._bindings.method_tts_pause = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -846,10 +846,10 @@ class _MethodBindings {
     }
   }
   static init_method_tts_resume() {
-    if (!this.#_bindings.method_tts_resume) {
+    if (!this._bindings.method_tts_resume) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("tts_resume");
-      this.#_bindings.method_tts_resume = internal.classdb_get_method_bind(
+      this._bindings.method_tts_resume = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -857,10 +857,10 @@ class _MethodBindings {
     }
   }
   static init_method_tts_stop() {
-    if (!this.#_bindings.method_tts_stop) {
+    if (!this._bindings.method_tts_stop) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("tts_stop");
-      this.#_bindings.method_tts_stop = internal.classdb_get_method_bind(
+      this._bindings.method_tts_stop = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -868,10 +868,10 @@ class _MethodBindings {
     }
   }
   static init_method_tts_set_utterance_callback() {
-    if (!this.#_bindings.method_tts_set_utterance_callback) {
+    if (!this._bindings.method_tts_set_utterance_callback) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("tts_set_utterance_callback");
-      this.#_bindings.method_tts_set_utterance_callback = internal.classdb_get_method_bind(
+      this._bindings.method_tts_set_utterance_callback = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         109679083
@@ -879,10 +879,10 @@ class _MethodBindings {
     }
   }
   static init_method_is_dark_mode_supported() {
-    if (!this.#_bindings.method_is_dark_mode_supported) {
+    if (!this._bindings.method_is_dark_mode_supported) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("is_dark_mode_supported");
-      this.#_bindings.method_is_dark_mode_supported = internal.classdb_get_method_bind(
+      this._bindings.method_is_dark_mode_supported = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -890,10 +890,10 @@ class _MethodBindings {
     }
   }
   static init_method_is_dark_mode() {
-    if (!this.#_bindings.method_is_dark_mode) {
+    if (!this._bindings.method_is_dark_mode) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("is_dark_mode");
-      this.#_bindings.method_is_dark_mode = internal.classdb_get_method_bind(
+      this._bindings.method_is_dark_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -901,10 +901,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_accent_color() {
-    if (!this.#_bindings.method_get_accent_color) {
+    if (!this._bindings.method_get_accent_color) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("get_accent_color");
-      this.#_bindings.method_get_accent_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_accent_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -912,10 +912,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_base_color() {
-    if (!this.#_bindings.method_get_base_color) {
+    if (!this._bindings.method_get_base_color) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("get_base_color");
-      this.#_bindings.method_get_base_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_base_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -923,10 +923,10 @@ class _MethodBindings {
     }
   }
   static init_method_set_system_theme_change_callback() {
-    if (!this.#_bindings.method_set_system_theme_change_callback) {
+    if (!this._bindings.method_set_system_theme_change_callback) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("set_system_theme_change_callback");
-      this.#_bindings.method_set_system_theme_change_callback = internal.classdb_get_method_bind(
+      this._bindings.method_set_system_theme_change_callback = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1611583062
@@ -934,10 +934,10 @@ class _MethodBindings {
     }
   }
   static init_method_mouse_set_mode() {
-    if (!this.#_bindings.method_mouse_set_mode) {
+    if (!this._bindings.method_mouse_set_mode) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("mouse_set_mode");
-      this.#_bindings.method_mouse_set_mode = internal.classdb_get_method_bind(
+      this._bindings.method_mouse_set_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         348288463
@@ -945,10 +945,10 @@ class _MethodBindings {
     }
   }
   static init_method_mouse_get_mode() {
-    if (!this.#_bindings.method_mouse_get_mode) {
+    if (!this._bindings.method_mouse_get_mode) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("mouse_get_mode");
-      this.#_bindings.method_mouse_get_mode = internal.classdb_get_method_bind(
+      this._bindings.method_mouse_get_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1353961651
@@ -956,10 +956,10 @@ class _MethodBindings {
     }
   }
   static init_method_warp_mouse() {
-    if (!this.#_bindings.method_warp_mouse) {
+    if (!this._bindings.method_warp_mouse) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("warp_mouse");
-      this.#_bindings.method_warp_mouse = internal.classdb_get_method_bind(
+      this._bindings.method_warp_mouse = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1130785943
@@ -967,10 +967,10 @@ class _MethodBindings {
     }
   }
   static init_method_mouse_get_position() {
-    if (!this.#_bindings.method_mouse_get_position) {
+    if (!this._bindings.method_mouse_get_position) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("mouse_get_position");
-      this.#_bindings.method_mouse_get_position = internal.classdb_get_method_bind(
+      this._bindings.method_mouse_get_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3690982128
@@ -978,10 +978,10 @@ class _MethodBindings {
     }
   }
   static init_method_mouse_get_button_state() {
-    if (!this.#_bindings.method_mouse_get_button_state) {
+    if (!this._bindings.method_mouse_get_button_state) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("mouse_get_button_state");
-      this.#_bindings.method_mouse_get_button_state = internal.classdb_get_method_bind(
+      this._bindings.method_mouse_get_button_state = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2512161324
@@ -989,10 +989,10 @@ class _MethodBindings {
     }
   }
   static init_method_clipboard_set() {
-    if (!this.#_bindings.method_clipboard_set) {
+    if (!this._bindings.method_clipboard_set) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("clipboard_set");
-      this.#_bindings.method_clipboard_set = internal.classdb_get_method_bind(
+      this._bindings.method_clipboard_set = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -1000,10 +1000,10 @@ class _MethodBindings {
     }
   }
   static init_method_clipboard_get() {
-    if (!this.#_bindings.method_clipboard_get) {
+    if (!this._bindings.method_clipboard_get) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("clipboard_get");
-      this.#_bindings.method_clipboard_get = internal.classdb_get_method_bind(
+      this._bindings.method_clipboard_get = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -1011,10 +1011,10 @@ class _MethodBindings {
     }
   }
   static init_method_clipboard_get_image() {
-    if (!this.#_bindings.method_clipboard_get_image) {
+    if (!this._bindings.method_clipboard_get_image) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("clipboard_get_image");
-      this.#_bindings.method_clipboard_get_image = internal.classdb_get_method_bind(
+      this._bindings.method_clipboard_get_image = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4190603485
@@ -1022,10 +1022,10 @@ class _MethodBindings {
     }
   }
   static init_method_clipboard_has() {
-    if (!this.#_bindings.method_clipboard_has) {
+    if (!this._bindings.method_clipboard_has) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("clipboard_has");
-      this.#_bindings.method_clipboard_has = internal.classdb_get_method_bind(
+      this._bindings.method_clipboard_has = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -1033,10 +1033,10 @@ class _MethodBindings {
     }
   }
   static init_method_clipboard_has_image() {
-    if (!this.#_bindings.method_clipboard_has_image) {
+    if (!this._bindings.method_clipboard_has_image) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("clipboard_has_image");
-      this.#_bindings.method_clipboard_has_image = internal.classdb_get_method_bind(
+      this._bindings.method_clipboard_has_image = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -1044,10 +1044,10 @@ class _MethodBindings {
     }
   }
   static init_method_clipboard_set_primary() {
-    if (!this.#_bindings.method_clipboard_set_primary) {
+    if (!this._bindings.method_clipboard_set_primary) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("clipboard_set_primary");
-      this.#_bindings.method_clipboard_set_primary = internal.classdb_get_method_bind(
+      this._bindings.method_clipboard_set_primary = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -1055,10 +1055,10 @@ class _MethodBindings {
     }
   }
   static init_method_clipboard_get_primary() {
-    if (!this.#_bindings.method_clipboard_get_primary) {
+    if (!this._bindings.method_clipboard_get_primary) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("clipboard_get_primary");
-      this.#_bindings.method_clipboard_get_primary = internal.classdb_get_method_bind(
+      this._bindings.method_clipboard_get_primary = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -1066,10 +1066,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_display_cutouts() {
-    if (!this.#_bindings.method_get_display_cutouts) {
+    if (!this._bindings.method_get_display_cutouts) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("get_display_cutouts");
-      this.#_bindings.method_get_display_cutouts = internal.classdb_get_method_bind(
+      this._bindings.method_get_display_cutouts = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -1077,10 +1077,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_display_safe_area() {
-    if (!this.#_bindings.method_get_display_safe_area) {
+    if (!this._bindings.method_get_display_safe_area) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("get_display_safe_area");
-      this.#_bindings.method_get_display_safe_area = internal.classdb_get_method_bind(
+      this._bindings.method_get_display_safe_area = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         410525958
@@ -1088,10 +1088,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_screen_count() {
-    if (!this.#_bindings.method_get_screen_count) {
+    if (!this._bindings.method_get_screen_count) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("get_screen_count");
-      this.#_bindings.method_get_screen_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_screen_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -1099,10 +1099,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_primary_screen() {
-    if (!this.#_bindings.method_get_primary_screen) {
+    if (!this._bindings.method_get_primary_screen) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("get_primary_screen");
-      this.#_bindings.method_get_primary_screen = internal.classdb_get_method_bind(
+      this._bindings.method_get_primary_screen = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -1110,10 +1110,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_keyboard_focus_screen() {
-    if (!this.#_bindings.method_get_keyboard_focus_screen) {
+    if (!this._bindings.method_get_keyboard_focus_screen) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("get_keyboard_focus_screen");
-      this.#_bindings.method_get_keyboard_focus_screen = internal.classdb_get_method_bind(
+      this._bindings.method_get_keyboard_focus_screen = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -1121,10 +1121,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_screen_from_rect() {
-    if (!this.#_bindings.method_get_screen_from_rect) {
+    if (!this._bindings.method_get_screen_from_rect) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("get_screen_from_rect");
-      this.#_bindings.method_get_screen_from_rect = internal.classdb_get_method_bind(
+      this._bindings.method_get_screen_from_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         741354659
@@ -1132,10 +1132,10 @@ class _MethodBindings {
     }
   }
   static init_method_screen_get_position() {
-    if (!this.#_bindings.method_screen_get_position) {
+    if (!this._bindings.method_screen_get_position) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("screen_get_position");
-      this.#_bindings.method_screen_get_position = internal.classdb_get_method_bind(
+      this._bindings.method_screen_get_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1725937825
@@ -1143,10 +1143,10 @@ class _MethodBindings {
     }
   }
   static init_method_screen_get_size() {
-    if (!this.#_bindings.method_screen_get_size) {
+    if (!this._bindings.method_screen_get_size) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("screen_get_size");
-      this.#_bindings.method_screen_get_size = internal.classdb_get_method_bind(
+      this._bindings.method_screen_get_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1725937825
@@ -1154,10 +1154,10 @@ class _MethodBindings {
     }
   }
   static init_method_screen_get_usable_rect() {
-    if (!this.#_bindings.method_screen_get_usable_rect) {
+    if (!this._bindings.method_screen_get_usable_rect) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("screen_get_usable_rect");
-      this.#_bindings.method_screen_get_usable_rect = internal.classdb_get_method_bind(
+      this._bindings.method_screen_get_usable_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2439012528
@@ -1165,10 +1165,10 @@ class _MethodBindings {
     }
   }
   static init_method_screen_get_dpi() {
-    if (!this.#_bindings.method_screen_get_dpi) {
+    if (!this._bindings.method_screen_get_dpi) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("screen_get_dpi");
-      this.#_bindings.method_screen_get_dpi = internal.classdb_get_method_bind(
+      this._bindings.method_screen_get_dpi = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         181039630
@@ -1176,10 +1176,10 @@ class _MethodBindings {
     }
   }
   static init_method_screen_get_scale() {
-    if (!this.#_bindings.method_screen_get_scale) {
+    if (!this._bindings.method_screen_get_scale) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("screen_get_scale");
-      this.#_bindings.method_screen_get_scale = internal.classdb_get_method_bind(
+      this._bindings.method_screen_get_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         909105437
@@ -1187,10 +1187,10 @@ class _MethodBindings {
     }
   }
   static init_method_is_touchscreen_available() {
-    if (!this.#_bindings.method_is_touchscreen_available) {
+    if (!this._bindings.method_is_touchscreen_available) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("is_touchscreen_available");
-      this.#_bindings.method_is_touchscreen_available = internal.classdb_get_method_bind(
+      this._bindings.method_is_touchscreen_available = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3323674545
@@ -1198,10 +1198,10 @@ class _MethodBindings {
     }
   }
   static init_method_screen_get_max_scale() {
-    if (!this.#_bindings.method_screen_get_max_scale) {
+    if (!this._bindings.method_screen_get_max_scale) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("screen_get_max_scale");
-      this.#_bindings.method_screen_get_max_scale = internal.classdb_get_method_bind(
+      this._bindings.method_screen_get_max_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -1209,10 +1209,10 @@ class _MethodBindings {
     }
   }
   static init_method_screen_get_refresh_rate() {
-    if (!this.#_bindings.method_screen_get_refresh_rate) {
+    if (!this._bindings.method_screen_get_refresh_rate) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("screen_get_refresh_rate");
-      this.#_bindings.method_screen_get_refresh_rate = internal.classdb_get_method_bind(
+      this._bindings.method_screen_get_refresh_rate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         909105437
@@ -1220,10 +1220,10 @@ class _MethodBindings {
     }
   }
   static init_method_screen_get_pixel() {
-    if (!this.#_bindings.method_screen_get_pixel) {
+    if (!this._bindings.method_screen_get_pixel) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("screen_get_pixel");
-      this.#_bindings.method_screen_get_pixel = internal.classdb_get_method_bind(
+      this._bindings.method_screen_get_pixel = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1532707496
@@ -1231,10 +1231,10 @@ class _MethodBindings {
     }
   }
   static init_method_screen_get_image() {
-    if (!this.#_bindings.method_screen_get_image) {
+    if (!this._bindings.method_screen_get_image) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("screen_get_image");
-      this.#_bindings.method_screen_get_image = internal.classdb_get_method_bind(
+      this._bindings.method_screen_get_image = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3813388802
@@ -1242,10 +1242,10 @@ class _MethodBindings {
     }
   }
   static init_method_screen_set_orientation() {
-    if (!this.#_bindings.method_screen_set_orientation) {
+    if (!this._bindings.method_screen_set_orientation) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("screen_set_orientation");
-      this.#_bindings.method_screen_set_orientation = internal.classdb_get_method_bind(
+      this._bindings.method_screen_set_orientation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2211511631
@@ -1253,10 +1253,10 @@ class _MethodBindings {
     }
   }
   static init_method_screen_get_orientation() {
-    if (!this.#_bindings.method_screen_get_orientation) {
+    if (!this._bindings.method_screen_get_orientation) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("screen_get_orientation");
-      this.#_bindings.method_screen_get_orientation = internal.classdb_get_method_bind(
+      this._bindings.method_screen_get_orientation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         133818562
@@ -1264,10 +1264,10 @@ class _MethodBindings {
     }
   }
   static init_method_screen_set_keep_on() {
-    if (!this.#_bindings.method_screen_set_keep_on) {
+    if (!this._bindings.method_screen_set_keep_on) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("screen_set_keep_on");
-      this.#_bindings.method_screen_set_keep_on = internal.classdb_get_method_bind(
+      this._bindings.method_screen_set_keep_on = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -1275,10 +1275,10 @@ class _MethodBindings {
     }
   }
   static init_method_screen_is_kept_on() {
-    if (!this.#_bindings.method_screen_is_kept_on) {
+    if (!this._bindings.method_screen_is_kept_on) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("screen_is_kept_on");
-      this.#_bindings.method_screen_is_kept_on = internal.classdb_get_method_bind(
+      this._bindings.method_screen_is_kept_on = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -1286,10 +1286,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_window_list() {
-    if (!this.#_bindings.method_get_window_list) {
+    if (!this._bindings.method_get_window_list) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("get_window_list");
-      this.#_bindings.method_get_window_list = internal.classdb_get_method_bind(
+      this._bindings.method_get_window_list = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1930428628
@@ -1297,10 +1297,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_window_at_screen_position() {
-    if (!this.#_bindings.method_get_window_at_screen_position) {
+    if (!this._bindings.method_get_window_at_screen_position) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("get_window_at_screen_position");
-      this.#_bindings.method_get_window_at_screen_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_window_at_screen_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2485466453
@@ -1308,10 +1308,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_get_native_handle() {
-    if (!this.#_bindings.method_window_get_native_handle) {
+    if (!this._bindings.method_window_get_native_handle) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_get_native_handle");
-      this.#_bindings.method_window_get_native_handle = internal.classdb_get_method_bind(
+      this._bindings.method_window_get_native_handle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1096425680
@@ -1319,10 +1319,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_get_active_popup() {
-    if (!this.#_bindings.method_window_get_active_popup) {
+    if (!this._bindings.method_window_get_active_popup) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_get_active_popup");
-      this.#_bindings.method_window_get_active_popup = internal.classdb_get_method_bind(
+      this._bindings.method_window_get_active_popup = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -1330,10 +1330,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_set_popup_safe_rect() {
-    if (!this.#_bindings.method_window_set_popup_safe_rect) {
+    if (!this._bindings.method_window_set_popup_safe_rect) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_set_popup_safe_rect");
-      this.#_bindings.method_window_set_popup_safe_rect = internal.classdb_get_method_bind(
+      this._bindings.method_window_set_popup_safe_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3317281434
@@ -1341,10 +1341,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_get_popup_safe_rect() {
-    if (!this.#_bindings.method_window_get_popup_safe_rect) {
+    if (!this._bindings.method_window_get_popup_safe_rect) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_get_popup_safe_rect");
-      this.#_bindings.method_window_get_popup_safe_rect = internal.classdb_get_method_bind(
+      this._bindings.method_window_get_popup_safe_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2161169500
@@ -1352,10 +1352,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_set_title() {
-    if (!this.#_bindings.method_window_set_title) {
+    if (!this._bindings.method_window_set_title) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_set_title");
-      this.#_bindings.method_window_set_title = internal.classdb_get_method_bind(
+      this._bindings.method_window_set_title = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         441246282
@@ -1363,10 +1363,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_get_title_size() {
-    if (!this.#_bindings.method_window_get_title_size) {
+    if (!this._bindings.method_window_get_title_size) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_get_title_size");
-      this.#_bindings.method_window_get_title_size = internal.classdb_get_method_bind(
+      this._bindings.method_window_get_title_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2925301799
@@ -1374,10 +1374,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_set_mouse_passthrough() {
-    if (!this.#_bindings.method_window_set_mouse_passthrough) {
+    if (!this._bindings.method_window_set_mouse_passthrough) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_set_mouse_passthrough");
-      this.#_bindings.method_window_set_mouse_passthrough = internal.classdb_get_method_bind(
+      this._bindings.method_window_set_mouse_passthrough = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1993637420
@@ -1385,10 +1385,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_get_current_screen() {
-    if (!this.#_bindings.method_window_get_current_screen) {
+    if (!this._bindings.method_window_get_current_screen) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_get_current_screen");
-      this.#_bindings.method_window_get_current_screen = internal.classdb_get_method_bind(
+      this._bindings.method_window_get_current_screen = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1591665591
@@ -1396,10 +1396,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_set_current_screen() {
-    if (!this.#_bindings.method_window_set_current_screen) {
+    if (!this._bindings.method_window_set_current_screen) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_set_current_screen");
-      this.#_bindings.method_window_set_current_screen = internal.classdb_get_method_bind(
+      this._bindings.method_window_set_current_screen = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2230941749
@@ -1407,10 +1407,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_get_position() {
-    if (!this.#_bindings.method_window_get_position) {
+    if (!this._bindings.method_window_get_position) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_get_position");
-      this.#_bindings.method_window_get_position = internal.classdb_get_method_bind(
+      this._bindings.method_window_get_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         763922886
@@ -1418,10 +1418,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_get_position_with_decorations() {
-    if (!this.#_bindings.method_window_get_position_with_decorations) {
+    if (!this._bindings.method_window_get_position_with_decorations) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_get_position_with_decorations");
-      this.#_bindings.method_window_get_position_with_decorations = internal.classdb_get_method_bind(
+      this._bindings.method_window_get_position_with_decorations = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         763922886
@@ -1429,10 +1429,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_set_position() {
-    if (!this.#_bindings.method_window_set_position) {
+    if (!this._bindings.method_window_set_position) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_set_position");
-      this.#_bindings.method_window_set_position = internal.classdb_get_method_bind(
+      this._bindings.method_window_set_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2019273902
@@ -1440,10 +1440,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_get_size() {
-    if (!this.#_bindings.method_window_get_size) {
+    if (!this._bindings.method_window_get_size) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_get_size");
-      this.#_bindings.method_window_get_size = internal.classdb_get_method_bind(
+      this._bindings.method_window_get_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         763922886
@@ -1451,10 +1451,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_set_size() {
-    if (!this.#_bindings.method_window_set_size) {
+    if (!this._bindings.method_window_set_size) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_set_size");
-      this.#_bindings.method_window_set_size = internal.classdb_get_method_bind(
+      this._bindings.method_window_set_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2019273902
@@ -1462,10 +1462,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_set_rect_changed_callback() {
-    if (!this.#_bindings.method_window_set_rect_changed_callback) {
+    if (!this._bindings.method_window_set_rect_changed_callback) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_set_rect_changed_callback");
-      this.#_bindings.method_window_set_rect_changed_callback = internal.classdb_get_method_bind(
+      this._bindings.method_window_set_rect_changed_callback = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1091192925
@@ -1473,10 +1473,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_set_window_event_callback() {
-    if (!this.#_bindings.method_window_set_window_event_callback) {
+    if (!this._bindings.method_window_set_window_event_callback) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_set_window_event_callback");
-      this.#_bindings.method_window_set_window_event_callback = internal.classdb_get_method_bind(
+      this._bindings.method_window_set_window_event_callback = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1091192925
@@ -1484,10 +1484,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_set_input_event_callback() {
-    if (!this.#_bindings.method_window_set_input_event_callback) {
+    if (!this._bindings.method_window_set_input_event_callback) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_set_input_event_callback");
-      this.#_bindings.method_window_set_input_event_callback = internal.classdb_get_method_bind(
+      this._bindings.method_window_set_input_event_callback = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1091192925
@@ -1495,10 +1495,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_set_input_text_callback() {
-    if (!this.#_bindings.method_window_set_input_text_callback) {
+    if (!this._bindings.method_window_set_input_text_callback) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_set_input_text_callback");
-      this.#_bindings.method_window_set_input_text_callback = internal.classdb_get_method_bind(
+      this._bindings.method_window_set_input_text_callback = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1091192925
@@ -1506,10 +1506,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_set_drop_files_callback() {
-    if (!this.#_bindings.method_window_set_drop_files_callback) {
+    if (!this._bindings.method_window_set_drop_files_callback) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_set_drop_files_callback");
-      this.#_bindings.method_window_set_drop_files_callback = internal.classdb_get_method_bind(
+      this._bindings.method_window_set_drop_files_callback = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1091192925
@@ -1517,10 +1517,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_get_attached_instance_id() {
-    if (!this.#_bindings.method_window_get_attached_instance_id) {
+    if (!this._bindings.method_window_get_attached_instance_id) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_get_attached_instance_id");
-      this.#_bindings.method_window_get_attached_instance_id = internal.classdb_get_method_bind(
+      this._bindings.method_window_get_attached_instance_id = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1591665591
@@ -1528,10 +1528,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_get_max_size() {
-    if (!this.#_bindings.method_window_get_max_size) {
+    if (!this._bindings.method_window_get_max_size) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_get_max_size");
-      this.#_bindings.method_window_get_max_size = internal.classdb_get_method_bind(
+      this._bindings.method_window_get_max_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         763922886
@@ -1539,10 +1539,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_set_max_size() {
-    if (!this.#_bindings.method_window_set_max_size) {
+    if (!this._bindings.method_window_set_max_size) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_set_max_size");
-      this.#_bindings.method_window_set_max_size = internal.classdb_get_method_bind(
+      this._bindings.method_window_set_max_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2019273902
@@ -1550,10 +1550,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_get_min_size() {
-    if (!this.#_bindings.method_window_get_min_size) {
+    if (!this._bindings.method_window_get_min_size) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_get_min_size");
-      this.#_bindings.method_window_get_min_size = internal.classdb_get_method_bind(
+      this._bindings.method_window_get_min_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         763922886
@@ -1561,10 +1561,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_set_min_size() {
-    if (!this.#_bindings.method_window_set_min_size) {
+    if (!this._bindings.method_window_set_min_size) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_set_min_size");
-      this.#_bindings.method_window_set_min_size = internal.classdb_get_method_bind(
+      this._bindings.method_window_set_min_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2019273902
@@ -1572,10 +1572,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_get_size_with_decorations() {
-    if (!this.#_bindings.method_window_get_size_with_decorations) {
+    if (!this._bindings.method_window_get_size_with_decorations) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_get_size_with_decorations");
-      this.#_bindings.method_window_get_size_with_decorations = internal.classdb_get_method_bind(
+      this._bindings.method_window_get_size_with_decorations = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         763922886
@@ -1583,10 +1583,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_get_mode() {
-    if (!this.#_bindings.method_window_get_mode) {
+    if (!this._bindings.method_window_get_mode) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_get_mode");
-      this.#_bindings.method_window_get_mode = internal.classdb_get_method_bind(
+      this._bindings.method_window_get_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2185728461
@@ -1594,10 +1594,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_set_mode() {
-    if (!this.#_bindings.method_window_set_mode) {
+    if (!this._bindings.method_window_set_mode) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_set_mode");
-      this.#_bindings.method_window_set_mode = internal.classdb_get_method_bind(
+      this._bindings.method_window_set_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1319965401
@@ -1605,10 +1605,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_set_flag() {
-    if (!this.#_bindings.method_window_set_flag) {
+    if (!this._bindings.method_window_set_flag) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_set_flag");
-      this.#_bindings.method_window_set_flag = internal.classdb_get_method_bind(
+      this._bindings.method_window_set_flag = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         254894155
@@ -1616,10 +1616,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_get_flag() {
-    if (!this.#_bindings.method_window_get_flag) {
+    if (!this._bindings.method_window_get_flag) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_get_flag");
-      this.#_bindings.method_window_get_flag = internal.classdb_get_method_bind(
+      this._bindings.method_window_get_flag = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         802816991
@@ -1627,10 +1627,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_set_window_buttons_offset() {
-    if (!this.#_bindings.method_window_set_window_buttons_offset) {
+    if (!this._bindings.method_window_set_window_buttons_offset) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_set_window_buttons_offset");
-      this.#_bindings.method_window_set_window_buttons_offset = internal.classdb_get_method_bind(
+      this._bindings.method_window_set_window_buttons_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2019273902
@@ -1638,10 +1638,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_get_safe_title_margins() {
-    if (!this.#_bindings.method_window_get_safe_title_margins) {
+    if (!this._bindings.method_window_get_safe_title_margins) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_get_safe_title_margins");
-      this.#_bindings.method_window_get_safe_title_margins = internal.classdb_get_method_bind(
+      this._bindings.method_window_get_safe_title_margins = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2295066620
@@ -1649,10 +1649,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_request_attention() {
-    if (!this.#_bindings.method_window_request_attention) {
+    if (!this._bindings.method_window_request_attention) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_request_attention");
-      this.#_bindings.method_window_request_attention = internal.classdb_get_method_bind(
+      this._bindings.method_window_request_attention = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1995695955
@@ -1660,10 +1660,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_move_to_foreground() {
-    if (!this.#_bindings.method_window_move_to_foreground) {
+    if (!this._bindings.method_window_move_to_foreground) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_move_to_foreground");
-      this.#_bindings.method_window_move_to_foreground = internal.classdb_get_method_bind(
+      this._bindings.method_window_move_to_foreground = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1995695955
@@ -1671,10 +1671,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_is_focused() {
-    if (!this.#_bindings.method_window_is_focused) {
+    if (!this._bindings.method_window_is_focused) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_is_focused");
-      this.#_bindings.method_window_is_focused = internal.classdb_get_method_bind(
+      this._bindings.method_window_is_focused = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1051549951
@@ -1682,10 +1682,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_can_draw() {
-    if (!this.#_bindings.method_window_can_draw) {
+    if (!this._bindings.method_window_can_draw) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_can_draw");
-      this.#_bindings.method_window_can_draw = internal.classdb_get_method_bind(
+      this._bindings.method_window_can_draw = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1051549951
@@ -1693,10 +1693,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_set_transient() {
-    if (!this.#_bindings.method_window_set_transient) {
+    if (!this._bindings.method_window_set_transient) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_set_transient");
-      this.#_bindings.method_window_set_transient = internal.classdb_get_method_bind(
+      this._bindings.method_window_set_transient = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -1704,10 +1704,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_set_exclusive() {
-    if (!this.#_bindings.method_window_set_exclusive) {
+    if (!this._bindings.method_window_set_exclusive) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_set_exclusive");
-      this.#_bindings.method_window_set_exclusive = internal.classdb_get_method_bind(
+      this._bindings.method_window_set_exclusive = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -1715,10 +1715,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_set_ime_active() {
-    if (!this.#_bindings.method_window_set_ime_active) {
+    if (!this._bindings.method_window_set_ime_active) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_set_ime_active");
-      this.#_bindings.method_window_set_ime_active = internal.classdb_get_method_bind(
+      this._bindings.method_window_set_ime_active = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1661950165
@@ -1726,10 +1726,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_set_ime_position() {
-    if (!this.#_bindings.method_window_set_ime_position) {
+    if (!this._bindings.method_window_set_ime_position) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_set_ime_position");
-      this.#_bindings.method_window_set_ime_position = internal.classdb_get_method_bind(
+      this._bindings.method_window_set_ime_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2019273902
@@ -1737,10 +1737,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_set_vsync_mode() {
-    if (!this.#_bindings.method_window_set_vsync_mode) {
+    if (!this._bindings.method_window_set_vsync_mode) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_set_vsync_mode");
-      this.#_bindings.method_window_set_vsync_mode = internal.classdb_get_method_bind(
+      this._bindings.method_window_set_vsync_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2179333492
@@ -1748,10 +1748,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_get_vsync_mode() {
-    if (!this.#_bindings.method_window_get_vsync_mode) {
+    if (!this._bindings.method_window_get_vsync_mode) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_get_vsync_mode");
-      this.#_bindings.method_window_get_vsync_mode = internal.classdb_get_method_bind(
+      this._bindings.method_window_get_vsync_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         578873795
@@ -1759,10 +1759,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_is_maximize_allowed() {
-    if (!this.#_bindings.method_window_is_maximize_allowed) {
+    if (!this._bindings.method_window_is_maximize_allowed) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_is_maximize_allowed");
-      this.#_bindings.method_window_is_maximize_allowed = internal.classdb_get_method_bind(
+      this._bindings.method_window_is_maximize_allowed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1051549951
@@ -1770,10 +1770,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_maximize_on_title_dbl_click() {
-    if (!this.#_bindings.method_window_maximize_on_title_dbl_click) {
+    if (!this._bindings.method_window_maximize_on_title_dbl_click) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_maximize_on_title_dbl_click");
-      this.#_bindings.method_window_maximize_on_title_dbl_click = internal.classdb_get_method_bind(
+      this._bindings.method_window_maximize_on_title_dbl_click = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -1781,10 +1781,10 @@ class _MethodBindings {
     }
   }
   static init_method_window_minimize_on_title_dbl_click() {
-    if (!this.#_bindings.method_window_minimize_on_title_dbl_click) {
+    if (!this._bindings.method_window_minimize_on_title_dbl_click) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("window_minimize_on_title_dbl_click");
-      this.#_bindings.method_window_minimize_on_title_dbl_click = internal.classdb_get_method_bind(
+      this._bindings.method_window_minimize_on_title_dbl_click = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -1792,10 +1792,10 @@ class _MethodBindings {
     }
   }
   static init_method_ime_get_selection() {
-    if (!this.#_bindings.method_ime_get_selection) {
+    if (!this._bindings.method_ime_get_selection) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("ime_get_selection");
-      this.#_bindings.method_ime_get_selection = internal.classdb_get_method_bind(
+      this._bindings.method_ime_get_selection = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3690982128
@@ -1803,10 +1803,10 @@ class _MethodBindings {
     }
   }
   static init_method_ime_get_text() {
-    if (!this.#_bindings.method_ime_get_text) {
+    if (!this._bindings.method_ime_get_text) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("ime_get_text");
-      this.#_bindings.method_ime_get_text = internal.classdb_get_method_bind(
+      this._bindings.method_ime_get_text = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -1814,10 +1814,10 @@ class _MethodBindings {
     }
   }
   static init_method_virtual_keyboard_show() {
-    if (!this.#_bindings.method_virtual_keyboard_show) {
+    if (!this._bindings.method_virtual_keyboard_show) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("virtual_keyboard_show");
-      this.#_bindings.method_virtual_keyboard_show = internal.classdb_get_method_bind(
+      this._bindings.method_virtual_keyboard_show = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3042891259
@@ -1825,10 +1825,10 @@ class _MethodBindings {
     }
   }
   static init_method_virtual_keyboard_hide() {
-    if (!this.#_bindings.method_virtual_keyboard_hide) {
+    if (!this._bindings.method_virtual_keyboard_hide) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("virtual_keyboard_hide");
-      this.#_bindings.method_virtual_keyboard_hide = internal.classdb_get_method_bind(
+      this._bindings.method_virtual_keyboard_hide = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -1836,10 +1836,10 @@ class _MethodBindings {
     }
   }
   static init_method_virtual_keyboard_get_height() {
-    if (!this.#_bindings.method_virtual_keyboard_get_height) {
+    if (!this._bindings.method_virtual_keyboard_get_height) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("virtual_keyboard_get_height");
-      this.#_bindings.method_virtual_keyboard_get_height = internal.classdb_get_method_bind(
+      this._bindings.method_virtual_keyboard_get_height = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -1847,10 +1847,10 @@ class _MethodBindings {
     }
   }
   static init_method_cursor_set_shape() {
-    if (!this.#_bindings.method_cursor_set_shape) {
+    if (!this._bindings.method_cursor_set_shape) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("cursor_set_shape");
-      this.#_bindings.method_cursor_set_shape = internal.classdb_get_method_bind(
+      this._bindings.method_cursor_set_shape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2026291549
@@ -1858,10 +1858,10 @@ class _MethodBindings {
     }
   }
   static init_method_cursor_get_shape() {
-    if (!this.#_bindings.method_cursor_get_shape) {
+    if (!this._bindings.method_cursor_get_shape) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("cursor_get_shape");
-      this.#_bindings.method_cursor_get_shape = internal.classdb_get_method_bind(
+      this._bindings.method_cursor_get_shape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1087724927
@@ -1869,10 +1869,10 @@ class _MethodBindings {
     }
   }
   static init_method_cursor_set_custom_image() {
-    if (!this.#_bindings.method_cursor_set_custom_image) {
+    if (!this._bindings.method_cursor_set_custom_image) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("cursor_set_custom_image");
-      this.#_bindings.method_cursor_set_custom_image = internal.classdb_get_method_bind(
+      this._bindings.method_cursor_set_custom_image = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1816663697
@@ -1880,10 +1880,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_swap_cancel_ok() {
-    if (!this.#_bindings.method_get_swap_cancel_ok) {
+    if (!this._bindings.method_get_swap_cancel_ok) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("get_swap_cancel_ok");
-      this.#_bindings.method_get_swap_cancel_ok = internal.classdb_get_method_bind(
+      this._bindings.method_get_swap_cancel_ok = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2240911060
@@ -1891,10 +1891,10 @@ class _MethodBindings {
     }
   }
   static init_method_enable_for_stealing_focus() {
-    if (!this.#_bindings.method_enable_for_stealing_focus) {
+    if (!this._bindings.method_enable_for_stealing_focus) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("enable_for_stealing_focus");
-      this.#_bindings.method_enable_for_stealing_focus = internal.classdb_get_method_bind(
+      this._bindings.method_enable_for_stealing_focus = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -1902,10 +1902,10 @@ class _MethodBindings {
     }
   }
   static init_method_dialog_show() {
-    if (!this.#_bindings.method_dialog_show) {
+    if (!this._bindings.method_dialog_show) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("dialog_show");
-      this.#_bindings.method_dialog_show = internal.classdb_get_method_bind(
+      this._bindings.method_dialog_show = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4115553226
@@ -1913,10 +1913,10 @@ class _MethodBindings {
     }
   }
   static init_method_dialog_input_text() {
-    if (!this.#_bindings.method_dialog_input_text) {
+    if (!this._bindings.method_dialog_input_text) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("dialog_input_text");
-      this.#_bindings.method_dialog_input_text = internal.classdb_get_method_bind(
+      this._bindings.method_dialog_input_text = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3088703427
@@ -1924,10 +1924,10 @@ class _MethodBindings {
     }
   }
   static init_method_file_dialog_show() {
-    if (!this.#_bindings.method_file_dialog_show) {
+    if (!this._bindings.method_file_dialog_show) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("file_dialog_show");
-      this.#_bindings.method_file_dialog_show = internal.classdb_get_method_bind(
+      this._bindings.method_file_dialog_show = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1531299078
@@ -1935,10 +1935,10 @@ class _MethodBindings {
     }
   }
   static init_method_file_dialog_with_options_show() {
-    if (!this.#_bindings.method_file_dialog_with_options_show) {
+    if (!this._bindings.method_file_dialog_with_options_show) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("file_dialog_with_options_show");
-      this.#_bindings.method_file_dialog_with_options_show = internal.classdb_get_method_bind(
+      this._bindings.method_file_dialog_with_options_show = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1305318754
@@ -1946,10 +1946,10 @@ class _MethodBindings {
     }
   }
   static init_method_keyboard_get_layout_count() {
-    if (!this.#_bindings.method_keyboard_get_layout_count) {
+    if (!this._bindings.method_keyboard_get_layout_count) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("keyboard_get_layout_count");
-      this.#_bindings.method_keyboard_get_layout_count = internal.classdb_get_method_bind(
+      this._bindings.method_keyboard_get_layout_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -1957,10 +1957,10 @@ class _MethodBindings {
     }
   }
   static init_method_keyboard_get_current_layout() {
-    if (!this.#_bindings.method_keyboard_get_current_layout) {
+    if (!this._bindings.method_keyboard_get_current_layout) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("keyboard_get_current_layout");
-      this.#_bindings.method_keyboard_get_current_layout = internal.classdb_get_method_bind(
+      this._bindings.method_keyboard_get_current_layout = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -1968,10 +1968,10 @@ class _MethodBindings {
     }
   }
   static init_method_keyboard_set_current_layout() {
-    if (!this.#_bindings.method_keyboard_set_current_layout) {
+    if (!this._bindings.method_keyboard_set_current_layout) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("keyboard_set_current_layout");
-      this.#_bindings.method_keyboard_set_current_layout = internal.classdb_get_method_bind(
+      this._bindings.method_keyboard_set_current_layout = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -1979,10 +1979,10 @@ class _MethodBindings {
     }
   }
   static init_method_keyboard_get_layout_language() {
-    if (!this.#_bindings.method_keyboard_get_layout_language) {
+    if (!this._bindings.method_keyboard_get_layout_language) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("keyboard_get_layout_language");
-      this.#_bindings.method_keyboard_get_layout_language = internal.classdb_get_method_bind(
+      this._bindings.method_keyboard_get_layout_language = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         844755477
@@ -1990,10 +1990,10 @@ class _MethodBindings {
     }
   }
   static init_method_keyboard_get_layout_name() {
-    if (!this.#_bindings.method_keyboard_get_layout_name) {
+    if (!this._bindings.method_keyboard_get_layout_name) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("keyboard_get_layout_name");
-      this.#_bindings.method_keyboard_get_layout_name = internal.classdb_get_method_bind(
+      this._bindings.method_keyboard_get_layout_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         844755477
@@ -2001,10 +2001,10 @@ class _MethodBindings {
     }
   }
   static init_method_keyboard_get_keycode_from_physical() {
-    if (!this.#_bindings.method_keyboard_get_keycode_from_physical) {
+    if (!this._bindings.method_keyboard_get_keycode_from_physical) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("keyboard_get_keycode_from_physical");
-      this.#_bindings.method_keyboard_get_keycode_from_physical = internal.classdb_get_method_bind(
+      this._bindings.method_keyboard_get_keycode_from_physical = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3447613187
@@ -2012,10 +2012,10 @@ class _MethodBindings {
     }
   }
   static init_method_keyboard_get_label_from_physical() {
-    if (!this.#_bindings.method_keyboard_get_label_from_physical) {
+    if (!this._bindings.method_keyboard_get_label_from_physical) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("keyboard_get_label_from_physical");
-      this.#_bindings.method_keyboard_get_label_from_physical = internal.classdb_get_method_bind(
+      this._bindings.method_keyboard_get_label_from_physical = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3447613187
@@ -2023,10 +2023,10 @@ class _MethodBindings {
     }
   }
   static init_method_process_events() {
-    if (!this.#_bindings.method_process_events) {
+    if (!this._bindings.method_process_events) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("process_events");
-      this.#_bindings.method_process_events = internal.classdb_get_method_bind(
+      this._bindings.method_process_events = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -2034,10 +2034,10 @@ class _MethodBindings {
     }
   }
   static init_method_force_process_and_drop_events() {
-    if (!this.#_bindings.method_force_process_and_drop_events) {
+    if (!this._bindings.method_force_process_and_drop_events) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("force_process_and_drop_events");
-      this.#_bindings.method_force_process_and_drop_events = internal.classdb_get_method_bind(
+      this._bindings.method_force_process_and_drop_events = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -2045,10 +2045,10 @@ class _MethodBindings {
     }
   }
   static init_method_set_native_icon() {
-    if (!this.#_bindings.method_set_native_icon) {
+    if (!this._bindings.method_set_native_icon) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("set_native_icon");
-      this.#_bindings.method_set_native_icon = internal.classdb_get_method_bind(
+      this._bindings.method_set_native_icon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -2056,10 +2056,10 @@ class _MethodBindings {
     }
   }
   static init_method_set_icon() {
-    if (!this.#_bindings.method_set_icon) {
+    if (!this._bindings.method_set_icon) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("set_icon");
-      this.#_bindings.method_set_icon = internal.classdb_get_method_bind(
+      this._bindings.method_set_icon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         532598488
@@ -2067,10 +2067,10 @@ class _MethodBindings {
     }
   }
   static init_method_create_status_indicator() {
-    if (!this.#_bindings.method_create_status_indicator) {
+    if (!this._bindings.method_create_status_indicator) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("create_status_indicator");
-      this.#_bindings.method_create_status_indicator = internal.classdb_get_method_bind(
+      this._bindings.method_create_status_indicator = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1904285171
@@ -2078,10 +2078,10 @@ class _MethodBindings {
     }
   }
   static init_method_status_indicator_set_icon() {
-    if (!this.#_bindings.method_status_indicator_set_icon) {
+    if (!this._bindings.method_status_indicator_set_icon) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("status_indicator_set_icon");
-      this.#_bindings.method_status_indicator_set_icon = internal.classdb_get_method_bind(
+      this._bindings.method_status_indicator_set_icon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         666127730
@@ -2089,10 +2089,10 @@ class _MethodBindings {
     }
   }
   static init_method_status_indicator_set_tooltip() {
-    if (!this.#_bindings.method_status_indicator_set_tooltip) {
+    if (!this._bindings.method_status_indicator_set_tooltip) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("status_indicator_set_tooltip");
-      this.#_bindings.method_status_indicator_set_tooltip = internal.classdb_get_method_bind(
+      this._bindings.method_status_indicator_set_tooltip = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         501894301
@@ -2100,10 +2100,10 @@ class _MethodBindings {
     }
   }
   static init_method_status_indicator_set_menu() {
-    if (!this.#_bindings.method_status_indicator_set_menu) {
+    if (!this._bindings.method_status_indicator_set_menu) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("status_indicator_set_menu");
-      this.#_bindings.method_status_indicator_set_menu = internal.classdb_get_method_bind(
+      this._bindings.method_status_indicator_set_menu = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4040184819
@@ -2111,10 +2111,10 @@ class _MethodBindings {
     }
   }
   static init_method_status_indicator_set_callback() {
-    if (!this.#_bindings.method_status_indicator_set_callback) {
+    if (!this._bindings.method_status_indicator_set_callback) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("status_indicator_set_callback");
-      this.#_bindings.method_status_indicator_set_callback = internal.classdb_get_method_bind(
+      this._bindings.method_status_indicator_set_callback = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         957362965
@@ -2122,10 +2122,10 @@ class _MethodBindings {
     }
   }
   static init_method_status_indicator_get_rect() {
-    if (!this.#_bindings.method_status_indicator_get_rect) {
+    if (!this._bindings.method_status_indicator_get_rect) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("status_indicator_get_rect");
-      this.#_bindings.method_status_indicator_get_rect = internal.classdb_get_method_bind(
+      this._bindings.method_status_indicator_get_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3327874267
@@ -2133,10 +2133,10 @@ class _MethodBindings {
     }
   }
   static init_method_delete_status_indicator() {
-    if (!this.#_bindings.method_delete_status_indicator) {
+    if (!this._bindings.method_delete_status_indicator) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("delete_status_indicator");
-      this.#_bindings.method_delete_status_indicator = internal.classdb_get_method_bind(
+      this._bindings.method_delete_status_indicator = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -2144,10 +2144,10 @@ class _MethodBindings {
     }
   }
   static init_method_tablet_get_driver_count() {
-    if (!this.#_bindings.method_tablet_get_driver_count) {
+    if (!this._bindings.method_tablet_get_driver_count) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("tablet_get_driver_count");
-      this.#_bindings.method_tablet_get_driver_count = internal.classdb_get_method_bind(
+      this._bindings.method_tablet_get_driver_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -2155,10 +2155,10 @@ class _MethodBindings {
     }
   }
   static init_method_tablet_get_driver_name() {
-    if (!this.#_bindings.method_tablet_get_driver_name) {
+    if (!this._bindings.method_tablet_get_driver_name) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("tablet_get_driver_name");
-      this.#_bindings.method_tablet_get_driver_name = internal.classdb_get_method_bind(
+      this._bindings.method_tablet_get_driver_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         844755477
@@ -2166,10 +2166,10 @@ class _MethodBindings {
     }
   }
   static init_method_tablet_get_current_driver() {
-    if (!this.#_bindings.method_tablet_get_current_driver) {
+    if (!this._bindings.method_tablet_get_current_driver) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("tablet_get_current_driver");
-      this.#_bindings.method_tablet_get_current_driver = internal.classdb_get_method_bind(
+      this._bindings.method_tablet_get_current_driver = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -2177,10 +2177,10 @@ class _MethodBindings {
     }
   }
   static init_method_tablet_set_current_driver() {
-    if (!this.#_bindings.method_tablet_set_current_driver) {
+    if (!this._bindings.method_tablet_set_current_driver) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("tablet_set_current_driver");
-      this.#_bindings.method_tablet_set_current_driver = internal.classdb_get_method_bind(
+      this._bindings.method_tablet_set_current_driver = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -2188,10 +2188,10 @@ class _MethodBindings {
     }
   }
   static init_method_is_window_transparency_available() {
-    if (!this.#_bindings.method_is_window_transparency_available) {
+    if (!this._bindings.method_is_window_transparency_available) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("is_window_transparency_available");
-      this.#_bindings.method_is_window_transparency_available = internal.classdb_get_method_bind(
+      this._bindings.method_is_window_transparency_available = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -2199,10 +2199,10 @@ class _MethodBindings {
     }
   }
   static init_method_register_additional_output() {
-    if (!this.#_bindings.method_register_additional_output) {
+    if (!this._bindings.method_register_additional_output) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("register_additional_output");
-      this.#_bindings.method_register_additional_output = internal.classdb_get_method_bind(
+      this._bindings.method_register_additional_output = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3975164845
@@ -2210,10 +2210,10 @@ class _MethodBindings {
     }
   }
   static init_method_unregister_additional_output() {
-    if (!this.#_bindings.method_unregister_additional_output) {
+    if (!this._bindings.method_unregister_additional_output) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("unregister_additional_output");
-      this.#_bindings.method_unregister_additional_output = internal.classdb_get_method_bind(
+      this._bindings.method_unregister_additional_output = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3975164845
@@ -2221,10 +2221,10 @@ class _MethodBindings {
     }
   }
   static init_method_has_additional_outputs() {
-    if (!this.#_bindings.method_has_additional_outputs) {
+    if (!this._bindings.method_has_additional_outputs) {
       let classname = new StringName("DisplayServer");
       let methodname = new StringName("has_additional_outputs");
-      this.#_bindings.method_has_additional_outputs = internal.classdb_get_method_bind(
+      this._bindings.method_has_additional_outputs = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -2237,7 +2237,7 @@ class _MethodBindings {
   has_feature(_feature) {
     DisplayServer.init_method_has_feature();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_has_feature,
+      _DisplayServer._bindings.method_has_feature,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2248,7 +2248,7 @@ class _MethodBindings {
   get_name() {
     DisplayServer.init_method_get_name();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_get_name,
+      _DisplayServer._bindings.method_get_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2259,7 +2259,7 @@ class _MethodBindings {
   help_set_search_callbacks(_search_callback, _action_callback) {
     DisplayServer.init_method_help_set_search_callbacks();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_help_set_search_callbacks,
+      _DisplayServer._bindings.method_help_set_search_callbacks,
       this._owner,
       _search_callback, _action_callback
     );
@@ -2268,7 +2268,7 @@ class _MethodBindings {
   global_menu_set_popup_callbacks(_menu_root, _open_callback, _close_callback) {
     DisplayServer.init_method_global_menu_set_popup_callbacks();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_global_menu_set_popup_callbacks,
+      _DisplayServer._bindings.method_global_menu_set_popup_callbacks,
       this._owner,
       _menu_root, _open_callback, _close_callback
     );
@@ -2277,7 +2277,7 @@ class _MethodBindings {
   global_menu_add_submenu_item(_menu_root, _label, _submenu, _index) {
     DisplayServer.init_method_global_menu_add_submenu_item();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_add_submenu_item,
+      _DisplayServer._bindings.method_global_menu_add_submenu_item,
       this._owner,
 			Variant.Type.INT,
     
@@ -2288,7 +2288,7 @@ class _MethodBindings {
   global_menu_add_item(_menu_root, _label, _callback, _key_callback, _tag, _accelerator, _index) {
     DisplayServer.init_method_global_menu_add_item();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_add_item,
+      _DisplayServer._bindings.method_global_menu_add_item,
       this._owner,
 			Variant.Type.INT,
     
@@ -2299,7 +2299,7 @@ class _MethodBindings {
   global_menu_add_check_item(_menu_root, _label, _callback, _key_callback, _tag, _accelerator, _index) {
     DisplayServer.init_method_global_menu_add_check_item();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_add_check_item,
+      _DisplayServer._bindings.method_global_menu_add_check_item,
       this._owner,
 			Variant.Type.INT,
     
@@ -2310,7 +2310,7 @@ class _MethodBindings {
   global_menu_add_icon_item(_menu_root, _icon, _label, _callback, _key_callback, _tag, _accelerator, _index) {
     DisplayServer.init_method_global_menu_add_icon_item();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_add_icon_item,
+      _DisplayServer._bindings.method_global_menu_add_icon_item,
       this._owner,
 			Variant.Type.INT,
     
@@ -2321,7 +2321,7 @@ class _MethodBindings {
   global_menu_add_icon_check_item(_menu_root, _icon, _label, _callback, _key_callback, _tag, _accelerator, _index) {
     DisplayServer.init_method_global_menu_add_icon_check_item();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_add_icon_check_item,
+      _DisplayServer._bindings.method_global_menu_add_icon_check_item,
       this._owner,
 			Variant.Type.INT,
     
@@ -2332,7 +2332,7 @@ class _MethodBindings {
   global_menu_add_radio_check_item(_menu_root, _label, _callback, _key_callback, _tag, _accelerator, _index) {
     DisplayServer.init_method_global_menu_add_radio_check_item();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_add_radio_check_item,
+      _DisplayServer._bindings.method_global_menu_add_radio_check_item,
       this._owner,
 			Variant.Type.INT,
     
@@ -2343,7 +2343,7 @@ class _MethodBindings {
   global_menu_add_icon_radio_check_item(_menu_root, _icon, _label, _callback, _key_callback, _tag, _accelerator, _index) {
     DisplayServer.init_method_global_menu_add_icon_radio_check_item();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_add_icon_radio_check_item,
+      _DisplayServer._bindings.method_global_menu_add_icon_radio_check_item,
       this._owner,
 			Variant.Type.INT,
     
@@ -2354,7 +2354,7 @@ class _MethodBindings {
   global_menu_add_multistate_item(_menu_root, _label, _max_states, _default_state, _callback, _key_callback, _tag, _accelerator, _index) {
     DisplayServer.init_method_global_menu_add_multistate_item();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_add_multistate_item,
+      _DisplayServer._bindings.method_global_menu_add_multistate_item,
       this._owner,
 			Variant.Type.INT,
     
@@ -2365,7 +2365,7 @@ class _MethodBindings {
   global_menu_add_separator(_menu_root, _index) {
     DisplayServer.init_method_global_menu_add_separator();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_add_separator,
+      _DisplayServer._bindings.method_global_menu_add_separator,
       this._owner,
 			Variant.Type.INT,
     
@@ -2376,7 +2376,7 @@ class _MethodBindings {
   global_menu_get_item_index_from_text(_menu_root, _text) {
     DisplayServer.init_method_global_menu_get_item_index_from_text();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_get_item_index_from_text,
+      _DisplayServer._bindings.method_global_menu_get_item_index_from_text,
       this._owner,
 			Variant.Type.INT,
     
@@ -2387,7 +2387,7 @@ class _MethodBindings {
   global_menu_get_item_index_from_tag(_menu_root, _tag) {
     DisplayServer.init_method_global_menu_get_item_index_from_tag();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_get_item_index_from_tag,
+      _DisplayServer._bindings.method_global_menu_get_item_index_from_tag,
       this._owner,
 			Variant.Type.INT,
     
@@ -2398,7 +2398,7 @@ class _MethodBindings {
   global_menu_is_item_checked(_menu_root, _idx) {
     DisplayServer.init_method_global_menu_is_item_checked();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_is_item_checked,
+      _DisplayServer._bindings.method_global_menu_is_item_checked,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2409,7 +2409,7 @@ class _MethodBindings {
   global_menu_is_item_checkable(_menu_root, _idx) {
     DisplayServer.init_method_global_menu_is_item_checkable();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_is_item_checkable,
+      _DisplayServer._bindings.method_global_menu_is_item_checkable,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2420,7 +2420,7 @@ class _MethodBindings {
   global_menu_is_item_radio_checkable(_menu_root, _idx) {
     DisplayServer.init_method_global_menu_is_item_radio_checkable();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_is_item_radio_checkable,
+      _DisplayServer._bindings.method_global_menu_is_item_radio_checkable,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2431,7 +2431,7 @@ class _MethodBindings {
   global_menu_get_item_callback(_menu_root, _idx) {
     DisplayServer.init_method_global_menu_get_item_callback();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_get_item_callback,
+      _DisplayServer._bindings.method_global_menu_get_item_callback,
       this._owner,
 			Variant.Type.CALLABLE,
     
@@ -2442,7 +2442,7 @@ class _MethodBindings {
   global_menu_get_item_key_callback(_menu_root, _idx) {
     DisplayServer.init_method_global_menu_get_item_key_callback();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_get_item_key_callback,
+      _DisplayServer._bindings.method_global_menu_get_item_key_callback,
       this._owner,
 			Variant.Type.CALLABLE,
     
@@ -2453,7 +2453,7 @@ class _MethodBindings {
   global_menu_get_item_tag(_menu_root, _idx) {
     DisplayServer.init_method_global_menu_get_item_tag();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_get_item_tag,
+      _DisplayServer._bindings.method_global_menu_get_item_tag,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -2464,7 +2464,7 @@ class _MethodBindings {
   global_menu_get_item_text(_menu_root, _idx) {
     DisplayServer.init_method_global_menu_get_item_text();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_get_item_text,
+      _DisplayServer._bindings.method_global_menu_get_item_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2475,7 +2475,7 @@ class _MethodBindings {
   global_menu_get_item_submenu(_menu_root, _idx) {
     DisplayServer.init_method_global_menu_get_item_submenu();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_get_item_submenu,
+      _DisplayServer._bindings.method_global_menu_get_item_submenu,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2486,7 +2486,7 @@ class _MethodBindings {
   global_menu_get_item_accelerator(_menu_root, _idx) {
     DisplayServer.init_method_global_menu_get_item_accelerator();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_get_item_accelerator,
+      _DisplayServer._bindings.method_global_menu_get_item_accelerator,
       this._owner,
 			Variant.Type.INT,
     
@@ -2497,7 +2497,7 @@ class _MethodBindings {
   global_menu_is_item_disabled(_menu_root, _idx) {
     DisplayServer.init_method_global_menu_is_item_disabled();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_is_item_disabled,
+      _DisplayServer._bindings.method_global_menu_is_item_disabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2508,7 +2508,7 @@ class _MethodBindings {
   global_menu_is_item_hidden(_menu_root, _idx) {
     DisplayServer.init_method_global_menu_is_item_hidden();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_is_item_hidden,
+      _DisplayServer._bindings.method_global_menu_is_item_hidden,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2519,7 +2519,7 @@ class _MethodBindings {
   global_menu_get_item_tooltip(_menu_root, _idx) {
     DisplayServer.init_method_global_menu_get_item_tooltip();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_get_item_tooltip,
+      _DisplayServer._bindings.method_global_menu_get_item_tooltip,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2530,7 +2530,7 @@ class _MethodBindings {
   global_menu_get_item_state(_menu_root, _idx) {
     DisplayServer.init_method_global_menu_get_item_state();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_get_item_state,
+      _DisplayServer._bindings.method_global_menu_get_item_state,
       this._owner,
 			Variant.Type.INT,
     
@@ -2541,7 +2541,7 @@ class _MethodBindings {
   global_menu_get_item_max_states(_menu_root, _idx) {
     DisplayServer.init_method_global_menu_get_item_max_states();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_get_item_max_states,
+      _DisplayServer._bindings.method_global_menu_get_item_max_states,
       this._owner,
 			Variant.Type.INT,
     
@@ -2552,7 +2552,7 @@ class _MethodBindings {
   global_menu_get_item_icon(_menu_root, _idx) {
     DisplayServer.init_method_global_menu_get_item_icon();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_get_item_icon,
+      _DisplayServer._bindings.method_global_menu_get_item_icon,
       this._owner,
 			Variant.Type.OBJECT,
       _menu_root, _idx
@@ -2562,7 +2562,7 @@ class _MethodBindings {
   global_menu_get_item_indentation_level(_menu_root, _idx) {
     DisplayServer.init_method_global_menu_get_item_indentation_level();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_get_item_indentation_level,
+      _DisplayServer._bindings.method_global_menu_get_item_indentation_level,
       this._owner,
 			Variant.Type.INT,
     
@@ -2573,7 +2573,7 @@ class _MethodBindings {
   global_menu_set_item_checked(_menu_root, _idx, _checked) {
     DisplayServer.init_method_global_menu_set_item_checked();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_global_menu_set_item_checked,
+      _DisplayServer._bindings.method_global_menu_set_item_checked,
       this._owner,
       _menu_root, _idx, _checked
     );
@@ -2582,7 +2582,7 @@ class _MethodBindings {
   global_menu_set_item_checkable(_menu_root, _idx, _checkable) {
     DisplayServer.init_method_global_menu_set_item_checkable();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_global_menu_set_item_checkable,
+      _DisplayServer._bindings.method_global_menu_set_item_checkable,
       this._owner,
       _menu_root, _idx, _checkable
     );
@@ -2591,7 +2591,7 @@ class _MethodBindings {
   global_menu_set_item_radio_checkable(_menu_root, _idx, _checkable) {
     DisplayServer.init_method_global_menu_set_item_radio_checkable();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_global_menu_set_item_radio_checkable,
+      _DisplayServer._bindings.method_global_menu_set_item_radio_checkable,
       this._owner,
       _menu_root, _idx, _checkable
     );
@@ -2600,7 +2600,7 @@ class _MethodBindings {
   global_menu_set_item_callback(_menu_root, _idx, _callback) {
     DisplayServer.init_method_global_menu_set_item_callback();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_global_menu_set_item_callback,
+      _DisplayServer._bindings.method_global_menu_set_item_callback,
       this._owner,
       _menu_root, _idx, _callback
     );
@@ -2609,7 +2609,7 @@ class _MethodBindings {
   global_menu_set_item_hover_callbacks(_menu_root, _idx, _callback) {
     DisplayServer.init_method_global_menu_set_item_hover_callbacks();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_global_menu_set_item_hover_callbacks,
+      _DisplayServer._bindings.method_global_menu_set_item_hover_callbacks,
       this._owner,
       _menu_root, _idx, _callback
     );
@@ -2618,7 +2618,7 @@ class _MethodBindings {
   global_menu_set_item_key_callback(_menu_root, _idx, _key_callback) {
     DisplayServer.init_method_global_menu_set_item_key_callback();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_global_menu_set_item_key_callback,
+      _DisplayServer._bindings.method_global_menu_set_item_key_callback,
       this._owner,
       _menu_root, _idx, _key_callback
     );
@@ -2627,7 +2627,7 @@ class _MethodBindings {
   global_menu_set_item_tag(_menu_root, _idx, _tag) {
     DisplayServer.init_method_global_menu_set_item_tag();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_global_menu_set_item_tag,
+      _DisplayServer._bindings.method_global_menu_set_item_tag,
       this._owner,
       _menu_root, _idx, _tag
     );
@@ -2636,7 +2636,7 @@ class _MethodBindings {
   global_menu_set_item_text(_menu_root, _idx, _text) {
     DisplayServer.init_method_global_menu_set_item_text();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_global_menu_set_item_text,
+      _DisplayServer._bindings.method_global_menu_set_item_text,
       this._owner,
       _menu_root, _idx, _text
     );
@@ -2645,7 +2645,7 @@ class _MethodBindings {
   global_menu_set_item_submenu(_menu_root, _idx, _submenu) {
     DisplayServer.init_method_global_menu_set_item_submenu();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_global_menu_set_item_submenu,
+      _DisplayServer._bindings.method_global_menu_set_item_submenu,
       this._owner,
       _menu_root, _idx, _submenu
     );
@@ -2654,7 +2654,7 @@ class _MethodBindings {
   global_menu_set_item_accelerator(_menu_root, _idx, _keycode) {
     DisplayServer.init_method_global_menu_set_item_accelerator();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_global_menu_set_item_accelerator,
+      _DisplayServer._bindings.method_global_menu_set_item_accelerator,
       this._owner,
       _menu_root, _idx, _keycode
     );
@@ -2663,7 +2663,7 @@ class _MethodBindings {
   global_menu_set_item_disabled(_menu_root, _idx, _disabled) {
     DisplayServer.init_method_global_menu_set_item_disabled();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_global_menu_set_item_disabled,
+      _DisplayServer._bindings.method_global_menu_set_item_disabled,
       this._owner,
       _menu_root, _idx, _disabled
     );
@@ -2672,7 +2672,7 @@ class _MethodBindings {
   global_menu_set_item_hidden(_menu_root, _idx, _hidden) {
     DisplayServer.init_method_global_menu_set_item_hidden();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_global_menu_set_item_hidden,
+      _DisplayServer._bindings.method_global_menu_set_item_hidden,
       this._owner,
       _menu_root, _idx, _hidden
     );
@@ -2681,7 +2681,7 @@ class _MethodBindings {
   global_menu_set_item_tooltip(_menu_root, _idx, _tooltip) {
     DisplayServer.init_method_global_menu_set_item_tooltip();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_global_menu_set_item_tooltip,
+      _DisplayServer._bindings.method_global_menu_set_item_tooltip,
       this._owner,
       _menu_root, _idx, _tooltip
     );
@@ -2690,7 +2690,7 @@ class _MethodBindings {
   global_menu_set_item_state(_menu_root, _idx, _state) {
     DisplayServer.init_method_global_menu_set_item_state();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_global_menu_set_item_state,
+      _DisplayServer._bindings.method_global_menu_set_item_state,
       this._owner,
       _menu_root, _idx, _state
     );
@@ -2699,7 +2699,7 @@ class _MethodBindings {
   global_menu_set_item_max_states(_menu_root, _idx, _max_states) {
     DisplayServer.init_method_global_menu_set_item_max_states();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_global_menu_set_item_max_states,
+      _DisplayServer._bindings.method_global_menu_set_item_max_states,
       this._owner,
       _menu_root, _idx, _max_states
     );
@@ -2708,7 +2708,7 @@ class _MethodBindings {
   global_menu_set_item_icon(_menu_root, _idx, _icon) {
     DisplayServer.init_method_global_menu_set_item_icon();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_global_menu_set_item_icon,
+      _DisplayServer._bindings.method_global_menu_set_item_icon,
       this._owner,
       _menu_root, _idx, _icon
     );
@@ -2717,7 +2717,7 @@ class _MethodBindings {
   global_menu_set_item_indentation_level(_menu_root, _idx, _level) {
     DisplayServer.init_method_global_menu_set_item_indentation_level();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_global_menu_set_item_indentation_level,
+      _DisplayServer._bindings.method_global_menu_set_item_indentation_level,
       this._owner,
       _menu_root, _idx, _level
     );
@@ -2726,7 +2726,7 @@ class _MethodBindings {
   global_menu_get_item_count(_menu_root) {
     DisplayServer.init_method_global_menu_get_item_count();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_get_item_count,
+      _DisplayServer._bindings.method_global_menu_get_item_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -2737,7 +2737,7 @@ class _MethodBindings {
   global_menu_remove_item(_menu_root, _idx) {
     DisplayServer.init_method_global_menu_remove_item();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_global_menu_remove_item,
+      _DisplayServer._bindings.method_global_menu_remove_item,
       this._owner,
       _menu_root, _idx
     );
@@ -2746,7 +2746,7 @@ class _MethodBindings {
   global_menu_clear(_menu_root) {
     DisplayServer.init_method_global_menu_clear();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_global_menu_clear,
+      _DisplayServer._bindings.method_global_menu_clear,
       this._owner,
       _menu_root
     );
@@ -2755,7 +2755,7 @@ class _MethodBindings {
   global_menu_get_system_menu_roots() {
     DisplayServer.init_method_global_menu_get_system_menu_roots();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_global_menu_get_system_menu_roots,
+      _DisplayServer._bindings.method_global_menu_get_system_menu_roots,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -2766,7 +2766,7 @@ class _MethodBindings {
   tts_is_speaking() {
     DisplayServer.init_method_tts_is_speaking();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_tts_is_speaking,
+      _DisplayServer._bindings.method_tts_is_speaking,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2777,7 +2777,7 @@ class _MethodBindings {
   tts_is_paused() {
     DisplayServer.init_method_tts_is_paused();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_tts_is_paused,
+      _DisplayServer._bindings.method_tts_is_paused,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2788,7 +2788,7 @@ class _MethodBindings {
   tts_get_voices() {
     DisplayServer.init_method_tts_get_voices();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_tts_get_voices,
+      _DisplayServer._bindings.method_tts_get_voices,
       this._owner,
 			Variant.Type.ARRAY,
       
@@ -2798,7 +2798,7 @@ class _MethodBindings {
   tts_get_voices_for_language(_language) {
     DisplayServer.init_method_tts_get_voices_for_language();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_tts_get_voices_for_language,
+      _DisplayServer._bindings.method_tts_get_voices_for_language,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -2809,7 +2809,7 @@ class _MethodBindings {
   tts_speak(_text, _voice, _volume, _pitch, _rate, _utterance_id, _interrupt) {
     DisplayServer.init_method_tts_speak();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_tts_speak,
+      _DisplayServer._bindings.method_tts_speak,
       this._owner,
       _text, _voice, _volume, _pitch, _rate, _utterance_id, _interrupt
     );
@@ -2818,7 +2818,7 @@ class _MethodBindings {
   tts_pause() {
     DisplayServer.init_method_tts_pause();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_tts_pause,
+      _DisplayServer._bindings.method_tts_pause,
       this._owner,
       
     );
@@ -2827,7 +2827,7 @@ class _MethodBindings {
   tts_resume() {
     DisplayServer.init_method_tts_resume();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_tts_resume,
+      _DisplayServer._bindings.method_tts_resume,
       this._owner,
       
     );
@@ -2836,7 +2836,7 @@ class _MethodBindings {
   tts_stop() {
     DisplayServer.init_method_tts_stop();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_tts_stop,
+      _DisplayServer._bindings.method_tts_stop,
       this._owner,
       
     );
@@ -2845,7 +2845,7 @@ class _MethodBindings {
   tts_set_utterance_callback(_event, _callable) {
     DisplayServer.init_method_tts_set_utterance_callback();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_tts_set_utterance_callback,
+      _DisplayServer._bindings.method_tts_set_utterance_callback,
       this._owner,
       _event, _callable
     );
@@ -2854,7 +2854,7 @@ class _MethodBindings {
   is_dark_mode_supported() {
     DisplayServer.init_method_is_dark_mode_supported();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_is_dark_mode_supported,
+      _DisplayServer._bindings.method_is_dark_mode_supported,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2865,7 +2865,7 @@ class _MethodBindings {
   is_dark_mode() {
     DisplayServer.init_method_is_dark_mode();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_is_dark_mode,
+      _DisplayServer._bindings.method_is_dark_mode,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2876,7 +2876,7 @@ class _MethodBindings {
   get_accent_color() {
     DisplayServer.init_method_get_accent_color();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_get_accent_color,
+      _DisplayServer._bindings.method_get_accent_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -2887,7 +2887,7 @@ class _MethodBindings {
   get_base_color() {
     DisplayServer.init_method_get_base_color();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_get_base_color,
+      _DisplayServer._bindings.method_get_base_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -2898,7 +2898,7 @@ class _MethodBindings {
   set_system_theme_change_callback(_callable) {
     DisplayServer.init_method_set_system_theme_change_callback();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_set_system_theme_change_callback,
+      _DisplayServer._bindings.method_set_system_theme_change_callback,
       this._owner,
       _callable
     );
@@ -2907,7 +2907,7 @@ class _MethodBindings {
   mouse_set_mode(_mouse_mode) {
     DisplayServer.init_method_mouse_set_mode();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_mouse_set_mode,
+      _DisplayServer._bindings.method_mouse_set_mode,
       this._owner,
       _mouse_mode
     );
@@ -2916,7 +2916,7 @@ class _MethodBindings {
   mouse_get_mode() {
     DisplayServer.init_method_mouse_get_mode();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_mouse_get_mode,
+      _DisplayServer._bindings.method_mouse_get_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -2927,7 +2927,7 @@ class _MethodBindings {
   warp_mouse(_position) {
     DisplayServer.init_method_warp_mouse();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_warp_mouse,
+      _DisplayServer._bindings.method_warp_mouse,
       this._owner,
       _position
     );
@@ -2936,7 +2936,7 @@ class _MethodBindings {
   mouse_get_position() {
     DisplayServer.init_method_mouse_get_position();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_mouse_get_position,
+      _DisplayServer._bindings.method_mouse_get_position,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -2947,7 +2947,7 @@ class _MethodBindings {
   mouse_get_button_state() {
     DisplayServer.init_method_mouse_get_button_state();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_mouse_get_button_state,
+      _DisplayServer._bindings.method_mouse_get_button_state,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -2957,7 +2957,7 @@ class _MethodBindings {
   clipboard_set(_clipboard) {
     DisplayServer.init_method_clipboard_set();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_clipboard_set,
+      _DisplayServer._bindings.method_clipboard_set,
       this._owner,
       _clipboard
     );
@@ -2966,7 +2966,7 @@ class _MethodBindings {
   clipboard_get() {
     DisplayServer.init_method_clipboard_get();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_clipboard_get,
+      _DisplayServer._bindings.method_clipboard_get,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2977,7 +2977,7 @@ class _MethodBindings {
   clipboard_get_image() {
     DisplayServer.init_method_clipboard_get_image();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_clipboard_get_image,
+      _DisplayServer._bindings.method_clipboard_get_image,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -2987,7 +2987,7 @@ class _MethodBindings {
   clipboard_has() {
     DisplayServer.init_method_clipboard_has();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_clipboard_has,
+      _DisplayServer._bindings.method_clipboard_has,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -2998,7 +2998,7 @@ class _MethodBindings {
   clipboard_has_image() {
     DisplayServer.init_method_clipboard_has_image();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_clipboard_has_image,
+      _DisplayServer._bindings.method_clipboard_has_image,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -3009,7 +3009,7 @@ class _MethodBindings {
   clipboard_set_primary(_clipboard_primary) {
     DisplayServer.init_method_clipboard_set_primary();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_clipboard_set_primary,
+      _DisplayServer._bindings.method_clipboard_set_primary,
       this._owner,
       _clipboard_primary
     );
@@ -3018,7 +3018,7 @@ class _MethodBindings {
   clipboard_get_primary() {
     DisplayServer.init_method_clipboard_get_primary();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_clipboard_get_primary,
+      _DisplayServer._bindings.method_clipboard_get_primary,
       this._owner,
 			Variant.Type.STRING,
     
@@ -3029,7 +3029,7 @@ class _MethodBindings {
   get_display_cutouts() {
     DisplayServer.init_method_get_display_cutouts();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_get_display_cutouts,
+      _DisplayServer._bindings.method_get_display_cutouts,
       this._owner,
 			Variant.Type.ARRAY,
       
@@ -3039,7 +3039,7 @@ class _MethodBindings {
   get_display_safe_area() {
     DisplayServer.init_method_get_display_safe_area();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_get_display_safe_area,
+      _DisplayServer._bindings.method_get_display_safe_area,
       this._owner,
 			Variant.Type.RECT2I,
     
@@ -3050,7 +3050,7 @@ class _MethodBindings {
   get_screen_count() {
     DisplayServer.init_method_get_screen_count();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_get_screen_count,
+      _DisplayServer._bindings.method_get_screen_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -3061,7 +3061,7 @@ class _MethodBindings {
   get_primary_screen() {
     DisplayServer.init_method_get_primary_screen();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_get_primary_screen,
+      _DisplayServer._bindings.method_get_primary_screen,
       this._owner,
 			Variant.Type.INT,
     
@@ -3072,7 +3072,7 @@ class _MethodBindings {
   get_keyboard_focus_screen() {
     DisplayServer.init_method_get_keyboard_focus_screen();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_get_keyboard_focus_screen,
+      _DisplayServer._bindings.method_get_keyboard_focus_screen,
       this._owner,
 			Variant.Type.INT,
     
@@ -3083,7 +3083,7 @@ class _MethodBindings {
   get_screen_from_rect(_rect) {
     DisplayServer.init_method_get_screen_from_rect();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_get_screen_from_rect,
+      _DisplayServer._bindings.method_get_screen_from_rect,
       this._owner,
 			Variant.Type.INT,
     
@@ -3094,7 +3094,7 @@ class _MethodBindings {
   screen_get_position(_screen) {
     DisplayServer.init_method_screen_get_position();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_screen_get_position,
+      _DisplayServer._bindings.method_screen_get_position,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -3105,7 +3105,7 @@ class _MethodBindings {
   screen_get_size(_screen) {
     DisplayServer.init_method_screen_get_size();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_screen_get_size,
+      _DisplayServer._bindings.method_screen_get_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -3116,7 +3116,7 @@ class _MethodBindings {
   screen_get_usable_rect(_screen) {
     DisplayServer.init_method_screen_get_usable_rect();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_screen_get_usable_rect,
+      _DisplayServer._bindings.method_screen_get_usable_rect,
       this._owner,
 			Variant.Type.RECT2I,
     
@@ -3127,7 +3127,7 @@ class _MethodBindings {
   screen_get_dpi(_screen) {
     DisplayServer.init_method_screen_get_dpi();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_screen_get_dpi,
+      _DisplayServer._bindings.method_screen_get_dpi,
       this._owner,
 			Variant.Type.INT,
     
@@ -3138,7 +3138,7 @@ class _MethodBindings {
   screen_get_scale(_screen) {
     DisplayServer.init_method_screen_get_scale();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_screen_get_scale,
+      _DisplayServer._bindings.method_screen_get_scale,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -3149,7 +3149,7 @@ class _MethodBindings {
   is_touchscreen_available() {
     DisplayServer.init_method_is_touchscreen_available();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_is_touchscreen_available,
+      _DisplayServer._bindings.method_is_touchscreen_available,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -3160,7 +3160,7 @@ class _MethodBindings {
   screen_get_max_scale() {
     DisplayServer.init_method_screen_get_max_scale();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_screen_get_max_scale,
+      _DisplayServer._bindings.method_screen_get_max_scale,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -3171,7 +3171,7 @@ class _MethodBindings {
   screen_get_refresh_rate(_screen) {
     DisplayServer.init_method_screen_get_refresh_rate();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_screen_get_refresh_rate,
+      _DisplayServer._bindings.method_screen_get_refresh_rate,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -3182,7 +3182,7 @@ class _MethodBindings {
   screen_get_pixel(_position) {
     DisplayServer.init_method_screen_get_pixel();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_screen_get_pixel,
+      _DisplayServer._bindings.method_screen_get_pixel,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -3193,7 +3193,7 @@ class _MethodBindings {
   screen_get_image(_screen) {
     DisplayServer.init_method_screen_get_image();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_screen_get_image,
+      _DisplayServer._bindings.method_screen_get_image,
       this._owner,
 			Variant.Type.OBJECT,
       _screen
@@ -3203,7 +3203,7 @@ class _MethodBindings {
   screen_set_orientation(_orientation, _screen) {
     DisplayServer.init_method_screen_set_orientation();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_screen_set_orientation,
+      _DisplayServer._bindings.method_screen_set_orientation,
       this._owner,
       _orientation, _screen
     );
@@ -3212,7 +3212,7 @@ class _MethodBindings {
   screen_get_orientation(_screen) {
     DisplayServer.init_method_screen_get_orientation();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_screen_get_orientation,
+      _DisplayServer._bindings.method_screen_get_orientation,
       this._owner,
 			Variant.Type.INT,
     
@@ -3223,7 +3223,7 @@ class _MethodBindings {
   screen_set_keep_on(_enable) {
     DisplayServer.init_method_screen_set_keep_on();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_screen_set_keep_on,
+      _DisplayServer._bindings.method_screen_set_keep_on,
       this._owner,
       _enable
     );
@@ -3232,7 +3232,7 @@ class _MethodBindings {
   screen_is_kept_on() {
     DisplayServer.init_method_screen_is_kept_on();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_screen_is_kept_on,
+      _DisplayServer._bindings.method_screen_is_kept_on,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -3243,7 +3243,7 @@ class _MethodBindings {
   get_window_list() {
     DisplayServer.init_method_get_window_list();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_get_window_list,
+      _DisplayServer._bindings.method_get_window_list,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -3254,7 +3254,7 @@ class _MethodBindings {
   get_window_at_screen_position(_position) {
     DisplayServer.init_method_get_window_at_screen_position();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_get_window_at_screen_position,
+      _DisplayServer._bindings.method_get_window_at_screen_position,
       this._owner,
 			Variant.Type.INT,
     
@@ -3265,7 +3265,7 @@ class _MethodBindings {
   window_get_native_handle(_handle_type, _window_id) {
     DisplayServer.init_method_window_get_native_handle();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_window_get_native_handle,
+      _DisplayServer._bindings.method_window_get_native_handle,
       this._owner,
 			Variant.Type.INT,
     
@@ -3276,7 +3276,7 @@ class _MethodBindings {
   window_get_active_popup() {
     DisplayServer.init_method_window_get_active_popup();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_window_get_active_popup,
+      _DisplayServer._bindings.method_window_get_active_popup,
       this._owner,
 			Variant.Type.INT,
     
@@ -3287,7 +3287,7 @@ class _MethodBindings {
   window_set_popup_safe_rect(_window, _rect) {
     DisplayServer.init_method_window_set_popup_safe_rect();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_window_set_popup_safe_rect,
+      _DisplayServer._bindings.method_window_set_popup_safe_rect,
       this._owner,
       _window, _rect
     );
@@ -3296,7 +3296,7 @@ class _MethodBindings {
   window_get_popup_safe_rect(_window) {
     DisplayServer.init_method_window_get_popup_safe_rect();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_window_get_popup_safe_rect,
+      _DisplayServer._bindings.method_window_get_popup_safe_rect,
       this._owner,
 			Variant.Type.RECT2I,
     
@@ -3307,7 +3307,7 @@ class _MethodBindings {
   window_set_title(_title, _window_id) {
     DisplayServer.init_method_window_set_title();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_window_set_title,
+      _DisplayServer._bindings.method_window_set_title,
       this._owner,
       _title, _window_id
     );
@@ -3316,7 +3316,7 @@ class _MethodBindings {
   window_get_title_size(_title, _window_id) {
     DisplayServer.init_method_window_get_title_size();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_window_get_title_size,
+      _DisplayServer._bindings.method_window_get_title_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -3327,7 +3327,7 @@ class _MethodBindings {
   window_set_mouse_passthrough(_region, _window_id) {
     DisplayServer.init_method_window_set_mouse_passthrough();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_window_set_mouse_passthrough,
+      _DisplayServer._bindings.method_window_set_mouse_passthrough,
       this._owner,
       _region, _window_id
     );
@@ -3336,7 +3336,7 @@ class _MethodBindings {
   window_get_current_screen(_window_id) {
     DisplayServer.init_method_window_get_current_screen();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_window_get_current_screen,
+      _DisplayServer._bindings.method_window_get_current_screen,
       this._owner,
 			Variant.Type.INT,
     
@@ -3347,7 +3347,7 @@ class _MethodBindings {
   window_set_current_screen(_screen, _window_id) {
     DisplayServer.init_method_window_set_current_screen();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_window_set_current_screen,
+      _DisplayServer._bindings.method_window_set_current_screen,
       this._owner,
       _screen, _window_id
     );
@@ -3356,7 +3356,7 @@ class _MethodBindings {
   window_get_position(_window_id) {
     DisplayServer.init_method_window_get_position();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_window_get_position,
+      _DisplayServer._bindings.method_window_get_position,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -3367,7 +3367,7 @@ class _MethodBindings {
   window_get_position_with_decorations(_window_id) {
     DisplayServer.init_method_window_get_position_with_decorations();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_window_get_position_with_decorations,
+      _DisplayServer._bindings.method_window_get_position_with_decorations,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -3378,7 +3378,7 @@ class _MethodBindings {
   window_set_position(_position, _window_id) {
     DisplayServer.init_method_window_set_position();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_window_set_position,
+      _DisplayServer._bindings.method_window_set_position,
       this._owner,
       _position, _window_id
     );
@@ -3387,7 +3387,7 @@ class _MethodBindings {
   window_get_size(_window_id) {
     DisplayServer.init_method_window_get_size();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_window_get_size,
+      _DisplayServer._bindings.method_window_get_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -3398,7 +3398,7 @@ class _MethodBindings {
   window_set_size(_size, _window_id) {
     DisplayServer.init_method_window_set_size();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_window_set_size,
+      _DisplayServer._bindings.method_window_set_size,
       this._owner,
       _size, _window_id
     );
@@ -3407,7 +3407,7 @@ class _MethodBindings {
   window_set_rect_changed_callback(_callback, _window_id) {
     DisplayServer.init_method_window_set_rect_changed_callback();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_window_set_rect_changed_callback,
+      _DisplayServer._bindings.method_window_set_rect_changed_callback,
       this._owner,
       _callback, _window_id
     );
@@ -3416,7 +3416,7 @@ class _MethodBindings {
   window_set_window_event_callback(_callback, _window_id) {
     DisplayServer.init_method_window_set_window_event_callback();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_window_set_window_event_callback,
+      _DisplayServer._bindings.method_window_set_window_event_callback,
       this._owner,
       _callback, _window_id
     );
@@ -3425,7 +3425,7 @@ class _MethodBindings {
   window_set_input_event_callback(_callback, _window_id) {
     DisplayServer.init_method_window_set_input_event_callback();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_window_set_input_event_callback,
+      _DisplayServer._bindings.method_window_set_input_event_callback,
       this._owner,
       _callback, _window_id
     );
@@ -3434,7 +3434,7 @@ class _MethodBindings {
   window_set_input_text_callback(_callback, _window_id) {
     DisplayServer.init_method_window_set_input_text_callback();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_window_set_input_text_callback,
+      _DisplayServer._bindings.method_window_set_input_text_callback,
       this._owner,
       _callback, _window_id
     );
@@ -3443,7 +3443,7 @@ class _MethodBindings {
   window_set_drop_files_callback(_callback, _window_id) {
     DisplayServer.init_method_window_set_drop_files_callback();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_window_set_drop_files_callback,
+      _DisplayServer._bindings.method_window_set_drop_files_callback,
       this._owner,
       _callback, _window_id
     );
@@ -3452,7 +3452,7 @@ class _MethodBindings {
   window_get_attached_instance_id(_window_id) {
     DisplayServer.init_method_window_get_attached_instance_id();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_window_get_attached_instance_id,
+      _DisplayServer._bindings.method_window_get_attached_instance_id,
       this._owner,
 			Variant.Type.INT,
     
@@ -3463,7 +3463,7 @@ class _MethodBindings {
   window_get_max_size(_window_id) {
     DisplayServer.init_method_window_get_max_size();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_window_get_max_size,
+      _DisplayServer._bindings.method_window_get_max_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -3474,7 +3474,7 @@ class _MethodBindings {
   window_set_max_size(_max_size, _window_id) {
     DisplayServer.init_method_window_set_max_size();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_window_set_max_size,
+      _DisplayServer._bindings.method_window_set_max_size,
       this._owner,
       _max_size, _window_id
     );
@@ -3483,7 +3483,7 @@ class _MethodBindings {
   window_get_min_size(_window_id) {
     DisplayServer.init_method_window_get_min_size();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_window_get_min_size,
+      _DisplayServer._bindings.method_window_get_min_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -3494,7 +3494,7 @@ class _MethodBindings {
   window_set_min_size(_min_size, _window_id) {
     DisplayServer.init_method_window_set_min_size();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_window_set_min_size,
+      _DisplayServer._bindings.method_window_set_min_size,
       this._owner,
       _min_size, _window_id
     );
@@ -3503,7 +3503,7 @@ class _MethodBindings {
   window_get_size_with_decorations(_window_id) {
     DisplayServer.init_method_window_get_size_with_decorations();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_window_get_size_with_decorations,
+      _DisplayServer._bindings.method_window_get_size_with_decorations,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -3514,7 +3514,7 @@ class _MethodBindings {
   window_get_mode(_window_id) {
     DisplayServer.init_method_window_get_mode();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_window_get_mode,
+      _DisplayServer._bindings.method_window_get_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -3525,7 +3525,7 @@ class _MethodBindings {
   window_set_mode(_mode, _window_id) {
     DisplayServer.init_method_window_set_mode();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_window_set_mode,
+      _DisplayServer._bindings.method_window_set_mode,
       this._owner,
       _mode, _window_id
     );
@@ -3534,7 +3534,7 @@ class _MethodBindings {
   window_set_flag(_flag, _enabled, _window_id) {
     DisplayServer.init_method_window_set_flag();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_window_set_flag,
+      _DisplayServer._bindings.method_window_set_flag,
       this._owner,
       _flag, _enabled, _window_id
     );
@@ -3543,7 +3543,7 @@ class _MethodBindings {
   window_get_flag(_flag, _window_id) {
     DisplayServer.init_method_window_get_flag();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_window_get_flag,
+      _DisplayServer._bindings.method_window_get_flag,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -3554,7 +3554,7 @@ class _MethodBindings {
   window_set_window_buttons_offset(_offset, _window_id) {
     DisplayServer.init_method_window_set_window_buttons_offset();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_window_set_window_buttons_offset,
+      _DisplayServer._bindings.method_window_set_window_buttons_offset,
       this._owner,
       _offset, _window_id
     );
@@ -3563,7 +3563,7 @@ class _MethodBindings {
   window_get_safe_title_margins(_window_id) {
     DisplayServer.init_method_window_get_safe_title_margins();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_window_get_safe_title_margins,
+      _DisplayServer._bindings.method_window_get_safe_title_margins,
       this._owner,
 			Variant.Type.VECTOR3I,
     
@@ -3574,7 +3574,7 @@ class _MethodBindings {
   window_request_attention(_window_id) {
     DisplayServer.init_method_window_request_attention();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_window_request_attention,
+      _DisplayServer._bindings.method_window_request_attention,
       this._owner,
       _window_id
     );
@@ -3583,7 +3583,7 @@ class _MethodBindings {
   window_move_to_foreground(_window_id) {
     DisplayServer.init_method_window_move_to_foreground();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_window_move_to_foreground,
+      _DisplayServer._bindings.method_window_move_to_foreground,
       this._owner,
       _window_id
     );
@@ -3592,7 +3592,7 @@ class _MethodBindings {
   window_is_focused(_window_id) {
     DisplayServer.init_method_window_is_focused();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_window_is_focused,
+      _DisplayServer._bindings.method_window_is_focused,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -3603,7 +3603,7 @@ class _MethodBindings {
   window_can_draw(_window_id) {
     DisplayServer.init_method_window_can_draw();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_window_can_draw,
+      _DisplayServer._bindings.method_window_can_draw,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -3614,7 +3614,7 @@ class _MethodBindings {
   window_set_transient(_window_id, _parent_window_id) {
     DisplayServer.init_method_window_set_transient();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_window_set_transient,
+      _DisplayServer._bindings.method_window_set_transient,
       this._owner,
       _window_id, _parent_window_id
     );
@@ -3623,7 +3623,7 @@ class _MethodBindings {
   window_set_exclusive(_window_id, _exclusive) {
     DisplayServer.init_method_window_set_exclusive();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_window_set_exclusive,
+      _DisplayServer._bindings.method_window_set_exclusive,
       this._owner,
       _window_id, _exclusive
     );
@@ -3632,7 +3632,7 @@ class _MethodBindings {
   window_set_ime_active(_active, _window_id) {
     DisplayServer.init_method_window_set_ime_active();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_window_set_ime_active,
+      _DisplayServer._bindings.method_window_set_ime_active,
       this._owner,
       _active, _window_id
     );
@@ -3641,7 +3641,7 @@ class _MethodBindings {
   window_set_ime_position(_position, _window_id) {
     DisplayServer.init_method_window_set_ime_position();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_window_set_ime_position,
+      _DisplayServer._bindings.method_window_set_ime_position,
       this._owner,
       _position, _window_id
     );
@@ -3650,7 +3650,7 @@ class _MethodBindings {
   window_set_vsync_mode(_vsync_mode, _window_id) {
     DisplayServer.init_method_window_set_vsync_mode();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_window_set_vsync_mode,
+      _DisplayServer._bindings.method_window_set_vsync_mode,
       this._owner,
       _vsync_mode, _window_id
     );
@@ -3659,7 +3659,7 @@ class _MethodBindings {
   window_get_vsync_mode(_window_id) {
     DisplayServer.init_method_window_get_vsync_mode();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_window_get_vsync_mode,
+      _DisplayServer._bindings.method_window_get_vsync_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -3670,7 +3670,7 @@ class _MethodBindings {
   window_is_maximize_allowed(_window_id) {
     DisplayServer.init_method_window_is_maximize_allowed();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_window_is_maximize_allowed,
+      _DisplayServer._bindings.method_window_is_maximize_allowed,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -3681,7 +3681,7 @@ class _MethodBindings {
   window_maximize_on_title_dbl_click() {
     DisplayServer.init_method_window_maximize_on_title_dbl_click();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_window_maximize_on_title_dbl_click,
+      _DisplayServer._bindings.method_window_maximize_on_title_dbl_click,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -3692,7 +3692,7 @@ class _MethodBindings {
   window_minimize_on_title_dbl_click() {
     DisplayServer.init_method_window_minimize_on_title_dbl_click();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_window_minimize_on_title_dbl_click,
+      _DisplayServer._bindings.method_window_minimize_on_title_dbl_click,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -3703,7 +3703,7 @@ class _MethodBindings {
   ime_get_selection() {
     DisplayServer.init_method_ime_get_selection();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_ime_get_selection,
+      _DisplayServer._bindings.method_ime_get_selection,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -3714,7 +3714,7 @@ class _MethodBindings {
   ime_get_text() {
     DisplayServer.init_method_ime_get_text();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_ime_get_text,
+      _DisplayServer._bindings.method_ime_get_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -3725,7 +3725,7 @@ class _MethodBindings {
   virtual_keyboard_show(_existing_text, _position, _type, _max_length, _cursor_start, _cursor_end) {
     DisplayServer.init_method_virtual_keyboard_show();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_virtual_keyboard_show,
+      _DisplayServer._bindings.method_virtual_keyboard_show,
       this._owner,
       _existing_text, _position, _type, _max_length, _cursor_start, _cursor_end
     );
@@ -3734,7 +3734,7 @@ class _MethodBindings {
   virtual_keyboard_hide() {
     DisplayServer.init_method_virtual_keyboard_hide();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_virtual_keyboard_hide,
+      _DisplayServer._bindings.method_virtual_keyboard_hide,
       this._owner,
       
     );
@@ -3743,7 +3743,7 @@ class _MethodBindings {
   virtual_keyboard_get_height() {
     DisplayServer.init_method_virtual_keyboard_get_height();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_virtual_keyboard_get_height,
+      _DisplayServer._bindings.method_virtual_keyboard_get_height,
       this._owner,
 			Variant.Type.INT,
     
@@ -3754,7 +3754,7 @@ class _MethodBindings {
   cursor_set_shape(_shape) {
     DisplayServer.init_method_cursor_set_shape();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_cursor_set_shape,
+      _DisplayServer._bindings.method_cursor_set_shape,
       this._owner,
       _shape
     );
@@ -3763,7 +3763,7 @@ class _MethodBindings {
   cursor_get_shape() {
     DisplayServer.init_method_cursor_get_shape();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_cursor_get_shape,
+      _DisplayServer._bindings.method_cursor_get_shape,
       this._owner,
 			Variant.Type.INT,
     
@@ -3774,7 +3774,7 @@ class _MethodBindings {
   cursor_set_custom_image(_cursor, _shape, _hotspot) {
     DisplayServer.init_method_cursor_set_custom_image();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_cursor_set_custom_image,
+      _DisplayServer._bindings.method_cursor_set_custom_image,
       this._owner,
       _cursor, _shape, _hotspot
     );
@@ -3783,7 +3783,7 @@ class _MethodBindings {
   get_swap_cancel_ok() {
     DisplayServer.init_method_get_swap_cancel_ok();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_get_swap_cancel_ok,
+      _DisplayServer._bindings.method_get_swap_cancel_ok,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -3794,7 +3794,7 @@ class _MethodBindings {
   enable_for_stealing_focus(_process_id) {
     DisplayServer.init_method_enable_for_stealing_focus();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_enable_for_stealing_focus,
+      _DisplayServer._bindings.method_enable_for_stealing_focus,
       this._owner,
       _process_id
     );
@@ -3803,7 +3803,7 @@ class _MethodBindings {
   dialog_show(_title, _description, _buttons, _callback) {
     DisplayServer.init_method_dialog_show();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_dialog_show,
+      _DisplayServer._bindings.method_dialog_show,
       this._owner,
 			Variant.Type.INT,
     
@@ -3814,7 +3814,7 @@ class _MethodBindings {
   dialog_input_text(_title, _description, _existing_text, _callback) {
     DisplayServer.init_method_dialog_input_text();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_dialog_input_text,
+      _DisplayServer._bindings.method_dialog_input_text,
       this._owner,
 			Variant.Type.INT,
     
@@ -3825,7 +3825,7 @@ class _MethodBindings {
   file_dialog_show(_title, _current_directory, _filename, _show_hidden, _mode, _filters, _callback) {
     DisplayServer.init_method_file_dialog_show();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_file_dialog_show,
+      _DisplayServer._bindings.method_file_dialog_show,
       this._owner,
 			Variant.Type.INT,
     
@@ -3836,7 +3836,7 @@ class _MethodBindings {
   file_dialog_with_options_show(_title, _current_directory, _root, _filename, _show_hidden, _mode, _filters, _options, _callback) {
     DisplayServer.init_method_file_dialog_with_options_show();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_file_dialog_with_options_show,
+      _DisplayServer._bindings.method_file_dialog_with_options_show,
       this._owner,
 			Variant.Type.INT,
     
@@ -3847,7 +3847,7 @@ class _MethodBindings {
   keyboard_get_layout_count() {
     DisplayServer.init_method_keyboard_get_layout_count();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_keyboard_get_layout_count,
+      _DisplayServer._bindings.method_keyboard_get_layout_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -3858,7 +3858,7 @@ class _MethodBindings {
   keyboard_get_current_layout() {
     DisplayServer.init_method_keyboard_get_current_layout();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_keyboard_get_current_layout,
+      _DisplayServer._bindings.method_keyboard_get_current_layout,
       this._owner,
 			Variant.Type.INT,
     
@@ -3869,7 +3869,7 @@ class _MethodBindings {
   keyboard_set_current_layout(_index) {
     DisplayServer.init_method_keyboard_set_current_layout();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_keyboard_set_current_layout,
+      _DisplayServer._bindings.method_keyboard_set_current_layout,
       this._owner,
       _index
     );
@@ -3878,7 +3878,7 @@ class _MethodBindings {
   keyboard_get_layout_language(_index) {
     DisplayServer.init_method_keyboard_get_layout_language();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_keyboard_get_layout_language,
+      _DisplayServer._bindings.method_keyboard_get_layout_language,
       this._owner,
 			Variant.Type.STRING,
     
@@ -3889,7 +3889,7 @@ class _MethodBindings {
   keyboard_get_layout_name(_index) {
     DisplayServer.init_method_keyboard_get_layout_name();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_keyboard_get_layout_name,
+      _DisplayServer._bindings.method_keyboard_get_layout_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -3900,7 +3900,7 @@ class _MethodBindings {
   keyboard_get_keycode_from_physical(_keycode) {
     DisplayServer.init_method_keyboard_get_keycode_from_physical();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_keyboard_get_keycode_from_physical,
+      _DisplayServer._bindings.method_keyboard_get_keycode_from_physical,
       this._owner,
 			Variant.Type.INT,
     
@@ -3911,7 +3911,7 @@ class _MethodBindings {
   keyboard_get_label_from_physical(_keycode) {
     DisplayServer.init_method_keyboard_get_label_from_physical();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_keyboard_get_label_from_physical,
+      _DisplayServer._bindings.method_keyboard_get_label_from_physical,
       this._owner,
 			Variant.Type.INT,
     
@@ -3922,7 +3922,7 @@ class _MethodBindings {
   process_events() {
     DisplayServer.init_method_process_events();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_process_events,
+      _DisplayServer._bindings.method_process_events,
       this._owner,
       
     );
@@ -3931,7 +3931,7 @@ class _MethodBindings {
   force_process_and_drop_events() {
     DisplayServer.init_method_force_process_and_drop_events();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_force_process_and_drop_events,
+      _DisplayServer._bindings.method_force_process_and_drop_events,
       this._owner,
       
     );
@@ -3940,7 +3940,7 @@ class _MethodBindings {
   set_native_icon(_filename) {
     DisplayServer.init_method_set_native_icon();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_set_native_icon,
+      _DisplayServer._bindings.method_set_native_icon,
       this._owner,
       _filename
     );
@@ -3949,7 +3949,7 @@ class _MethodBindings {
   set_icon(_image) {
     DisplayServer.init_method_set_icon();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_set_icon,
+      _DisplayServer._bindings.method_set_icon,
       this._owner,
       _image
     );
@@ -3958,7 +3958,7 @@ class _MethodBindings {
   create_status_indicator(_icon, _tooltip, _callback) {
     DisplayServer.init_method_create_status_indicator();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_create_status_indicator,
+      _DisplayServer._bindings.method_create_status_indicator,
       this._owner,
 			Variant.Type.INT,
     
@@ -3969,7 +3969,7 @@ class _MethodBindings {
   status_indicator_set_icon(_id, _icon) {
     DisplayServer.init_method_status_indicator_set_icon();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_status_indicator_set_icon,
+      _DisplayServer._bindings.method_status_indicator_set_icon,
       this._owner,
       _id, _icon
     );
@@ -3978,7 +3978,7 @@ class _MethodBindings {
   status_indicator_set_tooltip(_id, _tooltip) {
     DisplayServer.init_method_status_indicator_set_tooltip();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_status_indicator_set_tooltip,
+      _DisplayServer._bindings.method_status_indicator_set_tooltip,
       this._owner,
       _id, _tooltip
     );
@@ -3987,7 +3987,7 @@ class _MethodBindings {
   status_indicator_set_menu(_id, _menu_rid) {
     DisplayServer.init_method_status_indicator_set_menu();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_status_indicator_set_menu,
+      _DisplayServer._bindings.method_status_indicator_set_menu,
       this._owner,
       _id, _menu_rid
     );
@@ -3996,7 +3996,7 @@ class _MethodBindings {
   status_indicator_set_callback(_id, _callback) {
     DisplayServer.init_method_status_indicator_set_callback();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_status_indicator_set_callback,
+      _DisplayServer._bindings.method_status_indicator_set_callback,
       this._owner,
       _id, _callback
     );
@@ -4005,7 +4005,7 @@ class _MethodBindings {
   status_indicator_get_rect(_id) {
     DisplayServer.init_method_status_indicator_get_rect();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_status_indicator_get_rect,
+      _DisplayServer._bindings.method_status_indicator_get_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -4016,7 +4016,7 @@ class _MethodBindings {
   delete_status_indicator(_id) {
     DisplayServer.init_method_delete_status_indicator();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_delete_status_indicator,
+      _DisplayServer._bindings.method_delete_status_indicator,
       this._owner,
       _id
     );
@@ -4025,7 +4025,7 @@ class _MethodBindings {
   tablet_get_driver_count() {
     DisplayServer.init_method_tablet_get_driver_count();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_tablet_get_driver_count,
+      _DisplayServer._bindings.method_tablet_get_driver_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -4036,7 +4036,7 @@ class _MethodBindings {
   tablet_get_driver_name(_idx) {
     DisplayServer.init_method_tablet_get_driver_name();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_tablet_get_driver_name,
+      _DisplayServer._bindings.method_tablet_get_driver_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -4047,7 +4047,7 @@ class _MethodBindings {
   tablet_get_current_driver() {
     DisplayServer.init_method_tablet_get_current_driver();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_tablet_get_current_driver,
+      _DisplayServer._bindings.method_tablet_get_current_driver,
       this._owner,
 			Variant.Type.STRING,
     
@@ -4058,7 +4058,7 @@ class _MethodBindings {
   tablet_set_current_driver(_name) {
     DisplayServer.init_method_tablet_set_current_driver();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_tablet_set_current_driver,
+      _DisplayServer._bindings.method_tablet_set_current_driver,
       this._owner,
       _name
     );
@@ -4067,7 +4067,7 @@ class _MethodBindings {
   is_window_transparency_available() {
     DisplayServer.init_method_is_window_transparency_available();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_is_window_transparency_available,
+      _DisplayServer._bindings.method_is_window_transparency_available,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -4078,7 +4078,7 @@ class _MethodBindings {
   register_additional_output(_object) {
     DisplayServer.init_method_register_additional_output();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_register_additional_output,
+      _DisplayServer._bindings.method_register_additional_output,
       this._owner,
       _object
     );
@@ -4087,7 +4087,7 @@ class _MethodBindings {
   unregister_additional_output(_object) {
     DisplayServer.init_method_unregister_additional_output();
     return _call_native_mb_no_ret(
-      _DisplayServer.#_bindings.method_unregister_additional_output,
+      _DisplayServer._bindings.method_unregister_additional_output,
       this._owner,
       _object
     );
@@ -4096,7 +4096,7 @@ class _MethodBindings {
   has_additional_outputs() {
     DisplayServer.init_method_has_additional_outputs();
     return _call_native_mb_ret(
-      _DisplayServer.#_bindings.method_has_additional_outputs,
+      _DisplayServer._bindings.method_has_additional_outputs,
       this._owner,
 			Variant.Type.BOOL,
     

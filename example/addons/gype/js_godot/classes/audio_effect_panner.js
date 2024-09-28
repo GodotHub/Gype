@@ -1,22 +1,23 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { AudioEffect } from '@js_godot/classes/audio_effect'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_pan;
   method_get_pan;
 }
+@GodotClass
 export class AudioEffectPanner extends AudioEffect{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -26,10 +27,10 @@ export class AudioEffectPanner extends AudioEffect{
     }
   }
   static init_method_set_pan() {
-    if (!this.#_bindings.method_set_pan) {
+    if (!this._bindings.method_set_pan) {
       let classname = new StringName("AudioEffectPanner");
       let methodname = new StringName("set_pan");
-      this.#_bindings.method_set_pan = internal.classdb_get_method_bind(
+      this._bindings.method_set_pan = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -37,10 +38,10 @@ export class AudioEffectPanner extends AudioEffect{
     }
   }
   static init_method_get_pan() {
-    if (!this.#_bindings.method_get_pan) {
+    if (!this._bindings.method_get_pan) {
       let classname = new StringName("AudioEffectPanner");
       let methodname = new StringName("get_pan");
-      this.#_bindings.method_get_pan = internal.classdb_get_method_bind(
+      this._bindings.method_get_pan = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -53,7 +54,7 @@ export class AudioEffectPanner extends AudioEffect{
   set_pan(_cpanume) {
     AudioEffectPanner.init_method_set_pan();
     return _call_native_mb_no_ret(
-      AudioEffectPanner.#_bindings.method_set_pan,
+      AudioEffectPanner._bindings.method_set_pan,
       this._owner,
       _cpanume
     );
@@ -62,7 +63,7 @@ export class AudioEffectPanner extends AudioEffect{
   get_pan() {
     AudioEffectPanner.init_method_get_pan();
     return _call_native_mb_ret(
-      AudioEffectPanner.#_bindings.method_get_pan,
+      AudioEffectPanner._bindings.method_get_pan,
       this._owner,
 			Variant.Type.FLOAT,
     

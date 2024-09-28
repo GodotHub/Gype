@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GodotObject } from '@js_godot/classes/godot_object'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_create_action;
@@ -23,10 +24,10 @@ class _MethodBindings {
   method_get_object_history_id;
   method_get_history_undo_redo;
 }
+@GodotClass
 export class EditorUndoRedoManager extends GodotObject{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -36,10 +37,10 @@ export class EditorUndoRedoManager extends GodotObject{
     }
   }
   static init_method_create_action() {
-    if (!this.#_bindings.method_create_action) {
+    if (!this._bindings.method_create_action) {
       let classname = new StringName("EditorUndoRedoManager");
       let methodname = new StringName("create_action");
-      this.#_bindings.method_create_action = internal.classdb_get_method_bind(
+      this._bindings.method_create_action = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2107025470
@@ -47,10 +48,10 @@ export class EditorUndoRedoManager extends GodotObject{
     }
   }
   static init_method_commit_action() {
-    if (!this.#_bindings.method_commit_action) {
+    if (!this._bindings.method_commit_action) {
       let classname = new StringName("EditorUndoRedoManager");
       let methodname = new StringName("commit_action");
-      this.#_bindings.method_commit_action = internal.classdb_get_method_bind(
+      this._bindings.method_commit_action = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3216645846
@@ -58,10 +59,10 @@ export class EditorUndoRedoManager extends GodotObject{
     }
   }
   static init_method_is_committing_action() {
-    if (!this.#_bindings.method_is_committing_action) {
+    if (!this._bindings.method_is_committing_action) {
       let classname = new StringName("EditorUndoRedoManager");
       let methodname = new StringName("is_committing_action");
-      this.#_bindings.method_is_committing_action = internal.classdb_get_method_bind(
+      this._bindings.method_is_committing_action = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -69,10 +70,10 @@ export class EditorUndoRedoManager extends GodotObject{
     }
   }
   static init_method_force_fixed_history() {
-    if (!this.#_bindings.method_force_fixed_history) {
+    if (!this._bindings.method_force_fixed_history) {
       let classname = new StringName("EditorUndoRedoManager");
       let methodname = new StringName("force_fixed_history");
-      this.#_bindings.method_force_fixed_history = internal.classdb_get_method_bind(
+      this._bindings.method_force_fixed_history = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -80,10 +81,10 @@ export class EditorUndoRedoManager extends GodotObject{
     }
   }
   static init_method_add_do_method() {
-    if (!this.#_bindings.method_add_do_method) {
+    if (!this._bindings.method_add_do_method) {
       let classname = new StringName("EditorUndoRedoManager");
       let methodname = new StringName("add_do_method");
-      this.#_bindings.method_add_do_method = internal.classdb_get_method_bind(
+      this._bindings.method_add_do_method = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1517810467
@@ -91,10 +92,10 @@ export class EditorUndoRedoManager extends GodotObject{
     }
   }
   static init_method_add_undo_method() {
-    if (!this.#_bindings.method_add_undo_method) {
+    if (!this._bindings.method_add_undo_method) {
       let classname = new StringName("EditorUndoRedoManager");
       let methodname = new StringName("add_undo_method");
-      this.#_bindings.method_add_undo_method = internal.classdb_get_method_bind(
+      this._bindings.method_add_undo_method = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1517810467
@@ -102,10 +103,10 @@ export class EditorUndoRedoManager extends GodotObject{
     }
   }
   static init_method_add_do_property() {
-    if (!this.#_bindings.method_add_do_property) {
+    if (!this._bindings.method_add_do_property) {
       let classname = new StringName("EditorUndoRedoManager");
       let methodname = new StringName("add_do_property");
-      this.#_bindings.method_add_do_property = internal.classdb_get_method_bind(
+      this._bindings.method_add_do_property = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1017172818
@@ -113,10 +114,10 @@ export class EditorUndoRedoManager extends GodotObject{
     }
   }
   static init_method_add_undo_property() {
-    if (!this.#_bindings.method_add_undo_property) {
+    if (!this._bindings.method_add_undo_property) {
       let classname = new StringName("EditorUndoRedoManager");
       let methodname = new StringName("add_undo_property");
-      this.#_bindings.method_add_undo_property = internal.classdb_get_method_bind(
+      this._bindings.method_add_undo_property = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1017172818
@@ -124,10 +125,10 @@ export class EditorUndoRedoManager extends GodotObject{
     }
   }
   static init_method_add_do_reference() {
-    if (!this.#_bindings.method_add_do_reference) {
+    if (!this._bindings.method_add_do_reference) {
       let classname = new StringName("EditorUndoRedoManager");
       let methodname = new StringName("add_do_reference");
-      this.#_bindings.method_add_do_reference = internal.classdb_get_method_bind(
+      this._bindings.method_add_do_reference = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3975164845
@@ -135,10 +136,10 @@ export class EditorUndoRedoManager extends GodotObject{
     }
   }
   static init_method_add_undo_reference() {
-    if (!this.#_bindings.method_add_undo_reference) {
+    if (!this._bindings.method_add_undo_reference) {
       let classname = new StringName("EditorUndoRedoManager");
       let methodname = new StringName("add_undo_reference");
-      this.#_bindings.method_add_undo_reference = internal.classdb_get_method_bind(
+      this._bindings.method_add_undo_reference = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3975164845
@@ -146,10 +147,10 @@ export class EditorUndoRedoManager extends GodotObject{
     }
   }
   static init_method_get_object_history_id() {
-    if (!this.#_bindings.method_get_object_history_id) {
+    if (!this._bindings.method_get_object_history_id) {
       let classname = new StringName("EditorUndoRedoManager");
       let methodname = new StringName("get_object_history_id");
-      this.#_bindings.method_get_object_history_id = internal.classdb_get_method_bind(
+      this._bindings.method_get_object_history_id = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1107568780
@@ -157,10 +158,10 @@ export class EditorUndoRedoManager extends GodotObject{
     }
   }
   static init_method_get_history_undo_redo() {
-    if (!this.#_bindings.method_get_history_undo_redo) {
+    if (!this._bindings.method_get_history_undo_redo) {
       let classname = new StringName("EditorUndoRedoManager");
       let methodname = new StringName("get_history_undo_redo");
-      this.#_bindings.method_get_history_undo_redo = internal.classdb_get_method_bind(
+      this._bindings.method_get_history_undo_redo = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2417974513
@@ -173,7 +174,7 @@ export class EditorUndoRedoManager extends GodotObject{
   create_action(_name, _merge_mode, _custom_context, _backward_undo_ops) {
     EditorUndoRedoManager.init_method_create_action();
     return _call_native_mb_no_ret(
-      EditorUndoRedoManager.#_bindings.method_create_action,
+      EditorUndoRedoManager._bindings.method_create_action,
       this._owner,
       _name, _merge_mode, _custom_context, _backward_undo_ops
     );
@@ -182,7 +183,7 @@ export class EditorUndoRedoManager extends GodotObject{
   commit_action(_execute) {
     EditorUndoRedoManager.init_method_commit_action();
     return _call_native_mb_no_ret(
-      EditorUndoRedoManager.#_bindings.method_commit_action,
+      EditorUndoRedoManager._bindings.method_commit_action,
       this._owner,
       _execute
     );
@@ -191,7 +192,7 @@ export class EditorUndoRedoManager extends GodotObject{
   is_committing_action() {
     EditorUndoRedoManager.init_method_is_committing_action();
     return _call_native_mb_ret(
-      EditorUndoRedoManager.#_bindings.method_is_committing_action,
+      EditorUndoRedoManager._bindings.method_is_committing_action,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -202,7 +203,7 @@ export class EditorUndoRedoManager extends GodotObject{
   force_fixed_history() {
     EditorUndoRedoManager.init_method_force_fixed_history();
     return _call_native_mb_no_ret(
-      EditorUndoRedoManager.#_bindings.method_force_fixed_history,
+      EditorUndoRedoManager._bindings.method_force_fixed_history,
       this._owner,
       
     );
@@ -211,7 +212,7 @@ export class EditorUndoRedoManager extends GodotObject{
   add_do_method(_object, _method) {
     EditorUndoRedoManager.init_method_add_do_method();
     return _call_native_mb_no_ret(
-      EditorUndoRedoManager.#_bindings.method_add_do_method,
+      EditorUndoRedoManager._bindings.method_add_do_method,
       this._owner,
       _object, _method
     );
@@ -220,7 +221,7 @@ export class EditorUndoRedoManager extends GodotObject{
   add_undo_method(_object, _method) {
     EditorUndoRedoManager.init_method_add_undo_method();
     return _call_native_mb_no_ret(
-      EditorUndoRedoManager.#_bindings.method_add_undo_method,
+      EditorUndoRedoManager._bindings.method_add_undo_method,
       this._owner,
       _object, _method
     );
@@ -229,7 +230,7 @@ export class EditorUndoRedoManager extends GodotObject{
   add_do_property(_object, _property, _value) {
     EditorUndoRedoManager.init_method_add_do_property();
     return _call_native_mb_no_ret(
-      EditorUndoRedoManager.#_bindings.method_add_do_property,
+      EditorUndoRedoManager._bindings.method_add_do_property,
       this._owner,
       _object, _property, _value
     );
@@ -238,7 +239,7 @@ export class EditorUndoRedoManager extends GodotObject{
   add_undo_property(_object, _property, _value) {
     EditorUndoRedoManager.init_method_add_undo_property();
     return _call_native_mb_no_ret(
-      EditorUndoRedoManager.#_bindings.method_add_undo_property,
+      EditorUndoRedoManager._bindings.method_add_undo_property,
       this._owner,
       _object, _property, _value
     );
@@ -247,7 +248,7 @@ export class EditorUndoRedoManager extends GodotObject{
   add_do_reference(_object) {
     EditorUndoRedoManager.init_method_add_do_reference();
     return _call_native_mb_no_ret(
-      EditorUndoRedoManager.#_bindings.method_add_do_reference,
+      EditorUndoRedoManager._bindings.method_add_do_reference,
       this._owner,
       _object
     );
@@ -256,7 +257,7 @@ export class EditorUndoRedoManager extends GodotObject{
   add_undo_reference(_object) {
     EditorUndoRedoManager.init_method_add_undo_reference();
     return _call_native_mb_no_ret(
-      EditorUndoRedoManager.#_bindings.method_add_undo_reference,
+      EditorUndoRedoManager._bindings.method_add_undo_reference,
       this._owner,
       _object
     );
@@ -265,7 +266,7 @@ export class EditorUndoRedoManager extends GodotObject{
   get_object_history_id(_object) {
     EditorUndoRedoManager.init_method_get_object_history_id();
     return _call_native_mb_ret(
-      EditorUndoRedoManager.#_bindings.method_get_object_history_id,
+      EditorUndoRedoManager._bindings.method_get_object_history_id,
       this._owner,
 			Variant.Type.INT,
     
@@ -276,7 +277,7 @@ export class EditorUndoRedoManager extends GodotObject{
   get_history_undo_redo(_id) {
     EditorUndoRedoManager.init_method_get_history_undo_redo();
     return _call_native_mb_ret(
-      EditorUndoRedoManager.#_bindings.method_get_history_undo_redo,
+      EditorUndoRedoManager._bindings.method_get_history_undo_redo,
       this._owner,
 			Variant.Type.OBJECT,
       _id

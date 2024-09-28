@@ -1,14 +1,15 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_bytecode;
@@ -17,10 +18,10 @@ class _MethodBindings {
   method_set_base_error;
   method_get_base_error;
 }
+@GodotClass
 export class RDShaderFile extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -30,10 +31,10 @@ export class RDShaderFile extends Resource{
     }
   }
   static init_method_set_bytecode() {
-    if (!this.#_bindings.method_set_bytecode) {
+    if (!this._bindings.method_set_bytecode) {
       let classname = new StringName("RDShaderFile");
       let methodname = new StringName("set_bytecode");
-      this.#_bindings.method_set_bytecode = internal.classdb_get_method_bind(
+      this._bindings.method_set_bytecode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1558064255
@@ -41,10 +42,10 @@ export class RDShaderFile extends Resource{
     }
   }
   static init_method_get_spirv() {
-    if (!this.#_bindings.method_get_spirv) {
+    if (!this._bindings.method_get_spirv) {
       let classname = new StringName("RDShaderFile");
       let methodname = new StringName("get_spirv");
-      this.#_bindings.method_get_spirv = internal.classdb_get_method_bind(
+      this._bindings.method_get_spirv = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3340165340
@@ -52,10 +53,10 @@ export class RDShaderFile extends Resource{
     }
   }
   static init_method_get_version_list() {
-    if (!this.#_bindings.method_get_version_list) {
+    if (!this._bindings.method_get_version_list) {
       let classname = new StringName("RDShaderFile");
       let methodname = new StringName("get_version_list");
-      this.#_bindings.method_get_version_list = internal.classdb_get_method_bind(
+      this._bindings.method_get_version_list = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -63,10 +64,10 @@ export class RDShaderFile extends Resource{
     }
   }
   static init_method_set_base_error() {
-    if (!this.#_bindings.method_set_base_error) {
+    if (!this._bindings.method_set_base_error) {
       let classname = new StringName("RDShaderFile");
       let methodname = new StringName("set_base_error");
-      this.#_bindings.method_set_base_error = internal.classdb_get_method_bind(
+      this._bindings.method_set_base_error = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -74,10 +75,10 @@ export class RDShaderFile extends Resource{
     }
   }
   static init_method_get_base_error() {
-    if (!this.#_bindings.method_get_base_error) {
+    if (!this._bindings.method_get_base_error) {
       let classname = new StringName("RDShaderFile");
       let methodname = new StringName("get_base_error");
-      this.#_bindings.method_get_base_error = internal.classdb_get_method_bind(
+      this._bindings.method_get_base_error = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -90,7 +91,7 @@ export class RDShaderFile extends Resource{
   set_bytecode(_bytecode, _version) {
     RDShaderFile.init_method_set_bytecode();
     return _call_native_mb_no_ret(
-      RDShaderFile.#_bindings.method_set_bytecode,
+      RDShaderFile._bindings.method_set_bytecode,
       this._owner,
       _bytecode, _version
     );
@@ -99,7 +100,7 @@ export class RDShaderFile extends Resource{
   get_spirv(_version) {
     RDShaderFile.init_method_get_spirv();
     return _call_native_mb_ret(
-      RDShaderFile.#_bindings.method_get_spirv,
+      RDShaderFile._bindings.method_get_spirv,
       this._owner,
 			Variant.Type.OBJECT,
       _version
@@ -109,7 +110,7 @@ export class RDShaderFile extends Resource{
   get_version_list() {
     RDShaderFile.init_method_get_version_list();
     return _call_native_mb_ret(
-      RDShaderFile.#_bindings.method_get_version_list,
+      RDShaderFile._bindings.method_get_version_list,
       this._owner,
 			Variant.Type.ARRAY,
       
@@ -119,7 +120,7 @@ export class RDShaderFile extends Resource{
   set_base_error(_error) {
     RDShaderFile.init_method_set_base_error();
     return _call_native_mb_no_ret(
-      RDShaderFile.#_bindings.method_set_base_error,
+      RDShaderFile._bindings.method_set_base_error,
       this._owner,
       _error
     );
@@ -128,7 +129,7 @@ export class RDShaderFile extends Resource{
   get_base_error() {
     RDShaderFile.init_method_get_base_error();
     return _call_native_mb_ret(
-      RDShaderFile.#_bindings.method_get_base_error,
+      RDShaderFile._bindings.method_get_base_error,
       this._owner,
 			Variant.Type.STRING,
     

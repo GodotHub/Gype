@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { AudioStreamPlayback } from '@js_godot/classes/audio_stream_playback'
 import {
   call_utility_ret,
@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_play_stream;
@@ -16,10 +17,10 @@ class _MethodBindings {
   method_is_stream_playing;
   method_stop_stream;
 }
+@GodotClass
 export class AudioStreamPlaybackPolyphonic extends AudioStreamPlayback{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -29,10 +30,10 @@ export class AudioStreamPlaybackPolyphonic extends AudioStreamPlayback{
     }
   }
   static init_method_play_stream() {
-    if (!this.#_bindings.method_play_stream) {
+    if (!this._bindings.method_play_stream) {
       let classname = new StringName("AudioStreamPlaybackPolyphonic");
       let methodname = new StringName("play_stream");
-      this.#_bindings.method_play_stream = internal.classdb_get_method_bind(
+      this._bindings.method_play_stream = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1846744803
@@ -40,10 +41,10 @@ export class AudioStreamPlaybackPolyphonic extends AudioStreamPlayback{
     }
   }
   static init_method_set_stream_volume() {
-    if (!this.#_bindings.method_set_stream_volume) {
+    if (!this._bindings.method_set_stream_volume) {
       let classname = new StringName("AudioStreamPlaybackPolyphonic");
       let methodname = new StringName("set_stream_volume");
-      this.#_bindings.method_set_stream_volume = internal.classdb_get_method_bind(
+      this._bindings.method_set_stream_volume = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1602489585
@@ -51,10 +52,10 @@ export class AudioStreamPlaybackPolyphonic extends AudioStreamPlayback{
     }
   }
   static init_method_set_stream_pitch_scale() {
-    if (!this.#_bindings.method_set_stream_pitch_scale) {
+    if (!this._bindings.method_set_stream_pitch_scale) {
       let classname = new StringName("AudioStreamPlaybackPolyphonic");
       let methodname = new StringName("set_stream_pitch_scale");
-      this.#_bindings.method_set_stream_pitch_scale = internal.classdb_get_method_bind(
+      this._bindings.method_set_stream_pitch_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1602489585
@@ -62,10 +63,10 @@ export class AudioStreamPlaybackPolyphonic extends AudioStreamPlayback{
     }
   }
   static init_method_is_stream_playing() {
-    if (!this.#_bindings.method_is_stream_playing) {
+    if (!this._bindings.method_is_stream_playing) {
       let classname = new StringName("AudioStreamPlaybackPolyphonic");
       let methodname = new StringName("is_stream_playing");
-      this.#_bindings.method_is_stream_playing = internal.classdb_get_method_bind(
+      this._bindings.method_is_stream_playing = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -73,10 +74,10 @@ export class AudioStreamPlaybackPolyphonic extends AudioStreamPlayback{
     }
   }
   static init_method_stop_stream() {
-    if (!this.#_bindings.method_stop_stream) {
+    if (!this._bindings.method_stop_stream) {
       let classname = new StringName("AudioStreamPlaybackPolyphonic");
       let methodname = new StringName("stop_stream");
-      this.#_bindings.method_stop_stream = internal.classdb_get_method_bind(
+      this._bindings.method_stop_stream = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -89,7 +90,7 @@ export class AudioStreamPlaybackPolyphonic extends AudioStreamPlayback{
   play_stream(_stream, _from_offset, _volume_db, _pitch_scale, _playback_type, _bus) {
     AudioStreamPlaybackPolyphonic.init_method_play_stream();
     return _call_native_mb_ret(
-      AudioStreamPlaybackPolyphonic.#_bindings.method_play_stream,
+      AudioStreamPlaybackPolyphonic._bindings.method_play_stream,
       this._owner,
 			Variant.Type.INT,
     
@@ -100,7 +101,7 @@ export class AudioStreamPlaybackPolyphonic extends AudioStreamPlayback{
   set_stream_volume(_stream, _volume_db) {
     AudioStreamPlaybackPolyphonic.init_method_set_stream_volume();
     return _call_native_mb_no_ret(
-      AudioStreamPlaybackPolyphonic.#_bindings.method_set_stream_volume,
+      AudioStreamPlaybackPolyphonic._bindings.method_set_stream_volume,
       this._owner,
       _stream, _volume_db
     );
@@ -109,7 +110,7 @@ export class AudioStreamPlaybackPolyphonic extends AudioStreamPlayback{
   set_stream_pitch_scale(_stream, _pitch_scale) {
     AudioStreamPlaybackPolyphonic.init_method_set_stream_pitch_scale();
     return _call_native_mb_no_ret(
-      AudioStreamPlaybackPolyphonic.#_bindings.method_set_stream_pitch_scale,
+      AudioStreamPlaybackPolyphonic._bindings.method_set_stream_pitch_scale,
       this._owner,
       _stream, _pitch_scale
     );
@@ -118,7 +119,7 @@ export class AudioStreamPlaybackPolyphonic extends AudioStreamPlayback{
   is_stream_playing(_stream) {
     AudioStreamPlaybackPolyphonic.init_method_is_stream_playing();
     return _call_native_mb_ret(
-      AudioStreamPlaybackPolyphonic.#_bindings.method_is_stream_playing,
+      AudioStreamPlaybackPolyphonic._bindings.method_is_stream_playing,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -129,7 +130,7 @@ export class AudioStreamPlaybackPolyphonic extends AudioStreamPlayback{
   stop_stream(_stream) {
     AudioStreamPlaybackPolyphonic.init_method_stop_stream();
     return _call_native_mb_no_ret(
-      AudioStreamPlaybackPolyphonic.#_bindings.method_stop_stream,
+      AudioStreamPlaybackPolyphonic._bindings.method_stop_stream,
       this._owner,
       _stream
     );

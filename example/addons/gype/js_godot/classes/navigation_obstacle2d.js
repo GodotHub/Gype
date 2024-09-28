@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { Node2D } from '@js_godot/classes/node2d'
 import {
   call_utility_ret,
@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_rid;
@@ -30,10 +31,10 @@ class _MethodBindings {
   method_set_carve_navigation_mesh;
   method_get_carve_navigation_mesh;
 }
+@GodotClass
 export class NavigationObstacle2D extends Node2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -43,10 +44,10 @@ export class NavigationObstacle2D extends Node2D{
     }
   }
   static init_method_get_rid() {
-    if (!this.#_bindings.method_get_rid) {
+    if (!this._bindings.method_get_rid) {
       let classname = new StringName("NavigationObstacle2D");
       let methodname = new StringName("get_rid");
-      this.#_bindings.method_get_rid = internal.classdb_get_method_bind(
+      this._bindings.method_get_rid = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2944877500
@@ -54,10 +55,10 @@ export class NavigationObstacle2D extends Node2D{
     }
   }
   static init_method_set_avoidance_enabled() {
-    if (!this.#_bindings.method_set_avoidance_enabled) {
+    if (!this._bindings.method_set_avoidance_enabled) {
       let classname = new StringName("NavigationObstacle2D");
       let methodname = new StringName("set_avoidance_enabled");
-      this.#_bindings.method_set_avoidance_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_avoidance_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -65,10 +66,10 @@ export class NavigationObstacle2D extends Node2D{
     }
   }
   static init_method_get_avoidance_enabled() {
-    if (!this.#_bindings.method_get_avoidance_enabled) {
+    if (!this._bindings.method_get_avoidance_enabled) {
       let classname = new StringName("NavigationObstacle2D");
       let methodname = new StringName("get_avoidance_enabled");
-      this.#_bindings.method_get_avoidance_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_get_avoidance_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -76,10 +77,10 @@ export class NavigationObstacle2D extends Node2D{
     }
   }
   static init_method_set_navigation_map() {
-    if (!this.#_bindings.method_set_navigation_map) {
+    if (!this._bindings.method_set_navigation_map) {
       let classname = new StringName("NavigationObstacle2D");
       let methodname = new StringName("set_navigation_map");
-      this.#_bindings.method_set_navigation_map = internal.classdb_get_method_bind(
+      this._bindings.method_set_navigation_map = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2722037293
@@ -87,10 +88,10 @@ export class NavigationObstacle2D extends Node2D{
     }
   }
   static init_method_get_navigation_map() {
-    if (!this.#_bindings.method_get_navigation_map) {
+    if (!this._bindings.method_get_navigation_map) {
       let classname = new StringName("NavigationObstacle2D");
       let methodname = new StringName("get_navigation_map");
-      this.#_bindings.method_get_navigation_map = internal.classdb_get_method_bind(
+      this._bindings.method_get_navigation_map = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2944877500
@@ -98,10 +99,10 @@ export class NavigationObstacle2D extends Node2D{
     }
   }
   static init_method_set_radius() {
-    if (!this.#_bindings.method_set_radius) {
+    if (!this._bindings.method_set_radius) {
       let classname = new StringName("NavigationObstacle2D");
       let methodname = new StringName("set_radius");
-      this.#_bindings.method_set_radius = internal.classdb_get_method_bind(
+      this._bindings.method_set_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -109,10 +110,10 @@ export class NavigationObstacle2D extends Node2D{
     }
   }
   static init_method_get_radius() {
-    if (!this.#_bindings.method_get_radius) {
+    if (!this._bindings.method_get_radius) {
       let classname = new StringName("NavigationObstacle2D");
       let methodname = new StringName("get_radius");
-      this.#_bindings.method_get_radius = internal.classdb_get_method_bind(
+      this._bindings.method_get_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -120,10 +121,10 @@ export class NavigationObstacle2D extends Node2D{
     }
   }
   static init_method_set_velocity() {
-    if (!this.#_bindings.method_set_velocity) {
+    if (!this._bindings.method_set_velocity) {
       let classname = new StringName("NavigationObstacle2D");
       let methodname = new StringName("set_velocity");
-      this.#_bindings.method_set_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_set_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -131,10 +132,10 @@ export class NavigationObstacle2D extends Node2D{
     }
   }
   static init_method_get_velocity() {
-    if (!this.#_bindings.method_get_velocity) {
+    if (!this._bindings.method_get_velocity) {
       let classname = new StringName("NavigationObstacle2D");
       let methodname = new StringName("get_velocity");
-      this.#_bindings.method_get_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_get_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -142,10 +143,10 @@ export class NavigationObstacle2D extends Node2D{
     }
   }
   static init_method_set_vertices() {
-    if (!this.#_bindings.method_set_vertices) {
+    if (!this._bindings.method_set_vertices) {
       let classname = new StringName("NavigationObstacle2D");
       let methodname = new StringName("set_vertices");
-      this.#_bindings.method_set_vertices = internal.classdb_get_method_bind(
+      this._bindings.method_set_vertices = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1509147220
@@ -153,10 +154,10 @@ export class NavigationObstacle2D extends Node2D{
     }
   }
   static init_method_get_vertices() {
-    if (!this.#_bindings.method_get_vertices) {
+    if (!this._bindings.method_get_vertices) {
       let classname = new StringName("NavigationObstacle2D");
       let methodname = new StringName("get_vertices");
-      this.#_bindings.method_get_vertices = internal.classdb_get_method_bind(
+      this._bindings.method_get_vertices = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2961356807
@@ -164,10 +165,10 @@ export class NavigationObstacle2D extends Node2D{
     }
   }
   static init_method_set_avoidance_layers() {
-    if (!this.#_bindings.method_set_avoidance_layers) {
+    if (!this._bindings.method_set_avoidance_layers) {
       let classname = new StringName("NavigationObstacle2D");
       let methodname = new StringName("set_avoidance_layers");
-      this.#_bindings.method_set_avoidance_layers = internal.classdb_get_method_bind(
+      this._bindings.method_set_avoidance_layers = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -175,10 +176,10 @@ export class NavigationObstacle2D extends Node2D{
     }
   }
   static init_method_get_avoidance_layers() {
-    if (!this.#_bindings.method_get_avoidance_layers) {
+    if (!this._bindings.method_get_avoidance_layers) {
       let classname = new StringName("NavigationObstacle2D");
       let methodname = new StringName("get_avoidance_layers");
-      this.#_bindings.method_get_avoidance_layers = internal.classdb_get_method_bind(
+      this._bindings.method_get_avoidance_layers = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -186,10 +187,10 @@ export class NavigationObstacle2D extends Node2D{
     }
   }
   static init_method_set_avoidance_layer_value() {
-    if (!this.#_bindings.method_set_avoidance_layer_value) {
+    if (!this._bindings.method_set_avoidance_layer_value) {
       let classname = new StringName("NavigationObstacle2D");
       let methodname = new StringName("set_avoidance_layer_value");
-      this.#_bindings.method_set_avoidance_layer_value = internal.classdb_get_method_bind(
+      this._bindings.method_set_avoidance_layer_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -197,10 +198,10 @@ export class NavigationObstacle2D extends Node2D{
     }
   }
   static init_method_get_avoidance_layer_value() {
-    if (!this.#_bindings.method_get_avoidance_layer_value) {
+    if (!this._bindings.method_get_avoidance_layer_value) {
       let classname = new StringName("NavigationObstacle2D");
       let methodname = new StringName("get_avoidance_layer_value");
-      this.#_bindings.method_get_avoidance_layer_value = internal.classdb_get_method_bind(
+      this._bindings.method_get_avoidance_layer_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -208,10 +209,10 @@ export class NavigationObstacle2D extends Node2D{
     }
   }
   static init_method_set_affect_navigation_mesh() {
-    if (!this.#_bindings.method_set_affect_navigation_mesh) {
+    if (!this._bindings.method_set_affect_navigation_mesh) {
       let classname = new StringName("NavigationObstacle2D");
       let methodname = new StringName("set_affect_navigation_mesh");
-      this.#_bindings.method_set_affect_navigation_mesh = internal.classdb_get_method_bind(
+      this._bindings.method_set_affect_navigation_mesh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -219,10 +220,10 @@ export class NavigationObstacle2D extends Node2D{
     }
   }
   static init_method_get_affect_navigation_mesh() {
-    if (!this.#_bindings.method_get_affect_navigation_mesh) {
+    if (!this._bindings.method_get_affect_navigation_mesh) {
       let classname = new StringName("NavigationObstacle2D");
       let methodname = new StringName("get_affect_navigation_mesh");
-      this.#_bindings.method_get_affect_navigation_mesh = internal.classdb_get_method_bind(
+      this._bindings.method_get_affect_navigation_mesh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -230,10 +231,10 @@ export class NavigationObstacle2D extends Node2D{
     }
   }
   static init_method_set_carve_navigation_mesh() {
-    if (!this.#_bindings.method_set_carve_navigation_mesh) {
+    if (!this._bindings.method_set_carve_navigation_mesh) {
       let classname = new StringName("NavigationObstacle2D");
       let methodname = new StringName("set_carve_navigation_mesh");
-      this.#_bindings.method_set_carve_navigation_mesh = internal.classdb_get_method_bind(
+      this._bindings.method_set_carve_navigation_mesh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -241,10 +242,10 @@ export class NavigationObstacle2D extends Node2D{
     }
   }
   static init_method_get_carve_navigation_mesh() {
-    if (!this.#_bindings.method_get_carve_navigation_mesh) {
+    if (!this._bindings.method_get_carve_navigation_mesh) {
       let classname = new StringName("NavigationObstacle2D");
       let methodname = new StringName("get_carve_navigation_mesh");
-      this.#_bindings.method_get_carve_navigation_mesh = internal.classdb_get_method_bind(
+      this._bindings.method_get_carve_navigation_mesh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -257,7 +258,7 @@ export class NavigationObstacle2D extends Node2D{
   get_rid() {
     NavigationObstacle2D.init_method_get_rid();
     return _call_native_mb_ret(
-      NavigationObstacle2D.#_bindings.method_get_rid,
+      NavigationObstacle2D._bindings.method_get_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -268,7 +269,7 @@ export class NavigationObstacle2D extends Node2D{
   set_avoidance_enabled(_enabled) {
     NavigationObstacle2D.init_method_set_avoidance_enabled();
     return _call_native_mb_no_ret(
-      NavigationObstacle2D.#_bindings.method_set_avoidance_enabled,
+      NavigationObstacle2D._bindings.method_set_avoidance_enabled,
       this._owner,
       _enabled
     );
@@ -277,7 +278,7 @@ export class NavigationObstacle2D extends Node2D{
   get_avoidance_enabled() {
     NavigationObstacle2D.init_method_get_avoidance_enabled();
     return _call_native_mb_ret(
-      NavigationObstacle2D.#_bindings.method_get_avoidance_enabled,
+      NavigationObstacle2D._bindings.method_get_avoidance_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -288,7 +289,7 @@ export class NavigationObstacle2D extends Node2D{
   set_navigation_map(_navigation_map) {
     NavigationObstacle2D.init_method_set_navigation_map();
     return _call_native_mb_no_ret(
-      NavigationObstacle2D.#_bindings.method_set_navigation_map,
+      NavigationObstacle2D._bindings.method_set_navigation_map,
       this._owner,
       _navigation_map
     );
@@ -297,7 +298,7 @@ export class NavigationObstacle2D extends Node2D{
   get_navigation_map() {
     NavigationObstacle2D.init_method_get_navigation_map();
     return _call_native_mb_ret(
-      NavigationObstacle2D.#_bindings.method_get_navigation_map,
+      NavigationObstacle2D._bindings.method_get_navigation_map,
       this._owner,
 			Variant.Type.RID,
     
@@ -308,7 +309,7 @@ export class NavigationObstacle2D extends Node2D{
   set_radius(_radius) {
     NavigationObstacle2D.init_method_set_radius();
     return _call_native_mb_no_ret(
-      NavigationObstacle2D.#_bindings.method_set_radius,
+      NavigationObstacle2D._bindings.method_set_radius,
       this._owner,
       _radius
     );
@@ -317,7 +318,7 @@ export class NavigationObstacle2D extends Node2D{
   get_radius() {
     NavigationObstacle2D.init_method_get_radius();
     return _call_native_mb_ret(
-      NavigationObstacle2D.#_bindings.method_get_radius,
+      NavigationObstacle2D._bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -328,7 +329,7 @@ export class NavigationObstacle2D extends Node2D{
   set_velocity(_velocity) {
     NavigationObstacle2D.init_method_set_velocity();
     return _call_native_mb_no_ret(
-      NavigationObstacle2D.#_bindings.method_set_velocity,
+      NavigationObstacle2D._bindings.method_set_velocity,
       this._owner,
       _velocity
     );
@@ -337,7 +338,7 @@ export class NavigationObstacle2D extends Node2D{
   get_velocity() {
     NavigationObstacle2D.init_method_get_velocity();
     return _call_native_mb_ret(
-      NavigationObstacle2D.#_bindings.method_get_velocity,
+      NavigationObstacle2D._bindings.method_get_velocity,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -348,7 +349,7 @@ export class NavigationObstacle2D extends Node2D{
   set_vertices(_vertices) {
     NavigationObstacle2D.init_method_set_vertices();
     return _call_native_mb_no_ret(
-      NavigationObstacle2D.#_bindings.method_set_vertices,
+      NavigationObstacle2D._bindings.method_set_vertices,
       this._owner,
       _vertices
     );
@@ -357,7 +358,7 @@ export class NavigationObstacle2D extends Node2D{
   get_vertices() {
     NavigationObstacle2D.init_method_get_vertices();
     return _call_native_mb_ret(
-      NavigationObstacle2D.#_bindings.method_get_vertices,
+      NavigationObstacle2D._bindings.method_get_vertices,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -368,7 +369,7 @@ export class NavigationObstacle2D extends Node2D{
   set_avoidance_layers(_layers) {
     NavigationObstacle2D.init_method_set_avoidance_layers();
     return _call_native_mb_no_ret(
-      NavigationObstacle2D.#_bindings.method_set_avoidance_layers,
+      NavigationObstacle2D._bindings.method_set_avoidance_layers,
       this._owner,
       _layers
     );
@@ -377,7 +378,7 @@ export class NavigationObstacle2D extends Node2D{
   get_avoidance_layers() {
     NavigationObstacle2D.init_method_get_avoidance_layers();
     return _call_native_mb_ret(
-      NavigationObstacle2D.#_bindings.method_get_avoidance_layers,
+      NavigationObstacle2D._bindings.method_get_avoidance_layers,
       this._owner,
 			Variant.Type.INT,
     
@@ -388,7 +389,7 @@ export class NavigationObstacle2D extends Node2D{
   set_avoidance_layer_value(_layer_number, _value) {
     NavigationObstacle2D.init_method_set_avoidance_layer_value();
     return _call_native_mb_no_ret(
-      NavigationObstacle2D.#_bindings.method_set_avoidance_layer_value,
+      NavigationObstacle2D._bindings.method_set_avoidance_layer_value,
       this._owner,
       _layer_number, _value
     );
@@ -397,7 +398,7 @@ export class NavigationObstacle2D extends Node2D{
   get_avoidance_layer_value(_layer_number) {
     NavigationObstacle2D.init_method_get_avoidance_layer_value();
     return _call_native_mb_ret(
-      NavigationObstacle2D.#_bindings.method_get_avoidance_layer_value,
+      NavigationObstacle2D._bindings.method_get_avoidance_layer_value,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -408,7 +409,7 @@ export class NavigationObstacle2D extends Node2D{
   set_affect_navigation_mesh(_enabled) {
     NavigationObstacle2D.init_method_set_affect_navigation_mesh();
     return _call_native_mb_no_ret(
-      NavigationObstacle2D.#_bindings.method_set_affect_navigation_mesh,
+      NavigationObstacle2D._bindings.method_set_affect_navigation_mesh,
       this._owner,
       _enabled
     );
@@ -417,7 +418,7 @@ export class NavigationObstacle2D extends Node2D{
   get_affect_navigation_mesh() {
     NavigationObstacle2D.init_method_get_affect_navigation_mesh();
     return _call_native_mb_ret(
-      NavigationObstacle2D.#_bindings.method_get_affect_navigation_mesh,
+      NavigationObstacle2D._bindings.method_get_affect_navigation_mesh,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -428,7 +429,7 @@ export class NavigationObstacle2D extends Node2D{
   set_carve_navigation_mesh(_enabled) {
     NavigationObstacle2D.init_method_set_carve_navigation_mesh();
     return _call_native_mb_no_ret(
-      NavigationObstacle2D.#_bindings.method_set_carve_navigation_mesh,
+      NavigationObstacle2D._bindings.method_set_carve_navigation_mesh,
       this._owner,
       _enabled
     );
@@ -437,7 +438,7 @@ export class NavigationObstacle2D extends Node2D{
   get_carve_navigation_mesh() {
     NavigationObstacle2D.init_method_get_carve_navigation_mesh();
     return _call_native_mb_ret(
-      NavigationObstacle2D.#_bindings.method_get_carve_navigation_mesh,
+      NavigationObstacle2D._bindings.method_get_carve_navigation_mesh,
       this._owner,
 			Variant.Type.BOOL,
     

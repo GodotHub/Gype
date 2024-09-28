@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { SkeletonModifier3D } from '@js_godot/classes/skeleton_modifier3d'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_body_tracker;
@@ -17,10 +18,10 @@ class _MethodBindings {
   method_set_bone_update;
   method_get_bone_update;
 }
+@GodotClass
 export class XRBodyModifier3D extends SkeletonModifier3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -30,10 +31,10 @@ export class XRBodyModifier3D extends SkeletonModifier3D{
     }
   }
   static init_method_set_body_tracker() {
-    if (!this.#_bindings.method_set_body_tracker) {
+    if (!this._bindings.method_set_body_tracker) {
       let classname = new StringName("XRBodyModifier3D");
       let methodname = new StringName("set_body_tracker");
-      this.#_bindings.method_set_body_tracker = internal.classdb_get_method_bind(
+      this._bindings.method_set_body_tracker = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -41,10 +42,10 @@ export class XRBodyModifier3D extends SkeletonModifier3D{
     }
   }
   static init_method_get_body_tracker() {
-    if (!this.#_bindings.method_get_body_tracker) {
+    if (!this._bindings.method_get_body_tracker) {
       let classname = new StringName("XRBodyModifier3D");
       let methodname = new StringName("get_body_tracker");
-      this.#_bindings.method_get_body_tracker = internal.classdb_get_method_bind(
+      this._bindings.method_get_body_tracker = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2002593661
@@ -52,10 +53,10 @@ export class XRBodyModifier3D extends SkeletonModifier3D{
     }
   }
   static init_method_set_body_update() {
-    if (!this.#_bindings.method_set_body_update) {
+    if (!this._bindings.method_set_body_update) {
       let classname = new StringName("XRBodyModifier3D");
       let methodname = new StringName("set_body_update");
-      this.#_bindings.method_set_body_update = internal.classdb_get_method_bind(
+      this._bindings.method_set_body_update = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2211199417
@@ -63,10 +64,10 @@ export class XRBodyModifier3D extends SkeletonModifier3D{
     }
   }
   static init_method_get_body_update() {
-    if (!this.#_bindings.method_get_body_update) {
+    if (!this._bindings.method_get_body_update) {
       let classname = new StringName("XRBodyModifier3D");
       let methodname = new StringName("get_body_update");
-      this.#_bindings.method_get_body_update = internal.classdb_get_method_bind(
+      this._bindings.method_get_body_update = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2642335328
@@ -74,10 +75,10 @@ export class XRBodyModifier3D extends SkeletonModifier3D{
     }
   }
   static init_method_set_bone_update() {
-    if (!this.#_bindings.method_set_bone_update) {
+    if (!this._bindings.method_set_bone_update) {
       let classname = new StringName("XRBodyModifier3D");
       let methodname = new StringName("set_bone_update");
-      this.#_bindings.method_set_bone_update = internal.classdb_get_method_bind(
+      this._bindings.method_set_bone_update = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3356796943
@@ -85,10 +86,10 @@ export class XRBodyModifier3D extends SkeletonModifier3D{
     }
   }
   static init_method_get_bone_update() {
-    if (!this.#_bindings.method_get_bone_update) {
+    if (!this._bindings.method_get_bone_update) {
       let classname = new StringName("XRBodyModifier3D");
       let methodname = new StringName("get_bone_update");
-      this.#_bindings.method_get_bone_update = internal.classdb_get_method_bind(
+      this._bindings.method_get_bone_update = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1309305964
@@ -101,7 +102,7 @@ export class XRBodyModifier3D extends SkeletonModifier3D{
   set_body_tracker(_tracker_name) {
     XRBodyModifier3D.init_method_set_body_tracker();
     return _call_native_mb_no_ret(
-      XRBodyModifier3D.#_bindings.method_set_body_tracker,
+      XRBodyModifier3D._bindings.method_set_body_tracker,
       this._owner,
       _tracker_name
     );
@@ -110,7 +111,7 @@ export class XRBodyModifier3D extends SkeletonModifier3D{
   get_body_tracker() {
     XRBodyModifier3D.init_method_get_body_tracker();
     return _call_native_mb_ret(
-      XRBodyModifier3D.#_bindings.method_get_body_tracker,
+      XRBodyModifier3D._bindings.method_get_body_tracker,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -121,7 +122,7 @@ export class XRBodyModifier3D extends SkeletonModifier3D{
   set_body_update(_body_update) {
     XRBodyModifier3D.init_method_set_body_update();
     return _call_native_mb_no_ret(
-      XRBodyModifier3D.#_bindings.method_set_body_update,
+      XRBodyModifier3D._bindings.method_set_body_update,
       this._owner,
       _body_update
     );
@@ -130,7 +131,7 @@ export class XRBodyModifier3D extends SkeletonModifier3D{
   get_body_update() {
     XRBodyModifier3D.init_method_get_body_update();
     return _call_native_mb_ret(
-      XRBodyModifier3D.#_bindings.method_get_body_update,
+      XRBodyModifier3D._bindings.method_get_body_update,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -140,7 +141,7 @@ export class XRBodyModifier3D extends SkeletonModifier3D{
   set_bone_update(_bone_update) {
     XRBodyModifier3D.init_method_set_bone_update();
     return _call_native_mb_no_ret(
-      XRBodyModifier3D.#_bindings.method_set_bone_update,
+      XRBodyModifier3D._bindings.method_set_bone_update,
       this._owner,
       _bone_update
     );
@@ -149,7 +150,7 @@ export class XRBodyModifier3D extends SkeletonModifier3D{
   get_bone_update() {
     XRBodyModifier3D.init_method_get_bone_update();
     return _call_native_mb_ret(
-      XRBodyModifier3D.#_bindings.method_get_bone_update,
+      XRBodyModifier3D._bindings.method_get_bone_update,
       this._owner,
 			Variant.Type.INT,
     

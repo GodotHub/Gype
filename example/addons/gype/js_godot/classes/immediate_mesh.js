@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Mesh } from '@js_godot/classes/mesh'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_surface_begin;
@@ -21,10 +22,10 @@ class _MethodBindings {
   method_surface_end;
   method_clear_surfaces;
 }
+@GodotClass
 export class ImmediateMesh extends Mesh{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -34,10 +35,10 @@ export class ImmediateMesh extends Mesh{
     }
   }
   static init_method_surface_begin() {
-    if (!this.#_bindings.method_surface_begin) {
+    if (!this._bindings.method_surface_begin) {
       let classname = new StringName("ImmediateMesh");
       let methodname = new StringName("surface_begin");
-      this.#_bindings.method_surface_begin = internal.classdb_get_method_bind(
+      this._bindings.method_surface_begin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2794442543
@@ -45,10 +46,10 @@ export class ImmediateMesh extends Mesh{
     }
   }
   static init_method_surface_set_color() {
-    if (!this.#_bindings.method_surface_set_color) {
+    if (!this._bindings.method_surface_set_color) {
       let classname = new StringName("ImmediateMesh");
       let methodname = new StringName("surface_set_color");
-      this.#_bindings.method_surface_set_color = internal.classdb_get_method_bind(
+      this._bindings.method_surface_set_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -56,10 +57,10 @@ export class ImmediateMesh extends Mesh{
     }
   }
   static init_method_surface_set_normal() {
-    if (!this.#_bindings.method_surface_set_normal) {
+    if (!this._bindings.method_surface_set_normal) {
       let classname = new StringName("ImmediateMesh");
       let methodname = new StringName("surface_set_normal");
-      this.#_bindings.method_surface_set_normal = internal.classdb_get_method_bind(
+      this._bindings.method_surface_set_normal = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -67,10 +68,10 @@ export class ImmediateMesh extends Mesh{
     }
   }
   static init_method_surface_set_tangent() {
-    if (!this.#_bindings.method_surface_set_tangent) {
+    if (!this._bindings.method_surface_set_tangent) {
       let classname = new StringName("ImmediateMesh");
       let methodname = new StringName("surface_set_tangent");
-      this.#_bindings.method_surface_set_tangent = internal.classdb_get_method_bind(
+      this._bindings.method_surface_set_tangent = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3505987427
@@ -78,10 +79,10 @@ export class ImmediateMesh extends Mesh{
     }
   }
   static init_method_surface_set_uv() {
-    if (!this.#_bindings.method_surface_set_uv) {
+    if (!this._bindings.method_surface_set_uv) {
       let classname = new StringName("ImmediateMesh");
       let methodname = new StringName("surface_set_uv");
-      this.#_bindings.method_surface_set_uv = internal.classdb_get_method_bind(
+      this._bindings.method_surface_set_uv = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -89,10 +90,10 @@ export class ImmediateMesh extends Mesh{
     }
   }
   static init_method_surface_set_uv2() {
-    if (!this.#_bindings.method_surface_set_uv2) {
+    if (!this._bindings.method_surface_set_uv2) {
       let classname = new StringName("ImmediateMesh");
       let methodname = new StringName("surface_set_uv2");
-      this.#_bindings.method_surface_set_uv2 = internal.classdb_get_method_bind(
+      this._bindings.method_surface_set_uv2 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -100,10 +101,10 @@ export class ImmediateMesh extends Mesh{
     }
   }
   static init_method_surface_add_vertex() {
-    if (!this.#_bindings.method_surface_add_vertex) {
+    if (!this._bindings.method_surface_add_vertex) {
       let classname = new StringName("ImmediateMesh");
       let methodname = new StringName("surface_add_vertex");
-      this.#_bindings.method_surface_add_vertex = internal.classdb_get_method_bind(
+      this._bindings.method_surface_add_vertex = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -111,10 +112,10 @@ export class ImmediateMesh extends Mesh{
     }
   }
   static init_method_surface_add_vertex_2d() {
-    if (!this.#_bindings.method_surface_add_vertex_2d) {
+    if (!this._bindings.method_surface_add_vertex_2d) {
       let classname = new StringName("ImmediateMesh");
       let methodname = new StringName("surface_add_vertex_2d");
-      this.#_bindings.method_surface_add_vertex_2d = internal.classdb_get_method_bind(
+      this._bindings.method_surface_add_vertex_2d = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -122,10 +123,10 @@ export class ImmediateMesh extends Mesh{
     }
   }
   static init_method_surface_end() {
-    if (!this.#_bindings.method_surface_end) {
+    if (!this._bindings.method_surface_end) {
       let classname = new StringName("ImmediateMesh");
       let methodname = new StringName("surface_end");
-      this.#_bindings.method_surface_end = internal.classdb_get_method_bind(
+      this._bindings.method_surface_end = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -133,10 +134,10 @@ export class ImmediateMesh extends Mesh{
     }
   }
   static init_method_clear_surfaces() {
-    if (!this.#_bindings.method_clear_surfaces) {
+    if (!this._bindings.method_clear_surfaces) {
       let classname = new StringName("ImmediateMesh");
       let methodname = new StringName("clear_surfaces");
-      this.#_bindings.method_clear_surfaces = internal.classdb_get_method_bind(
+      this._bindings.method_clear_surfaces = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -149,7 +150,7 @@ export class ImmediateMesh extends Mesh{
   surface_begin(_primitive, _material) {
     ImmediateMesh.init_method_surface_begin();
     return _call_native_mb_no_ret(
-      ImmediateMesh.#_bindings.method_surface_begin,
+      ImmediateMesh._bindings.method_surface_begin,
       this._owner,
       _primitive, _material
     );
@@ -158,7 +159,7 @@ export class ImmediateMesh extends Mesh{
   surface_set_color(_color) {
     ImmediateMesh.init_method_surface_set_color();
     return _call_native_mb_no_ret(
-      ImmediateMesh.#_bindings.method_surface_set_color,
+      ImmediateMesh._bindings.method_surface_set_color,
       this._owner,
       _color
     );
@@ -167,7 +168,7 @@ export class ImmediateMesh extends Mesh{
   surface_set_normal(_normal) {
     ImmediateMesh.init_method_surface_set_normal();
     return _call_native_mb_no_ret(
-      ImmediateMesh.#_bindings.method_surface_set_normal,
+      ImmediateMesh._bindings.method_surface_set_normal,
       this._owner,
       _normal
     );
@@ -176,7 +177,7 @@ export class ImmediateMesh extends Mesh{
   surface_set_tangent(_tangent) {
     ImmediateMesh.init_method_surface_set_tangent();
     return _call_native_mb_no_ret(
-      ImmediateMesh.#_bindings.method_surface_set_tangent,
+      ImmediateMesh._bindings.method_surface_set_tangent,
       this._owner,
       _tangent
     );
@@ -185,7 +186,7 @@ export class ImmediateMesh extends Mesh{
   surface_set_uv(_uv) {
     ImmediateMesh.init_method_surface_set_uv();
     return _call_native_mb_no_ret(
-      ImmediateMesh.#_bindings.method_surface_set_uv,
+      ImmediateMesh._bindings.method_surface_set_uv,
       this._owner,
       _uv
     );
@@ -194,7 +195,7 @@ export class ImmediateMesh extends Mesh{
   surface_set_uv2(_uv2) {
     ImmediateMesh.init_method_surface_set_uv2();
     return _call_native_mb_no_ret(
-      ImmediateMesh.#_bindings.method_surface_set_uv2,
+      ImmediateMesh._bindings.method_surface_set_uv2,
       this._owner,
       _uv2
     );
@@ -203,7 +204,7 @@ export class ImmediateMesh extends Mesh{
   surface_add_vertex(_vertex) {
     ImmediateMesh.init_method_surface_add_vertex();
     return _call_native_mb_no_ret(
-      ImmediateMesh.#_bindings.method_surface_add_vertex,
+      ImmediateMesh._bindings.method_surface_add_vertex,
       this._owner,
       _vertex
     );
@@ -212,7 +213,7 @@ export class ImmediateMesh extends Mesh{
   surface_add_vertex_2d(_vertex) {
     ImmediateMesh.init_method_surface_add_vertex_2d();
     return _call_native_mb_no_ret(
-      ImmediateMesh.#_bindings.method_surface_add_vertex_2d,
+      ImmediateMesh._bindings.method_surface_add_vertex_2d,
       this._owner,
       _vertex
     );
@@ -221,7 +222,7 @@ export class ImmediateMesh extends Mesh{
   surface_end() {
     ImmediateMesh.init_method_surface_end();
     return _call_native_mb_no_ret(
-      ImmediateMesh.#_bindings.method_surface_end,
+      ImmediateMesh._bindings.method_surface_end,
       this._owner,
       
     );
@@ -230,7 +231,7 @@ export class ImmediateMesh extends Mesh{
   clear_surfaces() {
     ImmediateMesh.init_method_clear_surfaces();
     return _call_native_mb_no_ret(
-      ImmediateMesh.#_bindings.method_clear_surfaces,
+      ImmediateMesh._bindings.method_clear_surfaces,
       this._owner,
       
     );

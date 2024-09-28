@@ -8,15 +8,16 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_aabb;
   method_is_on_screen;
 }
+@GodotClass
 export class VisibleOnScreenNotifier3D extends VisualInstance3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -26,10 +27,10 @@ export class VisibleOnScreenNotifier3D extends VisualInstance3D{
     }
   }
   static init_method_set_aabb() {
-    if (!this.#_bindings.method_set_aabb) {
+    if (!this._bindings.method_set_aabb) {
       let classname = new StringName("VisibleOnScreenNotifier3D");
       let methodname = new StringName("set_aabb");
-      this.#_bindings.method_set_aabb = internal.classdb_get_method_bind(
+      this._bindings.method_set_aabb = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         259215842
@@ -37,10 +38,10 @@ export class VisibleOnScreenNotifier3D extends VisualInstance3D{
     }
   }
   static init_method_is_on_screen() {
-    if (!this.#_bindings.method_is_on_screen) {
+    if (!this._bindings.method_is_on_screen) {
       let classname = new StringName("VisibleOnScreenNotifier3D");
       let methodname = new StringName("is_on_screen");
-      this.#_bindings.method_is_on_screen = internal.classdb_get_method_bind(
+      this._bindings.method_is_on_screen = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -53,7 +54,7 @@ export class VisibleOnScreenNotifier3D extends VisualInstance3D{
   set_aabb(_rect) {
     VisibleOnScreenNotifier3D.init_method_set_aabb();
     return _call_native_mb_no_ret(
-      VisibleOnScreenNotifier3D.#_bindings.method_set_aabb,
+      VisibleOnScreenNotifier3D._bindings.method_set_aabb,
       this._owner,
       _rect
     );
@@ -62,7 +63,7 @@ export class VisibleOnScreenNotifier3D extends VisualInstance3D{
   is_on_screen() {
     VisibleOnScreenNotifier3D.init_method_is_on_screen();
     return _call_native_mb_ret(
-      VisibleOnScreenNotifier3D.#_bindings.method_is_on_screen,
+      VisibleOnScreenNotifier3D._bindings.method_is_on_screen,
       this._owner,
 			Variant.Type.BOOL,
     

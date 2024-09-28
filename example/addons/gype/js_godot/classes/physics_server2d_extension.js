@@ -1,23 +1,24 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDArray } from '@js_godot/variant/gd_array'
 import { PhysicsServer2D } from '@js_godot/classes/physics_server2d'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_body_test_motion_is_excluding_body;
   method_body_test_motion_is_excluding_object;
 }
+@GodotClass
 export class PhysicsServer2DExtension extends PhysicsServer2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -27,10 +28,10 @@ export class PhysicsServer2DExtension extends PhysicsServer2D{
     }
   }
   static init_method_body_test_motion_is_excluding_body() {
-    if (!this.#_bindings.method_body_test_motion_is_excluding_body) {
+    if (!this._bindings.method_body_test_motion_is_excluding_body) {
       let classname = new StringName("PhysicsServer2DExtension");
       let methodname = new StringName("body_test_motion_is_excluding_body");
-      this.#_bindings.method_body_test_motion_is_excluding_body = internal.classdb_get_method_bind(
+      this._bindings.method_body_test_motion_is_excluding_body = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4155700596
@@ -38,10 +39,10 @@ export class PhysicsServer2DExtension extends PhysicsServer2D{
     }
   }
   static init_method_body_test_motion_is_excluding_object() {
-    if (!this.#_bindings.method_body_test_motion_is_excluding_object) {
+    if (!this._bindings.method_body_test_motion_is_excluding_object) {
       let classname = new StringName("PhysicsServer2DExtension");
       let methodname = new StringName("body_test_motion_is_excluding_object");
-      this.#_bindings.method_body_test_motion_is_excluding_object = internal.classdb_get_method_bind(
+      this._bindings.method_body_test_motion_is_excluding_object = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -330,7 +331,7 @@ export class PhysicsServer2DExtension extends PhysicsServer2D{
   body_test_motion_is_excluding_body(_body) {
     PhysicsServer2DExtension.init_method_body_test_motion_is_excluding_body();
     return _call_native_mb_ret(
-      PhysicsServer2DExtension.#_bindings.method_body_test_motion_is_excluding_body,
+      PhysicsServer2DExtension._bindings.method_body_test_motion_is_excluding_body,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -341,7 +342,7 @@ export class PhysicsServer2DExtension extends PhysicsServer2D{
   body_test_motion_is_excluding_object(_object) {
     PhysicsServer2DExtension.init_method_body_test_motion_is_excluding_object();
     return _call_native_mb_ret(
-      PhysicsServer2DExtension.#_bindings.method_body_test_motion_is_excluding_object,
+      PhysicsServer2DExtension._bindings.method_body_test_motion_is_excluding_object,
       this._owner,
 			Variant.Type.BOOL,
     

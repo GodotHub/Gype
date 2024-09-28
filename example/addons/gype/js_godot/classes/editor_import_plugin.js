@@ -1,22 +1,23 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDArray } from '@js_godot/variant/gd_array'
 import { ResourceImporter } from '@js_godot/classes/resource_importer'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
+import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_append_import_external_resource;
 }
+@GodotClass
 export class EditorImportPlugin extends ResourceImporter{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -26,10 +27,10 @@ export class EditorImportPlugin extends ResourceImporter{
     }
   }
   static init_method_append_import_external_resource() {
-    if (!this.#_bindings.method_append_import_external_resource) {
+    if (!this._bindings.method_append_import_external_resource) {
       let classname = new StringName("EditorImportPlugin");
       let methodname = new StringName("append_import_external_resource");
-      this.#_bindings.method_append_import_external_resource = internal.classdb_get_method_bind(
+      this._bindings.method_append_import_external_resource = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         320493106
@@ -68,7 +69,7 @@ export class EditorImportPlugin extends ResourceImporter{
   append_import_external_resource(_path, _custom_options, _custom_importer, _generator_parameters) {
     EditorImportPlugin.init_method_append_import_external_resource();
     return _call_native_mb_ret(
-      EditorImportPlugin.#_bindings.method_append_import_external_resource,
+      EditorImportPlugin._bindings.method_append_import_external_resource,
       this._owner,
 			Variant.Type.INT,
     

@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_enabled;
@@ -21,10 +22,10 @@ class _MethodBindings {
   method_set_editor_draw_gizmo;
   method_get_editor_draw_gizmo;
 }
+@GodotClass
 export class SkeletonModification2D extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -34,10 +35,10 @@ export class SkeletonModification2D extends Resource{
     }
   }
   static init_method_set_enabled() {
-    if (!this.#_bindings.method_set_enabled) {
+    if (!this._bindings.method_set_enabled) {
       let classname = new StringName("SkeletonModification2D");
       let methodname = new StringName("set_enabled");
-      this.#_bindings.method_set_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -45,10 +46,10 @@ export class SkeletonModification2D extends Resource{
     }
   }
   static init_method_get_enabled() {
-    if (!this.#_bindings.method_get_enabled) {
+    if (!this._bindings.method_get_enabled) {
       let classname = new StringName("SkeletonModification2D");
       let methodname = new StringName("get_enabled");
-      this.#_bindings.method_get_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_get_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2240911060
@@ -56,10 +57,10 @@ export class SkeletonModification2D extends Resource{
     }
   }
   static init_method_get_modification_stack() {
-    if (!this.#_bindings.method_get_modification_stack) {
+    if (!this._bindings.method_get_modification_stack) {
       let classname = new StringName("SkeletonModification2D");
       let methodname = new StringName("get_modification_stack");
-      this.#_bindings.method_get_modification_stack = internal.classdb_get_method_bind(
+      this._bindings.method_get_modification_stack = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2137761694
@@ -67,10 +68,10 @@ export class SkeletonModification2D extends Resource{
     }
   }
   static init_method_set_is_setup() {
-    if (!this.#_bindings.method_set_is_setup) {
+    if (!this._bindings.method_set_is_setup) {
       let classname = new StringName("SkeletonModification2D");
       let methodname = new StringName("set_is_setup");
-      this.#_bindings.method_set_is_setup = internal.classdb_get_method_bind(
+      this._bindings.method_set_is_setup = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -78,10 +79,10 @@ export class SkeletonModification2D extends Resource{
     }
   }
   static init_method_get_is_setup() {
-    if (!this.#_bindings.method_get_is_setup) {
+    if (!this._bindings.method_get_is_setup) {
       let classname = new StringName("SkeletonModification2D");
       let methodname = new StringName("get_is_setup");
-      this.#_bindings.method_get_is_setup = internal.classdb_get_method_bind(
+      this._bindings.method_get_is_setup = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -89,10 +90,10 @@ export class SkeletonModification2D extends Resource{
     }
   }
   static init_method_set_execution_mode() {
-    if (!this.#_bindings.method_set_execution_mode) {
+    if (!this._bindings.method_set_execution_mode) {
       let classname = new StringName("SkeletonModification2D");
       let methodname = new StringName("set_execution_mode");
-      this.#_bindings.method_set_execution_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_execution_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -100,10 +101,10 @@ export class SkeletonModification2D extends Resource{
     }
   }
   static init_method_get_execution_mode() {
-    if (!this.#_bindings.method_get_execution_mode) {
+    if (!this._bindings.method_get_execution_mode) {
       let classname = new StringName("SkeletonModification2D");
       let methodname = new StringName("get_execution_mode");
-      this.#_bindings.method_get_execution_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_execution_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -111,10 +112,10 @@ export class SkeletonModification2D extends Resource{
     }
   }
   static init_method_clamp_angle() {
-    if (!this.#_bindings.method_clamp_angle) {
+    if (!this._bindings.method_clamp_angle) {
       let classname = new StringName("SkeletonModification2D");
       let methodname = new StringName("clamp_angle");
-      this.#_bindings.method_clamp_angle = internal.classdb_get_method_bind(
+      this._bindings.method_clamp_angle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1229502682
@@ -122,10 +123,10 @@ export class SkeletonModification2D extends Resource{
     }
   }
   static init_method_set_editor_draw_gizmo() {
-    if (!this.#_bindings.method_set_editor_draw_gizmo) {
+    if (!this._bindings.method_set_editor_draw_gizmo) {
       let classname = new StringName("SkeletonModification2D");
       let methodname = new StringName("set_editor_draw_gizmo");
-      this.#_bindings.method_set_editor_draw_gizmo = internal.classdb_get_method_bind(
+      this._bindings.method_set_editor_draw_gizmo = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -133,10 +134,10 @@ export class SkeletonModification2D extends Resource{
     }
   }
   static init_method_get_editor_draw_gizmo() {
-    if (!this.#_bindings.method_get_editor_draw_gizmo) {
+    if (!this._bindings.method_get_editor_draw_gizmo) {
       let classname = new StringName("SkeletonModification2D");
       let methodname = new StringName("get_editor_draw_gizmo");
-      this.#_bindings.method_get_editor_draw_gizmo = internal.classdb_get_method_bind(
+      this._bindings.method_get_editor_draw_gizmo = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -155,7 +156,7 @@ export class SkeletonModification2D extends Resource{
   set_enabled(_enabled) {
     SkeletonModification2D.init_method_set_enabled();
     return _call_native_mb_no_ret(
-      SkeletonModification2D.#_bindings.method_set_enabled,
+      SkeletonModification2D._bindings.method_set_enabled,
       this._owner,
       _enabled
     );
@@ -164,7 +165,7 @@ export class SkeletonModification2D extends Resource{
   get_enabled() {
     SkeletonModification2D.init_method_get_enabled();
     return _call_native_mb_ret(
-      SkeletonModification2D.#_bindings.method_get_enabled,
+      SkeletonModification2D._bindings.method_get_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -175,7 +176,7 @@ export class SkeletonModification2D extends Resource{
   get_modification_stack() {
     SkeletonModification2D.init_method_get_modification_stack();
     return _call_native_mb_ret(
-      SkeletonModification2D.#_bindings.method_get_modification_stack,
+      SkeletonModification2D._bindings.method_get_modification_stack,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -185,7 +186,7 @@ export class SkeletonModification2D extends Resource{
   set_is_setup(_is_setup) {
     SkeletonModification2D.init_method_set_is_setup();
     return _call_native_mb_no_ret(
-      SkeletonModification2D.#_bindings.method_set_is_setup,
+      SkeletonModification2D._bindings.method_set_is_setup,
       this._owner,
       _is_setup
     );
@@ -194,7 +195,7 @@ export class SkeletonModification2D extends Resource{
   get_is_setup() {
     SkeletonModification2D.init_method_get_is_setup();
     return _call_native_mb_ret(
-      SkeletonModification2D.#_bindings.method_get_is_setup,
+      SkeletonModification2D._bindings.method_get_is_setup,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -205,7 +206,7 @@ export class SkeletonModification2D extends Resource{
   set_execution_mode(_execution_mode) {
     SkeletonModification2D.init_method_set_execution_mode();
     return _call_native_mb_no_ret(
-      SkeletonModification2D.#_bindings.method_set_execution_mode,
+      SkeletonModification2D._bindings.method_set_execution_mode,
       this._owner,
       _execution_mode
     );
@@ -214,7 +215,7 @@ export class SkeletonModification2D extends Resource{
   get_execution_mode() {
     SkeletonModification2D.init_method_get_execution_mode();
     return _call_native_mb_ret(
-      SkeletonModification2D.#_bindings.method_get_execution_mode,
+      SkeletonModification2D._bindings.method_get_execution_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -225,7 +226,7 @@ export class SkeletonModification2D extends Resource{
   clamp_angle(_angle, _min, _max, _invert) {
     SkeletonModification2D.init_method_clamp_angle();
     return _call_native_mb_ret(
-      SkeletonModification2D.#_bindings.method_clamp_angle,
+      SkeletonModification2D._bindings.method_clamp_angle,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -236,7 +237,7 @@ export class SkeletonModification2D extends Resource{
   set_editor_draw_gizmo(_draw_gizmo) {
     SkeletonModification2D.init_method_set_editor_draw_gizmo();
     return _call_native_mb_no_ret(
-      SkeletonModification2D.#_bindings.method_set_editor_draw_gizmo,
+      SkeletonModification2D._bindings.method_set_editor_draw_gizmo,
       this._owner,
       _draw_gizmo
     );
@@ -245,7 +246,7 @@ export class SkeletonModification2D extends Resource{
   get_editor_draw_gizmo() {
     SkeletonModification2D.init_method_get_editor_draw_gizmo();
     return _call_native_mb_ret(
-      SkeletonModification2D.#_bindings.method_get_editor_draw_gizmo,
+      SkeletonModification2D._bindings.method_get_editor_draw_gizmo,
       this._owner,
 			Variant.Type.BOOL,
     

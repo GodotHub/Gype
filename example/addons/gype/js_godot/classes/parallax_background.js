@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { CanvasLayer } from '@js_godot/classes/canvas_layer'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_scroll_offset;
@@ -23,10 +24,10 @@ class _MethodBindings {
   method_set_ignore_camera_zoom;
   method_is_ignore_camera_zoom;
 }
+@GodotClass
 export class ParallaxBackground extends CanvasLayer{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -36,10 +37,10 @@ export class ParallaxBackground extends CanvasLayer{
     }
   }
   static init_method_set_scroll_offset() {
-    if (!this.#_bindings.method_set_scroll_offset) {
+    if (!this._bindings.method_set_scroll_offset) {
       let classname = new StringName("ParallaxBackground");
       let methodname = new StringName("set_scroll_offset");
-      this.#_bindings.method_set_scroll_offset = internal.classdb_get_method_bind(
+      this._bindings.method_set_scroll_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -47,10 +48,10 @@ export class ParallaxBackground extends CanvasLayer{
     }
   }
   static init_method_get_scroll_offset() {
-    if (!this.#_bindings.method_get_scroll_offset) {
+    if (!this._bindings.method_get_scroll_offset) {
       let classname = new StringName("ParallaxBackground");
       let methodname = new StringName("get_scroll_offset");
-      this.#_bindings.method_get_scroll_offset = internal.classdb_get_method_bind(
+      this._bindings.method_get_scroll_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -58,10 +59,10 @@ export class ParallaxBackground extends CanvasLayer{
     }
   }
   static init_method_set_scroll_base_offset() {
-    if (!this.#_bindings.method_set_scroll_base_offset) {
+    if (!this._bindings.method_set_scroll_base_offset) {
       let classname = new StringName("ParallaxBackground");
       let methodname = new StringName("set_scroll_base_offset");
-      this.#_bindings.method_set_scroll_base_offset = internal.classdb_get_method_bind(
+      this._bindings.method_set_scroll_base_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -69,10 +70,10 @@ export class ParallaxBackground extends CanvasLayer{
     }
   }
   static init_method_get_scroll_base_offset() {
-    if (!this.#_bindings.method_get_scroll_base_offset) {
+    if (!this._bindings.method_get_scroll_base_offset) {
       let classname = new StringName("ParallaxBackground");
       let methodname = new StringName("get_scroll_base_offset");
-      this.#_bindings.method_get_scroll_base_offset = internal.classdb_get_method_bind(
+      this._bindings.method_get_scroll_base_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -80,10 +81,10 @@ export class ParallaxBackground extends CanvasLayer{
     }
   }
   static init_method_set_scroll_base_scale() {
-    if (!this.#_bindings.method_set_scroll_base_scale) {
+    if (!this._bindings.method_set_scroll_base_scale) {
       let classname = new StringName("ParallaxBackground");
       let methodname = new StringName("set_scroll_base_scale");
-      this.#_bindings.method_set_scroll_base_scale = internal.classdb_get_method_bind(
+      this._bindings.method_set_scroll_base_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -91,10 +92,10 @@ export class ParallaxBackground extends CanvasLayer{
     }
   }
   static init_method_get_scroll_base_scale() {
-    if (!this.#_bindings.method_get_scroll_base_scale) {
+    if (!this._bindings.method_get_scroll_base_scale) {
       let classname = new StringName("ParallaxBackground");
       let methodname = new StringName("get_scroll_base_scale");
-      this.#_bindings.method_get_scroll_base_scale = internal.classdb_get_method_bind(
+      this._bindings.method_get_scroll_base_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -102,10 +103,10 @@ export class ParallaxBackground extends CanvasLayer{
     }
   }
   static init_method_set_limit_begin() {
-    if (!this.#_bindings.method_set_limit_begin) {
+    if (!this._bindings.method_set_limit_begin) {
       let classname = new StringName("ParallaxBackground");
       let methodname = new StringName("set_limit_begin");
-      this.#_bindings.method_set_limit_begin = internal.classdb_get_method_bind(
+      this._bindings.method_set_limit_begin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -113,10 +114,10 @@ export class ParallaxBackground extends CanvasLayer{
     }
   }
   static init_method_get_limit_begin() {
-    if (!this.#_bindings.method_get_limit_begin) {
+    if (!this._bindings.method_get_limit_begin) {
       let classname = new StringName("ParallaxBackground");
       let methodname = new StringName("get_limit_begin");
-      this.#_bindings.method_get_limit_begin = internal.classdb_get_method_bind(
+      this._bindings.method_get_limit_begin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -124,10 +125,10 @@ export class ParallaxBackground extends CanvasLayer{
     }
   }
   static init_method_set_limit_end() {
-    if (!this.#_bindings.method_set_limit_end) {
+    if (!this._bindings.method_set_limit_end) {
       let classname = new StringName("ParallaxBackground");
       let methodname = new StringName("set_limit_end");
-      this.#_bindings.method_set_limit_end = internal.classdb_get_method_bind(
+      this._bindings.method_set_limit_end = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -135,10 +136,10 @@ export class ParallaxBackground extends CanvasLayer{
     }
   }
   static init_method_get_limit_end() {
-    if (!this.#_bindings.method_get_limit_end) {
+    if (!this._bindings.method_get_limit_end) {
       let classname = new StringName("ParallaxBackground");
       let methodname = new StringName("get_limit_end");
-      this.#_bindings.method_get_limit_end = internal.classdb_get_method_bind(
+      this._bindings.method_get_limit_end = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -146,10 +147,10 @@ export class ParallaxBackground extends CanvasLayer{
     }
   }
   static init_method_set_ignore_camera_zoom() {
-    if (!this.#_bindings.method_set_ignore_camera_zoom) {
+    if (!this._bindings.method_set_ignore_camera_zoom) {
       let classname = new StringName("ParallaxBackground");
       let methodname = new StringName("set_ignore_camera_zoom");
-      this.#_bindings.method_set_ignore_camera_zoom = internal.classdb_get_method_bind(
+      this._bindings.method_set_ignore_camera_zoom = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -157,10 +158,10 @@ export class ParallaxBackground extends CanvasLayer{
     }
   }
   static init_method_is_ignore_camera_zoom() {
-    if (!this.#_bindings.method_is_ignore_camera_zoom) {
+    if (!this._bindings.method_is_ignore_camera_zoom) {
       let classname = new StringName("ParallaxBackground");
       let methodname = new StringName("is_ignore_camera_zoom");
-      this.#_bindings.method_is_ignore_camera_zoom = internal.classdb_get_method_bind(
+      this._bindings.method_is_ignore_camera_zoom = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2240911060
@@ -173,7 +174,7 @@ export class ParallaxBackground extends CanvasLayer{
   set_scroll_offset(_offset) {
     ParallaxBackground.init_method_set_scroll_offset();
     return _call_native_mb_no_ret(
-      ParallaxBackground.#_bindings.method_set_scroll_offset,
+      ParallaxBackground._bindings.method_set_scroll_offset,
       this._owner,
       _offset
     );
@@ -182,7 +183,7 @@ export class ParallaxBackground extends CanvasLayer{
   get_scroll_offset() {
     ParallaxBackground.init_method_get_scroll_offset();
     return _call_native_mb_ret(
-      ParallaxBackground.#_bindings.method_get_scroll_offset,
+      ParallaxBackground._bindings.method_get_scroll_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -193,7 +194,7 @@ export class ParallaxBackground extends CanvasLayer{
   set_scroll_base_offset(_offset) {
     ParallaxBackground.init_method_set_scroll_base_offset();
     return _call_native_mb_no_ret(
-      ParallaxBackground.#_bindings.method_set_scroll_base_offset,
+      ParallaxBackground._bindings.method_set_scroll_base_offset,
       this._owner,
       _offset
     );
@@ -202,7 +203,7 @@ export class ParallaxBackground extends CanvasLayer{
   get_scroll_base_offset() {
     ParallaxBackground.init_method_get_scroll_base_offset();
     return _call_native_mb_ret(
-      ParallaxBackground.#_bindings.method_get_scroll_base_offset,
+      ParallaxBackground._bindings.method_get_scroll_base_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -213,7 +214,7 @@ export class ParallaxBackground extends CanvasLayer{
   set_scroll_base_scale(_scale) {
     ParallaxBackground.init_method_set_scroll_base_scale();
     return _call_native_mb_no_ret(
-      ParallaxBackground.#_bindings.method_set_scroll_base_scale,
+      ParallaxBackground._bindings.method_set_scroll_base_scale,
       this._owner,
       _scale
     );
@@ -222,7 +223,7 @@ export class ParallaxBackground extends CanvasLayer{
   get_scroll_base_scale() {
     ParallaxBackground.init_method_get_scroll_base_scale();
     return _call_native_mb_ret(
-      ParallaxBackground.#_bindings.method_get_scroll_base_scale,
+      ParallaxBackground._bindings.method_get_scroll_base_scale,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -233,7 +234,7 @@ export class ParallaxBackground extends CanvasLayer{
   set_limit_begin(_offset) {
     ParallaxBackground.init_method_set_limit_begin();
     return _call_native_mb_no_ret(
-      ParallaxBackground.#_bindings.method_set_limit_begin,
+      ParallaxBackground._bindings.method_set_limit_begin,
       this._owner,
       _offset
     );
@@ -242,7 +243,7 @@ export class ParallaxBackground extends CanvasLayer{
   get_limit_begin() {
     ParallaxBackground.init_method_get_limit_begin();
     return _call_native_mb_ret(
-      ParallaxBackground.#_bindings.method_get_limit_begin,
+      ParallaxBackground._bindings.method_get_limit_begin,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -253,7 +254,7 @@ export class ParallaxBackground extends CanvasLayer{
   set_limit_end(_offset) {
     ParallaxBackground.init_method_set_limit_end();
     return _call_native_mb_no_ret(
-      ParallaxBackground.#_bindings.method_set_limit_end,
+      ParallaxBackground._bindings.method_set_limit_end,
       this._owner,
       _offset
     );
@@ -262,7 +263,7 @@ export class ParallaxBackground extends CanvasLayer{
   get_limit_end() {
     ParallaxBackground.init_method_get_limit_end();
     return _call_native_mb_ret(
-      ParallaxBackground.#_bindings.method_get_limit_end,
+      ParallaxBackground._bindings.method_get_limit_end,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -273,7 +274,7 @@ export class ParallaxBackground extends CanvasLayer{
   set_ignore_camera_zoom(_ignore) {
     ParallaxBackground.init_method_set_ignore_camera_zoom();
     return _call_native_mb_no_ret(
-      ParallaxBackground.#_bindings.method_set_ignore_camera_zoom,
+      ParallaxBackground._bindings.method_set_ignore_camera_zoom,
       this._owner,
       _ignore
     );
@@ -282,7 +283,7 @@ export class ParallaxBackground extends CanvasLayer{
   is_ignore_camera_zoom() {
     ParallaxBackground.init_method_is_ignore_camera_zoom();
     return _call_native_mb_ret(
-      ParallaxBackground.#_bindings.method_is_ignore_camera_zoom,
+      ParallaxBackground._bindings.method_is_ignore_camera_zoom,
       this._owner,
 			Variant.Type.BOOL,
     

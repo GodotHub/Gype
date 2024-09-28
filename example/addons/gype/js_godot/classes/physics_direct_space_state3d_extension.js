@@ -1,21 +1,22 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { PhysicsDirectSpaceState3D } from '@js_godot/classes/physics_direct_space_state3d'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_is_body_excluded_from_query;
 }
+@GodotClass
 export class PhysicsDirectSpaceState3DExtension extends PhysicsDirectSpaceState3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -25,10 +26,10 @@ export class PhysicsDirectSpaceState3DExtension extends PhysicsDirectSpaceState3
     }
   }
   static init_method_is_body_excluded_from_query() {
-    if (!this.#_bindings.method_is_body_excluded_from_query) {
+    if (!this._bindings.method_is_body_excluded_from_query) {
       let classname = new StringName("PhysicsDirectSpaceState3DExtension");
       let methodname = new StringName("is_body_excluded_from_query");
-      this.#_bindings.method_is_body_excluded_from_query = internal.classdb_get_method_bind(
+      this._bindings.method_is_body_excluded_from_query = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4155700596
@@ -55,7 +56,7 @@ export class PhysicsDirectSpaceState3DExtension extends PhysicsDirectSpaceState3
   is_body_excluded_from_query(_body) {
     PhysicsDirectSpaceState3DExtension.init_method_is_body_excluded_from_query();
     return _call_native_mb_ret(
-      PhysicsDirectSpaceState3DExtension.#_bindings.method_is_body_excluded_from_query,
+      PhysicsDirectSpaceState3DExtension._bindings.method_is_body_excluded_from_query,
       this._owner,
 			Variant.Type.BOOL,
     

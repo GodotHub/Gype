@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Node } from '@js_godot/classes/node'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_wait_time;
@@ -25,10 +26,10 @@ class _MethodBindings {
   method_set_timer_process_callback;
   method_get_timer_process_callback;
 }
+@GodotClass
 export class Timer extends Node{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -38,10 +39,10 @@ export class Timer extends Node{
     }
   }
   static init_method_set_wait_time() {
-    if (!this.#_bindings.method_set_wait_time) {
+    if (!this._bindings.method_set_wait_time) {
       let classname = new StringName("Timer");
       let methodname = new StringName("set_wait_time");
-      this.#_bindings.method_set_wait_time = internal.classdb_get_method_bind(
+      this._bindings.method_set_wait_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -49,10 +50,10 @@ export class Timer extends Node{
     }
   }
   static init_method_get_wait_time() {
-    if (!this.#_bindings.method_get_wait_time) {
+    if (!this._bindings.method_get_wait_time) {
       let classname = new StringName("Timer");
       let methodname = new StringName("get_wait_time");
-      this.#_bindings.method_get_wait_time = internal.classdb_get_method_bind(
+      this._bindings.method_get_wait_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -60,10 +61,10 @@ export class Timer extends Node{
     }
   }
   static init_method_set_one_shot() {
-    if (!this.#_bindings.method_set_one_shot) {
+    if (!this._bindings.method_set_one_shot) {
       let classname = new StringName("Timer");
       let methodname = new StringName("set_one_shot");
-      this.#_bindings.method_set_one_shot = internal.classdb_get_method_bind(
+      this._bindings.method_set_one_shot = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -71,10 +72,10 @@ export class Timer extends Node{
     }
   }
   static init_method_is_one_shot() {
-    if (!this.#_bindings.method_is_one_shot) {
+    if (!this._bindings.method_is_one_shot) {
       let classname = new StringName("Timer");
       let methodname = new StringName("is_one_shot");
-      this.#_bindings.method_is_one_shot = internal.classdb_get_method_bind(
+      this._bindings.method_is_one_shot = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -82,10 +83,10 @@ export class Timer extends Node{
     }
   }
   static init_method_set_autostart() {
-    if (!this.#_bindings.method_set_autostart) {
+    if (!this._bindings.method_set_autostart) {
       let classname = new StringName("Timer");
       let methodname = new StringName("set_autostart");
-      this.#_bindings.method_set_autostart = internal.classdb_get_method_bind(
+      this._bindings.method_set_autostart = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -93,10 +94,10 @@ export class Timer extends Node{
     }
   }
   static init_method_has_autostart() {
-    if (!this.#_bindings.method_has_autostart) {
+    if (!this._bindings.method_has_autostart) {
       let classname = new StringName("Timer");
       let methodname = new StringName("has_autostart");
-      this.#_bindings.method_has_autostart = internal.classdb_get_method_bind(
+      this._bindings.method_has_autostart = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -104,10 +105,10 @@ export class Timer extends Node{
     }
   }
   static init_method_start() {
-    if (!this.#_bindings.method_start) {
+    if (!this._bindings.method_start) {
       let classname = new StringName("Timer");
       let methodname = new StringName("start");
-      this.#_bindings.method_start = internal.classdb_get_method_bind(
+      this._bindings.method_start = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1392008558
@@ -115,10 +116,10 @@ export class Timer extends Node{
     }
   }
   static init_method_stop() {
-    if (!this.#_bindings.method_stop) {
+    if (!this._bindings.method_stop) {
       let classname = new StringName("Timer");
       let methodname = new StringName("stop");
-      this.#_bindings.method_stop = internal.classdb_get_method_bind(
+      this._bindings.method_stop = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -126,10 +127,10 @@ export class Timer extends Node{
     }
   }
   static init_method_set_paused() {
-    if (!this.#_bindings.method_set_paused) {
+    if (!this._bindings.method_set_paused) {
       let classname = new StringName("Timer");
       let methodname = new StringName("set_paused");
-      this.#_bindings.method_set_paused = internal.classdb_get_method_bind(
+      this._bindings.method_set_paused = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -137,10 +138,10 @@ export class Timer extends Node{
     }
   }
   static init_method_is_paused() {
-    if (!this.#_bindings.method_is_paused) {
+    if (!this._bindings.method_is_paused) {
       let classname = new StringName("Timer");
       let methodname = new StringName("is_paused");
-      this.#_bindings.method_is_paused = internal.classdb_get_method_bind(
+      this._bindings.method_is_paused = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -148,10 +149,10 @@ export class Timer extends Node{
     }
   }
   static init_method_is_stopped() {
-    if (!this.#_bindings.method_is_stopped) {
+    if (!this._bindings.method_is_stopped) {
       let classname = new StringName("Timer");
       let methodname = new StringName("is_stopped");
-      this.#_bindings.method_is_stopped = internal.classdb_get_method_bind(
+      this._bindings.method_is_stopped = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -159,10 +160,10 @@ export class Timer extends Node{
     }
   }
   static init_method_get_time_left() {
-    if (!this.#_bindings.method_get_time_left) {
+    if (!this._bindings.method_get_time_left) {
       let classname = new StringName("Timer");
       let methodname = new StringName("get_time_left");
-      this.#_bindings.method_get_time_left = internal.classdb_get_method_bind(
+      this._bindings.method_get_time_left = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -170,10 +171,10 @@ export class Timer extends Node{
     }
   }
   static init_method_set_timer_process_callback() {
-    if (!this.#_bindings.method_set_timer_process_callback) {
+    if (!this._bindings.method_set_timer_process_callback) {
       let classname = new StringName("Timer");
       let methodname = new StringName("set_timer_process_callback");
-      this.#_bindings.method_set_timer_process_callback = internal.classdb_get_method_bind(
+      this._bindings.method_set_timer_process_callback = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3469495063
@@ -181,10 +182,10 @@ export class Timer extends Node{
     }
   }
   static init_method_get_timer_process_callback() {
-    if (!this.#_bindings.method_get_timer_process_callback) {
+    if (!this._bindings.method_get_timer_process_callback) {
       let classname = new StringName("Timer");
       let methodname = new StringName("get_timer_process_callback");
-      this.#_bindings.method_get_timer_process_callback = internal.classdb_get_method_bind(
+      this._bindings.method_get_timer_process_callback = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2672570227
@@ -197,7 +198,7 @@ export class Timer extends Node{
   set_wait_time(_time_sec) {
     Timer.init_method_set_wait_time();
     return _call_native_mb_no_ret(
-      Timer.#_bindings.method_set_wait_time,
+      Timer._bindings.method_set_wait_time,
       this._owner,
       _time_sec
     );
@@ -206,7 +207,7 @@ export class Timer extends Node{
   get_wait_time() {
     Timer.init_method_get_wait_time();
     return _call_native_mb_ret(
-      Timer.#_bindings.method_get_wait_time,
+      Timer._bindings.method_get_wait_time,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -217,7 +218,7 @@ export class Timer extends Node{
   set_one_shot(_enable) {
     Timer.init_method_set_one_shot();
     return _call_native_mb_no_ret(
-      Timer.#_bindings.method_set_one_shot,
+      Timer._bindings.method_set_one_shot,
       this._owner,
       _enable
     );
@@ -226,7 +227,7 @@ export class Timer extends Node{
   is_one_shot() {
     Timer.init_method_is_one_shot();
     return _call_native_mb_ret(
-      Timer.#_bindings.method_is_one_shot,
+      Timer._bindings.method_is_one_shot,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -237,7 +238,7 @@ export class Timer extends Node{
   set_autostart(_enable) {
     Timer.init_method_set_autostart();
     return _call_native_mb_no_ret(
-      Timer.#_bindings.method_set_autostart,
+      Timer._bindings.method_set_autostart,
       this._owner,
       _enable
     );
@@ -246,7 +247,7 @@ export class Timer extends Node{
   has_autostart() {
     Timer.init_method_has_autostart();
     return _call_native_mb_ret(
-      Timer.#_bindings.method_has_autostart,
+      Timer._bindings.method_has_autostart,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -257,7 +258,7 @@ export class Timer extends Node{
   start(_time_sec) {
     Timer.init_method_start();
     return _call_native_mb_no_ret(
-      Timer.#_bindings.method_start,
+      Timer._bindings.method_start,
       this._owner,
       _time_sec
     );
@@ -266,7 +267,7 @@ export class Timer extends Node{
   stop() {
     Timer.init_method_stop();
     return _call_native_mb_no_ret(
-      Timer.#_bindings.method_stop,
+      Timer._bindings.method_stop,
       this._owner,
       
     );
@@ -275,7 +276,7 @@ export class Timer extends Node{
   set_paused(_paused) {
     Timer.init_method_set_paused();
     return _call_native_mb_no_ret(
-      Timer.#_bindings.method_set_paused,
+      Timer._bindings.method_set_paused,
       this._owner,
       _paused
     );
@@ -284,7 +285,7 @@ export class Timer extends Node{
   is_paused() {
     Timer.init_method_is_paused();
     return _call_native_mb_ret(
-      Timer.#_bindings.method_is_paused,
+      Timer._bindings.method_is_paused,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -295,7 +296,7 @@ export class Timer extends Node{
   is_stopped() {
     Timer.init_method_is_stopped();
     return _call_native_mb_ret(
-      Timer.#_bindings.method_is_stopped,
+      Timer._bindings.method_is_stopped,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -306,7 +307,7 @@ export class Timer extends Node{
   get_time_left() {
     Timer.init_method_get_time_left();
     return _call_native_mb_ret(
-      Timer.#_bindings.method_get_time_left,
+      Timer._bindings.method_get_time_left,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -317,7 +318,7 @@ export class Timer extends Node{
   set_timer_process_callback(_callback) {
     Timer.init_method_set_timer_process_callback();
     return _call_native_mb_no_ret(
-      Timer.#_bindings.method_set_timer_process_callback,
+      Timer._bindings.method_set_timer_process_callback,
       this._owner,
       _callback
     );
@@ -326,7 +327,7 @@ export class Timer extends Node{
   get_timer_process_callback() {
     Timer.init_method_get_timer_process_callback();
     return _call_native_mb_ret(
-      Timer.#_bindings.method_get_timer_process_callback,
+      Timer._bindings.method_get_timer_process_callback,
       this._owner,
 			Variant.Type.INT,
     

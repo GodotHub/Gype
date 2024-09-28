@@ -1,14 +1,15 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDArray } from '@js_godot/variant/gd_array'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_create_from_string;
@@ -22,10 +23,10 @@ class _MethodBindings {
   method_get_group_count;
   method_get_names;
 }
+@GodotClass
 export class RegEx extends RefCounted{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -35,10 +36,10 @@ export class RegEx extends RefCounted{
     }
   }
   static init_method_create_from_string() {
-    if (!this.#_bindings.method_create_from_string) {
+    if (!this._bindings.method_create_from_string) {
       let classname = new StringName("RegEx");
       let methodname = new StringName("create_from_string");
-      this.#_bindings.method_create_from_string = internal.classdb_get_method_bind(
+      this._bindings.method_create_from_string = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2150300909
@@ -46,10 +47,10 @@ export class RegEx extends RefCounted{
     }
   }
   static init_method_clear() {
-    if (!this.#_bindings.method_clear) {
+    if (!this._bindings.method_clear) {
       let classname = new StringName("RegEx");
       let methodname = new StringName("clear");
-      this.#_bindings.method_clear = internal.classdb_get_method_bind(
+      this._bindings.method_clear = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -57,10 +58,10 @@ export class RegEx extends RefCounted{
     }
   }
   static init_method_compile() {
-    if (!this.#_bindings.method_compile) {
+    if (!this._bindings.method_compile) {
       let classname = new StringName("RegEx");
       let methodname = new StringName("compile");
-      this.#_bindings.method_compile = internal.classdb_get_method_bind(
+      this._bindings.method_compile = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         166001499
@@ -68,10 +69,10 @@ export class RegEx extends RefCounted{
     }
   }
   static init_method_search() {
-    if (!this.#_bindings.method_search) {
+    if (!this._bindings.method_search) {
       let classname = new StringName("RegEx");
       let methodname = new StringName("search");
-      this.#_bindings.method_search = internal.classdb_get_method_bind(
+      this._bindings.method_search = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3365977994
@@ -79,10 +80,10 @@ export class RegEx extends RefCounted{
     }
   }
   static init_method_search_all() {
-    if (!this.#_bindings.method_search_all) {
+    if (!this._bindings.method_search_all) {
       let classname = new StringName("RegEx");
       let methodname = new StringName("search_all");
-      this.#_bindings.method_search_all = internal.classdb_get_method_bind(
+      this._bindings.method_search_all = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         849021363
@@ -90,10 +91,10 @@ export class RegEx extends RefCounted{
     }
   }
   static init_method_sub() {
-    if (!this.#_bindings.method_sub) {
+    if (!this._bindings.method_sub) {
       let classname = new StringName("RegEx");
       let methodname = new StringName("sub");
-      this.#_bindings.method_sub = internal.classdb_get_method_bind(
+      this._bindings.method_sub = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         54019702
@@ -101,10 +102,10 @@ export class RegEx extends RefCounted{
     }
   }
   static init_method_is_valid() {
-    if (!this.#_bindings.method_is_valid) {
+    if (!this._bindings.method_is_valid) {
       let classname = new StringName("RegEx");
       let methodname = new StringName("is_valid");
-      this.#_bindings.method_is_valid = internal.classdb_get_method_bind(
+      this._bindings.method_is_valid = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -112,10 +113,10 @@ export class RegEx extends RefCounted{
     }
   }
   static init_method_get_pattern() {
-    if (!this.#_bindings.method_get_pattern) {
+    if (!this._bindings.method_get_pattern) {
       let classname = new StringName("RegEx");
       let methodname = new StringName("get_pattern");
-      this.#_bindings.method_get_pattern = internal.classdb_get_method_bind(
+      this._bindings.method_get_pattern = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -123,10 +124,10 @@ export class RegEx extends RefCounted{
     }
   }
   static init_method_get_group_count() {
-    if (!this.#_bindings.method_get_group_count) {
+    if (!this._bindings.method_get_group_count) {
       let classname = new StringName("RegEx");
       let methodname = new StringName("get_group_count");
-      this.#_bindings.method_get_group_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_group_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -134,10 +135,10 @@ export class RegEx extends RefCounted{
     }
   }
   static init_method_get_names() {
-    if (!this.#_bindings.method_get_names) {
+    if (!this._bindings.method_get_names) {
       let classname = new StringName("RegEx");
       let methodname = new StringName("get_names");
-      this.#_bindings.method_get_names = internal.classdb_get_method_bind(
+      this._bindings.method_get_names = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1139954409
@@ -150,7 +151,7 @@ export class RegEx extends RefCounted{
   create_from_string(_pattern) {
     RegEx.init_method_create_from_string();
     return _call_native_mb_ret(
-      RegEx.#_bindings.method_create_from_string,
+      RegEx._bindings.method_create_from_string,
       this._owner,
 			Variant.Type.OBJECT,
       _pattern
@@ -160,7 +161,7 @@ export class RegEx extends RefCounted{
   clear() {
     RegEx.init_method_clear();
     return _call_native_mb_no_ret(
-      RegEx.#_bindings.method_clear,
+      RegEx._bindings.method_clear,
       this._owner,
       
     );
@@ -169,7 +170,7 @@ export class RegEx extends RefCounted{
   compile(_pattern) {
     RegEx.init_method_compile();
     return _call_native_mb_ret(
-      RegEx.#_bindings.method_compile,
+      RegEx._bindings.method_compile,
       this._owner,
 			Variant.Type.INT,
     
@@ -180,7 +181,7 @@ export class RegEx extends RefCounted{
   search(_subject, _offset, _end) {
     RegEx.init_method_search();
     return _call_native_mb_ret(
-      RegEx.#_bindings.method_search,
+      RegEx._bindings.method_search,
       this._owner,
 			Variant.Type.OBJECT,
       _subject, _offset, _end
@@ -190,7 +191,7 @@ export class RegEx extends RefCounted{
   search_all(_subject, _offset, _end) {
     RegEx.init_method_search_all();
     return _call_native_mb_ret(
-      RegEx.#_bindings.method_search_all,
+      RegEx._bindings.method_search_all,
       this._owner,
 			Variant.Type.ARRAY,
       _subject, _offset, _end
@@ -200,7 +201,7 @@ export class RegEx extends RefCounted{
   sub(_subject, _replacement, _all, _offset, _end) {
     RegEx.init_method_sub();
     return _call_native_mb_ret(
-      RegEx.#_bindings.method_sub,
+      RegEx._bindings.method_sub,
       this._owner,
 			Variant.Type.STRING,
     
@@ -211,7 +212,7 @@ export class RegEx extends RefCounted{
   is_valid() {
     RegEx.init_method_is_valid();
     return _call_native_mb_ret(
-      RegEx.#_bindings.method_is_valid,
+      RegEx._bindings.method_is_valid,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -222,7 +223,7 @@ export class RegEx extends RefCounted{
   get_pattern() {
     RegEx.init_method_get_pattern();
     return _call_native_mb_ret(
-      RegEx.#_bindings.method_get_pattern,
+      RegEx._bindings.method_get_pattern,
       this._owner,
 			Variant.Type.STRING,
     
@@ -233,7 +234,7 @@ export class RegEx extends RefCounted{
   get_group_count() {
     RegEx.init_method_get_group_count();
     return _call_native_mb_ret(
-      RegEx.#_bindings.method_get_group_count,
+      RegEx._bindings.method_get_group_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -244,7 +245,7 @@ export class RegEx extends RefCounted{
   get_names() {
     RegEx.init_method_get_names();
     return _call_native_mb_ret(
-      RegEx.#_bindings.method_get_names,
+      RegEx._bindings.method_get_names,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     

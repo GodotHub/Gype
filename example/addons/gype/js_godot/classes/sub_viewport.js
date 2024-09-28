@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Viewport } from '@js_godot/classes/viewport'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_size;
@@ -21,10 +22,10 @@ class _MethodBindings {
   method_set_clear_mode;
   method_get_clear_mode;
 }
+@GodotClass
 export class SubViewport extends Viewport{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -34,10 +35,10 @@ export class SubViewport extends Viewport{
     }
   }
   static init_method_set_size() {
-    if (!this.#_bindings.method_set_size) {
+    if (!this._bindings.method_set_size) {
       let classname = new StringName("SubViewport");
       let methodname = new StringName("set_size");
-      this.#_bindings.method_set_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1130785943
@@ -45,10 +46,10 @@ export class SubViewport extends Viewport{
     }
   }
   static init_method_get_size() {
-    if (!this.#_bindings.method_get_size) {
+    if (!this._bindings.method_get_size) {
       let classname = new StringName("SubViewport");
       let methodname = new StringName("get_size");
-      this.#_bindings.method_get_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3690982128
@@ -56,10 +57,10 @@ export class SubViewport extends Viewport{
     }
   }
   static init_method_set_size_2d_override() {
-    if (!this.#_bindings.method_set_size_2d_override) {
+    if (!this._bindings.method_set_size_2d_override) {
       let classname = new StringName("SubViewport");
       let methodname = new StringName("set_size_2d_override");
-      this.#_bindings.method_set_size_2d_override = internal.classdb_get_method_bind(
+      this._bindings.method_set_size_2d_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1130785943
@@ -67,10 +68,10 @@ export class SubViewport extends Viewport{
     }
   }
   static init_method_get_size_2d_override() {
-    if (!this.#_bindings.method_get_size_2d_override) {
+    if (!this._bindings.method_get_size_2d_override) {
       let classname = new StringName("SubViewport");
       let methodname = new StringName("get_size_2d_override");
-      this.#_bindings.method_get_size_2d_override = internal.classdb_get_method_bind(
+      this._bindings.method_get_size_2d_override = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3690982128
@@ -78,10 +79,10 @@ export class SubViewport extends Viewport{
     }
   }
   static init_method_set_size_2d_override_stretch() {
-    if (!this.#_bindings.method_set_size_2d_override_stretch) {
+    if (!this._bindings.method_set_size_2d_override_stretch) {
       let classname = new StringName("SubViewport");
       let methodname = new StringName("set_size_2d_override_stretch");
-      this.#_bindings.method_set_size_2d_override_stretch = internal.classdb_get_method_bind(
+      this._bindings.method_set_size_2d_override_stretch = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -89,10 +90,10 @@ export class SubViewport extends Viewport{
     }
   }
   static init_method_is_size_2d_override_stretch_enabled() {
-    if (!this.#_bindings.method_is_size_2d_override_stretch_enabled) {
+    if (!this._bindings.method_is_size_2d_override_stretch_enabled) {
       let classname = new StringName("SubViewport");
       let methodname = new StringName("is_size_2d_override_stretch_enabled");
-      this.#_bindings.method_is_size_2d_override_stretch_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_size_2d_override_stretch_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -100,10 +101,10 @@ export class SubViewport extends Viewport{
     }
   }
   static init_method_set_update_mode() {
-    if (!this.#_bindings.method_set_update_mode) {
+    if (!this._bindings.method_set_update_mode) {
       let classname = new StringName("SubViewport");
       let methodname = new StringName("set_update_mode");
-      this.#_bindings.method_set_update_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_update_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1295690030
@@ -111,10 +112,10 @@ export class SubViewport extends Viewport{
     }
   }
   static init_method_get_update_mode() {
-    if (!this.#_bindings.method_get_update_mode) {
+    if (!this._bindings.method_get_update_mode) {
       let classname = new StringName("SubViewport");
       let methodname = new StringName("get_update_mode");
-      this.#_bindings.method_get_update_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_update_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2980171553
@@ -122,10 +123,10 @@ export class SubViewport extends Viewport{
     }
   }
   static init_method_set_clear_mode() {
-    if (!this.#_bindings.method_set_clear_mode) {
+    if (!this._bindings.method_set_clear_mode) {
       let classname = new StringName("SubViewport");
       let methodname = new StringName("set_clear_mode");
-      this.#_bindings.method_set_clear_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_clear_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2834454712
@@ -133,10 +134,10 @@ export class SubViewport extends Viewport{
     }
   }
   static init_method_get_clear_mode() {
-    if (!this.#_bindings.method_get_clear_mode) {
+    if (!this._bindings.method_get_clear_mode) {
       let classname = new StringName("SubViewport");
       let methodname = new StringName("get_clear_mode");
-      this.#_bindings.method_get_clear_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_clear_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         331324495
@@ -149,7 +150,7 @@ export class SubViewport extends Viewport{
   set_size(_size) {
     SubViewport.init_method_set_size();
     return _call_native_mb_no_ret(
-      SubViewport.#_bindings.method_set_size,
+      SubViewport._bindings.method_set_size,
       this._owner,
       _size
     );
@@ -158,7 +159,7 @@ export class SubViewport extends Viewport{
   get_size() {
     SubViewport.init_method_get_size();
     return _call_native_mb_ret(
-      SubViewport.#_bindings.method_get_size,
+      SubViewport._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -169,7 +170,7 @@ export class SubViewport extends Viewport{
   set_size_2d_override(_size) {
     SubViewport.init_method_set_size_2d_override();
     return _call_native_mb_no_ret(
-      SubViewport.#_bindings.method_set_size_2d_override,
+      SubViewport._bindings.method_set_size_2d_override,
       this._owner,
       _size
     );
@@ -178,7 +179,7 @@ export class SubViewport extends Viewport{
   get_size_2d_override() {
     SubViewport.init_method_get_size_2d_override();
     return _call_native_mb_ret(
-      SubViewport.#_bindings.method_get_size_2d_override,
+      SubViewport._bindings.method_get_size_2d_override,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -189,7 +190,7 @@ export class SubViewport extends Viewport{
   set_size_2d_override_stretch(_enable) {
     SubViewport.init_method_set_size_2d_override_stretch();
     return _call_native_mb_no_ret(
-      SubViewport.#_bindings.method_set_size_2d_override_stretch,
+      SubViewport._bindings.method_set_size_2d_override_stretch,
       this._owner,
       _enable
     );
@@ -198,7 +199,7 @@ export class SubViewport extends Viewport{
   is_size_2d_override_stretch_enabled() {
     SubViewport.init_method_is_size_2d_override_stretch_enabled();
     return _call_native_mb_ret(
-      SubViewport.#_bindings.method_is_size_2d_override_stretch_enabled,
+      SubViewport._bindings.method_is_size_2d_override_stretch_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -209,7 +210,7 @@ export class SubViewport extends Viewport{
   set_update_mode(_mode) {
     SubViewport.init_method_set_update_mode();
     return _call_native_mb_no_ret(
-      SubViewport.#_bindings.method_set_update_mode,
+      SubViewport._bindings.method_set_update_mode,
       this._owner,
       _mode
     );
@@ -218,7 +219,7 @@ export class SubViewport extends Viewport{
   get_update_mode() {
     SubViewport.init_method_get_update_mode();
     return _call_native_mb_ret(
-      SubViewport.#_bindings.method_get_update_mode,
+      SubViewport._bindings.method_get_update_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -229,7 +230,7 @@ export class SubViewport extends Viewport{
   set_clear_mode(_mode) {
     SubViewport.init_method_set_clear_mode();
     return _call_native_mb_no_ret(
-      SubViewport.#_bindings.method_set_clear_mode,
+      SubViewport._bindings.method_set_clear_mode,
       this._owner,
       _mode
     );
@@ -238,7 +239,7 @@ export class SubViewport extends Viewport{
   get_clear_mode() {
     SubViewport.init_method_get_clear_mode();
     return _call_native_mb_ret(
-      SubViewport.#_bindings.method_get_clear_mode,
+      SubViewport._bindings.method_get_clear_mode,
       this._owner,
 			Variant.Type.INT,
     

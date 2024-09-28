@@ -1,22 +1,23 @@
 import * as internal from '__internal__';
+import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
-import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_op_type;
   method_get_op_type;
 }
+@GodotClass
 export class VisualShaderNodeSwitch extends VisualShaderNode{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -26,10 +27,10 @@ export class VisualShaderNodeSwitch extends VisualShaderNode{
     }
   }
   static init_method_set_op_type() {
-    if (!this.#_bindings.method_set_op_type) {
+    if (!this._bindings.method_set_op_type) {
       let classname = new StringName("VisualShaderNodeSwitch");
       let methodname = new StringName("set_op_type");
-      this.#_bindings.method_set_op_type = internal.classdb_get_method_bind(
+      this._bindings.method_set_op_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         510471861
@@ -37,10 +38,10 @@ export class VisualShaderNodeSwitch extends VisualShaderNode{
     }
   }
   static init_method_get_op_type() {
-    if (!this.#_bindings.method_get_op_type) {
+    if (!this._bindings.method_get_op_type) {
       let classname = new StringName("VisualShaderNodeSwitch");
       let methodname = new StringName("get_op_type");
-      this.#_bindings.method_get_op_type = internal.classdb_get_method_bind(
+      this._bindings.method_get_op_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2517845071
@@ -53,7 +54,7 @@ export class VisualShaderNodeSwitch extends VisualShaderNode{
   set_op_type(_type) {
     VisualShaderNodeSwitch.init_method_set_op_type();
     return _call_native_mb_no_ret(
-      VisualShaderNodeSwitch.#_bindings.method_set_op_type,
+      VisualShaderNodeSwitch._bindings.method_set_op_type,
       this._owner,
       _type
     );
@@ -62,7 +63,7 @@ export class VisualShaderNodeSwitch extends VisualShaderNode{
   get_op_type() {
     VisualShaderNodeSwitch.init_method_get_op_type();
     return _call_native_mb_ret(
-      VisualShaderNodeSwitch.#_bindings.method_get_op_type,
+      VisualShaderNodeSwitch._bindings.method_get_op_type,
       this._owner,
 			Variant.Type.INT,
     

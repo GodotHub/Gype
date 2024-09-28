@@ -1,22 +1,23 @@
 import * as internal from '__internal__';
+import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
-import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_mode;
   method_get_mode;
 }
+@GodotClass
 export class VisualShaderNodeParticleAccelerator extends VisualShaderNode{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -26,10 +27,10 @@ export class VisualShaderNodeParticleAccelerator extends VisualShaderNode{
     }
   }
   static init_method_set_mode() {
-    if (!this.#_bindings.method_set_mode) {
+    if (!this._bindings.method_set_mode) {
       let classname = new StringName("VisualShaderNodeParticleAccelerator");
       let methodname = new StringName("set_mode");
-      this.#_bindings.method_set_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3457585749
@@ -37,10 +38,10 @@ export class VisualShaderNodeParticleAccelerator extends VisualShaderNode{
     }
   }
   static init_method_get_mode() {
-    if (!this.#_bindings.method_get_mode) {
+    if (!this._bindings.method_get_mode) {
       let classname = new StringName("VisualShaderNodeParticleAccelerator");
       let methodname = new StringName("get_mode");
-      this.#_bindings.method_get_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2660365633
@@ -53,7 +54,7 @@ export class VisualShaderNodeParticleAccelerator extends VisualShaderNode{
   set_mode(_mode) {
     VisualShaderNodeParticleAccelerator.init_method_set_mode();
     return _call_native_mb_no_ret(
-      VisualShaderNodeParticleAccelerator.#_bindings.method_set_mode,
+      VisualShaderNodeParticleAccelerator._bindings.method_set_mode,
       this._owner,
       _mode
     );
@@ -62,7 +63,7 @@ export class VisualShaderNodeParticleAccelerator extends VisualShaderNode{
   get_mode() {
     VisualShaderNodeParticleAccelerator.init_method_get_mode();
     return _call_native_mb_ret(
-      VisualShaderNodeParticleAccelerator.#_bindings.method_get_mode,
+      VisualShaderNodeParticleAccelerator._bindings.method_get_mode,
       this._owner,
 			Variant.Type.INT,
     

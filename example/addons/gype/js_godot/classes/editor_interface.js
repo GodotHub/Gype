@@ -1,14 +1,15 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { GodotObject } from '@js_godot/classes/godot_object'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_restart_editor;
@@ -68,8 +69,7 @@ class _MethodBindings {
   method_is_movie_maker_enabled;
 }class _EditorInterface extends GodotObject{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -79,10 +79,10 @@ class _MethodBindings {
     }
   }
   static init_method_restart_editor() {
-    if (!this.#_bindings.method_restart_editor) {
+    if (!this._bindings.method_restart_editor) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("restart_editor");
-      this.#_bindings.method_restart_editor = internal.classdb_get_method_bind(
+      this._bindings.method_restart_editor = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3216645846
@@ -90,10 +90,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_command_palette() {
-    if (!this.#_bindings.method_get_command_palette) {
+    if (!this._bindings.method_get_command_palette) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("get_command_palette");
-      this.#_bindings.method_get_command_palette = internal.classdb_get_method_bind(
+      this._bindings.method_get_command_palette = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2471163807
@@ -101,10 +101,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_resource_filesystem() {
-    if (!this.#_bindings.method_get_resource_filesystem) {
+    if (!this._bindings.method_get_resource_filesystem) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("get_resource_filesystem");
-      this.#_bindings.method_get_resource_filesystem = internal.classdb_get_method_bind(
+      this._bindings.method_get_resource_filesystem = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         780151678
@@ -112,10 +112,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_editor_paths() {
-    if (!this.#_bindings.method_get_editor_paths) {
+    if (!this._bindings.method_get_editor_paths) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("get_editor_paths");
-      this.#_bindings.method_get_editor_paths = internal.classdb_get_method_bind(
+      this._bindings.method_get_editor_paths = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1595760068
@@ -123,10 +123,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_resource_previewer() {
-    if (!this.#_bindings.method_get_resource_previewer) {
+    if (!this._bindings.method_get_resource_previewer) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("get_resource_previewer");
-      this.#_bindings.method_get_resource_previewer = internal.classdb_get_method_bind(
+      this._bindings.method_get_resource_previewer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         943486957
@@ -134,10 +134,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_selection() {
-    if (!this.#_bindings.method_get_selection) {
+    if (!this._bindings.method_get_selection) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("get_selection");
-      this.#_bindings.method_get_selection = internal.classdb_get_method_bind(
+      this._bindings.method_get_selection = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2690272531
@@ -145,10 +145,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_editor_settings() {
-    if (!this.#_bindings.method_get_editor_settings) {
+    if (!this._bindings.method_get_editor_settings) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("get_editor_settings");
-      this.#_bindings.method_get_editor_settings = internal.classdb_get_method_bind(
+      this._bindings.method_get_editor_settings = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4086932459
@@ -156,10 +156,10 @@ class _MethodBindings {
     }
   }
   static init_method_make_mesh_previews() {
-    if (!this.#_bindings.method_make_mesh_previews) {
+    if (!this._bindings.method_make_mesh_previews) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("make_mesh_previews");
-      this.#_bindings.method_make_mesh_previews = internal.classdb_get_method_bind(
+      this._bindings.method_make_mesh_previews = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         878078554
@@ -167,10 +167,10 @@ class _MethodBindings {
     }
   }
   static init_method_set_plugin_enabled() {
-    if (!this.#_bindings.method_set_plugin_enabled) {
+    if (!this._bindings.method_set_plugin_enabled) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("set_plugin_enabled");
-      this.#_bindings.method_set_plugin_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_plugin_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2678287736
@@ -178,10 +178,10 @@ class _MethodBindings {
     }
   }
   static init_method_is_plugin_enabled() {
-    if (!this.#_bindings.method_is_plugin_enabled) {
+    if (!this._bindings.method_is_plugin_enabled) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("is_plugin_enabled");
-      this.#_bindings.method_is_plugin_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_plugin_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3927539163
@@ -189,10 +189,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_editor_theme() {
-    if (!this.#_bindings.method_get_editor_theme) {
+    if (!this._bindings.method_get_editor_theme) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("get_editor_theme");
-      this.#_bindings.method_get_editor_theme = internal.classdb_get_method_bind(
+      this._bindings.method_get_editor_theme = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3846893731
@@ -200,10 +200,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_base_control() {
-    if (!this.#_bindings.method_get_base_control) {
+    if (!this._bindings.method_get_base_control) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("get_base_control");
-      this.#_bindings.method_get_base_control = internal.classdb_get_method_bind(
+      this._bindings.method_get_base_control = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2783021301
@@ -211,10 +211,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_editor_main_screen() {
-    if (!this.#_bindings.method_get_editor_main_screen) {
+    if (!this._bindings.method_get_editor_main_screen) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("get_editor_main_screen");
-      this.#_bindings.method_get_editor_main_screen = internal.classdb_get_method_bind(
+      this._bindings.method_get_editor_main_screen = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1706218421
@@ -222,10 +222,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_script_editor() {
-    if (!this.#_bindings.method_get_script_editor) {
+    if (!this._bindings.method_get_script_editor) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("get_script_editor");
-      this.#_bindings.method_get_script_editor = internal.classdb_get_method_bind(
+      this._bindings.method_get_script_editor = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         90868003
@@ -233,10 +233,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_editor_viewport_2d() {
-    if (!this.#_bindings.method_get_editor_viewport_2d) {
+    if (!this._bindings.method_get_editor_viewport_2d) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("get_editor_viewport_2d");
-      this.#_bindings.method_get_editor_viewport_2d = internal.classdb_get_method_bind(
+      this._bindings.method_get_editor_viewport_2d = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3750751911
@@ -244,10 +244,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_editor_viewport_3d() {
-    if (!this.#_bindings.method_get_editor_viewport_3d) {
+    if (!this._bindings.method_get_editor_viewport_3d) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("get_editor_viewport_3d");
-      this.#_bindings.method_get_editor_viewport_3d = internal.classdb_get_method_bind(
+      this._bindings.method_get_editor_viewport_3d = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1970834490
@@ -255,10 +255,10 @@ class _MethodBindings {
     }
   }
   static init_method_set_main_screen_editor() {
-    if (!this.#_bindings.method_set_main_screen_editor) {
+    if (!this._bindings.method_set_main_screen_editor) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("set_main_screen_editor");
-      this.#_bindings.method_set_main_screen_editor = internal.classdb_get_method_bind(
+      this._bindings.method_set_main_screen_editor = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -266,10 +266,10 @@ class _MethodBindings {
     }
   }
   static init_method_set_distraction_free_mode() {
-    if (!this.#_bindings.method_set_distraction_free_mode) {
+    if (!this._bindings.method_set_distraction_free_mode) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("set_distraction_free_mode");
-      this.#_bindings.method_set_distraction_free_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_distraction_free_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -277,10 +277,10 @@ class _MethodBindings {
     }
   }
   static init_method_is_distraction_free_mode_enabled() {
-    if (!this.#_bindings.method_is_distraction_free_mode_enabled) {
+    if (!this._bindings.method_is_distraction_free_mode_enabled) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("is_distraction_free_mode_enabled");
-      this.#_bindings.method_is_distraction_free_mode_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_distraction_free_mode_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -288,10 +288,10 @@ class _MethodBindings {
     }
   }
   static init_method_is_multi_window_enabled() {
-    if (!this.#_bindings.method_is_multi_window_enabled) {
+    if (!this._bindings.method_is_multi_window_enabled) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("is_multi_window_enabled");
-      this.#_bindings.method_is_multi_window_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_multi_window_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -299,10 +299,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_editor_scale() {
-    if (!this.#_bindings.method_get_editor_scale) {
+    if (!this._bindings.method_get_editor_scale) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("get_editor_scale");
-      this.#_bindings.method_get_editor_scale = internal.classdb_get_method_bind(
+      this._bindings.method_get_editor_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -310,10 +310,10 @@ class _MethodBindings {
     }
   }
   static init_method_popup_dialog() {
-    if (!this.#_bindings.method_popup_dialog) {
+    if (!this._bindings.method_popup_dialog) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("popup_dialog");
-      this.#_bindings.method_popup_dialog = internal.classdb_get_method_bind(
+      this._bindings.method_popup_dialog = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2015770942
@@ -321,10 +321,10 @@ class _MethodBindings {
     }
   }
   static init_method_popup_dialog_centered() {
-    if (!this.#_bindings.method_popup_dialog_centered) {
+    if (!this._bindings.method_popup_dialog_centered) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("popup_dialog_centered");
-      this.#_bindings.method_popup_dialog_centered = internal.classdb_get_method_bind(
+      this._bindings.method_popup_dialog_centered = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         346557367
@@ -332,10 +332,10 @@ class _MethodBindings {
     }
   }
   static init_method_popup_dialog_centered_ratio() {
-    if (!this.#_bindings.method_popup_dialog_centered_ratio) {
+    if (!this._bindings.method_popup_dialog_centered_ratio) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("popup_dialog_centered_ratio");
-      this.#_bindings.method_popup_dialog_centered_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_popup_dialog_centered_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2093669136
@@ -343,10 +343,10 @@ class _MethodBindings {
     }
   }
   static init_method_popup_dialog_centered_clamped() {
-    if (!this.#_bindings.method_popup_dialog_centered_clamped) {
+    if (!this._bindings.method_popup_dialog_centered_clamped) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("popup_dialog_centered_clamped");
-      this.#_bindings.method_popup_dialog_centered_clamped = internal.classdb_get_method_bind(
+      this._bindings.method_popup_dialog_centered_clamped = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3763385571
@@ -354,10 +354,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_current_feature_profile() {
-    if (!this.#_bindings.method_get_current_feature_profile) {
+    if (!this._bindings.method_get_current_feature_profile) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("get_current_feature_profile");
-      this.#_bindings.method_get_current_feature_profile = internal.classdb_get_method_bind(
+      this._bindings.method_get_current_feature_profile = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -365,10 +365,10 @@ class _MethodBindings {
     }
   }
   static init_method_set_current_feature_profile() {
-    if (!this.#_bindings.method_set_current_feature_profile) {
+    if (!this._bindings.method_set_current_feature_profile) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("set_current_feature_profile");
-      this.#_bindings.method_set_current_feature_profile = internal.classdb_get_method_bind(
+      this._bindings.method_set_current_feature_profile = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -376,10 +376,10 @@ class _MethodBindings {
     }
   }
   static init_method_popup_node_selector() {
-    if (!this.#_bindings.method_popup_node_selector) {
+    if (!this._bindings.method_popup_node_selector) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("popup_node_selector");
-      this.#_bindings.method_popup_node_selector = internal.classdb_get_method_bind(
+      this._bindings.method_popup_node_selector = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2271411043
@@ -387,10 +387,10 @@ class _MethodBindings {
     }
   }
   static init_method_popup_property_selector() {
-    if (!this.#_bindings.method_popup_property_selector) {
+    if (!this._bindings.method_popup_property_selector) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("popup_property_selector");
-      this.#_bindings.method_popup_property_selector = internal.classdb_get_method_bind(
+      this._bindings.method_popup_property_selector = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         261221679
@@ -398,10 +398,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_file_system_dock() {
-    if (!this.#_bindings.method_get_file_system_dock) {
+    if (!this._bindings.method_get_file_system_dock) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("get_file_system_dock");
-      this.#_bindings.method_get_file_system_dock = internal.classdb_get_method_bind(
+      this._bindings.method_get_file_system_dock = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3751012327
@@ -409,10 +409,10 @@ class _MethodBindings {
     }
   }
   static init_method_select_file() {
-    if (!this.#_bindings.method_select_file) {
+    if (!this._bindings.method_select_file) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("select_file");
-      this.#_bindings.method_select_file = internal.classdb_get_method_bind(
+      this._bindings.method_select_file = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -420,10 +420,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_selected_paths() {
-    if (!this.#_bindings.method_get_selected_paths) {
+    if (!this._bindings.method_get_selected_paths) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("get_selected_paths");
-      this.#_bindings.method_get_selected_paths = internal.classdb_get_method_bind(
+      this._bindings.method_get_selected_paths = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1139954409
@@ -431,10 +431,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_current_path() {
-    if (!this.#_bindings.method_get_current_path) {
+    if (!this._bindings.method_get_current_path) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("get_current_path");
-      this.#_bindings.method_get_current_path = internal.classdb_get_method_bind(
+      this._bindings.method_get_current_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -442,10 +442,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_current_directory() {
-    if (!this.#_bindings.method_get_current_directory) {
+    if (!this._bindings.method_get_current_directory) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("get_current_directory");
-      this.#_bindings.method_get_current_directory = internal.classdb_get_method_bind(
+      this._bindings.method_get_current_directory = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -453,10 +453,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_inspector() {
-    if (!this.#_bindings.method_get_inspector) {
+    if (!this._bindings.method_get_inspector) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("get_inspector");
-      this.#_bindings.method_get_inspector = internal.classdb_get_method_bind(
+      this._bindings.method_get_inspector = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3517113938
@@ -464,10 +464,10 @@ class _MethodBindings {
     }
   }
   static init_method_inspect_object() {
-    if (!this.#_bindings.method_inspect_object) {
+    if (!this._bindings.method_inspect_object) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("inspect_object");
-      this.#_bindings.method_inspect_object = internal.classdb_get_method_bind(
+      this._bindings.method_inspect_object = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         127962172
@@ -475,10 +475,10 @@ class _MethodBindings {
     }
   }
   static init_method_edit_resource() {
-    if (!this.#_bindings.method_edit_resource) {
+    if (!this._bindings.method_edit_resource) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("edit_resource");
-      this.#_bindings.method_edit_resource = internal.classdb_get_method_bind(
+      this._bindings.method_edit_resource = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         968641751
@@ -486,10 +486,10 @@ class _MethodBindings {
     }
   }
   static init_method_edit_node() {
-    if (!this.#_bindings.method_edit_node) {
+    if (!this._bindings.method_edit_node) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("edit_node");
-      this.#_bindings.method_edit_node = internal.classdb_get_method_bind(
+      this._bindings.method_edit_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1078189570
@@ -497,10 +497,10 @@ class _MethodBindings {
     }
   }
   static init_method_edit_script() {
-    if (!this.#_bindings.method_edit_script) {
+    if (!this._bindings.method_edit_script) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("edit_script");
-      this.#_bindings.method_edit_script = internal.classdb_get_method_bind(
+      this._bindings.method_edit_script = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         219829402
@@ -508,10 +508,10 @@ class _MethodBindings {
     }
   }
   static init_method_open_scene_from_path() {
-    if (!this.#_bindings.method_open_scene_from_path) {
+    if (!this._bindings.method_open_scene_from_path) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("open_scene_from_path");
-      this.#_bindings.method_open_scene_from_path = internal.classdb_get_method_bind(
+      this._bindings.method_open_scene_from_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -519,10 +519,10 @@ class _MethodBindings {
     }
   }
   static init_method_reload_scene_from_path() {
-    if (!this.#_bindings.method_reload_scene_from_path) {
+    if (!this._bindings.method_reload_scene_from_path) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("reload_scene_from_path");
-      this.#_bindings.method_reload_scene_from_path = internal.classdb_get_method_bind(
+      this._bindings.method_reload_scene_from_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -530,10 +530,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_open_scenes() {
-    if (!this.#_bindings.method_get_open_scenes) {
+    if (!this._bindings.method_get_open_scenes) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("get_open_scenes");
-      this.#_bindings.method_get_open_scenes = internal.classdb_get_method_bind(
+      this._bindings.method_get_open_scenes = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1139954409
@@ -541,10 +541,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_edited_scene_root() {
-    if (!this.#_bindings.method_get_edited_scene_root) {
+    if (!this._bindings.method_get_edited_scene_root) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("get_edited_scene_root");
-      this.#_bindings.method_get_edited_scene_root = internal.classdb_get_method_bind(
+      this._bindings.method_get_edited_scene_root = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3160264692
@@ -552,10 +552,10 @@ class _MethodBindings {
     }
   }
   static init_method_save_scene() {
-    if (!this.#_bindings.method_save_scene) {
+    if (!this._bindings.method_save_scene) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("save_scene");
-      this.#_bindings.method_save_scene = internal.classdb_get_method_bind(
+      this._bindings.method_save_scene = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         166280745
@@ -563,10 +563,10 @@ class _MethodBindings {
     }
   }
   static init_method_save_scene_as() {
-    if (!this.#_bindings.method_save_scene_as) {
+    if (!this._bindings.method_save_scene_as) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("save_scene_as");
-      this.#_bindings.method_save_scene_as = internal.classdb_get_method_bind(
+      this._bindings.method_save_scene_as = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3647332257
@@ -574,10 +574,10 @@ class _MethodBindings {
     }
   }
   static init_method_save_all_scenes() {
-    if (!this.#_bindings.method_save_all_scenes) {
+    if (!this._bindings.method_save_all_scenes) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("save_all_scenes");
-      this.#_bindings.method_save_all_scenes = internal.classdb_get_method_bind(
+      this._bindings.method_save_all_scenes = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -585,10 +585,10 @@ class _MethodBindings {
     }
   }
   static init_method_mark_scene_as_unsaved() {
-    if (!this.#_bindings.method_mark_scene_as_unsaved) {
+    if (!this._bindings.method_mark_scene_as_unsaved) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("mark_scene_as_unsaved");
-      this.#_bindings.method_mark_scene_as_unsaved = internal.classdb_get_method_bind(
+      this._bindings.method_mark_scene_as_unsaved = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -596,10 +596,10 @@ class _MethodBindings {
     }
   }
   static init_method_play_main_scene() {
-    if (!this.#_bindings.method_play_main_scene) {
+    if (!this._bindings.method_play_main_scene) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("play_main_scene");
-      this.#_bindings.method_play_main_scene = internal.classdb_get_method_bind(
+      this._bindings.method_play_main_scene = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -607,10 +607,10 @@ class _MethodBindings {
     }
   }
   static init_method_play_current_scene() {
-    if (!this.#_bindings.method_play_current_scene) {
+    if (!this._bindings.method_play_current_scene) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("play_current_scene");
-      this.#_bindings.method_play_current_scene = internal.classdb_get_method_bind(
+      this._bindings.method_play_current_scene = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -618,10 +618,10 @@ class _MethodBindings {
     }
   }
   static init_method_play_custom_scene() {
-    if (!this.#_bindings.method_play_custom_scene) {
+    if (!this._bindings.method_play_custom_scene) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("play_custom_scene");
-      this.#_bindings.method_play_custom_scene = internal.classdb_get_method_bind(
+      this._bindings.method_play_custom_scene = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -629,10 +629,10 @@ class _MethodBindings {
     }
   }
   static init_method_stop_playing_scene() {
-    if (!this.#_bindings.method_stop_playing_scene) {
+    if (!this._bindings.method_stop_playing_scene) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("stop_playing_scene");
-      this.#_bindings.method_stop_playing_scene = internal.classdb_get_method_bind(
+      this._bindings.method_stop_playing_scene = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -640,10 +640,10 @@ class _MethodBindings {
     }
   }
   static init_method_is_playing_scene() {
-    if (!this.#_bindings.method_is_playing_scene) {
+    if (!this._bindings.method_is_playing_scene) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("is_playing_scene");
-      this.#_bindings.method_is_playing_scene = internal.classdb_get_method_bind(
+      this._bindings.method_is_playing_scene = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -651,10 +651,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_playing_scene() {
-    if (!this.#_bindings.method_get_playing_scene) {
+    if (!this._bindings.method_get_playing_scene) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("get_playing_scene");
-      this.#_bindings.method_get_playing_scene = internal.classdb_get_method_bind(
+      this._bindings.method_get_playing_scene = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -662,10 +662,10 @@ class _MethodBindings {
     }
   }
   static init_method_set_movie_maker_enabled() {
-    if (!this.#_bindings.method_set_movie_maker_enabled) {
+    if (!this._bindings.method_set_movie_maker_enabled) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("set_movie_maker_enabled");
-      this.#_bindings.method_set_movie_maker_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_movie_maker_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -673,10 +673,10 @@ class _MethodBindings {
     }
   }
   static init_method_is_movie_maker_enabled() {
-    if (!this.#_bindings.method_is_movie_maker_enabled) {
+    if (!this._bindings.method_is_movie_maker_enabled) {
       let classname = new StringName("EditorInterface");
       let methodname = new StringName("is_movie_maker_enabled");
-      this.#_bindings.method_is_movie_maker_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_movie_maker_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -689,7 +689,7 @@ class _MethodBindings {
   restart_editor(_save) {
     EditorInterface.init_method_restart_editor();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_restart_editor,
+      _EditorInterface._bindings.method_restart_editor,
       this._owner,
       _save
     );
@@ -698,7 +698,7 @@ class _MethodBindings {
   get_command_palette() {
     EditorInterface.init_method_get_command_palette();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_get_command_palette,
+      _EditorInterface._bindings.method_get_command_palette,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -708,7 +708,7 @@ class _MethodBindings {
   get_resource_filesystem() {
     EditorInterface.init_method_get_resource_filesystem();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_get_resource_filesystem,
+      _EditorInterface._bindings.method_get_resource_filesystem,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -718,7 +718,7 @@ class _MethodBindings {
   get_editor_paths() {
     EditorInterface.init_method_get_editor_paths();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_get_editor_paths,
+      _EditorInterface._bindings.method_get_editor_paths,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -728,7 +728,7 @@ class _MethodBindings {
   get_resource_previewer() {
     EditorInterface.init_method_get_resource_previewer();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_get_resource_previewer,
+      _EditorInterface._bindings.method_get_resource_previewer,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -738,7 +738,7 @@ class _MethodBindings {
   get_selection() {
     EditorInterface.init_method_get_selection();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_get_selection,
+      _EditorInterface._bindings.method_get_selection,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -748,7 +748,7 @@ class _MethodBindings {
   get_editor_settings() {
     EditorInterface.init_method_get_editor_settings();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_get_editor_settings,
+      _EditorInterface._bindings.method_get_editor_settings,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -758,7 +758,7 @@ class _MethodBindings {
   make_mesh_previews(_meshes, _preview_size) {
     EditorInterface.init_method_make_mesh_previews();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_make_mesh_previews,
+      _EditorInterface._bindings.method_make_mesh_previews,
       this._owner,
 			Variant.Type.ARRAY,
       _meshes, _preview_size
@@ -768,7 +768,7 @@ class _MethodBindings {
   set_plugin_enabled(_plugin, _enabled) {
     EditorInterface.init_method_set_plugin_enabled();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_set_plugin_enabled,
+      _EditorInterface._bindings.method_set_plugin_enabled,
       this._owner,
       _plugin, _enabled
     );
@@ -777,7 +777,7 @@ class _MethodBindings {
   is_plugin_enabled(_plugin) {
     EditorInterface.init_method_is_plugin_enabled();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_is_plugin_enabled,
+      _EditorInterface._bindings.method_is_plugin_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -788,7 +788,7 @@ class _MethodBindings {
   get_editor_theme() {
     EditorInterface.init_method_get_editor_theme();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_get_editor_theme,
+      _EditorInterface._bindings.method_get_editor_theme,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -798,7 +798,7 @@ class _MethodBindings {
   get_base_control() {
     EditorInterface.init_method_get_base_control();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_get_base_control,
+      _EditorInterface._bindings.method_get_base_control,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -808,7 +808,7 @@ class _MethodBindings {
   get_editor_main_screen() {
     EditorInterface.init_method_get_editor_main_screen();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_get_editor_main_screen,
+      _EditorInterface._bindings.method_get_editor_main_screen,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -818,7 +818,7 @@ class _MethodBindings {
   get_script_editor() {
     EditorInterface.init_method_get_script_editor();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_get_script_editor,
+      _EditorInterface._bindings.method_get_script_editor,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -828,7 +828,7 @@ class _MethodBindings {
   get_editor_viewport_2d() {
     EditorInterface.init_method_get_editor_viewport_2d();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_get_editor_viewport_2d,
+      _EditorInterface._bindings.method_get_editor_viewport_2d,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -838,7 +838,7 @@ class _MethodBindings {
   get_editor_viewport_3d(_idx) {
     EditorInterface.init_method_get_editor_viewport_3d();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_get_editor_viewport_3d,
+      _EditorInterface._bindings.method_get_editor_viewport_3d,
       this._owner,
 			Variant.Type.OBJECT,
       _idx
@@ -848,7 +848,7 @@ class _MethodBindings {
   set_main_screen_editor(_name) {
     EditorInterface.init_method_set_main_screen_editor();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_set_main_screen_editor,
+      _EditorInterface._bindings.method_set_main_screen_editor,
       this._owner,
       _name
     );
@@ -857,7 +857,7 @@ class _MethodBindings {
   set_distraction_free_mode(_enter) {
     EditorInterface.init_method_set_distraction_free_mode();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_set_distraction_free_mode,
+      _EditorInterface._bindings.method_set_distraction_free_mode,
       this._owner,
       _enter
     );
@@ -866,7 +866,7 @@ class _MethodBindings {
   is_distraction_free_mode_enabled() {
     EditorInterface.init_method_is_distraction_free_mode_enabled();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_is_distraction_free_mode_enabled,
+      _EditorInterface._bindings.method_is_distraction_free_mode_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -877,7 +877,7 @@ class _MethodBindings {
   is_multi_window_enabled() {
     EditorInterface.init_method_is_multi_window_enabled();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_is_multi_window_enabled,
+      _EditorInterface._bindings.method_is_multi_window_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -888,7 +888,7 @@ class _MethodBindings {
   get_editor_scale() {
     EditorInterface.init_method_get_editor_scale();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_get_editor_scale,
+      _EditorInterface._bindings.method_get_editor_scale,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -899,7 +899,7 @@ class _MethodBindings {
   popup_dialog(_dialog, _rect) {
     EditorInterface.init_method_popup_dialog();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_popup_dialog,
+      _EditorInterface._bindings.method_popup_dialog,
       this._owner,
       _dialog, _rect
     );
@@ -908,7 +908,7 @@ class _MethodBindings {
   popup_dialog_centered(_dialog, _minsize) {
     EditorInterface.init_method_popup_dialog_centered();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_popup_dialog_centered,
+      _EditorInterface._bindings.method_popup_dialog_centered,
       this._owner,
       _dialog, _minsize
     );
@@ -917,7 +917,7 @@ class _MethodBindings {
   popup_dialog_centered_ratio(_dialog, _ratio) {
     EditorInterface.init_method_popup_dialog_centered_ratio();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_popup_dialog_centered_ratio,
+      _EditorInterface._bindings.method_popup_dialog_centered_ratio,
       this._owner,
       _dialog, _ratio
     );
@@ -926,7 +926,7 @@ class _MethodBindings {
   popup_dialog_centered_clamped(_dialog, _minsize, _fallback_ratio) {
     EditorInterface.init_method_popup_dialog_centered_clamped();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_popup_dialog_centered_clamped,
+      _EditorInterface._bindings.method_popup_dialog_centered_clamped,
       this._owner,
       _dialog, _minsize, _fallback_ratio
     );
@@ -935,7 +935,7 @@ class _MethodBindings {
   get_current_feature_profile() {
     EditorInterface.init_method_get_current_feature_profile();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_get_current_feature_profile,
+      _EditorInterface._bindings.method_get_current_feature_profile,
       this._owner,
 			Variant.Type.STRING,
     
@@ -946,7 +946,7 @@ class _MethodBindings {
   set_current_feature_profile(_profile_name) {
     EditorInterface.init_method_set_current_feature_profile();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_set_current_feature_profile,
+      _EditorInterface._bindings.method_set_current_feature_profile,
       this._owner,
       _profile_name
     );
@@ -955,7 +955,7 @@ class _MethodBindings {
   popup_node_selector(_callback, _valid_types) {
     EditorInterface.init_method_popup_node_selector();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_popup_node_selector,
+      _EditorInterface._bindings.method_popup_node_selector,
       this._owner,
       _callback, _valid_types
     );
@@ -964,7 +964,7 @@ class _MethodBindings {
   popup_property_selector(_object, _callback, _type_filter) {
     EditorInterface.init_method_popup_property_selector();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_popup_property_selector,
+      _EditorInterface._bindings.method_popup_property_selector,
       this._owner,
       _object, _callback, _type_filter
     );
@@ -973,7 +973,7 @@ class _MethodBindings {
   get_file_system_dock() {
     EditorInterface.init_method_get_file_system_dock();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_get_file_system_dock,
+      _EditorInterface._bindings.method_get_file_system_dock,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -983,7 +983,7 @@ class _MethodBindings {
   select_file(_file) {
     EditorInterface.init_method_select_file();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_select_file,
+      _EditorInterface._bindings.method_select_file,
       this._owner,
       _file
     );
@@ -992,7 +992,7 @@ class _MethodBindings {
   get_selected_paths() {
     EditorInterface.init_method_get_selected_paths();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_get_selected_paths,
+      _EditorInterface._bindings.method_get_selected_paths,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -1003,7 +1003,7 @@ class _MethodBindings {
   get_current_path() {
     EditorInterface.init_method_get_current_path();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_get_current_path,
+      _EditorInterface._bindings.method_get_current_path,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1014,7 +1014,7 @@ class _MethodBindings {
   get_current_directory() {
     EditorInterface.init_method_get_current_directory();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_get_current_directory,
+      _EditorInterface._bindings.method_get_current_directory,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1025,7 +1025,7 @@ class _MethodBindings {
   get_inspector() {
     EditorInterface.init_method_get_inspector();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_get_inspector,
+      _EditorInterface._bindings.method_get_inspector,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -1035,7 +1035,7 @@ class _MethodBindings {
   inspect_object(_object, _for_property, _inspector_only) {
     EditorInterface.init_method_inspect_object();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_inspect_object,
+      _EditorInterface._bindings.method_inspect_object,
       this._owner,
       _object, _for_property, _inspector_only
     );
@@ -1044,7 +1044,7 @@ class _MethodBindings {
   edit_resource(_resource) {
     EditorInterface.init_method_edit_resource();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_edit_resource,
+      _EditorInterface._bindings.method_edit_resource,
       this._owner,
       _resource
     );
@@ -1053,7 +1053,7 @@ class _MethodBindings {
   edit_node(_node) {
     EditorInterface.init_method_edit_node();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_edit_node,
+      _EditorInterface._bindings.method_edit_node,
       this._owner,
       _node
     );
@@ -1062,7 +1062,7 @@ class _MethodBindings {
   edit_script(_script, _line, _column, _grab_focus) {
     EditorInterface.init_method_edit_script();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_edit_script,
+      _EditorInterface._bindings.method_edit_script,
       this._owner,
       _script, _line, _column, _grab_focus
     );
@@ -1071,7 +1071,7 @@ class _MethodBindings {
   open_scene_from_path(_scene_filepath) {
     EditorInterface.init_method_open_scene_from_path();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_open_scene_from_path,
+      _EditorInterface._bindings.method_open_scene_from_path,
       this._owner,
       _scene_filepath
     );
@@ -1080,7 +1080,7 @@ class _MethodBindings {
   reload_scene_from_path(_scene_filepath) {
     EditorInterface.init_method_reload_scene_from_path();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_reload_scene_from_path,
+      _EditorInterface._bindings.method_reload_scene_from_path,
       this._owner,
       _scene_filepath
     );
@@ -1089,7 +1089,7 @@ class _MethodBindings {
   get_open_scenes() {
     EditorInterface.init_method_get_open_scenes();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_get_open_scenes,
+      _EditorInterface._bindings.method_get_open_scenes,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -1100,7 +1100,7 @@ class _MethodBindings {
   get_edited_scene_root() {
     EditorInterface.init_method_get_edited_scene_root();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_get_edited_scene_root,
+      _EditorInterface._bindings.method_get_edited_scene_root,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -1110,7 +1110,7 @@ class _MethodBindings {
   save_scene() {
     EditorInterface.init_method_save_scene();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_save_scene,
+      _EditorInterface._bindings.method_save_scene,
       this._owner,
 			Variant.Type.INT,
     
@@ -1121,7 +1121,7 @@ class _MethodBindings {
   save_scene_as(_path, _with_preview) {
     EditorInterface.init_method_save_scene_as();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_save_scene_as,
+      _EditorInterface._bindings.method_save_scene_as,
       this._owner,
       _path, _with_preview
     );
@@ -1130,7 +1130,7 @@ class _MethodBindings {
   save_all_scenes() {
     EditorInterface.init_method_save_all_scenes();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_save_all_scenes,
+      _EditorInterface._bindings.method_save_all_scenes,
       this._owner,
       
     );
@@ -1139,7 +1139,7 @@ class _MethodBindings {
   mark_scene_as_unsaved() {
     EditorInterface.init_method_mark_scene_as_unsaved();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_mark_scene_as_unsaved,
+      _EditorInterface._bindings.method_mark_scene_as_unsaved,
       this._owner,
       
     );
@@ -1148,7 +1148,7 @@ class _MethodBindings {
   play_main_scene() {
     EditorInterface.init_method_play_main_scene();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_play_main_scene,
+      _EditorInterface._bindings.method_play_main_scene,
       this._owner,
       
     );
@@ -1157,7 +1157,7 @@ class _MethodBindings {
   play_current_scene() {
     EditorInterface.init_method_play_current_scene();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_play_current_scene,
+      _EditorInterface._bindings.method_play_current_scene,
       this._owner,
       
     );
@@ -1166,7 +1166,7 @@ class _MethodBindings {
   play_custom_scene(_scene_filepath) {
     EditorInterface.init_method_play_custom_scene();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_play_custom_scene,
+      _EditorInterface._bindings.method_play_custom_scene,
       this._owner,
       _scene_filepath
     );
@@ -1175,7 +1175,7 @@ class _MethodBindings {
   stop_playing_scene() {
     EditorInterface.init_method_stop_playing_scene();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_stop_playing_scene,
+      _EditorInterface._bindings.method_stop_playing_scene,
       this._owner,
       
     );
@@ -1184,7 +1184,7 @@ class _MethodBindings {
   is_playing_scene() {
     EditorInterface.init_method_is_playing_scene();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_is_playing_scene,
+      _EditorInterface._bindings.method_is_playing_scene,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1195,7 +1195,7 @@ class _MethodBindings {
   get_playing_scene() {
     EditorInterface.init_method_get_playing_scene();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_get_playing_scene,
+      _EditorInterface._bindings.method_get_playing_scene,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1206,7 +1206,7 @@ class _MethodBindings {
   set_movie_maker_enabled(_enabled) {
     EditorInterface.init_method_set_movie_maker_enabled();
     return _call_native_mb_no_ret(
-      _EditorInterface.#_bindings.method_set_movie_maker_enabled,
+      _EditorInterface._bindings.method_set_movie_maker_enabled,
       this._owner,
       _enabled
     );
@@ -1215,7 +1215,7 @@ class _MethodBindings {
   is_movie_maker_enabled() {
     EditorInterface.init_method_is_movie_maker_enabled();
     return _call_native_mb_ret(
-      _EditorInterface.#_bindings.method_is_movie_maker_enabled,
+      _EditorInterface._bindings.method_is_movie_maker_enabled,
       this._owner,
 			Variant.Type.BOOL,
     

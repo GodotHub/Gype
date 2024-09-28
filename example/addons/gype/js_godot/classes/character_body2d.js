@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { PhysicsBody2D } from '@js_godot/classes/physics_body2d'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_move_and_slide;
@@ -59,10 +60,10 @@ class _MethodBindings {
   method_get_slide_collision;
   method_get_last_slide_collision;
 }
+@GodotClass
 export class CharacterBody2D extends PhysicsBody2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -72,10 +73,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_move_and_slide() {
-    if (!this.#_bindings.method_move_and_slide) {
+    if (!this._bindings.method_move_and_slide) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("move_and_slide");
-      this.#_bindings.method_move_and_slide = internal.classdb_get_method_bind(
+      this._bindings.method_move_and_slide = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2240911060
@@ -83,10 +84,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_apply_floor_snap() {
-    if (!this.#_bindings.method_apply_floor_snap) {
+    if (!this._bindings.method_apply_floor_snap) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("apply_floor_snap");
-      this.#_bindings.method_apply_floor_snap = internal.classdb_get_method_bind(
+      this._bindings.method_apply_floor_snap = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -94,10 +95,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_set_velocity() {
-    if (!this.#_bindings.method_set_velocity) {
+    if (!this._bindings.method_set_velocity) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("set_velocity");
-      this.#_bindings.method_set_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_set_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -105,10 +106,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_get_velocity() {
-    if (!this.#_bindings.method_get_velocity) {
+    if (!this._bindings.method_get_velocity) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("get_velocity");
-      this.#_bindings.method_get_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_get_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -116,10 +117,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_set_safe_margin() {
-    if (!this.#_bindings.method_set_safe_margin) {
+    if (!this._bindings.method_set_safe_margin) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("set_safe_margin");
-      this.#_bindings.method_set_safe_margin = internal.classdb_get_method_bind(
+      this._bindings.method_set_safe_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -127,10 +128,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_get_safe_margin() {
-    if (!this.#_bindings.method_get_safe_margin) {
+    if (!this._bindings.method_get_safe_margin) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("get_safe_margin");
-      this.#_bindings.method_get_safe_margin = internal.classdb_get_method_bind(
+      this._bindings.method_get_safe_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -138,10 +139,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_is_floor_stop_on_slope_enabled() {
-    if (!this.#_bindings.method_is_floor_stop_on_slope_enabled) {
+    if (!this._bindings.method_is_floor_stop_on_slope_enabled) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("is_floor_stop_on_slope_enabled");
-      this.#_bindings.method_is_floor_stop_on_slope_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_floor_stop_on_slope_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -149,10 +150,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_set_floor_stop_on_slope_enabled() {
-    if (!this.#_bindings.method_set_floor_stop_on_slope_enabled) {
+    if (!this._bindings.method_set_floor_stop_on_slope_enabled) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("set_floor_stop_on_slope_enabled");
-      this.#_bindings.method_set_floor_stop_on_slope_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_floor_stop_on_slope_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -160,10 +161,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_set_floor_constant_speed_enabled() {
-    if (!this.#_bindings.method_set_floor_constant_speed_enabled) {
+    if (!this._bindings.method_set_floor_constant_speed_enabled) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("set_floor_constant_speed_enabled");
-      this.#_bindings.method_set_floor_constant_speed_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_floor_constant_speed_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -171,10 +172,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_is_floor_constant_speed_enabled() {
-    if (!this.#_bindings.method_is_floor_constant_speed_enabled) {
+    if (!this._bindings.method_is_floor_constant_speed_enabled) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("is_floor_constant_speed_enabled");
-      this.#_bindings.method_is_floor_constant_speed_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_floor_constant_speed_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -182,10 +183,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_set_floor_block_on_wall_enabled() {
-    if (!this.#_bindings.method_set_floor_block_on_wall_enabled) {
+    if (!this._bindings.method_set_floor_block_on_wall_enabled) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("set_floor_block_on_wall_enabled");
-      this.#_bindings.method_set_floor_block_on_wall_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_floor_block_on_wall_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -193,10 +194,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_is_floor_block_on_wall_enabled() {
-    if (!this.#_bindings.method_is_floor_block_on_wall_enabled) {
+    if (!this._bindings.method_is_floor_block_on_wall_enabled) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("is_floor_block_on_wall_enabled");
-      this.#_bindings.method_is_floor_block_on_wall_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_floor_block_on_wall_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -204,10 +205,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_set_slide_on_ceiling_enabled() {
-    if (!this.#_bindings.method_set_slide_on_ceiling_enabled) {
+    if (!this._bindings.method_set_slide_on_ceiling_enabled) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("set_slide_on_ceiling_enabled");
-      this.#_bindings.method_set_slide_on_ceiling_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_slide_on_ceiling_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -215,10 +216,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_is_slide_on_ceiling_enabled() {
-    if (!this.#_bindings.method_is_slide_on_ceiling_enabled) {
+    if (!this._bindings.method_is_slide_on_ceiling_enabled) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("is_slide_on_ceiling_enabled");
-      this.#_bindings.method_is_slide_on_ceiling_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_slide_on_ceiling_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -226,10 +227,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_set_platform_floor_layers() {
-    if (!this.#_bindings.method_set_platform_floor_layers) {
+    if (!this._bindings.method_set_platform_floor_layers) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("set_platform_floor_layers");
-      this.#_bindings.method_set_platform_floor_layers = internal.classdb_get_method_bind(
+      this._bindings.method_set_platform_floor_layers = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -237,10 +238,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_get_platform_floor_layers() {
-    if (!this.#_bindings.method_get_platform_floor_layers) {
+    if (!this._bindings.method_get_platform_floor_layers) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("get_platform_floor_layers");
-      this.#_bindings.method_get_platform_floor_layers = internal.classdb_get_method_bind(
+      this._bindings.method_get_platform_floor_layers = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -248,10 +249,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_set_platform_wall_layers() {
-    if (!this.#_bindings.method_set_platform_wall_layers) {
+    if (!this._bindings.method_set_platform_wall_layers) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("set_platform_wall_layers");
-      this.#_bindings.method_set_platform_wall_layers = internal.classdb_get_method_bind(
+      this._bindings.method_set_platform_wall_layers = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -259,10 +260,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_get_platform_wall_layers() {
-    if (!this.#_bindings.method_get_platform_wall_layers) {
+    if (!this._bindings.method_get_platform_wall_layers) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("get_platform_wall_layers");
-      this.#_bindings.method_get_platform_wall_layers = internal.classdb_get_method_bind(
+      this._bindings.method_get_platform_wall_layers = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -270,10 +271,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_get_max_slides() {
-    if (!this.#_bindings.method_get_max_slides) {
+    if (!this._bindings.method_get_max_slides) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("get_max_slides");
-      this.#_bindings.method_get_max_slides = internal.classdb_get_method_bind(
+      this._bindings.method_get_max_slides = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -281,10 +282,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_set_max_slides() {
-    if (!this.#_bindings.method_set_max_slides) {
+    if (!this._bindings.method_set_max_slides) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("set_max_slides");
-      this.#_bindings.method_set_max_slides = internal.classdb_get_method_bind(
+      this._bindings.method_set_max_slides = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -292,10 +293,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_get_floor_max_angle() {
-    if (!this.#_bindings.method_get_floor_max_angle) {
+    if (!this._bindings.method_get_floor_max_angle) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("get_floor_max_angle");
-      this.#_bindings.method_get_floor_max_angle = internal.classdb_get_method_bind(
+      this._bindings.method_get_floor_max_angle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -303,10 +304,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_set_floor_max_angle() {
-    if (!this.#_bindings.method_set_floor_max_angle) {
+    if (!this._bindings.method_set_floor_max_angle) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("set_floor_max_angle");
-      this.#_bindings.method_set_floor_max_angle = internal.classdb_get_method_bind(
+      this._bindings.method_set_floor_max_angle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -314,10 +315,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_get_floor_snap_length() {
-    if (!this.#_bindings.method_get_floor_snap_length) {
+    if (!this._bindings.method_get_floor_snap_length) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("get_floor_snap_length");
-      this.#_bindings.method_get_floor_snap_length = internal.classdb_get_method_bind(
+      this._bindings.method_get_floor_snap_length = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         191475506
@@ -325,10 +326,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_set_floor_snap_length() {
-    if (!this.#_bindings.method_set_floor_snap_length) {
+    if (!this._bindings.method_set_floor_snap_length) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("set_floor_snap_length");
-      this.#_bindings.method_set_floor_snap_length = internal.classdb_get_method_bind(
+      this._bindings.method_set_floor_snap_length = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -336,10 +337,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_get_wall_min_slide_angle() {
-    if (!this.#_bindings.method_get_wall_min_slide_angle) {
+    if (!this._bindings.method_get_wall_min_slide_angle) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("get_wall_min_slide_angle");
-      this.#_bindings.method_get_wall_min_slide_angle = internal.classdb_get_method_bind(
+      this._bindings.method_get_wall_min_slide_angle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -347,10 +348,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_set_wall_min_slide_angle() {
-    if (!this.#_bindings.method_set_wall_min_slide_angle) {
+    if (!this._bindings.method_set_wall_min_slide_angle) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("set_wall_min_slide_angle");
-      this.#_bindings.method_set_wall_min_slide_angle = internal.classdb_get_method_bind(
+      this._bindings.method_set_wall_min_slide_angle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -358,10 +359,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_get_up_direction() {
-    if (!this.#_bindings.method_get_up_direction) {
+    if (!this._bindings.method_get_up_direction) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("get_up_direction");
-      this.#_bindings.method_get_up_direction = internal.classdb_get_method_bind(
+      this._bindings.method_get_up_direction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -369,10 +370,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_set_up_direction() {
-    if (!this.#_bindings.method_set_up_direction) {
+    if (!this._bindings.method_set_up_direction) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("set_up_direction");
-      this.#_bindings.method_set_up_direction = internal.classdb_get_method_bind(
+      this._bindings.method_set_up_direction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -380,10 +381,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_set_motion_mode() {
-    if (!this.#_bindings.method_set_motion_mode) {
+    if (!this._bindings.method_set_motion_mode) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("set_motion_mode");
-      this.#_bindings.method_set_motion_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_motion_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1224392233
@@ -391,10 +392,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_get_motion_mode() {
-    if (!this.#_bindings.method_get_motion_mode) {
+    if (!this._bindings.method_get_motion_mode) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("get_motion_mode");
-      this.#_bindings.method_get_motion_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_motion_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1160151236
@@ -402,10 +403,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_set_platform_on_leave() {
-    if (!this.#_bindings.method_set_platform_on_leave) {
+    if (!this._bindings.method_set_platform_on_leave) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("set_platform_on_leave");
-      this.#_bindings.method_set_platform_on_leave = internal.classdb_get_method_bind(
+      this._bindings.method_set_platform_on_leave = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2423324375
@@ -413,10 +414,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_get_platform_on_leave() {
-    if (!this.#_bindings.method_get_platform_on_leave) {
+    if (!this._bindings.method_get_platform_on_leave) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("get_platform_on_leave");
-      this.#_bindings.method_get_platform_on_leave = internal.classdb_get_method_bind(
+      this._bindings.method_get_platform_on_leave = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4054324341
@@ -424,10 +425,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_is_on_floor() {
-    if (!this.#_bindings.method_is_on_floor) {
+    if (!this._bindings.method_is_on_floor) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("is_on_floor");
-      this.#_bindings.method_is_on_floor = internal.classdb_get_method_bind(
+      this._bindings.method_is_on_floor = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -435,10 +436,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_is_on_floor_only() {
-    if (!this.#_bindings.method_is_on_floor_only) {
+    if (!this._bindings.method_is_on_floor_only) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("is_on_floor_only");
-      this.#_bindings.method_is_on_floor_only = internal.classdb_get_method_bind(
+      this._bindings.method_is_on_floor_only = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -446,10 +447,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_is_on_ceiling() {
-    if (!this.#_bindings.method_is_on_ceiling) {
+    if (!this._bindings.method_is_on_ceiling) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("is_on_ceiling");
-      this.#_bindings.method_is_on_ceiling = internal.classdb_get_method_bind(
+      this._bindings.method_is_on_ceiling = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -457,10 +458,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_is_on_ceiling_only() {
-    if (!this.#_bindings.method_is_on_ceiling_only) {
+    if (!this._bindings.method_is_on_ceiling_only) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("is_on_ceiling_only");
-      this.#_bindings.method_is_on_ceiling_only = internal.classdb_get_method_bind(
+      this._bindings.method_is_on_ceiling_only = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -468,10 +469,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_is_on_wall() {
-    if (!this.#_bindings.method_is_on_wall) {
+    if (!this._bindings.method_is_on_wall) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("is_on_wall");
-      this.#_bindings.method_is_on_wall = internal.classdb_get_method_bind(
+      this._bindings.method_is_on_wall = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -479,10 +480,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_is_on_wall_only() {
-    if (!this.#_bindings.method_is_on_wall_only) {
+    if (!this._bindings.method_is_on_wall_only) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("is_on_wall_only");
-      this.#_bindings.method_is_on_wall_only = internal.classdb_get_method_bind(
+      this._bindings.method_is_on_wall_only = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -490,10 +491,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_get_floor_normal() {
-    if (!this.#_bindings.method_get_floor_normal) {
+    if (!this._bindings.method_get_floor_normal) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("get_floor_normal");
-      this.#_bindings.method_get_floor_normal = internal.classdb_get_method_bind(
+      this._bindings.method_get_floor_normal = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -501,10 +502,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_get_wall_normal() {
-    if (!this.#_bindings.method_get_wall_normal) {
+    if (!this._bindings.method_get_wall_normal) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("get_wall_normal");
-      this.#_bindings.method_get_wall_normal = internal.classdb_get_method_bind(
+      this._bindings.method_get_wall_normal = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -512,10 +513,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_get_last_motion() {
-    if (!this.#_bindings.method_get_last_motion) {
+    if (!this._bindings.method_get_last_motion) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("get_last_motion");
-      this.#_bindings.method_get_last_motion = internal.classdb_get_method_bind(
+      this._bindings.method_get_last_motion = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -523,10 +524,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_get_position_delta() {
-    if (!this.#_bindings.method_get_position_delta) {
+    if (!this._bindings.method_get_position_delta) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("get_position_delta");
-      this.#_bindings.method_get_position_delta = internal.classdb_get_method_bind(
+      this._bindings.method_get_position_delta = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -534,10 +535,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_get_real_velocity() {
-    if (!this.#_bindings.method_get_real_velocity) {
+    if (!this._bindings.method_get_real_velocity) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("get_real_velocity");
-      this.#_bindings.method_get_real_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_get_real_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -545,10 +546,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_get_floor_angle() {
-    if (!this.#_bindings.method_get_floor_angle) {
+    if (!this._bindings.method_get_floor_angle) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("get_floor_angle");
-      this.#_bindings.method_get_floor_angle = internal.classdb_get_method_bind(
+      this._bindings.method_get_floor_angle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2841063350
@@ -556,10 +557,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_get_platform_velocity() {
-    if (!this.#_bindings.method_get_platform_velocity) {
+    if (!this._bindings.method_get_platform_velocity) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("get_platform_velocity");
-      this.#_bindings.method_get_platform_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_get_platform_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -567,10 +568,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_get_slide_collision_count() {
-    if (!this.#_bindings.method_get_slide_collision_count) {
+    if (!this._bindings.method_get_slide_collision_count) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("get_slide_collision_count");
-      this.#_bindings.method_get_slide_collision_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_slide_collision_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -578,10 +579,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_get_slide_collision() {
-    if (!this.#_bindings.method_get_slide_collision) {
+    if (!this._bindings.method_get_slide_collision) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("get_slide_collision");
-      this.#_bindings.method_get_slide_collision = internal.classdb_get_method_bind(
+      this._bindings.method_get_slide_collision = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         860659811
@@ -589,10 +590,10 @@ export class CharacterBody2D extends PhysicsBody2D{
     }
   }
   static init_method_get_last_slide_collision() {
-    if (!this.#_bindings.method_get_last_slide_collision) {
+    if (!this._bindings.method_get_last_slide_collision) {
       let classname = new StringName("CharacterBody2D");
       let methodname = new StringName("get_last_slide_collision");
-      this.#_bindings.method_get_last_slide_collision = internal.classdb_get_method_bind(
+      this._bindings.method_get_last_slide_collision = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2161834755
@@ -605,7 +606,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   move_and_slide() {
     CharacterBody2D.init_method_move_and_slide();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_move_and_slide,
+      CharacterBody2D._bindings.method_move_and_slide,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -616,7 +617,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   apply_floor_snap() {
     CharacterBody2D.init_method_apply_floor_snap();
     return _call_native_mb_no_ret(
-      CharacterBody2D.#_bindings.method_apply_floor_snap,
+      CharacterBody2D._bindings.method_apply_floor_snap,
       this._owner,
       
     );
@@ -625,7 +626,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   set_velocity(_velocity) {
     CharacterBody2D.init_method_set_velocity();
     return _call_native_mb_no_ret(
-      CharacterBody2D.#_bindings.method_set_velocity,
+      CharacterBody2D._bindings.method_set_velocity,
       this._owner,
       _velocity
     );
@@ -634,7 +635,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   get_velocity() {
     CharacterBody2D.init_method_get_velocity();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_get_velocity,
+      CharacterBody2D._bindings.method_get_velocity,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -645,7 +646,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   set_safe_margin(_margin) {
     CharacterBody2D.init_method_set_safe_margin();
     return _call_native_mb_no_ret(
-      CharacterBody2D.#_bindings.method_set_safe_margin,
+      CharacterBody2D._bindings.method_set_safe_margin,
       this._owner,
       _margin
     );
@@ -654,7 +655,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   get_safe_margin() {
     CharacterBody2D.init_method_get_safe_margin();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_get_safe_margin,
+      CharacterBody2D._bindings.method_get_safe_margin,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -665,7 +666,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   is_floor_stop_on_slope_enabled() {
     CharacterBody2D.init_method_is_floor_stop_on_slope_enabled();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_is_floor_stop_on_slope_enabled,
+      CharacterBody2D._bindings.method_is_floor_stop_on_slope_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -676,7 +677,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   set_floor_stop_on_slope_enabled(_enabled) {
     CharacterBody2D.init_method_set_floor_stop_on_slope_enabled();
     return _call_native_mb_no_ret(
-      CharacterBody2D.#_bindings.method_set_floor_stop_on_slope_enabled,
+      CharacterBody2D._bindings.method_set_floor_stop_on_slope_enabled,
       this._owner,
       _enabled
     );
@@ -685,7 +686,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   set_floor_constant_speed_enabled(_enabled) {
     CharacterBody2D.init_method_set_floor_constant_speed_enabled();
     return _call_native_mb_no_ret(
-      CharacterBody2D.#_bindings.method_set_floor_constant_speed_enabled,
+      CharacterBody2D._bindings.method_set_floor_constant_speed_enabled,
       this._owner,
       _enabled
     );
@@ -694,7 +695,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   is_floor_constant_speed_enabled() {
     CharacterBody2D.init_method_is_floor_constant_speed_enabled();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_is_floor_constant_speed_enabled,
+      CharacterBody2D._bindings.method_is_floor_constant_speed_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -705,7 +706,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   set_floor_block_on_wall_enabled(_enabled) {
     CharacterBody2D.init_method_set_floor_block_on_wall_enabled();
     return _call_native_mb_no_ret(
-      CharacterBody2D.#_bindings.method_set_floor_block_on_wall_enabled,
+      CharacterBody2D._bindings.method_set_floor_block_on_wall_enabled,
       this._owner,
       _enabled
     );
@@ -714,7 +715,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   is_floor_block_on_wall_enabled() {
     CharacterBody2D.init_method_is_floor_block_on_wall_enabled();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_is_floor_block_on_wall_enabled,
+      CharacterBody2D._bindings.method_is_floor_block_on_wall_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -725,7 +726,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   set_slide_on_ceiling_enabled(_enabled) {
     CharacterBody2D.init_method_set_slide_on_ceiling_enabled();
     return _call_native_mb_no_ret(
-      CharacterBody2D.#_bindings.method_set_slide_on_ceiling_enabled,
+      CharacterBody2D._bindings.method_set_slide_on_ceiling_enabled,
       this._owner,
       _enabled
     );
@@ -734,7 +735,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   is_slide_on_ceiling_enabled() {
     CharacterBody2D.init_method_is_slide_on_ceiling_enabled();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_is_slide_on_ceiling_enabled,
+      CharacterBody2D._bindings.method_is_slide_on_ceiling_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -745,7 +746,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   set_platform_floor_layers(_exclude_layer) {
     CharacterBody2D.init_method_set_platform_floor_layers();
     return _call_native_mb_no_ret(
-      CharacterBody2D.#_bindings.method_set_platform_floor_layers,
+      CharacterBody2D._bindings.method_set_platform_floor_layers,
       this._owner,
       _exclude_layer
     );
@@ -754,7 +755,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   get_platform_floor_layers() {
     CharacterBody2D.init_method_get_platform_floor_layers();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_get_platform_floor_layers,
+      CharacterBody2D._bindings.method_get_platform_floor_layers,
       this._owner,
 			Variant.Type.INT,
     
@@ -765,7 +766,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   set_platform_wall_layers(_exclude_layer) {
     CharacterBody2D.init_method_set_platform_wall_layers();
     return _call_native_mb_no_ret(
-      CharacterBody2D.#_bindings.method_set_platform_wall_layers,
+      CharacterBody2D._bindings.method_set_platform_wall_layers,
       this._owner,
       _exclude_layer
     );
@@ -774,7 +775,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   get_platform_wall_layers() {
     CharacterBody2D.init_method_get_platform_wall_layers();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_get_platform_wall_layers,
+      CharacterBody2D._bindings.method_get_platform_wall_layers,
       this._owner,
 			Variant.Type.INT,
     
@@ -785,7 +786,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   get_max_slides() {
     CharacterBody2D.init_method_get_max_slides();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_get_max_slides,
+      CharacterBody2D._bindings.method_get_max_slides,
       this._owner,
 			Variant.Type.INT,
     
@@ -796,7 +797,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   set_max_slides(_max_slides) {
     CharacterBody2D.init_method_set_max_slides();
     return _call_native_mb_no_ret(
-      CharacterBody2D.#_bindings.method_set_max_slides,
+      CharacterBody2D._bindings.method_set_max_slides,
       this._owner,
       _max_slides
     );
@@ -805,7 +806,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   get_floor_max_angle() {
     CharacterBody2D.init_method_get_floor_max_angle();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_get_floor_max_angle,
+      CharacterBody2D._bindings.method_get_floor_max_angle,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -816,7 +817,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   set_floor_max_angle(_radians) {
     CharacterBody2D.init_method_set_floor_max_angle();
     return _call_native_mb_no_ret(
-      CharacterBody2D.#_bindings.method_set_floor_max_angle,
+      CharacterBody2D._bindings.method_set_floor_max_angle,
       this._owner,
       _radians
     );
@@ -825,7 +826,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   get_floor_snap_length() {
     CharacterBody2D.init_method_get_floor_snap_length();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_get_floor_snap_length,
+      CharacterBody2D._bindings.method_get_floor_snap_length,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -836,7 +837,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   set_floor_snap_length(_floor_snap_length) {
     CharacterBody2D.init_method_set_floor_snap_length();
     return _call_native_mb_no_ret(
-      CharacterBody2D.#_bindings.method_set_floor_snap_length,
+      CharacterBody2D._bindings.method_set_floor_snap_length,
       this._owner,
       _floor_snap_length
     );
@@ -845,7 +846,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   get_wall_min_slide_angle() {
     CharacterBody2D.init_method_get_wall_min_slide_angle();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_get_wall_min_slide_angle,
+      CharacterBody2D._bindings.method_get_wall_min_slide_angle,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -856,7 +857,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   set_wall_min_slide_angle(_radians) {
     CharacterBody2D.init_method_set_wall_min_slide_angle();
     return _call_native_mb_no_ret(
-      CharacterBody2D.#_bindings.method_set_wall_min_slide_angle,
+      CharacterBody2D._bindings.method_set_wall_min_slide_angle,
       this._owner,
       _radians
     );
@@ -865,7 +866,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   get_up_direction() {
     CharacterBody2D.init_method_get_up_direction();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_get_up_direction,
+      CharacterBody2D._bindings.method_get_up_direction,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -876,7 +877,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   set_up_direction(_up_direction) {
     CharacterBody2D.init_method_set_up_direction();
     return _call_native_mb_no_ret(
-      CharacterBody2D.#_bindings.method_set_up_direction,
+      CharacterBody2D._bindings.method_set_up_direction,
       this._owner,
       _up_direction
     );
@@ -885,7 +886,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   set_motion_mode(_mode) {
     CharacterBody2D.init_method_set_motion_mode();
     return _call_native_mb_no_ret(
-      CharacterBody2D.#_bindings.method_set_motion_mode,
+      CharacterBody2D._bindings.method_set_motion_mode,
       this._owner,
       _mode
     );
@@ -894,7 +895,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   get_motion_mode() {
     CharacterBody2D.init_method_get_motion_mode();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_get_motion_mode,
+      CharacterBody2D._bindings.method_get_motion_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -905,7 +906,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   set_platform_on_leave(_on_leave_apply_velocity) {
     CharacterBody2D.init_method_set_platform_on_leave();
     return _call_native_mb_no_ret(
-      CharacterBody2D.#_bindings.method_set_platform_on_leave,
+      CharacterBody2D._bindings.method_set_platform_on_leave,
       this._owner,
       _on_leave_apply_velocity
     );
@@ -914,7 +915,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   get_platform_on_leave() {
     CharacterBody2D.init_method_get_platform_on_leave();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_get_platform_on_leave,
+      CharacterBody2D._bindings.method_get_platform_on_leave,
       this._owner,
 			Variant.Type.INT,
     
@@ -925,7 +926,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   is_on_floor() {
     CharacterBody2D.init_method_is_on_floor();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_is_on_floor,
+      CharacterBody2D._bindings.method_is_on_floor,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -936,7 +937,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   is_on_floor_only() {
     CharacterBody2D.init_method_is_on_floor_only();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_is_on_floor_only,
+      CharacterBody2D._bindings.method_is_on_floor_only,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -947,7 +948,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   is_on_ceiling() {
     CharacterBody2D.init_method_is_on_ceiling();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_is_on_ceiling,
+      CharacterBody2D._bindings.method_is_on_ceiling,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -958,7 +959,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   is_on_ceiling_only() {
     CharacterBody2D.init_method_is_on_ceiling_only();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_is_on_ceiling_only,
+      CharacterBody2D._bindings.method_is_on_ceiling_only,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -969,7 +970,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   is_on_wall() {
     CharacterBody2D.init_method_is_on_wall();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_is_on_wall,
+      CharacterBody2D._bindings.method_is_on_wall,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -980,7 +981,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   is_on_wall_only() {
     CharacterBody2D.init_method_is_on_wall_only();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_is_on_wall_only,
+      CharacterBody2D._bindings.method_is_on_wall_only,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -991,7 +992,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   get_floor_normal() {
     CharacterBody2D.init_method_get_floor_normal();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_get_floor_normal,
+      CharacterBody2D._bindings.method_get_floor_normal,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1002,7 +1003,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   get_wall_normal() {
     CharacterBody2D.init_method_get_wall_normal();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_get_wall_normal,
+      CharacterBody2D._bindings.method_get_wall_normal,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1013,7 +1014,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   get_last_motion() {
     CharacterBody2D.init_method_get_last_motion();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_get_last_motion,
+      CharacterBody2D._bindings.method_get_last_motion,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1024,7 +1025,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   get_position_delta() {
     CharacterBody2D.init_method_get_position_delta();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_get_position_delta,
+      CharacterBody2D._bindings.method_get_position_delta,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1035,7 +1036,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   get_real_velocity() {
     CharacterBody2D.init_method_get_real_velocity();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_get_real_velocity,
+      CharacterBody2D._bindings.method_get_real_velocity,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1046,7 +1047,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   get_floor_angle(_up_direction) {
     CharacterBody2D.init_method_get_floor_angle();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_get_floor_angle,
+      CharacterBody2D._bindings.method_get_floor_angle,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1057,7 +1058,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   get_platform_velocity() {
     CharacterBody2D.init_method_get_platform_velocity();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_get_platform_velocity,
+      CharacterBody2D._bindings.method_get_platform_velocity,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1068,7 +1069,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   get_slide_collision_count() {
     CharacterBody2D.init_method_get_slide_collision_count();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_get_slide_collision_count,
+      CharacterBody2D._bindings.method_get_slide_collision_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -1079,7 +1080,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   get_slide_collision(_slide_idx) {
     CharacterBody2D.init_method_get_slide_collision();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_get_slide_collision,
+      CharacterBody2D._bindings.method_get_slide_collision,
       this._owner,
 			Variant.Type.OBJECT,
       _slide_idx
@@ -1089,7 +1090,7 @@ export class CharacterBody2D extends PhysicsBody2D{
   get_last_slide_collision() {
     CharacterBody2D.init_method_get_last_slide_collision();
     return _call_native_mb_ret(
-      CharacterBody2D.#_bindings.method_get_last_slide_collision,
+      CharacterBody2D._bindings.method_get_last_slide_collision,
       this._owner,
 			Variant.Type.OBJECT,
       

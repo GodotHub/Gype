@@ -1,23 +1,24 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDArray } from '@js_godot/variant/gd_array'
 import { TextureLayered } from '@js_godot/classes/texture_layered'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_create_from_images;
   method_update_layer;
 }
+@GodotClass
 export class ImageTextureLayered extends TextureLayered{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -27,10 +28,10 @@ export class ImageTextureLayered extends TextureLayered{
     }
   }
   static init_method_create_from_images() {
-    if (!this.#_bindings.method_create_from_images) {
+    if (!this._bindings.method_create_from_images) {
       let classname = new StringName("ImageTextureLayered");
       let methodname = new StringName("create_from_images");
-      this.#_bindings.method_create_from_images = internal.classdb_get_method_bind(
+      this._bindings.method_create_from_images = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2785773503
@@ -38,10 +39,10 @@ export class ImageTextureLayered extends TextureLayered{
     }
   }
   static init_method_update_layer() {
-    if (!this.#_bindings.method_update_layer) {
+    if (!this._bindings.method_update_layer) {
       let classname = new StringName("ImageTextureLayered");
       let methodname = new StringName("update_layer");
-      this.#_bindings.method_update_layer = internal.classdb_get_method_bind(
+      this._bindings.method_update_layer = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3331733361
@@ -54,7 +55,7 @@ export class ImageTextureLayered extends TextureLayered{
   create_from_images(_images) {
     ImageTextureLayered.init_method_create_from_images();
     return _call_native_mb_ret(
-      ImageTextureLayered.#_bindings.method_create_from_images,
+      ImageTextureLayered._bindings.method_create_from_images,
       this._owner,
 			Variant.Type.INT,
     
@@ -65,7 +66,7 @@ export class ImageTextureLayered extends TextureLayered{
   update_layer(_image, _layer) {
     ImageTextureLayered.init_method_update_layer();
     return _call_native_mb_no_ret(
-      ImageTextureLayered.#_bindings.method_update_layer,
+      ImageTextureLayered._bindings.method_update_layer,
       this._owner,
       _image, _layer
     );

@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_action_sets;
@@ -26,10 +27,10 @@ class _MethodBindings {
   method_remove_interaction_profile;
   method_create_default_action_sets;
 }
+@GodotClass
 export class OpenXRActionMap extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -39,10 +40,10 @@ export class OpenXRActionMap extends Resource{
     }
   }
   static init_method_set_action_sets() {
-    if (!this.#_bindings.method_set_action_sets) {
+    if (!this._bindings.method_set_action_sets) {
       let classname = new StringName("OpenXRActionMap");
       let methodname = new StringName("set_action_sets");
-      this.#_bindings.method_set_action_sets = internal.classdb_get_method_bind(
+      this._bindings.method_set_action_sets = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         381264803
@@ -50,10 +51,10 @@ export class OpenXRActionMap extends Resource{
     }
   }
   static init_method_get_action_sets() {
-    if (!this.#_bindings.method_get_action_sets) {
+    if (!this._bindings.method_get_action_sets) {
       let classname = new StringName("OpenXRActionMap");
       let methodname = new StringName("get_action_sets");
-      this.#_bindings.method_get_action_sets = internal.classdb_get_method_bind(
+      this._bindings.method_get_action_sets = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -61,10 +62,10 @@ export class OpenXRActionMap extends Resource{
     }
   }
   static init_method_get_action_set_count() {
-    if (!this.#_bindings.method_get_action_set_count) {
+    if (!this._bindings.method_get_action_set_count) {
       let classname = new StringName("OpenXRActionMap");
       let methodname = new StringName("get_action_set_count");
-      this.#_bindings.method_get_action_set_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_action_set_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -72,10 +73,10 @@ export class OpenXRActionMap extends Resource{
     }
   }
   static init_method_find_action_set() {
-    if (!this.#_bindings.method_find_action_set) {
+    if (!this._bindings.method_find_action_set) {
       let classname = new StringName("OpenXRActionMap");
       let methodname = new StringName("find_action_set");
-      this.#_bindings.method_find_action_set = internal.classdb_get_method_bind(
+      this._bindings.method_find_action_set = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1888809267
@@ -83,10 +84,10 @@ export class OpenXRActionMap extends Resource{
     }
   }
   static init_method_get_action_set() {
-    if (!this.#_bindings.method_get_action_set) {
+    if (!this._bindings.method_get_action_set) {
       let classname = new StringName("OpenXRActionMap");
       let methodname = new StringName("get_action_set");
-      this.#_bindings.method_get_action_set = internal.classdb_get_method_bind(
+      this._bindings.method_get_action_set = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1789580336
@@ -94,10 +95,10 @@ export class OpenXRActionMap extends Resource{
     }
   }
   static init_method_add_action_set() {
-    if (!this.#_bindings.method_add_action_set) {
+    if (!this._bindings.method_add_action_set) {
       let classname = new StringName("OpenXRActionMap");
       let methodname = new StringName("add_action_set");
-      this.#_bindings.method_add_action_set = internal.classdb_get_method_bind(
+      this._bindings.method_add_action_set = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2093310581
@@ -105,10 +106,10 @@ export class OpenXRActionMap extends Resource{
     }
   }
   static init_method_remove_action_set() {
-    if (!this.#_bindings.method_remove_action_set) {
+    if (!this._bindings.method_remove_action_set) {
       let classname = new StringName("OpenXRActionMap");
       let methodname = new StringName("remove_action_set");
-      this.#_bindings.method_remove_action_set = internal.classdb_get_method_bind(
+      this._bindings.method_remove_action_set = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2093310581
@@ -116,10 +117,10 @@ export class OpenXRActionMap extends Resource{
     }
   }
   static init_method_set_interaction_profiles() {
-    if (!this.#_bindings.method_set_interaction_profiles) {
+    if (!this._bindings.method_set_interaction_profiles) {
       let classname = new StringName("OpenXRActionMap");
       let methodname = new StringName("set_interaction_profiles");
-      this.#_bindings.method_set_interaction_profiles = internal.classdb_get_method_bind(
+      this._bindings.method_set_interaction_profiles = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         381264803
@@ -127,10 +128,10 @@ export class OpenXRActionMap extends Resource{
     }
   }
   static init_method_get_interaction_profiles() {
-    if (!this.#_bindings.method_get_interaction_profiles) {
+    if (!this._bindings.method_get_interaction_profiles) {
       let classname = new StringName("OpenXRActionMap");
       let methodname = new StringName("get_interaction_profiles");
-      this.#_bindings.method_get_interaction_profiles = internal.classdb_get_method_bind(
+      this._bindings.method_get_interaction_profiles = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3995934104
@@ -138,10 +139,10 @@ export class OpenXRActionMap extends Resource{
     }
   }
   static init_method_get_interaction_profile_count() {
-    if (!this.#_bindings.method_get_interaction_profile_count) {
+    if (!this._bindings.method_get_interaction_profile_count) {
       let classname = new StringName("OpenXRActionMap");
       let methodname = new StringName("get_interaction_profile_count");
-      this.#_bindings.method_get_interaction_profile_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_interaction_profile_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -149,10 +150,10 @@ export class OpenXRActionMap extends Resource{
     }
   }
   static init_method_find_interaction_profile() {
-    if (!this.#_bindings.method_find_interaction_profile) {
+    if (!this._bindings.method_find_interaction_profile) {
       let classname = new StringName("OpenXRActionMap");
       let methodname = new StringName("find_interaction_profile");
-      this.#_bindings.method_find_interaction_profile = internal.classdb_get_method_bind(
+      this._bindings.method_find_interaction_profile = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3095875538
@@ -160,10 +161,10 @@ export class OpenXRActionMap extends Resource{
     }
   }
   static init_method_get_interaction_profile() {
-    if (!this.#_bindings.method_get_interaction_profile) {
+    if (!this._bindings.method_get_interaction_profile) {
       let classname = new StringName("OpenXRActionMap");
       let methodname = new StringName("get_interaction_profile");
-      this.#_bindings.method_get_interaction_profile = internal.classdb_get_method_bind(
+      this._bindings.method_get_interaction_profile = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2546151210
@@ -171,10 +172,10 @@ export class OpenXRActionMap extends Resource{
     }
   }
   static init_method_add_interaction_profile() {
-    if (!this.#_bindings.method_add_interaction_profile) {
+    if (!this._bindings.method_add_interaction_profile) {
       let classname = new StringName("OpenXRActionMap");
       let methodname = new StringName("add_interaction_profile");
-      this.#_bindings.method_add_interaction_profile = internal.classdb_get_method_bind(
+      this._bindings.method_add_interaction_profile = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2697953512
@@ -182,10 +183,10 @@ export class OpenXRActionMap extends Resource{
     }
   }
   static init_method_remove_interaction_profile() {
-    if (!this.#_bindings.method_remove_interaction_profile) {
+    if (!this._bindings.method_remove_interaction_profile) {
       let classname = new StringName("OpenXRActionMap");
       let methodname = new StringName("remove_interaction_profile");
-      this.#_bindings.method_remove_interaction_profile = internal.classdb_get_method_bind(
+      this._bindings.method_remove_interaction_profile = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2697953512
@@ -193,10 +194,10 @@ export class OpenXRActionMap extends Resource{
     }
   }
   static init_method_create_default_action_sets() {
-    if (!this.#_bindings.method_create_default_action_sets) {
+    if (!this._bindings.method_create_default_action_sets) {
       let classname = new StringName("OpenXRActionMap");
       let methodname = new StringName("create_default_action_sets");
-      this.#_bindings.method_create_default_action_sets = internal.classdb_get_method_bind(
+      this._bindings.method_create_default_action_sets = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -209,7 +210,7 @@ export class OpenXRActionMap extends Resource{
   set_action_sets(_action_sets) {
     OpenXRActionMap.init_method_set_action_sets();
     return _call_native_mb_no_ret(
-      OpenXRActionMap.#_bindings.method_set_action_sets,
+      OpenXRActionMap._bindings.method_set_action_sets,
       this._owner,
       _action_sets
     );
@@ -218,7 +219,7 @@ export class OpenXRActionMap extends Resource{
   get_action_sets() {
     OpenXRActionMap.init_method_get_action_sets();
     return _call_native_mb_ret(
-      OpenXRActionMap.#_bindings.method_get_action_sets,
+      OpenXRActionMap._bindings.method_get_action_sets,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -229,7 +230,7 @@ export class OpenXRActionMap extends Resource{
   get_action_set_count() {
     OpenXRActionMap.init_method_get_action_set_count();
     return _call_native_mb_ret(
-      OpenXRActionMap.#_bindings.method_get_action_set_count,
+      OpenXRActionMap._bindings.method_get_action_set_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -240,7 +241,7 @@ export class OpenXRActionMap extends Resource{
   find_action_set(_name) {
     OpenXRActionMap.init_method_find_action_set();
     return _call_native_mb_ret(
-      OpenXRActionMap.#_bindings.method_find_action_set,
+      OpenXRActionMap._bindings.method_find_action_set,
       this._owner,
 			Variant.Type.OBJECT,
       _name
@@ -250,7 +251,7 @@ export class OpenXRActionMap extends Resource{
   get_action_set(_idx) {
     OpenXRActionMap.init_method_get_action_set();
     return _call_native_mb_ret(
-      OpenXRActionMap.#_bindings.method_get_action_set,
+      OpenXRActionMap._bindings.method_get_action_set,
       this._owner,
 			Variant.Type.OBJECT,
       _idx
@@ -260,7 +261,7 @@ export class OpenXRActionMap extends Resource{
   add_action_set(_action_set) {
     OpenXRActionMap.init_method_add_action_set();
     return _call_native_mb_no_ret(
-      OpenXRActionMap.#_bindings.method_add_action_set,
+      OpenXRActionMap._bindings.method_add_action_set,
       this._owner,
       _action_set
     );
@@ -269,7 +270,7 @@ export class OpenXRActionMap extends Resource{
   remove_action_set(_action_set) {
     OpenXRActionMap.init_method_remove_action_set();
     return _call_native_mb_no_ret(
-      OpenXRActionMap.#_bindings.method_remove_action_set,
+      OpenXRActionMap._bindings.method_remove_action_set,
       this._owner,
       _action_set
     );
@@ -278,7 +279,7 @@ export class OpenXRActionMap extends Resource{
   set_interaction_profiles(_interaction_profiles) {
     OpenXRActionMap.init_method_set_interaction_profiles();
     return _call_native_mb_no_ret(
-      OpenXRActionMap.#_bindings.method_set_interaction_profiles,
+      OpenXRActionMap._bindings.method_set_interaction_profiles,
       this._owner,
       _interaction_profiles
     );
@@ -287,7 +288,7 @@ export class OpenXRActionMap extends Resource{
   get_interaction_profiles() {
     OpenXRActionMap.init_method_get_interaction_profiles();
     return _call_native_mb_ret(
-      OpenXRActionMap.#_bindings.method_get_interaction_profiles,
+      OpenXRActionMap._bindings.method_get_interaction_profiles,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -298,7 +299,7 @@ export class OpenXRActionMap extends Resource{
   get_interaction_profile_count() {
     OpenXRActionMap.init_method_get_interaction_profile_count();
     return _call_native_mb_ret(
-      OpenXRActionMap.#_bindings.method_get_interaction_profile_count,
+      OpenXRActionMap._bindings.method_get_interaction_profile_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -309,7 +310,7 @@ export class OpenXRActionMap extends Resource{
   find_interaction_profile(_name) {
     OpenXRActionMap.init_method_find_interaction_profile();
     return _call_native_mb_ret(
-      OpenXRActionMap.#_bindings.method_find_interaction_profile,
+      OpenXRActionMap._bindings.method_find_interaction_profile,
       this._owner,
 			Variant.Type.OBJECT,
       _name
@@ -319,7 +320,7 @@ export class OpenXRActionMap extends Resource{
   get_interaction_profile(_idx) {
     OpenXRActionMap.init_method_get_interaction_profile();
     return _call_native_mb_ret(
-      OpenXRActionMap.#_bindings.method_get_interaction_profile,
+      OpenXRActionMap._bindings.method_get_interaction_profile,
       this._owner,
 			Variant.Type.OBJECT,
       _idx
@@ -329,7 +330,7 @@ export class OpenXRActionMap extends Resource{
   add_interaction_profile(_interaction_profile) {
     OpenXRActionMap.init_method_add_interaction_profile();
     return _call_native_mb_no_ret(
-      OpenXRActionMap.#_bindings.method_add_interaction_profile,
+      OpenXRActionMap._bindings.method_add_interaction_profile,
       this._owner,
       _interaction_profile
     );
@@ -338,7 +339,7 @@ export class OpenXRActionMap extends Resource{
   remove_interaction_profile(_interaction_profile) {
     OpenXRActionMap.init_method_remove_interaction_profile();
     return _call_native_mb_no_ret(
-      OpenXRActionMap.#_bindings.method_remove_interaction_profile,
+      OpenXRActionMap._bindings.method_remove_interaction_profile,
       this._owner,
       _interaction_profile
     );
@@ -347,7 +348,7 @@ export class OpenXRActionMap extends Resource{
   create_default_action_sets() {
     OpenXRActionMap.init_method_create_default_action_sets();
     return _call_native_mb_no_ret(
-      OpenXRActionMap.#_bindings.method_create_default_action_sets,
+      OpenXRActionMap._bindings.method_create_default_action_sets,
       this._owner,
       
     );

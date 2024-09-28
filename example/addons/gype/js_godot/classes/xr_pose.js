@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_has_tracking_data;
@@ -24,10 +25,10 @@ class _MethodBindings {
   method_set_tracking_confidence;
   method_get_tracking_confidence;
 }
+@GodotClass
 export class XRPose extends RefCounted{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -37,10 +38,10 @@ export class XRPose extends RefCounted{
     }
   }
   static init_method_set_has_tracking_data() {
-    if (!this.#_bindings.method_set_has_tracking_data) {
+    if (!this._bindings.method_set_has_tracking_data) {
       let classname = new StringName("XRPose");
       let methodname = new StringName("set_has_tracking_data");
-      this.#_bindings.method_set_has_tracking_data = internal.classdb_get_method_bind(
+      this._bindings.method_set_has_tracking_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -48,10 +49,10 @@ export class XRPose extends RefCounted{
     }
   }
   static init_method_get_has_tracking_data() {
-    if (!this.#_bindings.method_get_has_tracking_data) {
+    if (!this._bindings.method_get_has_tracking_data) {
       let classname = new StringName("XRPose");
       let methodname = new StringName("get_has_tracking_data");
-      this.#_bindings.method_get_has_tracking_data = internal.classdb_get_method_bind(
+      this._bindings.method_get_has_tracking_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -59,10 +60,10 @@ export class XRPose extends RefCounted{
     }
   }
   static init_method_set_name() {
-    if (!this.#_bindings.method_set_name) {
+    if (!this._bindings.method_set_name) {
       let classname = new StringName("XRPose");
       let methodname = new StringName("set_name");
-      this.#_bindings.method_set_name = internal.classdb_get_method_bind(
+      this._bindings.method_set_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -70,10 +71,10 @@ export class XRPose extends RefCounted{
     }
   }
   static init_method_get_name() {
-    if (!this.#_bindings.method_get_name) {
+    if (!this._bindings.method_get_name) {
       let classname = new StringName("XRPose");
       let methodname = new StringName("get_name");
-      this.#_bindings.method_get_name = internal.classdb_get_method_bind(
+      this._bindings.method_get_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2002593661
@@ -81,10 +82,10 @@ export class XRPose extends RefCounted{
     }
   }
   static init_method_set_transform() {
-    if (!this.#_bindings.method_set_transform) {
+    if (!this._bindings.method_set_transform) {
       let classname = new StringName("XRPose");
       let methodname = new StringName("set_transform");
-      this.#_bindings.method_set_transform = internal.classdb_get_method_bind(
+      this._bindings.method_set_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2952846383
@@ -92,10 +93,10 @@ export class XRPose extends RefCounted{
     }
   }
   static init_method_get_transform() {
-    if (!this.#_bindings.method_get_transform) {
+    if (!this._bindings.method_get_transform) {
       let classname = new StringName("XRPose");
       let methodname = new StringName("get_transform");
-      this.#_bindings.method_get_transform = internal.classdb_get_method_bind(
+      this._bindings.method_get_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3229777777
@@ -103,10 +104,10 @@ export class XRPose extends RefCounted{
     }
   }
   static init_method_get_adjusted_transform() {
-    if (!this.#_bindings.method_get_adjusted_transform) {
+    if (!this._bindings.method_get_adjusted_transform) {
       let classname = new StringName("XRPose");
       let methodname = new StringName("get_adjusted_transform");
-      this.#_bindings.method_get_adjusted_transform = internal.classdb_get_method_bind(
+      this._bindings.method_get_adjusted_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3229777777
@@ -114,10 +115,10 @@ export class XRPose extends RefCounted{
     }
   }
   static init_method_set_linear_velocity() {
-    if (!this.#_bindings.method_set_linear_velocity) {
+    if (!this._bindings.method_set_linear_velocity) {
       let classname = new StringName("XRPose");
       let methodname = new StringName("set_linear_velocity");
-      this.#_bindings.method_set_linear_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_set_linear_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -125,10 +126,10 @@ export class XRPose extends RefCounted{
     }
   }
   static init_method_get_linear_velocity() {
-    if (!this.#_bindings.method_get_linear_velocity) {
+    if (!this._bindings.method_get_linear_velocity) {
       let classname = new StringName("XRPose");
       let methodname = new StringName("get_linear_velocity");
-      this.#_bindings.method_get_linear_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_get_linear_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3360562783
@@ -136,10 +137,10 @@ export class XRPose extends RefCounted{
     }
   }
   static init_method_set_angular_velocity() {
-    if (!this.#_bindings.method_set_angular_velocity) {
+    if (!this._bindings.method_set_angular_velocity) {
       let classname = new StringName("XRPose");
       let methodname = new StringName("set_angular_velocity");
-      this.#_bindings.method_set_angular_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_set_angular_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -147,10 +148,10 @@ export class XRPose extends RefCounted{
     }
   }
   static init_method_get_angular_velocity() {
-    if (!this.#_bindings.method_get_angular_velocity) {
+    if (!this._bindings.method_get_angular_velocity) {
       let classname = new StringName("XRPose");
       let methodname = new StringName("get_angular_velocity");
-      this.#_bindings.method_get_angular_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_get_angular_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3360562783
@@ -158,10 +159,10 @@ export class XRPose extends RefCounted{
     }
   }
   static init_method_set_tracking_confidence() {
-    if (!this.#_bindings.method_set_tracking_confidence) {
+    if (!this._bindings.method_set_tracking_confidence) {
       let classname = new StringName("XRPose");
       let methodname = new StringName("set_tracking_confidence");
-      this.#_bindings.method_set_tracking_confidence = internal.classdb_get_method_bind(
+      this._bindings.method_set_tracking_confidence = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4171656666
@@ -169,10 +170,10 @@ export class XRPose extends RefCounted{
     }
   }
   static init_method_get_tracking_confidence() {
-    if (!this.#_bindings.method_get_tracking_confidence) {
+    if (!this._bindings.method_get_tracking_confidence) {
       let classname = new StringName("XRPose");
       let methodname = new StringName("get_tracking_confidence");
-      this.#_bindings.method_get_tracking_confidence = internal.classdb_get_method_bind(
+      this._bindings.method_get_tracking_confidence = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2064923680
@@ -185,7 +186,7 @@ export class XRPose extends RefCounted{
   set_has_tracking_data(_has_tracking_data) {
     XRPose.init_method_set_has_tracking_data();
     return _call_native_mb_no_ret(
-      XRPose.#_bindings.method_set_has_tracking_data,
+      XRPose._bindings.method_set_has_tracking_data,
       this._owner,
       _has_tracking_data
     );
@@ -194,7 +195,7 @@ export class XRPose extends RefCounted{
   get_has_tracking_data() {
     XRPose.init_method_get_has_tracking_data();
     return _call_native_mb_ret(
-      XRPose.#_bindings.method_get_has_tracking_data,
+      XRPose._bindings.method_get_has_tracking_data,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -205,7 +206,7 @@ export class XRPose extends RefCounted{
   set_name(_name) {
     XRPose.init_method_set_name();
     return _call_native_mb_no_ret(
-      XRPose.#_bindings.method_set_name,
+      XRPose._bindings.method_set_name,
       this._owner,
       _name
     );
@@ -214,7 +215,7 @@ export class XRPose extends RefCounted{
   get_name() {
     XRPose.init_method_get_name();
     return _call_native_mb_ret(
-      XRPose.#_bindings.method_get_name,
+      XRPose._bindings.method_get_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -225,7 +226,7 @@ export class XRPose extends RefCounted{
   set_transform(_transform) {
     XRPose.init_method_set_transform();
     return _call_native_mb_no_ret(
-      XRPose.#_bindings.method_set_transform,
+      XRPose._bindings.method_set_transform,
       this._owner,
       _transform
     );
@@ -234,7 +235,7 @@ export class XRPose extends RefCounted{
   get_transform() {
     XRPose.init_method_get_transform();
     return _call_native_mb_ret(
-      XRPose.#_bindings.method_get_transform,
+      XRPose._bindings.method_get_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -245,7 +246,7 @@ export class XRPose extends RefCounted{
   get_adjusted_transform() {
     XRPose.init_method_get_adjusted_transform();
     return _call_native_mb_ret(
-      XRPose.#_bindings.method_get_adjusted_transform,
+      XRPose._bindings.method_get_adjusted_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -256,7 +257,7 @@ export class XRPose extends RefCounted{
   set_linear_velocity(_velocity) {
     XRPose.init_method_set_linear_velocity();
     return _call_native_mb_no_ret(
-      XRPose.#_bindings.method_set_linear_velocity,
+      XRPose._bindings.method_set_linear_velocity,
       this._owner,
       _velocity
     );
@@ -265,7 +266,7 @@ export class XRPose extends RefCounted{
   get_linear_velocity() {
     XRPose.init_method_get_linear_velocity();
     return _call_native_mb_ret(
-      XRPose.#_bindings.method_get_linear_velocity,
+      XRPose._bindings.method_get_linear_velocity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -276,7 +277,7 @@ export class XRPose extends RefCounted{
   set_angular_velocity(_velocity) {
     XRPose.init_method_set_angular_velocity();
     return _call_native_mb_no_ret(
-      XRPose.#_bindings.method_set_angular_velocity,
+      XRPose._bindings.method_set_angular_velocity,
       this._owner,
       _velocity
     );
@@ -285,7 +286,7 @@ export class XRPose extends RefCounted{
   get_angular_velocity() {
     XRPose.init_method_get_angular_velocity();
     return _call_native_mb_ret(
-      XRPose.#_bindings.method_get_angular_velocity,
+      XRPose._bindings.method_get_angular_velocity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -296,7 +297,7 @@ export class XRPose extends RefCounted{
   set_tracking_confidence(_tracking_confidence) {
     XRPose.init_method_set_tracking_confidence();
     return _call_native_mb_no_ret(
-      XRPose.#_bindings.method_set_tracking_confidence,
+      XRPose._bindings.method_set_tracking_confidence,
       this._owner,
       _tracking_confidence
     );
@@ -305,7 +306,7 @@ export class XRPose extends RefCounted{
   get_tracking_confidence() {
     XRPose.init_method_get_tracking_confidence();
     return _call_native_mb_ret(
-      XRPose.#_bindings.method_get_tracking_confidence,
+      XRPose._bindings.method_get_tracking_confidence,
       this._owner,
 			Variant.Type.INT,
     

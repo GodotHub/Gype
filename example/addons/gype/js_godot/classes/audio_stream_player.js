@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Node } from '@js_godot/classes/node'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_stream;
@@ -36,10 +37,10 @@ class _MethodBindings {
   method_set_playback_type;
   method_get_playback_type;
 }
+@GodotClass
 export class AudioStreamPlayer extends Node{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -49,10 +50,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_set_stream() {
-    if (!this.#_bindings.method_set_stream) {
+    if (!this._bindings.method_set_stream) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("set_stream");
-      this.#_bindings.method_set_stream = internal.classdb_get_method_bind(
+      this._bindings.method_set_stream = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2210767741
@@ -60,10 +61,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_get_stream() {
-    if (!this.#_bindings.method_get_stream) {
+    if (!this._bindings.method_get_stream) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("get_stream");
-      this.#_bindings.method_get_stream = internal.classdb_get_method_bind(
+      this._bindings.method_get_stream = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         160907539
@@ -71,10 +72,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_set_volume_db() {
-    if (!this.#_bindings.method_set_volume_db) {
+    if (!this._bindings.method_set_volume_db) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("set_volume_db");
-      this.#_bindings.method_set_volume_db = internal.classdb_get_method_bind(
+      this._bindings.method_set_volume_db = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -82,10 +83,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_get_volume_db() {
-    if (!this.#_bindings.method_get_volume_db) {
+    if (!this._bindings.method_get_volume_db) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("get_volume_db");
-      this.#_bindings.method_get_volume_db = internal.classdb_get_method_bind(
+      this._bindings.method_get_volume_db = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -93,10 +94,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_set_pitch_scale() {
-    if (!this.#_bindings.method_set_pitch_scale) {
+    if (!this._bindings.method_set_pitch_scale) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("set_pitch_scale");
-      this.#_bindings.method_set_pitch_scale = internal.classdb_get_method_bind(
+      this._bindings.method_set_pitch_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -104,10 +105,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_get_pitch_scale() {
-    if (!this.#_bindings.method_get_pitch_scale) {
+    if (!this._bindings.method_get_pitch_scale) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("get_pitch_scale");
-      this.#_bindings.method_get_pitch_scale = internal.classdb_get_method_bind(
+      this._bindings.method_get_pitch_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -115,10 +116,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_play() {
-    if (!this.#_bindings.method_play) {
+    if (!this._bindings.method_play) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("play");
-      this.#_bindings.method_play = internal.classdb_get_method_bind(
+      this._bindings.method_play = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1958160172
@@ -126,10 +127,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_seek() {
-    if (!this.#_bindings.method_seek) {
+    if (!this._bindings.method_seek) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("seek");
-      this.#_bindings.method_seek = internal.classdb_get_method_bind(
+      this._bindings.method_seek = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -137,10 +138,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_stop() {
-    if (!this.#_bindings.method_stop) {
+    if (!this._bindings.method_stop) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("stop");
-      this.#_bindings.method_stop = internal.classdb_get_method_bind(
+      this._bindings.method_stop = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -148,10 +149,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_is_playing() {
-    if (!this.#_bindings.method_is_playing) {
+    if (!this._bindings.method_is_playing) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("is_playing");
-      this.#_bindings.method_is_playing = internal.classdb_get_method_bind(
+      this._bindings.method_is_playing = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -159,10 +160,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_get_playback_position() {
-    if (!this.#_bindings.method_get_playback_position) {
+    if (!this._bindings.method_get_playback_position) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("get_playback_position");
-      this.#_bindings.method_get_playback_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_playback_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         191475506
@@ -170,10 +171,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_set_bus() {
-    if (!this.#_bindings.method_set_bus) {
+    if (!this._bindings.method_set_bus) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("set_bus");
-      this.#_bindings.method_set_bus = internal.classdb_get_method_bind(
+      this._bindings.method_set_bus = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -181,10 +182,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_get_bus() {
-    if (!this.#_bindings.method_get_bus) {
+    if (!this._bindings.method_get_bus) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("get_bus");
-      this.#_bindings.method_get_bus = internal.classdb_get_method_bind(
+      this._bindings.method_get_bus = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2002593661
@@ -192,10 +193,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_set_autoplay() {
-    if (!this.#_bindings.method_set_autoplay) {
+    if (!this._bindings.method_set_autoplay) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("set_autoplay");
-      this.#_bindings.method_set_autoplay = internal.classdb_get_method_bind(
+      this._bindings.method_set_autoplay = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -203,10 +204,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_is_autoplay_enabled() {
-    if (!this.#_bindings.method_is_autoplay_enabled) {
+    if (!this._bindings.method_is_autoplay_enabled) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("is_autoplay_enabled");
-      this.#_bindings.method_is_autoplay_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_autoplay_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -214,10 +215,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_set_mix_target() {
-    if (!this.#_bindings.method_set_mix_target) {
+    if (!this._bindings.method_set_mix_target) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("set_mix_target");
-      this.#_bindings.method_set_mix_target = internal.classdb_get_method_bind(
+      this._bindings.method_set_mix_target = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2300306138
@@ -225,10 +226,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_get_mix_target() {
-    if (!this.#_bindings.method_get_mix_target) {
+    if (!this._bindings.method_get_mix_target) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("get_mix_target");
-      this.#_bindings.method_get_mix_target = internal.classdb_get_method_bind(
+      this._bindings.method_get_mix_target = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         172807476
@@ -236,10 +237,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_set_stream_paused() {
-    if (!this.#_bindings.method_set_stream_paused) {
+    if (!this._bindings.method_set_stream_paused) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("set_stream_paused");
-      this.#_bindings.method_set_stream_paused = internal.classdb_get_method_bind(
+      this._bindings.method_set_stream_paused = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -247,10 +248,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_get_stream_paused() {
-    if (!this.#_bindings.method_get_stream_paused) {
+    if (!this._bindings.method_get_stream_paused) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("get_stream_paused");
-      this.#_bindings.method_get_stream_paused = internal.classdb_get_method_bind(
+      this._bindings.method_get_stream_paused = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -258,10 +259,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_set_max_polyphony() {
-    if (!this.#_bindings.method_set_max_polyphony) {
+    if (!this._bindings.method_set_max_polyphony) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("set_max_polyphony");
-      this.#_bindings.method_set_max_polyphony = internal.classdb_get_method_bind(
+      this._bindings.method_set_max_polyphony = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -269,10 +270,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_get_max_polyphony() {
-    if (!this.#_bindings.method_get_max_polyphony) {
+    if (!this._bindings.method_get_max_polyphony) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("get_max_polyphony");
-      this.#_bindings.method_get_max_polyphony = internal.classdb_get_method_bind(
+      this._bindings.method_get_max_polyphony = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -280,10 +281,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_has_stream_playback() {
-    if (!this.#_bindings.method_has_stream_playback) {
+    if (!this._bindings.method_has_stream_playback) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("has_stream_playback");
-      this.#_bindings.method_has_stream_playback = internal.classdb_get_method_bind(
+      this._bindings.method_has_stream_playback = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2240911060
@@ -291,10 +292,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_get_stream_playback() {
-    if (!this.#_bindings.method_get_stream_playback) {
+    if (!this._bindings.method_get_stream_playback) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("get_stream_playback");
-      this.#_bindings.method_get_stream_playback = internal.classdb_get_method_bind(
+      this._bindings.method_get_stream_playback = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         210135309
@@ -302,10 +303,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_set_playback_type() {
-    if (!this.#_bindings.method_set_playback_type) {
+    if (!this._bindings.method_set_playback_type) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("set_playback_type");
-      this.#_bindings.method_set_playback_type = internal.classdb_get_method_bind(
+      this._bindings.method_set_playback_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         725473817
@@ -313,10 +314,10 @@ export class AudioStreamPlayer extends Node{
     }
   }
   static init_method_get_playback_type() {
-    if (!this.#_bindings.method_get_playback_type) {
+    if (!this._bindings.method_get_playback_type) {
       let classname = new StringName("AudioStreamPlayer");
       let methodname = new StringName("get_playback_type");
-      this.#_bindings.method_get_playback_type = internal.classdb_get_method_bind(
+      this._bindings.method_get_playback_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4011264623
@@ -329,7 +330,7 @@ export class AudioStreamPlayer extends Node{
   set_stream(_stream) {
     AudioStreamPlayer.init_method_set_stream();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer.#_bindings.method_set_stream,
+      AudioStreamPlayer._bindings.method_set_stream,
       this._owner,
       _stream
     );
@@ -338,7 +339,7 @@ export class AudioStreamPlayer extends Node{
   get_stream() {
     AudioStreamPlayer.init_method_get_stream();
     return _call_native_mb_ret(
-      AudioStreamPlayer.#_bindings.method_get_stream,
+      AudioStreamPlayer._bindings.method_get_stream,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -348,7 +349,7 @@ export class AudioStreamPlayer extends Node{
   set_volume_db(_volume_db) {
     AudioStreamPlayer.init_method_set_volume_db();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer.#_bindings.method_set_volume_db,
+      AudioStreamPlayer._bindings.method_set_volume_db,
       this._owner,
       _volume_db
     );
@@ -357,7 +358,7 @@ export class AudioStreamPlayer extends Node{
   get_volume_db() {
     AudioStreamPlayer.init_method_get_volume_db();
     return _call_native_mb_ret(
-      AudioStreamPlayer.#_bindings.method_get_volume_db,
+      AudioStreamPlayer._bindings.method_get_volume_db,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -368,7 +369,7 @@ export class AudioStreamPlayer extends Node{
   set_pitch_scale(_pitch_scale) {
     AudioStreamPlayer.init_method_set_pitch_scale();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer.#_bindings.method_set_pitch_scale,
+      AudioStreamPlayer._bindings.method_set_pitch_scale,
       this._owner,
       _pitch_scale
     );
@@ -377,7 +378,7 @@ export class AudioStreamPlayer extends Node{
   get_pitch_scale() {
     AudioStreamPlayer.init_method_get_pitch_scale();
     return _call_native_mb_ret(
-      AudioStreamPlayer.#_bindings.method_get_pitch_scale,
+      AudioStreamPlayer._bindings.method_get_pitch_scale,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -388,7 +389,7 @@ export class AudioStreamPlayer extends Node{
   play(_from_position) {
     AudioStreamPlayer.init_method_play();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer.#_bindings.method_play,
+      AudioStreamPlayer._bindings.method_play,
       this._owner,
       _from_position
     );
@@ -397,7 +398,7 @@ export class AudioStreamPlayer extends Node{
   seek(_to_position) {
     AudioStreamPlayer.init_method_seek();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer.#_bindings.method_seek,
+      AudioStreamPlayer._bindings.method_seek,
       this._owner,
       _to_position
     );
@@ -406,7 +407,7 @@ export class AudioStreamPlayer extends Node{
   stop() {
     AudioStreamPlayer.init_method_stop();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer.#_bindings.method_stop,
+      AudioStreamPlayer._bindings.method_stop,
       this._owner,
       
     );
@@ -415,7 +416,7 @@ export class AudioStreamPlayer extends Node{
   is_playing() {
     AudioStreamPlayer.init_method_is_playing();
     return _call_native_mb_ret(
-      AudioStreamPlayer.#_bindings.method_is_playing,
+      AudioStreamPlayer._bindings.method_is_playing,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -426,7 +427,7 @@ export class AudioStreamPlayer extends Node{
   get_playback_position() {
     AudioStreamPlayer.init_method_get_playback_position();
     return _call_native_mb_ret(
-      AudioStreamPlayer.#_bindings.method_get_playback_position,
+      AudioStreamPlayer._bindings.method_get_playback_position,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -437,7 +438,7 @@ export class AudioStreamPlayer extends Node{
   set_bus(_bus) {
     AudioStreamPlayer.init_method_set_bus();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer.#_bindings.method_set_bus,
+      AudioStreamPlayer._bindings.method_set_bus,
       this._owner,
       _bus
     );
@@ -446,7 +447,7 @@ export class AudioStreamPlayer extends Node{
   get_bus() {
     AudioStreamPlayer.init_method_get_bus();
     return _call_native_mb_ret(
-      AudioStreamPlayer.#_bindings.method_get_bus,
+      AudioStreamPlayer._bindings.method_get_bus,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -457,7 +458,7 @@ export class AudioStreamPlayer extends Node{
   set_autoplay(_enable) {
     AudioStreamPlayer.init_method_set_autoplay();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer.#_bindings.method_set_autoplay,
+      AudioStreamPlayer._bindings.method_set_autoplay,
       this._owner,
       _enable
     );
@@ -466,7 +467,7 @@ export class AudioStreamPlayer extends Node{
   is_autoplay_enabled() {
     AudioStreamPlayer.init_method_is_autoplay_enabled();
     return _call_native_mb_ret(
-      AudioStreamPlayer.#_bindings.method_is_autoplay_enabled,
+      AudioStreamPlayer._bindings.method_is_autoplay_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -477,7 +478,7 @@ export class AudioStreamPlayer extends Node{
   set_mix_target(_mix_target) {
     AudioStreamPlayer.init_method_set_mix_target();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer.#_bindings.method_set_mix_target,
+      AudioStreamPlayer._bindings.method_set_mix_target,
       this._owner,
       _mix_target
     );
@@ -486,7 +487,7 @@ export class AudioStreamPlayer extends Node{
   get_mix_target() {
     AudioStreamPlayer.init_method_get_mix_target();
     return _call_native_mb_ret(
-      AudioStreamPlayer.#_bindings.method_get_mix_target,
+      AudioStreamPlayer._bindings.method_get_mix_target,
       this._owner,
 			Variant.Type.INT,
     
@@ -497,7 +498,7 @@ export class AudioStreamPlayer extends Node{
   set_stream_paused(_pause) {
     AudioStreamPlayer.init_method_set_stream_paused();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer.#_bindings.method_set_stream_paused,
+      AudioStreamPlayer._bindings.method_set_stream_paused,
       this._owner,
       _pause
     );
@@ -506,7 +507,7 @@ export class AudioStreamPlayer extends Node{
   get_stream_paused() {
     AudioStreamPlayer.init_method_get_stream_paused();
     return _call_native_mb_ret(
-      AudioStreamPlayer.#_bindings.method_get_stream_paused,
+      AudioStreamPlayer._bindings.method_get_stream_paused,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -517,7 +518,7 @@ export class AudioStreamPlayer extends Node{
   set_max_polyphony(_max_polyphony) {
     AudioStreamPlayer.init_method_set_max_polyphony();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer.#_bindings.method_set_max_polyphony,
+      AudioStreamPlayer._bindings.method_set_max_polyphony,
       this._owner,
       _max_polyphony
     );
@@ -526,7 +527,7 @@ export class AudioStreamPlayer extends Node{
   get_max_polyphony() {
     AudioStreamPlayer.init_method_get_max_polyphony();
     return _call_native_mb_ret(
-      AudioStreamPlayer.#_bindings.method_get_max_polyphony,
+      AudioStreamPlayer._bindings.method_get_max_polyphony,
       this._owner,
 			Variant.Type.INT,
     
@@ -537,7 +538,7 @@ export class AudioStreamPlayer extends Node{
   has_stream_playback() {
     AudioStreamPlayer.init_method_has_stream_playback();
     return _call_native_mb_ret(
-      AudioStreamPlayer.#_bindings.method_has_stream_playback,
+      AudioStreamPlayer._bindings.method_has_stream_playback,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -548,7 +549,7 @@ export class AudioStreamPlayer extends Node{
   get_stream_playback() {
     AudioStreamPlayer.init_method_get_stream_playback();
     return _call_native_mb_ret(
-      AudioStreamPlayer.#_bindings.method_get_stream_playback,
+      AudioStreamPlayer._bindings.method_get_stream_playback,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -558,7 +559,7 @@ export class AudioStreamPlayer extends Node{
   set_playback_type(_playback_type) {
     AudioStreamPlayer.init_method_set_playback_type();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer.#_bindings.method_set_playback_type,
+      AudioStreamPlayer._bindings.method_set_playback_type,
       this._owner,
       _playback_type
     );
@@ -567,7 +568,7 @@ export class AudioStreamPlayer extends Node{
   get_playback_type() {
     AudioStreamPlayer.init_method_get_playback_type();
     return _call_native_mb_ret(
-      AudioStreamPlayer.#_bindings.method_get_playback_type,
+      AudioStreamPlayer._bindings.method_get_playback_type,
       this._owner,
 			Variant.Type.INT,
     

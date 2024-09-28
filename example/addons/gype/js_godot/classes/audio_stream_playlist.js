@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { AudioStream } from '@js_godot/classes/audio_stream'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_stream_count;
@@ -22,10 +23,10 @@ class _MethodBindings {
   method_set_loop;
   method_has_loop;
 }
+@GodotClass
 export class AudioStreamPlaylist extends AudioStream{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -35,10 +36,10 @@ export class AudioStreamPlaylist extends AudioStream{
     }
   }
   static init_method_set_stream_count() {
-    if (!this.#_bindings.method_set_stream_count) {
+    if (!this._bindings.method_set_stream_count) {
       let classname = new StringName("AudioStreamPlaylist");
       let methodname = new StringName("set_stream_count");
-      this.#_bindings.method_set_stream_count = internal.classdb_get_method_bind(
+      this._bindings.method_set_stream_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -46,10 +47,10 @@ export class AudioStreamPlaylist extends AudioStream{
     }
   }
   static init_method_get_stream_count() {
-    if (!this.#_bindings.method_get_stream_count) {
+    if (!this._bindings.method_get_stream_count) {
       let classname = new StringName("AudioStreamPlaylist");
       let methodname = new StringName("get_stream_count");
-      this.#_bindings.method_get_stream_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_stream_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -57,10 +58,10 @@ export class AudioStreamPlaylist extends AudioStream{
     }
   }
   static init_method_get_bpm() {
-    if (!this.#_bindings.method_get_bpm) {
+    if (!this._bindings.method_get_bpm) {
       let classname = new StringName("AudioStreamPlaylist");
       let methodname = new StringName("get_bpm");
-      this.#_bindings.method_get_bpm = internal.classdb_get_method_bind(
+      this._bindings.method_get_bpm = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -68,10 +69,10 @@ export class AudioStreamPlaylist extends AudioStream{
     }
   }
   static init_method_set_list_stream() {
-    if (!this.#_bindings.method_set_list_stream) {
+    if (!this._bindings.method_set_list_stream) {
       let classname = new StringName("AudioStreamPlaylist");
       let methodname = new StringName("set_list_stream");
-      this.#_bindings.method_set_list_stream = internal.classdb_get_method_bind(
+      this._bindings.method_set_list_stream = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         111075094
@@ -79,10 +80,10 @@ export class AudioStreamPlaylist extends AudioStream{
     }
   }
   static init_method_get_list_stream() {
-    if (!this.#_bindings.method_get_list_stream) {
+    if (!this._bindings.method_get_list_stream) {
       let classname = new StringName("AudioStreamPlaylist");
       let methodname = new StringName("get_list_stream");
-      this.#_bindings.method_get_list_stream = internal.classdb_get_method_bind(
+      this._bindings.method_get_list_stream = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2739380747
@@ -90,10 +91,10 @@ export class AudioStreamPlaylist extends AudioStream{
     }
   }
   static init_method_set_shuffle() {
-    if (!this.#_bindings.method_set_shuffle) {
+    if (!this._bindings.method_set_shuffle) {
       let classname = new StringName("AudioStreamPlaylist");
       let methodname = new StringName("set_shuffle");
-      this.#_bindings.method_set_shuffle = internal.classdb_get_method_bind(
+      this._bindings.method_set_shuffle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -101,10 +102,10 @@ export class AudioStreamPlaylist extends AudioStream{
     }
   }
   static init_method_get_shuffle() {
-    if (!this.#_bindings.method_get_shuffle) {
+    if (!this._bindings.method_get_shuffle) {
       let classname = new StringName("AudioStreamPlaylist");
       let methodname = new StringName("get_shuffle");
-      this.#_bindings.method_get_shuffle = internal.classdb_get_method_bind(
+      this._bindings.method_get_shuffle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -112,10 +113,10 @@ export class AudioStreamPlaylist extends AudioStream{
     }
   }
   static init_method_set_fade_time() {
-    if (!this.#_bindings.method_set_fade_time) {
+    if (!this._bindings.method_set_fade_time) {
       let classname = new StringName("AudioStreamPlaylist");
       let methodname = new StringName("set_fade_time");
-      this.#_bindings.method_set_fade_time = internal.classdb_get_method_bind(
+      this._bindings.method_set_fade_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -123,10 +124,10 @@ export class AudioStreamPlaylist extends AudioStream{
     }
   }
   static init_method_get_fade_time() {
-    if (!this.#_bindings.method_get_fade_time) {
+    if (!this._bindings.method_get_fade_time) {
       let classname = new StringName("AudioStreamPlaylist");
       let methodname = new StringName("get_fade_time");
-      this.#_bindings.method_get_fade_time = internal.classdb_get_method_bind(
+      this._bindings.method_get_fade_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -134,10 +135,10 @@ export class AudioStreamPlaylist extends AudioStream{
     }
   }
   static init_method_set_loop() {
-    if (!this.#_bindings.method_set_loop) {
+    if (!this._bindings.method_set_loop) {
       let classname = new StringName("AudioStreamPlaylist");
       let methodname = new StringName("set_loop");
-      this.#_bindings.method_set_loop = internal.classdb_get_method_bind(
+      this._bindings.method_set_loop = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -145,10 +146,10 @@ export class AudioStreamPlaylist extends AudioStream{
     }
   }
   static init_method_has_loop() {
-    if (!this.#_bindings.method_has_loop) {
+    if (!this._bindings.method_has_loop) {
       let classname = new StringName("AudioStreamPlaylist");
       let methodname = new StringName("has_loop");
-      this.#_bindings.method_has_loop = internal.classdb_get_method_bind(
+      this._bindings.method_has_loop = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -161,7 +162,7 @@ export class AudioStreamPlaylist extends AudioStream{
   set_stream_count(_stream_count) {
     AudioStreamPlaylist.init_method_set_stream_count();
     return _call_native_mb_no_ret(
-      AudioStreamPlaylist.#_bindings.method_set_stream_count,
+      AudioStreamPlaylist._bindings.method_set_stream_count,
       this._owner,
       _stream_count
     );
@@ -170,7 +171,7 @@ export class AudioStreamPlaylist extends AudioStream{
   get_stream_count() {
     AudioStreamPlaylist.init_method_get_stream_count();
     return _call_native_mb_ret(
-      AudioStreamPlaylist.#_bindings.method_get_stream_count,
+      AudioStreamPlaylist._bindings.method_get_stream_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -181,7 +182,7 @@ export class AudioStreamPlaylist extends AudioStream{
   get_bpm() {
     AudioStreamPlaylist.init_method_get_bpm();
     return _call_native_mb_ret(
-      AudioStreamPlaylist.#_bindings.method_get_bpm,
+      AudioStreamPlaylist._bindings.method_get_bpm,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -192,7 +193,7 @@ export class AudioStreamPlaylist extends AudioStream{
   set_list_stream(_stream_index, _audio_stream) {
     AudioStreamPlaylist.init_method_set_list_stream();
     return _call_native_mb_no_ret(
-      AudioStreamPlaylist.#_bindings.method_set_list_stream,
+      AudioStreamPlaylist._bindings.method_set_list_stream,
       this._owner,
       _stream_index, _audio_stream
     );
@@ -201,7 +202,7 @@ export class AudioStreamPlaylist extends AudioStream{
   get_list_stream(_stream_index) {
     AudioStreamPlaylist.init_method_get_list_stream();
     return _call_native_mb_ret(
-      AudioStreamPlaylist.#_bindings.method_get_list_stream,
+      AudioStreamPlaylist._bindings.method_get_list_stream,
       this._owner,
 			Variant.Type.OBJECT,
       _stream_index
@@ -211,7 +212,7 @@ export class AudioStreamPlaylist extends AudioStream{
   set_shuffle(_shuffle) {
     AudioStreamPlaylist.init_method_set_shuffle();
     return _call_native_mb_no_ret(
-      AudioStreamPlaylist.#_bindings.method_set_shuffle,
+      AudioStreamPlaylist._bindings.method_set_shuffle,
       this._owner,
       _shuffle
     );
@@ -220,7 +221,7 @@ export class AudioStreamPlaylist extends AudioStream{
   get_shuffle() {
     AudioStreamPlaylist.init_method_get_shuffle();
     return _call_native_mb_ret(
-      AudioStreamPlaylist.#_bindings.method_get_shuffle,
+      AudioStreamPlaylist._bindings.method_get_shuffle,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -231,7 +232,7 @@ export class AudioStreamPlaylist extends AudioStream{
   set_fade_time(_dec) {
     AudioStreamPlaylist.init_method_set_fade_time();
     return _call_native_mb_no_ret(
-      AudioStreamPlaylist.#_bindings.method_set_fade_time,
+      AudioStreamPlaylist._bindings.method_set_fade_time,
       this._owner,
       _dec
     );
@@ -240,7 +241,7 @@ export class AudioStreamPlaylist extends AudioStream{
   get_fade_time() {
     AudioStreamPlaylist.init_method_get_fade_time();
     return _call_native_mb_ret(
-      AudioStreamPlaylist.#_bindings.method_get_fade_time,
+      AudioStreamPlaylist._bindings.method_get_fade_time,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -251,7 +252,7 @@ export class AudioStreamPlaylist extends AudioStream{
   set_loop(_loop) {
     AudioStreamPlaylist.init_method_set_loop();
     return _call_native_mb_no_ret(
-      AudioStreamPlaylist.#_bindings.method_set_loop,
+      AudioStreamPlaylist._bindings.method_set_loop,
       this._owner,
       _loop
     );
@@ -260,7 +261,7 @@ export class AudioStreamPlaylist extends AudioStream{
   has_loop() {
     AudioStreamPlaylist.init_method_has_loop();
     return _call_native_mb_ret(
-      AudioStreamPlaylist.#_bindings.method_has_loop,
+      AudioStreamPlaylist._bindings.method_has_loop,
       this._owner,
 			Variant.Type.BOOL,
     

@@ -1,22 +1,23 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Joint3D } from '@js_godot/classes/joint3d'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_param;
   method_get_param;
 }
+@GodotClass
 export class ConeTwistJoint3D extends Joint3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -26,10 +27,10 @@ export class ConeTwistJoint3D extends Joint3D{
     }
   }
   static init_method_set_param() {
-    if (!this.#_bindings.method_set_param) {
+    if (!this._bindings.method_set_param) {
       let classname = new StringName("ConeTwistJoint3D");
       let methodname = new StringName("set_param");
-      this.#_bindings.method_set_param = internal.classdb_get_method_bind(
+      this._bindings.method_set_param = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1062470226
@@ -37,10 +38,10 @@ export class ConeTwistJoint3D extends Joint3D{
     }
   }
   static init_method_get_param() {
-    if (!this.#_bindings.method_get_param) {
+    if (!this._bindings.method_get_param) {
       let classname = new StringName("ConeTwistJoint3D");
       let methodname = new StringName("get_param");
-      this.#_bindings.method_get_param = internal.classdb_get_method_bind(
+      this._bindings.method_get_param = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2928790850
@@ -53,7 +54,7 @@ export class ConeTwistJoint3D extends Joint3D{
   set_param(_param, _value) {
     ConeTwistJoint3D.init_method_set_param();
     return _call_native_mb_no_ret(
-      ConeTwistJoint3D.#_bindings.method_set_param,
+      ConeTwistJoint3D._bindings.method_set_param,
       this._owner,
       _param, _value
     );
@@ -62,7 +63,7 @@ export class ConeTwistJoint3D extends Joint3D{
   get_param(_param) {
     ConeTwistJoint3D.init_method_get_param();
     return _call_native_mb_ret(
-      ConeTwistJoint3D.#_bindings.method_get_param,
+      ConeTwistJoint3D._bindings.method_get_param,
       this._owner,
 			Variant.Type.FLOAT,
     

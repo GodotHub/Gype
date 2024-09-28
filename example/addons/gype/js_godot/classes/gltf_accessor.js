@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_buffer_view;
@@ -41,10 +42,10 @@ class _MethodBindings {
   method_get_sparse_values_byte_offset;
   method_set_sparse_values_byte_offset;
 }
+@GodotClass
 export class GLTFAccessor extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -54,10 +55,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_get_buffer_view() {
-    if (!this.#_bindings.method_get_buffer_view) {
+    if (!this._bindings.method_get_buffer_view) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("get_buffer_view");
-      this.#_bindings.method_get_buffer_view = internal.classdb_get_method_bind(
+      this._bindings.method_get_buffer_view = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -65,10 +66,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_set_buffer_view() {
-    if (!this.#_bindings.method_set_buffer_view) {
+    if (!this._bindings.method_set_buffer_view) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("set_buffer_view");
-      this.#_bindings.method_set_buffer_view = internal.classdb_get_method_bind(
+      this._bindings.method_set_buffer_view = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -76,10 +77,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_get_byte_offset() {
-    if (!this.#_bindings.method_get_byte_offset) {
+    if (!this._bindings.method_get_byte_offset) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("get_byte_offset");
-      this.#_bindings.method_get_byte_offset = internal.classdb_get_method_bind(
+      this._bindings.method_get_byte_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -87,10 +88,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_set_byte_offset() {
-    if (!this.#_bindings.method_set_byte_offset) {
+    if (!this._bindings.method_set_byte_offset) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("set_byte_offset");
-      this.#_bindings.method_set_byte_offset = internal.classdb_get_method_bind(
+      this._bindings.method_set_byte_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -98,10 +99,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_get_component_type() {
-    if (!this.#_bindings.method_get_component_type) {
+    if (!this._bindings.method_get_component_type) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("get_component_type");
-      this.#_bindings.method_get_component_type = internal.classdb_get_method_bind(
+      this._bindings.method_get_component_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -109,10 +110,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_set_component_type() {
-    if (!this.#_bindings.method_set_component_type) {
+    if (!this._bindings.method_set_component_type) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("set_component_type");
-      this.#_bindings.method_set_component_type = internal.classdb_get_method_bind(
+      this._bindings.method_set_component_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -120,10 +121,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_get_normalized() {
-    if (!this.#_bindings.method_get_normalized) {
+    if (!this._bindings.method_get_normalized) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("get_normalized");
-      this.#_bindings.method_get_normalized = internal.classdb_get_method_bind(
+      this._bindings.method_get_normalized = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2240911060
@@ -131,10 +132,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_set_normalized() {
-    if (!this.#_bindings.method_set_normalized) {
+    if (!this._bindings.method_set_normalized) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("set_normalized");
-      this.#_bindings.method_set_normalized = internal.classdb_get_method_bind(
+      this._bindings.method_set_normalized = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -142,10 +143,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_get_count() {
-    if (!this.#_bindings.method_get_count) {
+    if (!this._bindings.method_get_count) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("get_count");
-      this.#_bindings.method_get_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -153,10 +154,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_set_count() {
-    if (!this.#_bindings.method_set_count) {
+    if (!this._bindings.method_set_count) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("set_count");
-      this.#_bindings.method_set_count = internal.classdb_get_method_bind(
+      this._bindings.method_set_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -164,10 +165,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_get_accessor_type() {
-    if (!this.#_bindings.method_get_accessor_type) {
+    if (!this._bindings.method_get_accessor_type) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("get_accessor_type");
-      this.#_bindings.method_get_accessor_type = internal.classdb_get_method_bind(
+      this._bindings.method_get_accessor_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         679305214
@@ -175,10 +176,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_set_accessor_type() {
-    if (!this.#_bindings.method_set_accessor_type) {
+    if (!this._bindings.method_set_accessor_type) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("set_accessor_type");
-      this.#_bindings.method_set_accessor_type = internal.classdb_get_method_bind(
+      this._bindings.method_set_accessor_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2347728198
@@ -186,10 +187,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_get_type() {
-    if (!this.#_bindings.method_get_type) {
+    if (!this._bindings.method_get_type) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("get_type");
-      this.#_bindings.method_get_type = internal.classdb_get_method_bind(
+      this._bindings.method_get_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -197,10 +198,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_set_type() {
-    if (!this.#_bindings.method_set_type) {
+    if (!this._bindings.method_set_type) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("set_type");
-      this.#_bindings.method_set_type = internal.classdb_get_method_bind(
+      this._bindings.method_set_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -208,10 +209,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_get_min() {
-    if (!this.#_bindings.method_get_min) {
+    if (!this._bindings.method_get_min) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("get_min");
-      this.#_bindings.method_get_min = internal.classdb_get_method_bind(
+      this._bindings.method_get_min = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         148677866
@@ -219,10 +220,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_set_min() {
-    if (!this.#_bindings.method_set_min) {
+    if (!this._bindings.method_set_min) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("set_min");
-      this.#_bindings.method_set_min = internal.classdb_get_method_bind(
+      this._bindings.method_set_min = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2576592201
@@ -230,10 +231,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_get_max() {
-    if (!this.#_bindings.method_get_max) {
+    if (!this._bindings.method_get_max) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("get_max");
-      this.#_bindings.method_get_max = internal.classdb_get_method_bind(
+      this._bindings.method_get_max = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         148677866
@@ -241,10 +242,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_set_max() {
-    if (!this.#_bindings.method_set_max) {
+    if (!this._bindings.method_set_max) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("set_max");
-      this.#_bindings.method_set_max = internal.classdb_get_method_bind(
+      this._bindings.method_set_max = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2576592201
@@ -252,10 +253,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_get_sparse_count() {
-    if (!this.#_bindings.method_get_sparse_count) {
+    if (!this._bindings.method_get_sparse_count) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("get_sparse_count");
-      this.#_bindings.method_get_sparse_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_sparse_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -263,10 +264,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_set_sparse_count() {
-    if (!this.#_bindings.method_set_sparse_count) {
+    if (!this._bindings.method_set_sparse_count) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("set_sparse_count");
-      this.#_bindings.method_set_sparse_count = internal.classdb_get_method_bind(
+      this._bindings.method_set_sparse_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -274,10 +275,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_get_sparse_indices_buffer_view() {
-    if (!this.#_bindings.method_get_sparse_indices_buffer_view) {
+    if (!this._bindings.method_get_sparse_indices_buffer_view) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("get_sparse_indices_buffer_view");
-      this.#_bindings.method_get_sparse_indices_buffer_view = internal.classdb_get_method_bind(
+      this._bindings.method_get_sparse_indices_buffer_view = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -285,10 +286,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_set_sparse_indices_buffer_view() {
-    if (!this.#_bindings.method_set_sparse_indices_buffer_view) {
+    if (!this._bindings.method_set_sparse_indices_buffer_view) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("set_sparse_indices_buffer_view");
-      this.#_bindings.method_set_sparse_indices_buffer_view = internal.classdb_get_method_bind(
+      this._bindings.method_set_sparse_indices_buffer_view = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -296,10 +297,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_get_sparse_indices_byte_offset() {
-    if (!this.#_bindings.method_get_sparse_indices_byte_offset) {
+    if (!this._bindings.method_get_sparse_indices_byte_offset) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("get_sparse_indices_byte_offset");
-      this.#_bindings.method_get_sparse_indices_byte_offset = internal.classdb_get_method_bind(
+      this._bindings.method_get_sparse_indices_byte_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -307,10 +308,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_set_sparse_indices_byte_offset() {
-    if (!this.#_bindings.method_set_sparse_indices_byte_offset) {
+    if (!this._bindings.method_set_sparse_indices_byte_offset) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("set_sparse_indices_byte_offset");
-      this.#_bindings.method_set_sparse_indices_byte_offset = internal.classdb_get_method_bind(
+      this._bindings.method_set_sparse_indices_byte_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -318,10 +319,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_get_sparse_indices_component_type() {
-    if (!this.#_bindings.method_get_sparse_indices_component_type) {
+    if (!this._bindings.method_get_sparse_indices_component_type) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("get_sparse_indices_component_type");
-      this.#_bindings.method_get_sparse_indices_component_type = internal.classdb_get_method_bind(
+      this._bindings.method_get_sparse_indices_component_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -329,10 +330,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_set_sparse_indices_component_type() {
-    if (!this.#_bindings.method_set_sparse_indices_component_type) {
+    if (!this._bindings.method_set_sparse_indices_component_type) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("set_sparse_indices_component_type");
-      this.#_bindings.method_set_sparse_indices_component_type = internal.classdb_get_method_bind(
+      this._bindings.method_set_sparse_indices_component_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -340,10 +341,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_get_sparse_values_buffer_view() {
-    if (!this.#_bindings.method_get_sparse_values_buffer_view) {
+    if (!this._bindings.method_get_sparse_values_buffer_view) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("get_sparse_values_buffer_view");
-      this.#_bindings.method_get_sparse_values_buffer_view = internal.classdb_get_method_bind(
+      this._bindings.method_get_sparse_values_buffer_view = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -351,10 +352,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_set_sparse_values_buffer_view() {
-    if (!this.#_bindings.method_set_sparse_values_buffer_view) {
+    if (!this._bindings.method_set_sparse_values_buffer_view) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("set_sparse_values_buffer_view");
-      this.#_bindings.method_set_sparse_values_buffer_view = internal.classdb_get_method_bind(
+      this._bindings.method_set_sparse_values_buffer_view = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -362,10 +363,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_get_sparse_values_byte_offset() {
-    if (!this.#_bindings.method_get_sparse_values_byte_offset) {
+    if (!this._bindings.method_get_sparse_values_byte_offset) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("get_sparse_values_byte_offset");
-      this.#_bindings.method_get_sparse_values_byte_offset = internal.classdb_get_method_bind(
+      this._bindings.method_get_sparse_values_byte_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -373,10 +374,10 @@ export class GLTFAccessor extends Resource{
     }
   }
   static init_method_set_sparse_values_byte_offset() {
-    if (!this.#_bindings.method_set_sparse_values_byte_offset) {
+    if (!this._bindings.method_set_sparse_values_byte_offset) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("set_sparse_values_byte_offset");
-      this.#_bindings.method_set_sparse_values_byte_offset = internal.classdb_get_method_bind(
+      this._bindings.method_set_sparse_values_byte_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -389,7 +390,7 @@ export class GLTFAccessor extends Resource{
   get_buffer_view() {
     GLTFAccessor.init_method_get_buffer_view();
     return _call_native_mb_ret(
-      GLTFAccessor.#_bindings.method_get_buffer_view,
+      GLTFAccessor._bindings.method_get_buffer_view,
       this._owner,
 			Variant.Type.INT,
     
@@ -400,7 +401,7 @@ export class GLTFAccessor extends Resource{
   set_buffer_view(_buffer_view) {
     GLTFAccessor.init_method_set_buffer_view();
     return _call_native_mb_no_ret(
-      GLTFAccessor.#_bindings.method_set_buffer_view,
+      GLTFAccessor._bindings.method_set_buffer_view,
       this._owner,
       _buffer_view
     );
@@ -409,7 +410,7 @@ export class GLTFAccessor extends Resource{
   get_byte_offset() {
     GLTFAccessor.init_method_get_byte_offset();
     return _call_native_mb_ret(
-      GLTFAccessor.#_bindings.method_get_byte_offset,
+      GLTFAccessor._bindings.method_get_byte_offset,
       this._owner,
 			Variant.Type.INT,
     
@@ -420,7 +421,7 @@ export class GLTFAccessor extends Resource{
   set_byte_offset(_byte_offset) {
     GLTFAccessor.init_method_set_byte_offset();
     return _call_native_mb_no_ret(
-      GLTFAccessor.#_bindings.method_set_byte_offset,
+      GLTFAccessor._bindings.method_set_byte_offset,
       this._owner,
       _byte_offset
     );
@@ -429,7 +430,7 @@ export class GLTFAccessor extends Resource{
   get_component_type() {
     GLTFAccessor.init_method_get_component_type();
     return _call_native_mb_ret(
-      GLTFAccessor.#_bindings.method_get_component_type,
+      GLTFAccessor._bindings.method_get_component_type,
       this._owner,
 			Variant.Type.INT,
     
@@ -440,7 +441,7 @@ export class GLTFAccessor extends Resource{
   set_component_type(_component_type) {
     GLTFAccessor.init_method_set_component_type();
     return _call_native_mb_no_ret(
-      GLTFAccessor.#_bindings.method_set_component_type,
+      GLTFAccessor._bindings.method_set_component_type,
       this._owner,
       _component_type
     );
@@ -449,7 +450,7 @@ export class GLTFAccessor extends Resource{
   get_normalized() {
     GLTFAccessor.init_method_get_normalized();
     return _call_native_mb_ret(
-      GLTFAccessor.#_bindings.method_get_normalized,
+      GLTFAccessor._bindings.method_get_normalized,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -460,7 +461,7 @@ export class GLTFAccessor extends Resource{
   set_normalized(_normalized) {
     GLTFAccessor.init_method_set_normalized();
     return _call_native_mb_no_ret(
-      GLTFAccessor.#_bindings.method_set_normalized,
+      GLTFAccessor._bindings.method_set_normalized,
       this._owner,
       _normalized
     );
@@ -469,7 +470,7 @@ export class GLTFAccessor extends Resource{
   get_count() {
     GLTFAccessor.init_method_get_count();
     return _call_native_mb_ret(
-      GLTFAccessor.#_bindings.method_get_count,
+      GLTFAccessor._bindings.method_get_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -480,7 +481,7 @@ export class GLTFAccessor extends Resource{
   set_count(_count) {
     GLTFAccessor.init_method_set_count();
     return _call_native_mb_no_ret(
-      GLTFAccessor.#_bindings.method_set_count,
+      GLTFAccessor._bindings.method_set_count,
       this._owner,
       _count
     );
@@ -489,7 +490,7 @@ export class GLTFAccessor extends Resource{
   get_accessor_type() {
     GLTFAccessor.init_method_get_accessor_type();
     return _call_native_mb_ret(
-      GLTFAccessor.#_bindings.method_get_accessor_type,
+      GLTFAccessor._bindings.method_get_accessor_type,
       this._owner,
 			Variant.Type.INT,
     
@@ -500,7 +501,7 @@ export class GLTFAccessor extends Resource{
   set_accessor_type(_accessor_type) {
     GLTFAccessor.init_method_set_accessor_type();
     return _call_native_mb_no_ret(
-      GLTFAccessor.#_bindings.method_set_accessor_type,
+      GLTFAccessor._bindings.method_set_accessor_type,
       this._owner,
       _accessor_type
     );
@@ -509,7 +510,7 @@ export class GLTFAccessor extends Resource{
   get_type() {
     GLTFAccessor.init_method_get_type();
     return _call_native_mb_ret(
-      GLTFAccessor.#_bindings.method_get_type,
+      GLTFAccessor._bindings.method_get_type,
       this._owner,
 			Variant.Type.INT,
     
@@ -520,7 +521,7 @@ export class GLTFAccessor extends Resource{
   set_type(_type) {
     GLTFAccessor.init_method_set_type();
     return _call_native_mb_no_ret(
-      GLTFAccessor.#_bindings.method_set_type,
+      GLTFAccessor._bindings.method_set_type,
       this._owner,
       _type
     );
@@ -529,7 +530,7 @@ export class GLTFAccessor extends Resource{
   get_min() {
     GLTFAccessor.init_method_get_min();
     return _call_native_mb_ret(
-      GLTFAccessor.#_bindings.method_get_min,
+      GLTFAccessor._bindings.method_get_min,
       this._owner,
 			Variant.Type.PACKED_FLOAT64_ARRAY,
     
@@ -540,7 +541,7 @@ export class GLTFAccessor extends Resource{
   set_min(_min) {
     GLTFAccessor.init_method_set_min();
     return _call_native_mb_no_ret(
-      GLTFAccessor.#_bindings.method_set_min,
+      GLTFAccessor._bindings.method_set_min,
       this._owner,
       _min
     );
@@ -549,7 +550,7 @@ export class GLTFAccessor extends Resource{
   get_max() {
     GLTFAccessor.init_method_get_max();
     return _call_native_mb_ret(
-      GLTFAccessor.#_bindings.method_get_max,
+      GLTFAccessor._bindings.method_get_max,
       this._owner,
 			Variant.Type.PACKED_FLOAT64_ARRAY,
     
@@ -560,7 +561,7 @@ export class GLTFAccessor extends Resource{
   set_max(_max) {
     GLTFAccessor.init_method_set_max();
     return _call_native_mb_no_ret(
-      GLTFAccessor.#_bindings.method_set_max,
+      GLTFAccessor._bindings.method_set_max,
       this._owner,
       _max
     );
@@ -569,7 +570,7 @@ export class GLTFAccessor extends Resource{
   get_sparse_count() {
     GLTFAccessor.init_method_get_sparse_count();
     return _call_native_mb_ret(
-      GLTFAccessor.#_bindings.method_get_sparse_count,
+      GLTFAccessor._bindings.method_get_sparse_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -580,7 +581,7 @@ export class GLTFAccessor extends Resource{
   set_sparse_count(_sparse_count) {
     GLTFAccessor.init_method_set_sparse_count();
     return _call_native_mb_no_ret(
-      GLTFAccessor.#_bindings.method_set_sparse_count,
+      GLTFAccessor._bindings.method_set_sparse_count,
       this._owner,
       _sparse_count
     );
@@ -589,7 +590,7 @@ export class GLTFAccessor extends Resource{
   get_sparse_indices_buffer_view() {
     GLTFAccessor.init_method_get_sparse_indices_buffer_view();
     return _call_native_mb_ret(
-      GLTFAccessor.#_bindings.method_get_sparse_indices_buffer_view,
+      GLTFAccessor._bindings.method_get_sparse_indices_buffer_view,
       this._owner,
 			Variant.Type.INT,
     
@@ -600,7 +601,7 @@ export class GLTFAccessor extends Resource{
   set_sparse_indices_buffer_view(_sparse_indices_buffer_view) {
     GLTFAccessor.init_method_set_sparse_indices_buffer_view();
     return _call_native_mb_no_ret(
-      GLTFAccessor.#_bindings.method_set_sparse_indices_buffer_view,
+      GLTFAccessor._bindings.method_set_sparse_indices_buffer_view,
       this._owner,
       _sparse_indices_buffer_view
     );
@@ -609,7 +610,7 @@ export class GLTFAccessor extends Resource{
   get_sparse_indices_byte_offset() {
     GLTFAccessor.init_method_get_sparse_indices_byte_offset();
     return _call_native_mb_ret(
-      GLTFAccessor.#_bindings.method_get_sparse_indices_byte_offset,
+      GLTFAccessor._bindings.method_get_sparse_indices_byte_offset,
       this._owner,
 			Variant.Type.INT,
     
@@ -620,7 +621,7 @@ export class GLTFAccessor extends Resource{
   set_sparse_indices_byte_offset(_sparse_indices_byte_offset) {
     GLTFAccessor.init_method_set_sparse_indices_byte_offset();
     return _call_native_mb_no_ret(
-      GLTFAccessor.#_bindings.method_set_sparse_indices_byte_offset,
+      GLTFAccessor._bindings.method_set_sparse_indices_byte_offset,
       this._owner,
       _sparse_indices_byte_offset
     );
@@ -629,7 +630,7 @@ export class GLTFAccessor extends Resource{
   get_sparse_indices_component_type() {
     GLTFAccessor.init_method_get_sparse_indices_component_type();
     return _call_native_mb_ret(
-      GLTFAccessor.#_bindings.method_get_sparse_indices_component_type,
+      GLTFAccessor._bindings.method_get_sparse_indices_component_type,
       this._owner,
 			Variant.Type.INT,
     
@@ -640,7 +641,7 @@ export class GLTFAccessor extends Resource{
   set_sparse_indices_component_type(_sparse_indices_component_type) {
     GLTFAccessor.init_method_set_sparse_indices_component_type();
     return _call_native_mb_no_ret(
-      GLTFAccessor.#_bindings.method_set_sparse_indices_component_type,
+      GLTFAccessor._bindings.method_set_sparse_indices_component_type,
       this._owner,
       _sparse_indices_component_type
     );
@@ -649,7 +650,7 @@ export class GLTFAccessor extends Resource{
   get_sparse_values_buffer_view() {
     GLTFAccessor.init_method_get_sparse_values_buffer_view();
     return _call_native_mb_ret(
-      GLTFAccessor.#_bindings.method_get_sparse_values_buffer_view,
+      GLTFAccessor._bindings.method_get_sparse_values_buffer_view,
       this._owner,
 			Variant.Type.INT,
     
@@ -660,7 +661,7 @@ export class GLTFAccessor extends Resource{
   set_sparse_values_buffer_view(_sparse_values_buffer_view) {
     GLTFAccessor.init_method_set_sparse_values_buffer_view();
     return _call_native_mb_no_ret(
-      GLTFAccessor.#_bindings.method_set_sparse_values_buffer_view,
+      GLTFAccessor._bindings.method_set_sparse_values_buffer_view,
       this._owner,
       _sparse_values_buffer_view
     );
@@ -669,7 +670,7 @@ export class GLTFAccessor extends Resource{
   get_sparse_values_byte_offset() {
     GLTFAccessor.init_method_get_sparse_values_byte_offset();
     return _call_native_mb_ret(
-      GLTFAccessor.#_bindings.method_get_sparse_values_byte_offset,
+      GLTFAccessor._bindings.method_get_sparse_values_byte_offset,
       this._owner,
 			Variant.Type.INT,
     
@@ -680,7 +681,7 @@ export class GLTFAccessor extends Resource{
   set_sparse_values_byte_offset(_sparse_values_byte_offset) {
     GLTFAccessor.init_method_set_sparse_values_byte_offset();
     return _call_native_mb_no_ret(
-      GLTFAccessor.#_bindings.method_set_sparse_values_byte_offset,
+      GLTFAccessor._bindings.method_set_sparse_values_byte_offset,
       this._owner,
       _sparse_values_byte_offset
     );

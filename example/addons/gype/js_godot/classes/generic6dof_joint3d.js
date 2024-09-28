@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Joint3D } from '@js_godot/classes/joint3d'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_param_x;
@@ -23,10 +24,10 @@ class _MethodBindings {
   method_set_flag_z;
   method_get_flag_z;
 }
+@GodotClass
 export class Generic6DOFJoint3D extends Joint3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -36,10 +37,10 @@ export class Generic6DOFJoint3D extends Joint3D{
     }
   }
   static init_method_set_param_x() {
-    if (!this.#_bindings.method_set_param_x) {
+    if (!this._bindings.method_set_param_x) {
       let classname = new StringName("Generic6DOFJoint3D");
       let methodname = new StringName("set_param_x");
-      this.#_bindings.method_set_param_x = internal.classdb_get_method_bind(
+      this._bindings.method_set_param_x = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2018184242
@@ -47,10 +48,10 @@ export class Generic6DOFJoint3D extends Joint3D{
     }
   }
   static init_method_get_param_x() {
-    if (!this.#_bindings.method_get_param_x) {
+    if (!this._bindings.method_get_param_x) {
       let classname = new StringName("Generic6DOFJoint3D");
       let methodname = new StringName("get_param_x");
-      this.#_bindings.method_get_param_x = internal.classdb_get_method_bind(
+      this._bindings.method_get_param_x = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2599835054
@@ -58,10 +59,10 @@ export class Generic6DOFJoint3D extends Joint3D{
     }
   }
   static init_method_set_param_y() {
-    if (!this.#_bindings.method_set_param_y) {
+    if (!this._bindings.method_set_param_y) {
       let classname = new StringName("Generic6DOFJoint3D");
       let methodname = new StringName("set_param_y");
-      this.#_bindings.method_set_param_y = internal.classdb_get_method_bind(
+      this._bindings.method_set_param_y = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2018184242
@@ -69,10 +70,10 @@ export class Generic6DOFJoint3D extends Joint3D{
     }
   }
   static init_method_get_param_y() {
-    if (!this.#_bindings.method_get_param_y) {
+    if (!this._bindings.method_get_param_y) {
       let classname = new StringName("Generic6DOFJoint3D");
       let methodname = new StringName("get_param_y");
-      this.#_bindings.method_get_param_y = internal.classdb_get_method_bind(
+      this._bindings.method_get_param_y = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2599835054
@@ -80,10 +81,10 @@ export class Generic6DOFJoint3D extends Joint3D{
     }
   }
   static init_method_set_param_z() {
-    if (!this.#_bindings.method_set_param_z) {
+    if (!this._bindings.method_set_param_z) {
       let classname = new StringName("Generic6DOFJoint3D");
       let methodname = new StringName("set_param_z");
-      this.#_bindings.method_set_param_z = internal.classdb_get_method_bind(
+      this._bindings.method_set_param_z = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2018184242
@@ -91,10 +92,10 @@ export class Generic6DOFJoint3D extends Joint3D{
     }
   }
   static init_method_get_param_z() {
-    if (!this.#_bindings.method_get_param_z) {
+    if (!this._bindings.method_get_param_z) {
       let classname = new StringName("Generic6DOFJoint3D");
       let methodname = new StringName("get_param_z");
-      this.#_bindings.method_get_param_z = internal.classdb_get_method_bind(
+      this._bindings.method_get_param_z = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2599835054
@@ -102,10 +103,10 @@ export class Generic6DOFJoint3D extends Joint3D{
     }
   }
   static init_method_set_flag_x() {
-    if (!this.#_bindings.method_set_flag_x) {
+    if (!this._bindings.method_set_flag_x) {
       let classname = new StringName("Generic6DOFJoint3D");
       let methodname = new StringName("set_flag_x");
-      this.#_bindings.method_set_flag_x = internal.classdb_get_method_bind(
+      this._bindings.method_set_flag_x = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2451594564
@@ -113,10 +114,10 @@ export class Generic6DOFJoint3D extends Joint3D{
     }
   }
   static init_method_get_flag_x() {
-    if (!this.#_bindings.method_get_flag_x) {
+    if (!this._bindings.method_get_flag_x) {
       let classname = new StringName("Generic6DOFJoint3D");
       let methodname = new StringName("get_flag_x");
-      this.#_bindings.method_get_flag_x = internal.classdb_get_method_bind(
+      this._bindings.method_get_flag_x = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2122427807
@@ -124,10 +125,10 @@ export class Generic6DOFJoint3D extends Joint3D{
     }
   }
   static init_method_set_flag_y() {
-    if (!this.#_bindings.method_set_flag_y) {
+    if (!this._bindings.method_set_flag_y) {
       let classname = new StringName("Generic6DOFJoint3D");
       let methodname = new StringName("set_flag_y");
-      this.#_bindings.method_set_flag_y = internal.classdb_get_method_bind(
+      this._bindings.method_set_flag_y = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2451594564
@@ -135,10 +136,10 @@ export class Generic6DOFJoint3D extends Joint3D{
     }
   }
   static init_method_get_flag_y() {
-    if (!this.#_bindings.method_get_flag_y) {
+    if (!this._bindings.method_get_flag_y) {
       let classname = new StringName("Generic6DOFJoint3D");
       let methodname = new StringName("get_flag_y");
-      this.#_bindings.method_get_flag_y = internal.classdb_get_method_bind(
+      this._bindings.method_get_flag_y = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2122427807
@@ -146,10 +147,10 @@ export class Generic6DOFJoint3D extends Joint3D{
     }
   }
   static init_method_set_flag_z() {
-    if (!this.#_bindings.method_set_flag_z) {
+    if (!this._bindings.method_set_flag_z) {
       let classname = new StringName("Generic6DOFJoint3D");
       let methodname = new StringName("set_flag_z");
-      this.#_bindings.method_set_flag_z = internal.classdb_get_method_bind(
+      this._bindings.method_set_flag_z = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2451594564
@@ -157,10 +158,10 @@ export class Generic6DOFJoint3D extends Joint3D{
     }
   }
   static init_method_get_flag_z() {
-    if (!this.#_bindings.method_get_flag_z) {
+    if (!this._bindings.method_get_flag_z) {
       let classname = new StringName("Generic6DOFJoint3D");
       let methodname = new StringName("get_flag_z");
-      this.#_bindings.method_get_flag_z = internal.classdb_get_method_bind(
+      this._bindings.method_get_flag_z = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2122427807
@@ -173,7 +174,7 @@ export class Generic6DOFJoint3D extends Joint3D{
   set_param_x(_param, _value) {
     Generic6DOFJoint3D.init_method_set_param_x();
     return _call_native_mb_no_ret(
-      Generic6DOFJoint3D.#_bindings.method_set_param_x,
+      Generic6DOFJoint3D._bindings.method_set_param_x,
       this._owner,
       _param, _value
     );
@@ -182,7 +183,7 @@ export class Generic6DOFJoint3D extends Joint3D{
   get_param_x(_param) {
     Generic6DOFJoint3D.init_method_get_param_x();
     return _call_native_mb_ret(
-      Generic6DOFJoint3D.#_bindings.method_get_param_x,
+      Generic6DOFJoint3D._bindings.method_get_param_x,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -193,7 +194,7 @@ export class Generic6DOFJoint3D extends Joint3D{
   set_param_y(_param, _value) {
     Generic6DOFJoint3D.init_method_set_param_y();
     return _call_native_mb_no_ret(
-      Generic6DOFJoint3D.#_bindings.method_set_param_y,
+      Generic6DOFJoint3D._bindings.method_set_param_y,
       this._owner,
       _param, _value
     );
@@ -202,7 +203,7 @@ export class Generic6DOFJoint3D extends Joint3D{
   get_param_y(_param) {
     Generic6DOFJoint3D.init_method_get_param_y();
     return _call_native_mb_ret(
-      Generic6DOFJoint3D.#_bindings.method_get_param_y,
+      Generic6DOFJoint3D._bindings.method_get_param_y,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -213,7 +214,7 @@ export class Generic6DOFJoint3D extends Joint3D{
   set_param_z(_param, _value) {
     Generic6DOFJoint3D.init_method_set_param_z();
     return _call_native_mb_no_ret(
-      Generic6DOFJoint3D.#_bindings.method_set_param_z,
+      Generic6DOFJoint3D._bindings.method_set_param_z,
       this._owner,
       _param, _value
     );
@@ -222,7 +223,7 @@ export class Generic6DOFJoint3D extends Joint3D{
   get_param_z(_param) {
     Generic6DOFJoint3D.init_method_get_param_z();
     return _call_native_mb_ret(
-      Generic6DOFJoint3D.#_bindings.method_get_param_z,
+      Generic6DOFJoint3D._bindings.method_get_param_z,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -233,7 +234,7 @@ export class Generic6DOFJoint3D extends Joint3D{
   set_flag_x(_flag, _value) {
     Generic6DOFJoint3D.init_method_set_flag_x();
     return _call_native_mb_no_ret(
-      Generic6DOFJoint3D.#_bindings.method_set_flag_x,
+      Generic6DOFJoint3D._bindings.method_set_flag_x,
       this._owner,
       _flag, _value
     );
@@ -242,7 +243,7 @@ export class Generic6DOFJoint3D extends Joint3D{
   get_flag_x(_flag) {
     Generic6DOFJoint3D.init_method_get_flag_x();
     return _call_native_mb_ret(
-      Generic6DOFJoint3D.#_bindings.method_get_flag_x,
+      Generic6DOFJoint3D._bindings.method_get_flag_x,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -253,7 +254,7 @@ export class Generic6DOFJoint3D extends Joint3D{
   set_flag_y(_flag, _value) {
     Generic6DOFJoint3D.init_method_set_flag_y();
     return _call_native_mb_no_ret(
-      Generic6DOFJoint3D.#_bindings.method_set_flag_y,
+      Generic6DOFJoint3D._bindings.method_set_flag_y,
       this._owner,
       _flag, _value
     );
@@ -262,7 +263,7 @@ export class Generic6DOFJoint3D extends Joint3D{
   get_flag_y(_flag) {
     Generic6DOFJoint3D.init_method_get_flag_y();
     return _call_native_mb_ret(
-      Generic6DOFJoint3D.#_bindings.method_get_flag_y,
+      Generic6DOFJoint3D._bindings.method_get_flag_y,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -273,7 +274,7 @@ export class Generic6DOFJoint3D extends Joint3D{
   set_flag_z(_flag, _value) {
     Generic6DOFJoint3D.init_method_set_flag_z();
     return _call_native_mb_no_ret(
-      Generic6DOFJoint3D.#_bindings.method_set_flag_z,
+      Generic6DOFJoint3D._bindings.method_set_flag_z,
       this._owner,
       _flag, _value
     );
@@ -282,7 +283,7 @@ export class Generic6DOFJoint3D extends Joint3D{
   get_flag_z(_flag) {
     Generic6DOFJoint3D.init_method_get_flag_z();
     return _call_native_mb_ret(
-      Generic6DOFJoint3D.#_bindings.method_get_flag_z,
+      Generic6DOFJoint3D._bindings.method_get_flag_z,
       this._owner,
 			Variant.Type.BOOL,
     

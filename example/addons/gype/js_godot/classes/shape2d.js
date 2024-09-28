@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_custom_solver_bias;
@@ -19,10 +20,10 @@ class _MethodBindings {
   method_draw;
   method_get_rect;
 }
+@GodotClass
 export class Shape2D extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -32,10 +33,10 @@ export class Shape2D extends Resource{
     }
   }
   static init_method_set_custom_solver_bias() {
-    if (!this.#_bindings.method_set_custom_solver_bias) {
+    if (!this._bindings.method_set_custom_solver_bias) {
       let classname = new StringName("Shape2D");
       let methodname = new StringName("set_custom_solver_bias");
-      this.#_bindings.method_set_custom_solver_bias = internal.classdb_get_method_bind(
+      this._bindings.method_set_custom_solver_bias = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -43,10 +44,10 @@ export class Shape2D extends Resource{
     }
   }
   static init_method_get_custom_solver_bias() {
-    if (!this.#_bindings.method_get_custom_solver_bias) {
+    if (!this._bindings.method_get_custom_solver_bias) {
       let classname = new StringName("Shape2D");
       let methodname = new StringName("get_custom_solver_bias");
-      this.#_bindings.method_get_custom_solver_bias = internal.classdb_get_method_bind(
+      this._bindings.method_get_custom_solver_bias = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -54,10 +55,10 @@ export class Shape2D extends Resource{
     }
   }
   static init_method_collide() {
-    if (!this.#_bindings.method_collide) {
+    if (!this._bindings.method_collide) {
       let classname = new StringName("Shape2D");
       let methodname = new StringName("collide");
-      this.#_bindings.method_collide = internal.classdb_get_method_bind(
+      this._bindings.method_collide = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3709843132
@@ -65,10 +66,10 @@ export class Shape2D extends Resource{
     }
   }
   static init_method_collide_with_motion() {
-    if (!this.#_bindings.method_collide_with_motion) {
+    if (!this._bindings.method_collide_with_motion) {
       let classname = new StringName("Shape2D");
       let methodname = new StringName("collide_with_motion");
-      this.#_bindings.method_collide_with_motion = internal.classdb_get_method_bind(
+      this._bindings.method_collide_with_motion = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2869556801
@@ -76,10 +77,10 @@ export class Shape2D extends Resource{
     }
   }
   static init_method_collide_and_get_contacts() {
-    if (!this.#_bindings.method_collide_and_get_contacts) {
+    if (!this._bindings.method_collide_and_get_contacts) {
       let classname = new StringName("Shape2D");
       let methodname = new StringName("collide_and_get_contacts");
-      this.#_bindings.method_collide_and_get_contacts = internal.classdb_get_method_bind(
+      this._bindings.method_collide_and_get_contacts = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3056932662
@@ -87,10 +88,10 @@ export class Shape2D extends Resource{
     }
   }
   static init_method_collide_with_motion_and_get_contacts() {
-    if (!this.#_bindings.method_collide_with_motion_and_get_contacts) {
+    if (!this._bindings.method_collide_with_motion_and_get_contacts) {
       let classname = new StringName("Shape2D");
       let methodname = new StringName("collide_with_motion_and_get_contacts");
-      this.#_bindings.method_collide_with_motion_and_get_contacts = internal.classdb_get_method_bind(
+      this._bindings.method_collide_with_motion_and_get_contacts = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3620351573
@@ -98,10 +99,10 @@ export class Shape2D extends Resource{
     }
   }
   static init_method_draw() {
-    if (!this.#_bindings.method_draw) {
+    if (!this._bindings.method_draw) {
       let classname = new StringName("Shape2D");
       let methodname = new StringName("draw");
-      this.#_bindings.method_draw = internal.classdb_get_method_bind(
+      this._bindings.method_draw = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2948539648
@@ -109,10 +110,10 @@ export class Shape2D extends Resource{
     }
   }
   static init_method_get_rect() {
-    if (!this.#_bindings.method_get_rect) {
+    if (!this._bindings.method_get_rect) {
       let classname = new StringName("Shape2D");
       let methodname = new StringName("get_rect");
-      this.#_bindings.method_get_rect = internal.classdb_get_method_bind(
+      this._bindings.method_get_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1639390495
@@ -125,7 +126,7 @@ export class Shape2D extends Resource{
   set_custom_solver_bias(_bias) {
     Shape2D.init_method_set_custom_solver_bias();
     return _call_native_mb_no_ret(
-      Shape2D.#_bindings.method_set_custom_solver_bias,
+      Shape2D._bindings.method_set_custom_solver_bias,
       this._owner,
       _bias
     );
@@ -134,7 +135,7 @@ export class Shape2D extends Resource{
   get_custom_solver_bias() {
     Shape2D.init_method_get_custom_solver_bias();
     return _call_native_mb_ret(
-      Shape2D.#_bindings.method_get_custom_solver_bias,
+      Shape2D._bindings.method_get_custom_solver_bias,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -145,7 +146,7 @@ export class Shape2D extends Resource{
   collide(_local_xform, _with_shape, _shape_xform) {
     Shape2D.init_method_collide();
     return _call_native_mb_ret(
-      Shape2D.#_bindings.method_collide,
+      Shape2D._bindings.method_collide,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -156,7 +157,7 @@ export class Shape2D extends Resource{
   collide_with_motion(_local_xform, _local_motion, _with_shape, _shape_xform, _shape_motion) {
     Shape2D.init_method_collide_with_motion();
     return _call_native_mb_ret(
-      Shape2D.#_bindings.method_collide_with_motion,
+      Shape2D._bindings.method_collide_with_motion,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -167,7 +168,7 @@ export class Shape2D extends Resource{
   collide_and_get_contacts(_local_xform, _with_shape, _shape_xform) {
     Shape2D.init_method_collide_and_get_contacts();
     return _call_native_mb_ret(
-      Shape2D.#_bindings.method_collide_and_get_contacts,
+      Shape2D._bindings.method_collide_and_get_contacts,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -178,7 +179,7 @@ export class Shape2D extends Resource{
   collide_with_motion_and_get_contacts(_local_xform, _local_motion, _with_shape, _shape_xform, _shape_motion) {
     Shape2D.init_method_collide_with_motion_and_get_contacts();
     return _call_native_mb_ret(
-      Shape2D.#_bindings.method_collide_with_motion_and_get_contacts,
+      Shape2D._bindings.method_collide_with_motion_and_get_contacts,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -189,7 +190,7 @@ export class Shape2D extends Resource{
   draw(_canvas_item, _color) {
     Shape2D.init_method_draw();
     return _call_native_mb_no_ret(
-      Shape2D.#_bindings.method_draw,
+      Shape2D._bindings.method_draw,
       this._owner,
       _canvas_item, _color
     );
@@ -198,7 +199,7 @@ export class Shape2D extends Resource{
   get_rect() {
     Shape2D.init_method_get_rect();
     return _call_native_mb_ret(
-      Shape2D.#_bindings.method_get_rect,
+      Shape2D._bindings.method_get_rect,
       this._owner,
 			Variant.Type.RECT2,
     

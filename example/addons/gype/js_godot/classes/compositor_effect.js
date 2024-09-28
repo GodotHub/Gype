@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_enabled;
@@ -25,10 +26,10 @@ class _MethodBindings {
   method_set_needs_separate_specular;
   method_get_needs_separate_specular;
 }
+@GodotClass
 export class CompositorEffect extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -38,10 +39,10 @@ export class CompositorEffect extends Resource{
     }
   }
   static init_method_set_enabled() {
-    if (!this.#_bindings.method_set_enabled) {
+    if (!this._bindings.method_set_enabled) {
       let classname = new StringName("CompositorEffect");
       let methodname = new StringName("set_enabled");
-      this.#_bindings.method_set_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -49,10 +50,10 @@ export class CompositorEffect extends Resource{
     }
   }
   static init_method_get_enabled() {
-    if (!this.#_bindings.method_get_enabled) {
+    if (!this._bindings.method_get_enabled) {
       let classname = new StringName("CompositorEffect");
       let methodname = new StringName("get_enabled");
-      this.#_bindings.method_get_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_get_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -60,10 +61,10 @@ export class CompositorEffect extends Resource{
     }
   }
   static init_method_set_effect_callback_type() {
-    if (!this.#_bindings.method_set_effect_callback_type) {
+    if (!this._bindings.method_set_effect_callback_type) {
       let classname = new StringName("CompositorEffect");
       let methodname = new StringName("set_effect_callback_type");
-      this.#_bindings.method_set_effect_callback_type = internal.classdb_get_method_bind(
+      this._bindings.method_set_effect_callback_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1390728419
@@ -71,10 +72,10 @@ export class CompositorEffect extends Resource{
     }
   }
   static init_method_get_effect_callback_type() {
-    if (!this.#_bindings.method_get_effect_callback_type) {
+    if (!this._bindings.method_get_effect_callback_type) {
       let classname = new StringName("CompositorEffect");
       let methodname = new StringName("get_effect_callback_type");
-      this.#_bindings.method_get_effect_callback_type = internal.classdb_get_method_bind(
+      this._bindings.method_get_effect_callback_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1221912590
@@ -82,10 +83,10 @@ export class CompositorEffect extends Resource{
     }
   }
   static init_method_set_access_resolved_color() {
-    if (!this.#_bindings.method_set_access_resolved_color) {
+    if (!this._bindings.method_set_access_resolved_color) {
       let classname = new StringName("CompositorEffect");
       let methodname = new StringName("set_access_resolved_color");
-      this.#_bindings.method_set_access_resolved_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_access_resolved_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -93,10 +94,10 @@ export class CompositorEffect extends Resource{
     }
   }
   static init_method_get_access_resolved_color() {
-    if (!this.#_bindings.method_get_access_resolved_color) {
+    if (!this._bindings.method_get_access_resolved_color) {
       let classname = new StringName("CompositorEffect");
       let methodname = new StringName("get_access_resolved_color");
-      this.#_bindings.method_get_access_resolved_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_access_resolved_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -104,10 +105,10 @@ export class CompositorEffect extends Resource{
     }
   }
   static init_method_set_access_resolved_depth() {
-    if (!this.#_bindings.method_set_access_resolved_depth) {
+    if (!this._bindings.method_set_access_resolved_depth) {
       let classname = new StringName("CompositorEffect");
       let methodname = new StringName("set_access_resolved_depth");
-      this.#_bindings.method_set_access_resolved_depth = internal.classdb_get_method_bind(
+      this._bindings.method_set_access_resolved_depth = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -115,10 +116,10 @@ export class CompositorEffect extends Resource{
     }
   }
   static init_method_get_access_resolved_depth() {
-    if (!this.#_bindings.method_get_access_resolved_depth) {
+    if (!this._bindings.method_get_access_resolved_depth) {
       let classname = new StringName("CompositorEffect");
       let methodname = new StringName("get_access_resolved_depth");
-      this.#_bindings.method_get_access_resolved_depth = internal.classdb_get_method_bind(
+      this._bindings.method_get_access_resolved_depth = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -126,10 +127,10 @@ export class CompositorEffect extends Resource{
     }
   }
   static init_method_set_needs_motion_vectors() {
-    if (!this.#_bindings.method_set_needs_motion_vectors) {
+    if (!this._bindings.method_set_needs_motion_vectors) {
       let classname = new StringName("CompositorEffect");
       let methodname = new StringName("set_needs_motion_vectors");
-      this.#_bindings.method_set_needs_motion_vectors = internal.classdb_get_method_bind(
+      this._bindings.method_set_needs_motion_vectors = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -137,10 +138,10 @@ export class CompositorEffect extends Resource{
     }
   }
   static init_method_get_needs_motion_vectors() {
-    if (!this.#_bindings.method_get_needs_motion_vectors) {
+    if (!this._bindings.method_get_needs_motion_vectors) {
       let classname = new StringName("CompositorEffect");
       let methodname = new StringName("get_needs_motion_vectors");
-      this.#_bindings.method_get_needs_motion_vectors = internal.classdb_get_method_bind(
+      this._bindings.method_get_needs_motion_vectors = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -148,10 +149,10 @@ export class CompositorEffect extends Resource{
     }
   }
   static init_method_set_needs_normal_roughness() {
-    if (!this.#_bindings.method_set_needs_normal_roughness) {
+    if (!this._bindings.method_set_needs_normal_roughness) {
       let classname = new StringName("CompositorEffect");
       let methodname = new StringName("set_needs_normal_roughness");
-      this.#_bindings.method_set_needs_normal_roughness = internal.classdb_get_method_bind(
+      this._bindings.method_set_needs_normal_roughness = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -159,10 +160,10 @@ export class CompositorEffect extends Resource{
     }
   }
   static init_method_get_needs_normal_roughness() {
-    if (!this.#_bindings.method_get_needs_normal_roughness) {
+    if (!this._bindings.method_get_needs_normal_roughness) {
       let classname = new StringName("CompositorEffect");
       let methodname = new StringName("get_needs_normal_roughness");
-      this.#_bindings.method_get_needs_normal_roughness = internal.classdb_get_method_bind(
+      this._bindings.method_get_needs_normal_roughness = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -170,10 +171,10 @@ export class CompositorEffect extends Resource{
     }
   }
   static init_method_set_needs_separate_specular() {
-    if (!this.#_bindings.method_set_needs_separate_specular) {
+    if (!this._bindings.method_set_needs_separate_specular) {
       let classname = new StringName("CompositorEffect");
       let methodname = new StringName("set_needs_separate_specular");
-      this.#_bindings.method_set_needs_separate_specular = internal.classdb_get_method_bind(
+      this._bindings.method_set_needs_separate_specular = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -181,10 +182,10 @@ export class CompositorEffect extends Resource{
     }
   }
   static init_method_get_needs_separate_specular() {
-    if (!this.#_bindings.method_get_needs_separate_specular) {
+    if (!this._bindings.method_get_needs_separate_specular) {
       let classname = new StringName("CompositorEffect");
       let methodname = new StringName("get_needs_separate_specular");
-      this.#_bindings.method_get_needs_separate_specular = internal.classdb_get_method_bind(
+      this._bindings.method_get_needs_separate_specular = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -199,7 +200,7 @@ export class CompositorEffect extends Resource{
   set_enabled(_enabled) {
     CompositorEffect.init_method_set_enabled();
     return _call_native_mb_no_ret(
-      CompositorEffect.#_bindings.method_set_enabled,
+      CompositorEffect._bindings.method_set_enabled,
       this._owner,
       _enabled
     );
@@ -208,7 +209,7 @@ export class CompositorEffect extends Resource{
   get_enabled() {
     CompositorEffect.init_method_get_enabled();
     return _call_native_mb_ret(
-      CompositorEffect.#_bindings.method_get_enabled,
+      CompositorEffect._bindings.method_get_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -219,7 +220,7 @@ export class CompositorEffect extends Resource{
   set_effect_callback_type(_effect_callback_type) {
     CompositorEffect.init_method_set_effect_callback_type();
     return _call_native_mb_no_ret(
-      CompositorEffect.#_bindings.method_set_effect_callback_type,
+      CompositorEffect._bindings.method_set_effect_callback_type,
       this._owner,
       _effect_callback_type
     );
@@ -228,7 +229,7 @@ export class CompositorEffect extends Resource{
   get_effect_callback_type() {
     CompositorEffect.init_method_get_effect_callback_type();
     return _call_native_mb_ret(
-      CompositorEffect.#_bindings.method_get_effect_callback_type,
+      CompositorEffect._bindings.method_get_effect_callback_type,
       this._owner,
 			Variant.Type.INT,
     
@@ -239,7 +240,7 @@ export class CompositorEffect extends Resource{
   set_access_resolved_color(_enable) {
     CompositorEffect.init_method_set_access_resolved_color();
     return _call_native_mb_no_ret(
-      CompositorEffect.#_bindings.method_set_access_resolved_color,
+      CompositorEffect._bindings.method_set_access_resolved_color,
       this._owner,
       _enable
     );
@@ -248,7 +249,7 @@ export class CompositorEffect extends Resource{
   get_access_resolved_color() {
     CompositorEffect.init_method_get_access_resolved_color();
     return _call_native_mb_ret(
-      CompositorEffect.#_bindings.method_get_access_resolved_color,
+      CompositorEffect._bindings.method_get_access_resolved_color,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -259,7 +260,7 @@ export class CompositorEffect extends Resource{
   set_access_resolved_depth(_enable) {
     CompositorEffect.init_method_set_access_resolved_depth();
     return _call_native_mb_no_ret(
-      CompositorEffect.#_bindings.method_set_access_resolved_depth,
+      CompositorEffect._bindings.method_set_access_resolved_depth,
       this._owner,
       _enable
     );
@@ -268,7 +269,7 @@ export class CompositorEffect extends Resource{
   get_access_resolved_depth() {
     CompositorEffect.init_method_get_access_resolved_depth();
     return _call_native_mb_ret(
-      CompositorEffect.#_bindings.method_get_access_resolved_depth,
+      CompositorEffect._bindings.method_get_access_resolved_depth,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -279,7 +280,7 @@ export class CompositorEffect extends Resource{
   set_needs_motion_vectors(_enable) {
     CompositorEffect.init_method_set_needs_motion_vectors();
     return _call_native_mb_no_ret(
-      CompositorEffect.#_bindings.method_set_needs_motion_vectors,
+      CompositorEffect._bindings.method_set_needs_motion_vectors,
       this._owner,
       _enable
     );
@@ -288,7 +289,7 @@ export class CompositorEffect extends Resource{
   get_needs_motion_vectors() {
     CompositorEffect.init_method_get_needs_motion_vectors();
     return _call_native_mb_ret(
-      CompositorEffect.#_bindings.method_get_needs_motion_vectors,
+      CompositorEffect._bindings.method_get_needs_motion_vectors,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -299,7 +300,7 @@ export class CompositorEffect extends Resource{
   set_needs_normal_roughness(_enable) {
     CompositorEffect.init_method_set_needs_normal_roughness();
     return _call_native_mb_no_ret(
-      CompositorEffect.#_bindings.method_set_needs_normal_roughness,
+      CompositorEffect._bindings.method_set_needs_normal_roughness,
       this._owner,
       _enable
     );
@@ -308,7 +309,7 @@ export class CompositorEffect extends Resource{
   get_needs_normal_roughness() {
     CompositorEffect.init_method_get_needs_normal_roughness();
     return _call_native_mb_ret(
-      CompositorEffect.#_bindings.method_get_needs_normal_roughness,
+      CompositorEffect._bindings.method_get_needs_normal_roughness,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -319,7 +320,7 @@ export class CompositorEffect extends Resource{
   set_needs_separate_specular(_enable) {
     CompositorEffect.init_method_set_needs_separate_specular();
     return _call_native_mb_no_ret(
-      CompositorEffect.#_bindings.method_set_needs_separate_specular,
+      CompositorEffect._bindings.method_set_needs_separate_specular,
       this._owner,
       _enable
     );
@@ -328,7 +329,7 @@ export class CompositorEffect extends Resource{
   get_needs_separate_specular() {
     CompositorEffect.init_method_get_needs_separate_specular();
     return _call_native_mb_ret(
-      CompositorEffect.#_bindings.method_get_needs_separate_specular,
+      CompositorEffect._bindings.method_get_needs_separate_specular,
       this._owner,
 			Variant.Type.BOOL,
     

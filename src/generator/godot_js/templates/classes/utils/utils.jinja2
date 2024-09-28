@@ -31,6 +31,7 @@
   {%- if clazz['name'] in singletons -%}
 class _{{to_js_type(clazz['name'])-}}
   {% else %}
+@GodotClass
 export class {{to_js_type(clazz['name'])-}}
   {%- endif -%}
 {%- endmacro -%}

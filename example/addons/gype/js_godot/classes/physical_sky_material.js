@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Material } from '@js_godot/classes/material'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_rayleigh_coefficient;
@@ -33,10 +34,10 @@ class _MethodBindings {
   method_set_night_sky;
   method_get_night_sky;
 }
+@GodotClass
 export class PhysicalSkyMaterial extends Material{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -46,10 +47,10 @@ export class PhysicalSkyMaterial extends Material{
     }
   }
   static init_method_set_rayleigh_coefficient() {
-    if (!this.#_bindings.method_set_rayleigh_coefficient) {
+    if (!this._bindings.method_set_rayleigh_coefficient) {
       let classname = new StringName("PhysicalSkyMaterial");
       let methodname = new StringName("set_rayleigh_coefficient");
-      this.#_bindings.method_set_rayleigh_coefficient = internal.classdb_get_method_bind(
+      this._bindings.method_set_rayleigh_coefficient = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -57,10 +58,10 @@ export class PhysicalSkyMaterial extends Material{
     }
   }
   static init_method_get_rayleigh_coefficient() {
-    if (!this.#_bindings.method_get_rayleigh_coefficient) {
+    if (!this._bindings.method_get_rayleigh_coefficient) {
       let classname = new StringName("PhysicalSkyMaterial");
       let methodname = new StringName("get_rayleigh_coefficient");
-      this.#_bindings.method_get_rayleigh_coefficient = internal.classdb_get_method_bind(
+      this._bindings.method_get_rayleigh_coefficient = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -68,10 +69,10 @@ export class PhysicalSkyMaterial extends Material{
     }
   }
   static init_method_set_rayleigh_color() {
-    if (!this.#_bindings.method_set_rayleigh_color) {
+    if (!this._bindings.method_set_rayleigh_color) {
       let classname = new StringName("PhysicalSkyMaterial");
       let methodname = new StringName("set_rayleigh_color");
-      this.#_bindings.method_set_rayleigh_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_rayleigh_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -79,10 +80,10 @@ export class PhysicalSkyMaterial extends Material{
     }
   }
   static init_method_get_rayleigh_color() {
-    if (!this.#_bindings.method_get_rayleigh_color) {
+    if (!this._bindings.method_get_rayleigh_color) {
       let classname = new StringName("PhysicalSkyMaterial");
       let methodname = new StringName("get_rayleigh_color");
-      this.#_bindings.method_get_rayleigh_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_rayleigh_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -90,10 +91,10 @@ export class PhysicalSkyMaterial extends Material{
     }
   }
   static init_method_set_mie_coefficient() {
-    if (!this.#_bindings.method_set_mie_coefficient) {
+    if (!this._bindings.method_set_mie_coefficient) {
       let classname = new StringName("PhysicalSkyMaterial");
       let methodname = new StringName("set_mie_coefficient");
-      this.#_bindings.method_set_mie_coefficient = internal.classdb_get_method_bind(
+      this._bindings.method_set_mie_coefficient = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -101,10 +102,10 @@ export class PhysicalSkyMaterial extends Material{
     }
   }
   static init_method_get_mie_coefficient() {
-    if (!this.#_bindings.method_get_mie_coefficient) {
+    if (!this._bindings.method_get_mie_coefficient) {
       let classname = new StringName("PhysicalSkyMaterial");
       let methodname = new StringName("get_mie_coefficient");
-      this.#_bindings.method_get_mie_coefficient = internal.classdb_get_method_bind(
+      this._bindings.method_get_mie_coefficient = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -112,10 +113,10 @@ export class PhysicalSkyMaterial extends Material{
     }
   }
   static init_method_set_mie_eccentricity() {
-    if (!this.#_bindings.method_set_mie_eccentricity) {
+    if (!this._bindings.method_set_mie_eccentricity) {
       let classname = new StringName("PhysicalSkyMaterial");
       let methodname = new StringName("set_mie_eccentricity");
-      this.#_bindings.method_set_mie_eccentricity = internal.classdb_get_method_bind(
+      this._bindings.method_set_mie_eccentricity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -123,10 +124,10 @@ export class PhysicalSkyMaterial extends Material{
     }
   }
   static init_method_get_mie_eccentricity() {
-    if (!this.#_bindings.method_get_mie_eccentricity) {
+    if (!this._bindings.method_get_mie_eccentricity) {
       let classname = new StringName("PhysicalSkyMaterial");
       let methodname = new StringName("get_mie_eccentricity");
-      this.#_bindings.method_get_mie_eccentricity = internal.classdb_get_method_bind(
+      this._bindings.method_get_mie_eccentricity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -134,10 +135,10 @@ export class PhysicalSkyMaterial extends Material{
     }
   }
   static init_method_set_mie_color() {
-    if (!this.#_bindings.method_set_mie_color) {
+    if (!this._bindings.method_set_mie_color) {
       let classname = new StringName("PhysicalSkyMaterial");
       let methodname = new StringName("set_mie_color");
-      this.#_bindings.method_set_mie_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_mie_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -145,10 +146,10 @@ export class PhysicalSkyMaterial extends Material{
     }
   }
   static init_method_get_mie_color() {
-    if (!this.#_bindings.method_get_mie_color) {
+    if (!this._bindings.method_get_mie_color) {
       let classname = new StringName("PhysicalSkyMaterial");
       let methodname = new StringName("get_mie_color");
-      this.#_bindings.method_get_mie_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_mie_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -156,10 +157,10 @@ export class PhysicalSkyMaterial extends Material{
     }
   }
   static init_method_set_turbidity() {
-    if (!this.#_bindings.method_set_turbidity) {
+    if (!this._bindings.method_set_turbidity) {
       let classname = new StringName("PhysicalSkyMaterial");
       let methodname = new StringName("set_turbidity");
-      this.#_bindings.method_set_turbidity = internal.classdb_get_method_bind(
+      this._bindings.method_set_turbidity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -167,10 +168,10 @@ export class PhysicalSkyMaterial extends Material{
     }
   }
   static init_method_get_turbidity() {
-    if (!this.#_bindings.method_get_turbidity) {
+    if (!this._bindings.method_get_turbidity) {
       let classname = new StringName("PhysicalSkyMaterial");
       let methodname = new StringName("get_turbidity");
-      this.#_bindings.method_get_turbidity = internal.classdb_get_method_bind(
+      this._bindings.method_get_turbidity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -178,10 +179,10 @@ export class PhysicalSkyMaterial extends Material{
     }
   }
   static init_method_set_sun_disk_scale() {
-    if (!this.#_bindings.method_set_sun_disk_scale) {
+    if (!this._bindings.method_set_sun_disk_scale) {
       let classname = new StringName("PhysicalSkyMaterial");
       let methodname = new StringName("set_sun_disk_scale");
-      this.#_bindings.method_set_sun_disk_scale = internal.classdb_get_method_bind(
+      this._bindings.method_set_sun_disk_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -189,10 +190,10 @@ export class PhysicalSkyMaterial extends Material{
     }
   }
   static init_method_get_sun_disk_scale() {
-    if (!this.#_bindings.method_get_sun_disk_scale) {
+    if (!this._bindings.method_get_sun_disk_scale) {
       let classname = new StringName("PhysicalSkyMaterial");
       let methodname = new StringName("get_sun_disk_scale");
-      this.#_bindings.method_get_sun_disk_scale = internal.classdb_get_method_bind(
+      this._bindings.method_get_sun_disk_scale = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -200,10 +201,10 @@ export class PhysicalSkyMaterial extends Material{
     }
   }
   static init_method_set_ground_color() {
-    if (!this.#_bindings.method_set_ground_color) {
+    if (!this._bindings.method_set_ground_color) {
       let classname = new StringName("PhysicalSkyMaterial");
       let methodname = new StringName("set_ground_color");
-      this.#_bindings.method_set_ground_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_ground_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -211,10 +212,10 @@ export class PhysicalSkyMaterial extends Material{
     }
   }
   static init_method_get_ground_color() {
-    if (!this.#_bindings.method_get_ground_color) {
+    if (!this._bindings.method_get_ground_color) {
       let classname = new StringName("PhysicalSkyMaterial");
       let methodname = new StringName("get_ground_color");
-      this.#_bindings.method_get_ground_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_ground_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -222,10 +223,10 @@ export class PhysicalSkyMaterial extends Material{
     }
   }
   static init_method_set_energy_multiplier() {
-    if (!this.#_bindings.method_set_energy_multiplier) {
+    if (!this._bindings.method_set_energy_multiplier) {
       let classname = new StringName("PhysicalSkyMaterial");
       let methodname = new StringName("set_energy_multiplier");
-      this.#_bindings.method_set_energy_multiplier = internal.classdb_get_method_bind(
+      this._bindings.method_set_energy_multiplier = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -233,10 +234,10 @@ export class PhysicalSkyMaterial extends Material{
     }
   }
   static init_method_get_energy_multiplier() {
-    if (!this.#_bindings.method_get_energy_multiplier) {
+    if (!this._bindings.method_get_energy_multiplier) {
       let classname = new StringName("PhysicalSkyMaterial");
       let methodname = new StringName("get_energy_multiplier");
-      this.#_bindings.method_get_energy_multiplier = internal.classdb_get_method_bind(
+      this._bindings.method_get_energy_multiplier = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -244,10 +245,10 @@ export class PhysicalSkyMaterial extends Material{
     }
   }
   static init_method_set_use_debanding() {
-    if (!this.#_bindings.method_set_use_debanding) {
+    if (!this._bindings.method_set_use_debanding) {
       let classname = new StringName("PhysicalSkyMaterial");
       let methodname = new StringName("set_use_debanding");
-      this.#_bindings.method_set_use_debanding = internal.classdb_get_method_bind(
+      this._bindings.method_set_use_debanding = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -255,10 +256,10 @@ export class PhysicalSkyMaterial extends Material{
     }
   }
   static init_method_get_use_debanding() {
-    if (!this.#_bindings.method_get_use_debanding) {
+    if (!this._bindings.method_get_use_debanding) {
       let classname = new StringName("PhysicalSkyMaterial");
       let methodname = new StringName("get_use_debanding");
-      this.#_bindings.method_get_use_debanding = internal.classdb_get_method_bind(
+      this._bindings.method_get_use_debanding = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -266,10 +267,10 @@ export class PhysicalSkyMaterial extends Material{
     }
   }
   static init_method_set_night_sky() {
-    if (!this.#_bindings.method_set_night_sky) {
+    if (!this._bindings.method_set_night_sky) {
       let classname = new StringName("PhysicalSkyMaterial");
       let methodname = new StringName("set_night_sky");
-      this.#_bindings.method_set_night_sky = internal.classdb_get_method_bind(
+      this._bindings.method_set_night_sky = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4051416890
@@ -277,10 +278,10 @@ export class PhysicalSkyMaterial extends Material{
     }
   }
   static init_method_get_night_sky() {
-    if (!this.#_bindings.method_get_night_sky) {
+    if (!this._bindings.method_get_night_sky) {
       let classname = new StringName("PhysicalSkyMaterial");
       let methodname = new StringName("get_night_sky");
-      this.#_bindings.method_get_night_sky = internal.classdb_get_method_bind(
+      this._bindings.method_get_night_sky = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -293,7 +294,7 @@ export class PhysicalSkyMaterial extends Material{
   set_rayleigh_coefficient(_rayleigh) {
     PhysicalSkyMaterial.init_method_set_rayleigh_coefficient();
     return _call_native_mb_no_ret(
-      PhysicalSkyMaterial.#_bindings.method_set_rayleigh_coefficient,
+      PhysicalSkyMaterial._bindings.method_set_rayleigh_coefficient,
       this._owner,
       _rayleigh
     );
@@ -302,7 +303,7 @@ export class PhysicalSkyMaterial extends Material{
   get_rayleigh_coefficient() {
     PhysicalSkyMaterial.init_method_get_rayleigh_coefficient();
     return _call_native_mb_ret(
-      PhysicalSkyMaterial.#_bindings.method_get_rayleigh_coefficient,
+      PhysicalSkyMaterial._bindings.method_get_rayleigh_coefficient,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -313,7 +314,7 @@ export class PhysicalSkyMaterial extends Material{
   set_rayleigh_color(_color) {
     PhysicalSkyMaterial.init_method_set_rayleigh_color();
     return _call_native_mb_no_ret(
-      PhysicalSkyMaterial.#_bindings.method_set_rayleigh_color,
+      PhysicalSkyMaterial._bindings.method_set_rayleigh_color,
       this._owner,
       _color
     );
@@ -322,7 +323,7 @@ export class PhysicalSkyMaterial extends Material{
   get_rayleigh_color() {
     PhysicalSkyMaterial.init_method_get_rayleigh_color();
     return _call_native_mb_ret(
-      PhysicalSkyMaterial.#_bindings.method_get_rayleigh_color,
+      PhysicalSkyMaterial._bindings.method_get_rayleigh_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -333,7 +334,7 @@ export class PhysicalSkyMaterial extends Material{
   set_mie_coefficient(_mie) {
     PhysicalSkyMaterial.init_method_set_mie_coefficient();
     return _call_native_mb_no_ret(
-      PhysicalSkyMaterial.#_bindings.method_set_mie_coefficient,
+      PhysicalSkyMaterial._bindings.method_set_mie_coefficient,
       this._owner,
       _mie
     );
@@ -342,7 +343,7 @@ export class PhysicalSkyMaterial extends Material{
   get_mie_coefficient() {
     PhysicalSkyMaterial.init_method_get_mie_coefficient();
     return _call_native_mb_ret(
-      PhysicalSkyMaterial.#_bindings.method_get_mie_coefficient,
+      PhysicalSkyMaterial._bindings.method_get_mie_coefficient,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -353,7 +354,7 @@ export class PhysicalSkyMaterial extends Material{
   set_mie_eccentricity(_eccentricity) {
     PhysicalSkyMaterial.init_method_set_mie_eccentricity();
     return _call_native_mb_no_ret(
-      PhysicalSkyMaterial.#_bindings.method_set_mie_eccentricity,
+      PhysicalSkyMaterial._bindings.method_set_mie_eccentricity,
       this._owner,
       _eccentricity
     );
@@ -362,7 +363,7 @@ export class PhysicalSkyMaterial extends Material{
   get_mie_eccentricity() {
     PhysicalSkyMaterial.init_method_get_mie_eccentricity();
     return _call_native_mb_ret(
-      PhysicalSkyMaterial.#_bindings.method_get_mie_eccentricity,
+      PhysicalSkyMaterial._bindings.method_get_mie_eccentricity,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -373,7 +374,7 @@ export class PhysicalSkyMaterial extends Material{
   set_mie_color(_color) {
     PhysicalSkyMaterial.init_method_set_mie_color();
     return _call_native_mb_no_ret(
-      PhysicalSkyMaterial.#_bindings.method_set_mie_color,
+      PhysicalSkyMaterial._bindings.method_set_mie_color,
       this._owner,
       _color
     );
@@ -382,7 +383,7 @@ export class PhysicalSkyMaterial extends Material{
   get_mie_color() {
     PhysicalSkyMaterial.init_method_get_mie_color();
     return _call_native_mb_ret(
-      PhysicalSkyMaterial.#_bindings.method_get_mie_color,
+      PhysicalSkyMaterial._bindings.method_get_mie_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -393,7 +394,7 @@ export class PhysicalSkyMaterial extends Material{
   set_turbidity(_turbidity) {
     PhysicalSkyMaterial.init_method_set_turbidity();
     return _call_native_mb_no_ret(
-      PhysicalSkyMaterial.#_bindings.method_set_turbidity,
+      PhysicalSkyMaterial._bindings.method_set_turbidity,
       this._owner,
       _turbidity
     );
@@ -402,7 +403,7 @@ export class PhysicalSkyMaterial extends Material{
   get_turbidity() {
     PhysicalSkyMaterial.init_method_get_turbidity();
     return _call_native_mb_ret(
-      PhysicalSkyMaterial.#_bindings.method_get_turbidity,
+      PhysicalSkyMaterial._bindings.method_get_turbidity,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -413,7 +414,7 @@ export class PhysicalSkyMaterial extends Material{
   set_sun_disk_scale(_scale) {
     PhysicalSkyMaterial.init_method_set_sun_disk_scale();
     return _call_native_mb_no_ret(
-      PhysicalSkyMaterial.#_bindings.method_set_sun_disk_scale,
+      PhysicalSkyMaterial._bindings.method_set_sun_disk_scale,
       this._owner,
       _scale
     );
@@ -422,7 +423,7 @@ export class PhysicalSkyMaterial extends Material{
   get_sun_disk_scale() {
     PhysicalSkyMaterial.init_method_get_sun_disk_scale();
     return _call_native_mb_ret(
-      PhysicalSkyMaterial.#_bindings.method_get_sun_disk_scale,
+      PhysicalSkyMaterial._bindings.method_get_sun_disk_scale,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -433,7 +434,7 @@ export class PhysicalSkyMaterial extends Material{
   set_ground_color(_color) {
     PhysicalSkyMaterial.init_method_set_ground_color();
     return _call_native_mb_no_ret(
-      PhysicalSkyMaterial.#_bindings.method_set_ground_color,
+      PhysicalSkyMaterial._bindings.method_set_ground_color,
       this._owner,
       _color
     );
@@ -442,7 +443,7 @@ export class PhysicalSkyMaterial extends Material{
   get_ground_color() {
     PhysicalSkyMaterial.init_method_get_ground_color();
     return _call_native_mb_ret(
-      PhysicalSkyMaterial.#_bindings.method_get_ground_color,
+      PhysicalSkyMaterial._bindings.method_get_ground_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -453,7 +454,7 @@ export class PhysicalSkyMaterial extends Material{
   set_energy_multiplier(_multiplier) {
     PhysicalSkyMaterial.init_method_set_energy_multiplier();
     return _call_native_mb_no_ret(
-      PhysicalSkyMaterial.#_bindings.method_set_energy_multiplier,
+      PhysicalSkyMaterial._bindings.method_set_energy_multiplier,
       this._owner,
       _multiplier
     );
@@ -462,7 +463,7 @@ export class PhysicalSkyMaterial extends Material{
   get_energy_multiplier() {
     PhysicalSkyMaterial.init_method_get_energy_multiplier();
     return _call_native_mb_ret(
-      PhysicalSkyMaterial.#_bindings.method_get_energy_multiplier,
+      PhysicalSkyMaterial._bindings.method_get_energy_multiplier,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -473,7 +474,7 @@ export class PhysicalSkyMaterial extends Material{
   set_use_debanding(_use_debanding) {
     PhysicalSkyMaterial.init_method_set_use_debanding();
     return _call_native_mb_no_ret(
-      PhysicalSkyMaterial.#_bindings.method_set_use_debanding,
+      PhysicalSkyMaterial._bindings.method_set_use_debanding,
       this._owner,
       _use_debanding
     );
@@ -482,7 +483,7 @@ export class PhysicalSkyMaterial extends Material{
   get_use_debanding() {
     PhysicalSkyMaterial.init_method_get_use_debanding();
     return _call_native_mb_ret(
-      PhysicalSkyMaterial.#_bindings.method_get_use_debanding,
+      PhysicalSkyMaterial._bindings.method_get_use_debanding,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -493,7 +494,7 @@ export class PhysicalSkyMaterial extends Material{
   set_night_sky(_night_sky) {
     PhysicalSkyMaterial.init_method_set_night_sky();
     return _call_native_mb_no_ret(
-      PhysicalSkyMaterial.#_bindings.method_set_night_sky,
+      PhysicalSkyMaterial._bindings.method_set_night_sky,
       this._owner,
       _night_sky
     );
@@ -502,7 +503,7 @@ export class PhysicalSkyMaterial extends Material{
   get_night_sky() {
     PhysicalSkyMaterial.init_method_get_night_sky();
     return _call_native_mb_ret(
-      PhysicalSkyMaterial.#_bindings.method_get_night_sky,
+      PhysicalSkyMaterial._bindings.method_get_night_sky,
       this._owner,
 			Variant.Type.OBJECT,
       

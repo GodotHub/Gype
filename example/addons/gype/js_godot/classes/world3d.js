@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_space;
@@ -21,10 +22,10 @@ class _MethodBindings {
   method_get_camera_attributes;
   method_get_direct_space_state;
 }
+@GodotClass
 export class World3D extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -34,10 +35,10 @@ export class World3D extends Resource{
     }
   }
   static init_method_get_space() {
-    if (!this.#_bindings.method_get_space) {
+    if (!this._bindings.method_get_space) {
       let classname = new StringName("World3D");
       let methodname = new StringName("get_space");
-      this.#_bindings.method_get_space = internal.classdb_get_method_bind(
+      this._bindings.method_get_space = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2944877500
@@ -45,10 +46,10 @@ export class World3D extends Resource{
     }
   }
   static init_method_get_navigation_map() {
-    if (!this.#_bindings.method_get_navigation_map) {
+    if (!this._bindings.method_get_navigation_map) {
       let classname = new StringName("World3D");
       let methodname = new StringName("get_navigation_map");
-      this.#_bindings.method_get_navigation_map = internal.classdb_get_method_bind(
+      this._bindings.method_get_navigation_map = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2944877500
@@ -56,10 +57,10 @@ export class World3D extends Resource{
     }
   }
   static init_method_get_scenario() {
-    if (!this.#_bindings.method_get_scenario) {
+    if (!this._bindings.method_get_scenario) {
       let classname = new StringName("World3D");
       let methodname = new StringName("get_scenario");
-      this.#_bindings.method_get_scenario = internal.classdb_get_method_bind(
+      this._bindings.method_get_scenario = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2944877500
@@ -67,10 +68,10 @@ export class World3D extends Resource{
     }
   }
   static init_method_set_environment() {
-    if (!this.#_bindings.method_set_environment) {
+    if (!this._bindings.method_set_environment) {
       let classname = new StringName("World3D");
       let methodname = new StringName("set_environment");
-      this.#_bindings.method_set_environment = internal.classdb_get_method_bind(
+      this._bindings.method_set_environment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4143518816
@@ -78,10 +79,10 @@ export class World3D extends Resource{
     }
   }
   static init_method_get_environment() {
-    if (!this.#_bindings.method_get_environment) {
+    if (!this._bindings.method_get_environment) {
       let classname = new StringName("World3D");
       let methodname = new StringName("get_environment");
-      this.#_bindings.method_get_environment = internal.classdb_get_method_bind(
+      this._bindings.method_get_environment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3082064660
@@ -89,10 +90,10 @@ export class World3D extends Resource{
     }
   }
   static init_method_set_fallback_environment() {
-    if (!this.#_bindings.method_set_fallback_environment) {
+    if (!this._bindings.method_set_fallback_environment) {
       let classname = new StringName("World3D");
       let methodname = new StringName("set_fallback_environment");
-      this.#_bindings.method_set_fallback_environment = internal.classdb_get_method_bind(
+      this._bindings.method_set_fallback_environment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4143518816
@@ -100,10 +101,10 @@ export class World3D extends Resource{
     }
   }
   static init_method_get_fallback_environment() {
-    if (!this.#_bindings.method_get_fallback_environment) {
+    if (!this._bindings.method_get_fallback_environment) {
       let classname = new StringName("World3D");
       let methodname = new StringName("get_fallback_environment");
-      this.#_bindings.method_get_fallback_environment = internal.classdb_get_method_bind(
+      this._bindings.method_get_fallback_environment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3082064660
@@ -111,10 +112,10 @@ export class World3D extends Resource{
     }
   }
   static init_method_set_camera_attributes() {
-    if (!this.#_bindings.method_set_camera_attributes) {
+    if (!this._bindings.method_set_camera_attributes) {
       let classname = new StringName("World3D");
       let methodname = new StringName("set_camera_attributes");
-      this.#_bindings.method_set_camera_attributes = internal.classdb_get_method_bind(
+      this._bindings.method_set_camera_attributes = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2817810567
@@ -122,10 +123,10 @@ export class World3D extends Resource{
     }
   }
   static init_method_get_camera_attributes() {
-    if (!this.#_bindings.method_get_camera_attributes) {
+    if (!this._bindings.method_get_camera_attributes) {
       let classname = new StringName("World3D");
       let methodname = new StringName("get_camera_attributes");
-      this.#_bindings.method_get_camera_attributes = internal.classdb_get_method_bind(
+      this._bindings.method_get_camera_attributes = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3921283215
@@ -133,10 +134,10 @@ export class World3D extends Resource{
     }
   }
   static init_method_get_direct_space_state() {
-    if (!this.#_bindings.method_get_direct_space_state) {
+    if (!this._bindings.method_get_direct_space_state) {
       let classname = new StringName("World3D");
       let methodname = new StringName("get_direct_space_state");
-      this.#_bindings.method_get_direct_space_state = internal.classdb_get_method_bind(
+      this._bindings.method_get_direct_space_state = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2069328350
@@ -149,7 +150,7 @@ export class World3D extends Resource{
   get_space() {
     World3D.init_method_get_space();
     return _call_native_mb_ret(
-      World3D.#_bindings.method_get_space,
+      World3D._bindings.method_get_space,
       this._owner,
 			Variant.Type.RID,
     
@@ -160,7 +161,7 @@ export class World3D extends Resource{
   get_navigation_map() {
     World3D.init_method_get_navigation_map();
     return _call_native_mb_ret(
-      World3D.#_bindings.method_get_navigation_map,
+      World3D._bindings.method_get_navigation_map,
       this._owner,
 			Variant.Type.RID,
     
@@ -171,7 +172,7 @@ export class World3D extends Resource{
   get_scenario() {
     World3D.init_method_get_scenario();
     return _call_native_mb_ret(
-      World3D.#_bindings.method_get_scenario,
+      World3D._bindings.method_get_scenario,
       this._owner,
 			Variant.Type.RID,
     
@@ -182,7 +183,7 @@ export class World3D extends Resource{
   set_environment(_env) {
     World3D.init_method_set_environment();
     return _call_native_mb_no_ret(
-      World3D.#_bindings.method_set_environment,
+      World3D._bindings.method_set_environment,
       this._owner,
       _env
     );
@@ -191,7 +192,7 @@ export class World3D extends Resource{
   get_environment() {
     World3D.init_method_get_environment();
     return _call_native_mb_ret(
-      World3D.#_bindings.method_get_environment,
+      World3D._bindings.method_get_environment,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -201,7 +202,7 @@ export class World3D extends Resource{
   set_fallback_environment(_env) {
     World3D.init_method_set_fallback_environment();
     return _call_native_mb_no_ret(
-      World3D.#_bindings.method_set_fallback_environment,
+      World3D._bindings.method_set_fallback_environment,
       this._owner,
       _env
     );
@@ -210,7 +211,7 @@ export class World3D extends Resource{
   get_fallback_environment() {
     World3D.init_method_get_fallback_environment();
     return _call_native_mb_ret(
-      World3D.#_bindings.method_get_fallback_environment,
+      World3D._bindings.method_get_fallback_environment,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -220,7 +221,7 @@ export class World3D extends Resource{
   set_camera_attributes(_attributes) {
     World3D.init_method_set_camera_attributes();
     return _call_native_mb_no_ret(
-      World3D.#_bindings.method_set_camera_attributes,
+      World3D._bindings.method_set_camera_attributes,
       this._owner,
       _attributes
     );
@@ -229,7 +230,7 @@ export class World3D extends Resource{
   get_camera_attributes() {
     World3D.init_method_get_camera_attributes();
     return _call_native_mb_ret(
-      World3D.#_bindings.method_get_camera_attributes,
+      World3D._bindings.method_get_camera_attributes,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -239,7 +240,7 @@ export class World3D extends Resource{
   get_direct_space_state() {
     World3D.init_method_get_direct_space_state();
     return _call_native_mb_ret(
-      World3D.#_bindings.method_get_direct_space_state,
+      World3D._bindings.method_get_direct_space_state,
       this._owner,
 			Variant.Type.OBJECT,
       

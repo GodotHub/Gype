@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Material } from '@js_godot/classes/material'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_blend_mode;
@@ -23,10 +24,10 @@ class _MethodBindings {
   method_set_particles_anim_loop;
   method_get_particles_anim_loop;
 }
+@GodotClass
 export class CanvasItemMaterial extends Material{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -36,10 +37,10 @@ export class CanvasItemMaterial extends Material{
     }
   }
   static init_method_set_blend_mode() {
-    if (!this.#_bindings.method_set_blend_mode) {
+    if (!this._bindings.method_set_blend_mode) {
       let classname = new StringName("CanvasItemMaterial");
       let methodname = new StringName("set_blend_mode");
-      this.#_bindings.method_set_blend_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_blend_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1786054936
@@ -47,10 +48,10 @@ export class CanvasItemMaterial extends Material{
     }
   }
   static init_method_get_blend_mode() {
-    if (!this.#_bindings.method_get_blend_mode) {
+    if (!this._bindings.method_get_blend_mode) {
       let classname = new StringName("CanvasItemMaterial");
       let methodname = new StringName("get_blend_mode");
-      this.#_bindings.method_get_blend_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_blend_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3318684035
@@ -58,10 +59,10 @@ export class CanvasItemMaterial extends Material{
     }
   }
   static init_method_set_light_mode() {
-    if (!this.#_bindings.method_set_light_mode) {
+    if (!this._bindings.method_set_light_mode) {
       let classname = new StringName("CanvasItemMaterial");
       let methodname = new StringName("set_light_mode");
-      this.#_bindings.method_set_light_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_light_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         628074070
@@ -69,10 +70,10 @@ export class CanvasItemMaterial extends Material{
     }
   }
   static init_method_get_light_mode() {
-    if (!this.#_bindings.method_get_light_mode) {
+    if (!this._bindings.method_get_light_mode) {
       let classname = new StringName("CanvasItemMaterial");
       let methodname = new StringName("get_light_mode");
-      this.#_bindings.method_get_light_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_light_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3863292382
@@ -80,10 +81,10 @@ export class CanvasItemMaterial extends Material{
     }
   }
   static init_method_set_particles_animation() {
-    if (!this.#_bindings.method_set_particles_animation) {
+    if (!this._bindings.method_set_particles_animation) {
       let classname = new StringName("CanvasItemMaterial");
       let methodname = new StringName("set_particles_animation");
-      this.#_bindings.method_set_particles_animation = internal.classdb_get_method_bind(
+      this._bindings.method_set_particles_animation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -91,10 +92,10 @@ export class CanvasItemMaterial extends Material{
     }
   }
   static init_method_get_particles_animation() {
-    if (!this.#_bindings.method_get_particles_animation) {
+    if (!this._bindings.method_get_particles_animation) {
       let classname = new StringName("CanvasItemMaterial");
       let methodname = new StringName("get_particles_animation");
-      this.#_bindings.method_get_particles_animation = internal.classdb_get_method_bind(
+      this._bindings.method_get_particles_animation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -102,10 +103,10 @@ export class CanvasItemMaterial extends Material{
     }
   }
   static init_method_set_particles_anim_h_frames() {
-    if (!this.#_bindings.method_set_particles_anim_h_frames) {
+    if (!this._bindings.method_set_particles_anim_h_frames) {
       let classname = new StringName("CanvasItemMaterial");
       let methodname = new StringName("set_particles_anim_h_frames");
-      this.#_bindings.method_set_particles_anim_h_frames = internal.classdb_get_method_bind(
+      this._bindings.method_set_particles_anim_h_frames = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -113,10 +114,10 @@ export class CanvasItemMaterial extends Material{
     }
   }
   static init_method_get_particles_anim_h_frames() {
-    if (!this.#_bindings.method_get_particles_anim_h_frames) {
+    if (!this._bindings.method_get_particles_anim_h_frames) {
       let classname = new StringName("CanvasItemMaterial");
       let methodname = new StringName("get_particles_anim_h_frames");
-      this.#_bindings.method_get_particles_anim_h_frames = internal.classdb_get_method_bind(
+      this._bindings.method_get_particles_anim_h_frames = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -124,10 +125,10 @@ export class CanvasItemMaterial extends Material{
     }
   }
   static init_method_set_particles_anim_v_frames() {
-    if (!this.#_bindings.method_set_particles_anim_v_frames) {
+    if (!this._bindings.method_set_particles_anim_v_frames) {
       let classname = new StringName("CanvasItemMaterial");
       let methodname = new StringName("set_particles_anim_v_frames");
-      this.#_bindings.method_set_particles_anim_v_frames = internal.classdb_get_method_bind(
+      this._bindings.method_set_particles_anim_v_frames = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -135,10 +136,10 @@ export class CanvasItemMaterial extends Material{
     }
   }
   static init_method_get_particles_anim_v_frames() {
-    if (!this.#_bindings.method_get_particles_anim_v_frames) {
+    if (!this._bindings.method_get_particles_anim_v_frames) {
       let classname = new StringName("CanvasItemMaterial");
       let methodname = new StringName("get_particles_anim_v_frames");
-      this.#_bindings.method_get_particles_anim_v_frames = internal.classdb_get_method_bind(
+      this._bindings.method_get_particles_anim_v_frames = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -146,10 +147,10 @@ export class CanvasItemMaterial extends Material{
     }
   }
   static init_method_set_particles_anim_loop() {
-    if (!this.#_bindings.method_set_particles_anim_loop) {
+    if (!this._bindings.method_set_particles_anim_loop) {
       let classname = new StringName("CanvasItemMaterial");
       let methodname = new StringName("set_particles_anim_loop");
-      this.#_bindings.method_set_particles_anim_loop = internal.classdb_get_method_bind(
+      this._bindings.method_set_particles_anim_loop = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -157,10 +158,10 @@ export class CanvasItemMaterial extends Material{
     }
   }
   static init_method_get_particles_anim_loop() {
-    if (!this.#_bindings.method_get_particles_anim_loop) {
+    if (!this._bindings.method_get_particles_anim_loop) {
       let classname = new StringName("CanvasItemMaterial");
       let methodname = new StringName("get_particles_anim_loop");
-      this.#_bindings.method_get_particles_anim_loop = internal.classdb_get_method_bind(
+      this._bindings.method_get_particles_anim_loop = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -173,7 +174,7 @@ export class CanvasItemMaterial extends Material{
   set_blend_mode(_blend_mode) {
     CanvasItemMaterial.init_method_set_blend_mode();
     return _call_native_mb_no_ret(
-      CanvasItemMaterial.#_bindings.method_set_blend_mode,
+      CanvasItemMaterial._bindings.method_set_blend_mode,
       this._owner,
       _blend_mode
     );
@@ -182,7 +183,7 @@ export class CanvasItemMaterial extends Material{
   get_blend_mode() {
     CanvasItemMaterial.init_method_get_blend_mode();
     return _call_native_mb_ret(
-      CanvasItemMaterial.#_bindings.method_get_blend_mode,
+      CanvasItemMaterial._bindings.method_get_blend_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -193,7 +194,7 @@ export class CanvasItemMaterial extends Material{
   set_light_mode(_light_mode) {
     CanvasItemMaterial.init_method_set_light_mode();
     return _call_native_mb_no_ret(
-      CanvasItemMaterial.#_bindings.method_set_light_mode,
+      CanvasItemMaterial._bindings.method_set_light_mode,
       this._owner,
       _light_mode
     );
@@ -202,7 +203,7 @@ export class CanvasItemMaterial extends Material{
   get_light_mode() {
     CanvasItemMaterial.init_method_get_light_mode();
     return _call_native_mb_ret(
-      CanvasItemMaterial.#_bindings.method_get_light_mode,
+      CanvasItemMaterial._bindings.method_get_light_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -213,7 +214,7 @@ export class CanvasItemMaterial extends Material{
   set_particles_animation(_particles_anim) {
     CanvasItemMaterial.init_method_set_particles_animation();
     return _call_native_mb_no_ret(
-      CanvasItemMaterial.#_bindings.method_set_particles_animation,
+      CanvasItemMaterial._bindings.method_set_particles_animation,
       this._owner,
       _particles_anim
     );
@@ -222,7 +223,7 @@ export class CanvasItemMaterial extends Material{
   get_particles_animation() {
     CanvasItemMaterial.init_method_get_particles_animation();
     return _call_native_mb_ret(
-      CanvasItemMaterial.#_bindings.method_get_particles_animation,
+      CanvasItemMaterial._bindings.method_get_particles_animation,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -233,7 +234,7 @@ export class CanvasItemMaterial extends Material{
   set_particles_anim_h_frames(_frames) {
     CanvasItemMaterial.init_method_set_particles_anim_h_frames();
     return _call_native_mb_no_ret(
-      CanvasItemMaterial.#_bindings.method_set_particles_anim_h_frames,
+      CanvasItemMaterial._bindings.method_set_particles_anim_h_frames,
       this._owner,
       _frames
     );
@@ -242,7 +243,7 @@ export class CanvasItemMaterial extends Material{
   get_particles_anim_h_frames() {
     CanvasItemMaterial.init_method_get_particles_anim_h_frames();
     return _call_native_mb_ret(
-      CanvasItemMaterial.#_bindings.method_get_particles_anim_h_frames,
+      CanvasItemMaterial._bindings.method_get_particles_anim_h_frames,
       this._owner,
 			Variant.Type.INT,
     
@@ -253,7 +254,7 @@ export class CanvasItemMaterial extends Material{
   set_particles_anim_v_frames(_frames) {
     CanvasItemMaterial.init_method_set_particles_anim_v_frames();
     return _call_native_mb_no_ret(
-      CanvasItemMaterial.#_bindings.method_set_particles_anim_v_frames,
+      CanvasItemMaterial._bindings.method_set_particles_anim_v_frames,
       this._owner,
       _frames
     );
@@ -262,7 +263,7 @@ export class CanvasItemMaterial extends Material{
   get_particles_anim_v_frames() {
     CanvasItemMaterial.init_method_get_particles_anim_v_frames();
     return _call_native_mb_ret(
-      CanvasItemMaterial.#_bindings.method_get_particles_anim_v_frames,
+      CanvasItemMaterial._bindings.method_get_particles_anim_v_frames,
       this._owner,
 			Variant.Type.INT,
     
@@ -273,7 +274,7 @@ export class CanvasItemMaterial extends Material{
   set_particles_anim_loop(_loop) {
     CanvasItemMaterial.init_method_set_particles_anim_loop();
     return _call_native_mb_no_ret(
-      CanvasItemMaterial.#_bindings.method_set_particles_anim_loop,
+      CanvasItemMaterial._bindings.method_set_particles_anim_loop,
       this._owner,
       _loop
     );
@@ -282,7 +283,7 @@ export class CanvasItemMaterial extends Material{
   get_particles_anim_loop() {
     CanvasItemMaterial.init_method_get_particles_anim_loop();
     return _call_native_mb_ret(
-      CanvasItemMaterial.#_bindings.method_get_particles_anim_loop,
+      CanvasItemMaterial._bindings.method_get_particles_anim_loop,
       this._owner,
 			Variant.Type.BOOL,
     

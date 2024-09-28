@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GodotObject } from '@js_godot/classes/godot_object'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_total_gravity;
@@ -55,10 +56,10 @@ class _MethodBindings {
   method_integrate_forces;
   method_get_space_state;
 }
+@GodotClass
 export class PhysicsDirectBodyState2D extends GodotObject{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -68,10 +69,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_total_gravity() {
-    if (!this.#_bindings.method_get_total_gravity) {
+    if (!this._bindings.method_get_total_gravity) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_total_gravity");
-      this.#_bindings.method_get_total_gravity = internal.classdb_get_method_bind(
+      this._bindings.method_get_total_gravity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -79,10 +80,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_total_linear_damp() {
-    if (!this.#_bindings.method_get_total_linear_damp) {
+    if (!this._bindings.method_get_total_linear_damp) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_total_linear_damp");
-      this.#_bindings.method_get_total_linear_damp = internal.classdb_get_method_bind(
+      this._bindings.method_get_total_linear_damp = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -90,10 +91,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_total_angular_damp() {
-    if (!this.#_bindings.method_get_total_angular_damp) {
+    if (!this._bindings.method_get_total_angular_damp) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_total_angular_damp");
-      this.#_bindings.method_get_total_angular_damp = internal.classdb_get_method_bind(
+      this._bindings.method_get_total_angular_damp = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -101,10 +102,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_center_of_mass() {
-    if (!this.#_bindings.method_get_center_of_mass) {
+    if (!this._bindings.method_get_center_of_mass) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_center_of_mass");
-      this.#_bindings.method_get_center_of_mass = internal.classdb_get_method_bind(
+      this._bindings.method_get_center_of_mass = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -112,10 +113,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_center_of_mass_local() {
-    if (!this.#_bindings.method_get_center_of_mass_local) {
+    if (!this._bindings.method_get_center_of_mass_local) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_center_of_mass_local");
-      this.#_bindings.method_get_center_of_mass_local = internal.classdb_get_method_bind(
+      this._bindings.method_get_center_of_mass_local = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -123,10 +124,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_inverse_mass() {
-    if (!this.#_bindings.method_get_inverse_mass) {
+    if (!this._bindings.method_get_inverse_mass) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_inverse_mass");
-      this.#_bindings.method_get_inverse_mass = internal.classdb_get_method_bind(
+      this._bindings.method_get_inverse_mass = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -134,10 +135,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_inverse_inertia() {
-    if (!this.#_bindings.method_get_inverse_inertia) {
+    if (!this._bindings.method_get_inverse_inertia) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_inverse_inertia");
-      this.#_bindings.method_get_inverse_inertia = internal.classdb_get_method_bind(
+      this._bindings.method_get_inverse_inertia = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -145,10 +146,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_set_linear_velocity() {
-    if (!this.#_bindings.method_set_linear_velocity) {
+    if (!this._bindings.method_set_linear_velocity) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("set_linear_velocity");
-      this.#_bindings.method_set_linear_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_set_linear_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -156,10 +157,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_linear_velocity() {
-    if (!this.#_bindings.method_get_linear_velocity) {
+    if (!this._bindings.method_get_linear_velocity) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_linear_velocity");
-      this.#_bindings.method_get_linear_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_get_linear_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -167,10 +168,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_set_angular_velocity() {
-    if (!this.#_bindings.method_set_angular_velocity) {
+    if (!this._bindings.method_set_angular_velocity) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("set_angular_velocity");
-      this.#_bindings.method_set_angular_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_set_angular_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -178,10 +179,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_angular_velocity() {
-    if (!this.#_bindings.method_get_angular_velocity) {
+    if (!this._bindings.method_get_angular_velocity) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_angular_velocity");
-      this.#_bindings.method_get_angular_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_get_angular_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -189,10 +190,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_set_transform() {
-    if (!this.#_bindings.method_set_transform) {
+    if (!this._bindings.method_set_transform) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("set_transform");
-      this.#_bindings.method_set_transform = internal.classdb_get_method_bind(
+      this._bindings.method_set_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2761652528
@@ -200,10 +201,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_transform() {
-    if (!this.#_bindings.method_get_transform) {
+    if (!this._bindings.method_get_transform) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_transform");
-      this.#_bindings.method_get_transform = internal.classdb_get_method_bind(
+      this._bindings.method_get_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3814499831
@@ -211,10 +212,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_velocity_at_local_position() {
-    if (!this.#_bindings.method_get_velocity_at_local_position) {
+    if (!this._bindings.method_get_velocity_at_local_position) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_velocity_at_local_position");
-      this.#_bindings.method_get_velocity_at_local_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_velocity_at_local_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2656412154
@@ -222,10 +223,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_apply_central_impulse() {
-    if (!this.#_bindings.method_apply_central_impulse) {
+    if (!this._bindings.method_apply_central_impulse) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("apply_central_impulse");
-      this.#_bindings.method_apply_central_impulse = internal.classdb_get_method_bind(
+      this._bindings.method_apply_central_impulse = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -233,10 +234,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_apply_torque_impulse() {
-    if (!this.#_bindings.method_apply_torque_impulse) {
+    if (!this._bindings.method_apply_torque_impulse) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("apply_torque_impulse");
-      this.#_bindings.method_apply_torque_impulse = internal.classdb_get_method_bind(
+      this._bindings.method_apply_torque_impulse = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -244,10 +245,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_apply_impulse() {
-    if (!this.#_bindings.method_apply_impulse) {
+    if (!this._bindings.method_apply_impulse) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("apply_impulse");
-      this.#_bindings.method_apply_impulse = internal.classdb_get_method_bind(
+      this._bindings.method_apply_impulse = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4288681949
@@ -255,10 +256,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_apply_central_force() {
-    if (!this.#_bindings.method_apply_central_force) {
+    if (!this._bindings.method_apply_central_force) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("apply_central_force");
-      this.#_bindings.method_apply_central_force = internal.classdb_get_method_bind(
+      this._bindings.method_apply_central_force = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3862383994
@@ -266,10 +267,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_apply_force() {
-    if (!this.#_bindings.method_apply_force) {
+    if (!this._bindings.method_apply_force) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("apply_force");
-      this.#_bindings.method_apply_force = internal.classdb_get_method_bind(
+      this._bindings.method_apply_force = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4288681949
@@ -277,10 +278,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_apply_torque() {
-    if (!this.#_bindings.method_apply_torque) {
+    if (!this._bindings.method_apply_torque) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("apply_torque");
-      this.#_bindings.method_apply_torque = internal.classdb_get_method_bind(
+      this._bindings.method_apply_torque = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -288,10 +289,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_add_constant_central_force() {
-    if (!this.#_bindings.method_add_constant_central_force) {
+    if (!this._bindings.method_add_constant_central_force) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("add_constant_central_force");
-      this.#_bindings.method_add_constant_central_force = internal.classdb_get_method_bind(
+      this._bindings.method_add_constant_central_force = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3862383994
@@ -299,10 +300,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_add_constant_force() {
-    if (!this.#_bindings.method_add_constant_force) {
+    if (!this._bindings.method_add_constant_force) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("add_constant_force");
-      this.#_bindings.method_add_constant_force = internal.classdb_get_method_bind(
+      this._bindings.method_add_constant_force = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4288681949
@@ -310,10 +311,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_add_constant_torque() {
-    if (!this.#_bindings.method_add_constant_torque) {
+    if (!this._bindings.method_add_constant_torque) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("add_constant_torque");
-      this.#_bindings.method_add_constant_torque = internal.classdb_get_method_bind(
+      this._bindings.method_add_constant_torque = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -321,10 +322,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_set_constant_force() {
-    if (!this.#_bindings.method_set_constant_force) {
+    if (!this._bindings.method_set_constant_force) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("set_constant_force");
-      this.#_bindings.method_set_constant_force = internal.classdb_get_method_bind(
+      this._bindings.method_set_constant_force = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -332,10 +333,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_constant_force() {
-    if (!this.#_bindings.method_get_constant_force) {
+    if (!this._bindings.method_get_constant_force) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_constant_force");
-      this.#_bindings.method_get_constant_force = internal.classdb_get_method_bind(
+      this._bindings.method_get_constant_force = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -343,10 +344,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_set_constant_torque() {
-    if (!this.#_bindings.method_set_constant_torque) {
+    if (!this._bindings.method_set_constant_torque) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("set_constant_torque");
-      this.#_bindings.method_set_constant_torque = internal.classdb_get_method_bind(
+      this._bindings.method_set_constant_torque = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -354,10 +355,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_constant_torque() {
-    if (!this.#_bindings.method_get_constant_torque) {
+    if (!this._bindings.method_get_constant_torque) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_constant_torque");
-      this.#_bindings.method_get_constant_torque = internal.classdb_get_method_bind(
+      this._bindings.method_get_constant_torque = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -365,10 +366,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_set_sleep_state() {
-    if (!this.#_bindings.method_set_sleep_state) {
+    if (!this._bindings.method_set_sleep_state) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("set_sleep_state");
-      this.#_bindings.method_set_sleep_state = internal.classdb_get_method_bind(
+      this._bindings.method_set_sleep_state = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -376,10 +377,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_is_sleeping() {
-    if (!this.#_bindings.method_is_sleeping) {
+    if (!this._bindings.method_is_sleeping) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("is_sleeping");
-      this.#_bindings.method_is_sleeping = internal.classdb_get_method_bind(
+      this._bindings.method_is_sleeping = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -387,10 +388,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_contact_count() {
-    if (!this.#_bindings.method_get_contact_count) {
+    if (!this._bindings.method_get_contact_count) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_contact_count");
-      this.#_bindings.method_get_contact_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_contact_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -398,10 +399,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_contact_local_position() {
-    if (!this.#_bindings.method_get_contact_local_position) {
+    if (!this._bindings.method_get_contact_local_position) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_contact_local_position");
-      this.#_bindings.method_get_contact_local_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_contact_local_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2299179447
@@ -409,10 +410,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_contact_local_normal() {
-    if (!this.#_bindings.method_get_contact_local_normal) {
+    if (!this._bindings.method_get_contact_local_normal) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_contact_local_normal");
-      this.#_bindings.method_get_contact_local_normal = internal.classdb_get_method_bind(
+      this._bindings.method_get_contact_local_normal = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2299179447
@@ -420,10 +421,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_contact_local_shape() {
-    if (!this.#_bindings.method_get_contact_local_shape) {
+    if (!this._bindings.method_get_contact_local_shape) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_contact_local_shape");
-      this.#_bindings.method_get_contact_local_shape = internal.classdb_get_method_bind(
+      this._bindings.method_get_contact_local_shape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         923996154
@@ -431,10 +432,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_contact_local_velocity_at_position() {
-    if (!this.#_bindings.method_get_contact_local_velocity_at_position) {
+    if (!this._bindings.method_get_contact_local_velocity_at_position) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_contact_local_velocity_at_position");
-      this.#_bindings.method_get_contact_local_velocity_at_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_contact_local_velocity_at_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2299179447
@@ -442,10 +443,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_contact_collider() {
-    if (!this.#_bindings.method_get_contact_collider) {
+    if (!this._bindings.method_get_contact_collider) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_contact_collider");
-      this.#_bindings.method_get_contact_collider = internal.classdb_get_method_bind(
+      this._bindings.method_get_contact_collider = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         495598643
@@ -453,10 +454,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_contact_collider_position() {
-    if (!this.#_bindings.method_get_contact_collider_position) {
+    if (!this._bindings.method_get_contact_collider_position) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_contact_collider_position");
-      this.#_bindings.method_get_contact_collider_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_contact_collider_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2299179447
@@ -464,10 +465,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_contact_collider_id() {
-    if (!this.#_bindings.method_get_contact_collider_id) {
+    if (!this._bindings.method_get_contact_collider_id) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_contact_collider_id");
-      this.#_bindings.method_get_contact_collider_id = internal.classdb_get_method_bind(
+      this._bindings.method_get_contact_collider_id = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         923996154
@@ -475,10 +476,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_contact_collider_object() {
-    if (!this.#_bindings.method_get_contact_collider_object) {
+    if (!this._bindings.method_get_contact_collider_object) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_contact_collider_object");
-      this.#_bindings.method_get_contact_collider_object = internal.classdb_get_method_bind(
+      this._bindings.method_get_contact_collider_object = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3332903315
@@ -486,10 +487,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_contact_collider_shape() {
-    if (!this.#_bindings.method_get_contact_collider_shape) {
+    if (!this._bindings.method_get_contact_collider_shape) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_contact_collider_shape");
-      this.#_bindings.method_get_contact_collider_shape = internal.classdb_get_method_bind(
+      this._bindings.method_get_contact_collider_shape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         923996154
@@ -497,10 +498,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_contact_collider_velocity_at_position() {
-    if (!this.#_bindings.method_get_contact_collider_velocity_at_position) {
+    if (!this._bindings.method_get_contact_collider_velocity_at_position) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_contact_collider_velocity_at_position");
-      this.#_bindings.method_get_contact_collider_velocity_at_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_contact_collider_velocity_at_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2299179447
@@ -508,10 +509,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_contact_impulse() {
-    if (!this.#_bindings.method_get_contact_impulse) {
+    if (!this._bindings.method_get_contact_impulse) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_contact_impulse");
-      this.#_bindings.method_get_contact_impulse = internal.classdb_get_method_bind(
+      this._bindings.method_get_contact_impulse = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2299179447
@@ -519,10 +520,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_step() {
-    if (!this.#_bindings.method_get_step) {
+    if (!this._bindings.method_get_step) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_step");
-      this.#_bindings.method_get_step = internal.classdb_get_method_bind(
+      this._bindings.method_get_step = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -530,10 +531,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_integrate_forces() {
-    if (!this.#_bindings.method_integrate_forces) {
+    if (!this._bindings.method_integrate_forces) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("integrate_forces");
-      this.#_bindings.method_integrate_forces = internal.classdb_get_method_bind(
+      this._bindings.method_integrate_forces = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -541,10 +542,10 @@ export class PhysicsDirectBodyState2D extends GodotObject{
     }
   }
   static init_method_get_space_state() {
-    if (!this.#_bindings.method_get_space_state) {
+    if (!this._bindings.method_get_space_state) {
       let classname = new StringName("PhysicsDirectBodyState2D");
       let methodname = new StringName("get_space_state");
-      this.#_bindings.method_get_space_state = internal.classdb_get_method_bind(
+      this._bindings.method_get_space_state = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2506717822
@@ -557,7 +558,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_total_gravity() {
     PhysicsDirectBodyState2D.init_method_get_total_gravity();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_total_gravity,
+      PhysicsDirectBodyState2D._bindings.method_get_total_gravity,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -568,7 +569,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_total_linear_damp() {
     PhysicsDirectBodyState2D.init_method_get_total_linear_damp();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_total_linear_damp,
+      PhysicsDirectBodyState2D._bindings.method_get_total_linear_damp,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -579,7 +580,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_total_angular_damp() {
     PhysicsDirectBodyState2D.init_method_get_total_angular_damp();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_total_angular_damp,
+      PhysicsDirectBodyState2D._bindings.method_get_total_angular_damp,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -590,7 +591,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_center_of_mass() {
     PhysicsDirectBodyState2D.init_method_get_center_of_mass();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_center_of_mass,
+      PhysicsDirectBodyState2D._bindings.method_get_center_of_mass,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -601,7 +602,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_center_of_mass_local() {
     PhysicsDirectBodyState2D.init_method_get_center_of_mass_local();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_center_of_mass_local,
+      PhysicsDirectBodyState2D._bindings.method_get_center_of_mass_local,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -612,7 +613,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_inverse_mass() {
     PhysicsDirectBodyState2D.init_method_get_inverse_mass();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_inverse_mass,
+      PhysicsDirectBodyState2D._bindings.method_get_inverse_mass,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -623,7 +624,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_inverse_inertia() {
     PhysicsDirectBodyState2D.init_method_get_inverse_inertia();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_inverse_inertia,
+      PhysicsDirectBodyState2D._bindings.method_get_inverse_inertia,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -634,7 +635,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   set_linear_velocity(_velocity) {
     PhysicsDirectBodyState2D.init_method_set_linear_velocity();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_set_linear_velocity,
+      PhysicsDirectBodyState2D._bindings.method_set_linear_velocity,
       this._owner,
       _velocity
     );
@@ -643,7 +644,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_linear_velocity() {
     PhysicsDirectBodyState2D.init_method_get_linear_velocity();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_linear_velocity,
+      PhysicsDirectBodyState2D._bindings.method_get_linear_velocity,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -654,7 +655,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   set_angular_velocity(_velocity) {
     PhysicsDirectBodyState2D.init_method_set_angular_velocity();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_set_angular_velocity,
+      PhysicsDirectBodyState2D._bindings.method_set_angular_velocity,
       this._owner,
       _velocity
     );
@@ -663,7 +664,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_angular_velocity() {
     PhysicsDirectBodyState2D.init_method_get_angular_velocity();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_angular_velocity,
+      PhysicsDirectBodyState2D._bindings.method_get_angular_velocity,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -674,7 +675,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   set_transform(_transform) {
     PhysicsDirectBodyState2D.init_method_set_transform();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_set_transform,
+      PhysicsDirectBodyState2D._bindings.method_set_transform,
       this._owner,
       _transform
     );
@@ -683,7 +684,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_transform() {
     PhysicsDirectBodyState2D.init_method_get_transform();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_transform,
+      PhysicsDirectBodyState2D._bindings.method_get_transform,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -694,7 +695,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_velocity_at_local_position(_local_position) {
     PhysicsDirectBodyState2D.init_method_get_velocity_at_local_position();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_velocity_at_local_position,
+      PhysicsDirectBodyState2D._bindings.method_get_velocity_at_local_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -705,7 +706,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   apply_central_impulse(_impulse) {
     PhysicsDirectBodyState2D.init_method_apply_central_impulse();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_apply_central_impulse,
+      PhysicsDirectBodyState2D._bindings.method_apply_central_impulse,
       this._owner,
       _impulse
     );
@@ -714,7 +715,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   apply_torque_impulse(_impulse) {
     PhysicsDirectBodyState2D.init_method_apply_torque_impulse();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_apply_torque_impulse,
+      PhysicsDirectBodyState2D._bindings.method_apply_torque_impulse,
       this._owner,
       _impulse
     );
@@ -723,7 +724,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   apply_impulse(_impulse, _position) {
     PhysicsDirectBodyState2D.init_method_apply_impulse();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_apply_impulse,
+      PhysicsDirectBodyState2D._bindings.method_apply_impulse,
       this._owner,
       _impulse, _position
     );
@@ -732,7 +733,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   apply_central_force(_force) {
     PhysicsDirectBodyState2D.init_method_apply_central_force();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_apply_central_force,
+      PhysicsDirectBodyState2D._bindings.method_apply_central_force,
       this._owner,
       _force
     );
@@ -741,7 +742,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   apply_force(_force, _position) {
     PhysicsDirectBodyState2D.init_method_apply_force();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_apply_force,
+      PhysicsDirectBodyState2D._bindings.method_apply_force,
       this._owner,
       _force, _position
     );
@@ -750,7 +751,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   apply_torque(_torque) {
     PhysicsDirectBodyState2D.init_method_apply_torque();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_apply_torque,
+      PhysicsDirectBodyState2D._bindings.method_apply_torque,
       this._owner,
       _torque
     );
@@ -759,7 +760,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   add_constant_central_force(_force) {
     PhysicsDirectBodyState2D.init_method_add_constant_central_force();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_add_constant_central_force,
+      PhysicsDirectBodyState2D._bindings.method_add_constant_central_force,
       this._owner,
       _force
     );
@@ -768,7 +769,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   add_constant_force(_force, _position) {
     PhysicsDirectBodyState2D.init_method_add_constant_force();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_add_constant_force,
+      PhysicsDirectBodyState2D._bindings.method_add_constant_force,
       this._owner,
       _force, _position
     );
@@ -777,7 +778,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   add_constant_torque(_torque) {
     PhysicsDirectBodyState2D.init_method_add_constant_torque();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_add_constant_torque,
+      PhysicsDirectBodyState2D._bindings.method_add_constant_torque,
       this._owner,
       _torque
     );
@@ -786,7 +787,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   set_constant_force(_force) {
     PhysicsDirectBodyState2D.init_method_set_constant_force();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_set_constant_force,
+      PhysicsDirectBodyState2D._bindings.method_set_constant_force,
       this._owner,
       _force
     );
@@ -795,7 +796,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_constant_force() {
     PhysicsDirectBodyState2D.init_method_get_constant_force();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_constant_force,
+      PhysicsDirectBodyState2D._bindings.method_get_constant_force,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -806,7 +807,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   set_constant_torque(_torque) {
     PhysicsDirectBodyState2D.init_method_set_constant_torque();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_set_constant_torque,
+      PhysicsDirectBodyState2D._bindings.method_set_constant_torque,
       this._owner,
       _torque
     );
@@ -815,7 +816,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_constant_torque() {
     PhysicsDirectBodyState2D.init_method_get_constant_torque();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_constant_torque,
+      PhysicsDirectBodyState2D._bindings.method_get_constant_torque,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -826,7 +827,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   set_sleep_state(_enabled) {
     PhysicsDirectBodyState2D.init_method_set_sleep_state();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_set_sleep_state,
+      PhysicsDirectBodyState2D._bindings.method_set_sleep_state,
       this._owner,
       _enabled
     );
@@ -835,7 +836,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   is_sleeping() {
     PhysicsDirectBodyState2D.init_method_is_sleeping();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_is_sleeping,
+      PhysicsDirectBodyState2D._bindings.method_is_sleeping,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -846,7 +847,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_contact_count() {
     PhysicsDirectBodyState2D.init_method_get_contact_count();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_contact_count,
+      PhysicsDirectBodyState2D._bindings.method_get_contact_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -857,7 +858,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_contact_local_position(_contact_idx) {
     PhysicsDirectBodyState2D.init_method_get_contact_local_position();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_contact_local_position,
+      PhysicsDirectBodyState2D._bindings.method_get_contact_local_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -868,7 +869,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_contact_local_normal(_contact_idx) {
     PhysicsDirectBodyState2D.init_method_get_contact_local_normal();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_contact_local_normal,
+      PhysicsDirectBodyState2D._bindings.method_get_contact_local_normal,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -879,7 +880,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_contact_local_shape(_contact_idx) {
     PhysicsDirectBodyState2D.init_method_get_contact_local_shape();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_contact_local_shape,
+      PhysicsDirectBodyState2D._bindings.method_get_contact_local_shape,
       this._owner,
 			Variant.Type.INT,
     
@@ -890,7 +891,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_contact_local_velocity_at_position(_contact_idx) {
     PhysicsDirectBodyState2D.init_method_get_contact_local_velocity_at_position();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_contact_local_velocity_at_position,
+      PhysicsDirectBodyState2D._bindings.method_get_contact_local_velocity_at_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -901,7 +902,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_contact_collider(_contact_idx) {
     PhysicsDirectBodyState2D.init_method_get_contact_collider();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_contact_collider,
+      PhysicsDirectBodyState2D._bindings.method_get_contact_collider,
       this._owner,
 			Variant.Type.RID,
     
@@ -912,7 +913,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_contact_collider_position(_contact_idx) {
     PhysicsDirectBodyState2D.init_method_get_contact_collider_position();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_contact_collider_position,
+      PhysicsDirectBodyState2D._bindings.method_get_contact_collider_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -923,7 +924,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_contact_collider_id(_contact_idx) {
     PhysicsDirectBodyState2D.init_method_get_contact_collider_id();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_contact_collider_id,
+      PhysicsDirectBodyState2D._bindings.method_get_contact_collider_id,
       this._owner,
 			Variant.Type.INT,
     
@@ -934,7 +935,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_contact_collider_object(_contact_idx) {
     PhysicsDirectBodyState2D.init_method_get_contact_collider_object();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_contact_collider_object,
+      PhysicsDirectBodyState2D._bindings.method_get_contact_collider_object,
       this._owner,
 			Variant.Type.OBJECT,
       _contact_idx
@@ -944,7 +945,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_contact_collider_shape(_contact_idx) {
     PhysicsDirectBodyState2D.init_method_get_contact_collider_shape();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_contact_collider_shape,
+      PhysicsDirectBodyState2D._bindings.method_get_contact_collider_shape,
       this._owner,
 			Variant.Type.INT,
     
@@ -955,7 +956,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_contact_collider_velocity_at_position(_contact_idx) {
     PhysicsDirectBodyState2D.init_method_get_contact_collider_velocity_at_position();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_contact_collider_velocity_at_position,
+      PhysicsDirectBodyState2D._bindings.method_get_contact_collider_velocity_at_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -966,7 +967,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_contact_impulse(_contact_idx) {
     PhysicsDirectBodyState2D.init_method_get_contact_impulse();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_contact_impulse,
+      PhysicsDirectBodyState2D._bindings.method_get_contact_impulse,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -977,7 +978,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_step() {
     PhysicsDirectBodyState2D.init_method_get_step();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_step,
+      PhysicsDirectBodyState2D._bindings.method_get_step,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -988,7 +989,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   integrate_forces() {
     PhysicsDirectBodyState2D.init_method_integrate_forces();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_integrate_forces,
+      PhysicsDirectBodyState2D._bindings.method_integrate_forces,
       this._owner,
       
     );
@@ -997,7 +998,7 @@ export class PhysicsDirectBodyState2D extends GodotObject{
   get_space_state() {
     PhysicsDirectBodyState2D.init_method_get_space_state();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState2D.#_bindings.method_get_space_state,
+      PhysicsDirectBodyState2D._bindings.method_get_space_state,
       this._owner,
 			Variant.Type.OBJECT,
       

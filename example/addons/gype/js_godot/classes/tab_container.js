@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Container } from '@js_godot/classes/container'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_tab_count;
@@ -60,10 +61,10 @@ class _MethodBindings {
   method_set_deselect_enabled;
   method_get_deselect_enabled;
 }
+@GodotClass
 export class TabContainer extends Container{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -73,10 +74,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_get_tab_count() {
-    if (!this.#_bindings.method_get_tab_count) {
+    if (!this._bindings.method_get_tab_count) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("get_tab_count");
-      this.#_bindings.method_get_tab_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_tab_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -84,10 +85,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_set_current_tab() {
-    if (!this.#_bindings.method_set_current_tab) {
+    if (!this._bindings.method_set_current_tab) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("set_current_tab");
-      this.#_bindings.method_set_current_tab = internal.classdb_get_method_bind(
+      this._bindings.method_set_current_tab = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -95,10 +96,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_get_current_tab() {
-    if (!this.#_bindings.method_get_current_tab) {
+    if (!this._bindings.method_get_current_tab) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("get_current_tab");
-      this.#_bindings.method_get_current_tab = internal.classdb_get_method_bind(
+      this._bindings.method_get_current_tab = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -106,10 +107,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_get_previous_tab() {
-    if (!this.#_bindings.method_get_previous_tab) {
+    if (!this._bindings.method_get_previous_tab) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("get_previous_tab");
-      this.#_bindings.method_get_previous_tab = internal.classdb_get_method_bind(
+      this._bindings.method_get_previous_tab = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -117,10 +118,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_select_previous_available() {
-    if (!this.#_bindings.method_select_previous_available) {
+    if (!this._bindings.method_select_previous_available) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("select_previous_available");
-      this.#_bindings.method_select_previous_available = internal.classdb_get_method_bind(
+      this._bindings.method_select_previous_available = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2240911060
@@ -128,10 +129,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_select_next_available() {
-    if (!this.#_bindings.method_select_next_available) {
+    if (!this._bindings.method_select_next_available) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("select_next_available");
-      this.#_bindings.method_select_next_available = internal.classdb_get_method_bind(
+      this._bindings.method_select_next_available = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2240911060
@@ -139,10 +140,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_get_current_tab_control() {
-    if (!this.#_bindings.method_get_current_tab_control) {
+    if (!this._bindings.method_get_current_tab_control) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("get_current_tab_control");
-      this.#_bindings.method_get_current_tab_control = internal.classdb_get_method_bind(
+      this._bindings.method_get_current_tab_control = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2783021301
@@ -150,10 +151,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_get_tab_bar() {
-    if (!this.#_bindings.method_get_tab_bar) {
+    if (!this._bindings.method_get_tab_bar) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("get_tab_bar");
-      this.#_bindings.method_get_tab_bar = internal.classdb_get_method_bind(
+      this._bindings.method_get_tab_bar = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1865451809
@@ -161,10 +162,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_get_tab_control() {
-    if (!this.#_bindings.method_get_tab_control) {
+    if (!this._bindings.method_get_tab_control) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("get_tab_control");
-      this.#_bindings.method_get_tab_control = internal.classdb_get_method_bind(
+      this._bindings.method_get_tab_control = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1065994134
@@ -172,10 +173,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_set_tab_alignment() {
-    if (!this.#_bindings.method_set_tab_alignment) {
+    if (!this._bindings.method_set_tab_alignment) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("set_tab_alignment");
-      this.#_bindings.method_set_tab_alignment = internal.classdb_get_method_bind(
+      this._bindings.method_set_tab_alignment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2413632353
@@ -183,10 +184,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_get_tab_alignment() {
-    if (!this.#_bindings.method_get_tab_alignment) {
+    if (!this._bindings.method_get_tab_alignment) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("get_tab_alignment");
-      this.#_bindings.method_get_tab_alignment = internal.classdb_get_method_bind(
+      this._bindings.method_get_tab_alignment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2178122193
@@ -194,10 +195,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_set_tabs_position() {
-    if (!this.#_bindings.method_set_tabs_position) {
+    if (!this._bindings.method_set_tabs_position) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("set_tabs_position");
-      this.#_bindings.method_set_tabs_position = internal.classdb_get_method_bind(
+      this._bindings.method_set_tabs_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         256673370
@@ -205,10 +206,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_get_tabs_position() {
-    if (!this.#_bindings.method_get_tabs_position) {
+    if (!this._bindings.method_get_tabs_position) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("get_tabs_position");
-      this.#_bindings.method_get_tabs_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_tabs_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         919937023
@@ -216,10 +217,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_set_clip_tabs() {
-    if (!this.#_bindings.method_set_clip_tabs) {
+    if (!this._bindings.method_set_clip_tabs) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("set_clip_tabs");
-      this.#_bindings.method_set_clip_tabs = internal.classdb_get_method_bind(
+      this._bindings.method_set_clip_tabs = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -227,10 +228,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_get_clip_tabs() {
-    if (!this.#_bindings.method_get_clip_tabs) {
+    if (!this._bindings.method_get_clip_tabs) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("get_clip_tabs");
-      this.#_bindings.method_get_clip_tabs = internal.classdb_get_method_bind(
+      this._bindings.method_get_clip_tabs = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -238,10 +239,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_set_tabs_visible() {
-    if (!this.#_bindings.method_set_tabs_visible) {
+    if (!this._bindings.method_set_tabs_visible) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("set_tabs_visible");
-      this.#_bindings.method_set_tabs_visible = internal.classdb_get_method_bind(
+      this._bindings.method_set_tabs_visible = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -249,10 +250,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_are_tabs_visible() {
-    if (!this.#_bindings.method_are_tabs_visible) {
+    if (!this._bindings.method_are_tabs_visible) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("are_tabs_visible");
-      this.#_bindings.method_are_tabs_visible = internal.classdb_get_method_bind(
+      this._bindings.method_are_tabs_visible = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -260,10 +261,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_set_all_tabs_in_front() {
-    if (!this.#_bindings.method_set_all_tabs_in_front) {
+    if (!this._bindings.method_set_all_tabs_in_front) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("set_all_tabs_in_front");
-      this.#_bindings.method_set_all_tabs_in_front = internal.classdb_get_method_bind(
+      this._bindings.method_set_all_tabs_in_front = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -271,10 +272,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_is_all_tabs_in_front() {
-    if (!this.#_bindings.method_is_all_tabs_in_front) {
+    if (!this._bindings.method_is_all_tabs_in_front) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("is_all_tabs_in_front");
-      this.#_bindings.method_is_all_tabs_in_front = internal.classdb_get_method_bind(
+      this._bindings.method_is_all_tabs_in_front = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -282,10 +283,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_set_tab_title() {
-    if (!this.#_bindings.method_set_tab_title) {
+    if (!this._bindings.method_set_tab_title) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("set_tab_title");
-      this.#_bindings.method_set_tab_title = internal.classdb_get_method_bind(
+      this._bindings.method_set_tab_title = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         501894301
@@ -293,10 +294,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_get_tab_title() {
-    if (!this.#_bindings.method_get_tab_title) {
+    if (!this._bindings.method_get_tab_title) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("get_tab_title");
-      this.#_bindings.method_get_tab_title = internal.classdb_get_method_bind(
+      this._bindings.method_get_tab_title = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         844755477
@@ -304,10 +305,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_set_tab_tooltip() {
-    if (!this.#_bindings.method_set_tab_tooltip) {
+    if (!this._bindings.method_set_tab_tooltip) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("set_tab_tooltip");
-      this.#_bindings.method_set_tab_tooltip = internal.classdb_get_method_bind(
+      this._bindings.method_set_tab_tooltip = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         501894301
@@ -315,10 +316,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_get_tab_tooltip() {
-    if (!this.#_bindings.method_get_tab_tooltip) {
+    if (!this._bindings.method_get_tab_tooltip) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("get_tab_tooltip");
-      this.#_bindings.method_get_tab_tooltip = internal.classdb_get_method_bind(
+      this._bindings.method_get_tab_tooltip = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         844755477
@@ -326,10 +327,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_set_tab_icon() {
-    if (!this.#_bindings.method_set_tab_icon) {
+    if (!this._bindings.method_set_tab_icon) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("set_tab_icon");
-      this.#_bindings.method_set_tab_icon = internal.classdb_get_method_bind(
+      this._bindings.method_set_tab_icon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         666127730
@@ -337,10 +338,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_get_tab_icon() {
-    if (!this.#_bindings.method_get_tab_icon) {
+    if (!this._bindings.method_get_tab_icon) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("get_tab_icon");
-      this.#_bindings.method_get_tab_icon = internal.classdb_get_method_bind(
+      this._bindings.method_get_tab_icon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3536238170
@@ -348,10 +349,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_set_tab_icon_max_width() {
-    if (!this.#_bindings.method_set_tab_icon_max_width) {
+    if (!this._bindings.method_set_tab_icon_max_width) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("set_tab_icon_max_width");
-      this.#_bindings.method_set_tab_icon_max_width = internal.classdb_get_method_bind(
+      this._bindings.method_set_tab_icon_max_width = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -359,10 +360,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_get_tab_icon_max_width() {
-    if (!this.#_bindings.method_get_tab_icon_max_width) {
+    if (!this._bindings.method_get_tab_icon_max_width) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("get_tab_icon_max_width");
-      this.#_bindings.method_get_tab_icon_max_width = internal.classdb_get_method_bind(
+      this._bindings.method_get_tab_icon_max_width = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         923996154
@@ -370,10 +371,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_set_tab_disabled() {
-    if (!this.#_bindings.method_set_tab_disabled) {
+    if (!this._bindings.method_set_tab_disabled) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("set_tab_disabled");
-      this.#_bindings.method_set_tab_disabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_tab_disabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -381,10 +382,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_is_tab_disabled() {
-    if (!this.#_bindings.method_is_tab_disabled) {
+    if (!this._bindings.method_is_tab_disabled) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("is_tab_disabled");
-      this.#_bindings.method_is_tab_disabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_tab_disabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -392,10 +393,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_set_tab_hidden() {
-    if (!this.#_bindings.method_set_tab_hidden) {
+    if (!this._bindings.method_set_tab_hidden) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("set_tab_hidden");
-      this.#_bindings.method_set_tab_hidden = internal.classdb_get_method_bind(
+      this._bindings.method_set_tab_hidden = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -403,10 +404,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_is_tab_hidden() {
-    if (!this.#_bindings.method_is_tab_hidden) {
+    if (!this._bindings.method_is_tab_hidden) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("is_tab_hidden");
-      this.#_bindings.method_is_tab_hidden = internal.classdb_get_method_bind(
+      this._bindings.method_is_tab_hidden = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -414,10 +415,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_set_tab_metadata() {
-    if (!this.#_bindings.method_set_tab_metadata) {
+    if (!this._bindings.method_set_tab_metadata) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("set_tab_metadata");
-      this.#_bindings.method_set_tab_metadata = internal.classdb_get_method_bind(
+      this._bindings.method_set_tab_metadata = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2152698145
@@ -425,10 +426,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_get_tab_metadata() {
-    if (!this.#_bindings.method_get_tab_metadata) {
+    if (!this._bindings.method_get_tab_metadata) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("get_tab_metadata");
-      this.#_bindings.method_get_tab_metadata = internal.classdb_get_method_bind(
+      this._bindings.method_get_tab_metadata = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4227898402
@@ -436,10 +437,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_set_tab_button_icon() {
-    if (!this.#_bindings.method_set_tab_button_icon) {
+    if (!this._bindings.method_set_tab_button_icon) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("set_tab_button_icon");
-      this.#_bindings.method_set_tab_button_icon = internal.classdb_get_method_bind(
+      this._bindings.method_set_tab_button_icon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         666127730
@@ -447,10 +448,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_get_tab_button_icon() {
-    if (!this.#_bindings.method_get_tab_button_icon) {
+    if (!this._bindings.method_get_tab_button_icon) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("get_tab_button_icon");
-      this.#_bindings.method_get_tab_button_icon = internal.classdb_get_method_bind(
+      this._bindings.method_get_tab_button_icon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3536238170
@@ -458,10 +459,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_get_tab_idx_at_point() {
-    if (!this.#_bindings.method_get_tab_idx_at_point) {
+    if (!this._bindings.method_get_tab_idx_at_point) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("get_tab_idx_at_point");
-      this.#_bindings.method_get_tab_idx_at_point = internal.classdb_get_method_bind(
+      this._bindings.method_get_tab_idx_at_point = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3820158470
@@ -469,10 +470,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_get_tab_idx_from_control() {
-    if (!this.#_bindings.method_get_tab_idx_from_control) {
+    if (!this._bindings.method_get_tab_idx_from_control) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("get_tab_idx_from_control");
-      this.#_bindings.method_get_tab_idx_from_control = internal.classdb_get_method_bind(
+      this._bindings.method_get_tab_idx_from_control = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2787397975
@@ -480,10 +481,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_set_popup() {
-    if (!this.#_bindings.method_set_popup) {
+    if (!this._bindings.method_set_popup) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("set_popup");
-      this.#_bindings.method_set_popup = internal.classdb_get_method_bind(
+      this._bindings.method_set_popup = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1078189570
@@ -491,10 +492,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_get_popup() {
-    if (!this.#_bindings.method_get_popup) {
+    if (!this._bindings.method_get_popup) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("get_popup");
-      this.#_bindings.method_get_popup = internal.classdb_get_method_bind(
+      this._bindings.method_get_popup = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         111095082
@@ -502,10 +503,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_set_drag_to_rearrange_enabled() {
-    if (!this.#_bindings.method_set_drag_to_rearrange_enabled) {
+    if (!this._bindings.method_set_drag_to_rearrange_enabled) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("set_drag_to_rearrange_enabled");
-      this.#_bindings.method_set_drag_to_rearrange_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_drag_to_rearrange_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -513,10 +514,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_get_drag_to_rearrange_enabled() {
-    if (!this.#_bindings.method_get_drag_to_rearrange_enabled) {
+    if (!this._bindings.method_get_drag_to_rearrange_enabled) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("get_drag_to_rearrange_enabled");
-      this.#_bindings.method_get_drag_to_rearrange_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_get_drag_to_rearrange_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -524,10 +525,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_set_tabs_rearrange_group() {
-    if (!this.#_bindings.method_set_tabs_rearrange_group) {
+    if (!this._bindings.method_set_tabs_rearrange_group) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("set_tabs_rearrange_group");
-      this.#_bindings.method_set_tabs_rearrange_group = internal.classdb_get_method_bind(
+      this._bindings.method_set_tabs_rearrange_group = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -535,10 +536,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_get_tabs_rearrange_group() {
-    if (!this.#_bindings.method_get_tabs_rearrange_group) {
+    if (!this._bindings.method_get_tabs_rearrange_group) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("get_tabs_rearrange_group");
-      this.#_bindings.method_get_tabs_rearrange_group = internal.classdb_get_method_bind(
+      this._bindings.method_get_tabs_rearrange_group = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -546,10 +547,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_set_use_hidden_tabs_for_min_size() {
-    if (!this.#_bindings.method_set_use_hidden_tabs_for_min_size) {
+    if (!this._bindings.method_set_use_hidden_tabs_for_min_size) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("set_use_hidden_tabs_for_min_size");
-      this.#_bindings.method_set_use_hidden_tabs_for_min_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_use_hidden_tabs_for_min_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -557,10 +558,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_get_use_hidden_tabs_for_min_size() {
-    if (!this.#_bindings.method_get_use_hidden_tabs_for_min_size) {
+    if (!this._bindings.method_get_use_hidden_tabs_for_min_size) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("get_use_hidden_tabs_for_min_size");
-      this.#_bindings.method_get_use_hidden_tabs_for_min_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_use_hidden_tabs_for_min_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -568,10 +569,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_set_tab_focus_mode() {
-    if (!this.#_bindings.method_set_tab_focus_mode) {
+    if (!this._bindings.method_set_tab_focus_mode) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("set_tab_focus_mode");
-      this.#_bindings.method_set_tab_focus_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_tab_focus_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3232914922
@@ -579,10 +580,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_get_tab_focus_mode() {
-    if (!this.#_bindings.method_get_tab_focus_mode) {
+    if (!this._bindings.method_get_tab_focus_mode) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("get_tab_focus_mode");
-      this.#_bindings.method_get_tab_focus_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_tab_focus_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2132829277
@@ -590,10 +591,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_set_deselect_enabled() {
-    if (!this.#_bindings.method_set_deselect_enabled) {
+    if (!this._bindings.method_set_deselect_enabled) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("set_deselect_enabled");
-      this.#_bindings.method_set_deselect_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_deselect_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -601,10 +602,10 @@ export class TabContainer extends Container{
     }
   }
   static init_method_get_deselect_enabled() {
-    if (!this.#_bindings.method_get_deselect_enabled) {
+    if (!this._bindings.method_get_deselect_enabled) {
       let classname = new StringName("TabContainer");
       let methodname = new StringName("get_deselect_enabled");
-      this.#_bindings.method_get_deselect_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_get_deselect_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -617,7 +618,7 @@ export class TabContainer extends Container{
   get_tab_count() {
     TabContainer.init_method_get_tab_count();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_get_tab_count,
+      TabContainer._bindings.method_get_tab_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -628,7 +629,7 @@ export class TabContainer extends Container{
   set_current_tab(_tab_idx) {
     TabContainer.init_method_set_current_tab();
     return _call_native_mb_no_ret(
-      TabContainer.#_bindings.method_set_current_tab,
+      TabContainer._bindings.method_set_current_tab,
       this._owner,
       _tab_idx
     );
@@ -637,7 +638,7 @@ export class TabContainer extends Container{
   get_current_tab() {
     TabContainer.init_method_get_current_tab();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_get_current_tab,
+      TabContainer._bindings.method_get_current_tab,
       this._owner,
 			Variant.Type.INT,
     
@@ -648,7 +649,7 @@ export class TabContainer extends Container{
   get_previous_tab() {
     TabContainer.init_method_get_previous_tab();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_get_previous_tab,
+      TabContainer._bindings.method_get_previous_tab,
       this._owner,
 			Variant.Type.INT,
     
@@ -659,7 +660,7 @@ export class TabContainer extends Container{
   select_previous_available() {
     TabContainer.init_method_select_previous_available();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_select_previous_available,
+      TabContainer._bindings.method_select_previous_available,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -670,7 +671,7 @@ export class TabContainer extends Container{
   select_next_available() {
     TabContainer.init_method_select_next_available();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_select_next_available,
+      TabContainer._bindings.method_select_next_available,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -681,7 +682,7 @@ export class TabContainer extends Container{
   get_current_tab_control() {
     TabContainer.init_method_get_current_tab_control();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_get_current_tab_control,
+      TabContainer._bindings.method_get_current_tab_control,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -691,7 +692,7 @@ export class TabContainer extends Container{
   get_tab_bar() {
     TabContainer.init_method_get_tab_bar();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_get_tab_bar,
+      TabContainer._bindings.method_get_tab_bar,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -701,7 +702,7 @@ export class TabContainer extends Container{
   get_tab_control(_tab_idx) {
     TabContainer.init_method_get_tab_control();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_get_tab_control,
+      TabContainer._bindings.method_get_tab_control,
       this._owner,
 			Variant.Type.OBJECT,
       _tab_idx
@@ -711,7 +712,7 @@ export class TabContainer extends Container{
   set_tab_alignment(_alignment) {
     TabContainer.init_method_set_tab_alignment();
     return _call_native_mb_no_ret(
-      TabContainer.#_bindings.method_set_tab_alignment,
+      TabContainer._bindings.method_set_tab_alignment,
       this._owner,
       _alignment
     );
@@ -720,7 +721,7 @@ export class TabContainer extends Container{
   get_tab_alignment() {
     TabContainer.init_method_get_tab_alignment();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_get_tab_alignment,
+      TabContainer._bindings.method_get_tab_alignment,
       this._owner,
 			Variant.Type.INT,
     
@@ -731,7 +732,7 @@ export class TabContainer extends Container{
   set_tabs_position(_tabs_position) {
     TabContainer.init_method_set_tabs_position();
     return _call_native_mb_no_ret(
-      TabContainer.#_bindings.method_set_tabs_position,
+      TabContainer._bindings.method_set_tabs_position,
       this._owner,
       _tabs_position
     );
@@ -740,7 +741,7 @@ export class TabContainer extends Container{
   get_tabs_position() {
     TabContainer.init_method_get_tabs_position();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_get_tabs_position,
+      TabContainer._bindings.method_get_tabs_position,
       this._owner,
 			Variant.Type.INT,
     
@@ -751,7 +752,7 @@ export class TabContainer extends Container{
   set_clip_tabs(_clip_tabs) {
     TabContainer.init_method_set_clip_tabs();
     return _call_native_mb_no_ret(
-      TabContainer.#_bindings.method_set_clip_tabs,
+      TabContainer._bindings.method_set_clip_tabs,
       this._owner,
       _clip_tabs
     );
@@ -760,7 +761,7 @@ export class TabContainer extends Container{
   get_clip_tabs() {
     TabContainer.init_method_get_clip_tabs();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_get_clip_tabs,
+      TabContainer._bindings.method_get_clip_tabs,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -771,7 +772,7 @@ export class TabContainer extends Container{
   set_tabs_visible(_visible) {
     TabContainer.init_method_set_tabs_visible();
     return _call_native_mb_no_ret(
-      TabContainer.#_bindings.method_set_tabs_visible,
+      TabContainer._bindings.method_set_tabs_visible,
       this._owner,
       _visible
     );
@@ -780,7 +781,7 @@ export class TabContainer extends Container{
   are_tabs_visible() {
     TabContainer.init_method_are_tabs_visible();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_are_tabs_visible,
+      TabContainer._bindings.method_are_tabs_visible,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -791,7 +792,7 @@ export class TabContainer extends Container{
   set_all_tabs_in_front(_is_front) {
     TabContainer.init_method_set_all_tabs_in_front();
     return _call_native_mb_no_ret(
-      TabContainer.#_bindings.method_set_all_tabs_in_front,
+      TabContainer._bindings.method_set_all_tabs_in_front,
       this._owner,
       _is_front
     );
@@ -800,7 +801,7 @@ export class TabContainer extends Container{
   is_all_tabs_in_front() {
     TabContainer.init_method_is_all_tabs_in_front();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_is_all_tabs_in_front,
+      TabContainer._bindings.method_is_all_tabs_in_front,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -811,7 +812,7 @@ export class TabContainer extends Container{
   set_tab_title(_tab_idx, _title) {
     TabContainer.init_method_set_tab_title();
     return _call_native_mb_no_ret(
-      TabContainer.#_bindings.method_set_tab_title,
+      TabContainer._bindings.method_set_tab_title,
       this._owner,
       _tab_idx, _title
     );
@@ -820,7 +821,7 @@ export class TabContainer extends Container{
   get_tab_title(_tab_idx) {
     TabContainer.init_method_get_tab_title();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_get_tab_title,
+      TabContainer._bindings.method_get_tab_title,
       this._owner,
 			Variant.Type.STRING,
     
@@ -831,7 +832,7 @@ export class TabContainer extends Container{
   set_tab_tooltip(_tab_idx, _tooltip) {
     TabContainer.init_method_set_tab_tooltip();
     return _call_native_mb_no_ret(
-      TabContainer.#_bindings.method_set_tab_tooltip,
+      TabContainer._bindings.method_set_tab_tooltip,
       this._owner,
       _tab_idx, _tooltip
     );
@@ -840,7 +841,7 @@ export class TabContainer extends Container{
   get_tab_tooltip(_tab_idx) {
     TabContainer.init_method_get_tab_tooltip();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_get_tab_tooltip,
+      TabContainer._bindings.method_get_tab_tooltip,
       this._owner,
 			Variant.Type.STRING,
     
@@ -851,7 +852,7 @@ export class TabContainer extends Container{
   set_tab_icon(_tab_idx, _icon) {
     TabContainer.init_method_set_tab_icon();
     return _call_native_mb_no_ret(
-      TabContainer.#_bindings.method_set_tab_icon,
+      TabContainer._bindings.method_set_tab_icon,
       this._owner,
       _tab_idx, _icon
     );
@@ -860,7 +861,7 @@ export class TabContainer extends Container{
   get_tab_icon(_tab_idx) {
     TabContainer.init_method_get_tab_icon();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_get_tab_icon,
+      TabContainer._bindings.method_get_tab_icon,
       this._owner,
 			Variant.Type.OBJECT,
       _tab_idx
@@ -870,7 +871,7 @@ export class TabContainer extends Container{
   set_tab_icon_max_width(_tab_idx, _width) {
     TabContainer.init_method_set_tab_icon_max_width();
     return _call_native_mb_no_ret(
-      TabContainer.#_bindings.method_set_tab_icon_max_width,
+      TabContainer._bindings.method_set_tab_icon_max_width,
       this._owner,
       _tab_idx, _width
     );
@@ -879,7 +880,7 @@ export class TabContainer extends Container{
   get_tab_icon_max_width(_tab_idx) {
     TabContainer.init_method_get_tab_icon_max_width();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_get_tab_icon_max_width,
+      TabContainer._bindings.method_get_tab_icon_max_width,
       this._owner,
 			Variant.Type.INT,
     
@@ -890,7 +891,7 @@ export class TabContainer extends Container{
   set_tab_disabled(_tab_idx, _disabled) {
     TabContainer.init_method_set_tab_disabled();
     return _call_native_mb_no_ret(
-      TabContainer.#_bindings.method_set_tab_disabled,
+      TabContainer._bindings.method_set_tab_disabled,
       this._owner,
       _tab_idx, _disabled
     );
@@ -899,7 +900,7 @@ export class TabContainer extends Container{
   is_tab_disabled(_tab_idx) {
     TabContainer.init_method_is_tab_disabled();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_is_tab_disabled,
+      TabContainer._bindings.method_is_tab_disabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -910,7 +911,7 @@ export class TabContainer extends Container{
   set_tab_hidden(_tab_idx, _hidden) {
     TabContainer.init_method_set_tab_hidden();
     return _call_native_mb_no_ret(
-      TabContainer.#_bindings.method_set_tab_hidden,
+      TabContainer._bindings.method_set_tab_hidden,
       this._owner,
       _tab_idx, _hidden
     );
@@ -919,7 +920,7 @@ export class TabContainer extends Container{
   is_tab_hidden(_tab_idx) {
     TabContainer.init_method_is_tab_hidden();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_is_tab_hidden,
+      TabContainer._bindings.method_is_tab_hidden,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -930,7 +931,7 @@ export class TabContainer extends Container{
   set_tab_metadata(_tab_idx, _metadata) {
     TabContainer.init_method_set_tab_metadata();
     return _call_native_mb_no_ret(
-      TabContainer.#_bindings.method_set_tab_metadata,
+      TabContainer._bindings.method_set_tab_metadata,
       this._owner,
       _tab_idx, _metadata
     );
@@ -939,7 +940,7 @@ export class TabContainer extends Container{
   get_tab_metadata(_tab_idx) {
     TabContainer.init_method_get_tab_metadata();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_get_tab_metadata,
+      TabContainer._bindings.method_get_tab_metadata,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -950,7 +951,7 @@ export class TabContainer extends Container{
   set_tab_button_icon(_tab_idx, _icon) {
     TabContainer.init_method_set_tab_button_icon();
     return _call_native_mb_no_ret(
-      TabContainer.#_bindings.method_set_tab_button_icon,
+      TabContainer._bindings.method_set_tab_button_icon,
       this._owner,
       _tab_idx, _icon
     );
@@ -959,7 +960,7 @@ export class TabContainer extends Container{
   get_tab_button_icon(_tab_idx) {
     TabContainer.init_method_get_tab_button_icon();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_get_tab_button_icon,
+      TabContainer._bindings.method_get_tab_button_icon,
       this._owner,
 			Variant.Type.OBJECT,
       _tab_idx
@@ -969,7 +970,7 @@ export class TabContainer extends Container{
   get_tab_idx_at_point(_point) {
     TabContainer.init_method_get_tab_idx_at_point();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_get_tab_idx_at_point,
+      TabContainer._bindings.method_get_tab_idx_at_point,
       this._owner,
 			Variant.Type.INT,
     
@@ -980,7 +981,7 @@ export class TabContainer extends Container{
   get_tab_idx_from_control(_control) {
     TabContainer.init_method_get_tab_idx_from_control();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_get_tab_idx_from_control,
+      TabContainer._bindings.method_get_tab_idx_from_control,
       this._owner,
 			Variant.Type.INT,
     
@@ -991,7 +992,7 @@ export class TabContainer extends Container{
   set_popup(_popup) {
     TabContainer.init_method_set_popup();
     return _call_native_mb_no_ret(
-      TabContainer.#_bindings.method_set_popup,
+      TabContainer._bindings.method_set_popup,
       this._owner,
       _popup
     );
@@ -1000,7 +1001,7 @@ export class TabContainer extends Container{
   get_popup() {
     TabContainer.init_method_get_popup();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_get_popup,
+      TabContainer._bindings.method_get_popup,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -1010,7 +1011,7 @@ export class TabContainer extends Container{
   set_drag_to_rearrange_enabled(_enabled) {
     TabContainer.init_method_set_drag_to_rearrange_enabled();
     return _call_native_mb_no_ret(
-      TabContainer.#_bindings.method_set_drag_to_rearrange_enabled,
+      TabContainer._bindings.method_set_drag_to_rearrange_enabled,
       this._owner,
       _enabled
     );
@@ -1019,7 +1020,7 @@ export class TabContainer extends Container{
   get_drag_to_rearrange_enabled() {
     TabContainer.init_method_get_drag_to_rearrange_enabled();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_get_drag_to_rearrange_enabled,
+      TabContainer._bindings.method_get_drag_to_rearrange_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1030,7 +1031,7 @@ export class TabContainer extends Container{
   set_tabs_rearrange_group(_group_id) {
     TabContainer.init_method_set_tabs_rearrange_group();
     return _call_native_mb_no_ret(
-      TabContainer.#_bindings.method_set_tabs_rearrange_group,
+      TabContainer._bindings.method_set_tabs_rearrange_group,
       this._owner,
       _group_id
     );
@@ -1039,7 +1040,7 @@ export class TabContainer extends Container{
   get_tabs_rearrange_group() {
     TabContainer.init_method_get_tabs_rearrange_group();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_get_tabs_rearrange_group,
+      TabContainer._bindings.method_get_tabs_rearrange_group,
       this._owner,
 			Variant.Type.INT,
     
@@ -1050,7 +1051,7 @@ export class TabContainer extends Container{
   set_use_hidden_tabs_for_min_size(_enabled) {
     TabContainer.init_method_set_use_hidden_tabs_for_min_size();
     return _call_native_mb_no_ret(
-      TabContainer.#_bindings.method_set_use_hidden_tabs_for_min_size,
+      TabContainer._bindings.method_set_use_hidden_tabs_for_min_size,
       this._owner,
       _enabled
     );
@@ -1059,7 +1060,7 @@ export class TabContainer extends Container{
   get_use_hidden_tabs_for_min_size() {
     TabContainer.init_method_get_use_hidden_tabs_for_min_size();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_get_use_hidden_tabs_for_min_size,
+      TabContainer._bindings.method_get_use_hidden_tabs_for_min_size,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1070,7 +1071,7 @@ export class TabContainer extends Container{
   set_tab_focus_mode(_focus_mode) {
     TabContainer.init_method_set_tab_focus_mode();
     return _call_native_mb_no_ret(
-      TabContainer.#_bindings.method_set_tab_focus_mode,
+      TabContainer._bindings.method_set_tab_focus_mode,
       this._owner,
       _focus_mode
     );
@@ -1079,7 +1080,7 @@ export class TabContainer extends Container{
   get_tab_focus_mode() {
     TabContainer.init_method_get_tab_focus_mode();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_get_tab_focus_mode,
+      TabContainer._bindings.method_get_tab_focus_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -1090,7 +1091,7 @@ export class TabContainer extends Container{
   set_deselect_enabled(_enabled) {
     TabContainer.init_method_set_deselect_enabled();
     return _call_native_mb_no_ret(
-      TabContainer.#_bindings.method_set_deselect_enabled,
+      TabContainer._bindings.method_set_deselect_enabled,
       this._owner,
       _enabled
     );
@@ -1099,7 +1100,7 @@ export class TabContainer extends Container{
   get_deselect_enabled() {
     TabContainer.init_method_get_deselect_enabled();
     return _call_native_mb_ret(
-      TabContainer.#_bindings.method_get_deselect_enabled,
+      TabContainer._bindings.method_get_deselect_enabled,
       this._owner,
 			Variant.Type.BOOL,
     

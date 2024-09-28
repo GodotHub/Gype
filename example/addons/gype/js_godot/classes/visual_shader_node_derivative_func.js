@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
+import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
-import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_op_type;
@@ -17,10 +18,10 @@ class _MethodBindings {
   method_set_precision;
   method_get_precision;
 }
+@GodotClass
 export class VisualShaderNodeDerivativeFunc extends VisualShaderNode{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -30,10 +31,10 @@ export class VisualShaderNodeDerivativeFunc extends VisualShaderNode{
     }
   }
   static init_method_set_op_type() {
-    if (!this.#_bindings.method_set_op_type) {
+    if (!this._bindings.method_set_op_type) {
       let classname = new StringName("VisualShaderNodeDerivativeFunc");
       let methodname = new StringName("set_op_type");
-      this.#_bindings.method_set_op_type = internal.classdb_get_method_bind(
+      this._bindings.method_set_op_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         377800221
@@ -41,10 +42,10 @@ export class VisualShaderNodeDerivativeFunc extends VisualShaderNode{
     }
   }
   static init_method_get_op_type() {
-    if (!this.#_bindings.method_get_op_type) {
+    if (!this._bindings.method_get_op_type) {
       let classname = new StringName("VisualShaderNodeDerivativeFunc");
       let methodname = new StringName("get_op_type");
-      this.#_bindings.method_get_op_type = internal.classdb_get_method_bind(
+      this._bindings.method_get_op_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3997800514
@@ -52,10 +53,10 @@ export class VisualShaderNodeDerivativeFunc extends VisualShaderNode{
     }
   }
   static init_method_set_function() {
-    if (!this.#_bindings.method_set_function) {
+    if (!this._bindings.method_set_function) {
       let classname = new StringName("VisualShaderNodeDerivativeFunc");
       let methodname = new StringName("set_function");
-      this.#_bindings.method_set_function = internal.classdb_get_method_bind(
+      this._bindings.method_set_function = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1944704156
@@ -63,10 +64,10 @@ export class VisualShaderNodeDerivativeFunc extends VisualShaderNode{
     }
   }
   static init_method_get_function() {
-    if (!this.#_bindings.method_get_function) {
+    if (!this._bindings.method_get_function) {
       let classname = new StringName("VisualShaderNodeDerivativeFunc");
       let methodname = new StringName("get_function");
-      this.#_bindings.method_get_function = internal.classdb_get_method_bind(
+      this._bindings.method_get_function = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2389093396
@@ -74,10 +75,10 @@ export class VisualShaderNodeDerivativeFunc extends VisualShaderNode{
     }
   }
   static init_method_set_precision() {
-    if (!this.#_bindings.method_set_precision) {
+    if (!this._bindings.method_set_precision) {
       let classname = new StringName("VisualShaderNodeDerivativeFunc");
       let methodname = new StringName("set_precision");
-      this.#_bindings.method_set_precision = internal.classdb_get_method_bind(
+      this._bindings.method_set_precision = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         797270566
@@ -85,10 +86,10 @@ export class VisualShaderNodeDerivativeFunc extends VisualShaderNode{
     }
   }
   static init_method_get_precision() {
-    if (!this.#_bindings.method_get_precision) {
+    if (!this._bindings.method_get_precision) {
       let classname = new StringName("VisualShaderNodeDerivativeFunc");
       let methodname = new StringName("get_precision");
-      this.#_bindings.method_get_precision = internal.classdb_get_method_bind(
+      this._bindings.method_get_precision = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3822547323
@@ -101,7 +102,7 @@ export class VisualShaderNodeDerivativeFunc extends VisualShaderNode{
   set_op_type(_type) {
     VisualShaderNodeDerivativeFunc.init_method_set_op_type();
     return _call_native_mb_no_ret(
-      VisualShaderNodeDerivativeFunc.#_bindings.method_set_op_type,
+      VisualShaderNodeDerivativeFunc._bindings.method_set_op_type,
       this._owner,
       _type
     );
@@ -110,7 +111,7 @@ export class VisualShaderNodeDerivativeFunc extends VisualShaderNode{
   get_op_type() {
     VisualShaderNodeDerivativeFunc.init_method_get_op_type();
     return _call_native_mb_ret(
-      VisualShaderNodeDerivativeFunc.#_bindings.method_get_op_type,
+      VisualShaderNodeDerivativeFunc._bindings.method_get_op_type,
       this._owner,
 			Variant.Type.INT,
     
@@ -121,7 +122,7 @@ export class VisualShaderNodeDerivativeFunc extends VisualShaderNode{
   set_function(_func) {
     VisualShaderNodeDerivativeFunc.init_method_set_function();
     return _call_native_mb_no_ret(
-      VisualShaderNodeDerivativeFunc.#_bindings.method_set_function,
+      VisualShaderNodeDerivativeFunc._bindings.method_set_function,
       this._owner,
       _func
     );
@@ -130,7 +131,7 @@ export class VisualShaderNodeDerivativeFunc extends VisualShaderNode{
   get_function() {
     VisualShaderNodeDerivativeFunc.init_method_get_function();
     return _call_native_mb_ret(
-      VisualShaderNodeDerivativeFunc.#_bindings.method_get_function,
+      VisualShaderNodeDerivativeFunc._bindings.method_get_function,
       this._owner,
 			Variant.Type.INT,
     
@@ -141,7 +142,7 @@ export class VisualShaderNodeDerivativeFunc extends VisualShaderNode{
   set_precision(_precision) {
     VisualShaderNodeDerivativeFunc.init_method_set_precision();
     return _call_native_mb_no_ret(
-      VisualShaderNodeDerivativeFunc.#_bindings.method_set_precision,
+      VisualShaderNodeDerivativeFunc._bindings.method_set_precision,
       this._owner,
       _precision
     );
@@ -150,7 +151,7 @@ export class VisualShaderNodeDerivativeFunc extends VisualShaderNode{
   get_precision() {
     VisualShaderNodeDerivativeFunc.init_method_get_precision();
     return _call_native_mb_ret(
-      VisualShaderNodeDerivativeFunc.#_bindings.method_get_precision,
+      VisualShaderNodeDerivativeFunc._bindings.method_get_precision,
       this._owner,
 			Variant.Type.INT,
     

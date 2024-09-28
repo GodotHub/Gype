@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Control } from '@js_godot/classes/control'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_switch_on_hover;
@@ -35,10 +36,10 @@ class _MethodBindings {
   method_is_menu_hidden;
   method_get_menu_popup;
 }
+@GodotClass
 export class MenuBar extends Control{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -48,10 +49,10 @@ export class MenuBar extends Control{
     }
   }
   static init_method_set_switch_on_hover() {
-    if (!this.#_bindings.method_set_switch_on_hover) {
+    if (!this._bindings.method_set_switch_on_hover) {
       let classname = new StringName("MenuBar");
       let methodname = new StringName("set_switch_on_hover");
-      this.#_bindings.method_set_switch_on_hover = internal.classdb_get_method_bind(
+      this._bindings.method_set_switch_on_hover = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -59,10 +60,10 @@ export class MenuBar extends Control{
     }
   }
   static init_method_is_switch_on_hover() {
-    if (!this.#_bindings.method_is_switch_on_hover) {
+    if (!this._bindings.method_is_switch_on_hover) {
       let classname = new StringName("MenuBar");
       let methodname = new StringName("is_switch_on_hover");
-      this.#_bindings.method_is_switch_on_hover = internal.classdb_get_method_bind(
+      this._bindings.method_is_switch_on_hover = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2240911060
@@ -70,10 +71,10 @@ export class MenuBar extends Control{
     }
   }
   static init_method_set_disable_shortcuts() {
-    if (!this.#_bindings.method_set_disable_shortcuts) {
+    if (!this._bindings.method_set_disable_shortcuts) {
       let classname = new StringName("MenuBar");
       let methodname = new StringName("set_disable_shortcuts");
-      this.#_bindings.method_set_disable_shortcuts = internal.classdb_get_method_bind(
+      this._bindings.method_set_disable_shortcuts = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -81,10 +82,10 @@ export class MenuBar extends Control{
     }
   }
   static init_method_set_prefer_global_menu() {
-    if (!this.#_bindings.method_set_prefer_global_menu) {
+    if (!this._bindings.method_set_prefer_global_menu) {
       let classname = new StringName("MenuBar");
       let methodname = new StringName("set_prefer_global_menu");
-      this.#_bindings.method_set_prefer_global_menu = internal.classdb_get_method_bind(
+      this._bindings.method_set_prefer_global_menu = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -92,10 +93,10 @@ export class MenuBar extends Control{
     }
   }
   static init_method_is_prefer_global_menu() {
-    if (!this.#_bindings.method_is_prefer_global_menu) {
+    if (!this._bindings.method_is_prefer_global_menu) {
       let classname = new StringName("MenuBar");
       let methodname = new StringName("is_prefer_global_menu");
-      this.#_bindings.method_is_prefer_global_menu = internal.classdb_get_method_bind(
+      this._bindings.method_is_prefer_global_menu = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -103,10 +104,10 @@ export class MenuBar extends Control{
     }
   }
   static init_method_is_native_menu() {
-    if (!this.#_bindings.method_is_native_menu) {
+    if (!this._bindings.method_is_native_menu) {
       let classname = new StringName("MenuBar");
       let methodname = new StringName("is_native_menu");
-      this.#_bindings.method_is_native_menu = internal.classdb_get_method_bind(
+      this._bindings.method_is_native_menu = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -114,10 +115,10 @@ export class MenuBar extends Control{
     }
   }
   static init_method_get_menu_count() {
-    if (!this.#_bindings.method_get_menu_count) {
+    if (!this._bindings.method_get_menu_count) {
       let classname = new StringName("MenuBar");
       let methodname = new StringName("get_menu_count");
-      this.#_bindings.method_get_menu_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_menu_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -125,10 +126,10 @@ export class MenuBar extends Control{
     }
   }
   static init_method_set_text_direction() {
-    if (!this.#_bindings.method_set_text_direction) {
+    if (!this._bindings.method_set_text_direction) {
       let classname = new StringName("MenuBar");
       let methodname = new StringName("set_text_direction");
-      this.#_bindings.method_set_text_direction = internal.classdb_get_method_bind(
+      this._bindings.method_set_text_direction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         119160795
@@ -136,10 +137,10 @@ export class MenuBar extends Control{
     }
   }
   static init_method_get_text_direction() {
-    if (!this.#_bindings.method_get_text_direction) {
+    if (!this._bindings.method_get_text_direction) {
       let classname = new StringName("MenuBar");
       let methodname = new StringName("get_text_direction");
-      this.#_bindings.method_get_text_direction = internal.classdb_get_method_bind(
+      this._bindings.method_get_text_direction = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         797257663
@@ -147,10 +148,10 @@ export class MenuBar extends Control{
     }
   }
   static init_method_set_language() {
-    if (!this.#_bindings.method_set_language) {
+    if (!this._bindings.method_set_language) {
       let classname = new StringName("MenuBar");
       let methodname = new StringName("set_language");
-      this.#_bindings.method_set_language = internal.classdb_get_method_bind(
+      this._bindings.method_set_language = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -158,10 +159,10 @@ export class MenuBar extends Control{
     }
   }
   static init_method_get_language() {
-    if (!this.#_bindings.method_get_language) {
+    if (!this._bindings.method_get_language) {
       let classname = new StringName("MenuBar");
       let methodname = new StringName("get_language");
-      this.#_bindings.method_get_language = internal.classdb_get_method_bind(
+      this._bindings.method_get_language = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -169,10 +170,10 @@ export class MenuBar extends Control{
     }
   }
   static init_method_set_flat() {
-    if (!this.#_bindings.method_set_flat) {
+    if (!this._bindings.method_set_flat) {
       let classname = new StringName("MenuBar");
       let methodname = new StringName("set_flat");
-      this.#_bindings.method_set_flat = internal.classdb_get_method_bind(
+      this._bindings.method_set_flat = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -180,10 +181,10 @@ export class MenuBar extends Control{
     }
   }
   static init_method_is_flat() {
-    if (!this.#_bindings.method_is_flat) {
+    if (!this._bindings.method_is_flat) {
       let classname = new StringName("MenuBar");
       let methodname = new StringName("is_flat");
-      this.#_bindings.method_is_flat = internal.classdb_get_method_bind(
+      this._bindings.method_is_flat = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -191,10 +192,10 @@ export class MenuBar extends Control{
     }
   }
   static init_method_set_start_index() {
-    if (!this.#_bindings.method_set_start_index) {
+    if (!this._bindings.method_set_start_index) {
       let classname = new StringName("MenuBar");
       let methodname = new StringName("set_start_index");
-      this.#_bindings.method_set_start_index = internal.classdb_get_method_bind(
+      this._bindings.method_set_start_index = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -202,10 +203,10 @@ export class MenuBar extends Control{
     }
   }
   static init_method_get_start_index() {
-    if (!this.#_bindings.method_get_start_index) {
+    if (!this._bindings.method_get_start_index) {
       let classname = new StringName("MenuBar");
       let methodname = new StringName("get_start_index");
-      this.#_bindings.method_get_start_index = internal.classdb_get_method_bind(
+      this._bindings.method_get_start_index = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -213,10 +214,10 @@ export class MenuBar extends Control{
     }
   }
   static init_method_set_menu_title() {
-    if (!this.#_bindings.method_set_menu_title) {
+    if (!this._bindings.method_set_menu_title) {
       let classname = new StringName("MenuBar");
       let methodname = new StringName("set_menu_title");
-      this.#_bindings.method_set_menu_title = internal.classdb_get_method_bind(
+      this._bindings.method_set_menu_title = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         501894301
@@ -224,10 +225,10 @@ export class MenuBar extends Control{
     }
   }
   static init_method_get_menu_title() {
-    if (!this.#_bindings.method_get_menu_title) {
+    if (!this._bindings.method_get_menu_title) {
       let classname = new StringName("MenuBar");
       let methodname = new StringName("get_menu_title");
-      this.#_bindings.method_get_menu_title = internal.classdb_get_method_bind(
+      this._bindings.method_get_menu_title = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         844755477
@@ -235,10 +236,10 @@ export class MenuBar extends Control{
     }
   }
   static init_method_set_menu_tooltip() {
-    if (!this.#_bindings.method_set_menu_tooltip) {
+    if (!this._bindings.method_set_menu_tooltip) {
       let classname = new StringName("MenuBar");
       let methodname = new StringName("set_menu_tooltip");
-      this.#_bindings.method_set_menu_tooltip = internal.classdb_get_method_bind(
+      this._bindings.method_set_menu_tooltip = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         501894301
@@ -246,10 +247,10 @@ export class MenuBar extends Control{
     }
   }
   static init_method_get_menu_tooltip() {
-    if (!this.#_bindings.method_get_menu_tooltip) {
+    if (!this._bindings.method_get_menu_tooltip) {
       let classname = new StringName("MenuBar");
       let methodname = new StringName("get_menu_tooltip");
-      this.#_bindings.method_get_menu_tooltip = internal.classdb_get_method_bind(
+      this._bindings.method_get_menu_tooltip = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         844755477
@@ -257,10 +258,10 @@ export class MenuBar extends Control{
     }
   }
   static init_method_set_menu_disabled() {
-    if (!this.#_bindings.method_set_menu_disabled) {
+    if (!this._bindings.method_set_menu_disabled) {
       let classname = new StringName("MenuBar");
       let methodname = new StringName("set_menu_disabled");
-      this.#_bindings.method_set_menu_disabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_menu_disabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -268,10 +269,10 @@ export class MenuBar extends Control{
     }
   }
   static init_method_is_menu_disabled() {
-    if (!this.#_bindings.method_is_menu_disabled) {
+    if (!this._bindings.method_is_menu_disabled) {
       let classname = new StringName("MenuBar");
       let methodname = new StringName("is_menu_disabled");
-      this.#_bindings.method_is_menu_disabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_menu_disabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -279,10 +280,10 @@ export class MenuBar extends Control{
     }
   }
   static init_method_set_menu_hidden() {
-    if (!this.#_bindings.method_set_menu_hidden) {
+    if (!this._bindings.method_set_menu_hidden) {
       let classname = new StringName("MenuBar");
       let methodname = new StringName("set_menu_hidden");
-      this.#_bindings.method_set_menu_hidden = internal.classdb_get_method_bind(
+      this._bindings.method_set_menu_hidden = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -290,10 +291,10 @@ export class MenuBar extends Control{
     }
   }
   static init_method_is_menu_hidden() {
-    if (!this.#_bindings.method_is_menu_hidden) {
+    if (!this._bindings.method_is_menu_hidden) {
       let classname = new StringName("MenuBar");
       let methodname = new StringName("is_menu_hidden");
-      this.#_bindings.method_is_menu_hidden = internal.classdb_get_method_bind(
+      this._bindings.method_is_menu_hidden = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -301,10 +302,10 @@ export class MenuBar extends Control{
     }
   }
   static init_method_get_menu_popup() {
-    if (!this.#_bindings.method_get_menu_popup) {
+    if (!this._bindings.method_get_menu_popup) {
       let classname = new StringName("MenuBar");
       let methodname = new StringName("get_menu_popup");
-      this.#_bindings.method_get_menu_popup = internal.classdb_get_method_bind(
+      this._bindings.method_get_menu_popup = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2100501353
@@ -317,7 +318,7 @@ export class MenuBar extends Control{
   set_switch_on_hover(_enable) {
     MenuBar.init_method_set_switch_on_hover();
     return _call_native_mb_no_ret(
-      MenuBar.#_bindings.method_set_switch_on_hover,
+      MenuBar._bindings.method_set_switch_on_hover,
       this._owner,
       _enable
     );
@@ -326,7 +327,7 @@ export class MenuBar extends Control{
   is_switch_on_hover() {
     MenuBar.init_method_is_switch_on_hover();
     return _call_native_mb_ret(
-      MenuBar.#_bindings.method_is_switch_on_hover,
+      MenuBar._bindings.method_is_switch_on_hover,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -337,7 +338,7 @@ export class MenuBar extends Control{
   set_disable_shortcuts(_disabled) {
     MenuBar.init_method_set_disable_shortcuts();
     return _call_native_mb_no_ret(
-      MenuBar.#_bindings.method_set_disable_shortcuts,
+      MenuBar._bindings.method_set_disable_shortcuts,
       this._owner,
       _disabled
     );
@@ -346,7 +347,7 @@ export class MenuBar extends Control{
   set_prefer_global_menu(_enabled) {
     MenuBar.init_method_set_prefer_global_menu();
     return _call_native_mb_no_ret(
-      MenuBar.#_bindings.method_set_prefer_global_menu,
+      MenuBar._bindings.method_set_prefer_global_menu,
       this._owner,
       _enabled
     );
@@ -355,7 +356,7 @@ export class MenuBar extends Control{
   is_prefer_global_menu() {
     MenuBar.init_method_is_prefer_global_menu();
     return _call_native_mb_ret(
-      MenuBar.#_bindings.method_is_prefer_global_menu,
+      MenuBar._bindings.method_is_prefer_global_menu,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -366,7 +367,7 @@ export class MenuBar extends Control{
   is_native_menu() {
     MenuBar.init_method_is_native_menu();
     return _call_native_mb_ret(
-      MenuBar.#_bindings.method_is_native_menu,
+      MenuBar._bindings.method_is_native_menu,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -377,7 +378,7 @@ export class MenuBar extends Control{
   get_menu_count() {
     MenuBar.init_method_get_menu_count();
     return _call_native_mb_ret(
-      MenuBar.#_bindings.method_get_menu_count,
+      MenuBar._bindings.method_get_menu_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -388,7 +389,7 @@ export class MenuBar extends Control{
   set_text_direction(_direction) {
     MenuBar.init_method_set_text_direction();
     return _call_native_mb_no_ret(
-      MenuBar.#_bindings.method_set_text_direction,
+      MenuBar._bindings.method_set_text_direction,
       this._owner,
       _direction
     );
@@ -397,7 +398,7 @@ export class MenuBar extends Control{
   get_text_direction() {
     MenuBar.init_method_get_text_direction();
     return _call_native_mb_ret(
-      MenuBar.#_bindings.method_get_text_direction,
+      MenuBar._bindings.method_get_text_direction,
       this._owner,
 			Variant.Type.INT,
     
@@ -408,7 +409,7 @@ export class MenuBar extends Control{
   set_language(_language) {
     MenuBar.init_method_set_language();
     return _call_native_mb_no_ret(
-      MenuBar.#_bindings.method_set_language,
+      MenuBar._bindings.method_set_language,
       this._owner,
       _language
     );
@@ -417,7 +418,7 @@ export class MenuBar extends Control{
   get_language() {
     MenuBar.init_method_get_language();
     return _call_native_mb_ret(
-      MenuBar.#_bindings.method_get_language,
+      MenuBar._bindings.method_get_language,
       this._owner,
 			Variant.Type.STRING,
     
@@ -428,7 +429,7 @@ export class MenuBar extends Control{
   set_flat(_enabled) {
     MenuBar.init_method_set_flat();
     return _call_native_mb_no_ret(
-      MenuBar.#_bindings.method_set_flat,
+      MenuBar._bindings.method_set_flat,
       this._owner,
       _enabled
     );
@@ -437,7 +438,7 @@ export class MenuBar extends Control{
   is_flat() {
     MenuBar.init_method_is_flat();
     return _call_native_mb_ret(
-      MenuBar.#_bindings.method_is_flat,
+      MenuBar._bindings.method_is_flat,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -448,7 +449,7 @@ export class MenuBar extends Control{
   set_start_index(_enabled) {
     MenuBar.init_method_set_start_index();
     return _call_native_mb_no_ret(
-      MenuBar.#_bindings.method_set_start_index,
+      MenuBar._bindings.method_set_start_index,
       this._owner,
       _enabled
     );
@@ -457,7 +458,7 @@ export class MenuBar extends Control{
   get_start_index() {
     MenuBar.init_method_get_start_index();
     return _call_native_mb_ret(
-      MenuBar.#_bindings.method_get_start_index,
+      MenuBar._bindings.method_get_start_index,
       this._owner,
 			Variant.Type.INT,
     
@@ -468,7 +469,7 @@ export class MenuBar extends Control{
   set_menu_title(_menu, _title) {
     MenuBar.init_method_set_menu_title();
     return _call_native_mb_no_ret(
-      MenuBar.#_bindings.method_set_menu_title,
+      MenuBar._bindings.method_set_menu_title,
       this._owner,
       _menu, _title
     );
@@ -477,7 +478,7 @@ export class MenuBar extends Control{
   get_menu_title(_menu) {
     MenuBar.init_method_get_menu_title();
     return _call_native_mb_ret(
-      MenuBar.#_bindings.method_get_menu_title,
+      MenuBar._bindings.method_get_menu_title,
       this._owner,
 			Variant.Type.STRING,
     
@@ -488,7 +489,7 @@ export class MenuBar extends Control{
   set_menu_tooltip(_menu, _tooltip) {
     MenuBar.init_method_set_menu_tooltip();
     return _call_native_mb_no_ret(
-      MenuBar.#_bindings.method_set_menu_tooltip,
+      MenuBar._bindings.method_set_menu_tooltip,
       this._owner,
       _menu, _tooltip
     );
@@ -497,7 +498,7 @@ export class MenuBar extends Control{
   get_menu_tooltip(_menu) {
     MenuBar.init_method_get_menu_tooltip();
     return _call_native_mb_ret(
-      MenuBar.#_bindings.method_get_menu_tooltip,
+      MenuBar._bindings.method_get_menu_tooltip,
       this._owner,
 			Variant.Type.STRING,
     
@@ -508,7 +509,7 @@ export class MenuBar extends Control{
   set_menu_disabled(_menu, _disabled) {
     MenuBar.init_method_set_menu_disabled();
     return _call_native_mb_no_ret(
-      MenuBar.#_bindings.method_set_menu_disabled,
+      MenuBar._bindings.method_set_menu_disabled,
       this._owner,
       _menu, _disabled
     );
@@ -517,7 +518,7 @@ export class MenuBar extends Control{
   is_menu_disabled(_menu) {
     MenuBar.init_method_is_menu_disabled();
     return _call_native_mb_ret(
-      MenuBar.#_bindings.method_is_menu_disabled,
+      MenuBar._bindings.method_is_menu_disabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -528,7 +529,7 @@ export class MenuBar extends Control{
   set_menu_hidden(_menu, _hidden) {
     MenuBar.init_method_set_menu_hidden();
     return _call_native_mb_no_ret(
-      MenuBar.#_bindings.method_set_menu_hidden,
+      MenuBar._bindings.method_set_menu_hidden,
       this._owner,
       _menu, _hidden
     );
@@ -537,7 +538,7 @@ export class MenuBar extends Control{
   is_menu_hidden(_menu) {
     MenuBar.init_method_is_menu_hidden();
     return _call_native_mb_ret(
-      MenuBar.#_bindings.method_is_menu_hidden,
+      MenuBar._bindings.method_is_menu_hidden,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -548,7 +549,7 @@ export class MenuBar extends Control{
   get_menu_popup(_menu) {
     MenuBar.init_method_get_menu_popup();
     return _call_native_mb_ret(
-      MenuBar.#_bindings.method_get_menu_popup,
+      MenuBar._bindings.method_get_menu_popup,
       this._owner,
 			Variant.Type.OBJECT,
       _menu

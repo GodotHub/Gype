@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_mag_filter;
@@ -41,10 +42,10 @@ class _MethodBindings {
   method_set_unnormalized_uvw;
   method_get_unnormalized_uvw;
 }
+@GodotClass
 export class RDSamplerState extends RefCounted{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -54,10 +55,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_set_mag_filter() {
-    if (!this.#_bindings.method_set_mag_filter) {
+    if (!this._bindings.method_set_mag_filter) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("set_mag_filter");
-      this.#_bindings.method_set_mag_filter = internal.classdb_get_method_bind(
+      this._bindings.method_set_mag_filter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1493420382
@@ -65,10 +66,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_get_mag_filter() {
-    if (!this.#_bindings.method_get_mag_filter) {
+    if (!this._bindings.method_get_mag_filter) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("get_mag_filter");
-      this.#_bindings.method_get_mag_filter = internal.classdb_get_method_bind(
+      this._bindings.method_get_mag_filter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2209202801
@@ -76,10 +77,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_set_min_filter() {
-    if (!this.#_bindings.method_set_min_filter) {
+    if (!this._bindings.method_set_min_filter) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("set_min_filter");
-      this.#_bindings.method_set_min_filter = internal.classdb_get_method_bind(
+      this._bindings.method_set_min_filter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1493420382
@@ -87,10 +88,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_get_min_filter() {
-    if (!this.#_bindings.method_get_min_filter) {
+    if (!this._bindings.method_get_min_filter) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("get_min_filter");
-      this.#_bindings.method_get_min_filter = internal.classdb_get_method_bind(
+      this._bindings.method_get_min_filter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2209202801
@@ -98,10 +99,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_set_mip_filter() {
-    if (!this.#_bindings.method_set_mip_filter) {
+    if (!this._bindings.method_set_mip_filter) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("set_mip_filter");
-      this.#_bindings.method_set_mip_filter = internal.classdb_get_method_bind(
+      this._bindings.method_set_mip_filter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1493420382
@@ -109,10 +110,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_get_mip_filter() {
-    if (!this.#_bindings.method_get_mip_filter) {
+    if (!this._bindings.method_get_mip_filter) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("get_mip_filter");
-      this.#_bindings.method_get_mip_filter = internal.classdb_get_method_bind(
+      this._bindings.method_get_mip_filter = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2209202801
@@ -120,10 +121,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_set_repeat_u() {
-    if (!this.#_bindings.method_set_repeat_u) {
+    if (!this._bindings.method_set_repeat_u) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("set_repeat_u");
-      this.#_bindings.method_set_repeat_u = internal.classdb_get_method_bind(
+      this._bindings.method_set_repeat_u = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         246127626
@@ -131,10 +132,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_get_repeat_u() {
-    if (!this.#_bindings.method_get_repeat_u) {
+    if (!this._bindings.method_get_repeat_u) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("get_repeat_u");
-      this.#_bindings.method_get_repeat_u = internal.classdb_get_method_bind(
+      this._bindings.method_get_repeat_u = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3227895872
@@ -142,10 +143,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_set_repeat_v() {
-    if (!this.#_bindings.method_set_repeat_v) {
+    if (!this._bindings.method_set_repeat_v) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("set_repeat_v");
-      this.#_bindings.method_set_repeat_v = internal.classdb_get_method_bind(
+      this._bindings.method_set_repeat_v = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         246127626
@@ -153,10 +154,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_get_repeat_v() {
-    if (!this.#_bindings.method_get_repeat_v) {
+    if (!this._bindings.method_get_repeat_v) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("get_repeat_v");
-      this.#_bindings.method_get_repeat_v = internal.classdb_get_method_bind(
+      this._bindings.method_get_repeat_v = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3227895872
@@ -164,10 +165,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_set_repeat_w() {
-    if (!this.#_bindings.method_set_repeat_w) {
+    if (!this._bindings.method_set_repeat_w) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("set_repeat_w");
-      this.#_bindings.method_set_repeat_w = internal.classdb_get_method_bind(
+      this._bindings.method_set_repeat_w = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         246127626
@@ -175,10 +176,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_get_repeat_w() {
-    if (!this.#_bindings.method_get_repeat_w) {
+    if (!this._bindings.method_get_repeat_w) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("get_repeat_w");
-      this.#_bindings.method_get_repeat_w = internal.classdb_get_method_bind(
+      this._bindings.method_get_repeat_w = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3227895872
@@ -186,10 +187,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_set_lod_bias() {
-    if (!this.#_bindings.method_set_lod_bias) {
+    if (!this._bindings.method_set_lod_bias) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("set_lod_bias");
-      this.#_bindings.method_set_lod_bias = internal.classdb_get_method_bind(
+      this._bindings.method_set_lod_bias = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -197,10 +198,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_get_lod_bias() {
-    if (!this.#_bindings.method_get_lod_bias) {
+    if (!this._bindings.method_get_lod_bias) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("get_lod_bias");
-      this.#_bindings.method_get_lod_bias = internal.classdb_get_method_bind(
+      this._bindings.method_get_lod_bias = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -208,10 +209,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_set_use_anisotropy() {
-    if (!this.#_bindings.method_set_use_anisotropy) {
+    if (!this._bindings.method_set_use_anisotropy) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("set_use_anisotropy");
-      this.#_bindings.method_set_use_anisotropy = internal.classdb_get_method_bind(
+      this._bindings.method_set_use_anisotropy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -219,10 +220,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_get_use_anisotropy() {
-    if (!this.#_bindings.method_get_use_anisotropy) {
+    if (!this._bindings.method_get_use_anisotropy) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("get_use_anisotropy");
-      this.#_bindings.method_get_use_anisotropy = internal.classdb_get_method_bind(
+      this._bindings.method_get_use_anisotropy = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -230,10 +231,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_set_anisotropy_max() {
-    if (!this.#_bindings.method_set_anisotropy_max) {
+    if (!this._bindings.method_set_anisotropy_max) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("set_anisotropy_max");
-      this.#_bindings.method_set_anisotropy_max = internal.classdb_get_method_bind(
+      this._bindings.method_set_anisotropy_max = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -241,10 +242,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_get_anisotropy_max() {
-    if (!this.#_bindings.method_get_anisotropy_max) {
+    if (!this._bindings.method_get_anisotropy_max) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("get_anisotropy_max");
-      this.#_bindings.method_get_anisotropy_max = internal.classdb_get_method_bind(
+      this._bindings.method_get_anisotropy_max = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -252,10 +253,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_set_enable_compare() {
-    if (!this.#_bindings.method_set_enable_compare) {
+    if (!this._bindings.method_set_enable_compare) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("set_enable_compare");
-      this.#_bindings.method_set_enable_compare = internal.classdb_get_method_bind(
+      this._bindings.method_set_enable_compare = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -263,10 +264,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_get_enable_compare() {
-    if (!this.#_bindings.method_get_enable_compare) {
+    if (!this._bindings.method_get_enable_compare) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("get_enable_compare");
-      this.#_bindings.method_get_enable_compare = internal.classdb_get_method_bind(
+      this._bindings.method_get_enable_compare = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -274,10 +275,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_set_compare_op() {
-    if (!this.#_bindings.method_set_compare_op) {
+    if (!this._bindings.method_set_compare_op) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("set_compare_op");
-      this.#_bindings.method_set_compare_op = internal.classdb_get_method_bind(
+      this._bindings.method_set_compare_op = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2573711505
@@ -285,10 +286,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_get_compare_op() {
-    if (!this.#_bindings.method_get_compare_op) {
+    if (!this._bindings.method_get_compare_op) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("get_compare_op");
-      this.#_bindings.method_get_compare_op = internal.classdb_get_method_bind(
+      this._bindings.method_get_compare_op = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         269730778
@@ -296,10 +297,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_set_min_lod() {
-    if (!this.#_bindings.method_set_min_lod) {
+    if (!this._bindings.method_set_min_lod) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("set_min_lod");
-      this.#_bindings.method_set_min_lod = internal.classdb_get_method_bind(
+      this._bindings.method_set_min_lod = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -307,10 +308,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_get_min_lod() {
-    if (!this.#_bindings.method_get_min_lod) {
+    if (!this._bindings.method_get_min_lod) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("get_min_lod");
-      this.#_bindings.method_get_min_lod = internal.classdb_get_method_bind(
+      this._bindings.method_get_min_lod = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -318,10 +319,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_set_max_lod() {
-    if (!this.#_bindings.method_set_max_lod) {
+    if (!this._bindings.method_set_max_lod) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("set_max_lod");
-      this.#_bindings.method_set_max_lod = internal.classdb_get_method_bind(
+      this._bindings.method_set_max_lod = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -329,10 +330,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_get_max_lod() {
-    if (!this.#_bindings.method_get_max_lod) {
+    if (!this._bindings.method_get_max_lod) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("get_max_lod");
-      this.#_bindings.method_get_max_lod = internal.classdb_get_method_bind(
+      this._bindings.method_get_max_lod = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -340,10 +341,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_set_border_color() {
-    if (!this.#_bindings.method_set_border_color) {
+    if (!this._bindings.method_set_border_color) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("set_border_color");
-      this.#_bindings.method_set_border_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_border_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1115869595
@@ -351,10 +352,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_get_border_color() {
-    if (!this.#_bindings.method_get_border_color) {
+    if (!this._bindings.method_get_border_color) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("get_border_color");
-      this.#_bindings.method_get_border_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_border_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3514246478
@@ -362,10 +363,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_set_unnormalized_uvw() {
-    if (!this.#_bindings.method_set_unnormalized_uvw) {
+    if (!this._bindings.method_set_unnormalized_uvw) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("set_unnormalized_uvw");
-      this.#_bindings.method_set_unnormalized_uvw = internal.classdb_get_method_bind(
+      this._bindings.method_set_unnormalized_uvw = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -373,10 +374,10 @@ export class RDSamplerState extends RefCounted{
     }
   }
   static init_method_get_unnormalized_uvw() {
-    if (!this.#_bindings.method_get_unnormalized_uvw) {
+    if (!this._bindings.method_get_unnormalized_uvw) {
       let classname = new StringName("RDSamplerState");
       let methodname = new StringName("get_unnormalized_uvw");
-      this.#_bindings.method_get_unnormalized_uvw = internal.classdb_get_method_bind(
+      this._bindings.method_get_unnormalized_uvw = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -389,7 +390,7 @@ export class RDSamplerState extends RefCounted{
   set_mag_filter(_p_member) {
     RDSamplerState.init_method_set_mag_filter();
     return _call_native_mb_no_ret(
-      RDSamplerState.#_bindings.method_set_mag_filter,
+      RDSamplerState._bindings.method_set_mag_filter,
       this._owner,
       _p_member
     );
@@ -398,7 +399,7 @@ export class RDSamplerState extends RefCounted{
   get_mag_filter() {
     RDSamplerState.init_method_get_mag_filter();
     return _call_native_mb_ret(
-      RDSamplerState.#_bindings.method_get_mag_filter,
+      RDSamplerState._bindings.method_get_mag_filter,
       this._owner,
 			Variant.Type.INT,
     
@@ -409,7 +410,7 @@ export class RDSamplerState extends RefCounted{
   set_min_filter(_p_member) {
     RDSamplerState.init_method_set_min_filter();
     return _call_native_mb_no_ret(
-      RDSamplerState.#_bindings.method_set_min_filter,
+      RDSamplerState._bindings.method_set_min_filter,
       this._owner,
       _p_member
     );
@@ -418,7 +419,7 @@ export class RDSamplerState extends RefCounted{
   get_min_filter() {
     RDSamplerState.init_method_get_min_filter();
     return _call_native_mb_ret(
-      RDSamplerState.#_bindings.method_get_min_filter,
+      RDSamplerState._bindings.method_get_min_filter,
       this._owner,
 			Variant.Type.INT,
     
@@ -429,7 +430,7 @@ export class RDSamplerState extends RefCounted{
   set_mip_filter(_p_member) {
     RDSamplerState.init_method_set_mip_filter();
     return _call_native_mb_no_ret(
-      RDSamplerState.#_bindings.method_set_mip_filter,
+      RDSamplerState._bindings.method_set_mip_filter,
       this._owner,
       _p_member
     );
@@ -438,7 +439,7 @@ export class RDSamplerState extends RefCounted{
   get_mip_filter() {
     RDSamplerState.init_method_get_mip_filter();
     return _call_native_mb_ret(
-      RDSamplerState.#_bindings.method_get_mip_filter,
+      RDSamplerState._bindings.method_get_mip_filter,
       this._owner,
 			Variant.Type.INT,
     
@@ -449,7 +450,7 @@ export class RDSamplerState extends RefCounted{
   set_repeat_u(_p_member) {
     RDSamplerState.init_method_set_repeat_u();
     return _call_native_mb_no_ret(
-      RDSamplerState.#_bindings.method_set_repeat_u,
+      RDSamplerState._bindings.method_set_repeat_u,
       this._owner,
       _p_member
     );
@@ -458,7 +459,7 @@ export class RDSamplerState extends RefCounted{
   get_repeat_u() {
     RDSamplerState.init_method_get_repeat_u();
     return _call_native_mb_ret(
-      RDSamplerState.#_bindings.method_get_repeat_u,
+      RDSamplerState._bindings.method_get_repeat_u,
       this._owner,
 			Variant.Type.INT,
     
@@ -469,7 +470,7 @@ export class RDSamplerState extends RefCounted{
   set_repeat_v(_p_member) {
     RDSamplerState.init_method_set_repeat_v();
     return _call_native_mb_no_ret(
-      RDSamplerState.#_bindings.method_set_repeat_v,
+      RDSamplerState._bindings.method_set_repeat_v,
       this._owner,
       _p_member
     );
@@ -478,7 +479,7 @@ export class RDSamplerState extends RefCounted{
   get_repeat_v() {
     RDSamplerState.init_method_get_repeat_v();
     return _call_native_mb_ret(
-      RDSamplerState.#_bindings.method_get_repeat_v,
+      RDSamplerState._bindings.method_get_repeat_v,
       this._owner,
 			Variant.Type.INT,
     
@@ -489,7 +490,7 @@ export class RDSamplerState extends RefCounted{
   set_repeat_w(_p_member) {
     RDSamplerState.init_method_set_repeat_w();
     return _call_native_mb_no_ret(
-      RDSamplerState.#_bindings.method_set_repeat_w,
+      RDSamplerState._bindings.method_set_repeat_w,
       this._owner,
       _p_member
     );
@@ -498,7 +499,7 @@ export class RDSamplerState extends RefCounted{
   get_repeat_w() {
     RDSamplerState.init_method_get_repeat_w();
     return _call_native_mb_ret(
-      RDSamplerState.#_bindings.method_get_repeat_w,
+      RDSamplerState._bindings.method_get_repeat_w,
       this._owner,
 			Variant.Type.INT,
     
@@ -509,7 +510,7 @@ export class RDSamplerState extends RefCounted{
   set_lod_bias(_p_member) {
     RDSamplerState.init_method_set_lod_bias();
     return _call_native_mb_no_ret(
-      RDSamplerState.#_bindings.method_set_lod_bias,
+      RDSamplerState._bindings.method_set_lod_bias,
       this._owner,
       _p_member
     );
@@ -518,7 +519,7 @@ export class RDSamplerState extends RefCounted{
   get_lod_bias() {
     RDSamplerState.init_method_get_lod_bias();
     return _call_native_mb_ret(
-      RDSamplerState.#_bindings.method_get_lod_bias,
+      RDSamplerState._bindings.method_get_lod_bias,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -529,7 +530,7 @@ export class RDSamplerState extends RefCounted{
   set_use_anisotropy(_p_member) {
     RDSamplerState.init_method_set_use_anisotropy();
     return _call_native_mb_no_ret(
-      RDSamplerState.#_bindings.method_set_use_anisotropy,
+      RDSamplerState._bindings.method_set_use_anisotropy,
       this._owner,
       _p_member
     );
@@ -538,7 +539,7 @@ export class RDSamplerState extends RefCounted{
   get_use_anisotropy() {
     RDSamplerState.init_method_get_use_anisotropy();
     return _call_native_mb_ret(
-      RDSamplerState.#_bindings.method_get_use_anisotropy,
+      RDSamplerState._bindings.method_get_use_anisotropy,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -549,7 +550,7 @@ export class RDSamplerState extends RefCounted{
   set_anisotropy_max(_p_member) {
     RDSamplerState.init_method_set_anisotropy_max();
     return _call_native_mb_no_ret(
-      RDSamplerState.#_bindings.method_set_anisotropy_max,
+      RDSamplerState._bindings.method_set_anisotropy_max,
       this._owner,
       _p_member
     );
@@ -558,7 +559,7 @@ export class RDSamplerState extends RefCounted{
   get_anisotropy_max() {
     RDSamplerState.init_method_get_anisotropy_max();
     return _call_native_mb_ret(
-      RDSamplerState.#_bindings.method_get_anisotropy_max,
+      RDSamplerState._bindings.method_get_anisotropy_max,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -569,7 +570,7 @@ export class RDSamplerState extends RefCounted{
   set_enable_compare(_p_member) {
     RDSamplerState.init_method_set_enable_compare();
     return _call_native_mb_no_ret(
-      RDSamplerState.#_bindings.method_set_enable_compare,
+      RDSamplerState._bindings.method_set_enable_compare,
       this._owner,
       _p_member
     );
@@ -578,7 +579,7 @@ export class RDSamplerState extends RefCounted{
   get_enable_compare() {
     RDSamplerState.init_method_get_enable_compare();
     return _call_native_mb_ret(
-      RDSamplerState.#_bindings.method_get_enable_compare,
+      RDSamplerState._bindings.method_get_enable_compare,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -589,7 +590,7 @@ export class RDSamplerState extends RefCounted{
   set_compare_op(_p_member) {
     RDSamplerState.init_method_set_compare_op();
     return _call_native_mb_no_ret(
-      RDSamplerState.#_bindings.method_set_compare_op,
+      RDSamplerState._bindings.method_set_compare_op,
       this._owner,
       _p_member
     );
@@ -598,7 +599,7 @@ export class RDSamplerState extends RefCounted{
   get_compare_op() {
     RDSamplerState.init_method_get_compare_op();
     return _call_native_mb_ret(
-      RDSamplerState.#_bindings.method_get_compare_op,
+      RDSamplerState._bindings.method_get_compare_op,
       this._owner,
 			Variant.Type.INT,
     
@@ -609,7 +610,7 @@ export class RDSamplerState extends RefCounted{
   set_min_lod(_p_member) {
     RDSamplerState.init_method_set_min_lod();
     return _call_native_mb_no_ret(
-      RDSamplerState.#_bindings.method_set_min_lod,
+      RDSamplerState._bindings.method_set_min_lod,
       this._owner,
       _p_member
     );
@@ -618,7 +619,7 @@ export class RDSamplerState extends RefCounted{
   get_min_lod() {
     RDSamplerState.init_method_get_min_lod();
     return _call_native_mb_ret(
-      RDSamplerState.#_bindings.method_get_min_lod,
+      RDSamplerState._bindings.method_get_min_lod,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -629,7 +630,7 @@ export class RDSamplerState extends RefCounted{
   set_max_lod(_p_member) {
     RDSamplerState.init_method_set_max_lod();
     return _call_native_mb_no_ret(
-      RDSamplerState.#_bindings.method_set_max_lod,
+      RDSamplerState._bindings.method_set_max_lod,
       this._owner,
       _p_member
     );
@@ -638,7 +639,7 @@ export class RDSamplerState extends RefCounted{
   get_max_lod() {
     RDSamplerState.init_method_get_max_lod();
     return _call_native_mb_ret(
-      RDSamplerState.#_bindings.method_get_max_lod,
+      RDSamplerState._bindings.method_get_max_lod,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -649,7 +650,7 @@ export class RDSamplerState extends RefCounted{
   set_border_color(_p_member) {
     RDSamplerState.init_method_set_border_color();
     return _call_native_mb_no_ret(
-      RDSamplerState.#_bindings.method_set_border_color,
+      RDSamplerState._bindings.method_set_border_color,
       this._owner,
       _p_member
     );
@@ -658,7 +659,7 @@ export class RDSamplerState extends RefCounted{
   get_border_color() {
     RDSamplerState.init_method_get_border_color();
     return _call_native_mb_ret(
-      RDSamplerState.#_bindings.method_get_border_color,
+      RDSamplerState._bindings.method_get_border_color,
       this._owner,
 			Variant.Type.INT,
     
@@ -669,7 +670,7 @@ export class RDSamplerState extends RefCounted{
   set_unnormalized_uvw(_p_member) {
     RDSamplerState.init_method_set_unnormalized_uvw();
     return _call_native_mb_no_ret(
-      RDSamplerState.#_bindings.method_set_unnormalized_uvw,
+      RDSamplerState._bindings.method_set_unnormalized_uvw,
       this._owner,
       _p_member
     );
@@ -678,7 +679,7 @@ export class RDSamplerState extends RefCounted{
   get_unnormalized_uvw() {
     RDSamplerState.init_method_get_unnormalized_uvw();
     return _call_native_mb_ret(
-      RDSamplerState.#_bindings.method_get_unnormalized_uvw,
+      RDSamplerState._bindings.method_get_unnormalized_uvw,
       this._owner,
 			Variant.Type.BOOL,
     

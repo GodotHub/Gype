@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { AnimationNodeSync } from '@js_godot/classes/animation_node_sync'
 import {
   call_utility_ret,
@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_fadein_time;
@@ -29,10 +30,10 @@ class _MethodBindings {
   method_set_mix_mode;
   method_get_mix_mode;
 }
+@GodotClass
 export class AnimationNodeOneShot extends AnimationNodeSync{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -42,10 +43,10 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
     }
   }
   static init_method_set_fadein_time() {
-    if (!this.#_bindings.method_set_fadein_time) {
+    if (!this._bindings.method_set_fadein_time) {
       let classname = new StringName("AnimationNodeOneShot");
       let methodname = new StringName("set_fadein_time");
-      this.#_bindings.method_set_fadein_time = internal.classdb_get_method_bind(
+      this._bindings.method_set_fadein_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -53,10 +54,10 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
     }
   }
   static init_method_get_fadein_time() {
-    if (!this.#_bindings.method_get_fadein_time) {
+    if (!this._bindings.method_get_fadein_time) {
       let classname = new StringName("AnimationNodeOneShot");
       let methodname = new StringName("get_fadein_time");
-      this.#_bindings.method_get_fadein_time = internal.classdb_get_method_bind(
+      this._bindings.method_get_fadein_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -64,10 +65,10 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
     }
   }
   static init_method_set_fadein_curve() {
-    if (!this.#_bindings.method_set_fadein_curve) {
+    if (!this._bindings.method_set_fadein_curve) {
       let classname = new StringName("AnimationNodeOneShot");
       let methodname = new StringName("set_fadein_curve");
-      this.#_bindings.method_set_fadein_curve = internal.classdb_get_method_bind(
+      this._bindings.method_set_fadein_curve = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         270443179
@@ -75,10 +76,10 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
     }
   }
   static init_method_get_fadein_curve() {
-    if (!this.#_bindings.method_get_fadein_curve) {
+    if (!this._bindings.method_get_fadein_curve) {
       let classname = new StringName("AnimationNodeOneShot");
       let methodname = new StringName("get_fadein_curve");
-      this.#_bindings.method_get_fadein_curve = internal.classdb_get_method_bind(
+      this._bindings.method_get_fadein_curve = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2460114913
@@ -86,10 +87,10 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
     }
   }
   static init_method_set_fadeout_time() {
-    if (!this.#_bindings.method_set_fadeout_time) {
+    if (!this._bindings.method_set_fadeout_time) {
       let classname = new StringName("AnimationNodeOneShot");
       let methodname = new StringName("set_fadeout_time");
-      this.#_bindings.method_set_fadeout_time = internal.classdb_get_method_bind(
+      this._bindings.method_set_fadeout_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -97,10 +98,10 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
     }
   }
   static init_method_get_fadeout_time() {
-    if (!this.#_bindings.method_get_fadeout_time) {
+    if (!this._bindings.method_get_fadeout_time) {
       let classname = new StringName("AnimationNodeOneShot");
       let methodname = new StringName("get_fadeout_time");
-      this.#_bindings.method_get_fadeout_time = internal.classdb_get_method_bind(
+      this._bindings.method_get_fadeout_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -108,10 +109,10 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
     }
   }
   static init_method_set_fadeout_curve() {
-    if (!this.#_bindings.method_set_fadeout_curve) {
+    if (!this._bindings.method_set_fadeout_curve) {
       let classname = new StringName("AnimationNodeOneShot");
       let methodname = new StringName("set_fadeout_curve");
-      this.#_bindings.method_set_fadeout_curve = internal.classdb_get_method_bind(
+      this._bindings.method_set_fadeout_curve = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         270443179
@@ -119,10 +120,10 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
     }
   }
   static init_method_get_fadeout_curve() {
-    if (!this.#_bindings.method_get_fadeout_curve) {
+    if (!this._bindings.method_get_fadeout_curve) {
       let classname = new StringName("AnimationNodeOneShot");
       let methodname = new StringName("get_fadeout_curve");
-      this.#_bindings.method_get_fadeout_curve = internal.classdb_get_method_bind(
+      this._bindings.method_get_fadeout_curve = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2460114913
@@ -130,10 +131,10 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
     }
   }
   static init_method_set_break_loop_at_end() {
-    if (!this.#_bindings.method_set_break_loop_at_end) {
+    if (!this._bindings.method_set_break_loop_at_end) {
       let classname = new StringName("AnimationNodeOneShot");
       let methodname = new StringName("set_break_loop_at_end");
-      this.#_bindings.method_set_break_loop_at_end = internal.classdb_get_method_bind(
+      this._bindings.method_set_break_loop_at_end = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -141,10 +142,10 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
     }
   }
   static init_method_is_loop_broken_at_end() {
-    if (!this.#_bindings.method_is_loop_broken_at_end) {
+    if (!this._bindings.method_is_loop_broken_at_end) {
       let classname = new StringName("AnimationNodeOneShot");
       let methodname = new StringName("is_loop_broken_at_end");
-      this.#_bindings.method_is_loop_broken_at_end = internal.classdb_get_method_bind(
+      this._bindings.method_is_loop_broken_at_end = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -152,10 +153,10 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
     }
   }
   static init_method_set_autorestart() {
-    if (!this.#_bindings.method_set_autorestart) {
+    if (!this._bindings.method_set_autorestart) {
       let classname = new StringName("AnimationNodeOneShot");
       let methodname = new StringName("set_autorestart");
-      this.#_bindings.method_set_autorestart = internal.classdb_get_method_bind(
+      this._bindings.method_set_autorestart = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -163,10 +164,10 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
     }
   }
   static init_method_has_autorestart() {
-    if (!this.#_bindings.method_has_autorestart) {
+    if (!this._bindings.method_has_autorestart) {
       let classname = new StringName("AnimationNodeOneShot");
       let methodname = new StringName("has_autorestart");
-      this.#_bindings.method_has_autorestart = internal.classdb_get_method_bind(
+      this._bindings.method_has_autorestart = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -174,10 +175,10 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
     }
   }
   static init_method_set_autorestart_delay() {
-    if (!this.#_bindings.method_set_autorestart_delay) {
+    if (!this._bindings.method_set_autorestart_delay) {
       let classname = new StringName("AnimationNodeOneShot");
       let methodname = new StringName("set_autorestart_delay");
-      this.#_bindings.method_set_autorestart_delay = internal.classdb_get_method_bind(
+      this._bindings.method_set_autorestart_delay = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -185,10 +186,10 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
     }
   }
   static init_method_get_autorestart_delay() {
-    if (!this.#_bindings.method_get_autorestart_delay) {
+    if (!this._bindings.method_get_autorestart_delay) {
       let classname = new StringName("AnimationNodeOneShot");
       let methodname = new StringName("get_autorestart_delay");
-      this.#_bindings.method_get_autorestart_delay = internal.classdb_get_method_bind(
+      this._bindings.method_get_autorestart_delay = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -196,10 +197,10 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
     }
   }
   static init_method_set_autorestart_random_delay() {
-    if (!this.#_bindings.method_set_autorestart_random_delay) {
+    if (!this._bindings.method_set_autorestart_random_delay) {
       let classname = new StringName("AnimationNodeOneShot");
       let methodname = new StringName("set_autorestart_random_delay");
-      this.#_bindings.method_set_autorestart_random_delay = internal.classdb_get_method_bind(
+      this._bindings.method_set_autorestart_random_delay = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -207,10 +208,10 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
     }
   }
   static init_method_get_autorestart_random_delay() {
-    if (!this.#_bindings.method_get_autorestart_random_delay) {
+    if (!this._bindings.method_get_autorestart_random_delay) {
       let classname = new StringName("AnimationNodeOneShot");
       let methodname = new StringName("get_autorestart_random_delay");
-      this.#_bindings.method_get_autorestart_random_delay = internal.classdb_get_method_bind(
+      this._bindings.method_get_autorestart_random_delay = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -218,10 +219,10 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
     }
   }
   static init_method_set_mix_mode() {
-    if (!this.#_bindings.method_set_mix_mode) {
+    if (!this._bindings.method_set_mix_mode) {
       let classname = new StringName("AnimationNodeOneShot");
       let methodname = new StringName("set_mix_mode");
-      this.#_bindings.method_set_mix_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_mix_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1018899799
@@ -229,10 +230,10 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
     }
   }
   static init_method_get_mix_mode() {
-    if (!this.#_bindings.method_get_mix_mode) {
+    if (!this._bindings.method_get_mix_mode) {
       let classname = new StringName("AnimationNodeOneShot");
       let methodname = new StringName("get_mix_mode");
-      this.#_bindings.method_get_mix_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_mix_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3076550526
@@ -245,7 +246,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   set_fadein_time(_time) {
     AnimationNodeOneShot.init_method_set_fadein_time();
     return _call_native_mb_no_ret(
-      AnimationNodeOneShot.#_bindings.method_set_fadein_time,
+      AnimationNodeOneShot._bindings.method_set_fadein_time,
       this._owner,
       _time
     );
@@ -254,7 +255,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   get_fadein_time() {
     AnimationNodeOneShot.init_method_get_fadein_time();
     return _call_native_mb_ret(
-      AnimationNodeOneShot.#_bindings.method_get_fadein_time,
+      AnimationNodeOneShot._bindings.method_get_fadein_time,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -265,7 +266,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   set_fadein_curve(_curve) {
     AnimationNodeOneShot.init_method_set_fadein_curve();
     return _call_native_mb_no_ret(
-      AnimationNodeOneShot.#_bindings.method_set_fadein_curve,
+      AnimationNodeOneShot._bindings.method_set_fadein_curve,
       this._owner,
       _curve
     );
@@ -274,7 +275,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   get_fadein_curve() {
     AnimationNodeOneShot.init_method_get_fadein_curve();
     return _call_native_mb_ret(
-      AnimationNodeOneShot.#_bindings.method_get_fadein_curve,
+      AnimationNodeOneShot._bindings.method_get_fadein_curve,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -284,7 +285,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   set_fadeout_time(_time) {
     AnimationNodeOneShot.init_method_set_fadeout_time();
     return _call_native_mb_no_ret(
-      AnimationNodeOneShot.#_bindings.method_set_fadeout_time,
+      AnimationNodeOneShot._bindings.method_set_fadeout_time,
       this._owner,
       _time
     );
@@ -293,7 +294,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   get_fadeout_time() {
     AnimationNodeOneShot.init_method_get_fadeout_time();
     return _call_native_mb_ret(
-      AnimationNodeOneShot.#_bindings.method_get_fadeout_time,
+      AnimationNodeOneShot._bindings.method_get_fadeout_time,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -304,7 +305,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   set_fadeout_curve(_curve) {
     AnimationNodeOneShot.init_method_set_fadeout_curve();
     return _call_native_mb_no_ret(
-      AnimationNodeOneShot.#_bindings.method_set_fadeout_curve,
+      AnimationNodeOneShot._bindings.method_set_fadeout_curve,
       this._owner,
       _curve
     );
@@ -313,7 +314,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   get_fadeout_curve() {
     AnimationNodeOneShot.init_method_get_fadeout_curve();
     return _call_native_mb_ret(
-      AnimationNodeOneShot.#_bindings.method_get_fadeout_curve,
+      AnimationNodeOneShot._bindings.method_get_fadeout_curve,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -323,7 +324,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   set_break_loop_at_end(_enable) {
     AnimationNodeOneShot.init_method_set_break_loop_at_end();
     return _call_native_mb_no_ret(
-      AnimationNodeOneShot.#_bindings.method_set_break_loop_at_end,
+      AnimationNodeOneShot._bindings.method_set_break_loop_at_end,
       this._owner,
       _enable
     );
@@ -332,7 +333,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   is_loop_broken_at_end() {
     AnimationNodeOneShot.init_method_is_loop_broken_at_end();
     return _call_native_mb_ret(
-      AnimationNodeOneShot.#_bindings.method_is_loop_broken_at_end,
+      AnimationNodeOneShot._bindings.method_is_loop_broken_at_end,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -343,7 +344,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   set_autorestart(_active) {
     AnimationNodeOneShot.init_method_set_autorestart();
     return _call_native_mb_no_ret(
-      AnimationNodeOneShot.#_bindings.method_set_autorestart,
+      AnimationNodeOneShot._bindings.method_set_autorestart,
       this._owner,
       _active
     );
@@ -352,7 +353,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   has_autorestart() {
     AnimationNodeOneShot.init_method_has_autorestart();
     return _call_native_mb_ret(
-      AnimationNodeOneShot.#_bindings.method_has_autorestart,
+      AnimationNodeOneShot._bindings.method_has_autorestart,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -363,7 +364,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   set_autorestart_delay(_time) {
     AnimationNodeOneShot.init_method_set_autorestart_delay();
     return _call_native_mb_no_ret(
-      AnimationNodeOneShot.#_bindings.method_set_autorestart_delay,
+      AnimationNodeOneShot._bindings.method_set_autorestart_delay,
       this._owner,
       _time
     );
@@ -372,7 +373,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   get_autorestart_delay() {
     AnimationNodeOneShot.init_method_get_autorestart_delay();
     return _call_native_mb_ret(
-      AnimationNodeOneShot.#_bindings.method_get_autorestart_delay,
+      AnimationNodeOneShot._bindings.method_get_autorestart_delay,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -383,7 +384,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   set_autorestart_random_delay(_time) {
     AnimationNodeOneShot.init_method_set_autorestart_random_delay();
     return _call_native_mb_no_ret(
-      AnimationNodeOneShot.#_bindings.method_set_autorestart_random_delay,
+      AnimationNodeOneShot._bindings.method_set_autorestart_random_delay,
       this._owner,
       _time
     );
@@ -392,7 +393,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   get_autorestart_random_delay() {
     AnimationNodeOneShot.init_method_get_autorestart_random_delay();
     return _call_native_mb_ret(
-      AnimationNodeOneShot.#_bindings.method_get_autorestart_random_delay,
+      AnimationNodeOneShot._bindings.method_get_autorestart_random_delay,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -403,7 +404,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   set_mix_mode(_mode) {
     AnimationNodeOneShot.init_method_set_mix_mode();
     return _call_native_mb_no_ret(
-      AnimationNodeOneShot.#_bindings.method_set_mix_mode,
+      AnimationNodeOneShot._bindings.method_set_mix_mode,
       this._owner,
       _mode
     );
@@ -412,7 +413,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   get_mix_mode() {
     AnimationNodeOneShot.init_method_get_mix_mode();
     return _call_native_mb_ret(
-      AnimationNodeOneShot.#_bindings.method_get_mix_mode,
+      AnimationNodeOneShot._bindings.method_get_mix_mode,
       this._owner,
 			Variant.Type.INT,
     

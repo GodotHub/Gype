@@ -1,22 +1,23 @@
 import * as internal from '__internal__';
+import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
-import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_parameter_name;
   method_get_parameter_name;
 }
+@GodotClass
 export class VisualShaderNodeParameterRef extends VisualShaderNode{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -26,10 +27,10 @@ export class VisualShaderNodeParameterRef extends VisualShaderNode{
     }
   }
   static init_method_set_parameter_name() {
-    if (!this.#_bindings.method_set_parameter_name) {
+    if (!this._bindings.method_set_parameter_name) {
       let classname = new StringName("VisualShaderNodeParameterRef");
       let methodname = new StringName("set_parameter_name");
-      this.#_bindings.method_set_parameter_name = internal.classdb_get_method_bind(
+      this._bindings.method_set_parameter_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -37,10 +38,10 @@ export class VisualShaderNodeParameterRef extends VisualShaderNode{
     }
   }
   static init_method_get_parameter_name() {
-    if (!this.#_bindings.method_get_parameter_name) {
+    if (!this._bindings.method_get_parameter_name) {
       let classname = new StringName("VisualShaderNodeParameterRef");
       let methodname = new StringName("get_parameter_name");
-      this.#_bindings.method_get_parameter_name = internal.classdb_get_method_bind(
+      this._bindings.method_get_parameter_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -53,7 +54,7 @@ export class VisualShaderNodeParameterRef extends VisualShaderNode{
   set_parameter_name(_name) {
     VisualShaderNodeParameterRef.init_method_set_parameter_name();
     return _call_native_mb_no_ret(
-      VisualShaderNodeParameterRef.#_bindings.method_set_parameter_name,
+      VisualShaderNodeParameterRef._bindings.method_set_parameter_name,
       this._owner,
       _name
     );
@@ -62,7 +63,7 @@ export class VisualShaderNodeParameterRef extends VisualShaderNode{
   get_parameter_name() {
     VisualShaderNodeParameterRef.init_method_get_parameter_name();
     return _call_native_mb_ret(
-      VisualShaderNodeParameterRef.#_bindings.method_get_parameter_name,
+      VisualShaderNodeParameterRef._bindings.method_get_parameter_name,
       this._owner,
 			Variant.Type.STRING,
     

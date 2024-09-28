@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GodotObject } from '@js_godot/classes/godot_object'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_save;
@@ -16,8 +17,7 @@ class _MethodBindings {
   method_remove_resource_format_saver;
 }class _ResourceSaver extends GodotObject{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -27,10 +27,10 @@ class _MethodBindings {
     }
   }
   static init_method_save() {
-    if (!this.#_bindings.method_save) {
+    if (!this._bindings.method_save) {
       let classname = new StringName("ResourceSaver");
       let methodname = new StringName("save");
-      this.#_bindings.method_save = internal.classdb_get_method_bind(
+      this._bindings.method_save = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2983274697
@@ -38,10 +38,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_recognized_extensions() {
-    if (!this.#_bindings.method_get_recognized_extensions) {
+    if (!this._bindings.method_get_recognized_extensions) {
       let classname = new StringName("ResourceSaver");
       let methodname = new StringName("get_recognized_extensions");
-      this.#_bindings.method_get_recognized_extensions = internal.classdb_get_method_bind(
+      this._bindings.method_get_recognized_extensions = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4223597960
@@ -49,10 +49,10 @@ class _MethodBindings {
     }
   }
   static init_method_add_resource_format_saver() {
-    if (!this.#_bindings.method_add_resource_format_saver) {
+    if (!this._bindings.method_add_resource_format_saver) {
       let classname = new StringName("ResourceSaver");
       let methodname = new StringName("add_resource_format_saver");
-      this.#_bindings.method_add_resource_format_saver = internal.classdb_get_method_bind(
+      this._bindings.method_add_resource_format_saver = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         362894272
@@ -60,10 +60,10 @@ class _MethodBindings {
     }
   }
   static init_method_remove_resource_format_saver() {
-    if (!this.#_bindings.method_remove_resource_format_saver) {
+    if (!this._bindings.method_remove_resource_format_saver) {
       let classname = new StringName("ResourceSaver");
       let methodname = new StringName("remove_resource_format_saver");
-      this.#_bindings.method_remove_resource_format_saver = internal.classdb_get_method_bind(
+      this._bindings.method_remove_resource_format_saver = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3373026878
@@ -76,7 +76,7 @@ class _MethodBindings {
   save(_resource, _path, _flags) {
     ResourceSaver.init_method_save();
     return _call_native_mb_ret(
-      _ResourceSaver.#_bindings.method_save,
+      _ResourceSaver._bindings.method_save,
       this._owner,
 			Variant.Type.INT,
     
@@ -87,7 +87,7 @@ class _MethodBindings {
   get_recognized_extensions(_type) {
     ResourceSaver.init_method_get_recognized_extensions();
     return _call_native_mb_ret(
-      _ResourceSaver.#_bindings.method_get_recognized_extensions,
+      _ResourceSaver._bindings.method_get_recognized_extensions,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -98,7 +98,7 @@ class _MethodBindings {
   add_resource_format_saver(_format_saver, _at_front) {
     ResourceSaver.init_method_add_resource_format_saver();
     return _call_native_mb_no_ret(
-      _ResourceSaver.#_bindings.method_add_resource_format_saver,
+      _ResourceSaver._bindings.method_add_resource_format_saver,
       this._owner,
       _format_saver, _at_front
     );
@@ -107,7 +107,7 @@ class _MethodBindings {
   remove_resource_format_saver(_format_saver) {
     ResourceSaver.init_method_remove_resource_format_saver();
     return _call_native_mb_no_ret(
-      _ResourceSaver.#_bindings.method_remove_resource_format_saver,
+      _ResourceSaver._bindings.method_remove_resource_format_saver,
       this._owner,
       _format_saver
     );

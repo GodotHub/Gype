@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_src_image;
@@ -15,10 +16,10 @@ class _MethodBindings {
   method_get_sampler;
   method_set_sampler;
 }
+@GodotClass
 export class GLTFTexture extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -28,10 +29,10 @@ export class GLTFTexture extends Resource{
     }
   }
   static init_method_get_src_image() {
-    if (!this.#_bindings.method_get_src_image) {
+    if (!this._bindings.method_get_src_image) {
       let classname = new StringName("GLTFTexture");
       let methodname = new StringName("get_src_image");
-      this.#_bindings.method_get_src_image = internal.classdb_get_method_bind(
+      this._bindings.method_get_src_image = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -39,10 +40,10 @@ export class GLTFTexture extends Resource{
     }
   }
   static init_method_set_src_image() {
-    if (!this.#_bindings.method_set_src_image) {
+    if (!this._bindings.method_set_src_image) {
       let classname = new StringName("GLTFTexture");
       let methodname = new StringName("set_src_image");
-      this.#_bindings.method_set_src_image = internal.classdb_get_method_bind(
+      this._bindings.method_set_src_image = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -50,10 +51,10 @@ export class GLTFTexture extends Resource{
     }
   }
   static init_method_get_sampler() {
-    if (!this.#_bindings.method_get_sampler) {
+    if (!this._bindings.method_get_sampler) {
       let classname = new StringName("GLTFTexture");
       let methodname = new StringName("get_sampler");
-      this.#_bindings.method_get_sampler = internal.classdb_get_method_bind(
+      this._bindings.method_get_sampler = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -61,10 +62,10 @@ export class GLTFTexture extends Resource{
     }
   }
   static init_method_set_sampler() {
-    if (!this.#_bindings.method_set_sampler) {
+    if (!this._bindings.method_set_sampler) {
       let classname = new StringName("GLTFTexture");
       let methodname = new StringName("set_sampler");
-      this.#_bindings.method_set_sampler = internal.classdb_get_method_bind(
+      this._bindings.method_set_sampler = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -77,7 +78,7 @@ export class GLTFTexture extends Resource{
   get_src_image() {
     GLTFTexture.init_method_get_src_image();
     return _call_native_mb_ret(
-      GLTFTexture.#_bindings.method_get_src_image,
+      GLTFTexture._bindings.method_get_src_image,
       this._owner,
 			Variant.Type.INT,
     
@@ -88,7 +89,7 @@ export class GLTFTexture extends Resource{
   set_src_image(_src_image) {
     GLTFTexture.init_method_set_src_image();
     return _call_native_mb_no_ret(
-      GLTFTexture.#_bindings.method_set_src_image,
+      GLTFTexture._bindings.method_set_src_image,
       this._owner,
       _src_image
     );
@@ -97,7 +98,7 @@ export class GLTFTexture extends Resource{
   get_sampler() {
     GLTFTexture.init_method_get_sampler();
     return _call_native_mb_ret(
-      GLTFTexture.#_bindings.method_get_sampler,
+      GLTFTexture._bindings.method_get_sampler,
       this._owner,
 			Variant.Type.INT,
     
@@ -108,7 +109,7 @@ export class GLTFTexture extends Resource{
   set_sampler(_sampler) {
     GLTFTexture.init_method_set_sampler();
     return _call_native_mb_no_ret(
-      GLTFTexture.#_bindings.method_set_sampler,
+      GLTFTexture._bindings.method_set_sampler,
       this._owner,
       _sampler
     );

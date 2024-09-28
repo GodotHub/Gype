@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_listen;
@@ -17,10 +18,10 @@ class _MethodBindings {
   method_take_connection;
   method_stop;
 }
+@GodotClass
 export class TCPServer extends RefCounted{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -30,10 +31,10 @@ export class TCPServer extends RefCounted{
     }
   }
   static init_method_listen() {
-    if (!this.#_bindings.method_listen) {
+    if (!this._bindings.method_listen) {
       let classname = new StringName("TCPServer");
       let methodname = new StringName("listen");
-      this.#_bindings.method_listen = internal.classdb_get_method_bind(
+      this._bindings.method_listen = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3167955072
@@ -41,10 +42,10 @@ export class TCPServer extends RefCounted{
     }
   }
   static init_method_is_connection_available() {
-    if (!this.#_bindings.method_is_connection_available) {
+    if (!this._bindings.method_is_connection_available) {
       let classname = new StringName("TCPServer");
       let methodname = new StringName("is_connection_available");
-      this.#_bindings.method_is_connection_available = internal.classdb_get_method_bind(
+      this._bindings.method_is_connection_available = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -52,10 +53,10 @@ export class TCPServer extends RefCounted{
     }
   }
   static init_method_is_listening() {
-    if (!this.#_bindings.method_is_listening) {
+    if (!this._bindings.method_is_listening) {
       let classname = new StringName("TCPServer");
       let methodname = new StringName("is_listening");
-      this.#_bindings.method_is_listening = internal.classdb_get_method_bind(
+      this._bindings.method_is_listening = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -63,10 +64,10 @@ export class TCPServer extends RefCounted{
     }
   }
   static init_method_get_local_port() {
-    if (!this.#_bindings.method_get_local_port) {
+    if (!this._bindings.method_get_local_port) {
       let classname = new StringName("TCPServer");
       let methodname = new StringName("get_local_port");
-      this.#_bindings.method_get_local_port = internal.classdb_get_method_bind(
+      this._bindings.method_get_local_port = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -74,10 +75,10 @@ export class TCPServer extends RefCounted{
     }
   }
   static init_method_take_connection() {
-    if (!this.#_bindings.method_take_connection) {
+    if (!this._bindings.method_take_connection) {
       let classname = new StringName("TCPServer");
       let methodname = new StringName("take_connection");
-      this.#_bindings.method_take_connection = internal.classdb_get_method_bind(
+      this._bindings.method_take_connection = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         30545006
@@ -85,10 +86,10 @@ export class TCPServer extends RefCounted{
     }
   }
   static init_method_stop() {
-    if (!this.#_bindings.method_stop) {
+    if (!this._bindings.method_stop) {
       let classname = new StringName("TCPServer");
       let methodname = new StringName("stop");
-      this.#_bindings.method_stop = internal.classdb_get_method_bind(
+      this._bindings.method_stop = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -101,7 +102,7 @@ export class TCPServer extends RefCounted{
   listen(_port, _bind_address) {
     TCPServer.init_method_listen();
     return _call_native_mb_ret(
-      TCPServer.#_bindings.method_listen,
+      TCPServer._bindings.method_listen,
       this._owner,
 			Variant.Type.INT,
     
@@ -112,7 +113,7 @@ export class TCPServer extends RefCounted{
   is_connection_available() {
     TCPServer.init_method_is_connection_available();
     return _call_native_mb_ret(
-      TCPServer.#_bindings.method_is_connection_available,
+      TCPServer._bindings.method_is_connection_available,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -123,7 +124,7 @@ export class TCPServer extends RefCounted{
   is_listening() {
     TCPServer.init_method_is_listening();
     return _call_native_mb_ret(
-      TCPServer.#_bindings.method_is_listening,
+      TCPServer._bindings.method_is_listening,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -134,7 +135,7 @@ export class TCPServer extends RefCounted{
   get_local_port() {
     TCPServer.init_method_get_local_port();
     return _call_native_mb_ret(
-      TCPServer.#_bindings.method_get_local_port,
+      TCPServer._bindings.method_get_local_port,
       this._owner,
 			Variant.Type.INT,
     
@@ -145,7 +146,7 @@ export class TCPServer extends RefCounted{
   take_connection() {
     TCPServer.init_method_take_connection();
     return _call_native_mb_ret(
-      TCPServer.#_bindings.method_take_connection,
+      TCPServer._bindings.method_take_connection,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -155,7 +156,7 @@ export class TCPServer extends RefCounted{
   stop() {
     TCPServer.init_method_stop();
     return _call_native_mb_no_ret(
-      TCPServer.#_bindings.method_stop,
+      TCPServer._bindings.method_stop,
       this._owner,
       
     );

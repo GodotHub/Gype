@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Joint2D } from '@js_godot/classes/joint2d'
 import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { Joint2D } from '@js_godot/classes/joint2d'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_softness;
@@ -23,10 +24,10 @@ class _MethodBindings {
   method_set_angular_limit_enabled;
   method_is_angular_limit_enabled;
 }
+@GodotClass
 export class PinJoint2D extends Joint2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -36,10 +37,10 @@ export class PinJoint2D extends Joint2D{
     }
   }
   static init_method_set_softness() {
-    if (!this.#_bindings.method_set_softness) {
+    if (!this._bindings.method_set_softness) {
       let classname = new StringName("PinJoint2D");
       let methodname = new StringName("set_softness");
-      this.#_bindings.method_set_softness = internal.classdb_get_method_bind(
+      this._bindings.method_set_softness = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -47,10 +48,10 @@ export class PinJoint2D extends Joint2D{
     }
   }
   static init_method_get_softness() {
-    if (!this.#_bindings.method_get_softness) {
+    if (!this._bindings.method_get_softness) {
       let classname = new StringName("PinJoint2D");
       let methodname = new StringName("get_softness");
-      this.#_bindings.method_get_softness = internal.classdb_get_method_bind(
+      this._bindings.method_get_softness = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -58,10 +59,10 @@ export class PinJoint2D extends Joint2D{
     }
   }
   static init_method_set_angular_limit_lower() {
-    if (!this.#_bindings.method_set_angular_limit_lower) {
+    if (!this._bindings.method_set_angular_limit_lower) {
       let classname = new StringName("PinJoint2D");
       let methodname = new StringName("set_angular_limit_lower");
-      this.#_bindings.method_set_angular_limit_lower = internal.classdb_get_method_bind(
+      this._bindings.method_set_angular_limit_lower = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -69,10 +70,10 @@ export class PinJoint2D extends Joint2D{
     }
   }
   static init_method_get_angular_limit_lower() {
-    if (!this.#_bindings.method_get_angular_limit_lower) {
+    if (!this._bindings.method_get_angular_limit_lower) {
       let classname = new StringName("PinJoint2D");
       let methodname = new StringName("get_angular_limit_lower");
-      this.#_bindings.method_get_angular_limit_lower = internal.classdb_get_method_bind(
+      this._bindings.method_get_angular_limit_lower = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -80,10 +81,10 @@ export class PinJoint2D extends Joint2D{
     }
   }
   static init_method_set_angular_limit_upper() {
-    if (!this.#_bindings.method_set_angular_limit_upper) {
+    if (!this._bindings.method_set_angular_limit_upper) {
       let classname = new StringName("PinJoint2D");
       let methodname = new StringName("set_angular_limit_upper");
-      this.#_bindings.method_set_angular_limit_upper = internal.classdb_get_method_bind(
+      this._bindings.method_set_angular_limit_upper = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -91,10 +92,10 @@ export class PinJoint2D extends Joint2D{
     }
   }
   static init_method_get_angular_limit_upper() {
-    if (!this.#_bindings.method_get_angular_limit_upper) {
+    if (!this._bindings.method_get_angular_limit_upper) {
       let classname = new StringName("PinJoint2D");
       let methodname = new StringName("get_angular_limit_upper");
-      this.#_bindings.method_get_angular_limit_upper = internal.classdb_get_method_bind(
+      this._bindings.method_get_angular_limit_upper = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -102,10 +103,10 @@ export class PinJoint2D extends Joint2D{
     }
   }
   static init_method_set_motor_target_velocity() {
-    if (!this.#_bindings.method_set_motor_target_velocity) {
+    if (!this._bindings.method_set_motor_target_velocity) {
       let classname = new StringName("PinJoint2D");
       let methodname = new StringName("set_motor_target_velocity");
-      this.#_bindings.method_set_motor_target_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_set_motor_target_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -113,10 +114,10 @@ export class PinJoint2D extends Joint2D{
     }
   }
   static init_method_get_motor_target_velocity() {
-    if (!this.#_bindings.method_get_motor_target_velocity) {
+    if (!this._bindings.method_get_motor_target_velocity) {
       let classname = new StringName("PinJoint2D");
       let methodname = new StringName("get_motor_target_velocity");
-      this.#_bindings.method_get_motor_target_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_get_motor_target_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -124,10 +125,10 @@ export class PinJoint2D extends Joint2D{
     }
   }
   static init_method_set_motor_enabled() {
-    if (!this.#_bindings.method_set_motor_enabled) {
+    if (!this._bindings.method_set_motor_enabled) {
       let classname = new StringName("PinJoint2D");
       let methodname = new StringName("set_motor_enabled");
-      this.#_bindings.method_set_motor_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_motor_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -135,10 +136,10 @@ export class PinJoint2D extends Joint2D{
     }
   }
   static init_method_is_motor_enabled() {
-    if (!this.#_bindings.method_is_motor_enabled) {
+    if (!this._bindings.method_is_motor_enabled) {
       let classname = new StringName("PinJoint2D");
       let methodname = new StringName("is_motor_enabled");
-      this.#_bindings.method_is_motor_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_motor_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -146,10 +147,10 @@ export class PinJoint2D extends Joint2D{
     }
   }
   static init_method_set_angular_limit_enabled() {
-    if (!this.#_bindings.method_set_angular_limit_enabled) {
+    if (!this._bindings.method_set_angular_limit_enabled) {
       let classname = new StringName("PinJoint2D");
       let methodname = new StringName("set_angular_limit_enabled");
-      this.#_bindings.method_set_angular_limit_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_angular_limit_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -157,10 +158,10 @@ export class PinJoint2D extends Joint2D{
     }
   }
   static init_method_is_angular_limit_enabled() {
-    if (!this.#_bindings.method_is_angular_limit_enabled) {
+    if (!this._bindings.method_is_angular_limit_enabled) {
       let classname = new StringName("PinJoint2D");
       let methodname = new StringName("is_angular_limit_enabled");
-      this.#_bindings.method_is_angular_limit_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_angular_limit_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -173,7 +174,7 @@ export class PinJoint2D extends Joint2D{
   set_softness(_softness) {
     PinJoint2D.init_method_set_softness();
     return _call_native_mb_no_ret(
-      PinJoint2D.#_bindings.method_set_softness,
+      PinJoint2D._bindings.method_set_softness,
       this._owner,
       _softness
     );
@@ -182,7 +183,7 @@ export class PinJoint2D extends Joint2D{
   get_softness() {
     PinJoint2D.init_method_get_softness();
     return _call_native_mb_ret(
-      PinJoint2D.#_bindings.method_get_softness,
+      PinJoint2D._bindings.method_get_softness,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -193,7 +194,7 @@ export class PinJoint2D extends Joint2D{
   set_angular_limit_lower(_angular_limit_lower) {
     PinJoint2D.init_method_set_angular_limit_lower();
     return _call_native_mb_no_ret(
-      PinJoint2D.#_bindings.method_set_angular_limit_lower,
+      PinJoint2D._bindings.method_set_angular_limit_lower,
       this._owner,
       _angular_limit_lower
     );
@@ -202,7 +203,7 @@ export class PinJoint2D extends Joint2D{
   get_angular_limit_lower() {
     PinJoint2D.init_method_get_angular_limit_lower();
     return _call_native_mb_ret(
-      PinJoint2D.#_bindings.method_get_angular_limit_lower,
+      PinJoint2D._bindings.method_get_angular_limit_lower,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -213,7 +214,7 @@ export class PinJoint2D extends Joint2D{
   set_angular_limit_upper(_angular_limit_upper) {
     PinJoint2D.init_method_set_angular_limit_upper();
     return _call_native_mb_no_ret(
-      PinJoint2D.#_bindings.method_set_angular_limit_upper,
+      PinJoint2D._bindings.method_set_angular_limit_upper,
       this._owner,
       _angular_limit_upper
     );
@@ -222,7 +223,7 @@ export class PinJoint2D extends Joint2D{
   get_angular_limit_upper() {
     PinJoint2D.init_method_get_angular_limit_upper();
     return _call_native_mb_ret(
-      PinJoint2D.#_bindings.method_get_angular_limit_upper,
+      PinJoint2D._bindings.method_get_angular_limit_upper,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -233,7 +234,7 @@ export class PinJoint2D extends Joint2D{
   set_motor_target_velocity(_motor_target_velocity) {
     PinJoint2D.init_method_set_motor_target_velocity();
     return _call_native_mb_no_ret(
-      PinJoint2D.#_bindings.method_set_motor_target_velocity,
+      PinJoint2D._bindings.method_set_motor_target_velocity,
       this._owner,
       _motor_target_velocity
     );
@@ -242,7 +243,7 @@ export class PinJoint2D extends Joint2D{
   get_motor_target_velocity() {
     PinJoint2D.init_method_get_motor_target_velocity();
     return _call_native_mb_ret(
-      PinJoint2D.#_bindings.method_get_motor_target_velocity,
+      PinJoint2D._bindings.method_get_motor_target_velocity,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -253,7 +254,7 @@ export class PinJoint2D extends Joint2D{
   set_motor_enabled(_enabled) {
     PinJoint2D.init_method_set_motor_enabled();
     return _call_native_mb_no_ret(
-      PinJoint2D.#_bindings.method_set_motor_enabled,
+      PinJoint2D._bindings.method_set_motor_enabled,
       this._owner,
       _enabled
     );
@@ -262,7 +263,7 @@ export class PinJoint2D extends Joint2D{
   is_motor_enabled() {
     PinJoint2D.init_method_is_motor_enabled();
     return _call_native_mb_ret(
-      PinJoint2D.#_bindings.method_is_motor_enabled,
+      PinJoint2D._bindings.method_is_motor_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -273,7 +274,7 @@ export class PinJoint2D extends Joint2D{
   set_angular_limit_enabled(_enabled) {
     PinJoint2D.init_method_set_angular_limit_enabled();
     return _call_native_mb_no_ret(
-      PinJoint2D.#_bindings.method_set_angular_limit_enabled,
+      PinJoint2D._bindings.method_set_angular_limit_enabled,
       this._owner,
       _enabled
     );
@@ -282,7 +283,7 @@ export class PinJoint2D extends Joint2D{
   is_angular_limit_enabled() {
     PinJoint2D.init_method_is_angular_limit_enabled();
     return _call_native_mb_ret(
-      PinJoint2D.#_bindings.method_is_angular_limit_enabled,
+      PinJoint2D._bindings.method_is_angular_limit_enabled,
       this._owner,
 			Variant.Type.BOOL,
     

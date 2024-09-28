@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_add_point;
@@ -28,10 +29,10 @@ class _MethodBindings {
   method_set_interpolation_color_space;
   method_get_interpolation_color_space;
 }
+@GodotClass
 export class Gradient extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -41,10 +42,10 @@ export class Gradient extends Resource{
     }
   }
   static init_method_add_point() {
-    if (!this.#_bindings.method_add_point) {
+    if (!this._bindings.method_add_point) {
       let classname = new StringName("Gradient");
       let methodname = new StringName("add_point");
-      this.#_bindings.method_add_point = internal.classdb_get_method_bind(
+      this._bindings.method_add_point = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3629403827
@@ -52,10 +53,10 @@ export class Gradient extends Resource{
     }
   }
   static init_method_remove_point() {
-    if (!this.#_bindings.method_remove_point) {
+    if (!this._bindings.method_remove_point) {
       let classname = new StringName("Gradient");
       let methodname = new StringName("remove_point");
-      this.#_bindings.method_remove_point = internal.classdb_get_method_bind(
+      this._bindings.method_remove_point = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -63,10 +64,10 @@ export class Gradient extends Resource{
     }
   }
   static init_method_set_offset() {
-    if (!this.#_bindings.method_set_offset) {
+    if (!this._bindings.method_set_offset) {
       let classname = new StringName("Gradient");
       let methodname = new StringName("set_offset");
-      this.#_bindings.method_set_offset = internal.classdb_get_method_bind(
+      this._bindings.method_set_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1602489585
@@ -74,10 +75,10 @@ export class Gradient extends Resource{
     }
   }
   static init_method_get_offset() {
-    if (!this.#_bindings.method_get_offset) {
+    if (!this._bindings.method_get_offset) {
       let classname = new StringName("Gradient");
       let methodname = new StringName("get_offset");
-      this.#_bindings.method_get_offset = internal.classdb_get_method_bind(
+      this._bindings.method_get_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4025615559
@@ -85,10 +86,10 @@ export class Gradient extends Resource{
     }
   }
   static init_method_reverse() {
-    if (!this.#_bindings.method_reverse) {
+    if (!this._bindings.method_reverse) {
       let classname = new StringName("Gradient");
       let methodname = new StringName("reverse");
-      this.#_bindings.method_reverse = internal.classdb_get_method_bind(
+      this._bindings.method_reverse = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -96,10 +97,10 @@ export class Gradient extends Resource{
     }
   }
   static init_method_set_color() {
-    if (!this.#_bindings.method_set_color) {
+    if (!this._bindings.method_set_color) {
       let classname = new StringName("Gradient");
       let methodname = new StringName("set_color");
-      this.#_bindings.method_set_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2878471219
@@ -107,10 +108,10 @@ export class Gradient extends Resource{
     }
   }
   static init_method_get_color() {
-    if (!this.#_bindings.method_get_color) {
+    if (!this._bindings.method_get_color) {
       let classname = new StringName("Gradient");
       let methodname = new StringName("get_color");
-      this.#_bindings.method_get_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2624840992
@@ -118,10 +119,10 @@ export class Gradient extends Resource{
     }
   }
   static init_method_sample() {
-    if (!this.#_bindings.method_sample) {
+    if (!this._bindings.method_sample) {
       let classname = new StringName("Gradient");
       let methodname = new StringName("sample");
-      this.#_bindings.method_sample = internal.classdb_get_method_bind(
+      this._bindings.method_sample = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1250405064
@@ -129,10 +130,10 @@ export class Gradient extends Resource{
     }
   }
   static init_method_get_point_count() {
-    if (!this.#_bindings.method_get_point_count) {
+    if (!this._bindings.method_get_point_count) {
       let classname = new StringName("Gradient");
       let methodname = new StringName("get_point_count");
-      this.#_bindings.method_get_point_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_point_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -140,10 +141,10 @@ export class Gradient extends Resource{
     }
   }
   static init_method_set_offsets() {
-    if (!this.#_bindings.method_set_offsets) {
+    if (!this._bindings.method_set_offsets) {
       let classname = new StringName("Gradient");
       let methodname = new StringName("set_offsets");
-      this.#_bindings.method_set_offsets = internal.classdb_get_method_bind(
+      this._bindings.method_set_offsets = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2899603908
@@ -151,10 +152,10 @@ export class Gradient extends Resource{
     }
   }
   static init_method_get_offsets() {
-    if (!this.#_bindings.method_get_offsets) {
+    if (!this._bindings.method_get_offsets) {
       let classname = new StringName("Gradient");
       let methodname = new StringName("get_offsets");
-      this.#_bindings.method_get_offsets = internal.classdb_get_method_bind(
+      this._bindings.method_get_offsets = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         675695659
@@ -162,10 +163,10 @@ export class Gradient extends Resource{
     }
   }
   static init_method_set_colors() {
-    if (!this.#_bindings.method_set_colors) {
+    if (!this._bindings.method_set_colors) {
       let classname = new StringName("Gradient");
       let methodname = new StringName("set_colors");
-      this.#_bindings.method_set_colors = internal.classdb_get_method_bind(
+      this._bindings.method_set_colors = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3546319833
@@ -173,10 +174,10 @@ export class Gradient extends Resource{
     }
   }
   static init_method_get_colors() {
-    if (!this.#_bindings.method_get_colors) {
+    if (!this._bindings.method_get_colors) {
       let classname = new StringName("Gradient");
       let methodname = new StringName("get_colors");
-      this.#_bindings.method_get_colors = internal.classdb_get_method_bind(
+      this._bindings.method_get_colors = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1392750486
@@ -184,10 +185,10 @@ export class Gradient extends Resource{
     }
   }
   static init_method_set_interpolation_mode() {
-    if (!this.#_bindings.method_set_interpolation_mode) {
+    if (!this._bindings.method_set_interpolation_mode) {
       let classname = new StringName("Gradient");
       let methodname = new StringName("set_interpolation_mode");
-      this.#_bindings.method_set_interpolation_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_interpolation_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1971444490
@@ -195,10 +196,10 @@ export class Gradient extends Resource{
     }
   }
   static init_method_get_interpolation_mode() {
-    if (!this.#_bindings.method_get_interpolation_mode) {
+    if (!this._bindings.method_get_interpolation_mode) {
       let classname = new StringName("Gradient");
       let methodname = new StringName("get_interpolation_mode");
-      this.#_bindings.method_get_interpolation_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_interpolation_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3674172981
@@ -206,10 +207,10 @@ export class Gradient extends Resource{
     }
   }
   static init_method_set_interpolation_color_space() {
-    if (!this.#_bindings.method_set_interpolation_color_space) {
+    if (!this._bindings.method_set_interpolation_color_space) {
       let classname = new StringName("Gradient");
       let methodname = new StringName("set_interpolation_color_space");
-      this.#_bindings.method_set_interpolation_color_space = internal.classdb_get_method_bind(
+      this._bindings.method_set_interpolation_color_space = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3685995981
@@ -217,10 +218,10 @@ export class Gradient extends Resource{
     }
   }
   static init_method_get_interpolation_color_space() {
-    if (!this.#_bindings.method_get_interpolation_color_space) {
+    if (!this._bindings.method_get_interpolation_color_space) {
       let classname = new StringName("Gradient");
       let methodname = new StringName("get_interpolation_color_space");
-      this.#_bindings.method_get_interpolation_color_space = internal.classdb_get_method_bind(
+      this._bindings.method_get_interpolation_color_space = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1538296000
@@ -233,7 +234,7 @@ export class Gradient extends Resource{
   add_point(_offset, _color) {
     Gradient.init_method_add_point();
     return _call_native_mb_no_ret(
-      Gradient.#_bindings.method_add_point,
+      Gradient._bindings.method_add_point,
       this._owner,
       _offset, _color
     );
@@ -242,7 +243,7 @@ export class Gradient extends Resource{
   remove_point(_point) {
     Gradient.init_method_remove_point();
     return _call_native_mb_no_ret(
-      Gradient.#_bindings.method_remove_point,
+      Gradient._bindings.method_remove_point,
       this._owner,
       _point
     );
@@ -251,7 +252,7 @@ export class Gradient extends Resource{
   set_offset(_point, _offset) {
     Gradient.init_method_set_offset();
     return _call_native_mb_no_ret(
-      Gradient.#_bindings.method_set_offset,
+      Gradient._bindings.method_set_offset,
       this._owner,
       _point, _offset
     );
@@ -260,7 +261,7 @@ export class Gradient extends Resource{
   get_offset(_point) {
     Gradient.init_method_get_offset();
     return _call_native_mb_ret(
-      Gradient.#_bindings.method_get_offset,
+      Gradient._bindings.method_get_offset,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -271,7 +272,7 @@ export class Gradient extends Resource{
   reverse() {
     Gradient.init_method_reverse();
     return _call_native_mb_no_ret(
-      Gradient.#_bindings.method_reverse,
+      Gradient._bindings.method_reverse,
       this._owner,
       
     );
@@ -280,7 +281,7 @@ export class Gradient extends Resource{
   set_color(_point, _color) {
     Gradient.init_method_set_color();
     return _call_native_mb_no_ret(
-      Gradient.#_bindings.method_set_color,
+      Gradient._bindings.method_set_color,
       this._owner,
       _point, _color
     );
@@ -289,7 +290,7 @@ export class Gradient extends Resource{
   get_color(_point) {
     Gradient.init_method_get_color();
     return _call_native_mb_ret(
-      Gradient.#_bindings.method_get_color,
+      Gradient._bindings.method_get_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -300,7 +301,7 @@ export class Gradient extends Resource{
   sample(_offset) {
     Gradient.init_method_sample();
     return _call_native_mb_ret(
-      Gradient.#_bindings.method_sample,
+      Gradient._bindings.method_sample,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -311,7 +312,7 @@ export class Gradient extends Resource{
   get_point_count() {
     Gradient.init_method_get_point_count();
     return _call_native_mb_ret(
-      Gradient.#_bindings.method_get_point_count,
+      Gradient._bindings.method_get_point_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -322,7 +323,7 @@ export class Gradient extends Resource{
   set_offsets(_offsets) {
     Gradient.init_method_set_offsets();
     return _call_native_mb_no_ret(
-      Gradient.#_bindings.method_set_offsets,
+      Gradient._bindings.method_set_offsets,
       this._owner,
       _offsets
     );
@@ -331,7 +332,7 @@ export class Gradient extends Resource{
   get_offsets() {
     Gradient.init_method_get_offsets();
     return _call_native_mb_ret(
-      Gradient.#_bindings.method_get_offsets,
+      Gradient._bindings.method_get_offsets,
       this._owner,
 			Variant.Type.PACKED_FLOAT32_ARRAY,
     
@@ -342,7 +343,7 @@ export class Gradient extends Resource{
   set_colors(_colors) {
     Gradient.init_method_set_colors();
     return _call_native_mb_no_ret(
-      Gradient.#_bindings.method_set_colors,
+      Gradient._bindings.method_set_colors,
       this._owner,
       _colors
     );
@@ -351,7 +352,7 @@ export class Gradient extends Resource{
   get_colors() {
     Gradient.init_method_get_colors();
     return _call_native_mb_ret(
-      Gradient.#_bindings.method_get_colors,
+      Gradient._bindings.method_get_colors,
       this._owner,
 			Variant.Type.PACKED_COLOR_ARRAY,
     
@@ -362,7 +363,7 @@ export class Gradient extends Resource{
   set_interpolation_mode(_interpolation_mode) {
     Gradient.init_method_set_interpolation_mode();
     return _call_native_mb_no_ret(
-      Gradient.#_bindings.method_set_interpolation_mode,
+      Gradient._bindings.method_set_interpolation_mode,
       this._owner,
       _interpolation_mode
     );
@@ -371,7 +372,7 @@ export class Gradient extends Resource{
   get_interpolation_mode() {
     Gradient.init_method_get_interpolation_mode();
     return _call_native_mb_ret(
-      Gradient.#_bindings.method_get_interpolation_mode,
+      Gradient._bindings.method_get_interpolation_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -382,7 +383,7 @@ export class Gradient extends Resource{
   set_interpolation_color_space(_interpolation_color_space) {
     Gradient.init_method_set_interpolation_color_space();
     return _call_native_mb_no_ret(
-      Gradient.#_bindings.method_set_interpolation_color_space,
+      Gradient._bindings.method_set_interpolation_color_space,
       this._owner,
       _interpolation_color_space
     );
@@ -391,7 +392,7 @@ export class Gradient extends Resource{
   get_interpolation_color_space() {
     Gradient.init_method_get_interpolation_color_space();
     return _call_native_mb_ret(
-      Gradient.#_bindings.method_get_interpolation_color_space,
+      Gradient._bindings.method_get_interpolation_color_space,
       this._owner,
 			Variant.Type.INT,
     

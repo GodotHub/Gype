@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_open;
@@ -16,10 +17,10 @@ class _MethodBindings {
   method_read_file;
   method_file_exists;
 }
+@GodotClass
 export class ZIPReader extends RefCounted{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -29,10 +30,10 @@ export class ZIPReader extends RefCounted{
     }
   }
   static init_method_open() {
-    if (!this.#_bindings.method_open) {
+    if (!this._bindings.method_open) {
       let classname = new StringName("ZIPReader");
       let methodname = new StringName("open");
-      this.#_bindings.method_open = internal.classdb_get_method_bind(
+      this._bindings.method_open = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         166001499
@@ -40,10 +41,10 @@ export class ZIPReader extends RefCounted{
     }
   }
   static init_method_close() {
-    if (!this.#_bindings.method_close) {
+    if (!this._bindings.method_close) {
       let classname = new StringName("ZIPReader");
       let methodname = new StringName("close");
-      this.#_bindings.method_close = internal.classdb_get_method_bind(
+      this._bindings.method_close = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         166280745
@@ -51,10 +52,10 @@ export class ZIPReader extends RefCounted{
     }
   }
   static init_method_get_files() {
-    if (!this.#_bindings.method_get_files) {
+    if (!this._bindings.method_get_files) {
       let classname = new StringName("ZIPReader");
       let methodname = new StringName("get_files");
-      this.#_bindings.method_get_files = internal.classdb_get_method_bind(
+      this._bindings.method_get_files = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2981934095
@@ -62,10 +63,10 @@ export class ZIPReader extends RefCounted{
     }
   }
   static init_method_read_file() {
-    if (!this.#_bindings.method_read_file) {
+    if (!this._bindings.method_read_file) {
       let classname = new StringName("ZIPReader");
       let methodname = new StringName("read_file");
-      this.#_bindings.method_read_file = internal.classdb_get_method_bind(
+      this._bindings.method_read_file = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         740857591
@@ -73,10 +74,10 @@ export class ZIPReader extends RefCounted{
     }
   }
   static init_method_file_exists() {
-    if (!this.#_bindings.method_file_exists) {
+    if (!this._bindings.method_file_exists) {
       let classname = new StringName("ZIPReader");
       let methodname = new StringName("file_exists");
-      this.#_bindings.method_file_exists = internal.classdb_get_method_bind(
+      this._bindings.method_file_exists = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         35364943
@@ -89,7 +90,7 @@ export class ZIPReader extends RefCounted{
   open(_path) {
     ZIPReader.init_method_open();
     return _call_native_mb_ret(
-      ZIPReader.#_bindings.method_open,
+      ZIPReader._bindings.method_open,
       this._owner,
 			Variant.Type.INT,
     
@@ -100,7 +101,7 @@ export class ZIPReader extends RefCounted{
   close() {
     ZIPReader.init_method_close();
     return _call_native_mb_ret(
-      ZIPReader.#_bindings.method_close,
+      ZIPReader._bindings.method_close,
       this._owner,
 			Variant.Type.INT,
     
@@ -111,7 +112,7 @@ export class ZIPReader extends RefCounted{
   get_files() {
     ZIPReader.init_method_get_files();
     return _call_native_mb_ret(
-      ZIPReader.#_bindings.method_get_files,
+      ZIPReader._bindings.method_get_files,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -122,7 +123,7 @@ export class ZIPReader extends RefCounted{
   read_file(_path, _case_sensitive) {
     ZIPReader.init_method_read_file();
     return _call_native_mb_ret(
-      ZIPReader.#_bindings.method_read_file,
+      ZIPReader._bindings.method_read_file,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -133,7 +134,7 @@ export class ZIPReader extends RefCounted{
   file_exists(_path, _case_sensitive) {
     ZIPReader.init_method_file_exists();
     return _call_native_mb_ret(
-      ZIPReader.#_bindings.method_file_exists,
+      ZIPReader._bindings.method_file_exists,
       this._owner,
 			Variant.Type.BOOL,
     

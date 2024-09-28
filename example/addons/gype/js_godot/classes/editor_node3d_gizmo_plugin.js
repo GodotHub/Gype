@@ -1,14 +1,15 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_create_material;
@@ -17,10 +18,10 @@ class _MethodBindings {
   method_add_material;
   method_get_material;
 }
+@GodotClass
 export class EditorNode3DGizmoPlugin extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -30,10 +31,10 @@ export class EditorNode3DGizmoPlugin extends Resource{
     }
   }
   static init_method_create_material() {
-    if (!this.#_bindings.method_create_material) {
+    if (!this._bindings.method_create_material) {
       let classname = new StringName("EditorNode3DGizmoPlugin");
       let methodname = new StringName("create_material");
-      this.#_bindings.method_create_material = internal.classdb_get_method_bind(
+      this._bindings.method_create_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3486012546
@@ -41,10 +42,10 @@ export class EditorNode3DGizmoPlugin extends Resource{
     }
   }
   static init_method_create_icon_material() {
-    if (!this.#_bindings.method_create_icon_material) {
+    if (!this._bindings.method_create_icon_material) {
       let classname = new StringName("EditorNode3DGizmoPlugin");
       let methodname = new StringName("create_icon_material");
-      this.#_bindings.method_create_icon_material = internal.classdb_get_method_bind(
+      this._bindings.method_create_icon_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3804976916
@@ -52,10 +53,10 @@ export class EditorNode3DGizmoPlugin extends Resource{
     }
   }
   static init_method_create_handle_material() {
-    if (!this.#_bindings.method_create_handle_material) {
+    if (!this._bindings.method_create_handle_material) {
       let classname = new StringName("EditorNode3DGizmoPlugin");
       let methodname = new StringName("create_handle_material");
-      this.#_bindings.method_create_handle_material = internal.classdb_get_method_bind(
+      this._bindings.method_create_handle_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2486475223
@@ -63,10 +64,10 @@ export class EditorNode3DGizmoPlugin extends Resource{
     }
   }
   static init_method_add_material() {
-    if (!this.#_bindings.method_add_material) {
+    if (!this._bindings.method_add_material) {
       let classname = new StringName("EditorNode3DGizmoPlugin");
       let methodname = new StringName("add_material");
-      this.#_bindings.method_add_material = internal.classdb_get_method_bind(
+      this._bindings.method_add_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1374068695
@@ -74,10 +75,10 @@ export class EditorNode3DGizmoPlugin extends Resource{
     }
   }
   static init_method_get_material() {
-    if (!this.#_bindings.method_get_material) {
+    if (!this._bindings.method_get_material) {
       let classname = new StringName("EditorNode3DGizmoPlugin");
       let methodname = new StringName("get_material");
-      this.#_bindings.method_get_material = internal.classdb_get_method_bind(
+      this._bindings.method_get_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         974464017
@@ -126,7 +127,7 @@ export class EditorNode3DGizmoPlugin extends Resource{
   create_material(_name, _color, _billboard, _on_top, _use_vertex_color) {
     EditorNode3DGizmoPlugin.init_method_create_material();
     return _call_native_mb_no_ret(
-      EditorNode3DGizmoPlugin.#_bindings.method_create_material,
+      EditorNode3DGizmoPlugin._bindings.method_create_material,
       this._owner,
       _name, _color, _billboard, _on_top, _use_vertex_color
     );
@@ -135,7 +136,7 @@ export class EditorNode3DGizmoPlugin extends Resource{
   create_icon_material(_name, _texture, _on_top, _color) {
     EditorNode3DGizmoPlugin.init_method_create_icon_material();
     return _call_native_mb_no_ret(
-      EditorNode3DGizmoPlugin.#_bindings.method_create_icon_material,
+      EditorNode3DGizmoPlugin._bindings.method_create_icon_material,
       this._owner,
       _name, _texture, _on_top, _color
     );
@@ -144,7 +145,7 @@ export class EditorNode3DGizmoPlugin extends Resource{
   create_handle_material(_name, _billboard, _texture) {
     EditorNode3DGizmoPlugin.init_method_create_handle_material();
     return _call_native_mb_no_ret(
-      EditorNode3DGizmoPlugin.#_bindings.method_create_handle_material,
+      EditorNode3DGizmoPlugin._bindings.method_create_handle_material,
       this._owner,
       _name, _billboard, _texture
     );
@@ -153,7 +154,7 @@ export class EditorNode3DGizmoPlugin extends Resource{
   add_material(_name, _material) {
     EditorNode3DGizmoPlugin.init_method_add_material();
     return _call_native_mb_no_ret(
-      EditorNode3DGizmoPlugin.#_bindings.method_add_material,
+      EditorNode3DGizmoPlugin._bindings.method_add_material,
       this._owner,
       _name, _material
     );
@@ -162,7 +163,7 @@ export class EditorNode3DGizmoPlugin extends Resource{
   get_material(_name, _gizmo) {
     EditorNode3DGizmoPlugin.init_method_get_material();
     return _call_native_mb_ret(
-      EditorNode3DGizmoPlugin.#_bindings.method_get_material,
+      EditorNode3DGizmoPlugin._bindings.method_get_material,
       this._owner,
 			Variant.Type.OBJECT,
       _name, _gizmo

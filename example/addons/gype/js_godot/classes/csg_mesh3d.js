@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { CSGPrimitive3D } from '@js_godot/classes/csg_primitive3d'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_mesh;
@@ -15,10 +16,10 @@ class _MethodBindings {
   method_set_material;
   method_get_material;
 }
+@GodotClass
 export class CSGMesh3D extends CSGPrimitive3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -28,10 +29,10 @@ export class CSGMesh3D extends CSGPrimitive3D{
     }
   }
   static init_method_set_mesh() {
-    if (!this.#_bindings.method_set_mesh) {
+    if (!this._bindings.method_set_mesh) {
       let classname = new StringName("CSGMesh3D");
       let methodname = new StringName("set_mesh");
-      this.#_bindings.method_set_mesh = internal.classdb_get_method_bind(
+      this._bindings.method_set_mesh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         194775623
@@ -39,10 +40,10 @@ export class CSGMesh3D extends CSGPrimitive3D{
     }
   }
   static init_method_get_mesh() {
-    if (!this.#_bindings.method_get_mesh) {
+    if (!this._bindings.method_get_mesh) {
       let classname = new StringName("CSGMesh3D");
       let methodname = new StringName("get_mesh");
-      this.#_bindings.method_get_mesh = internal.classdb_get_method_bind(
+      this._bindings.method_get_mesh = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4081188045
@@ -50,10 +51,10 @@ export class CSGMesh3D extends CSGPrimitive3D{
     }
   }
   static init_method_set_material() {
-    if (!this.#_bindings.method_set_material) {
+    if (!this._bindings.method_set_material) {
       let classname = new StringName("CSGMesh3D");
       let methodname = new StringName("set_material");
-      this.#_bindings.method_set_material = internal.classdb_get_method_bind(
+      this._bindings.method_set_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2757459619
@@ -61,10 +62,10 @@ export class CSGMesh3D extends CSGPrimitive3D{
     }
   }
   static init_method_get_material() {
-    if (!this.#_bindings.method_get_material) {
+    if (!this._bindings.method_get_material) {
       let classname = new StringName("CSGMesh3D");
       let methodname = new StringName("get_material");
-      this.#_bindings.method_get_material = internal.classdb_get_method_bind(
+      this._bindings.method_get_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         5934680
@@ -77,7 +78,7 @@ export class CSGMesh3D extends CSGPrimitive3D{
   set_mesh(_mesh) {
     CSGMesh3D.init_method_set_mesh();
     return _call_native_mb_no_ret(
-      CSGMesh3D.#_bindings.method_set_mesh,
+      CSGMesh3D._bindings.method_set_mesh,
       this._owner,
       _mesh
     );
@@ -86,7 +87,7 @@ export class CSGMesh3D extends CSGPrimitive3D{
   get_mesh() {
     CSGMesh3D.init_method_get_mesh();
     return _call_native_mb_ret(
-      CSGMesh3D.#_bindings.method_get_mesh,
+      CSGMesh3D._bindings.method_get_mesh,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -96,7 +97,7 @@ export class CSGMesh3D extends CSGPrimitive3D{
   set_material(_material) {
     CSGMesh3D.init_method_set_material();
     return _call_native_mb_no_ret(
-      CSGMesh3D.#_bindings.method_set_material,
+      CSGMesh3D._bindings.method_set_material,
       this._owner,
       _material
     );
@@ -105,7 +106,7 @@ export class CSGMesh3D extends CSGPrimitive3D{
   get_material() {
     CSGMesh3D.init_method_get_material();
     return _call_native_mb_ret(
-      CSGMesh3D.#_bindings.method_get_material,
+      CSGMesh3D._bindings.method_get_material,
       this._owner,
 			Variant.Type.OBJECT,
       

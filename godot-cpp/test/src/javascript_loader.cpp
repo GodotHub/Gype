@@ -39,7 +39,7 @@ String JavaScriptLoader::_get_resource_type(const String &p_path) const {
 }
 
 String JavaScriptLoader::_get_resource_script_class(const String &p_path) const {
-	return p_path.get_file().split(".")[1];
+	return p_path.get_file().split(".")[0];
 }
 
 int64_t JavaScriptLoader::_get_resource_uid(const String &p_path) const {

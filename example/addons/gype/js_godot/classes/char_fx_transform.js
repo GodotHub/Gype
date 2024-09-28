@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_transform;
@@ -37,10 +38,10 @@ class _MethodBindings {
   method_get_font;
   method_set_font;
 }
+@GodotClass
 export class CharFXTransform extends RefCounted{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -50,10 +51,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_get_transform() {
-    if (!this.#_bindings.method_get_transform) {
+    if (!this._bindings.method_get_transform) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("get_transform");
-      this.#_bindings.method_get_transform = internal.classdb_get_method_bind(
+      this._bindings.method_get_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3761352769
@@ -61,10 +62,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_set_transform() {
-    if (!this.#_bindings.method_set_transform) {
+    if (!this._bindings.method_set_transform) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("set_transform");
-      this.#_bindings.method_set_transform = internal.classdb_get_method_bind(
+      this._bindings.method_set_transform = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2761652528
@@ -72,10 +73,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_get_range() {
-    if (!this.#_bindings.method_get_range) {
+    if (!this._bindings.method_get_range) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("get_range");
-      this.#_bindings.method_get_range = internal.classdb_get_method_bind(
+      this._bindings.method_get_range = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2741790807
@@ -83,10 +84,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_set_range() {
-    if (!this.#_bindings.method_set_range) {
+    if (!this._bindings.method_set_range) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("set_range");
-      this.#_bindings.method_set_range = internal.classdb_get_method_bind(
+      this._bindings.method_set_range = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1130785943
@@ -94,10 +95,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_get_elapsed_time() {
-    if (!this.#_bindings.method_get_elapsed_time) {
+    if (!this._bindings.method_get_elapsed_time) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("get_elapsed_time");
-      this.#_bindings.method_get_elapsed_time = internal.classdb_get_method_bind(
+      this._bindings.method_get_elapsed_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         191475506
@@ -105,10 +106,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_set_elapsed_time() {
-    if (!this.#_bindings.method_set_elapsed_time) {
+    if (!this._bindings.method_set_elapsed_time) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("set_elapsed_time");
-      this.#_bindings.method_set_elapsed_time = internal.classdb_get_method_bind(
+      this._bindings.method_set_elapsed_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -116,10 +117,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_is_visible() {
-    if (!this.#_bindings.method_is_visible) {
+    if (!this._bindings.method_is_visible) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("is_visible");
-      this.#_bindings.method_is_visible = internal.classdb_get_method_bind(
+      this._bindings.method_is_visible = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2240911060
@@ -127,10 +128,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_set_visibility() {
-    if (!this.#_bindings.method_set_visibility) {
+    if (!this._bindings.method_set_visibility) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("set_visibility");
-      this.#_bindings.method_set_visibility = internal.classdb_get_method_bind(
+      this._bindings.method_set_visibility = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -138,10 +139,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_is_outline() {
-    if (!this.#_bindings.method_is_outline) {
+    if (!this._bindings.method_is_outline) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("is_outline");
-      this.#_bindings.method_is_outline = internal.classdb_get_method_bind(
+      this._bindings.method_is_outline = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2240911060
@@ -149,10 +150,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_set_outline() {
-    if (!this.#_bindings.method_set_outline) {
+    if (!this._bindings.method_set_outline) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("set_outline");
-      this.#_bindings.method_set_outline = internal.classdb_get_method_bind(
+      this._bindings.method_set_outline = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -160,10 +161,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_get_offset() {
-    if (!this.#_bindings.method_get_offset) {
+    if (!this._bindings.method_get_offset) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("get_offset");
-      this.#_bindings.method_get_offset = internal.classdb_get_method_bind(
+      this._bindings.method_get_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1497962370
@@ -171,10 +172,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_set_offset() {
-    if (!this.#_bindings.method_set_offset) {
+    if (!this._bindings.method_set_offset) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("set_offset");
-      this.#_bindings.method_set_offset = internal.classdb_get_method_bind(
+      this._bindings.method_set_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -182,10 +183,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_get_color() {
-    if (!this.#_bindings.method_get_color) {
+    if (!this._bindings.method_get_color) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("get_color");
-      this.#_bindings.method_get_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3200896285
@@ -193,10 +194,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_set_color() {
-    if (!this.#_bindings.method_set_color) {
+    if (!this._bindings.method_set_color) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("set_color");
-      this.#_bindings.method_set_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -204,10 +205,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_get_environment() {
-    if (!this.#_bindings.method_get_environment) {
+    if (!this._bindings.method_get_environment) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("get_environment");
-      this.#_bindings.method_get_environment = internal.classdb_get_method_bind(
+      this._bindings.method_get_environment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2382534195
@@ -215,10 +216,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_set_environment() {
-    if (!this.#_bindings.method_set_environment) {
+    if (!this._bindings.method_set_environment) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("set_environment");
-      this.#_bindings.method_set_environment = internal.classdb_get_method_bind(
+      this._bindings.method_set_environment = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4155329257
@@ -226,10 +227,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_get_glyph_index() {
-    if (!this.#_bindings.method_get_glyph_index) {
+    if (!this._bindings.method_get_glyph_index) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("get_glyph_index");
-      this.#_bindings.method_get_glyph_index = internal.classdb_get_method_bind(
+      this._bindings.method_get_glyph_index = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -237,10 +238,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_set_glyph_index() {
-    if (!this.#_bindings.method_set_glyph_index) {
+    if (!this._bindings.method_set_glyph_index) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("set_glyph_index");
-      this.#_bindings.method_set_glyph_index = internal.classdb_get_method_bind(
+      this._bindings.method_set_glyph_index = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -248,10 +249,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_get_relative_index() {
-    if (!this.#_bindings.method_get_relative_index) {
+    if (!this._bindings.method_get_relative_index) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("get_relative_index");
-      this.#_bindings.method_get_relative_index = internal.classdb_get_method_bind(
+      this._bindings.method_get_relative_index = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -259,10 +260,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_set_relative_index() {
-    if (!this.#_bindings.method_set_relative_index) {
+    if (!this._bindings.method_set_relative_index) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("set_relative_index");
-      this.#_bindings.method_set_relative_index = internal.classdb_get_method_bind(
+      this._bindings.method_set_relative_index = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -270,10 +271,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_get_glyph_count() {
-    if (!this.#_bindings.method_get_glyph_count) {
+    if (!this._bindings.method_get_glyph_count) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("get_glyph_count");
-      this.#_bindings.method_get_glyph_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_glyph_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -281,10 +282,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_set_glyph_count() {
-    if (!this.#_bindings.method_set_glyph_count) {
+    if (!this._bindings.method_set_glyph_count) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("set_glyph_count");
-      this.#_bindings.method_set_glyph_count = internal.classdb_get_method_bind(
+      this._bindings.method_set_glyph_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -292,10 +293,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_get_glyph_flags() {
-    if (!this.#_bindings.method_get_glyph_flags) {
+    if (!this._bindings.method_get_glyph_flags) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("get_glyph_flags");
-      this.#_bindings.method_get_glyph_flags = internal.classdb_get_method_bind(
+      this._bindings.method_get_glyph_flags = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -303,10 +304,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_set_glyph_flags() {
-    if (!this.#_bindings.method_set_glyph_flags) {
+    if (!this._bindings.method_set_glyph_flags) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("set_glyph_flags");
-      this.#_bindings.method_set_glyph_flags = internal.classdb_get_method_bind(
+      this._bindings.method_set_glyph_flags = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -314,10 +315,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_get_font() {
-    if (!this.#_bindings.method_get_font) {
+    if (!this._bindings.method_get_font) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("get_font");
-      this.#_bindings.method_get_font = internal.classdb_get_method_bind(
+      this._bindings.method_get_font = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2944877500
@@ -325,10 +326,10 @@ export class CharFXTransform extends RefCounted{
     }
   }
   static init_method_set_font() {
-    if (!this.#_bindings.method_set_font) {
+    if (!this._bindings.method_set_font) {
       let classname = new StringName("CharFXTransform");
       let methodname = new StringName("set_font");
-      this.#_bindings.method_set_font = internal.classdb_get_method_bind(
+      this._bindings.method_set_font = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2722037293
@@ -341,7 +342,7 @@ export class CharFXTransform extends RefCounted{
   get_transform() {
     CharFXTransform.init_method_get_transform();
     return _call_native_mb_ret(
-      CharFXTransform.#_bindings.method_get_transform,
+      CharFXTransform._bindings.method_get_transform,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -352,7 +353,7 @@ export class CharFXTransform extends RefCounted{
   set_transform(_transform) {
     CharFXTransform.init_method_set_transform();
     return _call_native_mb_no_ret(
-      CharFXTransform.#_bindings.method_set_transform,
+      CharFXTransform._bindings.method_set_transform,
       this._owner,
       _transform
     );
@@ -361,7 +362,7 @@ export class CharFXTransform extends RefCounted{
   get_range() {
     CharFXTransform.init_method_get_range();
     return _call_native_mb_ret(
-      CharFXTransform.#_bindings.method_get_range,
+      CharFXTransform._bindings.method_get_range,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -372,7 +373,7 @@ export class CharFXTransform extends RefCounted{
   set_range(_range) {
     CharFXTransform.init_method_set_range();
     return _call_native_mb_no_ret(
-      CharFXTransform.#_bindings.method_set_range,
+      CharFXTransform._bindings.method_set_range,
       this._owner,
       _range
     );
@@ -381,7 +382,7 @@ export class CharFXTransform extends RefCounted{
   get_elapsed_time() {
     CharFXTransform.init_method_get_elapsed_time();
     return _call_native_mb_ret(
-      CharFXTransform.#_bindings.method_get_elapsed_time,
+      CharFXTransform._bindings.method_get_elapsed_time,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -392,7 +393,7 @@ export class CharFXTransform extends RefCounted{
   set_elapsed_time(_time) {
     CharFXTransform.init_method_set_elapsed_time();
     return _call_native_mb_no_ret(
-      CharFXTransform.#_bindings.method_set_elapsed_time,
+      CharFXTransform._bindings.method_set_elapsed_time,
       this._owner,
       _time
     );
@@ -401,7 +402,7 @@ export class CharFXTransform extends RefCounted{
   is_visible() {
     CharFXTransform.init_method_is_visible();
     return _call_native_mb_ret(
-      CharFXTransform.#_bindings.method_is_visible,
+      CharFXTransform._bindings.method_is_visible,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -412,7 +413,7 @@ export class CharFXTransform extends RefCounted{
   set_visibility(_visibility) {
     CharFXTransform.init_method_set_visibility();
     return _call_native_mb_no_ret(
-      CharFXTransform.#_bindings.method_set_visibility,
+      CharFXTransform._bindings.method_set_visibility,
       this._owner,
       _visibility
     );
@@ -421,7 +422,7 @@ export class CharFXTransform extends RefCounted{
   is_outline() {
     CharFXTransform.init_method_is_outline();
     return _call_native_mb_ret(
-      CharFXTransform.#_bindings.method_is_outline,
+      CharFXTransform._bindings.method_is_outline,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -432,7 +433,7 @@ export class CharFXTransform extends RefCounted{
   set_outline(_outline) {
     CharFXTransform.init_method_set_outline();
     return _call_native_mb_no_ret(
-      CharFXTransform.#_bindings.method_set_outline,
+      CharFXTransform._bindings.method_set_outline,
       this._owner,
       _outline
     );
@@ -441,7 +442,7 @@ export class CharFXTransform extends RefCounted{
   get_offset() {
     CharFXTransform.init_method_get_offset();
     return _call_native_mb_ret(
-      CharFXTransform.#_bindings.method_get_offset,
+      CharFXTransform._bindings.method_get_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -452,7 +453,7 @@ export class CharFXTransform extends RefCounted{
   set_offset(_offset) {
     CharFXTransform.init_method_set_offset();
     return _call_native_mb_no_ret(
-      CharFXTransform.#_bindings.method_set_offset,
+      CharFXTransform._bindings.method_set_offset,
       this._owner,
       _offset
     );
@@ -461,7 +462,7 @@ export class CharFXTransform extends RefCounted{
   get_color() {
     CharFXTransform.init_method_get_color();
     return _call_native_mb_ret(
-      CharFXTransform.#_bindings.method_get_color,
+      CharFXTransform._bindings.method_get_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -472,7 +473,7 @@ export class CharFXTransform extends RefCounted{
   set_color(_color) {
     CharFXTransform.init_method_set_color();
     return _call_native_mb_no_ret(
-      CharFXTransform.#_bindings.method_set_color,
+      CharFXTransform._bindings.method_set_color,
       this._owner,
       _color
     );
@@ -481,7 +482,7 @@ export class CharFXTransform extends RefCounted{
   get_environment() {
     CharFXTransform.init_method_get_environment();
     return _call_native_mb_ret(
-      CharFXTransform.#_bindings.method_get_environment,
+      CharFXTransform._bindings.method_get_environment,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -492,7 +493,7 @@ export class CharFXTransform extends RefCounted{
   set_environment(_environment) {
     CharFXTransform.init_method_set_environment();
     return _call_native_mb_no_ret(
-      CharFXTransform.#_bindings.method_set_environment,
+      CharFXTransform._bindings.method_set_environment,
       this._owner,
       _environment
     );
@@ -501,7 +502,7 @@ export class CharFXTransform extends RefCounted{
   get_glyph_index() {
     CharFXTransform.init_method_get_glyph_index();
     return _call_native_mb_ret(
-      CharFXTransform.#_bindings.method_get_glyph_index,
+      CharFXTransform._bindings.method_get_glyph_index,
       this._owner,
 			Variant.Type.INT,
     
@@ -512,7 +513,7 @@ export class CharFXTransform extends RefCounted{
   set_glyph_index(_glyph_index) {
     CharFXTransform.init_method_set_glyph_index();
     return _call_native_mb_no_ret(
-      CharFXTransform.#_bindings.method_set_glyph_index,
+      CharFXTransform._bindings.method_set_glyph_index,
       this._owner,
       _glyph_index
     );
@@ -521,7 +522,7 @@ export class CharFXTransform extends RefCounted{
   get_relative_index() {
     CharFXTransform.init_method_get_relative_index();
     return _call_native_mb_ret(
-      CharFXTransform.#_bindings.method_get_relative_index,
+      CharFXTransform._bindings.method_get_relative_index,
       this._owner,
 			Variant.Type.INT,
     
@@ -532,7 +533,7 @@ export class CharFXTransform extends RefCounted{
   set_relative_index(_relative_index) {
     CharFXTransform.init_method_set_relative_index();
     return _call_native_mb_no_ret(
-      CharFXTransform.#_bindings.method_set_relative_index,
+      CharFXTransform._bindings.method_set_relative_index,
       this._owner,
       _relative_index
     );
@@ -541,7 +542,7 @@ export class CharFXTransform extends RefCounted{
   get_glyph_count() {
     CharFXTransform.init_method_get_glyph_count();
     return _call_native_mb_ret(
-      CharFXTransform.#_bindings.method_get_glyph_count,
+      CharFXTransform._bindings.method_get_glyph_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -552,7 +553,7 @@ export class CharFXTransform extends RefCounted{
   set_glyph_count(_glyph_count) {
     CharFXTransform.init_method_set_glyph_count();
     return _call_native_mb_no_ret(
-      CharFXTransform.#_bindings.method_set_glyph_count,
+      CharFXTransform._bindings.method_set_glyph_count,
       this._owner,
       _glyph_count
     );
@@ -561,7 +562,7 @@ export class CharFXTransform extends RefCounted{
   get_glyph_flags() {
     CharFXTransform.init_method_get_glyph_flags();
     return _call_native_mb_ret(
-      CharFXTransform.#_bindings.method_get_glyph_flags,
+      CharFXTransform._bindings.method_get_glyph_flags,
       this._owner,
 			Variant.Type.INT,
     
@@ -572,7 +573,7 @@ export class CharFXTransform extends RefCounted{
   set_glyph_flags(_glyph_flags) {
     CharFXTransform.init_method_set_glyph_flags();
     return _call_native_mb_no_ret(
-      CharFXTransform.#_bindings.method_set_glyph_flags,
+      CharFXTransform._bindings.method_set_glyph_flags,
       this._owner,
       _glyph_flags
     );
@@ -581,7 +582,7 @@ export class CharFXTransform extends RefCounted{
   get_font() {
     CharFXTransform.init_method_get_font();
     return _call_native_mb_ret(
-      CharFXTransform.#_bindings.method_get_font,
+      CharFXTransform._bindings.method_get_font,
       this._owner,
 			Variant.Type.RID,
     
@@ -592,7 +593,7 @@ export class CharFXTransform extends RefCounted{
   set_font(_font) {
     CharFXTransform.init_method_set_font();
     return _call_native_mb_no_ret(
-      CharFXTransform.#_bindings.method_set_font,
+      CharFXTransform._bindings.method_set_font,
       this._owner,
       _font
     );

@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { AudioEffect } from '@js_godot/classes/audio_effect'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_predelay_msec;
@@ -27,10 +28,10 @@ class _MethodBindings {
   method_set_hpf;
   method_get_hpf;
 }
+@GodotClass
 export class AudioEffectReverb extends AudioEffect{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -40,10 +41,10 @@ export class AudioEffectReverb extends AudioEffect{
     }
   }
   static init_method_set_predelay_msec() {
-    if (!this.#_bindings.method_set_predelay_msec) {
+    if (!this._bindings.method_set_predelay_msec) {
       let classname = new StringName("AudioEffectReverb");
       let methodname = new StringName("set_predelay_msec");
-      this.#_bindings.method_set_predelay_msec = internal.classdb_get_method_bind(
+      this._bindings.method_set_predelay_msec = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -51,10 +52,10 @@ export class AudioEffectReverb extends AudioEffect{
     }
   }
   static init_method_get_predelay_msec() {
-    if (!this.#_bindings.method_get_predelay_msec) {
+    if (!this._bindings.method_get_predelay_msec) {
       let classname = new StringName("AudioEffectReverb");
       let methodname = new StringName("get_predelay_msec");
-      this.#_bindings.method_get_predelay_msec = internal.classdb_get_method_bind(
+      this._bindings.method_get_predelay_msec = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -62,10 +63,10 @@ export class AudioEffectReverb extends AudioEffect{
     }
   }
   static init_method_set_predelay_feedback() {
-    if (!this.#_bindings.method_set_predelay_feedback) {
+    if (!this._bindings.method_set_predelay_feedback) {
       let classname = new StringName("AudioEffectReverb");
       let methodname = new StringName("set_predelay_feedback");
-      this.#_bindings.method_set_predelay_feedback = internal.classdb_get_method_bind(
+      this._bindings.method_set_predelay_feedback = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -73,10 +74,10 @@ export class AudioEffectReverb extends AudioEffect{
     }
   }
   static init_method_get_predelay_feedback() {
-    if (!this.#_bindings.method_get_predelay_feedback) {
+    if (!this._bindings.method_get_predelay_feedback) {
       let classname = new StringName("AudioEffectReverb");
       let methodname = new StringName("get_predelay_feedback");
-      this.#_bindings.method_get_predelay_feedback = internal.classdb_get_method_bind(
+      this._bindings.method_get_predelay_feedback = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -84,10 +85,10 @@ export class AudioEffectReverb extends AudioEffect{
     }
   }
   static init_method_set_room_size() {
-    if (!this.#_bindings.method_set_room_size) {
+    if (!this._bindings.method_set_room_size) {
       let classname = new StringName("AudioEffectReverb");
       let methodname = new StringName("set_room_size");
-      this.#_bindings.method_set_room_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_room_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -95,10 +96,10 @@ export class AudioEffectReverb extends AudioEffect{
     }
   }
   static init_method_get_room_size() {
-    if (!this.#_bindings.method_get_room_size) {
+    if (!this._bindings.method_get_room_size) {
       let classname = new StringName("AudioEffectReverb");
       let methodname = new StringName("get_room_size");
-      this.#_bindings.method_get_room_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_room_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -106,10 +107,10 @@ export class AudioEffectReverb extends AudioEffect{
     }
   }
   static init_method_set_damping() {
-    if (!this.#_bindings.method_set_damping) {
+    if (!this._bindings.method_set_damping) {
       let classname = new StringName("AudioEffectReverb");
       let methodname = new StringName("set_damping");
-      this.#_bindings.method_set_damping = internal.classdb_get_method_bind(
+      this._bindings.method_set_damping = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -117,10 +118,10 @@ export class AudioEffectReverb extends AudioEffect{
     }
   }
   static init_method_get_damping() {
-    if (!this.#_bindings.method_get_damping) {
+    if (!this._bindings.method_get_damping) {
       let classname = new StringName("AudioEffectReverb");
       let methodname = new StringName("get_damping");
-      this.#_bindings.method_get_damping = internal.classdb_get_method_bind(
+      this._bindings.method_get_damping = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -128,10 +129,10 @@ export class AudioEffectReverb extends AudioEffect{
     }
   }
   static init_method_set_spread() {
-    if (!this.#_bindings.method_set_spread) {
+    if (!this._bindings.method_set_spread) {
       let classname = new StringName("AudioEffectReverb");
       let methodname = new StringName("set_spread");
-      this.#_bindings.method_set_spread = internal.classdb_get_method_bind(
+      this._bindings.method_set_spread = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -139,10 +140,10 @@ export class AudioEffectReverb extends AudioEffect{
     }
   }
   static init_method_get_spread() {
-    if (!this.#_bindings.method_get_spread) {
+    if (!this._bindings.method_get_spread) {
       let classname = new StringName("AudioEffectReverb");
       let methodname = new StringName("get_spread");
-      this.#_bindings.method_get_spread = internal.classdb_get_method_bind(
+      this._bindings.method_get_spread = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -150,10 +151,10 @@ export class AudioEffectReverb extends AudioEffect{
     }
   }
   static init_method_set_dry() {
-    if (!this.#_bindings.method_set_dry) {
+    if (!this._bindings.method_set_dry) {
       let classname = new StringName("AudioEffectReverb");
       let methodname = new StringName("set_dry");
-      this.#_bindings.method_set_dry = internal.classdb_get_method_bind(
+      this._bindings.method_set_dry = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -161,10 +162,10 @@ export class AudioEffectReverb extends AudioEffect{
     }
   }
   static init_method_get_dry() {
-    if (!this.#_bindings.method_get_dry) {
+    if (!this._bindings.method_get_dry) {
       let classname = new StringName("AudioEffectReverb");
       let methodname = new StringName("get_dry");
-      this.#_bindings.method_get_dry = internal.classdb_get_method_bind(
+      this._bindings.method_get_dry = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -172,10 +173,10 @@ export class AudioEffectReverb extends AudioEffect{
     }
   }
   static init_method_set_wet() {
-    if (!this.#_bindings.method_set_wet) {
+    if (!this._bindings.method_set_wet) {
       let classname = new StringName("AudioEffectReverb");
       let methodname = new StringName("set_wet");
-      this.#_bindings.method_set_wet = internal.classdb_get_method_bind(
+      this._bindings.method_set_wet = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -183,10 +184,10 @@ export class AudioEffectReverb extends AudioEffect{
     }
   }
   static init_method_get_wet() {
-    if (!this.#_bindings.method_get_wet) {
+    if (!this._bindings.method_get_wet) {
       let classname = new StringName("AudioEffectReverb");
       let methodname = new StringName("get_wet");
-      this.#_bindings.method_get_wet = internal.classdb_get_method_bind(
+      this._bindings.method_get_wet = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -194,10 +195,10 @@ export class AudioEffectReverb extends AudioEffect{
     }
   }
   static init_method_set_hpf() {
-    if (!this.#_bindings.method_set_hpf) {
+    if (!this._bindings.method_set_hpf) {
       let classname = new StringName("AudioEffectReverb");
       let methodname = new StringName("set_hpf");
-      this.#_bindings.method_set_hpf = internal.classdb_get_method_bind(
+      this._bindings.method_set_hpf = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -205,10 +206,10 @@ export class AudioEffectReverb extends AudioEffect{
     }
   }
   static init_method_get_hpf() {
-    if (!this.#_bindings.method_get_hpf) {
+    if (!this._bindings.method_get_hpf) {
       let classname = new StringName("AudioEffectReverb");
       let methodname = new StringName("get_hpf");
-      this.#_bindings.method_get_hpf = internal.classdb_get_method_bind(
+      this._bindings.method_get_hpf = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -221,7 +222,7 @@ export class AudioEffectReverb extends AudioEffect{
   set_predelay_msec(_msec) {
     AudioEffectReverb.init_method_set_predelay_msec();
     return _call_native_mb_no_ret(
-      AudioEffectReverb.#_bindings.method_set_predelay_msec,
+      AudioEffectReverb._bindings.method_set_predelay_msec,
       this._owner,
       _msec
     );
@@ -230,7 +231,7 @@ export class AudioEffectReverb extends AudioEffect{
   get_predelay_msec() {
     AudioEffectReverb.init_method_get_predelay_msec();
     return _call_native_mb_ret(
-      AudioEffectReverb.#_bindings.method_get_predelay_msec,
+      AudioEffectReverb._bindings.method_get_predelay_msec,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -241,7 +242,7 @@ export class AudioEffectReverb extends AudioEffect{
   set_predelay_feedback(_feedback) {
     AudioEffectReverb.init_method_set_predelay_feedback();
     return _call_native_mb_no_ret(
-      AudioEffectReverb.#_bindings.method_set_predelay_feedback,
+      AudioEffectReverb._bindings.method_set_predelay_feedback,
       this._owner,
       _feedback
     );
@@ -250,7 +251,7 @@ export class AudioEffectReverb extends AudioEffect{
   get_predelay_feedback() {
     AudioEffectReverb.init_method_get_predelay_feedback();
     return _call_native_mb_ret(
-      AudioEffectReverb.#_bindings.method_get_predelay_feedback,
+      AudioEffectReverb._bindings.method_get_predelay_feedback,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -261,7 +262,7 @@ export class AudioEffectReverb extends AudioEffect{
   set_room_size(_size) {
     AudioEffectReverb.init_method_set_room_size();
     return _call_native_mb_no_ret(
-      AudioEffectReverb.#_bindings.method_set_room_size,
+      AudioEffectReverb._bindings.method_set_room_size,
       this._owner,
       _size
     );
@@ -270,7 +271,7 @@ export class AudioEffectReverb extends AudioEffect{
   get_room_size() {
     AudioEffectReverb.init_method_get_room_size();
     return _call_native_mb_ret(
-      AudioEffectReverb.#_bindings.method_get_room_size,
+      AudioEffectReverb._bindings.method_get_room_size,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -281,7 +282,7 @@ export class AudioEffectReverb extends AudioEffect{
   set_damping(_amount) {
     AudioEffectReverb.init_method_set_damping();
     return _call_native_mb_no_ret(
-      AudioEffectReverb.#_bindings.method_set_damping,
+      AudioEffectReverb._bindings.method_set_damping,
       this._owner,
       _amount
     );
@@ -290,7 +291,7 @@ export class AudioEffectReverb extends AudioEffect{
   get_damping() {
     AudioEffectReverb.init_method_get_damping();
     return _call_native_mb_ret(
-      AudioEffectReverb.#_bindings.method_get_damping,
+      AudioEffectReverb._bindings.method_get_damping,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -301,7 +302,7 @@ export class AudioEffectReverb extends AudioEffect{
   set_spread(_amount) {
     AudioEffectReverb.init_method_set_spread();
     return _call_native_mb_no_ret(
-      AudioEffectReverb.#_bindings.method_set_spread,
+      AudioEffectReverb._bindings.method_set_spread,
       this._owner,
       _amount
     );
@@ -310,7 +311,7 @@ export class AudioEffectReverb extends AudioEffect{
   get_spread() {
     AudioEffectReverb.init_method_get_spread();
     return _call_native_mb_ret(
-      AudioEffectReverb.#_bindings.method_get_spread,
+      AudioEffectReverb._bindings.method_get_spread,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -321,7 +322,7 @@ export class AudioEffectReverb extends AudioEffect{
   set_dry(_amount) {
     AudioEffectReverb.init_method_set_dry();
     return _call_native_mb_no_ret(
-      AudioEffectReverb.#_bindings.method_set_dry,
+      AudioEffectReverb._bindings.method_set_dry,
       this._owner,
       _amount
     );
@@ -330,7 +331,7 @@ export class AudioEffectReverb extends AudioEffect{
   get_dry() {
     AudioEffectReverb.init_method_get_dry();
     return _call_native_mb_ret(
-      AudioEffectReverb.#_bindings.method_get_dry,
+      AudioEffectReverb._bindings.method_get_dry,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -341,7 +342,7 @@ export class AudioEffectReverb extends AudioEffect{
   set_wet(_amount) {
     AudioEffectReverb.init_method_set_wet();
     return _call_native_mb_no_ret(
-      AudioEffectReverb.#_bindings.method_set_wet,
+      AudioEffectReverb._bindings.method_set_wet,
       this._owner,
       _amount
     );
@@ -350,7 +351,7 @@ export class AudioEffectReverb extends AudioEffect{
   get_wet() {
     AudioEffectReverb.init_method_get_wet();
     return _call_native_mb_ret(
-      AudioEffectReverb.#_bindings.method_get_wet,
+      AudioEffectReverb._bindings.method_get_wet,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -361,7 +362,7 @@ export class AudioEffectReverb extends AudioEffect{
   set_hpf(_amount) {
     AudioEffectReverb.init_method_set_hpf();
     return _call_native_mb_no_ret(
-      AudioEffectReverb.#_bindings.method_set_hpf,
+      AudioEffectReverb._bindings.method_set_hpf,
       this._owner,
       _amount
     );
@@ -370,7 +371,7 @@ export class AudioEffectReverb extends AudioEffect{
   get_hpf() {
     AudioEffectReverb.init_method_get_hpf();
     return _call_native_mb_ret(
-      AudioEffectReverb.#_bindings.method_get_hpf,
+      AudioEffectReverb._bindings.method_get_hpf,
       this._owner,
 			Variant.Type.FLOAT,
     

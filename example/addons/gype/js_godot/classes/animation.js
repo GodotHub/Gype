@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_add_track;
@@ -85,10 +86,10 @@ class _MethodBindings {
   method_compress;
   method_is_capture_included;
 }
+@GodotClass
 export class Animation extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -98,10 +99,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_add_track() {
-    if (!this.#_bindings.method_add_track) {
+    if (!this._bindings.method_add_track) {
       let classname = new StringName("Animation");
       let methodname = new StringName("add_track");
-      this.#_bindings.method_add_track = internal.classdb_get_method_bind(
+      this._bindings.method_add_track = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3843682357
@@ -109,10 +110,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_remove_track() {
-    if (!this.#_bindings.method_remove_track) {
+    if (!this._bindings.method_remove_track) {
       let classname = new StringName("Animation");
       let methodname = new StringName("remove_track");
-      this.#_bindings.method_remove_track = internal.classdb_get_method_bind(
+      this._bindings.method_remove_track = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -120,10 +121,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_get_track_count() {
-    if (!this.#_bindings.method_get_track_count) {
+    if (!this._bindings.method_get_track_count) {
       let classname = new StringName("Animation");
       let methodname = new StringName("get_track_count");
-      this.#_bindings.method_get_track_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_track_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -131,10 +132,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_get_type() {
-    if (!this.#_bindings.method_track_get_type) {
+    if (!this._bindings.method_track_get_type) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_get_type");
-      this.#_bindings.method_track_get_type = internal.classdb_get_method_bind(
+      this._bindings.method_track_get_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3445944217
@@ -142,10 +143,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_get_path() {
-    if (!this.#_bindings.method_track_get_path) {
+    if (!this._bindings.method_track_get_path) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_get_path");
-      this.#_bindings.method_track_get_path = internal.classdb_get_method_bind(
+      this._bindings.method_track_get_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         408788394
@@ -153,10 +154,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_set_path() {
-    if (!this.#_bindings.method_track_set_path) {
+    if (!this._bindings.method_track_set_path) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_set_path");
-      this.#_bindings.method_track_set_path = internal.classdb_get_method_bind(
+      this._bindings.method_track_set_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2761262315
@@ -164,10 +165,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_find_track() {
-    if (!this.#_bindings.method_find_track) {
+    if (!this._bindings.method_find_track) {
       let classname = new StringName("Animation");
       let methodname = new StringName("find_track");
-      this.#_bindings.method_find_track = internal.classdb_get_method_bind(
+      this._bindings.method_find_track = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         245376003
@@ -175,10 +176,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_move_up() {
-    if (!this.#_bindings.method_track_move_up) {
+    if (!this._bindings.method_track_move_up) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_move_up");
-      this.#_bindings.method_track_move_up = internal.classdb_get_method_bind(
+      this._bindings.method_track_move_up = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -186,10 +187,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_move_down() {
-    if (!this.#_bindings.method_track_move_down) {
+    if (!this._bindings.method_track_move_down) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_move_down");
-      this.#_bindings.method_track_move_down = internal.classdb_get_method_bind(
+      this._bindings.method_track_move_down = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -197,10 +198,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_move_to() {
-    if (!this.#_bindings.method_track_move_to) {
+    if (!this._bindings.method_track_move_to) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_move_to");
-      this.#_bindings.method_track_move_to = internal.classdb_get_method_bind(
+      this._bindings.method_track_move_to = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -208,10 +209,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_swap() {
-    if (!this.#_bindings.method_track_swap) {
+    if (!this._bindings.method_track_swap) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_swap");
-      this.#_bindings.method_track_swap = internal.classdb_get_method_bind(
+      this._bindings.method_track_swap = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -219,10 +220,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_set_imported() {
-    if (!this.#_bindings.method_track_set_imported) {
+    if (!this._bindings.method_track_set_imported) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_set_imported");
-      this.#_bindings.method_track_set_imported = internal.classdb_get_method_bind(
+      this._bindings.method_track_set_imported = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -230,10 +231,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_is_imported() {
-    if (!this.#_bindings.method_track_is_imported) {
+    if (!this._bindings.method_track_is_imported) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_is_imported");
-      this.#_bindings.method_track_is_imported = internal.classdb_get_method_bind(
+      this._bindings.method_track_is_imported = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -241,10 +242,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_set_enabled() {
-    if (!this.#_bindings.method_track_set_enabled) {
+    if (!this._bindings.method_track_set_enabled) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_set_enabled");
-      this.#_bindings.method_track_set_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_track_set_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -252,10 +253,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_is_enabled() {
-    if (!this.#_bindings.method_track_is_enabled) {
+    if (!this._bindings.method_track_is_enabled) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_is_enabled");
-      this.#_bindings.method_track_is_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_track_is_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -263,10 +264,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_position_track_insert_key() {
-    if (!this.#_bindings.method_position_track_insert_key) {
+    if (!this._bindings.method_position_track_insert_key) {
       let classname = new StringName("Animation");
       let methodname = new StringName("position_track_insert_key");
-      this.#_bindings.method_position_track_insert_key = internal.classdb_get_method_bind(
+      this._bindings.method_position_track_insert_key = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2540608232
@@ -274,10 +275,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_rotation_track_insert_key() {
-    if (!this.#_bindings.method_rotation_track_insert_key) {
+    if (!this._bindings.method_rotation_track_insert_key) {
       let classname = new StringName("Animation");
       let methodname = new StringName("rotation_track_insert_key");
-      this.#_bindings.method_rotation_track_insert_key = internal.classdb_get_method_bind(
+      this._bindings.method_rotation_track_insert_key = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4165004800
@@ -285,10 +286,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_scale_track_insert_key() {
-    if (!this.#_bindings.method_scale_track_insert_key) {
+    if (!this._bindings.method_scale_track_insert_key) {
       let classname = new StringName("Animation");
       let methodname = new StringName("scale_track_insert_key");
-      this.#_bindings.method_scale_track_insert_key = internal.classdb_get_method_bind(
+      this._bindings.method_scale_track_insert_key = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2540608232
@@ -296,10 +297,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_blend_shape_track_insert_key() {
-    if (!this.#_bindings.method_blend_shape_track_insert_key) {
+    if (!this._bindings.method_blend_shape_track_insert_key) {
       let classname = new StringName("Animation");
       let methodname = new StringName("blend_shape_track_insert_key");
-      this.#_bindings.method_blend_shape_track_insert_key = internal.classdb_get_method_bind(
+      this._bindings.method_blend_shape_track_insert_key = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1534913637
@@ -307,10 +308,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_position_track_interpolate() {
-    if (!this.#_bindings.method_position_track_interpolate) {
+    if (!this._bindings.method_position_track_interpolate) {
       let classname = new StringName("Animation");
       let methodname = new StringName("position_track_interpolate");
-      this.#_bindings.method_position_track_interpolate = internal.classdb_get_method_bind(
+      this._bindings.method_position_track_interpolate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3530011197
@@ -318,10 +319,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_rotation_track_interpolate() {
-    if (!this.#_bindings.method_rotation_track_interpolate) {
+    if (!this._bindings.method_rotation_track_interpolate) {
       let classname = new StringName("Animation");
       let methodname = new StringName("rotation_track_interpolate");
-      this.#_bindings.method_rotation_track_interpolate = internal.classdb_get_method_bind(
+      this._bindings.method_rotation_track_interpolate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2915876792
@@ -329,10 +330,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_scale_track_interpolate() {
-    if (!this.#_bindings.method_scale_track_interpolate) {
+    if (!this._bindings.method_scale_track_interpolate) {
       let classname = new StringName("Animation");
       let methodname = new StringName("scale_track_interpolate");
-      this.#_bindings.method_scale_track_interpolate = internal.classdb_get_method_bind(
+      this._bindings.method_scale_track_interpolate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3530011197
@@ -340,10 +341,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_blend_shape_track_interpolate() {
-    if (!this.#_bindings.method_blend_shape_track_interpolate) {
+    if (!this._bindings.method_blend_shape_track_interpolate) {
       let classname = new StringName("Animation");
       let methodname = new StringName("blend_shape_track_interpolate");
-      this.#_bindings.method_blend_shape_track_interpolate = internal.classdb_get_method_bind(
+      this._bindings.method_blend_shape_track_interpolate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2482365182
@@ -351,10 +352,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_insert_key() {
-    if (!this.#_bindings.method_track_insert_key) {
+    if (!this._bindings.method_track_insert_key) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_insert_key");
-      this.#_bindings.method_track_insert_key = internal.classdb_get_method_bind(
+      this._bindings.method_track_insert_key = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         808952278
@@ -362,10 +363,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_remove_key() {
-    if (!this.#_bindings.method_track_remove_key) {
+    if (!this._bindings.method_track_remove_key) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_remove_key");
-      this.#_bindings.method_track_remove_key = internal.classdb_get_method_bind(
+      this._bindings.method_track_remove_key = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -373,10 +374,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_remove_key_at_time() {
-    if (!this.#_bindings.method_track_remove_key_at_time) {
+    if (!this._bindings.method_track_remove_key_at_time) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_remove_key_at_time");
-      this.#_bindings.method_track_remove_key_at_time = internal.classdb_get_method_bind(
+      this._bindings.method_track_remove_key_at_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1602489585
@@ -384,10 +385,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_set_key_value() {
-    if (!this.#_bindings.method_track_set_key_value) {
+    if (!this._bindings.method_track_set_key_value) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_set_key_value");
-      this.#_bindings.method_track_set_key_value = internal.classdb_get_method_bind(
+      this._bindings.method_track_set_key_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2060538656
@@ -395,10 +396,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_set_key_transition() {
-    if (!this.#_bindings.method_track_set_key_transition) {
+    if (!this._bindings.method_track_set_key_transition) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_set_key_transition");
-      this.#_bindings.method_track_set_key_transition = internal.classdb_get_method_bind(
+      this._bindings.method_track_set_key_transition = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3506521499
@@ -406,10 +407,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_set_key_time() {
-    if (!this.#_bindings.method_track_set_key_time) {
+    if (!this._bindings.method_track_set_key_time) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_set_key_time");
-      this.#_bindings.method_track_set_key_time = internal.classdb_get_method_bind(
+      this._bindings.method_track_set_key_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3506521499
@@ -417,10 +418,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_get_key_transition() {
-    if (!this.#_bindings.method_track_get_key_transition) {
+    if (!this._bindings.method_track_get_key_transition) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_get_key_transition");
-      this.#_bindings.method_track_get_key_transition = internal.classdb_get_method_bind(
+      this._bindings.method_track_get_key_transition = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3085491603
@@ -428,10 +429,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_get_key_count() {
-    if (!this.#_bindings.method_track_get_key_count) {
+    if (!this._bindings.method_track_get_key_count) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_get_key_count");
-      this.#_bindings.method_track_get_key_count = internal.classdb_get_method_bind(
+      this._bindings.method_track_get_key_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         923996154
@@ -439,10 +440,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_get_key_value() {
-    if (!this.#_bindings.method_track_get_key_value) {
+    if (!this._bindings.method_track_get_key_value) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_get_key_value");
-      this.#_bindings.method_track_get_key_value = internal.classdb_get_method_bind(
+      this._bindings.method_track_get_key_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         678354945
@@ -450,10 +451,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_get_key_time() {
-    if (!this.#_bindings.method_track_get_key_time) {
+    if (!this._bindings.method_track_get_key_time) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_get_key_time");
-      this.#_bindings.method_track_get_key_time = internal.classdb_get_method_bind(
+      this._bindings.method_track_get_key_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3085491603
@@ -461,10 +462,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_find_key() {
-    if (!this.#_bindings.method_track_find_key) {
+    if (!this._bindings.method_track_find_key) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_find_key");
-      this.#_bindings.method_track_find_key = internal.classdb_get_method_bind(
+      this._bindings.method_track_find_key = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4230953007
@@ -472,10 +473,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_set_interpolation_type() {
-    if (!this.#_bindings.method_track_set_interpolation_type) {
+    if (!this._bindings.method_track_set_interpolation_type) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_set_interpolation_type");
-      this.#_bindings.method_track_set_interpolation_type = internal.classdb_get_method_bind(
+      this._bindings.method_track_set_interpolation_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4112932513
@@ -483,10 +484,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_get_interpolation_type() {
-    if (!this.#_bindings.method_track_get_interpolation_type) {
+    if (!this._bindings.method_track_get_interpolation_type) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_get_interpolation_type");
-      this.#_bindings.method_track_get_interpolation_type = internal.classdb_get_method_bind(
+      this._bindings.method_track_get_interpolation_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1530756894
@@ -494,10 +495,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_set_interpolation_loop_wrap() {
-    if (!this.#_bindings.method_track_set_interpolation_loop_wrap) {
+    if (!this._bindings.method_track_set_interpolation_loop_wrap) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_set_interpolation_loop_wrap");
-      this.#_bindings.method_track_set_interpolation_loop_wrap = internal.classdb_get_method_bind(
+      this._bindings.method_track_set_interpolation_loop_wrap = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -505,10 +506,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_get_interpolation_loop_wrap() {
-    if (!this.#_bindings.method_track_get_interpolation_loop_wrap) {
+    if (!this._bindings.method_track_get_interpolation_loop_wrap) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_get_interpolation_loop_wrap");
-      this.#_bindings.method_track_get_interpolation_loop_wrap = internal.classdb_get_method_bind(
+      this._bindings.method_track_get_interpolation_loop_wrap = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -516,10 +517,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_track_is_compressed() {
-    if (!this.#_bindings.method_track_is_compressed) {
+    if (!this._bindings.method_track_is_compressed) {
       let classname = new StringName("Animation");
       let methodname = new StringName("track_is_compressed");
-      this.#_bindings.method_track_is_compressed = internal.classdb_get_method_bind(
+      this._bindings.method_track_is_compressed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -527,10 +528,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_value_track_set_update_mode() {
-    if (!this.#_bindings.method_value_track_set_update_mode) {
+    if (!this._bindings.method_value_track_set_update_mode) {
       let classname = new StringName("Animation");
       let methodname = new StringName("value_track_set_update_mode");
-      this.#_bindings.method_value_track_set_update_mode = internal.classdb_get_method_bind(
+      this._bindings.method_value_track_set_update_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2854058312
@@ -538,10 +539,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_value_track_get_update_mode() {
-    if (!this.#_bindings.method_value_track_get_update_mode) {
+    if (!this._bindings.method_value_track_get_update_mode) {
       let classname = new StringName("Animation");
       let methodname = new StringName("value_track_get_update_mode");
-      this.#_bindings.method_value_track_get_update_mode = internal.classdb_get_method_bind(
+      this._bindings.method_value_track_get_update_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1440326473
@@ -549,10 +550,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_value_track_interpolate() {
-    if (!this.#_bindings.method_value_track_interpolate) {
+    if (!this._bindings.method_value_track_interpolate) {
       let classname = new StringName("Animation");
       let methodname = new StringName("value_track_interpolate");
-      this.#_bindings.method_value_track_interpolate = internal.classdb_get_method_bind(
+      this._bindings.method_value_track_interpolate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         747269075
@@ -560,10 +561,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_method_track_get_name() {
-    if (!this.#_bindings.method_method_track_get_name) {
+    if (!this._bindings.method_method_track_get_name) {
       let classname = new StringName("Animation");
       let methodname = new StringName("method_track_get_name");
-      this.#_bindings.method_method_track_get_name = internal.classdb_get_method_bind(
+      this._bindings.method_method_track_get_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         351665558
@@ -571,10 +572,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_method_track_get_params() {
-    if (!this.#_bindings.method_method_track_get_params) {
+    if (!this._bindings.method_method_track_get_params) {
       let classname = new StringName("Animation");
       let methodname = new StringName("method_track_get_params");
-      this.#_bindings.method_method_track_get_params = internal.classdb_get_method_bind(
+      this._bindings.method_method_track_get_params = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2345056839
@@ -582,10 +583,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_bezier_track_insert_key() {
-    if (!this.#_bindings.method_bezier_track_insert_key) {
+    if (!this._bindings.method_bezier_track_insert_key) {
       let classname = new StringName("Animation");
       let methodname = new StringName("bezier_track_insert_key");
-      this.#_bindings.method_bezier_track_insert_key = internal.classdb_get_method_bind(
+      this._bindings.method_bezier_track_insert_key = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3656773645
@@ -593,10 +594,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_bezier_track_set_key_value() {
-    if (!this.#_bindings.method_bezier_track_set_key_value) {
+    if (!this._bindings.method_bezier_track_set_key_value) {
       let classname = new StringName("Animation");
       let methodname = new StringName("bezier_track_set_key_value");
-      this.#_bindings.method_bezier_track_set_key_value = internal.classdb_get_method_bind(
+      this._bindings.method_bezier_track_set_key_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3506521499
@@ -604,10 +605,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_bezier_track_set_key_in_handle() {
-    if (!this.#_bindings.method_bezier_track_set_key_in_handle) {
+    if (!this._bindings.method_bezier_track_set_key_in_handle) {
       let classname = new StringName("Animation");
       let methodname = new StringName("bezier_track_set_key_in_handle");
-      this.#_bindings.method_bezier_track_set_key_in_handle = internal.classdb_get_method_bind(
+      this._bindings.method_bezier_track_set_key_in_handle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1719223284
@@ -615,10 +616,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_bezier_track_set_key_out_handle() {
-    if (!this.#_bindings.method_bezier_track_set_key_out_handle) {
+    if (!this._bindings.method_bezier_track_set_key_out_handle) {
       let classname = new StringName("Animation");
       let methodname = new StringName("bezier_track_set_key_out_handle");
-      this.#_bindings.method_bezier_track_set_key_out_handle = internal.classdb_get_method_bind(
+      this._bindings.method_bezier_track_set_key_out_handle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1719223284
@@ -626,10 +627,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_bezier_track_get_key_value() {
-    if (!this.#_bindings.method_bezier_track_get_key_value) {
+    if (!this._bindings.method_bezier_track_get_key_value) {
       let classname = new StringName("Animation");
       let methodname = new StringName("bezier_track_get_key_value");
-      this.#_bindings.method_bezier_track_get_key_value = internal.classdb_get_method_bind(
+      this._bindings.method_bezier_track_get_key_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3085491603
@@ -637,10 +638,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_bezier_track_get_key_in_handle() {
-    if (!this.#_bindings.method_bezier_track_get_key_in_handle) {
+    if (!this._bindings.method_bezier_track_get_key_in_handle) {
       let classname = new StringName("Animation");
       let methodname = new StringName("bezier_track_get_key_in_handle");
-      this.#_bindings.method_bezier_track_get_key_in_handle = internal.classdb_get_method_bind(
+      this._bindings.method_bezier_track_get_key_in_handle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3016396712
@@ -648,10 +649,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_bezier_track_get_key_out_handle() {
-    if (!this.#_bindings.method_bezier_track_get_key_out_handle) {
+    if (!this._bindings.method_bezier_track_get_key_out_handle) {
       let classname = new StringName("Animation");
       let methodname = new StringName("bezier_track_get_key_out_handle");
-      this.#_bindings.method_bezier_track_get_key_out_handle = internal.classdb_get_method_bind(
+      this._bindings.method_bezier_track_get_key_out_handle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3016396712
@@ -659,10 +660,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_bezier_track_interpolate() {
-    if (!this.#_bindings.method_bezier_track_interpolate) {
+    if (!this._bindings.method_bezier_track_interpolate) {
       let classname = new StringName("Animation");
       let methodname = new StringName("bezier_track_interpolate");
-      this.#_bindings.method_bezier_track_interpolate = internal.classdb_get_method_bind(
+      this._bindings.method_bezier_track_interpolate = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1900462983
@@ -670,10 +671,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_audio_track_insert_key() {
-    if (!this.#_bindings.method_audio_track_insert_key) {
+    if (!this._bindings.method_audio_track_insert_key) {
       let classname = new StringName("Animation");
       let methodname = new StringName("audio_track_insert_key");
-      this.#_bindings.method_audio_track_insert_key = internal.classdb_get_method_bind(
+      this._bindings.method_audio_track_insert_key = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4021027286
@@ -681,10 +682,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_audio_track_set_key_stream() {
-    if (!this.#_bindings.method_audio_track_set_key_stream) {
+    if (!this._bindings.method_audio_track_set_key_stream) {
       let classname = new StringName("Animation");
       let methodname = new StringName("audio_track_set_key_stream");
-      this.#_bindings.method_audio_track_set_key_stream = internal.classdb_get_method_bind(
+      this._bindings.method_audio_track_set_key_stream = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3886397084
@@ -692,10 +693,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_audio_track_set_key_start_offset() {
-    if (!this.#_bindings.method_audio_track_set_key_start_offset) {
+    if (!this._bindings.method_audio_track_set_key_start_offset) {
       let classname = new StringName("Animation");
       let methodname = new StringName("audio_track_set_key_start_offset");
-      this.#_bindings.method_audio_track_set_key_start_offset = internal.classdb_get_method_bind(
+      this._bindings.method_audio_track_set_key_start_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3506521499
@@ -703,10 +704,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_audio_track_set_key_end_offset() {
-    if (!this.#_bindings.method_audio_track_set_key_end_offset) {
+    if (!this._bindings.method_audio_track_set_key_end_offset) {
       let classname = new StringName("Animation");
       let methodname = new StringName("audio_track_set_key_end_offset");
-      this.#_bindings.method_audio_track_set_key_end_offset = internal.classdb_get_method_bind(
+      this._bindings.method_audio_track_set_key_end_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3506521499
@@ -714,10 +715,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_audio_track_get_key_stream() {
-    if (!this.#_bindings.method_audio_track_get_key_stream) {
+    if (!this._bindings.method_audio_track_get_key_stream) {
       let classname = new StringName("Animation");
       let methodname = new StringName("audio_track_get_key_stream");
-      this.#_bindings.method_audio_track_get_key_stream = internal.classdb_get_method_bind(
+      this._bindings.method_audio_track_get_key_stream = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         635277205
@@ -725,10 +726,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_audio_track_get_key_start_offset() {
-    if (!this.#_bindings.method_audio_track_get_key_start_offset) {
+    if (!this._bindings.method_audio_track_get_key_start_offset) {
       let classname = new StringName("Animation");
       let methodname = new StringName("audio_track_get_key_start_offset");
-      this.#_bindings.method_audio_track_get_key_start_offset = internal.classdb_get_method_bind(
+      this._bindings.method_audio_track_get_key_start_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3085491603
@@ -736,10 +737,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_audio_track_get_key_end_offset() {
-    if (!this.#_bindings.method_audio_track_get_key_end_offset) {
+    if (!this._bindings.method_audio_track_get_key_end_offset) {
       let classname = new StringName("Animation");
       let methodname = new StringName("audio_track_get_key_end_offset");
-      this.#_bindings.method_audio_track_get_key_end_offset = internal.classdb_get_method_bind(
+      this._bindings.method_audio_track_get_key_end_offset = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3085491603
@@ -747,10 +748,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_audio_track_set_use_blend() {
-    if (!this.#_bindings.method_audio_track_set_use_blend) {
+    if (!this._bindings.method_audio_track_set_use_blend) {
       let classname = new StringName("Animation");
       let methodname = new StringName("audio_track_set_use_blend");
-      this.#_bindings.method_audio_track_set_use_blend = internal.classdb_get_method_bind(
+      this._bindings.method_audio_track_set_use_blend = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -758,10 +759,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_audio_track_is_use_blend() {
-    if (!this.#_bindings.method_audio_track_is_use_blend) {
+    if (!this._bindings.method_audio_track_is_use_blend) {
       let classname = new StringName("Animation");
       let methodname = new StringName("audio_track_is_use_blend");
-      this.#_bindings.method_audio_track_is_use_blend = internal.classdb_get_method_bind(
+      this._bindings.method_audio_track_is_use_blend = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -769,10 +770,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_animation_track_insert_key() {
-    if (!this.#_bindings.method_animation_track_insert_key) {
+    if (!this._bindings.method_animation_track_insert_key) {
       let classname = new StringName("Animation");
       let methodname = new StringName("animation_track_insert_key");
-      this.#_bindings.method_animation_track_insert_key = internal.classdb_get_method_bind(
+      this._bindings.method_animation_track_insert_key = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         158676774
@@ -780,10 +781,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_animation_track_set_key_animation() {
-    if (!this.#_bindings.method_animation_track_set_key_animation) {
+    if (!this._bindings.method_animation_track_set_key_animation) {
       let classname = new StringName("Animation");
       let methodname = new StringName("animation_track_set_key_animation");
-      this.#_bindings.method_animation_track_set_key_animation = internal.classdb_get_method_bind(
+      this._bindings.method_animation_track_set_key_animation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         117615382
@@ -791,10 +792,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_animation_track_get_key_animation() {
-    if (!this.#_bindings.method_animation_track_get_key_animation) {
+    if (!this._bindings.method_animation_track_get_key_animation) {
       let classname = new StringName("Animation");
       let methodname = new StringName("animation_track_get_key_animation");
-      this.#_bindings.method_animation_track_get_key_animation = internal.classdb_get_method_bind(
+      this._bindings.method_animation_track_get_key_animation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         351665558
@@ -802,10 +803,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_set_length() {
-    if (!this.#_bindings.method_set_length) {
+    if (!this._bindings.method_set_length) {
       let classname = new StringName("Animation");
       let methodname = new StringName("set_length");
-      this.#_bindings.method_set_length = internal.classdb_get_method_bind(
+      this._bindings.method_set_length = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -813,10 +814,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_get_length() {
-    if (!this.#_bindings.method_get_length) {
+    if (!this._bindings.method_get_length) {
       let classname = new StringName("Animation");
       let methodname = new StringName("get_length");
-      this.#_bindings.method_get_length = internal.classdb_get_method_bind(
+      this._bindings.method_get_length = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -824,10 +825,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_set_loop_mode() {
-    if (!this.#_bindings.method_set_loop_mode) {
+    if (!this._bindings.method_set_loop_mode) {
       let classname = new StringName("Animation");
       let methodname = new StringName("set_loop_mode");
-      this.#_bindings.method_set_loop_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_loop_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3155355575
@@ -835,10 +836,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_get_loop_mode() {
-    if (!this.#_bindings.method_get_loop_mode) {
+    if (!this._bindings.method_get_loop_mode) {
       let classname = new StringName("Animation");
       let methodname = new StringName("get_loop_mode");
-      this.#_bindings.method_get_loop_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_loop_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1988889481
@@ -846,10 +847,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_set_step() {
-    if (!this.#_bindings.method_set_step) {
+    if (!this._bindings.method_set_step) {
       let classname = new StringName("Animation");
       let methodname = new StringName("set_step");
-      this.#_bindings.method_set_step = internal.classdb_get_method_bind(
+      this._bindings.method_set_step = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -857,10 +858,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_get_step() {
-    if (!this.#_bindings.method_get_step) {
+    if (!this._bindings.method_get_step) {
       let classname = new StringName("Animation");
       let methodname = new StringName("get_step");
-      this.#_bindings.method_get_step = internal.classdb_get_method_bind(
+      this._bindings.method_get_step = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -868,10 +869,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_clear() {
-    if (!this.#_bindings.method_clear) {
+    if (!this._bindings.method_clear) {
       let classname = new StringName("Animation");
       let methodname = new StringName("clear");
-      this.#_bindings.method_clear = internal.classdb_get_method_bind(
+      this._bindings.method_clear = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -879,10 +880,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_copy_track() {
-    if (!this.#_bindings.method_copy_track) {
+    if (!this._bindings.method_copy_track) {
       let classname = new StringName("Animation");
       let methodname = new StringName("copy_track");
-      this.#_bindings.method_copy_track = internal.classdb_get_method_bind(
+      this._bindings.method_copy_track = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         148001024
@@ -890,10 +891,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_compress() {
-    if (!this.#_bindings.method_compress) {
+    if (!this._bindings.method_compress) {
       let classname = new StringName("Animation");
       let methodname = new StringName("compress");
-      this.#_bindings.method_compress = internal.classdb_get_method_bind(
+      this._bindings.method_compress = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3608408117
@@ -901,10 +902,10 @@ export class Animation extends Resource{
     }
   }
   static init_method_is_capture_included() {
-    if (!this.#_bindings.method_is_capture_included) {
+    if (!this._bindings.method_is_capture_included) {
       let classname = new StringName("Animation");
       let methodname = new StringName("is_capture_included");
-      this.#_bindings.method_is_capture_included = internal.classdb_get_method_bind(
+      this._bindings.method_is_capture_included = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -917,7 +918,7 @@ export class Animation extends Resource{
   add_track(_type, _at_position) {
     Animation.init_method_add_track();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_add_track,
+      Animation._bindings.method_add_track,
       this._owner,
 			Variant.Type.INT,
     
@@ -928,7 +929,7 @@ export class Animation extends Resource{
   remove_track(_track_idx) {
     Animation.init_method_remove_track();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_remove_track,
+      Animation._bindings.method_remove_track,
       this._owner,
       _track_idx
     );
@@ -937,7 +938,7 @@ export class Animation extends Resource{
   get_track_count() {
     Animation.init_method_get_track_count();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_get_track_count,
+      Animation._bindings.method_get_track_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -948,7 +949,7 @@ export class Animation extends Resource{
   track_get_type(_track_idx) {
     Animation.init_method_track_get_type();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_track_get_type,
+      Animation._bindings.method_track_get_type,
       this._owner,
 			Variant.Type.INT,
     
@@ -959,7 +960,7 @@ export class Animation extends Resource{
   track_get_path(_track_idx) {
     Animation.init_method_track_get_path();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_track_get_path,
+      Animation._bindings.method_track_get_path,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -970,7 +971,7 @@ export class Animation extends Resource{
   track_set_path(_track_idx, _path) {
     Animation.init_method_track_set_path();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_track_set_path,
+      Animation._bindings.method_track_set_path,
       this._owner,
       _track_idx, _path
     );
@@ -979,7 +980,7 @@ export class Animation extends Resource{
   find_track(_path, _type) {
     Animation.init_method_find_track();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_find_track,
+      Animation._bindings.method_find_track,
       this._owner,
 			Variant.Type.INT,
     
@@ -990,7 +991,7 @@ export class Animation extends Resource{
   track_move_up(_track_idx) {
     Animation.init_method_track_move_up();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_track_move_up,
+      Animation._bindings.method_track_move_up,
       this._owner,
       _track_idx
     );
@@ -999,7 +1000,7 @@ export class Animation extends Resource{
   track_move_down(_track_idx) {
     Animation.init_method_track_move_down();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_track_move_down,
+      Animation._bindings.method_track_move_down,
       this._owner,
       _track_idx
     );
@@ -1008,7 +1009,7 @@ export class Animation extends Resource{
   track_move_to(_track_idx, _to_idx) {
     Animation.init_method_track_move_to();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_track_move_to,
+      Animation._bindings.method_track_move_to,
       this._owner,
       _track_idx, _to_idx
     );
@@ -1017,7 +1018,7 @@ export class Animation extends Resource{
   track_swap(_track_idx, _with_idx) {
     Animation.init_method_track_swap();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_track_swap,
+      Animation._bindings.method_track_swap,
       this._owner,
       _track_idx, _with_idx
     );
@@ -1026,7 +1027,7 @@ export class Animation extends Resource{
   track_set_imported(_track_idx, _imported) {
     Animation.init_method_track_set_imported();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_track_set_imported,
+      Animation._bindings.method_track_set_imported,
       this._owner,
       _track_idx, _imported
     );
@@ -1035,7 +1036,7 @@ export class Animation extends Resource{
   track_is_imported(_track_idx) {
     Animation.init_method_track_is_imported();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_track_is_imported,
+      Animation._bindings.method_track_is_imported,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1046,7 +1047,7 @@ export class Animation extends Resource{
   track_set_enabled(_track_idx, _enabled) {
     Animation.init_method_track_set_enabled();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_track_set_enabled,
+      Animation._bindings.method_track_set_enabled,
       this._owner,
       _track_idx, _enabled
     );
@@ -1055,7 +1056,7 @@ export class Animation extends Resource{
   track_is_enabled(_track_idx) {
     Animation.init_method_track_is_enabled();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_track_is_enabled,
+      Animation._bindings.method_track_is_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1066,7 +1067,7 @@ export class Animation extends Resource{
   position_track_insert_key(_track_idx, _time, _position) {
     Animation.init_method_position_track_insert_key();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_position_track_insert_key,
+      Animation._bindings.method_position_track_insert_key,
       this._owner,
 			Variant.Type.INT,
     
@@ -1077,7 +1078,7 @@ export class Animation extends Resource{
   rotation_track_insert_key(_track_idx, _time, _rotation) {
     Animation.init_method_rotation_track_insert_key();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_rotation_track_insert_key,
+      Animation._bindings.method_rotation_track_insert_key,
       this._owner,
 			Variant.Type.INT,
     
@@ -1088,7 +1089,7 @@ export class Animation extends Resource{
   scale_track_insert_key(_track_idx, _time, _scale) {
     Animation.init_method_scale_track_insert_key();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_scale_track_insert_key,
+      Animation._bindings.method_scale_track_insert_key,
       this._owner,
 			Variant.Type.INT,
     
@@ -1099,7 +1100,7 @@ export class Animation extends Resource{
   blend_shape_track_insert_key(_track_idx, _time, _amount) {
     Animation.init_method_blend_shape_track_insert_key();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_blend_shape_track_insert_key,
+      Animation._bindings.method_blend_shape_track_insert_key,
       this._owner,
 			Variant.Type.INT,
     
@@ -1110,7 +1111,7 @@ export class Animation extends Resource{
   position_track_interpolate(_track_idx, _time_sec, _backward) {
     Animation.init_method_position_track_interpolate();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_position_track_interpolate,
+      Animation._bindings.method_position_track_interpolate,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1121,7 +1122,7 @@ export class Animation extends Resource{
   rotation_track_interpolate(_track_idx, _time_sec, _backward) {
     Animation.init_method_rotation_track_interpolate();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_rotation_track_interpolate,
+      Animation._bindings.method_rotation_track_interpolate,
       this._owner,
 			Variant.Type.QUATERNION,
     
@@ -1132,7 +1133,7 @@ export class Animation extends Resource{
   scale_track_interpolate(_track_idx, _time_sec, _backward) {
     Animation.init_method_scale_track_interpolate();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_scale_track_interpolate,
+      Animation._bindings.method_scale_track_interpolate,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1143,7 +1144,7 @@ export class Animation extends Resource{
   blend_shape_track_interpolate(_track_idx, _time_sec, _backward) {
     Animation.init_method_blend_shape_track_interpolate();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_blend_shape_track_interpolate,
+      Animation._bindings.method_blend_shape_track_interpolate,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1154,7 +1155,7 @@ export class Animation extends Resource{
   track_insert_key(_track_idx, _time, _key, _transition) {
     Animation.init_method_track_insert_key();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_track_insert_key,
+      Animation._bindings.method_track_insert_key,
       this._owner,
 			Variant.Type.INT,
     
@@ -1165,7 +1166,7 @@ export class Animation extends Resource{
   track_remove_key(_track_idx, _key_idx) {
     Animation.init_method_track_remove_key();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_track_remove_key,
+      Animation._bindings.method_track_remove_key,
       this._owner,
       _track_idx, _key_idx
     );
@@ -1174,7 +1175,7 @@ export class Animation extends Resource{
   track_remove_key_at_time(_track_idx, _time) {
     Animation.init_method_track_remove_key_at_time();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_track_remove_key_at_time,
+      Animation._bindings.method_track_remove_key_at_time,
       this._owner,
       _track_idx, _time
     );
@@ -1183,7 +1184,7 @@ export class Animation extends Resource{
   track_set_key_value(_track_idx, _key, _value) {
     Animation.init_method_track_set_key_value();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_track_set_key_value,
+      Animation._bindings.method_track_set_key_value,
       this._owner,
       _track_idx, _key, _value
     );
@@ -1192,7 +1193,7 @@ export class Animation extends Resource{
   track_set_key_transition(_track_idx, _key_idx, _transition) {
     Animation.init_method_track_set_key_transition();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_track_set_key_transition,
+      Animation._bindings.method_track_set_key_transition,
       this._owner,
       _track_idx, _key_idx, _transition
     );
@@ -1201,7 +1202,7 @@ export class Animation extends Resource{
   track_set_key_time(_track_idx, _key_idx, _time) {
     Animation.init_method_track_set_key_time();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_track_set_key_time,
+      Animation._bindings.method_track_set_key_time,
       this._owner,
       _track_idx, _key_idx, _time
     );
@@ -1210,7 +1211,7 @@ export class Animation extends Resource{
   track_get_key_transition(_track_idx, _key_idx) {
     Animation.init_method_track_get_key_transition();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_track_get_key_transition,
+      Animation._bindings.method_track_get_key_transition,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1221,7 +1222,7 @@ export class Animation extends Resource{
   track_get_key_count(_track_idx) {
     Animation.init_method_track_get_key_count();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_track_get_key_count,
+      Animation._bindings.method_track_get_key_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -1232,7 +1233,7 @@ export class Animation extends Resource{
   track_get_key_value(_track_idx, _key_idx) {
     Animation.init_method_track_get_key_value();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_track_get_key_value,
+      Animation._bindings.method_track_get_key_value,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -1243,7 +1244,7 @@ export class Animation extends Resource{
   track_get_key_time(_track_idx, _key_idx) {
     Animation.init_method_track_get_key_time();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_track_get_key_time,
+      Animation._bindings.method_track_get_key_time,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1254,7 +1255,7 @@ export class Animation extends Resource{
   track_find_key(_track_idx, _time, _find_mode, _limit, _backward) {
     Animation.init_method_track_find_key();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_track_find_key,
+      Animation._bindings.method_track_find_key,
       this._owner,
 			Variant.Type.INT,
     
@@ -1265,7 +1266,7 @@ export class Animation extends Resource{
   track_set_interpolation_type(_track_idx, _interpolation) {
     Animation.init_method_track_set_interpolation_type();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_track_set_interpolation_type,
+      Animation._bindings.method_track_set_interpolation_type,
       this._owner,
       _track_idx, _interpolation
     );
@@ -1274,7 +1275,7 @@ export class Animation extends Resource{
   track_get_interpolation_type(_track_idx) {
     Animation.init_method_track_get_interpolation_type();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_track_get_interpolation_type,
+      Animation._bindings.method_track_get_interpolation_type,
       this._owner,
 			Variant.Type.INT,
     
@@ -1285,7 +1286,7 @@ export class Animation extends Resource{
   track_set_interpolation_loop_wrap(_track_idx, _interpolation) {
     Animation.init_method_track_set_interpolation_loop_wrap();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_track_set_interpolation_loop_wrap,
+      Animation._bindings.method_track_set_interpolation_loop_wrap,
       this._owner,
       _track_idx, _interpolation
     );
@@ -1294,7 +1295,7 @@ export class Animation extends Resource{
   track_get_interpolation_loop_wrap(_track_idx) {
     Animation.init_method_track_get_interpolation_loop_wrap();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_track_get_interpolation_loop_wrap,
+      Animation._bindings.method_track_get_interpolation_loop_wrap,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1305,7 +1306,7 @@ export class Animation extends Resource{
   track_is_compressed(_track_idx) {
     Animation.init_method_track_is_compressed();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_track_is_compressed,
+      Animation._bindings.method_track_is_compressed,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1316,7 +1317,7 @@ export class Animation extends Resource{
   value_track_set_update_mode(_track_idx, _mode) {
     Animation.init_method_value_track_set_update_mode();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_value_track_set_update_mode,
+      Animation._bindings.method_value_track_set_update_mode,
       this._owner,
       _track_idx, _mode
     );
@@ -1325,7 +1326,7 @@ export class Animation extends Resource{
   value_track_get_update_mode(_track_idx) {
     Animation.init_method_value_track_get_update_mode();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_value_track_get_update_mode,
+      Animation._bindings.method_value_track_get_update_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -1336,7 +1337,7 @@ export class Animation extends Resource{
   value_track_interpolate(_track_idx, _time_sec, _backward) {
     Animation.init_method_value_track_interpolate();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_value_track_interpolate,
+      Animation._bindings.method_value_track_interpolate,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -1347,7 +1348,7 @@ export class Animation extends Resource{
   method_track_get_name(_track_idx, _key_idx) {
     Animation.init_method_method_track_get_name();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_method_track_get_name,
+      Animation._bindings.method_method_track_get_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -1358,7 +1359,7 @@ export class Animation extends Resource{
   method_track_get_params(_track_idx, _key_idx) {
     Animation.init_method_method_track_get_params();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_method_track_get_params,
+      Animation._bindings.method_method_track_get_params,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -1369,7 +1370,7 @@ export class Animation extends Resource{
   bezier_track_insert_key(_track_idx, _time, _value, _in_handle, _out_handle) {
     Animation.init_method_bezier_track_insert_key();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_bezier_track_insert_key,
+      Animation._bindings.method_bezier_track_insert_key,
       this._owner,
 			Variant.Type.INT,
     
@@ -1380,7 +1381,7 @@ export class Animation extends Resource{
   bezier_track_set_key_value(_track_idx, _key_idx, _value) {
     Animation.init_method_bezier_track_set_key_value();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_bezier_track_set_key_value,
+      Animation._bindings.method_bezier_track_set_key_value,
       this._owner,
       _track_idx, _key_idx, _value
     );
@@ -1389,7 +1390,7 @@ export class Animation extends Resource{
   bezier_track_set_key_in_handle(_track_idx, _key_idx, _in_handle, _balanced_value_time_ratio) {
     Animation.init_method_bezier_track_set_key_in_handle();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_bezier_track_set_key_in_handle,
+      Animation._bindings.method_bezier_track_set_key_in_handle,
       this._owner,
       _track_idx, _key_idx, _in_handle, _balanced_value_time_ratio
     );
@@ -1398,7 +1399,7 @@ export class Animation extends Resource{
   bezier_track_set_key_out_handle(_track_idx, _key_idx, _out_handle, _balanced_value_time_ratio) {
     Animation.init_method_bezier_track_set_key_out_handle();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_bezier_track_set_key_out_handle,
+      Animation._bindings.method_bezier_track_set_key_out_handle,
       this._owner,
       _track_idx, _key_idx, _out_handle, _balanced_value_time_ratio
     );
@@ -1407,7 +1408,7 @@ export class Animation extends Resource{
   bezier_track_get_key_value(_track_idx, _key_idx) {
     Animation.init_method_bezier_track_get_key_value();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_bezier_track_get_key_value,
+      Animation._bindings.method_bezier_track_get_key_value,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1418,7 +1419,7 @@ export class Animation extends Resource{
   bezier_track_get_key_in_handle(_track_idx, _key_idx) {
     Animation.init_method_bezier_track_get_key_in_handle();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_bezier_track_get_key_in_handle,
+      Animation._bindings.method_bezier_track_get_key_in_handle,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1429,7 +1430,7 @@ export class Animation extends Resource{
   bezier_track_get_key_out_handle(_track_idx, _key_idx) {
     Animation.init_method_bezier_track_get_key_out_handle();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_bezier_track_get_key_out_handle,
+      Animation._bindings.method_bezier_track_get_key_out_handle,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1440,7 +1441,7 @@ export class Animation extends Resource{
   bezier_track_interpolate(_track_idx, _time) {
     Animation.init_method_bezier_track_interpolate();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_bezier_track_interpolate,
+      Animation._bindings.method_bezier_track_interpolate,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1451,7 +1452,7 @@ export class Animation extends Resource{
   audio_track_insert_key(_track_idx, _time, _stream, _start_offset, _end_offset) {
     Animation.init_method_audio_track_insert_key();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_audio_track_insert_key,
+      Animation._bindings.method_audio_track_insert_key,
       this._owner,
 			Variant.Type.INT,
     
@@ -1462,7 +1463,7 @@ export class Animation extends Resource{
   audio_track_set_key_stream(_track_idx, _key_idx, _stream) {
     Animation.init_method_audio_track_set_key_stream();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_audio_track_set_key_stream,
+      Animation._bindings.method_audio_track_set_key_stream,
       this._owner,
       _track_idx, _key_idx, _stream
     );
@@ -1471,7 +1472,7 @@ export class Animation extends Resource{
   audio_track_set_key_start_offset(_track_idx, _key_idx, _offset) {
     Animation.init_method_audio_track_set_key_start_offset();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_audio_track_set_key_start_offset,
+      Animation._bindings.method_audio_track_set_key_start_offset,
       this._owner,
       _track_idx, _key_idx, _offset
     );
@@ -1480,7 +1481,7 @@ export class Animation extends Resource{
   audio_track_set_key_end_offset(_track_idx, _key_idx, _offset) {
     Animation.init_method_audio_track_set_key_end_offset();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_audio_track_set_key_end_offset,
+      Animation._bindings.method_audio_track_set_key_end_offset,
       this._owner,
       _track_idx, _key_idx, _offset
     );
@@ -1489,7 +1490,7 @@ export class Animation extends Resource{
   audio_track_get_key_stream(_track_idx, _key_idx) {
     Animation.init_method_audio_track_get_key_stream();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_audio_track_get_key_stream,
+      Animation._bindings.method_audio_track_get_key_stream,
       this._owner,
 			Variant.Type.OBJECT,
       _track_idx, _key_idx
@@ -1499,7 +1500,7 @@ export class Animation extends Resource{
   audio_track_get_key_start_offset(_track_idx, _key_idx) {
     Animation.init_method_audio_track_get_key_start_offset();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_audio_track_get_key_start_offset,
+      Animation._bindings.method_audio_track_get_key_start_offset,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1510,7 +1511,7 @@ export class Animation extends Resource{
   audio_track_get_key_end_offset(_track_idx, _key_idx) {
     Animation.init_method_audio_track_get_key_end_offset();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_audio_track_get_key_end_offset,
+      Animation._bindings.method_audio_track_get_key_end_offset,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1521,7 +1522,7 @@ export class Animation extends Resource{
   audio_track_set_use_blend(_track_idx, _enable) {
     Animation.init_method_audio_track_set_use_blend();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_audio_track_set_use_blend,
+      Animation._bindings.method_audio_track_set_use_blend,
       this._owner,
       _track_idx, _enable
     );
@@ -1530,7 +1531,7 @@ export class Animation extends Resource{
   audio_track_is_use_blend(_track_idx) {
     Animation.init_method_audio_track_is_use_blend();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_audio_track_is_use_blend,
+      Animation._bindings.method_audio_track_is_use_blend,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1541,7 +1542,7 @@ export class Animation extends Resource{
   animation_track_insert_key(_track_idx, _time, _animation) {
     Animation.init_method_animation_track_insert_key();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_animation_track_insert_key,
+      Animation._bindings.method_animation_track_insert_key,
       this._owner,
 			Variant.Type.INT,
     
@@ -1552,7 +1553,7 @@ export class Animation extends Resource{
   animation_track_set_key_animation(_track_idx, _key_idx, _animation) {
     Animation.init_method_animation_track_set_key_animation();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_animation_track_set_key_animation,
+      Animation._bindings.method_animation_track_set_key_animation,
       this._owner,
       _track_idx, _key_idx, _animation
     );
@@ -1561,7 +1562,7 @@ export class Animation extends Resource{
   animation_track_get_key_animation(_track_idx, _key_idx) {
     Animation.init_method_animation_track_get_key_animation();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_animation_track_get_key_animation,
+      Animation._bindings.method_animation_track_get_key_animation,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -1572,7 +1573,7 @@ export class Animation extends Resource{
   set_length(_time_sec) {
     Animation.init_method_set_length();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_set_length,
+      Animation._bindings.method_set_length,
       this._owner,
       _time_sec
     );
@@ -1581,7 +1582,7 @@ export class Animation extends Resource{
   get_length() {
     Animation.init_method_get_length();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_get_length,
+      Animation._bindings.method_get_length,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1592,7 +1593,7 @@ export class Animation extends Resource{
   set_loop_mode(_loop_mode) {
     Animation.init_method_set_loop_mode();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_set_loop_mode,
+      Animation._bindings.method_set_loop_mode,
       this._owner,
       _loop_mode
     );
@@ -1601,7 +1602,7 @@ export class Animation extends Resource{
   get_loop_mode() {
     Animation.init_method_get_loop_mode();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_get_loop_mode,
+      Animation._bindings.method_get_loop_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -1612,7 +1613,7 @@ export class Animation extends Resource{
   set_step(_size_sec) {
     Animation.init_method_set_step();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_set_step,
+      Animation._bindings.method_set_step,
       this._owner,
       _size_sec
     );
@@ -1621,7 +1622,7 @@ export class Animation extends Resource{
   get_step() {
     Animation.init_method_get_step();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_get_step,
+      Animation._bindings.method_get_step,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1632,7 +1633,7 @@ export class Animation extends Resource{
   clear() {
     Animation.init_method_clear();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_clear,
+      Animation._bindings.method_clear,
       this._owner,
       
     );
@@ -1641,7 +1642,7 @@ export class Animation extends Resource{
   copy_track(_track_idx, _to_animation) {
     Animation.init_method_copy_track();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_copy_track,
+      Animation._bindings.method_copy_track,
       this._owner,
       _track_idx, _to_animation
     );
@@ -1650,7 +1651,7 @@ export class Animation extends Resource{
   compress(_page_size, _fps, _split_tolerance) {
     Animation.init_method_compress();
     return _call_native_mb_no_ret(
-      Animation.#_bindings.method_compress,
+      Animation._bindings.method_compress,
       this._owner,
       _page_size, _fps, _split_tolerance
     );
@@ -1659,7 +1660,7 @@ export class Animation extends Resource{
   is_capture_included() {
     Animation.init_method_is_capture_included();
     return _call_native_mb_ret(
-      Animation.#_bindings.method_is_capture_included,
+      Animation._bindings.method_is_capture_included,
       this._owner,
 			Variant.Type.BOOL,
     

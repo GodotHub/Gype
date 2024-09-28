@@ -1,22 +1,23 @@
 import * as internal from '__internal__';
+import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
-import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_function;
   method_get_function;
 }
+@GodotClass
 export class VisualShaderNodeColorFunc extends VisualShaderNode{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -26,10 +27,10 @@ export class VisualShaderNodeColorFunc extends VisualShaderNode{
     }
   }
   static init_method_set_function() {
-    if (!this.#_bindings.method_set_function) {
+    if (!this._bindings.method_set_function) {
       let classname = new StringName("VisualShaderNodeColorFunc");
       let methodname = new StringName("set_function");
-      this.#_bindings.method_set_function = internal.classdb_get_method_bind(
+      this._bindings.method_set_function = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3973396138
@@ -37,10 +38,10 @@ export class VisualShaderNodeColorFunc extends VisualShaderNode{
     }
   }
   static init_method_get_function() {
-    if (!this.#_bindings.method_get_function) {
+    if (!this._bindings.method_get_function) {
       let classname = new StringName("VisualShaderNodeColorFunc");
       let methodname = new StringName("get_function");
-      this.#_bindings.method_get_function = internal.classdb_get_method_bind(
+      this._bindings.method_get_function = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         554863321
@@ -53,7 +54,7 @@ export class VisualShaderNodeColorFunc extends VisualShaderNode{
   set_function(_func) {
     VisualShaderNodeColorFunc.init_method_set_function();
     return _call_native_mb_no_ret(
-      VisualShaderNodeColorFunc.#_bindings.method_set_function,
+      VisualShaderNodeColorFunc._bindings.method_set_function,
       this._owner,
       _func
     );
@@ -62,7 +63,7 @@ export class VisualShaderNodeColorFunc extends VisualShaderNode{
   get_function() {
     VisualShaderNodeColorFunc.init_method_get_function();
     return _call_native_mb_ret(
-      VisualShaderNodeColorFunc.#_bindings.method_get_function,
+      VisualShaderNodeColorFunc._bindings.method_get_function,
       this._owner,
 			Variant.Type.INT,
     

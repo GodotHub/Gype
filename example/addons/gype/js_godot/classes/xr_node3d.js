@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Node3D } from '@js_godot/classes/node3d'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_tracker;
@@ -21,10 +22,10 @@ class _MethodBindings {
   method_get_pose;
   method_trigger_haptic_pulse;
 }
+@GodotClass
 export class XRNode3D extends Node3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -34,10 +35,10 @@ export class XRNode3D extends Node3D{
     }
   }
   static init_method_set_tracker() {
-    if (!this.#_bindings.method_set_tracker) {
+    if (!this._bindings.method_set_tracker) {
       let classname = new StringName("XRNode3D");
       let methodname = new StringName("set_tracker");
-      this.#_bindings.method_set_tracker = internal.classdb_get_method_bind(
+      this._bindings.method_set_tracker = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -45,10 +46,10 @@ export class XRNode3D extends Node3D{
     }
   }
   static init_method_get_tracker() {
-    if (!this.#_bindings.method_get_tracker) {
+    if (!this._bindings.method_get_tracker) {
       let classname = new StringName("XRNode3D");
       let methodname = new StringName("get_tracker");
-      this.#_bindings.method_get_tracker = internal.classdb_get_method_bind(
+      this._bindings.method_get_tracker = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2002593661
@@ -56,10 +57,10 @@ export class XRNode3D extends Node3D{
     }
   }
   static init_method_set_pose_name() {
-    if (!this.#_bindings.method_set_pose_name) {
+    if (!this._bindings.method_set_pose_name) {
       let classname = new StringName("XRNode3D");
       let methodname = new StringName("set_pose_name");
-      this.#_bindings.method_set_pose_name = internal.classdb_get_method_bind(
+      this._bindings.method_set_pose_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -67,10 +68,10 @@ export class XRNode3D extends Node3D{
     }
   }
   static init_method_get_pose_name() {
-    if (!this.#_bindings.method_get_pose_name) {
+    if (!this._bindings.method_get_pose_name) {
       let classname = new StringName("XRNode3D");
       let methodname = new StringName("get_pose_name");
-      this.#_bindings.method_get_pose_name = internal.classdb_get_method_bind(
+      this._bindings.method_get_pose_name = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2002593661
@@ -78,10 +79,10 @@ export class XRNode3D extends Node3D{
     }
   }
   static init_method_set_show_when_tracked() {
-    if (!this.#_bindings.method_set_show_when_tracked) {
+    if (!this._bindings.method_set_show_when_tracked) {
       let classname = new StringName("XRNode3D");
       let methodname = new StringName("set_show_when_tracked");
-      this.#_bindings.method_set_show_when_tracked = internal.classdb_get_method_bind(
+      this._bindings.method_set_show_when_tracked = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -89,10 +90,10 @@ export class XRNode3D extends Node3D{
     }
   }
   static init_method_get_show_when_tracked() {
-    if (!this.#_bindings.method_get_show_when_tracked) {
+    if (!this._bindings.method_get_show_when_tracked) {
       let classname = new StringName("XRNode3D");
       let methodname = new StringName("get_show_when_tracked");
-      this.#_bindings.method_get_show_when_tracked = internal.classdb_get_method_bind(
+      this._bindings.method_get_show_when_tracked = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -100,10 +101,10 @@ export class XRNode3D extends Node3D{
     }
   }
   static init_method_get_is_active() {
-    if (!this.#_bindings.method_get_is_active) {
+    if (!this._bindings.method_get_is_active) {
       let classname = new StringName("XRNode3D");
       let methodname = new StringName("get_is_active");
-      this.#_bindings.method_get_is_active = internal.classdb_get_method_bind(
+      this._bindings.method_get_is_active = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -111,10 +112,10 @@ export class XRNode3D extends Node3D{
     }
   }
   static init_method_get_has_tracking_data() {
-    if (!this.#_bindings.method_get_has_tracking_data) {
+    if (!this._bindings.method_get_has_tracking_data) {
       let classname = new StringName("XRNode3D");
       let methodname = new StringName("get_has_tracking_data");
-      this.#_bindings.method_get_has_tracking_data = internal.classdb_get_method_bind(
+      this._bindings.method_get_has_tracking_data = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -122,10 +123,10 @@ export class XRNode3D extends Node3D{
     }
   }
   static init_method_get_pose() {
-    if (!this.#_bindings.method_get_pose) {
+    if (!this._bindings.method_get_pose) {
       let classname = new StringName("XRNode3D");
       let methodname = new StringName("get_pose");
-      this.#_bindings.method_get_pose = internal.classdb_get_method_bind(
+      this._bindings.method_get_pose = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2806551826
@@ -133,10 +134,10 @@ export class XRNode3D extends Node3D{
     }
   }
   static init_method_trigger_haptic_pulse() {
-    if (!this.#_bindings.method_trigger_haptic_pulse) {
+    if (!this._bindings.method_trigger_haptic_pulse) {
       let classname = new StringName("XRNode3D");
       let methodname = new StringName("trigger_haptic_pulse");
-      this.#_bindings.method_trigger_haptic_pulse = internal.classdb_get_method_bind(
+      this._bindings.method_trigger_haptic_pulse = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         508576839
@@ -149,7 +150,7 @@ export class XRNode3D extends Node3D{
   set_tracker(_tracker_name) {
     XRNode3D.init_method_set_tracker();
     return _call_native_mb_no_ret(
-      XRNode3D.#_bindings.method_set_tracker,
+      XRNode3D._bindings.method_set_tracker,
       this._owner,
       _tracker_name
     );
@@ -158,7 +159,7 @@ export class XRNode3D extends Node3D{
   get_tracker() {
     XRNode3D.init_method_get_tracker();
     return _call_native_mb_ret(
-      XRNode3D.#_bindings.method_get_tracker,
+      XRNode3D._bindings.method_get_tracker,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -169,7 +170,7 @@ export class XRNode3D extends Node3D{
   set_pose_name(_pose) {
     XRNode3D.init_method_set_pose_name();
     return _call_native_mb_no_ret(
-      XRNode3D.#_bindings.method_set_pose_name,
+      XRNode3D._bindings.method_set_pose_name,
       this._owner,
       _pose
     );
@@ -178,7 +179,7 @@ export class XRNode3D extends Node3D{
   get_pose_name() {
     XRNode3D.init_method_get_pose_name();
     return _call_native_mb_ret(
-      XRNode3D.#_bindings.method_get_pose_name,
+      XRNode3D._bindings.method_get_pose_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -189,7 +190,7 @@ export class XRNode3D extends Node3D{
   set_show_when_tracked(_show) {
     XRNode3D.init_method_set_show_when_tracked();
     return _call_native_mb_no_ret(
-      XRNode3D.#_bindings.method_set_show_when_tracked,
+      XRNode3D._bindings.method_set_show_when_tracked,
       this._owner,
       _show
     );
@@ -198,7 +199,7 @@ export class XRNode3D extends Node3D{
   get_show_when_tracked() {
     XRNode3D.init_method_get_show_when_tracked();
     return _call_native_mb_ret(
-      XRNode3D.#_bindings.method_get_show_when_tracked,
+      XRNode3D._bindings.method_get_show_when_tracked,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -209,7 +210,7 @@ export class XRNode3D extends Node3D{
   get_is_active() {
     XRNode3D.init_method_get_is_active();
     return _call_native_mb_ret(
-      XRNode3D.#_bindings.method_get_is_active,
+      XRNode3D._bindings.method_get_is_active,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -220,7 +221,7 @@ export class XRNode3D extends Node3D{
   get_has_tracking_data() {
     XRNode3D.init_method_get_has_tracking_data();
     return _call_native_mb_ret(
-      XRNode3D.#_bindings.method_get_has_tracking_data,
+      XRNode3D._bindings.method_get_has_tracking_data,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -231,7 +232,7 @@ export class XRNode3D extends Node3D{
   get_pose() {
     XRNode3D.init_method_get_pose();
     return _call_native_mb_ret(
-      XRNode3D.#_bindings.method_get_pose,
+      XRNode3D._bindings.method_get_pose,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -241,7 +242,7 @@ export class XRNode3D extends Node3D{
   trigger_haptic_pulse(_action_name, _frequency, _amplitude, _duration_sec, _delay_sec) {
     XRNode3D.init_method_trigger_haptic_pulse();
     return _call_native_mb_no_ret(
-      XRNode3D.#_bindings.method_trigger_haptic_pulse,
+      XRNode3D._bindings.method_trigger_haptic_pulse,
       this._owner,
       _action_name, _frequency, _amplitude, _duration_sec, _delay_sec
     );

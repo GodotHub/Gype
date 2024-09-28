@@ -1,23 +1,24 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { GodotObject } from '@js_godot/classes/godot_object'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_openxr_api;
   method_register_extension_wrapper;
 }
+@GodotClass
 export class OpenXRExtensionWrapperExtension extends GodotObject{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -27,10 +28,10 @@ export class OpenXRExtensionWrapperExtension extends GodotObject{
     }
   }
   static init_method_get_openxr_api() {
-    if (!this.#_bindings.method_get_openxr_api) {
+    if (!this._bindings.method_get_openxr_api) {
       let classname = new StringName("OpenXRExtensionWrapperExtension");
       let methodname = new StringName("get_openxr_api");
-      this.#_bindings.method_get_openxr_api = internal.classdb_get_method_bind(
+      this._bindings.method_get_openxr_api = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1637791613
@@ -38,10 +39,10 @@ export class OpenXRExtensionWrapperExtension extends GodotObject{
     }
   }
   static init_method_register_extension_wrapper() {
-    if (!this.#_bindings.method_register_extension_wrapper) {
+    if (!this._bindings.method_register_extension_wrapper) {
       let classname = new StringName("OpenXRExtensionWrapperExtension");
       let methodname = new StringName("register_extension_wrapper");
-      this.#_bindings.method_register_extension_wrapper = internal.classdb_get_method_bind(
+      this._bindings.method_register_extension_wrapper = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -118,7 +119,7 @@ export class OpenXRExtensionWrapperExtension extends GodotObject{
   get_openxr_api() {
     OpenXRExtensionWrapperExtension.init_method_get_openxr_api();
     return _call_native_mb_ret(
-      OpenXRExtensionWrapperExtension.#_bindings.method_get_openxr_api,
+      OpenXRExtensionWrapperExtension._bindings.method_get_openxr_api,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -128,7 +129,7 @@ export class OpenXRExtensionWrapperExtension extends GodotObject{
   register_extension_wrapper() {
     OpenXRExtensionWrapperExtension.init_method_register_extension_wrapper();
     return _call_native_mb_no_ret(
-      OpenXRExtensionWrapperExtension.#_bindings.method_register_extension_wrapper,
+      OpenXRExtensionWrapperExtension._bindings.method_register_extension_wrapper,
       this._owner,
       
     );

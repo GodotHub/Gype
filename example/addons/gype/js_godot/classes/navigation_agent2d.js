@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Node } from '@js_godot/classes/node'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_rid;
@@ -82,10 +83,10 @@ class _MethodBindings {
   method_set_debug_path_custom_line_width;
   method_get_debug_path_custom_line_width;
 }
+@GodotClass
 export class NavigationAgent2D extends Node{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -95,10 +96,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_rid() {
-    if (!this.#_bindings.method_get_rid) {
+    if (!this._bindings.method_get_rid) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_rid");
-      this.#_bindings.method_get_rid = internal.classdb_get_method_bind(
+      this._bindings.method_get_rid = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2944877500
@@ -106,10 +107,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_avoidance_enabled() {
-    if (!this.#_bindings.method_set_avoidance_enabled) {
+    if (!this._bindings.method_set_avoidance_enabled) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_avoidance_enabled");
-      this.#_bindings.method_set_avoidance_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_avoidance_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -117,10 +118,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_avoidance_enabled() {
-    if (!this.#_bindings.method_get_avoidance_enabled) {
+    if (!this._bindings.method_get_avoidance_enabled) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_avoidance_enabled");
-      this.#_bindings.method_get_avoidance_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_get_avoidance_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -128,10 +129,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_path_desired_distance() {
-    if (!this.#_bindings.method_set_path_desired_distance) {
+    if (!this._bindings.method_set_path_desired_distance) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_path_desired_distance");
-      this.#_bindings.method_set_path_desired_distance = internal.classdb_get_method_bind(
+      this._bindings.method_set_path_desired_distance = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -139,10 +140,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_path_desired_distance() {
-    if (!this.#_bindings.method_get_path_desired_distance) {
+    if (!this._bindings.method_get_path_desired_distance) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_path_desired_distance");
-      this.#_bindings.method_get_path_desired_distance = internal.classdb_get_method_bind(
+      this._bindings.method_get_path_desired_distance = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -150,10 +151,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_target_desired_distance() {
-    if (!this.#_bindings.method_set_target_desired_distance) {
+    if (!this._bindings.method_set_target_desired_distance) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_target_desired_distance");
-      this.#_bindings.method_set_target_desired_distance = internal.classdb_get_method_bind(
+      this._bindings.method_set_target_desired_distance = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -161,10 +162,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_target_desired_distance() {
-    if (!this.#_bindings.method_get_target_desired_distance) {
+    if (!this._bindings.method_get_target_desired_distance) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_target_desired_distance");
-      this.#_bindings.method_get_target_desired_distance = internal.classdb_get_method_bind(
+      this._bindings.method_get_target_desired_distance = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -172,10 +173,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_radius() {
-    if (!this.#_bindings.method_set_radius) {
+    if (!this._bindings.method_set_radius) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_radius");
-      this.#_bindings.method_set_radius = internal.classdb_get_method_bind(
+      this._bindings.method_set_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -183,10 +184,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_radius() {
-    if (!this.#_bindings.method_get_radius) {
+    if (!this._bindings.method_get_radius) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_radius");
-      this.#_bindings.method_get_radius = internal.classdb_get_method_bind(
+      this._bindings.method_get_radius = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -194,10 +195,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_neighbor_distance() {
-    if (!this.#_bindings.method_set_neighbor_distance) {
+    if (!this._bindings.method_set_neighbor_distance) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_neighbor_distance");
-      this.#_bindings.method_set_neighbor_distance = internal.classdb_get_method_bind(
+      this._bindings.method_set_neighbor_distance = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -205,10 +206,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_neighbor_distance() {
-    if (!this.#_bindings.method_get_neighbor_distance) {
+    if (!this._bindings.method_get_neighbor_distance) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_neighbor_distance");
-      this.#_bindings.method_get_neighbor_distance = internal.classdb_get_method_bind(
+      this._bindings.method_get_neighbor_distance = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -216,10 +217,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_max_neighbors() {
-    if (!this.#_bindings.method_set_max_neighbors) {
+    if (!this._bindings.method_set_max_neighbors) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_max_neighbors");
-      this.#_bindings.method_set_max_neighbors = internal.classdb_get_method_bind(
+      this._bindings.method_set_max_neighbors = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -227,10 +228,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_max_neighbors() {
-    if (!this.#_bindings.method_get_max_neighbors) {
+    if (!this._bindings.method_get_max_neighbors) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_max_neighbors");
-      this.#_bindings.method_get_max_neighbors = internal.classdb_get_method_bind(
+      this._bindings.method_get_max_neighbors = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -238,10 +239,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_time_horizon_agents() {
-    if (!this.#_bindings.method_set_time_horizon_agents) {
+    if (!this._bindings.method_set_time_horizon_agents) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_time_horizon_agents");
-      this.#_bindings.method_set_time_horizon_agents = internal.classdb_get_method_bind(
+      this._bindings.method_set_time_horizon_agents = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -249,10 +250,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_time_horizon_agents() {
-    if (!this.#_bindings.method_get_time_horizon_agents) {
+    if (!this._bindings.method_get_time_horizon_agents) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_time_horizon_agents");
-      this.#_bindings.method_get_time_horizon_agents = internal.classdb_get_method_bind(
+      this._bindings.method_get_time_horizon_agents = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -260,10 +261,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_time_horizon_obstacles() {
-    if (!this.#_bindings.method_set_time_horizon_obstacles) {
+    if (!this._bindings.method_set_time_horizon_obstacles) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_time_horizon_obstacles");
-      this.#_bindings.method_set_time_horizon_obstacles = internal.classdb_get_method_bind(
+      this._bindings.method_set_time_horizon_obstacles = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -271,10 +272,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_time_horizon_obstacles() {
-    if (!this.#_bindings.method_get_time_horizon_obstacles) {
+    if (!this._bindings.method_get_time_horizon_obstacles) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_time_horizon_obstacles");
-      this.#_bindings.method_get_time_horizon_obstacles = internal.classdb_get_method_bind(
+      this._bindings.method_get_time_horizon_obstacles = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -282,10 +283,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_max_speed() {
-    if (!this.#_bindings.method_set_max_speed) {
+    if (!this._bindings.method_set_max_speed) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_max_speed");
-      this.#_bindings.method_set_max_speed = internal.classdb_get_method_bind(
+      this._bindings.method_set_max_speed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -293,10 +294,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_max_speed() {
-    if (!this.#_bindings.method_get_max_speed) {
+    if (!this._bindings.method_get_max_speed) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_max_speed");
-      this.#_bindings.method_get_max_speed = internal.classdb_get_method_bind(
+      this._bindings.method_get_max_speed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -304,10 +305,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_path_max_distance() {
-    if (!this.#_bindings.method_set_path_max_distance) {
+    if (!this._bindings.method_set_path_max_distance) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_path_max_distance");
-      this.#_bindings.method_set_path_max_distance = internal.classdb_get_method_bind(
+      this._bindings.method_set_path_max_distance = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -315,10 +316,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_path_max_distance() {
-    if (!this.#_bindings.method_get_path_max_distance) {
+    if (!this._bindings.method_get_path_max_distance) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_path_max_distance");
-      this.#_bindings.method_get_path_max_distance = internal.classdb_get_method_bind(
+      this._bindings.method_get_path_max_distance = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         191475506
@@ -326,10 +327,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_navigation_layers() {
-    if (!this.#_bindings.method_set_navigation_layers) {
+    if (!this._bindings.method_set_navigation_layers) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_navigation_layers");
-      this.#_bindings.method_set_navigation_layers = internal.classdb_get_method_bind(
+      this._bindings.method_set_navigation_layers = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -337,10 +338,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_navigation_layers() {
-    if (!this.#_bindings.method_get_navigation_layers) {
+    if (!this._bindings.method_get_navigation_layers) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_navigation_layers");
-      this.#_bindings.method_get_navigation_layers = internal.classdb_get_method_bind(
+      this._bindings.method_get_navigation_layers = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -348,10 +349,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_navigation_layer_value() {
-    if (!this.#_bindings.method_set_navigation_layer_value) {
+    if (!this._bindings.method_set_navigation_layer_value) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_navigation_layer_value");
-      this.#_bindings.method_set_navigation_layer_value = internal.classdb_get_method_bind(
+      this._bindings.method_set_navigation_layer_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -359,10 +360,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_navigation_layer_value() {
-    if (!this.#_bindings.method_get_navigation_layer_value) {
+    if (!this._bindings.method_get_navigation_layer_value) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_navigation_layer_value");
-      this.#_bindings.method_get_navigation_layer_value = internal.classdb_get_method_bind(
+      this._bindings.method_get_navigation_layer_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -370,10 +371,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_pathfinding_algorithm() {
-    if (!this.#_bindings.method_set_pathfinding_algorithm) {
+    if (!this._bindings.method_set_pathfinding_algorithm) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_pathfinding_algorithm");
-      this.#_bindings.method_set_pathfinding_algorithm = internal.classdb_get_method_bind(
+      this._bindings.method_set_pathfinding_algorithm = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2783519915
@@ -381,10 +382,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_pathfinding_algorithm() {
-    if (!this.#_bindings.method_get_pathfinding_algorithm) {
+    if (!this._bindings.method_get_pathfinding_algorithm) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_pathfinding_algorithm");
-      this.#_bindings.method_get_pathfinding_algorithm = internal.classdb_get_method_bind(
+      this._bindings.method_get_pathfinding_algorithm = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3000421146
@@ -392,10 +393,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_path_postprocessing() {
-    if (!this.#_bindings.method_set_path_postprocessing) {
+    if (!this._bindings.method_set_path_postprocessing) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_path_postprocessing");
-      this.#_bindings.method_set_path_postprocessing = internal.classdb_get_method_bind(
+      this._bindings.method_set_path_postprocessing = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2864409082
@@ -403,10 +404,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_path_postprocessing() {
-    if (!this.#_bindings.method_get_path_postprocessing) {
+    if (!this._bindings.method_get_path_postprocessing) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_path_postprocessing");
-      this.#_bindings.method_get_path_postprocessing = internal.classdb_get_method_bind(
+      this._bindings.method_get_path_postprocessing = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3798118993
@@ -414,10 +415,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_path_metadata_flags() {
-    if (!this.#_bindings.method_set_path_metadata_flags) {
+    if (!this._bindings.method_set_path_metadata_flags) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_path_metadata_flags");
-      this.#_bindings.method_set_path_metadata_flags = internal.classdb_get_method_bind(
+      this._bindings.method_set_path_metadata_flags = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         24274129
@@ -425,10 +426,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_path_metadata_flags() {
-    if (!this.#_bindings.method_get_path_metadata_flags) {
+    if (!this._bindings.method_get_path_metadata_flags) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_path_metadata_flags");
-      this.#_bindings.method_get_path_metadata_flags = internal.classdb_get_method_bind(
+      this._bindings.method_get_path_metadata_flags = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         488152976
@@ -436,10 +437,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_navigation_map() {
-    if (!this.#_bindings.method_set_navigation_map) {
+    if (!this._bindings.method_set_navigation_map) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_navigation_map");
-      this.#_bindings.method_set_navigation_map = internal.classdb_get_method_bind(
+      this._bindings.method_set_navigation_map = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2722037293
@@ -447,10 +448,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_navigation_map() {
-    if (!this.#_bindings.method_get_navigation_map) {
+    if (!this._bindings.method_get_navigation_map) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_navigation_map");
-      this.#_bindings.method_get_navigation_map = internal.classdb_get_method_bind(
+      this._bindings.method_get_navigation_map = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2944877500
@@ -458,10 +459,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_target_position() {
-    if (!this.#_bindings.method_set_target_position) {
+    if (!this._bindings.method_set_target_position) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_target_position");
-      this.#_bindings.method_set_target_position = internal.classdb_get_method_bind(
+      this._bindings.method_set_target_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -469,10 +470,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_target_position() {
-    if (!this.#_bindings.method_get_target_position) {
+    if (!this._bindings.method_get_target_position) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_target_position");
-      this.#_bindings.method_get_target_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_target_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -480,10 +481,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_simplify_path() {
-    if (!this.#_bindings.method_set_simplify_path) {
+    if (!this._bindings.method_set_simplify_path) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_simplify_path");
-      this.#_bindings.method_set_simplify_path = internal.classdb_get_method_bind(
+      this._bindings.method_set_simplify_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -491,10 +492,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_simplify_path() {
-    if (!this.#_bindings.method_get_simplify_path) {
+    if (!this._bindings.method_get_simplify_path) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_simplify_path");
-      this.#_bindings.method_get_simplify_path = internal.classdb_get_method_bind(
+      this._bindings.method_get_simplify_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -502,10 +503,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_simplify_epsilon() {
-    if (!this.#_bindings.method_set_simplify_epsilon) {
+    if (!this._bindings.method_set_simplify_epsilon) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_simplify_epsilon");
-      this.#_bindings.method_set_simplify_epsilon = internal.classdb_get_method_bind(
+      this._bindings.method_set_simplify_epsilon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -513,10 +514,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_simplify_epsilon() {
-    if (!this.#_bindings.method_get_simplify_epsilon) {
+    if (!this._bindings.method_get_simplify_epsilon) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_simplify_epsilon");
-      this.#_bindings.method_get_simplify_epsilon = internal.classdb_get_method_bind(
+      this._bindings.method_get_simplify_epsilon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -524,10 +525,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_next_path_position() {
-    if (!this.#_bindings.method_get_next_path_position) {
+    if (!this._bindings.method_get_next_path_position) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_next_path_position");
-      this.#_bindings.method_get_next_path_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_next_path_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1497962370
@@ -535,10 +536,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_velocity_forced() {
-    if (!this.#_bindings.method_set_velocity_forced) {
+    if (!this._bindings.method_set_velocity_forced) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_velocity_forced");
-      this.#_bindings.method_set_velocity_forced = internal.classdb_get_method_bind(
+      this._bindings.method_set_velocity_forced = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -546,10 +547,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_velocity() {
-    if (!this.#_bindings.method_set_velocity) {
+    if (!this._bindings.method_set_velocity) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_velocity");
-      this.#_bindings.method_set_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_set_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -557,10 +558,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_velocity() {
-    if (!this.#_bindings.method_get_velocity) {
+    if (!this._bindings.method_get_velocity) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_velocity");
-      this.#_bindings.method_get_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_get_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1497962370
@@ -568,10 +569,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_distance_to_target() {
-    if (!this.#_bindings.method_distance_to_target) {
+    if (!this._bindings.method_distance_to_target) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("distance_to_target");
-      this.#_bindings.method_distance_to_target = internal.classdb_get_method_bind(
+      this._bindings.method_distance_to_target = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -579,10 +580,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_current_navigation_result() {
-    if (!this.#_bindings.method_get_current_navigation_result) {
+    if (!this._bindings.method_get_current_navigation_result) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_current_navigation_result");
-      this.#_bindings.method_get_current_navigation_result = internal.classdb_get_method_bind(
+      this._bindings.method_get_current_navigation_result = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         166799483
@@ -590,10 +591,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_current_navigation_path() {
-    if (!this.#_bindings.method_get_current_navigation_path) {
+    if (!this._bindings.method_get_current_navigation_path) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_current_navigation_path");
-      this.#_bindings.method_get_current_navigation_path = internal.classdb_get_method_bind(
+      this._bindings.method_get_current_navigation_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2961356807
@@ -601,10 +602,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_current_navigation_path_index() {
-    if (!this.#_bindings.method_get_current_navigation_path_index) {
+    if (!this._bindings.method_get_current_navigation_path_index) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_current_navigation_path_index");
-      this.#_bindings.method_get_current_navigation_path_index = internal.classdb_get_method_bind(
+      this._bindings.method_get_current_navigation_path_index = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -612,10 +613,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_is_target_reached() {
-    if (!this.#_bindings.method_is_target_reached) {
+    if (!this._bindings.method_is_target_reached) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("is_target_reached");
-      this.#_bindings.method_is_target_reached = internal.classdb_get_method_bind(
+      this._bindings.method_is_target_reached = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -623,10 +624,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_is_target_reachable() {
-    if (!this.#_bindings.method_is_target_reachable) {
+    if (!this._bindings.method_is_target_reachable) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("is_target_reachable");
-      this.#_bindings.method_is_target_reachable = internal.classdb_get_method_bind(
+      this._bindings.method_is_target_reachable = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2240911060
@@ -634,10 +635,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_is_navigation_finished() {
-    if (!this.#_bindings.method_is_navigation_finished) {
+    if (!this._bindings.method_is_navigation_finished) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("is_navigation_finished");
-      this.#_bindings.method_is_navigation_finished = internal.classdb_get_method_bind(
+      this._bindings.method_is_navigation_finished = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2240911060
@@ -645,10 +646,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_final_position() {
-    if (!this.#_bindings.method_get_final_position) {
+    if (!this._bindings.method_get_final_position) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_final_position");
-      this.#_bindings.method_get_final_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_final_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1497962370
@@ -656,10 +657,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_avoidance_layers() {
-    if (!this.#_bindings.method_set_avoidance_layers) {
+    if (!this._bindings.method_set_avoidance_layers) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_avoidance_layers");
-      this.#_bindings.method_set_avoidance_layers = internal.classdb_get_method_bind(
+      this._bindings.method_set_avoidance_layers = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -667,10 +668,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_avoidance_layers() {
-    if (!this.#_bindings.method_get_avoidance_layers) {
+    if (!this._bindings.method_get_avoidance_layers) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_avoidance_layers");
-      this.#_bindings.method_get_avoidance_layers = internal.classdb_get_method_bind(
+      this._bindings.method_get_avoidance_layers = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -678,10 +679,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_avoidance_mask() {
-    if (!this.#_bindings.method_set_avoidance_mask) {
+    if (!this._bindings.method_set_avoidance_mask) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_avoidance_mask");
-      this.#_bindings.method_set_avoidance_mask = internal.classdb_get_method_bind(
+      this._bindings.method_set_avoidance_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -689,10 +690,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_avoidance_mask() {
-    if (!this.#_bindings.method_get_avoidance_mask) {
+    if (!this._bindings.method_get_avoidance_mask) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_avoidance_mask");
-      this.#_bindings.method_get_avoidance_mask = internal.classdb_get_method_bind(
+      this._bindings.method_get_avoidance_mask = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -700,10 +701,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_avoidance_layer_value() {
-    if (!this.#_bindings.method_set_avoidance_layer_value) {
+    if (!this._bindings.method_set_avoidance_layer_value) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_avoidance_layer_value");
-      this.#_bindings.method_set_avoidance_layer_value = internal.classdb_get_method_bind(
+      this._bindings.method_set_avoidance_layer_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -711,10 +712,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_avoidance_layer_value() {
-    if (!this.#_bindings.method_get_avoidance_layer_value) {
+    if (!this._bindings.method_get_avoidance_layer_value) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_avoidance_layer_value");
-      this.#_bindings.method_get_avoidance_layer_value = internal.classdb_get_method_bind(
+      this._bindings.method_get_avoidance_layer_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -722,10 +723,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_avoidance_mask_value() {
-    if (!this.#_bindings.method_set_avoidance_mask_value) {
+    if (!this._bindings.method_set_avoidance_mask_value) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_avoidance_mask_value");
-      this.#_bindings.method_set_avoidance_mask_value = internal.classdb_get_method_bind(
+      this._bindings.method_set_avoidance_mask_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -733,10 +734,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_avoidance_mask_value() {
-    if (!this.#_bindings.method_get_avoidance_mask_value) {
+    if (!this._bindings.method_get_avoidance_mask_value) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_avoidance_mask_value");
-      this.#_bindings.method_get_avoidance_mask_value = internal.classdb_get_method_bind(
+      this._bindings.method_get_avoidance_mask_value = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -744,10 +745,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_avoidance_priority() {
-    if (!this.#_bindings.method_set_avoidance_priority) {
+    if (!this._bindings.method_set_avoidance_priority) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_avoidance_priority");
-      this.#_bindings.method_set_avoidance_priority = internal.classdb_get_method_bind(
+      this._bindings.method_set_avoidance_priority = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -755,10 +756,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_avoidance_priority() {
-    if (!this.#_bindings.method_get_avoidance_priority) {
+    if (!this._bindings.method_get_avoidance_priority) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_avoidance_priority");
-      this.#_bindings.method_get_avoidance_priority = internal.classdb_get_method_bind(
+      this._bindings.method_get_avoidance_priority = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -766,10 +767,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_debug_enabled() {
-    if (!this.#_bindings.method_set_debug_enabled) {
+    if (!this._bindings.method_set_debug_enabled) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_debug_enabled");
-      this.#_bindings.method_set_debug_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_debug_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -777,10 +778,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_debug_enabled() {
-    if (!this.#_bindings.method_get_debug_enabled) {
+    if (!this._bindings.method_get_debug_enabled) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_debug_enabled");
-      this.#_bindings.method_get_debug_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_get_debug_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -788,10 +789,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_debug_use_custom() {
-    if (!this.#_bindings.method_set_debug_use_custom) {
+    if (!this._bindings.method_set_debug_use_custom) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_debug_use_custom");
-      this.#_bindings.method_set_debug_use_custom = internal.classdb_get_method_bind(
+      this._bindings.method_set_debug_use_custom = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -799,10 +800,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_debug_use_custom() {
-    if (!this.#_bindings.method_get_debug_use_custom) {
+    if (!this._bindings.method_get_debug_use_custom) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_debug_use_custom");
-      this.#_bindings.method_get_debug_use_custom = internal.classdb_get_method_bind(
+      this._bindings.method_get_debug_use_custom = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -810,10 +811,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_debug_path_custom_color() {
-    if (!this.#_bindings.method_set_debug_path_custom_color) {
+    if (!this._bindings.method_set_debug_path_custom_color) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_debug_path_custom_color");
-      this.#_bindings.method_set_debug_path_custom_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_debug_path_custom_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -821,10 +822,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_debug_path_custom_color() {
-    if (!this.#_bindings.method_get_debug_path_custom_color) {
+    if (!this._bindings.method_get_debug_path_custom_color) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_debug_path_custom_color");
-      this.#_bindings.method_get_debug_path_custom_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_debug_path_custom_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -832,10 +833,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_debug_path_custom_point_size() {
-    if (!this.#_bindings.method_set_debug_path_custom_point_size) {
+    if (!this._bindings.method_set_debug_path_custom_point_size) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_debug_path_custom_point_size");
-      this.#_bindings.method_set_debug_path_custom_point_size = internal.classdb_get_method_bind(
+      this._bindings.method_set_debug_path_custom_point_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -843,10 +844,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_debug_path_custom_point_size() {
-    if (!this.#_bindings.method_get_debug_path_custom_point_size) {
+    if (!this._bindings.method_get_debug_path_custom_point_size) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_debug_path_custom_point_size");
-      this.#_bindings.method_get_debug_path_custom_point_size = internal.classdb_get_method_bind(
+      this._bindings.method_get_debug_path_custom_point_size = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -854,10 +855,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_set_debug_path_custom_line_width() {
-    if (!this.#_bindings.method_set_debug_path_custom_line_width) {
+    if (!this._bindings.method_set_debug_path_custom_line_width) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("set_debug_path_custom_line_width");
-      this.#_bindings.method_set_debug_path_custom_line_width = internal.classdb_get_method_bind(
+      this._bindings.method_set_debug_path_custom_line_width = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -865,10 +866,10 @@ export class NavigationAgent2D extends Node{
     }
   }
   static init_method_get_debug_path_custom_line_width() {
-    if (!this.#_bindings.method_get_debug_path_custom_line_width) {
+    if (!this._bindings.method_get_debug_path_custom_line_width) {
       let classname = new StringName("NavigationAgent2D");
       let methodname = new StringName("get_debug_path_custom_line_width");
-      this.#_bindings.method_get_debug_path_custom_line_width = internal.classdb_get_method_bind(
+      this._bindings.method_get_debug_path_custom_line_width = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -881,7 +882,7 @@ export class NavigationAgent2D extends Node{
   get_rid() {
     NavigationAgent2D.init_method_get_rid();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_rid,
+      NavigationAgent2D._bindings.method_get_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -892,7 +893,7 @@ export class NavigationAgent2D extends Node{
   set_avoidance_enabled(_enabled) {
     NavigationAgent2D.init_method_set_avoidance_enabled();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_avoidance_enabled,
+      NavigationAgent2D._bindings.method_set_avoidance_enabled,
       this._owner,
       _enabled
     );
@@ -901,7 +902,7 @@ export class NavigationAgent2D extends Node{
   get_avoidance_enabled() {
     NavigationAgent2D.init_method_get_avoidance_enabled();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_avoidance_enabled,
+      NavigationAgent2D._bindings.method_get_avoidance_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -912,7 +913,7 @@ export class NavigationAgent2D extends Node{
   set_path_desired_distance(_desired_distance) {
     NavigationAgent2D.init_method_set_path_desired_distance();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_path_desired_distance,
+      NavigationAgent2D._bindings.method_set_path_desired_distance,
       this._owner,
       _desired_distance
     );
@@ -921,7 +922,7 @@ export class NavigationAgent2D extends Node{
   get_path_desired_distance() {
     NavigationAgent2D.init_method_get_path_desired_distance();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_path_desired_distance,
+      NavigationAgent2D._bindings.method_get_path_desired_distance,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -932,7 +933,7 @@ export class NavigationAgent2D extends Node{
   set_target_desired_distance(_desired_distance) {
     NavigationAgent2D.init_method_set_target_desired_distance();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_target_desired_distance,
+      NavigationAgent2D._bindings.method_set_target_desired_distance,
       this._owner,
       _desired_distance
     );
@@ -941,7 +942,7 @@ export class NavigationAgent2D extends Node{
   get_target_desired_distance() {
     NavigationAgent2D.init_method_get_target_desired_distance();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_target_desired_distance,
+      NavigationAgent2D._bindings.method_get_target_desired_distance,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -952,7 +953,7 @@ export class NavigationAgent2D extends Node{
   set_radius(_radius) {
     NavigationAgent2D.init_method_set_radius();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_radius,
+      NavigationAgent2D._bindings.method_set_radius,
       this._owner,
       _radius
     );
@@ -961,7 +962,7 @@ export class NavigationAgent2D extends Node{
   get_radius() {
     NavigationAgent2D.init_method_get_radius();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_radius,
+      NavigationAgent2D._bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -972,7 +973,7 @@ export class NavigationAgent2D extends Node{
   set_neighbor_distance(_neighbor_distance) {
     NavigationAgent2D.init_method_set_neighbor_distance();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_neighbor_distance,
+      NavigationAgent2D._bindings.method_set_neighbor_distance,
       this._owner,
       _neighbor_distance
     );
@@ -981,7 +982,7 @@ export class NavigationAgent2D extends Node{
   get_neighbor_distance() {
     NavigationAgent2D.init_method_get_neighbor_distance();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_neighbor_distance,
+      NavigationAgent2D._bindings.method_get_neighbor_distance,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -992,7 +993,7 @@ export class NavigationAgent2D extends Node{
   set_max_neighbors(_max_neighbors) {
     NavigationAgent2D.init_method_set_max_neighbors();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_max_neighbors,
+      NavigationAgent2D._bindings.method_set_max_neighbors,
       this._owner,
       _max_neighbors
     );
@@ -1001,7 +1002,7 @@ export class NavigationAgent2D extends Node{
   get_max_neighbors() {
     NavigationAgent2D.init_method_get_max_neighbors();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_max_neighbors,
+      NavigationAgent2D._bindings.method_get_max_neighbors,
       this._owner,
 			Variant.Type.INT,
     
@@ -1012,7 +1013,7 @@ export class NavigationAgent2D extends Node{
   set_time_horizon_agents(_time_horizon) {
     NavigationAgent2D.init_method_set_time_horizon_agents();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_time_horizon_agents,
+      NavigationAgent2D._bindings.method_set_time_horizon_agents,
       this._owner,
       _time_horizon
     );
@@ -1021,7 +1022,7 @@ export class NavigationAgent2D extends Node{
   get_time_horizon_agents() {
     NavigationAgent2D.init_method_get_time_horizon_agents();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_time_horizon_agents,
+      NavigationAgent2D._bindings.method_get_time_horizon_agents,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1032,7 +1033,7 @@ export class NavigationAgent2D extends Node{
   set_time_horizon_obstacles(_time_horizon) {
     NavigationAgent2D.init_method_set_time_horizon_obstacles();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_time_horizon_obstacles,
+      NavigationAgent2D._bindings.method_set_time_horizon_obstacles,
       this._owner,
       _time_horizon
     );
@@ -1041,7 +1042,7 @@ export class NavigationAgent2D extends Node{
   get_time_horizon_obstacles() {
     NavigationAgent2D.init_method_get_time_horizon_obstacles();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_time_horizon_obstacles,
+      NavigationAgent2D._bindings.method_get_time_horizon_obstacles,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1052,7 +1053,7 @@ export class NavigationAgent2D extends Node{
   set_max_speed(_max_speed) {
     NavigationAgent2D.init_method_set_max_speed();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_max_speed,
+      NavigationAgent2D._bindings.method_set_max_speed,
       this._owner,
       _max_speed
     );
@@ -1061,7 +1062,7 @@ export class NavigationAgent2D extends Node{
   get_max_speed() {
     NavigationAgent2D.init_method_get_max_speed();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_max_speed,
+      NavigationAgent2D._bindings.method_get_max_speed,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1072,7 +1073,7 @@ export class NavigationAgent2D extends Node{
   set_path_max_distance(_max_speed) {
     NavigationAgent2D.init_method_set_path_max_distance();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_path_max_distance,
+      NavigationAgent2D._bindings.method_set_path_max_distance,
       this._owner,
       _max_speed
     );
@@ -1081,7 +1082,7 @@ export class NavigationAgent2D extends Node{
   get_path_max_distance() {
     NavigationAgent2D.init_method_get_path_max_distance();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_path_max_distance,
+      NavigationAgent2D._bindings.method_get_path_max_distance,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1092,7 +1093,7 @@ export class NavigationAgent2D extends Node{
   set_navigation_layers(_navigation_layers) {
     NavigationAgent2D.init_method_set_navigation_layers();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_navigation_layers,
+      NavigationAgent2D._bindings.method_set_navigation_layers,
       this._owner,
       _navigation_layers
     );
@@ -1101,7 +1102,7 @@ export class NavigationAgent2D extends Node{
   get_navigation_layers() {
     NavigationAgent2D.init_method_get_navigation_layers();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_navigation_layers,
+      NavigationAgent2D._bindings.method_get_navigation_layers,
       this._owner,
 			Variant.Type.INT,
     
@@ -1112,7 +1113,7 @@ export class NavigationAgent2D extends Node{
   set_navigation_layer_value(_layer_number, _value) {
     NavigationAgent2D.init_method_set_navigation_layer_value();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_navigation_layer_value,
+      NavigationAgent2D._bindings.method_set_navigation_layer_value,
       this._owner,
       _layer_number, _value
     );
@@ -1121,7 +1122,7 @@ export class NavigationAgent2D extends Node{
   get_navigation_layer_value(_layer_number) {
     NavigationAgent2D.init_method_get_navigation_layer_value();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_navigation_layer_value,
+      NavigationAgent2D._bindings.method_get_navigation_layer_value,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1132,7 +1133,7 @@ export class NavigationAgent2D extends Node{
   set_pathfinding_algorithm(_pathfinding_algorithm) {
     NavigationAgent2D.init_method_set_pathfinding_algorithm();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_pathfinding_algorithm,
+      NavigationAgent2D._bindings.method_set_pathfinding_algorithm,
       this._owner,
       _pathfinding_algorithm
     );
@@ -1141,7 +1142,7 @@ export class NavigationAgent2D extends Node{
   get_pathfinding_algorithm() {
     NavigationAgent2D.init_method_get_pathfinding_algorithm();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_pathfinding_algorithm,
+      NavigationAgent2D._bindings.method_get_pathfinding_algorithm,
       this._owner,
 			Variant.Type.INT,
     
@@ -1152,7 +1153,7 @@ export class NavigationAgent2D extends Node{
   set_path_postprocessing(_path_postprocessing) {
     NavigationAgent2D.init_method_set_path_postprocessing();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_path_postprocessing,
+      NavigationAgent2D._bindings.method_set_path_postprocessing,
       this._owner,
       _path_postprocessing
     );
@@ -1161,7 +1162,7 @@ export class NavigationAgent2D extends Node{
   get_path_postprocessing() {
     NavigationAgent2D.init_method_get_path_postprocessing();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_path_postprocessing,
+      NavigationAgent2D._bindings.method_get_path_postprocessing,
       this._owner,
 			Variant.Type.INT,
     
@@ -1172,7 +1173,7 @@ export class NavigationAgent2D extends Node{
   set_path_metadata_flags(_flags) {
     NavigationAgent2D.init_method_set_path_metadata_flags();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_path_metadata_flags,
+      NavigationAgent2D._bindings.method_set_path_metadata_flags,
       this._owner,
       _flags
     );
@@ -1181,7 +1182,7 @@ export class NavigationAgent2D extends Node{
   get_path_metadata_flags() {
     NavigationAgent2D.init_method_get_path_metadata_flags();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_path_metadata_flags,
+      NavigationAgent2D._bindings.method_get_path_metadata_flags,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -1191,7 +1192,7 @@ export class NavigationAgent2D extends Node{
   set_navigation_map(_navigation_map) {
     NavigationAgent2D.init_method_set_navigation_map();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_navigation_map,
+      NavigationAgent2D._bindings.method_set_navigation_map,
       this._owner,
       _navigation_map
     );
@@ -1200,7 +1201,7 @@ export class NavigationAgent2D extends Node{
   get_navigation_map() {
     NavigationAgent2D.init_method_get_navigation_map();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_navigation_map,
+      NavigationAgent2D._bindings.method_get_navigation_map,
       this._owner,
 			Variant.Type.RID,
     
@@ -1211,7 +1212,7 @@ export class NavigationAgent2D extends Node{
   set_target_position(_position) {
     NavigationAgent2D.init_method_set_target_position();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_target_position,
+      NavigationAgent2D._bindings.method_set_target_position,
       this._owner,
       _position
     );
@@ -1220,7 +1221,7 @@ export class NavigationAgent2D extends Node{
   get_target_position() {
     NavigationAgent2D.init_method_get_target_position();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_target_position,
+      NavigationAgent2D._bindings.method_get_target_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1231,7 +1232,7 @@ export class NavigationAgent2D extends Node{
   set_simplify_path(_enabled) {
     NavigationAgent2D.init_method_set_simplify_path();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_simplify_path,
+      NavigationAgent2D._bindings.method_set_simplify_path,
       this._owner,
       _enabled
     );
@@ -1240,7 +1241,7 @@ export class NavigationAgent2D extends Node{
   get_simplify_path() {
     NavigationAgent2D.init_method_get_simplify_path();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_simplify_path,
+      NavigationAgent2D._bindings.method_get_simplify_path,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1251,7 +1252,7 @@ export class NavigationAgent2D extends Node{
   set_simplify_epsilon(_epsilon) {
     NavigationAgent2D.init_method_set_simplify_epsilon();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_simplify_epsilon,
+      NavigationAgent2D._bindings.method_set_simplify_epsilon,
       this._owner,
       _epsilon
     );
@@ -1260,7 +1261,7 @@ export class NavigationAgent2D extends Node{
   get_simplify_epsilon() {
     NavigationAgent2D.init_method_get_simplify_epsilon();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_simplify_epsilon,
+      NavigationAgent2D._bindings.method_get_simplify_epsilon,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1271,7 +1272,7 @@ export class NavigationAgent2D extends Node{
   get_next_path_position() {
     NavigationAgent2D.init_method_get_next_path_position();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_next_path_position,
+      NavigationAgent2D._bindings.method_get_next_path_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1282,7 +1283,7 @@ export class NavigationAgent2D extends Node{
   set_velocity_forced(_velocity) {
     NavigationAgent2D.init_method_set_velocity_forced();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_velocity_forced,
+      NavigationAgent2D._bindings.method_set_velocity_forced,
       this._owner,
       _velocity
     );
@@ -1291,7 +1292,7 @@ export class NavigationAgent2D extends Node{
   set_velocity(_velocity) {
     NavigationAgent2D.init_method_set_velocity();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_velocity,
+      NavigationAgent2D._bindings.method_set_velocity,
       this._owner,
       _velocity
     );
@@ -1300,7 +1301,7 @@ export class NavigationAgent2D extends Node{
   get_velocity() {
     NavigationAgent2D.init_method_get_velocity();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_velocity,
+      NavigationAgent2D._bindings.method_get_velocity,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1311,7 +1312,7 @@ export class NavigationAgent2D extends Node{
   distance_to_target() {
     NavigationAgent2D.init_method_distance_to_target();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_distance_to_target,
+      NavigationAgent2D._bindings.method_distance_to_target,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1322,7 +1323,7 @@ export class NavigationAgent2D extends Node{
   get_current_navigation_result() {
     NavigationAgent2D.init_method_get_current_navigation_result();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_current_navigation_result,
+      NavigationAgent2D._bindings.method_get_current_navigation_result,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -1332,7 +1333,7 @@ export class NavigationAgent2D extends Node{
   get_current_navigation_path() {
     NavigationAgent2D.init_method_get_current_navigation_path();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_current_navigation_path,
+      NavigationAgent2D._bindings.method_get_current_navigation_path,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -1343,7 +1344,7 @@ export class NavigationAgent2D extends Node{
   get_current_navigation_path_index() {
     NavigationAgent2D.init_method_get_current_navigation_path_index();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_current_navigation_path_index,
+      NavigationAgent2D._bindings.method_get_current_navigation_path_index,
       this._owner,
 			Variant.Type.INT,
     
@@ -1354,7 +1355,7 @@ export class NavigationAgent2D extends Node{
   is_target_reached() {
     NavigationAgent2D.init_method_is_target_reached();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_is_target_reached,
+      NavigationAgent2D._bindings.method_is_target_reached,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1365,7 +1366,7 @@ export class NavigationAgent2D extends Node{
   is_target_reachable() {
     NavigationAgent2D.init_method_is_target_reachable();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_is_target_reachable,
+      NavigationAgent2D._bindings.method_is_target_reachable,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1376,7 +1377,7 @@ export class NavigationAgent2D extends Node{
   is_navigation_finished() {
     NavigationAgent2D.init_method_is_navigation_finished();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_is_navigation_finished,
+      NavigationAgent2D._bindings.method_is_navigation_finished,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1387,7 +1388,7 @@ export class NavigationAgent2D extends Node{
   get_final_position() {
     NavigationAgent2D.init_method_get_final_position();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_final_position,
+      NavigationAgent2D._bindings.method_get_final_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1398,7 +1399,7 @@ export class NavigationAgent2D extends Node{
   set_avoidance_layers(_layers) {
     NavigationAgent2D.init_method_set_avoidance_layers();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_avoidance_layers,
+      NavigationAgent2D._bindings.method_set_avoidance_layers,
       this._owner,
       _layers
     );
@@ -1407,7 +1408,7 @@ export class NavigationAgent2D extends Node{
   get_avoidance_layers() {
     NavigationAgent2D.init_method_get_avoidance_layers();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_avoidance_layers,
+      NavigationAgent2D._bindings.method_get_avoidance_layers,
       this._owner,
 			Variant.Type.INT,
     
@@ -1418,7 +1419,7 @@ export class NavigationAgent2D extends Node{
   set_avoidance_mask(_mask) {
     NavigationAgent2D.init_method_set_avoidance_mask();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_avoidance_mask,
+      NavigationAgent2D._bindings.method_set_avoidance_mask,
       this._owner,
       _mask
     );
@@ -1427,7 +1428,7 @@ export class NavigationAgent2D extends Node{
   get_avoidance_mask() {
     NavigationAgent2D.init_method_get_avoidance_mask();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_avoidance_mask,
+      NavigationAgent2D._bindings.method_get_avoidance_mask,
       this._owner,
 			Variant.Type.INT,
     
@@ -1438,7 +1439,7 @@ export class NavigationAgent2D extends Node{
   set_avoidance_layer_value(_layer_number, _value) {
     NavigationAgent2D.init_method_set_avoidance_layer_value();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_avoidance_layer_value,
+      NavigationAgent2D._bindings.method_set_avoidance_layer_value,
       this._owner,
       _layer_number, _value
     );
@@ -1447,7 +1448,7 @@ export class NavigationAgent2D extends Node{
   get_avoidance_layer_value(_layer_number) {
     NavigationAgent2D.init_method_get_avoidance_layer_value();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_avoidance_layer_value,
+      NavigationAgent2D._bindings.method_get_avoidance_layer_value,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1458,7 +1459,7 @@ export class NavigationAgent2D extends Node{
   set_avoidance_mask_value(_mask_number, _value) {
     NavigationAgent2D.init_method_set_avoidance_mask_value();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_avoidance_mask_value,
+      NavigationAgent2D._bindings.method_set_avoidance_mask_value,
       this._owner,
       _mask_number, _value
     );
@@ -1467,7 +1468,7 @@ export class NavigationAgent2D extends Node{
   get_avoidance_mask_value(_mask_number) {
     NavigationAgent2D.init_method_get_avoidance_mask_value();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_avoidance_mask_value,
+      NavigationAgent2D._bindings.method_get_avoidance_mask_value,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1478,7 +1479,7 @@ export class NavigationAgent2D extends Node{
   set_avoidance_priority(_priority) {
     NavigationAgent2D.init_method_set_avoidance_priority();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_avoidance_priority,
+      NavigationAgent2D._bindings.method_set_avoidance_priority,
       this._owner,
       _priority
     );
@@ -1487,7 +1488,7 @@ export class NavigationAgent2D extends Node{
   get_avoidance_priority() {
     NavigationAgent2D.init_method_get_avoidance_priority();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_avoidance_priority,
+      NavigationAgent2D._bindings.method_get_avoidance_priority,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1498,7 +1499,7 @@ export class NavigationAgent2D extends Node{
   set_debug_enabled(_enabled) {
     NavigationAgent2D.init_method_set_debug_enabled();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_debug_enabled,
+      NavigationAgent2D._bindings.method_set_debug_enabled,
       this._owner,
       _enabled
     );
@@ -1507,7 +1508,7 @@ export class NavigationAgent2D extends Node{
   get_debug_enabled() {
     NavigationAgent2D.init_method_get_debug_enabled();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_debug_enabled,
+      NavigationAgent2D._bindings.method_get_debug_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1518,7 +1519,7 @@ export class NavigationAgent2D extends Node{
   set_debug_use_custom(_enabled) {
     NavigationAgent2D.init_method_set_debug_use_custom();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_debug_use_custom,
+      NavigationAgent2D._bindings.method_set_debug_use_custom,
       this._owner,
       _enabled
     );
@@ -1527,7 +1528,7 @@ export class NavigationAgent2D extends Node{
   get_debug_use_custom() {
     NavigationAgent2D.init_method_get_debug_use_custom();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_debug_use_custom,
+      NavigationAgent2D._bindings.method_get_debug_use_custom,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -1538,7 +1539,7 @@ export class NavigationAgent2D extends Node{
   set_debug_path_custom_color(_color) {
     NavigationAgent2D.init_method_set_debug_path_custom_color();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_debug_path_custom_color,
+      NavigationAgent2D._bindings.method_set_debug_path_custom_color,
       this._owner,
       _color
     );
@@ -1547,7 +1548,7 @@ export class NavigationAgent2D extends Node{
   get_debug_path_custom_color() {
     NavigationAgent2D.init_method_get_debug_path_custom_color();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_debug_path_custom_color,
+      NavigationAgent2D._bindings.method_get_debug_path_custom_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -1558,7 +1559,7 @@ export class NavigationAgent2D extends Node{
   set_debug_path_custom_point_size(_point_size) {
     NavigationAgent2D.init_method_set_debug_path_custom_point_size();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_debug_path_custom_point_size,
+      NavigationAgent2D._bindings.method_set_debug_path_custom_point_size,
       this._owner,
       _point_size
     );
@@ -1567,7 +1568,7 @@ export class NavigationAgent2D extends Node{
   get_debug_path_custom_point_size() {
     NavigationAgent2D.init_method_get_debug_path_custom_point_size();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_debug_path_custom_point_size,
+      NavigationAgent2D._bindings.method_get_debug_path_custom_point_size,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -1578,7 +1579,7 @@ export class NavigationAgent2D extends Node{
   set_debug_path_custom_line_width(_line_width) {
     NavigationAgent2D.init_method_set_debug_path_custom_line_width();
     return _call_native_mb_no_ret(
-      NavigationAgent2D.#_bindings.method_set_debug_path_custom_line_width,
+      NavigationAgent2D._bindings.method_set_debug_path_custom_line_width,
       this._owner,
       _line_width
     );
@@ -1587,7 +1588,7 @@ export class NavigationAgent2D extends Node{
   get_debug_path_custom_line_width() {
     NavigationAgent2D.init_method_get_debug_path_custom_line_width();
     return _call_native_mb_ret(
-      NavigationAgent2D.#_bindings.method_get_debug_path_custom_line_width,
+      NavigationAgent2D._bindings.method_get_debug_path_custom_line_width,
       this._owner,
 			Variant.Type.FLOAT,
     

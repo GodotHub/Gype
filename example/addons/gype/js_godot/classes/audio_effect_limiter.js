@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { AudioEffect } from '@js_godot/classes/audio_effect'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_ceiling_db;
@@ -19,10 +20,10 @@ class _MethodBindings {
   method_set_soft_clip_ratio;
   method_get_soft_clip_ratio;
 }
+@GodotClass
 export class AudioEffectLimiter extends AudioEffect{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -32,10 +33,10 @@ export class AudioEffectLimiter extends AudioEffect{
     }
   }
   static init_method_set_ceiling_db() {
-    if (!this.#_bindings.method_set_ceiling_db) {
+    if (!this._bindings.method_set_ceiling_db) {
       let classname = new StringName("AudioEffectLimiter");
       let methodname = new StringName("set_ceiling_db");
-      this.#_bindings.method_set_ceiling_db = internal.classdb_get_method_bind(
+      this._bindings.method_set_ceiling_db = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -43,10 +44,10 @@ export class AudioEffectLimiter extends AudioEffect{
     }
   }
   static init_method_get_ceiling_db() {
-    if (!this.#_bindings.method_get_ceiling_db) {
+    if (!this._bindings.method_get_ceiling_db) {
       let classname = new StringName("AudioEffectLimiter");
       let methodname = new StringName("get_ceiling_db");
-      this.#_bindings.method_get_ceiling_db = internal.classdb_get_method_bind(
+      this._bindings.method_get_ceiling_db = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -54,10 +55,10 @@ export class AudioEffectLimiter extends AudioEffect{
     }
   }
   static init_method_set_threshold_db() {
-    if (!this.#_bindings.method_set_threshold_db) {
+    if (!this._bindings.method_set_threshold_db) {
       let classname = new StringName("AudioEffectLimiter");
       let methodname = new StringName("set_threshold_db");
-      this.#_bindings.method_set_threshold_db = internal.classdb_get_method_bind(
+      this._bindings.method_set_threshold_db = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -65,10 +66,10 @@ export class AudioEffectLimiter extends AudioEffect{
     }
   }
   static init_method_get_threshold_db() {
-    if (!this.#_bindings.method_get_threshold_db) {
+    if (!this._bindings.method_get_threshold_db) {
       let classname = new StringName("AudioEffectLimiter");
       let methodname = new StringName("get_threshold_db");
-      this.#_bindings.method_get_threshold_db = internal.classdb_get_method_bind(
+      this._bindings.method_get_threshold_db = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -76,10 +77,10 @@ export class AudioEffectLimiter extends AudioEffect{
     }
   }
   static init_method_set_soft_clip_db() {
-    if (!this.#_bindings.method_set_soft_clip_db) {
+    if (!this._bindings.method_set_soft_clip_db) {
       let classname = new StringName("AudioEffectLimiter");
       let methodname = new StringName("set_soft_clip_db");
-      this.#_bindings.method_set_soft_clip_db = internal.classdb_get_method_bind(
+      this._bindings.method_set_soft_clip_db = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -87,10 +88,10 @@ export class AudioEffectLimiter extends AudioEffect{
     }
   }
   static init_method_get_soft_clip_db() {
-    if (!this.#_bindings.method_get_soft_clip_db) {
+    if (!this._bindings.method_get_soft_clip_db) {
       let classname = new StringName("AudioEffectLimiter");
       let methodname = new StringName("get_soft_clip_db");
-      this.#_bindings.method_get_soft_clip_db = internal.classdb_get_method_bind(
+      this._bindings.method_get_soft_clip_db = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -98,10 +99,10 @@ export class AudioEffectLimiter extends AudioEffect{
     }
   }
   static init_method_set_soft_clip_ratio() {
-    if (!this.#_bindings.method_set_soft_clip_ratio) {
+    if (!this._bindings.method_set_soft_clip_ratio) {
       let classname = new StringName("AudioEffectLimiter");
       let methodname = new StringName("set_soft_clip_ratio");
-      this.#_bindings.method_set_soft_clip_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_set_soft_clip_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -109,10 +110,10 @@ export class AudioEffectLimiter extends AudioEffect{
     }
   }
   static init_method_get_soft_clip_ratio() {
-    if (!this.#_bindings.method_get_soft_clip_ratio) {
+    if (!this._bindings.method_get_soft_clip_ratio) {
       let classname = new StringName("AudioEffectLimiter");
       let methodname = new StringName("get_soft_clip_ratio");
-      this.#_bindings.method_get_soft_clip_ratio = internal.classdb_get_method_bind(
+      this._bindings.method_get_soft_clip_ratio = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -125,7 +126,7 @@ export class AudioEffectLimiter extends AudioEffect{
   set_ceiling_db(_ceiling) {
     AudioEffectLimiter.init_method_set_ceiling_db();
     return _call_native_mb_no_ret(
-      AudioEffectLimiter.#_bindings.method_set_ceiling_db,
+      AudioEffectLimiter._bindings.method_set_ceiling_db,
       this._owner,
       _ceiling
     );
@@ -134,7 +135,7 @@ export class AudioEffectLimiter extends AudioEffect{
   get_ceiling_db() {
     AudioEffectLimiter.init_method_get_ceiling_db();
     return _call_native_mb_ret(
-      AudioEffectLimiter.#_bindings.method_get_ceiling_db,
+      AudioEffectLimiter._bindings.method_get_ceiling_db,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -145,7 +146,7 @@ export class AudioEffectLimiter extends AudioEffect{
   set_threshold_db(_threshold) {
     AudioEffectLimiter.init_method_set_threshold_db();
     return _call_native_mb_no_ret(
-      AudioEffectLimiter.#_bindings.method_set_threshold_db,
+      AudioEffectLimiter._bindings.method_set_threshold_db,
       this._owner,
       _threshold
     );
@@ -154,7 +155,7 @@ export class AudioEffectLimiter extends AudioEffect{
   get_threshold_db() {
     AudioEffectLimiter.init_method_get_threshold_db();
     return _call_native_mb_ret(
-      AudioEffectLimiter.#_bindings.method_get_threshold_db,
+      AudioEffectLimiter._bindings.method_get_threshold_db,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -165,7 +166,7 @@ export class AudioEffectLimiter extends AudioEffect{
   set_soft_clip_db(_soft_clip) {
     AudioEffectLimiter.init_method_set_soft_clip_db();
     return _call_native_mb_no_ret(
-      AudioEffectLimiter.#_bindings.method_set_soft_clip_db,
+      AudioEffectLimiter._bindings.method_set_soft_clip_db,
       this._owner,
       _soft_clip
     );
@@ -174,7 +175,7 @@ export class AudioEffectLimiter extends AudioEffect{
   get_soft_clip_db() {
     AudioEffectLimiter.init_method_get_soft_clip_db();
     return _call_native_mb_ret(
-      AudioEffectLimiter.#_bindings.method_get_soft_clip_db,
+      AudioEffectLimiter._bindings.method_get_soft_clip_db,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -185,7 +186,7 @@ export class AudioEffectLimiter extends AudioEffect{
   set_soft_clip_ratio(_soft_clip) {
     AudioEffectLimiter.init_method_set_soft_clip_ratio();
     return _call_native_mb_no_ret(
-      AudioEffectLimiter.#_bindings.method_set_soft_clip_ratio,
+      AudioEffectLimiter._bindings.method_set_soft_clip_ratio,
       this._owner,
       _soft_clip
     );
@@ -194,7 +195,7 @@ export class AudioEffectLimiter extends AudioEffect{
   get_soft_clip_ratio() {
     AudioEffectLimiter.init_method_get_soft_clip_ratio();
     return _call_native_mb_ret(
-      AudioEffectLimiter.#_bindings.method_get_soft_clip_ratio,
+      AudioEffectLimiter._bindings.method_get_soft_clip_ratio,
       this._owner,
 			Variant.Type.FLOAT,
     

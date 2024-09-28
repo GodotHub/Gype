@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StyleBox } from '@js_godot/classes/style_box'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_color;
@@ -21,10 +22,10 @@ class _MethodBindings {
   method_set_vertical;
   method_is_vertical;
 }
+@GodotClass
 export class StyleBoxLine extends StyleBox{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -34,10 +35,10 @@ export class StyleBoxLine extends StyleBox{
     }
   }
   static init_method_set_color() {
-    if (!this.#_bindings.method_set_color) {
+    if (!this._bindings.method_set_color) {
       let classname = new StringName("StyleBoxLine");
       let methodname = new StringName("set_color");
-      this.#_bindings.method_set_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -45,10 +46,10 @@ export class StyleBoxLine extends StyleBox{
     }
   }
   static init_method_get_color() {
-    if (!this.#_bindings.method_get_color) {
+    if (!this._bindings.method_get_color) {
       let classname = new StringName("StyleBoxLine");
       let methodname = new StringName("get_color");
-      this.#_bindings.method_get_color = internal.classdb_get_method_bind(
+      this._bindings.method_get_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3444240500
@@ -56,10 +57,10 @@ export class StyleBoxLine extends StyleBox{
     }
   }
   static init_method_set_thickness() {
-    if (!this.#_bindings.method_set_thickness) {
+    if (!this._bindings.method_set_thickness) {
       let classname = new StringName("StyleBoxLine");
       let methodname = new StringName("set_thickness");
-      this.#_bindings.method_set_thickness = internal.classdb_get_method_bind(
+      this._bindings.method_set_thickness = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -67,10 +68,10 @@ export class StyleBoxLine extends StyleBox{
     }
   }
   static init_method_get_thickness() {
-    if (!this.#_bindings.method_get_thickness) {
+    if (!this._bindings.method_get_thickness) {
       let classname = new StringName("StyleBoxLine");
       let methodname = new StringName("get_thickness");
-      this.#_bindings.method_get_thickness = internal.classdb_get_method_bind(
+      this._bindings.method_get_thickness = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -78,10 +79,10 @@ export class StyleBoxLine extends StyleBox{
     }
   }
   static init_method_set_grow_begin() {
-    if (!this.#_bindings.method_set_grow_begin) {
+    if (!this._bindings.method_set_grow_begin) {
       let classname = new StringName("StyleBoxLine");
       let methodname = new StringName("set_grow_begin");
-      this.#_bindings.method_set_grow_begin = internal.classdb_get_method_bind(
+      this._bindings.method_set_grow_begin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -89,10 +90,10 @@ export class StyleBoxLine extends StyleBox{
     }
   }
   static init_method_get_grow_begin() {
-    if (!this.#_bindings.method_get_grow_begin) {
+    if (!this._bindings.method_get_grow_begin) {
       let classname = new StringName("StyleBoxLine");
       let methodname = new StringName("get_grow_begin");
-      this.#_bindings.method_get_grow_begin = internal.classdb_get_method_bind(
+      this._bindings.method_get_grow_begin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -100,10 +101,10 @@ export class StyleBoxLine extends StyleBox{
     }
   }
   static init_method_set_grow_end() {
-    if (!this.#_bindings.method_set_grow_end) {
+    if (!this._bindings.method_set_grow_end) {
       let classname = new StringName("StyleBoxLine");
       let methodname = new StringName("set_grow_end");
-      this.#_bindings.method_set_grow_end = internal.classdb_get_method_bind(
+      this._bindings.method_set_grow_end = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -111,10 +112,10 @@ export class StyleBoxLine extends StyleBox{
     }
   }
   static init_method_get_grow_end() {
-    if (!this.#_bindings.method_get_grow_end) {
+    if (!this._bindings.method_get_grow_end) {
       let classname = new StringName("StyleBoxLine");
       let methodname = new StringName("get_grow_end");
-      this.#_bindings.method_get_grow_end = internal.classdb_get_method_bind(
+      this._bindings.method_get_grow_end = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -122,10 +123,10 @@ export class StyleBoxLine extends StyleBox{
     }
   }
   static init_method_set_vertical() {
-    if (!this.#_bindings.method_set_vertical) {
+    if (!this._bindings.method_set_vertical) {
       let classname = new StringName("StyleBoxLine");
       let methodname = new StringName("set_vertical");
-      this.#_bindings.method_set_vertical = internal.classdb_get_method_bind(
+      this._bindings.method_set_vertical = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -133,10 +134,10 @@ export class StyleBoxLine extends StyleBox{
     }
   }
   static init_method_is_vertical() {
-    if (!this.#_bindings.method_is_vertical) {
+    if (!this._bindings.method_is_vertical) {
       let classname = new StringName("StyleBoxLine");
       let methodname = new StringName("is_vertical");
-      this.#_bindings.method_is_vertical = internal.classdb_get_method_bind(
+      this._bindings.method_is_vertical = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -149,7 +150,7 @@ export class StyleBoxLine extends StyleBox{
   set_color(_color) {
     StyleBoxLine.init_method_set_color();
     return _call_native_mb_no_ret(
-      StyleBoxLine.#_bindings.method_set_color,
+      StyleBoxLine._bindings.method_set_color,
       this._owner,
       _color
     );
@@ -158,7 +159,7 @@ export class StyleBoxLine extends StyleBox{
   get_color() {
     StyleBoxLine.init_method_get_color();
     return _call_native_mb_ret(
-      StyleBoxLine.#_bindings.method_get_color,
+      StyleBoxLine._bindings.method_get_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -169,7 +170,7 @@ export class StyleBoxLine extends StyleBox{
   set_thickness(_thickness) {
     StyleBoxLine.init_method_set_thickness();
     return _call_native_mb_no_ret(
-      StyleBoxLine.#_bindings.method_set_thickness,
+      StyleBoxLine._bindings.method_set_thickness,
       this._owner,
       _thickness
     );
@@ -178,7 +179,7 @@ export class StyleBoxLine extends StyleBox{
   get_thickness() {
     StyleBoxLine.init_method_get_thickness();
     return _call_native_mb_ret(
-      StyleBoxLine.#_bindings.method_get_thickness,
+      StyleBoxLine._bindings.method_get_thickness,
       this._owner,
 			Variant.Type.INT,
     
@@ -189,7 +190,7 @@ export class StyleBoxLine extends StyleBox{
   set_grow_begin(_offset) {
     StyleBoxLine.init_method_set_grow_begin();
     return _call_native_mb_no_ret(
-      StyleBoxLine.#_bindings.method_set_grow_begin,
+      StyleBoxLine._bindings.method_set_grow_begin,
       this._owner,
       _offset
     );
@@ -198,7 +199,7 @@ export class StyleBoxLine extends StyleBox{
   get_grow_begin() {
     StyleBoxLine.init_method_get_grow_begin();
     return _call_native_mb_ret(
-      StyleBoxLine.#_bindings.method_get_grow_begin,
+      StyleBoxLine._bindings.method_get_grow_begin,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -209,7 +210,7 @@ export class StyleBoxLine extends StyleBox{
   set_grow_end(_offset) {
     StyleBoxLine.init_method_set_grow_end();
     return _call_native_mb_no_ret(
-      StyleBoxLine.#_bindings.method_set_grow_end,
+      StyleBoxLine._bindings.method_set_grow_end,
       this._owner,
       _offset
     );
@@ -218,7 +219,7 @@ export class StyleBoxLine extends StyleBox{
   get_grow_end() {
     StyleBoxLine.init_method_get_grow_end();
     return _call_native_mb_ret(
-      StyleBoxLine.#_bindings.method_get_grow_end,
+      StyleBoxLine._bindings.method_get_grow_end,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -229,7 +230,7 @@ export class StyleBoxLine extends StyleBox{
   set_vertical(_vertical) {
     StyleBoxLine.init_method_set_vertical();
     return _call_native_mb_no_ret(
-      StyleBoxLine.#_bindings.method_set_vertical,
+      StyleBoxLine._bindings.method_set_vertical,
       this._owner,
       _vertical
     );
@@ -238,7 +239,7 @@ export class StyleBoxLine extends StyleBox{
   is_vertical() {
     StyleBoxLine.init_method_is_vertical();
     return _call_native_mb_ret(
-      StyleBoxLine.#_bindings.method_is_vertical,
+      StyleBoxLine._bindings.method_is_vertical,
       this._owner,
 			Variant.Type.BOOL,
     

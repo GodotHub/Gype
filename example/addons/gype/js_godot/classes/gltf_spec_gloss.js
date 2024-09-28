@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_diffuse_img;
@@ -21,10 +22,10 @@ class _MethodBindings {
   method_get_spec_gloss_img;
   method_set_spec_gloss_img;
 }
+@GodotClass
 export class GLTFSpecGloss extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -34,10 +35,10 @@ export class GLTFSpecGloss extends Resource{
     }
   }
   static init_method_get_diffuse_img() {
-    if (!this.#_bindings.method_get_diffuse_img) {
+    if (!this._bindings.method_get_diffuse_img) {
       let classname = new StringName("GLTFSpecGloss");
       let methodname = new StringName("get_diffuse_img");
-      this.#_bindings.method_get_diffuse_img = internal.classdb_get_method_bind(
+      this._bindings.method_get_diffuse_img = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         564927088
@@ -45,10 +46,10 @@ export class GLTFSpecGloss extends Resource{
     }
   }
   static init_method_set_diffuse_img() {
-    if (!this.#_bindings.method_set_diffuse_img) {
+    if (!this._bindings.method_set_diffuse_img) {
       let classname = new StringName("GLTFSpecGloss");
       let methodname = new StringName("set_diffuse_img");
-      this.#_bindings.method_set_diffuse_img = internal.classdb_get_method_bind(
+      this._bindings.method_set_diffuse_img = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         532598488
@@ -56,10 +57,10 @@ export class GLTFSpecGloss extends Resource{
     }
   }
   static init_method_get_diffuse_factor() {
-    if (!this.#_bindings.method_get_diffuse_factor) {
+    if (!this._bindings.method_get_diffuse_factor) {
       let classname = new StringName("GLTFSpecGloss");
       let methodname = new StringName("get_diffuse_factor");
-      this.#_bindings.method_get_diffuse_factor = internal.classdb_get_method_bind(
+      this._bindings.method_get_diffuse_factor = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3200896285
@@ -67,10 +68,10 @@ export class GLTFSpecGloss extends Resource{
     }
   }
   static init_method_set_diffuse_factor() {
-    if (!this.#_bindings.method_set_diffuse_factor) {
+    if (!this._bindings.method_set_diffuse_factor) {
       let classname = new StringName("GLTFSpecGloss");
       let methodname = new StringName("set_diffuse_factor");
-      this.#_bindings.method_set_diffuse_factor = internal.classdb_get_method_bind(
+      this._bindings.method_set_diffuse_factor = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -78,10 +79,10 @@ export class GLTFSpecGloss extends Resource{
     }
   }
   static init_method_get_gloss_factor() {
-    if (!this.#_bindings.method_get_gloss_factor) {
+    if (!this._bindings.method_get_gloss_factor) {
       let classname = new StringName("GLTFSpecGloss");
       let methodname = new StringName("get_gloss_factor");
-      this.#_bindings.method_get_gloss_factor = internal.classdb_get_method_bind(
+      this._bindings.method_get_gloss_factor = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         191475506
@@ -89,10 +90,10 @@ export class GLTFSpecGloss extends Resource{
     }
   }
   static init_method_set_gloss_factor() {
-    if (!this.#_bindings.method_set_gloss_factor) {
+    if (!this._bindings.method_set_gloss_factor) {
       let classname = new StringName("GLTFSpecGloss");
       let methodname = new StringName("set_gloss_factor");
-      this.#_bindings.method_set_gloss_factor = internal.classdb_get_method_bind(
+      this._bindings.method_set_gloss_factor = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -100,10 +101,10 @@ export class GLTFSpecGloss extends Resource{
     }
   }
   static init_method_get_specular_factor() {
-    if (!this.#_bindings.method_get_specular_factor) {
+    if (!this._bindings.method_get_specular_factor) {
       let classname = new StringName("GLTFSpecGloss");
       let methodname = new StringName("get_specular_factor");
-      this.#_bindings.method_get_specular_factor = internal.classdb_get_method_bind(
+      this._bindings.method_get_specular_factor = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3200896285
@@ -111,10 +112,10 @@ export class GLTFSpecGloss extends Resource{
     }
   }
   static init_method_set_specular_factor() {
-    if (!this.#_bindings.method_set_specular_factor) {
+    if (!this._bindings.method_set_specular_factor) {
       let classname = new StringName("GLTFSpecGloss");
       let methodname = new StringName("set_specular_factor");
-      this.#_bindings.method_set_specular_factor = internal.classdb_get_method_bind(
+      this._bindings.method_set_specular_factor = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -122,10 +123,10 @@ export class GLTFSpecGloss extends Resource{
     }
   }
   static init_method_get_spec_gloss_img() {
-    if (!this.#_bindings.method_get_spec_gloss_img) {
+    if (!this._bindings.method_get_spec_gloss_img) {
       let classname = new StringName("GLTFSpecGloss");
       let methodname = new StringName("get_spec_gloss_img");
-      this.#_bindings.method_get_spec_gloss_img = internal.classdb_get_method_bind(
+      this._bindings.method_get_spec_gloss_img = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         564927088
@@ -133,10 +134,10 @@ export class GLTFSpecGloss extends Resource{
     }
   }
   static init_method_set_spec_gloss_img() {
-    if (!this.#_bindings.method_set_spec_gloss_img) {
+    if (!this._bindings.method_set_spec_gloss_img) {
       let classname = new StringName("GLTFSpecGloss");
       let methodname = new StringName("set_spec_gloss_img");
-      this.#_bindings.method_set_spec_gloss_img = internal.classdb_get_method_bind(
+      this._bindings.method_set_spec_gloss_img = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         532598488
@@ -149,7 +150,7 @@ export class GLTFSpecGloss extends Resource{
   get_diffuse_img() {
     GLTFSpecGloss.init_method_get_diffuse_img();
     return _call_native_mb_ret(
-      GLTFSpecGloss.#_bindings.method_get_diffuse_img,
+      GLTFSpecGloss._bindings.method_get_diffuse_img,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -159,7 +160,7 @@ export class GLTFSpecGloss extends Resource{
   set_diffuse_img(_diffuse_img) {
     GLTFSpecGloss.init_method_set_diffuse_img();
     return _call_native_mb_no_ret(
-      GLTFSpecGloss.#_bindings.method_set_diffuse_img,
+      GLTFSpecGloss._bindings.method_set_diffuse_img,
       this._owner,
       _diffuse_img
     );
@@ -168,7 +169,7 @@ export class GLTFSpecGloss extends Resource{
   get_diffuse_factor() {
     GLTFSpecGloss.init_method_get_diffuse_factor();
     return _call_native_mb_ret(
-      GLTFSpecGloss.#_bindings.method_get_diffuse_factor,
+      GLTFSpecGloss._bindings.method_get_diffuse_factor,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -179,7 +180,7 @@ export class GLTFSpecGloss extends Resource{
   set_diffuse_factor(_diffuse_factor) {
     GLTFSpecGloss.init_method_set_diffuse_factor();
     return _call_native_mb_no_ret(
-      GLTFSpecGloss.#_bindings.method_set_diffuse_factor,
+      GLTFSpecGloss._bindings.method_set_diffuse_factor,
       this._owner,
       _diffuse_factor
     );
@@ -188,7 +189,7 @@ export class GLTFSpecGloss extends Resource{
   get_gloss_factor() {
     GLTFSpecGloss.init_method_get_gloss_factor();
     return _call_native_mb_ret(
-      GLTFSpecGloss.#_bindings.method_get_gloss_factor,
+      GLTFSpecGloss._bindings.method_get_gloss_factor,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -199,7 +200,7 @@ export class GLTFSpecGloss extends Resource{
   set_gloss_factor(_gloss_factor) {
     GLTFSpecGloss.init_method_set_gloss_factor();
     return _call_native_mb_no_ret(
-      GLTFSpecGloss.#_bindings.method_set_gloss_factor,
+      GLTFSpecGloss._bindings.method_set_gloss_factor,
       this._owner,
       _gloss_factor
     );
@@ -208,7 +209,7 @@ export class GLTFSpecGloss extends Resource{
   get_specular_factor() {
     GLTFSpecGloss.init_method_get_specular_factor();
     return _call_native_mb_ret(
-      GLTFSpecGloss.#_bindings.method_get_specular_factor,
+      GLTFSpecGloss._bindings.method_get_specular_factor,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -219,7 +220,7 @@ export class GLTFSpecGloss extends Resource{
   set_specular_factor(_specular_factor) {
     GLTFSpecGloss.init_method_set_specular_factor();
     return _call_native_mb_no_ret(
-      GLTFSpecGloss.#_bindings.method_set_specular_factor,
+      GLTFSpecGloss._bindings.method_set_specular_factor,
       this._owner,
       _specular_factor
     );
@@ -228,7 +229,7 @@ export class GLTFSpecGloss extends Resource{
   get_spec_gloss_img() {
     GLTFSpecGloss.init_method_get_spec_gloss_img();
     return _call_native_mb_ret(
-      GLTFSpecGloss.#_bindings.method_get_spec_gloss_img,
+      GLTFSpecGloss._bindings.method_get_spec_gloss_img,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -238,7 +239,7 @@ export class GLTFSpecGloss extends Resource{
   set_spec_gloss_img(_spec_gloss_img) {
     GLTFSpecGloss.init_method_set_spec_gloss_img();
     return _call_native_mb_no_ret(
-      GLTFSpecGloss.#_bindings.method_set_spec_gloss_img,
+      GLTFSpecGloss._bindings.method_set_spec_gloss_img,
       this._owner,
       _spec_gloss_img
     );

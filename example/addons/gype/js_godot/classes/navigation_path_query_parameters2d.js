@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_pathfinding_algorithm;
@@ -29,10 +30,10 @@ class _MethodBindings {
   method_set_simplify_epsilon;
   method_get_simplify_epsilon;
 }
+@GodotClass
 export class NavigationPathQueryParameters2D extends RefCounted{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -42,10 +43,10 @@ export class NavigationPathQueryParameters2D extends RefCounted{
     }
   }
   static init_method_set_pathfinding_algorithm() {
-    if (!this.#_bindings.method_set_pathfinding_algorithm) {
+    if (!this._bindings.method_set_pathfinding_algorithm) {
       let classname = new StringName("NavigationPathQueryParameters2D");
       let methodname = new StringName("set_pathfinding_algorithm");
-      this.#_bindings.method_set_pathfinding_algorithm = internal.classdb_get_method_bind(
+      this._bindings.method_set_pathfinding_algorithm = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2783519915
@@ -53,10 +54,10 @@ export class NavigationPathQueryParameters2D extends RefCounted{
     }
   }
   static init_method_get_pathfinding_algorithm() {
-    if (!this.#_bindings.method_get_pathfinding_algorithm) {
+    if (!this._bindings.method_get_pathfinding_algorithm) {
       let classname = new StringName("NavigationPathQueryParameters2D");
       let methodname = new StringName("get_pathfinding_algorithm");
-      this.#_bindings.method_get_pathfinding_algorithm = internal.classdb_get_method_bind(
+      this._bindings.method_get_pathfinding_algorithm = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3000421146
@@ -64,10 +65,10 @@ export class NavigationPathQueryParameters2D extends RefCounted{
     }
   }
   static init_method_set_path_postprocessing() {
-    if (!this.#_bindings.method_set_path_postprocessing) {
+    if (!this._bindings.method_set_path_postprocessing) {
       let classname = new StringName("NavigationPathQueryParameters2D");
       let methodname = new StringName("set_path_postprocessing");
-      this.#_bindings.method_set_path_postprocessing = internal.classdb_get_method_bind(
+      this._bindings.method_set_path_postprocessing = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2864409082
@@ -75,10 +76,10 @@ export class NavigationPathQueryParameters2D extends RefCounted{
     }
   }
   static init_method_get_path_postprocessing() {
-    if (!this.#_bindings.method_get_path_postprocessing) {
+    if (!this._bindings.method_get_path_postprocessing) {
       let classname = new StringName("NavigationPathQueryParameters2D");
       let methodname = new StringName("get_path_postprocessing");
-      this.#_bindings.method_get_path_postprocessing = internal.classdb_get_method_bind(
+      this._bindings.method_get_path_postprocessing = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3798118993
@@ -86,10 +87,10 @@ export class NavigationPathQueryParameters2D extends RefCounted{
     }
   }
   static init_method_set_map() {
-    if (!this.#_bindings.method_set_map) {
+    if (!this._bindings.method_set_map) {
       let classname = new StringName("NavigationPathQueryParameters2D");
       let methodname = new StringName("set_map");
-      this.#_bindings.method_set_map = internal.classdb_get_method_bind(
+      this._bindings.method_set_map = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2722037293
@@ -97,10 +98,10 @@ export class NavigationPathQueryParameters2D extends RefCounted{
     }
   }
   static init_method_get_map() {
-    if (!this.#_bindings.method_get_map) {
+    if (!this._bindings.method_get_map) {
       let classname = new StringName("NavigationPathQueryParameters2D");
       let methodname = new StringName("get_map");
-      this.#_bindings.method_get_map = internal.classdb_get_method_bind(
+      this._bindings.method_get_map = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2944877500
@@ -108,10 +109,10 @@ export class NavigationPathQueryParameters2D extends RefCounted{
     }
   }
   static init_method_set_start_position() {
-    if (!this.#_bindings.method_set_start_position) {
+    if (!this._bindings.method_set_start_position) {
       let classname = new StringName("NavigationPathQueryParameters2D");
       let methodname = new StringName("set_start_position");
-      this.#_bindings.method_set_start_position = internal.classdb_get_method_bind(
+      this._bindings.method_set_start_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -119,10 +120,10 @@ export class NavigationPathQueryParameters2D extends RefCounted{
     }
   }
   static init_method_get_start_position() {
-    if (!this.#_bindings.method_get_start_position) {
+    if (!this._bindings.method_get_start_position) {
       let classname = new StringName("NavigationPathQueryParameters2D");
       let methodname = new StringName("get_start_position");
-      this.#_bindings.method_get_start_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_start_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -130,10 +131,10 @@ export class NavigationPathQueryParameters2D extends RefCounted{
     }
   }
   static init_method_set_target_position() {
-    if (!this.#_bindings.method_set_target_position) {
+    if (!this._bindings.method_set_target_position) {
       let classname = new StringName("NavigationPathQueryParameters2D");
       let methodname = new StringName("set_target_position");
-      this.#_bindings.method_set_target_position = internal.classdb_get_method_bind(
+      this._bindings.method_set_target_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -141,10 +142,10 @@ export class NavigationPathQueryParameters2D extends RefCounted{
     }
   }
   static init_method_get_target_position() {
-    if (!this.#_bindings.method_get_target_position) {
+    if (!this._bindings.method_get_target_position) {
       let classname = new StringName("NavigationPathQueryParameters2D");
       let methodname = new StringName("get_target_position");
-      this.#_bindings.method_get_target_position = internal.classdb_get_method_bind(
+      this._bindings.method_get_target_position = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3341600327
@@ -152,10 +153,10 @@ export class NavigationPathQueryParameters2D extends RefCounted{
     }
   }
   static init_method_set_navigation_layers() {
-    if (!this.#_bindings.method_set_navigation_layers) {
+    if (!this._bindings.method_set_navigation_layers) {
       let classname = new StringName("NavigationPathQueryParameters2D");
       let methodname = new StringName("set_navigation_layers");
-      this.#_bindings.method_set_navigation_layers = internal.classdb_get_method_bind(
+      this._bindings.method_set_navigation_layers = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -163,10 +164,10 @@ export class NavigationPathQueryParameters2D extends RefCounted{
     }
   }
   static init_method_get_navigation_layers() {
-    if (!this.#_bindings.method_get_navigation_layers) {
+    if (!this._bindings.method_get_navigation_layers) {
       let classname = new StringName("NavigationPathQueryParameters2D");
       let methodname = new StringName("get_navigation_layers");
-      this.#_bindings.method_get_navigation_layers = internal.classdb_get_method_bind(
+      this._bindings.method_get_navigation_layers = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -174,10 +175,10 @@ export class NavigationPathQueryParameters2D extends RefCounted{
     }
   }
   static init_method_set_metadata_flags() {
-    if (!this.#_bindings.method_set_metadata_flags) {
+    if (!this._bindings.method_set_metadata_flags) {
       let classname = new StringName("NavigationPathQueryParameters2D");
       let methodname = new StringName("set_metadata_flags");
-      this.#_bindings.method_set_metadata_flags = internal.classdb_get_method_bind(
+      this._bindings.method_set_metadata_flags = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         24274129
@@ -185,10 +186,10 @@ export class NavigationPathQueryParameters2D extends RefCounted{
     }
   }
   static init_method_get_metadata_flags() {
-    if (!this.#_bindings.method_get_metadata_flags) {
+    if (!this._bindings.method_get_metadata_flags) {
       let classname = new StringName("NavigationPathQueryParameters2D");
       let methodname = new StringName("get_metadata_flags");
-      this.#_bindings.method_get_metadata_flags = internal.classdb_get_method_bind(
+      this._bindings.method_get_metadata_flags = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         488152976
@@ -196,10 +197,10 @@ export class NavigationPathQueryParameters2D extends RefCounted{
     }
   }
   static init_method_set_simplify_path() {
-    if (!this.#_bindings.method_set_simplify_path) {
+    if (!this._bindings.method_set_simplify_path) {
       let classname = new StringName("NavigationPathQueryParameters2D");
       let methodname = new StringName("set_simplify_path");
-      this.#_bindings.method_set_simplify_path = internal.classdb_get_method_bind(
+      this._bindings.method_set_simplify_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -207,10 +208,10 @@ export class NavigationPathQueryParameters2D extends RefCounted{
     }
   }
   static init_method_get_simplify_path() {
-    if (!this.#_bindings.method_get_simplify_path) {
+    if (!this._bindings.method_get_simplify_path) {
       let classname = new StringName("NavigationPathQueryParameters2D");
       let methodname = new StringName("get_simplify_path");
-      this.#_bindings.method_get_simplify_path = internal.classdb_get_method_bind(
+      this._bindings.method_get_simplify_path = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -218,10 +219,10 @@ export class NavigationPathQueryParameters2D extends RefCounted{
     }
   }
   static init_method_set_simplify_epsilon() {
-    if (!this.#_bindings.method_set_simplify_epsilon) {
+    if (!this._bindings.method_set_simplify_epsilon) {
       let classname = new StringName("NavigationPathQueryParameters2D");
       let methodname = new StringName("set_simplify_epsilon");
-      this.#_bindings.method_set_simplify_epsilon = internal.classdb_get_method_bind(
+      this._bindings.method_set_simplify_epsilon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -229,10 +230,10 @@ export class NavigationPathQueryParameters2D extends RefCounted{
     }
   }
   static init_method_get_simplify_epsilon() {
-    if (!this.#_bindings.method_get_simplify_epsilon) {
+    if (!this._bindings.method_get_simplify_epsilon) {
       let classname = new StringName("NavigationPathQueryParameters2D");
       let methodname = new StringName("get_simplify_epsilon");
-      this.#_bindings.method_get_simplify_epsilon = internal.classdb_get_method_bind(
+      this._bindings.method_get_simplify_epsilon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -245,7 +246,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   set_pathfinding_algorithm(_pathfinding_algorithm) {
     NavigationPathQueryParameters2D.init_method_set_pathfinding_algorithm();
     return _call_native_mb_no_ret(
-      NavigationPathQueryParameters2D.#_bindings.method_set_pathfinding_algorithm,
+      NavigationPathQueryParameters2D._bindings.method_set_pathfinding_algorithm,
       this._owner,
       _pathfinding_algorithm
     );
@@ -254,7 +255,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   get_pathfinding_algorithm() {
     NavigationPathQueryParameters2D.init_method_get_pathfinding_algorithm();
     return _call_native_mb_ret(
-      NavigationPathQueryParameters2D.#_bindings.method_get_pathfinding_algorithm,
+      NavigationPathQueryParameters2D._bindings.method_get_pathfinding_algorithm,
       this._owner,
 			Variant.Type.INT,
     
@@ -265,7 +266,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   set_path_postprocessing(_path_postprocessing) {
     NavigationPathQueryParameters2D.init_method_set_path_postprocessing();
     return _call_native_mb_no_ret(
-      NavigationPathQueryParameters2D.#_bindings.method_set_path_postprocessing,
+      NavigationPathQueryParameters2D._bindings.method_set_path_postprocessing,
       this._owner,
       _path_postprocessing
     );
@@ -274,7 +275,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   get_path_postprocessing() {
     NavigationPathQueryParameters2D.init_method_get_path_postprocessing();
     return _call_native_mb_ret(
-      NavigationPathQueryParameters2D.#_bindings.method_get_path_postprocessing,
+      NavigationPathQueryParameters2D._bindings.method_get_path_postprocessing,
       this._owner,
 			Variant.Type.INT,
     
@@ -285,7 +286,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   set_map(_map) {
     NavigationPathQueryParameters2D.init_method_set_map();
     return _call_native_mb_no_ret(
-      NavigationPathQueryParameters2D.#_bindings.method_set_map,
+      NavigationPathQueryParameters2D._bindings.method_set_map,
       this._owner,
       _map
     );
@@ -294,7 +295,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   get_map() {
     NavigationPathQueryParameters2D.init_method_get_map();
     return _call_native_mb_ret(
-      NavigationPathQueryParameters2D.#_bindings.method_get_map,
+      NavigationPathQueryParameters2D._bindings.method_get_map,
       this._owner,
 			Variant.Type.RID,
     
@@ -305,7 +306,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   set_start_position(_start_position) {
     NavigationPathQueryParameters2D.init_method_set_start_position();
     return _call_native_mb_no_ret(
-      NavigationPathQueryParameters2D.#_bindings.method_set_start_position,
+      NavigationPathQueryParameters2D._bindings.method_set_start_position,
       this._owner,
       _start_position
     );
@@ -314,7 +315,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   get_start_position() {
     NavigationPathQueryParameters2D.init_method_get_start_position();
     return _call_native_mb_ret(
-      NavigationPathQueryParameters2D.#_bindings.method_get_start_position,
+      NavigationPathQueryParameters2D._bindings.method_get_start_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -325,7 +326,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   set_target_position(_target_position) {
     NavigationPathQueryParameters2D.init_method_set_target_position();
     return _call_native_mb_no_ret(
-      NavigationPathQueryParameters2D.#_bindings.method_set_target_position,
+      NavigationPathQueryParameters2D._bindings.method_set_target_position,
       this._owner,
       _target_position
     );
@@ -334,7 +335,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   get_target_position() {
     NavigationPathQueryParameters2D.init_method_get_target_position();
     return _call_native_mb_ret(
-      NavigationPathQueryParameters2D.#_bindings.method_get_target_position,
+      NavigationPathQueryParameters2D._bindings.method_get_target_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -345,7 +346,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   set_navigation_layers(_navigation_layers) {
     NavigationPathQueryParameters2D.init_method_set_navigation_layers();
     return _call_native_mb_no_ret(
-      NavigationPathQueryParameters2D.#_bindings.method_set_navigation_layers,
+      NavigationPathQueryParameters2D._bindings.method_set_navigation_layers,
       this._owner,
       _navigation_layers
     );
@@ -354,7 +355,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   get_navigation_layers() {
     NavigationPathQueryParameters2D.init_method_get_navigation_layers();
     return _call_native_mb_ret(
-      NavigationPathQueryParameters2D.#_bindings.method_get_navigation_layers,
+      NavigationPathQueryParameters2D._bindings.method_get_navigation_layers,
       this._owner,
 			Variant.Type.INT,
     
@@ -365,7 +366,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   set_metadata_flags(_flags) {
     NavigationPathQueryParameters2D.init_method_set_metadata_flags();
     return _call_native_mb_no_ret(
-      NavigationPathQueryParameters2D.#_bindings.method_set_metadata_flags,
+      NavigationPathQueryParameters2D._bindings.method_set_metadata_flags,
       this._owner,
       _flags
     );
@@ -374,7 +375,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   get_metadata_flags() {
     NavigationPathQueryParameters2D.init_method_get_metadata_flags();
     return _call_native_mb_ret(
-      NavigationPathQueryParameters2D.#_bindings.method_get_metadata_flags,
+      NavigationPathQueryParameters2D._bindings.method_get_metadata_flags,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -384,7 +385,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   set_simplify_path(_enabled) {
     NavigationPathQueryParameters2D.init_method_set_simplify_path();
     return _call_native_mb_no_ret(
-      NavigationPathQueryParameters2D.#_bindings.method_set_simplify_path,
+      NavigationPathQueryParameters2D._bindings.method_set_simplify_path,
       this._owner,
       _enabled
     );
@@ -393,7 +394,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   get_simplify_path() {
     NavigationPathQueryParameters2D.init_method_get_simplify_path();
     return _call_native_mb_ret(
-      NavigationPathQueryParameters2D.#_bindings.method_get_simplify_path,
+      NavigationPathQueryParameters2D._bindings.method_get_simplify_path,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -404,7 +405,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   set_simplify_epsilon(_epsilon) {
     NavigationPathQueryParameters2D.init_method_set_simplify_epsilon();
     return _call_native_mb_no_ret(
-      NavigationPathQueryParameters2D.#_bindings.method_set_simplify_epsilon,
+      NavigationPathQueryParameters2D._bindings.method_set_simplify_epsilon,
       this._owner,
       _epsilon
     );
@@ -413,7 +414,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   get_simplify_epsilon() {
     NavigationPathQueryParameters2D.init_method_get_simplify_epsilon();
     return _call_native_mb_ret(
-      NavigationPathQueryParameters2D.#_bindings.method_get_simplify_epsilon,
+      NavigationPathQueryParameters2D._bindings.method_get_simplify_epsilon,
       this._owner,
 			Variant.Type.FLOAT,
     

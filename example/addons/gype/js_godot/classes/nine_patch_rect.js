@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Control } from '@js_godot/classes/control'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_texture;
@@ -23,10 +24,10 @@ class _MethodBindings {
   method_set_v_axis_stretch_mode;
   method_get_v_axis_stretch_mode;
 }
+@GodotClass
 export class NinePatchRect extends Control{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -36,10 +37,10 @@ export class NinePatchRect extends Control{
     }
   }
   static init_method_set_texture() {
-    if (!this.#_bindings.method_set_texture) {
+    if (!this._bindings.method_set_texture) {
       let classname = new StringName("NinePatchRect");
       let methodname = new StringName("set_texture");
-      this.#_bindings.method_set_texture = internal.classdb_get_method_bind(
+      this._bindings.method_set_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4051416890
@@ -47,10 +48,10 @@ export class NinePatchRect extends Control{
     }
   }
   static init_method_get_texture() {
-    if (!this.#_bindings.method_get_texture) {
+    if (!this._bindings.method_get_texture) {
       let classname = new StringName("NinePatchRect");
       let methodname = new StringName("get_texture");
-      this.#_bindings.method_get_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -58,10 +59,10 @@ export class NinePatchRect extends Control{
     }
   }
   static init_method_set_patch_margin() {
-    if (!this.#_bindings.method_set_patch_margin) {
+    if (!this._bindings.method_set_patch_margin) {
       let classname = new StringName("NinePatchRect");
       let methodname = new StringName("set_patch_margin");
-      this.#_bindings.method_set_patch_margin = internal.classdb_get_method_bind(
+      this._bindings.method_set_patch_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         437707142
@@ -69,10 +70,10 @@ export class NinePatchRect extends Control{
     }
   }
   static init_method_get_patch_margin() {
-    if (!this.#_bindings.method_get_patch_margin) {
+    if (!this._bindings.method_get_patch_margin) {
       let classname = new StringName("NinePatchRect");
       let methodname = new StringName("get_patch_margin");
-      this.#_bindings.method_get_patch_margin = internal.classdb_get_method_bind(
+      this._bindings.method_get_patch_margin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1983885014
@@ -80,10 +81,10 @@ export class NinePatchRect extends Control{
     }
   }
   static init_method_set_region_rect() {
-    if (!this.#_bindings.method_set_region_rect) {
+    if (!this._bindings.method_set_region_rect) {
       let classname = new StringName("NinePatchRect");
       let methodname = new StringName("set_region_rect");
-      this.#_bindings.method_set_region_rect = internal.classdb_get_method_bind(
+      this._bindings.method_set_region_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2046264180
@@ -91,10 +92,10 @@ export class NinePatchRect extends Control{
     }
   }
   static init_method_get_region_rect() {
-    if (!this.#_bindings.method_get_region_rect) {
+    if (!this._bindings.method_get_region_rect) {
       let classname = new StringName("NinePatchRect");
       let methodname = new StringName("get_region_rect");
-      this.#_bindings.method_get_region_rect = internal.classdb_get_method_bind(
+      this._bindings.method_get_region_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1639390495
@@ -102,10 +103,10 @@ export class NinePatchRect extends Control{
     }
   }
   static init_method_set_draw_center() {
-    if (!this.#_bindings.method_set_draw_center) {
+    if (!this._bindings.method_set_draw_center) {
       let classname = new StringName("NinePatchRect");
       let methodname = new StringName("set_draw_center");
-      this.#_bindings.method_set_draw_center = internal.classdb_get_method_bind(
+      this._bindings.method_set_draw_center = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -113,10 +114,10 @@ export class NinePatchRect extends Control{
     }
   }
   static init_method_is_draw_center_enabled() {
-    if (!this.#_bindings.method_is_draw_center_enabled) {
+    if (!this._bindings.method_is_draw_center_enabled) {
       let classname = new StringName("NinePatchRect");
       let methodname = new StringName("is_draw_center_enabled");
-      this.#_bindings.method_is_draw_center_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_draw_center_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -124,10 +125,10 @@ export class NinePatchRect extends Control{
     }
   }
   static init_method_set_h_axis_stretch_mode() {
-    if (!this.#_bindings.method_set_h_axis_stretch_mode) {
+    if (!this._bindings.method_set_h_axis_stretch_mode) {
       let classname = new StringName("NinePatchRect");
       let methodname = new StringName("set_h_axis_stretch_mode");
-      this.#_bindings.method_set_h_axis_stretch_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_h_axis_stretch_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3219608417
@@ -135,10 +136,10 @@ export class NinePatchRect extends Control{
     }
   }
   static init_method_get_h_axis_stretch_mode() {
-    if (!this.#_bindings.method_get_h_axis_stretch_mode) {
+    if (!this._bindings.method_get_h_axis_stretch_mode) {
       let classname = new StringName("NinePatchRect");
       let methodname = new StringName("get_h_axis_stretch_mode");
-      this.#_bindings.method_get_h_axis_stretch_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_h_axis_stretch_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3317113799
@@ -146,10 +147,10 @@ export class NinePatchRect extends Control{
     }
   }
   static init_method_set_v_axis_stretch_mode() {
-    if (!this.#_bindings.method_set_v_axis_stretch_mode) {
+    if (!this._bindings.method_set_v_axis_stretch_mode) {
       let classname = new StringName("NinePatchRect");
       let methodname = new StringName("set_v_axis_stretch_mode");
-      this.#_bindings.method_set_v_axis_stretch_mode = internal.classdb_get_method_bind(
+      this._bindings.method_set_v_axis_stretch_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3219608417
@@ -157,10 +158,10 @@ export class NinePatchRect extends Control{
     }
   }
   static init_method_get_v_axis_stretch_mode() {
-    if (!this.#_bindings.method_get_v_axis_stretch_mode) {
+    if (!this._bindings.method_get_v_axis_stretch_mode) {
       let classname = new StringName("NinePatchRect");
       let methodname = new StringName("get_v_axis_stretch_mode");
-      this.#_bindings.method_get_v_axis_stretch_mode = internal.classdb_get_method_bind(
+      this._bindings.method_get_v_axis_stretch_mode = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3317113799
@@ -173,7 +174,7 @@ export class NinePatchRect extends Control{
   set_texture(_texture) {
     NinePatchRect.init_method_set_texture();
     return _call_native_mb_no_ret(
-      NinePatchRect.#_bindings.method_set_texture,
+      NinePatchRect._bindings.method_set_texture,
       this._owner,
       _texture
     );
@@ -182,7 +183,7 @@ export class NinePatchRect extends Control{
   get_texture() {
     NinePatchRect.init_method_get_texture();
     return _call_native_mb_ret(
-      NinePatchRect.#_bindings.method_get_texture,
+      NinePatchRect._bindings.method_get_texture,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -192,7 +193,7 @@ export class NinePatchRect extends Control{
   set_patch_margin(_margin, _value) {
     NinePatchRect.init_method_set_patch_margin();
     return _call_native_mb_no_ret(
-      NinePatchRect.#_bindings.method_set_patch_margin,
+      NinePatchRect._bindings.method_set_patch_margin,
       this._owner,
       _margin, _value
     );
@@ -201,7 +202,7 @@ export class NinePatchRect extends Control{
   get_patch_margin(_margin) {
     NinePatchRect.init_method_get_patch_margin();
     return _call_native_mb_ret(
-      NinePatchRect.#_bindings.method_get_patch_margin,
+      NinePatchRect._bindings.method_get_patch_margin,
       this._owner,
 			Variant.Type.INT,
     
@@ -212,7 +213,7 @@ export class NinePatchRect extends Control{
   set_region_rect(_rect) {
     NinePatchRect.init_method_set_region_rect();
     return _call_native_mb_no_ret(
-      NinePatchRect.#_bindings.method_set_region_rect,
+      NinePatchRect._bindings.method_set_region_rect,
       this._owner,
       _rect
     );
@@ -221,7 +222,7 @@ export class NinePatchRect extends Control{
   get_region_rect() {
     NinePatchRect.init_method_get_region_rect();
     return _call_native_mb_ret(
-      NinePatchRect.#_bindings.method_get_region_rect,
+      NinePatchRect._bindings.method_get_region_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -232,7 +233,7 @@ export class NinePatchRect extends Control{
   set_draw_center(_draw_center) {
     NinePatchRect.init_method_set_draw_center();
     return _call_native_mb_no_ret(
-      NinePatchRect.#_bindings.method_set_draw_center,
+      NinePatchRect._bindings.method_set_draw_center,
       this._owner,
       _draw_center
     );
@@ -241,7 +242,7 @@ export class NinePatchRect extends Control{
   is_draw_center_enabled() {
     NinePatchRect.init_method_is_draw_center_enabled();
     return _call_native_mb_ret(
-      NinePatchRect.#_bindings.method_is_draw_center_enabled,
+      NinePatchRect._bindings.method_is_draw_center_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -252,7 +253,7 @@ export class NinePatchRect extends Control{
   set_h_axis_stretch_mode(_mode) {
     NinePatchRect.init_method_set_h_axis_stretch_mode();
     return _call_native_mb_no_ret(
-      NinePatchRect.#_bindings.method_set_h_axis_stretch_mode,
+      NinePatchRect._bindings.method_set_h_axis_stretch_mode,
       this._owner,
       _mode
     );
@@ -261,7 +262,7 @@ export class NinePatchRect extends Control{
   get_h_axis_stretch_mode() {
     NinePatchRect.init_method_get_h_axis_stretch_mode();
     return _call_native_mb_ret(
-      NinePatchRect.#_bindings.method_get_h_axis_stretch_mode,
+      NinePatchRect._bindings.method_get_h_axis_stretch_mode,
       this._owner,
 			Variant.Type.INT,
     
@@ -272,7 +273,7 @@ export class NinePatchRect extends Control{
   set_v_axis_stretch_mode(_mode) {
     NinePatchRect.init_method_set_v_axis_stretch_mode();
     return _call_native_mb_no_ret(
-      NinePatchRect.#_bindings.method_set_v_axis_stretch_mode,
+      NinePatchRect._bindings.method_set_v_axis_stretch_mode,
       this._owner,
       _mode
     );
@@ -281,7 +282,7 @@ export class NinePatchRect extends Control{
   get_v_axis_stretch_mode() {
     NinePatchRect.init_method_get_v_axis_stretch_mode();
     return _call_native_mb_ret(
-      NinePatchRect.#_bindings.method_get_v_axis_stretch_mode,
+      NinePatchRect._bindings.method_get_v_axis_stretch_mode,
       this._owner,
 			Variant.Type.INT,
     

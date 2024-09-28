@@ -1,14 +1,15 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { GodotObject } from '@js_godot/classes/godot_object'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_monitor;
@@ -20,8 +21,7 @@ class _MethodBindings {
   method_get_custom_monitor_names;
 }class _Performance extends GodotObject{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -31,10 +31,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_monitor() {
-    if (!this.#_bindings.method_get_monitor) {
+    if (!this._bindings.method_get_monitor) {
       let classname = new StringName("Performance");
       let methodname = new StringName("get_monitor");
-      this.#_bindings.method_get_monitor = internal.classdb_get_method_bind(
+      this._bindings.method_get_monitor = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1943275655
@@ -42,10 +42,10 @@ class _MethodBindings {
     }
   }
   static init_method_add_custom_monitor() {
-    if (!this.#_bindings.method_add_custom_monitor) {
+    if (!this._bindings.method_add_custom_monitor) {
       let classname = new StringName("Performance");
       let methodname = new StringName("add_custom_monitor");
-      this.#_bindings.method_add_custom_monitor = internal.classdb_get_method_bind(
+      this._bindings.method_add_custom_monitor = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4099036814
@@ -53,10 +53,10 @@ class _MethodBindings {
     }
   }
   static init_method_remove_custom_monitor() {
-    if (!this.#_bindings.method_remove_custom_monitor) {
+    if (!this._bindings.method_remove_custom_monitor) {
       let classname = new StringName("Performance");
       let methodname = new StringName("remove_custom_monitor");
-      this.#_bindings.method_remove_custom_monitor = internal.classdb_get_method_bind(
+      this._bindings.method_remove_custom_monitor = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3304788590
@@ -64,10 +64,10 @@ class _MethodBindings {
     }
   }
   static init_method_has_custom_monitor() {
-    if (!this.#_bindings.method_has_custom_monitor) {
+    if (!this._bindings.method_has_custom_monitor) {
       let classname = new StringName("Performance");
       let methodname = new StringName("has_custom_monitor");
-      this.#_bindings.method_has_custom_monitor = internal.classdb_get_method_bind(
+      this._bindings.method_has_custom_monitor = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2041966384
@@ -75,10 +75,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_custom_monitor() {
-    if (!this.#_bindings.method_get_custom_monitor) {
+    if (!this._bindings.method_get_custom_monitor) {
       let classname = new StringName("Performance");
       let methodname = new StringName("get_custom_monitor");
-      this.#_bindings.method_get_custom_monitor = internal.classdb_get_method_bind(
+      this._bindings.method_get_custom_monitor = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2138907829
@@ -86,10 +86,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_monitor_modification_time() {
-    if (!this.#_bindings.method_get_monitor_modification_time) {
+    if (!this._bindings.method_get_monitor_modification_time) {
       let classname = new StringName("Performance");
       let methodname = new StringName("get_monitor_modification_time");
-      this.#_bindings.method_get_monitor_modification_time = internal.classdb_get_method_bind(
+      this._bindings.method_get_monitor_modification_time = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -97,10 +97,10 @@ class _MethodBindings {
     }
   }
   static init_method_get_custom_monitor_names() {
-    if (!this.#_bindings.method_get_custom_monitor_names) {
+    if (!this._bindings.method_get_custom_monitor_names) {
       let classname = new StringName("Performance");
       let methodname = new StringName("get_custom_monitor_names");
-      this.#_bindings.method_get_custom_monitor_names = internal.classdb_get_method_bind(
+      this._bindings.method_get_custom_monitor_names = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2915620761
@@ -113,7 +113,7 @@ class _MethodBindings {
   get_monitor(_monitor) {
     Performance.init_method_get_monitor();
     return _call_native_mb_ret(
-      _Performance.#_bindings.method_get_monitor,
+      _Performance._bindings.method_get_monitor,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -124,7 +124,7 @@ class _MethodBindings {
   add_custom_monitor(_id, _callable, _arguments) {
     Performance.init_method_add_custom_monitor();
     return _call_native_mb_no_ret(
-      _Performance.#_bindings.method_add_custom_monitor,
+      _Performance._bindings.method_add_custom_monitor,
       this._owner,
       _id, _callable, _arguments
     );
@@ -133,7 +133,7 @@ class _MethodBindings {
   remove_custom_monitor(_id) {
     Performance.init_method_remove_custom_monitor();
     return _call_native_mb_no_ret(
-      _Performance.#_bindings.method_remove_custom_monitor,
+      _Performance._bindings.method_remove_custom_monitor,
       this._owner,
       _id
     );
@@ -142,7 +142,7 @@ class _MethodBindings {
   has_custom_monitor(_id) {
     Performance.init_method_has_custom_monitor();
     return _call_native_mb_ret(
-      _Performance.#_bindings.method_has_custom_monitor,
+      _Performance._bindings.method_has_custom_monitor,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -153,7 +153,7 @@ class _MethodBindings {
   get_custom_monitor(_id) {
     Performance.init_method_get_custom_monitor();
     return _call_native_mb_ret(
-      _Performance.#_bindings.method_get_custom_monitor,
+      _Performance._bindings.method_get_custom_monitor,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -164,7 +164,7 @@ class _MethodBindings {
   get_monitor_modification_time() {
     Performance.init_method_get_monitor_modification_time();
     return _call_native_mb_ret(
-      _Performance.#_bindings.method_get_monitor_modification_time,
+      _Performance._bindings.method_get_monitor_modification_time,
       this._owner,
 			Variant.Type.INT,
     
@@ -175,7 +175,7 @@ class _MethodBindings {
   get_custom_monitor_names() {
     Performance.init_method_get_custom_monitor_names();
     return _call_native_mb_ret(
-      _Performance.#_bindings.method_get_custom_monitor_names,
+      _Performance._bindings.method_get_custom_monitor_names,
       this._owner,
 			Variant.Type.ARRAY,
       

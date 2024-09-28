@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_add_item;
@@ -45,10 +46,10 @@ class _MethodBindings {
   method_get_allow_reselect;
   method_set_disable_shortcuts;
 }
+@GodotClass
 export class OptionButton extends Button{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -58,10 +59,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_add_item() {
-    if (!this.#_bindings.method_add_item) {
+    if (!this._bindings.method_add_item) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("add_item");
-      this.#_bindings.method_add_item = internal.classdb_get_method_bind(
+      this._bindings.method_add_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2697778442
@@ -69,10 +70,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_add_icon_item() {
-    if (!this.#_bindings.method_add_icon_item) {
+    if (!this._bindings.method_add_icon_item) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("add_icon_item");
-      this.#_bindings.method_add_icon_item = internal.classdb_get_method_bind(
+      this._bindings.method_add_icon_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3781678508
@@ -80,10 +81,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_set_item_text() {
-    if (!this.#_bindings.method_set_item_text) {
+    if (!this._bindings.method_set_item_text) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("set_item_text");
-      this.#_bindings.method_set_item_text = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_text = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         501894301
@@ -91,10 +92,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_set_item_icon() {
-    if (!this.#_bindings.method_set_item_icon) {
+    if (!this._bindings.method_set_item_icon) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("set_item_icon");
-      this.#_bindings.method_set_item_icon = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_icon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         666127730
@@ -102,10 +103,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_set_item_disabled() {
-    if (!this.#_bindings.method_set_item_disabled) {
+    if (!this._bindings.method_set_item_disabled) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("set_item_disabled");
-      this.#_bindings.method_set_item_disabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_disabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         300928843
@@ -113,10 +114,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_set_item_id() {
-    if (!this.#_bindings.method_set_item_id) {
+    if (!this._bindings.method_set_item_id) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("set_item_id");
-      this.#_bindings.method_set_item_id = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_id = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3937882851
@@ -124,10 +125,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_set_item_metadata() {
-    if (!this.#_bindings.method_set_item_metadata) {
+    if (!this._bindings.method_set_item_metadata) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("set_item_metadata");
-      this.#_bindings.method_set_item_metadata = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_metadata = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2152698145
@@ -135,10 +136,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_set_item_tooltip() {
-    if (!this.#_bindings.method_set_item_tooltip) {
+    if (!this._bindings.method_set_item_tooltip) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("set_item_tooltip");
-      this.#_bindings.method_set_item_tooltip = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_tooltip = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         501894301
@@ -146,10 +147,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_get_item_text() {
-    if (!this.#_bindings.method_get_item_text) {
+    if (!this._bindings.method_get_item_text) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("get_item_text");
-      this.#_bindings.method_get_item_text = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_text = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         844755477
@@ -157,10 +158,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_get_item_icon() {
-    if (!this.#_bindings.method_get_item_icon) {
+    if (!this._bindings.method_get_item_icon) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("get_item_icon");
-      this.#_bindings.method_get_item_icon = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_icon = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3536238170
@@ -168,10 +169,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_get_item_id() {
-    if (!this.#_bindings.method_get_item_id) {
+    if (!this._bindings.method_get_item_id) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("get_item_id");
-      this.#_bindings.method_get_item_id = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_id = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         923996154
@@ -179,10 +180,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_get_item_index() {
-    if (!this.#_bindings.method_get_item_index) {
+    if (!this._bindings.method_get_item_index) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("get_item_index");
-      this.#_bindings.method_get_item_index = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_index = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         923996154
@@ -190,10 +191,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_get_item_metadata() {
-    if (!this.#_bindings.method_get_item_metadata) {
+    if (!this._bindings.method_get_item_metadata) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("get_item_metadata");
-      this.#_bindings.method_get_item_metadata = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_metadata = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4227898402
@@ -201,10 +202,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_get_item_tooltip() {
-    if (!this.#_bindings.method_get_item_tooltip) {
+    if (!this._bindings.method_get_item_tooltip) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("get_item_tooltip");
-      this.#_bindings.method_get_item_tooltip = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_tooltip = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         844755477
@@ -212,10 +213,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_is_item_disabled() {
-    if (!this.#_bindings.method_is_item_disabled) {
+    if (!this._bindings.method_is_item_disabled) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("is_item_disabled");
-      this.#_bindings.method_is_item_disabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_item_disabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -223,10 +224,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_is_item_separator() {
-    if (!this.#_bindings.method_is_item_separator) {
+    if (!this._bindings.method_is_item_separator) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("is_item_separator");
-      this.#_bindings.method_is_item_separator = internal.classdb_get_method_bind(
+      this._bindings.method_is_item_separator = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1116898809
@@ -234,10 +235,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_add_separator() {
-    if (!this.#_bindings.method_add_separator) {
+    if (!this._bindings.method_add_separator) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("add_separator");
-      this.#_bindings.method_add_separator = internal.classdb_get_method_bind(
+      this._bindings.method_add_separator = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3005725572
@@ -245,10 +246,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_clear() {
-    if (!this.#_bindings.method_clear) {
+    if (!this._bindings.method_clear) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("clear");
-      this.#_bindings.method_clear = internal.classdb_get_method_bind(
+      this._bindings.method_clear = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -256,10 +257,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_select() {
-    if (!this.#_bindings.method_select) {
+    if (!this._bindings.method_select) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("select");
-      this.#_bindings.method_select = internal.classdb_get_method_bind(
+      this._bindings.method_select = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -267,10 +268,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_get_selected() {
-    if (!this.#_bindings.method_get_selected) {
+    if (!this._bindings.method_get_selected) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("get_selected");
-      this.#_bindings.method_get_selected = internal.classdb_get_method_bind(
+      this._bindings.method_get_selected = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -278,10 +279,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_get_selected_id() {
-    if (!this.#_bindings.method_get_selected_id) {
+    if (!this._bindings.method_get_selected_id) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("get_selected_id");
-      this.#_bindings.method_get_selected_id = internal.classdb_get_method_bind(
+      this._bindings.method_get_selected_id = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -289,10 +290,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_get_selected_metadata() {
-    if (!this.#_bindings.method_get_selected_metadata) {
+    if (!this._bindings.method_get_selected_metadata) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("get_selected_metadata");
-      this.#_bindings.method_get_selected_metadata = internal.classdb_get_method_bind(
+      this._bindings.method_get_selected_metadata = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1214101251
@@ -300,10 +301,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_remove_item() {
-    if (!this.#_bindings.method_remove_item) {
+    if (!this._bindings.method_remove_item) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("remove_item");
-      this.#_bindings.method_remove_item = internal.classdb_get_method_bind(
+      this._bindings.method_remove_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -311,10 +312,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_get_popup() {
-    if (!this.#_bindings.method_get_popup) {
+    if (!this._bindings.method_get_popup) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("get_popup");
-      this.#_bindings.method_get_popup = internal.classdb_get_method_bind(
+      this._bindings.method_get_popup = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         229722558
@@ -322,10 +323,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_show_popup() {
-    if (!this.#_bindings.method_show_popup) {
+    if (!this._bindings.method_show_popup) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("show_popup");
-      this.#_bindings.method_show_popup = internal.classdb_get_method_bind(
+      this._bindings.method_show_popup = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -333,10 +334,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_set_item_count() {
-    if (!this.#_bindings.method_set_item_count) {
+    if (!this._bindings.method_set_item_count) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("set_item_count");
-      this.#_bindings.method_set_item_count = internal.classdb_get_method_bind(
+      this._bindings.method_set_item_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -344,10 +345,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_get_item_count() {
-    if (!this.#_bindings.method_get_item_count) {
+    if (!this._bindings.method_get_item_count) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("get_item_count");
-      this.#_bindings.method_get_item_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_item_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -355,10 +356,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_has_selectable_items() {
-    if (!this.#_bindings.method_has_selectable_items) {
+    if (!this._bindings.method_has_selectable_items) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("has_selectable_items");
-      this.#_bindings.method_has_selectable_items = internal.classdb_get_method_bind(
+      this._bindings.method_has_selectable_items = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -366,10 +367,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_get_selectable_item() {
-    if (!this.#_bindings.method_get_selectable_item) {
+    if (!this._bindings.method_get_selectable_item) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("get_selectable_item");
-      this.#_bindings.method_get_selectable_item = internal.classdb_get_method_bind(
+      this._bindings.method_get_selectable_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         894402480
@@ -377,10 +378,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_set_fit_to_longest_item() {
-    if (!this.#_bindings.method_set_fit_to_longest_item) {
+    if (!this._bindings.method_set_fit_to_longest_item) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("set_fit_to_longest_item");
-      this.#_bindings.method_set_fit_to_longest_item = internal.classdb_get_method_bind(
+      this._bindings.method_set_fit_to_longest_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -388,10 +389,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_is_fit_to_longest_item() {
-    if (!this.#_bindings.method_is_fit_to_longest_item) {
+    if (!this._bindings.method_is_fit_to_longest_item) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("is_fit_to_longest_item");
-      this.#_bindings.method_is_fit_to_longest_item = internal.classdb_get_method_bind(
+      this._bindings.method_is_fit_to_longest_item = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -399,10 +400,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_set_allow_reselect() {
-    if (!this.#_bindings.method_set_allow_reselect) {
+    if (!this._bindings.method_set_allow_reselect) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("set_allow_reselect");
-      this.#_bindings.method_set_allow_reselect = internal.classdb_get_method_bind(
+      this._bindings.method_set_allow_reselect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -410,10 +411,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_get_allow_reselect() {
-    if (!this.#_bindings.method_get_allow_reselect) {
+    if (!this._bindings.method_get_allow_reselect) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("get_allow_reselect");
-      this.#_bindings.method_get_allow_reselect = internal.classdb_get_method_bind(
+      this._bindings.method_get_allow_reselect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -421,10 +422,10 @@ export class OptionButton extends Button{
     }
   }
   static init_method_set_disable_shortcuts() {
-    if (!this.#_bindings.method_set_disable_shortcuts) {
+    if (!this._bindings.method_set_disable_shortcuts) {
       let classname = new StringName("OptionButton");
       let methodname = new StringName("set_disable_shortcuts");
-      this.#_bindings.method_set_disable_shortcuts = internal.classdb_get_method_bind(
+      this._bindings.method_set_disable_shortcuts = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -437,7 +438,7 @@ export class OptionButton extends Button{
   add_item(_label, _id) {
     OptionButton.init_method_add_item();
     return _call_native_mb_no_ret(
-      OptionButton.#_bindings.method_add_item,
+      OptionButton._bindings.method_add_item,
       this._owner,
       _label, _id
     );
@@ -446,7 +447,7 @@ export class OptionButton extends Button{
   add_icon_item(_texture, _label, _id) {
     OptionButton.init_method_add_icon_item();
     return _call_native_mb_no_ret(
-      OptionButton.#_bindings.method_add_icon_item,
+      OptionButton._bindings.method_add_icon_item,
       this._owner,
       _texture, _label, _id
     );
@@ -455,7 +456,7 @@ export class OptionButton extends Button{
   set_item_text(_idx, _text) {
     OptionButton.init_method_set_item_text();
     return _call_native_mb_no_ret(
-      OptionButton.#_bindings.method_set_item_text,
+      OptionButton._bindings.method_set_item_text,
       this._owner,
       _idx, _text
     );
@@ -464,7 +465,7 @@ export class OptionButton extends Button{
   set_item_icon(_idx, _texture) {
     OptionButton.init_method_set_item_icon();
     return _call_native_mb_no_ret(
-      OptionButton.#_bindings.method_set_item_icon,
+      OptionButton._bindings.method_set_item_icon,
       this._owner,
       _idx, _texture
     );
@@ -473,7 +474,7 @@ export class OptionButton extends Button{
   set_item_disabled(_idx, _disabled) {
     OptionButton.init_method_set_item_disabled();
     return _call_native_mb_no_ret(
-      OptionButton.#_bindings.method_set_item_disabled,
+      OptionButton._bindings.method_set_item_disabled,
       this._owner,
       _idx, _disabled
     );
@@ -482,7 +483,7 @@ export class OptionButton extends Button{
   set_item_id(_idx, _id) {
     OptionButton.init_method_set_item_id();
     return _call_native_mb_no_ret(
-      OptionButton.#_bindings.method_set_item_id,
+      OptionButton._bindings.method_set_item_id,
       this._owner,
       _idx, _id
     );
@@ -491,7 +492,7 @@ export class OptionButton extends Button{
   set_item_metadata(_idx, _metadata) {
     OptionButton.init_method_set_item_metadata();
     return _call_native_mb_no_ret(
-      OptionButton.#_bindings.method_set_item_metadata,
+      OptionButton._bindings.method_set_item_metadata,
       this._owner,
       _idx, _metadata
     );
@@ -500,7 +501,7 @@ export class OptionButton extends Button{
   set_item_tooltip(_idx, _tooltip) {
     OptionButton.init_method_set_item_tooltip();
     return _call_native_mb_no_ret(
-      OptionButton.#_bindings.method_set_item_tooltip,
+      OptionButton._bindings.method_set_item_tooltip,
       this._owner,
       _idx, _tooltip
     );
@@ -509,7 +510,7 @@ export class OptionButton extends Button{
   get_item_text(_idx) {
     OptionButton.init_method_get_item_text();
     return _call_native_mb_ret(
-      OptionButton.#_bindings.method_get_item_text,
+      OptionButton._bindings.method_get_item_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -520,7 +521,7 @@ export class OptionButton extends Button{
   get_item_icon(_idx) {
     OptionButton.init_method_get_item_icon();
     return _call_native_mb_ret(
-      OptionButton.#_bindings.method_get_item_icon,
+      OptionButton._bindings.method_get_item_icon,
       this._owner,
 			Variant.Type.OBJECT,
       _idx
@@ -530,7 +531,7 @@ export class OptionButton extends Button{
   get_item_id(_idx) {
     OptionButton.init_method_get_item_id();
     return _call_native_mb_ret(
-      OptionButton.#_bindings.method_get_item_id,
+      OptionButton._bindings.method_get_item_id,
       this._owner,
 			Variant.Type.INT,
     
@@ -541,7 +542,7 @@ export class OptionButton extends Button{
   get_item_index(_id) {
     OptionButton.init_method_get_item_index();
     return _call_native_mb_ret(
-      OptionButton.#_bindings.method_get_item_index,
+      OptionButton._bindings.method_get_item_index,
       this._owner,
 			Variant.Type.INT,
     
@@ -552,7 +553,7 @@ export class OptionButton extends Button{
   get_item_metadata(_idx) {
     OptionButton.init_method_get_item_metadata();
     return _call_native_mb_ret(
-      OptionButton.#_bindings.method_get_item_metadata,
+      OptionButton._bindings.method_get_item_metadata,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -563,7 +564,7 @@ export class OptionButton extends Button{
   get_item_tooltip(_idx) {
     OptionButton.init_method_get_item_tooltip();
     return _call_native_mb_ret(
-      OptionButton.#_bindings.method_get_item_tooltip,
+      OptionButton._bindings.method_get_item_tooltip,
       this._owner,
 			Variant.Type.STRING,
     
@@ -574,7 +575,7 @@ export class OptionButton extends Button{
   is_item_disabled(_idx) {
     OptionButton.init_method_is_item_disabled();
     return _call_native_mb_ret(
-      OptionButton.#_bindings.method_is_item_disabled,
+      OptionButton._bindings.method_is_item_disabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -585,7 +586,7 @@ export class OptionButton extends Button{
   is_item_separator(_idx) {
     OptionButton.init_method_is_item_separator();
     return _call_native_mb_ret(
-      OptionButton.#_bindings.method_is_item_separator,
+      OptionButton._bindings.method_is_item_separator,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -596,7 +597,7 @@ export class OptionButton extends Button{
   add_separator(_text) {
     OptionButton.init_method_add_separator();
     return _call_native_mb_no_ret(
-      OptionButton.#_bindings.method_add_separator,
+      OptionButton._bindings.method_add_separator,
       this._owner,
       _text
     );
@@ -605,7 +606,7 @@ export class OptionButton extends Button{
   clear() {
     OptionButton.init_method_clear();
     return _call_native_mb_no_ret(
-      OptionButton.#_bindings.method_clear,
+      OptionButton._bindings.method_clear,
       this._owner,
       
     );
@@ -614,7 +615,7 @@ export class OptionButton extends Button{
   select(_idx) {
     OptionButton.init_method_select();
     return _call_native_mb_no_ret(
-      OptionButton.#_bindings.method_select,
+      OptionButton._bindings.method_select,
       this._owner,
       _idx
     );
@@ -623,7 +624,7 @@ export class OptionButton extends Button{
   get_selected() {
     OptionButton.init_method_get_selected();
     return _call_native_mb_ret(
-      OptionButton.#_bindings.method_get_selected,
+      OptionButton._bindings.method_get_selected,
       this._owner,
 			Variant.Type.INT,
     
@@ -634,7 +635,7 @@ export class OptionButton extends Button{
   get_selected_id() {
     OptionButton.init_method_get_selected_id();
     return _call_native_mb_ret(
-      OptionButton.#_bindings.method_get_selected_id,
+      OptionButton._bindings.method_get_selected_id,
       this._owner,
 			Variant.Type.INT,
     
@@ -645,7 +646,7 @@ export class OptionButton extends Button{
   get_selected_metadata() {
     OptionButton.init_method_get_selected_metadata();
     return _call_native_mb_ret(
-      OptionButton.#_bindings.method_get_selected_metadata,
+      OptionButton._bindings.method_get_selected_metadata,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -656,7 +657,7 @@ export class OptionButton extends Button{
   remove_item(_idx) {
     OptionButton.init_method_remove_item();
     return _call_native_mb_no_ret(
-      OptionButton.#_bindings.method_remove_item,
+      OptionButton._bindings.method_remove_item,
       this._owner,
       _idx
     );
@@ -665,7 +666,7 @@ export class OptionButton extends Button{
   get_popup() {
     OptionButton.init_method_get_popup();
     return _call_native_mb_ret(
-      OptionButton.#_bindings.method_get_popup,
+      OptionButton._bindings.method_get_popup,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -675,7 +676,7 @@ export class OptionButton extends Button{
   show_popup() {
     OptionButton.init_method_show_popup();
     return _call_native_mb_no_ret(
-      OptionButton.#_bindings.method_show_popup,
+      OptionButton._bindings.method_show_popup,
       this._owner,
       
     );
@@ -684,7 +685,7 @@ export class OptionButton extends Button{
   set_item_count(_count) {
     OptionButton.init_method_set_item_count();
     return _call_native_mb_no_ret(
-      OptionButton.#_bindings.method_set_item_count,
+      OptionButton._bindings.method_set_item_count,
       this._owner,
       _count
     );
@@ -693,7 +694,7 @@ export class OptionButton extends Button{
   get_item_count() {
     OptionButton.init_method_get_item_count();
     return _call_native_mb_ret(
-      OptionButton.#_bindings.method_get_item_count,
+      OptionButton._bindings.method_get_item_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -704,7 +705,7 @@ export class OptionButton extends Button{
   has_selectable_items() {
     OptionButton.init_method_has_selectable_items();
     return _call_native_mb_ret(
-      OptionButton.#_bindings.method_has_selectable_items,
+      OptionButton._bindings.method_has_selectable_items,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -715,7 +716,7 @@ export class OptionButton extends Button{
   get_selectable_item(_from_last) {
     OptionButton.init_method_get_selectable_item();
     return _call_native_mb_ret(
-      OptionButton.#_bindings.method_get_selectable_item,
+      OptionButton._bindings.method_get_selectable_item,
       this._owner,
 			Variant.Type.INT,
     
@@ -726,7 +727,7 @@ export class OptionButton extends Button{
   set_fit_to_longest_item(_fit) {
     OptionButton.init_method_set_fit_to_longest_item();
     return _call_native_mb_no_ret(
-      OptionButton.#_bindings.method_set_fit_to_longest_item,
+      OptionButton._bindings.method_set_fit_to_longest_item,
       this._owner,
       _fit
     );
@@ -735,7 +736,7 @@ export class OptionButton extends Button{
   is_fit_to_longest_item() {
     OptionButton.init_method_is_fit_to_longest_item();
     return _call_native_mb_ret(
-      OptionButton.#_bindings.method_is_fit_to_longest_item,
+      OptionButton._bindings.method_is_fit_to_longest_item,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -746,7 +747,7 @@ export class OptionButton extends Button{
   set_allow_reselect(_allow) {
     OptionButton.init_method_set_allow_reselect();
     return _call_native_mb_no_ret(
-      OptionButton.#_bindings.method_set_allow_reselect,
+      OptionButton._bindings.method_set_allow_reselect,
       this._owner,
       _allow
     );
@@ -755,7 +756,7 @@ export class OptionButton extends Button{
   get_allow_reselect() {
     OptionButton.init_method_get_allow_reselect();
     return _call_native_mb_ret(
-      OptionButton.#_bindings.method_get_allow_reselect,
+      OptionButton._bindings.method_get_allow_reselect,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -766,7 +767,7 @@ export class OptionButton extends Button{
   set_disable_shortcuts(_disabled) {
     OptionButton.init_method_set_disable_shortcuts();
     return _call_native_mb_no_ret(
-      OptionButton.#_bindings.method_set_disable_shortcuts,
+      OptionButton._bindings.method_set_disable_shortcuts,
       this._owner,
       _disabled
     );

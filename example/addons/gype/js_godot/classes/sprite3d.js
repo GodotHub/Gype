@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { SpriteBase3D } from '@js_godot/classes/sprite_base3d'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_texture;
@@ -25,10 +26,10 @@ class _MethodBindings {
   method_set_hframes;
   method_get_hframes;
 }
+@GodotClass
 export class Sprite3D extends SpriteBase3D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -38,10 +39,10 @@ export class Sprite3D extends SpriteBase3D{
     }
   }
   static init_method_set_texture() {
-    if (!this.#_bindings.method_set_texture) {
+    if (!this._bindings.method_set_texture) {
       let classname = new StringName("Sprite3D");
       let methodname = new StringName("set_texture");
-      this.#_bindings.method_set_texture = internal.classdb_get_method_bind(
+      this._bindings.method_set_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4051416890
@@ -49,10 +50,10 @@ export class Sprite3D extends SpriteBase3D{
     }
   }
   static init_method_get_texture() {
-    if (!this.#_bindings.method_get_texture) {
+    if (!this._bindings.method_get_texture) {
       let classname = new StringName("Sprite3D");
       let methodname = new StringName("get_texture");
-      this.#_bindings.method_get_texture = internal.classdb_get_method_bind(
+      this._bindings.method_get_texture = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3635182373
@@ -60,10 +61,10 @@ export class Sprite3D extends SpriteBase3D{
     }
   }
   static init_method_set_region_enabled() {
-    if (!this.#_bindings.method_set_region_enabled) {
+    if (!this._bindings.method_set_region_enabled) {
       let classname = new StringName("Sprite3D");
       let methodname = new StringName("set_region_enabled");
-      this.#_bindings.method_set_region_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_set_region_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -71,10 +72,10 @@ export class Sprite3D extends SpriteBase3D{
     }
   }
   static init_method_is_region_enabled() {
-    if (!this.#_bindings.method_is_region_enabled) {
+    if (!this._bindings.method_is_region_enabled) {
       let classname = new StringName("Sprite3D");
       let methodname = new StringName("is_region_enabled");
-      this.#_bindings.method_is_region_enabled = internal.classdb_get_method_bind(
+      this._bindings.method_is_region_enabled = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -82,10 +83,10 @@ export class Sprite3D extends SpriteBase3D{
     }
   }
   static init_method_set_region_rect() {
-    if (!this.#_bindings.method_set_region_rect) {
+    if (!this._bindings.method_set_region_rect) {
       let classname = new StringName("Sprite3D");
       let methodname = new StringName("set_region_rect");
-      this.#_bindings.method_set_region_rect = internal.classdb_get_method_bind(
+      this._bindings.method_set_region_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2046264180
@@ -93,10 +94,10 @@ export class Sprite3D extends SpriteBase3D{
     }
   }
   static init_method_get_region_rect() {
-    if (!this.#_bindings.method_get_region_rect) {
+    if (!this._bindings.method_get_region_rect) {
       let classname = new StringName("Sprite3D");
       let methodname = new StringName("get_region_rect");
-      this.#_bindings.method_get_region_rect = internal.classdb_get_method_bind(
+      this._bindings.method_get_region_rect = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1639390495
@@ -104,10 +105,10 @@ export class Sprite3D extends SpriteBase3D{
     }
   }
   static init_method_set_frame() {
-    if (!this.#_bindings.method_set_frame) {
+    if (!this._bindings.method_set_frame) {
       let classname = new StringName("Sprite3D");
       let methodname = new StringName("set_frame");
-      this.#_bindings.method_set_frame = internal.classdb_get_method_bind(
+      this._bindings.method_set_frame = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -115,10 +116,10 @@ export class Sprite3D extends SpriteBase3D{
     }
   }
   static init_method_get_frame() {
-    if (!this.#_bindings.method_get_frame) {
+    if (!this._bindings.method_get_frame) {
       let classname = new StringName("Sprite3D");
       let methodname = new StringName("get_frame");
-      this.#_bindings.method_get_frame = internal.classdb_get_method_bind(
+      this._bindings.method_get_frame = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -126,10 +127,10 @@ export class Sprite3D extends SpriteBase3D{
     }
   }
   static init_method_set_frame_coords() {
-    if (!this.#_bindings.method_set_frame_coords) {
+    if (!this._bindings.method_set_frame_coords) {
       let classname = new StringName("Sprite3D");
       let methodname = new StringName("set_frame_coords");
-      this.#_bindings.method_set_frame_coords = internal.classdb_get_method_bind(
+      this._bindings.method_set_frame_coords = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1130785943
@@ -137,10 +138,10 @@ export class Sprite3D extends SpriteBase3D{
     }
   }
   static init_method_get_frame_coords() {
-    if (!this.#_bindings.method_get_frame_coords) {
+    if (!this._bindings.method_get_frame_coords) {
       let classname = new StringName("Sprite3D");
       let methodname = new StringName("get_frame_coords");
-      this.#_bindings.method_get_frame_coords = internal.classdb_get_method_bind(
+      this._bindings.method_get_frame_coords = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3690982128
@@ -148,10 +149,10 @@ export class Sprite3D extends SpriteBase3D{
     }
   }
   static init_method_set_vframes() {
-    if (!this.#_bindings.method_set_vframes) {
+    if (!this._bindings.method_set_vframes) {
       let classname = new StringName("Sprite3D");
       let methodname = new StringName("set_vframes");
-      this.#_bindings.method_set_vframes = internal.classdb_get_method_bind(
+      this._bindings.method_set_vframes = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -159,10 +160,10 @@ export class Sprite3D extends SpriteBase3D{
     }
   }
   static init_method_get_vframes() {
-    if (!this.#_bindings.method_get_vframes) {
+    if (!this._bindings.method_get_vframes) {
       let classname = new StringName("Sprite3D");
       let methodname = new StringName("get_vframes");
-      this.#_bindings.method_get_vframes = internal.classdb_get_method_bind(
+      this._bindings.method_get_vframes = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -170,10 +171,10 @@ export class Sprite3D extends SpriteBase3D{
     }
   }
   static init_method_set_hframes() {
-    if (!this.#_bindings.method_set_hframes) {
+    if (!this._bindings.method_set_hframes) {
       let classname = new StringName("Sprite3D");
       let methodname = new StringName("set_hframes");
-      this.#_bindings.method_set_hframes = internal.classdb_get_method_bind(
+      this._bindings.method_set_hframes = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -181,10 +182,10 @@ export class Sprite3D extends SpriteBase3D{
     }
   }
   static init_method_get_hframes() {
-    if (!this.#_bindings.method_get_hframes) {
+    if (!this._bindings.method_get_hframes) {
       let classname = new StringName("Sprite3D");
       let methodname = new StringName("get_hframes");
-      this.#_bindings.method_get_hframes = internal.classdb_get_method_bind(
+      this._bindings.method_get_hframes = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -197,7 +198,7 @@ export class Sprite3D extends SpriteBase3D{
   set_texture(_texture) {
     Sprite3D.init_method_set_texture();
     return _call_native_mb_no_ret(
-      Sprite3D.#_bindings.method_set_texture,
+      Sprite3D._bindings.method_set_texture,
       this._owner,
       _texture
     );
@@ -206,7 +207,7 @@ export class Sprite3D extends SpriteBase3D{
   get_texture() {
     Sprite3D.init_method_get_texture();
     return _call_native_mb_ret(
-      Sprite3D.#_bindings.method_get_texture,
+      Sprite3D._bindings.method_get_texture,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -216,7 +217,7 @@ export class Sprite3D extends SpriteBase3D{
   set_region_enabled(_enabled) {
     Sprite3D.init_method_set_region_enabled();
     return _call_native_mb_no_ret(
-      Sprite3D.#_bindings.method_set_region_enabled,
+      Sprite3D._bindings.method_set_region_enabled,
       this._owner,
       _enabled
     );
@@ -225,7 +226,7 @@ export class Sprite3D extends SpriteBase3D{
   is_region_enabled() {
     Sprite3D.init_method_is_region_enabled();
     return _call_native_mb_ret(
-      Sprite3D.#_bindings.method_is_region_enabled,
+      Sprite3D._bindings.method_is_region_enabled,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -236,7 +237,7 @@ export class Sprite3D extends SpriteBase3D{
   set_region_rect(_rect) {
     Sprite3D.init_method_set_region_rect();
     return _call_native_mb_no_ret(
-      Sprite3D.#_bindings.method_set_region_rect,
+      Sprite3D._bindings.method_set_region_rect,
       this._owner,
       _rect
     );
@@ -245,7 +246,7 @@ export class Sprite3D extends SpriteBase3D{
   get_region_rect() {
     Sprite3D.init_method_get_region_rect();
     return _call_native_mb_ret(
-      Sprite3D.#_bindings.method_get_region_rect,
+      Sprite3D._bindings.method_get_region_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -256,7 +257,7 @@ export class Sprite3D extends SpriteBase3D{
   set_frame(_frame) {
     Sprite3D.init_method_set_frame();
     return _call_native_mb_no_ret(
-      Sprite3D.#_bindings.method_set_frame,
+      Sprite3D._bindings.method_set_frame,
       this._owner,
       _frame
     );
@@ -265,7 +266,7 @@ export class Sprite3D extends SpriteBase3D{
   get_frame() {
     Sprite3D.init_method_get_frame();
     return _call_native_mb_ret(
-      Sprite3D.#_bindings.method_get_frame,
+      Sprite3D._bindings.method_get_frame,
       this._owner,
 			Variant.Type.INT,
     
@@ -276,7 +277,7 @@ export class Sprite3D extends SpriteBase3D{
   set_frame_coords(_coords) {
     Sprite3D.init_method_set_frame_coords();
     return _call_native_mb_no_ret(
-      Sprite3D.#_bindings.method_set_frame_coords,
+      Sprite3D._bindings.method_set_frame_coords,
       this._owner,
       _coords
     );
@@ -285,7 +286,7 @@ export class Sprite3D extends SpriteBase3D{
   get_frame_coords() {
     Sprite3D.init_method_get_frame_coords();
     return _call_native_mb_ret(
-      Sprite3D.#_bindings.method_get_frame_coords,
+      Sprite3D._bindings.method_get_frame_coords,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -296,7 +297,7 @@ export class Sprite3D extends SpriteBase3D{
   set_vframes(_vframes) {
     Sprite3D.init_method_set_vframes();
     return _call_native_mb_no_ret(
-      Sprite3D.#_bindings.method_set_vframes,
+      Sprite3D._bindings.method_set_vframes,
       this._owner,
       _vframes
     );
@@ -305,7 +306,7 @@ export class Sprite3D extends SpriteBase3D{
   get_vframes() {
     Sprite3D.init_method_get_vframes();
     return _call_native_mb_ret(
-      Sprite3D.#_bindings.method_get_vframes,
+      Sprite3D._bindings.method_get_vframes,
       this._owner,
 			Variant.Type.INT,
     
@@ -316,7 +317,7 @@ export class Sprite3D extends SpriteBase3D{
   set_hframes(_hframes) {
     Sprite3D.init_method_set_hframes();
     return _call_native_mb_no_ret(
-      Sprite3D.#_bindings.method_set_hframes,
+      Sprite3D._bindings.method_set_hframes,
       this._owner,
       _hframes
     );
@@ -325,7 +326,7 @@ export class Sprite3D extends SpriteBase3D{
   get_hframes() {
     Sprite3D.init_method_get_hframes();
     return _call_native_mb_ret(
-      Sprite3D.#_bindings.method_get_hframes,
+      Sprite3D._bindings.method_get_hframes,
       this._owner,
 			Variant.Type.INT,
     

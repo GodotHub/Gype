@@ -1,14 +1,15 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDArray } from '@js_godot/variant/gd_array'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_skin_weight_count;
@@ -45,10 +46,10 @@ class _MethodBindings {
   method_commit;
   method_commit_to_arrays;
 }
+@GodotClass
 export class SurfaceTool extends RefCounted{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -58,10 +59,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_set_skin_weight_count() {
-    if (!this.#_bindings.method_set_skin_weight_count) {
+    if (!this._bindings.method_set_skin_weight_count) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("set_skin_weight_count");
-      this.#_bindings.method_set_skin_weight_count = internal.classdb_get_method_bind(
+      this._bindings.method_set_skin_weight_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         618679515
@@ -69,10 +70,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_get_skin_weight_count() {
-    if (!this.#_bindings.method_get_skin_weight_count) {
+    if (!this._bindings.method_get_skin_weight_count) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("get_skin_weight_count");
-      this.#_bindings.method_get_skin_weight_count = internal.classdb_get_method_bind(
+      this._bindings.method_get_skin_weight_count = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1072401130
@@ -80,10 +81,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_set_custom_format() {
-    if (!this.#_bindings.method_set_custom_format) {
+    if (!this._bindings.method_set_custom_format) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("set_custom_format");
-      this.#_bindings.method_set_custom_format = internal.classdb_get_method_bind(
+      this._bindings.method_set_custom_format = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4087759856
@@ -91,10 +92,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_get_custom_format() {
-    if (!this.#_bindings.method_get_custom_format) {
+    if (!this._bindings.method_get_custom_format) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("get_custom_format");
-      this.#_bindings.method_get_custom_format = internal.classdb_get_method_bind(
+      this._bindings.method_get_custom_format = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         839863283
@@ -102,10 +103,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_begin() {
-    if (!this.#_bindings.method_begin) {
+    if (!this._bindings.method_begin) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("begin");
-      this.#_bindings.method_begin = internal.classdb_get_method_bind(
+      this._bindings.method_begin = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2230304113
@@ -113,10 +114,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_add_vertex() {
-    if (!this.#_bindings.method_add_vertex) {
+    if (!this._bindings.method_add_vertex) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("add_vertex");
-      this.#_bindings.method_add_vertex = internal.classdb_get_method_bind(
+      this._bindings.method_add_vertex = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -124,10 +125,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_set_color() {
-    if (!this.#_bindings.method_set_color) {
+    if (!this._bindings.method_set_color) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("set_color");
-      this.#_bindings.method_set_color = internal.classdb_get_method_bind(
+      this._bindings.method_set_color = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2920490490
@@ -135,10 +136,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_set_normal() {
-    if (!this.#_bindings.method_set_normal) {
+    if (!this._bindings.method_set_normal) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("set_normal");
-      this.#_bindings.method_set_normal = internal.classdb_get_method_bind(
+      this._bindings.method_set_normal = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -146,10 +147,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_set_tangent() {
-    if (!this.#_bindings.method_set_tangent) {
+    if (!this._bindings.method_set_tangent) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("set_tangent");
-      this.#_bindings.method_set_tangent = internal.classdb_get_method_bind(
+      this._bindings.method_set_tangent = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3505987427
@@ -157,10 +158,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_set_uv() {
-    if (!this.#_bindings.method_set_uv) {
+    if (!this._bindings.method_set_uv) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("set_uv");
-      this.#_bindings.method_set_uv = internal.classdb_get_method_bind(
+      this._bindings.method_set_uv = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -168,10 +169,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_set_uv2() {
-    if (!this.#_bindings.method_set_uv2) {
+    if (!this._bindings.method_set_uv2) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("set_uv2");
-      this.#_bindings.method_set_uv2 = internal.classdb_get_method_bind(
+      this._bindings.method_set_uv2 = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         743155724
@@ -179,10 +180,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_set_bones() {
-    if (!this.#_bindings.method_set_bones) {
+    if (!this._bindings.method_set_bones) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("set_bones");
-      this.#_bindings.method_set_bones = internal.classdb_get_method_bind(
+      this._bindings.method_set_bones = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3614634198
@@ -190,10 +191,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_set_weights() {
-    if (!this.#_bindings.method_set_weights) {
+    if (!this._bindings.method_set_weights) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("set_weights");
-      this.#_bindings.method_set_weights = internal.classdb_get_method_bind(
+      this._bindings.method_set_weights = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2899603908
@@ -201,10 +202,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_set_custom() {
-    if (!this.#_bindings.method_set_custom) {
+    if (!this._bindings.method_set_custom) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("set_custom");
-      this.#_bindings.method_set_custom = internal.classdb_get_method_bind(
+      this._bindings.method_set_custom = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2878471219
@@ -212,10 +213,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_set_smooth_group() {
-    if (!this.#_bindings.method_set_smooth_group) {
+    if (!this._bindings.method_set_smooth_group) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("set_smooth_group");
-      this.#_bindings.method_set_smooth_group = internal.classdb_get_method_bind(
+      this._bindings.method_set_smooth_group = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -223,10 +224,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_add_triangle_fan() {
-    if (!this.#_bindings.method_add_triangle_fan) {
+    if (!this._bindings.method_add_triangle_fan) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("add_triangle_fan");
-      this.#_bindings.method_add_triangle_fan = internal.classdb_get_method_bind(
+      this._bindings.method_add_triangle_fan = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2235017613
@@ -234,10 +235,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_add_index() {
-    if (!this.#_bindings.method_add_index) {
+    if (!this._bindings.method_add_index) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("add_index");
-      this.#_bindings.method_add_index = internal.classdb_get_method_bind(
+      this._bindings.method_add_index = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -245,10 +246,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_index() {
-    if (!this.#_bindings.method_index) {
+    if (!this._bindings.method_index) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("index");
-      this.#_bindings.method_index = internal.classdb_get_method_bind(
+      this._bindings.method_index = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -256,10 +257,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_deindex() {
-    if (!this.#_bindings.method_deindex) {
+    if (!this._bindings.method_deindex) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("deindex");
-      this.#_bindings.method_deindex = internal.classdb_get_method_bind(
+      this._bindings.method_deindex = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -267,10 +268,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_generate_normals() {
-    if (!this.#_bindings.method_generate_normals) {
+    if (!this._bindings.method_generate_normals) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("generate_normals");
-      this.#_bindings.method_generate_normals = internal.classdb_get_method_bind(
+      this._bindings.method_generate_normals = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         107499316
@@ -278,10 +279,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_generate_tangents() {
-    if (!this.#_bindings.method_generate_tangents) {
+    if (!this._bindings.method_generate_tangents) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("generate_tangents");
-      this.#_bindings.method_generate_tangents = internal.classdb_get_method_bind(
+      this._bindings.method_generate_tangents = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -289,10 +290,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_optimize_indices_for_cache() {
-    if (!this.#_bindings.method_optimize_indices_for_cache) {
+    if (!this._bindings.method_optimize_indices_for_cache) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("optimize_indices_for_cache");
-      this.#_bindings.method_optimize_indices_for_cache = internal.classdb_get_method_bind(
+      this._bindings.method_optimize_indices_for_cache = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -300,10 +301,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_get_aabb() {
-    if (!this.#_bindings.method_get_aabb) {
+    if (!this._bindings.method_get_aabb) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("get_aabb");
-      this.#_bindings.method_get_aabb = internal.classdb_get_method_bind(
+      this._bindings.method_get_aabb = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1068685055
@@ -311,10 +312,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_generate_lod() {
-    if (!this.#_bindings.method_generate_lod) {
+    if (!this._bindings.method_generate_lod) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("generate_lod");
-      this.#_bindings.method_generate_lod = internal.classdb_get_method_bind(
+      this._bindings.method_generate_lod = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1938056459
@@ -322,10 +323,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_set_material() {
-    if (!this.#_bindings.method_set_material) {
+    if (!this._bindings.method_set_material) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("set_material");
-      this.#_bindings.method_set_material = internal.classdb_get_method_bind(
+      this._bindings.method_set_material = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2757459619
@@ -333,10 +334,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_get_primitive_type() {
-    if (!this.#_bindings.method_get_primitive_type) {
+    if (!this._bindings.method_get_primitive_type) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("get_primitive_type");
-      this.#_bindings.method_get_primitive_type = internal.classdb_get_method_bind(
+      this._bindings.method_get_primitive_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         768822145
@@ -344,10 +345,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_clear() {
-    if (!this.#_bindings.method_clear) {
+    if (!this._bindings.method_clear) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("clear");
-      this.#_bindings.method_clear = internal.classdb_get_method_bind(
+      this._bindings.method_clear = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -355,10 +356,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_create_from() {
-    if (!this.#_bindings.method_create_from) {
+    if (!this._bindings.method_create_from) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("create_from");
-      this.#_bindings.method_create_from = internal.classdb_get_method_bind(
+      this._bindings.method_create_from = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1767024570
@@ -366,10 +367,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_create_from_arrays() {
-    if (!this.#_bindings.method_create_from_arrays) {
+    if (!this._bindings.method_create_from_arrays) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("create_from_arrays");
-      this.#_bindings.method_create_from_arrays = internal.classdb_get_method_bind(
+      this._bindings.method_create_from_arrays = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1894639680
@@ -377,10 +378,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_create_from_blend_shape() {
-    if (!this.#_bindings.method_create_from_blend_shape) {
+    if (!this._bindings.method_create_from_blend_shape) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("create_from_blend_shape");
-      this.#_bindings.method_create_from_blend_shape = internal.classdb_get_method_bind(
+      this._bindings.method_create_from_blend_shape = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1306185582
@@ -388,10 +389,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_append_from() {
-    if (!this.#_bindings.method_append_from) {
+    if (!this._bindings.method_append_from) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("append_from");
-      this.#_bindings.method_append_from = internal.classdb_get_method_bind(
+      this._bindings.method_append_from = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2217967155
@@ -399,10 +400,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_commit() {
-    if (!this.#_bindings.method_commit) {
+    if (!this._bindings.method_commit) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("commit");
-      this.#_bindings.method_commit = internal.classdb_get_method_bind(
+      this._bindings.method_commit = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4107864055
@@ -410,10 +411,10 @@ export class SurfaceTool extends RefCounted{
     }
   }
   static init_method_commit_to_arrays() {
-    if (!this.#_bindings.method_commit_to_arrays) {
+    if (!this._bindings.method_commit_to_arrays) {
       let classname = new StringName("SurfaceTool");
       let methodname = new StringName("commit_to_arrays");
-      this.#_bindings.method_commit_to_arrays = internal.classdb_get_method_bind(
+      this._bindings.method_commit_to_arrays = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2915620761
@@ -426,7 +427,7 @@ export class SurfaceTool extends RefCounted{
   set_skin_weight_count(_count) {
     SurfaceTool.init_method_set_skin_weight_count();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_set_skin_weight_count,
+      SurfaceTool._bindings.method_set_skin_weight_count,
       this._owner,
       _count
     );
@@ -435,7 +436,7 @@ export class SurfaceTool extends RefCounted{
   get_skin_weight_count() {
     SurfaceTool.init_method_get_skin_weight_count();
     return _call_native_mb_ret(
-      SurfaceTool.#_bindings.method_get_skin_weight_count,
+      SurfaceTool._bindings.method_get_skin_weight_count,
       this._owner,
 			Variant.Type.INT,
     
@@ -446,7 +447,7 @@ export class SurfaceTool extends RefCounted{
   set_custom_format(_channel_index, _format) {
     SurfaceTool.init_method_set_custom_format();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_set_custom_format,
+      SurfaceTool._bindings.method_set_custom_format,
       this._owner,
       _channel_index, _format
     );
@@ -455,7 +456,7 @@ export class SurfaceTool extends RefCounted{
   get_custom_format(_channel_index) {
     SurfaceTool.init_method_get_custom_format();
     return _call_native_mb_ret(
-      SurfaceTool.#_bindings.method_get_custom_format,
+      SurfaceTool._bindings.method_get_custom_format,
       this._owner,
 			Variant.Type.INT,
     
@@ -466,7 +467,7 @@ export class SurfaceTool extends RefCounted{
   begin(_primitive) {
     SurfaceTool.init_method_begin();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_begin,
+      SurfaceTool._bindings.method_begin,
       this._owner,
       _primitive
     );
@@ -475,7 +476,7 @@ export class SurfaceTool extends RefCounted{
   add_vertex(_vertex) {
     SurfaceTool.init_method_add_vertex();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_add_vertex,
+      SurfaceTool._bindings.method_add_vertex,
       this._owner,
       _vertex
     );
@@ -484,7 +485,7 @@ export class SurfaceTool extends RefCounted{
   set_color(_color) {
     SurfaceTool.init_method_set_color();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_set_color,
+      SurfaceTool._bindings.method_set_color,
       this._owner,
       _color
     );
@@ -493,7 +494,7 @@ export class SurfaceTool extends RefCounted{
   set_normal(_normal) {
     SurfaceTool.init_method_set_normal();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_set_normal,
+      SurfaceTool._bindings.method_set_normal,
       this._owner,
       _normal
     );
@@ -502,7 +503,7 @@ export class SurfaceTool extends RefCounted{
   set_tangent(_tangent) {
     SurfaceTool.init_method_set_tangent();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_set_tangent,
+      SurfaceTool._bindings.method_set_tangent,
       this._owner,
       _tangent
     );
@@ -511,7 +512,7 @@ export class SurfaceTool extends RefCounted{
   set_uv(_uv) {
     SurfaceTool.init_method_set_uv();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_set_uv,
+      SurfaceTool._bindings.method_set_uv,
       this._owner,
       _uv
     );
@@ -520,7 +521,7 @@ export class SurfaceTool extends RefCounted{
   set_uv2(_uv2) {
     SurfaceTool.init_method_set_uv2();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_set_uv2,
+      SurfaceTool._bindings.method_set_uv2,
       this._owner,
       _uv2
     );
@@ -529,7 +530,7 @@ export class SurfaceTool extends RefCounted{
   set_bones(_bones) {
     SurfaceTool.init_method_set_bones();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_set_bones,
+      SurfaceTool._bindings.method_set_bones,
       this._owner,
       _bones
     );
@@ -538,7 +539,7 @@ export class SurfaceTool extends RefCounted{
   set_weights(_weights) {
     SurfaceTool.init_method_set_weights();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_set_weights,
+      SurfaceTool._bindings.method_set_weights,
       this._owner,
       _weights
     );
@@ -547,7 +548,7 @@ export class SurfaceTool extends RefCounted{
   set_custom(_channel_index, _custom_color) {
     SurfaceTool.init_method_set_custom();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_set_custom,
+      SurfaceTool._bindings.method_set_custom,
       this._owner,
       _channel_index, _custom_color
     );
@@ -556,7 +557,7 @@ export class SurfaceTool extends RefCounted{
   set_smooth_group(_index) {
     SurfaceTool.init_method_set_smooth_group();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_set_smooth_group,
+      SurfaceTool._bindings.method_set_smooth_group,
       this._owner,
       _index
     );
@@ -565,7 +566,7 @@ export class SurfaceTool extends RefCounted{
   add_triangle_fan(_vertices, _uvs, _colors, _uv2s, _normals, _tangents) {
     SurfaceTool.init_method_add_triangle_fan();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_add_triangle_fan,
+      SurfaceTool._bindings.method_add_triangle_fan,
       this._owner,
       _vertices, _uvs, _colors, _uv2s, _normals, _tangents
     );
@@ -574,7 +575,7 @@ export class SurfaceTool extends RefCounted{
   add_index(_index) {
     SurfaceTool.init_method_add_index();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_add_index,
+      SurfaceTool._bindings.method_add_index,
       this._owner,
       _index
     );
@@ -583,7 +584,7 @@ export class SurfaceTool extends RefCounted{
   index() {
     SurfaceTool.init_method_index();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_index,
+      SurfaceTool._bindings.method_index,
       this._owner,
       
     );
@@ -592,7 +593,7 @@ export class SurfaceTool extends RefCounted{
   deindex() {
     SurfaceTool.init_method_deindex();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_deindex,
+      SurfaceTool._bindings.method_deindex,
       this._owner,
       
     );
@@ -601,7 +602,7 @@ export class SurfaceTool extends RefCounted{
   generate_normals(_flip) {
     SurfaceTool.init_method_generate_normals();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_generate_normals,
+      SurfaceTool._bindings.method_generate_normals,
       this._owner,
       _flip
     );
@@ -610,7 +611,7 @@ export class SurfaceTool extends RefCounted{
   generate_tangents() {
     SurfaceTool.init_method_generate_tangents();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_generate_tangents,
+      SurfaceTool._bindings.method_generate_tangents,
       this._owner,
       
     );
@@ -619,7 +620,7 @@ export class SurfaceTool extends RefCounted{
   optimize_indices_for_cache() {
     SurfaceTool.init_method_optimize_indices_for_cache();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_optimize_indices_for_cache,
+      SurfaceTool._bindings.method_optimize_indices_for_cache,
       this._owner,
       
     );
@@ -628,7 +629,7 @@ export class SurfaceTool extends RefCounted{
   get_aabb() {
     SurfaceTool.init_method_get_aabb();
     return _call_native_mb_ret(
-      SurfaceTool.#_bindings.method_get_aabb,
+      SurfaceTool._bindings.method_get_aabb,
       this._owner,
 			Variant.Type.AABB,
     
@@ -639,7 +640,7 @@ export class SurfaceTool extends RefCounted{
   generate_lod(_nd_threshold, _target_index_count) {
     SurfaceTool.init_method_generate_lod();
     return _call_native_mb_ret(
-      SurfaceTool.#_bindings.method_generate_lod,
+      SurfaceTool._bindings.method_generate_lod,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -650,7 +651,7 @@ export class SurfaceTool extends RefCounted{
   set_material(_material) {
     SurfaceTool.init_method_set_material();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_set_material,
+      SurfaceTool._bindings.method_set_material,
       this._owner,
       _material
     );
@@ -659,7 +660,7 @@ export class SurfaceTool extends RefCounted{
   get_primitive_type() {
     SurfaceTool.init_method_get_primitive_type();
     return _call_native_mb_ret(
-      SurfaceTool.#_bindings.method_get_primitive_type,
+      SurfaceTool._bindings.method_get_primitive_type,
       this._owner,
 			Variant.Type.INT,
     
@@ -670,7 +671,7 @@ export class SurfaceTool extends RefCounted{
   clear() {
     SurfaceTool.init_method_clear();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_clear,
+      SurfaceTool._bindings.method_clear,
       this._owner,
       
     );
@@ -679,7 +680,7 @@ export class SurfaceTool extends RefCounted{
   create_from(_existing, _surface) {
     SurfaceTool.init_method_create_from();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_create_from,
+      SurfaceTool._bindings.method_create_from,
       this._owner,
       _existing, _surface
     );
@@ -688,7 +689,7 @@ export class SurfaceTool extends RefCounted{
   create_from_arrays(_arrays, _primitive_type) {
     SurfaceTool.init_method_create_from_arrays();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_create_from_arrays,
+      SurfaceTool._bindings.method_create_from_arrays,
       this._owner,
       _arrays, _primitive_type
     );
@@ -697,7 +698,7 @@ export class SurfaceTool extends RefCounted{
   create_from_blend_shape(_existing, _surface, _blend_shape) {
     SurfaceTool.init_method_create_from_blend_shape();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_create_from_blend_shape,
+      SurfaceTool._bindings.method_create_from_blend_shape,
       this._owner,
       _existing, _surface, _blend_shape
     );
@@ -706,7 +707,7 @@ export class SurfaceTool extends RefCounted{
   append_from(_existing, _surface, _transform) {
     SurfaceTool.init_method_append_from();
     return _call_native_mb_no_ret(
-      SurfaceTool.#_bindings.method_append_from,
+      SurfaceTool._bindings.method_append_from,
       this._owner,
       _existing, _surface, _transform
     );
@@ -715,7 +716,7 @@ export class SurfaceTool extends RefCounted{
   commit(_existing, _flags) {
     SurfaceTool.init_method_commit();
     return _call_native_mb_ret(
-      SurfaceTool.#_bindings.method_commit,
+      SurfaceTool._bindings.method_commit,
       this._owner,
 			Variant.Type.OBJECT,
       _existing, _flags
@@ -725,7 +726,7 @@ export class SurfaceTool extends RefCounted{
   commit_to_arrays() {
     SurfaceTool.init_method_commit_to_arrays();
     return _call_native_mb_ret(
-      SurfaceTool.#_bindings.method_commit_to_arrays,
+      SurfaceTool._bindings.method_commit_to_arrays,
       this._owner,
 			Variant.Type.ARRAY,
     

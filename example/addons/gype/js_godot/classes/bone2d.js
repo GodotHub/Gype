@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { Node2D } from '@js_godot/classes/node2d'
 import {
   call_utility_ret,
@@ -8,6 +8,7 @@ import {
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_rest;
@@ -22,10 +23,10 @@ class _MethodBindings {
   method_set_bone_angle;
   method_get_bone_angle;
 }
+@GodotClass
 export class Bone2D extends Node2D{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -35,10 +36,10 @@ export class Bone2D extends Node2D{
     }
   }
   static init_method_set_rest() {
-    if (!this.#_bindings.method_set_rest) {
+    if (!this._bindings.method_set_rest) {
       let classname = new StringName("Bone2D");
       let methodname = new StringName("set_rest");
-      this.#_bindings.method_set_rest = internal.classdb_get_method_bind(
+      this._bindings.method_set_rest = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2761652528
@@ -46,10 +47,10 @@ export class Bone2D extends Node2D{
     }
   }
   static init_method_get_rest() {
-    if (!this.#_bindings.method_get_rest) {
+    if (!this._bindings.method_get_rest) {
       let classname = new StringName("Bone2D");
       let methodname = new StringName("get_rest");
-      this.#_bindings.method_get_rest = internal.classdb_get_method_bind(
+      this._bindings.method_get_rest = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3814499831
@@ -57,10 +58,10 @@ export class Bone2D extends Node2D{
     }
   }
   static init_method_apply_rest() {
-    if (!this.#_bindings.method_apply_rest) {
+    if (!this._bindings.method_apply_rest) {
       let classname = new StringName("Bone2D");
       let methodname = new StringName("apply_rest");
-      this.#_bindings.method_apply_rest = internal.classdb_get_method_bind(
+      this._bindings.method_apply_rest = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -68,10 +69,10 @@ export class Bone2D extends Node2D{
     }
   }
   static init_method_get_skeleton_rest() {
-    if (!this.#_bindings.method_get_skeleton_rest) {
+    if (!this._bindings.method_get_skeleton_rest) {
       let classname = new StringName("Bone2D");
       let methodname = new StringName("get_skeleton_rest");
-      this.#_bindings.method_get_skeleton_rest = internal.classdb_get_method_bind(
+      this._bindings.method_get_skeleton_rest = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3814499831
@@ -79,10 +80,10 @@ export class Bone2D extends Node2D{
     }
   }
   static init_method_get_index_in_skeleton() {
-    if (!this.#_bindings.method_get_index_in_skeleton) {
+    if (!this._bindings.method_get_index_in_skeleton) {
       let classname = new StringName("Bone2D");
       let methodname = new StringName("get_index_in_skeleton");
-      this.#_bindings.method_get_index_in_skeleton = internal.classdb_get_method_bind(
+      this._bindings.method_get_index_in_skeleton = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -90,10 +91,10 @@ export class Bone2D extends Node2D{
     }
   }
   static init_method_set_autocalculate_length_and_angle() {
-    if (!this.#_bindings.method_set_autocalculate_length_and_angle) {
+    if (!this._bindings.method_set_autocalculate_length_and_angle) {
       let classname = new StringName("Bone2D");
       let methodname = new StringName("set_autocalculate_length_and_angle");
-      this.#_bindings.method_set_autocalculate_length_and_angle = internal.classdb_get_method_bind(
+      this._bindings.method_set_autocalculate_length_and_angle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -101,10 +102,10 @@ export class Bone2D extends Node2D{
     }
   }
   static init_method_get_autocalculate_length_and_angle() {
-    if (!this.#_bindings.method_get_autocalculate_length_and_angle) {
+    if (!this._bindings.method_get_autocalculate_length_and_angle) {
       let classname = new StringName("Bone2D");
       let methodname = new StringName("get_autocalculate_length_and_angle");
-      this.#_bindings.method_get_autocalculate_length_and_angle = internal.classdb_get_method_bind(
+      this._bindings.method_get_autocalculate_length_and_angle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -112,10 +113,10 @@ export class Bone2D extends Node2D{
     }
   }
   static init_method_set_length() {
-    if (!this.#_bindings.method_set_length) {
+    if (!this._bindings.method_set_length) {
       let classname = new StringName("Bone2D");
       let methodname = new StringName("set_length");
-      this.#_bindings.method_set_length = internal.classdb_get_method_bind(
+      this._bindings.method_set_length = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -123,10 +124,10 @@ export class Bone2D extends Node2D{
     }
   }
   static init_method_get_length() {
-    if (!this.#_bindings.method_get_length) {
+    if (!this._bindings.method_get_length) {
       let classname = new StringName("Bone2D");
       let methodname = new StringName("get_length");
-      this.#_bindings.method_get_length = internal.classdb_get_method_bind(
+      this._bindings.method_get_length = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -134,10 +135,10 @@ export class Bone2D extends Node2D{
     }
   }
   static init_method_set_bone_angle() {
-    if (!this.#_bindings.method_set_bone_angle) {
+    if (!this._bindings.method_set_bone_angle) {
       let classname = new StringName("Bone2D");
       let methodname = new StringName("set_bone_angle");
-      this.#_bindings.method_set_bone_angle = internal.classdb_get_method_bind(
+      this._bindings.method_set_bone_angle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -145,10 +146,10 @@ export class Bone2D extends Node2D{
     }
   }
   static init_method_get_bone_angle() {
-    if (!this.#_bindings.method_get_bone_angle) {
+    if (!this._bindings.method_get_bone_angle) {
       let classname = new StringName("Bone2D");
       let methodname = new StringName("get_bone_angle");
-      this.#_bindings.method_get_bone_angle = internal.classdb_get_method_bind(
+      this._bindings.method_get_bone_angle = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -161,7 +162,7 @@ export class Bone2D extends Node2D{
   set_rest(_rest) {
     Bone2D.init_method_set_rest();
     return _call_native_mb_no_ret(
-      Bone2D.#_bindings.method_set_rest,
+      Bone2D._bindings.method_set_rest,
       this._owner,
       _rest
     );
@@ -170,7 +171,7 @@ export class Bone2D extends Node2D{
   get_rest() {
     Bone2D.init_method_get_rest();
     return _call_native_mb_ret(
-      Bone2D.#_bindings.method_get_rest,
+      Bone2D._bindings.method_get_rest,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -181,7 +182,7 @@ export class Bone2D extends Node2D{
   apply_rest() {
     Bone2D.init_method_apply_rest();
     return _call_native_mb_no_ret(
-      Bone2D.#_bindings.method_apply_rest,
+      Bone2D._bindings.method_apply_rest,
       this._owner,
       
     );
@@ -190,7 +191,7 @@ export class Bone2D extends Node2D{
   get_skeleton_rest() {
     Bone2D.init_method_get_skeleton_rest();
     return _call_native_mb_ret(
-      Bone2D.#_bindings.method_get_skeleton_rest,
+      Bone2D._bindings.method_get_skeleton_rest,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -201,7 +202,7 @@ export class Bone2D extends Node2D{
   get_index_in_skeleton() {
     Bone2D.init_method_get_index_in_skeleton();
     return _call_native_mb_ret(
-      Bone2D.#_bindings.method_get_index_in_skeleton,
+      Bone2D._bindings.method_get_index_in_skeleton,
       this._owner,
 			Variant.Type.INT,
     
@@ -212,7 +213,7 @@ export class Bone2D extends Node2D{
   set_autocalculate_length_and_angle(_auto_calculate) {
     Bone2D.init_method_set_autocalculate_length_and_angle();
     return _call_native_mb_no_ret(
-      Bone2D.#_bindings.method_set_autocalculate_length_and_angle,
+      Bone2D._bindings.method_set_autocalculate_length_and_angle,
       this._owner,
       _auto_calculate
     );
@@ -221,7 +222,7 @@ export class Bone2D extends Node2D{
   get_autocalculate_length_and_angle() {
     Bone2D.init_method_get_autocalculate_length_and_angle();
     return _call_native_mb_ret(
-      Bone2D.#_bindings.method_get_autocalculate_length_and_angle,
+      Bone2D._bindings.method_get_autocalculate_length_and_angle,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -232,7 +233,7 @@ export class Bone2D extends Node2D{
   set_length(_length) {
     Bone2D.init_method_set_length();
     return _call_native_mb_no_ret(
-      Bone2D.#_bindings.method_set_length,
+      Bone2D._bindings.method_set_length,
       this._owner,
       _length
     );
@@ -241,7 +242,7 @@ export class Bone2D extends Node2D{
   get_length() {
     Bone2D.init_method_get_length();
     return _call_native_mb_ret(
-      Bone2D.#_bindings.method_get_length,
+      Bone2D._bindings.method_get_length,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -252,7 +253,7 @@ export class Bone2D extends Node2D{
   set_bone_angle(_angle) {
     Bone2D.init_method_set_bone_angle();
     return _call_native_mb_no_ret(
-      Bone2D.#_bindings.method_set_bone_angle,
+      Bone2D._bindings.method_set_bone_angle,
       this._owner,
       _angle
     );
@@ -261,7 +262,7 @@ export class Bone2D extends Node2D{
   get_bone_angle() {
     Bone2D.init_method_get_bone_angle();
     return _call_native_mb_ret(
-      Bone2D.#_bindings.method_get_bone_angle,
+      Bone2D._bindings.method_get_bone_angle,
       this._owner,
 			Variant.Type.FLOAT,
     

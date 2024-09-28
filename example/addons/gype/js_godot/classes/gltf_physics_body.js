@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_from_node;
@@ -31,10 +32,10 @@ class _MethodBindings {
   method_get_inertia_tensor;
   method_set_inertia_tensor;
 }
+@GodotClass
 export class GLTFPhysicsBody extends Resource{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -44,10 +45,10 @@ export class GLTFPhysicsBody extends Resource{
     }
   }
   static init_method_from_node() {
-    if (!this.#_bindings.method_from_node) {
+    if (!this._bindings.method_from_node) {
       let classname = new StringName("GLTFPhysicsBody");
       let methodname = new StringName("from_node");
-      this.#_bindings.method_from_node = internal.classdb_get_method_bind(
+      this._bindings.method_from_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         420544174
@@ -55,10 +56,10 @@ export class GLTFPhysicsBody extends Resource{
     }
   }
   static init_method_to_node() {
-    if (!this.#_bindings.method_to_node) {
+    if (!this._bindings.method_to_node) {
       let classname = new StringName("GLTFPhysicsBody");
       let methodname = new StringName("to_node");
-      this.#_bindings.method_to_node = internal.classdb_get_method_bind(
+      this._bindings.method_to_node = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3224013656
@@ -66,10 +67,10 @@ export class GLTFPhysicsBody extends Resource{
     }
   }
   static init_method_from_dictionary() {
-    if (!this.#_bindings.method_from_dictionary) {
+    if (!this._bindings.method_from_dictionary) {
       let classname = new StringName("GLTFPhysicsBody");
       let methodname = new StringName("from_dictionary");
-      this.#_bindings.method_from_dictionary = internal.classdb_get_method_bind(
+      this._bindings.method_from_dictionary = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1177544336
@@ -77,10 +78,10 @@ export class GLTFPhysicsBody extends Resource{
     }
   }
   static init_method_to_dictionary() {
-    if (!this.#_bindings.method_to_dictionary) {
+    if (!this._bindings.method_to_dictionary) {
       let classname = new StringName("GLTFPhysicsBody");
       let methodname = new StringName("to_dictionary");
-      this.#_bindings.method_to_dictionary = internal.classdb_get_method_bind(
+      this._bindings.method_to_dictionary = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3102165223
@@ -88,10 +89,10 @@ export class GLTFPhysicsBody extends Resource{
     }
   }
   static init_method_get_body_type() {
-    if (!this.#_bindings.method_get_body_type) {
+    if (!this._bindings.method_get_body_type) {
       let classname = new StringName("GLTFPhysicsBody");
       let methodname = new StringName("get_body_type");
-      this.#_bindings.method_get_body_type = internal.classdb_get_method_bind(
+      this._bindings.method_get_body_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         201670096
@@ -99,10 +100,10 @@ export class GLTFPhysicsBody extends Resource{
     }
   }
   static init_method_set_body_type() {
-    if (!this.#_bindings.method_set_body_type) {
+    if (!this._bindings.method_set_body_type) {
       let classname = new StringName("GLTFPhysicsBody");
       let methodname = new StringName("set_body_type");
-      this.#_bindings.method_set_body_type = internal.classdb_get_method_bind(
+      this._bindings.method_set_body_type = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         83702148
@@ -110,10 +111,10 @@ export class GLTFPhysicsBody extends Resource{
     }
   }
   static init_method_get_mass() {
-    if (!this.#_bindings.method_get_mass) {
+    if (!this._bindings.method_get_mass) {
       let classname = new StringName("GLTFPhysicsBody");
       let methodname = new StringName("get_mass");
-      this.#_bindings.method_get_mass = internal.classdb_get_method_bind(
+      this._bindings.method_get_mass = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -121,10 +122,10 @@ export class GLTFPhysicsBody extends Resource{
     }
   }
   static init_method_set_mass() {
-    if (!this.#_bindings.method_set_mass) {
+    if (!this._bindings.method_set_mass) {
       let classname = new StringName("GLTFPhysicsBody");
       let methodname = new StringName("set_mass");
-      this.#_bindings.method_set_mass = internal.classdb_get_method_bind(
+      this._bindings.method_set_mass = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -132,10 +133,10 @@ export class GLTFPhysicsBody extends Resource{
     }
   }
   static init_method_get_linear_velocity() {
-    if (!this.#_bindings.method_get_linear_velocity) {
+    if (!this._bindings.method_get_linear_velocity) {
       let classname = new StringName("GLTFPhysicsBody");
       let methodname = new StringName("get_linear_velocity");
-      this.#_bindings.method_get_linear_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_get_linear_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3360562783
@@ -143,10 +144,10 @@ export class GLTFPhysicsBody extends Resource{
     }
   }
   static init_method_set_linear_velocity() {
-    if (!this.#_bindings.method_set_linear_velocity) {
+    if (!this._bindings.method_set_linear_velocity) {
       let classname = new StringName("GLTFPhysicsBody");
       let methodname = new StringName("set_linear_velocity");
-      this.#_bindings.method_set_linear_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_set_linear_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -154,10 +155,10 @@ export class GLTFPhysicsBody extends Resource{
     }
   }
   static init_method_get_angular_velocity() {
-    if (!this.#_bindings.method_get_angular_velocity) {
+    if (!this._bindings.method_get_angular_velocity) {
       let classname = new StringName("GLTFPhysicsBody");
       let methodname = new StringName("get_angular_velocity");
-      this.#_bindings.method_get_angular_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_get_angular_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3360562783
@@ -165,10 +166,10 @@ export class GLTFPhysicsBody extends Resource{
     }
   }
   static init_method_set_angular_velocity() {
-    if (!this.#_bindings.method_set_angular_velocity) {
+    if (!this._bindings.method_set_angular_velocity) {
       let classname = new StringName("GLTFPhysicsBody");
       let methodname = new StringName("set_angular_velocity");
-      this.#_bindings.method_set_angular_velocity = internal.classdb_get_method_bind(
+      this._bindings.method_set_angular_velocity = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -176,10 +177,10 @@ export class GLTFPhysicsBody extends Resource{
     }
   }
   static init_method_get_center_of_mass() {
-    if (!this.#_bindings.method_get_center_of_mass) {
+    if (!this._bindings.method_get_center_of_mass) {
       let classname = new StringName("GLTFPhysicsBody");
       let methodname = new StringName("get_center_of_mass");
-      this.#_bindings.method_get_center_of_mass = internal.classdb_get_method_bind(
+      this._bindings.method_get_center_of_mass = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3360562783
@@ -187,10 +188,10 @@ export class GLTFPhysicsBody extends Resource{
     }
   }
   static init_method_set_center_of_mass() {
-    if (!this.#_bindings.method_set_center_of_mass) {
+    if (!this._bindings.method_set_center_of_mass) {
       let classname = new StringName("GLTFPhysicsBody");
       let methodname = new StringName("set_center_of_mass");
-      this.#_bindings.method_set_center_of_mass = internal.classdb_get_method_bind(
+      this._bindings.method_set_center_of_mass = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -198,10 +199,10 @@ export class GLTFPhysicsBody extends Resource{
     }
   }
   static init_method_get_inertia_diagonal() {
-    if (!this.#_bindings.method_get_inertia_diagonal) {
+    if (!this._bindings.method_get_inertia_diagonal) {
       let classname = new StringName("GLTFPhysicsBody");
       let methodname = new StringName("get_inertia_diagonal");
-      this.#_bindings.method_get_inertia_diagonal = internal.classdb_get_method_bind(
+      this._bindings.method_get_inertia_diagonal = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3360562783
@@ -209,10 +210,10 @@ export class GLTFPhysicsBody extends Resource{
     }
   }
   static init_method_set_inertia_diagonal() {
-    if (!this.#_bindings.method_set_inertia_diagonal) {
+    if (!this._bindings.method_set_inertia_diagonal) {
       let classname = new StringName("GLTFPhysicsBody");
       let methodname = new StringName("set_inertia_diagonal");
-      this.#_bindings.method_set_inertia_diagonal = internal.classdb_get_method_bind(
+      this._bindings.method_set_inertia_diagonal = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3460891852
@@ -220,10 +221,10 @@ export class GLTFPhysicsBody extends Resource{
     }
   }
   static init_method_get_inertia_orientation() {
-    if (!this.#_bindings.method_get_inertia_orientation) {
+    if (!this._bindings.method_get_inertia_orientation) {
       let classname = new StringName("GLTFPhysicsBody");
       let methodname = new StringName("get_inertia_orientation");
-      this.#_bindings.method_get_inertia_orientation = internal.classdb_get_method_bind(
+      this._bindings.method_get_inertia_orientation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1222331677
@@ -231,10 +232,10 @@ export class GLTFPhysicsBody extends Resource{
     }
   }
   static init_method_set_inertia_orientation() {
-    if (!this.#_bindings.method_set_inertia_orientation) {
+    if (!this._bindings.method_set_inertia_orientation) {
       let classname = new StringName("GLTFPhysicsBody");
       let methodname = new StringName("set_inertia_orientation");
-      this.#_bindings.method_set_inertia_orientation = internal.classdb_get_method_bind(
+      this._bindings.method_set_inertia_orientation = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1727505552
@@ -242,10 +243,10 @@ export class GLTFPhysicsBody extends Resource{
     }
   }
   static init_method_get_inertia_tensor() {
-    if (!this.#_bindings.method_get_inertia_tensor) {
+    if (!this._bindings.method_get_inertia_tensor) {
       let classname = new StringName("GLTFPhysicsBody");
       let methodname = new StringName("get_inertia_tensor");
-      this.#_bindings.method_get_inertia_tensor = internal.classdb_get_method_bind(
+      this._bindings.method_get_inertia_tensor = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2716978435
@@ -253,10 +254,10 @@ export class GLTFPhysicsBody extends Resource{
     }
   }
   static init_method_set_inertia_tensor() {
-    if (!this.#_bindings.method_set_inertia_tensor) {
+    if (!this._bindings.method_set_inertia_tensor) {
       let classname = new StringName("GLTFPhysicsBody");
       let methodname = new StringName("set_inertia_tensor");
-      this.#_bindings.method_set_inertia_tensor = internal.classdb_get_method_bind(
+      this._bindings.method_set_inertia_tensor = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1055510324
@@ -269,7 +270,7 @@ export class GLTFPhysicsBody extends Resource{
   from_node(_body_node) {
     GLTFPhysicsBody.init_method_from_node();
     return _call_native_mb_ret(
-      GLTFPhysicsBody.#_bindings.method_from_node,
+      GLTFPhysicsBody._bindings.method_from_node,
       this._owner,
 			Variant.Type.OBJECT,
       _body_node
@@ -279,7 +280,7 @@ export class GLTFPhysicsBody extends Resource{
   to_node() {
     GLTFPhysicsBody.init_method_to_node();
     return _call_native_mb_ret(
-      GLTFPhysicsBody.#_bindings.method_to_node,
+      GLTFPhysicsBody._bindings.method_to_node,
       this._owner,
 			Variant.Type.OBJECT,
       
@@ -289,7 +290,7 @@ export class GLTFPhysicsBody extends Resource{
   from_dictionary(_dictionary) {
     GLTFPhysicsBody.init_method_from_dictionary();
     return _call_native_mb_ret(
-      GLTFPhysicsBody.#_bindings.method_from_dictionary,
+      GLTFPhysicsBody._bindings.method_from_dictionary,
       this._owner,
 			Variant.Type.OBJECT,
       _dictionary
@@ -299,7 +300,7 @@ export class GLTFPhysicsBody extends Resource{
   to_dictionary() {
     GLTFPhysicsBody.init_method_to_dictionary();
     return _call_native_mb_ret(
-      GLTFPhysicsBody.#_bindings.method_to_dictionary,
+      GLTFPhysicsBody._bindings.method_to_dictionary,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -310,7 +311,7 @@ export class GLTFPhysicsBody extends Resource{
   get_body_type() {
     GLTFPhysicsBody.init_method_get_body_type();
     return _call_native_mb_ret(
-      GLTFPhysicsBody.#_bindings.method_get_body_type,
+      GLTFPhysicsBody._bindings.method_get_body_type,
       this._owner,
 			Variant.Type.STRING,
     
@@ -321,7 +322,7 @@ export class GLTFPhysicsBody extends Resource{
   set_body_type(_body_type) {
     GLTFPhysicsBody.init_method_set_body_type();
     return _call_native_mb_no_ret(
-      GLTFPhysicsBody.#_bindings.method_set_body_type,
+      GLTFPhysicsBody._bindings.method_set_body_type,
       this._owner,
       _body_type
     );
@@ -330,7 +331,7 @@ export class GLTFPhysicsBody extends Resource{
   get_mass() {
     GLTFPhysicsBody.init_method_get_mass();
     return _call_native_mb_ret(
-      GLTFPhysicsBody.#_bindings.method_get_mass,
+      GLTFPhysicsBody._bindings.method_get_mass,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -341,7 +342,7 @@ export class GLTFPhysicsBody extends Resource{
   set_mass(_mass) {
     GLTFPhysicsBody.init_method_set_mass();
     return _call_native_mb_no_ret(
-      GLTFPhysicsBody.#_bindings.method_set_mass,
+      GLTFPhysicsBody._bindings.method_set_mass,
       this._owner,
       _mass
     );
@@ -350,7 +351,7 @@ export class GLTFPhysicsBody extends Resource{
   get_linear_velocity() {
     GLTFPhysicsBody.init_method_get_linear_velocity();
     return _call_native_mb_ret(
-      GLTFPhysicsBody.#_bindings.method_get_linear_velocity,
+      GLTFPhysicsBody._bindings.method_get_linear_velocity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -361,7 +362,7 @@ export class GLTFPhysicsBody extends Resource{
   set_linear_velocity(_linear_velocity) {
     GLTFPhysicsBody.init_method_set_linear_velocity();
     return _call_native_mb_no_ret(
-      GLTFPhysicsBody.#_bindings.method_set_linear_velocity,
+      GLTFPhysicsBody._bindings.method_set_linear_velocity,
       this._owner,
       _linear_velocity
     );
@@ -370,7 +371,7 @@ export class GLTFPhysicsBody extends Resource{
   get_angular_velocity() {
     GLTFPhysicsBody.init_method_get_angular_velocity();
     return _call_native_mb_ret(
-      GLTFPhysicsBody.#_bindings.method_get_angular_velocity,
+      GLTFPhysicsBody._bindings.method_get_angular_velocity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -381,7 +382,7 @@ export class GLTFPhysicsBody extends Resource{
   set_angular_velocity(_angular_velocity) {
     GLTFPhysicsBody.init_method_set_angular_velocity();
     return _call_native_mb_no_ret(
-      GLTFPhysicsBody.#_bindings.method_set_angular_velocity,
+      GLTFPhysicsBody._bindings.method_set_angular_velocity,
       this._owner,
       _angular_velocity
     );
@@ -390,7 +391,7 @@ export class GLTFPhysicsBody extends Resource{
   get_center_of_mass() {
     GLTFPhysicsBody.init_method_get_center_of_mass();
     return _call_native_mb_ret(
-      GLTFPhysicsBody.#_bindings.method_get_center_of_mass,
+      GLTFPhysicsBody._bindings.method_get_center_of_mass,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -401,7 +402,7 @@ export class GLTFPhysicsBody extends Resource{
   set_center_of_mass(_center_of_mass) {
     GLTFPhysicsBody.init_method_set_center_of_mass();
     return _call_native_mb_no_ret(
-      GLTFPhysicsBody.#_bindings.method_set_center_of_mass,
+      GLTFPhysicsBody._bindings.method_set_center_of_mass,
       this._owner,
       _center_of_mass
     );
@@ -410,7 +411,7 @@ export class GLTFPhysicsBody extends Resource{
   get_inertia_diagonal() {
     GLTFPhysicsBody.init_method_get_inertia_diagonal();
     return _call_native_mb_ret(
-      GLTFPhysicsBody.#_bindings.method_get_inertia_diagonal,
+      GLTFPhysicsBody._bindings.method_get_inertia_diagonal,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -421,7 +422,7 @@ export class GLTFPhysicsBody extends Resource{
   set_inertia_diagonal(_inertia_diagonal) {
     GLTFPhysicsBody.init_method_set_inertia_diagonal();
     return _call_native_mb_no_ret(
-      GLTFPhysicsBody.#_bindings.method_set_inertia_diagonal,
+      GLTFPhysicsBody._bindings.method_set_inertia_diagonal,
       this._owner,
       _inertia_diagonal
     );
@@ -430,7 +431,7 @@ export class GLTFPhysicsBody extends Resource{
   get_inertia_orientation() {
     GLTFPhysicsBody.init_method_get_inertia_orientation();
     return _call_native_mb_ret(
-      GLTFPhysicsBody.#_bindings.method_get_inertia_orientation,
+      GLTFPhysicsBody._bindings.method_get_inertia_orientation,
       this._owner,
 			Variant.Type.QUATERNION,
     
@@ -441,7 +442,7 @@ export class GLTFPhysicsBody extends Resource{
   set_inertia_orientation(_inertia_orientation) {
     GLTFPhysicsBody.init_method_set_inertia_orientation();
     return _call_native_mb_no_ret(
-      GLTFPhysicsBody.#_bindings.method_set_inertia_orientation,
+      GLTFPhysicsBody._bindings.method_set_inertia_orientation,
       this._owner,
       _inertia_orientation
     );
@@ -450,7 +451,7 @@ export class GLTFPhysicsBody extends Resource{
   get_inertia_tensor() {
     GLTFPhysicsBody.init_method_get_inertia_tensor();
     return _call_native_mb_ret(
-      GLTFPhysicsBody.#_bindings.method_get_inertia_tensor,
+      GLTFPhysicsBody._bindings.method_get_inertia_tensor,
       this._owner,
 			Variant.Type.BASIS,
     
@@ -461,7 +462,7 @@ export class GLTFPhysicsBody extends Resource{
   set_inertia_tensor(_inertia_tensor) {
     GLTFPhysicsBody.init_method_set_inertia_tensor();
     return _call_native_mb_no_ret(
-      GLTFPhysicsBody.#_bindings.method_set_inertia_tensor,
+      GLTFPhysicsBody._bindings.method_set_inertia_tensor,
       this._owner,
       _inertia_tensor
     );

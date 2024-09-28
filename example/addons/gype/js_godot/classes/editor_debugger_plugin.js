@@ -1,22 +1,23 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_get_session;
   method_get_sessions;
 }
+@GodotClass
 export class EditorDebuggerPlugin extends RefCounted{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -26,10 +27,10 @@ export class EditorDebuggerPlugin extends RefCounted{
     }
   }
   static init_method_get_session() {
-    if (!this.#_bindings.method_get_session) {
+    if (!this._bindings.method_get_session) {
       let classname = new StringName("EditorDebuggerPlugin");
       let methodname = new StringName("get_session");
-      this.#_bindings.method_get_session = internal.classdb_get_method_bind(
+      this._bindings.method_get_session = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3061968499
@@ -37,10 +38,10 @@ export class EditorDebuggerPlugin extends RefCounted{
     }
   }
   static init_method_get_sessions() {
-    if (!this.#_bindings.method_get_sessions) {
+    if (!this._bindings.method_get_sessions) {
       let classname = new StringName("EditorDebuggerPlugin");
       let methodname = new StringName("get_sessions");
-      this.#_bindings.method_get_sessions = internal.classdb_get_method_bind(
+      this._bindings.method_get_sessions = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2915620761
@@ -65,7 +66,7 @@ export class EditorDebuggerPlugin extends RefCounted{
   get_session(_id) {
     EditorDebuggerPlugin.init_method_get_session();
     return _call_native_mb_ret(
-      EditorDebuggerPlugin.#_bindings.method_get_session,
+      EditorDebuggerPlugin._bindings.method_get_session,
       this._owner,
 			Variant.Type.OBJECT,
       _id
@@ -75,7 +76,7 @@ export class EditorDebuggerPlugin extends RefCounted{
   get_sessions() {
     EditorDebuggerPlugin.init_method_get_sessions();
     return _call_native_mb_ret(
-      EditorDebuggerPlugin.#_bindings.method_get_sessions,
+      EditorDebuggerPlugin._bindings.method_get_sessions,
       this._owner,
 			Variant.Type.ARRAY,
     

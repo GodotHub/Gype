@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { AudioEffect } from '@js_godot/classes/audio_effect'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_dry;
@@ -37,10 +38,10 @@ class _MethodBindings {
   method_set_feedback_lowpass;
   method_get_feedback_lowpass;
 }
+@GodotClass
 export class AudioEffectDelay extends AudioEffect{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -50,10 +51,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_set_dry() {
-    if (!this.#_bindings.method_set_dry) {
+    if (!this._bindings.method_set_dry) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("set_dry");
-      this.#_bindings.method_set_dry = internal.classdb_get_method_bind(
+      this._bindings.method_set_dry = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -61,10 +62,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_get_dry() {
-    if (!this.#_bindings.method_get_dry) {
+    if (!this._bindings.method_get_dry) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("get_dry");
-      this.#_bindings.method_get_dry = internal.classdb_get_method_bind(
+      this._bindings.method_get_dry = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         191475506
@@ -72,10 +73,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_set_tap1_active() {
-    if (!this.#_bindings.method_set_tap1_active) {
+    if (!this._bindings.method_set_tap1_active) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("set_tap1_active");
-      this.#_bindings.method_set_tap1_active = internal.classdb_get_method_bind(
+      this._bindings.method_set_tap1_active = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -83,10 +84,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_is_tap1_active() {
-    if (!this.#_bindings.method_is_tap1_active) {
+    if (!this._bindings.method_is_tap1_active) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("is_tap1_active");
-      this.#_bindings.method_is_tap1_active = internal.classdb_get_method_bind(
+      this._bindings.method_is_tap1_active = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -94,10 +95,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_set_tap1_delay_ms() {
-    if (!this.#_bindings.method_set_tap1_delay_ms) {
+    if (!this._bindings.method_set_tap1_delay_ms) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("set_tap1_delay_ms");
-      this.#_bindings.method_set_tap1_delay_ms = internal.classdb_get_method_bind(
+      this._bindings.method_set_tap1_delay_ms = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -105,10 +106,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_get_tap1_delay_ms() {
-    if (!this.#_bindings.method_get_tap1_delay_ms) {
+    if (!this._bindings.method_get_tap1_delay_ms) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("get_tap1_delay_ms");
-      this.#_bindings.method_get_tap1_delay_ms = internal.classdb_get_method_bind(
+      this._bindings.method_get_tap1_delay_ms = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -116,10 +117,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_set_tap1_level_db() {
-    if (!this.#_bindings.method_set_tap1_level_db) {
+    if (!this._bindings.method_set_tap1_level_db) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("set_tap1_level_db");
-      this.#_bindings.method_set_tap1_level_db = internal.classdb_get_method_bind(
+      this._bindings.method_set_tap1_level_db = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -127,10 +128,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_get_tap1_level_db() {
-    if (!this.#_bindings.method_get_tap1_level_db) {
+    if (!this._bindings.method_get_tap1_level_db) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("get_tap1_level_db");
-      this.#_bindings.method_get_tap1_level_db = internal.classdb_get_method_bind(
+      this._bindings.method_get_tap1_level_db = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -138,10 +139,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_set_tap1_pan() {
-    if (!this.#_bindings.method_set_tap1_pan) {
+    if (!this._bindings.method_set_tap1_pan) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("set_tap1_pan");
-      this.#_bindings.method_set_tap1_pan = internal.classdb_get_method_bind(
+      this._bindings.method_set_tap1_pan = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -149,10 +150,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_get_tap1_pan() {
-    if (!this.#_bindings.method_get_tap1_pan) {
+    if (!this._bindings.method_get_tap1_pan) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("get_tap1_pan");
-      this.#_bindings.method_get_tap1_pan = internal.classdb_get_method_bind(
+      this._bindings.method_get_tap1_pan = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -160,10 +161,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_set_tap2_active() {
-    if (!this.#_bindings.method_set_tap2_active) {
+    if (!this._bindings.method_set_tap2_active) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("set_tap2_active");
-      this.#_bindings.method_set_tap2_active = internal.classdb_get_method_bind(
+      this._bindings.method_set_tap2_active = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -171,10 +172,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_is_tap2_active() {
-    if (!this.#_bindings.method_is_tap2_active) {
+    if (!this._bindings.method_is_tap2_active) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("is_tap2_active");
-      this.#_bindings.method_is_tap2_active = internal.classdb_get_method_bind(
+      this._bindings.method_is_tap2_active = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -182,10 +183,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_set_tap2_delay_ms() {
-    if (!this.#_bindings.method_set_tap2_delay_ms) {
+    if (!this._bindings.method_set_tap2_delay_ms) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("set_tap2_delay_ms");
-      this.#_bindings.method_set_tap2_delay_ms = internal.classdb_get_method_bind(
+      this._bindings.method_set_tap2_delay_ms = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -193,10 +194,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_get_tap2_delay_ms() {
-    if (!this.#_bindings.method_get_tap2_delay_ms) {
+    if (!this._bindings.method_get_tap2_delay_ms) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("get_tap2_delay_ms");
-      this.#_bindings.method_get_tap2_delay_ms = internal.classdb_get_method_bind(
+      this._bindings.method_get_tap2_delay_ms = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -204,10 +205,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_set_tap2_level_db() {
-    if (!this.#_bindings.method_set_tap2_level_db) {
+    if (!this._bindings.method_set_tap2_level_db) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("set_tap2_level_db");
-      this.#_bindings.method_set_tap2_level_db = internal.classdb_get_method_bind(
+      this._bindings.method_set_tap2_level_db = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -215,10 +216,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_get_tap2_level_db() {
-    if (!this.#_bindings.method_get_tap2_level_db) {
+    if (!this._bindings.method_get_tap2_level_db) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("get_tap2_level_db");
-      this.#_bindings.method_get_tap2_level_db = internal.classdb_get_method_bind(
+      this._bindings.method_get_tap2_level_db = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -226,10 +227,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_set_tap2_pan() {
-    if (!this.#_bindings.method_set_tap2_pan) {
+    if (!this._bindings.method_set_tap2_pan) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("set_tap2_pan");
-      this.#_bindings.method_set_tap2_pan = internal.classdb_get_method_bind(
+      this._bindings.method_set_tap2_pan = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -237,10 +238,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_get_tap2_pan() {
-    if (!this.#_bindings.method_get_tap2_pan) {
+    if (!this._bindings.method_get_tap2_pan) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("get_tap2_pan");
-      this.#_bindings.method_get_tap2_pan = internal.classdb_get_method_bind(
+      this._bindings.method_get_tap2_pan = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -248,10 +249,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_set_feedback_active() {
-    if (!this.#_bindings.method_set_feedback_active) {
+    if (!this._bindings.method_set_feedback_active) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("set_feedback_active");
-      this.#_bindings.method_set_feedback_active = internal.classdb_get_method_bind(
+      this._bindings.method_set_feedback_active = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2586408642
@@ -259,10 +260,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_is_feedback_active() {
-    if (!this.#_bindings.method_is_feedback_active) {
+    if (!this._bindings.method_is_feedback_active) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("is_feedback_active");
-      this.#_bindings.method_is_feedback_active = internal.classdb_get_method_bind(
+      this._bindings.method_is_feedback_active = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         36873697
@@ -270,10 +271,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_set_feedback_delay_ms() {
-    if (!this.#_bindings.method_set_feedback_delay_ms) {
+    if (!this._bindings.method_set_feedback_delay_ms) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("set_feedback_delay_ms");
-      this.#_bindings.method_set_feedback_delay_ms = internal.classdb_get_method_bind(
+      this._bindings.method_set_feedback_delay_ms = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -281,10 +282,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_get_feedback_delay_ms() {
-    if (!this.#_bindings.method_get_feedback_delay_ms) {
+    if (!this._bindings.method_get_feedback_delay_ms) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("get_feedback_delay_ms");
-      this.#_bindings.method_get_feedback_delay_ms = internal.classdb_get_method_bind(
+      this._bindings.method_get_feedback_delay_ms = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -292,10 +293,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_set_feedback_level_db() {
-    if (!this.#_bindings.method_set_feedback_level_db) {
+    if (!this._bindings.method_set_feedback_level_db) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("set_feedback_level_db");
-      this.#_bindings.method_set_feedback_level_db = internal.classdb_get_method_bind(
+      this._bindings.method_set_feedback_level_db = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -303,10 +304,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_get_feedback_level_db() {
-    if (!this.#_bindings.method_get_feedback_level_db) {
+    if (!this._bindings.method_get_feedback_level_db) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("get_feedback_level_db");
-      this.#_bindings.method_get_feedback_level_db = internal.classdb_get_method_bind(
+      this._bindings.method_get_feedback_level_db = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -314,10 +315,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_set_feedback_lowpass() {
-    if (!this.#_bindings.method_set_feedback_lowpass) {
+    if (!this._bindings.method_set_feedback_lowpass) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("set_feedback_lowpass");
-      this.#_bindings.method_set_feedback_lowpass = internal.classdb_get_method_bind(
+      this._bindings.method_set_feedback_lowpass = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -325,10 +326,10 @@ export class AudioEffectDelay extends AudioEffect{
     }
   }
   static init_method_get_feedback_lowpass() {
-    if (!this.#_bindings.method_get_feedback_lowpass) {
+    if (!this._bindings.method_get_feedback_lowpass) {
       let classname = new StringName("AudioEffectDelay");
       let methodname = new StringName("get_feedback_lowpass");
-      this.#_bindings.method_get_feedback_lowpass = internal.classdb_get_method_bind(
+      this._bindings.method_get_feedback_lowpass = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -341,7 +342,7 @@ export class AudioEffectDelay extends AudioEffect{
   set_dry(_amount) {
     AudioEffectDelay.init_method_set_dry();
     return _call_native_mb_no_ret(
-      AudioEffectDelay.#_bindings.method_set_dry,
+      AudioEffectDelay._bindings.method_set_dry,
       this._owner,
       _amount
     );
@@ -350,7 +351,7 @@ export class AudioEffectDelay extends AudioEffect{
   get_dry() {
     AudioEffectDelay.init_method_get_dry();
     return _call_native_mb_ret(
-      AudioEffectDelay.#_bindings.method_get_dry,
+      AudioEffectDelay._bindings.method_get_dry,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -361,7 +362,7 @@ export class AudioEffectDelay extends AudioEffect{
   set_tap1_active(_amount) {
     AudioEffectDelay.init_method_set_tap1_active();
     return _call_native_mb_no_ret(
-      AudioEffectDelay.#_bindings.method_set_tap1_active,
+      AudioEffectDelay._bindings.method_set_tap1_active,
       this._owner,
       _amount
     );
@@ -370,7 +371,7 @@ export class AudioEffectDelay extends AudioEffect{
   is_tap1_active() {
     AudioEffectDelay.init_method_is_tap1_active();
     return _call_native_mb_ret(
-      AudioEffectDelay.#_bindings.method_is_tap1_active,
+      AudioEffectDelay._bindings.method_is_tap1_active,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -381,7 +382,7 @@ export class AudioEffectDelay extends AudioEffect{
   set_tap1_delay_ms(_amount) {
     AudioEffectDelay.init_method_set_tap1_delay_ms();
     return _call_native_mb_no_ret(
-      AudioEffectDelay.#_bindings.method_set_tap1_delay_ms,
+      AudioEffectDelay._bindings.method_set_tap1_delay_ms,
       this._owner,
       _amount
     );
@@ -390,7 +391,7 @@ export class AudioEffectDelay extends AudioEffect{
   get_tap1_delay_ms() {
     AudioEffectDelay.init_method_get_tap1_delay_ms();
     return _call_native_mb_ret(
-      AudioEffectDelay.#_bindings.method_get_tap1_delay_ms,
+      AudioEffectDelay._bindings.method_get_tap1_delay_ms,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -401,7 +402,7 @@ export class AudioEffectDelay extends AudioEffect{
   set_tap1_level_db(_amount) {
     AudioEffectDelay.init_method_set_tap1_level_db();
     return _call_native_mb_no_ret(
-      AudioEffectDelay.#_bindings.method_set_tap1_level_db,
+      AudioEffectDelay._bindings.method_set_tap1_level_db,
       this._owner,
       _amount
     );
@@ -410,7 +411,7 @@ export class AudioEffectDelay extends AudioEffect{
   get_tap1_level_db() {
     AudioEffectDelay.init_method_get_tap1_level_db();
     return _call_native_mb_ret(
-      AudioEffectDelay.#_bindings.method_get_tap1_level_db,
+      AudioEffectDelay._bindings.method_get_tap1_level_db,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -421,7 +422,7 @@ export class AudioEffectDelay extends AudioEffect{
   set_tap1_pan(_amount) {
     AudioEffectDelay.init_method_set_tap1_pan();
     return _call_native_mb_no_ret(
-      AudioEffectDelay.#_bindings.method_set_tap1_pan,
+      AudioEffectDelay._bindings.method_set_tap1_pan,
       this._owner,
       _amount
     );
@@ -430,7 +431,7 @@ export class AudioEffectDelay extends AudioEffect{
   get_tap1_pan() {
     AudioEffectDelay.init_method_get_tap1_pan();
     return _call_native_mb_ret(
-      AudioEffectDelay.#_bindings.method_get_tap1_pan,
+      AudioEffectDelay._bindings.method_get_tap1_pan,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -441,7 +442,7 @@ export class AudioEffectDelay extends AudioEffect{
   set_tap2_active(_amount) {
     AudioEffectDelay.init_method_set_tap2_active();
     return _call_native_mb_no_ret(
-      AudioEffectDelay.#_bindings.method_set_tap2_active,
+      AudioEffectDelay._bindings.method_set_tap2_active,
       this._owner,
       _amount
     );
@@ -450,7 +451,7 @@ export class AudioEffectDelay extends AudioEffect{
   is_tap2_active() {
     AudioEffectDelay.init_method_is_tap2_active();
     return _call_native_mb_ret(
-      AudioEffectDelay.#_bindings.method_is_tap2_active,
+      AudioEffectDelay._bindings.method_is_tap2_active,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -461,7 +462,7 @@ export class AudioEffectDelay extends AudioEffect{
   set_tap2_delay_ms(_amount) {
     AudioEffectDelay.init_method_set_tap2_delay_ms();
     return _call_native_mb_no_ret(
-      AudioEffectDelay.#_bindings.method_set_tap2_delay_ms,
+      AudioEffectDelay._bindings.method_set_tap2_delay_ms,
       this._owner,
       _amount
     );
@@ -470,7 +471,7 @@ export class AudioEffectDelay extends AudioEffect{
   get_tap2_delay_ms() {
     AudioEffectDelay.init_method_get_tap2_delay_ms();
     return _call_native_mb_ret(
-      AudioEffectDelay.#_bindings.method_get_tap2_delay_ms,
+      AudioEffectDelay._bindings.method_get_tap2_delay_ms,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -481,7 +482,7 @@ export class AudioEffectDelay extends AudioEffect{
   set_tap2_level_db(_amount) {
     AudioEffectDelay.init_method_set_tap2_level_db();
     return _call_native_mb_no_ret(
-      AudioEffectDelay.#_bindings.method_set_tap2_level_db,
+      AudioEffectDelay._bindings.method_set_tap2_level_db,
       this._owner,
       _amount
     );
@@ -490,7 +491,7 @@ export class AudioEffectDelay extends AudioEffect{
   get_tap2_level_db() {
     AudioEffectDelay.init_method_get_tap2_level_db();
     return _call_native_mb_ret(
-      AudioEffectDelay.#_bindings.method_get_tap2_level_db,
+      AudioEffectDelay._bindings.method_get_tap2_level_db,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -501,7 +502,7 @@ export class AudioEffectDelay extends AudioEffect{
   set_tap2_pan(_amount) {
     AudioEffectDelay.init_method_set_tap2_pan();
     return _call_native_mb_no_ret(
-      AudioEffectDelay.#_bindings.method_set_tap2_pan,
+      AudioEffectDelay._bindings.method_set_tap2_pan,
       this._owner,
       _amount
     );
@@ -510,7 +511,7 @@ export class AudioEffectDelay extends AudioEffect{
   get_tap2_pan() {
     AudioEffectDelay.init_method_get_tap2_pan();
     return _call_native_mb_ret(
-      AudioEffectDelay.#_bindings.method_get_tap2_pan,
+      AudioEffectDelay._bindings.method_get_tap2_pan,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -521,7 +522,7 @@ export class AudioEffectDelay extends AudioEffect{
   set_feedback_active(_amount) {
     AudioEffectDelay.init_method_set_feedback_active();
     return _call_native_mb_no_ret(
-      AudioEffectDelay.#_bindings.method_set_feedback_active,
+      AudioEffectDelay._bindings.method_set_feedback_active,
       this._owner,
       _amount
     );
@@ -530,7 +531,7 @@ export class AudioEffectDelay extends AudioEffect{
   is_feedback_active() {
     AudioEffectDelay.init_method_is_feedback_active();
     return _call_native_mb_ret(
-      AudioEffectDelay.#_bindings.method_is_feedback_active,
+      AudioEffectDelay._bindings.method_is_feedback_active,
       this._owner,
 			Variant.Type.BOOL,
     
@@ -541,7 +542,7 @@ export class AudioEffectDelay extends AudioEffect{
   set_feedback_delay_ms(_amount) {
     AudioEffectDelay.init_method_set_feedback_delay_ms();
     return _call_native_mb_no_ret(
-      AudioEffectDelay.#_bindings.method_set_feedback_delay_ms,
+      AudioEffectDelay._bindings.method_set_feedback_delay_ms,
       this._owner,
       _amount
     );
@@ -550,7 +551,7 @@ export class AudioEffectDelay extends AudioEffect{
   get_feedback_delay_ms() {
     AudioEffectDelay.init_method_get_feedback_delay_ms();
     return _call_native_mb_ret(
-      AudioEffectDelay.#_bindings.method_get_feedback_delay_ms,
+      AudioEffectDelay._bindings.method_get_feedback_delay_ms,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -561,7 +562,7 @@ export class AudioEffectDelay extends AudioEffect{
   set_feedback_level_db(_amount) {
     AudioEffectDelay.init_method_set_feedback_level_db();
     return _call_native_mb_no_ret(
-      AudioEffectDelay.#_bindings.method_set_feedback_level_db,
+      AudioEffectDelay._bindings.method_set_feedback_level_db,
       this._owner,
       _amount
     );
@@ -570,7 +571,7 @@ export class AudioEffectDelay extends AudioEffect{
   get_feedback_level_db() {
     AudioEffectDelay.init_method_get_feedback_level_db();
     return _call_native_mb_ret(
-      AudioEffectDelay.#_bindings.method_get_feedback_level_db,
+      AudioEffectDelay._bindings.method_get_feedback_level_db,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -581,7 +582,7 @@ export class AudioEffectDelay extends AudioEffect{
   set_feedback_lowpass(_amount) {
     AudioEffectDelay.init_method_set_feedback_lowpass();
     return _call_native_mb_no_ret(
-      AudioEffectDelay.#_bindings.method_set_feedback_lowpass,
+      AudioEffectDelay._bindings.method_set_feedback_lowpass,
       this._owner,
       _amount
     );
@@ -590,7 +591,7 @@ export class AudioEffectDelay extends AudioEffect{
   get_feedback_lowpass() {
     AudioEffectDelay.init_method_get_feedback_lowpass();
     return _call_native_mb_ret(
-      AudioEffectDelay.#_bindings.method_get_feedback_lowpass,
+      AudioEffectDelay._bindings.method_get_feedback_lowpass,
       this._owner,
 			Variant.Type.FLOAT,
     

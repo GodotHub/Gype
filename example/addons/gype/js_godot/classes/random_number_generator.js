@@ -1,13 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_seed;
@@ -22,10 +23,10 @@ class _MethodBindings {
   method_rand_weighted;
   method_randomize;
 }
+@GodotClass
 export class RandomNumberGenerator extends RefCounted{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -35,10 +36,10 @@ export class RandomNumberGenerator extends RefCounted{
     }
   }
   static init_method_set_seed() {
-    if (!this.#_bindings.method_set_seed) {
+    if (!this._bindings.method_set_seed) {
       let classname = new StringName("RandomNumberGenerator");
       let methodname = new StringName("set_seed");
-      this.#_bindings.method_set_seed = internal.classdb_get_method_bind(
+      this._bindings.method_set_seed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -46,10 +47,10 @@ export class RandomNumberGenerator extends RefCounted{
     }
   }
   static init_method_get_seed() {
-    if (!this.#_bindings.method_get_seed) {
+    if (!this._bindings.method_get_seed) {
       let classname = new StringName("RandomNumberGenerator");
       let methodname = new StringName("get_seed");
-      this.#_bindings.method_get_seed = internal.classdb_get_method_bind(
+      this._bindings.method_get_seed = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -57,10 +58,10 @@ export class RandomNumberGenerator extends RefCounted{
     }
   }
   static init_method_set_state() {
-    if (!this.#_bindings.method_set_state) {
+    if (!this._bindings.method_set_state) {
       let classname = new StringName("RandomNumberGenerator");
       let methodname = new StringName("set_state");
-      this.#_bindings.method_set_state = internal.classdb_get_method_bind(
+      this._bindings.method_set_state = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1286410249
@@ -68,10 +69,10 @@ export class RandomNumberGenerator extends RefCounted{
     }
   }
   static init_method_get_state() {
-    if (!this.#_bindings.method_get_state) {
+    if (!this._bindings.method_get_state) {
       let classname = new StringName("RandomNumberGenerator");
       let methodname = new StringName("get_state");
-      this.#_bindings.method_get_state = internal.classdb_get_method_bind(
+      this._bindings.method_get_state = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3905245786
@@ -79,10 +80,10 @@ export class RandomNumberGenerator extends RefCounted{
     }
   }
   static init_method_randi() {
-    if (!this.#_bindings.method_randi) {
+    if (!this._bindings.method_randi) {
       let classname = new StringName("RandomNumberGenerator");
       let methodname = new StringName("randi");
-      this.#_bindings.method_randi = internal.classdb_get_method_bind(
+      this._bindings.method_randi = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         2455072627
@@ -90,10 +91,10 @@ export class RandomNumberGenerator extends RefCounted{
     }
   }
   static init_method_randf() {
-    if (!this.#_bindings.method_randf) {
+    if (!this._bindings.method_randf) {
       let classname = new StringName("RandomNumberGenerator");
       let methodname = new StringName("randf");
-      this.#_bindings.method_randf = internal.classdb_get_method_bind(
+      this._bindings.method_randf = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         191475506
@@ -101,10 +102,10 @@ export class RandomNumberGenerator extends RefCounted{
     }
   }
   static init_method_randfn() {
-    if (!this.#_bindings.method_randfn) {
+    if (!this._bindings.method_randfn) {
       let classname = new StringName("RandomNumberGenerator");
       let methodname = new StringName("randfn");
-      this.#_bindings.method_randfn = internal.classdb_get_method_bind(
+      this._bindings.method_randfn = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         837325100
@@ -112,10 +113,10 @@ export class RandomNumberGenerator extends RefCounted{
     }
   }
   static init_method_randf_range() {
-    if (!this.#_bindings.method_randf_range) {
+    if (!this._bindings.method_randf_range) {
       let classname = new StringName("RandomNumberGenerator");
       let methodname = new StringName("randf_range");
-      this.#_bindings.method_randf_range = internal.classdb_get_method_bind(
+      this._bindings.method_randf_range = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4269894367
@@ -123,10 +124,10 @@ export class RandomNumberGenerator extends RefCounted{
     }
   }
   static init_method_randi_range() {
-    if (!this.#_bindings.method_randi_range) {
+    if (!this._bindings.method_randi_range) {
       let classname = new StringName("RandomNumberGenerator");
       let methodname = new StringName("randi_range");
-      this.#_bindings.method_randi_range = internal.classdb_get_method_bind(
+      this._bindings.method_randi_range = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         50157827
@@ -134,10 +135,10 @@ export class RandomNumberGenerator extends RefCounted{
     }
   }
   static init_method_rand_weighted() {
-    if (!this.#_bindings.method_rand_weighted) {
+    if (!this._bindings.method_rand_weighted) {
       let classname = new StringName("RandomNumberGenerator");
       let methodname = new StringName("rand_weighted");
-      this.#_bindings.method_rand_weighted = internal.classdb_get_method_bind(
+      this._bindings.method_rand_weighted = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         4189642986
@@ -145,10 +146,10 @@ export class RandomNumberGenerator extends RefCounted{
     }
   }
   static init_method_randomize() {
-    if (!this.#_bindings.method_randomize) {
+    if (!this._bindings.method_randomize) {
       let classname = new StringName("RandomNumberGenerator");
       let methodname = new StringName("randomize");
-      this.#_bindings.method_randomize = internal.classdb_get_method_bind(
+      this._bindings.method_randomize = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         3218959716
@@ -161,7 +162,7 @@ export class RandomNumberGenerator extends RefCounted{
   set_seed(_seed) {
     RandomNumberGenerator.init_method_set_seed();
     return _call_native_mb_no_ret(
-      RandomNumberGenerator.#_bindings.method_set_seed,
+      RandomNumberGenerator._bindings.method_set_seed,
       this._owner,
       _seed
     );
@@ -170,7 +171,7 @@ export class RandomNumberGenerator extends RefCounted{
   get_seed() {
     RandomNumberGenerator.init_method_get_seed();
     return _call_native_mb_ret(
-      RandomNumberGenerator.#_bindings.method_get_seed,
+      RandomNumberGenerator._bindings.method_get_seed,
       this._owner,
 			Variant.Type.INT,
     
@@ -181,7 +182,7 @@ export class RandomNumberGenerator extends RefCounted{
   set_state(_state) {
     RandomNumberGenerator.init_method_set_state();
     return _call_native_mb_no_ret(
-      RandomNumberGenerator.#_bindings.method_set_state,
+      RandomNumberGenerator._bindings.method_set_state,
       this._owner,
       _state
     );
@@ -190,7 +191,7 @@ export class RandomNumberGenerator extends RefCounted{
   get_state() {
     RandomNumberGenerator.init_method_get_state();
     return _call_native_mb_ret(
-      RandomNumberGenerator.#_bindings.method_get_state,
+      RandomNumberGenerator._bindings.method_get_state,
       this._owner,
 			Variant.Type.INT,
     
@@ -201,7 +202,7 @@ export class RandomNumberGenerator extends RefCounted{
   randi() {
     RandomNumberGenerator.init_method_randi();
     return _call_native_mb_ret(
-      RandomNumberGenerator.#_bindings.method_randi,
+      RandomNumberGenerator._bindings.method_randi,
       this._owner,
 			Variant.Type.INT,
     
@@ -212,7 +213,7 @@ export class RandomNumberGenerator extends RefCounted{
   randf() {
     RandomNumberGenerator.init_method_randf();
     return _call_native_mb_ret(
-      RandomNumberGenerator.#_bindings.method_randf,
+      RandomNumberGenerator._bindings.method_randf,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -223,7 +224,7 @@ export class RandomNumberGenerator extends RefCounted{
   randfn(_mean, _deviation) {
     RandomNumberGenerator.init_method_randfn();
     return _call_native_mb_ret(
-      RandomNumberGenerator.#_bindings.method_randfn,
+      RandomNumberGenerator._bindings.method_randfn,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -234,7 +235,7 @@ export class RandomNumberGenerator extends RefCounted{
   randf_range(_from, _to) {
     RandomNumberGenerator.init_method_randf_range();
     return _call_native_mb_ret(
-      RandomNumberGenerator.#_bindings.method_randf_range,
+      RandomNumberGenerator._bindings.method_randf_range,
       this._owner,
 			Variant.Type.FLOAT,
     
@@ -245,7 +246,7 @@ export class RandomNumberGenerator extends RefCounted{
   randi_range(_from, _to) {
     RandomNumberGenerator.init_method_randi_range();
     return _call_native_mb_ret(
-      RandomNumberGenerator.#_bindings.method_randi_range,
+      RandomNumberGenerator._bindings.method_randi_range,
       this._owner,
 			Variant.Type.INT,
     
@@ -256,7 +257,7 @@ export class RandomNumberGenerator extends RefCounted{
   rand_weighted(_weights) {
     RandomNumberGenerator.init_method_rand_weighted();
     return _call_native_mb_ret(
-      RandomNumberGenerator.#_bindings.method_rand_weighted,
+      RandomNumberGenerator._bindings.method_rand_weighted,
       this._owner,
 			Variant.Type.INT,
     
@@ -267,7 +268,7 @@ export class RandomNumberGenerator extends RefCounted{
   randomize() {
     RandomNumberGenerator.init_method_randomize();
     return _call_native_mb_no_ret(
-      RandomNumberGenerator.#_bindings.method_randomize,
+      RandomNumberGenerator._bindings.method_randomize,
       this._owner,
       
     );

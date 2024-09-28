@@ -1,22 +1,23 @@
 import * as internal from '__internal__';
+import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { VisualShaderNodeConstant } from '@js_godot/classes/visual_shader_node_constant'
-import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
 } from "@js_godot/core/engine_ptrcall";
+import { GodotClass } from "@js_godot/core/class_define";
 
 class _MethodBindings {
   method_set_constant;
   method_get_constant;
 }
+@GodotClass
 export class VisualShaderNodeFloatConstant extends VisualShaderNodeConstant{
 
-  static #_bindings = new _MethodBindings();
-  static #initialized = false;
+  static _bindings = new _MethodBindings();
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -26,10 +27,10 @@ export class VisualShaderNodeFloatConstant extends VisualShaderNodeConstant{
     }
   }
   static init_method_set_constant() {
-    if (!this.#_bindings.method_set_constant) {
+    if (!this._bindings.method_set_constant) {
       let classname = new StringName("VisualShaderNodeFloatConstant");
       let methodname = new StringName("set_constant");
-      this.#_bindings.method_set_constant = internal.classdb_get_method_bind(
+      this._bindings.method_set_constant = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         373806689
@@ -37,10 +38,10 @@ export class VisualShaderNodeFloatConstant extends VisualShaderNodeConstant{
     }
   }
   static init_method_get_constant() {
-    if (!this.#_bindings.method_get_constant) {
+    if (!this._bindings.method_get_constant) {
       let classname = new StringName("VisualShaderNodeFloatConstant");
       let methodname = new StringName("get_constant");
-      this.#_bindings.method_get_constant = internal.classdb_get_method_bind(
+      this._bindings.method_get_constant = internal.classdb_get_method_bind(
         classname.opaque,
         methodname.opaque,
         1740695150
@@ -53,7 +54,7 @@ export class VisualShaderNodeFloatConstant extends VisualShaderNodeConstant{
   set_constant(_constant) {
     VisualShaderNodeFloatConstant.init_method_set_constant();
     return _call_native_mb_no_ret(
-      VisualShaderNodeFloatConstant.#_bindings.method_set_constant,
+      VisualShaderNodeFloatConstant._bindings.method_set_constant,
       this._owner,
       _constant
     );
@@ -62,7 +63,7 @@ export class VisualShaderNodeFloatConstant extends VisualShaderNodeConstant{
   get_constant() {
     VisualShaderNodeFloatConstant.init_method_get_constant();
     return _call_native_mb_ret(
-      VisualShaderNodeFloatConstant.#_bindings.method_get_constant,
+      VisualShaderNodeFloatConstant._bindings.method_get_constant,
       this._owner,
 			Variant.Type.FLOAT,
     
