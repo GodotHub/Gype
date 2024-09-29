@@ -17,11 +17,11 @@ inline bool is_typed_array(JSValue value) {
 	return class_id >= 21 && class_id <= 31;
 }
 
-inline bool is_int(JSValue value) {
+bool is_int(JSValue value) {
 	return JS_VALUE_GET_TAG(value) == JS_TAG_INT;
 }
 
-inline bool is_float(JSValue value) {
+bool is_float(JSValue value) {
 	return JS_VALUE_GET_TAG(value) == JS_TAG_FLOAT64;
 }
 

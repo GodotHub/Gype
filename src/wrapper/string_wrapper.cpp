@@ -16,7 +16,7 @@ void *gd_get_String_opaque(StringWrapper *wrapper) {
 }
 
 StringWrapper *gd_new_String_wrapper(void *p_from) {
-	return new StringWrapper{ String(*reinterpret_cast<Variant *>(p_from)) };
+	return new StringWrapper{ String(*static_cast<String *>(p_from)) };
 }
 
 VariantWrapper *gd_new_String_char8(const char *p_from) {

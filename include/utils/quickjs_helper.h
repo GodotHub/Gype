@@ -11,8 +11,8 @@ using namespace godot;
 
 inline uint8_t *get_typed_array_buf(JSValue v);
 inline bool is_typed_array(JSValue value);
-inline bool is_int(JSValue value);
-inline bool is_float(JSValue value);
+bool is_int(JSValue value);
+bool is_float(JSValue value);
 inline void print_exception();
 inline bool is_exception(JSValue exp);
 

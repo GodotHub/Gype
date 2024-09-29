@@ -15,7 +15,7 @@ void *gd_get_StringName_opaque(StringNameWrapper *wrapper) {
 }
 
 StringNameWrapper *gd_new_StringName_wrapper(void *p_from) {
-	return new StringNameWrapper{ StringName(*reinterpret_cast<Variant *>(p_from)) };
+	return new StringNameWrapper{ StringName(*static_cast<StringName *>(p_from)) };
 }
 
 VariantWrapper *gd_new_StringName_char8(const char *p_from) {
