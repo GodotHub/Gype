@@ -1,9 +1,9 @@
-#ifndef QUICKJS_UTILS
-#define QUICKJS_UTILS
+#ifndef __STR_UTILS_H__
+#define __STR_UTILS_H__
 
 #include <string>
 
 std::string underscoreToCamelCase(std::string input);
 std::string camelToSnake(std::string input);
 
-#endif // !QUICKJS_UTILS
+#endif // __STR_UTILS_H__

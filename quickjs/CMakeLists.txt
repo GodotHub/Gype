@@ -26,7 +26,7 @@ target_compile_features(${PROJECT_NAME}
 		cxx_std_17
 )
 # 添加必要的编译选项
-target_compile_definitions(quickjs PRIVATE 
+target_compile_definitions(quickjs PUBLIC 
     -D_GNU_SOURCE
     -DCONFIG_BIGNUM
     # -DDUMP_PROMISE

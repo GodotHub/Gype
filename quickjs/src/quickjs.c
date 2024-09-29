@@ -47,9 +47,10 @@
 #include "quickjs/libunicode.h"
 #include "quickjs/list.h"
 #include "quickjs/quickjs.h"
-
+#include "wrapper/array_wrapper.h"
 #include "wrapper/string_name_wrapper.h"
 #include "wrapper/string_wrapper.h"
+#include "wrapper/variant_wrapper.h"
 #include <gdextension_interface.h>
 
 #define OPTIMIZE 1
@@ -3356,6 +3357,28 @@ int JS_NewClass(JSRuntime *rt, JSClassID class_id, const JSClassDef *class_def) 
 	return ret;
 }
 
+static int gd_string_set_chars(JSValue *val, const void *cs) {
+	if (val->tag != JS_TAG_STRING)
+		return 1;
+	JSString *str = (JSString *)val->u.ptr;
+	if (str->mutable)
+		val->gptr = gd_new_String(cs, str->is_wide_char);
+	else
+		val->gptr = gd_new_StringName(cs, str->is_wide_char);
+	return 0;
+}
+
+static int gd_string_set_char(JSValue *val, const int c) {
+	if (val->tag != JS_TAG_STRING)
+		return 1;
+	JSString *str = (JSString *)val->u.ptr;
+	if (str->mutable)
+		val->gptr = gd_new_String_single_char(c, str->is_wide_char);
+	else
+		val->gptr = gd_new_StringName_single_char(c, str->is_wide_char);
+	return 0;
+}
+
 static JSValue js_new_string8(JSContext *ctx, const uint8_t *buf, int len) {
 	JSString *str;
 
@@ -3381,12 +3404,11 @@ static JSValue js_new_mutable_string8(JSContext *ctx, const uint8_t *buf, int le
 		return JS_EXCEPTION;
 	memcpy(str->u.str8, buf, len);
 	str->u.str8[len] = '\0';
-	JSValue ret = JS_MKPTR(JS_TAG_STRING, str);
+	str->mutable = mutable;
 	if (mutable)
-		ret.gptr = gd_new_String_char8(buf);
+		return JS_MK_WRAPPER_PTR(JS_TAG_STRING, str, gd_new_String_char8((const char *)str->u.str8));
 	else
-		ret.gptr = gd_new_StringName_char8(buf);
-	return ret;
+		return JS_MK_WRAPPER_PTR(JS_TAG_STRING, str, gd_new_StringName_char8((const char *)str->u.str8));
 }
 
 static JSValue js_new_string16(JSContext *ctx, const uint16_t *buf, int len) {
@@ -3432,7 +3454,7 @@ static JSValue js_sub_string(JSContext *ctx, JSString *p, int start, int end) {
 		str->u.str8[len] = '\0';
 		return JS_MKPTR(JS_TAG_STRING, str);
 	} else {
-		return js_new_string8(ctx, p->u.str8 + start, len);
+		return js_new_mutable_string8(ctx, p->u.str8 + start, len, p->mutable);
 	}
 }
 
@@ -3788,8 +3810,7 @@ JSValue JS_NewStringLen(JSContext *ctx, const char *buf, size_t buf_len) {
 		return JS_ThrowInternalError(ctx, "string too long");
 	if (p == p_end) {
 		/* ASCII string */
-		/* empty string */
-		return js_new_string8(ctx, (const uint8_t *)buf, buf_len);
+		return js_new_mutable_string8(ctx, (const uint8_t *)buf, buf_len, TRUE);
 	} else {
 		if (string_buffer_init(ctx, b, buf_len))
 			goto fail;
@@ -4759,7 +4780,13 @@ static JSValue JS_NewObjectFromShape(JSContext *ctx, JSShape *sh, JSClassID clas
 	}
 	p->header.ref_count = 1;
 	add_gc_object(ctx->rt, &p->header, JS_GC_OBJ_TYPE_JS_OBJECT);
-	return JS_MKPTR(JS_TAG_OBJECT, p);
+	JSValue ret = JS_MKPTR(JS_TAG_OBJECT, p);
+	if (JS_IsArray(ctx, ret) > 0) {
+		VariantWrapper *wrapper = gd_new_variant_empty_Array(ctx);
+		gd_set_variant_wrapper(ret.gptr, wrapper);
+		// freew(wrapper);
+	}
+	return ret;
 }
 
 static JSObject *get_proto_obj(JSValueConst proto_val) {
@@ -5392,7 +5419,6 @@ void __JS_FreeValueRT(JSRuntime *rt, JSValue v) {
 		}
 	}
 #endif
-
 	switch (tag) {
 		case JS_TAG_STRING: {
 			JSString *p = JS_VALUE_GET_STRING(v);
@@ -5404,6 +5430,7 @@ void __JS_FreeValueRT(JSRuntime *rt, JSValue v) {
 #endif
 				js_free_rt(rt, p);
 			}
+			freew(v.gptr);
 		} break;
 		case JS_TAG_OBJECT:
 		case JS_TAG_FUNCTION_BYTECODE: {
@@ -5438,6 +5465,10 @@ void __JS_FreeValueRT(JSRuntime *rt, JSValue v) {
 		case JS_TAG_SYMBOL: {
 			JSAtomStruct *p = JS_VALUE_GET_PTR(v);
 			JS_FreeAtomStruct(rt, p);
+		} break;
+		case JS_TAG_INT:
+		case JS_TAG_FLOAT64: {
+			freew(v.gptr);
 		} break;
 		default:
 			printf("__JS_FreeValue: unknown tag=%d\n", tag);
@@ -9015,6 +9046,8 @@ redo_prop_update:
 					if (flags & JS_PROP_HAS_VALUE) {
 						set_value(ctx, &p->u.array.u.values[idx], JS_DupValue(ctx, val));
 					}
+
+					gd_define_wrapper(ctx, &this_obj, &val);
 					return TRUE;
 				}
 			}
@@ -9066,7 +9099,13 @@ redo_prop_update:
 		}
 	}
 
-	return JS_CreateProperty(ctx, p, prop, val, getter, setter, flags);
+	if (JS_CreateProperty(ctx, p, prop, val, getter, setter, flags)) {
+		if (!JS_IsUninitialized(val)) {
+			gd_define_wrapper(ctx, &this_obj, &val);
+		}
+		return TRUE;
+	} else
+		return FALSE;
 }
 
 static int JS_DefineAutoInitProperty(JSContext *ctx, JSValueConst this_obj,
@@ -40351,25 +40390,14 @@ static const JSCFunctionListEntry js_boolean_proto_funcs[] = {
 
 /* String */
 
-static int gd_string_set_wrapper(JSValue *val, const void *cs) {
+static int gd_string_set_wrapper(JSValue *val) {
 	if (val->tag != JS_TAG_STRING)
 		return 1;
 	JSString *str = (JSString *)val->u.ptr;
 	if (str->mutable)
-		val->gptr = gd_new_String(cs, str->is_wide_char);
+		val->gptr = gd_new_String(str->u.str8, str->is_wide_char);
 	else
-		val->gptr = gd_new_StringName(cs, str->is_wide_char);
-	return 0;
-}
-
-static int gd_string_set_char(JSValue *val, const int c) {
-	if (val->tag != JS_TAG_STRING)
-		return 1;
-	JSString *str = (JSString *)val->u.ptr;
-	if (str->mutable)
-		val->gptr = gd_new_String_single_char(c, str->is_wide_char);
-	else
-		val->gptr = gd_new_StringName_single_char(c, str->is_wide_char);
+		val->gptr = gd_new_StringName(str->u.str16, str->is_wide_char);
 	return 0;
 }
 
@@ -40673,13 +40701,13 @@ static JSValue js_string_charAt(JSContext *ctx, JSValueConst this_val,
 			ret = JS_UNDEFINED;
 		else {
 			ret = js_new_string8(ctx, NULL, 0);
-			if (gd_string_set_wrapper(&ret, ""))
+			if (gd_string_set_chars(&ret, ""))
 				return JS_EXCEPTION;
 		}
 	} else {
 		c = string_get(p, idx);
 		ret = js_new_string_char(ctx, c);
-		if (gd_string_set_wrapper(&ret, &c))
+		if (gd_string_set_chars(&ret, &c))
 			return JS_EXCEPTION;
 	}
 	JS_FreeValue(ctx, val);
@@ -40705,6 +40733,8 @@ static JSValue js_string_codePointAt(JSContext *ctx, JSValueConst this_val,
 	} else {
 		c = string_getc(p, &idx);
 		ret = JS_NewInt32(ctx, c);
+		if (gd_string_set_wrapper(&ret))
+			return JS_EXCEPTION;
 	}
 	JS_FreeValue(ctx, val);
 	return ret;
@@ -40724,6 +40754,9 @@ static JSValue js_string_concat(JSContext *ctx, JSValueConst this_val,
 			break;
 		r = JS_ConcatString(ctx, r, JS_DupValue(ctx, argv[i]));
 	}
+	JSString *str = JS_VALUE_GET_PTR(r);
+	if (gd_string_set_wrapper(&r))
+		return JS_EXCEPTION;
 	return r;
 }
 
@@ -40847,6 +40880,8 @@ static JSValue js_string_toWellFormed(JSContext *ctx, JSValueConst this_val,
 			}
 		}
 	}
+	if (gd_string_set_wrapper(&ret))
+		return JS_EXCEPTION;
 	return ret;
 }
 
@@ -41356,6 +41391,7 @@ add_tail:
 done:
 	JS_FreeValue(ctx, S);
 	JS_FreeValue(ctx, R);
+	// gd_update_array_wrapper(&A);
 	return A;
 
 exception:
@@ -43104,6 +43140,8 @@ static JSValue js_regexp_exec(JSContext *ctx, JSValueConst this_val,
 	}
 	ret = obj;
 	obj = JS_UNDEFINED;
+	gd_update_array_wrapper(&ret);
+
 fail:
 	JS_FreeValue(ctx, indices_groups);
 	JS_FreeValue(ctx, indices);

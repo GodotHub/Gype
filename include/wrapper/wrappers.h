@@ -2,10 +2,10 @@
 #define __WRAPPERS_H__
 
 #include "utils/str_utils.h"
+#include "wrapper/array_wrapper.h"
 #include "wrapper/string_name_wrapper.h"
 #include "wrapper/string_wrapper.h"
 #include "wrapper/variant_wrapper.h"
-#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/variant.hpp>
 
 using namespace godot;
@@ -18,6 +18,11 @@ struct gd_traits {
 
 #define GET_OPAQUE(clazz, vwrapper) \
 	static_cast<clazz *>(gd_get_variant_opaque(static_cast<clazz##Wrapper *>(vwrapper)));
+
+#define GET_VARIANT_OPAQUE(wrapper) GET_OPAQUE(Variant, wrapper)
+
+#define SET_VARIANT_OPAQUE(clazz, wrapper1, wrapper2) \
+	gd_set_variant_opaque(static_cast<VariantWrapper *>(wrapper1), GET_VARIANT_OPAQUE(Variant, wrapper2));
 
 #define GD_TRAITS(clazz)                                                                 \
 	template <>                                                                          \
@@ -39,5 +44,6 @@ struct gd_traits {
 
 GD_TRAITS(String)
 GD_TRAITS(StringName)
+GD_TRAITS(Array)
 
 #endif // __WRAPPERS_H__

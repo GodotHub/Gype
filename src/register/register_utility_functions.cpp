@@ -22,9 +22,8 @@ static JSValue js_print(JSContext *ctx, JSValueConst this_val, int argc, JSValue
 	std::vector<const Variant *> args;
 	for (int i = 0; i < argc; i++) {
 		JSValue var = argv[i];
-		Variant *variant = GET_OPAQUE(Variant, var.gptr);
+		Variant *variant = GET_VARIANT_OPAQUE(var.gptr);
 		args.push_back(variant);
-		JS_FreeValue(ctx, var);
 	}
 	gd_print(args.data(), args.size());
 	return JS_UNDEFINED;
