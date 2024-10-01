@@ -21,8 +21,8 @@ static void gd_print(const Variant **p_args, GDExtensionInt p_arg_count) {
 static JSValue js_print(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	std::vector<const Variant *> args;
 	for (int i = 0; i < argc; i++) {
-		JSValue var = argv[i];
-		Variant *variant = GET_VARIANT_OPAQUE(var.gptr);
+		JSValue js_var = argv[i];
+		Variant *variant = GET_VARIANT_OPAQUE(js_var.var);
 		args.push_back(variant);
 	}
 	gd_print(args.data(), args.size());

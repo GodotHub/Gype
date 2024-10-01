@@ -11,7 +11,11 @@ class JSObject : public Object {
 
 	JSValue val;
 
+protected:
+	static void _bind_methods() {}
+
 public:
+	JSObject() {};
 	JSObject(JSValue val) :
 			val(val) {};
 	~JSObject() {

@@ -3,12 +3,33 @@
 
 #include "utils/str_utils.h"
 #include "wrapper/array_wrapper.h"
-#include "wrapper/string_name_wrapper.h"
 #include "wrapper/string_wrapper.h"
 #include "wrapper/variant_wrapper.h"
 #include <godot_cpp/variant/variant.hpp>
 
 using namespace godot;
+
+#define GET_OPAQUE(type, vwrapper) \
+	static_cast<type *>(gd_##type##_get_opaque(static_cast<type##Wrapper *>(vwrapper)))
+
+#define GET_VARIANT_OPAQUE(wrapper) GET_OPAQUE(Variant, wrapper)
+
+#define SET_VARIANT_OPAQUE(type, wrapper1, wrapper2) \
+	gd_set_variant_opaque(static_cast<VariantWrapper *>(wrapper1), GET_VARIANT_OPAQUE(Variant, wrapper2))
+
+#define GD_TRAITS(type)                                                                       \
+	template <>                                                                               \
+	struct gd_traits<type##Wrapper> {                                                         \
+		static type##Wrapper *unwrap(VariantWrapper *vwrapper) {                              \
+			return gd_variant_to_##type(vwrapper);                                            \
+		};                                                                                    \
+		static VariantWrapper *wrap(type##Wrapper *wrapper) {                                 \
+			type *opaque = reinterpret_cast<type *>(gd_##type##_wrapper_get_opaque(wrapper)); \
+			return gd_new_variant_##type(opaque);                                             \
+		};                                                                                    \
+	};
+
+namespace Wrapper {
 
 template <typename T, typename /*_SFINAE*/ = void>
 struct gd_traits {
@@ -16,34 +37,12 @@ struct gd_traits {
 	static VariantWrapper wrap(T *wrapper) = delete;
 };
 
-#define GET_OPAQUE(clazz, vwrapper) \
-	static_cast<clazz *>(gd_get_variant_opaque(static_cast<clazz##Wrapper *>(vwrapper)));
+#define WRAP(type, wrapper) \
+	gd_traits<type>::wrap(wrapper);
 
-#define GET_VARIANT_OPAQUE(wrapper) GET_OPAQUE(Variant, wrapper)
+#define UNWRAP(type, wrapper) \
+	gd_traits<type>::unwrap(wrapper);
 
-#define SET_VARIANT_OPAQUE(clazz, wrapper1, wrapper2) \
-	gd_set_variant_opaque(static_cast<VariantWrapper *>(wrapper1), GET_VARIANT_OPAQUE(Variant, wrapper2));
-
-#define GD_TRAITS(clazz)                                                                 \
-	template <>                                                                          \
-	struct gd_traits<clazz##Wrapper> {                                                   \
-		static clazz##Wrapper *unwrap(VariantWrapper *vwrapper) {                        \
-			return gd_variant_to_##clazz(vwrapper);                                      \
-		};                                                                               \
-		static VariantWrapper *wrap(clazz##Wrapper *wrapper) {                           \
-			clazz *opaque = reinterpret_cast<clazz *>(gd_get_##clazz##_opaque(wrapper)); \
-			return gd_new_variant_##clazz(opaque);                                       \
-		};                                                                               \
-	};
-
-#define WRAP(clazz, wrapper) \
-	gd_traits<clazz>::wrap(wrapper);
-
-#define UNWRAP(clazz, wrapper) \
-	gd_traits<clazz>::unwrap(wrapper);
-
-GD_TRAITS(String)
-GD_TRAITS(StringName)
-GD_TRAITS(Array)
+} // namespace Wrapper
 
 #endif // __WRAPPERS_H__

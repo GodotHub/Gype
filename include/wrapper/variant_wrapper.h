@@ -15,26 +15,44 @@ typedef struct ArrayWrapper ArrayWrapper;
 typedef struct JSContext JSContext;
 typedef struct JSValue JSValue;
 
-void *gd_get_variant_opaque(VariantWrapper *wrapper);
+#define WRAPPER_GET_OPAQUE(type) \
+	void *gd_##type##_get_opaque(type##Wrapper *wrapper);
+
+#define WRAPPER_GET_OPAQUE_IMPL(type)                      \
+	void *gd_##type##_get_opaque(type##Wrapper *wrapper) { \
+		return &wrapper->opaque;                           \
+	}
+
+#define GD_NEW_EMPTY_VARIANT(type) \
+	VariantWrapper *gd_##type##_new_empty_variant();
+
+#define GD_NEW_VARIANT(type) \
+	VariantWrapper *gd_##type##_new_variant(void *value)
+
+#define GD_NEW_EMPTY_VARIANT_IMPL(type)                   \
+	VariantWrapper *gd_##type##_new_empty_variant() {     \
+		return memnew(VariantWrapper{ Variant(type()) }); \
+	}
+
+// TODO std::move
+#define GD_NEW_VARIANT_IMPL(type)                                                                            \
+	VariantWrapper *gd_##type##_new_variant(void *wrapper) {                                                 \
+		return memnew(VariantWrapper{ Variant(*(type *)gd_##type##_get_opaque((type##Wrapper *)wrapper)) }); \
+	}
+
 void gd_set_variant_opaque(VariantWrapper *wrapper, void *opaque);
-void gd_set_variant_wrapper(VariantWrapper *w1, VariantWrapper *w2);
-void gd_update_array_wrapper(JSValue *val);
-void gd_define_wrapper(JSContext *ctx, JSValue *this_obj, JSValue *val);
-VariantWrapper *gd_new_variant_nil();
-VariantWrapper *gd_new_variant_bool(bool value);
-VariantWrapper *gd_new_variant_int(int64_t value);
-VariantWrapper *gd_new_variant_float(double value);
-VariantWrapper *gd_new_variant_String(void *value);
-VariantWrapper *gd_new_variant_StringName(void *value);
-VariantWrapper *gd_new_variant_Array(void *value);
-VariantWrapper *gd_new_variant_empty_String();
-VariantWrapper *gd_new_variant_empty_StringName();
-VariantWrapper *gd_new_variant_empty_Array();
-VariantWrapper *gd_new_variant_empty_Variant();
-VariantWrapper *gd_new_variant_Object(void *value);
+WRAPPER_GET_OPAQUE(Variant);
+GD_NEW_VARIANT(Array);
+GD_NEW_EMPTY_VARIANT(Array);
+VariantWrapper *gd_nil_new_variant();
+VariantWrapper *gd_bool_new_variant(bool value);
+VariantWrapper *gd_int_new_variant(int64_t value);
+VariantWrapper *gd_float_new_variant(double value);
+VariantWrapper *gd_Object_new_variant(void *value);
 StringWrapper *gd_variant_to_String(void *value);
-StringNameWrapper *gd_variant_to_StringName(void *value);
+StringWrapper *gd_variant_to_StringName(void *value);
 ArrayWrapper *gd_variant_to_Array(void *value);
+VariantWrapper *gd_String_new_variant(void *wrapper);
 void freew(void *w);
 
 #ifdef __cplusplus
