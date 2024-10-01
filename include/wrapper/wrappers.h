@@ -1,6 +1,7 @@
 #ifndef __WRAPPERS_H__
 #define __WRAPPERS_H__
 
+#include "quickjs/quickjs.h"
 #include "utils/str_utils.h"
 #include "wrapper/array_wrapper.h"
 #include "wrapper/string_wrapper.h"
@@ -42,6 +43,11 @@ struct gd_traits {
 
 #define UNWRAP(type, wrapper) \
 	gd_traits<type>::unwrap(wrapper);
+
+template <typename T>
+T convert_to(JSContext *ctx, JSValue val) {
+	return (T)gd_get_wrapper(ctx, val);
+}
 
 } // namespace Wrapper
 

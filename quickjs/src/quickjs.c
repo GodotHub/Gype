@@ -51,6 +51,7 @@
 #include "wrapper/dictionary_wrapper.h"
 #include "wrapper/string_wrapper.h"
 #include "wrapper/variant_wrapper.h"
+#include "wrapper/slow_array_wrapper.h"
 
 #define OPTIMIZE 1
 #define SHORT_OPCODES 1
@@ -976,6 +977,7 @@ struct JSObject {
 	} u;
 	/* byte sizes: 40/48/72 */
 	void *wrapper;
+	uint8_t dirty : 1;
 };
 
 enum {
@@ -1291,6 +1293,8 @@ static const JSClassExoticMethods js_proxy_exotic_methods;
 static const JSClassExoticMethods js_module_ns_exotic_methods;
 static JSClassID js_class_id_alloc = JS_CLASS_INIT_COUNT;
 
+static BOOL js_is_fast_array(JSContext *ctx, JSValueConst obj);
+
 static StringWrapper *gd_new_string_wrapper(JSString *str) {
 	return gd_new_String(str->u.str8, str->u.str16, str->is_mutable, str->is_wide_char);
 }
@@ -1305,14 +1309,37 @@ static int gd_array_set_value(ArrayWrapper *arr, VariantWrapper *val, int index)
 	return TRUE;
 }
 
-static int gd_set_value(JSContext *ctx, JSValue this_obj, JSValue val) {
-	if (JS_IsArray(ctx, this_obj)) {
-		JSObject *obj = JS_VALUE_GET_OBJ(this_obj);
-		if (js_is_fast_array(ctx, this_obj)) {
-		} else {
-			
-		}
+static int gd_set_value(JSContext *ctx, JSObject *p, VariantWrapper *keyw, VariantWrapper *valw) {
+	switch (p->class_id) {
+		case JS_CLASS_ARRAY: {
+			if (p->fast_array) {
+			} else {
+				gd_SlowArray_set_value(p->wrapper, keyw, valw);
+				p->dirty = TRUE;
+			}
+			return 0;
+		} break;
+		default:
+			return -1;
 	}
+}
+
+static void update_var(JSContext *ctx, JSObject *p, JSValue obj) {
+	switch (p->class_id) {
+		case JS_CLASS_ARRAY: {
+			VariantWrapper *vwrapper = gd_Dictionary_new_variant(p->wrapper);
+			gd_swap_opaque(obj.var, vwrapper);
+			freew(vwrapper);
+		} break;
+		default:
+			return;
+	}
+	p->dirty = FALSE;
+}
+
+void *gd_get_wrapper(JSContext *ctx, JSValue val) {
+	JSObject *obj = JS_VALUE_GET_OBJ(val);
+	return obj->wrapper;
 }
 
 static void js_trigger_gc(JSRuntime *rt, size_t size) {
@@ -7828,7 +7855,7 @@ static no_inline __exception int convert_fast_array_to_array(JSContext *ctx,
 	p->u.array.u.values = NULL; /* fail safe */
 	p->u.array.u1.size = 0;
 	p->fast_array = 0;
-	p->wrapper = gd_convert_to_slowArray(p->wrapper);
+	p->wrapper = gd_convert_to_SlowArray(p->wrapper);
 	return 0;
 }
 
@@ -8376,6 +8403,8 @@ retry:
 							JS_PROP_HAS_WRITABLE |
 							JS_PROP_HAS_CONFIGURABLE |
 							JS_PROP_C_W_E);
+			if (p->dirty)
+				update_var(ctx, p, this_obj);
 			JS_FreeValue(ctx, val);
 			return ret;
 		}
@@ -8564,7 +8593,7 @@ static int JS_CreateProperty(JSContext *ctx, JSObject *p,
 		JSValueConst getter, JSValueConst setter,
 		int flags) {
 	JSProperty *pr;
-	int ret, prop_flags, val_index;
+	int ret, prop_flags;
 
 	/* add a new property or modify an existing exotic one */
 	if (p->is_exotic) {
@@ -8666,6 +8695,7 @@ static int JS_CreateProperty(JSContext *ctx, JSObject *p,
 		} else {
 			pr->u.value = JS_UNDEFINED;
 		}
+		gd_set_value(ctx, p, gd_int_new_variant(prop), pr->u.value.var);
 	}
 	return TRUE;
 }

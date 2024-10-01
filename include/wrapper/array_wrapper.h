@@ -24,7 +24,6 @@ void gd_Array_call_reset(JSContext *ctx, JSValue arr);
 void gd_Array_call_reverse(ArrayWrapper *arr);
 ArrayWrapper *gd_Array_new_wrapper(void *value);
 ArrayWrapper *gd_Array_new_empty_wrapper();
-void gd_SlowArray_call_set(SlowArrayWrapper *slow_arrw, VariantWrapper *varw, int index);
 
 #ifdef __cplusplus
 }
