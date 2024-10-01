@@ -48,6 +48,7 @@
 #include "quickjs/list.h"
 #include "quickjs/quickjs.h"
 #include "wrapper/array_wrapper.h"
+#include "wrapper/dictionary_wrapper.h"
 #include "wrapper/string_wrapper.h"
 #include "wrapper/variant_wrapper.h"
 
@@ -1304,14 +1305,14 @@ static int gd_array_set_value(ArrayWrapper *arr, VariantWrapper *val, int index)
 	return TRUE;
 }
 
-static int gd_array_pop(ArrayWrapper *arr, int shift) {
-	gd_Array_call_pop(arr, shift);
-	return TRUE;
-}
-
-static int gd_Array_reset(JSContext *ctx, JSValue arr) {
-	gd_Array_call_reset(ctx, arr);
-	return TRUE;
+static int gd_set_value(JSContext *ctx, JSValue this_obj, JSValue val) {
+	if (JS_IsArray(ctx, this_obj)) {
+		JSObject *obj = JS_VALUE_GET_OBJ(this_obj);
+		if (js_is_fast_array(ctx, this_obj)) {
+		} else {
+			
+		}
+	}
 }
 
 static void js_trigger_gc(JSRuntime *rt, size_t size) {
@@ -7827,6 +7828,7 @@ static no_inline __exception int convert_fast_array_to_array(JSContext *ctx,
 	p->u.array.u.values = NULL; /* fail safe */
 	p->u.array.u1.size = 0;
 	p->fast_array = 0;
+	p->wrapper = gd_convert_to_slowArray(p->wrapper);
 	return 0;
 }
 
@@ -8073,6 +8075,7 @@ static int add_fast_array_element(JSContext *ctx, JSObject *p,
 	}
 	p->u.array.u.values[new_len - 1] = val;
 	p->u.array.count = new_len;
+	gd_array_append_value(p->wrapper, val.var);
 	return TRUE;
 }
 
@@ -8561,7 +8564,7 @@ static int JS_CreateProperty(JSContext *ctx, JSObject *p,
 		JSValueConst getter, JSValueConst setter,
 		int flags) {
 	JSProperty *pr;
-	int ret, prop_flags;
+	int ret, prop_flags, val_index;
 
 	/* add a new property or modify an existing exotic one */
 	if (p->is_exotic) {
@@ -8580,8 +8583,7 @@ static int JS_CreateProperty(JSContext *ctx, JSObject *p,
 						if (prop_flags != JS_PROP_C_W_E)
 							goto convert_to_array;
 						return add_fast_array_element(ctx, p,
-									   JS_DupValue(ctx, val), flags) &&
-								gd_array_append_value(p->wrapper, val.var);
+								JS_DupValue(ctx, val), flags);
 					} else {
 						goto convert_to_array;
 					}
@@ -39016,7 +39018,7 @@ static JSValue js_array_pop(JSContext *ctx, JSValueConst this_val,
 				res = arrp[count32 - 1];
 				p->u.array.count--;
 			}
-			gd_array_pop(p->wrapper, shift);
+			gd_Array_call_pop(p->wrapper, shift);
 		} else {
 			if (shift) {
 				res = JS_GetPropertyInt64(ctx, obj, 0);

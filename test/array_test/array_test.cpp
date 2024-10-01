@@ -9,8 +9,10 @@ void test_array() {
         let arr = [1.0,[2,2,-1],3,'4',5,true];
         let arr2 = [2,5];
         let arr3 = [1,2,3,4,5,6];
+        arr3[10] = 100;
         // arr3[10] = 1;
         // GD.print(arr);
+        GD.print(arr3);
         // GD.print(arr[1]);
         // GD.print(arr.at(1));
         // GD.print(arr.with(0,-50));
