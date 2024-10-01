@@ -3,6 +3,7 @@
 #include "utils/env.h"
 #include "wrapper/array_wrapper.h"
 #include "wrapper/string_wrapper.h"
+#include <wrapper/dictionary_wrapper.h>
 #include <godot_cpp/variant/utility_functions.hpp>
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/variant_size.hpp>
@@ -22,6 +23,8 @@ void gd_set_variant_opaque(VariantWrapper *wrapper, void *opaque) {
 
 GD_NEW_VARIANT_IMPL(Array);
 GD_NEW_EMPTY_VARIANT_IMPL(Array);
+GD_NEW_VARIANT_IMPL(Dictionary);
+GD_NEW_EMPTY_VARIANT_IMPL(Dictionary);
 
 VariantWrapper *gd_nil_new_variant() {
 	return memnew(VariantWrapper{ Variant() });
@@ -52,6 +55,12 @@ VariantWrapper *gd_String_new_variant(void *wrapper) {
 	else
 		src = Variant(*static_cast<StringName *>(gd_StringName_get_opaque(string_wrapper)));
 	return memnew(VariantWrapper{ src });
+}
+
+void gd_swap_opaque(VariantWrapper *w1, VariantWrapper *w2) {
+	Variant temp = w1->opaque;
+	w1->opaque = w2->opaque;
+	w2->opaque = temp;
 }
 
 StringWrapper *gd_variant_to_StringName(void *value) {

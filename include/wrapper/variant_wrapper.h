@@ -44,6 +44,8 @@ void gd_set_variant_opaque(VariantWrapper *wrapper, void *opaque);
 WRAPPER_GET_OPAQUE(Variant);
 GD_NEW_VARIANT(Array);
 GD_NEW_EMPTY_VARIANT(Array);
+GD_NEW_VARIANT(Dictionary);
+GD_NEW_EMPTY_VARIANT(Dictionary);
 VariantWrapper *gd_nil_new_variant();
 VariantWrapper *gd_bool_new_variant(bool value);
 VariantWrapper *gd_int_new_variant(int64_t value);
@@ -53,6 +55,7 @@ StringWrapper *gd_variant_to_String(void *value);
 StringWrapper *gd_variant_to_StringName(void *value);
 ArrayWrapper *gd_variant_to_Array(void *value);
 VariantWrapper *gd_String_new_variant(void *wrapper);
+void gd_swap_opaque(VariantWrapper *w1, VariantWrapper *w2);
 void freew(void *w);
 
 #ifdef __cplusplus

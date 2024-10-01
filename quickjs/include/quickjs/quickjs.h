@@ -249,6 +249,8 @@ static inline JS_BOOL JS_VALUE_IS_NAN(JSValue v) {
 	return (u.u64 & 0x7fffffffffffffff) > 0x7ff0000000000000;
 }
 
+void *gd_get_wrapper(JSContext *ctx, JSValue val);
+
 #endif /* !JS_NAN_BOXING */
 
 #define JS_VALUE_IS_BOTH_INT(v1, v2) ((JS_VALUE_GET_TAG(v1) | JS_VALUE_GET_TAG(v2)) == 0)

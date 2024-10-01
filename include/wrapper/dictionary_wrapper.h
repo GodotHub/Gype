@@ -9,8 +9,9 @@ typedef struct DictionaryWrapper DictionaryWrapper;
 typedef struct ArrayWrapper ArrayWrapper;
 typedef struct VariantWrapper VariantWrapper;
 
-DictionaryWrapper *gd_convert_to_slowArray(ArrayWrapper *arrw);
-void gd_dict_set_value(DictionaryWrapper *dictw, VariantWrapper *varw);
+DictionaryWrapper *gd_convert_to_Dictionary(ArrayWrapper *arrw);
+void gd_Dictionary_set_value(DictionaryWrapper *dictw, VariantWrapper *keyw, VariantWrapper *varw);
+void *gd_Dictionary_get_opaque(DictionaryWrapper *wrapper);
 
 #ifdef __cplusplus
 }
