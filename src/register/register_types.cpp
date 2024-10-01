@@ -31,8 +31,8 @@ void initialize_tgds_types(godot::ModuleInitializationLevel p_level) {
 	init_quickjs();
 #ifdef DEBUG_ENABLED
 	// test_gdstring();
-	test_number();
-	// test_array();
+	// test_number();
+	test_array();
 #endif // DEBUG
 	printf("%s", "Quickjs initialization is over\n");
 }
