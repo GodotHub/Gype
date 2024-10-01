@@ -203,7 +203,7 @@ typedef union JSValueUnion {
 typedef struct JSValue {
 	JSValueUnion u;
 	int64_t tag;
-	void *gptr;
+	void *var;
 } JSValue;
 
 #define JSValueConst JSValue
@@ -217,24 +217,24 @@ typedef struct JSValue {
 #define JS_VALUE_GET_PTR(v) ((v).u.ptr)
 
 #define JS_MKVAL(tag, val) \
-	(JSValue) { (JSValueUnion){ .int32 = val }, tag, gd_new_variant_nil() }
+	(JSValue) { (JSValueUnion){ .int32 = val }, tag, gd_nil_new_variant() }
 #define JS_MKVAL_WRAPPER(tag, val, wrapper) \
 	(JSValue) { (JSValueUnion){ .int32 = val }, tag, wrapper }
 #define JS_MKPTR(tag, p) \
-	(JSValue) { (JSValueUnion){ .ptr = p }, tag, gd_new_variant_nil() }
-#define JS_MK_WRAPPER_PTR(tag, p, wrapper) \
+	(JSValue) { (JSValueUnion){ .ptr = p }, tag, gd_nil_new_variant() }
+#define JS_MKPTR_WRAPPER(tag, p, wrapper) \
 	(JSValue) { (JSValueUnion){ .ptr = p }, tag, wrapper }
 
 #define JS_TAG_IS_FLOAT64(tag) ((unsigned)(tag) == JS_TAG_FLOAT64)
 
 #define JS_NAN \
-	(JSValue) { .u.float64 = JS_FLOAT64_NAN, JS_TAG_FLOAT64, gd_new_variant_nil() }
+	(JSValue) { .u.float64 = JS_FLOAT64_NAN, JS_TAG_FLOAT64, gd_nil_new_variant() }
 
 static inline JSValue __JS_NewFloat64(JSContext *ctx, double d) {
 	JSValue v;
 	v.tag = JS_TAG_FLOAT64;
 	v.u.float64 = d;
-	v.gptr = gd_new_variant_float(d);
+	v.var = gd_float_new_variant(d);
 	return v;
 }
 
@@ -259,12 +259,12 @@ static inline JS_BOOL JS_VALUE_IS_NAN(JSValue v) {
 #define JS_VALUE_HAS_REF_COUNT(v) ((unsigned)JS_VALUE_GET_TAG(v) >= (unsigned)JS_TAG_FIRST)
 
 /* special values */
-#define JS_NULL JS_MKVAL_WRAPPER(JS_TAG_NULL, 0, gd_new_variant_nil())
-#define JS_UNDEFINED JS_MKVAL_WRAPPER(JS_TAG_UNDEFINED, 0, gd_new_variant_nil())
-#define JS_FALSE JS_MKVAL_WRAPPER(JS_TAG_BOOL, 0, gd_new_variant_bool(0))
-#define JS_TRUE JS_MKVAL_WRAPPER(JS_TAG_BOOL, 1, gd_new_variant_bool(1))
-#define JS_EXCEPTION JS_MKVAL_WRAPPER(JS_TAG_EXCEPTION, 0, gd_new_variant_nil())
-#define JS_UNINITIALIZED JS_MKVAL_WRAPPER(JS_TAG_UNINITIALIZED, 0, gd_new_variant_nil())
+#define JS_NULL JS_MKVAL_WRAPPER(JS_TAG_NULL, 0, gd_nil_new_variant())
+#define JS_UNDEFINED JS_MKVAL_WRAPPER(JS_TAG_UNDEFINED, 0, gd_nil_new_variant())
+#define JS_FALSE JS_MKVAL_WRAPPER(JS_TAG_BOOL, 0, gd_bool_new_variant(0))
+#define JS_TRUE JS_MKVAL_WRAPPER(JS_TAG_BOOL, 1, gd_bool_new_variant(1))
+#define JS_EXCEPTION JS_MKVAL_WRAPPER(JS_TAG_EXCEPTION, 0, gd_nil_new_variant())
+#define JS_UNINITIALIZED JS_MKVAL_WRAPPER(JS_TAG_UNINITIALIZED, 0, gd_nil_new_variant())
 
 /* flags for object properties */
 #define JS_PROP_CONFIGURABLE (1 << 0)
@@ -516,11 +516,11 @@ int JS_IsRegisteredClass(JSRuntime *rt, JSClassID class_id);
 /* value handling */
 
 static js_force_inline JSValue JS_NewBool(JSContext *ctx, JS_BOOL val) {
-	return JS_MKVAL_WRAPPER(JS_TAG_BOOL, (val != 0), gd_new_variant_bool(val));
+	return JS_MKVAL_WRAPPER(JS_TAG_BOOL, (val != 0), gd_bool_new_variant(val));
 }
 
 static js_force_inline JSValue JS_NewInt32(JSContext *ctx, int32_t val) {
-	return JS_MKVAL_WRAPPER(JS_TAG_INT, val, gd_new_variant_int(val));
+	return JS_MKVAL_WRAPPER(JS_TAG_INT, val, gd_int_new_variant(val));
 }
 
 static js_force_inline JSValue JS_NewCatchOffset(JSContext *ctx, int32_t val) {
@@ -563,7 +563,7 @@ static js_force_inline JSValue JS_NewFloat64(JSContext *ctx, double d) {
 		/* -0 cannot be represented as integer, so we compare the bit
 		   representation */
 		if (u.u == t.u)
-			return JS_MKVAL(JS_TAG_INT, val);
+			return JS_MKVAL_WRAPPER(JS_TAG_INT, val, gd_int_new_variant(val));
 	}
 	return __JS_NewFloat64(ctx, d);
 }

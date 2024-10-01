@@ -12,7 +12,7 @@ uint8_t *get_typed_array_buf(JSValue v) {
 	}
 }
 
-inline bool is_typed_array(JSValue value) {
+bool is_typed_array(JSValue value) {
 	JSClassID class_id = JS_GetClassID(value);
 	return class_id >= 21 && class_id <= 31;
 }
@@ -25,7 +25,7 @@ bool is_float(JSValue value) {
 	return JS_VALUE_GET_TAG(value) == JS_TAG_FLOAT64;
 }
 
-inline void print_exception() {
+void print_exception() {
 	JSValue exp = JS_GetException(ctx);
 	JSValue message = JS_GetPropertyStr(ctx, exp, "message");
 	JSValue stack = JS_GetPropertyStr(ctx, exp, "stack");
@@ -40,7 +40,7 @@ inline void print_exception() {
 	JS_FreeCString(ctx, stack_str);
 }
 
-inline bool is_exception(JSValue exp) {
+bool is_exception(JSValue exp) {
 	if (JS_IsException(exp)) {
 		print_exception();
 		return true;
