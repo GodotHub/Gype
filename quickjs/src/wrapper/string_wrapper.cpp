@@ -1,5 +1,5 @@
-#include "wrapper/string_wrapper.h"
-#include "wrapper/variant_wrapper.h"
+#include "quickjs/wrapper/string_wrapper.h"
+#include "quickjs/wrapper/variant_wrapper.h"
 #include <godot_cpp/core/memory.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>

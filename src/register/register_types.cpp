@@ -1,12 +1,13 @@
 #include "register/register_types.h"
+#include "quickjs/wrapper/js_object.h"
 #include "register/classes/register_node.h"
 #include "register/register_utility_functions.h"
 #include "support/console_support.hpp"
 #include "utils/env.h"
-#include "wrapper/js_object.h"
 #include <gdextension_interface.h>
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/defs.hpp>
+
 
 // bug 无法关闭程序
 // #ifdef DEBUG_ENABLED

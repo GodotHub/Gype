@@ -1,9 +1,9 @@
 #include "register/register_utility_functions.h"
 #include "quickjs/quickjs.h"
+#include "quickjs/wrapper/variant_wrapper.h"
+#include "quickjs/wrapper/wrappers.h"
 #include "utils/env.h"
 #include "utils/vector_helper.h"
-#include "wrapper/variant_wrapper.h"
-#include <wrapper/wrappers.h>
 #include <godot_cpp/variant/utility_functions.hpp>
 #include <vector>
 

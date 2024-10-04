@@ -2,11 +2,12 @@
 #define __WRAPPERS_H__
 
 #include "quickjs/quickjs.h"
+#include "quickjs/wrapper/array_wrapper.h"
+#include "quickjs/wrapper/string_wrapper.h"
+#include "quickjs/wrapper/variant_wrapper.h"
 #include "utils/str_helper.h"
-#include "wrapper/array_wrapper.h"
-#include "wrapper/string_wrapper.h"
-#include "wrapper/variant_wrapper.h"
 #include <godot_cpp/variant/variant.hpp>
+
 
 using namespace godot;
 

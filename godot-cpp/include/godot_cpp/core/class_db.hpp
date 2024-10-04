@@ -31,18 +31,21 @@
 #ifndef GODOT_CLASS_DB_HPP
 #define GODOT_CLASS_DB_HPP
 
+#include "quickjs/quickjs.h"
 #include <gdextension_interface.h>
-
 #include <godot_cpp/core/defs.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 #include <godot_cpp/core/method_bind.hpp>
 #include <godot_cpp/core/object.hpp>
+#include <godot_cpp/templates/hash_map.hpp>
 
 #include <godot_cpp/classes/class_db_singleton.hpp>
 
 // Makes callable_mp readily available in all classes connecting signals.
 // Needs to come after method_bind and object have been included.
 #include <godot_cpp/variant/callable_method_pointer.hpp>
+
+#include <godot_cpp/core/class_db.hpp>
 
 #include <list>
 #include <mutex>
@@ -60,8 +63,9 @@ struct std::hash<godot::StringName> {
 };
 
 namespace godot {
-
 #define DEFVAL(m_defval) (m_defval)
+
+class JavaScriptDB;
 
 struct MethodDefinition {
 	StringName name;
@@ -213,7 +217,7 @@ public:
 #define BIND_VIRTUAL_METHOD(m_class, m_method)                                                                                                \
 	{                                                                                                                                         \
 		auto _call##m_method = [](GDExtensionObjectPtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr p_ret) -> void { \
-			call_with_ptr_args(reinterpret_cast<m_class *>(p_instance), &m_class::m_method, p_args, p_ret);                                   \
+			JavaScriptDB::get_singleton()->call_virtual_method(reinterpret_cast<m_class *>(p_instance), #m_method);                           \
 		};                                                                                                                                    \
 		::godot::ClassDB::bind_virtual_method(m_class::get_class_static(), #m_method, _call##m_method);                                       \
 	}
@@ -348,6 +352,31 @@ MethodBind *ClassDB::bind_vararg_method(uint32_t p_flags, StringName p_name, M p
 
 	return bind;
 }
+
+class JavaScriptDB {
+	static JavaScriptDB *singleton;
+	static JSContext *ctx;
+	HashMap<uint64_t, JSValue> instances;
+
+protected:
+	static void _bind_methods() {}
+
+public:
+	JavaScriptDB() {}
+
+	void add_instance(Object *obj, JSValue js_obj) {
+		instances[obj->get_instance_id()] = js_obj;
+	}
+
+	// TODO
+	void call_virtual_method(Object *p_obj, String p_method_name) {
+		const JSValue &this_obj = instances[p_obj->get_instance_id()];
+		JSValue func_obj = JS_GetPropertyStr(ctx, this_obj, std::string(p_method_name.utf8().get_data()).c_str());
+	}
+
+	static JavaScriptDB *get_singleton();
+	static void init(JSContext *ctx);
+};
 
 #define GDREGISTER_CLASS(m_class) ::godot::ClassDB::register_class<m_class>();
 #define GDREGISTER_VIRTUAL_CLASS(m_class) ::godot::ClassDB::register_class<m_class>(true);

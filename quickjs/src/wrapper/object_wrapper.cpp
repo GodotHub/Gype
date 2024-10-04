@@ -1,5 +1,5 @@
-#include "wrapper/object_wrapper.h"
-#include "wrapper/js_object.h"
+#include "quickjs/wrapper/object_wrapper.h"
+#include "quickjs/wrapper/js_object.h"
 #include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/variant.hpp>
 #include <string>

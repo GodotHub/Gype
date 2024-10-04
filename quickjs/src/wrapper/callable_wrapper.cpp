@@ -1,12 +1,13 @@
-#include "wrapper/callable_wrapper.h"
+#include "quickjs/wrapper/callable_wrapper.h"
 #include "quickjs/quickjs.h"
+#include "quickjs/wrapper/js_object.h"
+#include "quickjs/wrapper/object_wrapper.h"
 #include "utils/quickjs_helper.h"
-#include "wrapper/js_object.h"
-#include "wrapper/object_wrapper.h"
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/callable.hpp>
 #include <godot_cpp/variant/callable_custom.hpp>
 #include <godot_cpp/variant/callable_method_pointer.hpp>
+
 
 using namespace godot;
 

@@ -1,7 +1,7 @@
 #ifndef __ARRAY_WRAPPER_H__
 #define __ARRAY_WRAPPER_H__
 
-#include "wrapper/variant_wrapper.h"
+#include "quickjs/wrapper/variant_wrapper.h"
 
 #ifdef __cplusplus
 extern "C" {

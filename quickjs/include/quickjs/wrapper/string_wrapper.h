@@ -1,7 +1,7 @@
 #ifndef __STRING_WRAPPER_H__
 #define __STRING_WRAPPER_H__
 
-#include "wrapper/variant_wrapper.h"
+#include "quickjs/wrapper/variant_wrapper.h"
 #include <stdint.h>
 
 typedef struct StringWrapper StringWrapper;
