@@ -47,13 +47,13 @@
 #include "quickjs/libunicode.h"
 #include "quickjs/list.h"
 #include "quickjs/quickjs.h"
-#include "wrapper/array_wrapper.h"
-#include "wrapper/callable_wrapper.h"
-#include "wrapper/dictionary_wrapper.h"
-#include "wrapper/object_wrapper.h"
-#include "wrapper/slow_array_wrapper.h"
-#include "wrapper/string_wrapper.h"
-#include "wrapper/variant_wrapper.h"
+#include "quickjs/wrapper/array_wrapper.h"
+#include "quickjs/wrapper/callable_wrapper.h"
+#include "quickjs/wrapper/dictionary_wrapper.h"
+#include "quickjs/wrapper/object_wrapper.h"
+#include "quickjs/wrapper/slow_array_wrapper.h"
+#include "quickjs/wrapper/string_wrapper.h"
+#include "quickjs/wrapper/variant_wrapper.h"
 
 #define OPTIMIZE 1
 #define SHORT_OPCODES 1

@@ -1,4 +1,4 @@
-#include "wrapper/js_object.h"
+#include "quickjs/wrapper/js_object.h"
 
 godot::JSObject::JSObject(JSContext *ctx, JSValue instance) {
 	this->ctx = ctx;

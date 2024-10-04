@@ -383,6 +383,7 @@ def scons_generate_bindings(target, source, env):
 
 
 def generate_bindings(api_filepath, use_template_get_node, bits="64", precision="single", output_dir="."):
+    use_template_get_node = False
     api = None
 
     target_dir = Path(output_dir) / "gen"

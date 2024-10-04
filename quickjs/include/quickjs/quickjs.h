@@ -28,7 +28,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "wrapper/variant_wrapper.h"
+#include "quickjs/wrapper/variant_wrapper.h"
 #include <gdextension_interface.h>
 
 #ifdef __cplusplus

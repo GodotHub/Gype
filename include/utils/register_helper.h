@@ -5,6 +5,7 @@
 #include "utils/env.h"
 #include "utils/quickjs_helper.h"
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/core/type_info.hpp>
 #include <godot_cpp/templates/hash_map.hpp>
 #include <godot_cpp/variant/variant.hpp>
@@ -28,6 +29,15 @@ struct is_bitfield<Template<T>> : std::is_same<Template<T>, godot::BitField<T>> 
 
 template <typename T>
 constexpr bool is_bitfield_v = is_bitfield<T>::value;
+
+template <typename T>
+struct is_ref : std::false_type {};
+
+template <template <typename> class Template, typename T>
+struct is_ref<Template<T>> : std::is_same<Template<T>, godot::Ref<T>> {};
+
+template <typename T>
+constexpr bool is_ref_v = is_ref<T>::value;
 
 template <typename T>
 std::enable_if_t<std::is_fundamental_v<T>, T>

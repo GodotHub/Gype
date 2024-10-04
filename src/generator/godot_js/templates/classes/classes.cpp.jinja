@@ -1,8 +1,8 @@
 {%- set clazz_name = clazz['name'] -%}
 {%- set clazz_small_name = clazz_name | lower -%}
 {%- set snake_name = camel_to_snake(clazz['name']) -%}
-{%- set instance_methods = clazz['methods'] | selectattr('is_static', 'equalto', false) | selectattr('is_virtual', 'equalto', false) -%}
-{%- set static_methods = clazz['methods'] | selectattr('is_static', 'equalto', true) | selectattr('is_virtual', 'equalto', false) -%}
+{%- set instance_methods = clazz['methods'] | selectattr('is_static', 'equalto', false) | selectattr('is_virtual', 'equalto', false) | selectattr('is_vararg', 'equalto', false) -%}
+{%- set static_methods = clazz['methods'] | selectattr('is_static', 'equalto', true) | selectattr('is_virtual', 'equalto', false) | selectattr('is_vararg', 'equalto', false)-%}
 {%- set virtual_methods = clazz['methods'] | selectattr('is_virtual', 'equalto', true) -%}
 #include "register/classes/register_node.h"
 #include "quickjs/quickjs.h"
@@ -46,13 +46,14 @@ static JSValue {{clazz_small_name}}_class_constructor(JSContext *ctx, JSValueCon
 {%- for method in instance_methods %}
 static JSValue {{clazz_small_name}}_class_{{method['name']}}(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
     {%- if method['return_value'] %}
-	return call_builtin_method_ret<{{method['return_value']['meta'] if method['return_value']['meta'] else method['return_value']['type'] }}>(&{{clazz_name}}::{{method['name']}}, {{clazz_small_name}}_class_id, this_val, argv);
+	return call_builtin_method_ret(&{{clazz_name}}::{{method['name']}}, {{clazz_small_name}}_class_id, this_val, argv);
     {%- else %}
     call_builtin_method_no_ret(&{{clazz_name}}::{{method['name']}}, {{clazz_small_name}}_class_id, this_val, argv);
 	return JS_UNDEFINED;
     {%- endif %}
 };
 {%- endfor %}
+
 
 static const JSCFunctionListEntry {{clazz_small_name}}_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_name", 0, &{{clazz_small_name}}_class_get_name),
