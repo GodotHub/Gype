@@ -24,12 +24,14 @@ struct StringWrapper {
 		o.string_name_opaque = opaque;
 	}
 	StringWrapper(uint8_t type, const char *p_from) {
+		this->type = type;
 		if (type) {
 			memnew_placement((&o.string_opaque), String(p_from));
 		} else
 			memnew_placement((&o.string_opaque), StringName(p_from));
 	}
 	StringWrapper(uint8_t type, const char16_t *p_from) {
+		this->type = type;
 		if (type)
 			memnew_placement((&o.string_opaque), String(p_from));
 		else

@@ -18,7 +18,7 @@ SlowArrayWrapper *gd_convert_to_SlowArray(ArrayWrapper *arrw) {
 	memnew_placement(&(slow->opaque), Dictionary());
 	Array arr = *static_cast<Array *>(gd_Array_get_opaque(arrw));
 	for (int i = 0; i < arr.size(); i++) {
-		slow->opaque.get_or_add(i, arr[i]);
+		slow->opaque[i] = arr[i];
 	}
 	return slow;
 }
@@ -28,6 +28,7 @@ void gd_SlowArray_set_value(SlowArrayWrapper *dictw, VariantWrapper *keyw, Varia
 	Variant var = *GET_VARIANT_OPAQUE(varw);
 	dictw->opaque[key] = var;
 }
+
 void *gd_SlowArray_get_opaque(SlowArrayWrapper *wrapper) {
 	return &wrapper->opaque;
 }

@@ -1,4 +1,5 @@
 #include "register/register_types.h"
+#include "register/classes/register_node.h"
 #include "register/register_utility_functions.h"
 #include "support/console_support.hpp"
 #include "utils/env.h"
@@ -10,7 +11,10 @@
 // bug 无法关闭程序
 // #ifdef DEBUG_ENABLED
 #include "array_test/array_test.hpp"
+#include "call_test/call_test.hpp"
+#include "dict_test/dict_test.hpp"
 #include "gdstring_test/gdstring_test.hpp"
+#include "node_test/node_test.hpp"
 #include "number_test/number_test.hpp"
 
 // #endif
@@ -26,13 +30,17 @@ void initialize_tgds_types(godot::ModuleInitializationLevel p_level) {
 	if (p_level != godot::ModuleInitializationLevel::MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
+	GDREGISTER_CLASS(godot::JSObject);
 	RedirectIOToConsole();
 	printf("%s", "Quickjs start initialization\n");
 	init_quickjs();
 #ifdef DEBUG_ENABLED
 	// test_gdstring();
 	// test_number();
-	test_array();
+	// test_array();
+	// test_dict();
+	// test_call();
+	test_node();
 #endif // DEBUG
 	printf("%s", "Quickjs initialization is over\n");
 }
@@ -41,7 +49,6 @@ void uninitialize_tgds_types(godot::ModuleInitializationLevel p_level) {
 	if (p_level != godot::ModuleInitializationLevel::MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
-	GDREGISTER_CLASS(godot::JSObject);
 	// Engine::get_singleton()->unregister_script_language(JavaScriptLanguage::get_singleton());
 	// ResourceSaver::get_singleton()->remove_resource_format_saver(JavaScriptSaver::get_singleton());
 	// ResourceLoader::get_singleton()->remove_resource_format_loader(JavaScriptLoader::get_singleton());
@@ -52,6 +59,7 @@ void init_quickjs() {
 	rt = JS_NewRuntime();
 	ctx = JS_NewContext(rt);
 	register_utility_functions();
+	register_node();
 	// register_enums();
 	// register_internal_api();
 	// js_init_module(ctx);

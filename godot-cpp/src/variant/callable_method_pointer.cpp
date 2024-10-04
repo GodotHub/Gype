@@ -100,8 +100,8 @@ void CallableCustomMethodPointerBase::_setup(uint32_t *p_base_ptr, uint32_t p_pt
 
 namespace internal {
 
+GDExtensionCallableCustomInfo2 info = {};
 Callable create_callable_from_ccmp(CallableCustomMethodPointerBase *p_callable_method_pointer) {
-	GDExtensionCallableCustomInfo2 info = {};
 	info.callable_userdata = p_callable_method_pointer;
 	info.token = internal::token;
 	info.object_id = p_callable_method_pointer->get_object();

@@ -35,9 +35,9 @@ typedef struct JSValue JSValue;
 	}
 
 // TODO std::move
-#define GD_NEW_VARIANT_IMPL(type)                                                                            \
-	VariantWrapper *gd_##type##_new_variant(void *wrapper) {                                                 \
-		return memnew(VariantWrapper{ Variant(*(type *)gd_##type##_get_opaque((type##Wrapper *)wrapper)) }); \
+#define GD_NEW_VARIANT_IMPL(type)                                                                   \
+	VariantWrapper *gd_##type##_new_variant(void *wrapper) {                                        \
+		return memnew(VariantWrapper{ *(type *)gd_##type##_get_opaque((type##Wrapper *)wrapper) }); \
 	}
 
 void gd_set_variant_opaque(VariantWrapper *wrapper, void *opaque);
@@ -46,11 +46,16 @@ GD_NEW_VARIANT(Array);
 GD_NEW_EMPTY_VARIANT(Array);
 GD_NEW_VARIANT(Dictionary);
 GD_NEW_EMPTY_VARIANT(Dictionary);
+GD_NEW_VARIANT(Callable);
+GD_NEW_EMPTY_VARIANT(Callable);
+GD_NEW_VARIANT(JSObject);
+GD_NEW_EMPTY_VARIANT(JSObject);
 VariantWrapper *gd_nil_new_variant();
 VariantWrapper *gd_bool_new_variant(bool value);
 VariantWrapper *gd_int_new_variant(int64_t value);
 VariantWrapper *gd_float_new_variant(double value);
-VariantWrapper *gd_Object_new_variant(void *value);
+VariantWrapper *gd_JSObject_new_variant(void *value);
+VariantWrapper *gd_JSObject_new_empty_variant();
 StringWrapper *gd_variant_to_String(void *value);
 StringWrapper *gd_variant_to_StringName(void *value);
 ArrayWrapper *gd_variant_to_Array(void *value);

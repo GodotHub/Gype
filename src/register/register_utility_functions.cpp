@@ -1,4 +1,5 @@
 #include "register/register_utility_functions.h"
+#include "quickjs/quickjs.h"
 #include "utils/env.h"
 #include "utils/vector_helper.h"
 #include "wrapper/variant_wrapper.h"
@@ -22,8 +23,9 @@ static JSValue js_print(JSContext *ctx, JSValueConst this_val, int argc, JSValue
 	std::vector<const Variant *> args;
 	for (int i = 0; i < argc; i++) {
 		JSValue js_var = argv[i];
-		Variant *variant = GET_VARIANT_OPAQUE(js_var.var);
-		args.push_back(variant);
+		VariantWrapper *vwrapper = (VariantWrapper *)gd_get_vwrapper(ctx, js_var);
+		Variant *var = GET_VARIANT_OPAQUE(vwrapper);
+		args.push_back(var);
 	}
 	gd_print(args.data(), args.size());
 	return JS_UNDEFINED;

@@ -1,5 +1,0 @@
-#pragma once
-
-#define DEFINE_VARIANT_SIZE 24
-#define DEFINE_STRING_NAME_SIZE 8
-#define DEFINE_STRING_SIZE 8

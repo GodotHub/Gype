@@ -2,6 +2,9 @@
 #include "quickjs/quickjs.h"
 #include "utils/env.h"
 #include "wrapper/array_wrapper.h"
+#include "wrapper/callable_wrapper.h"
+#include "wrapper/js_object.h"
+#include "wrapper/object_wrapper.h"
 #include "wrapper/string_wrapper.h"
 #include <wrapper/dictionary_wrapper.h>
 #include <godot_cpp/variant/utility_functions.hpp>
@@ -25,6 +28,8 @@ GD_NEW_VARIANT_IMPL(Array);
 GD_NEW_EMPTY_VARIANT_IMPL(Array);
 GD_NEW_VARIANT_IMPL(Dictionary);
 GD_NEW_EMPTY_VARIANT_IMPL(Dictionary);
+GD_NEW_VARIANT_IMPL(Callable);
+GD_NEW_EMPTY_VARIANT_IMPL(Callable);
 
 VariantWrapper *gd_nil_new_variant() {
 	return memnew(VariantWrapper{ Variant() });
@@ -42,8 +47,16 @@ VariantWrapper *gd_float_new_variant(double value) {
 	return memnew(VariantWrapper{ Variant(value) });
 }
 
-VariantWrapper *gd_Object_new_variant(void *value) {
-	return memnew(VariantWrapper{ Variant(static_cast<Object *>(value)) });
+VariantWrapper *gd_JSObject_new_variant(void *value) {
+	VariantWrapper *wrapper = memnew(VariantWrapper);
+	memnew_placement(&(wrapper->opaque), Variant(static_cast<godot::Object *>(gd_JSObject_get_opaque((ObjectWrapper *)value))));
+	return wrapper;
+}
+
+VariantWrapper *gd_JSObject_new_empty_variant() {
+	VariantWrapper *wrapper = memnew(VariantWrapper);
+	memnew_placement(&(wrapper->opaque), Variant());
+	return wrapper;
 }
 
 VariantWrapper *gd_String_new_variant(void *wrapper) {

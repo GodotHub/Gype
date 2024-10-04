@@ -31,6 +31,7 @@
 #ifndef GODOT_TYPE_INFO_HPP
 #define GODOT_TYPE_INFO_HPP
 
+#include <godot_cpp/core/method_ptrcall.hpp>
 #include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
