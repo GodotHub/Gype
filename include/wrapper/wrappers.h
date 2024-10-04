@@ -2,7 +2,7 @@
 #define __WRAPPERS_H__
 
 #include "quickjs/quickjs.h"
-#include "utils/str_utils.h"
+#include "utils/str_helper.h"
 #include "wrapper/array_wrapper.h"
 #include "wrapper/string_wrapper.h"
 #include "wrapper/variant_wrapper.h"

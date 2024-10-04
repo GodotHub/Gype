@@ -11,36 +11,6 @@ def variant_types():
     ret.append('Variant')
     return ret
 
-def to_js_type(gd_type):
-    if gd_type == 'String':
-        return 'GDString'
-    elif gd_type == 'Object':
-        return 'GodotObject'
-    elif gd_type =='Array':
-        return 'GDArray'
-    elif is_pod_type(gd_type):
-        if gd_type == 'float' or gd_type == 'int':
-            return 'number'
-        else:
-            return gd_type
-    else:
-        return gd_type
-    
-def to_gd_type(gd_type):
-    if not gd_type:
-        return None
-    if gd_type == 'GDString':
-        return 'String'
-    elif gd_type.find('typedarray::') != -1:
-        return 'Array'
-    elif gd_type == 'GDArray':
-        return 'Array'
-    elif gd_type.find('enum::'):
-        return 'int'
-    else:
-        return gd_type
-
-
 def pod_types():
     return [
         "Nil",
@@ -181,4 +151,72 @@ def get_module_path(class_name):
         return '@js_godot/variant/gd_array'
     else:
         return '@js_godot/classes/%s' % camel_to_snake(to_js_type(class_name))
-    
+
+def correct_type(type_name, meta=None, use_alias=True):
+    type_conversion = {"float": "double", "int": "int64_t", "Nil": "Variant"}
+    if meta is not None:
+        if "int" in meta:
+            return f"{meta}_t"
+        elif meta in type_conversion:
+            return type_conversion[type_name]
+        else:
+            return meta
+    if type_name in type_conversion:
+        return type_conversion[type_name]
+    if type_name.startswith("typedarray::"):
+        return type_name.replace("typedarray::", "TypedArray<") + ">"
+    if is_enum(type_name):
+        if is_bitfield(type_name):
+            base_class = get_enum_class(type_name)
+            if use_alias and base_class in CLASS_ALIASES:
+                base_class = CLASS_ALIASES[base_class]
+            if base_class == "GlobalConstants":
+                return f"BitField<{get_enum_name(type_name)}>"
+            return f"BitField<{base_class}::{get_enum_name(type_name)}>"
+        else:
+            base_class = get_enum_class(type_name)
+            if use_alias and base_class in CLASS_ALIASES:
+                base_class = CLASS_ALIASES[base_class]
+            if base_class == "GlobalConstants":
+                return f"{get_enum_name(type_name)}"
+            return f"{base_class}::{get_enum_name(type_name)}"
+    if is_refcounted(type_name):
+        return f"Ref<{type_name}>"
+    if type_name == "Object" or is_engine_class(type_name):
+        return f"{type_name} *"
+    if type_name.endswith("*") and not type_name.endswith("**") and not type_name.endswith(" *"):
+        return f"{type_name[:-1]} *"
+    return type_name
+
+def is_enum(type_name):
+    return type_name.startswith("enum::") or type_name.startswith("bitfield::")
+
+
+def is_bitfield(type_name):
+    return type_name.startswith("bitfield::")
+
+def get_enum_class(enum_name: str):
+    if "." in enum_name:
+        if is_bitfield(enum_name):
+            return enum_name.replace("bitfield::", "").split(".")[0]
+        else:
+            return enum_name.replace("enum::", "").split(".")[0]
+    else:
+        return "GlobalConstants"
+
+
+def get_enum_fullname(enum_name: str):
+    if is_bitfield(enum_name):
+        return enum_name.replace("bitfield::", "BitField<") + ">"
+    else:
+        return enum_name.replace("enum::", "")
+
+
+def get_enum_name(enum_name: str):
+    if is_bitfield(enum_name):
+        return enum_name.replace("bitfield::", "").split(".")[-1]
+    else:
+        return enum_name.replace("enum::", "").split(".")[-1]
+
+def is_refcounted(type_name):
+    return type_name in engine_classes and engine_classes[type_name]

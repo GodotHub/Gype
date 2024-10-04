@@ -13,15 +13,10 @@ struct DictionaryWrapper {
 	Dictionary opaque;
 };
 
-DictionaryWrapper *gd_convert_to_Dictionary(ArrayWrapper *arrw) {
-	DictionaryWrapper *slow = memnew(DictionaryWrapper);
-	memnew_placement(&(slow->opaque), Dictionary());
-	Array arr = *static_cast<Array *>(gd_Array_get_opaque(arrw));
-	for (int i = 0; i < arr.size(); i++) {
-		slow->opaque.get_or_add(i, arr[i]);
-	}
-
-	return slow;
+DictionaryWrapper *gd_new_empty_Dictionary_wrapper() {
+	DictionaryWrapper *wrapper = memnew(DictionaryWrapper);
+	memnew_placement(&(wrapper->opaque), Dictionary);
+	return wrapper;
 }
 
 void gd_Dictionary_set_value(DictionaryWrapper *dictw, VariantWrapper *keyw, VariantWrapper *varw) {

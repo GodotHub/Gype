@@ -1,0 +1,92 @@
+{%- set clazz_name = clazz['name'] -%}
+{%- set clazz_small_name = clazz_name | lower -%}
+{%- set snake_name = camel_to_snake(clazz['name']) -%}
+{%- set instance_methods = clazz['methods'] | selectattr('is_static', 'equalto', false) | selectattr('is_virtual', 'equalto', false) -%}
+{%- set static_methods = clazz['methods'] | selectattr('is_static', 'equalto', true) | selectattr('is_virtual', 'equalto', false) -%}
+{%- set virtual_methods = clazz['methods'] | selectattr('is_virtual', 'equalto', true) -%}
+#include "register/classes/register_node.h"
+#include "quickjs/quickjs.h"
+#include "utils/env.h"
+#include "utils/register_helper.h"
+#include "utils/str_helper.h"
+#include <godot_cpp/classes/{{snake_name}}.hpp>
+#include <godot_cpp/variant/variant.hpp>
+
+using namespace godot;
+
+static JSClassID {{clazz_small_name}}_class_id;
+
+static void {{clazz_small_name}}_class_finalizer(JSRuntime *rt, JSValue val) {
+	{{clazz_name}} *{{snake_name}} = static_cast<Node *>(JS_GetOpaque(val, {{clazz_small_name}}_class_id));
+	if ({{snake_name}})
+		{{clazz_name}}::free(nullptr, {{snake_name}});
+}
+
+static JSClassDef {{clazz_small_name}}_class_def = {
+	"{{clazz_name}}",
+	.finalizer = {{clazz_small_name}}_class_finalizer
+};
+
+static JSValue {{clazz_small_name}}_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
+	{{clazz_name}} *{{clazz_small_name}}_class;
+	JSValue obj = JS_NewObjectClass(ctx, {{clazz_small_name}}_class_id);
+	if (JS_IsException(obj))
+		return obj;
+
+	{{clazz_small_name}}_class = memnew(Node);
+	if (!{{clazz_small_name}}_class) {
+		JS_FreeValue(ctx, obj);
+		return JS_EXCEPTION;
+	}
+
+	JS_SetOpaque(obj, {{clazz_small_name}}_class);
+	return obj;
+}
+
+{%- for method in instance_methods %}
+static JSValue {{clazz_small_name}}_class_{{method['name']}}(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+    {%- if method['return_value'] %}
+	return call_builtin_method_ret<{{method['return_value']['meta'] if method['return_value']['meta'] else method['return_value']['type'] }}>(&{{clazz_name}}::{{method['name']}}, {{clazz_small_name}}_class_id, this_val, argv);
+    {%- else %}
+    call_builtin_method_no_ret(&{{clazz_name}}::{{method['name']}}, {{clazz_small_name}}_class_id, this_val, argv);
+	return JS_UNDEFINED;
+    {%- endif %}
+};
+{%- endfor %}
+
+static const JSCFunctionListEntry {{clazz_small_name}}_class_proto_funcs[] = {
+	JS_CFUNC_DEF("get_name", 0, &{{clazz_small_name}}_class_get_name),
+};
+
+static int js_{{clazz_small_name}}_class_init(JSContext *ctx, JSModuleDef *m) {
+	JS_NewClassID(&{{clazz_small_name}}_class_id);
+	classes["Node"] = {{clazz_small_name}}_class_id;
+	JS_NewClass(JS_GetRuntime(ctx), {{clazz_small_name}}_class_id, &{{clazz_small_name}}_class_def);
+
+	JSValue proto = JS_NewObject(ctx);
+	JS_SetPropertyFunctionList(ctx, proto, {{clazz_small_name}}_class_proto_funcs, _countof({{clazz_small_name}}_class_proto_funcs));
+	JS_SetClassProto(ctx, {{clazz_small_name}}_class_id, proto);
+
+	JSValue ctor = JS_NewCFunction2(ctx, {{clazz_small_name}}_class_constructor, "Node", 0, JS_CFUNC_constructor, 0);
+	// JS_SetPropertyFunctionList(ctx, ctor, my_class_static_funcs, _countof(my_class_static_funcs));
+
+	JS_SetModuleExport(ctx, m, "Node", ctor);
+
+	return 0;
+}
+
+JSModuleDef *js_init_module(JSContext *ctx, const char *module_name) {
+	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_{{clazz_small_name}}_class_init);
+	if (!m)
+		return NULL;
+	JS_AddModuleExport(ctx, m, "Node");
+	return m;
+}
+
+JSModuleDef *js_init_node_module(JSContext *ctx) {
+	return js_init_module(ctx, "godot/classes/{{snake_name}}");
+}
+
+void register_node() {
+	js_init_node_module(ctx);
+}

@@ -9,7 +9,7 @@ typedef struct DictionaryWrapper DictionaryWrapper;
 typedef struct ArrayWrapper ArrayWrapper;
 typedef struct VariantWrapper VariantWrapper;
 
-DictionaryWrapper *gd_convert_to_Dictionary(ArrayWrapper *arrw);
+DictionaryWrapper *gd_new_empty_Dictionary_wrapper();
 void gd_Dictionary_set_value(DictionaryWrapper *dictw, VariantWrapper *keyw, VariantWrapper *varw);
 void *gd_Dictionary_get_opaque(DictionaryWrapper *wrapper);
 

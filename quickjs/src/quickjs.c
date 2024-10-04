@@ -48,10 +48,12 @@
 #include "quickjs/list.h"
 #include "quickjs/quickjs.h"
 #include "wrapper/array_wrapper.h"
+#include "wrapper/callable_wrapper.h"
 #include "wrapper/dictionary_wrapper.h"
+#include "wrapper/object_wrapper.h"
+#include "wrapper/slow_array_wrapper.h"
 #include "wrapper/string_wrapper.h"
 #include "wrapper/variant_wrapper.h"
-#include "wrapper/slow_array_wrapper.h"
 
 #define OPTIMIZE 1
 #define SHORT_OPCODES 1
@@ -502,6 +504,7 @@ struct JSString {
 	uint32_t hash_next; /* atom_index for JS_ATOM_TYPE_SYMBOL */
 	uint8_t is_mutable;
 	void *wrapper;
+	void *vwrapper;
 #ifdef DUMP_LEAKS
 	struct list_head link; /* string list */
 #endif
@@ -977,7 +980,8 @@ struct JSObject {
 	} u;
 	/* byte sizes: 40/48/72 */
 	void *wrapper;
-	uint8_t dirty : 1;
+	void *vwrapper;
+	// uint8_t dirty : 1;
 };
 
 enum {
@@ -1294,52 +1298,49 @@ static const JSClassExoticMethods js_module_ns_exotic_methods;
 static JSClassID js_class_id_alloc = JS_CLASS_INIT_COUNT;
 
 static BOOL js_is_fast_array(JSContext *ctx, JSValueConst obj);
+static BOOL JS_AtomIsArrayIndex(JSContext *ctx, uint32_t *pval, JSAtom atom);
 
 static StringWrapper *gd_new_string_wrapper(JSString *str) {
 	return gd_new_String(str->u.str8, str->u.str16, str->is_mutable, str->is_wide_char);
 }
 
-static int gd_array_append_value(ArrayWrapper *arr, VariantWrapper *val) {
-	gd_Array_call_append(arr, val);
-	return TRUE;
-}
-
-static int gd_array_set_value(ArrayWrapper *arr, VariantWrapper *val, int index) {
-	gd_Array_call_set_value(arr, val, index);
-	return TRUE;
-}
-
-static int gd_set_value(JSContext *ctx, JSObject *p, VariantWrapper *keyw, VariantWrapper *valw) {
+static int gd_set_value(JSContext *ctx, JSObject *p, JSAtom prop, VariantWrapper *valw) {
 	switch (p->class_id) {
+		case JS_CLASS_OBJECT: {
+			const char *name = JS_AtomToCString(ctx, prop);
+			StringWrapper *swrapper = gd_new_String_char8(name);
+			gd_JSObject_set_value(p->wrapper, gd_String_new_variant(swrapper), valw);
+		} break;
 		case JS_CLASS_ARRAY: {
+			uint32_t index;
+			if (!JS_AtomIsArrayIndex(ctx, &index, prop))
+				return -1;
 			if (p->fast_array) {
 			} else {
-				gd_SlowArray_set_value(p->wrapper, keyw, valw);
-				p->dirty = TRUE;
+				gd_SlowArray_set_value(p->wrapper, gd_int_new_variant(index), valw);
 			}
-			return 0;
 		} break;
 		default:
 			return -1;
 	}
-}
-
-static void update_var(JSContext *ctx, JSObject *p, JSValue obj) {
-	switch (p->class_id) {
-		case JS_CLASS_ARRAY: {
-			VariantWrapper *vwrapper = gd_Dictionary_new_variant(p->wrapper);
-			gd_swap_opaque(obj.var, vwrapper);
-			freew(vwrapper);
-		} break;
-		default:
-			return;
-	}
-	p->dirty = FALSE;
+	return 0;
 }
 
 void *gd_get_wrapper(JSContext *ctx, JSValue val) {
 	JSObject *obj = JS_VALUE_GET_OBJ(val);
 	return obj->wrapper;
+}
+
+void *gd_get_vwrapper(JSContext *ctx, JSValue val) {
+	int tag = JS_VALUE_GET_TAG(val);
+	switch (tag) {
+		case JS_TAG_OBJECT:
+			return JS_VALUE_GET_OBJ(val)->vwrapper;
+		case JS_TAG_STRING:
+			return JS_VALUE_GET_STRING(val)->vwrapper;
+		default:
+			return val.var;
+	}
 }
 
 static void js_trigger_gc(JSRuntime *rt, size_t size) {
@@ -1906,6 +1907,8 @@ static JSString *js_alloc_string_rt(JSRuntime *rt, int max_len, int is_wide_char
 	str->hash = 0; /* optional but costless */
 	str->hash_next = 0; /* optional */
 	str->is_mutable = 1;
+	str->vwrapper = NULL;
+	str->wrapper = NULL;
 #ifdef DUMP_LEAKS
 	list_add_tail(&str->link, &rt->string_list);
 #endif
@@ -2969,6 +2972,8 @@ static JSValue JS_NewSymbol(JSContext *ctx, JSString *p, int atom_type) {
 	atom = __JS_NewAtom(rt, p, atom_type);
 	if (atom == JS_ATOM_NULL)
 		return JS_ThrowOutOfMemory(ctx);
+	JSAtomStruct *s = rt->atom_array[atom];
+	rt->atom_array[atom]->wrapper = gd_new_String(s->u.str8, s->u.str16, s->is_mutable, s->is_wide_char);
 	return JS_MKPTR(JS_TAG_SYMBOL, rt->atom_array[atom]);
 }
 
@@ -3048,6 +3053,8 @@ static JSValue __JS_AtomToValue(JSContext *ctx, JSAtom atom, BOOL force_string) 
 		JSAtomStruct *p;
 		assert(atom < rt->atom_size);
 		p = rt->atom_array[atom];
+		p->wrapper = gd_new_String(p->u.str8, p->u.str16, p->is_mutable, p->is_wide_char);
+		p->vwrapper = gd_String_new_variant(p->wrapper);
 		if (p->atom_type == JS_ATOM_TYPE_STRING) {
 			goto ret_string;
 		} else if (force_string) {
@@ -3422,7 +3429,8 @@ static JSValue js_new_string8(JSContext *ctx, const uint8_t *buf, int len) {
 	str->is_mutable = 1;
 	str->u.str8[len] = '\0';
 	str->wrapper = gd_new_string_wrapper(str);
-	return JS_MKPTR_WRAPPER(JS_TAG_STRING, str, gd_String_new_variant(str->wrapper));
+	str->vwrapper = gd_String_new_variant(str->wrapper);
+	return JS_MKPTR(JS_TAG_STRING, str);
 }
 
 static JSValue js_new_string16(JSContext *ctx, const uint16_t *buf, int len) {
@@ -3432,7 +3440,8 @@ static JSValue js_new_string16(JSContext *ctx, const uint16_t *buf, int len) {
 		return JS_EXCEPTION;
 	memcpy(str->u.str16, buf, len * 2);
 	str->wrapper = gd_new_string_wrapper(str);
-	return JS_MKPTR_WRAPPER(JS_TAG_STRING, str, gd_String_new_variant(str->wrapper));
+	str->vwrapper = gd_String_new_variant(str->wrapper);
+	return JS_MKPTR(JS_TAG_STRING, str);
 }
 
 static JSValue js_new_string_char(JSContext *ctx, uint16_t c) {
@@ -3468,7 +3477,8 @@ static JSValue js_sub_string(JSContext *ctx, JSString *p, int start, int end) {
 		}
 		str->u.str8[len] = '\0';
 		str->wrapper = gd_new_string_wrapper(str);
-		return JS_MKPTR_WRAPPER(JS_TAG_STRING, str, gd_String_new_variant(str->wrapper));
+		str->vwrapper = gd_String_new_variant(str->wrapper);
+		return JS_MKPTR(JS_TAG_STRING, str);
 	} else {
 		return js_new_string8(ctx, p->u.str8 + start, len);
 	}
@@ -3517,6 +3527,7 @@ static void string_buffer_free(StringBuffer *s) {
 
 static int string_buffer_set_error(StringBuffer *s) {
 	freew(s->str->wrapper);
+	freew(s->str->vwrapper);
 	js_free(s->ctx, s->str);
 	s->str = NULL;
 	s->size = 0;
@@ -3788,7 +3799,8 @@ static JSValue string_buffer_end(StringBuffer *s) {
 	str->len = s->len;
 	s->str = NULL;
 	str->wrapper = gd_new_string_wrapper(str);
-	return JS_MKPTR_WRAPPER(JS_TAG_STRING, str, gd_String_new_variant(str->wrapper));
+	str->vwrapper = gd_String_new_variant(str->wrapper);
+	return JS_MKPTR(JS_TAG_STRING, str);
 }
 
 /* create a string from a UTF-8 buffer */
@@ -4088,7 +4100,8 @@ static JSValue JS_ConcatString1(JSContext *ctx,
 		copy_str16(p->u.str16 + p1->len, p2, 0, p2->len);
 	}
 	p->wrapper = gd_new_string_wrapper(p);
-	return JS_MKPTR_WRAPPER(JS_TAG_STRING, p, gd_String_new_variant(p->wrapper));
+	p->vwrapper = gd_String_new_variant(p->wrapper);
+	return JS_MKPTR_WRAPPER(JS_TAG_STRING, p, NULL);
 }
 
 static BOOL JS_ConcatStringInPlace(JSContext *ctx, JSString *p1, JSValueConst op2) {
@@ -4627,6 +4640,7 @@ static JSValue JS_NewObjectFromShape(JSContext *ctx, JSShape *sh, JSClassID clas
 	JSObject *p;
 
 	js_trigger_gc(ctx->rt, sizeof(JSObject));
+	VariantWrapper *vwrapper;
 	p = js_malloc(ctx, sizeof(JSObject));
 	if (unlikely(!p))
 		goto fail;
@@ -4652,6 +4666,8 @@ static JSValue JS_NewObjectFromShape(JSContext *ctx, JSShape *sh, JSClassID clas
 
 	switch (class_id) {
 		case JS_CLASS_OBJECT:
+			p->wrapper = gd_new_empty_JSObject_wrapper();
+			p->vwrapper = gd_JSObject_new_variant(p->wrapper);
 			break;
 		case JS_CLASS_ARRAY: {
 			JSProperty *pr;
@@ -4660,6 +4676,8 @@ static JSValue JS_NewObjectFromShape(JSContext *ctx, JSShape *sh, JSClassID clas
 			p->u.array.u.values = NULL;
 			p->u.array.count = 0;
 			p->u.array.u1.size = 0;
+			p->wrapper = gd_Array_new_empty_wrapper();
+			p->vwrapper = gd_Array_new_variant(p->wrapper);
 			/* the length property is always the first one */
 			if (likely(sh == ctx->array_shape)) {
 				pr = &p->prop[0];
@@ -4720,8 +4738,7 @@ static JSValue JS_NewObjectFromShape(JSContext *ctx, JSShape *sh, JSClassID clas
 	}
 	p->header.ref_count = 1;
 	add_gc_object(ctx->rt, &p->header, JS_GC_OBJ_TYPE_JS_OBJECT);
-	p->wrapper = gd_Array_new_empty_wrapper();
-	return JS_MKPTR_WRAPPER(JS_TAG_OBJECT, p, gd_Array_new_variant(p->wrapper));
+	return JS_MKPTR(JS_TAG_OBJECT, p);
 }
 
 static JSObject *get_proto_obj(JSValueConst proto_val) {
@@ -4925,6 +4942,8 @@ static JSValue JS_NewCFunction3(JSContext *ctx, JSCFunction *func,
 			cproto == JS_CFUNC_constructor_magic ||
 			cproto == JS_CFUNC_constructor_or_func ||
 			cproto == JS_CFUNC_constructor_or_func_magic);
+	p->wrapper = gd_new_empty_Callable_wrapper();
+	p->vwrapper = gd_Callable_new_empty_variant(p->wrapper);
 	if (!name)
 		name = "";
 	name_atom = JS_NewAtom(ctx, name);
@@ -7844,6 +7863,8 @@ static no_inline __exception int convert_fast_array_to_array(JSContext *ctx,
 	}
 
 	tab = p->u.array.u.values;
+	p->wrapper = gd_convert_to_SlowArray(p->wrapper);
+	p->vwrapper = gd_Dictionary_new_variant(p->wrapper);
 	for (i = 0; i < len; i++) {
 		/* add_property cannot fail here but
 		   __JS_AtomFromUInt32(i) fails for i > INT32_MAX */
@@ -7855,7 +7876,6 @@ static no_inline __exception int convert_fast_array_to_array(JSContext *ctx,
 	p->u.array.u.values = NULL; /* fail safe */
 	p->u.array.u1.size = 0;
 	p->fast_array = 0;
-	p->wrapper = gd_convert_to_SlowArray(p->wrapper);
 	return 0;
 }
 
@@ -8102,7 +8122,7 @@ static int add_fast_array_element(JSContext *ctx, JSObject *p,
 	}
 	p->u.array.u.values[new_len - 1] = val;
 	p->u.array.count = new_len;
-	gd_array_append_value(p->wrapper, val.var);
+	gd_Array_call_append(p->wrapper, gd_get_vwrapper(ctx, val));
 	return TRUE;
 }
 
@@ -8403,8 +8423,8 @@ retry:
 							JS_PROP_HAS_WRITABLE |
 							JS_PROP_HAS_CONFIGURABLE |
 							JS_PROP_C_W_E);
-			if (p->dirty)
-				update_var(ctx, p, this_obj);
+			// if (p->dirty)
+			// 	update_var(ctx, p, this_obj);
 			JS_FreeValue(ctx, val);
 			return ret;
 		}
@@ -8450,15 +8470,15 @@ static int JS_SetPropertyValue(JSContext *ctx, JSValueConst this_obj,
 						p1 = sh1->proto;
 					}
 					/* add element */
-					return add_fast_array_element(ctx, p, val, flags) && gd_array_append_value(p->wrapper, val.var);
+					return add_fast_array_element(ctx, p, val, flags);
 				}
-				gd_array_set_value(p->wrapper, val.var, idx);
+				gd_Array_call_set_value(p->wrapper, gd_get_vwrapper(ctx, val), idx);
 				set_value(ctx, &p->u.array.u.values[idx], val);
 				break;
 			case JS_CLASS_ARGUMENTS:
 				if (unlikely(idx >= (uint32_t)p->u.array.count))
 					goto slow_path;
-				gd_array_set_value(p->wrapper, val.var, idx);
+				gd_Array_call_set_value(p->wrapper, gd_get_vwrapper(ctx, val), idx);
 				set_value(ctx, &p->u.array.u.values[idx], val);
 				break;
 			case JS_CLASS_UINT8C_ARRAY:
@@ -8695,7 +8715,7 @@ static int JS_CreateProperty(JSContext *ctx, JSObject *p,
 		} else {
 			pr->u.value = JS_UNDEFINED;
 		}
-		gd_set_value(ctx, p, gd_int_new_variant(prop), pr->u.value.var);
+		gd_set_value(ctx, p, prop, gd_get_vwrapper(ctx, pr->u.value));
 	}
 	return TRUE;
 }
@@ -16367,6 +16387,8 @@ restart:
 				pc += 5;
 				if (JS_DefineGlobalFunction(ctx, atom, sp[-1], flags))
 					goto exception;
+				p->wrapper = gd_new_Callable_wrapper(ctx, JS_GetGlobalObject(ctx), sp[-1]);
+				p->vwrapper = gd_Callable_new_variant(p->wrapper);
 				JS_FreeValue(ctx, sp[-1]);
 				sp--;
 			}
@@ -17172,9 +17194,12 @@ restart:
 				value = JS_UNDEFINED;
 				getter = JS_UNDEFINED;
 				setter = JS_UNDEFINED;
+				JSObject *p = JS_VALUE_GET_OBJ(sp[-1]);
 				if (op_flags == OP_DEFINE_METHOD_METHOD) {
 					value = sp[-1];
 					flags |= JS_PROP_HAS_VALUE | JS_PROP_HAS_WRITABLE | JS_PROP_WRITABLE;
+					p->wrapper = gd_new_Callable_wrapper(ctx, obj, value);
+					p->vwrapper = gd_Callable_new_variant(p->wrapper);
 				} else if (op_flags == OP_DEFINE_METHOD_GETTER) {
 					getter = sp[-1];
 					flags |= JS_PROP_HAS_GET;
@@ -38340,20 +38365,20 @@ static JSValue js_array_with(JSContext *ctx, JSValueConst this_val,
 	if (js_get_fast_array(ctx, obj, &arrp, &count32) && count32 == len) {
 		for (; i < idx; i++, pval++) {
 			*pval = JS_DupValue(ctx, arrp[i]);
-			gd_array_append_value(p->wrapper, pval->var);
+			gd_Array_call_append(p->wrapper, gd_get_vwrapper(ctx, *pval));
 		}
 		*pval = JS_DupValue(ctx, argv[1]);
-		gd_array_append_value(p->wrapper, pval->var);
+		gd_Array_call_append(p->wrapper, gd_get_vwrapper(ctx, *pval));
 		for (i++, pval++; i < len; i++, pval++) {
 			*pval = JS_DupValue(ctx, arrp[i]);
-			gd_array_append_value(p->wrapper, pval->var);
+			gd_Array_call_append(p->wrapper, gd_get_vwrapper(ctx, *pval));
 		}
 	} else {
 		for (; i < idx; i++, pval++)
 			if (-1 == JS_TryGetPropertyInt64(ctx, obj, i, pval))
 				goto fill_and_fail;
 		*pval = JS_DupValue(ctx, argv[1]);
-		gd_array_set_value(obj.var, pval->var, i - 1);
+		gd_Array_call_set_value(obj.var, gd_get_vwrapper(ctx, *pval), i - 1);
 		for (i++, pval++; i < len; i++, pval++) {
 			if (-1 == JS_TryGetPropertyInt64(ctx, obj, i, pval)) {
 			fill_and_fail:
@@ -39048,7 +39073,7 @@ static JSValue js_array_pop(JSContext *ctx, JSValueConst this_val,
 				res = arrp[count32 - 1];
 				p->u.array.count--;
 			}
-			gd_Array_call_pop(p->wrapper, shift);
+			// gd_Array_call_pop(p->wrapper, shift);
 		} else {
 			if (shift) {
 				res = JS_GetPropertyInt64(ctx, obj, 0);
@@ -39138,7 +39163,7 @@ static JSValue js_array_reverse(JSContext *ctx, JSValueConst this_val,
 			}
 		}
 		JSObject *arr = JS_VALUE_GET_OBJ(obj);
-		gd_Array_call_reverse(arr->wrapper);
+		// gd_Array_call_reverse(arr->wrapper);
 		return obj;
 	}
 
@@ -39212,7 +39237,7 @@ static JSValue js_array_toReversed(JSContext *ctx, JSValueConst this_val,
 		if (js_get_fast_array(ctx, obj, &arrp, &count32) && count32 == len) {
 			for (; i >= 0; i--, pval++) {
 				*pval = JS_DupValue(ctx, arrp[i]);
-				gd_Array_call_append(p->wrapper, pval->var);
+				gd_Array_call_append(p->wrapper, gd_get_vwrapper(ctx, *pval));
 			}
 		} else {
 			// Query order is observable; test262 expects descending order.
@@ -45868,6 +45893,7 @@ typedef struct JSMapState {
 	uint32_t hash_size; /* must be a power of two */
 	uint32_t record_count_threshold; /* count at which a hash table
 										resize is needed */
+	DictionaryWrapper *wrapper;
 } JSMapState;
 
 #define MAGIC_SET (1 << 0)
