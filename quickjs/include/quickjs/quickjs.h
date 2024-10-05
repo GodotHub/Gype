@@ -251,6 +251,8 @@ static inline JS_BOOL JS_VALUE_IS_NAN(JSValue v) {
 
 void *gd_get_wrapper(JSContext *ctx, JSValue val);
 void *gd_get_vwrapper(JSContext *ctx, JSValue val);
+void gd_set_wrapper(JSContext *ctx, JSValue val, void *wrapper);
+void gd_set_vwrapper(JSContext *ctx, JSValue val, void *vwrapper);
 
 #endif /* !JS_NAN_BOXING */
 

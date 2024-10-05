@@ -383,7 +383,7 @@ def scons_generate_bindings(target, source, env):
 
 
 def generate_bindings(api_filepath, use_template_get_node, bits="64", precision="single", output_dir="."):
-    use_template_get_node = False
+    # TODO
     api = None
 
     target_dir = Path(output_dir) / "gen"
@@ -1575,6 +1575,8 @@ def generate_engine_class_header(class_api, used_classes, fully_used_classes, us
     if len(fully_used_classes) > 0:
         result.append("")
 
+    result.append('#include "quickjs/quickjs.h"')
+
     if class_name != "Object" and class_name != "ClassDBSingleton":
         result.append("#include <godot_cpp/core/class_db.hpp>")
         result.append("")
@@ -1612,6 +1614,14 @@ def generate_engine_class_header(class_api, used_classes, fully_used_classes, us
 
     result.append("public:")
     result.append("")
+
+    result.append(f"\tstatic JSClassID __class_id;")
+    result.append("")
+    result.append(
+        "\tinline static void __init_js_class_id() {\n"
+        f"\t\t{class_api["name"]}::__class_id = JS_NewClassID(&{class_api["name"]}::__class_id);\n"
+        "\t}\n"
+    )
 
     if "enums" in class_api:
         for enum_api in class_api["enums"]:

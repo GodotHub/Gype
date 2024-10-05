@@ -1343,6 +1343,16 @@ void *gd_get_vwrapper(JSContext *ctx, JSValue val) {
 	}
 }
 
+void gd_set_wrapper(JSContext *ctx, JSValue val, void *wrapper) {
+	JSObject *obj = JS_VALUE_GET_OBJ(val);
+	obj->wrapper = wrapper;
+}
+
+void gd_set_vwrapper(JSContext *ctx, JSValue val, void *vwrapper) {
+	JSObject *obj = JS_VALUE_GET_OBJ(val);
+	obj->vwrapper = vwrapper;
+}
+
 static void js_trigger_gc(JSRuntime *rt, size_t size) {
 	BOOL force_gc;
 #ifdef FORCE_GC_AT_MALLOC

@@ -11,16 +11,11 @@ class JSObject : public Object {
 
 	JSContext *ctx;
 	JSValue instance;
-	Dictionary property_dict;
 
 protected:
 	static void _bind_methods() {}
 
 public:
-	Dictionary get_property_dict() {
-		return property_dict;
-	}
-
 	JSValue get_instance() {
 		return instance;
 	}
