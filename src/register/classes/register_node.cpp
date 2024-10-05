@@ -1,12 +1,12 @@
 #include "register/classes/register_node.h"
 #include "quickjs/quickjs.h"
 #include "utils/env.h"
-#include "utils/register_helper.h"
 #include "utils/str_helper.h"
 #include <godot_cpp/classes/multiplayer_api.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/tween.hpp>
 #include <godot_cpp/core/class_db.hpp>
+#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/variant.hpp>
 
 using namespace godot;

@@ -13,17 +13,20 @@ void *gd_JSObject_get_opaque(ObjectWrapper *wrapper) {
 }
 
 ObjectWrapper *gd_new_empty_JSObject_wrapper() {
-	return new ObjectWrapper{ memnew(godot::JSObject) };
+	ObjectWrapper *wrapper = memnew(ObjectWrapper);
+	memnew_placement(&(wrapper->opaque), godot::JSObject());
+	return wrapper;
 }
 
-ObjectWrapper *get_new_JSObject_wrapper(JSContext *ctx, JSValue this_obj) {
-	return new ObjectWrapper{ memnew(godot::JSObject(ctx, this_obj)) };
+ObjectWrapper *gd_new_JSObject_wrapper(JSContext *ctx, JSValue this_obj) {
+	ObjectWrapper *wrapper = memnew(ObjectWrapper);
+	memnew_placement(&(wrapper->opaque), godot::JSObject(ctx, this_obj));
+	return wrapper;
 }
 
 void gd_JSObject_set_value(ObjectWrapper *this_obj, VariantWrapper *keyw, VariantWrapper *valw) {
 	godot::JSObject *obj = static_cast<godot::JSObject *>(gd_JSObject_get_opaque(this_obj));
-	godot::Dictionary properties = obj->get_property_dict();
 	godot::Variant key = gd_Variant_get_opaque(keyw);
 	godot::Variant val = gd_Variant_get_opaque(valw);
-	properties[key] = val;
+	this_obj->opaque->set(key, val);
 }

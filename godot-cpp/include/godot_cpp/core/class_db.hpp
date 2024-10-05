@@ -47,6 +47,8 @@
 
 #include <godot_cpp/core/class_db.hpp>
 
+#include <godot_cpp/core/convert_helper.hpp>
+
 #include <list>
 #include <mutex>
 #include <set>
@@ -214,12 +216,12 @@ public:
 #define BIND_BITFIELD_FLAG(m_constant) \
 	::godot::ClassDB::bind_integer_constant(get_class_static(), ::godot::_gde_constant_get_bitfield_name(m_constant, #m_constant), #m_constant, m_constant, true);
 
-#define BIND_VIRTUAL_METHOD(m_class, m_method)                                                                                                \
-	{                                                                                                                                         \
-		auto _call##m_method = [](GDExtensionObjectPtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr p_ret) -> void { \
-			JavaScriptDB::get_singleton()->call_virtual_method(reinterpret_cast<m_class *>(p_instance), #m_method);                           \
-		};                                                                                                                                    \
-		::godot::ClassDB::bind_virtual_method(m_class::get_class_static(), #m_method, _call##m_method);                                       \
+#define BIND_VIRTUAL_METHOD(m_class, m_method)                                                                                                                    \
+	{                                                                                                                                                             \
+		auto _call##m_method = [](GDExtensionObjectPtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr p_ret) -> void {                     \
+			JavaScriptDB::get_singleton()->call_virtual_method<&m_class::m_method>(#m_method, reinterpret_cast<m_class *>(p_instance), #m_method, p_args, p_ret); \
+		};                                                                                                                                                        \
+		::godot::ClassDB::bind_virtual_method(m_class::get_class_static(), #m_method, _call##m_method);                                                           \
 	}
 
 template <typename T, bool is_abstract>
@@ -368,10 +370,16 @@ public:
 		instances[obj->get_instance_id()] = js_obj;
 	}
 
-	// TODO
-	void call_virtual_method(Object *p_obj, String p_method_name) {
-		const JSValue &this_obj = instances[p_obj->get_instance_id()];
-		JSValue func_obj = JS_GetPropertyStr(ctx, this_obj, std::string(p_method_name.utf8().get_data()).c_str());
+	template <typename Func>
+	void call_virtual_method(const char *func_name, Object *p_obj, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr p_ret) {
+		using ReturnType = typename FunctionTraits<Func>::ReturnType;
+		using ArgTypes = typename FunctionTraits<Func>::ArgTypes;
+		constexpr std::size_t ArgCount = std::tuple_size<ArgTypes>::value;
+		auto tuple = convert_args_to_tuple<ArgTypes>(p_args);
+
+		JSValue this_obj = instances[p_obj->get_instance_id()];
+		JSValue func_obj = JS_GetPropertyStr(ctx, this_obj, func_name);
+		JSValue ret = call_js_function_with_tuple(ctx, func_obj, this_obj, ArgCount, tuple);
 	}
 
 	static JavaScriptDB *get_singleton();
