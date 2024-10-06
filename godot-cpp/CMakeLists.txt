@@ -41,7 +41,7 @@
 cmake_minimum_required(VERSION 3.13)
 project(godot-cpp LANGUAGES CXX)
 
-option(GENERATE_TEMPLATE_GET_NODE "Generate a template version of the Node class's get_node." ON)
+option(GENERATE_TEMPLATE_GET_NODE "Generate a template version of the Node class's get_node." OFF)
 option(GODOT_CPP_SYSTEM_HEADERS "Expose headers as SYSTEM." ON)
 option(GODOT_CPP_WARNING_AS_ERROR "Treat warnings as errors" OFF)
 
