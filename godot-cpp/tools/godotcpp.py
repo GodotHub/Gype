@@ -239,7 +239,7 @@ def options(opts, env):
         BoolVariable(
             key="generate_template_get_node",
             help="Generate a template version of the Node class's get_node.",
-            default=env.get("generate_template_get_node", True),
+            default=env.get("generate_template_get_node", False),
         )
     )
     opts.Add(
