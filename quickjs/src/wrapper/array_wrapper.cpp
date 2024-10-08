@@ -1,15 +1,13 @@
 #include "quickjs/wrapper/array_wrapper.h"
 #include "quickjs/quickjs.h"
+#include "quickjs/quickjs_helper.h"
 #include "quickjs/wrapper/js_object.h"
 #include "quickjs/wrapper/object_wrapper.h"
 #include "quickjs/wrapper/variant_wrapper.h"
 #include "quickjs/wrapper/wrappers.h"
-#include "utils/env.h"
-#include "utils/quickjs_helper.h"
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
-
 
 using namespace godot;
 

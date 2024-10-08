@@ -216,12 +216,13 @@ public:
 #define BIND_BITFIELD_FLAG(m_constant) \
 	::godot::ClassDB::bind_integer_constant(get_class_static(), ::godot::_gde_constant_get_bitfield_name(m_constant, #m_constant), #m_constant, m_constant, true);
 
-#define BIND_VIRTUAL_METHOD(m_class, m_method)                                                                                                                    \
-	{                                                                                                                                                             \
-		auto _call##m_method = [](GDExtensionObjectPtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr p_ret) -> void {                     \
-			JavaScriptDB::get_singleton()->call_virtual_method<&m_class::m_method>(#m_method, reinterpret_cast<m_class *>(p_instance), #m_method, p_args, p_ret); \
-		};                                                                                                                                                        \
-		::godot::ClassDB::bind_virtual_method(m_class::get_class_static(), #m_method, _call##m_method);                                                           \
+#define BIND_VIRTUAL_METHOD(m_class, m_method)                                                                                                                         \
+	{                                                                                                                                                                  \
+		auto _call##m_method = [](GDExtensionObjectPtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr p_ret) -> void {                          \
+			if (!JavaScriptDB::get_singleton()->call_virtual_method<&m_class::m_method>(#m_method, reinterpret_cast<m_class *>(p_instance), #m_method, p_args, p_ret)) \
+				call_with_ptr_args(reinterpret_cast<m_class *>(p_instance), &m_class::m_method, p_args, p_ret);                                                        \
+		};                                                                                                                                                             \
+		::godot::ClassDB::bind_virtual_method(m_class::get_class_static(), #m_method, _call##m_method);                                                                \
 	}
 
 template <typename T, bool is_abstract>
@@ -371,15 +372,20 @@ public:
 	}
 
 	template <typename Func>
-	void call_virtual_method(const char *func_name, Object *p_obj, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr p_ret) {
+	bool call_virtual_method(const char *func_name, Object *p_obj, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr p_ret) {
+		JSValue this_obj = instances[p_obj->get_instance_id()];
+		JSValue func_obj = JS_GetPropertyStr(ctx, this_obj, func_name);
+		if (JS_IsUndefined(func_obj) || JS_IsNull(func_obj))
+			return false;
+
 		using ReturnType = typename FunctionTraits<Func>::ReturnType;
 		using ArgTypes = typename FunctionTraits<Func>::ArgTypes;
 		constexpr std::size_t ArgCount = std::tuple_size<ArgTypes>::value;
 		auto tuple = convert_args_to_tuple<ArgTypes>(p_args);
-
-		JSValue this_obj = instances[p_obj->get_instance_id()];
-		JSValue func_obj = JS_GetPropertyStr(ctx, this_obj, func_name);
-		JSValue ret = call_js_function_with_tuple(ctx, func_obj, this_obj, ArgCount, tuple);
+		JSValue js_ret = call_js_function_with_tuple(ctx, func_obj, this_obj, ArgCount, tuple);
+		ReturnType ret = convert_to_gd(ctx, ret);
+		internal::gdextension_interface_variant_new_copy(p_ret, ret);
+		return true;
 	}
 
 	static JavaScriptDB *get_singleton();

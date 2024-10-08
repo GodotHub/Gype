@@ -9,8 +9,8 @@ namespace godot {
 class JSObject : public Object {
 	GDCLASS(JSObject, Object);
 
-	JSContext *ctx;
-	JSValue instance;
+	JSContext *ctx = nullptr;
+	JSValue instance = JS_UNDEFINED;
 
 protected:
 	static void _bind_methods() {}

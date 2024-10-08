@@ -1,0 +1,111 @@
+
+#include "quickjs/quickjs.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/env.h"
+#include "utils/register_helper.h"
+#include <godot_cpp/classes/box_mesh.hpp>
+#include <godot_cpp/classes/primitive_mesh.hpp>
+#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/variant/builtin_types.hpp>
+
+
+using namespace godot;
+
+static void box_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
+	BoxMesh *box_mesh = static_cast<BoxMesh *>(JS_GetOpaque(val, BoxMesh::__class_id));
+	if (box_mesh)
+		BoxMesh::free(nullptr, box_mesh);
+}
+
+static JSClassDef box_mesh_class_def = {
+	"BoxMesh",
+	.finalizer = box_mesh_class_finalizer
+};
+
+static JSValue box_mesh_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
+	BoxMesh *box_mesh_class;
+	JSValue obj = JS_NewObjectClass(ctx, BoxMesh::__class_id);
+	if (JS_IsException(obj))
+		return obj;
+	box_mesh_class = memnew(BoxMesh);
+	if (!box_mesh_class) {
+		JS_FreeValue(ctx, obj);
+		return JS_EXCEPTION;
+	}
+
+	JS_SetOpaque(obj, box_mesh_class);
+	return obj;
+}
+static JSValue box_mesh_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&BoxMesh::set_size, BoxMesh::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue box_mesh_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&BoxMesh::get_size, BoxMesh::__class_id, ctx, this_val, argv);
+};
+static JSValue box_mesh_class_set_subdivide_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&BoxMesh::set_subdivide_width, BoxMesh::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue box_mesh_class_get_subdivide_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&BoxMesh::get_subdivide_width, BoxMesh::__class_id, ctx, this_val, argv);
+};
+static JSValue box_mesh_class_set_subdivide_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&BoxMesh::set_subdivide_height, BoxMesh::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue box_mesh_class_get_subdivide_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&BoxMesh::get_subdivide_height, BoxMesh::__class_id, ctx, this_val, argv);
+};
+static JSValue box_mesh_class_set_subdivide_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&BoxMesh::set_subdivide_depth, BoxMesh::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue box_mesh_class_get_subdivide_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&BoxMesh::get_subdivide_depth, BoxMesh::__class_id, ctx, this_val, argv);
+};
+static const JSCFunctionListEntry box_mesh_class_proto_funcs[] = {
+	JS_CFUNC_DEF("set_size", 1, &box_mesh_class_set_size),
+	JS_CFUNC_DEF("get_size", 0, &box_mesh_class_get_size),
+	JS_CFUNC_DEF("set_subdivide_width", 1, &box_mesh_class_set_subdivide_width),
+	JS_CFUNC_DEF("get_subdivide_width", 0, &box_mesh_class_get_subdivide_width),
+	JS_CFUNC_DEF("set_subdivide_height", 1, &box_mesh_class_set_subdivide_height),
+	JS_CFUNC_DEF("get_subdivide_height", 0, &box_mesh_class_get_subdivide_height),
+	JS_CFUNC_DEF("set_subdivide_depth", 1, &box_mesh_class_set_subdivide_depth),
+	JS_CFUNC_DEF("get_subdivide_depth", 0, &box_mesh_class_get_subdivide_depth),
+};
+
+static int js_box_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
+	JS_NewClassID(&BoxMesh::__class_id);
+	classes["BoxMesh"] = BoxMesh::__class_id;
+	JS_NewClass(JS_GetRuntime(ctx), BoxMesh::__class_id, &box_mesh_class_def);
+
+	JSValue proto = JS_NewObject(ctx);
+	JSValue base_class = JS_GetClassProto(ctx, PrimitiveMesh::__class_id);
+	JS_SetPrototype(ctx, proto, base_class);
+	JS_SetClassProto(ctx, BoxMesh::__class_id, proto);
+	JS_SetPropertyFunctionList(ctx, proto, box_mesh_class_proto_funcs, _countof(box_mesh_class_proto_funcs));
+
+	JSValue ctor = JS_NewCFunction2(ctx, box_mesh_class_constructor, "BoxMesh", 0, JS_CFUNC_constructor, 0);
+
+	JS_SetModuleExport(ctx, m, "BoxMesh", ctor);
+
+	return 0;
+}
+
+JSModuleDef *_js_init_box_mesh_module(JSContext *ctx, const char *module_name) {
+	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_box_mesh_class_init);
+	if (!m)
+		return NULL;
+	JS_AddModuleExport(ctx, m, "BoxMesh");
+	return m;
+}
+
+JSModuleDef *js_init_box_mesh_module(JSContext *ctx) {
+	return _js_init_box_mesh_module(ctx, "godot/classes/box_mesh");
+}
+
+void register_box_mesh() {
+	js_init_box_mesh_module(ctx);
+}

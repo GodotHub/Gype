@@ -1,0 +1,138 @@
+
+#include "quickjs/quickjs.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/env.h"
+#include "utils/register_helper.h"
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/timer.hpp>
+#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/variant/builtin_types.hpp>
+
+
+using namespace godot;
+
+static void timer_class_finalizer(JSRuntime *rt, JSValue val) {
+	Timer *timer = static_cast<Timer *>(JS_GetOpaque(val, Timer::__class_id));
+	if (timer)
+		Timer::free(nullptr, timer);
+}
+
+static JSClassDef timer_class_def = {
+	"Timer",
+	.finalizer = timer_class_finalizer
+};
+
+static JSValue timer_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
+	Timer *timer_class;
+	JSValue obj = JS_NewObjectClass(ctx, Timer::__class_id);
+	if (JS_IsException(obj))
+		return obj;
+	timer_class = memnew(Timer);
+	if (!timer_class) {
+		JS_FreeValue(ctx, obj);
+		return JS_EXCEPTION;
+	}
+
+	JS_SetOpaque(obj, timer_class);
+	return obj;
+}
+static JSValue timer_class_set_wait_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&Timer::set_wait_time, Timer::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue timer_class_get_wait_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Timer::get_wait_time, Timer::__class_id, ctx, this_val, argv);
+};
+static JSValue timer_class_set_one_shot(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&Timer::set_one_shot, Timer::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue timer_class_is_one_shot(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Timer::is_one_shot, Timer::__class_id, ctx, this_val, argv);
+};
+static JSValue timer_class_set_autostart(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&Timer::set_autostart, Timer::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue timer_class_has_autostart(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Timer::has_autostart, Timer::__class_id, ctx, this_val, argv);
+};
+static JSValue timer_class_start(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&Timer::start, Timer::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue timer_class_stop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&Timer::stop, Timer::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue timer_class_set_paused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&Timer::set_paused, Timer::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue timer_class_is_paused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Timer::is_paused, Timer::__class_id, ctx, this_val, argv);
+};
+static JSValue timer_class_is_stopped(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Timer::is_stopped, Timer::__class_id, ctx, this_val, argv);
+};
+static JSValue timer_class_get_time_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Timer::get_time_left, Timer::__class_id, ctx, this_val, argv);
+};
+static JSValue timer_class_set_timer_process_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&Timer::set_timer_process_callback, Timer::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue timer_class_get_timer_process_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Timer::get_timer_process_callback, Timer::__class_id, ctx, this_val, argv);
+};
+static const JSCFunctionListEntry timer_class_proto_funcs[] = {
+	JS_CFUNC_DEF("set_wait_time", 1, &timer_class_set_wait_time),
+	JS_CFUNC_DEF("get_wait_time", 0, &timer_class_get_wait_time),
+	JS_CFUNC_DEF("set_one_shot", 1, &timer_class_set_one_shot),
+	JS_CFUNC_DEF("is_one_shot", 0, &timer_class_is_one_shot),
+	JS_CFUNC_DEF("set_autostart", 1, &timer_class_set_autostart),
+	JS_CFUNC_DEF("has_autostart", 0, &timer_class_has_autostart),
+	JS_CFUNC_DEF("start", 1, &timer_class_start),
+	JS_CFUNC_DEF("stop", 0, &timer_class_stop),
+	JS_CFUNC_DEF("set_paused", 1, &timer_class_set_paused),
+	JS_CFUNC_DEF("is_paused", 0, &timer_class_is_paused),
+	JS_CFUNC_DEF("is_stopped", 0, &timer_class_is_stopped),
+	JS_CFUNC_DEF("get_time_left", 0, &timer_class_get_time_left),
+	JS_CFUNC_DEF("set_timer_process_callback", 1, &timer_class_set_timer_process_callback),
+	JS_CFUNC_DEF("get_timer_process_callback", 0, &timer_class_get_timer_process_callback),
+};
+
+static int js_timer_class_init(JSContext *ctx, JSModuleDef *m) {
+	JS_NewClassID(&Timer::__class_id);
+	classes["Timer"] = Timer::__class_id;
+	JS_NewClass(JS_GetRuntime(ctx), Timer::__class_id, &timer_class_def);
+
+	JSValue proto = JS_NewObject(ctx);
+	JSValue base_class = JS_GetClassProto(ctx, Node::__class_id);
+	JS_SetPrototype(ctx, proto, base_class);
+	JS_SetClassProto(ctx, Timer::__class_id, proto);
+	JS_SetPropertyFunctionList(ctx, proto, timer_class_proto_funcs, _countof(timer_class_proto_funcs));
+
+	JSValue ctor = JS_NewCFunction2(ctx, timer_class_constructor, "Timer", 0, JS_CFUNC_constructor, 0);
+
+	JS_SetModuleExport(ctx, m, "Timer", ctor);
+
+	return 0;
+}
+
+JSModuleDef *_js_init_timer_module(JSContext *ctx, const char *module_name) {
+	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_timer_class_init);
+	if (!m)
+		return NULL;
+	JS_AddModuleExport(ctx, m, "Timer");
+	return m;
+}
+
+JSModuleDef *js_init_timer_module(JSContext *ctx) {
+	return _js_init_timer_module(ctx, "godot/classes/timer");
+}
+
+void register_timer() {
+	js_init_timer_module(ctx);
+}

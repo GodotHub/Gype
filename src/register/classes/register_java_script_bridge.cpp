@@ -1,0 +1,110 @@
+
+#include "quickjs/quickjs.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/env.h"
+#include "utils/register_helper.h"
+#include <godot_cpp/classes/java_script_bridge.hpp>
+#include <godot_cpp/classes/java_script_object.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/variant/builtin_types.hpp>
+
+
+using namespace godot;
+
+static void java_script_bridge_class_finalizer(JSRuntime *rt, JSValue val) {
+	JavaScriptBridge *java_script_bridge = static_cast<JavaScriptBridge *>(JS_GetOpaque(val, JavaScriptBridge::__class_id));
+	if (java_script_bridge)
+		JavaScriptBridge::free(nullptr, java_script_bridge);
+}
+
+static JSClassDef java_script_bridge_class_def = {
+	"JavaScriptBridge",
+	.finalizer = java_script_bridge_class_finalizer
+};
+
+static JSValue java_script_bridge_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
+	JavaScriptBridge *java_script_bridge_class;
+	JSValue obj = JS_NewObjectClass(ctx, JavaScriptBridge::__class_id);
+	if (JS_IsException(obj))
+		return obj;
+	java_script_bridge_class = JavaScriptBridge::get_singleton();
+	if (!java_script_bridge_class) {
+		JS_FreeValue(ctx, obj);
+		return JS_EXCEPTION;
+	}
+
+	JS_SetOpaque(obj, java_script_bridge_class);
+	return obj;
+}
+static JSValue java_script_bridge_class_eval(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_method_ret(&JavaScriptBridge::eval, JavaScriptBridge::__class_id, ctx, this_val, argv);
+};
+static JSValue java_script_bridge_class_get_interface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_method_ret(&JavaScriptBridge::get_interface, JavaScriptBridge::__class_id, ctx, this_val, argv);
+};
+static JSValue java_script_bridge_class_create_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_method_ret(&JavaScriptBridge::create_callback, JavaScriptBridge::__class_id, ctx, this_val, argv);
+};
+static JSValue java_script_bridge_class_download_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&JavaScriptBridge::download_buffer, JavaScriptBridge::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue java_script_bridge_class_pwa_needs_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&JavaScriptBridge::pwa_needs_update, JavaScriptBridge::__class_id, ctx, this_val, argv);
+};
+static JSValue java_script_bridge_class_pwa_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_method_ret(&JavaScriptBridge::pwa_update, JavaScriptBridge::__class_id, ctx, this_val, argv);
+};
+static JSValue java_script_bridge_class_force_fs_sync(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&JavaScriptBridge::force_fs_sync, JavaScriptBridge::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue java_script_bridge_class_create_object(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_vararg_method(&JavaScriptBridge::js_create_object, JavaScriptBridge::__class_id, ctx, this_val, argc, argv);
+}
+static const JSCFunctionListEntry java_script_bridge_class_proto_funcs[] = {
+	JS_CFUNC_DEF("eval", 2, &java_script_bridge_class_eval),
+	JS_CFUNC_DEF("get_interface", 1, &java_script_bridge_class_get_interface),
+	JS_CFUNC_DEF("create_callback", 1, &java_script_bridge_class_create_callback),
+	JS_CFUNC_DEF("download_buffer", 3, &java_script_bridge_class_download_buffer),
+	JS_CFUNC_DEF("pwa_needs_update", 0, &java_script_bridge_class_pwa_needs_update),
+	JS_CFUNC_DEF("pwa_update", 0, &java_script_bridge_class_pwa_update),
+	JS_CFUNC_DEF("force_fs_sync", 0, &java_script_bridge_class_force_fs_sync),
+	JS_CFUNC_DEF("create_object", 1, &java_script_bridge_class_create_object),
+};
+
+static int js_java_script_bridge_class_init(JSContext *ctx, JSModuleDef *m) {
+	JS_NewClassID(&JavaScriptBridge::__class_id);
+	classes["JavaScriptBridge"] = JavaScriptBridge::__class_id;
+	JS_NewClass(JS_GetRuntime(ctx), JavaScriptBridge::__class_id, &java_script_bridge_class_def);
+
+	JSValue proto = JS_NewObject(ctx);
+	JSValue base_class = JS_GetClassProto(ctx, Object::__class_id);
+	JS_SetPrototype(ctx, proto, base_class);
+	JS_SetClassProto(ctx, JavaScriptBridge::__class_id, proto);
+	JS_SetPropertyFunctionList(ctx, proto, java_script_bridge_class_proto_funcs, _countof(java_script_bridge_class_proto_funcs));
+
+	JSValue ctor = JS_NewCFunction2(ctx, java_script_bridge_class_constructor, "JavaScriptBridge", 0, JS_CFUNC_constructor, 0);
+
+	JS_SetModuleExport(ctx, m, "JavaScriptBridge", ctor);
+
+	return 0;
+}
+
+JSModuleDef *_js_init_java_script_bridge_module(JSContext *ctx, const char *module_name) {
+	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_java_script_bridge_class_init);
+	if (!m)
+		return NULL;
+	JS_AddModuleExport(ctx, m, "JavaScriptBridge");
+	return m;
+}
+
+JSModuleDef *js_init_java_script_bridge_module(JSContext *ctx) {
+	return _js_init_java_script_bridge_module(ctx, "godot/classes/java_script_bridge");
+}
+
+void register_java_script_bridge() {
+	js_init_java_script_bridge_module(ctx);
+}

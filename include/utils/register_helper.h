@@ -2,18 +2,18 @@
 #define __REGISTER_HELPER_H__
 
 #include "quickjs/quickjs.h"
-#include "utils/env.h"
-#include "utils/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/core/type_info.hpp>
 #include <godot_cpp/templates/hash_map.hpp>
-#include <godot_cpp/variant/variant.hpp>
-#include <string>
-#include <type_traits>
+#include <godot_cpp/variant/string_name.hpp>
 
 using namespace godot;
 
-static HashMap<StringName, JSClassID> classes;
+extern HashMap<StringName, JSClassID> classes;
+
+template <typename T>
+T *js_owner_to_gd(JSContext *ctx, JSValue this_obj) {
+	return static_cast<T *>(gd_get_wrapper(ctx, this_obj));
+}
+
+Variant js_get_variant(JSContext *ctx, JSValue val);
 
 #endif // __REGISTER_HELPER_H__

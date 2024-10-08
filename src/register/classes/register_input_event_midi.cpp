@@ -1,0 +1,147 @@
+
+#include "quickjs/quickjs.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/env.h"
+#include "utils/register_helper.h"
+#include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/input_event_midi.hpp>
+#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/variant/builtin_types.hpp>
+
+
+using namespace godot;
+
+static void input_event_midi_class_finalizer(JSRuntime *rt, JSValue val) {
+	InputEventMIDI *input_event_midi = static_cast<InputEventMIDI *>(JS_GetOpaque(val, InputEventMIDI::__class_id));
+	if (input_event_midi)
+		InputEventMIDI::free(nullptr, input_event_midi);
+}
+
+static JSClassDef input_event_midi_class_def = {
+	"InputEventMIDI",
+	.finalizer = input_event_midi_class_finalizer
+};
+
+static JSValue input_event_midi_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
+	InputEventMIDI *input_event_midi_class;
+	JSValue obj = JS_NewObjectClass(ctx, InputEventMIDI::__class_id);
+	if (JS_IsException(obj))
+		return obj;
+	input_event_midi_class = memnew(InputEventMIDI);
+	if (!input_event_midi_class) {
+		JS_FreeValue(ctx, obj);
+		return JS_EXCEPTION;
+	}
+
+	JS_SetOpaque(obj, input_event_midi_class);
+	return obj;
+}
+static JSValue input_event_midi_class_set_channel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&InputEventMIDI::set_channel, InputEventMIDI::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue input_event_midi_class_get_channel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&InputEventMIDI::get_channel, InputEventMIDI::__class_id, ctx, this_val, argv);
+};
+static JSValue input_event_midi_class_set_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&InputEventMIDI::set_message, InputEventMIDI::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue input_event_midi_class_get_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&InputEventMIDI::get_message, InputEventMIDI::__class_id, ctx, this_val, argv);
+};
+static JSValue input_event_midi_class_set_pitch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&InputEventMIDI::set_pitch, InputEventMIDI::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue input_event_midi_class_get_pitch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&InputEventMIDI::get_pitch, InputEventMIDI::__class_id, ctx, this_val, argv);
+};
+static JSValue input_event_midi_class_set_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&InputEventMIDI::set_velocity, InputEventMIDI::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue input_event_midi_class_get_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&InputEventMIDI::get_velocity, InputEventMIDI::__class_id, ctx, this_val, argv);
+};
+static JSValue input_event_midi_class_set_instrument(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&InputEventMIDI::set_instrument, InputEventMIDI::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue input_event_midi_class_get_instrument(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&InputEventMIDI::get_instrument, InputEventMIDI::__class_id, ctx, this_val, argv);
+};
+static JSValue input_event_midi_class_set_pressure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&InputEventMIDI::set_pressure, InputEventMIDI::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue input_event_midi_class_get_pressure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&InputEventMIDI::get_pressure, InputEventMIDI::__class_id, ctx, this_val, argv);
+};
+static JSValue input_event_midi_class_set_controller_number(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&InputEventMIDI::set_controller_number, InputEventMIDI::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue input_event_midi_class_get_controller_number(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&InputEventMIDI::get_controller_number, InputEventMIDI::__class_id, ctx, this_val, argv);
+};
+static JSValue input_event_midi_class_set_controller_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&InputEventMIDI::set_controller_value, InputEventMIDI::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue input_event_midi_class_get_controller_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&InputEventMIDI::get_controller_value, InputEventMIDI::__class_id, ctx, this_val, argv);
+};
+static const JSCFunctionListEntry input_event_midi_class_proto_funcs[] = {
+	JS_CFUNC_DEF("set_channel", 1, &input_event_midi_class_set_channel),
+	JS_CFUNC_DEF("get_channel", 0, &input_event_midi_class_get_channel),
+	JS_CFUNC_DEF("set_message", 1, &input_event_midi_class_set_message),
+	JS_CFUNC_DEF("get_message", 0, &input_event_midi_class_get_message),
+	JS_CFUNC_DEF("set_pitch", 1, &input_event_midi_class_set_pitch),
+	JS_CFUNC_DEF("get_pitch", 0, &input_event_midi_class_get_pitch),
+	JS_CFUNC_DEF("set_velocity", 1, &input_event_midi_class_set_velocity),
+	JS_CFUNC_DEF("get_velocity", 0, &input_event_midi_class_get_velocity),
+	JS_CFUNC_DEF("set_instrument", 1, &input_event_midi_class_set_instrument),
+	JS_CFUNC_DEF("get_instrument", 0, &input_event_midi_class_get_instrument),
+	JS_CFUNC_DEF("set_pressure", 1, &input_event_midi_class_set_pressure),
+	JS_CFUNC_DEF("get_pressure", 0, &input_event_midi_class_get_pressure),
+	JS_CFUNC_DEF("set_controller_number", 1, &input_event_midi_class_set_controller_number),
+	JS_CFUNC_DEF("get_controller_number", 0, &input_event_midi_class_get_controller_number),
+	JS_CFUNC_DEF("set_controller_value", 1, &input_event_midi_class_set_controller_value),
+	JS_CFUNC_DEF("get_controller_value", 0, &input_event_midi_class_get_controller_value),
+};
+
+static int js_input_event_midi_class_init(JSContext *ctx, JSModuleDef *m) {
+	JS_NewClassID(&InputEventMIDI::__class_id);
+	classes["InputEventMIDI"] = InputEventMIDI::__class_id;
+	JS_NewClass(JS_GetRuntime(ctx), InputEventMIDI::__class_id, &input_event_midi_class_def);
+
+	JSValue proto = JS_NewObject(ctx);
+	JSValue base_class = JS_GetClassProto(ctx, InputEvent::__class_id);
+	JS_SetPrototype(ctx, proto, base_class);
+	JS_SetClassProto(ctx, InputEventMIDI::__class_id, proto);
+	JS_SetPropertyFunctionList(ctx, proto, input_event_midi_class_proto_funcs, _countof(input_event_midi_class_proto_funcs));
+
+	JSValue ctor = JS_NewCFunction2(ctx, input_event_midi_class_constructor, "InputEventMIDI", 0, JS_CFUNC_constructor, 0);
+
+	JS_SetModuleExport(ctx, m, "InputEventMIDI", ctor);
+
+	return 0;
+}
+
+JSModuleDef *_js_init_input_event_midi_module(JSContext *ctx, const char *module_name) {
+	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_input_event_midi_class_init);
+	if (!m)
+		return NULL;
+	JS_AddModuleExport(ctx, m, "InputEventMIDI");
+	return m;
+}
+
+JSModuleDef *js_init_input_event_midi_module(JSContext *ctx) {
+	return _js_init_input_event_midi_module(ctx, "godot/classes/input_event_midi");
+}
+
+void register_input_event_midi() {
+	js_init_input_event_midi_module(ctx);
+}

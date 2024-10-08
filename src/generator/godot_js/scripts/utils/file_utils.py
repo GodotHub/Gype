@@ -7,5 +7,5 @@ def _read_gde_json():
     return json.loads(root.joinpath('../../../', 'godot-cpp','gdextension','extension_api.json').read_text(encoding='utf8'))
 
 workspace_dir = os.getenv('VSCODE_WORKSPACE', os.getcwd())
-cpp_generated_dir = Path(workspace_dir).parent.parent.parent
+generated_root_dir = Path(workspace_dir).parent.parent.parent
 gde_json = _read_gde_json()

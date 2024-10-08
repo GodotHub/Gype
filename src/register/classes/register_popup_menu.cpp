@@ -1,0 +1,478 @@
+
+#include "quickjs/quickjs.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/env.h"
+#include "utils/register_helper.h"
+#include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/popup.hpp>
+#include <godot_cpp/classes/popup_menu.hpp>
+#include <godot_cpp/classes/shortcut.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/variant/builtin_types.hpp>
+
+
+using namespace godot;
+
+static void popup_menu_class_finalizer(JSRuntime *rt, JSValue val) {
+	PopupMenu *popup_menu = static_cast<PopupMenu *>(JS_GetOpaque(val, PopupMenu::__class_id));
+	if (popup_menu)
+		PopupMenu::free(nullptr, popup_menu);
+}
+
+static JSClassDef popup_menu_class_def = {
+	"PopupMenu",
+	.finalizer = popup_menu_class_finalizer
+};
+
+static JSValue popup_menu_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
+	PopupMenu *popup_menu_class;
+	JSValue obj = JS_NewObjectClass(ctx, PopupMenu::__class_id);
+	if (JS_IsException(obj))
+		return obj;
+	popup_menu_class = memnew(PopupMenu);
+	if (!popup_menu_class) {
+		JS_FreeValue(ctx, obj);
+		return JS_EXCEPTION;
+	}
+
+	JS_SetOpaque(obj, popup_menu_class);
+	return obj;
+}
+static JSValue popup_menu_class_activate_item_by_event(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_method_ret(&PopupMenu::activate_item_by_event, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_set_prefer_native_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_prefer_native_menu, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_is_prefer_native_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::is_prefer_native_menu, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_is_native_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::is_native_menu, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_add_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::add_item, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_add_icon_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::add_icon_item, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_add_check_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::add_check_item, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_add_icon_check_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::add_icon_check_item, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_add_radio_check_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::add_radio_check_item, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_add_icon_radio_check_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::add_icon_radio_check_item, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_add_multistate_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::add_multistate_item, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_add_shortcut(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::add_shortcut, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_add_icon_shortcut(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::add_icon_shortcut, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_add_check_shortcut(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::add_check_shortcut, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_add_icon_check_shortcut(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::add_icon_check_shortcut, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_add_radio_check_shortcut(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::add_radio_check_shortcut, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_add_icon_radio_check_shortcut(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::add_icon_radio_check_shortcut, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_add_submenu_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::add_submenu_item, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_add_submenu_node_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::add_submenu_node_item, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_set_item_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_item_text, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_set_item_text_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_item_text_direction, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_set_item_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_item_language, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_set_item_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_item_icon, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_set_item_icon_max_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_item_icon_max_width, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_set_item_icon_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_item_icon_modulate, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_set_item_checked(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_item_checked, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_set_item_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_item_id, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_set_item_accelerator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_item_accelerator, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_set_item_metadata(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_item_metadata, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_set_item_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_item_disabled, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_set_item_submenu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_item_submenu, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_set_item_submenu_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_item_submenu_node, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_set_item_as_separator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_item_as_separator, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_set_item_as_checkable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_item_as_checkable, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_set_item_as_radio_checkable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_item_as_radio_checkable, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_set_item_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_item_tooltip, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_set_item_shortcut(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_item_shortcut, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_set_item_indent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_item_indent, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_set_item_multistate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_item_multistate, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_set_item_multistate_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_item_multistate_max, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_set_item_shortcut_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_item_shortcut_disabled, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_toggle_item_checked(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::toggle_item_checked, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_toggle_item_multistate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::toggle_item_multistate, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_get_item_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::get_item_text, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_get_item_text_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::get_item_text_direction, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_get_item_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::get_item_language, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_get_item_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::get_item_icon, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_get_item_icon_max_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::get_item_icon_max_width, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_get_item_icon_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::get_item_icon_modulate, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_is_item_checked(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::is_item_checked, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_get_item_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::get_item_id, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_get_item_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::get_item_index, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_get_item_accelerator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::get_item_accelerator, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_get_item_metadata(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::get_item_metadata, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_is_item_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::is_item_disabled, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_get_item_submenu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::get_item_submenu, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_get_item_submenu_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::get_item_submenu_node, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_is_item_separator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::is_item_separator, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_is_item_checkable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::is_item_checkable, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_is_item_radio_checkable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::is_item_radio_checkable, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_is_item_shortcut_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::is_item_shortcut_disabled, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_get_item_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::get_item_tooltip, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_get_item_shortcut(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::get_item_shortcut, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_get_item_indent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::get_item_indent, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_get_item_multistate_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::get_item_multistate_max, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_get_item_multistate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::get_item_multistate, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_set_focused_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_focused_item, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_get_focused_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::get_focused_item, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_set_item_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_item_count, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_get_item_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::get_item_count, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_scroll_to_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::scroll_to_item, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_remove_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::remove_item, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_add_separator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::add_separator, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::clear, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_set_hide_on_item_selection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_hide_on_item_selection, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_is_hide_on_item_selection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::is_hide_on_item_selection, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_set_hide_on_checkable_item_selection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_hide_on_checkable_item_selection, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_is_hide_on_checkable_item_selection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::is_hide_on_checkable_item_selection, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_set_hide_on_state_item_selection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_hide_on_state_item_selection, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_is_hide_on_state_item_selection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::is_hide_on_state_item_selection, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_set_submenu_popup_delay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_submenu_popup_delay, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_get_submenu_popup_delay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::get_submenu_popup_delay, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_set_allow_search(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_allow_search, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_get_allow_search(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::get_allow_search, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_is_system_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::is_system_menu, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static JSValue popup_menu_class_set_system_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PopupMenu::set_system_menu, PopupMenu::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue popup_menu_class_get_system_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PopupMenu::get_system_menu, PopupMenu::__class_id, ctx, this_val, argv);
+};
+static const JSCFunctionListEntry popup_menu_class_proto_funcs[] = {
+	JS_CFUNC_DEF("activate_item_by_event", 2, &popup_menu_class_activate_item_by_event),
+	JS_CFUNC_DEF("set_prefer_native_menu", 1, &popup_menu_class_set_prefer_native_menu),
+	JS_CFUNC_DEF("is_prefer_native_menu", 0, &popup_menu_class_is_prefer_native_menu),
+	JS_CFUNC_DEF("is_native_menu", 0, &popup_menu_class_is_native_menu),
+	JS_CFUNC_DEF("add_item", 3, &popup_menu_class_add_item),
+	JS_CFUNC_DEF("add_icon_item", 4, &popup_menu_class_add_icon_item),
+	JS_CFUNC_DEF("add_check_item", 3, &popup_menu_class_add_check_item),
+	JS_CFUNC_DEF("add_icon_check_item", 4, &popup_menu_class_add_icon_check_item),
+	JS_CFUNC_DEF("add_radio_check_item", 3, &popup_menu_class_add_radio_check_item),
+	JS_CFUNC_DEF("add_icon_radio_check_item", 4, &popup_menu_class_add_icon_radio_check_item),
+	JS_CFUNC_DEF("add_multistate_item", 5, &popup_menu_class_add_multistate_item),
+	JS_CFUNC_DEF("add_shortcut", 4, &popup_menu_class_add_shortcut),
+	JS_CFUNC_DEF("add_icon_shortcut", 5, &popup_menu_class_add_icon_shortcut),
+	JS_CFUNC_DEF("add_check_shortcut", 3, &popup_menu_class_add_check_shortcut),
+	JS_CFUNC_DEF("add_icon_check_shortcut", 4, &popup_menu_class_add_icon_check_shortcut),
+	JS_CFUNC_DEF("add_radio_check_shortcut", 3, &popup_menu_class_add_radio_check_shortcut),
+	JS_CFUNC_DEF("add_icon_radio_check_shortcut", 4, &popup_menu_class_add_icon_radio_check_shortcut),
+	JS_CFUNC_DEF("add_submenu_item", 3, &popup_menu_class_add_submenu_item),
+	JS_CFUNC_DEF("add_submenu_node_item", 3, &popup_menu_class_add_submenu_node_item),
+	JS_CFUNC_DEF("set_item_text", 2, &popup_menu_class_set_item_text),
+	JS_CFUNC_DEF("set_item_text_direction", 2, &popup_menu_class_set_item_text_direction),
+	JS_CFUNC_DEF("set_item_language", 2, &popup_menu_class_set_item_language),
+	JS_CFUNC_DEF("set_item_icon", 2, &popup_menu_class_set_item_icon),
+	JS_CFUNC_DEF("set_item_icon_max_width", 2, &popup_menu_class_set_item_icon_max_width),
+	JS_CFUNC_DEF("set_item_icon_modulate", 2, &popup_menu_class_set_item_icon_modulate),
+	JS_CFUNC_DEF("set_item_checked", 2, &popup_menu_class_set_item_checked),
+	JS_CFUNC_DEF("set_item_id", 2, &popup_menu_class_set_item_id),
+	JS_CFUNC_DEF("set_item_accelerator", 2, &popup_menu_class_set_item_accelerator),
+	JS_CFUNC_DEF("set_item_metadata", 2, &popup_menu_class_set_item_metadata),
+	JS_CFUNC_DEF("set_item_disabled", 2, &popup_menu_class_set_item_disabled),
+	JS_CFUNC_DEF("set_item_submenu", 2, &popup_menu_class_set_item_submenu),
+	JS_CFUNC_DEF("set_item_submenu_node", 2, &popup_menu_class_set_item_submenu_node),
+	JS_CFUNC_DEF("set_item_as_separator", 2, &popup_menu_class_set_item_as_separator),
+	JS_CFUNC_DEF("set_item_as_checkable", 2, &popup_menu_class_set_item_as_checkable),
+	JS_CFUNC_DEF("set_item_as_radio_checkable", 2, &popup_menu_class_set_item_as_radio_checkable),
+	JS_CFUNC_DEF("set_item_tooltip", 2, &popup_menu_class_set_item_tooltip),
+	JS_CFUNC_DEF("set_item_shortcut", 3, &popup_menu_class_set_item_shortcut),
+	JS_CFUNC_DEF("set_item_indent", 2, &popup_menu_class_set_item_indent),
+	JS_CFUNC_DEF("set_item_multistate", 2, &popup_menu_class_set_item_multistate),
+	JS_CFUNC_DEF("set_item_multistate_max", 2, &popup_menu_class_set_item_multistate_max),
+	JS_CFUNC_DEF("set_item_shortcut_disabled", 2, &popup_menu_class_set_item_shortcut_disabled),
+	JS_CFUNC_DEF("toggle_item_checked", 1, &popup_menu_class_toggle_item_checked),
+	JS_CFUNC_DEF("toggle_item_multistate", 1, &popup_menu_class_toggle_item_multistate),
+	JS_CFUNC_DEF("get_item_text", 1, &popup_menu_class_get_item_text),
+	JS_CFUNC_DEF("get_item_text_direction", 1, &popup_menu_class_get_item_text_direction),
+	JS_CFUNC_DEF("get_item_language", 1, &popup_menu_class_get_item_language),
+	JS_CFUNC_DEF("get_item_icon", 1, &popup_menu_class_get_item_icon),
+	JS_CFUNC_DEF("get_item_icon_max_width", 1, &popup_menu_class_get_item_icon_max_width),
+	JS_CFUNC_DEF("get_item_icon_modulate", 1, &popup_menu_class_get_item_icon_modulate),
+	JS_CFUNC_DEF("is_item_checked", 1, &popup_menu_class_is_item_checked),
+	JS_CFUNC_DEF("get_item_id", 1, &popup_menu_class_get_item_id),
+	JS_CFUNC_DEF("get_item_index", 1, &popup_menu_class_get_item_index),
+	JS_CFUNC_DEF("get_item_accelerator", 1, &popup_menu_class_get_item_accelerator),
+	JS_CFUNC_DEF("get_item_metadata", 1, &popup_menu_class_get_item_metadata),
+	JS_CFUNC_DEF("is_item_disabled", 1, &popup_menu_class_is_item_disabled),
+	JS_CFUNC_DEF("get_item_submenu", 1, &popup_menu_class_get_item_submenu),
+	JS_CFUNC_DEF("get_item_submenu_node", 1, &popup_menu_class_get_item_submenu_node),
+	JS_CFUNC_DEF("is_item_separator", 1, &popup_menu_class_is_item_separator),
+	JS_CFUNC_DEF("is_item_checkable", 1, &popup_menu_class_is_item_checkable),
+	JS_CFUNC_DEF("is_item_radio_checkable", 1, &popup_menu_class_is_item_radio_checkable),
+	JS_CFUNC_DEF("is_item_shortcut_disabled", 1, &popup_menu_class_is_item_shortcut_disabled),
+	JS_CFUNC_DEF("get_item_tooltip", 1, &popup_menu_class_get_item_tooltip),
+	JS_CFUNC_DEF("get_item_shortcut", 1, &popup_menu_class_get_item_shortcut),
+	JS_CFUNC_DEF("get_item_indent", 1, &popup_menu_class_get_item_indent),
+	JS_CFUNC_DEF("get_item_multistate_max", 1, &popup_menu_class_get_item_multistate_max),
+	JS_CFUNC_DEF("get_item_multistate", 1, &popup_menu_class_get_item_multistate),
+	JS_CFUNC_DEF("set_focused_item", 1, &popup_menu_class_set_focused_item),
+	JS_CFUNC_DEF("get_focused_item", 0, &popup_menu_class_get_focused_item),
+	JS_CFUNC_DEF("set_item_count", 1, &popup_menu_class_set_item_count),
+	JS_CFUNC_DEF("get_item_count", 0, &popup_menu_class_get_item_count),
+	JS_CFUNC_DEF("scroll_to_item", 1, &popup_menu_class_scroll_to_item),
+	JS_CFUNC_DEF("remove_item", 1, &popup_menu_class_remove_item),
+	JS_CFUNC_DEF("add_separator", 2, &popup_menu_class_add_separator),
+	JS_CFUNC_DEF("clear", 1, &popup_menu_class_clear),
+	JS_CFUNC_DEF("set_hide_on_item_selection", 1, &popup_menu_class_set_hide_on_item_selection),
+	JS_CFUNC_DEF("is_hide_on_item_selection", 0, &popup_menu_class_is_hide_on_item_selection),
+	JS_CFUNC_DEF("set_hide_on_checkable_item_selection", 1, &popup_menu_class_set_hide_on_checkable_item_selection),
+	JS_CFUNC_DEF("is_hide_on_checkable_item_selection", 0, &popup_menu_class_is_hide_on_checkable_item_selection),
+	JS_CFUNC_DEF("set_hide_on_state_item_selection", 1, &popup_menu_class_set_hide_on_state_item_selection),
+	JS_CFUNC_DEF("is_hide_on_state_item_selection", 0, &popup_menu_class_is_hide_on_state_item_selection),
+	JS_CFUNC_DEF("set_submenu_popup_delay", 1, &popup_menu_class_set_submenu_popup_delay),
+	JS_CFUNC_DEF("get_submenu_popup_delay", 0, &popup_menu_class_get_submenu_popup_delay),
+	JS_CFUNC_DEF("set_allow_search", 1, &popup_menu_class_set_allow_search),
+	JS_CFUNC_DEF("get_allow_search", 0, &popup_menu_class_get_allow_search),
+	JS_CFUNC_DEF("is_system_menu", 0, &popup_menu_class_is_system_menu),
+	JS_CFUNC_DEF("set_system_menu", 1, &popup_menu_class_set_system_menu),
+	JS_CFUNC_DEF("get_system_menu", 0, &popup_menu_class_get_system_menu),
+};
+
+static int js_popup_menu_class_init(JSContext *ctx, JSModuleDef *m) {
+	JS_NewClassID(&PopupMenu::__class_id);
+	classes["PopupMenu"] = PopupMenu::__class_id;
+	JS_NewClass(JS_GetRuntime(ctx), PopupMenu::__class_id, &popup_menu_class_def);
+
+	JSValue proto = JS_NewObject(ctx);
+	JSValue base_class = JS_GetClassProto(ctx, Popup::__class_id);
+	JS_SetPrototype(ctx, proto, base_class);
+	JS_SetClassProto(ctx, PopupMenu::__class_id, proto);
+	JS_SetPropertyFunctionList(ctx, proto, popup_menu_class_proto_funcs, _countof(popup_menu_class_proto_funcs));
+
+	JSValue ctor = JS_NewCFunction2(ctx, popup_menu_class_constructor, "PopupMenu", 0, JS_CFUNC_constructor, 0);
+
+	JS_SetModuleExport(ctx, m, "PopupMenu", ctor);
+
+	return 0;
+}
+
+JSModuleDef *_js_init_popup_menu_module(JSContext *ctx, const char *module_name) {
+	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_popup_menu_class_init);
+	if (!m)
+		return NULL;
+	JS_AddModuleExport(ctx, m, "PopupMenu");
+	return m;
+}
+
+JSModuleDef *js_init_popup_menu_module(JSContext *ctx) {
+	return _js_init_popup_menu_module(ctx, "godot/classes/popup_menu");
+}
+
+void register_popup_menu() {
+	js_init_popup_menu_module(ctx);
+}

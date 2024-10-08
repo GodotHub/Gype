@@ -1,0 +1,109 @@
+
+#include "quickjs/quickjs.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/env.h"
+#include "utils/register_helper.h"
+#include <godot_cpp/classes/camera_feed.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/variant/builtin_types.hpp>
+
+
+using namespace godot;
+
+static void camera_feed_class_finalizer(JSRuntime *rt, JSValue val) {
+	CameraFeed *camera_feed = static_cast<CameraFeed *>(JS_GetOpaque(val, CameraFeed::__class_id));
+	if (camera_feed)
+		CameraFeed::free(nullptr, camera_feed);
+}
+
+static JSClassDef camera_feed_class_def = {
+	"CameraFeed",
+	.finalizer = camera_feed_class_finalizer
+};
+
+static JSValue camera_feed_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
+	CameraFeed *camera_feed_class;
+	JSValue obj = JS_NewObjectClass(ctx, CameraFeed::__class_id);
+	if (JS_IsException(obj))
+		return obj;
+	camera_feed_class = memnew(CameraFeed);
+	if (!camera_feed_class) {
+		JS_FreeValue(ctx, obj);
+		return JS_EXCEPTION;
+	}
+
+	JS_SetOpaque(obj, camera_feed_class);
+	return obj;
+}
+static JSValue camera_feed_class_get_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&CameraFeed::get_id, CameraFeed::__class_id, ctx, this_val, argv);
+};
+static JSValue camera_feed_class_is_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&CameraFeed::is_active, CameraFeed::__class_id, ctx, this_val, argv);
+};
+static JSValue camera_feed_class_set_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&CameraFeed::set_active, CameraFeed::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue camera_feed_class_get_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&CameraFeed::get_name, CameraFeed::__class_id, ctx, this_val, argv);
+};
+static JSValue camera_feed_class_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&CameraFeed::get_position, CameraFeed::__class_id, ctx, this_val, argv);
+};
+static JSValue camera_feed_class_get_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&CameraFeed::get_transform, CameraFeed::__class_id, ctx, this_val, argv);
+};
+static JSValue camera_feed_class_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&CameraFeed::set_transform, CameraFeed::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue camera_feed_class_get_datatype(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&CameraFeed::get_datatype, CameraFeed::__class_id, ctx, this_val, argv);
+};
+static const JSCFunctionListEntry camera_feed_class_proto_funcs[] = {
+	JS_CFUNC_DEF("get_id", 0, &camera_feed_class_get_id),
+	JS_CFUNC_DEF("is_active", 0, &camera_feed_class_is_active),
+	JS_CFUNC_DEF("set_active", 1, &camera_feed_class_set_active),
+	JS_CFUNC_DEF("get_name", 0, &camera_feed_class_get_name),
+	JS_CFUNC_DEF("get_position", 0, &camera_feed_class_get_position),
+	JS_CFUNC_DEF("get_transform", 0, &camera_feed_class_get_transform),
+	JS_CFUNC_DEF("set_transform", 1, &camera_feed_class_set_transform),
+	JS_CFUNC_DEF("get_datatype", 0, &camera_feed_class_get_datatype),
+};
+
+static int js_camera_feed_class_init(JSContext *ctx, JSModuleDef *m) {
+	JS_NewClassID(&CameraFeed::__class_id);
+	classes["CameraFeed"] = CameraFeed::__class_id;
+	JS_NewClass(JS_GetRuntime(ctx), CameraFeed::__class_id, &camera_feed_class_def);
+
+	JSValue proto = JS_NewObject(ctx);
+	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
+	JS_SetPrototype(ctx, proto, base_class);
+	JS_SetClassProto(ctx, CameraFeed::__class_id, proto);
+	JS_SetPropertyFunctionList(ctx, proto, camera_feed_class_proto_funcs, _countof(camera_feed_class_proto_funcs));
+
+	JSValue ctor = JS_NewCFunction2(ctx, camera_feed_class_constructor, "CameraFeed", 0, JS_CFUNC_constructor, 0);
+
+	JS_SetModuleExport(ctx, m, "CameraFeed", ctor);
+
+	return 0;
+}
+
+JSModuleDef *_js_init_camera_feed_module(JSContext *ctx, const char *module_name) {
+	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_camera_feed_class_init);
+	if (!m)
+		return NULL;
+	JS_AddModuleExport(ctx, m, "CameraFeed");
+	return m;
+}
+
+JSModuleDef *js_init_camera_feed_module(JSContext *ctx) {
+	return _js_init_camera_feed_module(ctx, "godot/classes/camera_feed");
+}
+
+void register_camera_feed() {
+	js_init_camera_feed_module(ctx);
+}

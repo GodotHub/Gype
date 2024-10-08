@@ -1,7 +1,7 @@
 #include "array_test.hpp"
 #include "quickjs/quickjs.h"
+#include "quickjs/quickjs_helper.h"
 #include "utils/env.h"
-#include "utils/quickjs_helper.h"
 #include <string>
 
 void test_array() {
@@ -42,5 +42,5 @@ void test_array() {
         // }
     )xxx";
 	JSValue ret = JS_Eval(ctx, code.c_str(), code.size(), "<eval>", JS_EVAL_TYPE_MODULE);
-	is_exception(ret);
+	is_exception(ctx, ret);
 }

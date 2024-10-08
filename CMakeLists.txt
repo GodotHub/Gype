@@ -40,7 +40,8 @@ target_compile_features(${PROJECT_NAME}
 )
 
 target_compile_options(gype PUBLIC 
-	-Wall -O0 -g -DDEBUG_ENABLED)
+	-Wall -Os -g -s
+	-DDEBUG_ENABLED)
 
 set_target_properties(gype PROPERTIES 
 	RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/example/addons/gype/extension

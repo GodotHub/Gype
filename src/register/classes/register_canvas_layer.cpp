@@ -1,0 +1,174 @@
+
+#include "quickjs/quickjs.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/env.h"
+#include "utils/register_helper.h"
+#include <godot_cpp/classes/canvas_layer.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/variant/builtin_types.hpp>
+
+
+using namespace godot;
+
+static void canvas_layer_class_finalizer(JSRuntime *rt, JSValue val) {
+	CanvasLayer *canvas_layer = static_cast<CanvasLayer *>(JS_GetOpaque(val, CanvasLayer::__class_id));
+	if (canvas_layer)
+		CanvasLayer::free(nullptr, canvas_layer);
+}
+
+static JSClassDef canvas_layer_class_def = {
+	"CanvasLayer",
+	.finalizer = canvas_layer_class_finalizer
+};
+
+static JSValue canvas_layer_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
+	CanvasLayer *canvas_layer_class;
+	JSValue obj = JS_NewObjectClass(ctx, CanvasLayer::__class_id);
+	if (JS_IsException(obj))
+		return obj;
+	canvas_layer_class = memnew(CanvasLayer);
+	if (!canvas_layer_class) {
+		JS_FreeValue(ctx, obj);
+		return JS_EXCEPTION;
+	}
+
+	JS_SetOpaque(obj, canvas_layer_class);
+	return obj;
+}
+static JSValue canvas_layer_class_set_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&CanvasLayer::set_layer, CanvasLayer::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue canvas_layer_class_get_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&CanvasLayer::get_layer, CanvasLayer::__class_id, ctx, this_val, argv);
+};
+static JSValue canvas_layer_class_set_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&CanvasLayer::set_visible, CanvasLayer::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue canvas_layer_class_is_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&CanvasLayer::is_visible, CanvasLayer::__class_id, ctx, this_val, argv);
+};
+static JSValue canvas_layer_class_show(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&CanvasLayer::show, CanvasLayer::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue canvas_layer_class_hide(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&CanvasLayer::hide, CanvasLayer::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue canvas_layer_class_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&CanvasLayer::set_transform, CanvasLayer::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue canvas_layer_class_get_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&CanvasLayer::get_transform, CanvasLayer::__class_id, ctx, this_val, argv);
+};
+static JSValue canvas_layer_class_get_final_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&CanvasLayer::get_final_transform, CanvasLayer::__class_id, ctx, this_val, argv);
+};
+static JSValue canvas_layer_class_set_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&CanvasLayer::set_offset, CanvasLayer::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue canvas_layer_class_get_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&CanvasLayer::get_offset, CanvasLayer::__class_id, ctx, this_val, argv);
+};
+static JSValue canvas_layer_class_set_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&CanvasLayer::set_rotation, CanvasLayer::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue canvas_layer_class_get_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&CanvasLayer::get_rotation, CanvasLayer::__class_id, ctx, this_val, argv);
+};
+static JSValue canvas_layer_class_set_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&CanvasLayer::set_scale, CanvasLayer::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue canvas_layer_class_get_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&CanvasLayer::get_scale, CanvasLayer::__class_id, ctx, this_val, argv);
+};
+static JSValue canvas_layer_class_set_follow_viewport(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&CanvasLayer::set_follow_viewport, CanvasLayer::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue canvas_layer_class_is_following_viewport(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&CanvasLayer::is_following_viewport, CanvasLayer::__class_id, ctx, this_val, argv);
+};
+static JSValue canvas_layer_class_set_follow_viewport_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&CanvasLayer::set_follow_viewport_scale, CanvasLayer::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue canvas_layer_class_get_follow_viewport_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&CanvasLayer::get_follow_viewport_scale, CanvasLayer::__class_id, ctx, this_val, argv);
+};
+static JSValue canvas_layer_class_set_custom_viewport(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&CanvasLayer::set_custom_viewport, CanvasLayer::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue canvas_layer_class_get_custom_viewport(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&CanvasLayer::get_custom_viewport, CanvasLayer::__class_id, ctx, this_val, argv);
+};
+static JSValue canvas_layer_class_get_canvas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&CanvasLayer::get_canvas, CanvasLayer::__class_id, ctx, this_val, argv);
+};
+static const JSCFunctionListEntry canvas_layer_class_proto_funcs[] = {
+	JS_CFUNC_DEF("set_layer", 1, &canvas_layer_class_set_layer),
+	JS_CFUNC_DEF("get_layer", 0, &canvas_layer_class_get_layer),
+	JS_CFUNC_DEF("set_visible", 1, &canvas_layer_class_set_visible),
+	JS_CFUNC_DEF("is_visible", 0, &canvas_layer_class_is_visible),
+	JS_CFUNC_DEF("show", 0, &canvas_layer_class_show),
+	JS_CFUNC_DEF("hide", 0, &canvas_layer_class_hide),
+	JS_CFUNC_DEF("set_transform", 1, &canvas_layer_class_set_transform),
+	JS_CFUNC_DEF("get_transform", 0, &canvas_layer_class_get_transform),
+	JS_CFUNC_DEF("get_final_transform", 0, &canvas_layer_class_get_final_transform),
+	JS_CFUNC_DEF("set_offset", 1, &canvas_layer_class_set_offset),
+	JS_CFUNC_DEF("get_offset", 0, &canvas_layer_class_get_offset),
+	JS_CFUNC_DEF("set_rotation", 1, &canvas_layer_class_set_rotation),
+	JS_CFUNC_DEF("get_rotation", 0, &canvas_layer_class_get_rotation),
+	JS_CFUNC_DEF("set_scale", 1, &canvas_layer_class_set_scale),
+	JS_CFUNC_DEF("get_scale", 0, &canvas_layer_class_get_scale),
+	JS_CFUNC_DEF("set_follow_viewport", 1, &canvas_layer_class_set_follow_viewport),
+	JS_CFUNC_DEF("is_following_viewport", 0, &canvas_layer_class_is_following_viewport),
+	JS_CFUNC_DEF("set_follow_viewport_scale", 1, &canvas_layer_class_set_follow_viewport_scale),
+	JS_CFUNC_DEF("get_follow_viewport_scale", 0, &canvas_layer_class_get_follow_viewport_scale),
+	JS_CFUNC_DEF("set_custom_viewport", 1, &canvas_layer_class_set_custom_viewport),
+	JS_CFUNC_DEF("get_custom_viewport", 0, &canvas_layer_class_get_custom_viewport),
+	JS_CFUNC_DEF("get_canvas", 0, &canvas_layer_class_get_canvas),
+};
+
+static int js_canvas_layer_class_init(JSContext *ctx, JSModuleDef *m) {
+	JS_NewClassID(&CanvasLayer::__class_id);
+	classes["CanvasLayer"] = CanvasLayer::__class_id;
+	JS_NewClass(JS_GetRuntime(ctx), CanvasLayer::__class_id, &canvas_layer_class_def);
+
+	JSValue proto = JS_NewObject(ctx);
+	JSValue base_class = JS_GetClassProto(ctx, Node::__class_id);
+	JS_SetPrototype(ctx, proto, base_class);
+	JS_SetClassProto(ctx, CanvasLayer::__class_id, proto);
+	JS_SetPropertyFunctionList(ctx, proto, canvas_layer_class_proto_funcs, _countof(canvas_layer_class_proto_funcs));
+
+	JSValue ctor = JS_NewCFunction2(ctx, canvas_layer_class_constructor, "CanvasLayer", 0, JS_CFUNC_constructor, 0);
+
+	JS_SetModuleExport(ctx, m, "CanvasLayer", ctor);
+
+	return 0;
+}
+
+JSModuleDef *_js_init_canvas_layer_module(JSContext *ctx, const char *module_name) {
+	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_canvas_layer_class_init);
+	if (!m)
+		return NULL;
+	JS_AddModuleExport(ctx, m, "CanvasLayer");
+	return m;
+}
+
+JSModuleDef *js_init_canvas_layer_module(JSContext *ctx) {
+	return _js_init_canvas_layer_module(ctx, "godot/classes/canvas_layer");
+}
+
+void register_canvas_layer() {
+	js_init_canvas_layer_module(ctx);
+}

@@ -1,0 +1,98 @@
+
+#include "quickjs/quickjs.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/env.h"
+#include "utils/register_helper.h"
+#include <godot_cpp/classes/bone_map.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/skeleton_profile.hpp>
+#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/variant/builtin_types.hpp>
+
+
+using namespace godot;
+
+static void bone_map_class_finalizer(JSRuntime *rt, JSValue val) {
+	BoneMap *bone_map = static_cast<BoneMap *>(JS_GetOpaque(val, BoneMap::__class_id));
+	if (bone_map)
+		BoneMap::free(nullptr, bone_map);
+}
+
+static JSClassDef bone_map_class_def = {
+	"BoneMap",
+	.finalizer = bone_map_class_finalizer
+};
+
+static JSValue bone_map_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
+	BoneMap *bone_map_class;
+	JSValue obj = JS_NewObjectClass(ctx, BoneMap::__class_id);
+	if (JS_IsException(obj))
+		return obj;
+	bone_map_class = memnew(BoneMap);
+	if (!bone_map_class) {
+		JS_FreeValue(ctx, obj);
+		return JS_EXCEPTION;
+	}
+
+	JS_SetOpaque(obj, bone_map_class);
+	return obj;
+}
+static JSValue bone_map_class_get_profile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&BoneMap::get_profile, BoneMap::__class_id, ctx, this_val, argv);
+};
+static JSValue bone_map_class_set_profile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&BoneMap::set_profile, BoneMap::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue bone_map_class_get_skeleton_bone_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&BoneMap::get_skeleton_bone_name, BoneMap::__class_id, ctx, this_val, argv);
+};
+static JSValue bone_map_class_set_skeleton_bone_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&BoneMap::set_skeleton_bone_name, BoneMap::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue bone_map_class_find_profile_bone_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&BoneMap::find_profile_bone_name, BoneMap::__class_id, ctx, this_val, argv);
+};
+static const JSCFunctionListEntry bone_map_class_proto_funcs[] = {
+	JS_CFUNC_DEF("get_profile", 0, &bone_map_class_get_profile),
+	JS_CFUNC_DEF("set_profile", 1, &bone_map_class_set_profile),
+	JS_CFUNC_DEF("get_skeleton_bone_name", 1, &bone_map_class_get_skeleton_bone_name),
+	JS_CFUNC_DEF("set_skeleton_bone_name", 2, &bone_map_class_set_skeleton_bone_name),
+	JS_CFUNC_DEF("find_profile_bone_name", 1, &bone_map_class_find_profile_bone_name),
+};
+
+static int js_bone_map_class_init(JSContext *ctx, JSModuleDef *m) {
+	JS_NewClassID(&BoneMap::__class_id);
+	classes["BoneMap"] = BoneMap::__class_id;
+	JS_NewClass(JS_GetRuntime(ctx), BoneMap::__class_id, &bone_map_class_def);
+
+	JSValue proto = JS_NewObject(ctx);
+	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
+	JS_SetPrototype(ctx, proto, base_class);
+	JS_SetClassProto(ctx, BoneMap::__class_id, proto);
+	JS_SetPropertyFunctionList(ctx, proto, bone_map_class_proto_funcs, _countof(bone_map_class_proto_funcs));
+
+	JSValue ctor = JS_NewCFunction2(ctx, bone_map_class_constructor, "BoneMap", 0, JS_CFUNC_constructor, 0);
+
+	JS_SetModuleExport(ctx, m, "BoneMap", ctor);
+
+	return 0;
+}
+
+JSModuleDef *_js_init_bone_map_module(JSContext *ctx, const char *module_name) {
+	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_bone_map_class_init);
+	if (!m)
+		return NULL;
+	JS_AddModuleExport(ctx, m, "BoneMap");
+	return m;
+}
+
+JSModuleDef *js_init_bone_map_module(JSContext *ctx) {
+	return _js_init_bone_map_module(ctx, "godot/classes/bone_map");
+}
+
+void register_bone_map() {
+	js_init_bone_map_module(ctx);
+}
