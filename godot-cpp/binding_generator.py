@@ -1580,7 +1580,7 @@ def generate_engine_class_header(class_api, used_classes, fully_used_classes, us
 
     result.append('#include "quickjs/quickjs.h"')
 
-    if class_name != "Object" and class_name != "ClassDBSingleton":
+    if class_name != "Object" and class_name != "ClassDBSingleton" and class_name != 'RefCounted':
         result.append("#include <godot_cpp/core/class_db.hpp>")
         result.append("")
         result.append("#include <type_traits>")
@@ -1867,8 +1867,7 @@ def generate_engine_class_source(class_api, used_classes, fully_used_classes, us
 
     result.append(f"#include <godot_cpp/classes/{snake_class_name}.hpp>")
     result.append("")
-    if class_name != 'ref_counted':
-        result.append("#include <godot_cpp/core/class_db.hpp>")
+    result.append("#include <godot_cpp/core/class_db.hpp>")
     result.append("#include <godot_cpp/core/engine_ptrcall.hpp>")
     result.append("#include <godot_cpp/core/error_macros.hpp>")
     result.append("")
