@@ -6,6 +6,7 @@ from scripts.utils.jinja_utils import camel_to_snake, is_pod_type, get_enum_full
 def gen_classes():
     gen_classes_cpp()
     gen_classes_h()
+    gen_classes_register()
 
 def gen_classes_cpp():
     env = Environment(loader=FileSystemLoader(searchpath='./templates/classes'))
@@ -25,6 +26,15 @@ def gen_classes_h():
     classes = gde_json['classes']
     content = cpp_template.render({ 'classes': classes })
     with open(file=Path.joinpath(generated_root_dir, 'include', 'register', 'classes', f'register_classes.h'), mode='w', encoding='utf8') as file:
+        file.write(content)
+
+def gen_classes_register():
+    env = Environment(loader=FileSystemLoader(searchpath='./templates/classes'))
+    cpp_template = env.get_template('register_classes.cpp.jinja')
+    config_env(env)
+    classes = gde_json['classes']
+    content = cpp_template.render({ 'classes': classes })
+    with open(file=Path.joinpath(generated_root_dir, 'src', 'register', 'classes', f'register_classes.cpp'), mode='w', encoding='utf8') as file:
         file.write(content)
 
 def collect_dependency(clazz):

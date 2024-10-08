@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/code_edit.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/text_edit.hpp>
+#include <godot_cpp/classes/code_edit.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,69 +38,69 @@ static JSValue code_edit_class_constructor(JSContext *ctx, JSValueConst new_targ
 	return obj;
 }
 static JSValue code_edit_class_set_indent_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_indent_size, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_indent_size, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_indent_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeEdit::get_indent_size, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_set_indent_using_spaces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_indent_using_spaces, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_indent_using_spaces, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_indent_using_spaces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeEdit::is_indent_using_spaces, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_set_auto_indent_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_auto_indent_enabled, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_auto_indent_enabled, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_auto_indent_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeEdit::is_auto_indent_enabled, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_set_auto_indent_prefixes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_auto_indent_prefixes, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_auto_indent_prefixes, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_auto_indent_prefixes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeEdit::get_auto_indent_prefixes, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_do_indent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::do_indent, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::do_indent, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_indent_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::indent_lines, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::indent_lines, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_unindent_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::unindent_lines, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::unindent_lines, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_convert_indent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::convert_indent, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::convert_indent, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_set_auto_brace_completion_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_auto_brace_completion_enabled, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_auto_brace_completion_enabled, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_auto_brace_completion_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeEdit::is_auto_brace_completion_enabled, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_set_highlight_matching_braces_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_highlight_matching_braces_enabled, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_highlight_matching_braces_enabled, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_highlight_matching_braces_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeEdit::is_highlight_matching_braces_enabled, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_add_auto_brace_completion_pair(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::add_auto_brace_completion_pair, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::add_auto_brace_completion_pair, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_set_auto_brace_completion_pairs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_auto_brace_completion_pairs, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_auto_brace_completion_pairs, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_auto_brace_completion_pairs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -117,91 +116,91 @@ static JSValue code_edit_class_get_auto_brace_completion_close_key(JSContext *ct
 	return call_builtin_const_method_ret(&CodeEdit::get_auto_brace_completion_close_key, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_set_draw_breakpoints_gutter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_draw_breakpoints_gutter, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_draw_breakpoints_gutter, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_drawing_breakpoints_gutter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeEdit::is_drawing_breakpoints_gutter, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_set_draw_bookmarks_gutter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_draw_bookmarks_gutter, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_draw_bookmarks_gutter, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_drawing_bookmarks_gutter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeEdit::is_drawing_bookmarks_gutter, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_set_draw_executing_lines_gutter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_draw_executing_lines_gutter, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_draw_executing_lines_gutter, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_drawing_executing_lines_gutter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeEdit::is_drawing_executing_lines_gutter, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_set_line_as_breakpoint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_line_as_breakpoint, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_line_as_breakpoint, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_line_breakpointed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeEdit::is_line_breakpointed, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_clear_breakpointed_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::clear_breakpointed_lines, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::clear_breakpointed_lines, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_breakpointed_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeEdit::get_breakpointed_lines, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_set_line_as_bookmarked(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_line_as_bookmarked, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_line_as_bookmarked, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_line_bookmarked(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeEdit::is_line_bookmarked, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_clear_bookmarked_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::clear_bookmarked_lines, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::clear_bookmarked_lines, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_bookmarked_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeEdit::get_bookmarked_lines, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_set_line_as_executing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_line_as_executing, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_line_as_executing, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_line_executing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeEdit::is_line_executing, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_clear_executing_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::clear_executing_lines, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::clear_executing_lines, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_executing_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeEdit::get_executing_lines, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_set_draw_line_numbers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_draw_line_numbers, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_draw_line_numbers, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_draw_line_numbers_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeEdit::is_draw_line_numbers_enabled, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_set_line_numbers_zero_padded(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_line_numbers_zero_padded, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_line_numbers_zero_padded, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_line_numbers_zero_padded(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeEdit::is_line_numbers_zero_padded, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_set_draw_fold_gutter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_draw_fold_gutter, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_draw_fold_gutter, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_drawing_fold_gutter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeEdit::is_drawing_fold_gutter, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_set_line_folding_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_line_folding_enabled, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_line_folding_enabled, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_line_folding_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -211,27 +210,27 @@ static JSValue code_edit_class_can_fold_line(JSContext *ctx, JSValueConst this_v
 	return call_builtin_const_method_ret(&CodeEdit::can_fold_line, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_fold_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::fold_line, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::fold_line, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_unfold_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::unfold_line, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::unfold_line, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_fold_all_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::fold_all_lines, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::fold_all_lines, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_unfold_all_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::unfold_all_lines, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::unfold_all_lines, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_toggle_foldable_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::toggle_foldable_line, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::toggle_foldable_line, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_toggle_foldable_lines_at_carets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::toggle_foldable_lines_at_carets, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::toggle_foldable_lines_at_carets, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_line_folded(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -241,7 +240,7 @@ static JSValue code_edit_class_get_folded_lines(JSContext *ctx, JSValueConst thi
 	return call_builtin_const_method_ret(&CodeEdit::get_folded_lines, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_create_code_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::create_code_region, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::create_code_region, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_code_region_start_tag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -251,7 +250,7 @@ static JSValue code_edit_class_get_code_region_end_tag(JSContext *ctx, JSValueCo
 	return call_builtin_const_method_ret(&CodeEdit::get_code_region_end_tag, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_set_code_region_tags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_code_region_tags, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_code_region_tags, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_line_code_region_start(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -261,22 +260,22 @@ static JSValue code_edit_class_is_line_code_region_end(JSContext *ctx, JSValueCo
 	return call_builtin_const_method_ret(&CodeEdit::is_line_code_region_end, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_add_string_delimiter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::add_string_delimiter, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::add_string_delimiter, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_remove_string_delimiter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::remove_string_delimiter, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::remove_string_delimiter, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_has_string_delimiter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeEdit::has_string_delimiter, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_set_string_delimiters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_string_delimiters, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_string_delimiters, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_clear_string_delimiters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::clear_string_delimiters, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::clear_string_delimiters, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_string_delimiters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -286,22 +285,22 @@ static JSValue code_edit_class_is_in_string(JSContext *ctx, JSValueConst this_va
 	return call_builtin_const_method_ret(&CodeEdit::is_in_string, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_add_comment_delimiter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::add_comment_delimiter, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::add_comment_delimiter, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_remove_comment_delimiter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::remove_comment_delimiter, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::remove_comment_delimiter, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_has_comment_delimiter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeEdit::has_comment_delimiter, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_set_comment_delimiters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_comment_delimiters, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_comment_delimiters, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_clear_comment_delimiters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::clear_comment_delimiters, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::clear_comment_delimiters, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_comment_delimiters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -323,26 +322,26 @@ static JSValue code_edit_class_get_delimiter_end_position(JSContext *ctx, JSValu
 	return call_builtin_const_method_ret(&CodeEdit::get_delimiter_end_position, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_set_code_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_code_hint, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_code_hint, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_set_code_hint_draw_below(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_code_hint_draw_below, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_code_hint_draw_below, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_text_for_code_completion(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeEdit::get_text_for_code_completion, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_request_code_completion(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::request_code_completion, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::request_code_completion, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_add_code_completion_option(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::add_code_completion_option, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::add_code_completion_option, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_update_code_completion_options(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::update_code_completion_options, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::update_code_completion_options, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_code_completion_options(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -355,40 +354,40 @@ static JSValue code_edit_class_get_code_completion_selected_index(JSContext *ctx
 	return call_builtin_const_method_ret(&CodeEdit::get_code_completion_selected_index, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_set_code_completion_selected_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_code_completion_selected_index, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_code_completion_selected_index, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_confirm_code_completion(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::confirm_code_completion, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::confirm_code_completion, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_cancel_code_completion(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::cancel_code_completion, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::cancel_code_completion, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_set_code_completion_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_code_completion_enabled, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_code_completion_enabled, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_code_completion_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeEdit::is_code_completion_enabled, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_set_code_completion_prefixes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_code_completion_prefixes, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_code_completion_prefixes, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_code_completion_prefixes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeEdit::get_code_completion_prefixes, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_set_line_length_guidelines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_line_length_guidelines, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_line_length_guidelines, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_line_length_guidelines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeEdit::get_line_length_guidelines, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_set_symbol_lookup_on_click_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_symbol_lookup_on_click_enabled, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_symbol_lookup_on_click_enabled, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_symbol_lookup_on_click_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -401,27 +400,27 @@ static JSValue code_edit_class_get_text_with_cursor_char(JSContext *ctx, JSValue
 	return call_builtin_const_method_ret(&CodeEdit::get_text_with_cursor_char, CodeEdit::__class_id, ctx, this_val, argv);
 };
 static JSValue code_edit_class_set_symbol_lookup_word_as_valid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::set_symbol_lookup_word_as_valid, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_symbol_lookup_word_as_valid, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_move_lines_up(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::move_lines_up, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::move_lines_up, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_move_lines_down(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::move_lines_down, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::move_lines_down, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_delete_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::delete_lines, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::delete_lines, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_duplicate_selection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::duplicate_selection, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::duplicate_selection, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_duplicate_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeEdit::duplicate_lines, CodeEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeEdit::duplicate_lines, CodeEdit::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry code_edit_class_proto_funcs[] = {

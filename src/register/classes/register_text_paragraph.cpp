@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/text_paragraph.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,53 +38,53 @@ static JSValue text_paragraph_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue text_paragraph_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextParagraph::clear, TextParagraph::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextParagraph::clear, TextParagraph::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_paragraph_class_set_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextParagraph::set_direction, TextParagraph::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextParagraph::set_direction, TextParagraph::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_paragraph_class_get_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TextParagraph::get_direction, TextParagraph::__class_id, ctx, this_val, argv);
 };
 static JSValue text_paragraph_class_set_custom_punctuation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextParagraph::set_custom_punctuation, TextParagraph::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextParagraph::set_custom_punctuation, TextParagraph::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_paragraph_class_get_custom_punctuation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TextParagraph::get_custom_punctuation, TextParagraph::__class_id, ctx, this_val, argv);
 };
 static JSValue text_paragraph_class_set_orientation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextParagraph::set_orientation, TextParagraph::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextParagraph::set_orientation, TextParagraph::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_paragraph_class_get_orientation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TextParagraph::get_orientation, TextParagraph::__class_id, ctx, this_val, argv);
 };
 static JSValue text_paragraph_class_set_preserve_invalid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextParagraph::set_preserve_invalid, TextParagraph::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextParagraph::set_preserve_invalid, TextParagraph::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_paragraph_class_get_preserve_invalid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TextParagraph::get_preserve_invalid, TextParagraph::__class_id, ctx, this_val, argv);
 };
 static JSValue text_paragraph_class_set_preserve_control(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextParagraph::set_preserve_control, TextParagraph::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextParagraph::set_preserve_control, TextParagraph::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_paragraph_class_get_preserve_control(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TextParagraph::get_preserve_control, TextParagraph::__class_id, ctx, this_val, argv);
 };
 static JSValue text_paragraph_class_set_bidi_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextParagraph::set_bidi_override, TextParagraph::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextParagraph::set_bidi_override, TextParagraph::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_paragraph_class_set_dropcap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&TextParagraph::set_dropcap, TextParagraph::__class_id, ctx, this_val, argv);
 };
 static JSValue text_paragraph_class_clear_dropcap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextParagraph::clear_dropcap, TextParagraph::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextParagraph::clear_dropcap, TextParagraph::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_paragraph_class_add_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -98,46 +97,46 @@ static JSValue text_paragraph_class_resize_object(JSContext *ctx, JSValueConst t
 	return call_builtin_method_ret(&TextParagraph::resize_object, TextParagraph::__class_id, ctx, this_val, argv);
 };
 static JSValue text_paragraph_class_set_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextParagraph::set_alignment, TextParagraph::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextParagraph::set_alignment, TextParagraph::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_paragraph_class_get_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TextParagraph::get_alignment, TextParagraph::__class_id, ctx, this_val, argv);
 };
 static JSValue text_paragraph_class_tab_align(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextParagraph::tab_align, TextParagraph::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextParagraph::tab_align, TextParagraph::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_paragraph_class_set_break_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextParagraph::set_break_flags, TextParagraph::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextParagraph::set_break_flags, TextParagraph::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_paragraph_class_get_break_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TextParagraph::get_break_flags, TextParagraph::__class_id, ctx, this_val, argv);
 };
 static JSValue text_paragraph_class_set_justification_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextParagraph::set_justification_flags, TextParagraph::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextParagraph::set_justification_flags, TextParagraph::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_paragraph_class_get_justification_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TextParagraph::get_justification_flags, TextParagraph::__class_id, ctx, this_val, argv);
 };
 static JSValue text_paragraph_class_set_text_overrun_behavior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextParagraph::set_text_overrun_behavior, TextParagraph::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextParagraph::set_text_overrun_behavior, TextParagraph::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_paragraph_class_get_text_overrun_behavior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TextParagraph::get_text_overrun_behavior, TextParagraph::__class_id, ctx, this_val, argv);
 };
 static JSValue text_paragraph_class_set_ellipsis_char(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextParagraph::set_ellipsis_char, TextParagraph::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextParagraph::set_ellipsis_char, TextParagraph::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_paragraph_class_get_ellipsis_char(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TextParagraph::get_ellipsis_char, TextParagraph::__class_id, ctx, this_val, argv);
 };
 static JSValue text_paragraph_class_set_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextParagraph::set_width, TextParagraph::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextParagraph::set_width, TextParagraph::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_paragraph_class_get_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -162,7 +161,7 @@ static JSValue text_paragraph_class_get_line_count(JSContext *ctx, JSValueConst 
 	return call_builtin_const_method_ret(&TextParagraph::get_line_count, TextParagraph::__class_id, ctx, this_val, argv);
 };
 static JSValue text_paragraph_class_set_max_lines_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextParagraph::set_max_lines_visible, TextParagraph::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextParagraph::set_max_lines_visible, TextParagraph::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_paragraph_class_get_max_lines_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -202,27 +201,27 @@ static JSValue text_paragraph_class_get_dropcap_lines(JSContext *ctx, JSValueCon
 	return call_builtin_const_method_ret(&TextParagraph::get_dropcap_lines, TextParagraph::__class_id, ctx, this_val, argv);
 };
 static JSValue text_paragraph_class_draw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&TextParagraph::draw, TextParagraph::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&TextParagraph::draw, TextParagraph::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_paragraph_class_draw_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&TextParagraph::draw_outline, TextParagraph::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&TextParagraph::draw_outline, TextParagraph::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_paragraph_class_draw_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&TextParagraph::draw_line, TextParagraph::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&TextParagraph::draw_line, TextParagraph::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_paragraph_class_draw_line_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&TextParagraph::draw_line_outline, TextParagraph::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&TextParagraph::draw_line_outline, TextParagraph::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_paragraph_class_draw_dropcap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&TextParagraph::draw_dropcap, TextParagraph::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&TextParagraph::draw_dropcap, TextParagraph::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_paragraph_class_draw_dropcap_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&TextParagraph::draw_dropcap_outline, TextParagraph::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&TextParagraph::draw_dropcap_outline, TextParagraph::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_paragraph_class_hit_test(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

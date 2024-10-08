@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/collision_object2d.hpp>
-#include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/object.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/ray_cast2d.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/collision_object2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -40,14 +39,14 @@ static JSValue ray_cast2d_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue ray_cast2d_class_set_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast2D::set_enabled, RayCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast2D::set_enabled, RayCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast2d_class_is_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RayCast2D::is_enabled, RayCast2D::__class_id, ctx, this_val, argv);
 };
 static JSValue ray_cast2d_class_set_target_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast2D::set_target_position, RayCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast2D::set_target_position, RayCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast2d_class_get_target_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -57,7 +56,7 @@ static JSValue ray_cast2d_class_is_colliding(JSContext *ctx, JSValueConst this_v
 	return call_builtin_const_method_ret(&RayCast2D::is_colliding, RayCast2D::__class_id, ctx, this_val, argv);
 };
 static JSValue ray_cast2d_class_force_raycast_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast2D::force_raycast_update, RayCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast2D::force_raycast_update, RayCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast2d_class_get_collider(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -76,62 +75,62 @@ static JSValue ray_cast2d_class_get_collision_normal(JSContext *ctx, JSValueCons
 	return call_builtin_const_method_ret(&RayCast2D::get_collision_normal, RayCast2D::__class_id, ctx, this_val, argv);
 };
 static JSValue ray_cast2d_class_add_exception_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast2D::add_exception_rid, RayCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast2D::add_exception_rid, RayCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast2d_class_add_exception(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast2D::add_exception, RayCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast2D::add_exception, RayCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast2d_class_remove_exception_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast2D::remove_exception_rid, RayCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast2D::remove_exception_rid, RayCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast2d_class_remove_exception(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast2D::remove_exception, RayCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast2D::remove_exception, RayCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast2d_class_clear_exceptions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast2D::clear_exceptions, RayCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast2D::clear_exceptions, RayCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast2d_class_set_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast2D::set_collision_mask, RayCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast2D::set_collision_mask, RayCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast2d_class_get_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RayCast2D::get_collision_mask, RayCast2D::__class_id, ctx, this_val, argv);
 };
 static JSValue ray_cast2d_class_set_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast2D::set_collision_mask_value, RayCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast2D::set_collision_mask_value, RayCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast2d_class_get_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RayCast2D::get_collision_mask_value, RayCast2D::__class_id, ctx, this_val, argv);
 };
 static JSValue ray_cast2d_class_set_exclude_parent_body(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast2D::set_exclude_parent_body, RayCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast2D::set_exclude_parent_body, RayCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast2d_class_get_exclude_parent_body(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RayCast2D::get_exclude_parent_body, RayCast2D::__class_id, ctx, this_val, argv);
 };
 static JSValue ray_cast2d_class_set_collide_with_areas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast2D::set_collide_with_areas, RayCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast2D::set_collide_with_areas, RayCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast2d_class_is_collide_with_areas_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RayCast2D::is_collide_with_areas_enabled, RayCast2D::__class_id, ctx, this_val, argv);
 };
 static JSValue ray_cast2d_class_set_collide_with_bodies(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast2D::set_collide_with_bodies, RayCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast2D::set_collide_with_bodies, RayCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast2d_class_is_collide_with_bodies_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RayCast2D::is_collide_with_bodies_enabled, RayCast2D::__class_id, ctx, this_val, argv);
 };
 static JSValue ray_cast2d_class_set_hit_from_inside(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast2D::set_hit_from_inside, RayCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast2D::set_hit_from_inside, RayCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast2d_class_is_hit_from_inside_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

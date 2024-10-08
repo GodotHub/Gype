@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/input_event_from_window.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/input_event_screen_drag.hpp>
+#include <godot_cpp/classes/input_event_from_window.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,63 +37,63 @@ static JSValue input_event_screen_drag_class_constructor(JSContext *ctx, JSValue
 	return obj;
 }
 static JSValue input_event_screen_drag_class_set_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&InputEventScreenDrag::set_index, InputEventScreenDrag::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&InputEventScreenDrag::set_index, InputEventScreenDrag::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_screen_drag_class_get_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&InputEventScreenDrag::get_index, InputEventScreenDrag::__class_id, ctx, this_val, argv);
 };
 static JSValue input_event_screen_drag_class_set_tilt(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&InputEventScreenDrag::set_tilt, InputEventScreenDrag::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&InputEventScreenDrag::set_tilt, InputEventScreenDrag::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_screen_drag_class_get_tilt(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&InputEventScreenDrag::get_tilt, InputEventScreenDrag::__class_id, ctx, this_val, argv);
 };
 static JSValue input_event_screen_drag_class_set_pressure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&InputEventScreenDrag::set_pressure, InputEventScreenDrag::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&InputEventScreenDrag::set_pressure, InputEventScreenDrag::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_screen_drag_class_get_pressure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&InputEventScreenDrag::get_pressure, InputEventScreenDrag::__class_id, ctx, this_val, argv);
 };
 static JSValue input_event_screen_drag_class_set_pen_inverted(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&InputEventScreenDrag::set_pen_inverted, InputEventScreenDrag::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&InputEventScreenDrag::set_pen_inverted, InputEventScreenDrag::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_screen_drag_class_get_pen_inverted(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&InputEventScreenDrag::get_pen_inverted, InputEventScreenDrag::__class_id, ctx, this_val, argv);
 };
 static JSValue input_event_screen_drag_class_set_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&InputEventScreenDrag::set_position, InputEventScreenDrag::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&InputEventScreenDrag::set_position, InputEventScreenDrag::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_screen_drag_class_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&InputEventScreenDrag::get_position, InputEventScreenDrag::__class_id, ctx, this_val, argv);
 };
 static JSValue input_event_screen_drag_class_set_relative(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&InputEventScreenDrag::set_relative, InputEventScreenDrag::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&InputEventScreenDrag::set_relative, InputEventScreenDrag::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_screen_drag_class_get_relative(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&InputEventScreenDrag::get_relative, InputEventScreenDrag::__class_id, ctx, this_val, argv);
 };
 static JSValue input_event_screen_drag_class_set_screen_relative(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&InputEventScreenDrag::set_screen_relative, InputEventScreenDrag::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&InputEventScreenDrag::set_screen_relative, InputEventScreenDrag::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_screen_drag_class_get_screen_relative(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&InputEventScreenDrag::get_screen_relative, InputEventScreenDrag::__class_id, ctx, this_val, argv);
 };
 static JSValue input_event_screen_drag_class_set_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&InputEventScreenDrag::set_velocity, InputEventScreenDrag::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&InputEventScreenDrag::set_velocity, InputEventScreenDrag::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_screen_drag_class_get_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&InputEventScreenDrag::get_velocity, InputEventScreenDrag::__class_id, ctx, this_val, argv);
 };
 static JSValue input_event_screen_drag_class_set_screen_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&InputEventScreenDrag::set_screen_velocity, InputEventScreenDrag::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&InputEventScreenDrag::set_screen_velocity, InputEventScreenDrag::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_screen_drag_class_get_screen_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

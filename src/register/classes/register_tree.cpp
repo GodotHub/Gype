@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/control.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/tree.hpp>
 #include <godot_cpp/classes/tree_item.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,7 +38,7 @@ static JSValue tree_class_constructor(JSContext *ctx, JSValueConst new_target, i
 	return obj;
 }
 static JSValue tree_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::clear, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::clear, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_create_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -49,19 +48,19 @@ static JSValue tree_class_get_root(JSContext *ctx, JSValueConst this_val, int ar
 	return call_builtin_const_method_ret(&Tree::get_root, Tree::__class_id, ctx, this_val, argv);
 };
 static JSValue tree_class_set_column_custom_minimum_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::set_column_custom_minimum_width, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::set_column_custom_minimum_width, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_set_column_expand(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::set_column_expand, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::set_column_expand, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_set_column_expand_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::set_column_expand_ratio, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::set_column_expand_ratio, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_set_column_clip_content(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::set_column_clip_content, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::set_column_clip_content, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_is_column_expanding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -77,7 +76,7 @@ static JSValue tree_class_get_column_width(JSContext *ctx, JSValueConst this_val
 	return call_builtin_const_method_ret(&Tree::get_column_width, Tree::__class_id, ctx, this_val, argv);
 };
 static JSValue tree_class_set_hide_root(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::set_hide_root, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::set_hide_root, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_is_root_hidden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -90,7 +89,7 @@ static JSValue tree_class_get_selected(JSContext *ctx, JSValueConst this_val, in
 	return call_builtin_const_method_ret(&Tree::get_selected, Tree::__class_id, ctx, this_val, argv);
 };
 static JSValue tree_class_set_selected(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::set_selected, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::set_selected, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_get_selected_column(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -100,18 +99,18 @@ static JSValue tree_class_get_pressed_button(JSContext *ctx, JSValueConst this_v
 	return call_builtin_const_method_ret(&Tree::get_pressed_button, Tree::__class_id, ctx, this_val, argv);
 };
 static JSValue tree_class_set_select_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::set_select_mode, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::set_select_mode, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_get_select_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Tree::get_select_mode, Tree::__class_id, ctx, this_val, argv);
 };
 static JSValue tree_class_deselect_all(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::deselect_all, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::deselect_all, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_set_columns(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::set_columns, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::set_columns, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_get_columns(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -145,39 +144,39 @@ static JSValue tree_class_get_button_id_at_position(JSContext *ctx, JSValueConst
 	return call_builtin_const_method_ret(&Tree::get_button_id_at_position, Tree::__class_id, ctx, this_val, argv);
 };
 static JSValue tree_class_ensure_cursor_is_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::ensure_cursor_is_visible, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::ensure_cursor_is_visible, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_set_column_titles_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::set_column_titles_visible, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::set_column_titles_visible, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_are_column_titles_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Tree::are_column_titles_visible, Tree::__class_id, ctx, this_val, argv);
 };
 static JSValue tree_class_set_column_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::set_column_title, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::set_column_title, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_get_column_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Tree::get_column_title, Tree::__class_id, ctx, this_val, argv);
 };
 static JSValue tree_class_set_column_title_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::set_column_title_alignment, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::set_column_title_alignment, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_get_column_title_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Tree::get_column_title_alignment, Tree::__class_id, ctx, this_val, argv);
 };
 static JSValue tree_class_set_column_title_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::set_column_title_direction, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::set_column_title_direction, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_get_column_title_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Tree::get_column_title_direction, Tree::__class_id, ctx, this_val, argv);
 };
 static JSValue tree_class_set_column_title_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::set_column_title_language, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::set_column_title_language, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_get_column_title_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -187,60 +186,60 @@ static JSValue tree_class_get_scroll(JSContext *ctx, JSValueConst this_val, int 
 	return call_builtin_const_method_ret(&Tree::get_scroll, Tree::__class_id, ctx, this_val, argv);
 };
 static JSValue tree_class_scroll_to_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::scroll_to_item, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::scroll_to_item, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_set_h_scroll_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::set_h_scroll_enabled, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::set_h_scroll_enabled, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_is_h_scroll_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Tree::is_h_scroll_enabled, Tree::__class_id, ctx, this_val, argv);
 };
 static JSValue tree_class_set_v_scroll_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::set_v_scroll_enabled, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::set_v_scroll_enabled, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_is_v_scroll_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Tree::is_v_scroll_enabled, Tree::__class_id, ctx, this_val, argv);
 };
 static JSValue tree_class_set_hide_folding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::set_hide_folding, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::set_hide_folding, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_is_folding_hidden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Tree::is_folding_hidden, Tree::__class_id, ctx, this_val, argv);
 };
 static JSValue tree_class_set_enable_recursive_folding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::set_enable_recursive_folding, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::set_enable_recursive_folding, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_is_recursive_folding_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Tree::is_recursive_folding_enabled, Tree::__class_id, ctx, this_val, argv);
 };
 static JSValue tree_class_set_drop_mode_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::set_drop_mode_flags, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::set_drop_mode_flags, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_get_drop_mode_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Tree::get_drop_mode_flags, Tree::__class_id, ctx, this_val, argv);
 };
 static JSValue tree_class_set_allow_rmb_select(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::set_allow_rmb_select, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::set_allow_rmb_select, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_get_allow_rmb_select(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Tree::get_allow_rmb_select, Tree::__class_id, ctx, this_val, argv);
 };
 static JSValue tree_class_set_allow_reselect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::set_allow_reselect, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::set_allow_reselect, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_get_allow_reselect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Tree::get_allow_reselect, Tree::__class_id, ctx, this_val, argv);
 };
 static JSValue tree_class_set_allow_search(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Tree::set_allow_search, Tree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Tree::set_allow_search, Tree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tree_class_get_allow_search(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

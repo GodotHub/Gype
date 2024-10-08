@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/classes/style_box_line.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,35 +37,35 @@ static JSValue style_box_line_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue style_box_line_class_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxLine::set_color, StyleBoxLine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxLine::set_color, StyleBoxLine::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_line_class_get_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxLine::get_color, StyleBoxLine::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_line_class_set_thickness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxLine::set_thickness, StyleBoxLine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxLine::set_thickness, StyleBoxLine::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_line_class_get_thickness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxLine::get_thickness, StyleBoxLine::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_line_class_set_grow_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxLine::set_grow_begin, StyleBoxLine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxLine::set_grow_begin, StyleBoxLine::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_line_class_get_grow_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxLine::get_grow_begin, StyleBoxLine::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_line_class_set_grow_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxLine::set_grow_end, StyleBoxLine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxLine::set_grow_end, StyleBoxLine::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_line_class_get_grow_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxLine::get_grow_end, StyleBoxLine::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_line_class_set_vertical(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxLine::set_vertical, StyleBoxLine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxLine::set_vertical, StyleBoxLine::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_line_class_is_vertical(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

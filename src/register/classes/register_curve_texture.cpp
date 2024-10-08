@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/curve.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/curve_texture.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,18 +38,18 @@ static JSValue curve_texture_class_constructor(JSContext *ctx, JSValueConst new_
 	return obj;
 }
 static JSValue curve_texture_class_set_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CurveTexture::set_width, CurveTexture::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CurveTexture::set_width, CurveTexture::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_texture_class_set_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CurveTexture::set_curve, CurveTexture::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CurveTexture::set_curve, CurveTexture::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_texture_class_get_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CurveTexture::get_curve, CurveTexture::__class_id, ctx, this_val, argv);
 };
 static JSValue curve_texture_class_set_texture_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CurveTexture::set_texture_mode, CurveTexture::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CurveTexture::set_texture_mode, CurveTexture::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_texture_class_get_texture_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

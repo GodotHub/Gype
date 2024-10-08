@@ -1,17 +1,18 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
+#include <godot_cpp/classes/script_editor.hpp>
+#include <godot_cpp/classes/script.hpp>
+#include <godot_cpp/classes/script_editor_base.hpp>
 #include <godot_cpp/classes/editor_syntax_highlighter.hpp>
 #include <godot_cpp/classes/panel_container.hpp>
-#include <godot_cpp/classes/script.hpp>
-#include <godot_cpp/classes/script_editor.hpp>
 #include <godot_cpp/classes/script_editor_base.hpp>
+#include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -47,15 +48,15 @@ static JSValue script_editor_class_get_open_script_editors(JSContext *ctx, JSVal
 	return call_builtin_const_method_ret(&ScriptEditor::get_open_script_editors, ScriptEditor::__class_id, ctx, this_val, argv);
 };
 static JSValue script_editor_class_register_syntax_highlighter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ScriptEditor::register_syntax_highlighter, ScriptEditor::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ScriptEditor::register_syntax_highlighter, ScriptEditor::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue script_editor_class_unregister_syntax_highlighter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ScriptEditor::unregister_syntax_highlighter, ScriptEditor::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ScriptEditor::unregister_syntax_highlighter, ScriptEditor::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue script_editor_class_goto_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ScriptEditor::goto_line, ScriptEditor::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ScriptEditor::goto_line, ScriptEditor::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue script_editor_class_get_current_script(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -65,11 +66,11 @@ static JSValue script_editor_class_get_open_scripts(JSContext *ctx, JSValueConst
 	return call_builtin_const_method_ret(&ScriptEditor::get_open_scripts, ScriptEditor::__class_id, ctx, this_val, argv);
 };
 static JSValue script_editor_class_open_script_create_dialog(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ScriptEditor::open_script_create_dialog, ScriptEditor::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ScriptEditor::open_script_create_dialog, ScriptEditor::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue script_editor_class_goto_help(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ScriptEditor::goto_help, ScriptEditor::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ScriptEditor::goto_help, ScriptEditor::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry script_editor_class_proto_funcs[] = {

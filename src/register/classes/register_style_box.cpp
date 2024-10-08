@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/canvas_item.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/canvas_item.hpp>
 #include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -42,11 +41,11 @@ static JSValue style_box_class_get_minimum_size(JSContext *ctx, JSValueConst thi
 	return call_builtin_const_method_ret(&StyleBox::get_minimum_size, StyleBox::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_class_set_content_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBox::set_content_margin, StyleBox::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBox::set_content_margin, StyleBox::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_class_set_content_margin_all(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBox::set_content_margin_all, StyleBox::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBox::set_content_margin_all, StyleBox::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_class_get_content_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -59,7 +58,7 @@ static JSValue style_box_class_get_offset(JSContext *ctx, JSValueConst this_val,
 	return call_builtin_const_method_ret(&StyleBox::get_offset, StyleBox::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_class_draw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&StyleBox::draw, StyleBox::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&StyleBox::draw, StyleBox::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_class_get_current_item_drawn(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

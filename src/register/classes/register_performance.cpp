@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/performance.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -41,11 +40,11 @@ static JSValue performance_class_get_monitor(JSContext *ctx, JSValueConst this_v
 	return call_builtin_const_method_ret(&Performance::get_monitor, Performance::__class_id, ctx, this_val, argv);
 };
 static JSValue performance_class_add_custom_monitor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Performance::add_custom_monitor, Performance::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Performance::add_custom_monitor, Performance::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue performance_class_remove_custom_monitor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Performance::remove_custom_monitor, Performance::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Performance::remove_custom_monitor, Performance::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue performance_class_has_custom_monitor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

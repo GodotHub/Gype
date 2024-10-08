@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/rd_texture_view.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,35 +37,35 @@ static JSValue rd_texture_view_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue rd_texture_view_class_set_format_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDTextureView::set_format_override, RDTextureView::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDTextureView::set_format_override, RDTextureView::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_texture_view_class_get_format_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDTextureView::get_format_override, RDTextureView::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_texture_view_class_set_swizzle_r(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDTextureView::set_swizzle_r, RDTextureView::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDTextureView::set_swizzle_r, RDTextureView::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_texture_view_class_get_swizzle_r(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDTextureView::get_swizzle_r, RDTextureView::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_texture_view_class_set_swizzle_g(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDTextureView::set_swizzle_g, RDTextureView::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDTextureView::set_swizzle_g, RDTextureView::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_texture_view_class_get_swizzle_g(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDTextureView::get_swizzle_g, RDTextureView::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_texture_view_class_set_swizzle_b(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDTextureView::set_swizzle_b, RDTextureView::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDTextureView::set_swizzle_b, RDTextureView::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_texture_view_class_get_swizzle_b(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDTextureView::get_swizzle_b, RDTextureView::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_texture_view_class_set_swizzle_a(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDTextureView::set_swizzle_a, RDTextureView::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDTextureView::set_swizzle_a, RDTextureView::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_texture_view_class_get_swizzle_a(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

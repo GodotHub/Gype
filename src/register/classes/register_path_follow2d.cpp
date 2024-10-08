@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/path_follow2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,49 +37,49 @@ static JSValue path_follow2d_class_constructor(JSContext *ctx, JSValueConst new_
 	return obj;
 }
 static JSValue path_follow2d_class_set_progress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PathFollow2D::set_progress, PathFollow2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PathFollow2D::set_progress, PathFollow2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue path_follow2d_class_get_progress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PathFollow2D::get_progress, PathFollow2D::__class_id, ctx, this_val, argv);
 };
 static JSValue path_follow2d_class_set_h_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PathFollow2D::set_h_offset, PathFollow2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PathFollow2D::set_h_offset, PathFollow2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue path_follow2d_class_get_h_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PathFollow2D::get_h_offset, PathFollow2D::__class_id, ctx, this_val, argv);
 };
 static JSValue path_follow2d_class_set_v_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PathFollow2D::set_v_offset, PathFollow2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PathFollow2D::set_v_offset, PathFollow2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue path_follow2d_class_get_v_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PathFollow2D::get_v_offset, PathFollow2D::__class_id, ctx, this_val, argv);
 };
 static JSValue path_follow2d_class_set_progress_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PathFollow2D::set_progress_ratio, PathFollow2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PathFollow2D::set_progress_ratio, PathFollow2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue path_follow2d_class_get_progress_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PathFollow2D::get_progress_ratio, PathFollow2D::__class_id, ctx, this_val, argv);
 };
 static JSValue path_follow2d_class_set_rotates(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PathFollow2D::set_rotates, PathFollow2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PathFollow2D::set_rotates, PathFollow2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue path_follow2d_class_is_rotating(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PathFollow2D::is_rotating, PathFollow2D::__class_id, ctx, this_val, argv);
 };
 static JSValue path_follow2d_class_set_cubic_interpolation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PathFollow2D::set_cubic_interpolation, PathFollow2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PathFollow2D::set_cubic_interpolation, PathFollow2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue path_follow2d_class_get_cubic_interpolation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PathFollow2D::get_cubic_interpolation, PathFollow2D::__class_id, ctx, this_val, argv);
 };
 static JSValue path_follow2d_class_set_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PathFollow2D::set_loop, PathFollow2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PathFollow2D::set_loop, PathFollow2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue path_follow2d_class_has_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

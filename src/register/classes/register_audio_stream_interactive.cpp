@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/audio_stream.hpp>
 #include <godot_cpp/classes/audio_stream_interactive.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,56 +37,56 @@ static JSValue audio_stream_interactive_class_constructor(JSContext *ctx, JSValu
 	return obj;
 }
 static JSValue audio_stream_interactive_class_set_clip_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamInteractive::set_clip_count, AudioStreamInteractive::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamInteractive::set_clip_count, AudioStreamInteractive::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_interactive_class_get_clip_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamInteractive::get_clip_count, AudioStreamInteractive::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_interactive_class_set_initial_clip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamInteractive::set_initial_clip, AudioStreamInteractive::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamInteractive::set_initial_clip, AudioStreamInteractive::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_interactive_class_get_initial_clip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamInteractive::get_initial_clip, AudioStreamInteractive::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_interactive_class_set_clip_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamInteractive::set_clip_name, AudioStreamInteractive::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamInteractive::set_clip_name, AudioStreamInteractive::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_interactive_class_get_clip_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamInteractive::get_clip_name, AudioStreamInteractive::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_interactive_class_set_clip_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamInteractive::set_clip_stream, AudioStreamInteractive::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamInteractive::set_clip_stream, AudioStreamInteractive::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_interactive_class_get_clip_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamInteractive::get_clip_stream, AudioStreamInteractive::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_interactive_class_set_clip_auto_advance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamInteractive::set_clip_auto_advance, AudioStreamInteractive::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamInteractive::set_clip_auto_advance, AudioStreamInteractive::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_interactive_class_get_clip_auto_advance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamInteractive::get_clip_auto_advance, AudioStreamInteractive::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_interactive_class_set_clip_auto_advance_next_clip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamInteractive::set_clip_auto_advance_next_clip, AudioStreamInteractive::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamInteractive::set_clip_auto_advance_next_clip, AudioStreamInteractive::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_interactive_class_get_clip_auto_advance_next_clip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamInteractive::get_clip_auto_advance_next_clip, AudioStreamInteractive::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_interactive_class_add_transition(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamInteractive::add_transition, AudioStreamInteractive::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamInteractive::add_transition, AudioStreamInteractive::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_interactive_class_has_transition(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamInteractive::has_transition, AudioStreamInteractive::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_interactive_class_erase_transition(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamInteractive::erase_transition, AudioStreamInteractive::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamInteractive::erase_transition, AudioStreamInteractive::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_interactive_class_get_transition_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

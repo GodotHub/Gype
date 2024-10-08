@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/primitive_mesh.hpp>
 #include <godot_cpp/classes/torus_mesh.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,28 +37,28 @@ static JSValue torus_mesh_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue torus_mesh_class_set_inner_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TorusMesh::set_inner_radius, TorusMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TorusMesh::set_inner_radius, TorusMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue torus_mesh_class_get_inner_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TorusMesh::get_inner_radius, TorusMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue torus_mesh_class_set_outer_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TorusMesh::set_outer_radius, TorusMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TorusMesh::set_outer_radius, TorusMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue torus_mesh_class_get_outer_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TorusMesh::get_outer_radius, TorusMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue torus_mesh_class_set_rings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TorusMesh::set_rings, TorusMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TorusMesh::set_rings, TorusMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue torus_mesh_class_get_rings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TorusMesh::get_rings, TorusMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue torus_mesh_class_set_ring_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TorusMesh::set_ring_segments, TorusMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TorusMesh::set_ring_segments, TorusMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue torus_mesh_class_get_ring_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

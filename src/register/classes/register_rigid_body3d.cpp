@@ -1,17 +1,16 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/physics_body3d.hpp>
 #include <godot_cpp/classes/physics_direct_body_state3d.hpp>
-#include <godot_cpp/classes/physics_material.hpp>
 #include <godot_cpp/classes/rigid_body3d.hpp>
+#include <godot_cpp/classes/physics_body3d.hpp>
+#include <godot_cpp/classes/physics_material.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -41,49 +40,49 @@ static JSValue rigid_body3d_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue rigid_body3d_class_set_mass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::set_mass, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::set_mass, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_get_mass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RigidBody3D::get_mass, RigidBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue rigid_body3d_class_set_inertia(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::set_inertia, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::set_inertia, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_get_inertia(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RigidBody3D::get_inertia, RigidBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue rigid_body3d_class_set_center_of_mass_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::set_center_of_mass_mode, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::set_center_of_mass_mode, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_get_center_of_mass_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RigidBody3D::get_center_of_mass_mode, RigidBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue rigid_body3d_class_set_center_of_mass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::set_center_of_mass, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::set_center_of_mass, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_get_center_of_mass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RigidBody3D::get_center_of_mass, RigidBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue rigid_body3d_class_set_physics_material_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::set_physics_material_override, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::set_physics_material_override, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_get_physics_material_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RigidBody3D::get_physics_material_override, RigidBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue rigid_body3d_class_set_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::set_linear_velocity, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::set_linear_velocity, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_get_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RigidBody3D::get_linear_velocity, RigidBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue rigid_body3d_class_set_angular_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::set_angular_velocity, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::set_angular_velocity, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_get_angular_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -93,42 +92,42 @@ static JSValue rigid_body3d_class_get_inverse_inertia_tensor(JSContext *ctx, JSV
 	return call_builtin_const_method_ret(&RigidBody3D::get_inverse_inertia_tensor, RigidBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue rigid_body3d_class_set_gravity_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::set_gravity_scale, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::set_gravity_scale, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_get_gravity_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RigidBody3D::get_gravity_scale, RigidBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue rigid_body3d_class_set_linear_damp_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::set_linear_damp_mode, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::set_linear_damp_mode, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_get_linear_damp_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RigidBody3D::get_linear_damp_mode, RigidBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue rigid_body3d_class_set_angular_damp_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::set_angular_damp_mode, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::set_angular_damp_mode, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_get_angular_damp_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RigidBody3D::get_angular_damp_mode, RigidBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue rigid_body3d_class_set_linear_damp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::set_linear_damp, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::set_linear_damp, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_get_linear_damp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RigidBody3D::get_linear_damp, RigidBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue rigid_body3d_class_set_angular_damp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::set_angular_damp, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::set_angular_damp, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_get_angular_damp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RigidBody3D::get_angular_damp, RigidBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue rigid_body3d_class_set_max_contacts_reported(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::set_max_contacts_reported, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::set_max_contacts_reported, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_get_max_contacts_reported(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -138,110 +137,110 @@ static JSValue rigid_body3d_class_get_contact_count(JSContext *ctx, JSValueConst
 	return call_builtin_const_method_ret(&RigidBody3D::get_contact_count, RigidBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue rigid_body3d_class_set_use_custom_integrator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::set_use_custom_integrator, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::set_use_custom_integrator, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_is_using_custom_integrator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RigidBody3D::is_using_custom_integrator, RigidBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue rigid_body3d_class_set_contact_monitor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::set_contact_monitor, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::set_contact_monitor, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_is_contact_monitor_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RigidBody3D::is_contact_monitor_enabled, RigidBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue rigid_body3d_class_set_use_continuous_collision_detection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::set_use_continuous_collision_detection, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::set_use_continuous_collision_detection, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_is_using_continuous_collision_detection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RigidBody3D::is_using_continuous_collision_detection, RigidBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue rigid_body3d_class_set_axis_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::set_axis_velocity, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::set_axis_velocity, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_apply_central_impulse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::apply_central_impulse, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::apply_central_impulse, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_apply_impulse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::apply_impulse, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::apply_impulse, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_apply_torque_impulse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::apply_torque_impulse, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::apply_torque_impulse, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_apply_central_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::apply_central_force, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::apply_central_force, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_apply_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::apply_force, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::apply_force, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_apply_torque(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::apply_torque, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::apply_torque, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_add_constant_central_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::add_constant_central_force, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::add_constant_central_force, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_add_constant_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::add_constant_force, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::add_constant_force, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_add_constant_torque(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::add_constant_torque, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::add_constant_torque, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_set_constant_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::set_constant_force, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::set_constant_force, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_get_constant_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RigidBody3D::get_constant_force, RigidBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue rigid_body3d_class_set_constant_torque(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::set_constant_torque, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::set_constant_torque, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_get_constant_torque(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RigidBody3D::get_constant_torque, RigidBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue rigid_body3d_class_set_sleeping(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::set_sleeping, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::set_sleeping, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_is_sleeping(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RigidBody3D::is_sleeping, RigidBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue rigid_body3d_class_set_can_sleep(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::set_can_sleep, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::set_can_sleep, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_is_able_to_sleep(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RigidBody3D::is_able_to_sleep, RigidBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue rigid_body3d_class_set_lock_rotation_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::set_lock_rotation_enabled, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::set_lock_rotation_enabled, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_is_lock_rotation_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RigidBody3D::is_lock_rotation_enabled, RigidBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue rigid_body3d_class_set_freeze_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::set_freeze_enabled, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::set_freeze_enabled, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_is_freeze_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RigidBody3D::is_freeze_enabled, RigidBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue rigid_body3d_class_set_freeze_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RigidBody3D::set_freeze_mode, RigidBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RigidBody3D::set_freeze_mode, RigidBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rigid_body3d_class_get_freeze_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

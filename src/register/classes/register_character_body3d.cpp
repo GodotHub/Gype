@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/character_body3d.hpp>
-#include <godot_cpp/classes/kinematic_collision3d.hpp>
 #include <godot_cpp/classes/physics_body3d.hpp>
+#include <godot_cpp/classes/kinematic_collision3d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -42,18 +41,18 @@ static JSValue character_body3d_class_move_and_slide(JSContext *ctx, JSValueCons
 	return call_builtin_method_ret(&CharacterBody3D::move_and_slide, CharacterBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue character_body3d_class_apply_floor_snap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharacterBody3D::apply_floor_snap, CharacterBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharacterBody3D::apply_floor_snap, CharacterBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body3d_class_set_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharacterBody3D::set_velocity, CharacterBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharacterBody3D::set_velocity, CharacterBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body3d_class_get_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CharacterBody3D::get_velocity, CharacterBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue character_body3d_class_set_safe_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharacterBody3D::set_safe_margin, CharacterBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharacterBody3D::set_safe_margin, CharacterBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body3d_class_get_safe_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -63,39 +62,39 @@ static JSValue character_body3d_class_is_floor_stop_on_slope_enabled(JSContext *
 	return call_builtin_const_method_ret(&CharacterBody3D::is_floor_stop_on_slope_enabled, CharacterBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue character_body3d_class_set_floor_stop_on_slope_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharacterBody3D::set_floor_stop_on_slope_enabled, CharacterBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharacterBody3D::set_floor_stop_on_slope_enabled, CharacterBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body3d_class_set_floor_constant_speed_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharacterBody3D::set_floor_constant_speed_enabled, CharacterBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharacterBody3D::set_floor_constant_speed_enabled, CharacterBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body3d_class_is_floor_constant_speed_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CharacterBody3D::is_floor_constant_speed_enabled, CharacterBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue character_body3d_class_set_floor_block_on_wall_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharacterBody3D::set_floor_block_on_wall_enabled, CharacterBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharacterBody3D::set_floor_block_on_wall_enabled, CharacterBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body3d_class_is_floor_block_on_wall_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CharacterBody3D::is_floor_block_on_wall_enabled, CharacterBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue character_body3d_class_set_slide_on_ceiling_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharacterBody3D::set_slide_on_ceiling_enabled, CharacterBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharacterBody3D::set_slide_on_ceiling_enabled, CharacterBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body3d_class_is_slide_on_ceiling_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CharacterBody3D::is_slide_on_ceiling_enabled, CharacterBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue character_body3d_class_set_platform_floor_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharacterBody3D::set_platform_floor_layers, CharacterBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharacterBody3D::set_platform_floor_layers, CharacterBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body3d_class_get_platform_floor_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CharacterBody3D::get_platform_floor_layers, CharacterBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue character_body3d_class_set_platform_wall_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharacterBody3D::set_platform_wall_layers, CharacterBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharacterBody3D::set_platform_wall_layers, CharacterBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body3d_class_get_platform_wall_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -105,46 +104,46 @@ static JSValue character_body3d_class_get_max_slides(JSContext *ctx, JSValueCons
 	return call_builtin_const_method_ret(&CharacterBody3D::get_max_slides, CharacterBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue character_body3d_class_set_max_slides(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharacterBody3D::set_max_slides, CharacterBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharacterBody3D::set_max_slides, CharacterBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body3d_class_get_floor_max_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CharacterBody3D::get_floor_max_angle, CharacterBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue character_body3d_class_set_floor_max_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharacterBody3D::set_floor_max_angle, CharacterBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharacterBody3D::set_floor_max_angle, CharacterBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body3d_class_get_floor_snap_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&CharacterBody3D::get_floor_snap_length, CharacterBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue character_body3d_class_set_floor_snap_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharacterBody3D::set_floor_snap_length, CharacterBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharacterBody3D::set_floor_snap_length, CharacterBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body3d_class_get_wall_min_slide_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CharacterBody3D::get_wall_min_slide_angle, CharacterBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue character_body3d_class_set_wall_min_slide_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharacterBody3D::set_wall_min_slide_angle, CharacterBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharacterBody3D::set_wall_min_slide_angle, CharacterBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body3d_class_get_up_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CharacterBody3D::get_up_direction, CharacterBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue character_body3d_class_set_up_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharacterBody3D::set_up_direction, CharacterBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharacterBody3D::set_up_direction, CharacterBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body3d_class_set_motion_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharacterBody3D::set_motion_mode, CharacterBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharacterBody3D::set_motion_mode, CharacterBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body3d_class_get_motion_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CharacterBody3D::get_motion_mode, CharacterBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue character_body3d_class_set_platform_on_leave(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharacterBody3D::set_platform_on_leave, CharacterBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharacterBody3D::set_platform_on_leave, CharacterBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body3d_class_get_platform_on_leave(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/style_box.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/style_box_flat.hpp>
+#include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,113 +37,113 @@ static JSValue style_box_flat_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue style_box_flat_class_set_bg_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxFlat::set_bg_color, StyleBoxFlat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxFlat::set_bg_color, StyleBoxFlat::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_flat_class_get_bg_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxFlat::get_bg_color, StyleBoxFlat::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_flat_class_set_border_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxFlat::set_border_color, StyleBoxFlat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxFlat::set_border_color, StyleBoxFlat::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_flat_class_get_border_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxFlat::get_border_color, StyleBoxFlat::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_flat_class_set_border_width_all(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxFlat::set_border_width_all, StyleBoxFlat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxFlat::set_border_width_all, StyleBoxFlat::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_flat_class_get_border_width_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxFlat::get_border_width_min, StyleBoxFlat::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_flat_class_set_border_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxFlat::set_border_width, StyleBoxFlat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxFlat::set_border_width, StyleBoxFlat::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_flat_class_get_border_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxFlat::get_border_width, StyleBoxFlat::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_flat_class_set_border_blend(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxFlat::set_border_blend, StyleBoxFlat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxFlat::set_border_blend, StyleBoxFlat::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_flat_class_get_border_blend(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxFlat::get_border_blend, StyleBoxFlat::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_flat_class_set_corner_radius_all(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxFlat::set_corner_radius_all, StyleBoxFlat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxFlat::set_corner_radius_all, StyleBoxFlat::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_flat_class_set_corner_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxFlat::set_corner_radius, StyleBoxFlat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxFlat::set_corner_radius, StyleBoxFlat::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_flat_class_get_corner_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxFlat::get_corner_radius, StyleBoxFlat::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_flat_class_set_expand_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxFlat::set_expand_margin, StyleBoxFlat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxFlat::set_expand_margin, StyleBoxFlat::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_flat_class_set_expand_margin_all(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxFlat::set_expand_margin_all, StyleBoxFlat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxFlat::set_expand_margin_all, StyleBoxFlat::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_flat_class_get_expand_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxFlat::get_expand_margin, StyleBoxFlat::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_flat_class_set_draw_center(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxFlat::set_draw_center, StyleBoxFlat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxFlat::set_draw_center, StyleBoxFlat::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_flat_class_is_draw_center_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxFlat::is_draw_center_enabled, StyleBoxFlat::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_flat_class_set_skew(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxFlat::set_skew, StyleBoxFlat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxFlat::set_skew, StyleBoxFlat::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_flat_class_get_skew(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxFlat::get_skew, StyleBoxFlat::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_flat_class_set_shadow_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxFlat::set_shadow_color, StyleBoxFlat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxFlat::set_shadow_color, StyleBoxFlat::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_flat_class_get_shadow_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxFlat::get_shadow_color, StyleBoxFlat::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_flat_class_set_shadow_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxFlat::set_shadow_size, StyleBoxFlat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxFlat::set_shadow_size, StyleBoxFlat::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_flat_class_get_shadow_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxFlat::get_shadow_size, StyleBoxFlat::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_flat_class_set_shadow_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxFlat::set_shadow_offset, StyleBoxFlat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxFlat::set_shadow_offset, StyleBoxFlat::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_flat_class_get_shadow_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxFlat::get_shadow_offset, StyleBoxFlat::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_flat_class_set_anti_aliased(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxFlat::set_anti_aliased, StyleBoxFlat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxFlat::set_anti_aliased, StyleBoxFlat::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_flat_class_is_anti_aliased(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxFlat::is_anti_aliased, StyleBoxFlat::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_flat_class_set_aa_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxFlat::set_aa_size, StyleBoxFlat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxFlat::set_aa_size, StyleBoxFlat::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_flat_class_get_aa_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxFlat::get_aa_size, StyleBoxFlat::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_flat_class_set_corner_detail(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxFlat::set_corner_detail, StyleBoxFlat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxFlat::set_corner_detail, StyleBoxFlat::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_flat_class_get_corner_detail(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

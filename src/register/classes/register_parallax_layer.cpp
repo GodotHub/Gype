@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/parallax_layer.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,21 +37,21 @@ static JSValue parallax_layer_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue parallax_layer_class_set_motion_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParallaxLayer::set_motion_scale, ParallaxLayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParallaxLayer::set_motion_scale, ParallaxLayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax_layer_class_get_motion_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParallaxLayer::get_motion_scale, ParallaxLayer::__class_id, ctx, this_val, argv);
 };
 static JSValue parallax_layer_class_set_motion_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParallaxLayer::set_motion_offset, ParallaxLayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParallaxLayer::set_motion_offset, ParallaxLayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax_layer_class_get_motion_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParallaxLayer::get_motion_offset, ParallaxLayer::__class_id, ctx, this_val, argv);
 };
 static JSValue parallax_layer_class_set_mirroring(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParallaxLayer::set_mirroring, ParallaxLayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParallaxLayer::set_mirroring, ParallaxLayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax_layer_class_get_mirroring(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

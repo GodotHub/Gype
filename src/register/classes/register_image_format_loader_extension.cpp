@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/file_access.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/classes/image_format_loader.hpp>
 #include <godot_cpp/classes/image_format_loader_extension.hpp>
+#include <godot_cpp/classes/file_access.hpp>
+#include <godot_cpp/classes/image_format_loader.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -40,11 +39,11 @@ static JSValue image_format_loader_extension_class_constructor(JSContext *ctx, J
 	return obj;
 }
 static JSValue image_format_loader_extension_class_add_format_loader(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ImageFormatLoaderExtension::add_format_loader, ImageFormatLoaderExtension::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ImageFormatLoaderExtension::add_format_loader, ImageFormatLoaderExtension::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_format_loader_extension_class_remove_format_loader(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ImageFormatLoaderExtension::remove_format_loader, ImageFormatLoaderExtension::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ImageFormatLoaderExtension::remove_format_loader, ImageFormatLoaderExtension::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry image_format_loader_extension_class_proto_funcs[] = {

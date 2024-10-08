@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/color_picker.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/v_box_container.hpp>
+#include <godot_cpp/classes/color_picker.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,99 +37,99 @@ static JSValue color_picker_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue color_picker_class_set_pick_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ColorPicker::set_pick_color, ColorPicker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ColorPicker::set_pick_color, ColorPicker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue color_picker_class_get_pick_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ColorPicker::get_pick_color, ColorPicker::__class_id, ctx, this_val, argv);
 };
 static JSValue color_picker_class_set_deferred_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ColorPicker::set_deferred_mode, ColorPicker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ColorPicker::set_deferred_mode, ColorPicker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue color_picker_class_is_deferred_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ColorPicker::is_deferred_mode, ColorPicker::__class_id, ctx, this_val, argv);
 };
 static JSValue color_picker_class_set_color_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ColorPicker::set_color_mode, ColorPicker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ColorPicker::set_color_mode, ColorPicker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue color_picker_class_get_color_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ColorPicker::get_color_mode, ColorPicker::__class_id, ctx, this_val, argv);
 };
 static JSValue color_picker_class_set_edit_alpha(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ColorPicker::set_edit_alpha, ColorPicker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ColorPicker::set_edit_alpha, ColorPicker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue color_picker_class_is_editing_alpha(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ColorPicker::is_editing_alpha, ColorPicker::__class_id, ctx, this_val, argv);
 };
 static JSValue color_picker_class_set_can_add_swatches(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ColorPicker::set_can_add_swatches, ColorPicker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ColorPicker::set_can_add_swatches, ColorPicker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue color_picker_class_are_swatches_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ColorPicker::are_swatches_enabled, ColorPicker::__class_id, ctx, this_val, argv);
 };
 static JSValue color_picker_class_set_presets_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ColorPicker::set_presets_visible, ColorPicker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ColorPicker::set_presets_visible, ColorPicker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue color_picker_class_are_presets_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ColorPicker::are_presets_visible, ColorPicker::__class_id, ctx, this_val, argv);
 };
 static JSValue color_picker_class_set_modes_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ColorPicker::set_modes_visible, ColorPicker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ColorPicker::set_modes_visible, ColorPicker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue color_picker_class_are_modes_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ColorPicker::are_modes_visible, ColorPicker::__class_id, ctx, this_val, argv);
 };
 static JSValue color_picker_class_set_sampler_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ColorPicker::set_sampler_visible, ColorPicker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ColorPicker::set_sampler_visible, ColorPicker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue color_picker_class_is_sampler_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ColorPicker::is_sampler_visible, ColorPicker::__class_id, ctx, this_val, argv);
 };
 static JSValue color_picker_class_set_sliders_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ColorPicker::set_sliders_visible, ColorPicker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ColorPicker::set_sliders_visible, ColorPicker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue color_picker_class_are_sliders_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ColorPicker::are_sliders_visible, ColorPicker::__class_id, ctx, this_val, argv);
 };
 static JSValue color_picker_class_set_hex_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ColorPicker::set_hex_visible, ColorPicker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ColorPicker::set_hex_visible, ColorPicker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue color_picker_class_is_hex_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ColorPicker::is_hex_visible, ColorPicker::__class_id, ctx, this_val, argv);
 };
 static JSValue color_picker_class_add_preset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ColorPicker::add_preset, ColorPicker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ColorPicker::add_preset, ColorPicker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue color_picker_class_erase_preset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ColorPicker::erase_preset, ColorPicker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ColorPicker::erase_preset, ColorPicker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue color_picker_class_get_presets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ColorPicker::get_presets, ColorPicker::__class_id, ctx, this_val, argv);
 };
 static JSValue color_picker_class_add_recent_preset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ColorPicker::add_recent_preset, ColorPicker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ColorPicker::add_recent_preset, ColorPicker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue color_picker_class_erase_recent_preset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ColorPicker::erase_recent_preset, ColorPicker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ColorPicker::erase_recent_preset, ColorPicker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue color_picker_class_get_recent_presets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ColorPicker::get_recent_presets, ColorPicker::__class_id, ctx, this_val, argv);
 };
 static JSValue color_picker_class_set_picker_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ColorPicker::set_picker_shape, ColorPicker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ColorPicker::set_picker_shape, ColorPicker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue color_picker_class_get_picker_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

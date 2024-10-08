@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/project_settings.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -41,7 +40,7 @@ static JSValue project_settings_class_has_setting(JSContext *ctx, JSValueConst t
 	return call_builtin_const_method_ret(&ProjectSettings::has_setting, ProjectSettings::__class_id, ctx, this_val, argv);
 };
 static JSValue project_settings_class_set_setting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ProjectSettings::set_setting, ProjectSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ProjectSettings::set_setting, ProjectSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue project_settings_class_get_setting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -54,34 +53,34 @@ static JSValue project_settings_class_get_global_class_list(JSContext *ctx, JSVa
 	return call_builtin_method_ret(&ProjectSettings::get_global_class_list, ProjectSettings::__class_id, ctx, this_val, argv);
 };
 static JSValue project_settings_class_set_order(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ProjectSettings::set_order, ProjectSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ProjectSettings::set_order, ProjectSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue project_settings_class_get_order(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ProjectSettings::get_order, ProjectSettings::__class_id, ctx, this_val, argv);
 };
 static JSValue project_settings_class_set_initial_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ProjectSettings::set_initial_value, ProjectSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ProjectSettings::set_initial_value, ProjectSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue project_settings_class_set_as_basic(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ProjectSettings::set_as_basic, ProjectSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ProjectSettings::set_as_basic, ProjectSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue project_settings_class_set_as_internal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ProjectSettings::set_as_internal, ProjectSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ProjectSettings::set_as_internal, ProjectSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue project_settings_class_add_property_info(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ProjectSettings::add_property_info, ProjectSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ProjectSettings::add_property_info, ProjectSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue project_settings_class_set_restart_if_changed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ProjectSettings::set_restart_if_changed, ProjectSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ProjectSettings::set_restart_if_changed, ProjectSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue project_settings_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ProjectSettings::clear, ProjectSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ProjectSettings::clear, ProjectSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue project_settings_class_localize_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

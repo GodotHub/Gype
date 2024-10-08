@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/parallax2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,70 +37,70 @@ static JSValue parallax2d_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue parallax2d_class_set_scroll_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Parallax2D::set_scroll_scale, Parallax2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Parallax2D::set_scroll_scale, Parallax2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax2d_class_get_scroll_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Parallax2D::get_scroll_scale, Parallax2D::__class_id, ctx, this_val, argv);
 };
 static JSValue parallax2d_class_set_repeat_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Parallax2D::set_repeat_size, Parallax2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Parallax2D::set_repeat_size, Parallax2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax2d_class_get_repeat_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Parallax2D::get_repeat_size, Parallax2D::__class_id, ctx, this_val, argv);
 };
 static JSValue parallax2d_class_set_repeat_times(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Parallax2D::set_repeat_times, Parallax2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Parallax2D::set_repeat_times, Parallax2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax2d_class_get_repeat_times(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Parallax2D::get_repeat_times, Parallax2D::__class_id, ctx, this_val, argv);
 };
 static JSValue parallax2d_class_set_autoscroll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Parallax2D::set_autoscroll, Parallax2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Parallax2D::set_autoscroll, Parallax2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax2d_class_get_autoscroll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Parallax2D::get_autoscroll, Parallax2D::__class_id, ctx, this_val, argv);
 };
 static JSValue parallax2d_class_set_scroll_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Parallax2D::set_scroll_offset, Parallax2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Parallax2D::set_scroll_offset, Parallax2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax2d_class_get_scroll_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Parallax2D::get_scroll_offset, Parallax2D::__class_id, ctx, this_val, argv);
 };
 static JSValue parallax2d_class_set_screen_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Parallax2D::set_screen_offset, Parallax2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Parallax2D::set_screen_offset, Parallax2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax2d_class_get_screen_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Parallax2D::get_screen_offset, Parallax2D::__class_id, ctx, this_val, argv);
 };
 static JSValue parallax2d_class_set_limit_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Parallax2D::set_limit_begin, Parallax2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Parallax2D::set_limit_begin, Parallax2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax2d_class_get_limit_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Parallax2D::get_limit_begin, Parallax2D::__class_id, ctx, this_val, argv);
 };
 static JSValue parallax2d_class_set_limit_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Parallax2D::set_limit_end, Parallax2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Parallax2D::set_limit_end, Parallax2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax2d_class_get_limit_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Parallax2D::get_limit_end, Parallax2D::__class_id, ctx, this_val, argv);
 };
 static JSValue parallax2d_class_set_follow_viewport(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Parallax2D::set_follow_viewport, Parallax2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Parallax2D::set_follow_viewport, Parallax2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax2d_class_get_follow_viewport(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&Parallax2D::get_follow_viewport, Parallax2D::__class_id, ctx, this_val, argv);
 };
 static JSValue parallax2d_class_set_ignore_camera_scroll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Parallax2D::set_ignore_camera_scroll, Parallax2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Parallax2D::set_ignore_camera_scroll, Parallax2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax2d_class_is_ignore_camera_scroll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

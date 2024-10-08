@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/editor_vcs_interface.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -59,7 +58,7 @@ static JSValue editor_vcs_interface_class_add_line_diffs_into_diff_hunk(JSContex
 	return call_builtin_method_ret(&EditorVCSInterface::add_line_diffs_into_diff_hunk, EditorVCSInterface::__class_id, ctx, this_val, argv);
 };
 static JSValue editor_vcs_interface_class_popup_error(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorVCSInterface::popup_error, EditorVCSInterface::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorVCSInterface::popup_error, EditorVCSInterface::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry editor_vcs_interface_class_proto_funcs[] = {

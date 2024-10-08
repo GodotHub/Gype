@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/rd_pipeline_color_blend_state_attachment.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,81 +37,81 @@ static JSValue rd_pipeline_color_blend_state_attachment_class_constructor(JSCont
 	return obj;
 }
 static JSValue rd_pipeline_color_blend_state_attachment_class_set_as_mix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineColorBlendStateAttachment::set_as_mix, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineColorBlendStateAttachment::set_as_mix, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_color_blend_state_attachment_class_set_enable_blend(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineColorBlendStateAttachment::set_enable_blend, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineColorBlendStateAttachment::set_enable_blend, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_color_blend_state_attachment_class_get_enable_blend(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDPipelineColorBlendStateAttachment::get_enable_blend, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_pipeline_color_blend_state_attachment_class_set_src_color_blend_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineColorBlendStateAttachment::set_src_color_blend_factor, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineColorBlendStateAttachment::set_src_color_blend_factor, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_color_blend_state_attachment_class_get_src_color_blend_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDPipelineColorBlendStateAttachment::get_src_color_blend_factor, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_pipeline_color_blend_state_attachment_class_set_dst_color_blend_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineColorBlendStateAttachment::set_dst_color_blend_factor, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineColorBlendStateAttachment::set_dst_color_blend_factor, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_color_blend_state_attachment_class_get_dst_color_blend_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDPipelineColorBlendStateAttachment::get_dst_color_blend_factor, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_pipeline_color_blend_state_attachment_class_set_color_blend_op(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineColorBlendStateAttachment::set_color_blend_op, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineColorBlendStateAttachment::set_color_blend_op, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_color_blend_state_attachment_class_get_color_blend_op(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDPipelineColorBlendStateAttachment::get_color_blend_op, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_pipeline_color_blend_state_attachment_class_set_src_alpha_blend_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineColorBlendStateAttachment::set_src_alpha_blend_factor, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineColorBlendStateAttachment::set_src_alpha_blend_factor, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_color_blend_state_attachment_class_get_src_alpha_blend_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDPipelineColorBlendStateAttachment::get_src_alpha_blend_factor, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_pipeline_color_blend_state_attachment_class_set_dst_alpha_blend_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineColorBlendStateAttachment::set_dst_alpha_blend_factor, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineColorBlendStateAttachment::set_dst_alpha_blend_factor, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_color_blend_state_attachment_class_get_dst_alpha_blend_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDPipelineColorBlendStateAttachment::get_dst_alpha_blend_factor, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_pipeline_color_blend_state_attachment_class_set_alpha_blend_op(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineColorBlendStateAttachment::set_alpha_blend_op, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineColorBlendStateAttachment::set_alpha_blend_op, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_color_blend_state_attachment_class_get_alpha_blend_op(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDPipelineColorBlendStateAttachment::get_alpha_blend_op, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_pipeline_color_blend_state_attachment_class_set_write_r(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineColorBlendStateAttachment::set_write_r, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineColorBlendStateAttachment::set_write_r, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_color_blend_state_attachment_class_get_write_r(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDPipelineColorBlendStateAttachment::get_write_r, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_pipeline_color_blend_state_attachment_class_set_write_g(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineColorBlendStateAttachment::set_write_g, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineColorBlendStateAttachment::set_write_g, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_color_blend_state_attachment_class_get_write_g(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDPipelineColorBlendStateAttachment::get_write_g, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_pipeline_color_blend_state_attachment_class_set_write_b(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineColorBlendStateAttachment::set_write_b, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineColorBlendStateAttachment::set_write_b, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_color_blend_state_attachment_class_get_write_b(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDPipelineColorBlendStateAttachment::get_write_b, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_pipeline_color_blend_state_attachment_class_set_write_a(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineColorBlendStateAttachment::set_write_a, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineColorBlendStateAttachment::set_write_a, RDPipelineColorBlendStateAttachment::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_color_blend_state_attachment_class_get_write_a(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

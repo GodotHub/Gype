@@ -2175,6 +2175,8 @@ def generate_utility_functions(api, output_dir):
     header.append("")
     header.append("#include <godot_cpp/variant/builtin_types.hpp>")
     header.append("#include <godot_cpp/variant/variant.hpp>")
+    header.append('#include "quickjs/quickjs.h"')
+    header.append("#include <vector>")
     header.append("")
     header.append("#include <array>")
     header.append("")
@@ -2182,6 +2184,13 @@ def generate_utility_functions(api, output_dir):
     header.append("")
     header.append("class UtilityFunctions {")
     header.append("public:")
+    header.append(f"\tstatic JSClassID __class_id;")
+    header.append("")
+    header.append(
+        "\tinline static void __init_js_class_id() {\n"
+        f"\t\tUtilityFunctions::__class_id = JS_NewClassID(&UtilityFunctions::__class_id);\n"
+        "\t}\n"
+    )
 
     for function in api["utility_functions"]:
         if function["name"] == "is_instance_valid":
@@ -2199,6 +2208,7 @@ def generate_utility_functions(api, output_dir):
         if vararg:
             # Add templated version.
             header += make_varargs_template(function, static=True)
+            header += make_js_varargs_template(function, static = True)
 
     header.append("};")
     header.append("")
@@ -2221,6 +2231,7 @@ def generate_utility_functions(api, output_dir):
     source.append("#include <godot_cpp/core/engine_ptrcall.hpp>")
     source.append("")
     source.append("namespace godot {")
+    source.append("JSClassID UtilityFunctions::__class_id;")
     source.append("")
 
     for function in api["utility_functions"]:
@@ -2493,7 +2504,7 @@ def make_js_varargs_template(function_data, static=False,
     result.append(
         '\tfor (size_t i = 0; i < p_args.size(); i++) {\n'
             '\t\t\tvariant_args[i] = &p_args[i];\n'
-        '\t\t}\n')
+        '\t\t}')
     call_line = "\t"
     if not for_builtin_classes:
         if return_type != "void":

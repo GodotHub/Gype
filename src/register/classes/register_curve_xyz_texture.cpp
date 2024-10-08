@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/classes/curve_xyz_texture.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,25 +38,25 @@ static JSValue curve_xyz_texture_class_constructor(JSContext *ctx, JSValueConst 
 	return obj;
 }
 static JSValue curve_xyz_texture_class_set_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CurveXYZTexture::set_width, CurveXYZTexture::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CurveXYZTexture::set_width, CurveXYZTexture::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_xyz_texture_class_set_curve_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CurveXYZTexture::set_curve_x, CurveXYZTexture::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CurveXYZTexture::set_curve_x, CurveXYZTexture::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_xyz_texture_class_get_curve_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CurveXYZTexture::get_curve_x, CurveXYZTexture::__class_id, ctx, this_val, argv);
 };
 static JSValue curve_xyz_texture_class_set_curve_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CurveXYZTexture::set_curve_y, CurveXYZTexture::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CurveXYZTexture::set_curve_y, CurveXYZTexture::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_xyz_texture_class_get_curve_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CurveXYZTexture::get_curve_y, CurveXYZTexture::__class_id, ctx, this_val, argv);
 };
 static JSValue curve_xyz_texture_class_set_curve_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CurveXYZTexture::set_curve_z, CurveXYZTexture::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CurveXYZTexture::set_curve_z, CurveXYZTexture::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_xyz_texture_class_get_curve_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

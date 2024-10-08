@@ -1,17 +1,16 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/tile_data.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/tile_map.hpp>
+#include <godot_cpp/classes/tile_data.hpp>
 #include <godot_cpp/classes/tile_map_pattern.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/tile_set.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -41,25 +40,25 @@ static JSValue tile_map_class_constructor(JSContext *ctx, JSValueConst new_targe
 	return obj;
 }
 static JSValue tile_map_class_set_navigation_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::set_navigation_map, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::set_navigation_map, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_get_navigation_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TileMap::get_navigation_map, TileMap::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_map_class_force_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::force_update, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::force_update, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_set_tileset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::set_tileset, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::set_tileset, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_get_tileset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TileMap::get_tileset, TileMap::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_map_class_set_rendering_quadrant_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::set_rendering_quadrant_size, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::set_rendering_quadrant_size, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_get_rendering_quadrant_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -69,100 +68,100 @@ static JSValue tile_map_class_get_layers_count(JSContext *ctx, JSValueConst this
 	return call_builtin_const_method_ret(&TileMap::get_layers_count, TileMap::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_map_class_add_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::add_layer, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::add_layer, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_move_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::move_layer, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::move_layer, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_remove_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::remove_layer, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::remove_layer, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_set_layer_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::set_layer_name, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::set_layer_name, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_get_layer_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TileMap::get_layer_name, TileMap::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_map_class_set_layer_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::set_layer_enabled, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::set_layer_enabled, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_is_layer_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TileMap::is_layer_enabled, TileMap::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_map_class_set_layer_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::set_layer_modulate, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::set_layer_modulate, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_get_layer_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TileMap::get_layer_modulate, TileMap::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_map_class_set_layer_y_sort_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::set_layer_y_sort_enabled, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::set_layer_y_sort_enabled, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_is_layer_y_sort_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TileMap::is_layer_y_sort_enabled, TileMap::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_map_class_set_layer_y_sort_origin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::set_layer_y_sort_origin, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::set_layer_y_sort_origin, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_get_layer_y_sort_origin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TileMap::get_layer_y_sort_origin, TileMap::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_map_class_set_layer_z_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::set_layer_z_index, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::set_layer_z_index, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_get_layer_z_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TileMap::get_layer_z_index, TileMap::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_map_class_set_layer_navigation_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::set_layer_navigation_enabled, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::set_layer_navigation_enabled, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_is_layer_navigation_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TileMap::is_layer_navigation_enabled, TileMap::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_map_class_set_layer_navigation_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::set_layer_navigation_map, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::set_layer_navigation_map, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_get_layer_navigation_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TileMap::get_layer_navigation_map, TileMap::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_map_class_set_collision_animatable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::set_collision_animatable, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::set_collision_animatable, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_is_collision_animatable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TileMap::is_collision_animatable, TileMap::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_map_class_set_collision_visibility_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::set_collision_visibility_mode, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::set_collision_visibility_mode, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_get_collision_visibility_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TileMap::get_collision_visibility_mode, TileMap::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_map_class_set_navigation_visibility_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::set_navigation_visibility_mode, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::set_navigation_visibility_mode, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_get_navigation_visibility_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TileMap::get_navigation_visibility_mode, TileMap::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_map_class_set_cell(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::set_cell, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::set_cell, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_erase_cell(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::erase_cell, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::erase_cell, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_get_cell_source_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -190,35 +189,35 @@ static JSValue tile_map_class_map_pattern(JSContext *ctx, JSValueConst this_val,
 	return call_builtin_method_ret(&TileMap::map_pattern, TileMap::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_map_class_set_pattern(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::set_pattern, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::set_pattern, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_set_cells_terrain_connect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::set_cells_terrain_connect, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::set_cells_terrain_connect, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_set_cells_terrain_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::set_cells_terrain_path, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::set_cells_terrain_path, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_fix_invalid_tiles(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::fix_invalid_tiles, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::fix_invalid_tiles, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_clear_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::clear_layer, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::clear_layer, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::clear, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::clear, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_update_internals(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::update_internals, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::update_internals, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_notify_runtime_tile_data_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileMap::notify_runtime_tile_data_update, TileMap::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileMap::notify_runtime_tile_data_update, TileMap::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_class_get_surrounding_cells(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

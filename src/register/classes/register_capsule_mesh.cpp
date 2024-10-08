@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/capsule_mesh.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,28 +37,28 @@ static JSValue capsule_mesh_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue capsule_mesh_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CapsuleMesh::set_radius, CapsuleMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CapsuleMesh::set_radius, CapsuleMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue capsule_mesh_class_get_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CapsuleMesh::get_radius, CapsuleMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue capsule_mesh_class_set_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CapsuleMesh::set_height, CapsuleMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CapsuleMesh::set_height, CapsuleMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue capsule_mesh_class_get_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CapsuleMesh::get_height, CapsuleMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue capsule_mesh_class_set_radial_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CapsuleMesh::set_radial_segments, CapsuleMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CapsuleMesh::set_radial_segments, CapsuleMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue capsule_mesh_class_get_radial_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CapsuleMesh::get_radial_segments, CapsuleMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue capsule_mesh_class_set_rings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CapsuleMesh::set_rings, CapsuleMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CapsuleMesh::set_rings, CapsuleMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue capsule_mesh_class_get_rings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

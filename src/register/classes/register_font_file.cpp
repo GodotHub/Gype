@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/font_file.hpp>
-#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -45,118 +44,118 @@ static JSValue font_file_class_load_dynamic_font(JSContext *ctx, JSValueConst th
 	return call_builtin_method_ret(&FontFile::load_dynamic_font, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_data, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_data, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_data, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_font_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_font_name, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_font_name, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_set_font_style_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_font_style_name, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_font_style_name, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_set_font_style(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_font_style, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_font_style, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_set_font_weight(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_font_weight, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_font_weight, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_set_font_stretch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_font_stretch, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_font_stretch, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_set_antialiasing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_antialiasing, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_antialiasing, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_antialiasing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_antialiasing, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_disable_embedded_bitmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_disable_embedded_bitmaps, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_disable_embedded_bitmaps, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_disable_embedded_bitmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_disable_embedded_bitmaps, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_generate_mipmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_generate_mipmaps, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_generate_mipmaps, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_generate_mipmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_generate_mipmaps, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_multichannel_signed_distance_field(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_multichannel_signed_distance_field, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_multichannel_signed_distance_field, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_is_multichannel_signed_distance_field(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::is_multichannel_signed_distance_field, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_msdf_pixel_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_msdf_pixel_range, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_msdf_pixel_range, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_msdf_pixel_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_msdf_pixel_range, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_msdf_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_msdf_size, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_msdf_size, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_msdf_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_msdf_size, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_fixed_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_fixed_size, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_fixed_size, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_fixed_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_fixed_size, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_fixed_size_scale_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_fixed_size_scale_mode, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_fixed_size_scale_mode, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_fixed_size_scale_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_fixed_size_scale_mode, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_allow_system_fallback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_allow_system_fallback, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_allow_system_fallback, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_is_allow_system_fallback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::is_allow_system_fallback, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_force_autohinter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_force_autohinter, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_force_autohinter, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_is_force_autohinter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::is_force_autohinter, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_hinting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_hinting, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_hinting, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_hinting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_hinting, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_subpixel_positioning(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_subpixel_positioning, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_subpixel_positioning, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_subpixel_positioning(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_subpixel_positioning, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_oversampling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_oversampling, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_oversampling, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_oversampling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -166,96 +165,96 @@ static JSValue font_file_class_get_cache_count(JSContext *ctx, JSValueConst this
 	return call_builtin_const_method_ret(&FontFile::get_cache_count, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_clear_cache(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::clear_cache, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::clear_cache, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_remove_cache(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::remove_cache, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::remove_cache, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_size_cache_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_size_cache_list, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_clear_size_cache(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::clear_size_cache, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::clear_size_cache, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_remove_size_cache(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::remove_size_cache, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::remove_size_cache, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_set_variation_coordinates(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_variation_coordinates, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_variation_coordinates, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_variation_coordinates(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_variation_coordinates, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_embolden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_embolden, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_embolden, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_embolden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_embolden, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_transform, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_transform, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_transform, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_extra_spacing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_extra_spacing, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_extra_spacing, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_extra_spacing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_extra_spacing, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_extra_baseline_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_extra_baseline_offset, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_extra_baseline_offset, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_extra_baseline_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_extra_baseline_offset, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_face_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_face_index, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_face_index, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_face_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_face_index, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_cache_ascent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_cache_ascent, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_cache_ascent, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_cache_ascent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_cache_ascent, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_cache_descent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_cache_descent, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_cache_descent, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_cache_descent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_cache_descent, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_cache_underline_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_cache_underline_position, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_cache_underline_position, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_cache_underline_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_cache_underline_position, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_cache_underline_thickness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_cache_underline_thickness, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_cache_underline_thickness, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_cache_underline_thickness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_cache_underline_thickness, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_cache_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_cache_scale, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_cache_scale, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_cache_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -265,22 +264,22 @@ static JSValue font_file_class_get_texture_count(JSContext *ctx, JSValueConst th
 	return call_builtin_const_method_ret(&FontFile::get_texture_count, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_clear_textures(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::clear_textures, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::clear_textures, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_remove_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::remove_texture, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::remove_texture, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_set_texture_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_texture_image, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_texture_image, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_texture_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_texture_image, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_texture_offsets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_texture_offsets, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_texture_offsets, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_texture_offsets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -290,43 +289,43 @@ static JSValue font_file_class_get_glyph_list(JSContext *ctx, JSValueConst this_
 	return call_builtin_const_method_ret(&FontFile::get_glyph_list, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_clear_glyphs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::clear_glyphs, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::clear_glyphs, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_remove_glyph(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::remove_glyph, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::remove_glyph, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_set_glyph_advance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_glyph_advance, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_glyph_advance, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_glyph_advance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_glyph_advance, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_glyph_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_glyph_offset, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_glyph_offset, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_glyph_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_glyph_offset, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_glyph_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_glyph_size, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_glyph_size, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_glyph_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_glyph_size, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_glyph_uv_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_glyph_uv_rect, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_glyph_uv_rect, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_glyph_uv_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_glyph_uv_rect, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_glyph_texture_idx(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_glyph_texture_idx, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_glyph_texture_idx, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_glyph_texture_idx(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -336,58 +335,58 @@ static JSValue font_file_class_get_kerning_list(JSContext *ctx, JSValueConst thi
 	return call_builtin_const_method_ret(&FontFile::get_kerning_list, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_clear_kerning_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::clear_kerning_map, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::clear_kerning_map, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_remove_kerning(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::remove_kerning, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::remove_kerning, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_set_kerning(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_kerning, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_kerning, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_kerning(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_kerning, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_render_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::render_range, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::render_range, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_render_glyph(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::render_glyph, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::render_glyph, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_set_language_support_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_language_support_override, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_language_support_override, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_language_support_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_language_support_override, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_remove_language_support_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::remove_language_support_override, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::remove_language_support_override, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_language_support_overrides(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_language_support_overrides, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_script_support_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_script_support_override, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_script_support_override, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_script_support_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_script_support_override, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_remove_script_support_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::remove_script_support_override, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::remove_script_support_override, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_script_support_overrides(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FontFile::get_script_support_overrides, FontFile::__class_id, ctx, this_val, argv);
 };
 static JSValue font_file_class_set_opentype_feature_overrides(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FontFile::set_opentype_feature_overrides, FontFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FontFile::set_opentype_feature_overrides, FontFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_file_class_get_opentype_feature_overrides(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

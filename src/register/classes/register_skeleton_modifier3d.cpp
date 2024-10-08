@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/node3d.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/skeleton3d.hpp>
 #include <godot_cpp/classes/skeleton_modifier3d.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -42,14 +41,14 @@ static JSValue skeleton_modifier3d_class_get_skeleton(JSContext *ctx, JSValueCon
 	return call_builtin_const_method_ret(&SkeletonModifier3D::get_skeleton, SkeletonModifier3D::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modifier3d_class_set_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModifier3D::set_active, SkeletonModifier3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModifier3D::set_active, SkeletonModifier3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modifier3d_class_is_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonModifier3D::is_active, SkeletonModifier3D::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modifier3d_class_set_influence(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModifier3D::set_influence, SkeletonModifier3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModifier3D::set_influence, SkeletonModifier3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modifier3d_class_get_influence(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

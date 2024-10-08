@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/animation_node_animation.hpp>
 #include <godot_cpp/classes/animation_root_node.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,49 +37,49 @@ static JSValue animation_node_animation_class_constructor(JSContext *ctx, JSValu
 	return obj;
 }
 static JSValue animation_node_animation_class_set_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNodeAnimation::set_animation, AnimationNodeAnimation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeAnimation::set_animation, AnimationNodeAnimation::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_animation_class_get_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimationNodeAnimation::get_animation, AnimationNodeAnimation::__class_id, ctx, this_val, argv);
 };
 static JSValue animation_node_animation_class_set_play_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNodeAnimation::set_play_mode, AnimationNodeAnimation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeAnimation::set_play_mode, AnimationNodeAnimation::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_animation_class_get_play_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimationNodeAnimation::get_play_mode, AnimationNodeAnimation::__class_id, ctx, this_val, argv);
 };
 static JSValue animation_node_animation_class_set_use_custom_timeline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNodeAnimation::set_use_custom_timeline, AnimationNodeAnimation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeAnimation::set_use_custom_timeline, AnimationNodeAnimation::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_animation_class_is_using_custom_timeline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimationNodeAnimation::is_using_custom_timeline, AnimationNodeAnimation::__class_id, ctx, this_val, argv);
 };
 static JSValue animation_node_animation_class_set_timeline_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNodeAnimation::set_timeline_length, AnimationNodeAnimation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeAnimation::set_timeline_length, AnimationNodeAnimation::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_animation_class_get_timeline_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimationNodeAnimation::get_timeline_length, AnimationNodeAnimation::__class_id, ctx, this_val, argv);
 };
 static JSValue animation_node_animation_class_set_stretch_time_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNodeAnimation::set_stretch_time_scale, AnimationNodeAnimation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeAnimation::set_stretch_time_scale, AnimationNodeAnimation::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_animation_class_is_stretching_time_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimationNodeAnimation::is_stretching_time_scale, AnimationNodeAnimation::__class_id, ctx, this_val, argv);
 };
 static JSValue animation_node_animation_class_set_start_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNodeAnimation::set_start_offset, AnimationNodeAnimation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeAnimation::set_start_offset, AnimationNodeAnimation::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_animation_class_get_start_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimationNodeAnimation::get_start_offset, AnimationNodeAnimation::__class_id, ctx, this_val, argv);
 };
 static JSValue animation_node_animation_class_set_loop_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNodeAnimation::set_loop_mode, AnimationNodeAnimation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeAnimation::set_loop_mode, AnimationNodeAnimation::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_animation_class_get_loop_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -1,18 +1,17 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/cpu_particles3d.hpp>
-#include <godot_cpp/classes/curve.hpp>
-#include <godot_cpp/classes/geometry_instance3d.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/gradient.hpp>
 #include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/cpu_particles3d.hpp>
+#include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -42,55 +41,55 @@ static JSValue cpu_particles3d_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue cpu_particles3d_class_set_emitting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_emitting, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_emitting, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_set_amount(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_amount, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_amount, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_set_lifetime(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_lifetime, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_lifetime, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_set_one_shot(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_one_shot, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_one_shot, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_set_pre_process_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_pre_process_time, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_pre_process_time, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_set_explosiveness_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_explosiveness_ratio, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_explosiveness_ratio, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_set_randomness_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_randomness_ratio, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_randomness_ratio, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_set_visibility_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_visibility_aabb, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_visibility_aabb, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_set_lifetime_randomness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_lifetime_randomness, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_lifetime_randomness, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_set_use_local_coordinates(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_use_local_coordinates, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_use_local_coordinates, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_set_fixed_fps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_fixed_fps, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_fixed_fps, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_set_fractional_delta(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_fractional_delta, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_fractional_delta, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_set_speed_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_speed_scale, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_speed_scale, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_is_emitting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -133,158 +132,158 @@ static JSValue cpu_particles3d_class_get_speed_scale(JSContext *ctx, JSValueCons
 	return call_builtin_const_method_ret(&CPUParticles3D::get_speed_scale, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_draw_order(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_draw_order, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_draw_order, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_draw_order(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles3D::get_draw_order, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_mesh, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_mesh, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles3D::get_mesh, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_restart(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::restart, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::restart, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_set_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_direction, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_direction, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles3D::get_direction, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_spread(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_spread, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_spread, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_spread(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles3D::get_spread, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_flatness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_flatness, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_flatness, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_flatness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles3D::get_flatness, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_param_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_param_min, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_param_min, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_param_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles3D::get_param_min, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_param_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_param_max, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_param_max, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_param_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles3D::get_param_max, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_param_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_param_curve, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_param_curve, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_param_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles3D::get_param_curve, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_color, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_color, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles3D::get_color, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_color_ramp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_color_ramp, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_color_ramp, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_color_ramp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles3D::get_color_ramp, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_color_initial_ramp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_color_initial_ramp, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_color_initial_ramp, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_color_initial_ramp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles3D::get_color_initial_ramp, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_particle_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_particle_flag, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_particle_flag, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_particle_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles3D::get_particle_flag, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_emission_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_emission_shape, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_emission_shape, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_emission_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles3D::get_emission_shape, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_emission_sphere_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_emission_sphere_radius, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_emission_sphere_radius, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_emission_sphere_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles3D::get_emission_sphere_radius, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_emission_box_extents(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_emission_box_extents, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_emission_box_extents, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_emission_box_extents(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles3D::get_emission_box_extents, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_emission_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_emission_points, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_emission_points, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_emission_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles3D::get_emission_points, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_emission_normals(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_emission_normals, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_emission_normals, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_emission_normals(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles3D::get_emission_normals, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_emission_colors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_emission_colors, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_emission_colors, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_emission_colors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles3D::get_emission_colors, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_emission_ring_axis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_emission_ring_axis, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_emission_ring_axis, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_emission_ring_axis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles3D::get_emission_ring_axis, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_emission_ring_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_emission_ring_height, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_emission_ring_height, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_emission_ring_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles3D::get_emission_ring_height, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_emission_ring_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_emission_ring_radius, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_emission_ring_radius, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_emission_ring_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles3D::get_emission_ring_radius, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_emission_ring_inner_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_emission_ring_inner_radius, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_emission_ring_inner_radius, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_emission_ring_inner_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -294,39 +293,39 @@ static JSValue cpu_particles3d_class_get_gravity(JSContext *ctx, JSValueConst th
 	return call_builtin_const_method_ret(&CPUParticles3D::get_gravity, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_gravity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_gravity, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_gravity, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_split_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&CPUParticles3D::get_split_scale, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_split_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_split_scale, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_split_scale, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_scale_curve_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles3D::get_scale_curve_x, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_scale_curve_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_scale_curve_x, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_scale_curve_x, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_scale_curve_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles3D::get_scale_curve_y, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_scale_curve_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_scale_curve_y, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_scale_curve_y, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_get_scale_curve_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles3D::get_scale_curve_z, CPUParticles3D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles3d_class_set_scale_curve_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::set_scale_curve_z, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::set_scale_curve_z, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles3d_class_convert_from_particles(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles3D::convert_from_particles, CPUParticles3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles3D::convert_from_particles, CPUParticles3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry cpu_particles3d_class_proto_funcs[] = {

@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
+#include <godot_cpp/classes/texture3d.hpp>
 #include <godot_cpp/classes/fog_material.hpp>
 #include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/texture3d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,42 +38,42 @@ static JSValue fog_material_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue fog_material_class_set_density(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FogMaterial::set_density, FogMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FogMaterial::set_density, FogMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fog_material_class_get_density(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FogMaterial::get_density, FogMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue fog_material_class_set_albedo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FogMaterial::set_albedo, FogMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FogMaterial::set_albedo, FogMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fog_material_class_get_albedo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FogMaterial::get_albedo, FogMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue fog_material_class_set_emission(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FogMaterial::set_emission, FogMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FogMaterial::set_emission, FogMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fog_material_class_get_emission(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FogMaterial::get_emission, FogMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue fog_material_class_set_height_falloff(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FogMaterial::set_height_falloff, FogMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FogMaterial::set_height_falloff, FogMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fog_material_class_get_height_falloff(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FogMaterial::get_height_falloff, FogMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue fog_material_class_set_edge_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FogMaterial::set_edge_fade, FogMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FogMaterial::set_edge_fade, FogMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fog_material_class_get_edge_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FogMaterial::get_edge_fade, FogMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue fog_material_class_set_density_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FogMaterial::set_density_texture, FogMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FogMaterial::set_density_texture, FogMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fog_material_class_get_density_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -98,9 +98,9 @@ static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueCo
 {%- for method in vararg_methods %}
 static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
     {%- if method['return_value'] %}
-	return call_builtin_vararg_method(&{{norm_name}}::js_{{method['name']}}, {{class_id}}, ctx, this_val, argc, argv);
+	return call_builtin_vararg_method_ret(&{{norm_name}}::js_{{method['name']}}, {{class_id}}, ctx, this_val, argc, argv);
     {%- else %}
-    call_builtin_vararg_method(&{{norm_name}}::js_{{method['name']}}, {{class_id}}, ctx, this_val, argc, argv);
+    call_builtin_vararg_method_no_ret(&{{norm_name}}::js_{{method['name']}}, {{class_id}}, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
     {%- endif %}
 }

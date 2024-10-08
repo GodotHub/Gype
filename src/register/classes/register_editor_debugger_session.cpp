@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/editor_debugger_session.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,11 +38,11 @@ static JSValue editor_debugger_session_class_constructor(JSContext *ctx, JSValue
 	return obj;
 }
 static JSValue editor_debugger_session_class_send_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorDebuggerSession::send_message, EditorDebuggerSession::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorDebuggerSession::send_message, EditorDebuggerSession::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_debugger_session_class_toggle_profiler(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorDebuggerSession::toggle_profiler, EditorDebuggerSession::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorDebuggerSession::toggle_profiler, EditorDebuggerSession::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_debugger_session_class_is_breaked(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -56,15 +55,15 @@ static JSValue editor_debugger_session_class_is_active(JSContext *ctx, JSValueCo
 	return call_builtin_method_ret(&EditorDebuggerSession::is_active, EditorDebuggerSession::__class_id, ctx, this_val, argv);
 };
 static JSValue editor_debugger_session_class_add_session_tab(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorDebuggerSession::add_session_tab, EditorDebuggerSession::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorDebuggerSession::add_session_tab, EditorDebuggerSession::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_debugger_session_class_remove_session_tab(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorDebuggerSession::remove_session_tab, EditorDebuggerSession::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorDebuggerSession::remove_session_tab, EditorDebuggerSession::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_debugger_session_class_set_breakpoint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorDebuggerSession::set_breakpoint, EditorDebuggerSession::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorDebuggerSession::set_breakpoint, EditorDebuggerSession::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry editor_debugger_session_class_proto_funcs[] = {

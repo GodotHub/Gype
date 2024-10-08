@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/collision_object3d.hpp>
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/ray_cast3d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -40,14 +39,14 @@ static JSValue ray_cast3d_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue ray_cast3d_class_set_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast3D::set_enabled, RayCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast3D::set_enabled, RayCast3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast3d_class_is_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RayCast3D::is_enabled, RayCast3D::__class_id, ctx, this_val, argv);
 };
 static JSValue ray_cast3d_class_set_target_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast3D::set_target_position, RayCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast3D::set_target_position, RayCast3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast3d_class_get_target_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -57,7 +56,7 @@ static JSValue ray_cast3d_class_is_colliding(JSContext *ctx, JSValueConst this_v
 	return call_builtin_const_method_ret(&RayCast3D::is_colliding, RayCast3D::__class_id, ctx, this_val, argv);
 };
 static JSValue ray_cast3d_class_force_raycast_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast3D::force_raycast_update, RayCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast3D::force_raycast_update, RayCast3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast3d_class_get_collider(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -79,83 +78,83 @@ static JSValue ray_cast3d_class_get_collision_face_index(JSContext *ctx, JSValue
 	return call_builtin_const_method_ret(&RayCast3D::get_collision_face_index, RayCast3D::__class_id, ctx, this_val, argv);
 };
 static JSValue ray_cast3d_class_add_exception_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast3D::add_exception_rid, RayCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast3D::add_exception_rid, RayCast3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast3d_class_add_exception(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast3D::add_exception, RayCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast3D::add_exception, RayCast3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast3d_class_remove_exception_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast3D::remove_exception_rid, RayCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast3D::remove_exception_rid, RayCast3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast3d_class_remove_exception(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast3D::remove_exception, RayCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast3D::remove_exception, RayCast3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast3d_class_clear_exceptions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast3D::clear_exceptions, RayCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast3D::clear_exceptions, RayCast3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast3d_class_set_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast3D::set_collision_mask, RayCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast3D::set_collision_mask, RayCast3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast3d_class_get_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RayCast3D::get_collision_mask, RayCast3D::__class_id, ctx, this_val, argv);
 };
 static JSValue ray_cast3d_class_set_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast3D::set_collision_mask_value, RayCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast3D::set_collision_mask_value, RayCast3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast3d_class_get_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RayCast3D::get_collision_mask_value, RayCast3D::__class_id, ctx, this_val, argv);
 };
 static JSValue ray_cast3d_class_set_exclude_parent_body(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast3D::set_exclude_parent_body, RayCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast3D::set_exclude_parent_body, RayCast3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast3d_class_get_exclude_parent_body(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RayCast3D::get_exclude_parent_body, RayCast3D::__class_id, ctx, this_val, argv);
 };
 static JSValue ray_cast3d_class_set_collide_with_areas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast3D::set_collide_with_areas, RayCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast3D::set_collide_with_areas, RayCast3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast3d_class_is_collide_with_areas_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RayCast3D::is_collide_with_areas_enabled, RayCast3D::__class_id, ctx, this_val, argv);
 };
 static JSValue ray_cast3d_class_set_collide_with_bodies(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast3D::set_collide_with_bodies, RayCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast3D::set_collide_with_bodies, RayCast3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast3d_class_is_collide_with_bodies_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RayCast3D::is_collide_with_bodies_enabled, RayCast3D::__class_id, ctx, this_val, argv);
 };
 static JSValue ray_cast3d_class_set_hit_from_inside(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast3D::set_hit_from_inside, RayCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast3D::set_hit_from_inside, RayCast3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast3d_class_is_hit_from_inside_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RayCast3D::is_hit_from_inside_enabled, RayCast3D::__class_id, ctx, this_val, argv);
 };
 static JSValue ray_cast3d_class_set_hit_back_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast3D::set_hit_back_faces, RayCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast3D::set_hit_back_faces, RayCast3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast3d_class_is_hit_back_faces_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RayCast3D::is_hit_back_faces_enabled, RayCast3D::__class_id, ctx, this_val, argv);
 };
 static JSValue ray_cast3d_class_set_debug_shape_custom_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast3D::set_debug_shape_custom_color, RayCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast3D::set_debug_shape_custom_color, RayCast3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast3d_class_get_debug_shape_custom_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RayCast3D::get_debug_shape_custom_color, RayCast3D::__class_id, ctx, this_val, argv);
 };
 static JSValue ray_cast3d_class_set_debug_shape_thickness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RayCast3D::set_debug_shape_thickness, RayCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RayCast3D::set_debug_shape_thickness, RayCast3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ray_cast3d_class_get_debug_shape_thickness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

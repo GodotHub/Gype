@@ -1,17 +1,16 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/array_mesh.hpp>
-#include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/mesh.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/surface_tool.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -41,89 +40,89 @@ static JSValue surface_tool_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue surface_tool_class_set_skin_weight_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::set_skin_weight_count, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::set_skin_weight_count, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_get_skin_weight_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SurfaceTool::get_skin_weight_count, SurfaceTool::__class_id, ctx, this_val, argv);
 };
 static JSValue surface_tool_class_set_custom_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::set_custom_format, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::set_custom_format, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_get_custom_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SurfaceTool::get_custom_format, SurfaceTool::__class_id, ctx, this_val, argv);
 };
 static JSValue surface_tool_class_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::begin, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::begin, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_add_vertex(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::add_vertex, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::add_vertex, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::set_color, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::set_color, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_set_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::set_normal, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::set_normal, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_set_tangent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::set_tangent, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::set_tangent, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_set_uv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::set_uv, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::set_uv, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_set_uv2(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::set_uv2, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::set_uv2, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_set_bones(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::set_bones, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::set_bones, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_set_weights(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::set_weights, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::set_weights, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_set_custom(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::set_custom, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::set_custom, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_set_smooth_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::set_smooth_group, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::set_smooth_group, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_add_triangle_fan(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::add_triangle_fan, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::add_triangle_fan, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_add_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::add_index, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::add_index, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::index, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::index, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_deindex(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::deindex, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::deindex, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_generate_normals(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::generate_normals, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::generate_normals, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_generate_tangents(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::generate_tangents, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::generate_tangents, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_optimize_indices_for_cache(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::optimize_indices_for_cache, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::optimize_indices_for_cache, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_get_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -133,30 +132,30 @@ static JSValue surface_tool_class_generate_lod(JSContext *ctx, JSValueConst this
 	return call_builtin_method_ret(&SurfaceTool::generate_lod, SurfaceTool::__class_id, ctx, this_val, argv);
 };
 static JSValue surface_tool_class_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::set_material, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::set_material, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_get_primitive_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SurfaceTool::get_primitive_type, SurfaceTool::__class_id, ctx, this_val, argv);
 };
 static JSValue surface_tool_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::clear, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::clear, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_create_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::create_from, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::create_from, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_create_from_arrays(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::create_from_arrays, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::create_from_arrays, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_create_from_blend_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::create_from_blend_shape, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::create_from_blend_shape, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_append_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SurfaceTool::append_from, SurfaceTool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SurfaceTool::append_from, SurfaceTool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue surface_tool_class_commit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

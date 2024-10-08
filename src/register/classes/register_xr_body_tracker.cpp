@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/xr_body_tracker.hpp>
 #include <godot_cpp/classes/xr_positional_tracker.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,28 +37,28 @@ static JSValue xr_body_tracker_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue xr_body_tracker_class_set_has_tracking_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRBodyTracker::set_has_tracking_data, XRBodyTracker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRBodyTracker::set_has_tracking_data, XRBodyTracker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_body_tracker_class_get_has_tracking_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&XRBodyTracker::get_has_tracking_data, XRBodyTracker::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_body_tracker_class_set_body_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRBodyTracker::set_body_flags, XRBodyTracker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRBodyTracker::set_body_flags, XRBodyTracker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_body_tracker_class_get_body_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&XRBodyTracker::get_body_flags, XRBodyTracker::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_body_tracker_class_set_joint_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRBodyTracker::set_joint_flags, XRBodyTracker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRBodyTracker::set_joint_flags, XRBodyTracker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_body_tracker_class_get_joint_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&XRBodyTracker::get_joint_flags, XRBodyTracker::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_body_tracker_class_set_joint_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRBodyTracker::set_joint_transform, XRBodyTracker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRBodyTracker::set_joint_transform, XRBodyTracker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_body_tracker_class_get_joint_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

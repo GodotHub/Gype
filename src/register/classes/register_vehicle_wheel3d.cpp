@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/node3d.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/vehicle_wheel3d.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,70 +37,70 @@ static JSValue vehicle_wheel3d_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue vehicle_wheel3d_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VehicleWheel3D::set_radius, VehicleWheel3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VehicleWheel3D::set_radius, VehicleWheel3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue vehicle_wheel3d_class_get_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VehicleWheel3D::get_radius, VehicleWheel3D::__class_id, ctx, this_val, argv);
 };
 static JSValue vehicle_wheel3d_class_set_suspension_rest_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VehicleWheel3D::set_suspension_rest_length, VehicleWheel3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VehicleWheel3D::set_suspension_rest_length, VehicleWheel3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue vehicle_wheel3d_class_get_suspension_rest_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VehicleWheel3D::get_suspension_rest_length, VehicleWheel3D::__class_id, ctx, this_val, argv);
 };
 static JSValue vehicle_wheel3d_class_set_suspension_travel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VehicleWheel3D::set_suspension_travel, VehicleWheel3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VehicleWheel3D::set_suspension_travel, VehicleWheel3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue vehicle_wheel3d_class_get_suspension_travel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VehicleWheel3D::get_suspension_travel, VehicleWheel3D::__class_id, ctx, this_val, argv);
 };
 static JSValue vehicle_wheel3d_class_set_suspension_stiffness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VehicleWheel3D::set_suspension_stiffness, VehicleWheel3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VehicleWheel3D::set_suspension_stiffness, VehicleWheel3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue vehicle_wheel3d_class_get_suspension_stiffness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VehicleWheel3D::get_suspension_stiffness, VehicleWheel3D::__class_id, ctx, this_val, argv);
 };
 static JSValue vehicle_wheel3d_class_set_suspension_max_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VehicleWheel3D::set_suspension_max_force, VehicleWheel3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VehicleWheel3D::set_suspension_max_force, VehicleWheel3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue vehicle_wheel3d_class_get_suspension_max_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VehicleWheel3D::get_suspension_max_force, VehicleWheel3D::__class_id, ctx, this_val, argv);
 };
 static JSValue vehicle_wheel3d_class_set_damping_compression(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VehicleWheel3D::set_damping_compression, VehicleWheel3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VehicleWheel3D::set_damping_compression, VehicleWheel3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue vehicle_wheel3d_class_get_damping_compression(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VehicleWheel3D::get_damping_compression, VehicleWheel3D::__class_id, ctx, this_val, argv);
 };
 static JSValue vehicle_wheel3d_class_set_damping_relaxation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VehicleWheel3D::set_damping_relaxation, VehicleWheel3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VehicleWheel3D::set_damping_relaxation, VehicleWheel3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue vehicle_wheel3d_class_get_damping_relaxation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VehicleWheel3D::get_damping_relaxation, VehicleWheel3D::__class_id, ctx, this_val, argv);
 };
 static JSValue vehicle_wheel3d_class_set_use_as_traction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VehicleWheel3D::set_use_as_traction, VehicleWheel3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VehicleWheel3D::set_use_as_traction, VehicleWheel3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue vehicle_wheel3d_class_is_used_as_traction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VehicleWheel3D::is_used_as_traction, VehicleWheel3D::__class_id, ctx, this_val, argv);
 };
 static JSValue vehicle_wheel3d_class_set_use_as_steering(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VehicleWheel3D::set_use_as_steering, VehicleWheel3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VehicleWheel3D::set_use_as_steering, VehicleWheel3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue vehicle_wheel3d_class_is_used_as_steering(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VehicleWheel3D::is_used_as_steering, VehicleWheel3D::__class_id, ctx, this_val, argv);
 };
 static JSValue vehicle_wheel3d_class_set_friction_slip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VehicleWheel3D::set_friction_slip, VehicleWheel3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VehicleWheel3D::set_friction_slip, VehicleWheel3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue vehicle_wheel3d_class_get_friction_slip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -114,7 +113,7 @@ static JSValue vehicle_wheel3d_class_get_contact_body(JSContext *ctx, JSValueCon
 	return call_builtin_const_method_ret(&VehicleWheel3D::get_contact_body, VehicleWheel3D::__class_id, ctx, this_val, argv);
 };
 static JSValue vehicle_wheel3d_class_set_roll_influence(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VehicleWheel3D::set_roll_influence, VehicleWheel3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VehicleWheel3D::set_roll_influence, VehicleWheel3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue vehicle_wheel3d_class_get_roll_influence(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -127,21 +126,21 @@ static JSValue vehicle_wheel3d_class_get_rpm(JSContext *ctx, JSValueConst this_v
 	return call_builtin_const_method_ret(&VehicleWheel3D::get_rpm, VehicleWheel3D::__class_id, ctx, this_val, argv);
 };
 static JSValue vehicle_wheel3d_class_set_engine_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VehicleWheel3D::set_engine_force, VehicleWheel3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VehicleWheel3D::set_engine_force, VehicleWheel3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue vehicle_wheel3d_class_get_engine_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VehicleWheel3D::get_engine_force, VehicleWheel3D::__class_id, ctx, this_val, argv);
 };
 static JSValue vehicle_wheel3d_class_set_brake(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VehicleWheel3D::set_brake, VehicleWheel3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VehicleWheel3D::set_brake, VehicleWheel3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue vehicle_wheel3d_class_get_brake(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VehicleWheel3D::get_brake, VehicleWheel3D::__class_id, ctx, this_val, argv);
 };
 static JSValue vehicle_wheel3d_class_set_steering(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VehicleWheel3D::set_steering, VehicleWheel3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VehicleWheel3D::set_steering, VehicleWheel3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue vehicle_wheel3d_class_get_steering(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

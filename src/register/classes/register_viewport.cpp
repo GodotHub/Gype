@@ -1,23 +1,22 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
+#include <godot_cpp/classes/viewport_texture.hpp>
+#include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/window.hpp>
+#include <godot_cpp/classes/viewport.hpp>
+#include <godot_cpp/classes/world2d.hpp>
+#include <godot_cpp/classes/world3d.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/camera2d.hpp>
 #include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/input_event.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/viewport.hpp>
-#include <godot_cpp/classes/viewport_texture.hpp>
-#include <godot_cpp/classes/window.hpp>
-#include <godot_cpp/classes/world2d.hpp>
-#include <godot_cpp/classes/world3d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -47,7 +46,7 @@ static JSValue viewport_class_constructor(JSContext *ctx, JSValueConst new_targe
 	return obj;
 }
 static JSValue viewport_class_set_world_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_world_2d, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_world_2d, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_world_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -57,14 +56,14 @@ static JSValue viewport_class_find_world_2d(JSContext *ctx, JSValueConst this_va
 	return call_builtin_const_method_ret(&Viewport::find_world_2d, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_canvas_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_canvas_transform, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_canvas_transform, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_canvas_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::get_canvas_transform, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_global_canvas_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_global_canvas_transform, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_global_canvas_transform, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_global_canvas_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -80,63 +79,63 @@ static JSValue viewport_class_get_visible_rect(JSContext *ctx, JSValueConst this
 	return call_builtin_const_method_ret(&Viewport::get_visible_rect, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_transparent_background(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_transparent_background, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_transparent_background, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_has_transparent_background(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::has_transparent_background, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_use_hdr_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_use_hdr_2d, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_use_hdr_2d, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_using_hdr_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::is_using_hdr_2d, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_msaa_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_msaa_2d, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_msaa_2d, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_msaa_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::get_msaa_2d, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_msaa_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_msaa_3d, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_msaa_3d, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_msaa_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::get_msaa_3d, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_screen_space_aa(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_screen_space_aa, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_screen_space_aa, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_screen_space_aa(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::get_screen_space_aa, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_use_taa(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_use_taa, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_use_taa, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_using_taa(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::is_using_taa, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_use_debanding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_use_debanding, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_use_debanding, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_using_debanding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::is_using_debanding, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_use_occlusion_culling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_use_occlusion_culling, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_use_occlusion_culling, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_using_occlusion_culling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::is_using_occlusion_culling, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_debug_draw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_debug_draw, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_debug_draw, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_debug_draw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -149,21 +148,21 @@ static JSValue viewport_class_get_texture(JSContext *ctx, JSValueConst this_val,
 	return call_builtin_const_method_ret(&Viewport::get_texture, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_physics_object_picking(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_physics_object_picking, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_physics_object_picking, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_physics_object_picking(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&Viewport::get_physics_object_picking, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_physics_object_picking_sort(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_physics_object_picking_sort, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_physics_object_picking_sort, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_physics_object_picking_sort(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&Viewport::get_physics_object_picking_sort, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_physics_object_picking_first_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_physics_object_picking_first_only, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_physics_object_picking_first_only, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_physics_object_picking_first_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -173,26 +172,26 @@ static JSValue viewport_class_get_viewport_rid(JSContext *ctx, JSValueConst this
 	return call_builtin_const_method_ret(&Viewport::get_viewport_rid, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_push_text_input(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::push_text_input, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::push_text_input, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_push_input(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::push_input, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::push_input, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_push_unhandled_input(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::push_unhandled_input, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::push_unhandled_input, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_mouse_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::get_mouse_position, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_warp_mouse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::warp_mouse, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::warp_mouse, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_update_mouse_cursor_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::update_mouse_cursor_state, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::update_mouse_cursor_state, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_gui_get_drag_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -205,7 +204,7 @@ static JSValue viewport_class_gui_is_drag_successful(JSContext *ctx, JSValueCons
 	return call_builtin_const_method_ret(&Viewport::gui_is_drag_successful, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_gui_release_focus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::gui_release_focus, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::gui_release_focus, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_gui_get_focus_owner(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -215,77 +214,77 @@ static JSValue viewport_class_gui_get_hovered_control(JSContext *ctx, JSValueCon
 	return call_builtin_const_method_ret(&Viewport::gui_get_hovered_control, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_disable_input(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_disable_input, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_disable_input, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_input_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::is_input_disabled, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_positional_shadow_atlas_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_positional_shadow_atlas_size, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_positional_shadow_atlas_size, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_positional_shadow_atlas_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::get_positional_shadow_atlas_size, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_positional_shadow_atlas_16_bits(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_positional_shadow_atlas_16_bits, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_positional_shadow_atlas_16_bits, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_positional_shadow_atlas_16_bits(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::get_positional_shadow_atlas_16_bits, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_snap_controls_to_pixels(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_snap_controls_to_pixels, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_snap_controls_to_pixels, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_snap_controls_to_pixels_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::is_snap_controls_to_pixels_enabled, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_snap_2d_transforms_to_pixel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_snap_2d_transforms_to_pixel, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_snap_2d_transforms_to_pixel, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_snap_2d_transforms_to_pixel_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::is_snap_2d_transforms_to_pixel_enabled, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_snap_2d_vertices_to_pixel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_snap_2d_vertices_to_pixel, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_snap_2d_vertices_to_pixel, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_snap_2d_vertices_to_pixel_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::is_snap_2d_vertices_to_pixel_enabled, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_positional_shadow_atlas_quadrant_subdiv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_positional_shadow_atlas_quadrant_subdiv, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_positional_shadow_atlas_quadrant_subdiv, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_positional_shadow_atlas_quadrant_subdiv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::get_positional_shadow_atlas_quadrant_subdiv, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_input_as_handled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_input_as_handled, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_input_as_handled, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_input_handled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::is_input_handled, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_handle_input_locally(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_handle_input_locally, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_handle_input_locally, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_handling_input_locally(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::is_handling_input_locally, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_default_canvas_item_texture_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_default_canvas_item_texture_filter, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_default_canvas_item_texture_filter, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_default_canvas_item_texture_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::get_default_canvas_item_texture_filter, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_embedding_subwindows(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_embedding_subwindows, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_embedding_subwindows, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_embedding_subwindows(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -295,49 +294,49 @@ static JSValue viewport_class_get_embedded_subwindows(JSContext *ctx, JSValueCon
 	return call_builtin_const_method_ret(&Viewport::get_embedded_subwindows, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_canvas_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_canvas_cull_mask, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_canvas_cull_mask, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_canvas_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::get_canvas_cull_mask, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_canvas_cull_mask_bit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_canvas_cull_mask_bit, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_canvas_cull_mask_bit, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_canvas_cull_mask_bit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::get_canvas_cull_mask_bit, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_default_canvas_item_texture_repeat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_default_canvas_item_texture_repeat, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_default_canvas_item_texture_repeat, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_default_canvas_item_texture_repeat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::get_default_canvas_item_texture_repeat, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_sdf_oversize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_sdf_oversize, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_sdf_oversize, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_sdf_oversize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::get_sdf_oversize, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_sdf_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_sdf_scale, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_sdf_scale, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_sdf_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::get_sdf_scale, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_mesh_lod_threshold(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_mesh_lod_threshold, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_mesh_lod_threshold, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_mesh_lod_threshold(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::get_mesh_lod_threshold, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_as_audio_listener_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_as_audio_listener_2d, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_as_audio_listener_2d, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_audio_listener_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -347,7 +346,7 @@ static JSValue viewport_class_get_camera_2d(JSContext *ctx, JSValueConst this_va
 	return call_builtin_const_method_ret(&Viewport::get_camera_2d, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_world_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_world_3d, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_world_3d, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_world_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -357,7 +356,7 @@ static JSValue viewport_class_find_world_3d(JSContext *ctx, JSValueConst this_va
 	return call_builtin_const_method_ret(&Viewport::find_world_3d, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_use_own_world_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_use_own_world_3d, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_use_own_world_3d, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_using_own_world_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -367,70 +366,70 @@ static JSValue viewport_class_get_camera_3d(JSContext *ctx, JSValueConst this_va
 	return call_builtin_const_method_ret(&Viewport::get_camera_3d, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_as_audio_listener_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_as_audio_listener_3d, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_as_audio_listener_3d, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_audio_listener_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::is_audio_listener_3d, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_disable_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_disable_3d, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_disable_3d, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_3d_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::is_3d_disabled, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_use_xr(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_use_xr, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_use_xr, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_using_xr(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&Viewport::is_using_xr, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_scaling_3d_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_scaling_3d_mode, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_scaling_3d_mode, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_scaling_3d_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::get_scaling_3d_mode, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_scaling_3d_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_scaling_3d_scale, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_scaling_3d_scale, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_scaling_3d_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::get_scaling_3d_scale, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_fsr_sharpness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_fsr_sharpness, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_fsr_sharpness, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_fsr_sharpness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::get_fsr_sharpness, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_texture_mipmap_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_texture_mipmap_bias, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_texture_mipmap_bias, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_texture_mipmap_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::get_texture_mipmap_bias, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_vrs_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_vrs_mode, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_vrs_mode, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_vrs_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::get_vrs_mode, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_vrs_update_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_vrs_update_mode, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_vrs_update_mode, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_vrs_update_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Viewport::get_vrs_update_mode, Viewport::__class_id, ctx, this_val, argv);
 };
 static JSValue viewport_class_set_vrs_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Viewport::set_vrs_texture, Viewport::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Viewport::set_vrs_texture, Viewport::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_vrs_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

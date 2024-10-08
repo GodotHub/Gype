@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
 #include <godot_cpp/classes/tube_trail_mesh.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,56 +38,56 @@ static JSValue tube_trail_mesh_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue tube_trail_mesh_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TubeTrailMesh::set_radius, TubeTrailMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TubeTrailMesh::set_radius, TubeTrailMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tube_trail_mesh_class_get_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TubeTrailMesh::get_radius, TubeTrailMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue tube_trail_mesh_class_set_radial_steps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TubeTrailMesh::set_radial_steps, TubeTrailMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TubeTrailMesh::set_radial_steps, TubeTrailMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tube_trail_mesh_class_get_radial_steps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TubeTrailMesh::get_radial_steps, TubeTrailMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue tube_trail_mesh_class_set_sections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TubeTrailMesh::set_sections, TubeTrailMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TubeTrailMesh::set_sections, TubeTrailMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tube_trail_mesh_class_get_sections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TubeTrailMesh::get_sections, TubeTrailMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue tube_trail_mesh_class_set_section_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TubeTrailMesh::set_section_length, TubeTrailMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TubeTrailMesh::set_section_length, TubeTrailMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tube_trail_mesh_class_get_section_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TubeTrailMesh::get_section_length, TubeTrailMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue tube_trail_mesh_class_set_section_rings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TubeTrailMesh::set_section_rings, TubeTrailMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TubeTrailMesh::set_section_rings, TubeTrailMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tube_trail_mesh_class_get_section_rings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TubeTrailMesh::get_section_rings, TubeTrailMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue tube_trail_mesh_class_set_cap_top(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TubeTrailMesh::set_cap_top, TubeTrailMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TubeTrailMesh::set_cap_top, TubeTrailMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tube_trail_mesh_class_is_cap_top(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TubeTrailMesh::is_cap_top, TubeTrailMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue tube_trail_mesh_class_set_cap_bottom(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TubeTrailMesh::set_cap_bottom, TubeTrailMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TubeTrailMesh::set_cap_bottom, TubeTrailMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tube_trail_mesh_class_is_cap_bottom(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TubeTrailMesh::is_cap_bottom, TubeTrailMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue tube_trail_mesh_class_set_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TubeTrailMesh::set_curve, TubeTrailMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TubeTrailMesh::set_curve, TubeTrailMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tube_trail_mesh_class_get_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

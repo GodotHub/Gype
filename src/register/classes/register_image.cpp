@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -59,7 +58,7 @@ static JSValue image_class_get_data_size(JSContext *ctx, JSValueConst this_val, 
 	return call_builtin_const_method_ret(&Image::get_data_size, Image::__class_id, ctx, this_val, argv);
 };
 static JSValue image_class_convert(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::convert, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::convert, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_get_mipmap_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -69,38 +68,38 @@ static JSValue image_class_get_mipmap_offset(JSContext *ctx, JSValueConst this_v
 	return call_builtin_const_method_ret(&Image::get_mipmap_offset, Image::__class_id, ctx, this_val, argv);
 };
 static JSValue image_class_resize_to_po2(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::resize_to_po2, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::resize_to_po2, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_resize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::resize, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::resize, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_shrink_x2(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::shrink_x2, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::shrink_x2, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_crop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::crop, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::crop, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_flip_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::flip_x, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::flip_x, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_flip_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::flip_y, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::flip_y, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_generate_mipmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&Image::generate_mipmaps, Image::__class_id, ctx, this_val, argv);
 };
 static JSValue image_class_clear_mipmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::clear_mipmaps, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::clear_mipmaps, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_set_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::set_data, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::set_data, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_is_empty(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -155,61 +154,61 @@ static JSValue image_class_is_compressed(JSContext *ctx, JSValueConst this_val, 
 	return call_builtin_const_method_ret(&Image::is_compressed, Image::__class_id, ctx, this_val, argv);
 };
 static JSValue image_class_rotate_90(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::rotate_90, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::rotate_90, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_rotate_180(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::rotate_180, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::rotate_180, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_fix_alpha_edges(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::fix_alpha_edges, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::fix_alpha_edges, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_premultiply_alpha(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::premultiply_alpha, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::premultiply_alpha, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_srgb_to_linear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::srgb_to_linear, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::srgb_to_linear, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_normal_map_to_xy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::normal_map_to_xy, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::normal_map_to_xy, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_rgbe_to_srgb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&Image::rgbe_to_srgb, Image::__class_id, ctx, this_val, argv);
 };
 static JSValue image_class_bump_map_to_normal_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::bump_map_to_normal_map, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::bump_map_to_normal_map, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_compute_image_metrics(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&Image::compute_image_metrics, Image::__class_id, ctx, this_val, argv);
 };
 static JSValue image_class_blit_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::blit_rect, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::blit_rect, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_blit_rect_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::blit_rect_mask, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::blit_rect_mask, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_blend_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::blend_rect, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::blend_rect, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_blend_rect_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::blend_rect_mask, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::blend_rect_mask, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_fill(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::fill, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::fill, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_fill_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::fill_rect, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::fill_rect, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_get_used_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -219,7 +218,7 @@ static JSValue image_class_get_region(JSContext *ctx, JSValueConst this_val, int
 	return call_builtin_const_method_ret(&Image::get_region, Image::__class_id, ctx, this_val, argv);
 };
 static JSValue image_class_copy_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::copy_from, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::copy_from, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_get_pixelv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -229,15 +228,15 @@ static JSValue image_class_get_pixel(JSContext *ctx, JSValueConst this_val, int 
 	return call_builtin_const_method_ret(&Image::get_pixel, Image::__class_id, ctx, this_val, argv);
 };
 static JSValue image_class_set_pixelv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::set_pixelv, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::set_pixelv, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_set_pixel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::set_pixel, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::set_pixel, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_adjust_bcs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Image::adjust_bcs, Image::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Image::adjust_bcs, Image::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_load_png_from_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

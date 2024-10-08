@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/base_button.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/button.hpp>
+#include <godot_cpp/classes/base_button.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,84 +38,84 @@ static JSValue button_class_constructor(JSContext *ctx, JSValueConst new_target,
 	return obj;
 }
 static JSValue button_class_set_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Button::set_text, Button::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Button::set_text, Button::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue button_class_get_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Button::get_text, Button::__class_id, ctx, this_val, argv);
 };
 static JSValue button_class_set_text_overrun_behavior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Button::set_text_overrun_behavior, Button::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Button::set_text_overrun_behavior, Button::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue button_class_get_text_overrun_behavior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Button::get_text_overrun_behavior, Button::__class_id, ctx, this_val, argv);
 };
 static JSValue button_class_set_autowrap_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Button::set_autowrap_mode, Button::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Button::set_autowrap_mode, Button::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue button_class_get_autowrap_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Button::get_autowrap_mode, Button::__class_id, ctx, this_val, argv);
 };
 static JSValue button_class_set_text_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Button::set_text_direction, Button::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Button::set_text_direction, Button::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue button_class_get_text_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Button::get_text_direction, Button::__class_id, ctx, this_val, argv);
 };
 static JSValue button_class_set_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Button::set_language, Button::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Button::set_language, Button::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue button_class_get_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Button::get_language, Button::__class_id, ctx, this_val, argv);
 };
 static JSValue button_class_set_button_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Button::set_button_icon, Button::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Button::set_button_icon, Button::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue button_class_get_button_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Button::get_button_icon, Button::__class_id, ctx, this_val, argv);
 };
 static JSValue button_class_set_flat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Button::set_flat, Button::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Button::set_flat, Button::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue button_class_is_flat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Button::is_flat, Button::__class_id, ctx, this_val, argv);
 };
 static JSValue button_class_set_clip_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Button::set_clip_text, Button::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Button::set_clip_text, Button::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue button_class_get_clip_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Button::get_clip_text, Button::__class_id, ctx, this_val, argv);
 };
 static JSValue button_class_set_text_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Button::set_text_alignment, Button::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Button::set_text_alignment, Button::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue button_class_get_text_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Button::get_text_alignment, Button::__class_id, ctx, this_val, argv);
 };
 static JSValue button_class_set_icon_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Button::set_icon_alignment, Button::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Button::set_icon_alignment, Button::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue button_class_get_icon_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Button::get_icon_alignment, Button::__class_id, ctx, this_val, argv);
 };
 static JSValue button_class_set_vertical_icon_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Button::set_vertical_icon_alignment, Button::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Button::set_vertical_icon_alignment, Button::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue button_class_get_vertical_icon_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Button::get_vertical_icon_alignment, Button::__class_id, ctx, this_val, argv);
 };
 static JSValue button_class_set_expand_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Button::set_expand_icon, Button::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Button::set_expand_icon, Button::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue button_class_is_expand_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/camera_attributes.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,35 +37,35 @@ static JSValue camera_attributes_class_constructor(JSContext *ctx, JSValueConst 
 	return obj;
 }
 static JSValue camera_attributes_class_set_exposure_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CameraAttributes::set_exposure_multiplier, CameraAttributes::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CameraAttributes::set_exposure_multiplier, CameraAttributes::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera_attributes_class_get_exposure_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CameraAttributes::get_exposure_multiplier, CameraAttributes::__class_id, ctx, this_val, argv);
 };
 static JSValue camera_attributes_class_set_exposure_sensitivity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CameraAttributes::set_exposure_sensitivity, CameraAttributes::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CameraAttributes::set_exposure_sensitivity, CameraAttributes::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera_attributes_class_get_exposure_sensitivity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CameraAttributes::get_exposure_sensitivity, CameraAttributes::__class_id, ctx, this_val, argv);
 };
 static JSValue camera_attributes_class_set_auto_exposure_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CameraAttributes::set_auto_exposure_enabled, CameraAttributes::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CameraAttributes::set_auto_exposure_enabled, CameraAttributes::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera_attributes_class_is_auto_exposure_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CameraAttributes::is_auto_exposure_enabled, CameraAttributes::__class_id, ctx, this_val, argv);
 };
 static JSValue camera_attributes_class_set_auto_exposure_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CameraAttributes::set_auto_exposure_speed, CameraAttributes::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CameraAttributes::set_auto_exposure_speed, CameraAttributes::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera_attributes_class_get_auto_exposure_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CameraAttributes::get_auto_exposure_speed, CameraAttributes::__class_id, ctx, this_val, argv);
 };
 static JSValue camera_attributes_class_set_auto_exposure_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CameraAttributes::set_auto_exposure_scale, CameraAttributes::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CameraAttributes::set_auto_exposure_scale, CameraAttributes::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera_attributes_class_get_auto_exposure_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

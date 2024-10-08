@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/collision_polygon3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,28 +37,28 @@ static JSValue collision_polygon3d_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 static JSValue collision_polygon3d_class_set_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CollisionPolygon3D::set_depth, CollisionPolygon3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CollisionPolygon3D::set_depth, CollisionPolygon3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_polygon3d_class_get_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CollisionPolygon3D::get_depth, CollisionPolygon3D::__class_id, ctx, this_val, argv);
 };
 static JSValue collision_polygon3d_class_set_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CollisionPolygon3D::set_polygon, CollisionPolygon3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CollisionPolygon3D::set_polygon, CollisionPolygon3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_polygon3d_class_get_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CollisionPolygon3D::get_polygon, CollisionPolygon3D::__class_id, ctx, this_val, argv);
 };
 static JSValue collision_polygon3d_class_set_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CollisionPolygon3D::set_disabled, CollisionPolygon3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CollisionPolygon3D::set_disabled, CollisionPolygon3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_polygon3d_class_is_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CollisionPolygon3D::is_disabled, CollisionPolygon3D::__class_id, ctx, this_val, argv);
 };
 static JSValue collision_polygon3d_class_set_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CollisionPolygon3D::set_margin, CollisionPolygon3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CollisionPolygon3D::set_margin, CollisionPolygon3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_polygon3d_class_get_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

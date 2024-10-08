@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/generic6_dof_joint3d.hpp>
 #include <godot_cpp/classes/joint3d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,42 +37,42 @@ static JSValue generic6_dof_joint3d_class_constructor(JSContext *ctx, JSValueCon
 	return obj;
 }
 static JSValue generic6_dof_joint3d_class_set_param_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Generic6DOFJoint3D::set_param_x, Generic6DOFJoint3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Generic6DOFJoint3D::set_param_x, Generic6DOFJoint3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue generic6_dof_joint3d_class_get_param_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Generic6DOFJoint3D::get_param_x, Generic6DOFJoint3D::__class_id, ctx, this_val, argv);
 };
 static JSValue generic6_dof_joint3d_class_set_param_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Generic6DOFJoint3D::set_param_y, Generic6DOFJoint3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Generic6DOFJoint3D::set_param_y, Generic6DOFJoint3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue generic6_dof_joint3d_class_get_param_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Generic6DOFJoint3D::get_param_y, Generic6DOFJoint3D::__class_id, ctx, this_val, argv);
 };
 static JSValue generic6_dof_joint3d_class_set_param_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Generic6DOFJoint3D::set_param_z, Generic6DOFJoint3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Generic6DOFJoint3D::set_param_z, Generic6DOFJoint3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue generic6_dof_joint3d_class_get_param_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Generic6DOFJoint3D::get_param_z, Generic6DOFJoint3D::__class_id, ctx, this_val, argv);
 };
 static JSValue generic6_dof_joint3d_class_set_flag_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Generic6DOFJoint3D::set_flag_x, Generic6DOFJoint3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Generic6DOFJoint3D::set_flag_x, Generic6DOFJoint3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue generic6_dof_joint3d_class_get_flag_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Generic6DOFJoint3D::get_flag_x, Generic6DOFJoint3D::__class_id, ctx, this_val, argv);
 };
 static JSValue generic6_dof_joint3d_class_set_flag_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Generic6DOFJoint3D::set_flag_y, Generic6DOFJoint3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Generic6DOFJoint3D::set_flag_y, Generic6DOFJoint3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue generic6_dof_joint3d_class_get_flag_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Generic6DOFJoint3D::get_flag_y, Generic6DOFJoint3D::__class_id, ctx, this_val, argv);
 };
 static JSValue generic6_dof_joint3d_class_set_flag_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Generic6DOFJoint3D::set_flag_z, Generic6DOFJoint3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Generic6DOFJoint3D::set_flag_z, Generic6DOFJoint3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue generic6_dof_joint3d_class_get_flag_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

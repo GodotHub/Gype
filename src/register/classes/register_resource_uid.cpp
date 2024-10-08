@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/object.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/resource_uid.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -50,18 +49,18 @@ static JSValue resource_uid_class_has_id(JSContext *ctx, JSValueConst this_val, 
 	return call_builtin_const_method_ret(&ResourceUID::has_id, ResourceUID::__class_id, ctx, this_val, argv);
 };
 static JSValue resource_uid_class_add_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ResourceUID::add_id, ResourceUID::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ResourceUID::add_id, ResourceUID::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue resource_uid_class_set_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ResourceUID::set_id, ResourceUID::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ResourceUID::set_id, ResourceUID::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue resource_uid_class_get_id_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ResourceUID::get_id_path, ResourceUID::__class_id, ctx, this_val, argv);
 };
 static JSValue resource_uid_class_remove_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ResourceUID::remove_id, ResourceUID::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ResourceUID::remove_id, ResourceUID::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry resource_uid_class_proto_funcs[] = {

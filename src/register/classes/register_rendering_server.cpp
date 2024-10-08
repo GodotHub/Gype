@@ -1,16 +1,16 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
+#include <godot_cpp/classes/rendering_device.hpp>
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/rendering_device.hpp>
 #include <godot_cpp/classes/rendering_server.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -52,15 +52,15 @@ static JSValue rendering_server_class_texture_proxy_create(JSContext *ctx, JSVal
 	return call_builtin_method_ret(&RenderingServer::texture_proxy_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_texture_2d_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::texture_2d_update, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::texture_2d_update, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_texture_3d_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::texture_3d_update, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::texture_3d_update, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_texture_proxy_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::texture_proxy_update, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::texture_proxy_update, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_texture_2d_placeholder_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -82,15 +82,15 @@ static JSValue rendering_server_class_texture_3d_get(JSContext *ctx, JSValueCons
 	return call_builtin_const_method_ret(&RenderingServer::texture_3d_get, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_texture_replace(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::texture_replace, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::texture_replace, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_texture_set_size_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::texture_set_size_override, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::texture_set_size_override, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_texture_set_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::texture_set_path, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::texture_set_path, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_texture_get_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -100,7 +100,7 @@ static JSValue rendering_server_class_texture_get_format(JSContext *ctx, JSValue
 	return call_builtin_const_method_ret(&RenderingServer::texture_get_format, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_texture_set_force_redraw_if_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::texture_set_force_redraw_if_visible, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::texture_set_force_redraw_if_visible, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_texture_rd_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -116,11 +116,11 @@ static JSValue rendering_server_class_shader_create(JSContext *ctx, JSValueConst
 	return call_builtin_method_ret(&RenderingServer::shader_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_shader_set_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::shader_set_code, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::shader_set_code, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_shader_set_path_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::shader_set_path_hint, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::shader_set_path_hint, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_shader_get_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -133,7 +133,7 @@ static JSValue rendering_server_class_shader_get_parameter_default(JSContext *ct
 	return call_builtin_const_method_ret(&RenderingServer::shader_get_parameter_default, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_shader_set_default_texture_parameter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::shader_set_default_texture_parameter, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::shader_set_default_texture_parameter, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_shader_get_default_texture_parameter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -143,22 +143,22 @@ static JSValue rendering_server_class_material_create(JSContext *ctx, JSValueCon
 	return call_builtin_method_ret(&RenderingServer::material_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_material_set_shader(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::material_set_shader, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::material_set_shader, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_material_set_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::material_set_param, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::material_set_param, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_material_get_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RenderingServer::material_get_param, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_material_set_render_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::material_set_render_priority, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::material_set_render_priority, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_material_set_next_pass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::material_set_next_pass, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::material_set_next_pass, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_mesh_create_from_surfaces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -183,25 +183,25 @@ static JSValue rendering_server_class_mesh_surface_get_format_skin_stride(JSCont
 	return call_builtin_const_method_ret(&RenderingServer::mesh_surface_get_format_skin_stride, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_mesh_add_surface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::mesh_add_surface, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::mesh_add_surface, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_mesh_add_surface_from_arrays(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::mesh_add_surface_from_arrays, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::mesh_add_surface_from_arrays, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_mesh_get_blend_shape_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RenderingServer::mesh_get_blend_shape_count, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_mesh_set_blend_shape_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::mesh_set_blend_shape_mode, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::mesh_set_blend_shape_mode, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_mesh_get_blend_shape_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RenderingServer::mesh_get_blend_shape_mode, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_mesh_surface_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::mesh_surface_set_material, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::mesh_surface_set_material, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_mesh_surface_get_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -220,60 +220,60 @@ static JSValue rendering_server_class_mesh_get_surface_count(JSContext *ctx, JSV
 	return call_builtin_const_method_ret(&RenderingServer::mesh_get_surface_count, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_mesh_set_custom_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::mesh_set_custom_aabb, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::mesh_set_custom_aabb, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_mesh_get_custom_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RenderingServer::mesh_get_custom_aabb, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_mesh_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::mesh_clear, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::mesh_clear, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_mesh_surface_update_vertex_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::mesh_surface_update_vertex_region, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::mesh_surface_update_vertex_region, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_mesh_surface_update_attribute_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::mesh_surface_update_attribute_region, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::mesh_surface_update_attribute_region, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_mesh_surface_update_skin_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::mesh_surface_update_skin_region, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::mesh_surface_update_skin_region, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_mesh_set_shadow_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::mesh_set_shadow_mesh, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::mesh_set_shadow_mesh, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_multimesh_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::multimesh_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_multimesh_allocate_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::multimesh_allocate_data, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::multimesh_allocate_data, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_multimesh_get_instance_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RenderingServer::multimesh_get_instance_count, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_multimesh_set_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::multimesh_set_mesh, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::multimesh_set_mesh, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_multimesh_instance_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::multimesh_instance_set_transform, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::multimesh_instance_set_transform, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_multimesh_instance_set_transform_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::multimesh_instance_set_transform_2d, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::multimesh_instance_set_transform_2d, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_multimesh_instance_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::multimesh_instance_set_color, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::multimesh_instance_set_color, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_multimesh_instance_set_custom_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::multimesh_instance_set_custom_data, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::multimesh_instance_set_custom_data, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_multimesh_get_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -283,7 +283,7 @@ static JSValue rendering_server_class_multimesh_get_aabb(JSContext *ctx, JSValue
 	return call_builtin_const_method_ret(&RenderingServer::multimesh_get_aabb, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_multimesh_set_custom_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::multimesh_set_custom_aabb, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::multimesh_set_custom_aabb, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_multimesh_get_custom_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -302,14 +302,14 @@ static JSValue rendering_server_class_multimesh_instance_get_custom_data(JSConte
 	return call_builtin_const_method_ret(&RenderingServer::multimesh_instance_get_custom_data, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_multimesh_set_visible_instances(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::multimesh_set_visible_instances, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::multimesh_set_visible_instances, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_multimesh_get_visible_instances(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RenderingServer::multimesh_get_visible_instances, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_multimesh_set_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::multimesh_set_buffer, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::multimesh_set_buffer, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_multimesh_get_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -319,28 +319,28 @@ static JSValue rendering_server_class_skeleton_create(JSContext *ctx, JSValueCon
 	return call_builtin_method_ret(&RenderingServer::skeleton_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_skeleton_allocate_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::skeleton_allocate_data, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::skeleton_allocate_data, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_skeleton_get_bone_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RenderingServer::skeleton_get_bone_count, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_skeleton_bone_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::skeleton_bone_set_transform, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::skeleton_bone_set_transform, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_skeleton_bone_get_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RenderingServer::skeleton_bone_get_transform, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_skeleton_bone_set_transform_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::skeleton_bone_set_transform_2d, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::skeleton_bone_set_transform_2d, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_skeleton_bone_get_transform_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RenderingServer::skeleton_bone_get_transform_2d, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_skeleton_set_base_transform_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::skeleton_set_base_transform_2d, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::skeleton_set_base_transform_2d, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_directional_light_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -353,192 +353,192 @@ static JSValue rendering_server_class_spot_light_create(JSContext *ctx, JSValueC
 	return call_builtin_method_ret(&RenderingServer::spot_light_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_light_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::light_set_color, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::light_set_color, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_light_set_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::light_set_param, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::light_set_param, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_light_set_shadow(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::light_set_shadow, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::light_set_shadow, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_light_set_projector(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::light_set_projector, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::light_set_projector, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_light_set_negative(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::light_set_negative, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::light_set_negative, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_light_set_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::light_set_cull_mask, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::light_set_cull_mask, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_light_set_distance_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::light_set_distance_fade, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::light_set_distance_fade, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_light_set_reverse_cull_face_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::light_set_reverse_cull_face_mode, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::light_set_reverse_cull_face_mode, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_light_set_bake_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::light_set_bake_mode, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::light_set_bake_mode, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_light_set_max_sdfgi_cascade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::light_set_max_sdfgi_cascade, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::light_set_max_sdfgi_cascade, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_light_omni_set_shadow_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::light_omni_set_shadow_mode, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::light_omni_set_shadow_mode, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_light_directional_set_shadow_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::light_directional_set_shadow_mode, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::light_directional_set_shadow_mode, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_light_directional_set_blend_splits(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::light_directional_set_blend_splits, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::light_directional_set_blend_splits, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_light_directional_set_sky_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::light_directional_set_sky_mode, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::light_directional_set_sky_mode, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_light_projectors_set_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::light_projectors_set_filter, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::light_projectors_set_filter, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_positional_soft_shadow_filter_set_quality(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::positional_soft_shadow_filter_set_quality, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::positional_soft_shadow_filter_set_quality, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_directional_soft_shadow_filter_set_quality(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::directional_soft_shadow_filter_set_quality, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::directional_soft_shadow_filter_set_quality, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_directional_shadow_atlas_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::directional_shadow_atlas_set_size, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::directional_shadow_atlas_set_size, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_reflection_probe_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::reflection_probe_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_reflection_probe_set_update_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_update_mode, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_update_mode, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_reflection_probe_set_intensity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_intensity, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_intensity, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_reflection_probe_set_ambient_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_ambient_mode, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_ambient_mode, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_reflection_probe_set_ambient_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_ambient_color, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_ambient_color, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_reflection_probe_set_ambient_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_ambient_energy, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_ambient_energy, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_reflection_probe_set_max_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_max_distance, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_max_distance, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_reflection_probe_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_size, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_size, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_reflection_probe_set_origin_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_origin_offset, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_origin_offset, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_reflection_probe_set_as_interior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_as_interior, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_as_interior, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_reflection_probe_set_enable_box_projection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_enable_box_projection, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_enable_box_projection, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_reflection_probe_set_enable_shadows(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_enable_shadows, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_enable_shadows, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_reflection_probe_set_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_cull_mask, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_cull_mask, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_reflection_probe_set_reflection_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_reflection_mask, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_reflection_mask, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_reflection_probe_set_resolution(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_resolution, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_resolution, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_reflection_probe_set_mesh_lod_threshold(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_mesh_lod_threshold, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::reflection_probe_set_mesh_lod_threshold, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_decal_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::decal_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_decal_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::decal_set_size, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::decal_set_size, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_decal_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::decal_set_texture, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::decal_set_texture, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_decal_set_emission_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::decal_set_emission_energy, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::decal_set_emission_energy, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_decal_set_albedo_mix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::decal_set_albedo_mix, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::decal_set_albedo_mix, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_decal_set_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::decal_set_modulate, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::decal_set_modulate, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_decal_set_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::decal_set_cull_mask, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::decal_set_cull_mask, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_decal_set_distance_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::decal_set_distance_fade, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::decal_set_distance_fade, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_decal_set_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::decal_set_fade, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::decal_set_fade, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_decal_set_normal_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::decal_set_normal_fade, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::decal_set_normal_fade, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_decals_set_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::decals_set_filter, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::decals_set_filter, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_gi_set_use_half_resolution(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::gi_set_use_half_resolution, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::gi_set_use_half_resolution, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_voxel_gi_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::voxel_gi_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_voxel_gi_allocate_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::voxel_gi_allocate_data, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::voxel_gi_allocate_data, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_voxel_gi_get_octree_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -560,58 +560,58 @@ static JSValue rendering_server_class_voxel_gi_get_to_cell_xform(JSContext *ctx,
 	return call_builtin_const_method_ret(&RenderingServer::voxel_gi_get_to_cell_xform, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_voxel_gi_set_dynamic_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::voxel_gi_set_dynamic_range, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::voxel_gi_set_dynamic_range, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_voxel_gi_set_propagation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::voxel_gi_set_propagation, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::voxel_gi_set_propagation, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_voxel_gi_set_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::voxel_gi_set_energy, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::voxel_gi_set_energy, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_voxel_gi_set_baked_exposure_normalization(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::voxel_gi_set_baked_exposure_normalization, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::voxel_gi_set_baked_exposure_normalization, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_voxel_gi_set_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::voxel_gi_set_bias, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::voxel_gi_set_bias, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_voxel_gi_set_normal_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::voxel_gi_set_normal_bias, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::voxel_gi_set_normal_bias, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_voxel_gi_set_interior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::voxel_gi_set_interior, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::voxel_gi_set_interior, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_voxel_gi_set_use_two_bounces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::voxel_gi_set_use_two_bounces, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::voxel_gi_set_use_two_bounces, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_voxel_gi_set_quality(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::voxel_gi_set_quality, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::voxel_gi_set_quality, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_lightmap_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::lightmap_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_lightmap_set_textures(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::lightmap_set_textures, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::lightmap_set_textures, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_lightmap_set_probe_bounds(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::lightmap_set_probe_bounds, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::lightmap_set_probe_bounds, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_lightmap_set_probe_interior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::lightmap_set_probe_interior, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::lightmap_set_probe_interior, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_lightmap_set_probe_capture_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::lightmap_set_probe_capture_data, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::lightmap_set_probe_capture_data, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_lightmap_get_probe_capture_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -627,316 +627,316 @@ static JSValue rendering_server_class_lightmap_get_probe_capture_bsp_tree(JSCont
 	return call_builtin_const_method_ret(&RenderingServer::lightmap_get_probe_capture_bsp_tree, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_lightmap_set_baked_exposure_normalization(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::lightmap_set_baked_exposure_normalization, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::lightmap_set_baked_exposure_normalization, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_lightmap_set_probe_capture_update_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::lightmap_set_probe_capture_update_speed, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::lightmap_set_probe_capture_update_speed, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::particles_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_particles_set_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_mode, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_mode, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_set_emitting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_emitting, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_emitting, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_get_emitting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::particles_get_emitting, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_particles_set_amount(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_amount, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_amount, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_set_amount_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_amount_ratio, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_amount_ratio, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_set_lifetime(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_lifetime, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_lifetime, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_set_one_shot(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_one_shot, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_one_shot, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_set_pre_process_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_pre_process_time, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_pre_process_time, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_set_explosiveness_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_explosiveness_ratio, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_explosiveness_ratio, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_set_randomness_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_randomness_ratio, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_randomness_ratio, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_set_interp_to_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_interp_to_end, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_interp_to_end, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_set_emitter_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_emitter_velocity, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_emitter_velocity, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_set_custom_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_custom_aabb, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_custom_aabb, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_set_speed_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_speed_scale, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_speed_scale, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_set_use_local_coordinates(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_use_local_coordinates, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_use_local_coordinates, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_set_process_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_process_material, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_process_material, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_set_fixed_fps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_fixed_fps, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_fixed_fps, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_set_interpolate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_interpolate, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_interpolate, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_set_fractional_delta(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_fractional_delta, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_fractional_delta, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_set_collision_base_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_collision_base_size, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_collision_base_size, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_set_transform_align(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_transform_align, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_transform_align, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_set_trails(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_trails, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_trails, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_set_trail_bind_poses(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_trail_bind_poses, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_trail_bind_poses, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_is_inactive(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::particles_is_inactive, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_particles_request_process(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_request_process, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_request_process, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_restart(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_restart, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_restart, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_set_subemitter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_subemitter, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_subemitter, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_emit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_emit, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_emit, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_set_draw_order(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_draw_order, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_draw_order, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_set_draw_passes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_draw_passes, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_draw_passes, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_set_draw_pass_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_draw_pass_mesh, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_draw_pass_mesh, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_get_current_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::particles_get_current_aabb, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_particles_set_emission_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_set_emission_transform, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_set_emission_transform, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_collision_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::particles_collision_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_particles_collision_set_collision_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_collision_set_collision_type, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_collision_set_collision_type, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_collision_set_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_collision_set_cull_mask, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_collision_set_cull_mask, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_collision_set_sphere_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_collision_set_sphere_radius, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_collision_set_sphere_radius, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_collision_set_box_extents(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_collision_set_box_extents, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_collision_set_box_extents, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_collision_set_attractor_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_collision_set_attractor_strength, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_collision_set_attractor_strength, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_collision_set_attractor_directionality(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_collision_set_attractor_directionality, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_collision_set_attractor_directionality, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_collision_set_attractor_attenuation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_collision_set_attractor_attenuation, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_collision_set_attractor_attenuation, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_collision_set_field_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_collision_set_field_texture, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_collision_set_field_texture, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_collision_height_field_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_collision_height_field_update, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_collision_height_field_update, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_particles_collision_set_height_field_resolution(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::particles_collision_set_height_field_resolution, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::particles_collision_set_height_field_resolution, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_fog_volume_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::fog_volume_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_fog_volume_set_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::fog_volume_set_shape, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::fog_volume_set_shape, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_fog_volume_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::fog_volume_set_size, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::fog_volume_set_size, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_fog_volume_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::fog_volume_set_material, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::fog_volume_set_material, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_visibility_notifier_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::visibility_notifier_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_visibility_notifier_set_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::visibility_notifier_set_aabb, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::visibility_notifier_set_aabb, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_visibility_notifier_set_callbacks(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::visibility_notifier_set_callbacks, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::visibility_notifier_set_callbacks, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_occluder_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::occluder_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_occluder_set_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::occluder_set_mesh, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::occluder_set_mesh, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_camera_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::camera_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_camera_set_perspective(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::camera_set_perspective, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::camera_set_perspective, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_camera_set_orthogonal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::camera_set_orthogonal, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::camera_set_orthogonal, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_camera_set_frustum(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::camera_set_frustum, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::camera_set_frustum, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_camera_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::camera_set_transform, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::camera_set_transform, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_camera_set_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::camera_set_cull_mask, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::camera_set_cull_mask, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_camera_set_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::camera_set_environment, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::camera_set_environment, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_camera_set_camera_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::camera_set_camera_attributes, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::camera_set_camera_attributes, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_camera_set_compositor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::camera_set_compositor, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::camera_set_compositor, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_camera_set_use_vertical_aspect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::camera_set_use_vertical_aspect, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::camera_set_use_vertical_aspect, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::viewport_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_viewport_set_use_xr(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_use_xr, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_use_xr, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_size, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_size, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_active, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_active, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_parent_viewport(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_parent_viewport, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_parent_viewport, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_attach_to_screen(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_attach_to_screen, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_attach_to_screen, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_render_direct_to_screen(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_render_direct_to_screen, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_render_direct_to_screen, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_canvas_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_canvas_cull_mask, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_canvas_cull_mask, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_scaling_3d_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_scaling_3d_mode, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_scaling_3d_mode, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_scaling_3d_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_scaling_3d_scale, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_scaling_3d_scale, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_fsr_sharpness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_fsr_sharpness, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_fsr_sharpness, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_texture_mipmap_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_texture_mipmap_bias, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_texture_mipmap_bias, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_update_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_update_mode, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_update_mode, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_get_update_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RenderingServer::viewport_get_update_mode, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_viewport_set_clear_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_clear_mode, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_clear_mode, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_get_render_target(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -946,122 +946,122 @@ static JSValue rendering_server_class_viewport_get_texture(JSContext *ctx, JSVal
 	return call_builtin_const_method_ret(&RenderingServer::viewport_get_texture, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_viewport_set_disable_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_disable_3d, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_disable_3d, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_disable_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_disable_2d, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_disable_2d, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_environment_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_environment_mode, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_environment_mode, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_attach_camera(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_attach_camera, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_attach_camera, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_scenario(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_scenario, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_scenario, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_attach_canvas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_attach_canvas, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_attach_canvas, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_remove_canvas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_remove_canvas, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_remove_canvas, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_snap_2d_transforms_to_pixel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_snap_2d_transforms_to_pixel, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_snap_2d_transforms_to_pixel, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_snap_2d_vertices_to_pixel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_snap_2d_vertices_to_pixel, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_snap_2d_vertices_to_pixel, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_default_canvas_item_texture_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_default_canvas_item_texture_filter, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_default_canvas_item_texture_filter, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_default_canvas_item_texture_repeat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_default_canvas_item_texture_repeat, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_default_canvas_item_texture_repeat, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_canvas_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_canvas_transform, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_canvas_transform, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_canvas_stacking(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_canvas_stacking, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_canvas_stacking, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_transparent_background(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_transparent_background, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_transparent_background, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_global_canvas_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_global_canvas_transform, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_global_canvas_transform, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_sdf_oversize_and_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_sdf_oversize_and_scale, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_sdf_oversize_and_scale, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_positional_shadow_atlas_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_positional_shadow_atlas_size, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_positional_shadow_atlas_size, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_positional_shadow_atlas_quadrant_subdivision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_positional_shadow_atlas_quadrant_subdivision, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_positional_shadow_atlas_quadrant_subdivision, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_msaa_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_msaa_3d, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_msaa_3d, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_msaa_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_msaa_2d, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_msaa_2d, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_use_hdr_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_use_hdr_2d, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_use_hdr_2d, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_screen_space_aa(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_screen_space_aa, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_screen_space_aa, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_use_taa(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_use_taa, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_use_taa, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_use_debanding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_use_debanding, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_use_debanding, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_use_occlusion_culling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_use_occlusion_culling, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_use_occlusion_culling, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_occlusion_rays_per_thread(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_occlusion_rays_per_thread, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_occlusion_rays_per_thread, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_occlusion_culling_build_quality(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_occlusion_culling_build_quality, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_occlusion_culling_build_quality, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_get_render_info(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::viewport_get_render_info, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_viewport_set_debug_draw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_debug_draw, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_debug_draw, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_measure_render_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_measure_render_time, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_measure_render_time, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_get_measured_render_time_cpu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -1071,30 +1071,30 @@ static JSValue rendering_server_class_viewport_get_measured_render_time_gpu(JSCo
 	return call_builtin_const_method_ret(&RenderingServer::viewport_get_measured_render_time_gpu, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_viewport_set_vrs_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_vrs_mode, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_vrs_mode, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_vrs_update_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_vrs_update_mode, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_vrs_update_mode, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_viewport_set_vrs_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::viewport_set_vrs_texture, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::viewport_set_vrs_texture, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_sky_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::sky_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_sky_set_radiance_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::sky_set_radiance_size, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::sky_set_radiance_size, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_sky_set_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::sky_set_mode, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::sky_set_mode, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_sky_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::sky_set_material, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::sky_set_material, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_sky_bake_panorama(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -1104,182 +1104,182 @@ static JSValue rendering_server_class_compositor_effect_create(JSContext *ctx, J
 	return call_builtin_method_ret(&RenderingServer::compositor_effect_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_compositor_effect_set_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::compositor_effect_set_enabled, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::compositor_effect_set_enabled, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_compositor_effect_set_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::compositor_effect_set_callback, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::compositor_effect_set_callback, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_compositor_effect_set_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::compositor_effect_set_flag, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::compositor_effect_set_flag, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_compositor_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::compositor_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_compositor_set_compositor_effects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::compositor_set_compositor_effects, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::compositor_set_compositor_effects, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::environment_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_environment_set_background(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_set_background, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_set_background, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_set_sky(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_set_sky, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_set_sky, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_set_sky_custom_fov(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_set_sky_custom_fov, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_set_sky_custom_fov, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_set_sky_orientation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_set_sky_orientation, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_set_sky_orientation, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_set_bg_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_set_bg_color, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_set_bg_color, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_set_bg_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_set_bg_energy, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_set_bg_energy, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_set_canvas_max_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_set_canvas_max_layer, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_set_canvas_max_layer, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_set_ambient_light(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_set_ambient_light, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_set_ambient_light, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_set_glow(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_set_glow, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_set_glow, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_set_tonemap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_set_tonemap, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_set_tonemap, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_set_adjustment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_set_adjustment, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_set_adjustment, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_set_ssr(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_set_ssr, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_set_ssr, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_set_ssao(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_set_ssao, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_set_ssao, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_set_fog(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_set_fog, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_set_fog, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_set_sdfgi(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_set_sdfgi, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_set_sdfgi, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_set_volumetric_fog(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_set_volumetric_fog, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_set_volumetric_fog, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_glow_set_use_bicubic_upscale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_glow_set_use_bicubic_upscale, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_glow_set_use_bicubic_upscale, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_set_ssr_roughness_quality(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_set_ssr_roughness_quality, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_set_ssr_roughness_quality, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_set_ssao_quality(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_set_ssao_quality, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_set_ssao_quality, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_set_ssil_quality(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_set_ssil_quality, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_set_ssil_quality, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_set_sdfgi_ray_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_set_sdfgi_ray_count, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_set_sdfgi_ray_count, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_set_sdfgi_frames_to_converge(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_set_sdfgi_frames_to_converge, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_set_sdfgi_frames_to_converge, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_set_sdfgi_frames_to_update_light(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_set_sdfgi_frames_to_update_light, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_set_sdfgi_frames_to_update_light, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_set_volumetric_fog_volume_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_set_volumetric_fog_volume_size, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_set_volumetric_fog_volume_size, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_set_volumetric_fog_filter_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::environment_set_volumetric_fog_filter_active, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::environment_set_volumetric_fog_filter_active, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_environment_bake_panorama(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::environment_bake_panorama, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_screen_space_roughness_limiter_set_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::screen_space_roughness_limiter_set_active, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::screen_space_roughness_limiter_set_active, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_sub_surface_scattering_set_quality(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::sub_surface_scattering_set_quality, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::sub_surface_scattering_set_quality, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_sub_surface_scattering_set_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::sub_surface_scattering_set_scale, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::sub_surface_scattering_set_scale, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_camera_attributes_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::camera_attributes_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_camera_attributes_set_dof_blur_quality(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::camera_attributes_set_dof_blur_quality, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::camera_attributes_set_dof_blur_quality, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_camera_attributes_set_dof_blur_bokeh_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::camera_attributes_set_dof_blur_bokeh_shape, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::camera_attributes_set_dof_blur_bokeh_shape, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_camera_attributes_set_dof_blur(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::camera_attributes_set_dof_blur, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::camera_attributes_set_dof_blur, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_camera_attributes_set_exposure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::camera_attributes_set_exposure, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::camera_attributes_set_exposure, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_camera_attributes_set_auto_exposure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::camera_attributes_set_auto_exposure, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::camera_attributes_set_auto_exposure, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_scenario_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::scenario_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_scenario_set_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::scenario_set_environment, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::scenario_set_environment, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_scenario_set_fallback_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::scenario_set_fallback_environment, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::scenario_set_fallback_environment, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_scenario_set_camera_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::scenario_set_camera_attributes, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::scenario_set_camera_attributes, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_scenario_set_compositor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::scenario_set_compositor, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::scenario_set_compositor, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_instance_create2(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -1289,95 +1289,95 @@ static JSValue rendering_server_class_instance_create(JSContext *ctx, JSValueCon
 	return call_builtin_method_ret(&RenderingServer::instance_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_instance_set_base(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::instance_set_base, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::instance_set_base, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_instance_set_scenario(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::instance_set_scenario, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::instance_set_scenario, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_instance_set_layer_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::instance_set_layer_mask, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::instance_set_layer_mask, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_instance_set_pivot_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::instance_set_pivot_data, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::instance_set_pivot_data, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_instance_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::instance_set_transform, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::instance_set_transform, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_instance_attach_object_instance_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::instance_attach_object_instance_id, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::instance_attach_object_instance_id, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_instance_set_blend_shape_weight(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::instance_set_blend_shape_weight, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::instance_set_blend_shape_weight, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_instance_set_surface_override_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::instance_set_surface_override_material, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::instance_set_surface_override_material, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_instance_set_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::instance_set_visible, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::instance_set_visible, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_instance_geometry_set_transparency(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::instance_geometry_set_transparency, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::instance_geometry_set_transparency, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_instance_set_custom_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::instance_set_custom_aabb, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::instance_set_custom_aabb, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_instance_attach_skeleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::instance_attach_skeleton, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::instance_attach_skeleton, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_instance_set_extra_visibility_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::instance_set_extra_visibility_margin, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::instance_set_extra_visibility_margin, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_instance_set_visibility_parent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::instance_set_visibility_parent, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::instance_set_visibility_parent, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_instance_set_ignore_culling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::instance_set_ignore_culling, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::instance_set_ignore_culling, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_instance_geometry_set_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::instance_geometry_set_flag, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::instance_geometry_set_flag, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_instance_geometry_set_cast_shadows_setting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::instance_geometry_set_cast_shadows_setting, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::instance_geometry_set_cast_shadows_setting, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_instance_geometry_set_material_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::instance_geometry_set_material_override, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::instance_geometry_set_material_override, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_instance_geometry_set_material_overlay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::instance_geometry_set_material_overlay, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::instance_geometry_set_material_overlay, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_instance_geometry_set_visibility_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::instance_geometry_set_visibility_range, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::instance_geometry_set_visibility_range, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_instance_geometry_set_lightmap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::instance_geometry_set_lightmap, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::instance_geometry_set_lightmap, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_instance_geometry_set_lod_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::instance_geometry_set_lod_bias, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::instance_geometry_set_lod_bias, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_instance_geometry_set_shader_parameter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::instance_geometry_set_shader_parameter, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::instance_geometry_set_shader_parameter, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_instance_geometry_get_shader_parameter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -1405,221 +1405,221 @@ static JSValue rendering_server_class_canvas_create(JSContext *ctx, JSValueConst
 	return call_builtin_method_ret(&RenderingServer::canvas_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_canvas_set_item_mirroring(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_set_item_mirroring, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_set_item_mirroring, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_set_item_repeat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_set_item_repeat, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_set_item_repeat, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_set_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_set_modulate, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_set_modulate, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_set_disable_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_set_disable_scale, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_set_disable_scale, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_texture_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::canvas_texture_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_canvas_texture_set_channel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_texture_set_channel, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_texture_set_channel, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_texture_set_shading_parameters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_texture_set_shading_parameters, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_texture_set_shading_parameters, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_texture_set_texture_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_texture_set_texture_filter, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_texture_set_texture_filter, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_texture_set_texture_repeat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_texture_set_texture_repeat, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_texture_set_texture_repeat, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::canvas_item_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_canvas_item_set_parent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_set_parent, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_set_parent, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_set_default_texture_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_set_default_texture_filter, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_set_default_texture_filter, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_set_default_texture_repeat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_set_default_texture_repeat, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_set_default_texture_repeat, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_set_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_set_visible, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_set_visible, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_set_light_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_set_light_mask, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_set_light_mask, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_set_visibility_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_set_visibility_layer, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_set_visibility_layer, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_set_transform, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_set_transform, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_set_clip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_set_clip, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_set_clip, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_set_distance_field_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_set_distance_field_mode, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_set_distance_field_mode, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_set_custom_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_set_custom_rect, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_set_custom_rect, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_set_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_set_modulate, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_set_modulate, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_set_self_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_set_self_modulate, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_set_self_modulate, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_set_draw_behind_parent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_set_draw_behind_parent, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_set_draw_behind_parent, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_set_interpolated(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_set_interpolated, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_set_interpolated, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_reset_physics_interpolation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_reset_physics_interpolation, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_reset_physics_interpolation, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_transform_physics_interpolation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_transform_physics_interpolation, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_transform_physics_interpolation, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_add_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_add_line, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_add_line, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_add_polyline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_add_polyline, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_add_polyline, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_add_multiline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_add_multiline, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_add_multiline, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_add_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_add_rect, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_add_rect, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_add_circle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_add_circle, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_add_circle, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_add_texture_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_add_texture_rect, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_add_texture_rect, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_add_msdf_texture_rect_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_add_msdf_texture_rect_region, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_add_msdf_texture_rect_region, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_add_lcd_texture_rect_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_add_lcd_texture_rect_region, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_add_lcd_texture_rect_region, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_add_texture_rect_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_add_texture_rect_region, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_add_texture_rect_region, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_add_nine_patch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_add_nine_patch, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_add_nine_patch, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_add_primitive(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_add_primitive, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_add_primitive, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_add_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_add_polygon, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_add_polygon, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_add_triangle_array(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_add_triangle_array, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_add_triangle_array, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_add_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_add_mesh, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_add_mesh, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_add_multimesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_add_multimesh, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_add_multimesh, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_add_particles(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_add_particles, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_add_particles, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_add_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_add_set_transform, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_add_set_transform, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_add_clip_ignore(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_add_clip_ignore, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_add_clip_ignore, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_add_animation_slice(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_add_animation_slice, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_add_animation_slice, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_set_sort_children_by_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_set_sort_children_by_y, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_set_sort_children_by_y, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_set_z_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_set_z_index, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_set_z_index, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_set_z_as_relative_to_parent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_set_z_as_relative_to_parent, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_set_z_as_relative_to_parent, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_set_copy_to_backbuffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_set_copy_to_backbuffer, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_set_copy_to_backbuffer, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_clear, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_clear, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_set_draw_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_set_draw_index, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_set_draw_index, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_set_material, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_set_material, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_set_use_parent_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_set_use_parent_material, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_set_use_parent_material, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_set_visibility_notifier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_set_visibility_notifier, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_set_visibility_notifier, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_item_set_canvas_group_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_item_set_canvas_group_mode, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_item_set_canvas_group_mode, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_debug_canvas_item_get_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -1629,164 +1629,164 @@ static JSValue rendering_server_class_canvas_light_create(JSContext *ctx, JSValu
 	return call_builtin_method_ret(&RenderingServer::canvas_light_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_canvas_light_attach_to_canvas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_attach_to_canvas, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_attach_to_canvas, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_set_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_set_enabled, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_set_enabled, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_set_texture_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_set_texture_scale, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_set_texture_scale, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_set_transform, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_set_transform, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_set_texture, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_set_texture, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_set_texture_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_set_texture_offset, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_set_texture_offset, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_set_color, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_set_color, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_set_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_set_height, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_set_height, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_set_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_set_energy, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_set_energy, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_set_z_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_set_z_range, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_set_z_range, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_set_layer_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_set_layer_range, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_set_layer_range, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_set_item_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_set_item_cull_mask, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_set_item_cull_mask, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_set_item_shadow_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_set_item_shadow_cull_mask, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_set_item_shadow_cull_mask, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_set_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_set_mode, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_set_mode, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_set_shadow_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_set_shadow_enabled, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_set_shadow_enabled, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_set_shadow_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_set_shadow_filter, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_set_shadow_filter, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_set_shadow_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_set_shadow_color, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_set_shadow_color, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_set_shadow_smooth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_set_shadow_smooth, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_set_shadow_smooth, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_set_blend_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_set_blend_mode, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_set_blend_mode, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_set_interpolated(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_set_interpolated, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_set_interpolated, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_reset_physics_interpolation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_reset_physics_interpolation, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_reset_physics_interpolation, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_transform_physics_interpolation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_transform_physics_interpolation, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_transform_physics_interpolation, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_occluder_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::canvas_light_occluder_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_canvas_light_occluder_attach_to_canvas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_occluder_attach_to_canvas, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_occluder_attach_to_canvas, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_occluder_set_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_occluder_set_enabled, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_occluder_set_enabled, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_occluder_set_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_occluder_set_polygon, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_occluder_set_polygon, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_occluder_set_as_sdf_collision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_occluder_set_as_sdf_collision, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_occluder_set_as_sdf_collision, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_occluder_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_occluder_set_transform, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_occluder_set_transform, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_occluder_set_light_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_occluder_set_light_mask, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_occluder_set_light_mask, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_occluder_set_interpolated(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_occluder_set_interpolated, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_occluder_set_interpolated, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_occluder_reset_physics_interpolation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_occluder_reset_physics_interpolation, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_occluder_reset_physics_interpolation, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_light_occluder_transform_physics_interpolation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_light_occluder_transform_physics_interpolation, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_light_occluder_transform_physics_interpolation, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_occluder_polygon_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::canvas_occluder_polygon_create, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_canvas_occluder_polygon_set_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_occluder_polygon_set_shape, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_occluder_polygon_set_shape, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_occluder_polygon_set_cull_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_occluder_polygon_set_cull_mode, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_occluder_polygon_set_cull_mode, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_canvas_set_shadow_texture_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::canvas_set_shadow_texture_size, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::canvas_set_shadow_texture_size, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_global_shader_parameter_add(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::global_shader_parameter_add, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::global_shader_parameter_add, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_global_shader_parameter_remove(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::global_shader_parameter_remove, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::global_shader_parameter_remove, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_global_shader_parameter_get_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RenderingServer::global_shader_parameter_get_list, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_global_shader_parameter_set(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::global_shader_parameter_set, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::global_shader_parameter_set, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_global_shader_parameter_set_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::global_shader_parameter_set_override, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::global_shader_parameter_set_override, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_global_shader_parameter_get(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -1796,11 +1796,11 @@ static JSValue rendering_server_class_global_shader_parameter_get_type(JSContext
 	return call_builtin_const_method_ret(&RenderingServer::global_shader_parameter_get_type, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_free_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::free_rid, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::free_rid, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_request_frame_drawn_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::request_frame_drawn_callback, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::request_frame_drawn_callback, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_has_changed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -1834,39 +1834,39 @@ static JSValue rendering_server_class_get_white_texture(JSContext *ctx, JSValueC
 	return call_builtin_method_ret(&RenderingServer::get_white_texture, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_set_boot_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::set_boot_image, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::set_boot_image, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_get_default_clear_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RenderingServer::get_default_clear_color, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_set_default_clear_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::set_default_clear_color, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::set_default_clear_color, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_has_os_feature(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RenderingServer::has_os_feature, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_set_debug_generate_wireframes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::set_debug_generate_wireframes, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::set_debug_generate_wireframes, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_is_render_loop_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RenderingServer::is_render_loop_enabled, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_set_render_loop_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::set_render_loop_enabled, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::set_render_loop_enabled, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_get_frame_setup_time_cpu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RenderingServer::get_frame_setup_time_cpu, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_force_sync(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::force_sync, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::force_sync, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_force_draw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::force_draw, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::force_draw, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_get_rendering_device(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -1879,7 +1879,7 @@ static JSValue rendering_server_class_is_on_render_thread(JSContext *ctx, JSValu
 	return call_builtin_method_ret(&RenderingServer::is_on_render_thread, RenderingServer::__class_id, ctx, this_val, argv);
 };
 static JSValue rendering_server_class_call_on_render_thread(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderingServer::call_on_render_thread, RenderingServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderingServer::call_on_render_thread, RenderingServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rendering_server_class_has_feature(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

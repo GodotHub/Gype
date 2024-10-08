@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/rd_shader_file.hpp>
 #include <godot_cpp/classes/rd_shader_spirv.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,7 +38,7 @@ static JSValue rd_shader_file_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue rd_shader_file_class_set_bytecode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDShaderFile::set_bytecode, RDShaderFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDShaderFile::set_bytecode, RDShaderFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_shader_file_class_get_spirv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -49,7 +48,7 @@ static JSValue rd_shader_file_class_get_version_list(JSContext *ctx, JSValueCons
 	return call_builtin_const_method_ret(&RDShaderFile::get_version_list, RDShaderFile::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_shader_file_class_set_base_error(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDShaderFile::set_base_error, RDShaderFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDShaderFile::set_base_error, RDShaderFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_shader_file_class_get_base_error(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/fog_volume.hpp>
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,21 +38,21 @@ static JSValue fog_volume_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue fog_volume_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FogVolume::set_size, FogVolume::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FogVolume::set_size, FogVolume::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fog_volume_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FogVolume::get_size, FogVolume::__class_id, ctx, this_val, argv);
 };
 static JSValue fog_volume_class_set_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FogVolume::set_shape, FogVolume::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FogVolume::set_shape, FogVolume::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fog_volume_class_get_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FogVolume::get_shape, FogVolume::__class_id, ctx, this_val, argv);
 };
 static JSValue fog_volume_class_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FogVolume::set_material, FogVolume::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FogVolume::set_material, FogVolume::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fog_volume_class_get_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

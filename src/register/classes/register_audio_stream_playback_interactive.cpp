@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/audio_stream_playback.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/audio_stream_playback_interactive.hpp>
+#include <godot_cpp/classes/audio_stream_playback.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,11 +37,11 @@ static JSValue audio_stream_playback_interactive_class_constructor(JSContext *ct
 	return obj;
 }
 static JSValue audio_stream_playback_interactive_class_switch_to_clip_by_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlaybackInteractive::switch_to_clip_by_name, AudioStreamPlaybackInteractive::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlaybackInteractive::switch_to_clip_by_name, AudioStreamPlaybackInteractive::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_playback_interactive_class_switch_to_clip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlaybackInteractive::switch_to_clip, AudioStreamPlaybackInteractive::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlaybackInteractive::switch_to_clip, AudioStreamPlaybackInteractive::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry audio_stream_playback_interactive_class_proto_funcs[] = {

@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/os.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -47,37 +46,37 @@ static JSValue os_class_get_connected_midi_inputs(JSContext *ctx, JSValueConst t
 	return call_builtin_method_ret(&OS::get_connected_midi_inputs, OS::__class_id, ctx, this_val, argv);
 };
 static JSValue os_class_open_midi_inputs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&OS::open_midi_inputs, OS::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&OS::open_midi_inputs, OS::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_close_midi_inputs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&OS::close_midi_inputs, OS::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&OS::close_midi_inputs, OS::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_alert(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&OS::alert, OS::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&OS::alert, OS::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_crash(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&OS::crash, OS::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&OS::crash, OS::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_set_low_processor_usage_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&OS::set_low_processor_usage_mode, OS::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&OS::set_low_processor_usage_mode, OS::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_is_in_low_processor_usage_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&OS::is_in_low_processor_usage_mode, OS::__class_id, ctx, this_val, argv);
 };
 static JSValue os_class_set_low_processor_usage_mode_sleep_usec(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&OS::set_low_processor_usage_mode_sleep_usec, OS::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&OS::set_low_processor_usage_mode_sleep_usec, OS::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_get_low_processor_usage_mode_sleep_usec(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&OS::get_low_processor_usage_mode_sleep_usec, OS::__class_id, ctx, this_val, argv);
 };
 static JSValue os_class_set_delta_smoothing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&OS::set_delta_smoothing, OS::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&OS::set_delta_smoothing, OS::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_is_delta_smoothing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -141,11 +140,11 @@ static JSValue os_class_get_environment(JSContext *ctx, JSValueConst this_val, i
 	return call_builtin_const_method_ret(&OS::get_environment, OS::__class_id, ctx, this_val, argv);
 };
 static JSValue os_class_set_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&OS::set_environment, OS::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&OS::set_environment, OS::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_unset_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&OS::unset_environment, OS::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&OS::unset_environment, OS::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_get_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -167,7 +166,7 @@ static JSValue os_class_get_video_adapter_driver_info(JSContext *ctx, JSValueCon
 	return call_builtin_const_method_ret(&OS::get_video_adapter_driver_info, OS::__class_id, ctx, this_val, argv);
 };
 static JSValue os_class_set_restart_on_exit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&OS::set_restart_on_exit, OS::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&OS::set_restart_on_exit, OS::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_is_restart_on_exit_set(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -177,11 +176,11 @@ static JSValue os_class_get_restart_on_exit_arguments(JSContext *ctx, JSValueCon
 	return call_builtin_const_method_ret(&OS::get_restart_on_exit_arguments, OS::__class_id, ctx, this_val, argv);
 };
 static JSValue os_class_delay_usec(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&OS::delay_usec, OS::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&OS::delay_usec, OS::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_delay_msec(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&OS::delay_msec, OS::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&OS::delay_msec, OS::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_get_locale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -242,7 +241,7 @@ static JSValue os_class_find_keycode_from_string(JSContext *ctx, JSValueConst th
 	return call_builtin_const_method_ret(&OS::find_keycode_from_string, OS::__class_id, ctx, this_val, argv);
 };
 static JSValue os_class_set_use_file_access_save_and_swap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&OS::set_use_file_access_save_and_swap, OS::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&OS::set_use_file_access_save_and_swap, OS::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_set_thread_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -270,7 +269,7 @@ static JSValue os_class_get_granted_permissions(JSContext *ctx, JSValueConst thi
 	return call_builtin_const_method_ret(&OS::get_granted_permissions, OS::__class_id, ctx, this_val, argv);
 };
 static JSValue os_class_revoke_granted_permissions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&OS::revoke_granted_permissions, OS::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&OS::revoke_granted_permissions, OS::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry os_class_proto_funcs[] = {

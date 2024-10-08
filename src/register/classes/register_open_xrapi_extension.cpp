@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/open_xr_extension_wrapper_extension.hpp>
-#include <godot_cpp/classes/open_xrapi_extension.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/open_xrapi_extension.hpp>
+#include <godot_cpp/classes/open_xr_extension_wrapper_extension.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -84,15 +83,15 @@ static JSValue open_xrapi_extension_class_get_hand_tracker(JSContext *ctx, JSVal
 	return call_builtin_method_ret(&OpenXRAPIExtension::get_hand_tracker, OpenXRAPIExtension::__class_id, ctx, this_val, argv);
 };
 static JSValue open_xrapi_extension_class_register_composition_layer_provider(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&OpenXRAPIExtension::register_composition_layer_provider, OpenXRAPIExtension::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&OpenXRAPIExtension::register_composition_layer_provider, OpenXRAPIExtension::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xrapi_extension_class_unregister_composition_layer_provider(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&OpenXRAPIExtension::unregister_composition_layer_provider, OpenXRAPIExtension::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&OpenXRAPIExtension::unregister_composition_layer_provider, OpenXRAPIExtension::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xrapi_extension_class_set_emulate_environment_blend_mode_alpha_blend(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&OpenXRAPIExtension::set_emulate_environment_blend_mode_alpha_blend, OpenXRAPIExtension::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&OpenXRAPIExtension::set_emulate_environment_blend_mode_alpha_blend, OpenXRAPIExtension::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xrapi_extension_class_is_environment_blend_mode_alpha_supported(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

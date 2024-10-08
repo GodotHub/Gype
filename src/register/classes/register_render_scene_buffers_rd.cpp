@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/rd_texture_format.hpp>
-#include <godot_cpp/classes/rd_texture_view.hpp>
-#include <godot_cpp/classes/render_scene_buffers.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/render_scene_buffers_rd.hpp>
+#include <godot_cpp/classes/rd_texture_format.hpp>
+#include <godot_cpp/classes/render_scene_buffers.hpp>
+#include <godot_cpp/classes/rd_texture_view.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -67,7 +66,7 @@ static JSValue render_scene_buffers_rd_class_get_texture_slice_size(JSContext *c
 	return call_builtin_method_ret(&RenderSceneBuffersRD::get_texture_slice_size, RenderSceneBuffersRD::__class_id, ctx, this_val, argv);
 };
 static JSValue render_scene_buffers_rd_class_clear_context(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RenderSceneBuffersRD::clear_context, RenderSceneBuffersRD::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RenderSceneBuffersRD::clear_context, RenderSceneBuffersRD::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue render_scene_buffers_rd_class_get_color_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/animation_node_sync.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/animation_node_transition.hpp>
+#include <godot_cpp/classes/animation_node_sync.hpp>
 #include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,46 +38,46 @@ static JSValue animation_node_transition_class_constructor(JSContext *ctx, JSVal
 	return obj;
 }
 static JSValue animation_node_transition_class_set_input_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNodeTransition::set_input_count, AnimationNodeTransition::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeTransition::set_input_count, AnimationNodeTransition::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_transition_class_set_input_as_auto_advance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNodeTransition::set_input_as_auto_advance, AnimationNodeTransition::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeTransition::set_input_as_auto_advance, AnimationNodeTransition::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_transition_class_is_input_set_as_auto_advance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimationNodeTransition::is_input_set_as_auto_advance, AnimationNodeTransition::__class_id, ctx, this_val, argv);
 };
 static JSValue animation_node_transition_class_set_input_break_loop_at_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNodeTransition::set_input_break_loop_at_end, AnimationNodeTransition::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeTransition::set_input_break_loop_at_end, AnimationNodeTransition::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_transition_class_is_input_loop_broken_at_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimationNodeTransition::is_input_loop_broken_at_end, AnimationNodeTransition::__class_id, ctx, this_val, argv);
 };
 static JSValue animation_node_transition_class_set_input_reset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNodeTransition::set_input_reset, AnimationNodeTransition::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeTransition::set_input_reset, AnimationNodeTransition::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_transition_class_is_input_reset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimationNodeTransition::is_input_reset, AnimationNodeTransition::__class_id, ctx, this_val, argv);
 };
 static JSValue animation_node_transition_class_set_xfade_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNodeTransition::set_xfade_time, AnimationNodeTransition::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeTransition::set_xfade_time, AnimationNodeTransition::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_transition_class_get_xfade_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimationNodeTransition::get_xfade_time, AnimationNodeTransition::__class_id, ctx, this_val, argv);
 };
 static JSValue animation_node_transition_class_set_xfade_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNodeTransition::set_xfade_curve, AnimationNodeTransition::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeTransition::set_xfade_curve, AnimationNodeTransition::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_transition_class_get_xfade_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimationNodeTransition::get_xfade_curve, AnimationNodeTransition::__class_id, ctx, this_val, argv);
 };
 static JSValue animation_node_transition_class_set_allow_transition_to_self(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNodeTransition::set_allow_transition_to_self, AnimationNodeTransition::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeTransition::set_allow_transition_to_self, AnimationNodeTransition::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_transition_class_is_allow_transition_to_self(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

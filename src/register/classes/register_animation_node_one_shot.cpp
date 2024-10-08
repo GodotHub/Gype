@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/animation_node_one_shot.hpp>
 #include <godot_cpp/classes/animation_node_sync.hpp>
 #include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,63 +38,63 @@ static JSValue animation_node_one_shot_class_constructor(JSContext *ctx, JSValue
 	return obj;
 }
 static JSValue animation_node_one_shot_class_set_fadein_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNodeOneShot::set_fadein_time, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeOneShot::set_fadein_time, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_one_shot_class_get_fadein_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimationNodeOneShot::get_fadein_time, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
 };
 static JSValue animation_node_one_shot_class_set_fadein_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNodeOneShot::set_fadein_curve, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeOneShot::set_fadein_curve, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_one_shot_class_get_fadein_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimationNodeOneShot::get_fadein_curve, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
 };
 static JSValue animation_node_one_shot_class_set_fadeout_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNodeOneShot::set_fadeout_time, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeOneShot::set_fadeout_time, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_one_shot_class_get_fadeout_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimationNodeOneShot::get_fadeout_time, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
 };
 static JSValue animation_node_one_shot_class_set_fadeout_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNodeOneShot::set_fadeout_curve, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeOneShot::set_fadeout_curve, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_one_shot_class_get_fadeout_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimationNodeOneShot::get_fadeout_curve, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
 };
 static JSValue animation_node_one_shot_class_set_break_loop_at_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNodeOneShot::set_break_loop_at_end, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeOneShot::set_break_loop_at_end, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_one_shot_class_is_loop_broken_at_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimationNodeOneShot::is_loop_broken_at_end, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
 };
 static JSValue animation_node_one_shot_class_set_autorestart(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNodeOneShot::set_autorestart, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeOneShot::set_autorestart, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_one_shot_class_has_autorestart(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimationNodeOneShot::has_autorestart, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
 };
 static JSValue animation_node_one_shot_class_set_autorestart_delay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNodeOneShot::set_autorestart_delay, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeOneShot::set_autorestart_delay, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_one_shot_class_get_autorestart_delay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimationNodeOneShot::get_autorestart_delay, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
 };
 static JSValue animation_node_one_shot_class_set_autorestart_random_delay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNodeOneShot::set_autorestart_random_delay, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeOneShot::set_autorestart_random_delay, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_one_shot_class_get_autorestart_random_delay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimationNodeOneShot::get_autorestart_random_delay, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
 };
 static JSValue animation_node_one_shot_class_set_mix_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNodeOneShot::set_mix_mode, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeOneShot::set_mix_mode, AnimationNodeOneShot::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_one_shot_class_get_mix_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

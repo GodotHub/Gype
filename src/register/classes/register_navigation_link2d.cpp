@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/navigation_link2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -41,70 +40,70 @@ static JSValue navigation_link2d_class_get_rid(JSContext *ctx, JSValueConst this
 	return call_builtin_const_method_ret(&NavigationLink2D::get_rid, NavigationLink2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_link2d_class_set_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationLink2D::set_enabled, NavigationLink2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationLink2D::set_enabled, NavigationLink2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_link2d_class_is_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationLink2D::is_enabled, NavigationLink2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_link2d_class_set_bidirectional(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationLink2D::set_bidirectional, NavigationLink2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationLink2D::set_bidirectional, NavigationLink2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_link2d_class_is_bidirectional(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationLink2D::is_bidirectional, NavigationLink2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_link2d_class_set_navigation_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationLink2D::set_navigation_layers, NavigationLink2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationLink2D::set_navigation_layers, NavigationLink2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_link2d_class_get_navigation_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationLink2D::get_navigation_layers, NavigationLink2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_link2d_class_set_navigation_layer_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationLink2D::set_navigation_layer_value, NavigationLink2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationLink2D::set_navigation_layer_value, NavigationLink2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_link2d_class_get_navigation_layer_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationLink2D::get_navigation_layer_value, NavigationLink2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_link2d_class_set_start_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationLink2D::set_start_position, NavigationLink2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationLink2D::set_start_position, NavigationLink2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_link2d_class_get_start_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationLink2D::get_start_position, NavigationLink2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_link2d_class_set_end_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationLink2D::set_end_position, NavigationLink2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationLink2D::set_end_position, NavigationLink2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_link2d_class_get_end_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationLink2D::get_end_position, NavigationLink2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_link2d_class_set_global_start_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationLink2D::set_global_start_position, NavigationLink2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationLink2D::set_global_start_position, NavigationLink2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_link2d_class_get_global_start_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationLink2D::get_global_start_position, NavigationLink2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_link2d_class_set_global_end_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationLink2D::set_global_end_position, NavigationLink2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationLink2D::set_global_end_position, NavigationLink2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_link2d_class_get_global_end_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationLink2D::get_global_end_position, NavigationLink2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_link2d_class_set_enter_cost(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationLink2D::set_enter_cost, NavigationLink2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationLink2D::set_enter_cost, NavigationLink2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_link2d_class_get_enter_cost(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationLink2D::get_enter_cost, NavigationLink2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_link2d_class_set_travel_cost(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationLink2D::set_travel_cost, NavigationLink2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationLink2D::set_travel_cost, NavigationLink2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_link2d_class_get_travel_cost(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

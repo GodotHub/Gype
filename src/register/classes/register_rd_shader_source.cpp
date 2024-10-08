@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/rd_shader_source.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/rd_shader_source.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,14 +37,14 @@ static JSValue rd_shader_source_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue rd_shader_source_class_set_stage_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDShaderSource::set_stage_source, RDShaderSource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDShaderSource::set_stage_source, RDShaderSource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_shader_source_class_get_stage_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDShaderSource::get_stage_source, RDShaderSource::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_shader_source_class_set_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDShaderSource::set_language, RDShaderSource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDShaderSource::set_language, RDShaderSource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_shader_source_class_get_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

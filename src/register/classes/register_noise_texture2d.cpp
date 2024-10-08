@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/gradient.hpp>
-#include <godot_cpp/classes/noise.hpp>
 #include <godot_cpp/classes/noise_texture2d.hpp>
+#include <godot_cpp/classes/noise.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -40,78 +39,78 @@ static JSValue noise_texture2d_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue noise_texture2d_class_set_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NoiseTexture2D::set_width, NoiseTexture2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NoiseTexture2D::set_width, NoiseTexture2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue noise_texture2d_class_set_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NoiseTexture2D::set_height, NoiseTexture2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NoiseTexture2D::set_height, NoiseTexture2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue noise_texture2d_class_set_invert(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NoiseTexture2D::set_invert, NoiseTexture2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NoiseTexture2D::set_invert, NoiseTexture2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue noise_texture2d_class_get_invert(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NoiseTexture2D::get_invert, NoiseTexture2D::__class_id, ctx, this_val, argv);
 };
 static JSValue noise_texture2d_class_set_in_3d_space(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NoiseTexture2D::set_in_3d_space, NoiseTexture2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NoiseTexture2D::set_in_3d_space, NoiseTexture2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue noise_texture2d_class_is_in_3d_space(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NoiseTexture2D::is_in_3d_space, NoiseTexture2D::__class_id, ctx, this_val, argv);
 };
 static JSValue noise_texture2d_class_set_generate_mipmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NoiseTexture2D::set_generate_mipmaps, NoiseTexture2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NoiseTexture2D::set_generate_mipmaps, NoiseTexture2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue noise_texture2d_class_is_generating_mipmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NoiseTexture2D::is_generating_mipmaps, NoiseTexture2D::__class_id, ctx, this_val, argv);
 };
 static JSValue noise_texture2d_class_set_seamless(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NoiseTexture2D::set_seamless, NoiseTexture2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NoiseTexture2D::set_seamless, NoiseTexture2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue noise_texture2d_class_get_seamless(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&NoiseTexture2D::get_seamless, NoiseTexture2D::__class_id, ctx, this_val, argv);
 };
 static JSValue noise_texture2d_class_set_seamless_blend_skirt(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NoiseTexture2D::set_seamless_blend_skirt, NoiseTexture2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NoiseTexture2D::set_seamless_blend_skirt, NoiseTexture2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue noise_texture2d_class_get_seamless_blend_skirt(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&NoiseTexture2D::get_seamless_blend_skirt, NoiseTexture2D::__class_id, ctx, this_val, argv);
 };
 static JSValue noise_texture2d_class_set_as_normal_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NoiseTexture2D::set_as_normal_map, NoiseTexture2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NoiseTexture2D::set_as_normal_map, NoiseTexture2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue noise_texture2d_class_is_normal_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&NoiseTexture2D::is_normal_map, NoiseTexture2D::__class_id, ctx, this_val, argv);
 };
 static JSValue noise_texture2d_class_set_bump_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NoiseTexture2D::set_bump_strength, NoiseTexture2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NoiseTexture2D::set_bump_strength, NoiseTexture2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue noise_texture2d_class_get_bump_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&NoiseTexture2D::get_bump_strength, NoiseTexture2D::__class_id, ctx, this_val, argv);
 };
 static JSValue noise_texture2d_class_set_normalize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NoiseTexture2D::set_normalize, NoiseTexture2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NoiseTexture2D::set_normalize, NoiseTexture2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue noise_texture2d_class_is_normalized(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NoiseTexture2D::is_normalized, NoiseTexture2D::__class_id, ctx, this_val, argv);
 };
 static JSValue noise_texture2d_class_set_color_ramp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NoiseTexture2D::set_color_ramp, NoiseTexture2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NoiseTexture2D::set_color_ramp, NoiseTexture2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue noise_texture2d_class_get_color_ramp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NoiseTexture2D::get_color_ramp, NoiseTexture2D::__class_id, ctx, this_val, argv);
 };
 static JSValue noise_texture2d_class_set_noise(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NoiseTexture2D::set_noise, NoiseTexture2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NoiseTexture2D::set_noise, NoiseTexture2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue noise_texture2d_class_get_noise(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
+#include <godot_cpp/classes/v_box_container.hpp>
+#include <godot_cpp/classes/line_edit.hpp>
 #include <godot_cpp/classes/confirmation_dialog.hpp>
 #include <godot_cpp/classes/file_dialog.hpp>
-#include <godot_cpp/classes/line_edit.hpp>
-#include <godot_cpp/classes/v_box_container.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -40,15 +39,15 @@ static JSValue file_dialog_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue file_dialog_class_clear_filters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FileDialog::clear_filters, FileDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FileDialog::clear_filters, FileDialog::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_add_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FileDialog::add_filter, FileDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FileDialog::add_filter, FileDialog::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_set_filters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FileDialog::set_filters, FileDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FileDialog::set_filters, FileDialog::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_get_filters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -64,26 +63,26 @@ static JSValue file_dialog_class_get_option_default(JSContext *ctx, JSValueConst
 	return call_builtin_const_method_ret(&FileDialog::get_option_default, FileDialog::__class_id, ctx, this_val, argv);
 };
 static JSValue file_dialog_class_set_option_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FileDialog::set_option_name, FileDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FileDialog::set_option_name, FileDialog::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_set_option_values(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FileDialog::set_option_values, FileDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FileDialog::set_option_values, FileDialog::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_set_option_default(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FileDialog::set_option_default, FileDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FileDialog::set_option_default, FileDialog::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_set_option_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FileDialog::set_option_count, FileDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FileDialog::set_option_count, FileDialog::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_get_option_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FileDialog::get_option_count, FileDialog::__class_id, ctx, this_val, argv);
 };
 static JSValue file_dialog_class_add_option(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FileDialog::add_option, FileDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FileDialog::add_option, FileDialog::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_get_selected_options(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -99,26 +98,26 @@ static JSValue file_dialog_class_get_current_path(JSContext *ctx, JSValueConst t
 	return call_builtin_const_method_ret(&FileDialog::get_current_path, FileDialog::__class_id, ctx, this_val, argv);
 };
 static JSValue file_dialog_class_set_current_dir(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FileDialog::set_current_dir, FileDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FileDialog::set_current_dir, FileDialog::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_set_current_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FileDialog::set_current_file, FileDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FileDialog::set_current_file, FileDialog::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_set_current_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FileDialog::set_current_path, FileDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FileDialog::set_current_path, FileDialog::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_set_mode_overrides_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FileDialog::set_mode_overrides_title, FileDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FileDialog::set_mode_overrides_title, FileDialog::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_is_mode_overriding_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FileDialog::is_mode_overriding_title, FileDialog::__class_id, ctx, this_val, argv);
 };
 static JSValue file_dialog_class_set_file_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FileDialog::set_file_mode, FileDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FileDialog::set_file_mode, FileDialog::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_get_file_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -131,39 +130,39 @@ static JSValue file_dialog_class_get_line_edit(JSContext *ctx, JSValueConst this
 	return call_builtin_method_ret(&FileDialog::get_line_edit, FileDialog::__class_id, ctx, this_val, argv);
 };
 static JSValue file_dialog_class_set_access(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FileDialog::set_access, FileDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FileDialog::set_access, FileDialog::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_get_access(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FileDialog::get_access, FileDialog::__class_id, ctx, this_val, argv);
 };
 static JSValue file_dialog_class_set_root_subfolder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FileDialog::set_root_subfolder, FileDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FileDialog::set_root_subfolder, FileDialog::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_get_root_subfolder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FileDialog::get_root_subfolder, FileDialog::__class_id, ctx, this_val, argv);
 };
 static JSValue file_dialog_class_set_show_hidden_files(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FileDialog::set_show_hidden_files, FileDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FileDialog::set_show_hidden_files, FileDialog::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_is_showing_hidden_files(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FileDialog::is_showing_hidden_files, FileDialog::__class_id, ctx, this_val, argv);
 };
 static JSValue file_dialog_class_set_use_native_dialog(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FileDialog::set_use_native_dialog, FileDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FileDialog::set_use_native_dialog, FileDialog::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_get_use_native_dialog(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&FileDialog::get_use_native_dialog, FileDialog::__class_id, ctx, this_val, argv);
 };
 static JSValue file_dialog_class_deselect_all(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FileDialog::deselect_all, FileDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FileDialog::deselect_all, FileDialog::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_invalidate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FileDialog::invalidate, FileDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FileDialog::invalidate, FileDialog::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry file_dialog_class_proto_funcs[] = {

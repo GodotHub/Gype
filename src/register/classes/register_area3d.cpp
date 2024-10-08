@@ -1,16 +1,16 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/area3d.hpp>
+#include "quickjs/str_helper.h"
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/collision_object3d.hpp>
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/area3d.hpp>
+#include <godot_cpp/classes/area3d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -40,112 +40,112 @@ static JSValue area3d_class_constructor(JSContext *ctx, JSValueConst new_target,
 	return obj;
 }
 static JSValue area3d_class_set_gravity_space_override_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Area3D::set_gravity_space_override_mode, Area3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area3D::set_gravity_space_override_mode, Area3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area3d_class_get_gravity_space_override_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Area3D::get_gravity_space_override_mode, Area3D::__class_id, ctx, this_val, argv);
 };
 static JSValue area3d_class_set_gravity_is_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Area3D::set_gravity_is_point, Area3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area3D::set_gravity_is_point, Area3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area3d_class_is_gravity_a_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Area3D::is_gravity_a_point, Area3D::__class_id, ctx, this_val, argv);
 };
 static JSValue area3d_class_set_gravity_point_unit_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Area3D::set_gravity_point_unit_distance, Area3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area3D::set_gravity_point_unit_distance, Area3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area3d_class_get_gravity_point_unit_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Area3D::get_gravity_point_unit_distance, Area3D::__class_id, ctx, this_val, argv);
 };
 static JSValue area3d_class_set_gravity_point_center(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Area3D::set_gravity_point_center, Area3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area3D::set_gravity_point_center, Area3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area3d_class_get_gravity_point_center(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Area3D::get_gravity_point_center, Area3D::__class_id, ctx, this_val, argv);
 };
 static JSValue area3d_class_set_gravity_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Area3D::set_gravity_direction, Area3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area3D::set_gravity_direction, Area3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area3d_class_get_gravity_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Area3D::get_gravity_direction, Area3D::__class_id, ctx, this_val, argv);
 };
 static JSValue area3d_class_set_gravity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Area3D::set_gravity, Area3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area3D::set_gravity, Area3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area3d_class_get_gravity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Area3D::get_gravity, Area3D::__class_id, ctx, this_val, argv);
 };
 static JSValue area3d_class_set_linear_damp_space_override_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Area3D::set_linear_damp_space_override_mode, Area3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area3D::set_linear_damp_space_override_mode, Area3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area3d_class_get_linear_damp_space_override_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Area3D::get_linear_damp_space_override_mode, Area3D::__class_id, ctx, this_val, argv);
 };
 static JSValue area3d_class_set_angular_damp_space_override_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Area3D::set_angular_damp_space_override_mode, Area3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area3D::set_angular_damp_space_override_mode, Area3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area3d_class_get_angular_damp_space_override_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Area3D::get_angular_damp_space_override_mode, Area3D::__class_id, ctx, this_val, argv);
 };
 static JSValue area3d_class_set_angular_damp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Area3D::set_angular_damp, Area3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area3D::set_angular_damp, Area3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area3d_class_get_angular_damp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Area3D::get_angular_damp, Area3D::__class_id, ctx, this_val, argv);
 };
 static JSValue area3d_class_set_linear_damp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Area3D::set_linear_damp, Area3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area3D::set_linear_damp, Area3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area3d_class_get_linear_damp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Area3D::get_linear_damp, Area3D::__class_id, ctx, this_val, argv);
 };
 static JSValue area3d_class_set_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Area3D::set_priority, Area3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area3D::set_priority, Area3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area3d_class_get_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Area3D::get_priority, Area3D::__class_id, ctx, this_val, argv);
 };
 static JSValue area3d_class_set_wind_force_magnitude(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Area3D::set_wind_force_magnitude, Area3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area3D::set_wind_force_magnitude, Area3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area3d_class_get_wind_force_magnitude(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Area3D::get_wind_force_magnitude, Area3D::__class_id, ctx, this_val, argv);
 };
 static JSValue area3d_class_set_wind_attenuation_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Area3D::set_wind_attenuation_factor, Area3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area3D::set_wind_attenuation_factor, Area3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area3d_class_get_wind_attenuation_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Area3D::get_wind_attenuation_factor, Area3D::__class_id, ctx, this_val, argv);
 };
 static JSValue area3d_class_set_wind_source_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Area3D::set_wind_source_path, Area3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area3D::set_wind_source_path, Area3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area3d_class_get_wind_source_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Area3D::get_wind_source_path, Area3D::__class_id, ctx, this_val, argv);
 };
 static JSValue area3d_class_set_monitorable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Area3D::set_monitorable, Area3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area3D::set_monitorable, Area3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area3d_class_is_monitorable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Area3D::is_monitorable, Area3D::__class_id, ctx, this_val, argv);
 };
 static JSValue area3d_class_set_monitoring(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Area3D::set_monitoring, Area3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area3D::set_monitoring, Area3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area3d_class_is_monitoring(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -170,42 +170,42 @@ static JSValue area3d_class_overlaps_area(JSContext *ctx, JSValueConst this_val,
 	return call_builtin_const_method_ret(&Area3D::overlaps_area, Area3D::__class_id, ctx, this_val, argv);
 };
 static JSValue area3d_class_set_audio_bus_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Area3D::set_audio_bus_override, Area3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area3D::set_audio_bus_override, Area3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area3d_class_is_overriding_audio_bus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Area3D::is_overriding_audio_bus, Area3D::__class_id, ctx, this_val, argv);
 };
 static JSValue area3d_class_set_audio_bus_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Area3D::set_audio_bus_name, Area3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area3D::set_audio_bus_name, Area3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area3d_class_get_audio_bus_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Area3D::get_audio_bus_name, Area3D::__class_id, ctx, this_val, argv);
 };
 static JSValue area3d_class_set_use_reverb_bus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Area3D::set_use_reverb_bus, Area3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area3D::set_use_reverb_bus, Area3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area3d_class_is_using_reverb_bus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Area3D::is_using_reverb_bus, Area3D::__class_id, ctx, this_val, argv);
 };
 static JSValue area3d_class_set_reverb_bus_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Area3D::set_reverb_bus_name, Area3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area3D::set_reverb_bus_name, Area3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area3d_class_get_reverb_bus_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Area3D::get_reverb_bus_name, Area3D::__class_id, ctx, this_val, argv);
 };
 static JSValue area3d_class_set_reverb_amount(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Area3D::set_reverb_amount, Area3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area3D::set_reverb_amount, Area3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area3d_class_get_reverb_amount(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Area3D::get_reverb_amount, Area3D::__class_id, ctx, this_val, argv);
 };
 static JSValue area3d_class_set_reverb_uniformity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Area3D::set_reverb_uniformity, Area3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area3D::set_reverb_uniformity, Area3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area3d_class_get_reverb_uniformity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

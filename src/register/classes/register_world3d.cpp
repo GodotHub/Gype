@@ -1,17 +1,16 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/physics_direct_space_state3d.hpp>
+#include <godot_cpp/classes/world3d.hpp>
 #include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/classes/environment.hpp>
-#include <godot_cpp/classes/physics_direct_space_state3d.hpp>
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/world3d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -50,21 +49,21 @@ static JSValue world3d_class_get_scenario(JSContext *ctx, JSValueConst this_val,
 	return call_builtin_const_method_ret(&World3D::get_scenario, World3D::__class_id, ctx, this_val, argv);
 };
 static JSValue world3d_class_set_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&World3D::set_environment, World3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&World3D::set_environment, World3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue world3d_class_get_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&World3D::get_environment, World3D::__class_id, ctx, this_val, argv);
 };
 static JSValue world3d_class_set_fallback_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&World3D::set_fallback_environment, World3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&World3D::set_fallback_environment, World3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue world3d_class_get_fallback_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&World3D::get_fallback_environment, World3D::__class_id, ctx, this_val, argv);
 };
 static JSValue world3d_class_set_camera_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&World3D::set_camera_attributes, World3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&World3D::set_camera_attributes, World3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue world3d_class_get_camera_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

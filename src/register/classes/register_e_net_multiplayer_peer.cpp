@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/e_net_connection.hpp>
 #include <godot_cpp/classes/e_net_multiplayer_peer.hpp>
 #include <godot_cpp/classes/e_net_packet_peer.hpp>
 #include <godot_cpp/classes/multiplayer_peer.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -52,7 +51,7 @@ static JSValue e_net_multiplayer_peer_class_add_mesh_peer(JSContext *ctx, JSValu
 	return call_builtin_method_ret(&ENetMultiplayerPeer::add_mesh_peer, ENetMultiplayerPeer::__class_id, ctx, this_val, argv);
 };
 static JSValue e_net_multiplayer_peer_class_set_bind_ip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ENetMultiplayerPeer::set_bind_ip, ENetMultiplayerPeer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ENetMultiplayerPeer::set_bind_ip, ENetMultiplayerPeer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_multiplayer_peer_class_get_host(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

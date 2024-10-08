@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/csg_shape3d.hpp>
 #include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -41,63 +40,63 @@ static JSValue csg_shape3d_class_is_root_shape(JSContext *ctx, JSValueConst this
 	return call_builtin_const_method_ret(&CSGShape3D::is_root_shape, CSGShape3D::__class_id, ctx, this_val, argv);
 };
 static JSValue csg_shape3d_class_set_operation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CSGShape3D::set_operation, CSGShape3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CSGShape3D::set_operation, CSGShape3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_shape3d_class_get_operation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CSGShape3D::get_operation, CSGShape3D::__class_id, ctx, this_val, argv);
 };
 static JSValue csg_shape3d_class_set_snap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CSGShape3D::set_snap, CSGShape3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CSGShape3D::set_snap, CSGShape3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_shape3d_class_get_snap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CSGShape3D::get_snap, CSGShape3D::__class_id, ctx, this_val, argv);
 };
 static JSValue csg_shape3d_class_set_use_collision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CSGShape3D::set_use_collision, CSGShape3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CSGShape3D::set_use_collision, CSGShape3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_shape3d_class_is_using_collision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CSGShape3D::is_using_collision, CSGShape3D::__class_id, ctx, this_val, argv);
 };
 static JSValue csg_shape3d_class_set_collision_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CSGShape3D::set_collision_layer, CSGShape3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CSGShape3D::set_collision_layer, CSGShape3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_shape3d_class_get_collision_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CSGShape3D::get_collision_layer, CSGShape3D::__class_id, ctx, this_val, argv);
 };
 static JSValue csg_shape3d_class_set_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CSGShape3D::set_collision_mask, CSGShape3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CSGShape3D::set_collision_mask, CSGShape3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_shape3d_class_get_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CSGShape3D::get_collision_mask, CSGShape3D::__class_id, ctx, this_val, argv);
 };
 static JSValue csg_shape3d_class_set_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CSGShape3D::set_collision_mask_value, CSGShape3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CSGShape3D::set_collision_mask_value, CSGShape3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_shape3d_class_get_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CSGShape3D::get_collision_mask_value, CSGShape3D::__class_id, ctx, this_val, argv);
 };
 static JSValue csg_shape3d_class_set_collision_layer_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CSGShape3D::set_collision_layer_value, CSGShape3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CSGShape3D::set_collision_layer_value, CSGShape3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_shape3d_class_get_collision_layer_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CSGShape3D::get_collision_layer_value, CSGShape3D::__class_id, ctx, this_val, argv);
 };
 static JSValue csg_shape3d_class_set_collision_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CSGShape3D::set_collision_priority, CSGShape3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CSGShape3D::set_collision_priority, CSGShape3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_shape3d_class_get_collision_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CSGShape3D::get_collision_priority, CSGShape3D::__class_id, ctx, this_val, argv);
 };
 static JSValue csg_shape3d_class_set_calculate_tangents(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CSGShape3D::set_calculate_tangents, CSGShape3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CSGShape3D::set_calculate_tangents, CSGShape3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_shape3d_class_is_calculating_tangents(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

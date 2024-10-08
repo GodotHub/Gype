@@ -1,17 +1,16 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
+#include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/gpu_particles2d.hpp>
 #include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -41,67 +40,67 @@ static JSValue gpu_particles2d_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue gpu_particles2d_class_set_emitting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::set_emitting, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::set_emitting, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_set_amount(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::set_amount, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::set_amount, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_set_lifetime(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::set_lifetime, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::set_lifetime, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_set_one_shot(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::set_one_shot, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::set_one_shot, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_set_pre_process_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::set_pre_process_time, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::set_pre_process_time, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_set_explosiveness_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::set_explosiveness_ratio, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::set_explosiveness_ratio, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_set_randomness_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::set_randomness_ratio, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::set_randomness_ratio, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_set_visibility_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::set_visibility_rect, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::set_visibility_rect, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_set_use_local_coordinates(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::set_use_local_coordinates, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::set_use_local_coordinates, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_set_fixed_fps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::set_fixed_fps, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::set_fixed_fps, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_set_fractional_delta(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::set_fractional_delta, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::set_fractional_delta, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_set_interpolate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::set_interpolate, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::set_interpolate, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_set_process_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::set_process_material, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::set_process_material, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_set_speed_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::set_speed_scale, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::set_speed_scale, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_set_collision_base_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::set_collision_base_size, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::set_collision_base_size, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_set_interp_to_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::set_interp_to_end, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::set_interp_to_end, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_is_emitting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -153,14 +152,14 @@ static JSValue gpu_particles2d_class_get_interp_to_end(JSContext *ctx, JSValueCo
 	return call_builtin_const_method_ret(&GPUParticles2D::get_interp_to_end, GPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue gpu_particles2d_class_set_draw_order(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::set_draw_order, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::set_draw_order, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_get_draw_order(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&GPUParticles2D::get_draw_order, GPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue gpu_particles2d_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::set_texture, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::set_texture, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -170,26 +169,26 @@ static JSValue gpu_particles2d_class_capture_rect(JSContext *ctx, JSValueConst t
 	return call_builtin_const_method_ret(&GPUParticles2D::capture_rect, GPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue gpu_particles2d_class_restart(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::restart, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::restart, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_set_sub_emitter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::set_sub_emitter, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::set_sub_emitter, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_get_sub_emitter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&GPUParticles2D::get_sub_emitter, GPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue gpu_particles2d_class_emit_particle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::emit_particle, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::emit_particle, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_set_trail_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::set_trail_enabled, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::set_trail_enabled, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_set_trail_lifetime(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::set_trail_lifetime, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::set_trail_lifetime, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_is_trail_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -199,25 +198,25 @@ static JSValue gpu_particles2d_class_get_trail_lifetime(JSContext *ctx, JSValueC
 	return call_builtin_const_method_ret(&GPUParticles2D::get_trail_lifetime, GPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue gpu_particles2d_class_set_trail_sections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::set_trail_sections, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::set_trail_sections, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_get_trail_sections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&GPUParticles2D::get_trail_sections, GPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue gpu_particles2d_class_set_trail_section_subdivisions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::set_trail_section_subdivisions, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::set_trail_section_subdivisions, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_get_trail_section_subdivisions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&GPUParticles2D::get_trail_section_subdivisions, GPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue gpu_particles2d_class_convert_from_particles(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::convert_from_particles, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::convert_from_particles, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_set_amount_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticles2D::set_amount_ratio, GPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticles2D::set_amount_ratio, GPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles2d_class_get_amount_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

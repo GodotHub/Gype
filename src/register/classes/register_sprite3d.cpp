@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/sprite3d.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/sprite_base3d.hpp>
+#include <godot_cpp/classes/sprite3d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,49 +38,49 @@ static JSValue sprite3d_class_constructor(JSContext *ctx, JSValueConst new_targe
 	return obj;
 }
 static JSValue sprite3d_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Sprite3D::set_texture, Sprite3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Sprite3D::set_texture, Sprite3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite3d_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Sprite3D::get_texture, Sprite3D::__class_id, ctx, this_val, argv);
 };
 static JSValue sprite3d_class_set_region_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Sprite3D::set_region_enabled, Sprite3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Sprite3D::set_region_enabled, Sprite3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite3d_class_is_region_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Sprite3D::is_region_enabled, Sprite3D::__class_id, ctx, this_val, argv);
 };
 static JSValue sprite3d_class_set_region_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Sprite3D::set_region_rect, Sprite3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Sprite3D::set_region_rect, Sprite3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite3d_class_get_region_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Sprite3D::get_region_rect, Sprite3D::__class_id, ctx, this_val, argv);
 };
 static JSValue sprite3d_class_set_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Sprite3D::set_frame, Sprite3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Sprite3D::set_frame, Sprite3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite3d_class_get_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Sprite3D::get_frame, Sprite3D::__class_id, ctx, this_val, argv);
 };
 static JSValue sprite3d_class_set_frame_coords(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Sprite3D::set_frame_coords, Sprite3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Sprite3D::set_frame_coords, Sprite3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite3d_class_get_frame_coords(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Sprite3D::get_frame_coords, Sprite3D::__class_id, ctx, this_val, argv);
 };
 static JSValue sprite3d_class_set_vframes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Sprite3D::set_vframes, Sprite3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Sprite3D::set_vframes, Sprite3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite3d_class_get_vframes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Sprite3D::get_vframes, Sprite3D::__class_id, ctx, this_val, argv);
 };
 static JSValue sprite3d_class_set_hframes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Sprite3D::set_hframes, Sprite3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Sprite3D::set_hframes, Sprite3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite3d_class_get_hframes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/engine.hpp>
-#include <godot_cpp/classes/main_loop.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/engine.hpp>
 #include <godot_cpp/classes/script_language.hpp>
+#include <godot_cpp/classes/main_loop.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -40,21 +39,21 @@ static JSValue engine_class_constructor(JSContext *ctx, JSValueConst new_target,
 	return obj;
 }
 static JSValue engine_class_set_physics_ticks_per_second(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Engine::set_physics_ticks_per_second, Engine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Engine::set_physics_ticks_per_second, Engine::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue engine_class_get_physics_ticks_per_second(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Engine::get_physics_ticks_per_second, Engine::__class_id, ctx, this_val, argv);
 };
 static JSValue engine_class_set_max_physics_steps_per_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Engine::set_max_physics_steps_per_frame, Engine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Engine::set_max_physics_steps_per_frame, Engine::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue engine_class_get_max_physics_steps_per_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Engine::get_max_physics_steps_per_frame, Engine::__class_id, ctx, this_val, argv);
 };
 static JSValue engine_class_set_physics_jitter_fix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Engine::set_physics_jitter_fix, Engine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Engine::set_physics_jitter_fix, Engine::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue engine_class_get_physics_jitter_fix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -64,14 +63,14 @@ static JSValue engine_class_get_physics_interpolation_fraction(JSContext *ctx, J
 	return call_builtin_const_method_ret(&Engine::get_physics_interpolation_fraction, Engine::__class_id, ctx, this_val, argv);
 };
 static JSValue engine_class_set_max_fps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Engine::set_max_fps, Engine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Engine::set_max_fps, Engine::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue engine_class_get_max_fps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Engine::get_max_fps, Engine::__class_id, ctx, this_val, argv);
 };
 static JSValue engine_class_set_time_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Engine::set_time_scale, Engine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Engine::set_time_scale, Engine::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue engine_class_get_time_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -123,11 +122,11 @@ static JSValue engine_class_get_singleton(JSContext *ctx, JSValueConst this_val,
 	return call_builtin_const_method_ret(&Engine::get_singleton, Engine::__class_id, ctx, this_val, argv);
 };
 static JSValue engine_class_register_singleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Engine::register_singleton, Engine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Engine::register_singleton, Engine::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue engine_class_unregister_singleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Engine::unregister_singleton, Engine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Engine::unregister_singleton, Engine::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue engine_class_get_singleton_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -152,7 +151,7 @@ static JSValue engine_class_get_write_movie_path(JSContext *ctx, JSValueConst th
 	return call_builtin_const_method_ret(&Engine::get_write_movie_path, Engine::__class_id, ctx, this_val, argv);
 };
 static JSValue engine_class_set_print_error_messages(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Engine::set_print_error_messages, Engine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Engine::set_print_error_messages, Engine::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue engine_class_is_printing_error_messages(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

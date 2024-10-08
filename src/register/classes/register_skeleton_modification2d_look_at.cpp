@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/skeleton_modification2d.hpp>
 #include <godot_cpp/classes/skeleton_modification2d_look_at.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,56 +37,56 @@ static JSValue skeleton_modification2d_look_at_class_constructor(JSContext *ctx,
 	return obj;
 }
 static JSValue skeleton_modification2d_look_at_class_set_bone2d_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DLookAt::set_bone2d_node, SkeletonModification2DLookAt::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DLookAt::set_bone2d_node, SkeletonModification2DLookAt::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_look_at_class_get_bone2d_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonModification2DLookAt::get_bone2d_node, SkeletonModification2DLookAt::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_look_at_class_set_bone_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DLookAt::set_bone_index, SkeletonModification2DLookAt::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DLookAt::set_bone_index, SkeletonModification2DLookAt::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_look_at_class_get_bone_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonModification2DLookAt::get_bone_index, SkeletonModification2DLookAt::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_look_at_class_set_target_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DLookAt::set_target_node, SkeletonModification2DLookAt::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DLookAt::set_target_node, SkeletonModification2DLookAt::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_look_at_class_get_target_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonModification2DLookAt::get_target_node, SkeletonModification2DLookAt::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_look_at_class_set_additional_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DLookAt::set_additional_rotation, SkeletonModification2DLookAt::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DLookAt::set_additional_rotation, SkeletonModification2DLookAt::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_look_at_class_get_additional_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonModification2DLookAt::get_additional_rotation, SkeletonModification2DLookAt::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_look_at_class_set_enable_constraint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DLookAt::set_enable_constraint, SkeletonModification2DLookAt::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DLookAt::set_enable_constraint, SkeletonModification2DLookAt::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_look_at_class_get_enable_constraint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonModification2DLookAt::get_enable_constraint, SkeletonModification2DLookAt::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_look_at_class_set_constraint_angle_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DLookAt::set_constraint_angle_min, SkeletonModification2DLookAt::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DLookAt::set_constraint_angle_min, SkeletonModification2DLookAt::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_look_at_class_get_constraint_angle_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonModification2DLookAt::get_constraint_angle_min, SkeletonModification2DLookAt::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_look_at_class_set_constraint_angle_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DLookAt::set_constraint_angle_max, SkeletonModification2DLookAt::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DLookAt::set_constraint_angle_max, SkeletonModification2DLookAt::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_look_at_class_get_constraint_angle_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonModification2DLookAt::get_constraint_angle_max, SkeletonModification2DLookAt::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_look_at_class_set_constraint_angle_invert(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DLookAt::set_constraint_angle_invert, SkeletonModification2DLookAt::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DLookAt::set_constraint_angle_invert, SkeletonModification2DLookAt::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_look_at_class_get_constraint_angle_invert(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

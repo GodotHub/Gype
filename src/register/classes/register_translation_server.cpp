@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
+#include <godot_cpp/classes/translation_server.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/translation.hpp>
-#include <godot_cpp/classes/translation_server.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,7 +38,7 @@ static JSValue translation_server_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 static JSValue translation_server_class_set_locale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TranslationServer::set_locale, TranslationServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TranslationServer::set_locale, TranslationServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue translation_server_class_get_locale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -82,18 +81,18 @@ static JSValue translation_server_class_translate_plural(JSContext *ctx, JSValue
 	return call_builtin_const_method_ret(&TranslationServer::translate_plural, TranslationServer::__class_id, ctx, this_val, argv);
 };
 static JSValue translation_server_class_add_translation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TranslationServer::add_translation, TranslationServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TranslationServer::add_translation, TranslationServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue translation_server_class_remove_translation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TranslationServer::remove_translation, TranslationServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TranslationServer::remove_translation, TranslationServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue translation_server_class_get_translation_object(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&TranslationServer::get_translation_object, TranslationServer::__class_id, ctx, this_val, argv);
 };
 static JSValue translation_server_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TranslationServer::clear, TranslationServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TranslationServer::clear, TranslationServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue translation_server_class_get_loaded_locales(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -103,11 +102,11 @@ static JSValue translation_server_class_is_pseudolocalization_enabled(JSContext 
 	return call_builtin_const_method_ret(&TranslationServer::is_pseudolocalization_enabled, TranslationServer::__class_id, ctx, this_val, argv);
 };
 static JSValue translation_server_class_set_pseudolocalization_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TranslationServer::set_pseudolocalization_enabled, TranslationServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TranslationServer::set_pseudolocalization_enabled, TranslationServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue translation_server_class_reload_pseudolocalization(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TranslationServer::reload_pseudolocalization, TranslationServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TranslationServer::reload_pseudolocalization, TranslationServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue translation_server_class_pseudolocalize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

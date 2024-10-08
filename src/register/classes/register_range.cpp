@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/node.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/range.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -57,67 +56,67 @@ static JSValue range_class_get_as_ratio(JSContext *ctx, JSValueConst this_val, i
 	return call_builtin_const_method_ret(&Range::get_as_ratio, Range::__class_id, ctx, this_val, argv);
 };
 static JSValue range_class_set_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Range::set_value, Range::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Range::set_value, Range::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue range_class_set_value_no_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Range::set_value_no_signal, Range::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Range::set_value_no_signal, Range::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue range_class_set_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Range::set_min, Range::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Range::set_min, Range::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue range_class_set_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Range::set_max, Range::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Range::set_max, Range::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue range_class_set_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Range::set_step, Range::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Range::set_step, Range::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue range_class_set_page(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Range::set_page, Range::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Range::set_page, Range::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue range_class_set_as_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Range::set_as_ratio, Range::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Range::set_as_ratio, Range::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue range_class_set_use_rounded_values(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Range::set_use_rounded_values, Range::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Range::set_use_rounded_values, Range::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue range_class_is_using_rounded_values(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Range::is_using_rounded_values, Range::__class_id, ctx, this_val, argv);
 };
 static JSValue range_class_set_exp_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Range::set_exp_ratio, Range::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Range::set_exp_ratio, Range::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue range_class_is_ratio_exp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Range::is_ratio_exp, Range::__class_id, ctx, this_val, argv);
 };
 static JSValue range_class_set_allow_greater(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Range::set_allow_greater, Range::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Range::set_allow_greater, Range::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue range_class_is_greater_allowed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Range::is_greater_allowed, Range::__class_id, ctx, this_val, argv);
 };
 static JSValue range_class_set_allow_lesser(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Range::set_allow_lesser, Range::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Range::set_allow_lesser, Range::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue range_class_is_lesser_allowed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Range::is_lesser_allowed, Range::__class_id, ctx, this_val, argv);
 };
 static JSValue range_class_share(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Range::share, Range::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Range::share, Range::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue range_class_unshare(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Range::unshare, Range::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Range::unshare, Range::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry range_class_proto_funcs[] = {

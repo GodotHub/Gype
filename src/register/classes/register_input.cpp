@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/input.hpp>
 #include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -79,11 +78,11 @@ static JSValue input_class_get_vector(JSContext *ctx, JSValueConst this_val, int
 	return call_builtin_const_method_ret(&Input::get_vector, Input::__class_id, ctx, this_val, argv);
 };
 static JSValue input_class_add_joy_mapping(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Input::add_joy_mapping, Input::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Input::add_joy_mapping, Input::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_remove_joy_mapping(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Input::remove_joy_mapping, Input::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Input::remove_joy_mapping, Input::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_is_joy_known(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -114,15 +113,15 @@ static JSValue input_class_get_joy_vibration_duration(JSContext *ctx, JSValueCon
 	return call_builtin_method_ret(&Input::get_joy_vibration_duration, Input::__class_id, ctx, this_val, argv);
 };
 static JSValue input_class_start_joy_vibration(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Input::start_joy_vibration, Input::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Input::start_joy_vibration, Input::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_stop_joy_vibration(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Input::stop_joy_vibration, Input::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Input::stop_joy_vibration, Input::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_vibrate_handheld(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Input::vibrate_handheld, Input::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Input::vibrate_handheld, Input::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_get_gravity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -138,19 +137,19 @@ static JSValue input_class_get_gyroscope(JSContext *ctx, JSValueConst this_val, 
 	return call_builtin_const_method_ret(&Input::get_gyroscope, Input::__class_id, ctx, this_val, argv);
 };
 static JSValue input_class_set_gravity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Input::set_gravity, Input::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Input::set_gravity, Input::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_set_accelerometer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Input::set_accelerometer, Input::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Input::set_accelerometer, Input::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_set_magnetometer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Input::set_magnetometer, Input::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Input::set_magnetometer, Input::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_set_gyroscope(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Input::set_gyroscope, Input::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Input::set_gyroscope, Input::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_get_last_mouse_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -163,59 +162,59 @@ static JSValue input_class_get_mouse_button_mask(JSContext *ctx, JSValueConst th
 	return call_builtin_const_method_ret(&Input::get_mouse_button_mask, Input::__class_id, ctx, this_val, argv);
 };
 static JSValue input_class_set_mouse_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Input::set_mouse_mode, Input::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Input::set_mouse_mode, Input::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_get_mouse_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Input::get_mouse_mode, Input::__class_id, ctx, this_val, argv);
 };
 static JSValue input_class_warp_mouse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Input::warp_mouse, Input::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Input::warp_mouse, Input::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_action_press(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Input::action_press, Input::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Input::action_press, Input::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_action_release(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Input::action_release, Input::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Input::action_release, Input::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_set_default_cursor_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Input::set_default_cursor_shape, Input::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Input::set_default_cursor_shape, Input::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_get_current_cursor_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Input::get_current_cursor_shape, Input::__class_id, ctx, this_val, argv);
 };
 static JSValue input_class_set_custom_mouse_cursor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Input::set_custom_mouse_cursor, Input::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Input::set_custom_mouse_cursor, Input::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_parse_input_event(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Input::parse_input_event, Input::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Input::parse_input_event, Input::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_set_use_accumulated_input(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Input::set_use_accumulated_input, Input::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Input::set_use_accumulated_input, Input::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_is_using_accumulated_input(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&Input::is_using_accumulated_input, Input::__class_id, ctx, this_val, argv);
 };
 static JSValue input_class_flush_buffered_events(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Input::flush_buffered_events, Input::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Input::flush_buffered_events, Input::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_set_emulate_mouse_from_touch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Input::set_emulate_mouse_from_touch, Input::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Input::set_emulate_mouse_from_touch, Input::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_is_emulating_mouse_from_touch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Input::is_emulating_mouse_from_touch, Input::__class_id, ctx, this_val, argv);
 };
 static JSValue input_class_set_emulate_touch_from_mouse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Input::set_emulate_touch_from_mouse, Input::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Input::set_emulate_touch_from_mouse, Input::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_is_emulating_touch_from_mouse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/editor_scene_post_import_plugin.hpp>
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -43,11 +42,11 @@ static JSValue editor_scene_post_import_plugin_class_get_option_value(JSContext 
 	return call_builtin_const_method_ret(&EditorScenePostImportPlugin::get_option_value, EditorScenePostImportPlugin::__class_id, ctx, this_val, argv);
 };
 static JSValue editor_scene_post_import_plugin_class_add_import_option(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorScenePostImportPlugin::add_import_option, EditorScenePostImportPlugin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorScenePostImportPlugin::add_import_option, EditorScenePostImportPlugin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_scene_post_import_plugin_class_add_import_option_advanced(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorScenePostImportPlugin::add_import_option_advanced, EditorScenePostImportPlugin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorScenePostImportPlugin::add_import_option_advanced, EditorScenePostImportPlugin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry editor_scene_post_import_plugin_class_proto_funcs[] = {

@@ -1,19 +1,18 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/navigation_polygon.hpp>
 #include <godot_cpp/classes/navigation_mesh_source_geometry_data2d.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/navigation_server2d.hpp>
 #include <godot_cpp/classes/navigation_path_query_parameters2d.hpp>
 #include <godot_cpp/classes/navigation_path_query_result2d.hpp>
-#include <godot_cpp/classes/navigation_polygon.hpp>
-#include <godot_cpp/classes/navigation_server2d.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -49,35 +48,35 @@ static JSValue navigation_server2d_class_map_create(JSContext *ctx, JSValueConst
 	return call_builtin_method_ret(&NavigationServer2D::map_create, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_map_set_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::map_set_active, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::map_set_active, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_map_is_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::map_is_active, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_map_set_cell_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::map_set_cell_size, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::map_set_cell_size, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_map_get_cell_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::map_get_cell_size, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_map_set_use_edge_connections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::map_set_use_edge_connections, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::map_set_use_edge_connections, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_map_get_use_edge_connections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::map_get_use_edge_connections, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_map_set_edge_connection_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::map_set_edge_connection_margin, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::map_set_edge_connection_margin, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_map_get_edge_connection_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::map_get_edge_connection_margin, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_map_set_link_connection_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::map_set_link_connection_radius, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::map_set_link_connection_radius, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_map_get_link_connection_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -105,7 +104,7 @@ static JSValue navigation_server2d_class_map_get_obstacles(JSContext *ctx, JSVal
 	return call_builtin_const_method_ret(&NavigationServer2D::map_get_obstacles, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_map_force_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::map_force_update, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::map_force_update, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_map_get_iteration_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -115,42 +114,42 @@ static JSValue navigation_server2d_class_map_get_random_point(JSContext *ctx, JS
 	return call_builtin_const_method_ret(&NavigationServer2D::map_get_random_point, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_query_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&NavigationServer2D::query_path, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&NavigationServer2D::query_path, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_region_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&NavigationServer2D::region_create, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_region_set_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::region_set_enabled, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::region_set_enabled, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_region_get_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::region_get_enabled, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_region_set_use_edge_connections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::region_set_use_edge_connections, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::region_set_use_edge_connections, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_region_get_use_edge_connections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::region_get_use_edge_connections, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_region_set_enter_cost(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::region_set_enter_cost, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::region_set_enter_cost, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_region_get_enter_cost(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::region_get_enter_cost, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_region_set_travel_cost(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::region_set_travel_cost, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::region_set_travel_cost, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_region_get_travel_cost(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::region_get_travel_cost, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_region_set_owner_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::region_set_owner_id, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::region_set_owner_id, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_region_get_owner_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -160,28 +159,28 @@ static JSValue navigation_server2d_class_region_owns_point(JSContext *ctx, JSVal
 	return call_builtin_const_method_ret(&NavigationServer2D::region_owns_point, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_region_set_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::region_set_map, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::region_set_map, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_region_get_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::region_get_map, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_region_set_navigation_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::region_set_navigation_layers, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::region_set_navigation_layers, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_region_get_navigation_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::region_get_navigation_layers, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_region_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::region_set_transform, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::region_set_transform, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_region_get_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::region_get_transform, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_region_set_navigation_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::region_set_navigation_polygon, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::region_set_navigation_polygon, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_region_get_connections_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -200,63 +199,63 @@ static JSValue navigation_server2d_class_link_create(JSContext *ctx, JSValueCons
 	return call_builtin_method_ret(&NavigationServer2D::link_create, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_link_set_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::link_set_map, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::link_set_map, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_link_get_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::link_get_map, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_link_set_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::link_set_enabled, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::link_set_enabled, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_link_get_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::link_get_enabled, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_link_set_bidirectional(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::link_set_bidirectional, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::link_set_bidirectional, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_link_is_bidirectional(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::link_is_bidirectional, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_link_set_navigation_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::link_set_navigation_layers, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::link_set_navigation_layers, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_link_get_navigation_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::link_get_navigation_layers, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_link_set_start_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::link_set_start_position, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::link_set_start_position, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_link_get_start_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::link_get_start_position, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_link_set_end_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::link_set_end_position, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::link_set_end_position, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_link_get_end_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::link_get_end_position, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_link_set_enter_cost(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::link_set_enter_cost, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::link_set_enter_cost, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_link_get_enter_cost(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::link_get_enter_cost, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_link_set_travel_cost(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::link_set_travel_cost, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::link_set_travel_cost, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_link_get_travel_cost(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::link_get_travel_cost, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_link_set_owner_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::link_set_owner_id, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::link_set_owner_id, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_link_get_owner_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -266,81 +265,81 @@ static JSValue navigation_server2d_class_agent_create(JSContext *ctx, JSValueCon
 	return call_builtin_method_ret(&NavigationServer2D::agent_create, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_agent_set_avoidance_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::agent_set_avoidance_enabled, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::agent_set_avoidance_enabled, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_agent_get_avoidance_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::agent_get_avoidance_enabled, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_agent_set_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::agent_set_map, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::agent_set_map, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_agent_get_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::agent_get_map, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_agent_set_paused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::agent_set_paused, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::agent_set_paused, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_agent_get_paused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::agent_get_paused, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_agent_set_neighbor_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::agent_set_neighbor_distance, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::agent_set_neighbor_distance, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_agent_get_neighbor_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::agent_get_neighbor_distance, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_agent_set_max_neighbors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::agent_set_max_neighbors, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::agent_set_max_neighbors, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_agent_get_max_neighbors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::agent_get_max_neighbors, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_agent_set_time_horizon_agents(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::agent_set_time_horizon_agents, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::agent_set_time_horizon_agents, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_agent_get_time_horizon_agents(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::agent_get_time_horizon_agents, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_agent_set_time_horizon_obstacles(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::agent_set_time_horizon_obstacles, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::agent_set_time_horizon_obstacles, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_agent_get_time_horizon_obstacles(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::agent_get_time_horizon_obstacles, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_agent_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::agent_set_radius, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::agent_set_radius, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_agent_get_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::agent_get_radius, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_agent_set_max_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::agent_set_max_speed, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::agent_set_max_speed, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_agent_get_max_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::agent_get_max_speed, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_agent_set_velocity_forced(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::agent_set_velocity_forced, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::agent_set_velocity_forced, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_agent_set_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::agent_set_velocity, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::agent_set_velocity, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_agent_get_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::agent_get_velocity, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_agent_set_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::agent_set_position, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::agent_set_position, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_agent_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -350,28 +349,28 @@ static JSValue navigation_server2d_class_agent_is_map_changed(JSContext *ctx, JS
 	return call_builtin_const_method_ret(&NavigationServer2D::agent_is_map_changed, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_agent_set_avoidance_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::agent_set_avoidance_callback, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::agent_set_avoidance_callback, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_agent_has_avoidance_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::agent_has_avoidance_callback, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_agent_set_avoidance_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::agent_set_avoidance_layers, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::agent_set_avoidance_layers, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_agent_get_avoidance_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::agent_get_avoidance_layers, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_agent_set_avoidance_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::agent_set_avoidance_mask, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::agent_set_avoidance_mask, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_agent_get_avoidance_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::agent_get_avoidance_mask, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_agent_set_avoidance_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::agent_set_avoidance_priority, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::agent_set_avoidance_priority, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_agent_get_avoidance_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -381,71 +380,71 @@ static JSValue navigation_server2d_class_obstacle_create(JSContext *ctx, JSValue
 	return call_builtin_method_ret(&NavigationServer2D::obstacle_create, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_obstacle_set_avoidance_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::obstacle_set_avoidance_enabled, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::obstacle_set_avoidance_enabled, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_obstacle_get_avoidance_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::obstacle_get_avoidance_enabled, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_obstacle_set_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::obstacle_set_map, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::obstacle_set_map, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_obstacle_get_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::obstacle_get_map, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_obstacle_set_paused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::obstacle_set_paused, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::obstacle_set_paused, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_obstacle_get_paused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::obstacle_get_paused, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_obstacle_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::obstacle_set_radius, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::obstacle_set_radius, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_obstacle_get_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::obstacle_get_radius, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_obstacle_set_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::obstacle_set_velocity, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::obstacle_set_velocity, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_obstacle_get_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::obstacle_get_velocity, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_obstacle_set_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::obstacle_set_position, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::obstacle_set_position, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_obstacle_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::obstacle_get_position, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_obstacle_set_vertices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::obstacle_set_vertices, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::obstacle_set_vertices, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_obstacle_get_vertices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::obstacle_get_vertices, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_obstacle_set_avoidance_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::obstacle_set_avoidance_layers, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::obstacle_set_avoidance_layers, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_obstacle_get_avoidance_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationServer2D::obstacle_get_avoidance_layers, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_parse_source_geometry_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::parse_source_geometry_data, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::parse_source_geometry_data, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_bake_from_source_geometry_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::bake_from_source_geometry_data, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::bake_from_source_geometry_data, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_bake_from_source_geometry_data_async(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::bake_from_source_geometry_data_async, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::bake_from_source_geometry_data_async, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_is_baking_navigation_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -455,18 +454,18 @@ static JSValue navigation_server2d_class_source_geometry_parser_create(JSContext
 	return call_builtin_method_ret(&NavigationServer2D::source_geometry_parser_create, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_source_geometry_parser_set_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::source_geometry_parser_set_callback, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::source_geometry_parser_set_callback, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_simplify_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&NavigationServer2D::simplify_path, NavigationServer2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_server2d_class_free_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::free_rid, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::free_rid, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_set_debug_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationServer2D::set_debug_enabled, NavigationServer2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationServer2D::set_debug_enabled, NavigationServer2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_server2d_class_get_debug_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

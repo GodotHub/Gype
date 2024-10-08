@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/light3d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,98 +38,98 @@ static JSValue light3d_class_constructor(JSContext *ctx, JSValueConst new_target
 	return obj;
 }
 static JSValue light3d_class_set_editor_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Light3D::set_editor_only, Light3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Light3D::set_editor_only, Light3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_is_editor_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Light3D::is_editor_only, Light3D::__class_id, ctx, this_val, argv);
 };
 static JSValue light3d_class_set_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Light3D::set_param, Light3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Light3D::set_param, Light3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_get_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Light3D::get_param, Light3D::__class_id, ctx, this_val, argv);
 };
 static JSValue light3d_class_set_shadow(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Light3D::set_shadow, Light3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Light3D::set_shadow, Light3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_has_shadow(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Light3D::has_shadow, Light3D::__class_id, ctx, this_val, argv);
 };
 static JSValue light3d_class_set_negative(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Light3D::set_negative, Light3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Light3D::set_negative, Light3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_is_negative(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Light3D::is_negative, Light3D::__class_id, ctx, this_val, argv);
 };
 static JSValue light3d_class_set_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Light3D::set_cull_mask, Light3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Light3D::set_cull_mask, Light3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_get_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Light3D::get_cull_mask, Light3D::__class_id, ctx, this_val, argv);
 };
 static JSValue light3d_class_set_enable_distance_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Light3D::set_enable_distance_fade, Light3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Light3D::set_enable_distance_fade, Light3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_is_distance_fade_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Light3D::is_distance_fade_enabled, Light3D::__class_id, ctx, this_val, argv);
 };
 static JSValue light3d_class_set_distance_fade_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Light3D::set_distance_fade_begin, Light3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Light3D::set_distance_fade_begin, Light3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_get_distance_fade_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Light3D::get_distance_fade_begin, Light3D::__class_id, ctx, this_val, argv);
 };
 static JSValue light3d_class_set_distance_fade_shadow(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Light3D::set_distance_fade_shadow, Light3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Light3D::set_distance_fade_shadow, Light3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_get_distance_fade_shadow(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Light3D::get_distance_fade_shadow, Light3D::__class_id, ctx, this_val, argv);
 };
 static JSValue light3d_class_set_distance_fade_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Light3D::set_distance_fade_length, Light3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Light3D::set_distance_fade_length, Light3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_get_distance_fade_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Light3D::get_distance_fade_length, Light3D::__class_id, ctx, this_val, argv);
 };
 static JSValue light3d_class_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Light3D::set_color, Light3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Light3D::set_color, Light3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_get_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Light3D::get_color, Light3D::__class_id, ctx, this_val, argv);
 };
 static JSValue light3d_class_set_shadow_reverse_cull_face(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Light3D::set_shadow_reverse_cull_face, Light3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Light3D::set_shadow_reverse_cull_face, Light3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_get_shadow_reverse_cull_face(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Light3D::get_shadow_reverse_cull_face, Light3D::__class_id, ctx, this_val, argv);
 };
 static JSValue light3d_class_set_bake_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Light3D::set_bake_mode, Light3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Light3D::set_bake_mode, Light3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_get_bake_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Light3D::get_bake_mode, Light3D::__class_id, ctx, this_val, argv);
 };
 static JSValue light3d_class_set_projector(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Light3D::set_projector, Light3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Light3D::set_projector, Light3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_get_projector(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Light3D::get_projector, Light3D::__class_id, ctx, this_val, argv);
 };
 static JSValue light3d_class_set_temperature(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Light3D::set_temperature, Light3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Light3D::set_temperature, Light3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_get_temperature(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

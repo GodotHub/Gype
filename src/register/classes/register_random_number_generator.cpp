@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/random_number_generator.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/random_number_generator.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,14 +37,14 @@ static JSValue random_number_generator_class_constructor(JSContext *ctx, JSValue
 	return obj;
 }
 static JSValue random_number_generator_class_set_seed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RandomNumberGenerator::set_seed, RandomNumberGenerator::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RandomNumberGenerator::set_seed, RandomNumberGenerator::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue random_number_generator_class_get_seed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RandomNumberGenerator::get_seed, RandomNumberGenerator::__class_id, ctx, this_val, argv);
 };
 static JSValue random_number_generator_class_set_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RandomNumberGenerator::set_state, RandomNumberGenerator::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RandomNumberGenerator::set_state, RandomNumberGenerator::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue random_number_generator_class_get_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +69,7 @@ static JSValue random_number_generator_class_rand_weighted(JSContext *ctx, JSVal
 	return call_builtin_method_ret(&RandomNumberGenerator::rand_weighted, RandomNumberGenerator::__class_id, ctx, this_val, argv);
 };
 static JSValue random_number_generator_class_randomize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RandomNumberGenerator::randomize, RandomNumberGenerator::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RandomNumberGenerator::randomize, RandomNumberGenerator::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry random_number_generator_class_proto_funcs[] = {

@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/bone2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,14 +37,14 @@ static JSValue bone2d_class_constructor(JSContext *ctx, JSValueConst new_target,
 	return obj;
 }
 static JSValue bone2d_class_set_rest(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Bone2D::set_rest, Bone2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Bone2D::set_rest, Bone2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue bone2d_class_get_rest(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Bone2D::get_rest, Bone2D::__class_id, ctx, this_val, argv);
 };
 static JSValue bone2d_class_apply_rest(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Bone2D::apply_rest, Bone2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Bone2D::apply_rest, Bone2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue bone2d_class_get_skeleton_rest(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -55,21 +54,21 @@ static JSValue bone2d_class_get_index_in_skeleton(JSContext *ctx, JSValueConst t
 	return call_builtin_const_method_ret(&Bone2D::get_index_in_skeleton, Bone2D::__class_id, ctx, this_val, argv);
 };
 static JSValue bone2d_class_set_autocalculate_length_and_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Bone2D::set_autocalculate_length_and_angle, Bone2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Bone2D::set_autocalculate_length_and_angle, Bone2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue bone2d_class_get_autocalculate_length_and_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Bone2D::get_autocalculate_length_and_angle, Bone2D::__class_id, ctx, this_val, argv);
 };
 static JSValue bone2d_class_set_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Bone2D::set_length, Bone2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Bone2D::set_length, Bone2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue bone2d_class_get_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Bone2D::get_length, Bone2D::__class_id, ctx, this_val, argv);
 };
 static JSValue bone2d_class_set_bone_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Bone2D::set_bone_angle, Bone2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Bone2D::set_bone_angle, Bone2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue bone2d_class_get_bone_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

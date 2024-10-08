@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/classes/audio_effect_compressor.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,49 +37,49 @@ static JSValue audio_effect_compressor_class_constructor(JSContext *ctx, JSValue
 	return obj;
 }
 static JSValue audio_effect_compressor_class_set_threshold(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioEffectCompressor::set_threshold, AudioEffectCompressor::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioEffectCompressor::set_threshold, AudioEffectCompressor::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_compressor_class_get_threshold(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioEffectCompressor::get_threshold, AudioEffectCompressor::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_effect_compressor_class_set_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioEffectCompressor::set_ratio, AudioEffectCompressor::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioEffectCompressor::set_ratio, AudioEffectCompressor::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_compressor_class_get_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioEffectCompressor::get_ratio, AudioEffectCompressor::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_effect_compressor_class_set_gain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioEffectCompressor::set_gain, AudioEffectCompressor::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioEffectCompressor::set_gain, AudioEffectCompressor::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_compressor_class_get_gain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioEffectCompressor::get_gain, AudioEffectCompressor::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_effect_compressor_class_set_attack_us(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioEffectCompressor::set_attack_us, AudioEffectCompressor::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioEffectCompressor::set_attack_us, AudioEffectCompressor::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_compressor_class_get_attack_us(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioEffectCompressor::get_attack_us, AudioEffectCompressor::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_effect_compressor_class_set_release_ms(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioEffectCompressor::set_release_ms, AudioEffectCompressor::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioEffectCompressor::set_release_ms, AudioEffectCompressor::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_compressor_class_get_release_ms(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioEffectCompressor::get_release_ms, AudioEffectCompressor::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_effect_compressor_class_set_mix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioEffectCompressor::set_mix, AudioEffectCompressor::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioEffectCompressor::set_mix, AudioEffectCompressor::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_compressor_class_get_mix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioEffectCompressor::get_mix, AudioEffectCompressor::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_effect_compressor_class_set_sidechain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioEffectCompressor::set_sidechain, AudioEffectCompressor::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioEffectCompressor::set_sidechain, AudioEffectCompressor::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_compressor_class_get_sidechain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

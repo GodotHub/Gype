@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/rd_vertex_attribute.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,35 +37,35 @@ static JSValue rd_vertex_attribute_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 static JSValue rd_vertex_attribute_class_set_location(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDVertexAttribute::set_location, RDVertexAttribute::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDVertexAttribute::set_location, RDVertexAttribute::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_vertex_attribute_class_get_location(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDVertexAttribute::get_location, RDVertexAttribute::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_vertex_attribute_class_set_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDVertexAttribute::set_offset, RDVertexAttribute::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDVertexAttribute::set_offset, RDVertexAttribute::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_vertex_attribute_class_get_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDVertexAttribute::get_offset, RDVertexAttribute::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_vertex_attribute_class_set_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDVertexAttribute::set_format, RDVertexAttribute::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDVertexAttribute::set_format, RDVertexAttribute::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_vertex_attribute_class_get_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDVertexAttribute::get_format, RDVertexAttribute::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_vertex_attribute_class_set_stride(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDVertexAttribute::set_stride, RDVertexAttribute::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDVertexAttribute::set_stride, RDVertexAttribute::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_vertex_attribute_class_get_stride(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDVertexAttribute::get_stride, RDVertexAttribute::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_vertex_attribute_class_set_frequency(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDVertexAttribute::set_frequency, RDVertexAttribute::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDVertexAttribute::set_frequency, RDVertexAttribute::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_vertex_attribute_class_get_frequency(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

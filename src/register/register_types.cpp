@@ -1,7 +1,7 @@
 #include "register/register_types.h"
 #include "quickjs/wrapper/js_object.h"
 #include "register/classes/register_classes.h"
-#include "register/register_utility_functions.h"
+#include "register/utility_functions/register_utility_functions.h"
 #include "support/console_support.hpp"
 #include "utils/env.h"
 #include <gdextension_interface.h>
@@ -58,8 +58,8 @@ void uninitialize_tgds_types(godot::ModuleInitializationLevel p_level) {
 void init_quickjs() {
 	rt = JS_NewRuntime();
 	ctx = JS_NewContext(rt);
-	register_utility_functions();
 	register_classes();
+	register_utility_functions();
 	// register_enums();
 	// register_internal_api();
 	// js_init_module(ctx);

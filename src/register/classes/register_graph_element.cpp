@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/container.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/graph_element.hpp>
+#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,35 +37,35 @@ static JSValue graph_element_class_constructor(JSContext *ctx, JSValueConst new_
 	return obj;
 }
 static JSValue graph_element_class_set_resizable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphElement::set_resizable, GraphElement::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphElement::set_resizable, GraphElement::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_element_class_is_resizable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&GraphElement::is_resizable, GraphElement::__class_id, ctx, this_val, argv);
 };
 static JSValue graph_element_class_set_draggable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphElement::set_draggable, GraphElement::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphElement::set_draggable, GraphElement::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_element_class_is_draggable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&GraphElement::is_draggable, GraphElement::__class_id, ctx, this_val, argv);
 };
 static JSValue graph_element_class_set_selectable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphElement::set_selectable, GraphElement::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphElement::set_selectable, GraphElement::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_element_class_is_selectable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&GraphElement::is_selectable, GraphElement::__class_id, ctx, this_val, argv);
 };
 static JSValue graph_element_class_set_selected(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphElement::set_selected, GraphElement::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphElement::set_selected, GraphElement::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_element_class_is_selected(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&GraphElement::is_selected, GraphElement::__class_id, ctx, this_val, argv);
 };
 static JSValue graph_element_class_set_position_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphElement::set_position_offset, GraphElement::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphElement::set_position_offset, GraphElement::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_element_class_get_position_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/syntax_highlighter.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/text_edit.hpp>
+#include <godot_cpp/classes/syntax_highlighter.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -42,11 +41,11 @@ static JSValue syntax_highlighter_class_get_line_syntax_highlighting(JSContext *
 	return call_builtin_method_ret(&SyntaxHighlighter::get_line_syntax_highlighting, SyntaxHighlighter::__class_id, ctx, this_val, argv);
 };
 static JSValue syntax_highlighter_class_update_cache(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SyntaxHighlighter::update_cache, SyntaxHighlighter::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SyntaxHighlighter::update_cache, SyntaxHighlighter::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue syntax_highlighter_class_clear_highlighting_cache(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SyntaxHighlighter::clear_highlighting_cache, SyntaxHighlighter::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SyntaxHighlighter::clear_highlighting_cache, SyntaxHighlighter::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue syntax_highlighter_class_get_text_edit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

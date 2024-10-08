@@ -1,15 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/camera_feed.hpp>
-#include <godot_cpp/classes/camera_server.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/camera_server.hpp>
+#include <godot_cpp/classes/camera_feed.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -48,11 +48,11 @@ static JSValue camera_server_class_feeds(JSContext *ctx, JSValueConst this_val, 
 	return call_builtin_method_ret(&CameraServer::feeds, CameraServer::__class_id, ctx, this_val, argv);
 };
 static JSValue camera_server_class_add_feed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CameraServer::add_feed, CameraServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CameraServer::add_feed, CameraServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera_server_class_remove_feed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CameraServer::remove_feed, CameraServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CameraServer::remove_feed, CameraServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry camera_server_class_proto_funcs[] = {

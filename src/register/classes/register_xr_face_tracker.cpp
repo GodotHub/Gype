@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/xr_face_tracker.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/xr_tracker.hpp>
+#include <godot_cpp/classes/xr_face_tracker.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -41,14 +40,14 @@ static JSValue xr_face_tracker_class_get_blend_shape(JSContext *ctx, JSValueCons
 	return call_builtin_const_method_ret(&XRFaceTracker::get_blend_shape, XRFaceTracker::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_face_tracker_class_set_blend_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRFaceTracker::set_blend_shape, XRFaceTracker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRFaceTracker::set_blend_shape, XRFaceTracker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_face_tracker_class_get_blend_shapes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&XRFaceTracker::get_blend_shapes, XRFaceTracker::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_face_tracker_class_set_blend_shapes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRFaceTracker::set_blend_shapes, XRFaceTracker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRFaceTracker::set_blend_shapes, XRFaceTracker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry xr_face_tracker_class_proto_funcs[] = {

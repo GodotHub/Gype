@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/skeleton_modification2d.hpp>
 #include <godot_cpp/classes/skeleton_modification2d_physical_bones.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,29 +37,29 @@ static JSValue skeleton_modification2d_physical_bones_class_constructor(JSContex
 	return obj;
 }
 static JSValue skeleton_modification2d_physical_bones_class_set_physical_bone_chain_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DPhysicalBones::set_physical_bone_chain_length, SkeletonModification2DPhysicalBones::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DPhysicalBones::set_physical_bone_chain_length, SkeletonModification2DPhysicalBones::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_physical_bones_class_get_physical_bone_chain_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&SkeletonModification2DPhysicalBones::get_physical_bone_chain_length, SkeletonModification2DPhysicalBones::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_physical_bones_class_set_physical_bone_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DPhysicalBones::set_physical_bone_node, SkeletonModification2DPhysicalBones::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DPhysicalBones::set_physical_bone_node, SkeletonModification2DPhysicalBones::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_physical_bones_class_get_physical_bone_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonModification2DPhysicalBones::get_physical_bone_node, SkeletonModification2DPhysicalBones::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_physical_bones_class_fetch_physical_bones(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DPhysicalBones::fetch_physical_bones, SkeletonModification2DPhysicalBones::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DPhysicalBones::fetch_physical_bones, SkeletonModification2DPhysicalBones::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_physical_bones_class_start_simulation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DPhysicalBones::start_simulation, SkeletonModification2DPhysicalBones::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DPhysicalBones::start_simulation, SkeletonModification2DPhysicalBones::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_physical_bones_class_stop_simulation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DPhysicalBones::stop_simulation, SkeletonModification2DPhysicalBones::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DPhysicalBones::stop_simulation, SkeletonModification2DPhysicalBones::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry skeleton_modification2d_physical_bones_class_proto_funcs[] = {

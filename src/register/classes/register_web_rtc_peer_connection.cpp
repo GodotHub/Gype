@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/web_rtc_data_channel.hpp>
 #include <godot_cpp/classes/web_rtc_peer_connection.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -60,7 +59,7 @@ static JSValue web_rtc_peer_connection_class_poll(JSContext *ctx, JSValueConst t
 	return call_builtin_method_ret(&WebRTCPeerConnection::poll, WebRTCPeerConnection::__class_id, ctx, this_val, argv);
 };
 static JSValue web_rtc_peer_connection_class_close(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&WebRTCPeerConnection::close, WebRTCPeerConnection::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&WebRTCPeerConnection::close, WebRTCPeerConnection::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_rtc_peer_connection_class_get_connection_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -73,7 +72,7 @@ static JSValue web_rtc_peer_connection_class_get_signaling_state(JSContext *ctx,
 	return call_builtin_const_method_ret(&WebRTCPeerConnection::get_signaling_state, WebRTCPeerConnection::__class_id, ctx, this_val, argv);
 };
 static JSValue web_rtc_peer_connection_class_set_default_extension(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_method_no_ret(&WebRTCPeerConnection::set_default_extension, WebRTCPeerConnection::__class_id, ctx, this_val, argv);
+    call_builtin_static_method_no_ret(&WebRTCPeerConnection::set_default_extension, WebRTCPeerConnection::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry web_rtc_peer_connection_class_proto_funcs[] = {

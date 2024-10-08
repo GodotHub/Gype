@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
+#include <godot_cpp/classes/xr_tracker.hpp>
 #include <godot_cpp/classes/xr_pose.hpp>
 #include <godot_cpp/classes/xr_positional_tracker.hpp>
-#include <godot_cpp/classes/xr_tracker.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -42,14 +41,14 @@ static JSValue xr_positional_tracker_class_get_tracker_profile(JSContext *ctx, J
 	return call_builtin_const_method_ret(&XRPositionalTracker::get_tracker_profile, XRPositionalTracker::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_positional_tracker_class_set_tracker_profile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRPositionalTracker::set_tracker_profile, XRPositionalTracker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRPositionalTracker::set_tracker_profile, XRPositionalTracker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_positional_tracker_class_get_tracker_hand(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&XRPositionalTracker::get_tracker_hand, XRPositionalTracker::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_positional_tracker_class_set_tracker_hand(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRPositionalTracker::set_tracker_hand, XRPositionalTracker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRPositionalTracker::set_tracker_hand, XRPositionalTracker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_positional_tracker_class_has_pose(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -59,18 +58,18 @@ static JSValue xr_positional_tracker_class_get_pose(JSContext *ctx, JSValueConst
 	return call_builtin_const_method_ret(&XRPositionalTracker::get_pose, XRPositionalTracker::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_positional_tracker_class_invalidate_pose(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRPositionalTracker::invalidate_pose, XRPositionalTracker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRPositionalTracker::invalidate_pose, XRPositionalTracker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_positional_tracker_class_set_pose(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRPositionalTracker::set_pose, XRPositionalTracker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRPositionalTracker::set_pose, XRPositionalTracker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_positional_tracker_class_get_input(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&XRPositionalTracker::get_input, XRPositionalTracker::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_positional_tracker_class_set_input(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRPositionalTracker::set_input, XRPositionalTracker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRPositionalTracker::set_input, XRPositionalTracker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry xr_positional_tracker_class_proto_funcs[] = {

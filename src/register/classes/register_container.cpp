@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,11 +37,11 @@ static JSValue container_class_constructor(JSContext *ctx, JSValueConst new_targ
 	return obj;
 }
 static JSValue container_class_queue_sort(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Container::queue_sort, Container::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Container::queue_sort, Container::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue container_class_fit_child_in_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Container::fit_child_in_rect, Container::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Container::fit_child_in_rect, Container::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry container_class_proto_funcs[] = {

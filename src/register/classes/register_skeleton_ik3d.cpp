@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/skeleton3d.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/skeleton_ik3d.hpp>
+#include <godot_cpp/classes/skeleton3d.hpp>
 #include <godot_cpp/classes/skeleton_modifier3d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,49 +38,49 @@ static JSValue skeleton_ik3d_class_constructor(JSContext *ctx, JSValueConst new_
 	return obj;
 }
 static JSValue skeleton_ik3d_class_set_root_bone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonIK3D::set_root_bone, SkeletonIK3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonIK3D::set_root_bone, SkeletonIK3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_ik3d_class_get_root_bone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonIK3D::get_root_bone, SkeletonIK3D::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_ik3d_class_set_tip_bone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonIK3D::set_tip_bone, SkeletonIK3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonIK3D::set_tip_bone, SkeletonIK3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_ik3d_class_get_tip_bone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonIK3D::get_tip_bone, SkeletonIK3D::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_ik3d_class_set_target_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonIK3D::set_target_transform, SkeletonIK3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonIK3D::set_target_transform, SkeletonIK3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_ik3d_class_get_target_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonIK3D::get_target_transform, SkeletonIK3D::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_ik3d_class_set_target_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonIK3D::set_target_node, SkeletonIK3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonIK3D::set_target_node, SkeletonIK3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_ik3d_class_get_target_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&SkeletonIK3D::get_target_node, SkeletonIK3D::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_ik3d_class_set_override_tip_basis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonIK3D::set_override_tip_basis, SkeletonIK3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonIK3D::set_override_tip_basis, SkeletonIK3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_ik3d_class_is_override_tip_basis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonIK3D::is_override_tip_basis, SkeletonIK3D::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_ik3d_class_set_use_magnet(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonIK3D::set_use_magnet, SkeletonIK3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonIK3D::set_use_magnet, SkeletonIK3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_ik3d_class_is_using_magnet(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonIK3D::is_using_magnet, SkeletonIK3D::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_ik3d_class_set_magnet_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonIK3D::set_magnet_position, SkeletonIK3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonIK3D::set_magnet_position, SkeletonIK3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_ik3d_class_get_magnet_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -94,29 +93,29 @@ static JSValue skeleton_ik3d_class_is_running(JSContext *ctx, JSValueConst this_
 	return call_builtin_method_ret(&SkeletonIK3D::is_running, SkeletonIK3D::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_ik3d_class_set_min_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonIK3D::set_min_distance, SkeletonIK3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonIK3D::set_min_distance, SkeletonIK3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_ik3d_class_get_min_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonIK3D::get_min_distance, SkeletonIK3D::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_ik3d_class_set_max_iterations(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonIK3D::set_max_iterations, SkeletonIK3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonIK3D::set_max_iterations, SkeletonIK3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_ik3d_class_get_max_iterations(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonIK3D::get_max_iterations, SkeletonIK3D::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_ik3d_class_start(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonIK3D::start, SkeletonIK3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonIK3D::start, SkeletonIK3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_ik3d_class_stop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonIK3D::stop, SkeletonIK3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonIK3D::stop, SkeletonIK3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_ik3d_class_set_interpolation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonIK3D::set_interpolation, SkeletonIK3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonIK3D::set_interpolation, SkeletonIK3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_ik3d_class_get_interpolation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

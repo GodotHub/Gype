@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/open_xr_extension_wrapper_extension.hpp>
 #include <godot_cpp/classes/open_xrapi_extension.hpp>
+#include <godot_cpp/classes/open_xr_extension_wrapper_extension.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -42,7 +41,7 @@ static JSValue open_xr_extension_wrapper_extension_class_get_openxr_api(JSContex
 	return call_builtin_method_ret(&OpenXRExtensionWrapperExtension::get_openxr_api, OpenXRExtensionWrapperExtension::__class_id, ctx, this_val, argv);
 };
 static JSValue open_xr_extension_wrapper_extension_class_register_extension_wrapper(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&OpenXRExtensionWrapperExtension::register_extension_wrapper, OpenXRExtensionWrapperExtension::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&OpenXRExtensionWrapperExtension::register_extension_wrapper, OpenXRExtensionWrapperExtension::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry open_xr_extension_wrapper_extension_class_proto_funcs[] = {

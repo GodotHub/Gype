@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/classes/audio_effect_reverb.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,56 +37,56 @@ static JSValue audio_effect_reverb_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 static JSValue audio_effect_reverb_class_set_predelay_msec(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioEffectReverb::set_predelay_msec, AudioEffectReverb::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioEffectReverb::set_predelay_msec, AudioEffectReverb::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_reverb_class_get_predelay_msec(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioEffectReverb::get_predelay_msec, AudioEffectReverb::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_effect_reverb_class_set_predelay_feedback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioEffectReverb::set_predelay_feedback, AudioEffectReverb::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioEffectReverb::set_predelay_feedback, AudioEffectReverb::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_reverb_class_get_predelay_feedback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioEffectReverb::get_predelay_feedback, AudioEffectReverb::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_effect_reverb_class_set_room_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioEffectReverb::set_room_size, AudioEffectReverb::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioEffectReverb::set_room_size, AudioEffectReverb::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_reverb_class_get_room_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioEffectReverb::get_room_size, AudioEffectReverb::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_effect_reverb_class_set_damping(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioEffectReverb::set_damping, AudioEffectReverb::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioEffectReverb::set_damping, AudioEffectReverb::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_reverb_class_get_damping(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioEffectReverb::get_damping, AudioEffectReverb::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_effect_reverb_class_set_spread(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioEffectReverb::set_spread, AudioEffectReverb::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioEffectReverb::set_spread, AudioEffectReverb::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_reverb_class_get_spread(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioEffectReverb::get_spread, AudioEffectReverb::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_effect_reverb_class_set_dry(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioEffectReverb::set_dry, AudioEffectReverb::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioEffectReverb::set_dry, AudioEffectReverb::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_reverb_class_get_dry(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioEffectReverb::get_dry, AudioEffectReverb::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_effect_reverb_class_set_wet(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioEffectReverb::set_wet, AudioEffectReverb::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioEffectReverb::set_wet, AudioEffectReverb::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_reverb_class_get_wet(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioEffectReverb::get_wet, AudioEffectReverb::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_effect_reverb_class_set_hpf(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioEffectReverb::set_hpf, AudioEffectReverb::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioEffectReverb::set_hpf, AudioEffectReverb::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_reverb_class_get_hpf(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

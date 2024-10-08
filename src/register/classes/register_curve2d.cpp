@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/curve2d.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -41,40 +40,40 @@ static JSValue curve2d_class_get_point_count(JSContext *ctx, JSValueConst this_v
 	return call_builtin_const_method_ret(&Curve2D::get_point_count, Curve2D::__class_id, ctx, this_val, argv);
 };
 static JSValue curve2d_class_set_point_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Curve2D::set_point_count, Curve2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Curve2D::set_point_count, Curve2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve2d_class_add_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Curve2D::add_point, Curve2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Curve2D::add_point, Curve2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve2d_class_set_point_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Curve2D::set_point_position, Curve2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Curve2D::set_point_position, Curve2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve2d_class_get_point_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Curve2D::get_point_position, Curve2D::__class_id, ctx, this_val, argv);
 };
 static JSValue curve2d_class_set_point_in(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Curve2D::set_point_in, Curve2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Curve2D::set_point_in, Curve2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve2d_class_get_point_in(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Curve2D::get_point_in, Curve2D::__class_id, ctx, this_val, argv);
 };
 static JSValue curve2d_class_set_point_out(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Curve2D::set_point_out, Curve2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Curve2D::set_point_out, Curve2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve2d_class_get_point_out(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Curve2D::get_point_out, Curve2D::__class_id, ctx, this_val, argv);
 };
 static JSValue curve2d_class_remove_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Curve2D::remove_point, Curve2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Curve2D::remove_point, Curve2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve2d_class_clear_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Curve2D::clear_points, Curve2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Curve2D::clear_points, Curve2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve2d_class_sample(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -84,7 +83,7 @@ static JSValue curve2d_class_samplef(JSContext *ctx, JSValueConst this_val, int 
 	return call_builtin_const_method_ret(&Curve2D::samplef, Curve2D::__class_id, ctx, this_val, argv);
 };
 static JSValue curve2d_class_set_bake_interval(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Curve2D::set_bake_interval, Curve2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Curve2D::set_bake_interval, Curve2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve2d_class_get_bake_interval(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/physical_bone_simulator3d.hpp>
 #include <godot_cpp/classes/skeleton_modifier3d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -41,19 +40,19 @@ static JSValue physical_bone_simulator3d_class_is_simulating_physics(JSContext *
 	return call_builtin_const_method_ret(&PhysicalBoneSimulator3D::is_simulating_physics, PhysicalBoneSimulator3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_bone_simulator3d_class_physical_bones_stop_simulation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalBoneSimulator3D::physical_bones_stop_simulation, PhysicalBoneSimulator3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBoneSimulator3D::physical_bones_stop_simulation, PhysicalBoneSimulator3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone_simulator3d_class_physical_bones_start_simulation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalBoneSimulator3D::physical_bones_start_simulation, PhysicalBoneSimulator3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBoneSimulator3D::physical_bones_start_simulation, PhysicalBoneSimulator3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone_simulator3d_class_physical_bones_add_collision_exception(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalBoneSimulator3D::physical_bones_add_collision_exception, PhysicalBoneSimulator3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBoneSimulator3D::physical_bones_add_collision_exception, PhysicalBoneSimulator3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone_simulator3d_class_physical_bones_remove_collision_exception(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalBoneSimulator3D::physical_bones_remove_collision_exception, PhysicalBoneSimulator3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBoneSimulator3D::physical_bones_remove_collision_exception, PhysicalBoneSimulator3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry physical_bone_simulator3d_class_proto_funcs[] = {

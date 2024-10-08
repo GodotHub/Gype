@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/progress_bar.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/range.hpp>
+#include <godot_cpp/classes/progress_bar.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,28 +37,28 @@ static JSValue progress_bar_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue progress_bar_class_set_fill_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ProgressBar::set_fill_mode, ProgressBar::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ProgressBar::set_fill_mode, ProgressBar::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue progress_bar_class_get_fill_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&ProgressBar::get_fill_mode, ProgressBar::__class_id, ctx, this_val, argv);
 };
 static JSValue progress_bar_class_set_show_percentage(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ProgressBar::set_show_percentage, ProgressBar::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ProgressBar::set_show_percentage, ProgressBar::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue progress_bar_class_is_percentage_shown(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ProgressBar::is_percentage_shown, ProgressBar::__class_id, ctx, this_val, argv);
 };
 static JSValue progress_bar_class_set_indeterminate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ProgressBar::set_indeterminate, ProgressBar::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ProgressBar::set_indeterminate, ProgressBar::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue progress_bar_class_is_indeterminate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ProgressBar::is_indeterminate, ProgressBar::__class_id, ctx, this_val, argv);
 };
 static JSValue progress_bar_class_set_editor_preview_indeterminate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ProgressBar::set_editor_preview_indeterminate, ProgressBar::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ProgressBar::set_editor_preview_indeterminate, ProgressBar::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue progress_bar_class_is_editor_preview_indeterminate_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

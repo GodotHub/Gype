@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/animated_sprite3d.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/sprite_base3d.hpp>
+#include <godot_cpp/classes/animated_sprite3d.hpp>
 #include <godot_cpp/classes/sprite_frames.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,21 +38,21 @@ static JSValue animated_sprite3d_class_constructor(JSContext *ctx, JSValueConst 
 	return obj;
 }
 static JSValue animated_sprite3d_class_set_sprite_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimatedSprite3D::set_sprite_frames, AnimatedSprite3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimatedSprite3D::set_sprite_frames, AnimatedSprite3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite3d_class_get_sprite_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimatedSprite3D::get_sprite_frames, AnimatedSprite3D::__class_id, ctx, this_val, argv);
 };
 static JSValue animated_sprite3d_class_set_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimatedSprite3D::set_animation, AnimatedSprite3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimatedSprite3D::set_animation, AnimatedSprite3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite3d_class_get_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimatedSprite3D::get_animation, AnimatedSprite3D::__class_id, ctx, this_val, argv);
 };
 static JSValue animated_sprite3d_class_set_autoplay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimatedSprite3D::set_autoplay, AnimatedSprite3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimatedSprite3D::set_autoplay, AnimatedSprite3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite3d_class_get_autoplay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -63,41 +62,41 @@ static JSValue animated_sprite3d_class_is_playing(JSContext *ctx, JSValueConst t
 	return call_builtin_const_method_ret(&AnimatedSprite3D::is_playing, AnimatedSprite3D::__class_id, ctx, this_val, argv);
 };
 static JSValue animated_sprite3d_class_play(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimatedSprite3D::play, AnimatedSprite3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimatedSprite3D::play, AnimatedSprite3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite3d_class_play_backwards(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimatedSprite3D::play_backwards, AnimatedSprite3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimatedSprite3D::play_backwards, AnimatedSprite3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite3d_class_pause(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimatedSprite3D::pause, AnimatedSprite3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimatedSprite3D::pause, AnimatedSprite3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite3d_class_stop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimatedSprite3D::stop, AnimatedSprite3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimatedSprite3D::stop, AnimatedSprite3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite3d_class_set_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimatedSprite3D::set_frame, AnimatedSprite3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimatedSprite3D::set_frame, AnimatedSprite3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite3d_class_get_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimatedSprite3D::get_frame, AnimatedSprite3D::__class_id, ctx, this_val, argv);
 };
 static JSValue animated_sprite3d_class_set_frame_progress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimatedSprite3D::set_frame_progress, AnimatedSprite3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimatedSprite3D::set_frame_progress, AnimatedSprite3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite3d_class_get_frame_progress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimatedSprite3D::get_frame_progress, AnimatedSprite3D::__class_id, ctx, this_val, argv);
 };
 static JSValue animated_sprite3d_class_set_frame_and_progress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimatedSprite3D::set_frame_and_progress, AnimatedSprite3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimatedSprite3D::set_frame_and_progress, AnimatedSprite3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite3d_class_set_speed_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimatedSprite3D::set_speed_scale, AnimatedSprite3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimatedSprite3D::set_speed_scale, AnimatedSprite3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite3d_class_get_speed_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -1,19 +1,18 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/control.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/popup_menu.hpp>
-#include <godot_cpp/classes/rich_text_effect.hpp>
 #include <godot_cpp/classes/rich_text_label.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/rich_text_effect.hpp>
+#include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/classes/v_scroll_bar.hpp>
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -46,23 +45,23 @@ static JSValue rich_text_label_class_get_parsed_text(JSContext *ctx, JSValueCons
 	return call_builtin_const_method_ret(&RichTextLabel::get_parsed_text, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_add_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::add_text, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::add_text, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_set_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_text, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_text, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_add_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::add_image, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::add_image, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_update_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::update_image, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::update_image, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_newline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::newline, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::newline, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_remove_paragraph(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -72,199 +71,199 @@ static JSValue rich_text_label_class_invalidate_paragraph(JSContext *ctx, JSValu
 	return call_builtin_method_ret(&RichTextLabel::invalidate_paragraph, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_push_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_font, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_font, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_push_font_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_font_size, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_font_size, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_push_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_normal, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_normal, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_push_bold(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_bold, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_bold, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_push_bold_italics(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_bold_italics, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_bold_italics, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_push_italics(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_italics, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_italics, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_push_mono(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_mono, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_mono, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_push_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_color, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_color, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_push_outline_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_outline_size, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_outline_size, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_push_outline_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_outline_color, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_outline_color, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_push_paragraph(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_paragraph, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_paragraph, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_push_indent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_indent, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_indent, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_push_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_list, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_list, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_push_meta(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_meta, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_meta, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_push_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_hint, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_hint, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_push_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_language, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_language, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_push_underline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_underline, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_underline, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_push_strikethrough(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_strikethrough, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_strikethrough, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_push_table(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_table, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_table, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_push_dropcap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_dropcap, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_dropcap, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_set_table_column_expand(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_table_column_expand, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_table_column_expand, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_set_cell_row_background_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_cell_row_background_color, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_cell_row_background_color, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_set_cell_border_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_cell_border_color, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_cell_border_color, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_set_cell_size_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_cell_size_override, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_cell_size_override, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_set_cell_padding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_cell_padding, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_cell_padding, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_push_cell(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_cell, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_cell, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_push_fgcolor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_fgcolor, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_fgcolor, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_push_bgcolor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_bgcolor, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_bgcolor, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_push_customfx(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_customfx, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_customfx, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_push_context(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::push_context, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::push_context, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_pop_context(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::pop_context, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::pop_context, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_pop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::pop, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::pop, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_pop_all(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::pop_all, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::pop_all, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::clear, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::clear, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_set_structured_text_bidi_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_structured_text_bidi_override, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_structured_text_bidi_override, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_get_structured_text_bidi_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RichTextLabel::get_structured_text_bidi_override, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_set_structured_text_bidi_override_options(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_structured_text_bidi_override_options, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_structured_text_bidi_override_options, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_get_structured_text_bidi_override_options(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RichTextLabel::get_structured_text_bidi_override_options, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_set_text_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_text_direction, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_text_direction, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_get_text_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RichTextLabel::get_text_direction, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_set_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_language, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_language, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_get_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RichTextLabel::get_language, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_set_autowrap_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_autowrap_mode, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_autowrap_mode, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_get_autowrap_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RichTextLabel::get_autowrap_mode, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_set_meta_underline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_meta_underline, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_meta_underline, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_is_meta_underlined(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RichTextLabel::is_meta_underlined, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_set_hint_underline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_hint_underline, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_hint_underline, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_is_hint_underlined(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RichTextLabel::is_hint_underlined, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_set_scroll_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_scroll_active, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_scroll_active, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_is_scroll_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RichTextLabel::is_scroll_active, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_set_scroll_follow(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_scroll_follow, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_scroll_follow, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_is_scroll_following(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -274,61 +273,61 @@ static JSValue rich_text_label_class_get_v_scroll_bar(JSContext *ctx, JSValueCon
 	return call_builtin_method_ret(&RichTextLabel::get_v_scroll_bar, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_scroll_to_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::scroll_to_line, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::scroll_to_line, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_scroll_to_paragraph(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::scroll_to_paragraph, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::scroll_to_paragraph, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_scroll_to_selection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::scroll_to_selection, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::scroll_to_selection, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_set_tab_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_tab_size, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_tab_size, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_get_tab_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RichTextLabel::get_tab_size, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_set_fit_content(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_fit_content, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_fit_content, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_is_fit_content_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RichTextLabel::is_fit_content_enabled, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_set_selection_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_selection_enabled, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_selection_enabled, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_is_selection_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RichTextLabel::is_selection_enabled, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_set_context_menu_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_context_menu_enabled, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_context_menu_enabled, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_is_context_menu_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RichTextLabel::is_context_menu_enabled, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_set_shortcut_keys_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_shortcut_keys_enabled, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_shortcut_keys_enabled, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_is_shortcut_keys_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RichTextLabel::is_shortcut_keys_enabled, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_set_deselect_on_focus_loss_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_deselect_on_focus_loss_enabled, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_deselect_on_focus_loss_enabled, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_is_deselect_on_focus_loss_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RichTextLabel::is_deselect_on_focus_loss_enabled, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_set_drag_and_drop_selection_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_drag_and_drop_selection_enabled, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_drag_and_drop_selection_enabled, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_is_drag_and_drop_selection_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -341,22 +340,22 @@ static JSValue rich_text_label_class_get_selection_to(JSContext *ctx, JSValueCon
 	return call_builtin_const_method_ret(&RichTextLabel::get_selection_to, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_select_all(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::select_all, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::select_all, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_get_selected_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RichTextLabel::get_selected_text, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_deselect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::deselect, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::deselect, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_parse_bbcode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::parse_bbcode, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::parse_bbcode, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_append_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::append_text, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::append_text, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_get_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -366,21 +365,21 @@ static JSValue rich_text_label_class_is_ready(JSContext *ctx, JSValueConst this_
 	return call_builtin_const_method_ret(&RichTextLabel::is_ready, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_set_threaded(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_threaded, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_threaded, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_is_threaded(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RichTextLabel::is_threaded, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_set_progress_bar_delay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_progress_bar_delay, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_progress_bar_delay, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_get_progress_bar_delay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RichTextLabel::get_progress_bar_delay, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_set_visible_characters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_visible_characters, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_visible_characters, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_get_visible_characters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -390,11 +389,11 @@ static JSValue rich_text_label_class_get_visible_characters_behavior(JSContext *
 	return call_builtin_const_method_ret(&RichTextLabel::get_visible_characters_behavior, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_set_visible_characters_behavior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_visible_characters_behavior, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_visible_characters_behavior, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_set_visible_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_visible_ratio, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_visible_ratio, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_get_visible_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -410,7 +409,7 @@ static JSValue rich_text_label_class_get_total_character_count(JSContext *ctx, J
 	return call_builtin_const_method_ret(&RichTextLabel::get_total_character_count, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_set_use_bbcode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_use_bbcode, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_use_bbcode, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_is_using_bbcode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -444,14 +443,14 @@ static JSValue rich_text_label_class_parse_expressions_for_values(JSContext *ctx
 	return call_builtin_method_ret(&RichTextLabel::parse_expressions_for_values, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_set_effects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::set_effects, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::set_effects, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_get_effects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&RichTextLabel::get_effects, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_install_effect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::install_effect, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::install_effect, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rich_text_label_class_get_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -461,7 +460,7 @@ static JSValue rich_text_label_class_is_menu_visible(JSContext *ctx, JSValueCons
 	return call_builtin_const_method_ret(&RichTextLabel::is_menu_visible, RichTextLabel::__class_id, ctx, this_val, argv);
 };
 static JSValue rich_text_label_class_menu_option(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RichTextLabel::menu_option, RichTextLabel::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RichTextLabel::menu_option, RichTextLabel::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry rich_text_label_class_proto_funcs[] = {

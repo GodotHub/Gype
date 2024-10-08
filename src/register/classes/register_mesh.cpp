@@ -1,18 +1,17 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
+#include <godot_cpp/classes/triangle_mesh.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/concave_polygon_shape3d.hpp>
+#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/convex_polygon_shape3d.hpp>
 #include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/mesh.hpp>
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/triangle_mesh.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -42,7 +41,7 @@ static JSValue mesh_class_constructor(JSContext *ctx, JSValueConst new_target, i
 	return obj;
 }
 static JSValue mesh_class_set_lightmap_size_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Mesh::set_lightmap_size_hint, Mesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Mesh::set_lightmap_size_hint, Mesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_class_get_lightmap_size_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -64,7 +63,7 @@ static JSValue mesh_class_surface_get_blend_shape_arrays(JSContext *ctx, JSValue
 	return call_builtin_const_method_ret(&Mesh::surface_get_blend_shape_arrays, Mesh::__class_id, ctx, this_val, argv);
 };
 static JSValue mesh_class_surface_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Mesh::surface_set_material, Mesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Mesh::surface_set_material, Mesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_class_surface_get_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
