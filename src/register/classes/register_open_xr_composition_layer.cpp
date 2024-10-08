@@ -1,0 +1,120 @@
+
+#include "quickjs/quickjs.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/env.h"
+#include "utils/register_helper.h"
+#include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/open_xr_composition_layer.hpp>
+#include <godot_cpp/classes/sub_viewport.hpp>
+#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/variant/builtin_types.hpp>
+
+
+using namespace godot;
+
+static void open_xr_composition_layer_class_finalizer(JSRuntime *rt, JSValue val) {
+	OpenXRCompositionLayer *open_xr_composition_layer = static_cast<OpenXRCompositionLayer *>(JS_GetOpaque(val, OpenXRCompositionLayer::__class_id));
+	if (open_xr_composition_layer)
+		OpenXRCompositionLayer::free(nullptr, open_xr_composition_layer);
+}
+
+static JSClassDef open_xr_composition_layer_class_def = {
+	"OpenXRCompositionLayer",
+	.finalizer = open_xr_composition_layer_class_finalizer
+};
+
+static JSValue open_xr_composition_layer_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
+	OpenXRCompositionLayer *open_xr_composition_layer_class;
+	JSValue obj = JS_NewObjectClass(ctx, OpenXRCompositionLayer::__class_id);
+	if (JS_IsException(obj))
+		return obj;
+	open_xr_composition_layer_class = memnew(OpenXRCompositionLayer);
+	if (!open_xr_composition_layer_class) {
+		JS_FreeValue(ctx, obj);
+		return JS_EXCEPTION;
+	}
+
+	JS_SetOpaque(obj, open_xr_composition_layer_class);
+	return obj;
+}
+static JSValue open_xr_composition_layer_class_set_layer_viewport(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&OpenXRCompositionLayer::set_layer_viewport, OpenXRCompositionLayer::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue open_xr_composition_layer_class_get_layer_viewport(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&OpenXRCompositionLayer::get_layer_viewport, OpenXRCompositionLayer::__class_id, ctx, this_val, argv);
+};
+static JSValue open_xr_composition_layer_class_set_enable_hole_punch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&OpenXRCompositionLayer::set_enable_hole_punch, OpenXRCompositionLayer::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue open_xr_composition_layer_class_get_enable_hole_punch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&OpenXRCompositionLayer::get_enable_hole_punch, OpenXRCompositionLayer::__class_id, ctx, this_val, argv);
+};
+static JSValue open_xr_composition_layer_class_set_sort_order(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&OpenXRCompositionLayer::set_sort_order, OpenXRCompositionLayer::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue open_xr_composition_layer_class_get_sort_order(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&OpenXRCompositionLayer::get_sort_order, OpenXRCompositionLayer::__class_id, ctx, this_val, argv);
+};
+static JSValue open_xr_composition_layer_class_set_alpha_blend(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&OpenXRCompositionLayer::set_alpha_blend, OpenXRCompositionLayer::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue open_xr_composition_layer_class_get_alpha_blend(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&OpenXRCompositionLayer::get_alpha_blend, OpenXRCompositionLayer::__class_id, ctx, this_val, argv);
+};
+static JSValue open_xr_composition_layer_class_is_natively_supported(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&OpenXRCompositionLayer::is_natively_supported, OpenXRCompositionLayer::__class_id, ctx, this_val, argv);
+};
+static JSValue open_xr_composition_layer_class_intersects_ray(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&OpenXRCompositionLayer::intersects_ray, OpenXRCompositionLayer::__class_id, ctx, this_val, argv);
+};
+static const JSCFunctionListEntry open_xr_composition_layer_class_proto_funcs[] = {
+	JS_CFUNC_DEF("set_layer_viewport", 1, &open_xr_composition_layer_class_set_layer_viewport),
+	JS_CFUNC_DEF("get_layer_viewport", 0, &open_xr_composition_layer_class_get_layer_viewport),
+	JS_CFUNC_DEF("set_enable_hole_punch", 1, &open_xr_composition_layer_class_set_enable_hole_punch),
+	JS_CFUNC_DEF("get_enable_hole_punch", 0, &open_xr_composition_layer_class_get_enable_hole_punch),
+	JS_CFUNC_DEF("set_sort_order", 1, &open_xr_composition_layer_class_set_sort_order),
+	JS_CFUNC_DEF("get_sort_order", 0, &open_xr_composition_layer_class_get_sort_order),
+	JS_CFUNC_DEF("set_alpha_blend", 1, &open_xr_composition_layer_class_set_alpha_blend),
+	JS_CFUNC_DEF("get_alpha_blend", 0, &open_xr_composition_layer_class_get_alpha_blend),
+	JS_CFUNC_DEF("is_natively_supported", 0, &open_xr_composition_layer_class_is_natively_supported),
+	JS_CFUNC_DEF("intersects_ray", 2, &open_xr_composition_layer_class_intersects_ray),
+};
+
+static int js_open_xr_composition_layer_class_init(JSContext *ctx, JSModuleDef *m) {
+	JS_NewClassID(&OpenXRCompositionLayer::__class_id);
+	classes["OpenXRCompositionLayer"] = OpenXRCompositionLayer::__class_id;
+	JS_NewClass(JS_GetRuntime(ctx), OpenXRCompositionLayer::__class_id, &open_xr_composition_layer_class_def);
+
+	JSValue proto = JS_NewObject(ctx);
+	JSValue base_class = JS_GetClassProto(ctx, Node3D::__class_id);
+	JS_SetPrototype(ctx, proto, base_class);
+	JS_SetClassProto(ctx, OpenXRCompositionLayer::__class_id, proto);
+	JS_SetPropertyFunctionList(ctx, proto, open_xr_composition_layer_class_proto_funcs, _countof(open_xr_composition_layer_class_proto_funcs));
+
+	JSValue ctor = JS_NewCFunction2(ctx, open_xr_composition_layer_class_constructor, "OpenXRCompositionLayer", 0, JS_CFUNC_constructor, 0);
+
+	JS_SetModuleExport(ctx, m, "OpenXRCompositionLayer", ctor);
+
+	return 0;
+}
+
+JSModuleDef *_js_init_open_xr_composition_layer_module(JSContext *ctx, const char *module_name) {
+	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_open_xr_composition_layer_class_init);
+	if (!m)
+		return NULL;
+	JS_AddModuleExport(ctx, m, "OpenXRCompositionLayer");
+	return m;
+}
+
+JSModuleDef *js_init_open_xr_composition_layer_module(JSContext *ctx) {
+	return _js_init_open_xr_composition_layer_module(ctx, "godot/classes/open_xr_composition_layer");
+}
+
+void register_open_xr_composition_layer() {
+	js_init_open_xr_composition_layer_module(ctx);
+}

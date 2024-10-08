@@ -1,0 +1,113 @@
+
+#include "quickjs/quickjs.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/env.h"
+#include "utils/register_helper.h"
+#include <godot_cpp/classes/audio_effect.hpp>
+#include <godot_cpp/classes/audio_effect_capture.hpp>
+#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/variant/builtin_types.hpp>
+
+
+using namespace godot;
+
+static void audio_effect_capture_class_finalizer(JSRuntime *rt, JSValue val) {
+	AudioEffectCapture *audio_effect_capture = static_cast<AudioEffectCapture *>(JS_GetOpaque(val, AudioEffectCapture::__class_id));
+	if (audio_effect_capture)
+		AudioEffectCapture::free(nullptr, audio_effect_capture);
+}
+
+static JSClassDef audio_effect_capture_class_def = {
+	"AudioEffectCapture",
+	.finalizer = audio_effect_capture_class_finalizer
+};
+
+static JSValue audio_effect_capture_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
+	AudioEffectCapture *audio_effect_capture_class;
+	JSValue obj = JS_NewObjectClass(ctx, AudioEffectCapture::__class_id);
+	if (JS_IsException(obj))
+		return obj;
+	audio_effect_capture_class = memnew(AudioEffectCapture);
+	if (!audio_effect_capture_class) {
+		JS_FreeValue(ctx, obj);
+		return JS_EXCEPTION;
+	}
+
+	JS_SetOpaque(obj, audio_effect_capture_class);
+	return obj;
+}
+static JSValue audio_effect_capture_class_can_get_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AudioEffectCapture::can_get_buffer, AudioEffectCapture::__class_id, ctx, this_val, argv);
+};
+static JSValue audio_effect_capture_class_get_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_method_ret(&AudioEffectCapture::get_buffer, AudioEffectCapture::__class_id, ctx, this_val, argv);
+};
+static JSValue audio_effect_capture_class_clear_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&AudioEffectCapture::clear_buffer, AudioEffectCapture::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue audio_effect_capture_class_set_buffer_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&AudioEffectCapture::set_buffer_length, AudioEffectCapture::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue audio_effect_capture_class_get_buffer_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_method_ret(&AudioEffectCapture::get_buffer_length, AudioEffectCapture::__class_id, ctx, this_val, argv);
+};
+static JSValue audio_effect_capture_class_get_frames_available(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AudioEffectCapture::get_frames_available, AudioEffectCapture::__class_id, ctx, this_val, argv);
+};
+static JSValue audio_effect_capture_class_get_discarded_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AudioEffectCapture::get_discarded_frames, AudioEffectCapture::__class_id, ctx, this_val, argv);
+};
+static JSValue audio_effect_capture_class_get_buffer_length_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AudioEffectCapture::get_buffer_length_frames, AudioEffectCapture::__class_id, ctx, this_val, argv);
+};
+static JSValue audio_effect_capture_class_get_pushed_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AudioEffectCapture::get_pushed_frames, AudioEffectCapture::__class_id, ctx, this_val, argv);
+};
+static const JSCFunctionListEntry audio_effect_capture_class_proto_funcs[] = {
+	JS_CFUNC_DEF("can_get_buffer", 1, &audio_effect_capture_class_can_get_buffer),
+	JS_CFUNC_DEF("get_buffer", 1, &audio_effect_capture_class_get_buffer),
+	JS_CFUNC_DEF("clear_buffer", 0, &audio_effect_capture_class_clear_buffer),
+	JS_CFUNC_DEF("set_buffer_length", 1, &audio_effect_capture_class_set_buffer_length),
+	JS_CFUNC_DEF("get_buffer_length", 0, &audio_effect_capture_class_get_buffer_length),
+	JS_CFUNC_DEF("get_frames_available", 0, &audio_effect_capture_class_get_frames_available),
+	JS_CFUNC_DEF("get_discarded_frames", 0, &audio_effect_capture_class_get_discarded_frames),
+	JS_CFUNC_DEF("get_buffer_length_frames", 0, &audio_effect_capture_class_get_buffer_length_frames),
+	JS_CFUNC_DEF("get_pushed_frames", 0, &audio_effect_capture_class_get_pushed_frames),
+};
+
+static int js_audio_effect_capture_class_init(JSContext *ctx, JSModuleDef *m) {
+	JS_NewClassID(&AudioEffectCapture::__class_id);
+	classes["AudioEffectCapture"] = AudioEffectCapture::__class_id;
+	JS_NewClass(JS_GetRuntime(ctx), AudioEffectCapture::__class_id, &audio_effect_capture_class_def);
+
+	JSValue proto = JS_NewObject(ctx);
+	JSValue base_class = JS_GetClassProto(ctx, AudioEffect::__class_id);
+	JS_SetPrototype(ctx, proto, base_class);
+	JS_SetClassProto(ctx, AudioEffectCapture::__class_id, proto);
+	JS_SetPropertyFunctionList(ctx, proto, audio_effect_capture_class_proto_funcs, _countof(audio_effect_capture_class_proto_funcs));
+
+	JSValue ctor = JS_NewCFunction2(ctx, audio_effect_capture_class_constructor, "AudioEffectCapture", 0, JS_CFUNC_constructor, 0);
+
+	JS_SetModuleExport(ctx, m, "AudioEffectCapture", ctor);
+
+	return 0;
+}
+
+JSModuleDef *_js_init_audio_effect_capture_module(JSContext *ctx, const char *module_name) {
+	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_audio_effect_capture_class_init);
+	if (!m)
+		return NULL;
+	JS_AddModuleExport(ctx, m, "AudioEffectCapture");
+	return m;
+}
+
+JSModuleDef *js_init_audio_effect_capture_module(JSContext *ctx) {
+	return _js_init_audio_effect_capture_module(ctx, "godot/classes/audio_effect_capture");
+}
+
+void register_audio_effect_capture() {
+	js_init_audio_effect_capture_module(ctx);
+}

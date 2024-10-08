@@ -1,8 +1,13 @@
 import re
 from scripts.utils.file_utils import gde_json
 
-def is_variant(t):
-    return t in variant_types()
+def is_variant(type_name):
+    return (
+        type_name == "Variant"
+        or type_name in map(lambda e: e['name'], gde_json['builtin_classes'])
+        or type_name == "Nil"
+        or type_name.startswith("typedarray::")
+    )
 
 def variant_types():
     vt = map(lambda e: e['name'], gde_json['builtin_classes'])
@@ -141,56 +146,13 @@ def norm_op_name(ops):
         ret.append(tmp)
     return ret
 
-def camel_to_snake(x):
-    return re.sub(r'(?<=[a-z])[A-Z]|(?<!^)[A-Z](?=[a-z])', r'_\g<0>', x).lower()
-
-def get_module_path(class_name):
-    if class_name in variant_types():
-        return '@js_godot/variant/%s' % camel_to_snake(to_js_type(class_name))
-    elif class_name.find('typedarray::') != -1:
-        return '@js_godot/variant/gd_array'
-    else:
-        return '@js_godot/classes/%s' % camel_to_snake(to_js_type(class_name))
-
-def correct_type(type_name, meta=None, use_alias=True):
-    type_conversion = {"float": "double", "int": "int64_t", "Nil": "Variant"}
-    if meta is not None:
-        if "int" in meta:
-            return f"{meta}_t"
-        elif meta in type_conversion:
-            return type_conversion[type_name]
-        else:
-            return meta
-    if type_name in type_conversion:
-        return type_conversion[type_name]
-    if type_name.startswith("typedarray::"):
-        return type_name.replace("typedarray::", "TypedArray<") + ">"
-    if is_enum(type_name):
-        if is_bitfield(type_name):
-            base_class = get_enum_class(type_name)
-            if use_alias and base_class in CLASS_ALIASES:
-                base_class = CLASS_ALIASES[base_class]
-            if base_class == "GlobalConstants":
-                return f"BitField<{get_enum_name(type_name)}>"
-            return f"BitField<{base_class}::{get_enum_name(type_name)}>"
-        else:
-            base_class = get_enum_class(type_name)
-            if use_alias and base_class in CLASS_ALIASES:
-                base_class = CLASS_ALIASES[base_class]
-            if base_class == "GlobalConstants":
-                return f"{get_enum_name(type_name)}"
-            return f"{base_class}::{get_enum_name(type_name)}"
-    if is_refcounted(type_name):
-        return f"Ref<{type_name}>"
-    if type_name == "Object" or is_engine_class(type_name):
-        return f"{type_name} *"
-    if type_name.endswith("*") and not type_name.endswith("**") and not type_name.endswith(" *"):
-        return f"{type_name[:-1]} *"
-    return type_name
+def camel_to_snake(name):
+    name = re.sub("(.)([A-Z][a-z]+)", r"\1_\2", name)
+    name = re.sub("([a-z0-9])([A-Z])", r"\1_\2", name)
+    return name.replace("1_D", "1D").replace("2_D", "2D").replace("3_D", "3D").lower()
 
 def is_enum(type_name):
     return type_name.startswith("enum::") or type_name.startswith("bitfield::")
-
 
 def is_bitfield(type_name):
     return type_name.startswith("bitfield::")
@@ -217,6 +179,3 @@ def get_enum_name(enum_name: str):
         return enum_name.replace("bitfield::", "").split(".")[-1]
     else:
         return enum_name.replace("enum::", "").split(".")[-1]
-
-def is_refcounted(type_name):
-    return type_name in engine_classes and engine_classes[type_name]

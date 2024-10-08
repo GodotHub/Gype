@@ -1,0 +1,138 @@
+
+#include "quickjs/quickjs.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/env.h"
+#include "utils/register_helper.h"
+#include <godot_cpp/classes/canvas_texture.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/variant/builtin_types.hpp>
+
+
+using namespace godot;
+
+static void canvas_texture_class_finalizer(JSRuntime *rt, JSValue val) {
+	CanvasTexture *canvas_texture = static_cast<CanvasTexture *>(JS_GetOpaque(val, CanvasTexture::__class_id));
+	if (canvas_texture)
+		CanvasTexture::free(nullptr, canvas_texture);
+}
+
+static JSClassDef canvas_texture_class_def = {
+	"CanvasTexture",
+	.finalizer = canvas_texture_class_finalizer
+};
+
+static JSValue canvas_texture_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
+	CanvasTexture *canvas_texture_class;
+	JSValue obj = JS_NewObjectClass(ctx, CanvasTexture::__class_id);
+	if (JS_IsException(obj))
+		return obj;
+	canvas_texture_class = memnew(CanvasTexture);
+	if (!canvas_texture_class) {
+		JS_FreeValue(ctx, obj);
+		return JS_EXCEPTION;
+	}
+
+	JS_SetOpaque(obj, canvas_texture_class);
+	return obj;
+}
+static JSValue canvas_texture_class_set_diffuse_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&CanvasTexture::set_diffuse_texture, CanvasTexture::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue canvas_texture_class_get_diffuse_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&CanvasTexture::get_diffuse_texture, CanvasTexture::__class_id, ctx, this_val, argv);
+};
+static JSValue canvas_texture_class_set_normal_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&CanvasTexture::set_normal_texture, CanvasTexture::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue canvas_texture_class_get_normal_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&CanvasTexture::get_normal_texture, CanvasTexture::__class_id, ctx, this_val, argv);
+};
+static JSValue canvas_texture_class_set_specular_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&CanvasTexture::set_specular_texture, CanvasTexture::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue canvas_texture_class_get_specular_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&CanvasTexture::get_specular_texture, CanvasTexture::__class_id, ctx, this_val, argv);
+};
+static JSValue canvas_texture_class_set_specular_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&CanvasTexture::set_specular_color, CanvasTexture::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue canvas_texture_class_get_specular_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&CanvasTexture::get_specular_color, CanvasTexture::__class_id, ctx, this_val, argv);
+};
+static JSValue canvas_texture_class_set_specular_shininess(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&CanvasTexture::set_specular_shininess, CanvasTexture::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue canvas_texture_class_get_specular_shininess(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&CanvasTexture::get_specular_shininess, CanvasTexture::__class_id, ctx, this_val, argv);
+};
+static JSValue canvas_texture_class_set_texture_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&CanvasTexture::set_texture_filter, CanvasTexture::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue canvas_texture_class_get_texture_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&CanvasTexture::get_texture_filter, CanvasTexture::__class_id, ctx, this_val, argv);
+};
+static JSValue canvas_texture_class_set_texture_repeat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&CanvasTexture::set_texture_repeat, CanvasTexture::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue canvas_texture_class_get_texture_repeat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&CanvasTexture::get_texture_repeat, CanvasTexture::__class_id, ctx, this_val, argv);
+};
+static const JSCFunctionListEntry canvas_texture_class_proto_funcs[] = {
+	JS_CFUNC_DEF("set_diffuse_texture", 1, &canvas_texture_class_set_diffuse_texture),
+	JS_CFUNC_DEF("get_diffuse_texture", 0, &canvas_texture_class_get_diffuse_texture),
+	JS_CFUNC_DEF("set_normal_texture", 1, &canvas_texture_class_set_normal_texture),
+	JS_CFUNC_DEF("get_normal_texture", 0, &canvas_texture_class_get_normal_texture),
+	JS_CFUNC_DEF("set_specular_texture", 1, &canvas_texture_class_set_specular_texture),
+	JS_CFUNC_DEF("get_specular_texture", 0, &canvas_texture_class_get_specular_texture),
+	JS_CFUNC_DEF("set_specular_color", 1, &canvas_texture_class_set_specular_color),
+	JS_CFUNC_DEF("get_specular_color", 0, &canvas_texture_class_get_specular_color),
+	JS_CFUNC_DEF("set_specular_shininess", 1, &canvas_texture_class_set_specular_shininess),
+	JS_CFUNC_DEF("get_specular_shininess", 0, &canvas_texture_class_get_specular_shininess),
+	JS_CFUNC_DEF("set_texture_filter", 1, &canvas_texture_class_set_texture_filter),
+	JS_CFUNC_DEF("get_texture_filter", 0, &canvas_texture_class_get_texture_filter),
+	JS_CFUNC_DEF("set_texture_repeat", 1, &canvas_texture_class_set_texture_repeat),
+	JS_CFUNC_DEF("get_texture_repeat", 0, &canvas_texture_class_get_texture_repeat),
+};
+
+static int js_canvas_texture_class_init(JSContext *ctx, JSModuleDef *m) {
+	JS_NewClassID(&CanvasTexture::__class_id);
+	classes["CanvasTexture"] = CanvasTexture::__class_id;
+	JS_NewClass(JS_GetRuntime(ctx), CanvasTexture::__class_id, &canvas_texture_class_def);
+
+	JSValue proto = JS_NewObject(ctx);
+	JSValue base_class = JS_GetClassProto(ctx, Texture2D::__class_id);
+	JS_SetPrototype(ctx, proto, base_class);
+	JS_SetClassProto(ctx, CanvasTexture::__class_id, proto);
+	JS_SetPropertyFunctionList(ctx, proto, canvas_texture_class_proto_funcs, _countof(canvas_texture_class_proto_funcs));
+
+	JSValue ctor = JS_NewCFunction2(ctx, canvas_texture_class_constructor, "CanvasTexture", 0, JS_CFUNC_constructor, 0);
+
+	JS_SetModuleExport(ctx, m, "CanvasTexture", ctor);
+
+	return 0;
+}
+
+JSModuleDef *_js_init_canvas_texture_module(JSContext *ctx, const char *module_name) {
+	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_canvas_texture_class_init);
+	if (!m)
+		return NULL;
+	JS_AddModuleExport(ctx, m, "CanvasTexture");
+	return m;
+}
+
+JSModuleDef *js_init_canvas_texture_module(JSContext *ctx) {
+	return _js_init_canvas_texture_module(ctx, "godot/classes/canvas_texture");
+}
+
+void register_canvas_texture() {
+	js_init_canvas_texture_module(ctx);
+}

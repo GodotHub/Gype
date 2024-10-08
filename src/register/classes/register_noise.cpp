@@ -1,0 +1,112 @@
+
+#include "quickjs/quickjs.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/env.h"
+#include "utils/register_helper.h"
+#include <godot_cpp/classes/image.hpp>
+#include <godot_cpp/classes/noise.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/variant/builtin_types.hpp>
+
+
+using namespace godot;
+
+static void noise_class_finalizer(JSRuntime *rt, JSValue val) {
+	Noise *noise = static_cast<Noise *>(JS_GetOpaque(val, Noise::__class_id));
+	if (noise)
+		Noise::free(nullptr, noise);
+}
+
+static JSClassDef noise_class_def = {
+	"Noise",
+	.finalizer = noise_class_finalizer
+};
+
+static JSValue noise_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
+	Noise *noise_class;
+	JSValue obj = JS_NewObjectClass(ctx, Noise::__class_id);
+	if (JS_IsException(obj))
+		return obj;
+	noise_class = memnew(Noise);
+	if (!noise_class) {
+		JS_FreeValue(ctx, obj);
+		return JS_EXCEPTION;
+	}
+
+	JS_SetOpaque(obj, noise_class);
+	return obj;
+}
+static JSValue noise_class_get_noise_1d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Noise::get_noise_1d, Noise::__class_id, ctx, this_val, argv);
+};
+static JSValue noise_class_get_noise_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Noise::get_noise_2d, Noise::__class_id, ctx, this_val, argv);
+};
+static JSValue noise_class_get_noise_2dv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Noise::get_noise_2dv, Noise::__class_id, ctx, this_val, argv);
+};
+static JSValue noise_class_get_noise_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Noise::get_noise_3d, Noise::__class_id, ctx, this_val, argv);
+};
+static JSValue noise_class_get_noise_3dv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Noise::get_noise_3dv, Noise::__class_id, ctx, this_val, argv);
+};
+static JSValue noise_class_get_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Noise::get_image, Noise::__class_id, ctx, this_val, argv);
+};
+static JSValue noise_class_get_seamless_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Noise::get_seamless_image, Noise::__class_id, ctx, this_val, argv);
+};
+static JSValue noise_class_get_image_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Noise::get_image_3d, Noise::__class_id, ctx, this_val, argv);
+};
+static JSValue noise_class_get_seamless_image_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Noise::get_seamless_image_3d, Noise::__class_id, ctx, this_val, argv);
+};
+static const JSCFunctionListEntry noise_class_proto_funcs[] = {
+	JS_CFUNC_DEF("get_noise_1d", 1, &noise_class_get_noise_1d),
+	JS_CFUNC_DEF("get_noise_2d", 2, &noise_class_get_noise_2d),
+	JS_CFUNC_DEF("get_noise_2dv", 1, &noise_class_get_noise_2dv),
+	JS_CFUNC_DEF("get_noise_3d", 3, &noise_class_get_noise_3d),
+	JS_CFUNC_DEF("get_noise_3dv", 1, &noise_class_get_noise_3dv),
+	JS_CFUNC_DEF("get_image", 5, &noise_class_get_image),
+	JS_CFUNC_DEF("get_seamless_image", 6, &noise_class_get_seamless_image),
+	JS_CFUNC_DEF("get_image_3d", 5, &noise_class_get_image_3d),
+	JS_CFUNC_DEF("get_seamless_image_3d", 6, &noise_class_get_seamless_image_3d),
+};
+
+static int js_noise_class_init(JSContext *ctx, JSModuleDef *m) {
+	JS_NewClassID(&Noise::__class_id);
+	classes["Noise"] = Noise::__class_id;
+	JS_NewClass(JS_GetRuntime(ctx), Noise::__class_id, &noise_class_def);
+
+	JSValue proto = JS_NewObject(ctx);
+	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
+	JS_SetPrototype(ctx, proto, base_class);
+	JS_SetClassProto(ctx, Noise::__class_id, proto);
+	JS_SetPropertyFunctionList(ctx, proto, noise_class_proto_funcs, _countof(noise_class_proto_funcs));
+
+	JSValue ctor = JS_NewCFunction2(ctx, noise_class_constructor, "Noise", 0, JS_CFUNC_constructor, 0);
+
+	JS_SetModuleExport(ctx, m, "Noise", ctor);
+
+	return 0;
+}
+
+JSModuleDef *_js_init_noise_module(JSContext *ctx, const char *module_name) {
+	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_noise_class_init);
+	if (!m)
+		return NULL;
+	JS_AddModuleExport(ctx, m, "Noise");
+	return m;
+}
+
+JSModuleDef *js_init_noise_module(JSContext *ctx) {
+	return _js_init_noise_module(ctx, "godot/classes/noise");
+}
+
+void register_noise() {
+	js_init_noise_module(ctx);
+}

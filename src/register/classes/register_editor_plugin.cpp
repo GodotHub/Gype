@@ -1,0 +1,315 @@
+
+#include "quickjs/quickjs.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/env.h"
+#include "utils/register_helper.h"
+#include <godot_cpp/classes/button.hpp>
+#include <godot_cpp/classes/camera3d.hpp>
+#include <godot_cpp/classes/config_file.hpp>
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/editor_debugger_plugin.hpp>
+#include <godot_cpp/classes/editor_export_plugin.hpp>
+#include <godot_cpp/classes/editor_import_plugin.hpp>
+#include <godot_cpp/classes/editor_inspector_plugin.hpp>
+#include <godot_cpp/classes/editor_interface.hpp>
+#include <godot_cpp/classes/editor_node3d_gizmo_plugin.hpp>
+#include <godot_cpp/classes/editor_plugin.hpp>
+#include <godot_cpp/classes/editor_resource_conversion_plugin.hpp>
+#include <godot_cpp/classes/editor_scene_format_importer.hpp>
+#include <godot_cpp/classes/editor_scene_post_import_plugin.hpp>
+#include <godot_cpp/classes/editor_translation_parser_plugin.hpp>
+#include <godot_cpp/classes/editor_undo_redo_manager.hpp>
+#include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/popup_menu.hpp>
+#include <godot_cpp/classes/script.hpp>
+#include <godot_cpp/classes/script_create_dialog.hpp>
+#include <godot_cpp/classes/shortcut.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/variant/builtin_types.hpp>
+
+
+using namespace godot;
+
+static void editor_plugin_class_finalizer(JSRuntime *rt, JSValue val) {
+	EditorPlugin *editor_plugin = static_cast<EditorPlugin *>(JS_GetOpaque(val, EditorPlugin::__class_id));
+	if (editor_plugin)
+		EditorPlugin::free(nullptr, editor_plugin);
+}
+
+static JSClassDef editor_plugin_class_def = {
+	"EditorPlugin",
+	.finalizer = editor_plugin_class_finalizer
+};
+
+static JSValue editor_plugin_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
+	EditorPlugin *editor_plugin_class;
+	JSValue obj = JS_NewObjectClass(ctx, EditorPlugin::__class_id);
+	if (JS_IsException(obj))
+		return obj;
+	editor_plugin_class = memnew(EditorPlugin);
+	if (!editor_plugin_class) {
+		JS_FreeValue(ctx, obj);
+		return JS_EXCEPTION;
+	}
+
+	JS_SetOpaque(obj, editor_plugin_class);
+	return obj;
+}
+static JSValue editor_plugin_class_add_control_to_container(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::add_control_to_container, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_add_control_to_bottom_panel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_method_ret(&EditorPlugin::add_control_to_bottom_panel, EditorPlugin::__class_id, ctx, this_val, argv);
+};
+static JSValue editor_plugin_class_add_control_to_dock(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::add_control_to_dock, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_remove_control_from_docks(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::remove_control_from_docks, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_remove_control_from_bottom_panel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::remove_control_from_bottom_panel, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_remove_control_from_container(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::remove_control_from_container, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_set_dock_tab_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::set_dock_tab_icon, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_add_tool_menu_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::add_tool_menu_item, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_add_tool_submenu_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::add_tool_submenu_item, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_remove_tool_menu_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::remove_tool_menu_item, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_get_export_as_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_method_ret(&EditorPlugin::get_export_as_menu, EditorPlugin::__class_id, ctx, this_val, argv);
+};
+static JSValue editor_plugin_class_add_custom_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::add_custom_type, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_remove_custom_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::remove_custom_type, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_add_autoload_singleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::add_autoload_singleton, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_remove_autoload_singleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::remove_autoload_singleton, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_update_overlays(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&EditorPlugin::update_overlays, EditorPlugin::__class_id, ctx, this_val, argv);
+};
+static JSValue editor_plugin_class_make_bottom_panel_item_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::make_bottom_panel_item_visible, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_hide_bottom_panel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::hide_bottom_panel, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_get_undo_redo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_method_ret(&EditorPlugin::get_undo_redo, EditorPlugin::__class_id, ctx, this_val, argv);
+};
+static JSValue editor_plugin_class_add_undo_redo_inspector_hook_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::add_undo_redo_inspector_hook_callback, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_remove_undo_redo_inspector_hook_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::remove_undo_redo_inspector_hook_callback, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_queue_save_layout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::queue_save_layout, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_add_translation_parser_plugin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::add_translation_parser_plugin, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_remove_translation_parser_plugin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::remove_translation_parser_plugin, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_add_import_plugin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::add_import_plugin, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_remove_import_plugin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::remove_import_plugin, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_add_scene_format_importer_plugin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::add_scene_format_importer_plugin, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_remove_scene_format_importer_plugin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::remove_scene_format_importer_plugin, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_add_scene_post_import_plugin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::add_scene_post_import_plugin, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_remove_scene_post_import_plugin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::remove_scene_post_import_plugin, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_add_export_plugin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::add_export_plugin, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_remove_export_plugin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::remove_export_plugin, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_add_node_3d_gizmo_plugin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::add_node_3d_gizmo_plugin, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_remove_node_3d_gizmo_plugin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::remove_node_3d_gizmo_plugin, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_add_inspector_plugin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::add_inspector_plugin, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_remove_inspector_plugin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::remove_inspector_plugin, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_add_resource_conversion_plugin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::add_resource_conversion_plugin, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_remove_resource_conversion_plugin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::remove_resource_conversion_plugin, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_set_input_event_forwarding_always_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::set_input_event_forwarding_always_enabled, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_set_force_draw_over_forwarding_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::set_force_draw_over_forwarding_enabled, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_get_editor_interface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_method_ret(&EditorPlugin::get_editor_interface, EditorPlugin::__class_id, ctx, this_val, argv);
+};
+static JSValue editor_plugin_class_get_script_create_dialog(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_method_ret(&EditorPlugin::get_script_create_dialog, EditorPlugin::__class_id, ctx, this_val, argv);
+};
+static JSValue editor_plugin_class_add_debugger_plugin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::add_debugger_plugin, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_remove_debugger_plugin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&EditorPlugin::remove_debugger_plugin, EditorPlugin::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue editor_plugin_class_get_plugin_version(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&EditorPlugin::get_plugin_version, EditorPlugin::__class_id, ctx, this_val, argv);
+};
+static const JSCFunctionListEntry editor_plugin_class_proto_funcs[] = {
+	JS_CFUNC_DEF("add_control_to_container", 2, &editor_plugin_class_add_control_to_container),
+	JS_CFUNC_DEF("add_control_to_bottom_panel", 3, &editor_plugin_class_add_control_to_bottom_panel),
+	JS_CFUNC_DEF("add_control_to_dock", 3, &editor_plugin_class_add_control_to_dock),
+	JS_CFUNC_DEF("remove_control_from_docks", 1, &editor_plugin_class_remove_control_from_docks),
+	JS_CFUNC_DEF("remove_control_from_bottom_panel", 1, &editor_plugin_class_remove_control_from_bottom_panel),
+	JS_CFUNC_DEF("remove_control_from_container", 2, &editor_plugin_class_remove_control_from_container),
+	JS_CFUNC_DEF("set_dock_tab_icon", 2, &editor_plugin_class_set_dock_tab_icon),
+	JS_CFUNC_DEF("add_tool_menu_item", 2, &editor_plugin_class_add_tool_menu_item),
+	JS_CFUNC_DEF("add_tool_submenu_item", 2, &editor_plugin_class_add_tool_submenu_item),
+	JS_CFUNC_DEF("remove_tool_menu_item", 1, &editor_plugin_class_remove_tool_menu_item),
+	JS_CFUNC_DEF("get_export_as_menu", 0, &editor_plugin_class_get_export_as_menu),
+	JS_CFUNC_DEF("add_custom_type", 4, &editor_plugin_class_add_custom_type),
+	JS_CFUNC_DEF("remove_custom_type", 1, &editor_plugin_class_remove_custom_type),
+	JS_CFUNC_DEF("add_autoload_singleton", 2, &editor_plugin_class_add_autoload_singleton),
+	JS_CFUNC_DEF("remove_autoload_singleton", 1, &editor_plugin_class_remove_autoload_singleton),
+	JS_CFUNC_DEF("update_overlays", 0, &editor_plugin_class_update_overlays),
+	JS_CFUNC_DEF("make_bottom_panel_item_visible", 1, &editor_plugin_class_make_bottom_panel_item_visible),
+	JS_CFUNC_DEF("hide_bottom_panel", 0, &editor_plugin_class_hide_bottom_panel),
+	JS_CFUNC_DEF("get_undo_redo", 0, &editor_plugin_class_get_undo_redo),
+	JS_CFUNC_DEF("add_undo_redo_inspector_hook_callback", 1, &editor_plugin_class_add_undo_redo_inspector_hook_callback),
+	JS_CFUNC_DEF("remove_undo_redo_inspector_hook_callback", 1, &editor_plugin_class_remove_undo_redo_inspector_hook_callback),
+	JS_CFUNC_DEF("queue_save_layout", 0, &editor_plugin_class_queue_save_layout),
+	JS_CFUNC_DEF("add_translation_parser_plugin", 1, &editor_plugin_class_add_translation_parser_plugin),
+	JS_CFUNC_DEF("remove_translation_parser_plugin", 1, &editor_plugin_class_remove_translation_parser_plugin),
+	JS_CFUNC_DEF("add_import_plugin", 2, &editor_plugin_class_add_import_plugin),
+	JS_CFUNC_DEF("remove_import_plugin", 1, &editor_plugin_class_remove_import_plugin),
+	JS_CFUNC_DEF("add_scene_format_importer_plugin", 2, &editor_plugin_class_add_scene_format_importer_plugin),
+	JS_CFUNC_DEF("remove_scene_format_importer_plugin", 1, &editor_plugin_class_remove_scene_format_importer_plugin),
+	JS_CFUNC_DEF("add_scene_post_import_plugin", 2, &editor_plugin_class_add_scene_post_import_plugin),
+	JS_CFUNC_DEF("remove_scene_post_import_plugin", 1, &editor_plugin_class_remove_scene_post_import_plugin),
+	JS_CFUNC_DEF("add_export_plugin", 1, &editor_plugin_class_add_export_plugin),
+	JS_CFUNC_DEF("remove_export_plugin", 1, &editor_plugin_class_remove_export_plugin),
+	JS_CFUNC_DEF("add_node_3d_gizmo_plugin", 1, &editor_plugin_class_add_node_3d_gizmo_plugin),
+	JS_CFUNC_DEF("remove_node_3d_gizmo_plugin", 1, &editor_plugin_class_remove_node_3d_gizmo_plugin),
+	JS_CFUNC_DEF("add_inspector_plugin", 1, &editor_plugin_class_add_inspector_plugin),
+	JS_CFUNC_DEF("remove_inspector_plugin", 1, &editor_plugin_class_remove_inspector_plugin),
+	JS_CFUNC_DEF("add_resource_conversion_plugin", 1, &editor_plugin_class_add_resource_conversion_plugin),
+	JS_CFUNC_DEF("remove_resource_conversion_plugin", 1, &editor_plugin_class_remove_resource_conversion_plugin),
+	JS_CFUNC_DEF("set_input_event_forwarding_always_enabled", 0, &editor_plugin_class_set_input_event_forwarding_always_enabled),
+	JS_CFUNC_DEF("set_force_draw_over_forwarding_enabled", 0, &editor_plugin_class_set_force_draw_over_forwarding_enabled),
+	JS_CFUNC_DEF("get_editor_interface", 0, &editor_plugin_class_get_editor_interface),
+	JS_CFUNC_DEF("get_script_create_dialog", 0, &editor_plugin_class_get_script_create_dialog),
+	JS_CFUNC_DEF("add_debugger_plugin", 1, &editor_plugin_class_add_debugger_plugin),
+	JS_CFUNC_DEF("remove_debugger_plugin", 1, &editor_plugin_class_remove_debugger_plugin),
+	JS_CFUNC_DEF("get_plugin_version", 0, &editor_plugin_class_get_plugin_version),
+};
+
+static int js_editor_plugin_class_init(JSContext *ctx, JSModuleDef *m) {
+	JS_NewClassID(&EditorPlugin::__class_id);
+	classes["EditorPlugin"] = EditorPlugin::__class_id;
+	JS_NewClass(JS_GetRuntime(ctx), EditorPlugin::__class_id, &editor_plugin_class_def);
+
+	JSValue proto = JS_NewObject(ctx);
+	JSValue base_class = JS_GetClassProto(ctx, Node::__class_id);
+	JS_SetPrototype(ctx, proto, base_class);
+	JS_SetClassProto(ctx, EditorPlugin::__class_id, proto);
+	JS_SetPropertyFunctionList(ctx, proto, editor_plugin_class_proto_funcs, _countof(editor_plugin_class_proto_funcs));
+
+	JSValue ctor = JS_NewCFunction2(ctx, editor_plugin_class_constructor, "EditorPlugin", 0, JS_CFUNC_constructor, 0);
+
+	JS_SetModuleExport(ctx, m, "EditorPlugin", ctor);
+
+	return 0;
+}
+
+JSModuleDef *_js_init_editor_plugin_module(JSContext *ctx, const char *module_name) {
+	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_editor_plugin_class_init);
+	if (!m)
+		return NULL;
+	JS_AddModuleExport(ctx, m, "EditorPlugin");
+	return m;
+}
+
+JSModuleDef *js_init_editor_plugin_module(JSContext *ctx) {
+	return _js_init_editor_plugin_module(ctx, "godot/classes/editor_plugin");
+}
+
+void register_editor_plugin() {
+	js_init_editor_plugin_module(ctx);
+}

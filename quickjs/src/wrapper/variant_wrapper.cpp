@@ -6,7 +6,6 @@
 #include "quickjs/wrapper/js_object.h"
 #include "quickjs/wrapper/object_wrapper.h"
 #include "quickjs/wrapper/string_wrapper.h"
-#include "utils/env.h"
 #include <godot_cpp/variant/utility_functions.hpp>
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/variant_size.hpp>
@@ -48,9 +47,13 @@ VariantWrapper *gd_float_new_variant(double value) {
 }
 
 VariantWrapper *gd_JSObject_new_variant(void *value) {
-	VariantWrapper *wrapper = memnew(VariantWrapper);
-	memnew_placement(&(wrapper->opaque), Variant(static_cast<godot::Object *>(gd_JSObject_get_opaque((ObjectWrapper *)value))));
-	return wrapper;
+	if (value) {
+		VariantWrapper *wrapper = memnew(VariantWrapper);
+		memnew_placement(&(wrapper->opaque), Variant(static_cast<godot::Object *>(gd_JSObject_get_opaque((ObjectWrapper *)value))));
+		return wrapper;
+	} else {
+		return nullptr;
+	}
 }
 
 VariantWrapper *gd_JSObject_new_empty_variant() {

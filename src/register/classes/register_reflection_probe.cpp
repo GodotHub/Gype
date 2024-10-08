@@ -1,0 +1,201 @@
+
+#include "quickjs/quickjs.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/env.h"
+#include "utils/register_helper.h"
+#include <godot_cpp/classes/reflection_probe.hpp>
+#include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/variant/builtin_types.hpp>
+
+
+using namespace godot;
+
+static void reflection_probe_class_finalizer(JSRuntime *rt, JSValue val) {
+	ReflectionProbe *reflection_probe = static_cast<ReflectionProbe *>(JS_GetOpaque(val, ReflectionProbe::__class_id));
+	if (reflection_probe)
+		ReflectionProbe::free(nullptr, reflection_probe);
+}
+
+static JSClassDef reflection_probe_class_def = {
+	"ReflectionProbe",
+	.finalizer = reflection_probe_class_finalizer
+};
+
+static JSValue reflection_probe_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
+	ReflectionProbe *reflection_probe_class;
+	JSValue obj = JS_NewObjectClass(ctx, ReflectionProbe::__class_id);
+	if (JS_IsException(obj))
+		return obj;
+	reflection_probe_class = memnew(ReflectionProbe);
+	if (!reflection_probe_class) {
+		JS_FreeValue(ctx, obj);
+		return JS_EXCEPTION;
+	}
+
+	JS_SetOpaque(obj, reflection_probe_class);
+	return obj;
+}
+static JSValue reflection_probe_class_set_intensity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&ReflectionProbe::set_intensity, ReflectionProbe::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue reflection_probe_class_get_intensity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&ReflectionProbe::get_intensity, ReflectionProbe::__class_id, ctx, this_val, argv);
+};
+static JSValue reflection_probe_class_set_ambient_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&ReflectionProbe::set_ambient_mode, ReflectionProbe::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue reflection_probe_class_get_ambient_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&ReflectionProbe::get_ambient_mode, ReflectionProbe::__class_id, ctx, this_val, argv);
+};
+static JSValue reflection_probe_class_set_ambient_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&ReflectionProbe::set_ambient_color, ReflectionProbe::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue reflection_probe_class_get_ambient_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&ReflectionProbe::get_ambient_color, ReflectionProbe::__class_id, ctx, this_val, argv);
+};
+static JSValue reflection_probe_class_set_ambient_color_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&ReflectionProbe::set_ambient_color_energy, ReflectionProbe::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue reflection_probe_class_get_ambient_color_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&ReflectionProbe::get_ambient_color_energy, ReflectionProbe::__class_id, ctx, this_val, argv);
+};
+static JSValue reflection_probe_class_set_max_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&ReflectionProbe::set_max_distance, ReflectionProbe::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue reflection_probe_class_get_max_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&ReflectionProbe::get_max_distance, ReflectionProbe::__class_id, ctx, this_val, argv);
+};
+static JSValue reflection_probe_class_set_mesh_lod_threshold(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&ReflectionProbe::set_mesh_lod_threshold, ReflectionProbe::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue reflection_probe_class_get_mesh_lod_threshold(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&ReflectionProbe::get_mesh_lod_threshold, ReflectionProbe::__class_id, ctx, this_val, argv);
+};
+static JSValue reflection_probe_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&ReflectionProbe::set_size, ReflectionProbe::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue reflection_probe_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&ReflectionProbe::get_size, ReflectionProbe::__class_id, ctx, this_val, argv);
+};
+static JSValue reflection_probe_class_set_origin_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&ReflectionProbe::set_origin_offset, ReflectionProbe::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue reflection_probe_class_get_origin_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&ReflectionProbe::get_origin_offset, ReflectionProbe::__class_id, ctx, this_val, argv);
+};
+static JSValue reflection_probe_class_set_as_interior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&ReflectionProbe::set_as_interior, ReflectionProbe::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue reflection_probe_class_is_set_as_interior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&ReflectionProbe::is_set_as_interior, ReflectionProbe::__class_id, ctx, this_val, argv);
+};
+static JSValue reflection_probe_class_set_enable_box_projection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&ReflectionProbe::set_enable_box_projection, ReflectionProbe::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue reflection_probe_class_is_box_projection_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&ReflectionProbe::is_box_projection_enabled, ReflectionProbe::__class_id, ctx, this_val, argv);
+};
+static JSValue reflection_probe_class_set_enable_shadows(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&ReflectionProbe::set_enable_shadows, ReflectionProbe::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue reflection_probe_class_are_shadows_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&ReflectionProbe::are_shadows_enabled, ReflectionProbe::__class_id, ctx, this_val, argv);
+};
+static JSValue reflection_probe_class_set_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&ReflectionProbe::set_cull_mask, ReflectionProbe::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue reflection_probe_class_get_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&ReflectionProbe::get_cull_mask, ReflectionProbe::__class_id, ctx, this_val, argv);
+};
+static JSValue reflection_probe_class_set_reflection_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&ReflectionProbe::set_reflection_mask, ReflectionProbe::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue reflection_probe_class_get_reflection_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&ReflectionProbe::get_reflection_mask, ReflectionProbe::__class_id, ctx, this_val, argv);
+};
+static JSValue reflection_probe_class_set_update_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&ReflectionProbe::set_update_mode, ReflectionProbe::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue reflection_probe_class_get_update_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&ReflectionProbe::get_update_mode, ReflectionProbe::__class_id, ctx, this_val, argv);
+};
+static const JSCFunctionListEntry reflection_probe_class_proto_funcs[] = {
+	JS_CFUNC_DEF("set_intensity", 1, &reflection_probe_class_set_intensity),
+	JS_CFUNC_DEF("get_intensity", 0, &reflection_probe_class_get_intensity),
+	JS_CFUNC_DEF("set_ambient_mode", 1, &reflection_probe_class_set_ambient_mode),
+	JS_CFUNC_DEF("get_ambient_mode", 0, &reflection_probe_class_get_ambient_mode),
+	JS_CFUNC_DEF("set_ambient_color", 1, &reflection_probe_class_set_ambient_color),
+	JS_CFUNC_DEF("get_ambient_color", 0, &reflection_probe_class_get_ambient_color),
+	JS_CFUNC_DEF("set_ambient_color_energy", 1, &reflection_probe_class_set_ambient_color_energy),
+	JS_CFUNC_DEF("get_ambient_color_energy", 0, &reflection_probe_class_get_ambient_color_energy),
+	JS_CFUNC_DEF("set_max_distance", 1, &reflection_probe_class_set_max_distance),
+	JS_CFUNC_DEF("get_max_distance", 0, &reflection_probe_class_get_max_distance),
+	JS_CFUNC_DEF("set_mesh_lod_threshold", 1, &reflection_probe_class_set_mesh_lod_threshold),
+	JS_CFUNC_DEF("get_mesh_lod_threshold", 0, &reflection_probe_class_get_mesh_lod_threshold),
+	JS_CFUNC_DEF("set_size", 1, &reflection_probe_class_set_size),
+	JS_CFUNC_DEF("get_size", 0, &reflection_probe_class_get_size),
+	JS_CFUNC_DEF("set_origin_offset", 1, &reflection_probe_class_set_origin_offset),
+	JS_CFUNC_DEF("get_origin_offset", 0, &reflection_probe_class_get_origin_offset),
+	JS_CFUNC_DEF("set_as_interior", 1, &reflection_probe_class_set_as_interior),
+	JS_CFUNC_DEF("is_set_as_interior", 0, &reflection_probe_class_is_set_as_interior),
+	JS_CFUNC_DEF("set_enable_box_projection", 1, &reflection_probe_class_set_enable_box_projection),
+	JS_CFUNC_DEF("is_box_projection_enabled", 0, &reflection_probe_class_is_box_projection_enabled),
+	JS_CFUNC_DEF("set_enable_shadows", 1, &reflection_probe_class_set_enable_shadows),
+	JS_CFUNC_DEF("are_shadows_enabled", 0, &reflection_probe_class_are_shadows_enabled),
+	JS_CFUNC_DEF("set_cull_mask", 1, &reflection_probe_class_set_cull_mask),
+	JS_CFUNC_DEF("get_cull_mask", 0, &reflection_probe_class_get_cull_mask),
+	JS_CFUNC_DEF("set_reflection_mask", 1, &reflection_probe_class_set_reflection_mask),
+	JS_CFUNC_DEF("get_reflection_mask", 0, &reflection_probe_class_get_reflection_mask),
+	JS_CFUNC_DEF("set_update_mode", 1, &reflection_probe_class_set_update_mode),
+	JS_CFUNC_DEF("get_update_mode", 0, &reflection_probe_class_get_update_mode),
+};
+
+static int js_reflection_probe_class_init(JSContext *ctx, JSModuleDef *m) {
+	JS_NewClassID(&ReflectionProbe::__class_id);
+	classes["ReflectionProbe"] = ReflectionProbe::__class_id;
+	JS_NewClass(JS_GetRuntime(ctx), ReflectionProbe::__class_id, &reflection_probe_class_def);
+
+	JSValue proto = JS_NewObject(ctx);
+	JSValue base_class = JS_GetClassProto(ctx, VisualInstance3D::__class_id);
+	JS_SetPrototype(ctx, proto, base_class);
+	JS_SetClassProto(ctx, ReflectionProbe::__class_id, proto);
+	JS_SetPropertyFunctionList(ctx, proto, reflection_probe_class_proto_funcs, _countof(reflection_probe_class_proto_funcs));
+
+	JSValue ctor = JS_NewCFunction2(ctx, reflection_probe_class_constructor, "ReflectionProbe", 0, JS_CFUNC_constructor, 0);
+
+	JS_SetModuleExport(ctx, m, "ReflectionProbe", ctor);
+
+	return 0;
+}
+
+JSModuleDef *_js_init_reflection_probe_module(JSContext *ctx, const char *module_name) {
+	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_reflection_probe_class_init);
+	if (!m)
+		return NULL;
+	JS_AddModuleExport(ctx, m, "ReflectionProbe");
+	return m;
+}
+
+JSModuleDef *js_init_reflection_probe_module(JSContext *ctx) {
+	return _js_init_reflection_probe_module(ctx, "godot/classes/reflection_probe");
+}
+
+void register_reflection_probe() {
+	js_init_reflection_probe_module(ctx);
+}

@@ -1,0 +1,175 @@
+
+#include "quickjs/quickjs.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/env.h"
+#include "utils/register_helper.h"
+#include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/physical_sky_material.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/variant/builtin_types.hpp>
+
+
+using namespace godot;
+
+static void physical_sky_material_class_finalizer(JSRuntime *rt, JSValue val) {
+	PhysicalSkyMaterial *physical_sky_material = static_cast<PhysicalSkyMaterial *>(JS_GetOpaque(val, PhysicalSkyMaterial::__class_id));
+	if (physical_sky_material)
+		PhysicalSkyMaterial::free(nullptr, physical_sky_material);
+}
+
+static JSClassDef physical_sky_material_class_def = {
+	"PhysicalSkyMaterial",
+	.finalizer = physical_sky_material_class_finalizer
+};
+
+static JSValue physical_sky_material_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
+	PhysicalSkyMaterial *physical_sky_material_class;
+	JSValue obj = JS_NewObjectClass(ctx, PhysicalSkyMaterial::__class_id);
+	if (JS_IsException(obj))
+		return obj;
+	physical_sky_material_class = memnew(PhysicalSkyMaterial);
+	if (!physical_sky_material_class) {
+		JS_FreeValue(ctx, obj);
+		return JS_EXCEPTION;
+	}
+
+	JS_SetOpaque(obj, physical_sky_material_class);
+	return obj;
+}
+static JSValue physical_sky_material_class_set_rayleigh_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PhysicalSkyMaterial::set_rayleigh_coefficient, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue physical_sky_material_class_get_rayleigh_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PhysicalSkyMaterial::get_rayleigh_coefficient, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+};
+static JSValue physical_sky_material_class_set_rayleigh_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PhysicalSkyMaterial::set_rayleigh_color, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue physical_sky_material_class_get_rayleigh_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PhysicalSkyMaterial::get_rayleigh_color, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+};
+static JSValue physical_sky_material_class_set_mie_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PhysicalSkyMaterial::set_mie_coefficient, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue physical_sky_material_class_get_mie_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PhysicalSkyMaterial::get_mie_coefficient, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+};
+static JSValue physical_sky_material_class_set_mie_eccentricity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PhysicalSkyMaterial::set_mie_eccentricity, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue physical_sky_material_class_get_mie_eccentricity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PhysicalSkyMaterial::get_mie_eccentricity, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+};
+static JSValue physical_sky_material_class_set_mie_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PhysicalSkyMaterial::set_mie_color, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue physical_sky_material_class_get_mie_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PhysicalSkyMaterial::get_mie_color, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+};
+static JSValue physical_sky_material_class_set_turbidity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PhysicalSkyMaterial::set_turbidity, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue physical_sky_material_class_get_turbidity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PhysicalSkyMaterial::get_turbidity, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+};
+static JSValue physical_sky_material_class_set_sun_disk_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PhysicalSkyMaterial::set_sun_disk_scale, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue physical_sky_material_class_get_sun_disk_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PhysicalSkyMaterial::get_sun_disk_scale, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+};
+static JSValue physical_sky_material_class_set_ground_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PhysicalSkyMaterial::set_ground_color, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue physical_sky_material_class_get_ground_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PhysicalSkyMaterial::get_ground_color, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+};
+static JSValue physical_sky_material_class_set_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PhysicalSkyMaterial::set_energy_multiplier, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue physical_sky_material_class_get_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PhysicalSkyMaterial::get_energy_multiplier, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+};
+static JSValue physical_sky_material_class_set_use_debanding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PhysicalSkyMaterial::set_use_debanding, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue physical_sky_material_class_get_use_debanding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PhysicalSkyMaterial::get_use_debanding, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+};
+static JSValue physical_sky_material_class_set_night_sky(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&PhysicalSkyMaterial::set_night_sky, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue physical_sky_material_class_get_night_sky(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&PhysicalSkyMaterial::get_night_sky, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+};
+static const JSCFunctionListEntry physical_sky_material_class_proto_funcs[] = {
+	JS_CFUNC_DEF("set_rayleigh_coefficient", 1, &physical_sky_material_class_set_rayleigh_coefficient),
+	JS_CFUNC_DEF("get_rayleigh_coefficient", 0, &physical_sky_material_class_get_rayleigh_coefficient),
+	JS_CFUNC_DEF("set_rayleigh_color", 1, &physical_sky_material_class_set_rayleigh_color),
+	JS_CFUNC_DEF("get_rayleigh_color", 0, &physical_sky_material_class_get_rayleigh_color),
+	JS_CFUNC_DEF("set_mie_coefficient", 1, &physical_sky_material_class_set_mie_coefficient),
+	JS_CFUNC_DEF("get_mie_coefficient", 0, &physical_sky_material_class_get_mie_coefficient),
+	JS_CFUNC_DEF("set_mie_eccentricity", 1, &physical_sky_material_class_set_mie_eccentricity),
+	JS_CFUNC_DEF("get_mie_eccentricity", 0, &physical_sky_material_class_get_mie_eccentricity),
+	JS_CFUNC_DEF("set_mie_color", 1, &physical_sky_material_class_set_mie_color),
+	JS_CFUNC_DEF("get_mie_color", 0, &physical_sky_material_class_get_mie_color),
+	JS_CFUNC_DEF("set_turbidity", 1, &physical_sky_material_class_set_turbidity),
+	JS_CFUNC_DEF("get_turbidity", 0, &physical_sky_material_class_get_turbidity),
+	JS_CFUNC_DEF("set_sun_disk_scale", 1, &physical_sky_material_class_set_sun_disk_scale),
+	JS_CFUNC_DEF("get_sun_disk_scale", 0, &physical_sky_material_class_get_sun_disk_scale),
+	JS_CFUNC_DEF("set_ground_color", 1, &physical_sky_material_class_set_ground_color),
+	JS_CFUNC_DEF("get_ground_color", 0, &physical_sky_material_class_get_ground_color),
+	JS_CFUNC_DEF("set_energy_multiplier", 1, &physical_sky_material_class_set_energy_multiplier),
+	JS_CFUNC_DEF("get_energy_multiplier", 0, &physical_sky_material_class_get_energy_multiplier),
+	JS_CFUNC_DEF("set_use_debanding", 1, &physical_sky_material_class_set_use_debanding),
+	JS_CFUNC_DEF("get_use_debanding", 0, &physical_sky_material_class_get_use_debanding),
+	JS_CFUNC_DEF("set_night_sky", 1, &physical_sky_material_class_set_night_sky),
+	JS_CFUNC_DEF("get_night_sky", 0, &physical_sky_material_class_get_night_sky),
+};
+
+static int js_physical_sky_material_class_init(JSContext *ctx, JSModuleDef *m) {
+	JS_NewClassID(&PhysicalSkyMaterial::__class_id);
+	classes["PhysicalSkyMaterial"] = PhysicalSkyMaterial::__class_id;
+	JS_NewClass(JS_GetRuntime(ctx), PhysicalSkyMaterial::__class_id, &physical_sky_material_class_def);
+
+	JSValue proto = JS_NewObject(ctx);
+	JSValue base_class = JS_GetClassProto(ctx, Material::__class_id);
+	JS_SetPrototype(ctx, proto, base_class);
+	JS_SetClassProto(ctx, PhysicalSkyMaterial::__class_id, proto);
+	JS_SetPropertyFunctionList(ctx, proto, physical_sky_material_class_proto_funcs, _countof(physical_sky_material_class_proto_funcs));
+
+	JSValue ctor = JS_NewCFunction2(ctx, physical_sky_material_class_constructor, "PhysicalSkyMaterial", 0, JS_CFUNC_constructor, 0);
+
+	JS_SetModuleExport(ctx, m, "PhysicalSkyMaterial", ctor);
+
+	return 0;
+}
+
+JSModuleDef *_js_init_physical_sky_material_module(JSContext *ctx, const char *module_name) {
+	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_physical_sky_material_class_init);
+	if (!m)
+		return NULL;
+	JS_AddModuleExport(ctx, m, "PhysicalSkyMaterial");
+	return m;
+}
+
+JSModuleDef *js_init_physical_sky_material_module(JSContext *ctx) {
+	return _js_init_physical_sky_material_module(ctx, "godot/classes/physical_sky_material");
+}
+
+void register_physical_sky_material() {
+	js_init_physical_sky_material_module(ctx);
+}

@@ -1,0 +1,99 @@
+
+#include "quickjs/quickjs.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/env.h"
+#include "utils/register_helper.h"
+#include <godot_cpp/classes/audio_stream.hpp>
+#include <godot_cpp/classes/audio_stream_playback.hpp>
+#include <godot_cpp/classes/audio_stream_playback_polyphonic.hpp>
+#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/variant/builtin_types.hpp>
+
+
+using namespace godot;
+
+static void audio_stream_playback_polyphonic_class_finalizer(JSRuntime *rt, JSValue val) {
+	AudioStreamPlaybackPolyphonic *audio_stream_playback_polyphonic = static_cast<AudioStreamPlaybackPolyphonic *>(JS_GetOpaque(val, AudioStreamPlaybackPolyphonic::__class_id));
+	if (audio_stream_playback_polyphonic)
+		AudioStreamPlaybackPolyphonic::free(nullptr, audio_stream_playback_polyphonic);
+}
+
+static JSClassDef audio_stream_playback_polyphonic_class_def = {
+	"AudioStreamPlaybackPolyphonic",
+	.finalizer = audio_stream_playback_polyphonic_class_finalizer
+};
+
+static JSValue audio_stream_playback_polyphonic_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
+	AudioStreamPlaybackPolyphonic *audio_stream_playback_polyphonic_class;
+	JSValue obj = JS_NewObjectClass(ctx, AudioStreamPlaybackPolyphonic::__class_id);
+	if (JS_IsException(obj))
+		return obj;
+	audio_stream_playback_polyphonic_class = memnew(AudioStreamPlaybackPolyphonic);
+	if (!audio_stream_playback_polyphonic_class) {
+		JS_FreeValue(ctx, obj);
+		return JS_EXCEPTION;
+	}
+
+	JS_SetOpaque(obj, audio_stream_playback_polyphonic_class);
+	return obj;
+}
+static JSValue audio_stream_playback_polyphonic_class_play_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_method_ret(&AudioStreamPlaybackPolyphonic::play_stream, AudioStreamPlaybackPolyphonic::__class_id, ctx, this_val, argv);
+};
+static JSValue audio_stream_playback_polyphonic_class_set_stream_volume(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&AudioStreamPlaybackPolyphonic::set_stream_volume, AudioStreamPlaybackPolyphonic::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue audio_stream_playback_polyphonic_class_set_stream_pitch_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&AudioStreamPlaybackPolyphonic::set_stream_pitch_scale, AudioStreamPlaybackPolyphonic::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue audio_stream_playback_polyphonic_class_is_stream_playing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AudioStreamPlaybackPolyphonic::is_stream_playing, AudioStreamPlaybackPolyphonic::__class_id, ctx, this_val, argv);
+};
+static JSValue audio_stream_playback_polyphonic_class_stop_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&AudioStreamPlaybackPolyphonic::stop_stream, AudioStreamPlaybackPolyphonic::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static const JSCFunctionListEntry audio_stream_playback_polyphonic_class_proto_funcs[] = {
+	JS_CFUNC_DEF("play_stream", 6, &audio_stream_playback_polyphonic_class_play_stream),
+	JS_CFUNC_DEF("set_stream_volume", 2, &audio_stream_playback_polyphonic_class_set_stream_volume),
+	JS_CFUNC_DEF("set_stream_pitch_scale", 2, &audio_stream_playback_polyphonic_class_set_stream_pitch_scale),
+	JS_CFUNC_DEF("is_stream_playing", 1, &audio_stream_playback_polyphonic_class_is_stream_playing),
+	JS_CFUNC_DEF("stop_stream", 1, &audio_stream_playback_polyphonic_class_stop_stream),
+};
+
+static int js_audio_stream_playback_polyphonic_class_init(JSContext *ctx, JSModuleDef *m) {
+	JS_NewClassID(&AudioStreamPlaybackPolyphonic::__class_id);
+	classes["AudioStreamPlaybackPolyphonic"] = AudioStreamPlaybackPolyphonic::__class_id;
+	JS_NewClass(JS_GetRuntime(ctx), AudioStreamPlaybackPolyphonic::__class_id, &audio_stream_playback_polyphonic_class_def);
+
+	JSValue proto = JS_NewObject(ctx);
+	JSValue base_class = JS_GetClassProto(ctx, AudioStreamPlayback::__class_id);
+	JS_SetPrototype(ctx, proto, base_class);
+	JS_SetClassProto(ctx, AudioStreamPlaybackPolyphonic::__class_id, proto);
+	JS_SetPropertyFunctionList(ctx, proto, audio_stream_playback_polyphonic_class_proto_funcs, _countof(audio_stream_playback_polyphonic_class_proto_funcs));
+
+	JSValue ctor = JS_NewCFunction2(ctx, audio_stream_playback_polyphonic_class_constructor, "AudioStreamPlaybackPolyphonic", 0, JS_CFUNC_constructor, 0);
+
+	JS_SetModuleExport(ctx, m, "AudioStreamPlaybackPolyphonic", ctor);
+
+	return 0;
+}
+
+JSModuleDef *_js_init_audio_stream_playback_polyphonic_module(JSContext *ctx, const char *module_name) {
+	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_audio_stream_playback_polyphonic_class_init);
+	if (!m)
+		return NULL;
+	JS_AddModuleExport(ctx, m, "AudioStreamPlaybackPolyphonic");
+	return m;
+}
+
+JSModuleDef *js_init_audio_stream_playback_polyphonic_module(JSContext *ctx) {
+	return _js_init_audio_stream_playback_polyphonic_module(ctx, "godot/classes/audio_stream_playback_polyphonic");
+}
+
+void register_audio_stream_playback_polyphonic() {
+	js_init_audio_stream_playback_polyphonic_module(ctx);
+}

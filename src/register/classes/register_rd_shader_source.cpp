@@ -1,0 +1,93 @@
+
+#include "quickjs/quickjs.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/env.h"
+#include "utils/register_helper.h"
+#include <godot_cpp/classes/rd_shader_source.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/variant/builtin_types.hpp>
+
+
+using namespace godot;
+
+static void rd_shader_source_class_finalizer(JSRuntime *rt, JSValue val) {
+	RDShaderSource *rd_shader_source = static_cast<RDShaderSource *>(JS_GetOpaque(val, RDShaderSource::__class_id));
+	if (rd_shader_source)
+		RDShaderSource::free(nullptr, rd_shader_source);
+}
+
+static JSClassDef rd_shader_source_class_def = {
+	"RDShaderSource",
+	.finalizer = rd_shader_source_class_finalizer
+};
+
+static JSValue rd_shader_source_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
+	RDShaderSource *rd_shader_source_class;
+	JSValue obj = JS_NewObjectClass(ctx, RDShaderSource::__class_id);
+	if (JS_IsException(obj))
+		return obj;
+	rd_shader_source_class = memnew(RDShaderSource);
+	if (!rd_shader_source_class) {
+		JS_FreeValue(ctx, obj);
+		return JS_EXCEPTION;
+	}
+
+	JS_SetOpaque(obj, rd_shader_source_class);
+	return obj;
+}
+static JSValue rd_shader_source_class_set_stage_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&RDShaderSource::set_stage_source, RDShaderSource::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue rd_shader_source_class_get_stage_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&RDShaderSource::get_stage_source, RDShaderSource::__class_id, ctx, this_val, argv);
+};
+static JSValue rd_shader_source_class_set_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	call_builtin_method_no_ret(&RDShaderSource::set_language, RDShaderSource::__class_id, ctx, this_val, argv);
+	return JS_UNDEFINED;
+};
+static JSValue rd_shader_source_class_get_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&RDShaderSource::get_language, RDShaderSource::__class_id, ctx, this_val, argv);
+};
+static const JSCFunctionListEntry rd_shader_source_class_proto_funcs[] = {
+	JS_CFUNC_DEF("set_stage_source", 2, &rd_shader_source_class_set_stage_source),
+	JS_CFUNC_DEF("get_stage_source", 1, &rd_shader_source_class_get_stage_source),
+	JS_CFUNC_DEF("set_language", 1, &rd_shader_source_class_set_language),
+	JS_CFUNC_DEF("get_language", 0, &rd_shader_source_class_get_language),
+};
+
+static int js_rd_shader_source_class_init(JSContext *ctx, JSModuleDef *m) {
+	JS_NewClassID(&RDShaderSource::__class_id);
+	classes["RDShaderSource"] = RDShaderSource::__class_id;
+	JS_NewClass(JS_GetRuntime(ctx), RDShaderSource::__class_id, &rd_shader_source_class_def);
+
+	JSValue proto = JS_NewObject(ctx);
+	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
+	JS_SetPrototype(ctx, proto, base_class);
+	JS_SetClassProto(ctx, RDShaderSource::__class_id, proto);
+	JS_SetPropertyFunctionList(ctx, proto, rd_shader_source_class_proto_funcs, _countof(rd_shader_source_class_proto_funcs));
+
+	JSValue ctor = JS_NewCFunction2(ctx, rd_shader_source_class_constructor, "RDShaderSource", 0, JS_CFUNC_constructor, 0);
+
+	JS_SetModuleExport(ctx, m, "RDShaderSource", ctor);
+
+	return 0;
+}
+
+JSModuleDef *_js_init_rd_shader_source_module(JSContext *ctx, const char *module_name) {
+	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_rd_shader_source_class_init);
+	if (!m)
+		return NULL;
+	JS_AddModuleExport(ctx, m, "RDShaderSource");
+	return m;
+}
+
+JSModuleDef *js_init_rd_shader_source_module(JSContext *ctx) {
+	return _js_init_rd_shader_source_module(ctx, "godot/classes/rd_shader_source");
+}
+
+void register_rd_shader_source() {
+	js_init_rd_shader_source_module(ctx);
+}

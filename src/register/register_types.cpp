@@ -1,13 +1,12 @@
 #include "register/register_types.h"
 #include "quickjs/wrapper/js_object.h"
-#include "register/classes/register_node.h"
+#include "register/classes/register_classes.h"
 #include "register/register_utility_functions.h"
 #include "support/console_support.hpp"
 #include "utils/env.h"
 #include <gdextension_interface.h>
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/defs.hpp>
-
 
 // bug 无法关闭程序
 // #ifdef DEBUG_ENABLED
@@ -60,7 +59,7 @@ void init_quickjs() {
 	rt = JS_NewRuntime();
 	ctx = JS_NewContext(rt);
 	register_utility_functions();
-	register_node();
+	register_classes();
 	// register_enums();
 	// register_internal_api();
 	// js_init_module(ctx);

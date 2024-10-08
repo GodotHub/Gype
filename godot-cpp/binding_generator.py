@@ -383,7 +383,8 @@ def scons_generate_bindings(target, source, env):
 
 
 def generate_bindings(api_filepath, use_template_get_node, bits="64", precision="single", output_dir="."):
-    # TODO
+    #GENERATE_TEMPLATE_GET_NODE 配置无效,必须写死
+    use_template_get_node = False
     api = None
 
     target_dir = Path(output_dir) / "gen"
@@ -1562,6 +1563,8 @@ def generate_engine_class_header(class_api, used_classes, fully_used_classes, us
     result.append(f"#define {header_guard}")
 
     result.append("")
+    
+    result.append('#include <vector>')
 
     for included in fully_used_classes:
         if included == "TypedArray":
@@ -1663,6 +1666,7 @@ def generate_engine_class_header(class_api, used_classes, fully_used_classes, us
             if vararg:
                 # Add templated version.
                 result += make_varargs_template(method)
+                result += make_js_varargs_template(method)
 
         # Virtuals now.
         for method in class_api["methods"]:
@@ -1863,7 +1867,8 @@ def generate_engine_class_source(class_api, used_classes, fully_used_classes, us
 
     result.append(f"#include <godot_cpp/classes/{snake_class_name}.hpp>")
     result.append("")
-    result.append("#include <godot_cpp/core/class_db.hpp>")
+    if class_name != 'ref_counted':
+        result.append("#include <godot_cpp/core/class_db.hpp>")
     result.append("#include <godot_cpp/core/engine_ptrcall.hpp>")
     result.append("#include <godot_cpp/core/error_macros.hpp>")
     result.append("")
@@ -1875,6 +1880,9 @@ def generate_engine_class_source(class_api, used_classes, fully_used_classes, us
         result.append("")
 
     result.append("namespace godot {")
+    result.append("")
+
+    result.append(f"JSClassID {class_name}::__class_id;")
     result.append("")
 
     if is_singleton:
@@ -2289,10 +2297,10 @@ def generate_utility_functions(api, output_dir):
 def camel_to_snake(name):
     name = re.sub("(.)([A-Z][a-z]+)", r"\1_\2", name)
     name = re.sub("([a-z0-9])([A-Z])", r"\1_\2", name)
-    return name.replace("2_D", "2D").replace("3_D", "3D").lower()
+    return name.replace("1_D", "1D").replace("2_D", "2D").replace("3_D", "3D").lower()
 
 
-def make_function_parameters(parameters, include_default=False, for_builtin=False, is_vararg=False):
+def make_function_parameters(parameters, include_default=False, for_builtin=False, is_vararg=False, is_js = False):
     signature = []
 
     for index, par in enumerate(parameters):
@@ -2313,7 +2321,10 @@ def make_function_parameters(parameters, include_default=False, for_builtin=Fals
         signature.append(parameter)
 
     if is_vararg:
-        signature.append("const Args&... p_args")
+        if is_js:
+            signature.append("std::vector<Variant> p_args")
+        else:
+            signature.append("const Args&... p_args")
 
     return ", ".join(signature)
 
@@ -2371,6 +2382,7 @@ def make_signature(
         if "is_virtual" in function_data and function_data["is_virtual"]:
             function_signature += "virtual "
 
+        # MODIFY private to public
         if is_vararg:
             function_signature += "private: "
 
@@ -2421,6 +2433,78 @@ def make_signature(
 
     return function_signature
 
+def make_js_varargs_template(function_data, static=False,
+                             class_befor_signature="",
+                             with_public_declare=True,
+                             with_indent=True,
+                             for_builtin_classes=False):
+    result = []
+
+    function_signature = ""
+
+    if with_public_declare:
+        function_signature = "public: "
+    
+    if static:
+        function_signature += "static "
+
+    return_type = "void"
+    return_meta = None
+    if "return_type" in function_data:
+        return_type = correct_type(function_data["return_type"])
+    elif "return_value" in function_data:
+        return_type = function_data["return_value"]["type"]
+        return_meta = function_data["return_value"]["meta"] if "meta" in function_data["return_value"] else None
+
+    function_signature += correct_type(
+        return_type,
+        return_meta,
+    )
+    if not function_signature.endswith("*"):
+        function_signature += " "
+
+    if len(class_befor_signature) > 0:
+        function_signature += class_befor_signature + "::"
+    function_signature += f'js_{escape_identifier(function_data["name"])}'
+
+    method_arguments = []
+    if "arguments" in function_data:
+        method_arguments = function_data["arguments"]
+
+    function_signature += "("
+
+    is_vararg = "is_vararg" in function_data and function_data["is_vararg"]
+
+    function_signature += make_function_parameters(method_arguments, include_default=True, is_vararg=is_vararg, is_js=True)
+
+    function_signature += ")"
+
+    if "is_const" in function_data and function_data["is_const"]:
+        function_signature += " const"
+
+    function_signature += " {"
+    result.append(function_signature)
+
+    args_array = f"\tstd::vector<Variant *> variant_args;\n"
+    for argument in method_arguments:
+        args_array += f'\t\tVariant {argument["name"]} = {escape_argument(argument["name"])};\n'
+        args_array += f'\t\tvariant_args.push_back(&{argument["name"]});\n'
+
+    result.append(args_array)
+    result.append(
+        '\tfor (size_t i = 0; i < p_args.size(); i++) {\n'
+            '\t\t\tvariant_args[i] = &p_args[i];\n'
+        '\t\t}\n')
+    call_line = "\t"
+    if not for_builtin_classes:
+        if return_type != "void":
+            call_line += "return "
+
+        call_line += f'{escape_identifier(function_data["name"])}_internal(const_cast<const Variant **>(variant_args.data()), variant_args.size());'
+        result.append(call_line)
+    result.append('}\n')
+    result = list(map(lambda e: '\t' + e , result))
+    return result
 
 def make_varargs_template(
     function_data,

@@ -1,0 +1,99 @@
+
+#include "quickjs/quickjs.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/env.h"
+#include "utils/register_helper.h"
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/tile_set_source.hpp>
+#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/variant/builtin_types.hpp>
+
+
+using namespace godot;
+
+static void tile_set_source_class_finalizer(JSRuntime *rt, JSValue val) {
+	TileSetSource *tile_set_source = static_cast<TileSetSource *>(JS_GetOpaque(val, TileSetSource::__class_id));
+	if (tile_set_source)
+		TileSetSource::free(nullptr, tile_set_source);
+}
+
+static JSClassDef tile_set_source_class_def = {
+	"TileSetSource",
+	.finalizer = tile_set_source_class_finalizer
+};
+
+static JSValue tile_set_source_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
+	TileSetSource *tile_set_source_class;
+	JSValue obj = JS_NewObjectClass(ctx, TileSetSource::__class_id);
+	if (JS_IsException(obj))
+		return obj;
+	tile_set_source_class = memnew(TileSetSource);
+	if (!tile_set_source_class) {
+		JS_FreeValue(ctx, obj);
+		return JS_EXCEPTION;
+	}
+
+	JS_SetOpaque(obj, tile_set_source_class);
+	return obj;
+}
+static JSValue tile_set_source_class_get_tiles_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&TileSetSource::get_tiles_count, TileSetSource::__class_id, ctx, this_val, argv);
+};
+static JSValue tile_set_source_class_get_tile_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&TileSetSource::get_tile_id, TileSetSource::__class_id, ctx, this_val, argv);
+};
+static JSValue tile_set_source_class_has_tile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&TileSetSource::has_tile, TileSetSource::__class_id, ctx, this_val, argv);
+};
+static JSValue tile_set_source_class_get_alternative_tiles_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&TileSetSource::get_alternative_tiles_count, TileSetSource::__class_id, ctx, this_val, argv);
+};
+static JSValue tile_set_source_class_get_alternative_tile_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&TileSetSource::get_alternative_tile_id, TileSetSource::__class_id, ctx, this_val, argv);
+};
+static JSValue tile_set_source_class_has_alternative_tile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&TileSetSource::has_alternative_tile, TileSetSource::__class_id, ctx, this_val, argv);
+};
+static const JSCFunctionListEntry tile_set_source_class_proto_funcs[] = {
+	JS_CFUNC_DEF("get_tiles_count", 0, &tile_set_source_class_get_tiles_count),
+	JS_CFUNC_DEF("get_tile_id", 1, &tile_set_source_class_get_tile_id),
+	JS_CFUNC_DEF("has_tile", 1, &tile_set_source_class_has_tile),
+	JS_CFUNC_DEF("get_alternative_tiles_count", 1, &tile_set_source_class_get_alternative_tiles_count),
+	JS_CFUNC_DEF("get_alternative_tile_id", 2, &tile_set_source_class_get_alternative_tile_id),
+	JS_CFUNC_DEF("has_alternative_tile", 2, &tile_set_source_class_has_alternative_tile),
+};
+
+static int js_tile_set_source_class_init(JSContext *ctx, JSModuleDef *m) {
+	JS_NewClassID(&TileSetSource::__class_id);
+	classes["TileSetSource"] = TileSetSource::__class_id;
+	JS_NewClass(JS_GetRuntime(ctx), TileSetSource::__class_id, &tile_set_source_class_def);
+
+	JSValue proto = JS_NewObject(ctx);
+	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
+	JS_SetPrototype(ctx, proto, base_class);
+	JS_SetClassProto(ctx, TileSetSource::__class_id, proto);
+	JS_SetPropertyFunctionList(ctx, proto, tile_set_source_class_proto_funcs, _countof(tile_set_source_class_proto_funcs));
+
+	JSValue ctor = JS_NewCFunction2(ctx, tile_set_source_class_constructor, "TileSetSource", 0, JS_CFUNC_constructor, 0);
+
+	JS_SetModuleExport(ctx, m, "TileSetSource", ctor);
+
+	return 0;
+}
+
+JSModuleDef *_js_init_tile_set_source_module(JSContext *ctx, const char *module_name) {
+	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_tile_set_source_class_init);
+	if (!m)
+		return NULL;
+	JS_AddModuleExport(ctx, m, "TileSetSource");
+	return m;
+}
+
+JSModuleDef *js_init_tile_set_source_module(JSContext *ctx) {
+	return _js_init_tile_set_source_module(ctx, "godot/classes/tile_set_source");
+}
+
+void register_tile_set_source() {
+	js_init_tile_set_source_module(ctx);
+}

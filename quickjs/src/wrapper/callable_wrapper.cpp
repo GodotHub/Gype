@@ -1,13 +1,13 @@
 #include "quickjs/wrapper/callable_wrapper.h"
 #include "quickjs/quickjs.h"
+#include "quickjs/quickjs_helper.h"
 #include "quickjs/wrapper/js_object.h"
 #include "quickjs/wrapper/object_wrapper.h"
-#include "utils/quickjs_helper.h"
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/callable.hpp>
 #include <godot_cpp/variant/callable_custom.hpp>
 #include <godot_cpp/variant/callable_method_pointer.hpp>
-
+#include <string>
 
 using namespace godot;
 
@@ -41,7 +41,7 @@ public:
 	// }
 
 	virtual ObjectID get_object() const override {
-		VariantWrapper *wrapper = static_cast<VariantWrapper *>(gd_get_vwrapper(ctx, data.instance));
+		VariantWrapper *wrapper = static_cast<VariantWrapper *>(gd_get_vwrapper(data.ctx, data.instance));
 		Object *obj = *static_cast<Variant *>(gd_Variant_get_opaque(wrapper));
 		return ObjectID(obj->get_instance_id());
 	}
@@ -63,7 +63,7 @@ public:
 			args.push_back(to_jsvalue(ctx, *p_arguments[i]));
 		}
 		JSValue ret = JS_Call(ctx, data.method, data.instance, p_argcount, args.data());
-		if (!is_exception(ret)) {
+		if (!is_exception(ctx, ret)) {
 			r_call_error.argument = p_argcount;
 		} else {
 			r_call_error.error = GDExtensionCallErrorType::GDEXTENSION_CALL_ERROR_INVALID_METHOD;
