@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/ogg_packet_sequence.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/ogg_packet_sequence.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,21 +37,21 @@ static JSValue ogg_packet_sequence_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 static JSValue ogg_packet_sequence_class_set_packet_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&OggPacketSequence::set_packet_data, OggPacketSequence::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&OggPacketSequence::set_packet_data, OggPacketSequence::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ogg_packet_sequence_class_get_packet_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&OggPacketSequence::get_packet_data, OggPacketSequence::__class_id, ctx, this_val, argv);
 };
 static JSValue ogg_packet_sequence_class_set_packet_granule_positions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&OggPacketSequence::set_packet_granule_positions, OggPacketSequence::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&OggPacketSequence::set_packet_granule_positions, OggPacketSequence::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ogg_packet_sequence_class_get_packet_granule_positions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&OggPacketSequence::get_packet_granule_positions, OggPacketSequence::__class_id, ctx, this_val, argv);
 };
 static JSValue ogg_packet_sequence_class_set_sampling_rate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&OggPacketSequence::set_sampling_rate, OggPacketSequence::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&OggPacketSequence::set_sampling_rate, OggPacketSequence::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ogg_packet_sequence_class_get_sampling_rate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

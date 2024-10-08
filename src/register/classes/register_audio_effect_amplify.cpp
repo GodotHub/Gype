@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/classes/audio_effect_amplify.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,7 +37,7 @@ static JSValue audio_effect_amplify_class_constructor(JSContext *ctx, JSValueCon
 	return obj;
 }
 static JSValue audio_effect_amplify_class_set_volume_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioEffectAmplify::set_volume_db, AudioEffectAmplify::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioEffectAmplify::set_volume_db, AudioEffectAmplify::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_amplify_class_get_volume_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/accept_dialog.hpp>
 #include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/confirmation_dialog.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -42,7 +41,7 @@ static JSValue confirmation_dialog_class_get_cancel_button(JSContext *ctx, JSVal
 	return call_builtin_method_ret(&ConfirmationDialog::get_cancel_button, ConfirmationDialog::__class_id, ctx, this_val, argv);
 };
 static JSValue confirmation_dialog_class_set_cancel_button_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ConfirmationDialog::set_cancel_button_text, ConfirmationDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ConfirmationDialog::set_cancel_button_text, ConfirmationDialog::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue confirmation_dialog_class_get_cancel_button_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

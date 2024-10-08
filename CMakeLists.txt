@@ -40,7 +40,7 @@ target_compile_features(${PROJECT_NAME}
 )
 
 target_compile_options(gype PUBLIC 
-	-Wall -Os -g -s
+	-Wall -O0 -g -s
 	-DDEBUG_ENABLED)
 
 set_target_properties(gype PROPERTIES 

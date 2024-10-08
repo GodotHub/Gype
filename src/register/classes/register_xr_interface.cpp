@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -47,7 +46,7 @@ static JSValue xr_interface_class_is_primary(JSContext *ctx, JSValueConst this_v
 	return call_builtin_method_ret(&XRInterface::is_primary, XRInterface::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_interface_class_set_primary(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRInterface::set_primary, XRInterface::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRInterface::set_primary, XRInterface::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_interface_class_is_initialized(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -57,7 +56,7 @@ static JSValue xr_interface_class_initialize(JSContext *ctx, JSValueConst this_v
 	return call_builtin_method_ret(&XRInterface::initialize, XRInterface::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_interface_class_uninitialize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRInterface::uninitialize, XRInterface::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRInterface::uninitialize, XRInterface::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_interface_class_get_system_info(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -73,7 +72,7 @@ static JSValue xr_interface_class_get_view_count(JSContext *ctx, JSValueConst th
 	return call_builtin_method_ret(&XRInterface::get_view_count, XRInterface::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_interface_class_trigger_haptic_pulse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRInterface::trigger_haptic_pulse, XRInterface::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRInterface::trigger_haptic_pulse, XRInterface::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_interface_class_supports_play_area_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -92,7 +91,7 @@ static JSValue xr_interface_class_get_anchor_detection_is_enabled(JSContext *ctx
 	return call_builtin_const_method_ret(&XRInterface::get_anchor_detection_is_enabled, XRInterface::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_interface_class_set_anchor_detection_is_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRInterface::set_anchor_detection_is_enabled, XRInterface::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRInterface::set_anchor_detection_is_enabled, XRInterface::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_interface_class_get_camera_feed_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -108,7 +107,7 @@ static JSValue xr_interface_class_start_passthrough(JSContext *ctx, JSValueConst
 	return call_builtin_method_ret(&XRInterface::start_passthrough, XRInterface::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_interface_class_stop_passthrough(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRInterface::stop_passthrough, XRInterface::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRInterface::stop_passthrough, XRInterface::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_interface_class_get_transform_for_view(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -7,7 +7,7 @@ file(GLOB_RECURSE SOURCE
 file(GLOB_RECURSE HEADERS 
 	${PROJECT_SOURCE_DIR}/include/*.h**)
 
-add_library(quickjs SHARED ${SOURCE})
+add_library(quickjs STATIC ${SOURCE})
 
 target_include_directories(quickjs 
     PUBLIC 
@@ -17,7 +17,7 @@ target_link_libraries(quickjs PUBLIC godot-cpp)
 
 target_compile_options(quickjs 
     PRIVATE 
-        -Os -g -s)
+        -O0 -g -s)
 
 target_compile_features(${PROJECT_NAME}
 	PRIVATE

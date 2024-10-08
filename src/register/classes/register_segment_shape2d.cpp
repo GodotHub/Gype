@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/segment_shape2d.hpp>
 #include <godot_cpp/classes/shape2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,14 +37,14 @@ static JSValue segment_shape2d_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue segment_shape2d_class_set_a(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SegmentShape2D::set_a, SegmentShape2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SegmentShape2D::set_a, SegmentShape2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue segment_shape2d_class_get_a(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SegmentShape2D::get_a, SegmentShape2D::__class_id, ctx, this_val, argv);
 };
 static JSValue segment_shape2d_class_set_b(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SegmentShape2D::set_b, SegmentShape2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SegmentShape2D::set_b, SegmentShape2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue segment_shape2d_class_get_b(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

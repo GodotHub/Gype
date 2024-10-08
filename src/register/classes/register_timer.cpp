@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/timer.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,36 +37,36 @@ static JSValue timer_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	return obj;
 }
 static JSValue timer_class_set_wait_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Timer::set_wait_time, Timer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Timer::set_wait_time, Timer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue timer_class_get_wait_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Timer::get_wait_time, Timer::__class_id, ctx, this_val, argv);
 };
 static JSValue timer_class_set_one_shot(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Timer::set_one_shot, Timer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Timer::set_one_shot, Timer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue timer_class_is_one_shot(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Timer::is_one_shot, Timer::__class_id, ctx, this_val, argv);
 };
 static JSValue timer_class_set_autostart(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Timer::set_autostart, Timer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Timer::set_autostart, Timer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue timer_class_has_autostart(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Timer::has_autostart, Timer::__class_id, ctx, this_val, argv);
 };
 static JSValue timer_class_start(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Timer::start, Timer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Timer::start, Timer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue timer_class_stop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Timer::stop, Timer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Timer::stop, Timer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue timer_class_set_paused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Timer::set_paused, Timer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Timer::set_paused, Timer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue timer_class_is_paused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -80,7 +79,7 @@ static JSValue timer_class_get_time_left(JSContext *ctx, JSValueConst this_val, 
 	return call_builtin_const_method_ret(&Timer::get_time_left, Timer::__class_id, ctx, this_val, argv);
 };
 static JSValue timer_class_set_timer_process_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Timer::set_timer_process_callback, Timer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Timer::set_timer_process_callback, Timer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue timer_class_get_timer_process_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

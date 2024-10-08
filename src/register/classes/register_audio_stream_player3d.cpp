@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/audio_stream.hpp>
-#include <godot_cpp/classes/audio_stream_playback.hpp>
-#include <godot_cpp/classes/audio_stream_player3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/audio_stream_player3d.hpp>
+#include <godot_cpp/classes/audio_stream_playback.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -40,50 +39,50 @@ static JSValue audio_stream_player3d_class_constructor(JSContext *ctx, JSValueCo
 	return obj;
 }
 static JSValue audio_stream_player3d_class_set_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer3D::set_stream, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer3D::set_stream, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player3d_class_get_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer3D::get_stream, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player3d_class_set_volume_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer3D::set_volume_db, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer3D::set_volume_db, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player3d_class_get_volume_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer3D::get_volume_db, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player3d_class_set_unit_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer3D::set_unit_size, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer3D::set_unit_size, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player3d_class_get_unit_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer3D::get_unit_size, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player3d_class_set_max_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer3D::set_max_db, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer3D::set_max_db, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player3d_class_get_max_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer3D::get_max_db, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player3d_class_set_pitch_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer3D::set_pitch_scale, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer3D::set_pitch_scale, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player3d_class_get_pitch_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer3D::get_pitch_scale, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player3d_class_play(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer3D::play, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer3D::play, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player3d_class_seek(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer3D::seek, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer3D::seek, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player3d_class_stop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer3D::stop, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer3D::stop, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player3d_class_is_playing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -93,98 +92,98 @@ static JSValue audio_stream_player3d_class_get_playback_position(JSContext *ctx,
 	return call_builtin_method_ret(&AudioStreamPlayer3D::get_playback_position, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player3d_class_set_bus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer3D::set_bus, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer3D::set_bus, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player3d_class_get_bus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer3D::get_bus, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player3d_class_set_autoplay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer3D::set_autoplay, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer3D::set_autoplay, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player3d_class_is_autoplay_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer3D::is_autoplay_enabled, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player3d_class_set_max_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer3D::set_max_distance, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer3D::set_max_distance, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player3d_class_get_max_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer3D::get_max_distance, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player3d_class_set_area_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer3D::set_area_mask, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer3D::set_area_mask, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player3d_class_get_area_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer3D::get_area_mask, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player3d_class_set_emission_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer3D::set_emission_angle, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer3D::set_emission_angle, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player3d_class_get_emission_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer3D::get_emission_angle, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player3d_class_set_emission_angle_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer3D::set_emission_angle_enabled, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer3D::set_emission_angle_enabled, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player3d_class_is_emission_angle_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer3D::is_emission_angle_enabled, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player3d_class_set_emission_angle_filter_attenuation_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer3D::set_emission_angle_filter_attenuation_db, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer3D::set_emission_angle_filter_attenuation_db, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player3d_class_get_emission_angle_filter_attenuation_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer3D::get_emission_angle_filter_attenuation_db, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player3d_class_set_attenuation_filter_cutoff_hz(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer3D::set_attenuation_filter_cutoff_hz, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer3D::set_attenuation_filter_cutoff_hz, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player3d_class_get_attenuation_filter_cutoff_hz(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer3D::get_attenuation_filter_cutoff_hz, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player3d_class_set_attenuation_filter_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer3D::set_attenuation_filter_db, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer3D::set_attenuation_filter_db, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player3d_class_get_attenuation_filter_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer3D::get_attenuation_filter_db, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player3d_class_set_attenuation_model(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer3D::set_attenuation_model, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer3D::set_attenuation_model, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player3d_class_get_attenuation_model(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer3D::get_attenuation_model, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player3d_class_set_doppler_tracking(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer3D::set_doppler_tracking, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer3D::set_doppler_tracking, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player3d_class_get_doppler_tracking(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer3D::get_doppler_tracking, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player3d_class_set_stream_paused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer3D::set_stream_paused, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer3D::set_stream_paused, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player3d_class_get_stream_paused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer3D::get_stream_paused, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player3d_class_set_max_polyphony(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer3D::set_max_polyphony, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer3D::set_max_polyphony, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player3d_class_get_max_polyphony(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer3D::get_max_polyphony, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player3d_class_set_panning_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer3D::set_panning_strength, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer3D::set_panning_strength, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player3d_class_get_panning_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -197,7 +196,7 @@ static JSValue audio_stream_player3d_class_get_stream_playback(JSContext *ctx, J
 	return call_builtin_method_ret(&AudioStreamPlayer3D::get_stream_playback, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player3d_class_set_playback_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer3D::set_playback_type, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer3D::set_playback_type, AudioStreamPlayer3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player3d_class_get_playback_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

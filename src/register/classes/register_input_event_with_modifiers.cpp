@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/input_event_from_window.hpp>
 #include <godot_cpp/classes/input_event_with_modifiers.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,7 +37,7 @@ static JSValue input_event_with_modifiers_class_constructor(JSContext *ctx, JSVa
 	return obj;
 }
 static JSValue input_event_with_modifiers_class_set_command_or_control_autoremap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&InputEventWithModifiers::set_command_or_control_autoremap, InputEventWithModifiers::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&InputEventWithModifiers::set_command_or_control_autoremap, InputEventWithModifiers::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_with_modifiers_class_is_command_or_control_autoremap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -48,28 +47,28 @@ static JSValue input_event_with_modifiers_class_is_command_or_control_pressed(JS
 	return call_builtin_const_method_ret(&InputEventWithModifiers::is_command_or_control_pressed, InputEventWithModifiers::__class_id, ctx, this_val, argv);
 };
 static JSValue input_event_with_modifiers_class_set_alt_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&InputEventWithModifiers::set_alt_pressed, InputEventWithModifiers::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&InputEventWithModifiers::set_alt_pressed, InputEventWithModifiers::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_with_modifiers_class_is_alt_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&InputEventWithModifiers::is_alt_pressed, InputEventWithModifiers::__class_id, ctx, this_val, argv);
 };
 static JSValue input_event_with_modifiers_class_set_shift_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&InputEventWithModifiers::set_shift_pressed, InputEventWithModifiers::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&InputEventWithModifiers::set_shift_pressed, InputEventWithModifiers::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_with_modifiers_class_is_shift_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&InputEventWithModifiers::is_shift_pressed, InputEventWithModifiers::__class_id, ctx, this_val, argv);
 };
 static JSValue input_event_with_modifiers_class_set_ctrl_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&InputEventWithModifiers::set_ctrl_pressed, InputEventWithModifiers::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&InputEventWithModifiers::set_ctrl_pressed, InputEventWithModifiers::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_with_modifiers_class_is_ctrl_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&InputEventWithModifiers::is_ctrl_pressed, InputEventWithModifiers::__class_id, ctx, this_val, argv);
 };
 static JSValue input_event_with_modifiers_class_set_meta_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&InputEventWithModifiers::set_meta_pressed, InputEventWithModifiers::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&InputEventWithModifiers::set_meta_pressed, InputEventWithModifiers::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_with_modifiers_class_is_meta_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

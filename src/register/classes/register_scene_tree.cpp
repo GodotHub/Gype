@@ -1,21 +1,22 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/main_loop.hpp>
-#include <godot_cpp/classes/multiplayer_api.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/packed_scene.hpp>
-#include <godot_cpp/classes/scene_tree.hpp>
 #include <godot_cpp/classes/scene_tree_timer.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/tween.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/multiplayer_api.hpp>
+#include <godot_cpp/classes/tween.hpp>
+#include <godot_cpp/classes/scene_tree.hpp>
+#include <godot_cpp/classes/main_loop.hpp>
 #include <godot_cpp/classes/window.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -54,46 +55,46 @@ static JSValue scene_tree_class_is_auto_accept_quit(JSContext *ctx, JSValueConst
 	return call_builtin_const_method_ret(&SceneTree::is_auto_accept_quit, SceneTree::__class_id, ctx, this_val, argv);
 };
 static JSValue scene_tree_class_set_auto_accept_quit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneTree::set_auto_accept_quit, SceneTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneTree::set_auto_accept_quit, SceneTree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_is_quit_on_go_back(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SceneTree::is_quit_on_go_back, SceneTree::__class_id, ctx, this_val, argv);
 };
 static JSValue scene_tree_class_set_quit_on_go_back(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneTree::set_quit_on_go_back, SceneTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneTree::set_quit_on_go_back, SceneTree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_set_debug_collisions_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneTree::set_debug_collisions_hint, SceneTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneTree::set_debug_collisions_hint, SceneTree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_is_debugging_collisions_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SceneTree::is_debugging_collisions_hint, SceneTree::__class_id, ctx, this_val, argv);
 };
 static JSValue scene_tree_class_set_debug_paths_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneTree::set_debug_paths_hint, SceneTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneTree::set_debug_paths_hint, SceneTree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_is_debugging_paths_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SceneTree::is_debugging_paths_hint, SceneTree::__class_id, ctx, this_val, argv);
 };
 static JSValue scene_tree_class_set_debug_navigation_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneTree::set_debug_navigation_hint, SceneTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneTree::set_debug_navigation_hint, SceneTree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_is_debugging_navigation_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SceneTree::is_debugging_navigation_hint, SceneTree::__class_id, ctx, this_val, argv);
 };
 static JSValue scene_tree_class_set_edited_scene_root(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneTree::set_edited_scene_root, SceneTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneTree::set_edited_scene_root, SceneTree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_get_edited_scene_root(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SceneTree::get_edited_scene_root, SceneTree::__class_id, ctx, this_val, argv);
 };
 static JSValue scene_tree_class_set_pause(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneTree::set_pause, SceneTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneTree::set_pause, SceneTree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_is_paused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -115,34 +116,34 @@ static JSValue scene_tree_class_get_frame(JSContext *ctx, JSValueConst this_val,
 	return call_builtin_const_method_ret(&SceneTree::get_frame, SceneTree::__class_id, ctx, this_val, argv);
 };
 static JSValue scene_tree_class_quit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneTree::quit, SceneTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneTree::quit, SceneTree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_set_physics_interpolation_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneTree::set_physics_interpolation_enabled, SceneTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneTree::set_physics_interpolation_enabled, SceneTree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_is_physics_interpolation_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SceneTree::is_physics_interpolation_enabled, SceneTree::__class_id, ctx, this_val, argv);
 };
 static JSValue scene_tree_class_queue_delete(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneTree::queue_delete, SceneTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneTree::queue_delete, SceneTree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_notify_group_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneTree::notify_group_flags, SceneTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneTree::notify_group_flags, SceneTree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_set_group_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneTree::set_group_flags, SceneTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneTree::set_group_flags, SceneTree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_notify_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneTree::notify_group, SceneTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneTree::notify_group, SceneTree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_set_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneTree::set_group, SceneTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneTree::set_group, SceneTree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_get_nodes_in_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -155,7 +156,7 @@ static JSValue scene_tree_class_get_node_count_in_group(JSContext *ctx, JSValueC
 	return call_builtin_const_method_ret(&SceneTree::get_node_count_in_group, SceneTree::__class_id, ctx, this_val, argv);
 };
 static JSValue scene_tree_class_set_current_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneTree::set_current_scene, SceneTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneTree::set_current_scene, SceneTree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_get_current_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -171,29 +172,29 @@ static JSValue scene_tree_class_reload_current_scene(JSContext *ctx, JSValueCons
 	return call_builtin_method_ret(&SceneTree::reload_current_scene, SceneTree::__class_id, ctx, this_val, argv);
 };
 static JSValue scene_tree_class_unload_current_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneTree::unload_current_scene, SceneTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneTree::unload_current_scene, SceneTree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_set_multiplayer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneTree::set_multiplayer, SceneTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneTree::set_multiplayer, SceneTree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_get_multiplayer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SceneTree::get_multiplayer, SceneTree::__class_id, ctx, this_val, argv);
 };
 static JSValue scene_tree_class_set_multiplayer_poll_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneTree::set_multiplayer_poll_enabled, SceneTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneTree::set_multiplayer_poll_enabled, SceneTree::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_is_multiplayer_poll_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SceneTree::is_multiplayer_poll_enabled, SceneTree::__class_id, ctx, this_val, argv);
 };
 static JSValue scene_tree_class_call_group_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_vararg_method(&SceneTree::js_call_group_flags, SceneTree::__class_id, ctx, this_val, argc, argv);
+    call_builtin_vararg_method_no_ret(&SceneTree::js_call_group_flags, SceneTree::__class_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue scene_tree_class_call_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_vararg_method(&SceneTree::js_call_group, SceneTree::__class_id, ctx, this_val, argc, argv);
+    call_builtin_vararg_method_no_ret(&SceneTree::js_call_group, SceneTree::__class_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static const JSCFunctionListEntry scene_tree_class_proto_funcs[] = {

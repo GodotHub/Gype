@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/gltf_texture.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -41,14 +40,14 @@ static JSValue gltf_texture_class_get_src_image(JSContext *ctx, JSValueConst thi
 	return call_builtin_const_method_ret(&GLTFTexture::get_src_image, GLTFTexture::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_texture_class_set_src_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFTexture::set_src_image, GLTFTexture::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFTexture::set_src_image, GLTFTexture::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_texture_class_get_sampler(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&GLTFTexture::get_sampler, GLTFTexture::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_texture_class_set_sampler(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFTexture::set_sampler, GLTFTexture::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFTexture::set_sampler, GLTFTexture::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry gltf_texture_class_proto_funcs[] = {

@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/physics_ray_query_parameters2d.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/physics_ray_query_parameters2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,49 +37,49 @@ static JSValue physics_ray_query_parameters2d_class_constructor(JSContext *ctx, 
 	return obj;
 }
 static JSValue physics_ray_query_parameters2d_class_set_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsRayQueryParameters2D::set_from, PhysicsRayQueryParameters2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsRayQueryParameters2D::set_from, PhysicsRayQueryParameters2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_ray_query_parameters2d_class_get_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicsRayQueryParameters2D::get_from, PhysicsRayQueryParameters2D::__class_id, ctx, this_val, argv);
 };
 static JSValue physics_ray_query_parameters2d_class_set_to(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsRayQueryParameters2D::set_to, PhysicsRayQueryParameters2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsRayQueryParameters2D::set_to, PhysicsRayQueryParameters2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_ray_query_parameters2d_class_get_to(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicsRayQueryParameters2D::get_to, PhysicsRayQueryParameters2D::__class_id, ctx, this_val, argv);
 };
 static JSValue physics_ray_query_parameters2d_class_set_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsRayQueryParameters2D::set_collision_mask, PhysicsRayQueryParameters2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsRayQueryParameters2D::set_collision_mask, PhysicsRayQueryParameters2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_ray_query_parameters2d_class_get_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicsRayQueryParameters2D::get_collision_mask, PhysicsRayQueryParameters2D::__class_id, ctx, this_val, argv);
 };
 static JSValue physics_ray_query_parameters2d_class_set_exclude(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsRayQueryParameters2D::set_exclude, PhysicsRayQueryParameters2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsRayQueryParameters2D::set_exclude, PhysicsRayQueryParameters2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_ray_query_parameters2d_class_get_exclude(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicsRayQueryParameters2D::get_exclude, PhysicsRayQueryParameters2D::__class_id, ctx, this_val, argv);
 };
 static JSValue physics_ray_query_parameters2d_class_set_collide_with_bodies(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsRayQueryParameters2D::set_collide_with_bodies, PhysicsRayQueryParameters2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsRayQueryParameters2D::set_collide_with_bodies, PhysicsRayQueryParameters2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_ray_query_parameters2d_class_is_collide_with_bodies_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicsRayQueryParameters2D::is_collide_with_bodies_enabled, PhysicsRayQueryParameters2D::__class_id, ctx, this_val, argv);
 };
 static JSValue physics_ray_query_parameters2d_class_set_collide_with_areas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsRayQueryParameters2D::set_collide_with_areas, PhysicsRayQueryParameters2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsRayQueryParameters2D::set_collide_with_areas, PhysicsRayQueryParameters2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_ray_query_parameters2d_class_is_collide_with_areas_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicsRayQueryParameters2D::is_collide_with_areas_enabled, PhysicsRayQueryParameters2D::__class_id, ctx, this_val, argv);
 };
 static JSValue physics_ray_query_parameters2d_class_set_hit_from_inside(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsRayQueryParameters2D::set_hit_from_inside, PhysicsRayQueryParameters2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsRayQueryParameters2D::set_hit_from_inside, PhysicsRayQueryParameters2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_ray_query_parameters2d_class_is_hit_from_inside_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

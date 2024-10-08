@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/http_client.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/stream_peer.hpp>
+#include <godot_cpp/classes/http_client.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
+#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -43,7 +42,7 @@ static JSValue http_client_class_connect_to_host(JSContext *ctx, JSValueConst th
 	return call_builtin_method_ret(&HTTPClient::connect_to_host, HTTPClient::__class_id, ctx, this_val, argv);
 };
 static JSValue http_client_class_set_connection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&HTTPClient::set_connection, HTTPClient::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&HTTPClient::set_connection, HTTPClient::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue http_client_class_get_connection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -56,7 +55,7 @@ static JSValue http_client_class_request(JSContext *ctx, JSValueConst this_val, 
 	return call_builtin_method_ret(&HTTPClient::request, HTTPClient::__class_id, ctx, this_val, argv);
 };
 static JSValue http_client_class_close(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&HTTPClient::close, HTTPClient::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&HTTPClient::close, HTTPClient::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue http_client_class_has_response(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -81,14 +80,14 @@ static JSValue http_client_class_read_response_body_chunk(JSContext *ctx, JSValu
 	return call_builtin_method_ret(&HTTPClient::read_response_body_chunk, HTTPClient::__class_id, ctx, this_val, argv);
 };
 static JSValue http_client_class_set_read_chunk_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&HTTPClient::set_read_chunk_size, HTTPClient::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&HTTPClient::set_read_chunk_size, HTTPClient::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue http_client_class_get_read_chunk_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&HTTPClient::get_read_chunk_size, HTTPClient::__class_id, ctx, this_val, argv);
 };
 static JSValue http_client_class_set_blocking_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&HTTPClient::set_blocking_mode, HTTPClient::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&HTTPClient::set_blocking_mode, HTTPClient::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue http_client_class_is_blocking_mode_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -101,11 +100,11 @@ static JSValue http_client_class_poll(JSContext *ctx, JSValueConst this_val, int
 	return call_builtin_method_ret(&HTTPClient::poll, HTTPClient::__class_id, ctx, this_val, argv);
 };
 static JSValue http_client_class_set_http_proxy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&HTTPClient::set_http_proxy, HTTPClient::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&HTTPClient::set_http_proxy, HTTPClient::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue http_client_class_set_https_proxy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&HTTPClient::set_https_proxy, HTTPClient::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&HTTPClient::set_https_proxy, HTTPClient::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue http_client_class_query_string_from_dict(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

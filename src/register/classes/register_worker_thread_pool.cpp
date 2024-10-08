@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/object.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/worker_thread_pool.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -56,7 +55,7 @@ static JSValue worker_thread_pool_class_get_group_processed_element_count(JSCont
 	return call_builtin_const_method_ret(&WorkerThreadPool::get_group_processed_element_count, WorkerThreadPool::__class_id, ctx, this_val, argv);
 };
 static JSValue worker_thread_pool_class_wait_for_group_task_completion(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&WorkerThreadPool::wait_for_group_task_completion, WorkerThreadPool::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&WorkerThreadPool::wait_for_group_task_completion, WorkerThreadPool::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry worker_thread_pool_class_proto_funcs[] = {

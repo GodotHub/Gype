@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/line_edit.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/range.hpp>
+#include <godot_cpp/classes/line_edit.hpp>
 #include <godot_cpp/classes/spin_box.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,32 +38,32 @@ static JSValue spin_box_class_constructor(JSContext *ctx, JSValueConst new_targe
 	return obj;
 }
 static JSValue spin_box_class_set_horizontal_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SpinBox::set_horizontal_alignment, SpinBox::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SpinBox::set_horizontal_alignment, SpinBox::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue spin_box_class_get_horizontal_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SpinBox::get_horizontal_alignment, SpinBox::__class_id, ctx, this_val, argv);
 };
 static JSValue spin_box_class_set_suffix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SpinBox::set_suffix, SpinBox::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SpinBox::set_suffix, SpinBox::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue spin_box_class_get_suffix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SpinBox::get_suffix, SpinBox::__class_id, ctx, this_val, argv);
 };
 static JSValue spin_box_class_set_prefix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SpinBox::set_prefix, SpinBox::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SpinBox::set_prefix, SpinBox::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue spin_box_class_get_prefix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SpinBox::get_prefix, SpinBox::__class_id, ctx, this_val, argv);
 };
 static JSValue spin_box_class_set_editable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SpinBox::set_editable, SpinBox::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SpinBox::set_editable, SpinBox::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue spin_box_class_set_custom_arrow_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SpinBox::set_custom_arrow_step, SpinBox::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SpinBox::set_custom_arrow_step, SpinBox::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue spin_box_class_get_custom_arrow_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -74,21 +73,21 @@ static JSValue spin_box_class_is_editable(JSContext *ctx, JSValueConst this_val,
 	return call_builtin_const_method_ret(&SpinBox::is_editable, SpinBox::__class_id, ctx, this_val, argv);
 };
 static JSValue spin_box_class_set_update_on_text_changed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SpinBox::set_update_on_text_changed, SpinBox::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SpinBox::set_update_on_text_changed, SpinBox::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue spin_box_class_get_update_on_text_changed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SpinBox::get_update_on_text_changed, SpinBox::__class_id, ctx, this_val, argv);
 };
 static JSValue spin_box_class_set_select_all_on_focus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SpinBox::set_select_all_on_focus, SpinBox::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SpinBox::set_select_all_on_focus, SpinBox::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue spin_box_class_is_select_all_on_focus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SpinBox::is_select_all_on_focus, SpinBox::__class_id, ctx, this_val, argv);
 };
 static JSValue spin_box_class_apply(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SpinBox::apply, SpinBox::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SpinBox::apply, SpinBox::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue spin_box_class_get_line_edit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

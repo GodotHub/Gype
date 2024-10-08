@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/xr_hand_tracker.hpp>
 #include <godot_cpp/classes/xr_positional_tracker.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,49 +37,49 @@ static JSValue xr_hand_tracker_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue xr_hand_tracker_class_set_has_tracking_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRHandTracker::set_has_tracking_data, XRHandTracker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRHandTracker::set_has_tracking_data, XRHandTracker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_hand_tracker_class_get_has_tracking_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&XRHandTracker::get_has_tracking_data, XRHandTracker::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_hand_tracker_class_set_hand_tracking_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRHandTracker::set_hand_tracking_source, XRHandTracker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRHandTracker::set_hand_tracking_source, XRHandTracker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_hand_tracker_class_get_hand_tracking_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&XRHandTracker::get_hand_tracking_source, XRHandTracker::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_hand_tracker_class_set_hand_joint_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRHandTracker::set_hand_joint_flags, XRHandTracker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRHandTracker::set_hand_joint_flags, XRHandTracker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_hand_tracker_class_get_hand_joint_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&XRHandTracker::get_hand_joint_flags, XRHandTracker::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_hand_tracker_class_set_hand_joint_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRHandTracker::set_hand_joint_transform, XRHandTracker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRHandTracker::set_hand_joint_transform, XRHandTracker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_hand_tracker_class_get_hand_joint_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&XRHandTracker::get_hand_joint_transform, XRHandTracker::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_hand_tracker_class_set_hand_joint_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRHandTracker::set_hand_joint_radius, XRHandTracker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRHandTracker::set_hand_joint_radius, XRHandTracker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_hand_tracker_class_get_hand_joint_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&XRHandTracker::get_hand_joint_radius, XRHandTracker::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_hand_tracker_class_set_hand_joint_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRHandTracker::set_hand_joint_linear_velocity, XRHandTracker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRHandTracker::set_hand_joint_linear_velocity, XRHandTracker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_hand_tracker_class_get_hand_joint_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&XRHandTracker::get_hand_joint_linear_velocity, XRHandTracker::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_hand_tracker_class_set_hand_joint_angular_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRHandTracker::set_hand_joint_angular_velocity, XRHandTracker::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRHandTracker::set_hand_joint_angular_velocity, XRHandTracker::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_hand_tracker_class_get_hand_joint_angular_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

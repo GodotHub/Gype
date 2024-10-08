@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/primitive_mesh.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/prism_mesh.hpp>
+#include <godot_cpp/classes/primitive_mesh.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,35 +37,35 @@ static JSValue prism_mesh_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue prism_mesh_class_set_left_to_right(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PrismMesh::set_left_to_right, PrismMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PrismMesh::set_left_to_right, PrismMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue prism_mesh_class_get_left_to_right(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PrismMesh::get_left_to_right, PrismMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue prism_mesh_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PrismMesh::set_size, PrismMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PrismMesh::set_size, PrismMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue prism_mesh_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PrismMesh::get_size, PrismMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue prism_mesh_class_set_subdivide_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PrismMesh::set_subdivide_width, PrismMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PrismMesh::set_subdivide_width, PrismMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue prism_mesh_class_get_subdivide_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PrismMesh::get_subdivide_width, PrismMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue prism_mesh_class_set_subdivide_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PrismMesh::set_subdivide_height, PrismMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PrismMesh::set_subdivide_height, PrismMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue prism_mesh_class_get_subdivide_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PrismMesh::get_subdivide_height, PrismMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue prism_mesh_class_set_subdivide_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PrismMesh::set_subdivide_depth, PrismMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PrismMesh::set_subdivide_depth, PrismMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue prism_mesh_class_get_subdivide_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

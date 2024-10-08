@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/editor_resource_tooltip_plugin.hpp>
-#include <godot_cpp/classes/file_system_dock.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/v_box_container.hpp>
+#include <godot_cpp/classes/file_system_dock.hpp>
+#include <godot_cpp/classes/editor_resource_tooltip_plugin.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,15 +38,15 @@ static JSValue file_system_dock_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue file_system_dock_class_navigate_to_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FileSystemDock::navigate_to_path, FileSystemDock::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FileSystemDock::navigate_to_path, FileSystemDock::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_system_dock_class_add_resource_tooltip_plugin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FileSystemDock::add_resource_tooltip_plugin, FileSystemDock::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FileSystemDock::add_resource_tooltip_plugin, FileSystemDock::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_system_dock_class_remove_resource_tooltip_plugin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&FileSystemDock::remove_resource_tooltip_plugin, FileSystemDock::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&FileSystemDock::remove_resource_tooltip_plugin, FileSystemDock::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry file_system_dock_class_proto_funcs[] = {

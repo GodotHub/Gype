@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/gltf_mesh.hpp>
-#include <godot_cpp/classes/importer_mesh.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/gltf_mesh.hpp>
+#include <godot_cpp/classes/importer_mesh.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -43,35 +42,35 @@ static JSValue gltf_mesh_class_get_original_name(JSContext *ctx, JSValueConst th
 	return call_builtin_method_ret(&GLTFMesh::get_original_name, GLTFMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_mesh_class_set_original_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFMesh::set_original_name, GLTFMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFMesh::set_original_name, GLTFMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_mesh_class_get_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&GLTFMesh::get_mesh, GLTFMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_mesh_class_set_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFMesh::set_mesh, GLTFMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFMesh::set_mesh, GLTFMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_mesh_class_get_blend_weights(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&GLTFMesh::get_blend_weights, GLTFMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_mesh_class_set_blend_weights(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFMesh::set_blend_weights, GLTFMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFMesh::set_blend_weights, GLTFMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_mesh_class_get_instance_materials(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&GLTFMesh::get_instance_materials, GLTFMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_mesh_class_set_instance_materials(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFMesh::set_instance_materials, GLTFMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFMesh::set_instance_materials, GLTFMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_mesh_class_get_additional_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&GLTFMesh::get_additional_data, GLTFMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_mesh_class_set_additional_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFMesh::set_additional_data, GLTFMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFMesh::set_additional_data, GLTFMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry gltf_mesh_class_proto_funcs[] = {

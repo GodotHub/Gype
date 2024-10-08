@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/tile_data.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/tile_set_atlas_source.hpp>
+#include <godot_cpp/classes/tile_data.hpp>
 #include <godot_cpp/classes/tile_set_source.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -40,50 +39,50 @@ static JSValue tile_set_atlas_source_class_constructor(JSContext *ctx, JSValueCo
 	return obj;
 }
 static JSValue tile_set_atlas_source_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileSetAtlasSource::set_texture, TileSetAtlasSource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileSetAtlasSource::set_texture, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_atlas_source_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TileSetAtlasSource::get_texture, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_set_atlas_source_class_set_margins(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileSetAtlasSource::set_margins, TileSetAtlasSource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileSetAtlasSource::set_margins, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_atlas_source_class_get_margins(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TileSetAtlasSource::get_margins, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_set_atlas_source_class_set_separation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileSetAtlasSource::set_separation, TileSetAtlasSource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileSetAtlasSource::set_separation, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_atlas_source_class_get_separation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TileSetAtlasSource::get_separation, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_set_atlas_source_class_set_texture_region_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileSetAtlasSource::set_texture_region_size, TileSetAtlasSource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileSetAtlasSource::set_texture_region_size, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_atlas_source_class_get_texture_region_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TileSetAtlasSource::get_texture_region_size, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_set_atlas_source_class_set_use_texture_padding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileSetAtlasSource::set_use_texture_padding, TileSetAtlasSource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileSetAtlasSource::set_use_texture_padding, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_atlas_source_class_get_use_texture_padding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TileSetAtlasSource::get_use_texture_padding, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_set_atlas_source_class_create_tile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileSetAtlasSource::create_tile, TileSetAtlasSource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileSetAtlasSource::create_tile, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_atlas_source_class_remove_tile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileSetAtlasSource::remove_tile, TileSetAtlasSource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileSetAtlasSource::remove_tile, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_atlas_source_class_move_tile_in_atlas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileSetAtlasSource::move_tile_in_atlas, TileSetAtlasSource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileSetAtlasSource::move_tile_in_atlas, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_atlas_source_class_get_tile_size_in_atlas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -102,46 +101,46 @@ static JSValue tile_set_atlas_source_class_has_tiles_outside_texture(JSContext *
 	return call_builtin_const_method_ret(&TileSetAtlasSource::has_tiles_outside_texture, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_set_atlas_source_class_clear_tiles_outside_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileSetAtlasSource::clear_tiles_outside_texture, TileSetAtlasSource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileSetAtlasSource::clear_tiles_outside_texture, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_atlas_source_class_set_tile_animation_columns(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileSetAtlasSource::set_tile_animation_columns, TileSetAtlasSource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileSetAtlasSource::set_tile_animation_columns, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_atlas_source_class_get_tile_animation_columns(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TileSetAtlasSource::get_tile_animation_columns, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_set_atlas_source_class_set_tile_animation_separation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileSetAtlasSource::set_tile_animation_separation, TileSetAtlasSource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileSetAtlasSource::set_tile_animation_separation, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_atlas_source_class_get_tile_animation_separation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TileSetAtlasSource::get_tile_animation_separation, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_set_atlas_source_class_set_tile_animation_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileSetAtlasSource::set_tile_animation_speed, TileSetAtlasSource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileSetAtlasSource::set_tile_animation_speed, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_atlas_source_class_get_tile_animation_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TileSetAtlasSource::get_tile_animation_speed, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_set_atlas_source_class_set_tile_animation_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileSetAtlasSource::set_tile_animation_mode, TileSetAtlasSource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileSetAtlasSource::set_tile_animation_mode, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_atlas_source_class_get_tile_animation_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TileSetAtlasSource::get_tile_animation_mode, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_set_atlas_source_class_set_tile_animation_frames_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileSetAtlasSource::set_tile_animation_frames_count, TileSetAtlasSource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileSetAtlasSource::set_tile_animation_frames_count, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_atlas_source_class_get_tile_animation_frames_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TileSetAtlasSource::get_tile_animation_frames_count, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_set_atlas_source_class_set_tile_animation_frame_duration(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileSetAtlasSource::set_tile_animation_frame_duration, TileSetAtlasSource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileSetAtlasSource::set_tile_animation_frame_duration, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_atlas_source_class_get_tile_animation_frame_duration(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -154,11 +153,11 @@ static JSValue tile_set_atlas_source_class_create_alternative_tile(JSContext *ct
 	return call_builtin_method_ret(&TileSetAtlasSource::create_alternative_tile, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 };
 static JSValue tile_set_atlas_source_class_remove_alternative_tile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileSetAtlasSource::remove_alternative_tile, TileSetAtlasSource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileSetAtlasSource::remove_alternative_tile, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_atlas_source_class_set_alternative_tile_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TileSetAtlasSource::set_alternative_tile_id, TileSetAtlasSource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileSetAtlasSource::set_alternative_tile_id, TileSetAtlasSource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_atlas_source_class_get_next_alternative_tile_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

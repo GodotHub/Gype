@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/label_settings.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/label_settings.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,63 +38,63 @@ static JSValue label_settings_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue label_settings_class_set_line_spacing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&LabelSettings::set_line_spacing, LabelSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&LabelSettings::set_line_spacing, LabelSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_settings_class_get_line_spacing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&LabelSettings::get_line_spacing, LabelSettings::__class_id, ctx, this_val, argv);
 };
 static JSValue label_settings_class_set_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&LabelSettings::set_font, LabelSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&LabelSettings::set_font, LabelSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_settings_class_get_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&LabelSettings::get_font, LabelSettings::__class_id, ctx, this_val, argv);
 };
 static JSValue label_settings_class_set_font_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&LabelSettings::set_font_size, LabelSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&LabelSettings::set_font_size, LabelSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_settings_class_get_font_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&LabelSettings::get_font_size, LabelSettings::__class_id, ctx, this_val, argv);
 };
 static JSValue label_settings_class_set_font_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&LabelSettings::set_font_color, LabelSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&LabelSettings::set_font_color, LabelSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_settings_class_get_font_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&LabelSettings::get_font_color, LabelSettings::__class_id, ctx, this_val, argv);
 };
 static JSValue label_settings_class_set_outline_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&LabelSettings::set_outline_size, LabelSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&LabelSettings::set_outline_size, LabelSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_settings_class_get_outline_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&LabelSettings::get_outline_size, LabelSettings::__class_id, ctx, this_val, argv);
 };
 static JSValue label_settings_class_set_outline_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&LabelSettings::set_outline_color, LabelSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&LabelSettings::set_outline_color, LabelSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_settings_class_get_outline_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&LabelSettings::get_outline_color, LabelSettings::__class_id, ctx, this_val, argv);
 };
 static JSValue label_settings_class_set_shadow_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&LabelSettings::set_shadow_size, LabelSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&LabelSettings::set_shadow_size, LabelSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_settings_class_get_shadow_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&LabelSettings::get_shadow_size, LabelSettings::__class_id, ctx, this_val, argv);
 };
 static JSValue label_settings_class_set_shadow_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&LabelSettings::set_shadow_color, LabelSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&LabelSettings::set_shadow_color, LabelSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_settings_class_get_shadow_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&LabelSettings::get_shadow_color, LabelSettings::__class_id, ctx, this_val, argv);
 };
 static JSValue label_settings_class_set_shadow_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&LabelSettings::set_shadow_offset, LabelSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&LabelSettings::set_shadow_offset, LabelSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_settings_class_get_shadow_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

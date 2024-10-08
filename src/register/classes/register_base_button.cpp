@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/base_button.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/button_group.hpp>
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/shortcut.hpp>
+#include <godot_cpp/classes/base_button.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -40,49 +39,49 @@ static JSValue base_button_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue base_button_class_set_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&BaseButton::set_pressed, BaseButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&BaseButton::set_pressed, BaseButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_button_class_is_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&BaseButton::is_pressed, BaseButton::__class_id, ctx, this_val, argv);
 };
 static JSValue base_button_class_set_pressed_no_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&BaseButton::set_pressed_no_signal, BaseButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&BaseButton::set_pressed_no_signal, BaseButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_button_class_is_hovered(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&BaseButton::is_hovered, BaseButton::__class_id, ctx, this_val, argv);
 };
 static JSValue base_button_class_set_toggle_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&BaseButton::set_toggle_mode, BaseButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&BaseButton::set_toggle_mode, BaseButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_button_class_is_toggle_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&BaseButton::is_toggle_mode, BaseButton::__class_id, ctx, this_val, argv);
 };
 static JSValue base_button_class_set_shortcut_in_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&BaseButton::set_shortcut_in_tooltip, BaseButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&BaseButton::set_shortcut_in_tooltip, BaseButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_button_class_is_shortcut_in_tooltip_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&BaseButton::is_shortcut_in_tooltip_enabled, BaseButton::__class_id, ctx, this_val, argv);
 };
 static JSValue base_button_class_set_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&BaseButton::set_disabled, BaseButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&BaseButton::set_disabled, BaseButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_button_class_is_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&BaseButton::is_disabled, BaseButton::__class_id, ctx, this_val, argv);
 };
 static JSValue base_button_class_set_action_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&BaseButton::set_action_mode, BaseButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&BaseButton::set_action_mode, BaseButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_button_class_get_action_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&BaseButton::get_action_mode, BaseButton::__class_id, ctx, this_val, argv);
 };
 static JSValue base_button_class_set_button_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&BaseButton::set_button_mask, BaseButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&BaseButton::set_button_mask, BaseButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_button_class_get_button_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -92,28 +91,28 @@ static JSValue base_button_class_get_draw_mode(JSContext *ctx, JSValueConst this
 	return call_builtin_const_method_ret(&BaseButton::get_draw_mode, BaseButton::__class_id, ctx, this_val, argv);
 };
 static JSValue base_button_class_set_keep_pressed_outside(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&BaseButton::set_keep_pressed_outside, BaseButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&BaseButton::set_keep_pressed_outside, BaseButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_button_class_is_keep_pressed_outside(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&BaseButton::is_keep_pressed_outside, BaseButton::__class_id, ctx, this_val, argv);
 };
 static JSValue base_button_class_set_shortcut_feedback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&BaseButton::set_shortcut_feedback, BaseButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&BaseButton::set_shortcut_feedback, BaseButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_button_class_is_shortcut_feedback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&BaseButton::is_shortcut_feedback, BaseButton::__class_id, ctx, this_val, argv);
 };
 static JSValue base_button_class_set_shortcut(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&BaseButton::set_shortcut, BaseButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&BaseButton::set_shortcut, BaseButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_button_class_get_shortcut(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&BaseButton::get_shortcut, BaseButton::__class_id, ctx, this_val, argv);
 };
 static JSValue base_button_class_set_button_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&BaseButton::set_button_group, BaseButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&BaseButton::set_button_group, BaseButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_button_class_get_button_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

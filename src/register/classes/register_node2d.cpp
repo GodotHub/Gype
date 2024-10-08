@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/canvas_item.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/canvas_item.hpp>
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,23 +38,23 @@ static JSValue node2d_class_constructor(JSContext *ctx, JSValueConst new_target,
 	return obj;
 }
 static JSValue node2d_class_set_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Node2D::set_position, Node2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node2D::set_position, Node2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_set_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Node2D::set_rotation, Node2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node2D::set_rotation, Node2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_set_rotation_degrees(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Node2D::set_rotation_degrees, Node2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node2D::set_rotation_degrees, Node2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_set_skew(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Node2D::set_skew, Node2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node2D::set_skew, Node2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_set_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Node2D::set_scale, Node2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node2D::set_scale, Node2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -74,42 +73,42 @@ static JSValue node2d_class_get_scale(JSContext *ctx, JSValueConst this_val, int
 	return call_builtin_const_method_ret(&Node2D::get_scale, Node2D::__class_id, ctx, this_val, argv);
 };
 static JSValue node2d_class_rotate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Node2D::rotate, Node2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node2D::rotate, Node2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_move_local_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Node2D::move_local_x, Node2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node2D::move_local_x, Node2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_move_local_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Node2D::move_local_y, Node2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node2D::move_local_y, Node2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_translate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Node2D::translate, Node2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node2D::translate, Node2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_global_translate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Node2D::global_translate, Node2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node2D::global_translate, Node2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_apply_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Node2D::apply_scale, Node2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node2D::apply_scale, Node2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_set_global_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Node2D::set_global_position, Node2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node2D::set_global_position, Node2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_get_global_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Node2D::get_global_position, Node2D::__class_id, ctx, this_val, argv);
 };
 static JSValue node2d_class_set_global_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Node2D::set_global_rotation, Node2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node2D::set_global_rotation, Node2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_set_global_rotation_degrees(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Node2D::set_global_rotation_degrees, Node2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node2D::set_global_rotation_degrees, Node2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_get_global_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -119,29 +118,29 @@ static JSValue node2d_class_get_global_rotation_degrees(JSContext *ctx, JSValueC
 	return call_builtin_const_method_ret(&Node2D::get_global_rotation_degrees, Node2D::__class_id, ctx, this_val, argv);
 };
 static JSValue node2d_class_set_global_skew(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Node2D::set_global_skew, Node2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node2D::set_global_skew, Node2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_get_global_skew(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Node2D::get_global_skew, Node2D::__class_id, ctx, this_val, argv);
 };
 static JSValue node2d_class_set_global_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Node2D::set_global_scale, Node2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node2D::set_global_scale, Node2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_get_global_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Node2D::get_global_scale, Node2D::__class_id, ctx, this_val, argv);
 };
 static JSValue node2d_class_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Node2D::set_transform, Node2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node2D::set_transform, Node2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_set_global_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Node2D::set_global_transform, Node2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node2D::set_global_transform, Node2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_look_at(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Node2D::look_at, Node2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node2D::look_at, Node2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_get_angle_to(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

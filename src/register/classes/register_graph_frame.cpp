@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
+#include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/classes/graph_element.hpp>
 #include <godot_cpp/classes/graph_frame.hpp>
-#include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,7 +38,7 @@ static JSValue graph_frame_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue graph_frame_class_set_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphFrame::set_title, GraphFrame::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphFrame::set_title, GraphFrame::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_frame_class_get_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -49,35 +48,35 @@ static JSValue graph_frame_class_get_titlebar_hbox(JSContext *ctx, JSValueConst 
 	return call_builtin_method_ret(&GraphFrame::get_titlebar_hbox, GraphFrame::__class_id, ctx, this_val, argv);
 };
 static JSValue graph_frame_class_set_autoshrink_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphFrame::set_autoshrink_enabled, GraphFrame::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphFrame::set_autoshrink_enabled, GraphFrame::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_frame_class_is_autoshrink_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&GraphFrame::is_autoshrink_enabled, GraphFrame::__class_id, ctx, this_val, argv);
 };
 static JSValue graph_frame_class_set_autoshrink_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphFrame::set_autoshrink_margin, GraphFrame::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphFrame::set_autoshrink_margin, GraphFrame::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_frame_class_get_autoshrink_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&GraphFrame::get_autoshrink_margin, GraphFrame::__class_id, ctx, this_val, argv);
 };
 static JSValue graph_frame_class_set_drag_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphFrame::set_drag_margin, GraphFrame::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphFrame::set_drag_margin, GraphFrame::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_frame_class_get_drag_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&GraphFrame::get_drag_margin, GraphFrame::__class_id, ctx, this_val, argv);
 };
 static JSValue graph_frame_class_set_tint_color_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphFrame::set_tint_color_enabled, GraphFrame::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphFrame::set_tint_color_enabled, GraphFrame::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_frame_class_is_tint_color_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&GraphFrame::is_tint_color_enabled, GraphFrame::__class_id, ctx, this_val, argv);
 };
 static JSValue graph_frame_class_set_tint_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphFrame::set_tint_color, GraphFrame::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphFrame::set_tint_color, GraphFrame::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_frame_class_get_tint_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

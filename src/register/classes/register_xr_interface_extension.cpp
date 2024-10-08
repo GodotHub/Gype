@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/classes/xr_interface_extension.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -47,7 +46,7 @@ static JSValue xr_interface_extension_class_get_velocity_texture(JSContext *ctx,
 	return call_builtin_method_ret(&XRInterfaceExtension::get_velocity_texture, XRInterfaceExtension::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_interface_extension_class_add_blit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRInterfaceExtension::add_blit, XRInterfaceExtension::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRInterfaceExtension::add_blit, XRInterfaceExtension::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_interface_extension_class_get_render_target_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

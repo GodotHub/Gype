@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/root_motion_view.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,35 +37,35 @@ static JSValue root_motion_view_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue root_motion_view_class_set_animation_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RootMotionView::set_animation_path, RootMotionView::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RootMotionView::set_animation_path, RootMotionView::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue root_motion_view_class_get_animation_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RootMotionView::get_animation_path, RootMotionView::__class_id, ctx, this_val, argv);
 };
 static JSValue root_motion_view_class_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RootMotionView::set_color, RootMotionView::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RootMotionView::set_color, RootMotionView::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue root_motion_view_class_get_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RootMotionView::get_color, RootMotionView::__class_id, ctx, this_val, argv);
 };
 static JSValue root_motion_view_class_set_cell_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RootMotionView::set_cell_size, RootMotionView::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RootMotionView::set_cell_size, RootMotionView::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue root_motion_view_class_get_cell_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RootMotionView::get_cell_size, RootMotionView::__class_id, ctx, this_val, argv);
 };
 static JSValue root_motion_view_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RootMotionView::set_radius, RootMotionView::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RootMotionView::set_radius, RootMotionView::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue root_motion_view_class_get_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RootMotionView::get_radius, RootMotionView::__class_id, ctx, this_val, argv);
 };
 static JSValue root_motion_view_class_set_zero_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RootMotionView::set_zero_y, RootMotionView::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RootMotionView::set_zero_y, RootMotionView::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue root_motion_view_class_get_zero_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

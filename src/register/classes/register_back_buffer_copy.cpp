@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/back_buffer_copy.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/back_buffer_copy.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,14 +37,14 @@ static JSValue back_buffer_copy_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue back_buffer_copy_class_set_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&BackBufferCopy::set_rect, BackBufferCopy::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&BackBufferCopy::set_rect, BackBufferCopy::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue back_buffer_copy_class_get_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&BackBufferCopy::get_rect, BackBufferCopy::__class_id, ctx, this_val, argv);
 };
 static JSValue back_buffer_copy_class_set_copy_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&BackBufferCopy::set_copy_mode, BackBufferCopy::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&BackBufferCopy::set_copy_mode, BackBufferCopy::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue back_buffer_copy_class_get_copy_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

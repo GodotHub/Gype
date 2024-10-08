@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/resource.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/shader_include.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,7 +37,7 @@ static JSValue shader_include_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue shader_include_class_set_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ShaderInclude::set_code, ShaderInclude::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShaderInclude::set_code, ShaderInclude::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shader_include_class_get_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

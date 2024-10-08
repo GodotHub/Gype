@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/multiplayer_api.hpp>
 #include <godot_cpp/classes/scene_multiplayer.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,18 +37,18 @@ static JSValue scene_multiplayer_class_constructor(JSContext *ctx, JSValueConst 
 	return obj;
 }
 static JSValue scene_multiplayer_class_set_root_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneMultiplayer::set_root_path, SceneMultiplayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneMultiplayer::set_root_path, SceneMultiplayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_multiplayer_class_get_root_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SceneMultiplayer::get_root_path, SceneMultiplayer::__class_id, ctx, this_val, argv);
 };
 static JSValue scene_multiplayer_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneMultiplayer::clear, SceneMultiplayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneMultiplayer::clear, SceneMultiplayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_multiplayer_class_disconnect_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneMultiplayer::disconnect_peer, SceneMultiplayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneMultiplayer::disconnect_peer, SceneMultiplayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_multiplayer_class_get_authenticating_peers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,35 +61,35 @@ static JSValue scene_multiplayer_class_complete_auth(JSContext *ctx, JSValueCons
 	return call_builtin_method_ret(&SceneMultiplayer::complete_auth, SceneMultiplayer::__class_id, ctx, this_val, argv);
 };
 static JSValue scene_multiplayer_class_set_auth_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneMultiplayer::set_auth_callback, SceneMultiplayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneMultiplayer::set_auth_callback, SceneMultiplayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_multiplayer_class_get_auth_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SceneMultiplayer::get_auth_callback, SceneMultiplayer::__class_id, ctx, this_val, argv);
 };
 static JSValue scene_multiplayer_class_set_auth_timeout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneMultiplayer::set_auth_timeout, SceneMultiplayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneMultiplayer::set_auth_timeout, SceneMultiplayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_multiplayer_class_get_auth_timeout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SceneMultiplayer::get_auth_timeout, SceneMultiplayer::__class_id, ctx, this_val, argv);
 };
 static JSValue scene_multiplayer_class_set_refuse_new_connections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneMultiplayer::set_refuse_new_connections, SceneMultiplayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneMultiplayer::set_refuse_new_connections, SceneMultiplayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_multiplayer_class_is_refusing_new_connections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SceneMultiplayer::is_refusing_new_connections, SceneMultiplayer::__class_id, ctx, this_val, argv);
 };
 static JSValue scene_multiplayer_class_set_allow_object_decoding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneMultiplayer::set_allow_object_decoding, SceneMultiplayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneMultiplayer::set_allow_object_decoding, SceneMultiplayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_multiplayer_class_is_object_decoding_allowed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SceneMultiplayer::is_object_decoding_allowed, SceneMultiplayer::__class_id, ctx, this_val, argv);
 };
 static JSValue scene_multiplayer_class_set_server_relay_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneMultiplayer::set_server_relay_enabled, SceneMultiplayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneMultiplayer::set_server_relay_enabled, SceneMultiplayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_multiplayer_class_is_server_relay_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -103,14 +102,14 @@ static JSValue scene_multiplayer_class_get_max_sync_packet_size(JSContext *ctx, 
 	return call_builtin_const_method_ret(&SceneMultiplayer::get_max_sync_packet_size, SceneMultiplayer::__class_id, ctx, this_val, argv);
 };
 static JSValue scene_multiplayer_class_set_max_sync_packet_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneMultiplayer::set_max_sync_packet_size, SceneMultiplayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneMultiplayer::set_max_sync_packet_size, SceneMultiplayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_multiplayer_class_get_max_delta_packet_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SceneMultiplayer::get_max_delta_packet_size, SceneMultiplayer::__class_id, ctx, this_val, argv);
 };
 static JSValue scene_multiplayer_class_set_max_delta_packet_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SceneMultiplayer::set_max_delta_packet_size, SceneMultiplayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SceneMultiplayer::set_max_delta_packet_size, SceneMultiplayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry scene_multiplayer_class_proto_funcs[] = {

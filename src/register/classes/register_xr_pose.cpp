@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/xr_pose.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,21 +37,21 @@ static JSValue xr_pose_class_constructor(JSContext *ctx, JSValueConst new_target
 	return obj;
 }
 static JSValue xr_pose_class_set_has_tracking_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRPose::set_has_tracking_data, XRPose::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRPose::set_has_tracking_data, XRPose::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_pose_class_get_has_tracking_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&XRPose::get_has_tracking_data, XRPose::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_pose_class_set_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRPose::set_name, XRPose::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRPose::set_name, XRPose::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_pose_class_get_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&XRPose::get_name, XRPose::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_pose_class_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRPose::set_transform, XRPose::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRPose::set_transform, XRPose::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_pose_class_get_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,21 +61,21 @@ static JSValue xr_pose_class_get_adjusted_transform(JSContext *ctx, JSValueConst
 	return call_builtin_const_method_ret(&XRPose::get_adjusted_transform, XRPose::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_pose_class_set_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRPose::set_linear_velocity, XRPose::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRPose::set_linear_velocity, XRPose::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_pose_class_get_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&XRPose::get_linear_velocity, XRPose::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_pose_class_set_angular_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRPose::set_angular_velocity, XRPose::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRPose::set_angular_velocity, XRPose::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_pose_class_get_angular_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&XRPose::get_angular_velocity, XRPose::__class_id, ctx, this_val, argv);
 };
 static JSValue xr_pose_class_set_tracking_confidence(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&XRPose::set_tracking_confidence, XRPose::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRPose::set_tracking_confidence, XRPose::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_pose_class_get_tracking_confidence(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

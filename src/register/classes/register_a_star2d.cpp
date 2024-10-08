@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/a_star2d.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -41,25 +40,25 @@ static JSValue a_star2d_class_get_available_point_id(JSContext *ctx, JSValueCons
 	return call_builtin_const_method_ret(&AStar2D::get_available_point_id, AStar2D::__class_id, ctx, this_val, argv);
 };
 static JSValue a_star2d_class_add_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AStar2D::add_point, AStar2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AStar2D::add_point, AStar2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star2d_class_get_point_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AStar2D::get_point_position, AStar2D::__class_id, ctx, this_val, argv);
 };
 static JSValue a_star2d_class_set_point_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AStar2D::set_point_position, AStar2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AStar2D::set_point_position, AStar2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star2d_class_get_point_weight_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AStar2D::get_point_weight_scale, AStar2D::__class_id, ctx, this_val, argv);
 };
 static JSValue a_star2d_class_set_point_weight_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AStar2D::set_point_weight_scale, AStar2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AStar2D::set_point_weight_scale, AStar2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star2d_class_remove_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AStar2D::remove_point, AStar2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AStar2D::remove_point, AStar2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star2d_class_has_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -72,18 +71,18 @@ static JSValue a_star2d_class_get_point_ids(JSContext *ctx, JSValueConst this_va
 	return call_builtin_method_ret(&AStar2D::get_point_ids, AStar2D::__class_id, ctx, this_val, argv);
 };
 static JSValue a_star2d_class_set_point_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AStar2D::set_point_disabled, AStar2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AStar2D::set_point_disabled, AStar2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star2d_class_is_point_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AStar2D::is_point_disabled, AStar2D::__class_id, ctx, this_val, argv);
 };
 static JSValue a_star2d_class_connect_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AStar2D::connect_points, AStar2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AStar2D::connect_points, AStar2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star2d_class_disconnect_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AStar2D::disconnect_points, AStar2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AStar2D::disconnect_points, AStar2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star2d_class_are_points_connected(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -96,11 +95,11 @@ static JSValue a_star2d_class_get_point_capacity(JSContext *ctx, JSValueConst th
 	return call_builtin_const_method_ret(&AStar2D::get_point_capacity, AStar2D::__class_id, ctx, this_val, argv);
 };
 static JSValue a_star2d_class_reserve_space(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AStar2D::reserve_space, AStar2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AStar2D::reserve_space, AStar2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star2d_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AStar2D::clear, AStar2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AStar2D::clear, AStar2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star2d_class_get_closest_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

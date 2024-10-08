@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/video_stream.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/video_stream_player.hpp>
+#include <godot_cpp/classes/video_stream.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -40,53 +39,53 @@ static JSValue video_stream_player_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 static JSValue video_stream_player_class_set_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VideoStreamPlayer::set_stream, VideoStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VideoStreamPlayer::set_stream, VideoStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue video_stream_player_class_get_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VideoStreamPlayer::get_stream, VideoStreamPlayer::__class_id, ctx, this_val, argv);
 };
 static JSValue video_stream_player_class_play(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VideoStreamPlayer::play, VideoStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VideoStreamPlayer::play, VideoStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue video_stream_player_class_stop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VideoStreamPlayer::stop, VideoStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VideoStreamPlayer::stop, VideoStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue video_stream_player_class_is_playing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VideoStreamPlayer::is_playing, VideoStreamPlayer::__class_id, ctx, this_val, argv);
 };
 static JSValue video_stream_player_class_set_paused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VideoStreamPlayer::set_paused, VideoStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VideoStreamPlayer::set_paused, VideoStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue video_stream_player_class_is_paused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VideoStreamPlayer::is_paused, VideoStreamPlayer::__class_id, ctx, this_val, argv);
 };
 static JSValue video_stream_player_class_set_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VideoStreamPlayer::set_loop, VideoStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VideoStreamPlayer::set_loop, VideoStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue video_stream_player_class_has_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VideoStreamPlayer::has_loop, VideoStreamPlayer::__class_id, ctx, this_val, argv);
 };
 static JSValue video_stream_player_class_set_volume(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VideoStreamPlayer::set_volume, VideoStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VideoStreamPlayer::set_volume, VideoStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue video_stream_player_class_get_volume(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VideoStreamPlayer::get_volume, VideoStreamPlayer::__class_id, ctx, this_val, argv);
 };
 static JSValue video_stream_player_class_set_volume_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VideoStreamPlayer::set_volume_db, VideoStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VideoStreamPlayer::set_volume_db, VideoStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue video_stream_player_class_get_volume_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VideoStreamPlayer::get_volume_db, VideoStreamPlayer::__class_id, ctx, this_val, argv);
 };
 static JSValue video_stream_player_class_set_audio_track(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VideoStreamPlayer::set_audio_track, VideoStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VideoStreamPlayer::set_audio_track, VideoStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue video_stream_player_class_get_audio_track(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -99,35 +98,35 @@ static JSValue video_stream_player_class_get_stream_length(JSContext *ctx, JSVal
 	return call_builtin_const_method_ret(&VideoStreamPlayer::get_stream_length, VideoStreamPlayer::__class_id, ctx, this_val, argv);
 };
 static JSValue video_stream_player_class_set_stream_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VideoStreamPlayer::set_stream_position, VideoStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VideoStreamPlayer::set_stream_position, VideoStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue video_stream_player_class_get_stream_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VideoStreamPlayer::get_stream_position, VideoStreamPlayer::__class_id, ctx, this_val, argv);
 };
 static JSValue video_stream_player_class_set_autoplay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VideoStreamPlayer::set_autoplay, VideoStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VideoStreamPlayer::set_autoplay, VideoStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue video_stream_player_class_has_autoplay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VideoStreamPlayer::has_autoplay, VideoStreamPlayer::__class_id, ctx, this_val, argv);
 };
 static JSValue video_stream_player_class_set_expand(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VideoStreamPlayer::set_expand, VideoStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VideoStreamPlayer::set_expand, VideoStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue video_stream_player_class_has_expand(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VideoStreamPlayer::has_expand, VideoStreamPlayer::__class_id, ctx, this_val, argv);
 };
 static JSValue video_stream_player_class_set_buffering_msec(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VideoStreamPlayer::set_buffering_msec, VideoStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VideoStreamPlayer::set_buffering_msec, VideoStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue video_stream_player_class_get_buffering_msec(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VideoStreamPlayer::get_buffering_msec, VideoStreamPlayer::__class_id, ctx, this_val, argv);
 };
 static JSValue video_stream_player_class_set_bus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VideoStreamPlayer::set_bus, VideoStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VideoStreamPlayer::set_bus, VideoStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue video_stream_player_class_get_bus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

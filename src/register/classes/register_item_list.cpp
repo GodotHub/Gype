@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/item_list.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/item_list.hpp>
 #include <godot_cpp/classes/v_scroll_bar.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -46,84 +45,84 @@ static JSValue item_list_class_add_icon_item(JSContext *ctx, JSValueConst this_v
 	return call_builtin_method_ret(&ItemList::add_icon_item, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_item_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_item_text, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_item_text, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_get_item_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::get_item_text, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_item_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_item_icon, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_item_icon, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_get_item_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::get_item_icon, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_item_text_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_item_text_direction, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_item_text_direction, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_get_item_text_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::get_item_text_direction, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_item_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_item_language, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_item_language, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_get_item_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::get_item_language, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_item_icon_transposed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_item_icon_transposed, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_item_icon_transposed, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_is_item_icon_transposed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::is_item_icon_transposed, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_item_icon_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_item_icon_region, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_item_icon_region, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_get_item_icon_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::get_item_icon_region, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_item_icon_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_item_icon_modulate, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_item_icon_modulate, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_get_item_icon_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::get_item_icon_modulate, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_item_selectable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_item_selectable, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_item_selectable, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_is_item_selectable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::is_item_selectable, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_item_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_item_disabled, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_item_disabled, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_is_item_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::is_item_disabled, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_item_metadata(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_item_metadata, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_item_metadata, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_get_item_metadata(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::get_item_metadata, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_item_custom_bg_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_item_custom_bg_color, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_item_custom_bg_color, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_get_item_custom_bg_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::get_item_custom_bg_color, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_item_custom_fg_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_item_custom_fg_color, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_item_custom_fg_color, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_get_item_custom_fg_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -133,29 +132,29 @@ static JSValue item_list_class_get_item_rect(JSContext *ctx, JSValueConst this_v
 	return call_builtin_const_method_ret(&ItemList::get_item_rect, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_item_tooltip_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_item_tooltip_enabled, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_item_tooltip_enabled, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_is_item_tooltip_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::is_item_tooltip_enabled, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_item_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_item_tooltip, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_item_tooltip, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_get_item_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::get_item_tooltip, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_select(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::select, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::select, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_deselect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::deselect, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::deselect, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_deselect_all(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::deselect_all, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::deselect_all, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_is_selected(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -165,107 +164,107 @@ static JSValue item_list_class_get_selected_items(JSContext *ctx, JSValueConst t
 	return call_builtin_method_ret(&ItemList::get_selected_items, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_move_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::move_item, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::move_item, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_set_item_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_item_count, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_item_count, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_get_item_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::get_item_count, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_remove_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::remove_item, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::remove_item, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::clear, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::clear, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_sort_items_by_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::sort_items_by_text, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::sort_items_by_text, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_set_fixed_column_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_fixed_column_width, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_fixed_column_width, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_get_fixed_column_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::get_fixed_column_width, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_same_column_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_same_column_width, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_same_column_width, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_is_same_column_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::is_same_column_width, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_max_text_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_max_text_lines, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_max_text_lines, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_get_max_text_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::get_max_text_lines, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_max_columns(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_max_columns, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_max_columns, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_get_max_columns(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::get_max_columns, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_select_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_select_mode, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_select_mode, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_get_select_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::get_select_mode, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_icon_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_icon_mode, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_icon_mode, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_get_icon_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::get_icon_mode, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_fixed_icon_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_fixed_icon_size, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_fixed_icon_size, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_get_fixed_icon_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::get_fixed_icon_size, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_icon_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_icon_scale, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_icon_scale, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_get_icon_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::get_icon_scale, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_allow_rmb_select(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_allow_rmb_select, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_allow_rmb_select, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_get_allow_rmb_select(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::get_allow_rmb_select, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_allow_reselect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_allow_reselect, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_allow_reselect, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_get_allow_reselect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::get_allow_reselect, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_allow_search(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_allow_search, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_allow_search, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_get_allow_search(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::get_allow_search, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_auto_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_auto_height, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_auto_height, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_has_auto_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -278,21 +277,21 @@ static JSValue item_list_class_get_item_at_position(JSContext *ctx, JSValueConst
 	return call_builtin_const_method_ret(&ItemList::get_item_at_position, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_ensure_current_is_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::ensure_current_is_visible, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::ensure_current_is_visible, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_get_v_scroll_bar(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&ItemList::get_v_scroll_bar, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_set_text_overrun_behavior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::set_text_overrun_behavior, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::set_text_overrun_behavior, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue item_list_class_get_text_overrun_behavior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ItemList::get_text_overrun_behavior, ItemList::__class_id, ctx, this_val, argv);
 };
 static JSValue item_list_class_force_update_list_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ItemList::force_update_list_size, ItemList::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ItemList::force_update_list_size, ItemList::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry item_list_class_proto_funcs[] = {

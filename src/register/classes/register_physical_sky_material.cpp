@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/material.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/physical_sky_material.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,77 +38,77 @@ static JSValue physical_sky_material_class_constructor(JSContext *ctx, JSValueCo
 	return obj;
 }
 static JSValue physical_sky_material_class_set_rayleigh_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalSkyMaterial::set_rayleigh_coefficient, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalSkyMaterial::set_rayleigh_coefficient, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_sky_material_class_get_rayleigh_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicalSkyMaterial::get_rayleigh_coefficient, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_sky_material_class_set_rayleigh_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalSkyMaterial::set_rayleigh_color, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalSkyMaterial::set_rayleigh_color, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_sky_material_class_get_rayleigh_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicalSkyMaterial::get_rayleigh_color, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_sky_material_class_set_mie_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalSkyMaterial::set_mie_coefficient, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalSkyMaterial::set_mie_coefficient, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_sky_material_class_get_mie_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicalSkyMaterial::get_mie_coefficient, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_sky_material_class_set_mie_eccentricity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalSkyMaterial::set_mie_eccentricity, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalSkyMaterial::set_mie_eccentricity, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_sky_material_class_get_mie_eccentricity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicalSkyMaterial::get_mie_eccentricity, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_sky_material_class_set_mie_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalSkyMaterial::set_mie_color, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalSkyMaterial::set_mie_color, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_sky_material_class_get_mie_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicalSkyMaterial::get_mie_color, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_sky_material_class_set_turbidity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalSkyMaterial::set_turbidity, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalSkyMaterial::set_turbidity, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_sky_material_class_get_turbidity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicalSkyMaterial::get_turbidity, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_sky_material_class_set_sun_disk_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalSkyMaterial::set_sun_disk_scale, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalSkyMaterial::set_sun_disk_scale, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_sky_material_class_get_sun_disk_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicalSkyMaterial::get_sun_disk_scale, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_sky_material_class_set_ground_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalSkyMaterial::set_ground_color, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalSkyMaterial::set_ground_color, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_sky_material_class_get_ground_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicalSkyMaterial::get_ground_color, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_sky_material_class_set_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalSkyMaterial::set_energy_multiplier, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalSkyMaterial::set_energy_multiplier, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_sky_material_class_get_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicalSkyMaterial::get_energy_multiplier, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_sky_material_class_set_use_debanding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalSkyMaterial::set_use_debanding, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalSkyMaterial::set_use_debanding, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_sky_material_class_get_use_debanding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicalSkyMaterial::get_use_debanding, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_sky_material_class_set_night_sky(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalSkyMaterial::set_night_sky, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalSkyMaterial::set_night_sky, PhysicalSkyMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_sky_material_class_get_night_sky(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

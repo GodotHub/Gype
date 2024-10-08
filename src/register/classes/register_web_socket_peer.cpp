@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/packet_peer.hpp>
-#include <godot_cpp/classes/stream_peer.hpp>
-#include <godot_cpp/classes/tls_options.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/web_socket_peer.hpp>
+#include <godot_cpp/classes/packet_peer.hpp>
+#include <godot_cpp/classes/tls_options.hpp>
+#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -55,11 +54,11 @@ static JSValue web_socket_peer_class_was_string_packet(JSContext *ctx, JSValueCo
 	return call_builtin_const_method_ret(&WebSocketPeer::was_string_packet, WebSocketPeer::__class_id, ctx, this_val, argv);
 };
 static JSValue web_socket_peer_class_poll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&WebSocketPeer::poll, WebSocketPeer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&WebSocketPeer::poll, WebSocketPeer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_socket_peer_class_close(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&WebSocketPeer::close, WebSocketPeer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&WebSocketPeer::close, WebSocketPeer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_socket_peer_class_get_connected_host(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,7 +74,7 @@ static JSValue web_socket_peer_class_get_requested_url(JSContext *ctx, JSValueCo
 	return call_builtin_const_method_ret(&WebSocketPeer::get_requested_url, WebSocketPeer::__class_id, ctx, this_val, argv);
 };
 static JSValue web_socket_peer_class_set_no_delay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&WebSocketPeer::set_no_delay, WebSocketPeer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&WebSocketPeer::set_no_delay, WebSocketPeer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_socket_peer_class_get_current_outbound_buffered_amount(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -94,32 +93,32 @@ static JSValue web_socket_peer_class_get_supported_protocols(JSContext *ctx, JSV
 	return call_builtin_const_method_ret(&WebSocketPeer::get_supported_protocols, WebSocketPeer::__class_id, ctx, this_val, argv);
 };
 static JSValue web_socket_peer_class_set_supported_protocols(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&WebSocketPeer::set_supported_protocols, WebSocketPeer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&WebSocketPeer::set_supported_protocols, WebSocketPeer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_socket_peer_class_get_handshake_headers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&WebSocketPeer::get_handshake_headers, WebSocketPeer::__class_id, ctx, this_val, argv);
 };
 static JSValue web_socket_peer_class_set_handshake_headers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&WebSocketPeer::set_handshake_headers, WebSocketPeer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&WebSocketPeer::set_handshake_headers, WebSocketPeer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_socket_peer_class_get_inbound_buffer_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&WebSocketPeer::get_inbound_buffer_size, WebSocketPeer::__class_id, ctx, this_val, argv);
 };
 static JSValue web_socket_peer_class_set_inbound_buffer_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&WebSocketPeer::set_inbound_buffer_size, WebSocketPeer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&WebSocketPeer::set_inbound_buffer_size, WebSocketPeer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_socket_peer_class_get_outbound_buffer_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&WebSocketPeer::get_outbound_buffer_size, WebSocketPeer::__class_id, ctx, this_val, argv);
 };
 static JSValue web_socket_peer_class_set_outbound_buffer_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&WebSocketPeer::set_outbound_buffer_size, WebSocketPeer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&WebSocketPeer::set_outbound_buffer_size, WebSocketPeer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_socket_peer_class_set_max_queued_packets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&WebSocketPeer::set_max_queued_packets, WebSocketPeer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&WebSocketPeer::set_max_queued_packets, WebSocketPeer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_socket_peer_class_get_max_queued_packets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

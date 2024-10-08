@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/skeleton_modification2d.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/skeleton_modification2d_jiggle.hpp>
+#include <godot_cpp/classes/skeleton_modification2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,119 +37,119 @@ static JSValue skeleton_modification2d_jiggle_class_constructor(JSContext *ctx, 
 	return obj;
 }
 static JSValue skeleton_modification2d_jiggle_class_set_target_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_target_node, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_target_node, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_jiggle_class_get_target_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonModification2DJiggle::get_target_node, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_jiggle_class_set_jiggle_data_chain_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_jiggle_data_chain_length, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_jiggle_data_chain_length, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_jiggle_class_get_jiggle_data_chain_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&SkeletonModification2DJiggle::get_jiggle_data_chain_length, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_jiggle_class_set_stiffness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_stiffness, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_stiffness, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_jiggle_class_get_stiffness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonModification2DJiggle::get_stiffness, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_jiggle_class_set_mass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_mass, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_mass, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_jiggle_class_get_mass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonModification2DJiggle::get_mass, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_jiggle_class_set_damping(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_damping, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_damping, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_jiggle_class_get_damping(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonModification2DJiggle::get_damping, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_jiggle_class_set_use_gravity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_use_gravity, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_use_gravity, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_jiggle_class_get_use_gravity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonModification2DJiggle::get_use_gravity, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_jiggle_class_set_gravity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_gravity, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_gravity, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_jiggle_class_get_gravity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonModification2DJiggle::get_gravity, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_jiggle_class_set_use_colliders(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_use_colliders, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_use_colliders, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_jiggle_class_get_use_colliders(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonModification2DJiggle::get_use_colliders, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_jiggle_class_set_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_collision_mask, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_collision_mask, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_jiggle_class_get_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonModification2DJiggle::get_collision_mask, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_jiggle_class_set_jiggle_joint_bone2d_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_jiggle_joint_bone2d_node, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_jiggle_joint_bone2d_node, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_jiggle_class_get_jiggle_joint_bone2d_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonModification2DJiggle::get_jiggle_joint_bone2d_node, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_jiggle_class_set_jiggle_joint_bone_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_jiggle_joint_bone_index, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_jiggle_joint_bone_index, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_jiggle_class_get_jiggle_joint_bone_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonModification2DJiggle::get_jiggle_joint_bone_index, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_jiggle_class_set_jiggle_joint_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_jiggle_joint_override, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_jiggle_joint_override, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_jiggle_class_get_jiggle_joint_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonModification2DJiggle::get_jiggle_joint_override, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_jiggle_class_set_jiggle_joint_stiffness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_jiggle_joint_stiffness, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_jiggle_joint_stiffness, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_jiggle_class_get_jiggle_joint_stiffness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonModification2DJiggle::get_jiggle_joint_stiffness, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_jiggle_class_set_jiggle_joint_mass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_jiggle_joint_mass, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_jiggle_joint_mass, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_jiggle_class_get_jiggle_joint_mass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonModification2DJiggle::get_jiggle_joint_mass, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_jiggle_class_set_jiggle_joint_damping(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_jiggle_joint_damping, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_jiggle_joint_damping, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_jiggle_class_get_jiggle_joint_damping(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonModification2DJiggle::get_jiggle_joint_damping, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_jiggle_class_set_jiggle_joint_use_gravity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_jiggle_joint_use_gravity, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_jiggle_joint_use_gravity, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_jiggle_class_get_jiggle_joint_use_gravity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SkeletonModification2DJiggle::get_jiggle_joint_use_gravity, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 };
 static JSValue skeleton_modification2d_jiggle_class_set_jiggle_joint_gravity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_jiggle_joint_gravity, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DJiggle::set_jiggle_joint_gravity, SkeletonModification2DJiggle::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_jiggle_class_get_jiggle_joint_gravity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/material.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/particle_process_material.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,203 +38,203 @@ static JSValue particle_process_material_class_constructor(JSContext *ctx, JSVal
 	return obj;
 }
 static JSValue particle_process_material_class_set_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_direction, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_direction, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_direction, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_inherit_velocity_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_inherit_velocity_ratio, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_inherit_velocity_ratio, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_inherit_velocity_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&ParticleProcessMaterial::get_inherit_velocity_ratio, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_spread(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_spread, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_spread, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_spread(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_spread, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_flatness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_flatness, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_flatness, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_flatness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_flatness, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_param, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_param, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_param, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_param_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_param_min, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_param_min, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_param_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_param_min, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_param_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_param_max, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_param_max, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_param_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_param_max, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_param_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_param_texture, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_param_texture, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_param_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_param_texture, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_color, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_color, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_color, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_color_ramp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_color_ramp, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_color_ramp, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_color_ramp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_color_ramp, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_alpha_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_alpha_curve, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_alpha_curve, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_alpha_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_alpha_curve, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_emission_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_curve, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_curve, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_emission_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_emission_curve, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_color_initial_ramp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_color_initial_ramp, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_color_initial_ramp, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_color_initial_ramp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_color_initial_ramp, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_velocity_limit_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_velocity_limit_curve, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_velocity_limit_curve, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_velocity_limit_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_velocity_limit_curve, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_particle_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_particle_flag, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_particle_flag, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_particle_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_particle_flag, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_velocity_pivot(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_velocity_pivot, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_velocity_pivot, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_velocity_pivot(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&ParticleProcessMaterial::get_velocity_pivot, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_emission_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_shape, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_shape, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_emission_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_emission_shape, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_emission_sphere_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_sphere_radius, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_sphere_radius, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_emission_sphere_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_emission_sphere_radius, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_emission_box_extents(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_box_extents, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_box_extents, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_emission_box_extents(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_emission_box_extents, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_emission_point_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_point_texture, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_point_texture, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_emission_point_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_emission_point_texture, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_emission_normal_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_normal_texture, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_normal_texture, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_emission_normal_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_emission_normal_texture, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_emission_color_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_color_texture, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_color_texture, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_emission_color_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_emission_color_texture, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_emission_point_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_point_count, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_point_count, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_emission_point_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_emission_point_count, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_emission_ring_axis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_ring_axis, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_ring_axis, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_emission_ring_axis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_emission_ring_axis, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_emission_ring_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_ring_height, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_ring_height, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_emission_ring_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_emission_ring_height, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_emission_ring_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_ring_radius, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_ring_radius, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_emission_ring_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_emission_ring_radius, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_emission_ring_inner_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_ring_inner_radius, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_ring_inner_radius, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_emission_ring_inner_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_emission_ring_inner_radius, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_emission_shape_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_shape_offset, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_shape_offset, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_emission_shape_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_emission_shape_offset, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_emission_shape_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_shape_scale, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_emission_shape_scale, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_emission_shape_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -245,46 +244,46 @@ static JSValue particle_process_material_class_get_turbulence_enabled(JSContext 
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_turbulence_enabled, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_turbulence_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_turbulence_enabled, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_turbulence_enabled, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_turbulence_noise_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_turbulence_noise_strength, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_turbulence_noise_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_turbulence_noise_strength, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_turbulence_noise_strength, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_turbulence_noise_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_turbulence_noise_scale, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_turbulence_noise_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_turbulence_noise_scale, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_turbulence_noise_scale, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_turbulence_noise_speed_random(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_turbulence_noise_speed_random, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_turbulence_noise_speed_random(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_turbulence_noise_speed_random, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_turbulence_noise_speed_random, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_turbulence_noise_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_turbulence_noise_speed, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_turbulence_noise_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_turbulence_noise_speed, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_turbulence_noise_speed, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_gravity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_gravity, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_gravity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_gravity, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_gravity, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_set_lifetime_randomness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_lifetime_randomness, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_lifetime_randomness, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_lifetime_randomness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -294,67 +293,67 @@ static JSValue particle_process_material_class_get_sub_emitter_mode(JSContext *c
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_sub_emitter_mode, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_sub_emitter_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_sub_emitter_mode, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_sub_emitter_mode, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_sub_emitter_frequency(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_sub_emitter_frequency, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_sub_emitter_frequency(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_sub_emitter_frequency, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_sub_emitter_frequency, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_sub_emitter_amount_at_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_sub_emitter_amount_at_end, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_sub_emitter_amount_at_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_sub_emitter_amount_at_end, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_sub_emitter_amount_at_end, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_sub_emitter_amount_at_collision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_sub_emitter_amount_at_collision, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_sub_emitter_amount_at_collision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_sub_emitter_amount_at_collision, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_sub_emitter_amount_at_collision, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_sub_emitter_keep_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_sub_emitter_keep_velocity, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_sub_emitter_keep_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_sub_emitter_keep_velocity, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_sub_emitter_keep_velocity, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_set_attractor_interaction_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_attractor_interaction_enabled, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_attractor_interaction_enabled, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_is_attractor_interaction_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::is_attractor_interaction_enabled, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_collision_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_collision_mode, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_collision_mode, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_collision_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_collision_mode, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_collision_use_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_collision_use_scale, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_collision_use_scale, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_is_collision_using_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::is_collision_using_scale, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_collision_friction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_collision_friction, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_collision_friction, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_collision_friction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ParticleProcessMaterial::get_collision_friction, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 };
 static JSValue particle_process_material_class_set_collision_bounce(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ParticleProcessMaterial::set_collision_bounce, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ParticleProcessMaterial::set_collision_bounce, ParticleProcessMaterial::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue particle_process_material_class_get_collision_bounce(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

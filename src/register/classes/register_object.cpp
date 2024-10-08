@@ -1,13 +1,12 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -43,14 +42,14 @@ static JSValue object_class_is_class(JSContext *ctx, JSValueConst this_val, int 
 	return call_builtin_const_method_ret(&Object::is_class, Object::__class_id, ctx, this_val, argv);
 };
 static JSValue object_class_set(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Object::set, Object::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Object::set, Object::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_get(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Object::get, Object::__class_id, ctx, this_val, argv);
 };
 static JSValue object_class_set_indexed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Object::set_indexed, Object::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Object::set_indexed, Object::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_get_indexed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -69,7 +68,7 @@ static JSValue object_class_property_get_revert(JSContext *ctx, JSValueConst thi
 	return call_builtin_const_method_ret(&Object::property_get_revert, Object::__class_id, ctx, this_val, argv);
 };
 static JSValue object_class_notification(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Object::notification, Object::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Object::notification, Object::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_to_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -79,18 +78,18 @@ static JSValue object_class_get_instance_id(JSContext *ctx, JSValueConst this_va
 	return call_builtin_const_method_ret(&Object::get_instance_id, Object::__class_id, ctx, this_val, argv);
 };
 static JSValue object_class_set_script(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Object::set_script, Object::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Object::set_script, Object::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_get_script(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Object::get_script, Object::__class_id, ctx, this_val, argv);
 };
 static JSValue object_class_set_meta(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Object::set_meta, Object::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Object::set_meta, Object::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_remove_meta(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Object::remove_meta, Object::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Object::remove_meta, Object::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_get_meta(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -103,18 +102,18 @@ static JSValue object_class_get_meta_list(JSContext *ctx, JSValueConst this_val,
 	return call_builtin_const_method_ret(&Object::get_meta_list, Object::__class_id, ctx, this_val, argv);
 };
 static JSValue object_class_add_user_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Object::add_user_signal, Object::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Object::add_user_signal, Object::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_has_user_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Object::has_user_signal, Object::__class_id, ctx, this_val, argv);
 };
 static JSValue object_class_remove_user_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Object::remove_user_signal, Object::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Object::remove_user_signal, Object::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_set_deferred(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Object::set_deferred, Object::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Object::set_deferred, Object::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_callv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -142,25 +141,25 @@ static JSValue object_class_connect(JSContext *ctx, JSValueConst this_val, int a
 	return call_builtin_method_ret(&Object::connect, Object::__class_id, ctx, this_val, argv);
 };
 static JSValue object_class_disconnect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Object::disconnect, Object::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Object::disconnect, Object::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_is_connected(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Object::is_connected, Object::__class_id, ctx, this_val, argv);
 };
 static JSValue object_class_set_block_signals(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Object::set_block_signals, Object::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Object::set_block_signals, Object::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_is_blocking_signals(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Object::is_blocking_signals, Object::__class_id, ctx, this_val, argv);
 };
 static JSValue object_class_notify_property_list_changed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Object::notify_property_list_changed, Object::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Object::notify_property_list_changed, Object::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_set_message_translation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Object::set_message_translation, Object::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Object::set_message_translation, Object::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_can_translate_messages(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -176,17 +175,17 @@ static JSValue object_class_is_queued_for_deletion(JSContext *ctx, JSValueConst 
 	return call_builtin_const_method_ret(&Object::is_queued_for_deletion, Object::__class_id, ctx, this_val, argv);
 };
 static JSValue object_class_cancel_free(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Object::cancel_free, Object::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Object::cancel_free, Object::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_emit_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_vararg_method(&Object::js_emit_signal, Object::__class_id, ctx, this_val, argc, argv);
+	return call_builtin_vararg_method_ret(&Object::js_emit_signal, Object::__class_id, ctx, this_val, argc, argv);
 }
 static JSValue object_class_call(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_vararg_method(&Object::js_call, Object::__class_id, ctx, this_val, argc, argv);
+	return call_builtin_vararg_method_ret(&Object::js_call, Object::__class_id, ctx, this_val, argc, argv);
 }
 static JSValue object_class_call_deferred(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_vararg_method(&Object::js_call_deferred, Object::__class_id, ctx, this_val, argc, argv);
+	return call_builtin_vararg_method_ret(&Object::js_call_deferred, Object::__class_id, ctx, this_val, argc, argv);
 }
 static const JSCFunctionListEntry object_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_class", 0, &object_class_get_class),

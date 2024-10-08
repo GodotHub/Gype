@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/audio_stream.hpp>
 #include <godot_cpp/classes/audio_stream_mp3.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,42 +37,42 @@ static JSValue audio_stream_mp3_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue audio_stream_mp3_class_set_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamMP3::set_data, AudioStreamMP3::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamMP3::set_data, AudioStreamMP3::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_mp3_class_get_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamMP3::get_data, AudioStreamMP3::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_mp3_class_set_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamMP3::set_loop, AudioStreamMP3::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamMP3::set_loop, AudioStreamMP3::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_mp3_class_has_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamMP3::has_loop, AudioStreamMP3::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_mp3_class_set_loop_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamMP3::set_loop_offset, AudioStreamMP3::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamMP3::set_loop_offset, AudioStreamMP3::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_mp3_class_get_loop_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamMP3::get_loop_offset, AudioStreamMP3::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_mp3_class_set_bpm(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamMP3::set_bpm, AudioStreamMP3::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamMP3::set_bpm, AudioStreamMP3::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_mp3_class_get_bpm(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamMP3::get_bpm, AudioStreamMP3::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_mp3_class_set_beat_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamMP3::set_beat_count, AudioStreamMP3::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamMP3::set_beat_count, AudioStreamMP3::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_mp3_class_get_beat_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamMP3::get_beat_count, AudioStreamMP3::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_mp3_class_set_bar_beats(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamMP3::set_bar_beats, AudioStreamMP3::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamMP3::set_bar_beats, AudioStreamMP3::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_mp3_class_get_bar_beats(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

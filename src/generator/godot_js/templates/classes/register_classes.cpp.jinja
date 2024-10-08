@@ -1,0 +1,8 @@
+
+#include "register/classes/register_classes.h"
+
+void register_classes() {
+{%- for class in classes %}
+    register_{{ camel_to_snake(class['name']) }}();
+{%- endfor %}
+};

@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/animation_node.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/animation_node.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -41,7 +40,7 @@ static JSValue animation_node_class_add_input(JSContext *ctx, JSValueConst this_
 	return call_builtin_method_ret(&AnimationNode::add_input, AnimationNode::__class_id, ctx, this_val, argv);
 };
 static JSValue animation_node_class_remove_input(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNode::remove_input, AnimationNode::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNode::remove_input, AnimationNode::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_class_set_input_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -57,21 +56,21 @@ static JSValue animation_node_class_find_input(JSContext *ctx, JSValueConst this
 	return call_builtin_const_method_ret(&AnimationNode::find_input, AnimationNode::__class_id, ctx, this_val, argv);
 };
 static JSValue animation_node_class_set_filter_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNode::set_filter_path, AnimationNode::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNode::set_filter_path, AnimationNode::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_class_is_path_filtered(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimationNode::is_path_filtered, AnimationNode::__class_id, ctx, this_val, argv);
 };
 static JSValue animation_node_class_set_filter_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNode::set_filter_enabled, AnimationNode::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNode::set_filter_enabled, AnimationNode::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_class_is_filter_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AnimationNode::is_filter_enabled, AnimationNode::__class_id, ctx, this_val, argv);
 };
 static JSValue animation_node_class_blend_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNode::blend_animation, AnimationNode::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNode::blend_animation, AnimationNode::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_class_blend_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -81,7 +80,7 @@ static JSValue animation_node_class_blend_input(JSContext *ctx, JSValueConst thi
 	return call_builtin_method_ret(&AnimationNode::blend_input, AnimationNode::__class_id, ctx, this_val, argv);
 };
 static JSValue animation_node_class_set_parameter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimationNode::set_parameter, AnimationNode::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNode::set_parameter, AnimationNode::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_class_get_parameter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

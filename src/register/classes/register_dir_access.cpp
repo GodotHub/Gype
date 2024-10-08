@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/dir_access.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/dir_access.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -47,7 +46,7 @@ static JSValue dir_access_class_current_is_dir(JSContext *ctx, JSValueConst this
 	return call_builtin_const_method_ret(&DirAccess::current_is_dir, DirAccess::__class_id, ctx, this_val, argv);
 };
 static JSValue dir_access_class_list_dir_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DirAccess::list_dir_end, DirAccess::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DirAccess::list_dir_end, DirAccess::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue dir_access_class_get_files(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -99,14 +98,14 @@ static JSValue dir_access_class_create_link(JSContext *ctx, JSValueConst this_va
 	return call_builtin_method_ret(&DirAccess::create_link, DirAccess::__class_id, ctx, this_val, argv);
 };
 static JSValue dir_access_class_set_include_navigational(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DirAccess::set_include_navigational, DirAccess::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DirAccess::set_include_navigational, DirAccess::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue dir_access_class_get_include_navigational(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&DirAccess::get_include_navigational, DirAccess::__class_id, ctx, this_val, argv);
 };
 static JSValue dir_access_class_set_include_hidden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DirAccess::set_include_hidden, DirAccess::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DirAccess::set_include_hidden, DirAccess::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue dir_access_class_get_include_hidden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

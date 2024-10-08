@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/gltf_buffer_view.hpp>
-#include <godot_cpp/classes/gltf_state.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/gltf_state.hpp>
+#include <godot_cpp/classes/gltf_buffer_view.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -45,42 +44,42 @@ static JSValue gltf_buffer_view_class_get_buffer(JSContext *ctx, JSValueConst th
 	return call_builtin_const_method_ret(&GLTFBufferView::get_buffer, GLTFBufferView::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_buffer_view_class_set_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFBufferView::set_buffer, GLTFBufferView::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFBufferView::set_buffer, GLTFBufferView::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_buffer_view_class_get_byte_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&GLTFBufferView::get_byte_offset, GLTFBufferView::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_buffer_view_class_set_byte_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFBufferView::set_byte_offset, GLTFBufferView::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFBufferView::set_byte_offset, GLTFBufferView::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_buffer_view_class_get_byte_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&GLTFBufferView::get_byte_length, GLTFBufferView::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_buffer_view_class_set_byte_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFBufferView::set_byte_length, GLTFBufferView::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFBufferView::set_byte_length, GLTFBufferView::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_buffer_view_class_get_byte_stride(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&GLTFBufferView::get_byte_stride, GLTFBufferView::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_buffer_view_class_set_byte_stride(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFBufferView::set_byte_stride, GLTFBufferView::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFBufferView::set_byte_stride, GLTFBufferView::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_buffer_view_class_get_indices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&GLTFBufferView::get_indices, GLTFBufferView::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_buffer_view_class_set_indices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFBufferView::set_indices, GLTFBufferView::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFBufferView::set_indices, GLTFBufferView::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_buffer_view_class_get_vertex_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&GLTFBufferView::get_vertex_attributes, GLTFBufferView::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_buffer_view_class_set_vertex_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFBufferView::set_vertex_attributes, GLTFBufferView::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFBufferView::set_vertex_attributes, GLTFBufferView::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry gltf_buffer_view_class_proto_funcs[] = {

@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/sprite_frames.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/sprite_frames.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,47 +38,47 @@ static JSValue sprite_frames_class_constructor(JSContext *ctx, JSValueConst new_
 	return obj;
 }
 static JSValue sprite_frames_class_add_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SpriteFrames::add_animation, SpriteFrames::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SpriteFrames::add_animation, SpriteFrames::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_frames_class_has_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SpriteFrames::has_animation, SpriteFrames::__class_id, ctx, this_val, argv);
 };
 static JSValue sprite_frames_class_remove_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SpriteFrames::remove_animation, SpriteFrames::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SpriteFrames::remove_animation, SpriteFrames::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_frames_class_rename_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SpriteFrames::rename_animation, SpriteFrames::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SpriteFrames::rename_animation, SpriteFrames::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_frames_class_get_animation_names(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SpriteFrames::get_animation_names, SpriteFrames::__class_id, ctx, this_val, argv);
 };
 static JSValue sprite_frames_class_set_animation_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SpriteFrames::set_animation_speed, SpriteFrames::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SpriteFrames::set_animation_speed, SpriteFrames::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_frames_class_get_animation_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SpriteFrames::get_animation_speed, SpriteFrames::__class_id, ctx, this_val, argv);
 };
 static JSValue sprite_frames_class_set_animation_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SpriteFrames::set_animation_loop, SpriteFrames::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SpriteFrames::set_animation_loop, SpriteFrames::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_frames_class_get_animation_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&SpriteFrames::get_animation_loop, SpriteFrames::__class_id, ctx, this_val, argv);
 };
 static JSValue sprite_frames_class_add_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SpriteFrames::add_frame, SpriteFrames::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SpriteFrames::add_frame, SpriteFrames::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_frames_class_set_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SpriteFrames::set_frame, SpriteFrames::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SpriteFrames::set_frame, SpriteFrames::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_frames_class_remove_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SpriteFrames::remove_frame, SpriteFrames::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SpriteFrames::remove_frame, SpriteFrames::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_frames_class_get_frame_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -92,11 +91,11 @@ static JSValue sprite_frames_class_get_frame_duration(JSContext *ctx, JSValueCon
 	return call_builtin_const_method_ret(&SpriteFrames::get_frame_duration, SpriteFrames::__class_id, ctx, this_val, argv);
 };
 static JSValue sprite_frames_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SpriteFrames::clear, SpriteFrames::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SpriteFrames::clear, SpriteFrames::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_frames_class_clear_all(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&SpriteFrames::clear_all, SpriteFrames::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SpriteFrames::clear_all, SpriteFrames::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry sprite_frames_class_proto_funcs[] = {

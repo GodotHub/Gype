@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/navigation_obstacle2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -41,63 +40,63 @@ static JSValue navigation_obstacle2d_class_get_rid(JSContext *ctx, JSValueConst 
 	return call_builtin_const_method_ret(&NavigationObstacle2D::get_rid, NavigationObstacle2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_obstacle2d_class_set_avoidance_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationObstacle2D::set_avoidance_enabled, NavigationObstacle2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationObstacle2D::set_avoidance_enabled, NavigationObstacle2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_obstacle2d_class_get_avoidance_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationObstacle2D::get_avoidance_enabled, NavigationObstacle2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_obstacle2d_class_set_navigation_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationObstacle2D::set_navigation_map, NavigationObstacle2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationObstacle2D::set_navigation_map, NavigationObstacle2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_obstacle2d_class_get_navigation_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationObstacle2D::get_navigation_map, NavigationObstacle2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_obstacle2d_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationObstacle2D::set_radius, NavigationObstacle2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationObstacle2D::set_radius, NavigationObstacle2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_obstacle2d_class_get_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationObstacle2D::get_radius, NavigationObstacle2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_obstacle2d_class_set_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationObstacle2D::set_velocity, NavigationObstacle2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationObstacle2D::set_velocity, NavigationObstacle2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_obstacle2d_class_get_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationObstacle2D::get_velocity, NavigationObstacle2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_obstacle2d_class_set_vertices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationObstacle2D::set_vertices, NavigationObstacle2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationObstacle2D::set_vertices, NavigationObstacle2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_obstacle2d_class_get_vertices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationObstacle2D::get_vertices, NavigationObstacle2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_obstacle2d_class_set_avoidance_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationObstacle2D::set_avoidance_layers, NavigationObstacle2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationObstacle2D::set_avoidance_layers, NavigationObstacle2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_obstacle2d_class_get_avoidance_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationObstacle2D::get_avoidance_layers, NavigationObstacle2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_obstacle2d_class_set_avoidance_layer_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationObstacle2D::set_avoidance_layer_value, NavigationObstacle2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationObstacle2D::set_avoidance_layer_value, NavigationObstacle2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_obstacle2d_class_get_avoidance_layer_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationObstacle2D::get_avoidance_layer_value, NavigationObstacle2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_obstacle2d_class_set_affect_navigation_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationObstacle2D::set_affect_navigation_mesh, NavigationObstacle2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationObstacle2D::set_affect_navigation_mesh, NavigationObstacle2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_obstacle2d_class_get_affect_navigation_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&NavigationObstacle2D::get_affect_navigation_mesh, NavigationObstacle2D::__class_id, ctx, this_val, argv);
 };
 static JSValue navigation_obstacle2d_class_set_carve_navigation_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&NavigationObstacle2D::set_carve_navigation_mesh, NavigationObstacle2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationObstacle2D::set_carve_navigation_mesh, NavigationObstacle2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_obstacle2d_class_get_carve_navigation_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

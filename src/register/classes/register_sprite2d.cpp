@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/sprite2d.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/sprite2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,42 +38,42 @@ static JSValue sprite2d_class_constructor(JSContext *ctx, JSValueConst new_targe
 	return obj;
 }
 static JSValue sprite2d_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Sprite2D::set_texture, Sprite2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Sprite2D::set_texture, Sprite2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite2d_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Sprite2D::get_texture, Sprite2D::__class_id, ctx, this_val, argv);
 };
 static JSValue sprite2d_class_set_centered(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Sprite2D::set_centered, Sprite2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Sprite2D::set_centered, Sprite2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite2d_class_is_centered(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Sprite2D::is_centered, Sprite2D::__class_id, ctx, this_val, argv);
 };
 static JSValue sprite2d_class_set_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Sprite2D::set_offset, Sprite2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Sprite2D::set_offset, Sprite2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite2d_class_get_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Sprite2D::get_offset, Sprite2D::__class_id, ctx, this_val, argv);
 };
 static JSValue sprite2d_class_set_flip_h(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Sprite2D::set_flip_h, Sprite2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Sprite2D::set_flip_h, Sprite2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite2d_class_is_flipped_h(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Sprite2D::is_flipped_h, Sprite2D::__class_id, ctx, this_val, argv);
 };
 static JSValue sprite2d_class_set_flip_v(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Sprite2D::set_flip_v, Sprite2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Sprite2D::set_flip_v, Sprite2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite2d_class_is_flipped_v(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Sprite2D::is_flipped_v, Sprite2D::__class_id, ctx, this_val, argv);
 };
 static JSValue sprite2d_class_set_region_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Sprite2D::set_region_enabled, Sprite2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Sprite2D::set_region_enabled, Sprite2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite2d_class_is_region_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -84,42 +83,42 @@ static JSValue sprite2d_class_is_pixel_opaque(JSContext *ctx, JSValueConst this_
 	return call_builtin_const_method_ret(&Sprite2D::is_pixel_opaque, Sprite2D::__class_id, ctx, this_val, argv);
 };
 static JSValue sprite2d_class_set_region_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Sprite2D::set_region_rect, Sprite2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Sprite2D::set_region_rect, Sprite2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite2d_class_get_region_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Sprite2D::get_region_rect, Sprite2D::__class_id, ctx, this_val, argv);
 };
 static JSValue sprite2d_class_set_region_filter_clip_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Sprite2D::set_region_filter_clip_enabled, Sprite2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Sprite2D::set_region_filter_clip_enabled, Sprite2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite2d_class_is_region_filter_clip_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Sprite2D::is_region_filter_clip_enabled, Sprite2D::__class_id, ctx, this_val, argv);
 };
 static JSValue sprite2d_class_set_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Sprite2D::set_frame, Sprite2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Sprite2D::set_frame, Sprite2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite2d_class_get_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Sprite2D::get_frame, Sprite2D::__class_id, ctx, this_val, argv);
 };
 static JSValue sprite2d_class_set_frame_coords(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Sprite2D::set_frame_coords, Sprite2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Sprite2D::set_frame_coords, Sprite2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite2d_class_get_frame_coords(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Sprite2D::get_frame_coords, Sprite2D::__class_id, ctx, this_val, argv);
 };
 static JSValue sprite2d_class_set_vframes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Sprite2D::set_vframes, Sprite2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Sprite2D::set_vframes, Sprite2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite2d_class_get_vframes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Sprite2D::get_vframes, Sprite2D::__class_id, ctx, this_val, argv);
 };
 static JSValue sprite2d_class_set_hframes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Sprite2D::set_hframes, Sprite2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Sprite2D::set_hframes, Sprite2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite2d_class_get_hframes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

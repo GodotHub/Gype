@@ -1,17 +1,16 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/editor_export_platform.hpp>
-#include <godot_cpp/classes/editor_export_plugin.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/editor_export_platform.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/editor_export_plugin.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -41,47 +40,47 @@ static JSValue editor_export_plugin_class_constructor(JSContext *ctx, JSValueCon
 	return obj;
 }
 static JSValue editor_export_plugin_class_add_shared_object(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorExportPlugin::add_shared_object, EditorExportPlugin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorExportPlugin::add_shared_object, EditorExportPlugin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_export_plugin_class_add_ios_project_static_lib(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorExportPlugin::add_ios_project_static_lib, EditorExportPlugin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorExportPlugin::add_ios_project_static_lib, EditorExportPlugin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_export_plugin_class_add_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorExportPlugin::add_file, EditorExportPlugin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorExportPlugin::add_file, EditorExportPlugin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_export_plugin_class_add_ios_framework(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorExportPlugin::add_ios_framework, EditorExportPlugin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorExportPlugin::add_ios_framework, EditorExportPlugin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_export_plugin_class_add_ios_embedded_framework(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorExportPlugin::add_ios_embedded_framework, EditorExportPlugin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorExportPlugin::add_ios_embedded_framework, EditorExportPlugin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_export_plugin_class_add_ios_plist_content(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorExportPlugin::add_ios_plist_content, EditorExportPlugin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorExportPlugin::add_ios_plist_content, EditorExportPlugin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_export_plugin_class_add_ios_linker_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorExportPlugin::add_ios_linker_flags, EditorExportPlugin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorExportPlugin::add_ios_linker_flags, EditorExportPlugin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_export_plugin_class_add_ios_bundle_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorExportPlugin::add_ios_bundle_file, EditorExportPlugin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorExportPlugin::add_ios_bundle_file, EditorExportPlugin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_export_plugin_class_add_ios_cpp_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorExportPlugin::add_ios_cpp_code, EditorExportPlugin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorExportPlugin::add_ios_cpp_code, EditorExportPlugin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_export_plugin_class_add_macos_plugin_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorExportPlugin::add_macos_plugin_file, EditorExportPlugin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorExportPlugin::add_macos_plugin_file, EditorExportPlugin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_export_plugin_class_skip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorExportPlugin::skip, EditorExportPlugin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorExportPlugin::skip, EditorExportPlugin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_export_plugin_class_get_option(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

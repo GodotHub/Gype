@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/resource.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/resource_preloader.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,15 +38,15 @@ static JSValue resource_preloader_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 static JSValue resource_preloader_class_add_resource(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ResourcePreloader::add_resource, ResourcePreloader::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ResourcePreloader::add_resource, ResourcePreloader::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue resource_preloader_class_remove_resource(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ResourcePreloader::remove_resource, ResourcePreloader::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ResourcePreloader::remove_resource, ResourcePreloader::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue resource_preloader_class_rename_resource(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ResourcePreloader::rename_resource, ResourcePreloader::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ResourcePreloader::rename_resource, ResourcePreloader::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue resource_preloader_class_has_resource(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,18 +38,18 @@ static JSValue resource_class_constructor(JSContext *ctx, JSValueConst new_targe
 	return obj;
 }
 static JSValue resource_class_set_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Resource::set_path, Resource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Resource::set_path, Resource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue resource_class_take_over_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Resource::take_over_path, Resource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Resource::take_over_path, Resource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue resource_class_get_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Resource::get_path, Resource::__class_id, ctx, this_val, argv);
 };
 static JSValue resource_class_set_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Resource::set_name, Resource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Resource::set_name, Resource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue resource_class_get_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -60,7 +59,7 @@ static JSValue resource_class_get_rid(JSContext *ctx, JSValueConst this_val, int
 	return call_builtin_const_method_ret(&Resource::get_rid, Resource::__class_id, ctx, this_val, argv);
 };
 static JSValue resource_class_set_local_to_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Resource::set_local_to_scene, Resource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Resource::set_local_to_scene, Resource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue resource_class_is_local_to_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,18 +69,18 @@ static JSValue resource_class_get_local_scene(JSContext *ctx, JSValueConst this_
 	return call_builtin_const_method_ret(&Resource::get_local_scene, Resource::__class_id, ctx, this_val, argv);
 };
 static JSValue resource_class_setup_local_to_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Resource::setup_local_to_scene, Resource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Resource::setup_local_to_scene, Resource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue resource_class_set_scene_unique_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Resource::set_scene_unique_id, Resource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Resource::set_scene_unique_id, Resource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue resource_class_get_scene_unique_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Resource::get_scene_unique_id, Resource::__class_id, ctx, this_val, argv);
 };
 static JSValue resource_class_emit_changed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Resource::emit_changed, Resource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Resource::emit_changed, Resource::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue resource_class_duplicate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

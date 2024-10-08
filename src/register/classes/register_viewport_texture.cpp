@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/viewport_texture.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,7 +37,7 @@ static JSValue viewport_texture_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue viewport_texture_class_set_viewport_path_in_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ViewportTexture::set_viewport_path_in_scene, ViewportTexture::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ViewportTexture::set_viewport_path_in_scene, ViewportTexture::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_texture_class_get_viewport_path_in_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -1,14 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,7 +38,7 @@ static JSValue font_class_constructor(JSContext *ctx, JSValueConst new_target, i
 	return obj;
 }
 static JSValue font_class_set_fallbacks(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Font::set_fallbacks, Font::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Font::set_fallbacks, Font::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_class_get_fallbacks(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -90,7 +90,7 @@ static JSValue font_class_get_opentype_features(JSContext *ctx, JSValueConst thi
 	return call_builtin_const_method_ret(&Font::get_opentype_features, Font::__class_id, ctx, this_val, argv);
 };
 static JSValue font_class_set_cache_capacity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Font::set_cache_capacity, Font::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Font::set_cache_capacity, Font::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_class_get_string_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -100,19 +100,19 @@ static JSValue font_class_get_multiline_string_size(JSContext *ctx, JSValueConst
 	return call_builtin_const_method_ret(&Font::get_multiline_string_size, Font::__class_id, ctx, this_val, argv);
 };
 static JSValue font_class_draw_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&Font::draw_string, Font::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&Font::draw_string, Font::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_class_draw_multiline_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&Font::draw_multiline_string, Font::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&Font::draw_multiline_string, Font::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_class_draw_string_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&Font::draw_string_outline, Font::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&Font::draw_string_outline, Font::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_class_draw_multiline_string_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&Font::draw_multiline_string_outline, Font::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&Font::draw_multiline_string_outline, Font::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_class_get_char_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

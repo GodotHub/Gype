@@ -1,16 +1,16 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/collision_object3d.hpp>
+#include <godot_cpp/classes/physics_body3d.hpp>
 #include <godot_cpp/classes/kinematic_collision3d.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/physics_body3d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -49,7 +49,7 @@ static JSValue physics_body3d_class_get_gravity(JSContext *ctx, JSValueConst thi
 	return call_builtin_const_method_ret(&PhysicsBody3D::get_gravity, PhysicsBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physics_body3d_class_set_axis_lock(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsBody3D::set_axis_lock, PhysicsBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsBody3D::set_axis_lock, PhysicsBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_body3d_class_get_axis_lock(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -59,11 +59,11 @@ static JSValue physics_body3d_class_get_collision_exceptions(JSContext *ctx, JSV
 	return call_builtin_method_ret(&PhysicsBody3D::get_collision_exceptions, PhysicsBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physics_body3d_class_add_collision_exception_with(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsBody3D::add_collision_exception_with, PhysicsBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsBody3D::add_collision_exception_with, PhysicsBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_body3d_class_remove_collision_exception_with(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsBody3D::remove_collision_exception_with, PhysicsBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsBody3D::remove_collision_exception_with, PhysicsBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry physics_body3d_class_proto_funcs[] = {

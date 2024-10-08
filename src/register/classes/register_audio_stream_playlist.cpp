@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/audio_stream.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/audio_stream_playlist.hpp>
+#include <godot_cpp/classes/audio_stream.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,7 +37,7 @@ static JSValue audio_stream_playlist_class_constructor(JSContext *ctx, JSValueCo
 	return obj;
 }
 static JSValue audio_stream_playlist_class_set_stream_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlaylist::set_stream_count, AudioStreamPlaylist::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlaylist::set_stream_count, AudioStreamPlaylist::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_playlist_class_get_stream_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -48,28 +47,28 @@ static JSValue audio_stream_playlist_class_get_bpm(JSContext *ctx, JSValueConst 
 	return call_builtin_const_method_ret(&AudioStreamPlaylist::get_bpm, AudioStreamPlaylist::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_playlist_class_set_list_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlaylist::set_list_stream, AudioStreamPlaylist::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlaylist::set_list_stream, AudioStreamPlaylist::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_playlist_class_get_list_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlaylist::get_list_stream, AudioStreamPlaylist::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_playlist_class_set_shuffle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlaylist::set_shuffle, AudioStreamPlaylist::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlaylist::set_shuffle, AudioStreamPlaylist::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_playlist_class_get_shuffle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlaylist::get_shuffle, AudioStreamPlaylist::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_playlist_class_set_fade_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlaylist::set_fade_time, AudioStreamPlaylist::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlaylist::set_fade_time, AudioStreamPlaylist::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_playlist_class_get_fade_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlaylist::get_fade_time, AudioStreamPlaylist::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_playlist_class_set_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlaylist::set_loop, AudioStreamPlaylist::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlaylist::set_loop, AudioStreamPlaylist::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_playlist_class_has_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

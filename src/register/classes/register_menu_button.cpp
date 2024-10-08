@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/menu_button.hpp>
 #include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -42,22 +41,22 @@ static JSValue menu_button_class_get_popup(JSContext *ctx, JSValueConst this_val
 	return call_builtin_const_method_ret(&MenuButton::get_popup, MenuButton::__class_id, ctx, this_val, argv);
 };
 static JSValue menu_button_class_show_popup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&MenuButton::show_popup, MenuButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MenuButton::show_popup, MenuButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue menu_button_class_set_switch_on_hover(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&MenuButton::set_switch_on_hover, MenuButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MenuButton::set_switch_on_hover, MenuButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue menu_button_class_is_switch_on_hover(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&MenuButton::is_switch_on_hover, MenuButton::__class_id, ctx, this_val, argv);
 };
 static JSValue menu_button_class_set_disable_shortcuts(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&MenuButton::set_disable_shortcuts, MenuButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MenuButton::set_disable_shortcuts, MenuButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue menu_button_class_set_item_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&MenuButton::set_item_count, MenuButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MenuButton::set_item_count, MenuButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue menu_button_class_get_item_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
+#include <godot_cpp/classes/ribbon_trail_mesh.hpp>
 #include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
-#include <godot_cpp/classes/ribbon_trail_mesh.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,42 +38,42 @@ static JSValue ribbon_trail_mesh_class_constructor(JSContext *ctx, JSValueConst 
 	return obj;
 }
 static JSValue ribbon_trail_mesh_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RibbonTrailMesh::set_size, RibbonTrailMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RibbonTrailMesh::set_size, RibbonTrailMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ribbon_trail_mesh_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RibbonTrailMesh::get_size, RibbonTrailMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue ribbon_trail_mesh_class_set_sections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RibbonTrailMesh::set_sections, RibbonTrailMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RibbonTrailMesh::set_sections, RibbonTrailMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ribbon_trail_mesh_class_get_sections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RibbonTrailMesh::get_sections, RibbonTrailMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue ribbon_trail_mesh_class_set_section_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RibbonTrailMesh::set_section_length, RibbonTrailMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RibbonTrailMesh::set_section_length, RibbonTrailMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ribbon_trail_mesh_class_get_section_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RibbonTrailMesh::get_section_length, RibbonTrailMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue ribbon_trail_mesh_class_set_section_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RibbonTrailMesh::set_section_segments, RibbonTrailMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RibbonTrailMesh::set_section_segments, RibbonTrailMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ribbon_trail_mesh_class_get_section_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RibbonTrailMesh::get_section_segments, RibbonTrailMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue ribbon_trail_mesh_class_set_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RibbonTrailMesh::set_curve, RibbonTrailMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RibbonTrailMesh::set_curve, RibbonTrailMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ribbon_trail_mesh_class_get_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RibbonTrailMesh::get_curve, RibbonTrailMesh::__class_id, ctx, this_val, argv);
 };
 static JSValue ribbon_trail_mesh_class_set_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RibbonTrailMesh::set_shape, RibbonTrailMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RibbonTrailMesh::set_shape, RibbonTrailMesh::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ribbon_trail_mesh_class_get_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

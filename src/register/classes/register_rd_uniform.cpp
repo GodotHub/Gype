@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/rd_uniform.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/rd_uniform.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,25 +37,25 @@ static JSValue rd_uniform_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue rd_uniform_class_set_uniform_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDUniform::set_uniform_type, RDUniform::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDUniform::set_uniform_type, RDUniform::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_uniform_class_get_uniform_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDUniform::get_uniform_type, RDUniform::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_uniform_class_set_binding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDUniform::set_binding, RDUniform::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDUniform::set_binding, RDUniform::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_uniform_class_get_binding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDUniform::get_binding, RDUniform::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_uniform_class_add_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDUniform::add_id, RDUniform::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDUniform::add_id, RDUniform::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_uniform_class_clear_ids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDUniform::clear_ids, RDUniform::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDUniform::clear_ids, RDUniform::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_uniform_class_get_ids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

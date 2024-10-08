@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/style_box.hpp>
-#include <godot_cpp/classes/style_box_texture.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/style_box_texture.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,64 +38,64 @@ static JSValue style_box_texture_class_constructor(JSContext *ctx, JSValueConst 
 	return obj;
 }
 static JSValue style_box_texture_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxTexture::set_texture, StyleBoxTexture::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxTexture::set_texture, StyleBoxTexture::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_texture_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxTexture::get_texture, StyleBoxTexture::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_texture_class_set_texture_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxTexture::set_texture_margin, StyleBoxTexture::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxTexture::set_texture_margin, StyleBoxTexture::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_texture_class_set_texture_margin_all(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxTexture::set_texture_margin_all, StyleBoxTexture::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxTexture::set_texture_margin_all, StyleBoxTexture::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_texture_class_get_texture_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxTexture::get_texture_margin, StyleBoxTexture::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_texture_class_set_expand_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxTexture::set_expand_margin, StyleBoxTexture::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxTexture::set_expand_margin, StyleBoxTexture::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_texture_class_set_expand_margin_all(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxTexture::set_expand_margin_all, StyleBoxTexture::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxTexture::set_expand_margin_all, StyleBoxTexture::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_texture_class_get_expand_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxTexture::get_expand_margin, StyleBoxTexture::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_texture_class_set_region_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxTexture::set_region_rect, StyleBoxTexture::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxTexture::set_region_rect, StyleBoxTexture::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_texture_class_get_region_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxTexture::get_region_rect, StyleBoxTexture::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_texture_class_set_draw_center(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxTexture::set_draw_center, StyleBoxTexture::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxTexture::set_draw_center, StyleBoxTexture::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_texture_class_is_draw_center_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxTexture::is_draw_center_enabled, StyleBoxTexture::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_texture_class_set_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxTexture::set_modulate, StyleBoxTexture::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxTexture::set_modulate, StyleBoxTexture::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_texture_class_get_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxTexture::get_modulate, StyleBoxTexture::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_texture_class_set_h_axis_stretch_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxTexture::set_h_axis_stretch_mode, StyleBoxTexture::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxTexture::set_h_axis_stretch_mode, StyleBoxTexture::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_texture_class_get_h_axis_stretch_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StyleBoxTexture::get_h_axis_stretch_mode, StyleBoxTexture::__class_id, ctx, this_val, argv);
 };
 static JSValue style_box_texture_class_set_v_axis_stretch_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StyleBoxTexture::set_v_axis_stretch_mode, StyleBoxTexture::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StyleBoxTexture::set_v_axis_stretch_mode, StyleBoxTexture::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_texture_class_get_v_axis_stretch_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

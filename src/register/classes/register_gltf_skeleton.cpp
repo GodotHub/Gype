@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/bone_attachment3d.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/gltf_skeleton.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/bone_attachment3d.hpp>
 #include <godot_cpp/classes/skeleton3d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -43,14 +42,14 @@ static JSValue gltf_skeleton_class_get_joints(JSContext *ctx, JSValueConst this_
 	return call_builtin_method_ret(&GLTFSkeleton::get_joints, GLTFSkeleton::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_skeleton_class_set_joints(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFSkeleton::set_joints, GLTFSkeleton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFSkeleton::set_joints, GLTFSkeleton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skeleton_class_get_roots(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&GLTFSkeleton::get_roots, GLTFSkeleton::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_skeleton_class_set_roots(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFSkeleton::set_roots, GLTFSkeleton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFSkeleton::set_roots, GLTFSkeleton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skeleton_class_get_godot_skeleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -60,14 +59,14 @@ static JSValue gltf_skeleton_class_get_unique_names(JSContext *ctx, JSValueConst
 	return call_builtin_method_ret(&GLTFSkeleton::get_unique_names, GLTFSkeleton::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_skeleton_class_set_unique_names(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFSkeleton::set_unique_names, GLTFSkeleton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFSkeleton::set_unique_names, GLTFSkeleton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skeleton_class_get_godot_bone_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&GLTFSkeleton::get_godot_bone_node, GLTFSkeleton::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_skeleton_class_set_godot_bone_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFSkeleton::set_godot_bone_node, GLTFSkeleton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFSkeleton::set_godot_bone_node, GLTFSkeleton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skeleton_class_get_bone_attachment_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

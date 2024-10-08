@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/gradient.hpp>
 #include <godot_cpp/classes/gradient_texture1d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,18 +38,18 @@ static JSValue gradient_texture1d_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 static JSValue gradient_texture1d_class_set_gradient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GradientTexture1D::set_gradient, GradientTexture1D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GradientTexture1D::set_gradient, GradientTexture1D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_texture1d_class_get_gradient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&GradientTexture1D::get_gradient, GradientTexture1D::__class_id, ctx, this_val, argv);
 };
 static JSValue gradient_texture1d_class_set_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GradientTexture1D::set_width, GradientTexture1D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GradientTexture1D::set_width, GradientTexture1D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_texture1d_class_set_use_hdr(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GradientTexture1D::set_use_hdr, GradientTexture1D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GradientTexture1D::set_use_hdr, GradientTexture1D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_texture1d_class_is_using_hdr(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

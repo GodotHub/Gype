@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/polygon2d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,98 +38,98 @@ static JSValue polygon2d_class_constructor(JSContext *ctx, JSValueConst new_targ
 	return obj;
 }
 static JSValue polygon2d_class_set_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Polygon2D::set_polygon, Polygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Polygon2D::set_polygon, Polygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Polygon2D::get_polygon, Polygon2D::__class_id, ctx, this_val, argv);
 };
 static JSValue polygon2d_class_set_uv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Polygon2D::set_uv, Polygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Polygon2D::set_uv, Polygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_uv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Polygon2D::get_uv, Polygon2D::__class_id, ctx, this_val, argv);
 };
 static JSValue polygon2d_class_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Polygon2D::set_color, Polygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Polygon2D::set_color, Polygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Polygon2D::get_color, Polygon2D::__class_id, ctx, this_val, argv);
 };
 static JSValue polygon2d_class_set_polygons(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Polygon2D::set_polygons, Polygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Polygon2D::set_polygons, Polygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_polygons(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Polygon2D::get_polygons, Polygon2D::__class_id, ctx, this_val, argv);
 };
 static JSValue polygon2d_class_set_vertex_colors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Polygon2D::set_vertex_colors, Polygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Polygon2D::set_vertex_colors, Polygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_vertex_colors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Polygon2D::get_vertex_colors, Polygon2D::__class_id, ctx, this_val, argv);
 };
 static JSValue polygon2d_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Polygon2D::set_texture, Polygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Polygon2D::set_texture, Polygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Polygon2D::get_texture, Polygon2D::__class_id, ctx, this_val, argv);
 };
 static JSValue polygon2d_class_set_texture_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Polygon2D::set_texture_offset, Polygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Polygon2D::set_texture_offset, Polygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_texture_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Polygon2D::get_texture_offset, Polygon2D::__class_id, ctx, this_val, argv);
 };
 static JSValue polygon2d_class_set_texture_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Polygon2D::set_texture_rotation, Polygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Polygon2D::set_texture_rotation, Polygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_texture_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Polygon2D::get_texture_rotation, Polygon2D::__class_id, ctx, this_val, argv);
 };
 static JSValue polygon2d_class_set_texture_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Polygon2D::set_texture_scale, Polygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Polygon2D::set_texture_scale, Polygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_texture_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Polygon2D::get_texture_scale, Polygon2D::__class_id, ctx, this_val, argv);
 };
 static JSValue polygon2d_class_set_invert_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Polygon2D::set_invert_enabled, Polygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Polygon2D::set_invert_enabled, Polygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_invert_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Polygon2D::get_invert_enabled, Polygon2D::__class_id, ctx, this_val, argv);
 };
 static JSValue polygon2d_class_set_antialiased(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Polygon2D::set_antialiased, Polygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Polygon2D::set_antialiased, Polygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_antialiased(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Polygon2D::get_antialiased, Polygon2D::__class_id, ctx, this_val, argv);
 };
 static JSValue polygon2d_class_set_invert_border(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Polygon2D::set_invert_border, Polygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Polygon2D::set_invert_border, Polygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_invert_border(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Polygon2D::get_invert_border, Polygon2D::__class_id, ctx, this_val, argv);
 };
 static JSValue polygon2d_class_set_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Polygon2D::set_offset, Polygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Polygon2D::set_offset, Polygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Polygon2D::get_offset, Polygon2D::__class_id, ctx, this_val, argv);
 };
 static JSValue polygon2d_class_add_bone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Polygon2D::add_bone, Polygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Polygon2D::add_bone, Polygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_bone_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -143,30 +142,30 @@ static JSValue polygon2d_class_get_bone_weights(JSContext *ctx, JSValueConst thi
 	return call_builtin_const_method_ret(&Polygon2D::get_bone_weights, Polygon2D::__class_id, ctx, this_val, argv);
 };
 static JSValue polygon2d_class_erase_bone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Polygon2D::erase_bone, Polygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Polygon2D::erase_bone, Polygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_clear_bones(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Polygon2D::clear_bones, Polygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Polygon2D::clear_bones, Polygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_set_bone_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Polygon2D::set_bone_path, Polygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Polygon2D::set_bone_path, Polygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_set_bone_weights(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Polygon2D::set_bone_weights, Polygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Polygon2D::set_bone_weights, Polygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_set_skeleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Polygon2D::set_skeleton, Polygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Polygon2D::set_skeleton, Polygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_skeleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Polygon2D::get_skeleton, Polygon2D::__class_id, ctx, this_val, argv);
 };
 static JSValue polygon2d_class_set_internal_vertex_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Polygon2D::set_internal_vertex_count, Polygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Polygon2D::set_internal_vertex_count, Polygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_internal_vertex_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

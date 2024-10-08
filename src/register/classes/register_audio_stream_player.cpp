@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/audio_stream.hpp>
-#include <godot_cpp/classes/audio_stream_playback.hpp>
 #include <godot_cpp/classes/audio_stream_player.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/audio_stream_playback.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -40,36 +39,36 @@ static JSValue audio_stream_player_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 static JSValue audio_stream_player_class_set_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer::set_stream, AudioStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer::set_stream, AudioStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player_class_get_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer::get_stream, AudioStreamPlayer::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player_class_set_volume_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer::set_volume_db, AudioStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer::set_volume_db, AudioStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player_class_get_volume_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer::get_volume_db, AudioStreamPlayer::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player_class_set_pitch_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer::set_pitch_scale, AudioStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer::set_pitch_scale, AudioStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player_class_get_pitch_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer::get_pitch_scale, AudioStreamPlayer::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player_class_play(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer::play, AudioStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer::play, AudioStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player_class_seek(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer::seek, AudioStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer::seek, AudioStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player_class_stop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer::stop, AudioStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer::stop, AudioStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player_class_is_playing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -79,35 +78,35 @@ static JSValue audio_stream_player_class_get_playback_position(JSContext *ctx, J
 	return call_builtin_method_ret(&AudioStreamPlayer::get_playback_position, AudioStreamPlayer::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player_class_set_bus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer::set_bus, AudioStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer::set_bus, AudioStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player_class_get_bus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer::get_bus, AudioStreamPlayer::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player_class_set_autoplay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer::set_autoplay, AudioStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer::set_autoplay, AudioStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player_class_is_autoplay_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer::is_autoplay_enabled, AudioStreamPlayer::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player_class_set_mix_target(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer::set_mix_target, AudioStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer::set_mix_target, AudioStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player_class_get_mix_target(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer::get_mix_target, AudioStreamPlayer::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player_class_set_stream_paused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer::set_stream_paused, AudioStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer::set_stream_paused, AudioStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player_class_get_stream_paused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioStreamPlayer::get_stream_paused, AudioStreamPlayer::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player_class_set_max_polyphony(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer::set_max_polyphony, AudioStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer::set_max_polyphony, AudioStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player_class_get_max_polyphony(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -120,7 +119,7 @@ static JSValue audio_stream_player_class_get_stream_playback(JSContext *ctx, JSV
 	return call_builtin_method_ret(&AudioStreamPlayer::get_stream_playback, AudioStreamPlayer::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_stream_player_class_set_playback_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioStreamPlayer::set_playback_type, AudioStreamPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayer::set_playback_type, AudioStreamPlayer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_player_class_get_playback_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

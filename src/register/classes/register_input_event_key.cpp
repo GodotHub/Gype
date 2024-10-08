@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/input_event_key.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/input_event_with_modifiers.hpp>
+#include <godot_cpp/classes/input_event_key.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,46 +37,46 @@ static JSValue input_event_key_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue input_event_key_class_set_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&InputEventKey::set_pressed, InputEventKey::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&InputEventKey::set_pressed, InputEventKey::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_key_class_set_keycode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&InputEventKey::set_keycode, InputEventKey::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&InputEventKey::set_keycode, InputEventKey::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_key_class_get_keycode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&InputEventKey::get_keycode, InputEventKey::__class_id, ctx, this_val, argv);
 };
 static JSValue input_event_key_class_set_physical_keycode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&InputEventKey::set_physical_keycode, InputEventKey::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&InputEventKey::set_physical_keycode, InputEventKey::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_key_class_get_physical_keycode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&InputEventKey::get_physical_keycode, InputEventKey::__class_id, ctx, this_val, argv);
 };
 static JSValue input_event_key_class_set_key_label(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&InputEventKey::set_key_label, InputEventKey::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&InputEventKey::set_key_label, InputEventKey::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_key_class_get_key_label(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&InputEventKey::get_key_label, InputEventKey::__class_id, ctx, this_val, argv);
 };
 static JSValue input_event_key_class_set_unicode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&InputEventKey::set_unicode, InputEventKey::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&InputEventKey::set_unicode, InputEventKey::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_key_class_get_unicode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&InputEventKey::get_unicode, InputEventKey::__class_id, ctx, this_val, argv);
 };
 static JSValue input_event_key_class_set_location(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&InputEventKey::set_location, InputEventKey::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&InputEventKey::set_location, InputEventKey::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_key_class_get_location(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&InputEventKey::get_location, InputEventKey::__class_id, ctx, this_val, argv);
 };
 static JSValue input_event_key_class_set_echo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&InputEventKey::set_echo, InputEventKey::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&InputEventKey::set_echo, InputEventKey::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_key_class_get_keycode_with_modifiers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

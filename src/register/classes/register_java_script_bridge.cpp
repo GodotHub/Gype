@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/java_script_bridge.hpp>
 #include <godot_cpp/classes/java_script_object.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -48,7 +47,7 @@ static JSValue java_script_bridge_class_create_callback(JSContext *ctx, JSValueC
 	return call_builtin_method_ret(&JavaScriptBridge::create_callback, JavaScriptBridge::__class_id, ctx, this_val, argv);
 };
 static JSValue java_script_bridge_class_download_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&JavaScriptBridge::download_buffer, JavaScriptBridge::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&JavaScriptBridge::download_buffer, JavaScriptBridge::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue java_script_bridge_class_pwa_needs_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -58,11 +57,11 @@ static JSValue java_script_bridge_class_pwa_update(JSContext *ctx, JSValueConst 
 	return call_builtin_method_ret(&JavaScriptBridge::pwa_update, JavaScriptBridge::__class_id, ctx, this_val, argv);
 };
 static JSValue java_script_bridge_class_force_fs_sync(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&JavaScriptBridge::force_fs_sync, JavaScriptBridge::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&JavaScriptBridge::force_fs_sync, JavaScriptBridge::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue java_script_bridge_class_create_object(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_vararg_method(&JavaScriptBridge::js_create_object, JavaScriptBridge::__class_id, ctx, this_val, argc, argv);
+	return call_builtin_vararg_method_ret(&JavaScriptBridge::js_create_object, JavaScriptBridge::__class_id, ctx, this_val, argc, argv);
 }
 static const JSCFunctionListEntry java_script_bridge_class_proto_funcs[] = {
 	JS_CFUNC_DEF("eval", 2, &java_script_bridge_class_eval),

@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/status_indicator.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/status_indicator.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,28 +38,28 @@ static JSValue status_indicator_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue status_indicator_class_set_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StatusIndicator::set_tooltip, StatusIndicator::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StatusIndicator::set_tooltip, StatusIndicator::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue status_indicator_class_get_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StatusIndicator::get_tooltip, StatusIndicator::__class_id, ctx, this_val, argv);
 };
 static JSValue status_indicator_class_set_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StatusIndicator::set_icon, StatusIndicator::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StatusIndicator::set_icon, StatusIndicator::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue status_indicator_class_get_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StatusIndicator::get_icon, StatusIndicator::__class_id, ctx, this_val, argv);
 };
 static JSValue status_indicator_class_set_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StatusIndicator::set_visible, StatusIndicator::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StatusIndicator::set_visible, StatusIndicator::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue status_indicator_class_is_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StatusIndicator::is_visible, StatusIndicator::__class_id, ctx, this_val, argv);
 };
 static JSValue status_indicator_class_set_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&StatusIndicator::set_menu, StatusIndicator::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&StatusIndicator::set_menu, StatusIndicator::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue status_indicator_class_get_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/rd_pipeline_rasterization_state.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,77 +37,77 @@ static JSValue rd_pipeline_rasterization_state_class_constructor(JSContext *ctx,
 	return obj;
 }
 static JSValue rd_pipeline_rasterization_state_class_set_enable_depth_clamp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineRasterizationState::set_enable_depth_clamp, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineRasterizationState::set_enable_depth_clamp, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_rasterization_state_class_get_enable_depth_clamp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDPipelineRasterizationState::get_enable_depth_clamp, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_pipeline_rasterization_state_class_set_discard_primitives(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineRasterizationState::set_discard_primitives, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineRasterizationState::set_discard_primitives, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_rasterization_state_class_get_discard_primitives(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDPipelineRasterizationState::get_discard_primitives, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_pipeline_rasterization_state_class_set_wireframe(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineRasterizationState::set_wireframe, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineRasterizationState::set_wireframe, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_rasterization_state_class_get_wireframe(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDPipelineRasterizationState::get_wireframe, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_pipeline_rasterization_state_class_set_cull_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineRasterizationState::set_cull_mode, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineRasterizationState::set_cull_mode, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_rasterization_state_class_get_cull_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDPipelineRasterizationState::get_cull_mode, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_pipeline_rasterization_state_class_set_front_face(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineRasterizationState::set_front_face, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineRasterizationState::set_front_face, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_rasterization_state_class_get_front_face(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDPipelineRasterizationState::get_front_face, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_pipeline_rasterization_state_class_set_depth_bias_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineRasterizationState::set_depth_bias_enabled, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineRasterizationState::set_depth_bias_enabled, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_rasterization_state_class_get_depth_bias_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDPipelineRasterizationState::get_depth_bias_enabled, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_pipeline_rasterization_state_class_set_depth_bias_constant_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineRasterizationState::set_depth_bias_constant_factor, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineRasterizationState::set_depth_bias_constant_factor, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_rasterization_state_class_get_depth_bias_constant_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDPipelineRasterizationState::get_depth_bias_constant_factor, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_pipeline_rasterization_state_class_set_depth_bias_clamp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineRasterizationState::set_depth_bias_clamp, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineRasterizationState::set_depth_bias_clamp, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_rasterization_state_class_get_depth_bias_clamp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDPipelineRasterizationState::get_depth_bias_clamp, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_pipeline_rasterization_state_class_set_depth_bias_slope_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineRasterizationState::set_depth_bias_slope_factor, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineRasterizationState::set_depth_bias_slope_factor, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_rasterization_state_class_get_depth_bias_slope_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDPipelineRasterizationState::get_depth_bias_slope_factor, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_pipeline_rasterization_state_class_set_line_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineRasterizationState::set_line_width, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineRasterizationState::set_line_width, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_rasterization_state_class_get_line_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDPipelineRasterizationState::get_line_width, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_pipeline_rasterization_state_class_set_patch_control_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineRasterizationState::set_patch_control_points, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineRasterizationState::set_patch_control_points, RDPipelineRasterizationState::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_rasterization_state_class_get_patch_control_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

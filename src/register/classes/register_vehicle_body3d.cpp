@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/rigid_body3d.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/vehicle_body3d.hpp>
+#include <godot_cpp/classes/rigid_body3d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,21 +37,21 @@ static JSValue vehicle_body3d_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue vehicle_body3d_class_set_engine_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VehicleBody3D::set_engine_force, VehicleBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VehicleBody3D::set_engine_force, VehicleBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue vehicle_body3d_class_get_engine_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VehicleBody3D::get_engine_force, VehicleBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue vehicle_body3d_class_set_brake(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VehicleBody3D::set_brake, VehicleBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VehicleBody3D::set_brake, VehicleBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue vehicle_body3d_class_get_brake(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VehicleBody3D::get_brake, VehicleBody3D::__class_id, ctx, this_val, argv);
 };
 static JSValue vehicle_body3d_class_set_steering(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VehicleBody3D::set_steering, VehicleBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VehicleBody3D::set_steering, VehicleBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue vehicle_body3d_class_get_steering(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

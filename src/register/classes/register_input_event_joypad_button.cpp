@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/input_event.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/input_event_joypad_button.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,21 +37,21 @@ static JSValue input_event_joypad_button_class_constructor(JSContext *ctx, JSVal
 	return obj;
 }
 static JSValue input_event_joypad_button_class_set_button_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&InputEventJoypadButton::set_button_index, InputEventJoypadButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&InputEventJoypadButton::set_button_index, InputEventJoypadButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_joypad_button_class_get_button_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&InputEventJoypadButton::get_button_index, InputEventJoypadButton::__class_id, ctx, this_val, argv);
 };
 static JSValue input_event_joypad_button_class_set_pressure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&InputEventJoypadButton::set_pressure, InputEventJoypadButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&InputEventJoypadButton::set_pressure, InputEventJoypadButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_joypad_button_class_get_pressure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&InputEventJoypadButton::get_pressure, InputEventJoypadButton::__class_id, ctx, this_val, argv);
 };
 static JSValue input_event_joypad_button_class_set_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&InputEventJoypadButton::set_pressed, InputEventJoypadButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&InputEventJoypadButton::set_pressed, InputEventJoypadButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry input_event_joypad_button_class_proto_funcs[] = {

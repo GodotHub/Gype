@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/multiplayer_peer.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/packet_peer.hpp>
+#include <godot_cpp/classes/multiplayer_peer.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,21 +37,21 @@ static JSValue multiplayer_peer_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue multiplayer_peer_class_set_transfer_channel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&MultiplayerPeer::set_transfer_channel, MultiplayerPeer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MultiplayerPeer::set_transfer_channel, MultiplayerPeer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_peer_class_get_transfer_channel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&MultiplayerPeer::get_transfer_channel, MultiplayerPeer::__class_id, ctx, this_val, argv);
 };
 static JSValue multiplayer_peer_class_set_transfer_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&MultiplayerPeer::set_transfer_mode, MultiplayerPeer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MultiplayerPeer::set_transfer_mode, MultiplayerPeer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_peer_class_get_transfer_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&MultiplayerPeer::get_transfer_mode, MultiplayerPeer::__class_id, ctx, this_val, argv);
 };
 static JSValue multiplayer_peer_class_set_target_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&MultiplayerPeer::set_target_peer, MultiplayerPeer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MultiplayerPeer::set_target_peer, MultiplayerPeer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_peer_class_get_packet_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -65,15 +64,15 @@ static JSValue multiplayer_peer_class_get_packet_mode(JSContext *ctx, JSValueCon
 	return call_builtin_const_method_ret(&MultiplayerPeer::get_packet_mode, MultiplayerPeer::__class_id, ctx, this_val, argv);
 };
 static JSValue multiplayer_peer_class_poll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&MultiplayerPeer::poll, MultiplayerPeer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MultiplayerPeer::poll, MultiplayerPeer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_peer_class_close(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&MultiplayerPeer::close, MultiplayerPeer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MultiplayerPeer::close, MultiplayerPeer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_peer_class_disconnect_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&MultiplayerPeer::disconnect_peer, MultiplayerPeer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MultiplayerPeer::disconnect_peer, MultiplayerPeer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_peer_class_get_connection_status(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -86,7 +85,7 @@ static JSValue multiplayer_peer_class_generate_unique_id(JSContext *ctx, JSValue
 	return call_builtin_const_method_ret(&MultiplayerPeer::generate_unique_id, MultiplayerPeer::__class_id, ctx, this_val, argv);
 };
 static JSValue multiplayer_peer_class_set_refuse_new_connections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&MultiplayerPeer::set_refuse_new_connections, MultiplayerPeer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MultiplayerPeer::set_refuse_new_connections, MultiplayerPeer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_peer_class_is_refusing_new_connections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

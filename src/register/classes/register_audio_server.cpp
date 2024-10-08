@@ -1,18 +1,17 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
+#include <godot_cpp/classes/audio_stream.hpp>
+#include <godot_cpp/classes/audio_effect_instance.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/audio_server.hpp>
 #include <godot_cpp/classes/audio_bus_layout.hpp>
 #include <godot_cpp/classes/audio_effect.hpp>
-#include <godot_cpp/classes/audio_effect_instance.hpp>
-#include <godot_cpp/classes/audio_server.hpp>
-#include <godot_cpp/classes/audio_stream.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -42,26 +41,26 @@ static JSValue audio_server_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue audio_server_class_set_bus_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioServer::set_bus_count, AudioServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioServer::set_bus_count, AudioServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_server_class_get_bus_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioServer::get_bus_count, AudioServer::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_server_class_remove_bus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioServer::remove_bus, AudioServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioServer::remove_bus, AudioServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_server_class_add_bus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioServer::add_bus, AudioServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioServer::add_bus, AudioServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_server_class_move_bus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioServer::move_bus, AudioServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioServer::move_bus, AudioServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_server_class_set_bus_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioServer::set_bus_name, AudioServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioServer::set_bus_name, AudioServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_server_class_get_bus_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -74,46 +73,46 @@ static JSValue audio_server_class_get_bus_channels(JSContext *ctx, JSValueConst 
 	return call_builtin_const_method_ret(&AudioServer::get_bus_channels, AudioServer::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_server_class_set_bus_volume_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioServer::set_bus_volume_db, AudioServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioServer::set_bus_volume_db, AudioServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_server_class_get_bus_volume_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioServer::get_bus_volume_db, AudioServer::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_server_class_set_bus_send(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioServer::set_bus_send, AudioServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioServer::set_bus_send, AudioServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_server_class_get_bus_send(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioServer::get_bus_send, AudioServer::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_server_class_set_bus_solo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioServer::set_bus_solo, AudioServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioServer::set_bus_solo, AudioServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_server_class_is_bus_solo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioServer::is_bus_solo, AudioServer::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_server_class_set_bus_mute(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioServer::set_bus_mute, AudioServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioServer::set_bus_mute, AudioServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_server_class_is_bus_mute(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioServer::is_bus_mute, AudioServer::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_server_class_set_bus_bypass_effects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioServer::set_bus_bypass_effects, AudioServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioServer::set_bus_bypass_effects, AudioServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_server_class_is_bus_bypassing_effects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioServer::is_bus_bypassing_effects, AudioServer::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_server_class_add_bus_effect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioServer::add_bus_effect, AudioServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioServer::add_bus_effect, AudioServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_server_class_remove_bus_effect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioServer::remove_bus_effect, AudioServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioServer::remove_bus_effect, AudioServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_server_class_get_bus_effect_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -126,11 +125,11 @@ static JSValue audio_server_class_get_bus_effect_instance(JSContext *ctx, JSValu
 	return call_builtin_method_ret(&AudioServer::get_bus_effect_instance, AudioServer::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_server_class_swap_bus_effects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioServer::swap_bus_effects, AudioServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioServer::swap_bus_effects, AudioServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_server_class_set_bus_effect_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioServer::set_bus_effect_enabled, AudioServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioServer::set_bus_effect_enabled, AudioServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_server_class_is_bus_effect_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -143,18 +142,18 @@ static JSValue audio_server_class_get_bus_peak_volume_right_db(JSContext *ctx, J
 	return call_builtin_const_method_ret(&AudioServer::get_bus_peak_volume_right_db, AudioServer::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_server_class_set_playback_speed_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioServer::set_playback_speed_scale, AudioServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioServer::set_playback_speed_scale, AudioServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_server_class_get_playback_speed_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioServer::get_playback_speed_scale, AudioServer::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_server_class_lock(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioServer::lock, AudioServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioServer::lock, AudioServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_server_class_unlock(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioServer::unlock, AudioServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioServer::unlock, AudioServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_server_class_get_speaker_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -170,7 +169,7 @@ static JSValue audio_server_class_get_output_device(JSContext *ctx, JSValueConst
 	return call_builtin_method_ret(&AudioServer::get_output_device, AudioServer::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_server_class_set_output_device(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioServer::set_output_device, AudioServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioServer::set_output_device, AudioServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_server_class_get_time_to_next_mix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -189,25 +188,25 @@ static JSValue audio_server_class_get_input_device(JSContext *ctx, JSValueConst 
 	return call_builtin_method_ret(&AudioServer::get_input_device, AudioServer::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_server_class_set_input_device(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioServer::set_input_device, AudioServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioServer::set_input_device, AudioServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_server_class_set_bus_layout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioServer::set_bus_layout, AudioServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioServer::set_bus_layout, AudioServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_server_class_generate_bus_layout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioServer::generate_bus_layout, AudioServer::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_server_class_set_enable_tagging_used_audio_streams(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioServer::set_enable_tagging_used_audio_streams, AudioServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioServer::set_enable_tagging_used_audio_streams, AudioServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_server_class_is_stream_registered_as_sample(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&AudioServer::is_stream_registered_as_sample, AudioServer::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_server_class_register_stream_as_sample(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioServer::register_stream_as_sample, AudioServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioServer::register_stream_as_sample, AudioServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry audio_server_class_proto_funcs[] = {

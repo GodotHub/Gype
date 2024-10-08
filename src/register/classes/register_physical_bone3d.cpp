@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/physical_bone3d.hpp>
-#include <godot_cpp/classes/physics_body3d.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/physics_direct_body_state3d.hpp>
+#include <godot_cpp/classes/physics_body3d.hpp>
+#include <godot_cpp/classes/physical_bone3d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,36 +38,36 @@ static JSValue physical_bone3d_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue physical_bone3d_class_apply_central_impulse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalBone3D::apply_central_impulse, PhysicalBone3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBone3D::apply_central_impulse, PhysicalBone3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone3d_class_apply_impulse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalBone3D::apply_impulse, PhysicalBone3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBone3D::apply_impulse, PhysicalBone3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone3d_class_set_joint_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalBone3D::set_joint_type, PhysicalBone3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBone3D::set_joint_type, PhysicalBone3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone3d_class_get_joint_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicalBone3D::get_joint_type, PhysicalBone3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_bone3d_class_set_joint_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalBone3D::set_joint_offset, PhysicalBone3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBone3D::set_joint_offset, PhysicalBone3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone3d_class_get_joint_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicalBone3D::get_joint_offset, PhysicalBone3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_bone3d_class_set_joint_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalBone3D::set_joint_rotation, PhysicalBone3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBone3D::set_joint_rotation, PhysicalBone3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone3d_class_get_joint_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicalBone3D::get_joint_rotation, PhysicalBone3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_bone3d_class_set_body_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalBone3D::set_body_offset, PhysicalBone3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBone3D::set_body_offset, PhysicalBone3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone3d_class_get_body_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -84,84 +83,84 @@ static JSValue physical_bone3d_class_get_bone_id(JSContext *ctx, JSValueConst th
 	return call_builtin_const_method_ret(&PhysicalBone3D::get_bone_id, PhysicalBone3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_bone3d_class_set_mass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalBone3D::set_mass, PhysicalBone3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBone3D::set_mass, PhysicalBone3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone3d_class_get_mass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicalBone3D::get_mass, PhysicalBone3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_bone3d_class_set_friction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalBone3D::set_friction, PhysicalBone3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBone3D::set_friction, PhysicalBone3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone3d_class_get_friction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicalBone3D::get_friction, PhysicalBone3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_bone3d_class_set_bounce(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalBone3D::set_bounce, PhysicalBone3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBone3D::set_bounce, PhysicalBone3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone3d_class_get_bounce(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicalBone3D::get_bounce, PhysicalBone3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_bone3d_class_set_gravity_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalBone3D::set_gravity_scale, PhysicalBone3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBone3D::set_gravity_scale, PhysicalBone3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone3d_class_get_gravity_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicalBone3D::get_gravity_scale, PhysicalBone3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_bone3d_class_set_linear_damp_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalBone3D::set_linear_damp_mode, PhysicalBone3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBone3D::set_linear_damp_mode, PhysicalBone3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone3d_class_get_linear_damp_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicalBone3D::get_linear_damp_mode, PhysicalBone3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_bone3d_class_set_angular_damp_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalBone3D::set_angular_damp_mode, PhysicalBone3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBone3D::set_angular_damp_mode, PhysicalBone3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone3d_class_get_angular_damp_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicalBone3D::get_angular_damp_mode, PhysicalBone3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_bone3d_class_set_linear_damp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalBone3D::set_linear_damp, PhysicalBone3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBone3D::set_linear_damp, PhysicalBone3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone3d_class_get_linear_damp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicalBone3D::get_linear_damp, PhysicalBone3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_bone3d_class_set_angular_damp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalBone3D::set_angular_damp, PhysicalBone3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBone3D::set_angular_damp, PhysicalBone3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone3d_class_get_angular_damp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicalBone3D::get_angular_damp, PhysicalBone3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_bone3d_class_set_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalBone3D::set_linear_velocity, PhysicalBone3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBone3D::set_linear_velocity, PhysicalBone3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone3d_class_get_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicalBone3D::get_linear_velocity, PhysicalBone3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_bone3d_class_set_angular_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalBone3D::set_angular_velocity, PhysicalBone3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBone3D::set_angular_velocity, PhysicalBone3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone3d_class_get_angular_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicalBone3D::get_angular_velocity, PhysicalBone3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_bone3d_class_set_use_custom_integrator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalBone3D::set_use_custom_integrator, PhysicalBone3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBone3D::set_use_custom_integrator, PhysicalBone3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone3d_class_is_using_custom_integrator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&PhysicalBone3D::is_using_custom_integrator, PhysicalBone3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physical_bone3d_class_set_can_sleep(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicalBone3D::set_can_sleep, PhysicalBone3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBone3D::set_can_sleep, PhysicalBone3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone3d_class_is_able_to_sleep(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -1,17 +1,16 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/display_server.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/image.hpp>
+#include <godot_cpp/classes/display_server.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -47,11 +46,11 @@ static JSValue display_server_class_get_name(JSContext *ctx, JSValueConst this_v
 	return call_builtin_const_method_ret(&DisplayServer::get_name, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_help_set_search_callbacks(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::help_set_search_callbacks, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::help_set_search_callbacks, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_global_menu_set_popup_callbacks(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::global_menu_set_popup_callbacks, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::global_menu_set_popup_callbacks, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_global_menu_add_submenu_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -136,82 +135,82 @@ static JSValue display_server_class_global_menu_get_item_indentation_level(JSCon
 	return call_builtin_const_method_ret(&DisplayServer::global_menu_get_item_indentation_level, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_global_menu_set_item_checked(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_checked, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_checked, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_global_menu_set_item_checkable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_checkable, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_checkable, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_global_menu_set_item_radio_checkable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_radio_checkable, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_radio_checkable, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_global_menu_set_item_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_callback, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_callback, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_global_menu_set_item_hover_callbacks(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_hover_callbacks, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_hover_callbacks, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_global_menu_set_item_key_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_key_callback, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_key_callback, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_global_menu_set_item_tag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_tag, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_tag, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_global_menu_set_item_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_text, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_text, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_global_menu_set_item_submenu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_submenu, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_submenu, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_global_menu_set_item_accelerator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_accelerator, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_accelerator, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_global_menu_set_item_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_disabled, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_disabled, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_global_menu_set_item_hidden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_hidden, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_hidden, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_global_menu_set_item_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_tooltip, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_tooltip, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_global_menu_set_item_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_state, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_state, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_global_menu_set_item_max_states(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_max_states, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_max_states, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_global_menu_set_item_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_icon, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_icon, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_global_menu_set_item_indentation_level(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_indentation_level, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::global_menu_set_item_indentation_level, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_global_menu_get_item_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&DisplayServer::global_menu_get_item_count, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_global_menu_remove_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::global_menu_remove_item, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::global_menu_remove_item, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_global_menu_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::global_menu_clear, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::global_menu_clear, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_global_menu_get_system_menu_roots(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -230,23 +229,23 @@ static JSValue display_server_class_tts_get_voices_for_language(JSContext *ctx, 
 	return call_builtin_const_method_ret(&DisplayServer::tts_get_voices_for_language, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_tts_speak(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::tts_speak, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::tts_speak, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_tts_pause(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::tts_pause, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::tts_pause, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_tts_resume(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::tts_resume, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::tts_resume, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_tts_stop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::tts_stop, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::tts_stop, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_tts_set_utterance_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::tts_set_utterance_callback, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::tts_set_utterance_callback, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_is_dark_mode_supported(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -262,18 +261,18 @@ static JSValue display_server_class_get_base_color(JSContext *ctx, JSValueConst 
 	return call_builtin_const_method_ret(&DisplayServer::get_base_color, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_set_system_theme_change_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::set_system_theme_change_callback, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::set_system_theme_change_callback, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_mouse_set_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::mouse_set_mode, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::mouse_set_mode, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_mouse_get_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&DisplayServer::mouse_get_mode, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_warp_mouse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::warp_mouse, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::warp_mouse, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_mouse_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -283,7 +282,7 @@ static JSValue display_server_class_mouse_get_button_state(JSContext *ctx, JSVal
 	return call_builtin_const_method_ret(&DisplayServer::mouse_get_button_state, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_clipboard_set(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::clipboard_set, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::clipboard_set, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_clipboard_get(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -299,7 +298,7 @@ static JSValue display_server_class_clipboard_has_image(JSContext *ctx, JSValueC
 	return call_builtin_const_method_ret(&DisplayServer::clipboard_has_image, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_clipboard_set_primary(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::clipboard_set_primary, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::clipboard_set_primary, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_clipboard_get_primary(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -354,14 +353,14 @@ static JSValue display_server_class_screen_get_image(JSContext *ctx, JSValueCons
 	return call_builtin_const_method_ret(&DisplayServer::screen_get_image, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_screen_set_orientation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::screen_set_orientation, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::screen_set_orientation, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_screen_get_orientation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&DisplayServer::screen_get_orientation, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_screen_set_keep_on(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::screen_set_keep_on, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::screen_set_keep_on, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_screen_is_kept_on(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -380,28 +379,28 @@ static JSValue display_server_class_window_get_active_popup(JSContext *ctx, JSVa
 	return call_builtin_const_method_ret(&DisplayServer::window_get_active_popup, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_window_set_popup_safe_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::window_set_popup_safe_rect, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::window_set_popup_safe_rect, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_window_get_popup_safe_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&DisplayServer::window_get_popup_safe_rect, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_window_set_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::window_set_title, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::window_set_title, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_window_get_title_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&DisplayServer::window_get_title_size, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_window_set_mouse_passthrough(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::window_set_mouse_passthrough, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::window_set_mouse_passthrough, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_window_get_current_screen(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&DisplayServer::window_get_current_screen, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_window_set_current_screen(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::window_set_current_screen, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::window_set_current_screen, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_window_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -411,34 +410,34 @@ static JSValue display_server_class_window_get_position_with_decorations(JSConte
 	return call_builtin_const_method_ret(&DisplayServer::window_get_position_with_decorations, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_window_set_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::window_set_position, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::window_set_position, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_window_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&DisplayServer::window_get_size, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_window_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::window_set_size, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::window_set_size, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_window_set_rect_changed_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::window_set_rect_changed_callback, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::window_set_rect_changed_callback, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_window_set_window_event_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::window_set_window_event_callback, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::window_set_window_event_callback, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_window_set_input_event_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::window_set_input_event_callback, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::window_set_input_event_callback, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_window_set_input_text_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::window_set_input_text_callback, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::window_set_input_text_callback, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_window_set_drop_files_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::window_set_drop_files_callback, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::window_set_drop_files_callback, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_window_get_attached_instance_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -448,14 +447,14 @@ static JSValue display_server_class_window_get_max_size(JSContext *ctx, JSValueC
 	return call_builtin_const_method_ret(&DisplayServer::window_get_max_size, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_window_set_max_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::window_set_max_size, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::window_set_max_size, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_window_get_min_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&DisplayServer::window_get_min_size, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_window_set_min_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::window_set_min_size, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::window_set_min_size, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_window_get_size_with_decorations(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -465,29 +464,29 @@ static JSValue display_server_class_window_get_mode(JSContext *ctx, JSValueConst
 	return call_builtin_const_method_ret(&DisplayServer::window_get_mode, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_window_set_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::window_set_mode, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::window_set_mode, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_window_set_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::window_set_flag, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::window_set_flag, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_window_get_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&DisplayServer::window_get_flag, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_window_set_window_buttons_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::window_set_window_buttons_offset, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::window_set_window_buttons_offset, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_window_get_safe_title_margins(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&DisplayServer::window_get_safe_title_margins, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_window_request_attention(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::window_request_attention, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::window_request_attention, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_window_move_to_foreground(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::window_move_to_foreground, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::window_move_to_foreground, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_window_is_focused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -497,23 +496,23 @@ static JSValue display_server_class_window_can_draw(JSContext *ctx, JSValueConst
 	return call_builtin_const_method_ret(&DisplayServer::window_can_draw, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_window_set_transient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::window_set_transient, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::window_set_transient, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_window_set_exclusive(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::window_set_exclusive, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::window_set_exclusive, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_window_set_ime_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::window_set_ime_active, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::window_set_ime_active, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_window_set_ime_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::window_set_ime_position, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::window_set_ime_position, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_window_set_vsync_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::window_set_vsync_mode, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::window_set_vsync_mode, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_window_get_vsync_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -535,32 +534,32 @@ static JSValue display_server_class_ime_get_text(JSContext *ctx, JSValueConst th
 	return call_builtin_const_method_ret(&DisplayServer::ime_get_text, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_virtual_keyboard_show(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::virtual_keyboard_show, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::virtual_keyboard_show, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_virtual_keyboard_hide(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::virtual_keyboard_hide, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::virtual_keyboard_hide, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_virtual_keyboard_get_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&DisplayServer::virtual_keyboard_get_height, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_cursor_set_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::cursor_set_shape, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::cursor_set_shape, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_cursor_get_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&DisplayServer::cursor_get_shape, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_cursor_set_custom_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::cursor_set_custom_image, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::cursor_set_custom_image, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_get_swap_cancel_ok(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&DisplayServer::get_swap_cancel_ok, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_enable_for_stealing_focus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::enable_for_stealing_focus, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::enable_for_stealing_focus, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_dialog_show(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -582,7 +581,7 @@ static JSValue display_server_class_keyboard_get_current_layout(JSContext *ctx, 
 	return call_builtin_const_method_ret(&DisplayServer::keyboard_get_current_layout, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_keyboard_set_current_layout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::keyboard_set_current_layout, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::keyboard_set_current_layout, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_keyboard_get_layout_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -598,45 +597,45 @@ static JSValue display_server_class_keyboard_get_label_from_physical(JSContext *
 	return call_builtin_const_method_ret(&DisplayServer::keyboard_get_label_from_physical, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_process_events(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::process_events, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::process_events, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_force_process_and_drop_events(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::force_process_and_drop_events, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::force_process_and_drop_events, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_set_native_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::set_native_icon, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::set_native_icon, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_set_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::set_icon, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::set_icon, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_create_status_indicator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&DisplayServer::create_status_indicator, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_status_indicator_set_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::status_indicator_set_icon, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::status_indicator_set_icon, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_status_indicator_set_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::status_indicator_set_tooltip, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::status_indicator_set_tooltip, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_status_indicator_set_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::status_indicator_set_menu, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::status_indicator_set_menu, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_status_indicator_set_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::status_indicator_set_callback, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::status_indicator_set_callback, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_status_indicator_get_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&DisplayServer::status_indicator_get_rect, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_delete_status_indicator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::delete_status_indicator, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::delete_status_indicator, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_tablet_get_driver_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -649,18 +648,18 @@ static JSValue display_server_class_tablet_get_current_driver(JSContext *ctx, JS
 	return call_builtin_const_method_ret(&DisplayServer::tablet_get_current_driver, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_tablet_set_current_driver(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::tablet_set_current_driver, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::tablet_set_current_driver, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_is_window_transparency_available(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&DisplayServer::is_window_transparency_available, DisplayServer::__class_id, ctx, this_val, argv);
 };
 static JSValue display_server_class_register_additional_output(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::register_additional_output, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::register_additional_output, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_unregister_additional_output(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DisplayServer::unregister_additional_output, DisplayServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DisplayServer::unregister_additional_output, DisplayServer::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue display_server_class_has_additional_outputs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

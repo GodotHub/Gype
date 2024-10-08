@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/directional_light3d.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/light3d.hpp>
+#include <godot_cpp/classes/directional_light3d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,21 +37,21 @@ static JSValue directional_light3d_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 static JSValue directional_light3d_class_set_shadow_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DirectionalLight3D::set_shadow_mode, DirectionalLight3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DirectionalLight3D::set_shadow_mode, DirectionalLight3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue directional_light3d_class_get_shadow_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&DirectionalLight3D::get_shadow_mode, DirectionalLight3D::__class_id, ctx, this_val, argv);
 };
 static JSValue directional_light3d_class_set_blend_splits(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DirectionalLight3D::set_blend_splits, DirectionalLight3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DirectionalLight3D::set_blend_splits, DirectionalLight3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue directional_light3d_class_is_blend_splits_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&DirectionalLight3D::is_blend_splits_enabled, DirectionalLight3D::__class_id, ctx, this_val, argv);
 };
 static JSValue directional_light3d_class_set_sky_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&DirectionalLight3D::set_sky_mode, DirectionalLight3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DirectionalLight3D::set_sky_mode, DirectionalLight3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue directional_light3d_class_get_sky_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -1,18 +1,17 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/style_box.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/theme.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/classes/theme_db.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -48,35 +47,35 @@ static JSValue theme_db_class_get_project_theme(JSContext *ctx, JSValueConst thi
 	return call_builtin_method_ret(&ThemeDB::get_project_theme, ThemeDB::__class_id, ctx, this_val, argv);
 };
 static JSValue theme_db_class_set_fallback_base_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ThemeDB::set_fallback_base_scale, ThemeDB::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ThemeDB::set_fallback_base_scale, ThemeDB::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue theme_db_class_get_fallback_base_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&ThemeDB::get_fallback_base_scale, ThemeDB::__class_id, ctx, this_val, argv);
 };
 static JSValue theme_db_class_set_fallback_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ThemeDB::set_fallback_font, ThemeDB::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ThemeDB::set_fallback_font, ThemeDB::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue theme_db_class_get_fallback_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&ThemeDB::get_fallback_font, ThemeDB::__class_id, ctx, this_val, argv);
 };
 static JSValue theme_db_class_set_fallback_font_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ThemeDB::set_fallback_font_size, ThemeDB::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ThemeDB::set_fallback_font_size, ThemeDB::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue theme_db_class_get_fallback_font_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&ThemeDB::get_fallback_font_size, ThemeDB::__class_id, ctx, this_val, argv);
 };
 static JSValue theme_db_class_set_fallback_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ThemeDB::set_fallback_icon, ThemeDB::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ThemeDB::set_fallback_icon, ThemeDB::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue theme_db_class_get_fallback_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&ThemeDB::get_fallback_icon, ThemeDB::__class_id, ctx, this_val, argv);
 };
 static JSValue theme_db_class_set_fallback_stylebox(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ThemeDB::set_fallback_stylebox, ThemeDB::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ThemeDB::set_fallback_stylebox, ThemeDB::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue theme_db_class_get_fallback_stylebox(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

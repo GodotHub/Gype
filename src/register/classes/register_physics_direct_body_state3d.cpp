@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/physics_direct_body_state3d.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/physics_direct_space_state3d.hpp>
+#include <godot_cpp/classes/physics_direct_body_state3d.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -66,21 +65,21 @@ static JSValue physics_direct_body_state3d_class_get_inverse_inertia_tensor(JSCo
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_inverse_inertia_tensor, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physics_direct_body_state3d_class_set_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsDirectBodyState3D::set_linear_velocity, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsDirectBodyState3D::set_linear_velocity, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_get_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_linear_velocity, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physics_direct_body_state3d_class_set_angular_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsDirectBodyState3D::set_angular_velocity, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsDirectBodyState3D::set_angular_velocity, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_get_angular_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_angular_velocity, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physics_direct_body_state3d_class_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsDirectBodyState3D::set_transform, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsDirectBodyState3D::set_transform, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_get_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -90,57 +89,57 @@ static JSValue physics_direct_body_state3d_class_get_velocity_at_local_position(
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_velocity_at_local_position, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physics_direct_body_state3d_class_apply_central_impulse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsDirectBodyState3D::apply_central_impulse, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsDirectBodyState3D::apply_central_impulse, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_apply_impulse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsDirectBodyState3D::apply_impulse, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsDirectBodyState3D::apply_impulse, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_apply_torque_impulse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsDirectBodyState3D::apply_torque_impulse, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsDirectBodyState3D::apply_torque_impulse, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_apply_central_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsDirectBodyState3D::apply_central_force, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsDirectBodyState3D::apply_central_force, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_apply_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsDirectBodyState3D::apply_force, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsDirectBodyState3D::apply_force, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_apply_torque(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsDirectBodyState3D::apply_torque, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsDirectBodyState3D::apply_torque, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_add_constant_central_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsDirectBodyState3D::add_constant_central_force, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsDirectBodyState3D::add_constant_central_force, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_add_constant_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsDirectBodyState3D::add_constant_force, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsDirectBodyState3D::add_constant_force, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_add_constant_torque(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsDirectBodyState3D::add_constant_torque, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsDirectBodyState3D::add_constant_torque, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_set_constant_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsDirectBodyState3D::set_constant_force, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsDirectBodyState3D::set_constant_force, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_get_constant_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_constant_force, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physics_direct_body_state3d_class_set_constant_torque(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsDirectBodyState3D::set_constant_torque, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsDirectBodyState3D::set_constant_torque, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_get_constant_torque(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_constant_torque, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physics_direct_body_state3d_class_set_sleep_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsDirectBodyState3D::set_sleep_state, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsDirectBodyState3D::set_sleep_state, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_is_sleeping(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -186,7 +185,7 @@ static JSValue physics_direct_body_state3d_class_get_step(JSContext *ctx, JSValu
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_step, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
 };
 static JSValue physics_direct_body_state3d_class_integrate_forces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PhysicsDirectBodyState3D::integrate_forces, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicsDirectBodyState3D::integrate_forces, PhysicsDirectBodyState3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_get_space_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

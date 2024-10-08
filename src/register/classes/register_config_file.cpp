@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/config_file.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/config_file.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,7 +37,7 @@ static JSValue config_file_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue config_file_class_set_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ConfigFile::set_value, ConfigFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ConfigFile::set_value, ConfigFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue config_file_class_get_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -57,11 +56,11 @@ static JSValue config_file_class_get_section_keys(JSContext *ctx, JSValueConst t
 	return call_builtin_const_method_ret(&ConfigFile::get_section_keys, ConfigFile::__class_id, ctx, this_val, argv);
 };
 static JSValue config_file_class_erase_section(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ConfigFile::erase_section, ConfigFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ConfigFile::erase_section, ConfigFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue config_file_class_erase_section_key(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ConfigFile::erase_section_key, ConfigFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ConfigFile::erase_section_key, ConfigFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue config_file_class_load(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -89,7 +88,7 @@ static JSValue config_file_class_save_encrypted_pass(JSContext *ctx, JSValueCons
 	return call_builtin_method_ret(&ConfigFile::save_encrypted_pass, ConfigFile::__class_id, ctx, this_val, argv);
 };
 static JSValue config_file_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ConfigFile::clear, ConfigFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ConfigFile::clear, ConfigFile::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry config_file_class_proto_funcs[] = {

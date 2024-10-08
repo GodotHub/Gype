@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/classes/audio_effect_phaser.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,35 +37,35 @@ static JSValue audio_effect_phaser_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 static JSValue audio_effect_phaser_class_set_range_min_hz(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioEffectPhaser::set_range_min_hz, AudioEffectPhaser::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioEffectPhaser::set_range_min_hz, AudioEffectPhaser::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_phaser_class_get_range_min_hz(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioEffectPhaser::get_range_min_hz, AudioEffectPhaser::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_effect_phaser_class_set_range_max_hz(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioEffectPhaser::set_range_max_hz, AudioEffectPhaser::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioEffectPhaser::set_range_max_hz, AudioEffectPhaser::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_phaser_class_get_range_max_hz(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioEffectPhaser::get_range_max_hz, AudioEffectPhaser::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_effect_phaser_class_set_rate_hz(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioEffectPhaser::set_rate_hz, AudioEffectPhaser::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioEffectPhaser::set_rate_hz, AudioEffectPhaser::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_phaser_class_get_rate_hz(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioEffectPhaser::get_rate_hz, AudioEffectPhaser::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_effect_phaser_class_set_feedback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioEffectPhaser::set_feedback, AudioEffectPhaser::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioEffectPhaser::set_feedback, AudioEffectPhaser::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_phaser_class_get_feedback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&AudioEffectPhaser::get_feedback, AudioEffectPhaser::__class_id, ctx, this_val, argv);
 };
 static JSValue audio_effect_phaser_class_set_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AudioEffectPhaser::set_depth, AudioEffectPhaser::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioEffectPhaser::set_depth, AudioEffectPhaser::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_phaser_class_get_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

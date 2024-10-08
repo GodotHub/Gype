@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/editor_undo_redo_manager.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/editor_undo_redo_manager.hpp>
 #include <godot_cpp/classes/undo_redo.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,34 +38,34 @@ static JSValue editor_undo_redo_manager_class_constructor(JSContext *ctx, JSValu
 	return obj;
 }
 static JSValue editor_undo_redo_manager_class_create_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorUndoRedoManager::create_action, EditorUndoRedoManager::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorUndoRedoManager::create_action, EditorUndoRedoManager::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_undo_redo_manager_class_commit_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorUndoRedoManager::commit_action, EditorUndoRedoManager::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorUndoRedoManager::commit_action, EditorUndoRedoManager::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_undo_redo_manager_class_is_committing_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&EditorUndoRedoManager::is_committing_action, EditorUndoRedoManager::__class_id, ctx, this_val, argv);
 };
 static JSValue editor_undo_redo_manager_class_force_fixed_history(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorUndoRedoManager::force_fixed_history, EditorUndoRedoManager::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorUndoRedoManager::force_fixed_history, EditorUndoRedoManager::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_undo_redo_manager_class_add_do_property(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorUndoRedoManager::add_do_property, EditorUndoRedoManager::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorUndoRedoManager::add_do_property, EditorUndoRedoManager::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_undo_redo_manager_class_add_undo_property(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorUndoRedoManager::add_undo_property, EditorUndoRedoManager::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorUndoRedoManager::add_undo_property, EditorUndoRedoManager::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_undo_redo_manager_class_add_do_reference(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorUndoRedoManager::add_do_reference, EditorUndoRedoManager::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorUndoRedoManager::add_do_reference, EditorUndoRedoManager::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_undo_redo_manager_class_add_undo_reference(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorUndoRedoManager::add_undo_reference, EditorUndoRedoManager::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorUndoRedoManager::add_undo_reference, EditorUndoRedoManager::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_undo_redo_manager_class_get_object_history_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -76,11 +75,11 @@ static JSValue editor_undo_redo_manager_class_get_history_undo_redo(JSContext *c
 	return call_builtin_const_method_ret(&EditorUndoRedoManager::get_history_undo_redo, EditorUndoRedoManager::__class_id, ctx, this_val, argv);
 };
 static JSValue editor_undo_redo_manager_class_add_do_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_vararg_method(&EditorUndoRedoManager::js_add_do_method, EditorUndoRedoManager::__class_id, ctx, this_val, argc, argv);
+    call_builtin_vararg_method_no_ret(&EditorUndoRedoManager::js_add_do_method, EditorUndoRedoManager::__class_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue editor_undo_redo_manager_class_add_undo_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_vararg_method(&EditorUndoRedoManager::js_add_undo_method, EditorUndoRedoManager::__class_id, ctx, this_val, argc, argv);
+    call_builtin_vararg_method_no_ret(&EditorUndoRedoManager::js_add_undo_method, EditorUndoRedoManager::__class_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static const JSCFunctionListEntry editor_undo_redo_manager_class_proto_funcs[] = {

@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/editor_settings.hpp>
-#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -42,47 +41,47 @@ static JSValue editor_settings_class_has_setting(JSContext *ctx, JSValueConst th
 	return call_builtin_const_method_ret(&EditorSettings::has_setting, EditorSettings::__class_id, ctx, this_val, argv);
 };
 static JSValue editor_settings_class_set_setting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorSettings::set_setting, EditorSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorSettings::set_setting, EditorSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_settings_class_get_setting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&EditorSettings::get_setting, EditorSettings::__class_id, ctx, this_val, argv);
 };
 static JSValue editor_settings_class_erase(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorSettings::erase, EditorSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorSettings::erase, EditorSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_settings_class_set_initial_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorSettings::set_initial_value, EditorSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorSettings::set_initial_value, EditorSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_settings_class_add_property_info(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorSettings::add_property_info, EditorSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorSettings::add_property_info, EditorSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_settings_class_set_project_metadata(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorSettings::set_project_metadata, EditorSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorSettings::set_project_metadata, EditorSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_settings_class_get_project_metadata(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&EditorSettings::get_project_metadata, EditorSettings::__class_id, ctx, this_val, argv);
 };
 static JSValue editor_settings_class_set_favorites(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorSettings::set_favorites, EditorSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorSettings::set_favorites, EditorSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_settings_class_get_favorites(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&EditorSettings::get_favorites, EditorSettings::__class_id, ctx, this_val, argv);
 };
 static JSValue editor_settings_class_set_recent_dirs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorSettings::set_recent_dirs, EditorSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorSettings::set_recent_dirs, EditorSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_settings_class_get_recent_dirs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&EditorSettings::get_recent_dirs, EditorSettings::__class_id, ctx, this_val, argv);
 };
 static JSValue editor_settings_class_set_builtin_action_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorSettings::set_builtin_action_override, EditorSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorSettings::set_builtin_action_override, EditorSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_settings_class_check_changed_settings_in_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -92,7 +91,7 @@ static JSValue editor_settings_class_get_changed_settings(JSContext *ctx, JSValu
 	return call_builtin_const_method_ret(&EditorSettings::get_changed_settings, EditorSettings::__class_id, ctx, this_val, argv);
 };
 static JSValue editor_settings_class_mark_setting_changed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorSettings::mark_setting_changed, EditorSettings::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorSettings::mark_setting_changed, EditorSettings::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry editor_settings_class_proto_funcs[] = {

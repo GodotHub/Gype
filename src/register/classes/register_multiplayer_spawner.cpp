@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/multiplayer_spawner.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/multiplayer_spawner.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,7 +37,7 @@ static JSValue multiplayer_spawner_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 static JSValue multiplayer_spawner_class_add_spawnable_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&MultiplayerSpawner::add_spawnable_scene, MultiplayerSpawner::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MultiplayerSpawner::add_spawnable_scene, MultiplayerSpawner::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_spawner_class_get_spawnable_scene_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -48,7 +47,7 @@ static JSValue multiplayer_spawner_class_get_spawnable_scene(JSContext *ctx, JSV
 	return call_builtin_const_method_ret(&MultiplayerSpawner::get_spawnable_scene, MultiplayerSpawner::__class_id, ctx, this_val, argv);
 };
 static JSValue multiplayer_spawner_class_clear_spawnable_scenes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&MultiplayerSpawner::clear_spawnable_scenes, MultiplayerSpawner::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MultiplayerSpawner::clear_spawnable_scenes, MultiplayerSpawner::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_spawner_class_spawn(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -58,21 +57,21 @@ static JSValue multiplayer_spawner_class_get_spawn_path(JSContext *ctx, JSValueC
 	return call_builtin_const_method_ret(&MultiplayerSpawner::get_spawn_path, MultiplayerSpawner::__class_id, ctx, this_val, argv);
 };
 static JSValue multiplayer_spawner_class_set_spawn_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&MultiplayerSpawner::set_spawn_path, MultiplayerSpawner::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MultiplayerSpawner::set_spawn_path, MultiplayerSpawner::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_spawner_class_get_spawn_limit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&MultiplayerSpawner::get_spawn_limit, MultiplayerSpawner::__class_id, ctx, this_val, argv);
 };
 static JSValue multiplayer_spawner_class_set_spawn_limit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&MultiplayerSpawner::set_spawn_limit, MultiplayerSpawner::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MultiplayerSpawner::set_spawn_limit, MultiplayerSpawner::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_spawner_class_get_spawn_function(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&MultiplayerSpawner::get_spawn_function, MultiplayerSpawner::__class_id, ctx, this_val, argv);
 };
 static JSValue multiplayer_spawner_class_set_spawn_function(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&MultiplayerSpawner::set_spawn_function, MultiplayerSpawner::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MultiplayerSpawner::set_spawn_function, MultiplayerSpawner::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry multiplayer_spawner_class_proto_funcs[] = {

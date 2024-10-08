@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_multiply_add.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,7 +37,7 @@ static JSValue visual_shader_node_multiply_add_class_constructor(JSContext *ctx,
 	return obj;
 }
 static JSValue visual_shader_node_multiply_add_class_set_op_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VisualShaderNodeMultiplyAdd::set_op_type, VisualShaderNodeMultiplyAdd::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VisualShaderNodeMultiplyAdd::set_op_type, VisualShaderNodeMultiplyAdd::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_multiply_add_class_get_op_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

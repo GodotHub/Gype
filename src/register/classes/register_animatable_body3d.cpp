@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/animatable_body3d.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/static_body3d.hpp>
+#include <godot_cpp/classes/animatable_body3d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,7 +37,7 @@ static JSValue animatable_body3d_class_constructor(JSContext *ctx, JSValueConst 
 	return obj;
 }
 static JSValue animatable_body3d_class_set_sync_to_physics(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&AnimatableBody3D::set_sync_to_physics, AnimatableBody3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimatableBody3D::set_sync_to_physics, AnimatableBody3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animatable_body3d_class_is_sync_to_physics_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/ip.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/ip.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -56,7 +55,7 @@ static JSValue ip_class_get_resolve_item_addresses(JSContext *ctx, JSValueConst 
 	return call_builtin_const_method_ret(&IP::get_resolve_item_addresses, IP::__class_id, ctx, this_val, argv);
 };
 static JSValue ip_class_erase_resolve_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&IP::erase_resolve_item, IP::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&IP::erase_resolve_item, IP::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ip_class_get_local_addresses(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -66,7 +65,7 @@ static JSValue ip_class_get_local_interfaces(JSContext *ctx, JSValueConst this_v
 	return call_builtin_const_method_ret(&IP::get_local_interfaces, IP::__class_id, ctx, this_val, argv);
 };
 static JSValue ip_class_clear_cache(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&IP::clear_cache, IP::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&IP::clear_cache, IP::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry ip_class_proto_funcs[] = {

@@ -1,17 +1,16 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/collision_object2d.hpp>
-#include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/shape2d.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/shape_cast2d.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/shape2d.hpp>
+#include <godot_cpp/classes/collision_object2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -41,35 +40,35 @@ static JSValue shape_cast2d_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue shape_cast2d_class_set_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ShapeCast2D::set_enabled, ShapeCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast2D::set_enabled, ShapeCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast2d_class_is_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ShapeCast2D::is_enabled, ShapeCast2D::__class_id, ctx, this_val, argv);
 };
 static JSValue shape_cast2d_class_set_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ShapeCast2D::set_shape, ShapeCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast2D::set_shape, ShapeCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast2d_class_get_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ShapeCast2D::get_shape, ShapeCast2D::__class_id, ctx, this_val, argv);
 };
 static JSValue shape_cast2d_class_set_target_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ShapeCast2D::set_target_position, ShapeCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast2D::set_target_position, ShapeCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast2d_class_get_target_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ShapeCast2D::get_target_position, ShapeCast2D::__class_id, ctx, this_val, argv);
 };
 static JSValue shape_cast2d_class_set_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ShapeCast2D::set_margin, ShapeCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast2D::set_margin, ShapeCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast2d_class_get_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ShapeCast2D::get_margin, ShapeCast2D::__class_id, ctx, this_val, argv);
 };
 static JSValue shape_cast2d_class_set_max_results(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ShapeCast2D::set_max_results, ShapeCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast2D::set_max_results, ShapeCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast2d_class_get_max_results(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -82,7 +81,7 @@ static JSValue shape_cast2d_class_get_collision_count(JSContext *ctx, JSValueCon
 	return call_builtin_const_method_ret(&ShapeCast2D::get_collision_count, ShapeCast2D::__class_id, ctx, this_val, argv);
 };
 static JSValue shape_cast2d_class_force_shapecast_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ShapeCast2D::force_shapecast_update, ShapeCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast2D::force_shapecast_update, ShapeCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast2d_class_get_collider(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -107,55 +106,55 @@ static JSValue shape_cast2d_class_get_closest_collision_unsafe_fraction(JSContex
 	return call_builtin_const_method_ret(&ShapeCast2D::get_closest_collision_unsafe_fraction, ShapeCast2D::__class_id, ctx, this_val, argv);
 };
 static JSValue shape_cast2d_class_add_exception_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ShapeCast2D::add_exception_rid, ShapeCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast2D::add_exception_rid, ShapeCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast2d_class_add_exception(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ShapeCast2D::add_exception, ShapeCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast2D::add_exception, ShapeCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast2d_class_remove_exception_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ShapeCast2D::remove_exception_rid, ShapeCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast2D::remove_exception_rid, ShapeCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast2d_class_remove_exception(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ShapeCast2D::remove_exception, ShapeCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast2D::remove_exception, ShapeCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast2d_class_clear_exceptions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ShapeCast2D::clear_exceptions, ShapeCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast2D::clear_exceptions, ShapeCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast2d_class_set_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ShapeCast2D::set_collision_mask, ShapeCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast2D::set_collision_mask, ShapeCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast2d_class_get_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ShapeCast2D::get_collision_mask, ShapeCast2D::__class_id, ctx, this_val, argv);
 };
 static JSValue shape_cast2d_class_set_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ShapeCast2D::set_collision_mask_value, ShapeCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast2D::set_collision_mask_value, ShapeCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast2d_class_get_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ShapeCast2D::get_collision_mask_value, ShapeCast2D::__class_id, ctx, this_val, argv);
 };
 static JSValue shape_cast2d_class_set_exclude_parent_body(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ShapeCast2D::set_exclude_parent_body, ShapeCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast2D::set_exclude_parent_body, ShapeCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast2d_class_get_exclude_parent_body(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ShapeCast2D::get_exclude_parent_body, ShapeCast2D::__class_id, ctx, this_val, argv);
 };
 static JSValue shape_cast2d_class_set_collide_with_areas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ShapeCast2D::set_collide_with_areas, ShapeCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast2D::set_collide_with_areas, ShapeCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast2d_class_is_collide_with_areas_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&ShapeCast2D::is_collide_with_areas_enabled, ShapeCast2D::__class_id, ctx, this_val, argv);
 };
 static JSValue shape_cast2d_class_set_collide_with_bodies(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&ShapeCast2D::set_collide_with_bodies, ShapeCast2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast2D::set_collide_with_bodies, ShapeCast2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast2d_class_is_collide_with_bodies_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

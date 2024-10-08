@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/editor_inspector_plugin.hpp>
-#include <godot_cpp/classes/object.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/editor_inspector_plugin.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -40,15 +39,15 @@ static JSValue editor_inspector_plugin_class_constructor(JSContext *ctx, JSValue
 	return obj;
 }
 static JSValue editor_inspector_plugin_class_add_custom_control(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorInspectorPlugin::add_custom_control, EditorInspectorPlugin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorInspectorPlugin::add_custom_control, EditorInspectorPlugin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_inspector_plugin_class_add_property_editor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorInspectorPlugin::add_property_editor, EditorInspectorPlugin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorInspectorPlugin::add_property_editor, EditorInspectorPlugin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_inspector_plugin_class_add_property_editor_for_multiple_properties(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&EditorInspectorPlugin::add_property_editor_for_multiple_properties, EditorInspectorPlugin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&EditorInspectorPlugin::add_property_editor_for_multiple_properties, EditorInspectorPlugin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry editor_inspector_plugin_class_proto_funcs[] = {

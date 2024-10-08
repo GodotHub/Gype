@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/multiplayer_api.hpp>
 #include <godot_cpp/classes/multiplayer_peer.hpp>
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -46,7 +45,7 @@ static JSValue multiplayer_api_class_get_multiplayer_peer(JSContext *ctx, JSValu
 	return call_builtin_method_ret(&MultiplayerAPI::get_multiplayer_peer, MultiplayerAPI::__class_id, ctx, this_val, argv);
 };
 static JSValue multiplayer_api_class_set_multiplayer_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&MultiplayerAPI::set_multiplayer_peer, MultiplayerAPI::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MultiplayerAPI::set_multiplayer_peer, MultiplayerAPI::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_api_class_get_unique_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -74,7 +73,7 @@ static JSValue multiplayer_api_class_get_peers(JSContext *ctx, JSValueConst this
 	return call_builtin_method_ret(&MultiplayerAPI::get_peers, MultiplayerAPI::__class_id, ctx, this_val, argv);
 };
 static JSValue multiplayer_api_class_set_default_interface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_method_no_ret(&MultiplayerAPI::set_default_interface, MultiplayerAPI::__class_id, ctx, this_val, argv);
+    call_builtin_static_method_no_ret(&MultiplayerAPI::set_default_interface, MultiplayerAPI::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_api_class_get_default_interface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rd_pipeline_color_blend_state.hpp>
 #include <godot_cpp/classes/rd_pipeline_color_blend_state_attachment.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,28 +38,28 @@ static JSValue rd_pipeline_color_blend_state_class_constructor(JSContext *ctx, J
 	return obj;
 }
 static JSValue rd_pipeline_color_blend_state_class_set_enable_logic_op(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineColorBlendState::set_enable_logic_op, RDPipelineColorBlendState::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineColorBlendState::set_enable_logic_op, RDPipelineColorBlendState::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_color_blend_state_class_get_enable_logic_op(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDPipelineColorBlendState::get_enable_logic_op, RDPipelineColorBlendState::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_pipeline_color_blend_state_class_set_logic_op(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineColorBlendState::set_logic_op, RDPipelineColorBlendState::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineColorBlendState::set_logic_op, RDPipelineColorBlendState::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_color_blend_state_class_get_logic_op(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDPipelineColorBlendState::get_logic_op, RDPipelineColorBlendState::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_pipeline_color_blend_state_class_set_blend_constant(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineColorBlendState::set_blend_constant, RDPipelineColorBlendState::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineColorBlendState::set_blend_constant, RDPipelineColorBlendState::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_color_blend_state_class_get_blend_constant(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&RDPipelineColorBlendState::get_blend_constant, RDPipelineColorBlendState::__class_id, ctx, this_val, argv);
 };
 static JSValue rd_pipeline_color_blend_state_class_set_attachments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&RDPipelineColorBlendState::set_attachments, RDPipelineColorBlendState::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDPipelineColorBlendState::set_attachments, RDPipelineColorBlendState::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_color_blend_state_class_get_attachments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

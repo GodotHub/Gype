@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/code_highlighter.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/syntax_highlighter.hpp>
+#include <godot_cpp/classes/code_highlighter.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,11 +37,11 @@ static JSValue code_highlighter_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue code_highlighter_class_add_keyword_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeHighlighter::add_keyword_color, CodeHighlighter::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeHighlighter::add_keyword_color, CodeHighlighter::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_highlighter_class_remove_keyword_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeHighlighter::remove_keyword_color, CodeHighlighter::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeHighlighter::remove_keyword_color, CodeHighlighter::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_highlighter_class_has_keyword_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -52,22 +51,22 @@ static JSValue code_highlighter_class_get_keyword_color(JSContext *ctx, JSValueC
 	return call_builtin_const_method_ret(&CodeHighlighter::get_keyword_color, CodeHighlighter::__class_id, ctx, this_val, argv);
 };
 static JSValue code_highlighter_class_set_keyword_colors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeHighlighter::set_keyword_colors, CodeHighlighter::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeHighlighter::set_keyword_colors, CodeHighlighter::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_highlighter_class_clear_keyword_colors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeHighlighter::clear_keyword_colors, CodeHighlighter::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeHighlighter::clear_keyword_colors, CodeHighlighter::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_highlighter_class_get_keyword_colors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeHighlighter::get_keyword_colors, CodeHighlighter::__class_id, ctx, this_val, argv);
 };
 static JSValue code_highlighter_class_add_member_keyword_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeHighlighter::add_member_keyword_color, CodeHighlighter::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeHighlighter::add_member_keyword_color, CodeHighlighter::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_highlighter_class_remove_member_keyword_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeHighlighter::remove_member_keyword_color, CodeHighlighter::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeHighlighter::remove_member_keyword_color, CodeHighlighter::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_highlighter_class_has_member_keyword_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -77,61 +76,61 @@ static JSValue code_highlighter_class_get_member_keyword_color(JSContext *ctx, J
 	return call_builtin_const_method_ret(&CodeHighlighter::get_member_keyword_color, CodeHighlighter::__class_id, ctx, this_val, argv);
 };
 static JSValue code_highlighter_class_set_member_keyword_colors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeHighlighter::set_member_keyword_colors, CodeHighlighter::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeHighlighter::set_member_keyword_colors, CodeHighlighter::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_highlighter_class_clear_member_keyword_colors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeHighlighter::clear_member_keyword_colors, CodeHighlighter::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeHighlighter::clear_member_keyword_colors, CodeHighlighter::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_highlighter_class_get_member_keyword_colors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeHighlighter::get_member_keyword_colors, CodeHighlighter::__class_id, ctx, this_val, argv);
 };
 static JSValue code_highlighter_class_add_color_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeHighlighter::add_color_region, CodeHighlighter::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeHighlighter::add_color_region, CodeHighlighter::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_highlighter_class_remove_color_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeHighlighter::remove_color_region, CodeHighlighter::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeHighlighter::remove_color_region, CodeHighlighter::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_highlighter_class_has_color_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeHighlighter::has_color_region, CodeHighlighter::__class_id, ctx, this_val, argv);
 };
 static JSValue code_highlighter_class_set_color_regions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeHighlighter::set_color_regions, CodeHighlighter::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeHighlighter::set_color_regions, CodeHighlighter::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_highlighter_class_clear_color_regions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeHighlighter::clear_color_regions, CodeHighlighter::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeHighlighter::clear_color_regions, CodeHighlighter::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_highlighter_class_get_color_regions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeHighlighter::get_color_regions, CodeHighlighter::__class_id, ctx, this_val, argv);
 };
 static JSValue code_highlighter_class_set_function_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeHighlighter::set_function_color, CodeHighlighter::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeHighlighter::set_function_color, CodeHighlighter::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_highlighter_class_get_function_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeHighlighter::get_function_color, CodeHighlighter::__class_id, ctx, this_val, argv);
 };
 static JSValue code_highlighter_class_set_number_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeHighlighter::set_number_color, CodeHighlighter::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeHighlighter::set_number_color, CodeHighlighter::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_highlighter_class_get_number_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeHighlighter::get_number_color, CodeHighlighter::__class_id, ctx, this_val, argv);
 };
 static JSValue code_highlighter_class_set_symbol_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeHighlighter::set_symbol_color, CodeHighlighter::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeHighlighter::set_symbol_color, CodeHighlighter::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_highlighter_class_get_symbol_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CodeHighlighter::get_symbol_color, CodeHighlighter::__class_id, ctx, this_val, argv);
 };
 static JSValue code_highlighter_class_set_member_variable_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CodeHighlighter::set_member_variable_color, CodeHighlighter::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CodeHighlighter::set_member_variable_color, CodeHighlighter::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_highlighter_class_get_member_variable_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

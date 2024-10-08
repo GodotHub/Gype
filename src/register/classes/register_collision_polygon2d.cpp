@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/collision_polygon2d.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/collision_polygon2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,35 +37,35 @@ static JSValue collision_polygon2d_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 static JSValue collision_polygon2d_class_set_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CollisionPolygon2D::set_polygon, CollisionPolygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CollisionPolygon2D::set_polygon, CollisionPolygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_polygon2d_class_get_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CollisionPolygon2D::get_polygon, CollisionPolygon2D::__class_id, ctx, this_val, argv);
 };
 static JSValue collision_polygon2d_class_set_build_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CollisionPolygon2D::set_build_mode, CollisionPolygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CollisionPolygon2D::set_build_mode, CollisionPolygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_polygon2d_class_get_build_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CollisionPolygon2D::get_build_mode, CollisionPolygon2D::__class_id, ctx, this_val, argv);
 };
 static JSValue collision_polygon2d_class_set_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CollisionPolygon2D::set_disabled, CollisionPolygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CollisionPolygon2D::set_disabled, CollisionPolygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_polygon2d_class_is_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CollisionPolygon2D::is_disabled, CollisionPolygon2D::__class_id, ctx, this_val, argv);
 };
 static JSValue collision_polygon2d_class_set_one_way_collision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CollisionPolygon2D::set_one_way_collision, CollisionPolygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CollisionPolygon2D::set_one_way_collision, CollisionPolygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_polygon2d_class_is_one_way_collision_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CollisionPolygon2D::is_one_way_collision_enabled, CollisionPolygon2D::__class_id, ctx, this_val, argv);
 };
 static JSValue collision_polygon2d_class_set_one_way_collision_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CollisionPolygon2D::set_one_way_collision_margin, CollisionPolygon2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CollisionPolygon2D::set_one_way_collision_margin, CollisionPolygon2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_polygon2d_class_get_one_way_collision_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

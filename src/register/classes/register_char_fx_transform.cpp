@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/char_fx_transform.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/char_fx_transform.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -41,91 +40,91 @@ static JSValue char_fx_transform_class_get_transform(JSContext *ctx, JSValueCons
 	return call_builtin_method_ret(&CharFXTransform::get_transform, CharFXTransform::__class_id, ctx, this_val, argv);
 };
 static JSValue char_fx_transform_class_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharFXTransform::set_transform, CharFXTransform::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharFXTransform::set_transform, CharFXTransform::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue char_fx_transform_class_get_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&CharFXTransform::get_range, CharFXTransform::__class_id, ctx, this_val, argv);
 };
 static JSValue char_fx_transform_class_set_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharFXTransform::set_range, CharFXTransform::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharFXTransform::set_range, CharFXTransform::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue char_fx_transform_class_get_elapsed_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&CharFXTransform::get_elapsed_time, CharFXTransform::__class_id, ctx, this_val, argv);
 };
 static JSValue char_fx_transform_class_set_elapsed_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharFXTransform::set_elapsed_time, CharFXTransform::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharFXTransform::set_elapsed_time, CharFXTransform::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue char_fx_transform_class_is_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&CharFXTransform::is_visible, CharFXTransform::__class_id, ctx, this_val, argv);
 };
 static JSValue char_fx_transform_class_set_visibility(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharFXTransform::set_visibility, CharFXTransform::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharFXTransform::set_visibility, CharFXTransform::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue char_fx_transform_class_is_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&CharFXTransform::is_outline, CharFXTransform::__class_id, ctx, this_val, argv);
 };
 static JSValue char_fx_transform_class_set_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharFXTransform::set_outline, CharFXTransform::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharFXTransform::set_outline, CharFXTransform::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue char_fx_transform_class_get_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&CharFXTransform::get_offset, CharFXTransform::__class_id, ctx, this_val, argv);
 };
 static JSValue char_fx_transform_class_set_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharFXTransform::set_offset, CharFXTransform::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharFXTransform::set_offset, CharFXTransform::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue char_fx_transform_class_get_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&CharFXTransform::get_color, CharFXTransform::__class_id, ctx, this_val, argv);
 };
 static JSValue char_fx_transform_class_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharFXTransform::set_color, CharFXTransform::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharFXTransform::set_color, CharFXTransform::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue char_fx_transform_class_get_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&CharFXTransform::get_environment, CharFXTransform::__class_id, ctx, this_val, argv);
 };
 static JSValue char_fx_transform_class_set_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharFXTransform::set_environment, CharFXTransform::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharFXTransform::set_environment, CharFXTransform::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue char_fx_transform_class_get_glyph_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CharFXTransform::get_glyph_index, CharFXTransform::__class_id, ctx, this_val, argv);
 };
 static JSValue char_fx_transform_class_set_glyph_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharFXTransform::set_glyph_index, CharFXTransform::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharFXTransform::set_glyph_index, CharFXTransform::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue char_fx_transform_class_get_relative_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CharFXTransform::get_relative_index, CharFXTransform::__class_id, ctx, this_val, argv);
 };
 static JSValue char_fx_transform_class_set_relative_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharFXTransform::set_relative_index, CharFXTransform::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharFXTransform::set_relative_index, CharFXTransform::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue char_fx_transform_class_get_glyph_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CharFXTransform::get_glyph_count, CharFXTransform::__class_id, ctx, this_val, argv);
 };
 static JSValue char_fx_transform_class_set_glyph_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharFXTransform::set_glyph_count, CharFXTransform::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharFXTransform::set_glyph_count, CharFXTransform::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue char_fx_transform_class_get_glyph_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CharFXTransform::get_glyph_flags, CharFXTransform::__class_id, ctx, this_val, argv);
 };
 static JSValue char_fx_transform_class_set_glyph_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharFXTransform::set_glyph_flags, CharFXTransform::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharFXTransform::set_glyph_flags, CharFXTransform::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue char_fx_transform_class_get_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CharFXTransform::get_font, CharFXTransform::__class_id, ctx, this_val, argv);
 };
 static JSValue char_fx_transform_class_set_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CharFXTransform::set_font, CharFXTransform::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CharFXTransform::set_font, CharFXTransform::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry char_fx_transform_class_proto_funcs[] = {

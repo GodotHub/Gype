@@ -1,18 +1,17 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/cpu_particles2d.hpp>
-#include <godot_cpp/classes/curve.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/gradient.hpp>
+#include <godot_cpp/classes/cpu_particles2d.hpp>
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/curve.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -42,51 +41,51 @@ static JSValue cpu_particles2d_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue cpu_particles2d_class_set_emitting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_emitting, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_emitting, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_set_amount(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_amount, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_amount, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_set_lifetime(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_lifetime, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_lifetime, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_set_one_shot(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_one_shot, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_one_shot, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_set_pre_process_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_pre_process_time, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_pre_process_time, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_set_explosiveness_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_explosiveness_ratio, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_explosiveness_ratio, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_set_randomness_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_randomness_ratio, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_randomness_ratio, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_set_lifetime_randomness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_lifetime_randomness, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_lifetime_randomness, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_set_use_local_coordinates(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_use_local_coordinates, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_use_local_coordinates, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_set_fixed_fps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_fixed_fps, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_fixed_fps, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_set_fractional_delta(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_fractional_delta, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_fractional_delta, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_set_speed_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_speed_scale, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_speed_scale, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_is_emitting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -126,123 +125,123 @@ static JSValue cpu_particles2d_class_get_speed_scale(JSContext *ctx, JSValueCons
 	return call_builtin_const_method_ret(&CPUParticles2D::get_speed_scale, CPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles2d_class_set_draw_order(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_draw_order, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_draw_order, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_get_draw_order(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles2D::get_draw_order, CPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles2d_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_texture, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_texture, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles2D::get_texture, CPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles2d_class_restart(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::restart, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::restart, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_set_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_direction, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_direction, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_get_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles2D::get_direction, CPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles2d_class_set_spread(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_spread, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_spread, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_get_spread(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles2D::get_spread, CPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles2d_class_set_param_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_param_min, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_param_min, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_get_param_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles2D::get_param_min, CPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles2d_class_set_param_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_param_max, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_param_max, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_get_param_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles2D::get_param_max, CPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles2d_class_set_param_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_param_curve, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_param_curve, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_get_param_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles2D::get_param_curve, CPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles2d_class_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_color, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_color, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_get_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles2D::get_color, CPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles2d_class_set_color_ramp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_color_ramp, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_color_ramp, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_get_color_ramp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles2D::get_color_ramp, CPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles2d_class_set_color_initial_ramp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_color_initial_ramp, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_color_initial_ramp, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_get_color_initial_ramp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles2D::get_color_initial_ramp, CPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles2d_class_set_particle_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_particle_flag, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_particle_flag, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_get_particle_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles2D::get_particle_flag, CPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles2d_class_set_emission_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_emission_shape, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_emission_shape, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_get_emission_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles2D::get_emission_shape, CPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles2d_class_set_emission_sphere_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_emission_sphere_radius, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_emission_sphere_radius, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_get_emission_sphere_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles2D::get_emission_sphere_radius, CPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles2d_class_set_emission_rect_extents(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_emission_rect_extents, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_emission_rect_extents, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_get_emission_rect_extents(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles2D::get_emission_rect_extents, CPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles2d_class_set_emission_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_emission_points, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_emission_points, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_get_emission_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles2D::get_emission_points, CPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles2d_class_set_emission_normals(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_emission_normals, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_emission_normals, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_get_emission_normals(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles2D::get_emission_normals, CPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles2d_class_set_emission_colors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_emission_colors, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_emission_colors, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_get_emission_colors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -252,32 +251,32 @@ static JSValue cpu_particles2d_class_get_gravity(JSContext *ctx, JSValueConst th
 	return call_builtin_const_method_ret(&CPUParticles2D::get_gravity, CPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles2d_class_set_gravity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_gravity, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_gravity, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_get_split_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&CPUParticles2D::get_split_scale, CPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles2d_class_set_split_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_split_scale, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_split_scale, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_get_scale_curve_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles2D::get_scale_curve_x, CPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles2d_class_set_scale_curve_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_scale_curve_x, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_scale_curve_x, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_get_scale_curve_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CPUParticles2D::get_scale_curve_y, CPUParticles2D::__class_id, ctx, this_val, argv);
 };
 static JSValue cpu_particles2d_class_set_scale_curve_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::set_scale_curve_y, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::set_scale_curve_y, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cpu_particles2d_class_convert_from_particles(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CPUParticles2D::convert_from_particles, CPUParticles2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CPUParticles2D::convert_from_particles, CPUParticles2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry cpu_particles2d_class_proto_funcs[] = {

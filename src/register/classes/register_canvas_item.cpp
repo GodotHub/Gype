@@ -1,23 +1,22 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/canvas_item.hpp>
-#include <godot_cpp/classes/canvas_layer.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/input_event.hpp>
-#include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/multi_mesh.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/style_box.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/world2d.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/canvas_layer.hpp>
+#include <godot_cpp/classes/canvas_item.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/style_box.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -50,7 +49,7 @@ static JSValue canvas_item_class_get_canvas_item(JSContext *ctx, JSValueConst th
 	return call_builtin_const_method_ret(&CanvasItem::get_canvas_item, CanvasItem::__class_id, ctx, this_val, argv);
 };
 static JSValue canvas_item_class_set_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::set_visible, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::set_visible, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_is_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -60,195 +59,195 @@ static JSValue canvas_item_class_is_visible_in_tree(JSContext *ctx, JSValueConst
 	return call_builtin_const_method_ret(&CanvasItem::is_visible_in_tree, CanvasItem::__class_id, ctx, this_val, argv);
 };
 static JSValue canvas_item_class_show(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::show, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::show, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_hide(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::hide, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::hide, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_queue_redraw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::queue_redraw, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::queue_redraw, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_move_to_front(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::move_to_front, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::move_to_front, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_set_as_top_level(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::set_as_top_level, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::set_as_top_level, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_is_set_as_top_level(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CanvasItem::is_set_as_top_level, CanvasItem::__class_id, ctx, this_val, argv);
 };
 static JSValue canvas_item_class_set_light_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::set_light_mask, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::set_light_mask, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_get_light_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CanvasItem::get_light_mask, CanvasItem::__class_id, ctx, this_val, argv);
 };
 static JSValue canvas_item_class_set_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::set_modulate, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::set_modulate, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_get_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CanvasItem::get_modulate, CanvasItem::__class_id, ctx, this_val, argv);
 };
 static JSValue canvas_item_class_set_self_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::set_self_modulate, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::set_self_modulate, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_get_self_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CanvasItem::get_self_modulate, CanvasItem::__class_id, ctx, this_val, argv);
 };
 static JSValue canvas_item_class_set_z_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::set_z_index, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::set_z_index, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_get_z_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CanvasItem::get_z_index, CanvasItem::__class_id, ctx, this_val, argv);
 };
 static JSValue canvas_item_class_set_z_as_relative(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::set_z_as_relative, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::set_z_as_relative, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_is_z_relative(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CanvasItem::is_z_relative, CanvasItem::__class_id, ctx, this_val, argv);
 };
 static JSValue canvas_item_class_set_y_sort_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::set_y_sort_enabled, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::set_y_sort_enabled, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_is_y_sort_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CanvasItem::is_y_sort_enabled, CanvasItem::__class_id, ctx, this_val, argv);
 };
 static JSValue canvas_item_class_set_draw_behind_parent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::set_draw_behind_parent, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::set_draw_behind_parent, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_is_draw_behind_parent_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CanvasItem::is_draw_behind_parent_enabled, CanvasItem::__class_id, ctx, this_val, argv);
 };
 static JSValue canvas_item_class_draw_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::draw_line, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::draw_line, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_dashed_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::draw_dashed_line, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::draw_dashed_line, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_polyline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::draw_polyline, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::draw_polyline, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_polyline_colors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::draw_polyline_colors, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::draw_polyline_colors, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_arc(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::draw_arc, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::draw_arc, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_multiline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::draw_multiline, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::draw_multiline, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_multiline_colors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::draw_multiline_colors, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::draw_multiline_colors, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::draw_rect, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::draw_rect, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_circle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::draw_circle, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::draw_circle, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::draw_texture, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::draw_texture, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_texture_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::draw_texture_rect, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::draw_texture_rect, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_texture_rect_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::draw_texture_rect_region, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::draw_texture_rect_region, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_msdf_texture_rect_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::draw_msdf_texture_rect_region, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::draw_msdf_texture_rect_region, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_lcd_texture_rect_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::draw_lcd_texture_rect_region, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::draw_lcd_texture_rect_region, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_style_box(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::draw_style_box, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::draw_style_box, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_primitive(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::draw_primitive, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::draw_primitive, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::draw_polygon, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::draw_polygon, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_colored_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::draw_colored_polygon, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::draw_colored_polygon, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&CanvasItem::draw_string, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&CanvasItem::draw_string, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_multiline_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&CanvasItem::draw_multiline_string, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&CanvasItem::draw_multiline_string, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_string_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&CanvasItem::draw_string_outline, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&CanvasItem::draw_string_outline, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_multiline_string_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&CanvasItem::draw_multiline_string_outline, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&CanvasItem::draw_multiline_string_outline, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_char(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&CanvasItem::draw_char, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&CanvasItem::draw_char, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_char_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&CanvasItem::draw_char_outline, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&CanvasItem::draw_char_outline, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::draw_mesh, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::draw_mesh, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_multimesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::draw_multimesh, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::draw_multimesh, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::draw_set_transform, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::draw_set_transform, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_set_transform_matrix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::draw_set_transform_matrix, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::draw_set_transform_matrix, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_animation_slice(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::draw_animation_slice, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::draw_animation_slice, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_end_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::draw_end_animation, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::draw_end_animation, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_get_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -288,35 +287,35 @@ static JSValue canvas_item_class_get_world_2d(JSContext *ctx, JSValueConst this_
 	return call_builtin_const_method_ret(&CanvasItem::get_world_2d, CanvasItem::__class_id, ctx, this_val, argv);
 };
 static JSValue canvas_item_class_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::set_material, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::set_material, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_get_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CanvasItem::get_material, CanvasItem::__class_id, ctx, this_val, argv);
 };
 static JSValue canvas_item_class_set_use_parent_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::set_use_parent_material, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::set_use_parent_material, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_get_use_parent_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CanvasItem::get_use_parent_material, CanvasItem::__class_id, ctx, this_val, argv);
 };
 static JSValue canvas_item_class_set_notify_local_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::set_notify_local_transform, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::set_notify_local_transform, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_is_local_transform_notification_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CanvasItem::is_local_transform_notification_enabled, CanvasItem::__class_id, ctx, this_val, argv);
 };
 static JSValue canvas_item_class_set_notify_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::set_notify_transform, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::set_notify_transform, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_is_transform_notification_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CanvasItem::is_transform_notification_enabled, CanvasItem::__class_id, ctx, this_val, argv);
 };
 static JSValue canvas_item_class_force_update_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::force_update_transform, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::force_update_transform, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_make_canvas_position_local(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -326,35 +325,35 @@ static JSValue canvas_item_class_make_input_local(JSContext *ctx, JSValueConst t
 	return call_builtin_const_method_ret(&CanvasItem::make_input_local, CanvasItem::__class_id, ctx, this_val, argv);
 };
 static JSValue canvas_item_class_set_visibility_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::set_visibility_layer, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::set_visibility_layer, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_get_visibility_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CanvasItem::get_visibility_layer, CanvasItem::__class_id, ctx, this_val, argv);
 };
 static JSValue canvas_item_class_set_visibility_layer_bit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::set_visibility_layer_bit, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::set_visibility_layer_bit, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_get_visibility_layer_bit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CanvasItem::get_visibility_layer_bit, CanvasItem::__class_id, ctx, this_val, argv);
 };
 static JSValue canvas_item_class_set_texture_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::set_texture_filter, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::set_texture_filter, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_get_texture_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CanvasItem::get_texture_filter, CanvasItem::__class_id, ctx, this_val, argv);
 };
 static JSValue canvas_item_class_set_texture_repeat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::set_texture_repeat, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::set_texture_repeat, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_get_texture_repeat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&CanvasItem::get_texture_repeat, CanvasItem::__class_id, ctx, this_val, argv);
 };
 static JSValue canvas_item_class_set_clip_children_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&CanvasItem::set_clip_children_mode, CanvasItem::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CanvasItem::set_clip_children_mode, CanvasItem::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_get_clip_children_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

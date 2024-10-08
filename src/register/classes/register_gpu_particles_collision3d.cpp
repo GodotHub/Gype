@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/gpu_particles_collision3d.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/classes/gpu_particles_collision3d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,7 +37,7 @@ static JSValue gpu_particles_collision3d_class_constructor(JSContext *ctx, JSVal
 	return obj;
 }
 static JSValue gpu_particles_collision3d_class_set_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GPUParticlesCollision3D::set_cull_mask, GPUParticlesCollision3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GPUParticlesCollision3D::set_cull_mask, GPUParticlesCollision3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles_collision3d_class_get_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

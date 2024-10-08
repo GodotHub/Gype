@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/graph_element.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/graph_node.hpp>
 #include <godot_cpp/classes/h_box_container.hpp>
+#include <godot_cpp/classes/graph_element.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -40,7 +39,7 @@ static JSValue graph_node_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue graph_node_class_set_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphNode::set_title, GraphNode::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphNode::set_title, GraphNode::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_node_class_get_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -50,40 +49,40 @@ static JSValue graph_node_class_get_titlebar_hbox(JSContext *ctx, JSValueConst t
 	return call_builtin_method_ret(&GraphNode::get_titlebar_hbox, GraphNode::__class_id, ctx, this_val, argv);
 };
 static JSValue graph_node_class_set_slot(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphNode::set_slot, GraphNode::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphNode::set_slot, GraphNode::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_node_class_clear_slot(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphNode::clear_slot, GraphNode::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphNode::clear_slot, GraphNode::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_node_class_clear_all_slots(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphNode::clear_all_slots, GraphNode::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphNode::clear_all_slots, GraphNode::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_node_class_is_slot_enabled_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&GraphNode::is_slot_enabled_left, GraphNode::__class_id, ctx, this_val, argv);
 };
 static JSValue graph_node_class_set_slot_enabled_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphNode::set_slot_enabled_left, GraphNode::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphNode::set_slot_enabled_left, GraphNode::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_node_class_set_slot_type_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphNode::set_slot_type_left, GraphNode::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphNode::set_slot_type_left, GraphNode::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_node_class_get_slot_type_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&GraphNode::get_slot_type_left, GraphNode::__class_id, ctx, this_val, argv);
 };
 static JSValue graph_node_class_set_slot_color_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphNode::set_slot_color_left, GraphNode::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphNode::set_slot_color_left, GraphNode::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_node_class_get_slot_color_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&GraphNode::get_slot_color_left, GraphNode::__class_id, ctx, this_val, argv);
 };
 static JSValue graph_node_class_set_slot_custom_icon_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphNode::set_slot_custom_icon_left, GraphNode::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphNode::set_slot_custom_icon_left, GraphNode::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_node_class_get_slot_custom_icon_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -93,25 +92,25 @@ static JSValue graph_node_class_is_slot_enabled_right(JSContext *ctx, JSValueCon
 	return call_builtin_const_method_ret(&GraphNode::is_slot_enabled_right, GraphNode::__class_id, ctx, this_val, argv);
 };
 static JSValue graph_node_class_set_slot_enabled_right(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphNode::set_slot_enabled_right, GraphNode::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphNode::set_slot_enabled_right, GraphNode::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_node_class_set_slot_type_right(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphNode::set_slot_type_right, GraphNode::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphNode::set_slot_type_right, GraphNode::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_node_class_get_slot_type_right(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&GraphNode::get_slot_type_right, GraphNode::__class_id, ctx, this_val, argv);
 };
 static JSValue graph_node_class_set_slot_color_right(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphNode::set_slot_color_right, GraphNode::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphNode::set_slot_color_right, GraphNode::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_node_class_get_slot_color_right(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&GraphNode::get_slot_color_right, GraphNode::__class_id, ctx, this_val, argv);
 };
 static JSValue graph_node_class_set_slot_custom_icon_right(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphNode::set_slot_custom_icon_right, GraphNode::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphNode::set_slot_custom_icon_right, GraphNode::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_node_class_get_slot_custom_icon_right(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -121,11 +120,11 @@ static JSValue graph_node_class_is_slot_draw_stylebox(JSContext *ctx, JSValueCon
 	return call_builtin_const_method_ret(&GraphNode::is_slot_draw_stylebox, GraphNode::__class_id, ctx, this_val, argv);
 };
 static JSValue graph_node_class_set_slot_draw_stylebox(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphNode::set_slot_draw_stylebox, GraphNode::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphNode::set_slot_draw_stylebox, GraphNode::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_node_class_set_ignore_invalid_connection_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GraphNode::set_ignore_invalid_connection_type, GraphNode::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphNode::set_ignore_invalid_connection_type, GraphNode::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_node_class_is_ignoring_valid_connection_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

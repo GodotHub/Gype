@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/visual_shader_node_frame.hpp>
 #include <godot_cpp/classes/visual_shader_node_resizable_base.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,43 +37,43 @@ static JSValue visual_shader_node_frame_class_constructor(JSContext *ctx, JSValu
 	return obj;
 }
 static JSValue visual_shader_node_frame_class_set_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VisualShaderNodeFrame::set_title, VisualShaderNodeFrame::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VisualShaderNodeFrame::set_title, VisualShaderNodeFrame::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_frame_class_get_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VisualShaderNodeFrame::get_title, VisualShaderNodeFrame::__class_id, ctx, this_val, argv);
 };
 static JSValue visual_shader_node_frame_class_set_tint_color_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VisualShaderNodeFrame::set_tint_color_enabled, VisualShaderNodeFrame::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VisualShaderNodeFrame::set_tint_color_enabled, VisualShaderNodeFrame::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_frame_class_is_tint_color_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VisualShaderNodeFrame::is_tint_color_enabled, VisualShaderNodeFrame::__class_id, ctx, this_val, argv);
 };
 static JSValue visual_shader_node_frame_class_set_tint_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VisualShaderNodeFrame::set_tint_color, VisualShaderNodeFrame::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VisualShaderNodeFrame::set_tint_color, VisualShaderNodeFrame::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_frame_class_get_tint_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VisualShaderNodeFrame::get_tint_color, VisualShaderNodeFrame::__class_id, ctx, this_val, argv);
 };
 static JSValue visual_shader_node_frame_class_set_autoshrink_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VisualShaderNodeFrame::set_autoshrink_enabled, VisualShaderNodeFrame::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VisualShaderNodeFrame::set_autoshrink_enabled, VisualShaderNodeFrame::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_frame_class_is_autoshrink_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VisualShaderNodeFrame::is_autoshrink_enabled, VisualShaderNodeFrame::__class_id, ctx, this_val, argv);
 };
 static JSValue visual_shader_node_frame_class_add_attached_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VisualShaderNodeFrame::add_attached_node, VisualShaderNodeFrame::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VisualShaderNodeFrame::add_attached_node, VisualShaderNodeFrame::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_frame_class_remove_attached_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VisualShaderNodeFrame::remove_attached_node, VisualShaderNodeFrame::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VisualShaderNodeFrame::remove_attached_node, VisualShaderNodeFrame::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_frame_class_set_attached_nodes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VisualShaderNodeFrame::set_attached_nodes, VisualShaderNodeFrame::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VisualShaderNodeFrame::set_attached_nodes, VisualShaderNodeFrame::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_frame_class_get_attached_nodes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/base_button.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/link_button.hpp>
+#include <godot_cpp/classes/base_button.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,49 +37,49 @@ static JSValue link_button_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue link_button_class_set_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&LinkButton::set_text, LinkButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&LinkButton::set_text, LinkButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue link_button_class_get_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&LinkButton::get_text, LinkButton::__class_id, ctx, this_val, argv);
 };
 static JSValue link_button_class_set_text_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&LinkButton::set_text_direction, LinkButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&LinkButton::set_text_direction, LinkButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue link_button_class_get_text_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&LinkButton::get_text_direction, LinkButton::__class_id, ctx, this_val, argv);
 };
 static JSValue link_button_class_set_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&LinkButton::set_language, LinkButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&LinkButton::set_language, LinkButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue link_button_class_get_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&LinkButton::get_language, LinkButton::__class_id, ctx, this_val, argv);
 };
 static JSValue link_button_class_set_uri(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&LinkButton::set_uri, LinkButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&LinkButton::set_uri, LinkButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue link_button_class_get_uri(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&LinkButton::get_uri, LinkButton::__class_id, ctx, this_val, argv);
 };
 static JSValue link_button_class_set_underline_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&LinkButton::set_underline_mode, LinkButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&LinkButton::set_underline_mode, LinkButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue link_button_class_get_underline_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&LinkButton::get_underline_mode, LinkButton::__class_id, ctx, this_val, argv);
 };
 static JSValue link_button_class_set_structured_text_bidi_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&LinkButton::set_structured_text_bidi_override, LinkButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&LinkButton::set_structured_text_bidi_override, LinkButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue link_button_class_get_structured_text_bidi_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&LinkButton::get_structured_text_bidi_override, LinkButton::__class_id, ctx, this_val, argv);
 };
 static JSValue link_button_class_set_structured_text_bidi_override_options(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&LinkButton::set_structured_text_bidi_override_options, LinkButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&LinkButton::set_structured_text_bidi_override_options, LinkButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue link_button_class_get_structured_text_bidi_override_options(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

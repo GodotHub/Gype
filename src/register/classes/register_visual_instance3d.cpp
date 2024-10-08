@@ -1,14 +1,13 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -38,7 +37,7 @@ static JSValue visual_instance3d_class_constructor(JSContext *ctx, JSValueConst 
 	return obj;
 }
 static JSValue visual_instance3d_class_set_base(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VisualInstance3D::set_base, VisualInstance3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VisualInstance3D::set_base, VisualInstance3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_instance3d_class_get_base(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -48,28 +47,28 @@ static JSValue visual_instance3d_class_get_instance(JSContext *ctx, JSValueConst
 	return call_builtin_const_method_ret(&VisualInstance3D::get_instance, VisualInstance3D::__class_id, ctx, this_val, argv);
 };
 static JSValue visual_instance3d_class_set_layer_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VisualInstance3D::set_layer_mask, VisualInstance3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VisualInstance3D::set_layer_mask, VisualInstance3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_instance3d_class_get_layer_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VisualInstance3D::get_layer_mask, VisualInstance3D::__class_id, ctx, this_val, argv);
 };
 static JSValue visual_instance3d_class_set_layer_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VisualInstance3D::set_layer_mask_value, VisualInstance3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VisualInstance3D::set_layer_mask_value, VisualInstance3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_instance3d_class_get_layer_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VisualInstance3D::get_layer_mask_value, VisualInstance3D::__class_id, ctx, this_val, argv);
 };
 static JSValue visual_instance3d_class_set_sorting_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VisualInstance3D::set_sorting_offset, VisualInstance3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VisualInstance3D::set_sorting_offset, VisualInstance3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_instance3d_class_get_sorting_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&VisualInstance3D::get_sorting_offset, VisualInstance3D::__class_id, ctx, this_val, argv);
 };
 static JSValue visual_instance3d_class_set_sorting_use_aabb_center(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&VisualInstance3D::set_sorting_use_aabb_center, VisualInstance3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VisualInstance3D::set_sorting_use_aabb_center, VisualInstance3D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_instance3d_class_is_sorting_use_aabb_center(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/texture.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -52,15 +51,15 @@ static JSValue texture2d_class_has_alpha(JSContext *ctx, JSValueConst this_val, 
 	return call_builtin_const_method_ret(&Texture2D::has_alpha, Texture2D::__class_id, ctx, this_val, argv);
 };
 static JSValue texture2d_class_draw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&Texture2D::draw, Texture2D::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&Texture2D::draw, Texture2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture2d_class_draw_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&Texture2D::draw_rect, Texture2D::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&Texture2D::draw_rect, Texture2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture2d_class_draw_rect_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_method_no_ret(&Texture2D::draw_rect_region, Texture2D::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&Texture2D::draw_rect_region, Texture2D::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture2d_class_get_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

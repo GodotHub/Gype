@@ -1,16 +1,15 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/base_button.hpp>
-#include <godot_cpp/classes/bit_map.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/texture_button.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/bit_map.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -40,46 +39,46 @@ static JSValue texture_button_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue texture_button_class_set_texture_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextureButton::set_texture_normal, TextureButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextureButton::set_texture_normal, TextureButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_button_class_set_texture_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextureButton::set_texture_pressed, TextureButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextureButton::set_texture_pressed, TextureButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_button_class_set_texture_hover(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextureButton::set_texture_hover, TextureButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextureButton::set_texture_hover, TextureButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_button_class_set_texture_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextureButton::set_texture_disabled, TextureButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextureButton::set_texture_disabled, TextureButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_button_class_set_texture_focused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextureButton::set_texture_focused, TextureButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextureButton::set_texture_focused, TextureButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_button_class_set_click_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextureButton::set_click_mask, TextureButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextureButton::set_click_mask, TextureButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_button_class_set_ignore_texture_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextureButton::set_ignore_texture_size, TextureButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextureButton::set_ignore_texture_size, TextureButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_button_class_set_stretch_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextureButton::set_stretch_mode, TextureButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextureButton::set_stretch_mode, TextureButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_button_class_set_flip_h(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextureButton::set_flip_h, TextureButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextureButton::set_flip_h, TextureButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_button_class_is_flipped_h(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&TextureButton::is_flipped_h, TextureButton::__class_id, ctx, this_val, argv);
 };
 static JSValue texture_button_class_set_flip_v(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&TextureButton::set_flip_v, TextureButton::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextureButton::set_flip_v, TextureButton::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_button_class_is_flipped_v(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

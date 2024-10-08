@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
-#include <godot_cpp/classes/gltf_skin.hpp>
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/gltf_skin.hpp>
 #include <godot_cpp/classes/skin.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -42,70 +41,70 @@ static JSValue gltf_skin_class_get_skin_root(JSContext *ctx, JSValueConst this_v
 	return call_builtin_method_ret(&GLTFSkin::get_skin_root, GLTFSkin::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_skin_class_set_skin_root(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFSkin::set_skin_root, GLTFSkin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFSkin::set_skin_root, GLTFSkin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skin_class_get_joints_original(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&GLTFSkin::get_joints_original, GLTFSkin::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_skin_class_set_joints_original(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFSkin::set_joints_original, GLTFSkin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFSkin::set_joints_original, GLTFSkin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skin_class_get_inverse_binds(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&GLTFSkin::get_inverse_binds, GLTFSkin::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_skin_class_set_inverse_binds(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFSkin::set_inverse_binds, GLTFSkin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFSkin::set_inverse_binds, GLTFSkin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skin_class_get_joints(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&GLTFSkin::get_joints, GLTFSkin::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_skin_class_set_joints(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFSkin::set_joints, GLTFSkin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFSkin::set_joints, GLTFSkin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skin_class_get_non_joints(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&GLTFSkin::get_non_joints, GLTFSkin::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_skin_class_set_non_joints(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFSkin::set_non_joints, GLTFSkin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFSkin::set_non_joints, GLTFSkin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skin_class_get_roots(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&GLTFSkin::get_roots, GLTFSkin::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_skin_class_set_roots(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFSkin::set_roots, GLTFSkin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFSkin::set_roots, GLTFSkin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skin_class_get_skeleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&GLTFSkin::get_skeleton, GLTFSkin::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_skin_class_set_skeleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFSkin::set_skeleton, GLTFSkin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFSkin::set_skeleton, GLTFSkin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skin_class_get_joint_i_to_bone_i(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&GLTFSkin::get_joint_i_to_bone_i, GLTFSkin::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_skin_class_set_joint_i_to_bone_i(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFSkin::set_joint_i_to_bone_i, GLTFSkin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFSkin::set_joint_i_to_bone_i, GLTFSkin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skin_class_get_joint_i_to_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&GLTFSkin::get_joint_i_to_name, GLTFSkin::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_skin_class_set_joint_i_to_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFSkin::set_joint_i_to_name, GLTFSkin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFSkin::set_joint_i_to_name, GLTFSkin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skin_class_get_godot_skin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&GLTFSkin::get_godot_skin, GLTFSkin::__class_id, ctx, this_val, argv);
 };
 static JSValue gltf_skin_class_set_godot_skin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&GLTFSkin::set_godot_skin, GLTFSkin::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFSkin::set_godot_skin, GLTFSkin::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry gltf_skin_class_proto_funcs[] = {

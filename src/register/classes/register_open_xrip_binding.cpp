@@ -1,15 +1,14 @@
 
 #include "quickjs/quickjs.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
 #include "utils/env.h"
 #include "utils/register_helper.h"
+#include "quickjs/str_helper.h"
 #include <godot_cpp/classes/open_xr_action.hpp>
-#include <godot_cpp/classes/open_xrip_binding.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/open_xrip_binding.hpp>
 #include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
@@ -39,7 +38,7 @@ static JSValue open_xrip_binding_class_constructor(JSContext *ctx, JSValueConst 
 	return obj;
 }
 static JSValue open_xrip_binding_class_set_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&OpenXRIPBinding::set_action, OpenXRIPBinding::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&OpenXRIPBinding::set_action, OpenXRIPBinding::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xrip_binding_class_get_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -49,7 +48,7 @@ static JSValue open_xrip_binding_class_get_path_count(JSContext *ctx, JSValueCon
 	return call_builtin_const_method_ret(&OpenXRIPBinding::get_path_count, OpenXRIPBinding::__class_id, ctx, this_val, argv);
 };
 static JSValue open_xrip_binding_class_set_paths(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&OpenXRIPBinding::set_paths, OpenXRIPBinding::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&OpenXRIPBinding::set_paths, OpenXRIPBinding::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xrip_binding_class_get_paths(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -59,11 +58,11 @@ static JSValue open_xrip_binding_class_has_path(JSContext *ctx, JSValueConst thi
 	return call_builtin_const_method_ret(&OpenXRIPBinding::has_path, OpenXRIPBinding::__class_id, ctx, this_val, argv);
 };
 static JSValue open_xrip_binding_class_add_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&OpenXRIPBinding::add_path, OpenXRIPBinding::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&OpenXRIPBinding::add_path, OpenXRIPBinding::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xrip_binding_class_remove_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&OpenXRIPBinding::remove_path, OpenXRIPBinding::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&OpenXRIPBinding::remove_path, OpenXRIPBinding::__class_id, ctx, this_val, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry open_xrip_binding_class_proto_funcs[] = {
