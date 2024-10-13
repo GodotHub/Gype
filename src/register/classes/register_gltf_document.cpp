@@ -1,16 +1,17 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/resource.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/gltf_state.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/gltf_document.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/gltf_document_extension.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -37,53 +38,61 @@ static JSValue gltf_document_class_constructor(JSContext *ctx, JSValueConst new_
 	}
 
 	JS_SetOpaque(obj, gltf_document_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue gltf_document_class_set_image_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GLTFDocument::set_image_format, GLTFDocument::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFDocument::set_image_format, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_document_class_get_image_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GLTFDocument::get_image_format, GLTFDocument::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GLTFDocument::get_image_format, ctx, this_val, argc, argv);
 };
 static JSValue gltf_document_class_set_lossy_quality(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GLTFDocument::set_lossy_quality, GLTFDocument::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFDocument::set_lossy_quality, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_document_class_get_lossy_quality(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GLTFDocument::get_lossy_quality, GLTFDocument::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GLTFDocument::get_lossy_quality, ctx, this_val, argc, argv);
 };
 static JSValue gltf_document_class_set_root_node_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GLTFDocument::set_root_node_mode, GLTFDocument::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFDocument::set_root_node_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_document_class_get_root_node_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GLTFDocument::get_root_node_mode, GLTFDocument::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GLTFDocument::get_root_node_mode, ctx, this_val, argc, argv);
 };
 static JSValue gltf_document_class_append_from_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&GLTFDocument::append_from_file, GLTFDocument::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&GLTFDocument::append_from_file, ctx, this_val, argc, argv);
 };
 static JSValue gltf_document_class_append_from_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&GLTFDocument::append_from_buffer, GLTFDocument::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&GLTFDocument::append_from_buffer, ctx, this_val, argc, argv);
 };
 static JSValue gltf_document_class_append_from_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&GLTFDocument::append_from_scene, GLTFDocument::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&GLTFDocument::append_from_scene, ctx, this_val, argc, argv);
 };
 static JSValue gltf_document_class_generate_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&GLTFDocument::generate_scene, GLTFDocument::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&GLTFDocument::generate_scene, ctx, this_val, argc, argv);
 };
 static JSValue gltf_document_class_generate_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&GLTFDocument::generate_buffer, GLTFDocument::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&GLTFDocument::generate_buffer, ctx, this_val, argc, argv);
 };
 static JSValue gltf_document_class_write_to_filesystem(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&GLTFDocument::write_to_filesystem, GLTFDocument::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&GLTFDocument::write_to_filesystem, ctx, this_val, argc, argv);
 };
 static JSValue gltf_document_class_register_gltf_document_extension(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_static_method_no_ret(&GLTFDocument::register_gltf_document_extension, GLTFDocument::__class_id, ctx, this_val, argv);
+    call_builtin_static_method_no_ret(&GLTFDocument::register_gltf_document_extension, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_document_class_unregister_gltf_document_extension(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_static_method_no_ret(&GLTFDocument::unregister_gltf_document_extension, GLTFDocument::__class_id, ctx, this_val, argv);
+    call_builtin_static_method_no_ret(&GLTFDocument::unregister_gltf_document_extension, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry gltf_document_class_proto_funcs[] = {
@@ -105,18 +114,49 @@ static const JSCFunctionListEntry gltf_document_class_static_funcs[] = {
 	JS_CFUNC_DEF("unregister_gltf_document_extension", 1, &gltf_document_class_unregister_gltf_document_extension),
 };
 
+void define_gltf_document_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "image_format"),
+        JS_NewCFunction(ctx, gltf_document_class_get_image_format, "get_image_format", 0),
+        JS_NewCFunction(ctx, gltf_document_class_set_image_format, "set_image_format", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "lossy_quality"),
+        JS_NewCFunction(ctx, gltf_document_class_get_lossy_quality, "get_lossy_quality", 0),
+        JS_NewCFunction(ctx, gltf_document_class_set_lossy_quality, "set_lossy_quality", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "root_node_mode"),
+        JS_NewCFunction(ctx, gltf_document_class_get_root_node_mode, "get_root_node_mode", 0),
+        JS_NewCFunction(ctx, gltf_document_class_set_root_node_mode, "set_root_node_mode", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_gltf_document_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&GLTFDocument::__class_id);
 	classes["GLTFDocument"] = GLTFDocument::__class_id;
+	class_id_list.insert(GLTFDocument::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GLTFDocument::__class_id, &gltf_document_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, GLTFDocument::__class_id, proto);
+	define_gltf_document_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, gltf_document_class_proto_funcs, _countof(gltf_document_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, gltf_document_class_constructor, "GLTFDocument", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 	JS_SetPropertyFunctionList(ctx, ctor, gltf_document_class_static_funcs, _countof(gltf_document_class_static_funcs));
 
 	JS_SetModuleExport(ctx, m, "GLTFDocument", ctor);
@@ -125,6 +165,10 @@ static int js_gltf_document_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_gltf_document_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/resource';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_gltf_document_class_init);
 	if (!m)
 		return NULL;
@@ -137,5 +181,6 @@ JSModuleDef *js_init_gltf_document_module(JSContext *ctx) {
 }
 
 void register_gltf_document() {
+	GLTFDocument::__init_js_class_id();
 	js_init_gltf_document_module(ctx);
 }

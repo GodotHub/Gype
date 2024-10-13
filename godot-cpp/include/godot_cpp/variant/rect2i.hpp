@@ -31,6 +31,7 @@
 #ifndef GODOT_RECT2I_HPP
 #define GODOT_RECT2I_HPP
 
+#include "quickjs/quickjs.h"
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
 
@@ -40,6 +41,11 @@ class String;
 struct Rect2;
 
 struct _NO_DISCARD_ Rect2i {
+	static JSClassID __class_id;
+
+	inline static void __init_js_class_id() {
+		Rect2i::__class_id = JS_NewClassID(&Rect2i::__class_id);
+	}
 	Point2i position;
 	Size2i size;
 

@@ -34,6 +34,8 @@
 
 namespace godot {
 
+JSClassID Transform3D::__class_id;
+
 void Transform3D::affine_invert() {
 	basis.invert();
 	origin = basis.xform(-origin);

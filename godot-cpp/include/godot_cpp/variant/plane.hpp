@@ -39,6 +39,11 @@ namespace godot {
 class Variant;
 
 struct _NO_DISCARD_ Plane {
+	static JSClassID __class_id;
+
+	inline static void __init_js_class_id() {
+		Plane::__class_id = JS_NewClassID(&Plane::__class_id);
+	}
 	Vector3 normal;
 	real_t d = 0;
 

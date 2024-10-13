@@ -1,17 +1,21 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/xr_tracker.hpp>
-#include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/classes/xr_server.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
+
+static JSValue xr_server_instance;
+
+static void js_xr_server_singleton();
 
 static void xr_server_class_finalizer(JSRuntime *rt, JSValue val) {
 	XRServer *xr_server = static_cast<XRServer *>(JS_GetOpaque(val, XRServer::__class_id));
@@ -39,72 +43,92 @@ static JSValue xr_server_class_constructor(JSContext *ctx, JSValueConst new_targ
 	return obj;
 }
 static JSValue xr_server_class_get_world_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&XRServer::get_world_scale, XRServer::__class_id, ctx, this_val, argv);
+    js_xr_server_singleton();
+	return call_builtin_const_method_ret(&XRServer::get_world_scale, ctx, this_val, argc, argv);
 };
 static JSValue xr_server_class_set_world_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&XRServer::set_world_scale, XRServer::__class_id, ctx, this_val, argv);
+    js_xr_server_singleton();
+    call_builtin_method_no_ret(&XRServer::set_world_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_server_class_get_world_origin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&XRServer::get_world_origin, XRServer::__class_id, ctx, this_val, argv);
+    js_xr_server_singleton();
+	return call_builtin_const_method_ret(&XRServer::get_world_origin, ctx, this_val, argc, argv);
 };
 static JSValue xr_server_class_set_world_origin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&XRServer::set_world_origin, XRServer::__class_id, ctx, this_val, argv);
+    js_xr_server_singleton();
+    call_builtin_method_no_ret(&XRServer::set_world_origin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_server_class_get_reference_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&XRServer::get_reference_frame, XRServer::__class_id, ctx, this_val, argv);
+    js_xr_server_singleton();
+	return call_builtin_const_method_ret(&XRServer::get_reference_frame, ctx, this_val, argc, argv);
 };
 static JSValue xr_server_class_clear_reference_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&XRServer::clear_reference_frame, XRServer::__class_id, ctx, this_val, argv);
+    js_xr_server_singleton();
+    call_builtin_method_no_ret(&XRServer::clear_reference_frame, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_server_class_center_on_hmd(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&XRServer::center_on_hmd, XRServer::__class_id, ctx, this_val, argv);
+    js_xr_server_singleton();
+    call_builtin_method_no_ret(&XRServer::center_on_hmd, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_server_class_get_hmd_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&XRServer::get_hmd_transform, XRServer::__class_id, ctx, this_val, argv);
+    js_xr_server_singleton();
+	return call_builtin_method_ret(&XRServer::get_hmd_transform, ctx, this_val, argc, argv);
 };
 static JSValue xr_server_class_add_interface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&XRServer::add_interface, XRServer::__class_id, ctx, this_val, argv);
+    js_xr_server_singleton();
+    call_builtin_method_no_ret(&XRServer::add_interface, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_server_class_get_interface_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&XRServer::get_interface_count, XRServer::__class_id, ctx, this_val, argv);
+    js_xr_server_singleton();
+	return call_builtin_const_method_ret(&XRServer::get_interface_count, ctx, this_val, argc, argv);
 };
 static JSValue xr_server_class_remove_interface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&XRServer::remove_interface, XRServer::__class_id, ctx, this_val, argv);
+    js_xr_server_singleton();
+    call_builtin_method_no_ret(&XRServer::remove_interface, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_server_class_get_interface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&XRServer::get_interface, XRServer::__class_id, ctx, this_val, argv);
+    js_xr_server_singleton();
+	return call_builtin_const_method_ret(&XRServer::get_interface, ctx, this_val, argc, argv);
 };
 static JSValue xr_server_class_get_interfaces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&XRServer::get_interfaces, XRServer::__class_id, ctx, this_val, argv);
+    js_xr_server_singleton();
+	return call_builtin_const_method_ret(&XRServer::get_interfaces, ctx, this_val, argc, argv);
 };
 static JSValue xr_server_class_find_interface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&XRServer::find_interface, XRServer::__class_id, ctx, this_val, argv);
+    js_xr_server_singleton();
+	return call_builtin_const_method_ret(&XRServer::find_interface, ctx, this_val, argc, argv);
 };
 static JSValue xr_server_class_add_tracker(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&XRServer::add_tracker, XRServer::__class_id, ctx, this_val, argv);
+    js_xr_server_singleton();
+    call_builtin_method_no_ret(&XRServer::add_tracker, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_server_class_remove_tracker(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&XRServer::remove_tracker, XRServer::__class_id, ctx, this_val, argv);
+    js_xr_server_singleton();
+    call_builtin_method_no_ret(&XRServer::remove_tracker, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_server_class_get_trackers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&XRServer::get_trackers, XRServer::__class_id, ctx, this_val, argv);
+    js_xr_server_singleton();
+	return call_builtin_method_ret(&XRServer::get_trackers, ctx, this_val, argc, argv);
 };
 static JSValue xr_server_class_get_tracker(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&XRServer::get_tracker, XRServer::__class_id, ctx, this_val, argv);
+    js_xr_server_singleton();
+	return call_builtin_const_method_ret(&XRServer::get_tracker, ctx, this_val, argc, argv);
 };
 static JSValue xr_server_class_get_primary_interface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&XRServer::get_primary_interface, XRServer::__class_id, ctx, this_val, argv);
+    js_xr_server_singleton();
+	return call_builtin_const_method_ret(&XRServer::get_primary_interface, ctx, this_val, argc, argv);
 };
 static JSValue xr_server_class_set_primary_interface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&XRServer::set_primary_interface, XRServer::__class_id, ctx, this_val, argv);
+    js_xr_server_singleton();
+    call_builtin_method_no_ret(&XRServer::set_primary_interface, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry xr_server_class_proto_funcs[] = {
@@ -130,7 +154,7 @@ static const JSCFunctionListEntry xr_server_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_primary_interface", 1, &xr_server_class_set_primary_interface),
 };
 
-static int js_xr_server_class_init(JSContext *ctx, JSModuleDef *m) {
+static int js_xr_server_class_init(JSContext *ctx) {
 	JS_NewClassID(&XRServer::__class_id);
 	classes["XRServer"] = XRServer::__class_id;
 	JS_NewClass(JS_GetRuntime(ctx), XRServer::__class_id, &xr_server_class_def);
@@ -140,26 +164,18 @@ static int js_xr_server_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, XRServer::__class_id, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xr_server_class_proto_funcs, _countof(xr_server_class_proto_funcs));
-
-	JSValue ctor = JS_NewCFunction2(ctx, xr_server_class_constructor, "XRServer", 0, JS_CFUNC_constructor, 0);
-
-	JS_SetModuleExport(ctx, m, "XRServer", ctor);
-
 	return 0;
 }
 
-JSModuleDef *_js_init_xr_server_module(JSContext *ctx, const char *module_name) {
-	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_xr_server_class_init);
-	if (!m)
-		return NULL;
-	JS_AddModuleExport(ctx, m, "XRServer");
-	return m;
+static void js_xr_server_singleton() {
+	if (JS_IsUninitialized(xr_server_instance)) {
+		JSValue global = JS_GetGlobalObject(ctx);
+		xr_server_instance = xr_server_class_constructor(ctx, global, 0, NULL);
+		JS_SetPropertyStr(ctx, global, "XRServer", xr_server_instance);
+	}
 }
 
-JSModuleDef *js_init_xr_server_module(JSContext *ctx) {
-	return _js_init_xr_server_module(ctx, "godot/classes/xr_server");
-}
 
 void register_xr_server() {
-	js_init_xr_server_module(ctx);
+	js_xr_server_class_init(ctx);
 }

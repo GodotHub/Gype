@@ -1,13 +1,14 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/resource.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/animation.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -34,259 +35,267 @@ static JSValue animation_class_constructor(JSContext *ctx, JSValueConst new_targ
 	}
 
 	JS_SetOpaque(obj, animation_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue animation_class_add_track(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&Animation::add_track, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&Animation::add_track, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_remove_track(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::remove_track, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::remove_track, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_get_track_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::get_track_count, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::get_track_count, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_track_get_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::track_get_type, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::track_get_type, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_track_get_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::track_get_path, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::track_get_path, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_track_set_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::track_set_path, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::track_set_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_find_track(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::find_track, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::find_track, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_track_move_up(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::track_move_up, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::track_move_up, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_track_move_down(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::track_move_down, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::track_move_down, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_track_move_to(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::track_move_to, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::track_move_to, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_track_swap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::track_swap, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::track_swap, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_track_set_imported(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::track_set_imported, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::track_set_imported, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_track_is_imported(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::track_is_imported, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::track_is_imported, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_track_set_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::track_set_enabled, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::track_set_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_track_is_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::track_is_enabled, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::track_is_enabled, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_position_track_insert_key(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&Animation::position_track_insert_key, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&Animation::position_track_insert_key, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_rotation_track_insert_key(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&Animation::rotation_track_insert_key, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&Animation::rotation_track_insert_key, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_scale_track_insert_key(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&Animation::scale_track_insert_key, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&Animation::scale_track_insert_key, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_blend_shape_track_insert_key(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&Animation::blend_shape_track_insert_key, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&Animation::blend_shape_track_insert_key, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_position_track_interpolate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::position_track_interpolate, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::position_track_interpolate, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_rotation_track_interpolate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::rotation_track_interpolate, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::rotation_track_interpolate, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_scale_track_interpolate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::scale_track_interpolate, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::scale_track_interpolate, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_blend_shape_track_interpolate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::blend_shape_track_interpolate, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::blend_shape_track_interpolate, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_track_insert_key(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&Animation::track_insert_key, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&Animation::track_insert_key, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_track_remove_key(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::track_remove_key, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::track_remove_key, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_track_remove_key_at_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::track_remove_key_at_time, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::track_remove_key_at_time, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_track_set_key_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::track_set_key_value, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::track_set_key_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_track_set_key_transition(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::track_set_key_transition, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::track_set_key_transition, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_track_set_key_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::track_set_key_time, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::track_set_key_time, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_track_get_key_transition(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::track_get_key_transition, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::track_get_key_transition, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_track_get_key_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::track_get_key_count, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::track_get_key_count, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_track_get_key_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::track_get_key_value, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::track_get_key_value, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_track_get_key_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::track_get_key_time, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::track_get_key_time, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_track_find_key(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::track_find_key, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::track_find_key, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_track_set_interpolation_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::track_set_interpolation_type, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::track_set_interpolation_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_track_get_interpolation_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::track_get_interpolation_type, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::track_get_interpolation_type, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_track_set_interpolation_loop_wrap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::track_set_interpolation_loop_wrap, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::track_set_interpolation_loop_wrap, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_track_get_interpolation_loop_wrap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::track_get_interpolation_loop_wrap, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::track_get_interpolation_loop_wrap, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_track_is_compressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::track_is_compressed, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::track_is_compressed, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_value_track_set_update_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::value_track_set_update_mode, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::value_track_set_update_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_value_track_get_update_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::value_track_get_update_mode, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::value_track_get_update_mode, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_value_track_interpolate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::value_track_interpolate, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::value_track_interpolate, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_method_track_get_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::method_track_get_name, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::method_track_get_name, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_method_track_get_params(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::method_track_get_params, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::method_track_get_params, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_bezier_track_insert_key(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&Animation::bezier_track_insert_key, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&Animation::bezier_track_insert_key, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_bezier_track_set_key_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::bezier_track_set_key_value, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::bezier_track_set_key_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_bezier_track_set_key_in_handle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::bezier_track_set_key_in_handle, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::bezier_track_set_key_in_handle, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_bezier_track_set_key_out_handle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::bezier_track_set_key_out_handle, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::bezier_track_set_key_out_handle, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_bezier_track_get_key_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::bezier_track_get_key_value, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::bezier_track_get_key_value, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_bezier_track_get_key_in_handle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::bezier_track_get_key_in_handle, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::bezier_track_get_key_in_handle, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_bezier_track_get_key_out_handle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::bezier_track_get_key_out_handle, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::bezier_track_get_key_out_handle, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_bezier_track_interpolate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::bezier_track_interpolate, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::bezier_track_interpolate, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_audio_track_insert_key(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&Animation::audio_track_insert_key, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&Animation::audio_track_insert_key, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_audio_track_set_key_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::audio_track_set_key_stream, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::audio_track_set_key_stream, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_audio_track_set_key_start_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::audio_track_set_key_start_offset, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::audio_track_set_key_start_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_audio_track_set_key_end_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::audio_track_set_key_end_offset, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::audio_track_set_key_end_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_audio_track_get_key_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::audio_track_get_key_stream, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::audio_track_get_key_stream, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_audio_track_get_key_start_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::audio_track_get_key_start_offset, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::audio_track_get_key_start_offset, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_audio_track_get_key_end_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::audio_track_get_key_end_offset, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::audio_track_get_key_end_offset, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_audio_track_set_use_blend(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::audio_track_set_use_blend, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::audio_track_set_use_blend, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_audio_track_is_use_blend(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::audio_track_is_use_blend, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::audio_track_is_use_blend, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_animation_track_insert_key(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&Animation::animation_track_insert_key, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&Animation::animation_track_insert_key, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_animation_track_set_key_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::animation_track_set_key_animation, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::animation_track_set_key_animation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_animation_track_get_key_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::animation_track_get_key_animation, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::animation_track_get_key_animation, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_set_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::set_length, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::set_length, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_get_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::get_length, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::get_length, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_set_loop_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::set_loop_mode, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::set_loop_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_get_loop_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::get_loop_mode, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::get_loop_mode, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_set_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::set_step, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::set_step, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_get_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::get_step, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::get_step, ctx, this_val, argc, argv);
 };
 static JSValue animation_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::clear, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_copy_track(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::copy_track, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::copy_track, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_compress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Animation::compress, Animation::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Animation::compress, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_class_is_capture_included(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Animation::is_capture_included, Animation::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Animation::is_capture_included, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry animation_class_proto_funcs[] = {
 	JS_CFUNC_DEF("add_track", 2, &animation_class_add_track),
@@ -365,18 +374,57 @@ static const JSCFunctionListEntry animation_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_capture_included", 0, &animation_class_is_capture_included),
 };
 
+void define_animation_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "length"),
+        JS_NewCFunction(ctx, animation_class_get_length, "get_length", 0),
+        JS_NewCFunction(ctx, animation_class_set_length, "set_length", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "loop_mode"),
+        JS_NewCFunction(ctx, animation_class_get_loop_mode, "get_loop_mode", 0),
+        JS_NewCFunction(ctx, animation_class_set_loop_mode, "set_loop_mode", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "step"),
+        JS_NewCFunction(ctx, animation_class_get_step, "get_step", 0),
+        JS_NewCFunction(ctx, animation_class_set_step, "set_step", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "capture_included"),
+        JS_NewCFunction(ctx, animation_class_is_capture_included, "is_capture_included", 0),
+        JS_UNDEFINED,
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_animation_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&Animation::__class_id);
 	classes["Animation"] = Animation::__class_id;
+	class_id_list.insert(Animation::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Animation::__class_id, &animation_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Animation::__class_id, proto);
+	define_animation_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, animation_class_proto_funcs, _countof(animation_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, animation_class_constructor, "Animation", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "Animation", ctor);
 
@@ -384,6 +432,10 @@ static int js_animation_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_animation_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/resource';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_animation_class_init);
 	if (!m)
 		return NULL;
@@ -396,5 +448,6 @@ JSModuleDef *js_init_animation_module(JSContext *ctx) {
 }
 
 void register_animation() {
+	Animation::__init_js_class_id();
 	js_init_animation_module(ctx);
 }

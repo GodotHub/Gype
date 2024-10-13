@@ -1,17 +1,21 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/script_language.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/engine_debugger.hpp>
 #include <godot_cpp/classes/engine_profiler.hpp>
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/script_language.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
+
+static JSValue engine_debugger_instance;
+
+static void js_engine_debugger_singleton();
 
 static void engine_debugger_class_finalizer(JSRuntime *rt, JSValue val) {
 	EngineDebugger *engine_debugger = static_cast<EngineDebugger *>(JS_GetOpaque(val, EngineDebugger::__class_id));
@@ -39,87 +43,110 @@ static JSValue engine_debugger_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue engine_debugger_class_is_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&EngineDebugger::is_active, EngineDebugger::__class_id, ctx, this_val, argv);
+    js_engine_debugger_singleton();
+	return call_builtin_method_ret(&EngineDebugger::is_active, ctx, this_val, argc, argv);
 };
 static JSValue engine_debugger_class_register_profiler(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EngineDebugger::register_profiler, EngineDebugger::__class_id, ctx, this_val, argv);
+    js_engine_debugger_singleton();
+    call_builtin_method_no_ret(&EngineDebugger::register_profiler, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue engine_debugger_class_unregister_profiler(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EngineDebugger::unregister_profiler, EngineDebugger::__class_id, ctx, this_val, argv);
+    js_engine_debugger_singleton();
+    call_builtin_method_no_ret(&EngineDebugger::unregister_profiler, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue engine_debugger_class_is_profiling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&EngineDebugger::is_profiling, EngineDebugger::__class_id, ctx, this_val, argv);
+    js_engine_debugger_singleton();
+	return call_builtin_method_ret(&EngineDebugger::is_profiling, ctx, this_val, argc, argv);
 };
 static JSValue engine_debugger_class_has_profiler(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&EngineDebugger::has_profiler, EngineDebugger::__class_id, ctx, this_val, argv);
+    js_engine_debugger_singleton();
+	return call_builtin_method_ret(&EngineDebugger::has_profiler, ctx, this_val, argc, argv);
 };
 static JSValue engine_debugger_class_profiler_add_frame_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EngineDebugger::profiler_add_frame_data, EngineDebugger::__class_id, ctx, this_val, argv);
+    js_engine_debugger_singleton();
+    call_builtin_method_no_ret(&EngineDebugger::profiler_add_frame_data, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue engine_debugger_class_profiler_enable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EngineDebugger::profiler_enable, EngineDebugger::__class_id, ctx, this_val, argv);
+    js_engine_debugger_singleton();
+    call_builtin_method_no_ret(&EngineDebugger::profiler_enable, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue engine_debugger_class_register_message_capture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EngineDebugger::register_message_capture, EngineDebugger::__class_id, ctx, this_val, argv);
+    js_engine_debugger_singleton();
+    call_builtin_method_no_ret(&EngineDebugger::register_message_capture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue engine_debugger_class_unregister_message_capture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EngineDebugger::unregister_message_capture, EngineDebugger::__class_id, ctx, this_val, argv);
+    js_engine_debugger_singleton();
+    call_builtin_method_no_ret(&EngineDebugger::unregister_message_capture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue engine_debugger_class_has_capture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&EngineDebugger::has_capture, EngineDebugger::__class_id, ctx, this_val, argv);
+    js_engine_debugger_singleton();
+	return call_builtin_method_ret(&EngineDebugger::has_capture, ctx, this_val, argc, argv);
 };
 static JSValue engine_debugger_class_line_poll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EngineDebugger::line_poll, EngineDebugger::__class_id, ctx, this_val, argv);
+    js_engine_debugger_singleton();
+    call_builtin_method_no_ret(&EngineDebugger::line_poll, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue engine_debugger_class_send_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EngineDebugger::send_message, EngineDebugger::__class_id, ctx, this_val, argv);
+    js_engine_debugger_singleton();
+    call_builtin_method_no_ret(&EngineDebugger::send_message, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue engine_debugger_class_debug(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EngineDebugger::debug, EngineDebugger::__class_id, ctx, this_val, argv);
+    js_engine_debugger_singleton();
+    call_builtin_method_no_ret(&EngineDebugger::debug, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue engine_debugger_class_script_debug(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EngineDebugger::script_debug, EngineDebugger::__class_id, ctx, this_val, argv);
+    js_engine_debugger_singleton();
+    call_builtin_method_no_ret(&EngineDebugger::script_debug, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue engine_debugger_class_set_lines_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EngineDebugger::set_lines_left, EngineDebugger::__class_id, ctx, this_val, argv);
+    js_engine_debugger_singleton();
+    call_builtin_method_no_ret(&EngineDebugger::set_lines_left, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue engine_debugger_class_get_lines_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EngineDebugger::get_lines_left, EngineDebugger::__class_id, ctx, this_val, argv);
+    js_engine_debugger_singleton();
+	return call_builtin_const_method_ret(&EngineDebugger::get_lines_left, ctx, this_val, argc, argv);
 };
 static JSValue engine_debugger_class_set_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EngineDebugger::set_depth, EngineDebugger::__class_id, ctx, this_val, argv);
+    js_engine_debugger_singleton();
+    call_builtin_method_no_ret(&EngineDebugger::set_depth, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue engine_debugger_class_get_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EngineDebugger::get_depth, EngineDebugger::__class_id, ctx, this_val, argv);
+    js_engine_debugger_singleton();
+	return call_builtin_const_method_ret(&EngineDebugger::get_depth, ctx, this_val, argc, argv);
 };
 static JSValue engine_debugger_class_is_breakpoint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EngineDebugger::is_breakpoint, EngineDebugger::__class_id, ctx, this_val, argv);
+    js_engine_debugger_singleton();
+	return call_builtin_const_method_ret(&EngineDebugger::is_breakpoint, ctx, this_val, argc, argv);
 };
 static JSValue engine_debugger_class_is_skipping_breakpoints(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EngineDebugger::is_skipping_breakpoints, EngineDebugger::__class_id, ctx, this_val, argv);
+    js_engine_debugger_singleton();
+	return call_builtin_const_method_ret(&EngineDebugger::is_skipping_breakpoints, ctx, this_val, argc, argv);
 };
 static JSValue engine_debugger_class_insert_breakpoint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EngineDebugger::insert_breakpoint, EngineDebugger::__class_id, ctx, this_val, argv);
+    js_engine_debugger_singleton();
+    call_builtin_method_no_ret(&EngineDebugger::insert_breakpoint, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue engine_debugger_class_remove_breakpoint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EngineDebugger::remove_breakpoint, EngineDebugger::__class_id, ctx, this_val, argv);
+    js_engine_debugger_singleton();
+    call_builtin_method_no_ret(&EngineDebugger::remove_breakpoint, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue engine_debugger_class_clear_breakpoints(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EngineDebugger::clear_breakpoints, EngineDebugger::__class_id, ctx, this_val, argv);
+    js_engine_debugger_singleton();
+    call_builtin_method_no_ret(&EngineDebugger::clear_breakpoints, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry engine_debugger_class_proto_funcs[] = {
@@ -148,7 +175,7 @@ static const JSCFunctionListEntry engine_debugger_class_proto_funcs[] = {
 	JS_CFUNC_DEF("clear_breakpoints", 0, &engine_debugger_class_clear_breakpoints),
 };
 
-static int js_engine_debugger_class_init(JSContext *ctx, JSModuleDef *m) {
+static int js_engine_debugger_class_init(JSContext *ctx) {
 	JS_NewClassID(&EngineDebugger::__class_id);
 	classes["EngineDebugger"] = EngineDebugger::__class_id;
 	JS_NewClass(JS_GetRuntime(ctx), EngineDebugger::__class_id, &engine_debugger_class_def);
@@ -158,26 +185,18 @@ static int js_engine_debugger_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, EngineDebugger::__class_id, proto);
 	JS_SetPropertyFunctionList(ctx, proto, engine_debugger_class_proto_funcs, _countof(engine_debugger_class_proto_funcs));
-
-	JSValue ctor = JS_NewCFunction2(ctx, engine_debugger_class_constructor, "EngineDebugger", 0, JS_CFUNC_constructor, 0);
-
-	JS_SetModuleExport(ctx, m, "EngineDebugger", ctor);
-
 	return 0;
 }
 
-JSModuleDef *_js_init_engine_debugger_module(JSContext *ctx, const char *module_name) {
-	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_engine_debugger_class_init);
-	if (!m)
-		return NULL;
-	JS_AddModuleExport(ctx, m, "EngineDebugger");
-	return m;
+static void js_engine_debugger_singleton() {
+	if (JS_IsUninitialized(engine_debugger_instance)) {
+		JSValue global = JS_GetGlobalObject(ctx);
+		engine_debugger_instance = engine_debugger_class_constructor(ctx, global, 0, NULL);
+		JS_SetPropertyStr(ctx, global, "EngineDebugger", engine_debugger_instance);
+	}
 }
 
-JSModuleDef *js_init_engine_debugger_module(JSContext *ctx) {
-	return _js_init_engine_debugger_module(ctx, "godot/classes/engine_debugger");
-}
 
 void register_engine_debugger() {
-	js_init_engine_debugger_module(ctx);
+	js_engine_debugger_class_init(ctx);
 }

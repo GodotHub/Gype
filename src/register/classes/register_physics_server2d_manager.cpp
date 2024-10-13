@@ -1,15 +1,19 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/object.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/physics_server2d_manager.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
+
+static JSValue physics_server2d_manager_instance;
+
+static void js_physics_server2d_manager_singleton();
 
 static void physics_server2d_manager_class_finalizer(JSRuntime *rt, JSValue val) {
 	PhysicsServer2DManager *physics_server2d_manager = static_cast<PhysicsServer2DManager *>(JS_GetOpaque(val, PhysicsServer2DManager::__class_id));
@@ -37,11 +41,13 @@ static JSValue physics_server2d_manager_class_constructor(JSContext *ctx, JSValu
 	return obj;
 }
 static JSValue physics_server2d_manager_class_register_server(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer2DManager::register_server, PhysicsServer2DManager::__class_id, ctx, this_val, argv);
+    js_physics_server2d_manager_singleton();
+    call_builtin_method_no_ret(&PhysicsServer2DManager::register_server, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server2d_manager_class_set_default_server(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer2DManager::set_default_server, PhysicsServer2DManager::__class_id, ctx, this_val, argv);
+    js_physics_server2d_manager_singleton();
+    call_builtin_method_no_ret(&PhysicsServer2DManager::set_default_server, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry physics_server2d_manager_class_proto_funcs[] = {
@@ -49,7 +55,7 @@ static const JSCFunctionListEntry physics_server2d_manager_class_proto_funcs[] =
 	JS_CFUNC_DEF("set_default_server", 2, &physics_server2d_manager_class_set_default_server),
 };
 
-static int js_physics_server2d_manager_class_init(JSContext *ctx, JSModuleDef *m) {
+static int js_physics_server2d_manager_class_init(JSContext *ctx) {
 	JS_NewClassID(&PhysicsServer2DManager::__class_id);
 	classes["PhysicsServer2DManager"] = PhysicsServer2DManager::__class_id;
 	JS_NewClass(JS_GetRuntime(ctx), PhysicsServer2DManager::__class_id, &physics_server2d_manager_class_def);
@@ -59,26 +65,18 @@ static int js_physics_server2d_manager_class_init(JSContext *ctx, JSModuleDef *m
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PhysicsServer2DManager::__class_id, proto);
 	JS_SetPropertyFunctionList(ctx, proto, physics_server2d_manager_class_proto_funcs, _countof(physics_server2d_manager_class_proto_funcs));
-
-	JSValue ctor = JS_NewCFunction2(ctx, physics_server2d_manager_class_constructor, "PhysicsServer2DManager", 0, JS_CFUNC_constructor, 0);
-
-	JS_SetModuleExport(ctx, m, "PhysicsServer2DManager", ctor);
-
 	return 0;
 }
 
-JSModuleDef *_js_init_physics_server2d_manager_module(JSContext *ctx, const char *module_name) {
-	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_physics_server2d_manager_class_init);
-	if (!m)
-		return NULL;
-	JS_AddModuleExport(ctx, m, "PhysicsServer2DManager");
-	return m;
+static void js_physics_server2d_manager_singleton() {
+	if (JS_IsUninitialized(physics_server2d_manager_instance)) {
+		JSValue global = JS_GetGlobalObject(ctx);
+		physics_server2d_manager_instance = physics_server2d_manager_class_constructor(ctx, global, 0, NULL);
+		JS_SetPropertyStr(ctx, global, "PhysicsServer2DManager", physics_server2d_manager_instance);
+	}
 }
 
-JSModuleDef *js_init_physics_server2d_manager_module(JSContext *ctx) {
-	return _js_init_physics_server2d_manager_module(ctx, "godot/classes/physics_server2d_manager");
-}
 
 void register_physics_server2d_manager() {
-	js_init_physics_server2d_manager_module(ctx);
+	js_physics_server2d_manager_class_init(ctx);
 }

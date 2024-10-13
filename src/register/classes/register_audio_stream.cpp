@@ -1,15 +1,16 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/audio_stream_playback.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/audio_stream.hpp>
 #include <godot_cpp/classes/audio_sample.hpp>
-#include <godot_cpp/classes/audio_stream_playback.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -36,25 +37,33 @@ static JSValue audio_stream_class_constructor(JSContext *ctx, JSValueConst new_t
 	}
 
 	JS_SetOpaque(obj, audio_stream_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue audio_stream_class_get_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AudioStream::get_length, AudioStream::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AudioStream::get_length, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_class_is_monophonic(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AudioStream::is_monophonic, AudioStream::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AudioStream::is_monophonic, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_class_instantiate_playback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&AudioStream::instantiate_playback, AudioStream::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&AudioStream::instantiate_playback, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_class_can_be_sampled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AudioStream::can_be_sampled, AudioStream::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AudioStream::can_be_sampled, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_class_generate_sample(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AudioStream::generate_sample, AudioStream::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AudioStream::generate_sample, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_class_is_meta_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AudioStream::is_meta_stream, AudioStream::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AudioStream::is_meta_stream, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry audio_stream_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_length", 0, &audio_stream_class_get_length),
@@ -65,18 +74,25 @@ static const JSCFunctionListEntry audio_stream_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_meta_stream", 0, &audio_stream_class_is_meta_stream),
 };
 
+void define_audio_stream_property(JSContext *ctx, JSValue obj) {
+}
+
 static int js_audio_stream_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&AudioStream::__class_id);
 	classes["AudioStream"] = AudioStream::__class_id;
+	class_id_list.insert(AudioStream::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioStream::__class_id, &audio_stream_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AudioStream::__class_id, proto);
+	define_audio_stream_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, audio_stream_class_proto_funcs, _countof(audio_stream_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, audio_stream_class_constructor, "AudioStream", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "AudioStream", ctor);
 
@@ -84,6 +100,10 @@ static int js_audio_stream_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_audio_stream_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/resource';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_audio_stream_class_init);
 	if (!m)
 		return NULL;
@@ -96,5 +116,6 @@ JSModuleDef *js_init_audio_stream_module(JSContext *ctx) {
 }
 
 void register_audio_stream() {
+	AudioStream::__init_js_class_id();
 	js_init_audio_stream_module(ctx);
 }

@@ -35,6 +35,8 @@
 
 namespace godot {
 
+JSClassID Vector4::__class_id;
+
 Vector4::Axis Vector4::min_axis_index() const {
 	uint32_t min_index = 0;
 	real_t min_value = x;

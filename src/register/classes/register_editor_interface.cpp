@@ -1,34 +1,38 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/editor_settings.hpp>
-#include <godot_cpp/classes/theme.hpp>
-#include <godot_cpp/classes/editor_resource_preview.hpp>
-#include <godot_cpp/classes/mesh.hpp>
-#include <godot_cpp/classes/file_system_dock.hpp>
-#include <godot_cpp/classes/editor_inspector.hpp>
-#include <godot_cpp/classes/script_editor.hpp>
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/editor_file_system.hpp>
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/editor_paths.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/editor_selection.hpp>
-#include <godot_cpp/classes/editor_command_palette.hpp>
-#include <godot_cpp/classes/v_box_container.hpp>
-#include <godot_cpp/classes/script.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/editor_interface.hpp>
+#include <godot_cpp/classes/editor_command_palette.hpp>
+#include <godot_cpp/classes/script_editor.hpp>
+#include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/editor_settings.hpp>
+#include <godot_cpp/classes/editor_paths.hpp>
+#include <godot_cpp/classes/theme.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/v_box_container.hpp>
+#include <godot_cpp/classes/file_system_dock.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/window.hpp>
+#include <godot_cpp/classes/editor_inspector.hpp>
+#include <godot_cpp/classes/editor_file_system.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/editor_selection.hpp>
 #include <godot_cpp/classes/sub_viewport.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/script.hpp>
+#include <godot_cpp/classes/editor_resource_preview.hpp>
+#include <godot_cpp/classes/window.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
+
+static JSValue editor_interface_instance;
+
+static void js_editor_interface_singleton();
 
 static void editor_interface_class_finalizer(JSRuntime *rt, JSValue val) {
 	EditorInterface *editor_interface = static_cast<EditorInterface *>(JS_GetOpaque(val, EditorInterface::__class_id));
@@ -56,195 +60,250 @@ static JSValue editor_interface_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue editor_interface_class_restart_editor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::restart_editor, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::restart_editor, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_get_command_palette(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::get_command_palette, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::get_command_palette, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_get_resource_filesystem(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::get_resource_filesystem, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::get_resource_filesystem, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_get_editor_paths(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::get_editor_paths, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::get_editor_paths, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_get_resource_previewer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::get_resource_previewer, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::get_resource_previewer, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_get_selection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::get_selection, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::get_selection, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_get_editor_settings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::get_editor_settings, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::get_editor_settings, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_make_mesh_previews(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&EditorInterface::make_mesh_previews, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_method_ret(&EditorInterface::make_mesh_previews, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_set_plugin_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::set_plugin_enabled, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::set_plugin_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_is_plugin_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::is_plugin_enabled, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::is_plugin_enabled, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_get_editor_theme(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::get_editor_theme, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::get_editor_theme, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_get_base_control(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::get_base_control, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::get_base_control, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_get_editor_main_screen(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::get_editor_main_screen, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::get_editor_main_screen, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_get_script_editor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::get_script_editor, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::get_script_editor, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_get_editor_viewport_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::get_editor_viewport_2d, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::get_editor_viewport_2d, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_get_editor_viewport_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::get_editor_viewport_3d, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::get_editor_viewport_3d, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_set_main_screen_editor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::set_main_screen_editor, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::set_main_screen_editor, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_set_distraction_free_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::set_distraction_free_mode, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::set_distraction_free_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_is_distraction_free_mode_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::is_distraction_free_mode_enabled, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::is_distraction_free_mode_enabled, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_is_multi_window_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::is_multi_window_enabled, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::is_multi_window_enabled, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_get_editor_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::get_editor_scale, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::get_editor_scale, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_popup_dialog(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::popup_dialog, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::popup_dialog, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_popup_dialog_centered(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::popup_dialog_centered, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::popup_dialog_centered, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_popup_dialog_centered_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::popup_dialog_centered_ratio, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::popup_dialog_centered_ratio, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_popup_dialog_centered_clamped(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::popup_dialog_centered_clamped, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::popup_dialog_centered_clamped, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_get_current_feature_profile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::get_current_feature_profile, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::get_current_feature_profile, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_set_current_feature_profile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::set_current_feature_profile, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::set_current_feature_profile, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_popup_node_selector(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::popup_node_selector, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::popup_node_selector, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_popup_property_selector(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::popup_property_selector, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::popup_property_selector, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_get_file_system_dock(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::get_file_system_dock, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::get_file_system_dock, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_select_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::select_file, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::select_file, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_get_selected_paths(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::get_selected_paths, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::get_selected_paths, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_get_current_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::get_current_path, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::get_current_path, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_get_current_directory(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::get_current_directory, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::get_current_directory, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_get_inspector(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::get_inspector, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::get_inspector, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_inspect_object(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::inspect_object, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::inspect_object, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_edit_resource(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::edit_resource, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::edit_resource, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_edit_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::edit_node, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::edit_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_edit_script(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::edit_script, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::edit_script, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_open_scene_from_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::open_scene_from_path, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::open_scene_from_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_reload_scene_from_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::reload_scene_from_path, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::reload_scene_from_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_get_open_scenes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::get_open_scenes, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::get_open_scenes, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_get_edited_scene_root(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::get_edited_scene_root, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::get_edited_scene_root, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_save_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&EditorInterface::save_scene, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_method_ret(&EditorInterface::save_scene, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_save_scene_as(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::save_scene_as, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::save_scene_as, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_save_all_scenes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::save_all_scenes, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::save_all_scenes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_mark_scene_as_unsaved(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::mark_scene_as_unsaved, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::mark_scene_as_unsaved, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_play_main_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::play_main_scene, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::play_main_scene, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_play_current_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::play_current_scene, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::play_current_scene, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_play_custom_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::play_custom_scene, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::play_custom_scene, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_stop_playing_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::stop_playing_scene, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::stop_playing_scene, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_is_playing_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::is_playing_scene, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::is_playing_scene, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_get_playing_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::get_playing_scene, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::get_playing_scene, ctx, this_val, argc, argv);
 };
 static JSValue editor_interface_class_set_movie_maker_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&EditorInterface::set_movie_maker_enabled, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+    call_builtin_method_no_ret(&EditorInterface::set_movie_maker_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_interface_class_is_movie_maker_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorInterface::is_movie_maker_enabled, EditorInterface::__class_id, ctx, this_val, argv);
+    js_editor_interface_singleton();
+	return call_builtin_const_method_ret(&EditorInterface::is_movie_maker_enabled, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry editor_interface_class_proto_funcs[] = {
 	JS_CFUNC_DEF("restart_editor", 1, &editor_interface_class_restart_editor),
@@ -304,7 +363,7 @@ static const JSCFunctionListEntry editor_interface_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_movie_maker_enabled", 0, &editor_interface_class_is_movie_maker_enabled),
 };
 
-static int js_editor_interface_class_init(JSContext *ctx, JSModuleDef *m) {
+static int js_editor_interface_class_init(JSContext *ctx) {
 	JS_NewClassID(&EditorInterface::__class_id);
 	classes["EditorInterface"] = EditorInterface::__class_id;
 	JS_NewClass(JS_GetRuntime(ctx), EditorInterface::__class_id, &editor_interface_class_def);
@@ -314,26 +373,18 @@ static int js_editor_interface_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, EditorInterface::__class_id, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_interface_class_proto_funcs, _countof(editor_interface_class_proto_funcs));
-
-	JSValue ctor = JS_NewCFunction2(ctx, editor_interface_class_constructor, "EditorInterface", 0, JS_CFUNC_constructor, 0);
-
-	JS_SetModuleExport(ctx, m, "EditorInterface", ctor);
-
 	return 0;
 }
 
-JSModuleDef *_js_init_editor_interface_module(JSContext *ctx, const char *module_name) {
-	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_editor_interface_class_init);
-	if (!m)
-		return NULL;
-	JS_AddModuleExport(ctx, m, "EditorInterface");
-	return m;
+static void js_editor_interface_singleton() {
+	if (JS_IsUninitialized(editor_interface_instance)) {
+		JSValue global = JS_GetGlobalObject(ctx);
+		editor_interface_instance = editor_interface_class_constructor(ctx, global, 0, NULL);
+		JS_SetPropertyStr(ctx, global, "EditorInterface", editor_interface_instance);
+	}
 }
 
-JSModuleDef *js_init_editor_interface_module(JSContext *ctx) {
-	return _js_init_editor_interface_module(ctx, "godot/classes/editor_interface");
-}
 
 void register_editor_interface() {
-	js_init_editor_interface_module(ctx);
+	js_editor_interface_class_init(ctx);
 }

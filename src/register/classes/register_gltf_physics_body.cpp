@@ -1,14 +1,15 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/resource.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/collision_object3d.hpp>
 #include <godot_cpp/classes/gltf_physics_body.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -35,75 +36,83 @@ static JSValue gltf_physics_body_class_constructor(JSContext *ctx, JSValueConst 
 	}
 
 	JS_SetOpaque(obj, gltf_physics_body_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue gltf_physics_body_class_to_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GLTFPhysicsBody::to_node, GLTFPhysicsBody::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GLTFPhysicsBody::to_node, ctx, this_val, argc, argv);
 };
 static JSValue gltf_physics_body_class_to_dictionary(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GLTFPhysicsBody::to_dictionary, GLTFPhysicsBody::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GLTFPhysicsBody::to_dictionary, ctx, this_val, argc, argv);
 };
 static JSValue gltf_physics_body_class_get_body_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GLTFPhysicsBody::get_body_type, GLTFPhysicsBody::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GLTFPhysicsBody::get_body_type, ctx, this_val, argc, argv);
 };
 static JSValue gltf_physics_body_class_set_body_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GLTFPhysicsBody::set_body_type, GLTFPhysicsBody::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFPhysicsBody::set_body_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_physics_body_class_get_mass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GLTFPhysicsBody::get_mass, GLTFPhysicsBody::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GLTFPhysicsBody::get_mass, ctx, this_val, argc, argv);
 };
 static JSValue gltf_physics_body_class_set_mass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GLTFPhysicsBody::set_mass, GLTFPhysicsBody::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFPhysicsBody::set_mass, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_physics_body_class_get_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GLTFPhysicsBody::get_linear_velocity, GLTFPhysicsBody::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GLTFPhysicsBody::get_linear_velocity, ctx, this_val, argc, argv);
 };
 static JSValue gltf_physics_body_class_set_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GLTFPhysicsBody::set_linear_velocity, GLTFPhysicsBody::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFPhysicsBody::set_linear_velocity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_physics_body_class_get_angular_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GLTFPhysicsBody::get_angular_velocity, GLTFPhysicsBody::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GLTFPhysicsBody::get_angular_velocity, ctx, this_val, argc, argv);
 };
 static JSValue gltf_physics_body_class_set_angular_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GLTFPhysicsBody::set_angular_velocity, GLTFPhysicsBody::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFPhysicsBody::set_angular_velocity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_physics_body_class_get_center_of_mass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GLTFPhysicsBody::get_center_of_mass, GLTFPhysicsBody::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GLTFPhysicsBody::get_center_of_mass, ctx, this_val, argc, argv);
 };
 static JSValue gltf_physics_body_class_set_center_of_mass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GLTFPhysicsBody::set_center_of_mass, GLTFPhysicsBody::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFPhysicsBody::set_center_of_mass, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_physics_body_class_get_inertia_diagonal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GLTFPhysicsBody::get_inertia_diagonal, GLTFPhysicsBody::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GLTFPhysicsBody::get_inertia_diagonal, ctx, this_val, argc, argv);
 };
 static JSValue gltf_physics_body_class_set_inertia_diagonal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GLTFPhysicsBody::set_inertia_diagonal, GLTFPhysicsBody::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFPhysicsBody::set_inertia_diagonal, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_physics_body_class_get_inertia_orientation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GLTFPhysicsBody::get_inertia_orientation, GLTFPhysicsBody::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GLTFPhysicsBody::get_inertia_orientation, ctx, this_val, argc, argv);
 };
 static JSValue gltf_physics_body_class_set_inertia_orientation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GLTFPhysicsBody::set_inertia_orientation, GLTFPhysicsBody::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFPhysicsBody::set_inertia_orientation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_physics_body_class_get_inertia_tensor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GLTFPhysicsBody::get_inertia_tensor, GLTFPhysicsBody::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GLTFPhysicsBody::get_inertia_tensor, ctx, this_val, argc, argv);
 };
 static JSValue gltf_physics_body_class_set_inertia_tensor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GLTFPhysicsBody::set_inertia_tensor, GLTFPhysicsBody::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFPhysicsBody::set_inertia_tensor, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_physics_body_class_from_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&GLTFPhysicsBody::from_node, GLTFPhysicsBody::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&GLTFPhysicsBody::from_node, ctx, this_val, argc, argv);
 };
 static JSValue gltf_physics_body_class_from_dictionary(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&GLTFPhysicsBody::from_dictionary, GLTFPhysicsBody::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&GLTFPhysicsBody::from_dictionary, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry gltf_physics_body_class_proto_funcs[] = {
 	JS_CFUNC_DEF("to_node", 0, &gltf_physics_body_class_to_node),
@@ -130,18 +139,89 @@ static const JSCFunctionListEntry gltf_physics_body_class_static_funcs[] = {
 	JS_CFUNC_DEF("from_dictionary", 1, &gltf_physics_body_class_from_dictionary),
 };
 
+void define_gltf_physics_body_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "body_type"),
+        JS_NewCFunction(ctx, gltf_physics_body_class_get_body_type, "get_body_type", 0),
+        JS_NewCFunction(ctx, gltf_physics_body_class_set_body_type, "set_body_type", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "mass"),
+        JS_NewCFunction(ctx, gltf_physics_body_class_get_mass, "get_mass", 0),
+        JS_NewCFunction(ctx, gltf_physics_body_class_set_mass, "set_mass", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "linear_velocity"),
+        JS_NewCFunction(ctx, gltf_physics_body_class_get_linear_velocity, "get_linear_velocity", 0),
+        JS_NewCFunction(ctx, gltf_physics_body_class_set_linear_velocity, "set_linear_velocity", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "angular_velocity"),
+        JS_NewCFunction(ctx, gltf_physics_body_class_get_angular_velocity, "get_angular_velocity", 0),
+        JS_NewCFunction(ctx, gltf_physics_body_class_set_angular_velocity, "set_angular_velocity", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "center_of_mass"),
+        JS_NewCFunction(ctx, gltf_physics_body_class_get_center_of_mass, "get_center_of_mass", 0),
+        JS_NewCFunction(ctx, gltf_physics_body_class_set_center_of_mass, "set_center_of_mass", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "inertia_diagonal"),
+        JS_NewCFunction(ctx, gltf_physics_body_class_get_inertia_diagonal, "get_inertia_diagonal", 0),
+        JS_NewCFunction(ctx, gltf_physics_body_class_set_inertia_diagonal, "set_inertia_diagonal", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "inertia_orientation"),
+        JS_NewCFunction(ctx, gltf_physics_body_class_get_inertia_orientation, "get_inertia_orientation", 0),
+        JS_NewCFunction(ctx, gltf_physics_body_class_set_inertia_orientation, "set_inertia_orientation", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "inertia_tensor"),
+        JS_NewCFunction(ctx, gltf_physics_body_class_get_inertia_tensor, "get_inertia_tensor", 0),
+        JS_NewCFunction(ctx, gltf_physics_body_class_set_inertia_tensor, "set_inertia_tensor", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_gltf_physics_body_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&GLTFPhysicsBody::__class_id);
 	classes["GLTFPhysicsBody"] = GLTFPhysicsBody::__class_id;
+	class_id_list.insert(GLTFPhysicsBody::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GLTFPhysicsBody::__class_id, &gltf_physics_body_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, GLTFPhysicsBody::__class_id, proto);
+	define_gltf_physics_body_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, gltf_physics_body_class_proto_funcs, _countof(gltf_physics_body_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, gltf_physics_body_class_constructor, "GLTFPhysicsBody", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 	JS_SetPropertyFunctionList(ctx, ctor, gltf_physics_body_class_static_funcs, _countof(gltf_physics_body_class_static_funcs));
 
 	JS_SetModuleExport(ctx, m, "GLTFPhysicsBody", ctor);
@@ -150,6 +230,10 @@ static int js_gltf_physics_body_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_gltf_physics_body_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/resource';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_gltf_physics_body_class_init);
 	if (!m)
 		return NULL;
@@ -162,5 +246,6 @@ JSModuleDef *js_init_gltf_physics_body_module(JSContext *ctx) {
 }
 
 void register_gltf_physics_body() {
+	GLTFPhysicsBody::__init_js_class_id();
 	js_init_gltf_physics_body_module(ctx);
 }

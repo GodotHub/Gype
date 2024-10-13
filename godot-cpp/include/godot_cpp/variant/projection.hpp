@@ -45,6 +45,11 @@ struct Transform3D;
 struct Vector2;
 
 struct _NO_DISCARD_ Projection {
+	static JSClassID __class_id;
+
+	inline static void __init_js_class_id() {
+		Projection::__class_id = JS_NewClassID(&Projection::__class_id);
+	}
 	enum Planes {
 		PLANE_NEAR,
 		PLANE_FAR,

@@ -1,13 +1,14 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/convex_polygon_shape3d.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/shape3d.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/convex_polygon_shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -34,32 +35,55 @@ static JSValue convex_polygon_shape3d_class_constructor(JSContext *ctx, JSValueC
 	}
 
 	JS_SetOpaque(obj, convex_polygon_shape3d_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue convex_polygon_shape3d_class_set_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ConvexPolygonShape3D::set_points, ConvexPolygonShape3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ConvexPolygonShape3D::set_points, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue convex_polygon_shape3d_class_get_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ConvexPolygonShape3D::get_points, ConvexPolygonShape3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ConvexPolygonShape3D::get_points, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry convex_polygon_shape3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_points", 1, &convex_polygon_shape3d_class_set_points),
 	JS_CFUNC_DEF("get_points", 0, &convex_polygon_shape3d_class_get_points),
 };
 
+void define_convex_polygon_shape3d_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "points"),
+        JS_NewCFunction(ctx, convex_polygon_shape3d_class_get_points, "get_points", 0),
+        JS_NewCFunction(ctx, convex_polygon_shape3d_class_set_points, "set_points", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_convex_polygon_shape3d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&ConvexPolygonShape3D::__class_id);
 	classes["ConvexPolygonShape3D"] = ConvexPolygonShape3D::__class_id;
+	class_id_list.insert(ConvexPolygonShape3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ConvexPolygonShape3D::__class_id, &convex_polygon_shape3d_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, Shape3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ConvexPolygonShape3D::__class_id, proto);
+	define_convex_polygon_shape3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, convex_polygon_shape3d_class_proto_funcs, _countof(convex_polygon_shape3d_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, convex_polygon_shape3d_class_constructor, "ConvexPolygonShape3D", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "ConvexPolygonShape3D", ctor);
 
@@ -67,6 +91,10 @@ static int js_convex_polygon_shape3d_class_init(JSContext *ctx, JSModuleDef *m) 
 }
 
 JSModuleDef *_js_init_convex_polygon_shape3d_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/shape3d';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_convex_polygon_shape3d_class_init);
 	if (!m)
 		return NULL;
@@ -79,5 +107,6 @@ JSModuleDef *js_init_convex_polygon_shape3d_module(JSContext *ctx) {
 }
 
 void register_convex_polygon_shape3d() {
+	ConvexPolygonShape3D::__init_js_class_id();
 	js_init_convex_polygon_shape3d_module(ctx);
 }

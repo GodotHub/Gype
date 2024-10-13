@@ -200,6 +200,7 @@ target_include_directories(${PROJECT_NAME} ${GODOT_CPP_SYSTEM_HEADERS_ATTRIBUTE}
 	${CMAKE_CURRENT_BINARY_DIR}/gen/include
 	${GODOT_GDEXTENSION_DIR}
 	${CMAKE_SOURCE_DIR}/quickjs/include
+	${CMAKE_SOURCE_DIR}/include
 )
 
 # Add the compile flags

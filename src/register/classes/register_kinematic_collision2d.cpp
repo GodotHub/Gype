@@ -1,14 +1,15 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/kinematic_collision2d.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -35,46 +36,54 @@ static JSValue kinematic_collision2d_class_constructor(JSContext *ctx, JSValueCo
 	}
 
 	JS_SetOpaque(obj, kinematic_collision2d_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue kinematic_collision2d_class_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&KinematicCollision2D::get_position, KinematicCollision2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&KinematicCollision2D::get_position, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision2d_class_get_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&KinematicCollision2D::get_normal, KinematicCollision2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&KinematicCollision2D::get_normal, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision2d_class_get_travel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&KinematicCollision2D::get_travel, KinematicCollision2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&KinematicCollision2D::get_travel, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision2d_class_get_remainder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&KinematicCollision2D::get_remainder, KinematicCollision2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&KinematicCollision2D::get_remainder, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision2d_class_get_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&KinematicCollision2D::get_angle, KinematicCollision2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&KinematicCollision2D::get_angle, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision2d_class_get_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&KinematicCollision2D::get_depth, KinematicCollision2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&KinematicCollision2D::get_depth, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision2d_class_get_local_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&KinematicCollision2D::get_local_shape, KinematicCollision2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&KinematicCollision2D::get_local_shape, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision2d_class_get_collider(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&KinematicCollision2D::get_collider, KinematicCollision2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&KinematicCollision2D::get_collider, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision2d_class_get_collider_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&KinematicCollision2D::get_collider_id, KinematicCollision2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&KinematicCollision2D::get_collider_id, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision2d_class_get_collider_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&KinematicCollision2D::get_collider_rid, KinematicCollision2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&KinematicCollision2D::get_collider_rid, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision2d_class_get_collider_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&KinematicCollision2D::get_collider_shape, KinematicCollision2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&KinematicCollision2D::get_collider_shape, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision2d_class_get_collider_shape_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&KinematicCollision2D::get_collider_shape_index, KinematicCollision2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&KinematicCollision2D::get_collider_shape_index, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision2d_class_get_collider_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&KinematicCollision2D::get_collider_velocity, KinematicCollision2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&KinematicCollision2D::get_collider_velocity, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry kinematic_collision2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_position", 0, &kinematic_collision2d_class_get_position),
@@ -92,18 +101,25 @@ static const JSCFunctionListEntry kinematic_collision2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_collider_velocity", 0, &kinematic_collision2d_class_get_collider_velocity),
 };
 
+void define_kinematic_collision2d_property(JSContext *ctx, JSValue obj) {
+}
+
 static int js_kinematic_collision2d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&KinematicCollision2D::__class_id);
 	classes["KinematicCollision2D"] = KinematicCollision2D::__class_id;
+	class_id_list.insert(KinematicCollision2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), KinematicCollision2D::__class_id, &kinematic_collision2d_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, KinematicCollision2D::__class_id, proto);
+	define_kinematic_collision2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, kinematic_collision2d_class_proto_funcs, _countof(kinematic_collision2d_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, kinematic_collision2d_class_constructor, "KinematicCollision2D", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "KinematicCollision2D", ctor);
 
@@ -111,6 +127,10 @@ static int js_kinematic_collision2d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_kinematic_collision2d_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_kinematic_collision2d_class_init);
 	if (!m)
 		return NULL;
@@ -123,5 +143,6 @@ JSModuleDef *js_init_kinematic_collision2d_module(JSContext *ctx) {
 }
 
 void register_kinematic_collision2d() {
+	KinematicCollision2D::__init_js_class_id();
 	js_init_kinematic_collision2d_module(ctx);
 }

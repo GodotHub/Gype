@@ -1,14 +1,15 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/classes/scene_state.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -35,70 +36,78 @@ static JSValue scene_state_class_constructor(JSContext *ctx, JSValueConst new_ta
 	}
 
 	JS_SetOpaque(obj, scene_state_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue scene_state_class_get_node_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SceneState::get_node_count, SceneState::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SceneState::get_node_count, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_node_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SceneState::get_node_type, SceneState::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SceneState::get_node_type, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_node_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SceneState::get_node_name, SceneState::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SceneState::get_node_name, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_node_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SceneState::get_node_path, SceneState::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SceneState::get_node_path, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_node_owner_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SceneState::get_node_owner_path, SceneState::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SceneState::get_node_owner_path, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_is_node_instance_placeholder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SceneState::is_node_instance_placeholder, SceneState::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SceneState::is_node_instance_placeholder, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_node_instance_placeholder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SceneState::get_node_instance_placeholder, SceneState::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SceneState::get_node_instance_placeholder, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_node_instance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SceneState::get_node_instance, SceneState::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SceneState::get_node_instance, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_node_groups(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SceneState::get_node_groups, SceneState::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SceneState::get_node_groups, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_node_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SceneState::get_node_index, SceneState::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SceneState::get_node_index, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_node_property_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SceneState::get_node_property_count, SceneState::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SceneState::get_node_property_count, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_node_property_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SceneState::get_node_property_name, SceneState::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SceneState::get_node_property_name, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_node_property_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SceneState::get_node_property_value, SceneState::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SceneState::get_node_property_value, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_connection_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SceneState::get_connection_count, SceneState::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SceneState::get_connection_count, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_connection_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SceneState::get_connection_source, SceneState::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SceneState::get_connection_source, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_connection_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SceneState::get_connection_signal, SceneState::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SceneState::get_connection_signal, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_connection_target(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SceneState::get_connection_target, SceneState::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SceneState::get_connection_target, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_connection_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SceneState::get_connection_method, SceneState::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SceneState::get_connection_method, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_connection_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SceneState::get_connection_flags, SceneState::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SceneState::get_connection_flags, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_connection_binds(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SceneState::get_connection_binds, SceneState::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SceneState::get_connection_binds, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_connection_unbinds(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SceneState::get_connection_unbinds, SceneState::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SceneState::get_connection_unbinds, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry scene_state_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_node_count", 0, &scene_state_class_get_node_count),
@@ -124,18 +133,25 @@ static const JSCFunctionListEntry scene_state_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_connection_unbinds", 1, &scene_state_class_get_connection_unbinds),
 };
 
+void define_scene_state_property(JSContext *ctx, JSValue obj) {
+}
+
 static int js_scene_state_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&SceneState::__class_id);
 	classes["SceneState"] = SceneState::__class_id;
+	class_id_list.insert(SceneState::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SceneState::__class_id, &scene_state_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, SceneState::__class_id, proto);
+	define_scene_state_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, scene_state_class_proto_funcs, _countof(scene_state_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, scene_state_class_constructor, "SceneState", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "SceneState", ctor);
 
@@ -143,6 +159,10 @@ static int js_scene_state_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_scene_state_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_scene_state_class_init);
 	if (!m)
 		return NULL;
@@ -155,5 +175,6 @@ JSModuleDef *js_init_scene_state_module(JSContext *ctx) {
 }
 
 void register_scene_state() {
+	SceneState::__init_js_class_id();
 	js_init_scene_state_module(ctx);
 }

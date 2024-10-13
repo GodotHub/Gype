@@ -10,7 +10,7 @@ class StringName;
 
 std::string underscoreToCamelCase(std::string input);
 std::string camelToSnake(std::string input);
-const char *to_chars(godot::String *input);
-const char *to_chars(godot::StringName *input);
+const char *to_chars(const godot::String &input);
+const char *to_chars(const godot::StringName &input);
 
 #endif // __STR_HELPER_H__

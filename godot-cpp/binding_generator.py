@@ -603,6 +603,7 @@ def generate_builtin_class_vararg_method_implements_header(builtin_classes):
             result += make_varargs_template(
                 method, "is_static" in method and method["is_static"], class_name, False, False, True
             )
+            result += make_js_varargs_template(method, "is_static" in method and method["is_static"], class_name, False, False, True)
             result.append("")
 
     result.append("")
@@ -626,6 +627,7 @@ def generate_builtin_class_header(builtin_api, size, used_classes, fully_used_cl
 
     result.append("")
     result.append("#include <godot_cpp/core/defs.hpp>")
+    result.append("#include <vector>")
     result.append("")
 
     # Special cases.
@@ -665,6 +667,7 @@ def generate_builtin_class_header(builtin_api, size, used_classes, fully_used_cl
         result.append("")
 
     result.append("#include <gdextension_interface.h>")
+    result.append("#include \"quickjs/quickjs.h\"")
     result.append("")
     result.append("namespace godot {")
     result.append("")
@@ -738,6 +741,13 @@ def generate_builtin_class_header(builtin_api, size, used_classes, fully_used_cl
     result.append("")
     result.append("public:")
 
+    result.append(	
+        '\tstatic JSClassID __class_id;\n'
+
+        '\tinline static void __init_js_class_id() {\n'
+        f'\t\t{class_name}::__class_id = JS_NewClassID(&{class_name}::__class_id);\n'
+        '\t}\n'
+    )
     result.append(
         f"\t_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const {{ return const_cast<uint8_t (*)[{snake_class_name}_SIZE]>(&opaque); }}"
     )
@@ -828,6 +838,41 @@ def generate_builtin_class_header(builtin_api, size, used_classes, fully_used_cl
             method_signature += ";"
 
             result.append(method_signature)
+    
+    if "methods" in builtin_api:
+        for method in builtin_api["methods"]:
+            vararg = method["is_vararg"]
+            if vararg:
+                method_list.append(method["name"])
+
+
+                method_signature = "\t"
+                if "is_static" in method and method["is_static"]:
+                    method_signature += "static "
+
+                if "return_type" in method:
+                    method_signature += f'{correct_type(method["return_type"])}'
+                    if not method_signature.endswith("*"):
+                        method_signature += " "
+                else:
+                    method_signature += "void "
+
+                method_signature += f'js_{method["name"]}('
+
+                method_arguments = []
+                if "arguments" in method:
+                    method_arguments = method["arguments"]
+
+                method_signature += make_function_parameters(
+                    method_arguments, include_default=True, for_builtin=True, is_vararg=True, is_js=True
+                )
+
+                method_signature += ")"
+                if method["is_const"]:
+                    method_signature += " const"
+                method_signature += ";"
+
+                result.append(method_signature)
 
     # Special cases.
     if class_name == "String":
@@ -1068,6 +1113,7 @@ def generate_builtin_class_source(builtin_api, size, used_classes, fully_used_cl
     result.append("")
     result.append("namespace godot {")
     result.append("")
+    result.append(f'JSClassID {class_name}::__class_id;')
 
     result.append(f"{class_name}::_MethodBindings {class_name}::_method_bindings;")
     result.append("")
@@ -1624,6 +1670,12 @@ def generate_engine_class_header(class_api, used_classes, fully_used_classes, us
         "\tinline static void __init_js_class_id() {\n"
         f"\t\t{class_api["name"]}::__class_id = JS_NewClassID(&{class_api["name"]}::__class_id);\n"
         "\t}\n"
+    )
+
+    result.append(
+        '\tvirtual JSClassID __get_js_class_id() {\n'
+		f'\t\treturn {class_api["name"]}::__class_id;\n'
+	    '\t}\n'
     )
 
     if "enums" in class_api:
@@ -2450,7 +2502,7 @@ def make_js_varargs_template(function_data, static=False,
                              for_builtin_classes=False):
     result = []
 
-    function_signature = ""
+    function_signature = "inline "
 
     if with_public_declare:
         function_signature = "public: "
@@ -2495,16 +2547,16 @@ def make_js_varargs_template(function_data, static=False,
     function_signature += " {"
     result.append(function_signature)
 
-    args_array = f"\tstd::vector<Variant *> variant_args;\n"
+    args_array = f"std::vector<Variant *> variant_args;\n"
     for argument in method_arguments:
-        args_array += f'\t\tVariant {argument["name"]} = {escape_argument(argument["name"])};\n'
-        args_array += f'\t\tvariant_args.push_back(&{argument["name"]});\n'
+        args_array += f'Variant {argument["name"]} = {escape_argument(argument["name"])};\n'
+        args_array += f'variant_args.push_back(&{argument["name"]});\n'
 
     result.append(args_array)
     result.append(
-        '\tfor (size_t i = 0; i < p_args.size(); i++) {\n'
-            '\t\t\tvariant_args[i] = &p_args[i];\n'
-        '\t\t}')
+        'for (size_t i = 0; i < p_args.size(); i++) {\n'
+            'variant_args.push_back(&p_args[i]);\n'
+        '}')
     call_line = "\t"
     if not for_builtin_classes:
         if return_type != "void":
@@ -2512,6 +2564,21 @@ def make_js_varargs_template(function_data, static=False,
 
         call_line += f'{escape_identifier(function_data["name"])}_internal(const_cast<const Variant **>(variant_args.data()), variant_args.size());'
         result.append(call_line)
+    else:
+        base = "(GDExtensionTypePtr)&opaque"
+        if static:
+            base = "nullptr"
+
+        ret = "nullptr"
+        if return_type != "void":
+            ret = "&ret"
+            result.append(f'\t{correct_type(function_data["return_type"])} ret;')
+
+        function_name = function_data["name"]
+        result.append(
+            f"\t_method_bindings.method_{function_name}({base}, reinterpret_cast<GDExtensionConstTypePtr *>(const_cast<const Variant **>(variant_args.data())), {ret}, {len(method_arguments)} + variant_args.size());"
+        )
+
     result.append('}\n')
     result = list(map(lambda e: '\t' + e , result))
     return result

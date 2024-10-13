@@ -1,13 +1,14 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/audio_stream_randomizer.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/audio_stream.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/audio_stream_randomizer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -34,61 +35,69 @@ static JSValue audio_stream_randomizer_class_constructor(JSContext *ctx, JSValue
 	}
 
 	JS_SetOpaque(obj, audio_stream_randomizer_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue audio_stream_randomizer_class_add_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AudioStreamRandomizer::add_stream, AudioStreamRandomizer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamRandomizer::add_stream, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_randomizer_class_move_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AudioStreamRandomizer::move_stream, AudioStreamRandomizer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamRandomizer::move_stream, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_randomizer_class_remove_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AudioStreamRandomizer::remove_stream, AudioStreamRandomizer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamRandomizer::remove_stream, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_randomizer_class_set_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AudioStreamRandomizer::set_stream, AudioStreamRandomizer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamRandomizer::set_stream, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_randomizer_class_get_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AudioStreamRandomizer::get_stream, AudioStreamRandomizer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AudioStreamRandomizer::get_stream, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_randomizer_class_set_stream_probability_weight(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AudioStreamRandomizer::set_stream_probability_weight, AudioStreamRandomizer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamRandomizer::set_stream_probability_weight, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_randomizer_class_get_stream_probability_weight(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AudioStreamRandomizer::get_stream_probability_weight, AudioStreamRandomizer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AudioStreamRandomizer::get_stream_probability_weight, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_randomizer_class_set_streams_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AudioStreamRandomizer::set_streams_count, AudioStreamRandomizer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamRandomizer::set_streams_count, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_randomizer_class_get_streams_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AudioStreamRandomizer::get_streams_count, AudioStreamRandomizer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AudioStreamRandomizer::get_streams_count, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_randomizer_class_set_random_pitch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AudioStreamRandomizer::set_random_pitch, AudioStreamRandomizer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamRandomizer::set_random_pitch, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_randomizer_class_get_random_pitch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AudioStreamRandomizer::get_random_pitch, AudioStreamRandomizer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AudioStreamRandomizer::get_random_pitch, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_randomizer_class_set_random_volume_offset_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AudioStreamRandomizer::set_random_volume_offset_db, AudioStreamRandomizer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamRandomizer::set_random_volume_offset_db, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_randomizer_class_get_random_volume_offset_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AudioStreamRandomizer::get_random_volume_offset_db, AudioStreamRandomizer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AudioStreamRandomizer::get_random_volume_offset_db, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_randomizer_class_set_playback_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AudioStreamRandomizer::set_playback_mode, AudioStreamRandomizer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AudioStreamRandomizer::set_playback_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_randomizer_class_get_playback_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AudioStreamRandomizer::get_playback_mode, AudioStreamRandomizer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AudioStreamRandomizer::get_playback_mode, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry audio_stream_randomizer_class_proto_funcs[] = {
 	JS_CFUNC_DEF("add_stream", 3, &audio_stream_randomizer_class_add_stream),
@@ -108,18 +117,57 @@ static const JSCFunctionListEntry audio_stream_randomizer_class_proto_funcs[] = 
 	JS_CFUNC_DEF("get_playback_mode", 0, &audio_stream_randomizer_class_get_playback_mode),
 };
 
+void define_audio_stream_randomizer_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "playback_mode"),
+        JS_NewCFunction(ctx, audio_stream_randomizer_class_get_playback_mode, "get_playback_mode", 0),
+        JS_NewCFunction(ctx, audio_stream_randomizer_class_set_playback_mode, "set_playback_mode", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "random_pitch"),
+        JS_NewCFunction(ctx, audio_stream_randomizer_class_get_random_pitch, "get_random_pitch", 0),
+        JS_NewCFunction(ctx, audio_stream_randomizer_class_set_random_pitch, "set_random_pitch", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "random_volume_offset_db"),
+        JS_NewCFunction(ctx, audio_stream_randomizer_class_get_random_volume_offset_db, "get_random_volume_offset_db", 0),
+        JS_NewCFunction(ctx, audio_stream_randomizer_class_set_random_volume_offset_db, "set_random_volume_offset_db", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "streams_count"),
+        JS_NewCFunction(ctx, audio_stream_randomizer_class_get_streams_count, "get_streams_count", 0),
+        JS_NewCFunction(ctx, audio_stream_randomizer_class_set_streams_count, "set_streams_count", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_audio_stream_randomizer_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&AudioStreamRandomizer::__class_id);
 	classes["AudioStreamRandomizer"] = AudioStreamRandomizer::__class_id;
+	class_id_list.insert(AudioStreamRandomizer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioStreamRandomizer::__class_id, &audio_stream_randomizer_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, AudioStream::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AudioStreamRandomizer::__class_id, proto);
+	define_audio_stream_randomizer_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, audio_stream_randomizer_class_proto_funcs, _countof(audio_stream_randomizer_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, audio_stream_randomizer_class_constructor, "AudioStreamRandomizer", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "AudioStreamRandomizer", ctor);
 
@@ -127,6 +175,10 @@ static int js_audio_stream_randomizer_class_init(JSContext *ctx, JSModuleDef *m)
 }
 
 JSModuleDef *_js_init_audio_stream_randomizer_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/audio_stream';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_audio_stream_randomizer_class_init);
 	if (!m)
 		return NULL;
@@ -139,5 +191,6 @@ JSModuleDef *js_init_audio_stream_randomizer_module(JSContext *ctx) {
 }
 
 void register_audio_stream_randomizer() {
+	AudioStreamRandomizer::__init_js_class_id();
 	js_init_audio_stream_randomizer_module(ctx);
 }

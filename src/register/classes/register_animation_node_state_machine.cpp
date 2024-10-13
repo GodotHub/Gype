@@ -1,15 +1,16 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/animation_node_state_machine.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/animation_node_state_machine_transition.hpp>
 #include <godot_cpp/classes/animation_node.hpp>
+#include <godot_cpp/classes/animation_node_state_machine.hpp>
 #include <godot_cpp/classes/animation_root_node.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -36,94 +37,102 @@ static JSValue animation_node_state_machine_class_constructor(JSContext *ctx, JS
 	}
 
 	JS_SetOpaque(obj, animation_node_state_machine_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue animation_node_state_machine_class_add_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationNodeStateMachine::add_node, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeStateMachine::add_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_state_machine_class_replace_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationNodeStateMachine::replace_node, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeStateMachine::replace_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_state_machine_class_get_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationNodeStateMachine::get_node, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationNodeStateMachine::get_node, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_state_machine_class_remove_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationNodeStateMachine::remove_node, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeStateMachine::remove_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_state_machine_class_rename_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationNodeStateMachine::rename_node, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeStateMachine::rename_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_state_machine_class_has_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationNodeStateMachine::has_node, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationNodeStateMachine::has_node, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_state_machine_class_get_node_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationNodeStateMachine::get_node_name, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationNodeStateMachine::get_node_name, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_state_machine_class_set_node_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationNodeStateMachine::set_node_position, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeStateMachine::set_node_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_state_machine_class_get_node_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationNodeStateMachine::get_node_position, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationNodeStateMachine::get_node_position, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_state_machine_class_has_transition(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationNodeStateMachine::has_transition, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationNodeStateMachine::has_transition, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_state_machine_class_add_transition(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationNodeStateMachine::add_transition, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeStateMachine::add_transition, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_state_machine_class_get_transition(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationNodeStateMachine::get_transition, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationNodeStateMachine::get_transition, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_state_machine_class_get_transition_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationNodeStateMachine::get_transition_from, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationNodeStateMachine::get_transition_from, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_state_machine_class_get_transition_to(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationNodeStateMachine::get_transition_to, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationNodeStateMachine::get_transition_to, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_state_machine_class_get_transition_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationNodeStateMachine::get_transition_count, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationNodeStateMachine::get_transition_count, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_state_machine_class_remove_transition_by_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationNodeStateMachine::remove_transition_by_index, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeStateMachine::remove_transition_by_index, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_state_machine_class_remove_transition(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationNodeStateMachine::remove_transition, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeStateMachine::remove_transition, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_state_machine_class_set_graph_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationNodeStateMachine::set_graph_offset, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeStateMachine::set_graph_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_state_machine_class_get_graph_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationNodeStateMachine::get_graph_offset, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationNodeStateMachine::get_graph_offset, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_state_machine_class_set_state_machine_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationNodeStateMachine::set_state_machine_type, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeStateMachine::set_state_machine_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_state_machine_class_get_state_machine_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationNodeStateMachine::get_state_machine_type, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationNodeStateMachine::get_state_machine_type, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_state_machine_class_set_allow_transition_to_self(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationNodeStateMachine::set_allow_transition_to_self, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeStateMachine::set_allow_transition_to_self, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_state_machine_class_is_allow_transition_to_self(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationNodeStateMachine::is_allow_transition_to_self, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationNodeStateMachine::is_allow_transition_to_self, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_state_machine_class_set_reset_ends(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationNodeStateMachine::set_reset_ends, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeStateMachine::set_reset_ends, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_state_machine_class_are_ends_reset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationNodeStateMachine::are_ends_reset, AnimationNodeStateMachine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationNodeStateMachine::are_ends_reset, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry animation_node_state_machine_class_proto_funcs[] = {
 	JS_CFUNC_DEF("add_node", 3, &animation_node_state_machine_class_add_node),
@@ -153,18 +162,49 @@ static const JSCFunctionListEntry animation_node_state_machine_class_proto_funcs
 	JS_CFUNC_DEF("are_ends_reset", 0, &animation_node_state_machine_class_are_ends_reset),
 };
 
+void define_animation_node_state_machine_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "state_machine_type"),
+        JS_NewCFunction(ctx, animation_node_state_machine_class_get_state_machine_type, "get_state_machine_type", 0),
+        JS_NewCFunction(ctx, animation_node_state_machine_class_set_state_machine_type, "set_state_machine_type", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "allow_transition_to_self"),
+        JS_NewCFunction(ctx, animation_node_state_machine_class_is_allow_transition_to_self, "is_allow_transition_to_self", 0),
+        JS_NewCFunction(ctx, animation_node_state_machine_class_set_allow_transition_to_self, "set_allow_transition_to_self", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "reset_ends"),
+        JS_NewCFunction(ctx, animation_node_state_machine_class_are_ends_reset, "are_ends_reset", 0),
+        JS_NewCFunction(ctx, animation_node_state_machine_class_set_reset_ends, "set_reset_ends", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_animation_node_state_machine_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&AnimationNodeStateMachine::__class_id);
 	classes["AnimationNodeStateMachine"] = AnimationNodeStateMachine::__class_id;
+	class_id_list.insert(AnimationNodeStateMachine::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimationNodeStateMachine::__class_id, &animation_node_state_machine_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, AnimationRootNode::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AnimationNodeStateMachine::__class_id, proto);
+	define_animation_node_state_machine_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, animation_node_state_machine_class_proto_funcs, _countof(animation_node_state_machine_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, animation_node_state_machine_class_constructor, "AnimationNodeStateMachine", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "AnimationNodeStateMachine", ctor);
 
@@ -172,6 +212,10 @@ static int js_animation_node_state_machine_class_init(JSContext *ctx, JSModuleDe
 }
 
 JSModuleDef *_js_init_animation_node_state_machine_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/animation_root_node';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_animation_node_state_machine_class_init);
 	if (!m)
 		return NULL;
@@ -184,5 +228,6 @@ JSModuleDef *js_init_animation_node_state_machine_module(JSContext *ctx) {
 }
 
 void register_animation_node_state_machine() {
+	AnimationNodeStateMachine::__init_js_class_id();
 	js_init_animation_node_state_machine_module(ctx);
 }

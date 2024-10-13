@@ -31,6 +31,7 @@
 #ifndef GODOT_COLOR_HPP
 #define GODOT_COLOR_HPP
 
+#include "quickjs/quickjs.h"
 #include <godot_cpp/core/math.hpp>
 
 namespace godot {
@@ -38,6 +39,11 @@ namespace godot {
 class String;
 
 struct _NO_DISCARD_ Color {
+	static JSClassID __class_id;
+
+	inline static void __init_js_class_id() {
+		Color::__class_id = JS_NewClassID(&Color::__class_id);
+	}
 	union {
 		struct {
 			float r;

@@ -35,6 +35,8 @@
 
 namespace godot {
 
+JSClassID Rect2i::__class_id;
+
 Rect2i::operator String() const {
 	return "[P: " + position.operator String() + ", S: " + size + "]";
 }

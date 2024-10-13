@@ -1,15 +1,16 @@
 #include "register/utility_functions/register_utility_functions.h"
+#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
+#include "quickjs/quickjs_helper.h"
 #include "quickjs/str_helper.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
-#include <godot_cpp/core/convert_helper.hpp>
+#include "utils/func_utils.h"
 #include <godot_cpp/variant/builtin_types.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
 
+
 using namespace godot;
 
-static JSValue gd;
+JSValue utility_functions_instance;
 
 static void utility_functions_class_finalizer(JSRuntime *rt, JSValue val) {
 	// nothing
@@ -35,373 +36,357 @@ static JSValue utility_functions_class_constructor(JSContext *ctx, JSValueConst 
 	return obj;
 }
 static JSValue utility_functions_class_sin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::sin, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::sin, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_cos(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::cos, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::cos, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_tan(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::tan, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::tan, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_sinh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::sinh, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::sinh, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_cosh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::cosh, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::cosh, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_tanh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::tanh, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::tanh, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_asin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::asin, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::asin, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_acos(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::acos, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::acos, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_atan(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::atan, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::atan, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_atan2(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::atan2, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::atan2, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_asinh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::asinh, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::asinh, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_acosh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::acosh, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::acosh, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_atanh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::atanh, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::atanh, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_sqrt(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::sqrt, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::sqrt, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_fmod(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::fmod, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::fmod, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_fposmod(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::fposmod, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::fposmod, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_posmod(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::posmod, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::posmod, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_floor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::floor, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::floor, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_floorf(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::floorf, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::floorf, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_floori(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::floori, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::floori, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_ceil(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::ceil, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::ceil, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_ceilf(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::ceilf, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::ceilf, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_ceili(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::ceili, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::ceili, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_round(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::round, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::round, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_roundf(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::roundf, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::roundf, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_roundi(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::roundi, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::roundi, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_abs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::abs, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::abs, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_absf(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::absf, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::absf, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_absi(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::absi, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::absi, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_sign(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::sign, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::sign, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_signf(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::signf, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::signf, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_signi(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::signi, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::signi, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_snapped(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::snapped, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::snapped, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_snappedf(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::snappedf, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::snappedf, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_snappedi(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::snappedi, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::snappedi, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_pow(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::pow, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::pow, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_log(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::log, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::log, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_exp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::exp, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::exp, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_is_nan(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::is_nan, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::is_nan, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_is_inf(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::is_inf, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::is_inf, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_is_equal_approx(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::is_equal_approx, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::is_equal_approx, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_is_zero_approx(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::is_zero_approx, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::is_zero_approx, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_is_finite(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::is_finite, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::is_finite, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_ease(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::ease, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::ease, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_step_decimals(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::step_decimals, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::step_decimals, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_lerp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::lerp, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::lerp, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_lerpf(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::lerpf, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::lerpf, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_cubic_interpolate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::cubic_interpolate, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::cubic_interpolate, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_cubic_interpolate_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::cubic_interpolate_angle, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::cubic_interpolate_angle, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_cubic_interpolate_in_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::cubic_interpolate_in_time, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::cubic_interpolate_in_time, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_cubic_interpolate_angle_in_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::cubic_interpolate_angle_in_time, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::cubic_interpolate_angle_in_time, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_bezier_interpolate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::bezier_interpolate, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::bezier_interpolate, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_bezier_derivative(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::bezier_derivative, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::bezier_derivative, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_angle_difference(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::angle_difference, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::angle_difference, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_lerp_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::lerp_angle, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::lerp_angle, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_inverse_lerp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::inverse_lerp, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::inverse_lerp, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_remap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::remap, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::remap, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_smoothstep(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::smoothstep, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::smoothstep, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_move_toward(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::move_toward, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::move_toward, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_rotate_toward(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::rotate_toward, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::rotate_toward, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_deg_to_rad(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::deg_to_rad, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::deg_to_rad, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_rad_to_deg(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::rad_to_deg, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::rad_to_deg, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_linear_to_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::linear_to_db, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::linear_to_db, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_db_to_linear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::db_to_linear, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::db_to_linear, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_wrap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::wrap, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::wrap, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_wrapi(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::wrapi, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::wrapi, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_wrapf(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::wrapf, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::wrapf, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_maxi(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::maxi, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::maxi, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_maxf(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::maxf, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::maxf, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_mini(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::mini, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::mini, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_minf(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::minf, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::minf, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_clamp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::clamp, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::clamp, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_clampi(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::clampi, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::clampi, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_clampf(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::clampf, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::clampf, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_nearest_po2(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::nearest_po2, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::nearest_po2, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_pingpong(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::pingpong, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::pingpong, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_randomize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_method_no_ret(&UtilityFunctions::randomize, UtilityFunctions::__class_id, ctx, this_val, argv);
+	call_builtin_static_method_no_ret(&UtilityFunctions::randomize, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue utility_functions_class_randi(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::randi, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::randi, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_randf(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::randf, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::randf, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_randi_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::randi_range, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::randi_range, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_randf_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::randf_range, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::randf_range, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_randfn(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::randfn, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::randfn, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_seed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_method_no_ret(&UtilityFunctions::seed, UtilityFunctions::__class_id, ctx, this_val, argv);
+	call_builtin_static_method_no_ret(&UtilityFunctions::seed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue utility_functions_class_rand_from_seed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::rand_from_seed, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::rand_from_seed, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_weakref(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::weakref, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::weakref, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_typeof(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::type_of, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::type_of, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_type_convert(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::type_convert, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::type_convert, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_error_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::error_string, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::error_string, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_type_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::type_string, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::type_string, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_var_to_str(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::var_to_str, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::var_to_str, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_str_to_var(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::str_to_var, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::str_to_var, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_var_to_bytes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::var_to_bytes, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::var_to_bytes, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_bytes_to_var(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::bytes_to_var, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::bytes_to_var, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_var_to_bytes_with_objects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::var_to_bytes_with_objects, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::var_to_bytes_with_objects, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_bytes_to_var_with_objects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::bytes_to_var_with_objects, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::bytes_to_var_with_objects, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_hash(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::hash, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::hash, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_instance_from_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::instance_from_id, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::instance_from_id, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_is_instance_id_valid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::is_instance_id_valid, UtilityFunctions::__class_id, ctx, this_val, argv);
-};
-static JSValue utility_functions_class_is_instance_valid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::is_instance_id_valid, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::is_instance_id_valid, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_rid_allocate_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::rid_allocate_id, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::rid_allocate_id, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_rid_from_int64(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::rid_from_int64, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::rid_from_int64, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_is_same(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&UtilityFunctions::is_same, UtilityFunctions::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&UtilityFunctions::is_same, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_vararg_method_ret(&UtilityFunctions::js_max, UtilityFunctions::__class_id, ctx, this_val, argc, argv);
+	return call_builtin_static_vararg_method_ret(&UtilityFunctions::js_max, ctx, this_val, argc, argv);
 }
 static JSValue utility_functions_class_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_vararg_method_ret(&UtilityFunctions::js_min, UtilityFunctions::__class_id, ctx, this_val, argc, argv);
+	return call_builtin_static_vararg_method_ret(&UtilityFunctions::js_min, ctx, this_val, argc, argv);
 }
 static JSValue utility_functions_class_str(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_vararg_method_ret(&UtilityFunctions::js_str, UtilityFunctions::__class_id, ctx, this_val, argc, argv);
+	return call_builtin_static_vararg_method_ret(&UtilityFunctions::js_str, ctx, this_val, argc, argv);
 }
 static JSValue utility_functions_class_print(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_print, UtilityFunctions::__class_id, ctx, this_val, argc, argv);
+	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_print, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue utility_functions_class_print_rich(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_print_rich, UtilityFunctions::__class_id, ctx, this_val, argc, argv);
+	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_print_rich, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue utility_functions_class_printerr(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_printerr, UtilityFunctions::__class_id, ctx, this_val, argc, argv);
+	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_printerr, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue utility_functions_class_printt(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_printt, UtilityFunctions::__class_id, ctx, this_val, argc, argv);
+	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_printt, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue utility_functions_class_prints(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_prints, UtilityFunctions::__class_id, ctx, this_val, argc, argv);
+	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_prints, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue utility_functions_class_printraw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_printraw, UtilityFunctions::__class_id, ctx, this_val, argc, argv);
+	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_printraw, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue utility_functions_class_print_verbose(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_print_verbose, UtilityFunctions::__class_id, ctx, this_val, argc, argv);
+	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_print_verbose, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue utility_functions_class_push_error(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_push_error, UtilityFunctions::__class_id, ctx, this_val, argc, argv);
+	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_push_error, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue utility_functions_class_push_warning(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_push_warning, UtilityFunctions::__class_id, ctx, this_val, argc, argv);
+	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_push_warning, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
-static const JSCFunctionListEntry utility_functions_class_proto_funcs[] = {
-	JS_CFUNC_DEF("max", 2, &utility_functions_class_max),
-	JS_CFUNC_DEF("min", 2, &utility_functions_class_min),
-	JS_CFUNC_DEF("str", 1, &utility_functions_class_str),
-	JS_CFUNC_DEF("print", 1, &utility_functions_class_print),
-	JS_CFUNC_DEF("print_rich", 1, &utility_functions_class_print_rich),
-	JS_CFUNC_DEF("printerr", 1, &utility_functions_class_printerr),
-	JS_CFUNC_DEF("printt", 1, &utility_functions_class_printt),
-	JS_CFUNC_DEF("prints", 1, &utility_functions_class_prints),
-	JS_CFUNC_DEF("printraw", 1, &utility_functions_class_printraw),
-	JS_CFUNC_DEF("print_verbose", 1, &utility_functions_class_print_verbose),
-	JS_CFUNC_DEF("push_error", 1, &utility_functions_class_push_error),
-	JS_CFUNC_DEF("push_warning", 1, &utility_functions_class_push_warning),
-};
-static const JSCFunctionListEntry utility_functions_class_static_funcs[] = {
+
+static const JSCFunctionListEntry utility_functions_class_funcs[] = {
 	JS_CFUNC_DEF("sin", 1, &utility_functions_class_sin),
 	JS_CFUNC_DEF("cos", 1, &utility_functions_class_cos),
 	JS_CFUNC_DEF("tan", 1, &utility_functions_class_tan),
@@ -500,27 +485,36 @@ static const JSCFunctionListEntry utility_functions_class_static_funcs[] = {
 	JS_CFUNC_DEF("hash", 1, &utility_functions_class_hash),
 	JS_CFUNC_DEF("instance_from_id", 1, &utility_functions_class_instance_from_id),
 	JS_CFUNC_DEF("is_instance_id_valid", 1, &utility_functions_class_is_instance_id_valid),
-	JS_CFUNC_DEF("is_instance_valid", 1, &utility_functions_class_is_instance_valid),
 	JS_CFUNC_DEF("rid_allocate_id", 0, &utility_functions_class_rid_allocate_id),
 	JS_CFUNC_DEF("rid_from_int64", 1, &utility_functions_class_rid_from_int64),
 	JS_CFUNC_DEF("is_same", 2, &utility_functions_class_is_same),
+	JS_CFUNC_DEF("max", 2, &utility_functions_class_max),
+	JS_CFUNC_DEF("min", 2, &utility_functions_class_min),
+	JS_CFUNC_DEF("str", 1, &utility_functions_class_str),
+	JS_CFUNC_DEF("print", 1, &utility_functions_class_print),
+	JS_CFUNC_DEF("print_rich", 1, &utility_functions_class_print_rich),
+	JS_CFUNC_DEF("printerr", 1, &utility_functions_class_printerr),
+	JS_CFUNC_DEF("printt", 1, &utility_functions_class_printt),
+	JS_CFUNC_DEF("prints", 1, &utility_functions_class_prints),
+	JS_CFUNC_DEF("printraw", 1, &utility_functions_class_printraw),
+	JS_CFUNC_DEF("print_verbose", 1, &utility_functions_class_print_verbose),
+	JS_CFUNC_DEF("push_error", 1, &utility_functions_class_push_error),
+	JS_CFUNC_DEF("push_warning", 1, &utility_functions_class_push_warning),
 };
 
 static int js_utility_functions_class_init(JSContext *ctx) {
 	JS_NewClassID(&UtilityFunctions::__class_id);
 	classes["UtilityFunctions"] = UtilityFunctions::__class_id;
+	class_id_list.insert(UtilityFunctions::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), UtilityFunctions::__class_id, &utility_functions_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JS_SetClassProto(ctx, UtilityFunctions::__class_id, proto);
-	JS_SetPropertyFunctionList(ctx, proto, utility_functions_class_proto_funcs, _countof(utility_functions_class_proto_funcs));
-
-	JSValue ctor = JS_NewCFunction2(ctx, utility_functions_class_constructor, "UtilityFunctions", 0, JS_CFUNC_constructor, 0);
-	JS_SetPropertyFunctionList(ctx, ctor, utility_functions_class_static_funcs, _countof(utility_functions_class_static_funcs));
+	JS_SetPropertyFunctionList(ctx, proto, utility_functions_class_funcs, _countof(utility_functions_class_funcs));
 
 	JSValue global = JS_GetGlobalObject(ctx);
-	gd = utility_functions_class_constructor(ctx, global, 0, NULL);
-	JS_SetPropertyStr(ctx, global, "GD", gd);
+	utility_functions_instance = utility_functions_class_constructor(ctx, global, 0, NULL);
+	JS_SetPropertyStr(ctx, global, "GD", utility_functions_instance);
 
 	return 0;
 }

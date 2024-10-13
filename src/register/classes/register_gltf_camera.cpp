@@ -1,14 +1,15 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/resource.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/classes/gltf_camera.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -35,54 +36,62 @@ static JSValue gltf_camera_class_constructor(JSContext *ctx, JSValueConst new_ta
 	}
 
 	JS_SetOpaque(obj, gltf_camera_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue gltf_camera_class_to_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GLTFCamera::to_node, GLTFCamera::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GLTFCamera::to_node, ctx, this_val, argc, argv);
 };
 static JSValue gltf_camera_class_to_dictionary(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GLTFCamera::to_dictionary, GLTFCamera::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GLTFCamera::to_dictionary, ctx, this_val, argc, argv);
 };
 static JSValue gltf_camera_class_get_perspective(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GLTFCamera::get_perspective, GLTFCamera::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GLTFCamera::get_perspective, ctx, this_val, argc, argv);
 };
 static JSValue gltf_camera_class_set_perspective(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GLTFCamera::set_perspective, GLTFCamera::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFCamera::set_perspective, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_camera_class_get_fov(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GLTFCamera::get_fov, GLTFCamera::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GLTFCamera::get_fov, ctx, this_val, argc, argv);
 };
 static JSValue gltf_camera_class_set_fov(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GLTFCamera::set_fov, GLTFCamera::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFCamera::set_fov, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_camera_class_get_size_mag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GLTFCamera::get_size_mag, GLTFCamera::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GLTFCamera::get_size_mag, ctx, this_val, argc, argv);
 };
 static JSValue gltf_camera_class_set_size_mag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GLTFCamera::set_size_mag, GLTFCamera::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFCamera::set_size_mag, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_camera_class_get_depth_far(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GLTFCamera::get_depth_far, GLTFCamera::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GLTFCamera::get_depth_far, ctx, this_val, argc, argv);
 };
 static JSValue gltf_camera_class_set_depth_far(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GLTFCamera::set_depth_far, GLTFCamera::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFCamera::set_depth_far, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_camera_class_get_depth_near(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GLTFCamera::get_depth_near, GLTFCamera::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GLTFCamera::get_depth_near, ctx, this_val, argc, argv);
 };
 static JSValue gltf_camera_class_set_depth_near(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GLTFCamera::set_depth_near, GLTFCamera::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GLTFCamera::set_depth_near, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_camera_class_from_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&GLTFCamera::from_node, GLTFCamera::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&GLTFCamera::from_node, ctx, this_val, argc, argv);
 };
 static JSValue gltf_camera_class_from_dictionary(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&GLTFCamera::from_dictionary, GLTFCamera::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&GLTFCamera::from_dictionary, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry gltf_camera_class_proto_funcs[] = {
 	JS_CFUNC_DEF("to_node", 0, &gltf_camera_class_to_node),
@@ -103,18 +112,65 @@ static const JSCFunctionListEntry gltf_camera_class_static_funcs[] = {
 	JS_CFUNC_DEF("from_dictionary", 1, &gltf_camera_class_from_dictionary),
 };
 
+void define_gltf_camera_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "perspective"),
+        JS_NewCFunction(ctx, gltf_camera_class_get_perspective, "get_perspective", 0),
+        JS_NewCFunction(ctx, gltf_camera_class_set_perspective, "set_perspective", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "fov"),
+        JS_NewCFunction(ctx, gltf_camera_class_get_fov, "get_fov", 0),
+        JS_NewCFunction(ctx, gltf_camera_class_set_fov, "set_fov", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "size_mag"),
+        JS_NewCFunction(ctx, gltf_camera_class_get_size_mag, "get_size_mag", 0),
+        JS_NewCFunction(ctx, gltf_camera_class_set_size_mag, "set_size_mag", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "depth_far"),
+        JS_NewCFunction(ctx, gltf_camera_class_get_depth_far, "get_depth_far", 0),
+        JS_NewCFunction(ctx, gltf_camera_class_set_depth_far, "set_depth_far", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "depth_near"),
+        JS_NewCFunction(ctx, gltf_camera_class_get_depth_near, "get_depth_near", 0),
+        JS_NewCFunction(ctx, gltf_camera_class_set_depth_near, "set_depth_near", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_gltf_camera_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&GLTFCamera::__class_id);
 	classes["GLTFCamera"] = GLTFCamera::__class_id;
+	class_id_list.insert(GLTFCamera::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GLTFCamera::__class_id, &gltf_camera_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, GLTFCamera::__class_id, proto);
+	define_gltf_camera_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, gltf_camera_class_proto_funcs, _countof(gltf_camera_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, gltf_camera_class_constructor, "GLTFCamera", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 	JS_SetPropertyFunctionList(ctx, ctor, gltf_camera_class_static_funcs, _countof(gltf_camera_class_static_funcs));
 
 	JS_SetModuleExport(ctx, m, "GLTFCamera", ctor);
@@ -123,6 +179,10 @@ static int js_gltf_camera_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_gltf_camera_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/resource';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_gltf_camera_class_init);
 	if (!m)
 		return NULL;
@@ -135,5 +195,6 @@ JSModuleDef *js_init_gltf_camera_module(JSContext *ctx) {
 }
 
 void register_gltf_camera() {
+	GLTFCamera::__init_js_class_id();
 	js_init_gltf_camera_module(ctx);
 }

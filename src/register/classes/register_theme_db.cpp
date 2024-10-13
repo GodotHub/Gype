@@ -1,19 +1,23 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/object.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/theme.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/classes/theme_db.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
+
+static JSValue theme_db_instance;
+
+static void js_theme_db_singleton();
 
 static void theme_db_class_finalizer(JSRuntime *rt, JSValue val) {
 	ThemeDB *theme_db = static_cast<ThemeDB *>(JS_GetOpaque(val, ThemeDB::__class_id));
@@ -41,45 +45,57 @@ static JSValue theme_db_class_constructor(JSContext *ctx, JSValueConst new_targe
 	return obj;
 }
 static JSValue theme_db_class_get_default_theme(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&ThemeDB::get_default_theme, ThemeDB::__class_id, ctx, this_val, argv);
+    js_theme_db_singleton();
+	return call_builtin_method_ret(&ThemeDB::get_default_theme, ctx, this_val, argc, argv);
 };
 static JSValue theme_db_class_get_project_theme(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&ThemeDB::get_project_theme, ThemeDB::__class_id, ctx, this_val, argv);
+    js_theme_db_singleton();
+	return call_builtin_method_ret(&ThemeDB::get_project_theme, ctx, this_val, argc, argv);
 };
 static JSValue theme_db_class_set_fallback_base_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ThemeDB::set_fallback_base_scale, ThemeDB::__class_id, ctx, this_val, argv);
+    js_theme_db_singleton();
+    call_builtin_method_no_ret(&ThemeDB::set_fallback_base_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue theme_db_class_get_fallback_base_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&ThemeDB::get_fallback_base_scale, ThemeDB::__class_id, ctx, this_val, argv);
+    js_theme_db_singleton();
+	return call_builtin_method_ret(&ThemeDB::get_fallback_base_scale, ctx, this_val, argc, argv);
 };
 static JSValue theme_db_class_set_fallback_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ThemeDB::set_fallback_font, ThemeDB::__class_id, ctx, this_val, argv);
+    js_theme_db_singleton();
+    call_builtin_method_no_ret(&ThemeDB::set_fallback_font, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue theme_db_class_get_fallback_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&ThemeDB::get_fallback_font, ThemeDB::__class_id, ctx, this_val, argv);
+    js_theme_db_singleton();
+	return call_builtin_method_ret(&ThemeDB::get_fallback_font, ctx, this_val, argc, argv);
 };
 static JSValue theme_db_class_set_fallback_font_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ThemeDB::set_fallback_font_size, ThemeDB::__class_id, ctx, this_val, argv);
+    js_theme_db_singleton();
+    call_builtin_method_no_ret(&ThemeDB::set_fallback_font_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue theme_db_class_get_fallback_font_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&ThemeDB::get_fallback_font_size, ThemeDB::__class_id, ctx, this_val, argv);
+    js_theme_db_singleton();
+	return call_builtin_method_ret(&ThemeDB::get_fallback_font_size, ctx, this_val, argc, argv);
 };
 static JSValue theme_db_class_set_fallback_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ThemeDB::set_fallback_icon, ThemeDB::__class_id, ctx, this_val, argv);
+    js_theme_db_singleton();
+    call_builtin_method_no_ret(&ThemeDB::set_fallback_icon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue theme_db_class_get_fallback_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&ThemeDB::get_fallback_icon, ThemeDB::__class_id, ctx, this_val, argv);
+    js_theme_db_singleton();
+	return call_builtin_method_ret(&ThemeDB::get_fallback_icon, ctx, this_val, argc, argv);
 };
 static JSValue theme_db_class_set_fallback_stylebox(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ThemeDB::set_fallback_stylebox, ThemeDB::__class_id, ctx, this_val, argv);
+    js_theme_db_singleton();
+    call_builtin_method_no_ret(&ThemeDB::set_fallback_stylebox, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue theme_db_class_get_fallback_stylebox(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&ThemeDB::get_fallback_stylebox, ThemeDB::__class_id, ctx, this_val, argv);
+    js_theme_db_singleton();
+	return call_builtin_method_ret(&ThemeDB::get_fallback_stylebox, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry theme_db_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_default_theme", 0, &theme_db_class_get_default_theme),
@@ -96,7 +112,7 @@ static const JSCFunctionListEntry theme_db_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_fallback_stylebox", 0, &theme_db_class_get_fallback_stylebox),
 };
 
-static int js_theme_db_class_init(JSContext *ctx, JSModuleDef *m) {
+static int js_theme_db_class_init(JSContext *ctx) {
 	JS_NewClassID(&ThemeDB::__class_id);
 	classes["ThemeDB"] = ThemeDB::__class_id;
 	JS_NewClass(JS_GetRuntime(ctx), ThemeDB::__class_id, &theme_db_class_def);
@@ -106,26 +122,18 @@ static int js_theme_db_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ThemeDB::__class_id, proto);
 	JS_SetPropertyFunctionList(ctx, proto, theme_db_class_proto_funcs, _countof(theme_db_class_proto_funcs));
-
-	JSValue ctor = JS_NewCFunction2(ctx, theme_db_class_constructor, "ThemeDB", 0, JS_CFUNC_constructor, 0);
-
-	JS_SetModuleExport(ctx, m, "ThemeDB", ctor);
-
 	return 0;
 }
 
-JSModuleDef *_js_init_theme_db_module(JSContext *ctx, const char *module_name) {
-	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_theme_db_class_init);
-	if (!m)
-		return NULL;
-	JS_AddModuleExport(ctx, m, "ThemeDB");
-	return m;
+static void js_theme_db_singleton() {
+	if (JS_IsUninitialized(theme_db_instance)) {
+		JSValue global = JS_GetGlobalObject(ctx);
+		theme_db_instance = theme_db_class_constructor(ctx, global, 0, NULL);
+		JS_SetPropertyStr(ctx, global, "ThemeDB", theme_db_instance);
+	}
 }
 
-JSModuleDef *js_init_theme_db_module(JSContext *ctx) {
-	return _js_init_theme_db_module(ctx, "godot/classes/theme_db");
-}
 
 void register_theme_db() {
-	js_init_theme_db_module(ctx);
+	js_theme_db_class_init(ctx);
 }

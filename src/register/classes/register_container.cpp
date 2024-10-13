@@ -1,13 +1,14 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/container.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -34,14 +35,22 @@ static JSValue container_class_constructor(JSContext *ctx, JSValueConst new_targ
 	}
 
 	JS_SetOpaque(obj, container_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue container_class_queue_sort(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Container::queue_sort, Container::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Container::queue_sort, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue container_class_fit_child_in_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Container::fit_child_in_rect, Container::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Container::fit_child_in_rect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry container_class_proto_funcs[] = {
@@ -49,18 +58,25 @@ static const JSCFunctionListEntry container_class_proto_funcs[] = {
 	JS_CFUNC_DEF("fit_child_in_rect", 2, &container_class_fit_child_in_rect),
 };
 
+void define_container_property(JSContext *ctx, JSValue obj) {
+}
+
 static int js_container_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&Container::__class_id);
 	classes["Container"] = Container::__class_id;
+	class_id_list.insert(Container::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Container::__class_id, &container_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, Control::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Container::__class_id, proto);
+	define_container_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, container_class_proto_funcs, _countof(container_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, container_class_constructor, "Container", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "Container", ctor);
 
@@ -68,6 +84,10 @@ static int js_container_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_container_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/control';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_container_class_init);
 	if (!m)
 		return NULL;
@@ -80,5 +100,6 @@ JSModuleDef *js_init_container_module(JSContext *ctx) {
 }
 
 void register_container() {
+	Container::__init_js_class_id();
 	js_init_container_module(ctx);
 }

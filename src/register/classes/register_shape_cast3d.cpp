@@ -1,17 +1,18 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/shape3d.hpp>
-#include <godot_cpp/classes/resource.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/collision_object3d.hpp>
+#include <godot_cpp/classes/shape3d.hpp>
+#include <godot_cpp/classes/shape_cast3d.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/shape_cast3d.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -38,139 +39,147 @@ static JSValue shape_cast3d_class_constructor(JSContext *ctx, JSValueConst new_t
 	}
 
 	JS_SetOpaque(obj, shape_cast3d_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue shape_cast3d_class_resource_changed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ShapeCast3D::resource_changed, ShapeCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast3D::resource_changed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast3d_class_set_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ShapeCast3D::set_enabled, ShapeCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast3D::set_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast3d_class_is_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ShapeCast3D::is_enabled, ShapeCast3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ShapeCast3D::is_enabled, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast3d_class_set_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ShapeCast3D::set_shape, ShapeCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast3D::set_shape, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast3d_class_get_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ShapeCast3D::get_shape, ShapeCast3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ShapeCast3D::get_shape, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast3d_class_set_target_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ShapeCast3D::set_target_position, ShapeCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast3D::set_target_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast3d_class_get_target_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ShapeCast3D::get_target_position, ShapeCast3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ShapeCast3D::get_target_position, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast3d_class_set_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ShapeCast3D::set_margin, ShapeCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast3D::set_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast3d_class_get_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ShapeCast3D::get_margin, ShapeCast3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ShapeCast3D::get_margin, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast3d_class_set_max_results(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ShapeCast3D::set_max_results, ShapeCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast3D::set_max_results, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast3d_class_get_max_results(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ShapeCast3D::get_max_results, ShapeCast3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ShapeCast3D::get_max_results, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast3d_class_is_colliding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ShapeCast3D::is_colliding, ShapeCast3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ShapeCast3D::is_colliding, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast3d_class_get_collision_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ShapeCast3D::get_collision_count, ShapeCast3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ShapeCast3D::get_collision_count, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast3d_class_force_shapecast_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ShapeCast3D::force_shapecast_update, ShapeCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast3D::force_shapecast_update, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast3d_class_get_collider(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ShapeCast3D::get_collider, ShapeCast3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ShapeCast3D::get_collider, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast3d_class_get_collider_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ShapeCast3D::get_collider_rid, ShapeCast3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ShapeCast3D::get_collider_rid, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast3d_class_get_collider_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ShapeCast3D::get_collider_shape, ShapeCast3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ShapeCast3D::get_collider_shape, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast3d_class_get_collision_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ShapeCast3D::get_collision_point, ShapeCast3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ShapeCast3D::get_collision_point, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast3d_class_get_collision_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ShapeCast3D::get_collision_normal, ShapeCast3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ShapeCast3D::get_collision_normal, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast3d_class_get_closest_collision_safe_fraction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ShapeCast3D::get_closest_collision_safe_fraction, ShapeCast3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ShapeCast3D::get_closest_collision_safe_fraction, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast3d_class_get_closest_collision_unsafe_fraction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ShapeCast3D::get_closest_collision_unsafe_fraction, ShapeCast3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ShapeCast3D::get_closest_collision_unsafe_fraction, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast3d_class_add_exception_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ShapeCast3D::add_exception_rid, ShapeCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast3D::add_exception_rid, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast3d_class_add_exception(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ShapeCast3D::add_exception, ShapeCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast3D::add_exception, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast3d_class_remove_exception_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ShapeCast3D::remove_exception_rid, ShapeCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast3D::remove_exception_rid, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast3d_class_remove_exception(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ShapeCast3D::remove_exception, ShapeCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast3D::remove_exception, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast3d_class_clear_exceptions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ShapeCast3D::clear_exceptions, ShapeCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast3D::clear_exceptions, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast3d_class_set_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ShapeCast3D::set_collision_mask, ShapeCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast3D::set_collision_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast3d_class_get_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ShapeCast3D::get_collision_mask, ShapeCast3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ShapeCast3D::get_collision_mask, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast3d_class_set_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ShapeCast3D::set_collision_mask_value, ShapeCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast3D::set_collision_mask_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast3d_class_get_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ShapeCast3D::get_collision_mask_value, ShapeCast3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ShapeCast3D::get_collision_mask_value, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast3d_class_set_exclude_parent_body(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ShapeCast3D::set_exclude_parent_body, ShapeCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast3D::set_exclude_parent_body, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast3d_class_get_exclude_parent_body(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ShapeCast3D::get_exclude_parent_body, ShapeCast3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ShapeCast3D::get_exclude_parent_body, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast3d_class_set_collide_with_areas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ShapeCast3D::set_collide_with_areas, ShapeCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast3D::set_collide_with_areas, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast3d_class_is_collide_with_areas_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ShapeCast3D::is_collide_with_areas_enabled, ShapeCast3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ShapeCast3D::is_collide_with_areas_enabled, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast3d_class_set_collide_with_bodies(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ShapeCast3D::set_collide_with_bodies, ShapeCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast3D::set_collide_with_bodies, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast3d_class_is_collide_with_bodies_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ShapeCast3D::is_collide_with_bodies_enabled, ShapeCast3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ShapeCast3D::is_collide_with_bodies_enabled, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast3d_class_set_debug_shape_custom_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ShapeCast3D::set_debug_shape_custom_color, ShapeCast3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ShapeCast3D::set_debug_shape_custom_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape_cast3d_class_get_debug_shape_custom_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ShapeCast3D::get_debug_shape_custom_color, ShapeCast3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ShapeCast3D::get_debug_shape_custom_color, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry shape_cast3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("resource_changed", 1, &shape_cast3d_class_resource_changed),
@@ -213,18 +222,105 @@ static const JSCFunctionListEntry shape_cast3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_debug_shape_custom_color", 0, &shape_cast3d_class_get_debug_shape_custom_color),
 };
 
+void define_shape_cast3d_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "enabled"),
+        JS_NewCFunction(ctx, shape_cast3d_class_is_enabled, "is_enabled", 0),
+        JS_NewCFunction(ctx, shape_cast3d_class_set_enabled, "set_enabled", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "shape"),
+        JS_NewCFunction(ctx, shape_cast3d_class_get_shape, "get_shape", 0),
+        JS_NewCFunction(ctx, shape_cast3d_class_set_shape, "set_shape", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "exclude_parent"),
+        JS_NewCFunction(ctx, shape_cast3d_class_get_exclude_parent_body, "get_exclude_parent_body", 0),
+        JS_NewCFunction(ctx, shape_cast3d_class_set_exclude_parent_body, "set_exclude_parent_body", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "target_position"),
+        JS_NewCFunction(ctx, shape_cast3d_class_get_target_position, "get_target_position", 0),
+        JS_NewCFunction(ctx, shape_cast3d_class_set_target_position, "set_target_position", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "margin"),
+        JS_NewCFunction(ctx, shape_cast3d_class_get_margin, "get_margin", 0),
+        JS_NewCFunction(ctx, shape_cast3d_class_set_margin, "set_margin", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "max_results"),
+        JS_NewCFunction(ctx, shape_cast3d_class_get_max_results, "get_max_results", 0),
+        JS_NewCFunction(ctx, shape_cast3d_class_set_max_results, "set_max_results", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "collision_mask"),
+        JS_NewCFunction(ctx, shape_cast3d_class_get_collision_mask, "get_collision_mask", 0),
+        JS_NewCFunction(ctx, shape_cast3d_class_set_collision_mask, "set_collision_mask", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "collide_with_areas"),
+        JS_NewCFunction(ctx, shape_cast3d_class_is_collide_with_areas_enabled, "is_collide_with_areas_enabled", 0),
+        JS_NewCFunction(ctx, shape_cast3d_class_set_collide_with_areas, "set_collide_with_areas", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "collide_with_bodies"),
+        JS_NewCFunction(ctx, shape_cast3d_class_is_collide_with_bodies_enabled, "is_collide_with_bodies_enabled", 0),
+        JS_NewCFunction(ctx, shape_cast3d_class_set_collide_with_bodies, "set_collide_with_bodies", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "debug_shape_custom_color"),
+        JS_NewCFunction(ctx, shape_cast3d_class_get_debug_shape_custom_color, "get_debug_shape_custom_color", 0),
+        JS_NewCFunction(ctx, shape_cast3d_class_set_debug_shape_custom_color, "set_debug_shape_custom_color", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_shape_cast3d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&ShapeCast3D::__class_id);
 	classes["ShapeCast3D"] = ShapeCast3D::__class_id;
+	class_id_list.insert(ShapeCast3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ShapeCast3D::__class_id, &shape_cast3d_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, Node3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ShapeCast3D::__class_id, proto);
+	define_shape_cast3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, shape_cast3d_class_proto_funcs, _countof(shape_cast3d_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, shape_cast3d_class_constructor, "ShapeCast3D", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "ShapeCast3D", ctor);
 
@@ -232,6 +328,10 @@ static int js_shape_cast3d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_shape_cast3d_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/node3d';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_shape_cast3d_class_init);
 	if (!m)
 		return NULL;
@@ -244,5 +344,6 @@ JSModuleDef *js_init_shape_cast3d_module(JSContext *ctx) {
 }
 
 void register_shape_cast3d() {
+	ShapeCast3D::__init_js_class_id();
 	js_init_shape_cast3d_module(ctx);
 }

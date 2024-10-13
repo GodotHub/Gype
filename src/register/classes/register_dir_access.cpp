@@ -1,13 +1,14 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/dir_access.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -34,121 +35,129 @@ static JSValue dir_access_class_constructor(JSContext *ctx, JSValueConst new_tar
 	}
 
 	JS_SetOpaque(obj, dir_access_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue dir_access_class_list_dir_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&DirAccess::list_dir_begin, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&DirAccess::list_dir_begin, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_get_next(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&DirAccess::get_next, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&DirAccess::get_next, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_current_is_dir(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&DirAccess::current_is_dir, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&DirAccess::current_is_dir, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_list_dir_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&DirAccess::list_dir_end, DirAccess::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DirAccess::list_dir_end, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue dir_access_class_get_files(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&DirAccess::get_files, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&DirAccess::get_files, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_get_directories(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&DirAccess::get_directories, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&DirAccess::get_directories, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_get_current_drive(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&DirAccess::get_current_drive, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&DirAccess::get_current_drive, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_change_dir(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&DirAccess::change_dir, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&DirAccess::change_dir, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_get_current_dir(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&DirAccess::get_current_dir, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&DirAccess::get_current_dir, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_make_dir(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&DirAccess::make_dir, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&DirAccess::make_dir, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_make_dir_recursive(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&DirAccess::make_dir_recursive, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&DirAccess::make_dir_recursive, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_file_exists(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&DirAccess::file_exists, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&DirAccess::file_exists, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_dir_exists(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&DirAccess::dir_exists, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&DirAccess::dir_exists, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_get_space_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&DirAccess::get_space_left, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&DirAccess::get_space_left, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_copy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&DirAccess::copy, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&DirAccess::copy, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_rename(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&DirAccess::rename, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&DirAccess::rename, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_remove(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&DirAccess::remove, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&DirAccess::remove, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_is_link(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&DirAccess::is_link, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&DirAccess::is_link, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_read_link(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&DirAccess::read_link, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&DirAccess::read_link, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_create_link(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&DirAccess::create_link, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&DirAccess::create_link, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_set_include_navigational(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&DirAccess::set_include_navigational, DirAccess::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DirAccess::set_include_navigational, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue dir_access_class_get_include_navigational(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&DirAccess::get_include_navigational, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&DirAccess::get_include_navigational, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_set_include_hidden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&DirAccess::set_include_hidden, DirAccess::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&DirAccess::set_include_hidden, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue dir_access_class_get_include_hidden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&DirAccess::get_include_hidden, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&DirAccess::get_include_hidden, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_is_case_sensitive(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&DirAccess::is_case_sensitive, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&DirAccess::is_case_sensitive, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_open(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&DirAccess::open, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&DirAccess::open, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_get_open_error(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&DirAccess::get_open_error, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&DirAccess::get_open_error, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_get_files_at(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&DirAccess::get_files_at, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&DirAccess::get_files_at, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_get_directories_at(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&DirAccess::get_directories_at, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&DirAccess::get_directories_at, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_get_drive_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&DirAccess::get_drive_count, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&DirAccess::get_drive_count, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_get_drive_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&DirAccess::get_drive_name, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&DirAccess::get_drive_name, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_make_dir_absolute(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&DirAccess::make_dir_absolute, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&DirAccess::make_dir_absolute, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_make_dir_recursive_absolute(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&DirAccess::make_dir_recursive_absolute, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&DirAccess::make_dir_recursive_absolute, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_dir_exists_absolute(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&DirAccess::dir_exists_absolute, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&DirAccess::dir_exists_absolute, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_copy_absolute(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&DirAccess::copy_absolute, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&DirAccess::copy_absolute, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_rename_absolute(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&DirAccess::rename_absolute, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&DirAccess::rename_absolute, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_remove_absolute(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&DirAccess::remove_absolute, DirAccess::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&DirAccess::remove_absolute, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry dir_access_class_proto_funcs[] = {
 	JS_CFUNC_DEF("list_dir_begin", 0, &dir_access_class_list_dir_begin),
@@ -192,18 +201,41 @@ static const JSCFunctionListEntry dir_access_class_static_funcs[] = {
 	JS_CFUNC_DEF("remove_absolute", 1, &dir_access_class_remove_absolute),
 };
 
+void define_dir_access_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "include_navigational"),
+        JS_NewCFunction(ctx, dir_access_class_get_include_navigational, "get_include_navigational", 0),
+        JS_NewCFunction(ctx, dir_access_class_set_include_navigational, "set_include_navigational", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "include_hidden"),
+        JS_NewCFunction(ctx, dir_access_class_get_include_hidden, "get_include_hidden", 0),
+        JS_NewCFunction(ctx, dir_access_class_set_include_hidden, "set_include_hidden", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_dir_access_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&DirAccess::__class_id);
 	classes["DirAccess"] = DirAccess::__class_id;
+	class_id_list.insert(DirAccess::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), DirAccess::__class_id, &dir_access_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, DirAccess::__class_id, proto);
+	define_dir_access_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, dir_access_class_proto_funcs, _countof(dir_access_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, dir_access_class_constructor, "DirAccess", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 	JS_SetPropertyFunctionList(ctx, ctor, dir_access_class_static_funcs, _countof(dir_access_class_static_funcs));
 
 	JS_SetModuleExport(ctx, m, "DirAccess", ctor);
@@ -212,6 +244,10 @@ static int js_dir_access_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_dir_access_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_dir_access_class_init);
 	if (!m)
 		return NULL;
@@ -224,5 +260,6 @@ JSModuleDef *js_init_dir_access_module(JSContext *ctx) {
 }
 
 void register_dir_access() {
+	DirAccess::__init_js_class_id();
 	js_init_dir_access_module(ctx);
 }

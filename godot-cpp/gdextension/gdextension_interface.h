@@ -218,9 +218,9 @@ typedef void (*GDExtensionInstanceBindingFreeCallback)(void *p_token, void *p_in
 typedef GDExtensionBool (*GDExtensionInstanceBindingReferenceCallback)(void *p_token, void *p_binding, GDExtensionBool p_reference);
 
 typedef struct {
-	GDExtensionInstanceBindingCreateCallback create_callback;
-	GDExtensionInstanceBindingFreeCallback free_callback;
-	GDExtensionInstanceBindingReferenceCallback reference_callback;
+	GDExtensionInstanceBindingCreateCallback create_callback = NULL;
+	GDExtensionInstanceBindingFreeCallback free_callback = NULL;
+	GDExtensionInstanceBindingReferenceCallback reference_callback = NULL;
 } GDExtensionInstanceBindingCallbacks;
 
 /* EXTENSION CLASSES */

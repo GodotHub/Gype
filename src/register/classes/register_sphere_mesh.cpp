@@ -1,13 +1,14 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/sphere_mesh.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/primitive_mesh.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/sphere_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -34,42 +35,50 @@ static JSValue sphere_mesh_class_constructor(JSContext *ctx, JSValueConst new_ta
 	}
 
 	JS_SetOpaque(obj, sphere_mesh_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue sphere_mesh_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&SphereMesh::set_radius, SphereMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SphereMesh::set_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sphere_mesh_class_get_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SphereMesh::get_radius, SphereMesh::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SphereMesh::get_radius, ctx, this_val, argc, argv);
 };
 static JSValue sphere_mesh_class_set_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&SphereMesh::set_height, SphereMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SphereMesh::set_height, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sphere_mesh_class_get_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SphereMesh::get_height, SphereMesh::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SphereMesh::get_height, ctx, this_val, argc, argv);
 };
 static JSValue sphere_mesh_class_set_radial_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&SphereMesh::set_radial_segments, SphereMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SphereMesh::set_radial_segments, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sphere_mesh_class_get_radial_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SphereMesh::get_radial_segments, SphereMesh::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SphereMesh::get_radial_segments, ctx, this_val, argc, argv);
 };
 static JSValue sphere_mesh_class_set_rings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&SphereMesh::set_rings, SphereMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SphereMesh::set_rings, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sphere_mesh_class_get_rings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SphereMesh::get_rings, SphereMesh::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SphereMesh::get_rings, ctx, this_val, argc, argv);
 };
 static JSValue sphere_mesh_class_set_is_hemisphere(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&SphereMesh::set_is_hemisphere, SphereMesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&SphereMesh::set_is_hemisphere, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sphere_mesh_class_get_is_hemisphere(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&SphereMesh::get_is_hemisphere, SphereMesh::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&SphereMesh::get_is_hemisphere, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry sphere_mesh_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_radius", 1, &sphere_mesh_class_set_radius),
@@ -84,18 +93,65 @@ static const JSCFunctionListEntry sphere_mesh_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_is_hemisphere", 0, &sphere_mesh_class_get_is_hemisphere),
 };
 
+void define_sphere_mesh_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "radius"),
+        JS_NewCFunction(ctx, sphere_mesh_class_get_radius, "get_radius", 0),
+        JS_NewCFunction(ctx, sphere_mesh_class_set_radius, "set_radius", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "height"),
+        JS_NewCFunction(ctx, sphere_mesh_class_get_height, "get_height", 0),
+        JS_NewCFunction(ctx, sphere_mesh_class_set_height, "set_height", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "radial_segments"),
+        JS_NewCFunction(ctx, sphere_mesh_class_get_radial_segments, "get_radial_segments", 0),
+        JS_NewCFunction(ctx, sphere_mesh_class_set_radial_segments, "set_radial_segments", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "rings"),
+        JS_NewCFunction(ctx, sphere_mesh_class_get_rings, "get_rings", 0),
+        JS_NewCFunction(ctx, sphere_mesh_class_set_rings, "set_rings", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "is_hemisphere"),
+        JS_NewCFunction(ctx, sphere_mesh_class_get_is_hemisphere, "get_is_hemisphere", 0),
+        JS_NewCFunction(ctx, sphere_mesh_class_set_is_hemisphere, "set_is_hemisphere", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_sphere_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&SphereMesh::__class_id);
 	classes["SphereMesh"] = SphereMesh::__class_id;
+	class_id_list.insert(SphereMesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SphereMesh::__class_id, &sphere_mesh_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, PrimitiveMesh::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, SphereMesh::__class_id, proto);
+	define_sphere_mesh_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, sphere_mesh_class_proto_funcs, _countof(sphere_mesh_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, sphere_mesh_class_constructor, "SphereMesh", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "SphereMesh", ctor);
 
@@ -103,6 +159,10 @@ static int js_sphere_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_sphere_mesh_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/primitive_mesh';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_sphere_mesh_class_init);
 	if (!m)
 		return NULL;
@@ -115,5 +175,6 @@ JSModuleDef *js_init_sphere_mesh_module(JSContext *ctx) {
 }
 
 void register_sphere_mesh() {
+	SphereMesh::__init_js_class_id();
 	js_init_sphere_mesh_module(ctx);
 }

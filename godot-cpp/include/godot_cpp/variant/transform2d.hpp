@@ -31,6 +31,7 @@
 #ifndef GODOT_TRANSFORM2D_HPP
 #define GODOT_TRANSFORM2D_HPP
 
+#include "quickjs/quickjs.h"
 #include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/variant/rect2.hpp>
 #include <godot_cpp/variant/vector2.hpp>
@@ -50,7 +51,11 @@ struct _NO_DISCARD_ Transform2D {
 
 	// Warning #2: 2D be aware that unlike 3D code, 2D code uses a left-handed coordinate system: Y-axis points down,
 	// and angle is measure from +X to +Y in a clockwise-fashion.
+	static JSClassID __class_id;
 
+	inline static void __init_js_class_id() {
+		Transform2D::__class_id = JS_NewClassID(&Transform2D::__class_id);
+	}
 	Vector2 columns[3];
 
 	_FORCE_INLINE_ real_t tdotx(const Vector2 &v) const { return columns[0][0] * v.x + columns[1][0] * v.y; }

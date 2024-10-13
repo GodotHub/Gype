@@ -39,6 +39,11 @@ namespace godot {
 template <typename T>
 class TypedArray : public Array {
 public:
+	static JSClassID __class_id;
+
+	inline static void __init_js_class_id() {
+		TypedArray::__class_id = JS_NewClassID(&TypedArray::__class_id);
+	}
 	_FORCE_INLINE_ void operator=(const Array &p_array) {
 		ERR_FAIL_COND_MSG(!is_same_typed(p_array), "Cannot assign an array with a different element type.");
 		_ref(p_array);

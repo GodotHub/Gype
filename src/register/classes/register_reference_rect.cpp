@@ -1,13 +1,14 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/reference_rect.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/reference_rect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -34,27 +35,35 @@ static JSValue reference_rect_class_constructor(JSContext *ctx, JSValueConst new
 	}
 
 	JS_SetOpaque(obj, reference_rect_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue reference_rect_class_get_border_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ReferenceRect::get_border_color, ReferenceRect::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ReferenceRect::get_border_color, ctx, this_val, argc, argv);
 };
 static JSValue reference_rect_class_set_border_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ReferenceRect::set_border_color, ReferenceRect::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ReferenceRect::set_border_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue reference_rect_class_get_border_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ReferenceRect::get_border_width, ReferenceRect::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ReferenceRect::get_border_width, ctx, this_val, argc, argv);
 };
 static JSValue reference_rect_class_set_border_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ReferenceRect::set_border_width, ReferenceRect::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ReferenceRect::set_border_width, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue reference_rect_class_get_editor_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ReferenceRect::get_editor_only, ReferenceRect::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ReferenceRect::get_editor_only, ctx, this_val, argc, argv);
 };
 static JSValue reference_rect_class_set_editor_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ReferenceRect::set_editor_only, ReferenceRect::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ReferenceRect::set_editor_only, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry reference_rect_class_proto_funcs[] = {
@@ -66,18 +75,49 @@ static const JSCFunctionListEntry reference_rect_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_editor_only", 1, &reference_rect_class_set_editor_only),
 };
 
+void define_reference_rect_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "border_color"),
+        JS_NewCFunction(ctx, reference_rect_class_get_border_color, "get_border_color", 0),
+        JS_NewCFunction(ctx, reference_rect_class_set_border_color, "set_border_color", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "border_width"),
+        JS_NewCFunction(ctx, reference_rect_class_get_border_width, "get_border_width", 0),
+        JS_NewCFunction(ctx, reference_rect_class_set_border_width, "set_border_width", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "editor_only"),
+        JS_NewCFunction(ctx, reference_rect_class_get_editor_only, "get_editor_only", 0),
+        JS_NewCFunction(ctx, reference_rect_class_set_editor_only, "set_editor_only", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_reference_rect_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&ReferenceRect::__class_id);
 	classes["ReferenceRect"] = ReferenceRect::__class_id;
+	class_id_list.insert(ReferenceRect::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ReferenceRect::__class_id, &reference_rect_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, Control::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ReferenceRect::__class_id, proto);
+	define_reference_rect_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, reference_rect_class_proto_funcs, _countof(reference_rect_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, reference_rect_class_constructor, "ReferenceRect", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "ReferenceRect", ctor);
 
@@ -85,6 +125,10 @@ static int js_reference_rect_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_reference_rect_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/control';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_reference_rect_class_init);
 	if (!m)
 		return NULL;
@@ -97,5 +141,6 @@ JSModuleDef *js_init_reference_rect_module(JSContext *ctx) {
 }
 
 void register_reference_rect() {
+	ReferenceRect::__init_js_class_id();
 	js_init_reference_rect_module(ctx);
 }

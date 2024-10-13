@@ -1,13 +1,14 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/mutex.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -34,17 +35,25 @@ static JSValue mutex_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	}
 
 	JS_SetOpaque(obj, mutex_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue mutex_class_lock(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Mutex::lock, Mutex::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Mutex::lock, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mutex_class_try_lock(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&Mutex::try_lock, Mutex::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&Mutex::try_lock, ctx, this_val, argc, argv);
 };
 static JSValue mutex_class_unlock(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Mutex::unlock, Mutex::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Mutex::unlock, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry mutex_class_proto_funcs[] = {
@@ -53,18 +62,25 @@ static const JSCFunctionListEntry mutex_class_proto_funcs[] = {
 	JS_CFUNC_DEF("unlock", 0, &mutex_class_unlock),
 };
 
+void define_mutex_property(JSContext *ctx, JSValue obj) {
+}
+
 static int js_mutex_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&Mutex::__class_id);
 	classes["Mutex"] = Mutex::__class_id;
+	class_id_list.insert(Mutex::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Mutex::__class_id, &mutex_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Mutex::__class_id, proto);
+	define_mutex_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, mutex_class_proto_funcs, _countof(mutex_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, mutex_class_constructor, "Mutex", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "Mutex", ctor);
 
@@ -72,6 +88,10 @@ static int js_mutex_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_mutex_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_mutex_class_init);
 	if (!m)
 		return NULL;
@@ -84,5 +104,6 @@ JSModuleDef *js_init_mutex_module(JSContext *ctx) {
 }
 
 void register_mutex() {
+	Mutex::__init_js_class_id();
 	js_init_mutex_module(ctx);
 }

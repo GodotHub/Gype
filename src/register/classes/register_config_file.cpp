@@ -1,13 +1,14 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/config_file.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -34,61 +35,69 @@ static JSValue config_file_class_constructor(JSContext *ctx, JSValueConst new_ta
 	}
 
 	JS_SetOpaque(obj, config_file_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue config_file_class_set_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ConfigFile::set_value, ConfigFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ConfigFile::set_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue config_file_class_get_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ConfigFile::get_value, ConfigFile::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ConfigFile::get_value, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_has_section(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ConfigFile::has_section, ConfigFile::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ConfigFile::has_section, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_has_section_key(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ConfigFile::has_section_key, ConfigFile::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ConfigFile::has_section_key, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_get_sections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ConfigFile::get_sections, ConfigFile::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ConfigFile::get_sections, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_get_section_keys(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ConfigFile::get_section_keys, ConfigFile::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ConfigFile::get_section_keys, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_erase_section(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ConfigFile::erase_section, ConfigFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ConfigFile::erase_section, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue config_file_class_erase_section_key(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ConfigFile::erase_section_key, ConfigFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ConfigFile::erase_section_key, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue config_file_class_load(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&ConfigFile::load, ConfigFile::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&ConfigFile::load, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_parse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&ConfigFile::parse, ConfigFile::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&ConfigFile::parse, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_save(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&ConfigFile::save, ConfigFile::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&ConfigFile::save, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_encode_to_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&ConfigFile::encode_to_text, ConfigFile::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&ConfigFile::encode_to_text, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_load_encrypted(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&ConfigFile::load_encrypted, ConfigFile::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&ConfigFile::load_encrypted, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_load_encrypted_pass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&ConfigFile::load_encrypted_pass, ConfigFile::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&ConfigFile::load_encrypted_pass, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_save_encrypted(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&ConfigFile::save_encrypted, ConfigFile::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&ConfigFile::save_encrypted, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_save_encrypted_pass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&ConfigFile::save_encrypted_pass, ConfigFile::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&ConfigFile::save_encrypted_pass, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ConfigFile::clear, ConfigFile::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ConfigFile::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry config_file_class_proto_funcs[] = {
@@ -111,18 +120,25 @@ static const JSCFunctionListEntry config_file_class_proto_funcs[] = {
 	JS_CFUNC_DEF("clear", 0, &config_file_class_clear),
 };
 
+void define_config_file_property(JSContext *ctx, JSValue obj) {
+}
+
 static int js_config_file_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&ConfigFile::__class_id);
 	classes["ConfigFile"] = ConfigFile::__class_id;
+	class_id_list.insert(ConfigFile::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ConfigFile::__class_id, &config_file_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ConfigFile::__class_id, proto);
+	define_config_file_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, config_file_class_proto_funcs, _countof(config_file_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, config_file_class_constructor, "ConfigFile", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "ConfigFile", ctor);
 
@@ -130,6 +146,10 @@ static int js_config_file_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_config_file_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_config_file_class_init);
 	if (!m)
 		return NULL;
@@ -142,5 +162,6 @@ JSModuleDef *js_init_config_file_module(JSContext *ctx) {
 }
 
 void register_config_file() {
+	ConfigFile::__init_js_class_id();
 	js_init_config_file_module(ctx);
 }

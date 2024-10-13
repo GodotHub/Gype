@@ -1,5 +1,5 @@
-#ifndef __JAVASCRIPT_H__
-#define __JAVASCRIPT_H__
+#ifndef __JAVASCRIPT_TEST_H__
+#define __JAVASCRIPT_TEST_H__
 
 #include "javascript_language.h"
 #include <godot_cpp/classes/script_extension.hpp>
@@ -73,4 +73,4 @@ protected:
 };
 } // namespace godot
 
-#endif // __JAVASCRIPT_H__
+#endif // __JAVASCRIPT_TEST_H__

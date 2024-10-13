@@ -1,15 +1,19 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/object.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/os.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
+
+static JSValue os_instance;
+
+static void js_os_singleton();
 
 static void os_class_finalizer(JSRuntime *rt, JSValue val) {
 	OS *os = static_cast<OS *>(JS_GetOpaque(val, OS::__class_id));
@@ -37,239 +41,313 @@ static JSValue os_class_constructor(JSContext *ctx, JSValueConst new_target, int
 	return obj;
 }
 static JSValue os_class_get_entropy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&OS::get_entropy, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_method_ret(&OS::get_entropy, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_system_ca_certificates(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&OS::get_system_ca_certificates, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_method_ret(&OS::get_system_ca_certificates, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_connected_midi_inputs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&OS::get_connected_midi_inputs, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_method_ret(&OS::get_connected_midi_inputs, ctx, this_val, argc, argv);
 };
 static JSValue os_class_open_midi_inputs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&OS::open_midi_inputs, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+    call_builtin_method_no_ret(&OS::open_midi_inputs, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_close_midi_inputs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&OS::close_midi_inputs, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+    call_builtin_method_no_ret(&OS::close_midi_inputs, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_alert(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&OS::alert, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+    call_builtin_method_no_ret(&OS::alert, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_crash(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&OS::crash, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+    call_builtin_method_no_ret(&OS::crash, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_set_low_processor_usage_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&OS::set_low_processor_usage_mode, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+    call_builtin_method_no_ret(&OS::set_low_processor_usage_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_is_in_low_processor_usage_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::is_in_low_processor_usage_mode, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::is_in_low_processor_usage_mode, ctx, this_val, argc, argv);
 };
 static JSValue os_class_set_low_processor_usage_mode_sleep_usec(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&OS::set_low_processor_usage_mode_sleep_usec, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+    call_builtin_method_no_ret(&OS::set_low_processor_usage_mode_sleep_usec, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_get_low_processor_usage_mode_sleep_usec(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_low_processor_usage_mode_sleep_usec, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_low_processor_usage_mode_sleep_usec, ctx, this_val, argc, argv);
 };
 static JSValue os_class_set_delta_smoothing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&OS::set_delta_smoothing, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+    call_builtin_method_no_ret(&OS::set_delta_smoothing, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_is_delta_smoothing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::is_delta_smoothing_enabled, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::is_delta_smoothing_enabled, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_processor_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_processor_count, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_processor_count, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_processor_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_processor_name, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_processor_name, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_system_fonts(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_system_fonts, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_system_fonts, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_system_font_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_system_font_path, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_system_font_path, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_system_font_path_for_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_system_font_path_for_text, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_system_font_path_for_text, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_executable_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_executable_path, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_executable_path, ctx, this_val, argc, argv);
 };
 static JSValue os_class_read_string_from_stdin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&OS::read_string_from_stdin, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_method_ret(&OS::read_string_from_stdin, ctx, this_val, argc, argv);
 };
 static JSValue os_class_execute(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&OS::execute, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_method_ret(&OS::execute, ctx, this_val, argc, argv);
 };
 static JSValue os_class_execute_with_pipe(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&OS::execute_with_pipe, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_method_ret(&OS::execute_with_pipe, ctx, this_val, argc, argv);
 };
 static JSValue os_class_create_process(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&OS::create_process, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_method_ret(&OS::create_process, ctx, this_val, argc, argv);
 };
 static JSValue os_class_create_instance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&OS::create_instance, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_method_ret(&OS::create_instance, ctx, this_val, argc, argv);
 };
 static JSValue os_class_kill(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&OS::kill, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_method_ret(&OS::kill, ctx, this_val, argc, argv);
 };
 static JSValue os_class_shell_open(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&OS::shell_open, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_method_ret(&OS::shell_open, ctx, this_val, argc, argv);
 };
 static JSValue os_class_shell_show_in_file_manager(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&OS::shell_show_in_file_manager, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_method_ret(&OS::shell_show_in_file_manager, ctx, this_val, argc, argv);
 };
 static JSValue os_class_is_process_running(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::is_process_running, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::is_process_running, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_process_exit_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_process_exit_code, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_process_exit_code, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_process_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_process_id, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_process_id, ctx, this_val, argc, argv);
 };
 static JSValue os_class_has_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::has_environment, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::has_environment, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_environment, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_environment, ctx, this_val, argc, argv);
 };
 static JSValue os_class_set_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_const_method_no_ret(&OS::set_environment, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+    call_builtin_const_method_no_ret(&OS::set_environment, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_unset_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_const_method_no_ret(&OS::unset_environment, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+    call_builtin_const_method_no_ret(&OS::unset_environment, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_get_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_name, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_name, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_distribution_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_distribution_name, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_distribution_name, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_version(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_version, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_version, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_cmdline_args(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&OS::get_cmdline_args, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_method_ret(&OS::get_cmdline_args, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_cmdline_user_args(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&OS::get_cmdline_user_args, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_method_ret(&OS::get_cmdline_user_args, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_video_adapter_driver_info(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_video_adapter_driver_info, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_video_adapter_driver_info, ctx, this_val, argc, argv);
 };
 static JSValue os_class_set_restart_on_exit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&OS::set_restart_on_exit, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+    call_builtin_method_no_ret(&OS::set_restart_on_exit, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_is_restart_on_exit_set(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::is_restart_on_exit_set, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::is_restart_on_exit_set, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_restart_on_exit_arguments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_restart_on_exit_arguments, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_restart_on_exit_arguments, ctx, this_val, argc, argv);
 };
 static JSValue os_class_delay_usec(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_const_method_no_ret(&OS::delay_usec, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+    call_builtin_const_method_no_ret(&OS::delay_usec, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_delay_msec(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_const_method_no_ret(&OS::delay_msec, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+    call_builtin_const_method_no_ret(&OS::delay_msec, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_get_locale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_locale, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_locale, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_locale_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_locale_language, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_locale_language, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_model_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_model_name, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_model_name, ctx, this_val, argc, argv);
 };
 static JSValue os_class_is_userfs_persistent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::is_userfs_persistent, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::is_userfs_persistent, ctx, this_val, argc, argv);
 };
 static JSValue os_class_is_stdout_verbose(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::is_stdout_verbose, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::is_stdout_verbose, ctx, this_val, argc, argv);
 };
 static JSValue os_class_is_debug_build(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::is_debug_build, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::is_debug_build, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_static_memory_usage(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_static_memory_usage, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_static_memory_usage, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_static_memory_peak_usage(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_static_memory_peak_usage, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_static_memory_peak_usage, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_memory_info(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_memory_info, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_memory_info, ctx, this_val, argc, argv);
 };
 static JSValue os_class_move_to_trash(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::move_to_trash, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::move_to_trash, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_user_data_dir(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_user_data_dir, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_user_data_dir, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_system_dir(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_system_dir, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_system_dir, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_config_dir(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_config_dir, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_config_dir, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_data_dir(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_data_dir, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_data_dir, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_cache_dir(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_cache_dir, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_cache_dir, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_unique_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_unique_id, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_unique_id, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_keycode_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_keycode_string, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_keycode_string, ctx, this_val, argc, argv);
 };
 static JSValue os_class_is_keycode_unicode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::is_keycode_unicode, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::is_keycode_unicode, ctx, this_val, argc, argv);
 };
 static JSValue os_class_find_keycode_from_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::find_keycode_from_string, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::find_keycode_from_string, ctx, this_val, argc, argv);
 };
 static JSValue os_class_set_use_file_access_save_and_swap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&OS::set_use_file_access_save_and_swap, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+    call_builtin_method_no_ret(&OS::set_use_file_access_save_and_swap, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue os_class_set_thread_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&OS::set_thread_name, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_method_ret(&OS::set_thread_name, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_thread_caller_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_thread_caller_id, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_thread_caller_id, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_main_thread_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_main_thread_id, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_main_thread_id, ctx, this_val, argc, argv);
 };
 static JSValue os_class_has_feature(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::has_feature, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::has_feature, ctx, this_val, argc, argv);
 };
 static JSValue os_class_is_sandboxed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::is_sandboxed, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::is_sandboxed, ctx, this_val, argc, argv);
 };
 static JSValue os_class_request_permission(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&OS::request_permission, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_method_ret(&OS::request_permission, ctx, this_val, argc, argv);
 };
 static JSValue os_class_request_permissions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&OS::request_permissions, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_method_ret(&OS::request_permissions, ctx, this_val, argc, argv);
 };
 static JSValue os_class_get_granted_permissions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&OS::get_granted_permissions, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+	return call_builtin_const_method_ret(&OS::get_granted_permissions, ctx, this_val, argc, argv);
 };
 static JSValue os_class_revoke_granted_permissions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&OS::revoke_granted_permissions, OS::__class_id, ctx, this_val, argv);
+    js_os_singleton();
+    call_builtin_method_no_ret(&OS::revoke_granted_permissions, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry os_class_proto_funcs[] = {
@@ -349,7 +427,7 @@ static const JSCFunctionListEntry os_class_proto_funcs[] = {
 	JS_CFUNC_DEF("revoke_granted_permissions", 0, &os_class_revoke_granted_permissions),
 };
 
-static int js_os_class_init(JSContext *ctx, JSModuleDef *m) {
+static int js_os_class_init(JSContext *ctx) {
 	JS_NewClassID(&OS::__class_id);
 	classes["OS"] = OS::__class_id;
 	JS_NewClass(JS_GetRuntime(ctx), OS::__class_id, &os_class_def);
@@ -359,26 +437,18 @@ static int js_os_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, OS::__class_id, proto);
 	JS_SetPropertyFunctionList(ctx, proto, os_class_proto_funcs, _countof(os_class_proto_funcs));
-
-	JSValue ctor = JS_NewCFunction2(ctx, os_class_constructor, "OS", 0, JS_CFUNC_constructor, 0);
-
-	JS_SetModuleExport(ctx, m, "OS", ctor);
-
 	return 0;
 }
 
-JSModuleDef *_js_init_os_module(JSContext *ctx, const char *module_name) {
-	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_os_class_init);
-	if (!m)
-		return NULL;
-	JS_AddModuleExport(ctx, m, "OS");
-	return m;
+static void js_os_singleton() {
+	if (JS_IsUninitialized(os_instance)) {
+		JSValue global = JS_GetGlobalObject(ctx);
+		os_instance = os_class_constructor(ctx, global, 0, NULL);
+		JS_SetPropertyStr(ctx, global, "OS", os_instance);
+	}
 }
 
-JSModuleDef *js_init_os_module(JSContext *ctx) {
-	return _js_init_os_module(ctx, "godot/classes/os");
-}
 
 void register_os() {
-	js_init_os_module(ctx);
+	js_os_class_init(ctx);
 }

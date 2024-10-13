@@ -1,13 +1,14 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/array_occluder3d.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/occluder3d.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/array_occluder3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -34,18 +35,26 @@ static JSValue array_occluder3d_class_constructor(JSContext *ctx, JSValueConst n
 	}
 
 	JS_SetOpaque(obj, array_occluder3d_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue array_occluder3d_class_set_arrays(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ArrayOccluder3D::set_arrays, ArrayOccluder3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ArrayOccluder3D::set_arrays, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue array_occluder3d_class_set_vertices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ArrayOccluder3D::set_vertices, ArrayOccluder3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ArrayOccluder3D::set_vertices, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue array_occluder3d_class_set_indices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ArrayOccluder3D::set_indices, ArrayOccluder3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&ArrayOccluder3D::set_indices, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry array_occluder3d_class_proto_funcs[] = {
@@ -54,18 +63,41 @@ static const JSCFunctionListEntry array_occluder3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_indices", 1, &array_occluder3d_class_set_indices),
 };
 
+void define_array_occluder3d_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "vertices"),
+        JS_UNDEFINED,
+        JS_NewCFunction(ctx, array_occluder3d_class_set_vertices, "set_vertices", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "indices"),
+        JS_UNDEFINED,
+        JS_NewCFunction(ctx, array_occluder3d_class_set_indices, "set_indices", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_array_occluder3d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&ArrayOccluder3D::__class_id);
 	classes["ArrayOccluder3D"] = ArrayOccluder3D::__class_id;
+	class_id_list.insert(ArrayOccluder3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ArrayOccluder3D::__class_id, &array_occluder3d_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, Occluder3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ArrayOccluder3D::__class_id, proto);
+	define_array_occluder3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, array_occluder3d_class_proto_funcs, _countof(array_occluder3d_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, array_occluder3d_class_constructor, "ArrayOccluder3D", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "ArrayOccluder3D", ctor);
 
@@ -73,6 +105,10 @@ static int js_array_occluder3d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_array_occluder3d_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/occluder3d';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_array_occluder3d_class_init);
 	if (!m)
 		return NULL;
@@ -85,5 +121,6 @@ JSModuleDef *js_init_array_occluder3d_module(JSContext *ctx) {
 }
 
 void register_array_occluder3d() {
+	ArrayOccluder3D::__init_js_class_id();
 	js_init_array_occluder3d_module(ctx);
 }

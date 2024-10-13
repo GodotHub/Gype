@@ -1,15 +1,16 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/editor_scene_post_import.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/editor_scene_post_import.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -36,27 +37,42 @@ static JSValue editor_scene_post_import_class_constructor(JSContext *ctx, JSValu
 	}
 
 	JS_SetOpaque(obj, editor_scene_post_import_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue editor_scene_post_import_class_get_source_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&EditorScenePostImport::get_source_file, EditorScenePostImport::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&EditorScenePostImport::get_source_file, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry editor_scene_post_import_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_source_file", 0, &editor_scene_post_import_class_get_source_file),
 };
 
+void define_editor_scene_post_import_property(JSContext *ctx, JSValue obj) {
+}
+
 static int js_editor_scene_post_import_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&EditorScenePostImport::__class_id);
 	classes["EditorScenePostImport"] = EditorScenePostImport::__class_id;
+	class_id_list.insert(EditorScenePostImport::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorScenePostImport::__class_id, &editor_scene_post_import_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, EditorScenePostImport::__class_id, proto);
+	define_editor_scene_post_import_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_scene_post_import_class_proto_funcs, _countof(editor_scene_post_import_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, editor_scene_post_import_class_constructor, "EditorScenePostImport", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "EditorScenePostImport", ctor);
 
@@ -64,6 +80,10 @@ static int js_editor_scene_post_import_class_init(JSContext *ctx, JSModuleDef *m
 }
 
 JSModuleDef *_js_init_editor_scene_post_import_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_editor_scene_post_import_class_init);
 	if (!m)
 		return NULL;
@@ -76,5 +96,6 @@ JSModuleDef *js_init_editor_scene_post_import_module(JSContext *ctx) {
 }
 
 void register_editor_scene_post_import() {
+	EditorScenePostImport::__init_js_class_id();
 	js_init_editor_scene_post_import_module(ctx);
 }

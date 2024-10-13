@@ -1,13 +1,14 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/editor_import_plugin.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/resource_importer.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/editor_import_plugin.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -34,27 +35,42 @@ static JSValue editor_import_plugin_class_constructor(JSContext *ctx, JSValueCon
 	}
 
 	JS_SetOpaque(obj, editor_import_plugin_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue editor_import_plugin_class_append_import_external_resource(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&EditorImportPlugin::append_import_external_resource, EditorImportPlugin::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&EditorImportPlugin::append_import_external_resource, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry editor_import_plugin_class_proto_funcs[] = {
 	JS_CFUNC_DEF("append_import_external_resource", 4, &editor_import_plugin_class_append_import_external_resource),
 };
 
+void define_editor_import_plugin_property(JSContext *ctx, JSValue obj) {
+}
+
 static int js_editor_import_plugin_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&EditorImportPlugin::__class_id);
 	classes["EditorImportPlugin"] = EditorImportPlugin::__class_id;
+	class_id_list.insert(EditorImportPlugin::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorImportPlugin::__class_id, &editor_import_plugin_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, ResourceImporter::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, EditorImportPlugin::__class_id, proto);
+	define_editor_import_plugin_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_import_plugin_class_proto_funcs, _countof(editor_import_plugin_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, editor_import_plugin_class_constructor, "EditorImportPlugin", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "EditorImportPlugin", ctor);
 
@@ -62,6 +78,10 @@ static int js_editor_import_plugin_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_editor_import_plugin_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/resource_importer';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_editor_import_plugin_class_init);
 	if (!m)
 		return NULL;
@@ -74,5 +94,6 @@ JSModuleDef *js_init_editor_import_plugin_module(JSContext *ctx) {
 }
 
 void register_editor_import_plugin() {
+	EditorImportPlugin::__init_js_class_id();
 	js_init_editor_import_plugin_module(ctx);
 }

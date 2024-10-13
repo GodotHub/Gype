@@ -1,13 +1,14 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rd_texture_format.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -34,77 +35,85 @@ static JSValue rd_texture_format_class_constructor(JSContext *ctx, JSValueConst 
 	}
 
 	JS_SetOpaque(obj, rd_texture_format_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue rd_texture_format_class_set_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&RDTextureFormat::set_format, RDTextureFormat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDTextureFormat::set_format, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_texture_format_class_get_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&RDTextureFormat::get_format, RDTextureFormat::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&RDTextureFormat::get_format, ctx, this_val, argc, argv);
 };
 static JSValue rd_texture_format_class_set_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&RDTextureFormat::set_width, RDTextureFormat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDTextureFormat::set_width, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_texture_format_class_get_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&RDTextureFormat::get_width, RDTextureFormat::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&RDTextureFormat::get_width, ctx, this_val, argc, argv);
 };
 static JSValue rd_texture_format_class_set_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&RDTextureFormat::set_height, RDTextureFormat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDTextureFormat::set_height, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_texture_format_class_get_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&RDTextureFormat::get_height, RDTextureFormat::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&RDTextureFormat::get_height, ctx, this_val, argc, argv);
 };
 static JSValue rd_texture_format_class_set_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&RDTextureFormat::set_depth, RDTextureFormat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDTextureFormat::set_depth, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_texture_format_class_get_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&RDTextureFormat::get_depth, RDTextureFormat::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&RDTextureFormat::get_depth, ctx, this_val, argc, argv);
 };
 static JSValue rd_texture_format_class_set_array_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&RDTextureFormat::set_array_layers, RDTextureFormat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDTextureFormat::set_array_layers, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_texture_format_class_get_array_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&RDTextureFormat::get_array_layers, RDTextureFormat::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&RDTextureFormat::get_array_layers, ctx, this_val, argc, argv);
 };
 static JSValue rd_texture_format_class_set_mipmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&RDTextureFormat::set_mipmaps, RDTextureFormat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDTextureFormat::set_mipmaps, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_texture_format_class_get_mipmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&RDTextureFormat::get_mipmaps, RDTextureFormat::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&RDTextureFormat::get_mipmaps, ctx, this_val, argc, argv);
 };
 static JSValue rd_texture_format_class_set_texture_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&RDTextureFormat::set_texture_type, RDTextureFormat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDTextureFormat::set_texture_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_texture_format_class_get_texture_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&RDTextureFormat::get_texture_type, RDTextureFormat::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&RDTextureFormat::get_texture_type, ctx, this_val, argc, argv);
 };
 static JSValue rd_texture_format_class_set_samples(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&RDTextureFormat::set_samples, RDTextureFormat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDTextureFormat::set_samples, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_texture_format_class_get_samples(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&RDTextureFormat::get_samples, RDTextureFormat::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&RDTextureFormat::get_samples, ctx, this_val, argc, argv);
 };
 static JSValue rd_texture_format_class_set_usage_bits(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&RDTextureFormat::set_usage_bits, RDTextureFormat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDTextureFormat::set_usage_bits, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_texture_format_class_get_usage_bits(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&RDTextureFormat::get_usage_bits, RDTextureFormat::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&RDTextureFormat::get_usage_bits, ctx, this_val, argc, argv);
 };
 static JSValue rd_texture_format_class_add_shareable_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&RDTextureFormat::add_shareable_format, RDTextureFormat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDTextureFormat::add_shareable_format, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_texture_format_class_remove_shareable_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&RDTextureFormat::remove_shareable_format, RDTextureFormat::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&RDTextureFormat::remove_shareable_format, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry rd_texture_format_class_proto_funcs[] = {
@@ -130,18 +139,97 @@ static const JSCFunctionListEntry rd_texture_format_class_proto_funcs[] = {
 	JS_CFUNC_DEF("remove_shareable_format", 1, &rd_texture_format_class_remove_shareable_format),
 };
 
+void define_rd_texture_format_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "format"),
+        JS_NewCFunction(ctx, rd_texture_format_class_get_format, "get_format", 0),
+        JS_NewCFunction(ctx, rd_texture_format_class_set_format, "set_format", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "width"),
+        JS_NewCFunction(ctx, rd_texture_format_class_get_width, "get_width", 0),
+        JS_NewCFunction(ctx, rd_texture_format_class_set_width, "set_width", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "height"),
+        JS_NewCFunction(ctx, rd_texture_format_class_get_height, "get_height", 0),
+        JS_NewCFunction(ctx, rd_texture_format_class_set_height, "set_height", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "depth"),
+        JS_NewCFunction(ctx, rd_texture_format_class_get_depth, "get_depth", 0),
+        JS_NewCFunction(ctx, rd_texture_format_class_set_depth, "set_depth", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "array_layers"),
+        JS_NewCFunction(ctx, rd_texture_format_class_get_array_layers, "get_array_layers", 0),
+        JS_NewCFunction(ctx, rd_texture_format_class_set_array_layers, "set_array_layers", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "mipmaps"),
+        JS_NewCFunction(ctx, rd_texture_format_class_get_mipmaps, "get_mipmaps", 0),
+        JS_NewCFunction(ctx, rd_texture_format_class_set_mipmaps, "set_mipmaps", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "texture_type"),
+        JS_NewCFunction(ctx, rd_texture_format_class_get_texture_type, "get_texture_type", 0),
+        JS_NewCFunction(ctx, rd_texture_format_class_set_texture_type, "set_texture_type", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "samples"),
+        JS_NewCFunction(ctx, rd_texture_format_class_get_samples, "get_samples", 0),
+        JS_NewCFunction(ctx, rd_texture_format_class_set_samples, "set_samples", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "usage_bits"),
+        JS_NewCFunction(ctx, rd_texture_format_class_get_usage_bits, "get_usage_bits", 0),
+        JS_NewCFunction(ctx, rd_texture_format_class_set_usage_bits, "set_usage_bits", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_rd_texture_format_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&RDTextureFormat::__class_id);
 	classes["RDTextureFormat"] = RDTextureFormat::__class_id;
+	class_id_list.insert(RDTextureFormat::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RDTextureFormat::__class_id, &rd_texture_format_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, RDTextureFormat::__class_id, proto);
+	define_rd_texture_format_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, rd_texture_format_class_proto_funcs, _countof(rd_texture_format_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, rd_texture_format_class_constructor, "RDTextureFormat", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "RDTextureFormat", ctor);
 
@@ -149,6 +237,10 @@ static int js_rd_texture_format_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_rd_texture_format_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_rd_texture_format_class_init);
 	if (!m)
 		return NULL;
@@ -161,5 +253,6 @@ JSModuleDef *js_init_rd_texture_format_module(JSContext *ctx) {
 }
 
 void register_rd_texture_format() {
+	RDTextureFormat::__init_js_class_id();
 	js_init_rd_texture_format_module(ctx);
 }

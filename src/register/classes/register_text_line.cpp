@@ -1,14 +1,15 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/text_line.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/text_line.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -35,129 +36,137 @@ static JSValue text_line_class_constructor(JSContext *ctx, JSValueConst new_targ
 	}
 
 	JS_SetOpaque(obj, text_line_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue text_line_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&TextLine::clear, TextLine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextLine::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_line_class_set_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&TextLine::set_direction, TextLine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextLine::set_direction, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_line_class_get_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&TextLine::get_direction, TextLine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&TextLine::get_direction, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_set_orientation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&TextLine::set_orientation, TextLine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextLine::set_orientation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_line_class_get_orientation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&TextLine::get_orientation, TextLine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&TextLine::get_orientation, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_set_preserve_invalid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&TextLine::set_preserve_invalid, TextLine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextLine::set_preserve_invalid, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_line_class_get_preserve_invalid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&TextLine::get_preserve_invalid, TextLine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&TextLine::get_preserve_invalid, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_set_preserve_control(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&TextLine::set_preserve_control, TextLine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextLine::set_preserve_control, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_line_class_get_preserve_control(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&TextLine::get_preserve_control, TextLine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&TextLine::get_preserve_control, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_set_bidi_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&TextLine::set_bidi_override, TextLine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextLine::set_bidi_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_line_class_add_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&TextLine::add_string, TextLine::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&TextLine::add_string, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_add_object(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&TextLine::add_object, TextLine::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&TextLine::add_object, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_resize_object(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&TextLine::resize_object, TextLine::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&TextLine::resize_object, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_set_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&TextLine::set_width, TextLine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextLine::set_width, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_line_class_get_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&TextLine::get_width, TextLine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&TextLine::get_width, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_set_horizontal_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&TextLine::set_horizontal_alignment, TextLine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextLine::set_horizontal_alignment, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_line_class_get_horizontal_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&TextLine::get_horizontal_alignment, TextLine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&TextLine::get_horizontal_alignment, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_tab_align(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&TextLine::tab_align, TextLine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextLine::tab_align, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_line_class_set_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&TextLine::set_flags, TextLine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextLine::set_flags, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_line_class_get_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&TextLine::get_flags, TextLine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&TextLine::get_flags, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_set_text_overrun_behavior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&TextLine::set_text_overrun_behavior, TextLine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextLine::set_text_overrun_behavior, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_line_class_get_text_overrun_behavior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&TextLine::get_text_overrun_behavior, TextLine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&TextLine::get_text_overrun_behavior, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_set_ellipsis_char(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&TextLine::set_ellipsis_char, TextLine::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TextLine::set_ellipsis_char, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_line_class_get_ellipsis_char(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&TextLine::get_ellipsis_char, TextLine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&TextLine::get_ellipsis_char, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_get_objects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&TextLine::get_objects, TextLine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&TextLine::get_objects, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_get_object_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&TextLine::get_object_rect, TextLine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&TextLine::get_object_rect, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&TextLine::get_size, TextLine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&TextLine::get_size, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_get_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&TextLine::get_rid, TextLine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&TextLine::get_rid, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_get_line_ascent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&TextLine::get_line_ascent, TextLine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&TextLine::get_line_ascent, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_get_line_descent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&TextLine::get_line_descent, TextLine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&TextLine::get_line_descent, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_get_line_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&TextLine::get_line_width, TextLine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&TextLine::get_line_width, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_get_line_underline_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&TextLine::get_line_underline_position, TextLine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&TextLine::get_line_underline_position, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_get_line_underline_thickness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&TextLine::get_line_underline_thickness, TextLine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&TextLine::get_line_underline_thickness, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_draw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_const_method_no_ret(&TextLine::draw, TextLine::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&TextLine::draw, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_line_class_draw_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_const_method_no_ret(&TextLine::draw_outline, TextLine::__class_id, ctx, this_val, argv);
+    call_builtin_const_method_no_ret(&TextLine::draw_outline, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_line_class_hit_test(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&TextLine::hit_test, TextLine::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&TextLine::hit_test, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry text_line_class_proto_funcs[] = {
 	JS_CFUNC_DEF("clear", 0, &text_line_class_clear),
@@ -198,18 +207,97 @@ static const JSCFunctionListEntry text_line_class_proto_funcs[] = {
 	JS_CFUNC_DEF("hit_test", 1, &text_line_class_hit_test),
 };
 
+void define_text_line_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "direction"),
+        JS_NewCFunction(ctx, text_line_class_get_direction, "get_direction", 0),
+        JS_NewCFunction(ctx, text_line_class_set_direction, "set_direction", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "orientation"),
+        JS_NewCFunction(ctx, text_line_class_get_orientation, "get_orientation", 0),
+        JS_NewCFunction(ctx, text_line_class_set_orientation, "set_orientation", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "preserve_invalid"),
+        JS_NewCFunction(ctx, text_line_class_get_preserve_invalid, "get_preserve_invalid", 0),
+        JS_NewCFunction(ctx, text_line_class_set_preserve_invalid, "set_preserve_invalid", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "preserve_control"),
+        JS_NewCFunction(ctx, text_line_class_get_preserve_control, "get_preserve_control", 0),
+        JS_NewCFunction(ctx, text_line_class_set_preserve_control, "set_preserve_control", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "width"),
+        JS_NewCFunction(ctx, text_line_class_get_width, "get_width", 0),
+        JS_NewCFunction(ctx, text_line_class_set_width, "set_width", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "alignment"),
+        JS_NewCFunction(ctx, text_line_class_get_horizontal_alignment, "get_horizontal_alignment", 0),
+        JS_NewCFunction(ctx, text_line_class_set_horizontal_alignment, "set_horizontal_alignment", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "flags"),
+        JS_NewCFunction(ctx, text_line_class_get_flags, "get_flags", 0),
+        JS_NewCFunction(ctx, text_line_class_set_flags, "set_flags", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "text_overrun_behavior"),
+        JS_NewCFunction(ctx, text_line_class_get_text_overrun_behavior, "get_text_overrun_behavior", 0),
+        JS_NewCFunction(ctx, text_line_class_set_text_overrun_behavior, "set_text_overrun_behavior", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "ellipsis_char"),
+        JS_NewCFunction(ctx, text_line_class_get_ellipsis_char, "get_ellipsis_char", 0),
+        JS_NewCFunction(ctx, text_line_class_set_ellipsis_char, "set_ellipsis_char", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_text_line_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&TextLine::__class_id);
 	classes["TextLine"] = TextLine::__class_id;
+	class_id_list.insert(TextLine::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TextLine::__class_id, &text_line_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, TextLine::__class_id, proto);
+	define_text_line_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, text_line_class_proto_funcs, _countof(text_line_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, text_line_class_constructor, "TextLine", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "TextLine", ctor);
 
@@ -217,6 +305,10 @@ static int js_text_line_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_text_line_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_text_line_class_init);
 	if (!m)
 		return NULL;
@@ -229,5 +321,6 @@ JSModuleDef *js_init_text_line_module(JSContext *ctx) {
 }
 
 void register_text_line() {
+	TextLine::__init_js_class_id();
 	js_init_text_line_module(ctx);
 }
