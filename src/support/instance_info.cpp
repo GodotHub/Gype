@@ -33,6 +33,15 @@ GDExtensionBool get_func(GDExtensionScriptInstanceDataPtr p_instance, GDExtensio
 // 	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_instance);
 // 	return instance->property_get_revert(p_name, r_ret);
 // }
+GDExtensionBool has_method_func(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name) {
+	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_instance);
+	return instance->has_method(p_name);
+}
+
+GDExtensionInt get_method_argument_count_func(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionBool *r_is_valid) {
+	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_instance);
+	return instance->get_method_argument_count(p_name, r_is_valid);
+}
 
 void call_func(GDExtensionScriptInstanceDataPtr p_self, GDExtensionConstStringNamePtr p_method, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count, GDExtensionVariantPtr r_return, GDExtensionCallError *r_error) {
 	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_self);
@@ -42,6 +51,21 @@ void call_func(GDExtensionScriptInstanceDataPtr p_self, GDExtensionConstStringNa
 void notification_func(GDExtensionScriptInstanceDataPtr p_instance, int32_t p_what, GDExtensionBool p_reversed) {
 	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_instance);
 	instance->notification(p_what, p_reversed);
+}
+
+void to_string_func(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionBool *r_is_valid, GDExtensionStringPtr r_out) {
+	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_instance);
+	instance->to_string(r_is_valid, r_out);
+}
+
+void refcount_incremented_func(GDExtensionScriptInstanceDataPtr p_instance) {
+	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_instance);
+	instance->refcount_incremented();
+}
+
+GDExtensionBool refcount_decremented_func(GDExtensionScriptInstanceDataPtr p_instance) {
+	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_instance);
+	return instance->refcount_decremented();
 }
 
 GDExtensionObjectPtr get_owner_func(GDExtensionScriptInstanceDataPtr p_instance) {

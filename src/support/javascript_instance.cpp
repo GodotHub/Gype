@@ -12,6 +12,7 @@
 
 using namespace godot;
 
+static void notification_bind(JSValue instance, int32_t p_what, GDExtensionBool p_reversed);
 static JSPropertyDescriptor *get_property(JSContext *ctx, JSValue instance, const char *key);
 
 const char *JavaScriptInstance::symbol_mask = "_GodotClass";
@@ -135,6 +136,25 @@ GDExtensionBool JavaScriptInstance::get(GDExtensionConstStringNamePtr p_name, GD
 // return true;
 // }
 
+GDExtensionBool JavaScriptInstance::has_method(GDExtensionConstStringNamePtr p_name) {
+	JSValue js_instance = binding->js_instance;
+	const char *name = to_chars(*reinterpret_cast<const StringName *>(p_name));
+	JSValue js_method = JS_GetPropertyStr(ctx, js_instance, name);
+	return JS_IsFunction(ctx, js_method);
+}
+
+GDExtensionInt JavaScriptInstance::get_method_argument_count(GDExtensionConstStringNamePtr p_name, GDExtensionBool *r_is_valid) {
+	JSValue js_instance = binding->js_instance;
+	const char *name = to_chars(*reinterpret_cast<const StringName *>(p_name));
+	JSValue js_method = JS_GetPropertyStr(ctx, js_instance, name);
+	JSValue js_len = JS_GetPropertyStr(ctx, js_method, "length");
+	int64_t len;
+	if (JS_ToInt64(ctx, &len, js_len))
+		*r_is_valid = false;
+	*r_is_valid = true;
+	return len;
+}
+
 void JavaScriptInstance::call(GDExtensionConstStringNamePtr p_method, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count, GDExtensionVariantPtr r_return, GDExtensionCallError *r_error) {
 	std::string method = to_chars(*reinterpret_cast<const StringName *>(p_method));
 	JSValue js_instance = binding->js_instance;
@@ -157,20 +177,40 @@ void JavaScriptInstance::call(GDExtensionConstStringNamePtr p_method, const GDEx
 	internal::gdextension_interface_variant_new_copy(r_return, ret._native_ptr());
 }
 
-void godot::JavaScriptInstance::notification(int32_t p_what, GDExtensionBool p_reversed) {
+void JavaScriptInstance::notification(int32_t p_what, GDExtensionBool p_reversed) {
 	JSValue js_instance = binding->js_instance;
-	JSValue js_method = JS_GetPropertyStr(ctx, js_instance, "_notification");
+	notification_bind(js_instance, p_what, p_reversed);
 }
 
-GDExtensionObjectPtr godot::JavaScriptInstance::get_owner_func() {
+void JavaScriptInstance::to_string(GDExtensionBool *r_is_valid, GDExtensionStringPtr r_out) {
+	static JSAtom to_string_atom = JS_NewAtom(ctx, "toString");
+	JSValue js_instance = binding->js_instance;
+	JSValue ret = JS_Invoke(ctx, js_instance, to_string_atom, 0, NULL);
+	const char *cstr = JS_ToCString(ctx, ret);
+	internal::gdextension_interface_variant_new_copy(r_out, String(cstr)._native_ptr());
+	*r_is_valid = true;
+}
+
+void JavaScriptInstance::refcount_incremented() {
+	JSValue js_instance = binding->js_instance;
+	JS_DupValue(ctx, js_instance);
+}
+
+GDExtensionBool JavaScriptInstance::refcount_decremented() {
+	JSValue js_instance = binding->js_instance;
+	JS_FreeValue(ctx, js_instance);
+	return true;
+}
+
+GDExtensionObjectPtr JavaScriptInstance::get_owner() {
 	return p_godot_object->_owner;
 }
 
-GDExtensionObjectPtr godot::JavaScriptInstance::get_script() {
+GDExtensionObjectPtr JavaScriptInstance::get_script() {
 	return script;
 }
 
-GDExtensionScriptLanguagePtr godot::JavaScriptInstance::get_language() {
+GDExtensionScriptLanguagePtr JavaScriptInstance::get_language() {
 	return JavaScriptLanguage::get_singleton();
 }
 
@@ -191,5 +231,14 @@ static JSPropertyDescriptor *get_property(JSContext *ctx, JSValue instance, cons
 }
 
 static void notification_bind(JSValue instance, int32_t p_what, GDExtensionBool p_reversed) {
+	if (JS_IsNull(instance))
+		return;
+	JSValue what = JS_NewInt32(ctx, p_what);
+	JSValue js_method = JS_GetPropertyStr(ctx, instance, "_notification");
+	if (p_reversed)
+		JS_Call(ctx, js_method, instance, 1, &what);
 	JSValue super = JS_GetPrototype(ctx, instance);
+	notification_bind(super, p_what, p_reversed);
+	if (!p_reversed)
+		JS_Call(ctx, js_method, instance, 1, &what);
 }

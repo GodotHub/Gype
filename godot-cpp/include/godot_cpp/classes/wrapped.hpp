@@ -493,24 +493,7 @@ public:                                                                         
 		Memory::free_static(reinterpret_cast<m_class *>(p_binding));                                                                                                                   \
 	}                                                                                                                                                                                  \
 	static GDExtensionBool _gde_binding_reference_callback(void *p_token, void *p_instance, GDExtensionBool p_reference) {                                                             \
-		m_class *binding = reinterpret_cast<m_class *>(p_instance);                                                                                                                    \
-		if (!p_reference || binding->ctx == nullptr)                                                                                                                                   \
-			return true;                                                                                                                                                               \
-		JSValue get_reference_count_func = JS_GetPropertyStr(binding->ctx, binding->js_instance, "get_reference_count");                                                               \
-		JSValue ret = JS_Call(binding->ctx, get_reference_count_func, binding->js_instance, 0, NULL);                                                                                  \
-		int32_t count;                                                                                                                                                                 \
-		ERR_FAIL_COND_V(JS_ToInt32(binding->ctx, &count, ret), true);                                                                                                                  \
-		if (count == 0) {                                                                                                                                                              \
-			binding->~m_class();                                                                                                                                                       \
-			return false;                                                                                                                                                              \
-		}                                                                                                                                                                              \
-		if (p_reference) {                                                                                                                                                             \
-			JS_DupValue(binding->ctx, binding->js_instance);                                                                                                                           \
-			return true;                                                                                                                                                               \
-		} else {                                                                                                                                                                       \
-			JS_FreeValue(binding->ctx, binding->js_instance);                                                                                                                          \
-			return true;                                                                                                                                                               \
-		}                                                                                                                                                                              \
+		return true;                                                                                                                                                                   \
 	}                                                                                                                                                                                  \
 	static constexpr GDExtensionInstanceBindingCallbacks _gde_binding_callbacks = {                                                                                                    \
 		_gde_binding_create_callback,                                                                                                                                                  \

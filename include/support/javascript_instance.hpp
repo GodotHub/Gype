@@ -34,7 +34,12 @@ public:
 	// GDExtensionBool property_get_revert(GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret);
 	void call(GDExtensionConstStringNamePtr p_method, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count, GDExtensionVariantPtr r_return, GDExtensionCallError *r_error);
 	void notification(int32_t p_what, GDExtensionBool p_reversed);
-	GDExtensionObjectPtr get_owner_func();
+	void to_string(GDExtensionBool *r_is_valid, GDExtensionStringPtr r_out);
+	void refcount_incremented();
+	GDExtensionBool refcount_decremented();
+	GDExtensionBool has_method(GDExtensionConstStringNamePtr p_name);
+	GDExtensionInt get_method_argument_count(GDExtensionConstStringNamePtr p_name, GDExtensionBool *r_is_valid);
+	GDExtensionObjectPtr get_owner();
 	GDExtensionObjectPtr get_script();
 	GDExtensionScriptLanguagePtr get_language();
 
