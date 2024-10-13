@@ -1,17 +1,21 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/resource.hpp>
+#include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/resource_loader.hpp>
 #include <godot_cpp/classes/resource_format_loader.hpp>
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/resource_loader.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
+
+static JSValue resource_loader_instance;
+
+static void js_resource_loader_singleton();
 
 static void resource_loader_class_finalizer(JSRuntime *rt, JSValue val) {
 	ResourceLoader *resource_loader = static_cast<ResourceLoader *>(JS_GetOpaque(val, ResourceLoader::__class_id));
@@ -39,43 +43,55 @@ static JSValue resource_loader_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue resource_loader_class_load_threaded_request(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&ResourceLoader::load_threaded_request, ResourceLoader::__class_id, ctx, this_val, argv);
+    js_resource_loader_singleton();
+	return call_builtin_method_ret(&ResourceLoader::load_threaded_request, ctx, this_val, argc, argv);
 };
 static JSValue resource_loader_class_load_threaded_get_status(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&ResourceLoader::load_threaded_get_status, ResourceLoader::__class_id, ctx, this_val, argv);
+    js_resource_loader_singleton();
+	return call_builtin_method_ret(&ResourceLoader::load_threaded_get_status, ctx, this_val, argc, argv);
 };
 static JSValue resource_loader_class_load_threaded_get(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&ResourceLoader::load_threaded_get, ResourceLoader::__class_id, ctx, this_val, argv);
+    js_resource_loader_singleton();
+	return call_builtin_method_ret(&ResourceLoader::load_threaded_get, ctx, this_val, argc, argv);
 };
 static JSValue resource_loader_class_load(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&ResourceLoader::load, ResourceLoader::__class_id, ctx, this_val, argv);
+    js_resource_loader_singleton();
+	return call_builtin_method_ret(&ResourceLoader::load, ctx, this_val, argc, argv);
 };
 static JSValue resource_loader_class_get_recognized_extensions_for_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&ResourceLoader::get_recognized_extensions_for_type, ResourceLoader::__class_id, ctx, this_val, argv);
+    js_resource_loader_singleton();
+	return call_builtin_method_ret(&ResourceLoader::get_recognized_extensions_for_type, ctx, this_val, argc, argv);
 };
 static JSValue resource_loader_class_add_resource_format_loader(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ResourceLoader::add_resource_format_loader, ResourceLoader::__class_id, ctx, this_val, argv);
+    js_resource_loader_singleton();
+    call_builtin_method_no_ret(&ResourceLoader::add_resource_format_loader, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue resource_loader_class_remove_resource_format_loader(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ResourceLoader::remove_resource_format_loader, ResourceLoader::__class_id, ctx, this_val, argv);
+    js_resource_loader_singleton();
+    call_builtin_method_no_ret(&ResourceLoader::remove_resource_format_loader, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue resource_loader_class_set_abort_on_missing_resources(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&ResourceLoader::set_abort_on_missing_resources, ResourceLoader::__class_id, ctx, this_val, argv);
+    js_resource_loader_singleton();
+    call_builtin_method_no_ret(&ResourceLoader::set_abort_on_missing_resources, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue resource_loader_class_get_dependencies(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&ResourceLoader::get_dependencies, ResourceLoader::__class_id, ctx, this_val, argv);
+    js_resource_loader_singleton();
+	return call_builtin_method_ret(&ResourceLoader::get_dependencies, ctx, this_val, argc, argv);
 };
 static JSValue resource_loader_class_has_cached(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&ResourceLoader::has_cached, ResourceLoader::__class_id, ctx, this_val, argv);
+    js_resource_loader_singleton();
+	return call_builtin_method_ret(&ResourceLoader::has_cached, ctx, this_val, argc, argv);
 };
 static JSValue resource_loader_class_exists(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&ResourceLoader::exists, ResourceLoader::__class_id, ctx, this_val, argv);
+    js_resource_loader_singleton();
+	return call_builtin_method_ret(&ResourceLoader::exists, ctx, this_val, argc, argv);
 };
 static JSValue resource_loader_class_get_resource_uid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&ResourceLoader::get_resource_uid, ResourceLoader::__class_id, ctx, this_val, argv);
+    js_resource_loader_singleton();
+	return call_builtin_method_ret(&ResourceLoader::get_resource_uid, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry resource_loader_class_proto_funcs[] = {
 	JS_CFUNC_DEF("load_threaded_request", 4, &resource_loader_class_load_threaded_request),
@@ -92,7 +108,7 @@ static const JSCFunctionListEntry resource_loader_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_resource_uid", 1, &resource_loader_class_get_resource_uid),
 };
 
-static int js_resource_loader_class_init(JSContext *ctx, JSModuleDef *m) {
+static int js_resource_loader_class_init(JSContext *ctx) {
 	JS_NewClassID(&ResourceLoader::__class_id);
 	classes["ResourceLoader"] = ResourceLoader::__class_id;
 	JS_NewClass(JS_GetRuntime(ctx), ResourceLoader::__class_id, &resource_loader_class_def);
@@ -102,26 +118,18 @@ static int js_resource_loader_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ResourceLoader::__class_id, proto);
 	JS_SetPropertyFunctionList(ctx, proto, resource_loader_class_proto_funcs, _countof(resource_loader_class_proto_funcs));
-
-	JSValue ctor = JS_NewCFunction2(ctx, resource_loader_class_constructor, "ResourceLoader", 0, JS_CFUNC_constructor, 0);
-
-	JS_SetModuleExport(ctx, m, "ResourceLoader", ctor);
-
 	return 0;
 }
 
-JSModuleDef *_js_init_resource_loader_module(JSContext *ctx, const char *module_name) {
-	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_resource_loader_class_init);
-	if (!m)
-		return NULL;
-	JS_AddModuleExport(ctx, m, "ResourceLoader");
-	return m;
+static void js_resource_loader_singleton() {
+	if (JS_IsUninitialized(resource_loader_instance)) {
+		JSValue global = JS_GetGlobalObject(ctx);
+		resource_loader_instance = resource_loader_class_constructor(ctx, global, 0, NULL);
+		JS_SetPropertyStr(ctx, global, "ResourceLoader", resource_loader_instance);
+	}
 }
 
-JSModuleDef *js_init_resource_loader_module(JSContext *ctx) {
-	return _js_init_resource_loader_module(ctx, "godot/classes/resource_loader");
-}
 
 void register_resource_loader() {
-	js_init_resource_loader_module(ctx);
+	js_resource_loader_class_init(ctx);
 }

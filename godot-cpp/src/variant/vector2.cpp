@@ -35,6 +35,8 @@
 
 namespace godot {
 
+JSClassID Vector2::__class_id;
+
 real_t Vector2::angle() const {
 	return Math::atan2(y, x);
 }

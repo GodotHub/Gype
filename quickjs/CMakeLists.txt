@@ -27,6 +27,7 @@ target_compile_features(${PROJECT_NAME}
 target_compile_definitions(quickjs PUBLIC 
     -D_GNU_SOURCE
     -DCONFIG_BIGNUM
+    -DCONFIG_ALL_UNICODE
     # -DDUMP_PROMISE
     # -DDUMP_LEAKS
     # -DDUMP_MODULE_RESOLVE

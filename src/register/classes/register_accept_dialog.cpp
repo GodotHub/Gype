@@ -1,16 +1,17 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/label.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/button.hpp>
+#include <godot_cpp/classes/label.hpp>
+#include <godot_cpp/classes/line_edit.hpp>
 #include <godot_cpp/classes/accept_dialog.hpp>
 #include <godot_cpp/classes/window.hpp>
-#include <godot_cpp/classes/line_edit.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -37,62 +38,70 @@ static JSValue accept_dialog_class_constructor(JSContext *ctx, JSValueConst new_
 	}
 
 	JS_SetOpaque(obj, accept_dialog_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue accept_dialog_class_get_ok_button(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&AcceptDialog::get_ok_button, AcceptDialog::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&AcceptDialog::get_ok_button, ctx, this_val, argc, argv);
 };
 static JSValue accept_dialog_class_get_label(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&AcceptDialog::get_label, AcceptDialog::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&AcceptDialog::get_label, ctx, this_val, argc, argv);
 };
 static JSValue accept_dialog_class_set_hide_on_ok(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AcceptDialog::set_hide_on_ok, AcceptDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AcceptDialog::set_hide_on_ok, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue accept_dialog_class_get_hide_on_ok(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AcceptDialog::get_hide_on_ok, AcceptDialog::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AcceptDialog::get_hide_on_ok, ctx, this_val, argc, argv);
 };
 static JSValue accept_dialog_class_set_close_on_escape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AcceptDialog::set_close_on_escape, AcceptDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AcceptDialog::set_close_on_escape, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue accept_dialog_class_get_close_on_escape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AcceptDialog::get_close_on_escape, AcceptDialog::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AcceptDialog::get_close_on_escape, ctx, this_val, argc, argv);
 };
 static JSValue accept_dialog_class_add_button(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&AcceptDialog::add_button, AcceptDialog::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&AcceptDialog::add_button, ctx, this_val, argc, argv);
 };
 static JSValue accept_dialog_class_add_cancel_button(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&AcceptDialog::add_cancel_button, AcceptDialog::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&AcceptDialog::add_cancel_button, ctx, this_val, argc, argv);
 };
 static JSValue accept_dialog_class_remove_button(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AcceptDialog::remove_button, AcceptDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AcceptDialog::remove_button, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue accept_dialog_class_register_text_enter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AcceptDialog::register_text_enter, AcceptDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AcceptDialog::register_text_enter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue accept_dialog_class_set_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AcceptDialog::set_text, AcceptDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AcceptDialog::set_text, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue accept_dialog_class_get_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AcceptDialog::get_text, AcceptDialog::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AcceptDialog::get_text, ctx, this_val, argc, argv);
 };
 static JSValue accept_dialog_class_set_autowrap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AcceptDialog::set_autowrap, AcceptDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AcceptDialog::set_autowrap, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue accept_dialog_class_has_autowrap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&AcceptDialog::has_autowrap, AcceptDialog::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&AcceptDialog::has_autowrap, ctx, this_val, argc, argv);
 };
 static JSValue accept_dialog_class_set_ok_button_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AcceptDialog::set_ok_button_text, AcceptDialog::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AcceptDialog::set_ok_button_text, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue accept_dialog_class_get_ok_button_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AcceptDialog::get_ok_button_text, AcceptDialog::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AcceptDialog::get_ok_button_text, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry accept_dialog_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_ok_button", 0, &accept_dialog_class_get_ok_button),
@@ -113,18 +122,65 @@ static const JSCFunctionListEntry accept_dialog_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_ok_button_text", 0, &accept_dialog_class_get_ok_button_text),
 };
 
+void define_accept_dialog_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "ok_button_text"),
+        JS_NewCFunction(ctx, accept_dialog_class_get_ok_button_text, "get_ok_button_text", 0),
+        JS_NewCFunction(ctx, accept_dialog_class_set_ok_button_text, "set_ok_button_text", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "dialog_text"),
+        JS_NewCFunction(ctx, accept_dialog_class_get_text, "get_text", 0),
+        JS_NewCFunction(ctx, accept_dialog_class_set_text, "set_text", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "dialog_hide_on_ok"),
+        JS_NewCFunction(ctx, accept_dialog_class_get_hide_on_ok, "get_hide_on_ok", 0),
+        JS_NewCFunction(ctx, accept_dialog_class_set_hide_on_ok, "set_hide_on_ok", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "dialog_close_on_escape"),
+        JS_NewCFunction(ctx, accept_dialog_class_get_close_on_escape, "get_close_on_escape", 0),
+        JS_NewCFunction(ctx, accept_dialog_class_set_close_on_escape, "set_close_on_escape", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "dialog_autowrap"),
+        JS_NewCFunction(ctx, accept_dialog_class_has_autowrap, "has_autowrap", 0),
+        JS_NewCFunction(ctx, accept_dialog_class_set_autowrap, "set_autowrap", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_accept_dialog_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&AcceptDialog::__class_id);
 	classes["AcceptDialog"] = AcceptDialog::__class_id;
+	class_id_list.insert(AcceptDialog::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AcceptDialog::__class_id, &accept_dialog_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, Window::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AcceptDialog::__class_id, proto);
+	define_accept_dialog_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, accept_dialog_class_proto_funcs, _countof(accept_dialog_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, accept_dialog_class_constructor, "AcceptDialog", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "AcceptDialog", ctor);
 
@@ -132,6 +188,10 @@ static int js_accept_dialog_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_accept_dialog_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/window';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_accept_dialog_class_init);
 	if (!m)
 		return NULL;
@@ -144,5 +204,6 @@ JSModuleDef *js_init_accept_dialog_module(JSContext *ctx) {
 }
 
 void register_accept_dialog() {
+	AcceptDialog::__init_js_class_id();
 	js_init_accept_dialog_module(ctx);
 }

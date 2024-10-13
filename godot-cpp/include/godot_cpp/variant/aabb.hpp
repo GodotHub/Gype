@@ -44,6 +44,11 @@ namespace godot {
 class Variant;
 
 struct _NO_DISCARD_ AABB {
+	static JSClassID __class_id;
+
+	inline static void __init_js_class_id() {
+		AABB::__class_id = JS_NewClassID(&AABB::__class_id);
+	}
 	Vector3 position;
 	Vector3 size;
 

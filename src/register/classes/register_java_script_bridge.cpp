@@ -1,16 +1,20 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/java_script_object.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/java_script_bridge.hpp>
-#include <godot_cpp/classes/java_script_object.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
+
+static JSValue java_script_bridge_instance;
+
+static void js_java_script_bridge_singleton();
 
 static void java_script_bridge_class_finalizer(JSRuntime *rt, JSValue val) {
 	JavaScriptBridge *java_script_bridge = static_cast<JavaScriptBridge *>(JS_GetOpaque(val, JavaScriptBridge::__class_id));
@@ -38,30 +42,38 @@ static JSValue java_script_bridge_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 static JSValue java_script_bridge_class_eval(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&JavaScriptBridge::eval, JavaScriptBridge::__class_id, ctx, this_val, argv);
+    js_java_script_bridge_singleton();
+	return call_builtin_method_ret(&JavaScriptBridge::eval, ctx, this_val, argc, argv);
 };
 static JSValue java_script_bridge_class_get_interface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&JavaScriptBridge::get_interface, JavaScriptBridge::__class_id, ctx, this_val, argv);
+    js_java_script_bridge_singleton();
+	return call_builtin_method_ret(&JavaScriptBridge::get_interface, ctx, this_val, argc, argv);
 };
 static JSValue java_script_bridge_class_create_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&JavaScriptBridge::create_callback, JavaScriptBridge::__class_id, ctx, this_val, argv);
+    js_java_script_bridge_singleton();
+	return call_builtin_method_ret(&JavaScriptBridge::create_callback, ctx, this_val, argc, argv);
 };
 static JSValue java_script_bridge_class_download_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&JavaScriptBridge::download_buffer, JavaScriptBridge::__class_id, ctx, this_val, argv);
+    js_java_script_bridge_singleton();
+    call_builtin_method_no_ret(&JavaScriptBridge::download_buffer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue java_script_bridge_class_pwa_needs_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&JavaScriptBridge::pwa_needs_update, JavaScriptBridge::__class_id, ctx, this_val, argv);
+    js_java_script_bridge_singleton();
+	return call_builtin_const_method_ret(&JavaScriptBridge::pwa_needs_update, ctx, this_val, argc, argv);
 };
 static JSValue java_script_bridge_class_pwa_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&JavaScriptBridge::pwa_update, JavaScriptBridge::__class_id, ctx, this_val, argv);
+    js_java_script_bridge_singleton();
+	return call_builtin_method_ret(&JavaScriptBridge::pwa_update, ctx, this_val, argc, argv);
 };
 static JSValue java_script_bridge_class_force_fs_sync(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&JavaScriptBridge::force_fs_sync, JavaScriptBridge::__class_id, ctx, this_val, argv);
+    js_java_script_bridge_singleton();
+    call_builtin_method_no_ret(&JavaScriptBridge::force_fs_sync, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue java_script_bridge_class_create_object(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_vararg_method_ret(&JavaScriptBridge::js_create_object, JavaScriptBridge::__class_id, ctx, this_val, argc, argv);
+    js_java_script_bridge_singleton();
+	return call_builtin_vararg_method_ret(&JavaScriptBridge::js_create_object, ctx, this_val, argc, argv);
 }
 static const JSCFunctionListEntry java_script_bridge_class_proto_funcs[] = {
 	JS_CFUNC_DEF("eval", 2, &java_script_bridge_class_eval),
@@ -74,7 +86,7 @@ static const JSCFunctionListEntry java_script_bridge_class_proto_funcs[] = {
 	JS_CFUNC_DEF("create_object", 1, &java_script_bridge_class_create_object),
 };
 
-static int js_java_script_bridge_class_init(JSContext *ctx, JSModuleDef *m) {
+static int js_java_script_bridge_class_init(JSContext *ctx) {
 	JS_NewClassID(&JavaScriptBridge::__class_id);
 	classes["JavaScriptBridge"] = JavaScriptBridge::__class_id;
 	JS_NewClass(JS_GetRuntime(ctx), JavaScriptBridge::__class_id, &java_script_bridge_class_def);
@@ -84,26 +96,18 @@ static int js_java_script_bridge_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, JavaScriptBridge::__class_id, proto);
 	JS_SetPropertyFunctionList(ctx, proto, java_script_bridge_class_proto_funcs, _countof(java_script_bridge_class_proto_funcs));
-
-	JSValue ctor = JS_NewCFunction2(ctx, java_script_bridge_class_constructor, "JavaScriptBridge", 0, JS_CFUNC_constructor, 0);
-
-	JS_SetModuleExport(ctx, m, "JavaScriptBridge", ctor);
-
 	return 0;
 }
 
-JSModuleDef *_js_init_java_script_bridge_module(JSContext *ctx, const char *module_name) {
-	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_java_script_bridge_class_init);
-	if (!m)
-		return NULL;
-	JS_AddModuleExport(ctx, m, "JavaScriptBridge");
-	return m;
+static void js_java_script_bridge_singleton() {
+	if (JS_IsUninitialized(java_script_bridge_instance)) {
+		JSValue global = JS_GetGlobalObject(ctx);
+		java_script_bridge_instance = java_script_bridge_class_constructor(ctx, global, 0, NULL);
+		JS_SetPropertyStr(ctx, global, "JavaScriptBridge", java_script_bridge_instance);
+	}
 }
 
-JSModuleDef *js_init_java_script_bridge_module(JSContext *ctx) {
-	return _js_init_java_script_bridge_module(ctx, "godot/classes/java_script_bridge");
-}
 
 void register_java_script_bridge() {
-	js_init_java_script_bridge_module(ctx);
+	js_java_script_bridge_class_init(ctx);
 }

@@ -31,6 +31,8 @@
 #ifndef GODOT_VARIANT_HPP
 #define GODOT_VARIANT_HPP
 
+#include "quickjs/quickjs.h"
+
 #include <godot_cpp/core/defs.hpp>
 
 #include <godot_cpp/variant/builtin_types.hpp>
@@ -214,6 +216,7 @@ public:
 	Variant(const PackedVector3Array &v);
 	Variant(const PackedColorArray &v);
 	Variant(const PackedVector4Array &v);
+	Variant(JSValue v);
 	~Variant();
 
 	operator bool() const;
@@ -263,6 +266,7 @@ public:
 	operator PackedVector3Array() const;
 	operator PackedColorArray() const;
 	operator PackedVector4Array() const;
+	operator JSValue() const;
 
 	Variant &operator=(const Variant &other);
 	Variant &operator=(Variant &&other);

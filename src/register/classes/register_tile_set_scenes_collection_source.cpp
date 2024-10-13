@@ -1,14 +1,15 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/packed_scene.hpp>
-#include <godot_cpp/classes/tile_set_source.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/tile_set_scenes_collection_source.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/tile_set_source.hpp>
+#include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -35,44 +36,52 @@ static JSValue tile_set_scenes_collection_source_class_constructor(JSContext *ct
 	}
 
 	JS_SetOpaque(obj, tile_set_scenes_collection_source_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue tile_set_scenes_collection_source_class_get_scene_tiles_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&TileSetScenesCollectionSource::get_scene_tiles_count, TileSetScenesCollectionSource::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&TileSetScenesCollectionSource::get_scene_tiles_count, ctx, this_val, argc, argv);
 };
 static JSValue tile_set_scenes_collection_source_class_get_scene_tile_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&TileSetScenesCollectionSource::get_scene_tile_id, TileSetScenesCollectionSource::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&TileSetScenesCollectionSource::get_scene_tile_id, ctx, this_val, argc, argv);
 };
 static JSValue tile_set_scenes_collection_source_class_has_scene_tile_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&TileSetScenesCollectionSource::has_scene_tile_id, TileSetScenesCollectionSource::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&TileSetScenesCollectionSource::has_scene_tile_id, ctx, this_val, argc, argv);
 };
 static JSValue tile_set_scenes_collection_source_class_create_scene_tile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&TileSetScenesCollectionSource::create_scene_tile, TileSetScenesCollectionSource::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&TileSetScenesCollectionSource::create_scene_tile, ctx, this_val, argc, argv);
 };
 static JSValue tile_set_scenes_collection_source_class_set_scene_tile_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&TileSetScenesCollectionSource::set_scene_tile_id, TileSetScenesCollectionSource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileSetScenesCollectionSource::set_scene_tile_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_scenes_collection_source_class_set_scene_tile_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&TileSetScenesCollectionSource::set_scene_tile_scene, TileSetScenesCollectionSource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileSetScenesCollectionSource::set_scene_tile_scene, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_scenes_collection_source_class_get_scene_tile_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&TileSetScenesCollectionSource::get_scene_tile_scene, TileSetScenesCollectionSource::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&TileSetScenesCollectionSource::get_scene_tile_scene, ctx, this_val, argc, argv);
 };
 static JSValue tile_set_scenes_collection_source_class_set_scene_tile_display_placeholder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&TileSetScenesCollectionSource::set_scene_tile_display_placeholder, TileSetScenesCollectionSource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileSetScenesCollectionSource::set_scene_tile_display_placeholder, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_scenes_collection_source_class_get_scene_tile_display_placeholder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&TileSetScenesCollectionSource::get_scene_tile_display_placeholder, TileSetScenesCollectionSource::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&TileSetScenesCollectionSource::get_scene_tile_display_placeholder, ctx, this_val, argc, argv);
 };
 static JSValue tile_set_scenes_collection_source_class_remove_scene_tile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&TileSetScenesCollectionSource::remove_scene_tile, TileSetScenesCollectionSource::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&TileSetScenesCollectionSource::remove_scene_tile, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_scenes_collection_source_class_get_next_scene_tile_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&TileSetScenesCollectionSource::get_next_scene_tile_id, TileSetScenesCollectionSource::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&TileSetScenesCollectionSource::get_next_scene_tile_id, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry tile_set_scenes_collection_source_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_scene_tiles_count", 0, &tile_set_scenes_collection_source_class_get_scene_tiles_count),
@@ -88,18 +97,25 @@ static const JSCFunctionListEntry tile_set_scenes_collection_source_class_proto_
 	JS_CFUNC_DEF("get_next_scene_tile_id", 0, &tile_set_scenes_collection_source_class_get_next_scene_tile_id),
 };
 
+void define_tile_set_scenes_collection_source_property(JSContext *ctx, JSValue obj) {
+}
+
 static int js_tile_set_scenes_collection_source_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&TileSetScenesCollectionSource::__class_id);
 	classes["TileSetScenesCollectionSource"] = TileSetScenesCollectionSource::__class_id;
+	class_id_list.insert(TileSetScenesCollectionSource::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TileSetScenesCollectionSource::__class_id, &tile_set_scenes_collection_source_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, TileSetSource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, TileSetScenesCollectionSource::__class_id, proto);
+	define_tile_set_scenes_collection_source_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, tile_set_scenes_collection_source_class_proto_funcs, _countof(tile_set_scenes_collection_source_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, tile_set_scenes_collection_source_class_constructor, "TileSetScenesCollectionSource", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "TileSetScenesCollectionSource", ctor);
 
@@ -107,6 +123,10 @@ static int js_tile_set_scenes_collection_source_class_init(JSContext *ctx, JSMod
 }
 
 JSModuleDef *_js_init_tile_set_scenes_collection_source_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/tile_set_source';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_tile_set_scenes_collection_source_class_init);
 	if (!m)
 		return NULL;
@@ -119,5 +139,6 @@ JSModuleDef *js_init_tile_set_scenes_collection_source_module(JSContext *ctx) {
 }
 
 void register_tile_set_scenes_collection_source() {
+	TileSetScenesCollectionSource::__init_js_class_id();
 	js_init_tile_set_scenes_collection_source_module(ctx);
 }

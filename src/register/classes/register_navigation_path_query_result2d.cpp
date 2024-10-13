@@ -1,13 +1,14 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/navigation_path_query_result2d.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -34,38 +35,46 @@ static JSValue navigation_path_query_result2d_class_constructor(JSContext *ctx, 
 	}
 
 	JS_SetOpaque(obj, navigation_path_query_result2d_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue navigation_path_query_result2d_class_set_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPathQueryResult2D::set_path, NavigationPathQueryResult2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPathQueryResult2D::set_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_result2d_class_get_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationPathQueryResult2D::get_path, NavigationPathQueryResult2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationPathQueryResult2D::get_path, ctx, this_val, argc, argv);
 };
 static JSValue navigation_path_query_result2d_class_set_path_types(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPathQueryResult2D::set_path_types, NavigationPathQueryResult2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPathQueryResult2D::set_path_types, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_result2d_class_get_path_types(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationPathQueryResult2D::get_path_types, NavigationPathQueryResult2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationPathQueryResult2D::get_path_types, ctx, this_val, argc, argv);
 };
 static JSValue navigation_path_query_result2d_class_set_path_rids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPathQueryResult2D::set_path_rids, NavigationPathQueryResult2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPathQueryResult2D::set_path_rids, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_result2d_class_get_path_rids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationPathQueryResult2D::get_path_rids, NavigationPathQueryResult2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationPathQueryResult2D::get_path_rids, ctx, this_val, argc, argv);
 };
 static JSValue navigation_path_query_result2d_class_set_path_owner_ids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPathQueryResult2D::set_path_owner_ids, NavigationPathQueryResult2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPathQueryResult2D::set_path_owner_ids, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_result2d_class_get_path_owner_ids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationPathQueryResult2D::get_path_owner_ids, NavigationPathQueryResult2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationPathQueryResult2D::get_path_owner_ids, ctx, this_val, argc, argv);
 };
 static JSValue navigation_path_query_result2d_class_reset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPathQueryResult2D::reset, NavigationPathQueryResult2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPathQueryResult2D::reset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry navigation_path_query_result2d_class_proto_funcs[] = {
@@ -80,18 +89,57 @@ static const JSCFunctionListEntry navigation_path_query_result2d_class_proto_fun
 	JS_CFUNC_DEF("reset", 0, &navigation_path_query_result2d_class_reset),
 };
 
+void define_navigation_path_query_result2d_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "path"),
+        JS_NewCFunction(ctx, navigation_path_query_result2d_class_get_path, "get_path", 0),
+        JS_NewCFunction(ctx, navigation_path_query_result2d_class_set_path, "set_path", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "path_types"),
+        JS_NewCFunction(ctx, navigation_path_query_result2d_class_get_path_types, "get_path_types", 0),
+        JS_NewCFunction(ctx, navigation_path_query_result2d_class_set_path_types, "set_path_types", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "path_rids"),
+        JS_NewCFunction(ctx, navigation_path_query_result2d_class_get_path_rids, "get_path_rids", 0),
+        JS_NewCFunction(ctx, navigation_path_query_result2d_class_set_path_rids, "set_path_rids", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "path_owner_ids"),
+        JS_NewCFunction(ctx, navigation_path_query_result2d_class_get_path_owner_ids, "get_path_owner_ids", 0),
+        JS_NewCFunction(ctx, navigation_path_query_result2d_class_set_path_owner_ids, "set_path_owner_ids", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_navigation_path_query_result2d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&NavigationPathQueryResult2D::__class_id);
 	classes["NavigationPathQueryResult2D"] = NavigationPathQueryResult2D::__class_id;
+	class_id_list.insert(NavigationPathQueryResult2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), NavigationPathQueryResult2D::__class_id, &navigation_path_query_result2d_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, NavigationPathQueryResult2D::__class_id, proto);
+	define_navigation_path_query_result2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, navigation_path_query_result2d_class_proto_funcs, _countof(navigation_path_query_result2d_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, navigation_path_query_result2d_class_constructor, "NavigationPathQueryResult2D", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "NavigationPathQueryResult2D", ctor);
 
@@ -99,6 +147,10 @@ static int js_navigation_path_query_result2d_class_init(JSContext *ctx, JSModule
 }
 
 JSModuleDef *_js_init_navigation_path_query_result2d_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_navigation_path_query_result2d_class_init);
 	if (!m)
 		return NULL;
@@ -111,5 +163,6 @@ JSModuleDef *js_init_navigation_path_query_result2d_module(JSContext *ctx) {
 }
 
 void register_navigation_path_query_result2d() {
+	NavigationPathQueryResult2D::__init_js_class_id();
 	js_init_navigation_path_query_result2d_module(ctx);
 }

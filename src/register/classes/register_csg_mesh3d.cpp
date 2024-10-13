@@ -1,15 +1,16 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/csg_mesh3d.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/csg_primitive3d.hpp>
-#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/csg_mesh3d.hpp>
+#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -36,21 +37,29 @@ static JSValue csg_mesh3d_class_constructor(JSContext *ctx, JSValueConst new_tar
 	}
 
 	JS_SetOpaque(obj, csg_mesh3d_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue csg_mesh3d_class_set_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&CSGMesh3D::set_mesh, CSGMesh3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CSGMesh3D::set_mesh, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_mesh3d_class_get_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&CSGMesh3D::get_mesh, CSGMesh3D::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&CSGMesh3D::get_mesh, ctx, this_val, argc, argv);
 };
 static JSValue csg_mesh3d_class_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&CSGMesh3D::set_material, CSGMesh3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CSGMesh3D::set_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_mesh3d_class_get_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&CSGMesh3D::get_material, CSGMesh3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&CSGMesh3D::get_material, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry csg_mesh3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_mesh", 1, &csg_mesh3d_class_set_mesh),
@@ -59,18 +68,41 @@ static const JSCFunctionListEntry csg_mesh3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_material", 0, &csg_mesh3d_class_get_material),
 };
 
+void define_csg_mesh3d_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "mesh"),
+        JS_NewCFunction(ctx, csg_mesh3d_class_get_mesh, "get_mesh", 0),
+        JS_NewCFunction(ctx, csg_mesh3d_class_set_mesh, "set_mesh", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "material"),
+        JS_NewCFunction(ctx, csg_mesh3d_class_get_material, "get_material", 0),
+        JS_NewCFunction(ctx, csg_mesh3d_class_set_material, "set_material", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_csg_mesh3d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&CSGMesh3D::__class_id);
 	classes["CSGMesh3D"] = CSGMesh3D::__class_id;
+	class_id_list.insert(CSGMesh3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CSGMesh3D::__class_id, &csg_mesh3d_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, CSGPrimitive3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, CSGMesh3D::__class_id, proto);
+	define_csg_mesh3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, csg_mesh3d_class_proto_funcs, _countof(csg_mesh3d_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, csg_mesh3d_class_constructor, "CSGMesh3D", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "CSGMesh3D", ctor);
 
@@ -78,6 +110,10 @@ static int js_csg_mesh3d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_csg_mesh3d_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/csg_primitive3d';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_csg_mesh3d_class_init);
 	if (!m)
 		return NULL;
@@ -90,5 +126,6 @@ JSModuleDef *js_init_csg_mesh3d_module(JSContext *ctx) {
 }
 
 void register_csg_mesh3d() {
+	CSGMesh3D::__init_js_class_id();
 	js_init_csg_mesh3d_module(ctx);
 }

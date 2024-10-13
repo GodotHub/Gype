@@ -35,6 +35,8 @@
 
 namespace godot {
 
+JSClassID Vector2i::__class_id;
+
 Vector2i Vector2i::snapped(const Vector2i &p_step) const {
 	return Vector2i(
 			Math::snapped(x, p_step.x),

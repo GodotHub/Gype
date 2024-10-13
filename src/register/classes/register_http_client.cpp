@@ -1,15 +1,16 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/http_client.hpp>
-#include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/classes/stream_peer.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/tls_options.hpp>
+#include <godot_cpp/classes/http_client.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -36,79 +37,87 @@ static JSValue http_client_class_constructor(JSContext *ctx, JSValueConst new_ta
 	}
 
 	JS_SetOpaque(obj, http_client_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue http_client_class_connect_to_host(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&HTTPClient::connect_to_host, HTTPClient::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&HTTPClient::connect_to_host, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_set_connection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&HTTPClient::set_connection, HTTPClient::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&HTTPClient::set_connection, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue http_client_class_get_connection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&HTTPClient::get_connection, HTTPClient::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&HTTPClient::get_connection, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_request_raw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&HTTPClient::request_raw, HTTPClient::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&HTTPClient::request_raw, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_request(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&HTTPClient::request, HTTPClient::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&HTTPClient::request, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_close(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&HTTPClient::close, HTTPClient::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&HTTPClient::close, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue http_client_class_has_response(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&HTTPClient::has_response, HTTPClient::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&HTTPClient::has_response, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_is_response_chunked(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&HTTPClient::is_response_chunked, HTTPClient::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&HTTPClient::is_response_chunked, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_get_response_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&HTTPClient::get_response_code, HTTPClient::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&HTTPClient::get_response_code, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_get_response_headers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&HTTPClient::get_response_headers, HTTPClient::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&HTTPClient::get_response_headers, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_get_response_headers_as_dictionary(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&HTTPClient::get_response_headers_as_dictionary, HTTPClient::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&HTTPClient::get_response_headers_as_dictionary, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_get_response_body_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&HTTPClient::get_response_body_length, HTTPClient::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&HTTPClient::get_response_body_length, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_read_response_body_chunk(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&HTTPClient::read_response_body_chunk, HTTPClient::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&HTTPClient::read_response_body_chunk, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_set_read_chunk_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&HTTPClient::set_read_chunk_size, HTTPClient::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&HTTPClient::set_read_chunk_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue http_client_class_get_read_chunk_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&HTTPClient::get_read_chunk_size, HTTPClient::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&HTTPClient::get_read_chunk_size, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_set_blocking_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&HTTPClient::set_blocking_mode, HTTPClient::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&HTTPClient::set_blocking_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue http_client_class_is_blocking_mode_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&HTTPClient::is_blocking_mode_enabled, HTTPClient::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&HTTPClient::is_blocking_mode_enabled, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_get_status(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&HTTPClient::get_status, HTTPClient::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&HTTPClient::get_status, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_poll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&HTTPClient::poll, HTTPClient::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&HTTPClient::poll, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_set_http_proxy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&HTTPClient::set_http_proxy, HTTPClient::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&HTTPClient::set_http_proxy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue http_client_class_set_https_proxy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&HTTPClient::set_https_proxy, HTTPClient::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&HTTPClient::set_https_proxy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue http_client_class_query_string_from_dict(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&HTTPClient::query_string_from_dict, HTTPClient::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&HTTPClient::query_string_from_dict, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry http_client_class_proto_funcs[] = {
 	JS_CFUNC_DEF("connect_to_host", 3, &http_client_class_connect_to_host),
@@ -135,18 +144,49 @@ static const JSCFunctionListEntry http_client_class_proto_funcs[] = {
 	JS_CFUNC_DEF("query_string_from_dict", 1, &http_client_class_query_string_from_dict),
 };
 
+void define_http_client_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "blocking_mode_enabled"),
+        JS_NewCFunction(ctx, http_client_class_is_blocking_mode_enabled, "is_blocking_mode_enabled", 0),
+        JS_NewCFunction(ctx, http_client_class_set_blocking_mode, "set_blocking_mode", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "connection"),
+        JS_NewCFunction(ctx, http_client_class_get_connection, "get_connection", 0),
+        JS_NewCFunction(ctx, http_client_class_set_connection, "set_connection", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "read_chunk_size"),
+        JS_NewCFunction(ctx, http_client_class_get_read_chunk_size, "get_read_chunk_size", 0),
+        JS_NewCFunction(ctx, http_client_class_set_read_chunk_size, "set_read_chunk_size", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_http_client_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&HTTPClient::__class_id);
 	classes["HTTPClient"] = HTTPClient::__class_id;
+	class_id_list.insert(HTTPClient::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), HTTPClient::__class_id, &http_client_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, HTTPClient::__class_id, proto);
+	define_http_client_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, http_client_class_proto_funcs, _countof(http_client_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, http_client_class_constructor, "HTTPClient", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "HTTPClient", ctor);
 
@@ -154,6 +194,10 @@ static int js_http_client_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_http_client_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_http_client_class_init);
 	if (!m)
 		return NULL;
@@ -166,5 +210,6 @@ JSModuleDef *js_init_http_client_module(JSContext *ctx) {
 }
 
 void register_http_client() {
+	HTTPClient::__init_js_class_id();
 	js_init_http_client_module(ctx);
 }

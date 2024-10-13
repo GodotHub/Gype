@@ -31,6 +31,7 @@
 #ifndef GODOT_VECTOR4_HPP
 #define GODOT_VECTOR4_HPP
 
+#include "quickjs/quickjs.h"
 #include <godot_cpp/core/error_macros.hpp>
 #include <godot_cpp/core/math.hpp>
 
@@ -39,6 +40,12 @@ namespace godot {
 class String;
 
 struct _NO_DISCARD_ Vector4 {
+	static JSClassID __class_id;
+
+	inline static void __init_js_class_id() {
+		Vector4::__class_id = JS_NewClassID(&Vector4::__class_id);
+	}
+
 	static const int AXIS_COUNT = 4;
 
 	enum Axis {

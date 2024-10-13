@@ -1,16 +1,17 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/area2d.hpp>
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/collision_object2d.hpp>
 #include <godot_cpp/classes/area2d.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -37,130 +38,138 @@ static JSValue area2d_class_constructor(JSContext *ctx, JSValueConst new_target,
 	}
 
 	JS_SetOpaque(obj, area2d_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue area2d_class_set_gravity_space_override_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Area2D::set_gravity_space_override_mode, Area2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area2D::set_gravity_space_override_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area2d_class_get_gravity_space_override_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Area2D::get_gravity_space_override_mode, Area2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Area2D::get_gravity_space_override_mode, ctx, this_val, argc, argv);
 };
 static JSValue area2d_class_set_gravity_is_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Area2D::set_gravity_is_point, Area2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area2D::set_gravity_is_point, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area2d_class_is_gravity_a_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Area2D::is_gravity_a_point, Area2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Area2D::is_gravity_a_point, ctx, this_val, argc, argv);
 };
 static JSValue area2d_class_set_gravity_point_unit_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Area2D::set_gravity_point_unit_distance, Area2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area2D::set_gravity_point_unit_distance, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area2d_class_get_gravity_point_unit_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Area2D::get_gravity_point_unit_distance, Area2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Area2D::get_gravity_point_unit_distance, ctx, this_val, argc, argv);
 };
 static JSValue area2d_class_set_gravity_point_center(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Area2D::set_gravity_point_center, Area2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area2D::set_gravity_point_center, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area2d_class_get_gravity_point_center(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Area2D::get_gravity_point_center, Area2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Area2D::get_gravity_point_center, ctx, this_val, argc, argv);
 };
 static JSValue area2d_class_set_gravity_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Area2D::set_gravity_direction, Area2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area2D::set_gravity_direction, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area2d_class_get_gravity_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Area2D::get_gravity_direction, Area2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Area2D::get_gravity_direction, ctx, this_val, argc, argv);
 };
 static JSValue area2d_class_set_gravity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Area2D::set_gravity, Area2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area2D::set_gravity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area2d_class_get_gravity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Area2D::get_gravity, Area2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Area2D::get_gravity, ctx, this_val, argc, argv);
 };
 static JSValue area2d_class_set_linear_damp_space_override_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Area2D::set_linear_damp_space_override_mode, Area2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area2D::set_linear_damp_space_override_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area2d_class_get_linear_damp_space_override_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Area2D::get_linear_damp_space_override_mode, Area2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Area2D::get_linear_damp_space_override_mode, ctx, this_val, argc, argv);
 };
 static JSValue area2d_class_set_angular_damp_space_override_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Area2D::set_angular_damp_space_override_mode, Area2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area2D::set_angular_damp_space_override_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area2d_class_get_angular_damp_space_override_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Area2D::get_angular_damp_space_override_mode, Area2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Area2D::get_angular_damp_space_override_mode, ctx, this_val, argc, argv);
 };
 static JSValue area2d_class_set_linear_damp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Area2D::set_linear_damp, Area2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area2D::set_linear_damp, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area2d_class_get_linear_damp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Area2D::get_linear_damp, Area2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Area2D::get_linear_damp, ctx, this_val, argc, argv);
 };
 static JSValue area2d_class_set_angular_damp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Area2D::set_angular_damp, Area2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area2D::set_angular_damp, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area2d_class_get_angular_damp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Area2D::get_angular_damp, Area2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Area2D::get_angular_damp, ctx, this_val, argc, argv);
 };
 static JSValue area2d_class_set_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Area2D::set_priority, Area2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area2D::set_priority, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area2d_class_get_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Area2D::get_priority, Area2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Area2D::get_priority, ctx, this_val, argc, argv);
 };
 static JSValue area2d_class_set_monitoring(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Area2D::set_monitoring, Area2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area2D::set_monitoring, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area2d_class_is_monitoring(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Area2D::is_monitoring, Area2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Area2D::is_monitoring, ctx, this_val, argc, argv);
 };
 static JSValue area2d_class_set_monitorable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Area2D::set_monitorable, Area2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area2D::set_monitorable, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area2d_class_is_monitorable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Area2D::is_monitorable, Area2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Area2D::is_monitorable, ctx, this_val, argc, argv);
 };
 static JSValue area2d_class_get_overlapping_bodies(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Area2D::get_overlapping_bodies, Area2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Area2D::get_overlapping_bodies, ctx, this_val, argc, argv);
 };
 static JSValue area2d_class_get_overlapping_areas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Area2D::get_overlapping_areas, Area2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Area2D::get_overlapping_areas, ctx, this_val, argc, argv);
 };
 static JSValue area2d_class_has_overlapping_bodies(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Area2D::has_overlapping_bodies, Area2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Area2D::has_overlapping_bodies, ctx, this_val, argc, argv);
 };
 static JSValue area2d_class_has_overlapping_areas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Area2D::has_overlapping_areas, Area2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Area2D::has_overlapping_areas, ctx, this_val, argc, argv);
 };
 static JSValue area2d_class_overlaps_body(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Area2D::overlaps_body, Area2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Area2D::overlaps_body, ctx, this_val, argc, argv);
 };
 static JSValue area2d_class_overlaps_area(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Area2D::overlaps_area, Area2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Area2D::overlaps_area, ctx, this_val, argc, argv);
 };
 static JSValue area2d_class_set_audio_bus_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Area2D::set_audio_bus_name, Area2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area2D::set_audio_bus_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area2d_class_get_audio_bus_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Area2D::get_audio_bus_name, Area2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Area2D::get_audio_bus_name, ctx, this_val, argc, argv);
 };
 static JSValue area2d_class_set_audio_bus_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Area2D::set_audio_bus_override, Area2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Area2D::set_audio_bus_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue area2d_class_is_overriding_audio_bus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Area2D::is_overriding_audio_bus, Area2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Area2D::is_overriding_audio_bus, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry area2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_gravity_space_override_mode", 1, &area2d_class_set_gravity_space_override_mode),
@@ -201,18 +210,145 @@ static const JSCFunctionListEntry area2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_overriding_audio_bus", 0, &area2d_class_is_overriding_audio_bus),
 };
 
+void define_area2d_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "monitoring"),
+        JS_NewCFunction(ctx, area2d_class_is_monitoring, "is_monitoring", 0),
+        JS_NewCFunction(ctx, area2d_class_set_monitoring, "set_monitoring", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "monitorable"),
+        JS_NewCFunction(ctx, area2d_class_is_monitorable, "is_monitorable", 0),
+        JS_NewCFunction(ctx, area2d_class_set_monitorable, "set_monitorable", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "priority"),
+        JS_NewCFunction(ctx, area2d_class_get_priority, "get_priority", 0),
+        JS_NewCFunction(ctx, area2d_class_set_priority, "set_priority", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "gravity_space_override"),
+        JS_NewCFunction(ctx, area2d_class_get_gravity_space_override_mode, "get_gravity_space_override_mode", 0),
+        JS_NewCFunction(ctx, area2d_class_set_gravity_space_override_mode, "set_gravity_space_override_mode", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "gravity_point"),
+        JS_NewCFunction(ctx, area2d_class_is_gravity_a_point, "is_gravity_a_point", 0),
+        JS_NewCFunction(ctx, area2d_class_set_gravity_is_point, "set_gravity_is_point", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "gravity_point_unit_distance"),
+        JS_NewCFunction(ctx, area2d_class_get_gravity_point_unit_distance, "get_gravity_point_unit_distance", 0),
+        JS_NewCFunction(ctx, area2d_class_set_gravity_point_unit_distance, "set_gravity_point_unit_distance", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "gravity_point_center"),
+        JS_NewCFunction(ctx, area2d_class_get_gravity_point_center, "get_gravity_point_center", 0),
+        JS_NewCFunction(ctx, area2d_class_set_gravity_point_center, "set_gravity_point_center", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "gravity_direction"),
+        JS_NewCFunction(ctx, area2d_class_get_gravity_direction, "get_gravity_direction", 0),
+        JS_NewCFunction(ctx, area2d_class_set_gravity_direction, "set_gravity_direction", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "gravity"),
+        JS_NewCFunction(ctx, area2d_class_get_gravity, "get_gravity", 0),
+        JS_NewCFunction(ctx, area2d_class_set_gravity, "set_gravity", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "linear_damp_space_override"),
+        JS_NewCFunction(ctx, area2d_class_get_linear_damp_space_override_mode, "get_linear_damp_space_override_mode", 0),
+        JS_NewCFunction(ctx, area2d_class_set_linear_damp_space_override_mode, "set_linear_damp_space_override_mode", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "linear_damp"),
+        JS_NewCFunction(ctx, area2d_class_get_linear_damp, "get_linear_damp", 0),
+        JS_NewCFunction(ctx, area2d_class_set_linear_damp, "set_linear_damp", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "angular_damp_space_override"),
+        JS_NewCFunction(ctx, area2d_class_get_angular_damp_space_override_mode, "get_angular_damp_space_override_mode", 0),
+        JS_NewCFunction(ctx, area2d_class_set_angular_damp_space_override_mode, "set_angular_damp_space_override_mode", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "angular_damp"),
+        JS_NewCFunction(ctx, area2d_class_get_angular_damp, "get_angular_damp", 0),
+        JS_NewCFunction(ctx, area2d_class_set_angular_damp, "set_angular_damp", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "audio_bus_override"),
+        JS_NewCFunction(ctx, area2d_class_is_overriding_audio_bus, "is_overriding_audio_bus", 0),
+        JS_NewCFunction(ctx, area2d_class_set_audio_bus_override, "set_audio_bus_override", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "audio_bus_name"),
+        JS_NewCFunction(ctx, area2d_class_get_audio_bus_name, "get_audio_bus_name", 0),
+        JS_NewCFunction(ctx, area2d_class_set_audio_bus_name, "set_audio_bus_name", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_area2d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&Area2D::__class_id);
 	classes["Area2D"] = Area2D::__class_id;
+	class_id_list.insert(Area2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Area2D::__class_id, &area2d_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, CollisionObject2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Area2D::__class_id, proto);
+	define_area2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, area2d_class_proto_funcs, _countof(area2d_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, area2d_class_constructor, "Area2D", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "Area2D", ctor);
 
@@ -220,6 +356,10 @@ static int js_area2d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_area2d_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/collision_object2d';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_area2d_class_init);
 	if (!m)
 		return NULL;
@@ -232,5 +372,6 @@ JSModuleDef *js_init_area2d_module(JSContext *ctx) {
 }
 
 void register_area2d() {
+	Area2D::__init_js_class_id();
 	js_init_area2d_module(ctx);
 }

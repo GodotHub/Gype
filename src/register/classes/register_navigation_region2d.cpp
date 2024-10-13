@@ -1,14 +1,15 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/navigation_polygon.hpp>
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/navigation_region2d.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -35,76 +36,84 @@ static JSValue navigation_region2d_class_constructor(JSContext *ctx, JSValueCons
 	}
 
 	JS_SetOpaque(obj, navigation_region2d_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue navigation_region2d_class_get_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationRegion2D::get_rid, NavigationRegion2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationRegion2D::get_rid, ctx, this_val, argc, argv);
 };
 static JSValue navigation_region2d_class_set_navigation_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationRegion2D::set_navigation_polygon, NavigationRegion2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationRegion2D::set_navigation_polygon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_region2d_class_get_navigation_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationRegion2D::get_navigation_polygon, NavigationRegion2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationRegion2D::get_navigation_polygon, ctx, this_val, argc, argv);
 };
 static JSValue navigation_region2d_class_set_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationRegion2D::set_enabled, NavigationRegion2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationRegion2D::set_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_region2d_class_is_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationRegion2D::is_enabled, NavigationRegion2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationRegion2D::is_enabled, ctx, this_val, argc, argv);
 };
 static JSValue navigation_region2d_class_set_navigation_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationRegion2D::set_navigation_map, NavigationRegion2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationRegion2D::set_navigation_map, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_region2d_class_get_navigation_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationRegion2D::get_navigation_map, NavigationRegion2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationRegion2D::get_navigation_map, ctx, this_val, argc, argv);
 };
 static JSValue navigation_region2d_class_set_use_edge_connections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationRegion2D::set_use_edge_connections, NavigationRegion2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationRegion2D::set_use_edge_connections, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_region2d_class_get_use_edge_connections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationRegion2D::get_use_edge_connections, NavigationRegion2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationRegion2D::get_use_edge_connections, ctx, this_val, argc, argv);
 };
 static JSValue navigation_region2d_class_set_navigation_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationRegion2D::set_navigation_layers, NavigationRegion2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationRegion2D::set_navigation_layers, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_region2d_class_get_navigation_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationRegion2D::get_navigation_layers, NavigationRegion2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationRegion2D::get_navigation_layers, ctx, this_val, argc, argv);
 };
 static JSValue navigation_region2d_class_set_navigation_layer_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationRegion2D::set_navigation_layer_value, NavigationRegion2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationRegion2D::set_navigation_layer_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_region2d_class_get_navigation_layer_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationRegion2D::get_navigation_layer_value, NavigationRegion2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationRegion2D::get_navigation_layer_value, ctx, this_val, argc, argv);
 };
 static JSValue navigation_region2d_class_get_region_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationRegion2D::get_region_rid, NavigationRegion2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationRegion2D::get_region_rid, ctx, this_val, argc, argv);
 };
 static JSValue navigation_region2d_class_set_enter_cost(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationRegion2D::set_enter_cost, NavigationRegion2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationRegion2D::set_enter_cost, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_region2d_class_get_enter_cost(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationRegion2D::get_enter_cost, NavigationRegion2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationRegion2D::get_enter_cost, ctx, this_val, argc, argv);
 };
 static JSValue navigation_region2d_class_set_travel_cost(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationRegion2D::set_travel_cost, NavigationRegion2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationRegion2D::set_travel_cost, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_region2d_class_get_travel_cost(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationRegion2D::get_travel_cost, NavigationRegion2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationRegion2D::get_travel_cost, ctx, this_val, argc, argv);
 };
 static JSValue navigation_region2d_class_bake_navigation_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationRegion2D::bake_navigation_polygon, NavigationRegion2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationRegion2D::bake_navigation_polygon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_region2d_class_is_baking(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationRegion2D::is_baking, NavigationRegion2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationRegion2D::is_baking, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry navigation_region2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_rid", 0, &navigation_region2d_class_get_rid),
@@ -129,18 +138,73 @@ static const JSCFunctionListEntry navigation_region2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_baking", 0, &navigation_region2d_class_is_baking),
 };
 
+void define_navigation_region2d_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "navigation_polygon"),
+        JS_NewCFunction(ctx, navigation_region2d_class_get_navigation_polygon, "get_navigation_polygon", 0),
+        JS_NewCFunction(ctx, navigation_region2d_class_set_navigation_polygon, "set_navigation_polygon", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "enabled"),
+        JS_NewCFunction(ctx, navigation_region2d_class_is_enabled, "is_enabled", 0),
+        JS_NewCFunction(ctx, navigation_region2d_class_set_enabled, "set_enabled", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "use_edge_connections"),
+        JS_NewCFunction(ctx, navigation_region2d_class_get_use_edge_connections, "get_use_edge_connections", 0),
+        JS_NewCFunction(ctx, navigation_region2d_class_set_use_edge_connections, "set_use_edge_connections", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "navigation_layers"),
+        JS_NewCFunction(ctx, navigation_region2d_class_get_navigation_layers, "get_navigation_layers", 0),
+        JS_NewCFunction(ctx, navigation_region2d_class_set_navigation_layers, "set_navigation_layers", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "enter_cost"),
+        JS_NewCFunction(ctx, navigation_region2d_class_get_enter_cost, "get_enter_cost", 0),
+        JS_NewCFunction(ctx, navigation_region2d_class_set_enter_cost, "set_enter_cost", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "travel_cost"),
+        JS_NewCFunction(ctx, navigation_region2d_class_get_travel_cost, "get_travel_cost", 0),
+        JS_NewCFunction(ctx, navigation_region2d_class_set_travel_cost, "set_travel_cost", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_navigation_region2d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&NavigationRegion2D::__class_id);
 	classes["NavigationRegion2D"] = NavigationRegion2D::__class_id;
+	class_id_list.insert(NavigationRegion2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), NavigationRegion2D::__class_id, &navigation_region2d_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, Node2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, NavigationRegion2D::__class_id, proto);
+	define_navigation_region2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, navigation_region2d_class_proto_funcs, _countof(navigation_region2d_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, navigation_region2d_class_constructor, "NavigationRegion2D", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "NavigationRegion2D", ctor);
 
@@ -148,6 +212,10 @@ static int js_navigation_region2d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_navigation_region2d_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/node2d';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_navigation_region2d_class_init);
 	if (!m)
 		return NULL;
@@ -160,5 +228,6 @@ JSModuleDef *js_init_navigation_region2d_module(JSContext *ctx) {
 }
 
 void register_navigation_region2d() {
+	NavigationRegion2D::__init_js_class_id();
 	js_init_navigation_region2d_module(ctx);
 }

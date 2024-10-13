@@ -1,15 +1,16 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/gradient.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/noise_texture3d.hpp>
 #include <godot_cpp/classes/noise.hpp>
+#include <godot_cpp/classes/gradient.hpp>
 #include <godot_cpp/classes/texture3d.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -36,61 +37,69 @@ static JSValue noise_texture3d_class_constructor(JSContext *ctx, JSValueConst ne
 	}
 
 	JS_SetOpaque(obj, noise_texture3d_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue noise_texture3d_class_set_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NoiseTexture3D::set_width, NoiseTexture3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NoiseTexture3D::set_width, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue noise_texture3d_class_set_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NoiseTexture3D::set_height, NoiseTexture3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NoiseTexture3D::set_height, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue noise_texture3d_class_set_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NoiseTexture3D::set_depth, NoiseTexture3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NoiseTexture3D::set_depth, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue noise_texture3d_class_set_invert(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NoiseTexture3D::set_invert, NoiseTexture3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NoiseTexture3D::set_invert, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue noise_texture3d_class_get_invert(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NoiseTexture3D::get_invert, NoiseTexture3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NoiseTexture3D::get_invert, ctx, this_val, argc, argv);
 };
 static JSValue noise_texture3d_class_set_seamless(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NoiseTexture3D::set_seamless, NoiseTexture3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NoiseTexture3D::set_seamless, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue noise_texture3d_class_get_seamless(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&NoiseTexture3D::get_seamless, NoiseTexture3D::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&NoiseTexture3D::get_seamless, ctx, this_val, argc, argv);
 };
 static JSValue noise_texture3d_class_set_seamless_blend_skirt(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NoiseTexture3D::set_seamless_blend_skirt, NoiseTexture3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NoiseTexture3D::set_seamless_blend_skirt, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue noise_texture3d_class_get_seamless_blend_skirt(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&NoiseTexture3D::get_seamless_blend_skirt, NoiseTexture3D::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&NoiseTexture3D::get_seamless_blend_skirt, ctx, this_val, argc, argv);
 };
 static JSValue noise_texture3d_class_set_normalize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NoiseTexture3D::set_normalize, NoiseTexture3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NoiseTexture3D::set_normalize, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue noise_texture3d_class_is_normalized(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NoiseTexture3D::is_normalized, NoiseTexture3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NoiseTexture3D::is_normalized, ctx, this_val, argc, argv);
 };
 static JSValue noise_texture3d_class_set_color_ramp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NoiseTexture3D::set_color_ramp, NoiseTexture3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NoiseTexture3D::set_color_ramp, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue noise_texture3d_class_get_color_ramp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NoiseTexture3D::get_color_ramp, NoiseTexture3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NoiseTexture3D::get_color_ramp, ctx, this_val, argc, argv);
 };
 static JSValue noise_texture3d_class_set_noise(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NoiseTexture3D::set_noise, NoiseTexture3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NoiseTexture3D::set_noise, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue noise_texture3d_class_get_noise(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&NoiseTexture3D::get_noise, NoiseTexture3D::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&NoiseTexture3D::get_noise, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry noise_texture3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_width", 1, &noise_texture3d_class_set_width),
@@ -110,18 +119,97 @@ static const JSCFunctionListEntry noise_texture3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_noise", 0, &noise_texture3d_class_get_noise),
 };
 
+void define_noise_texture3d_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "width"),
+        JS_UNDEFINED,
+        JS_NewCFunction(ctx, noise_texture3d_class_set_width, "set_width", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "height"),
+        JS_UNDEFINED,
+        JS_NewCFunction(ctx, noise_texture3d_class_set_height, "set_height", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "depth"),
+        JS_UNDEFINED,
+        JS_NewCFunction(ctx, noise_texture3d_class_set_depth, "set_depth", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "invert"),
+        JS_NewCFunction(ctx, noise_texture3d_class_get_invert, "get_invert", 0),
+        JS_NewCFunction(ctx, noise_texture3d_class_set_invert, "set_invert", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "seamless"),
+        JS_NewCFunction(ctx, noise_texture3d_class_get_seamless, "get_seamless", 0),
+        JS_NewCFunction(ctx, noise_texture3d_class_set_seamless, "set_seamless", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "seamless_blend_skirt"),
+        JS_NewCFunction(ctx, noise_texture3d_class_get_seamless_blend_skirt, "get_seamless_blend_skirt", 0),
+        JS_NewCFunction(ctx, noise_texture3d_class_set_seamless_blend_skirt, "set_seamless_blend_skirt", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "normalize"),
+        JS_NewCFunction(ctx, noise_texture3d_class_is_normalized, "is_normalized", 0),
+        JS_NewCFunction(ctx, noise_texture3d_class_set_normalize, "set_normalize", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "color_ramp"),
+        JS_NewCFunction(ctx, noise_texture3d_class_get_color_ramp, "get_color_ramp", 0),
+        JS_NewCFunction(ctx, noise_texture3d_class_set_color_ramp, "set_color_ramp", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "noise"),
+        JS_NewCFunction(ctx, noise_texture3d_class_get_noise, "get_noise", 0),
+        JS_NewCFunction(ctx, noise_texture3d_class_set_noise, "set_noise", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_noise_texture3d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&NoiseTexture3D::__class_id);
 	classes["NoiseTexture3D"] = NoiseTexture3D::__class_id;
+	class_id_list.insert(NoiseTexture3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), NoiseTexture3D::__class_id, &noise_texture3d_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, Texture3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, NoiseTexture3D::__class_id, proto);
+	define_noise_texture3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, noise_texture3d_class_proto_funcs, _countof(noise_texture3d_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, noise_texture3d_class_constructor, "NoiseTexture3D", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "NoiseTexture3D", ctor);
 
@@ -129,6 +217,10 @@ static int js_noise_texture3d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_noise_texture3d_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/texture3d';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_noise_texture3d_class_init);
 	if (!m)
 		return NULL;
@@ -141,5 +233,6 @@ JSModuleDef *js_init_noise_texture3d_module(JSContext *ctx) {
 }
 
 void register_noise_texture3d() {
+	NoiseTexture3D::__init_js_class_id();
 	js_init_noise_texture3d_module(ctx);
 }

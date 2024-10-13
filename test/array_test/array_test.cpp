@@ -1,8 +1,9 @@
 #include "array_test.hpp"
+#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include "utils/env.h"
 #include <string>
+
 
 void test_array() {
 	std::string code = R"xxx(

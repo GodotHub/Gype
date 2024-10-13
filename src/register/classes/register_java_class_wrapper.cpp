@@ -1,16 +1,20 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/java_class.hpp>
 #include <godot_cpp/classes/java_class_wrapper.hpp>
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
+
+static JSValue java_class_wrapper_instance;
+
+static void js_java_class_wrapper_singleton();
 
 static void java_class_wrapper_class_finalizer(JSRuntime *rt, JSValue val) {
 	JavaClassWrapper *java_class_wrapper = static_cast<JavaClassWrapper *>(JS_GetOpaque(val, JavaClassWrapper::__class_id));
@@ -38,13 +42,14 @@ static JSValue java_class_wrapper_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 static JSValue java_class_wrapper_class_wrap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&JavaClassWrapper::wrap, JavaClassWrapper::__class_id, ctx, this_val, argv);
+    js_java_class_wrapper_singleton();
+	return call_builtin_method_ret(&JavaClassWrapper::wrap, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry java_class_wrapper_class_proto_funcs[] = {
 	JS_CFUNC_DEF("wrap", 1, &java_class_wrapper_class_wrap),
 };
 
-static int js_java_class_wrapper_class_init(JSContext *ctx, JSModuleDef *m) {
+static int js_java_class_wrapper_class_init(JSContext *ctx) {
 	JS_NewClassID(&JavaClassWrapper::__class_id);
 	classes["JavaClassWrapper"] = JavaClassWrapper::__class_id;
 	JS_NewClass(JS_GetRuntime(ctx), JavaClassWrapper::__class_id, &java_class_wrapper_class_def);
@@ -54,26 +59,18 @@ static int js_java_class_wrapper_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, JavaClassWrapper::__class_id, proto);
 	JS_SetPropertyFunctionList(ctx, proto, java_class_wrapper_class_proto_funcs, _countof(java_class_wrapper_class_proto_funcs));
-
-	JSValue ctor = JS_NewCFunction2(ctx, java_class_wrapper_class_constructor, "JavaClassWrapper", 0, JS_CFUNC_constructor, 0);
-
-	JS_SetModuleExport(ctx, m, "JavaClassWrapper", ctor);
-
 	return 0;
 }
 
-JSModuleDef *_js_init_java_class_wrapper_module(JSContext *ctx, const char *module_name) {
-	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_java_class_wrapper_class_init);
-	if (!m)
-		return NULL;
-	JS_AddModuleExport(ctx, m, "JavaClassWrapper");
-	return m;
+static void js_java_class_wrapper_singleton() {
+	if (JS_IsUninitialized(java_class_wrapper_instance)) {
+		JSValue global = JS_GetGlobalObject(ctx);
+		java_class_wrapper_instance = java_class_wrapper_class_constructor(ctx, global, 0, NULL);
+		JS_SetPropertyStr(ctx, global, "JavaClassWrapper", java_class_wrapper_instance);
+	}
 }
 
-JSModuleDef *js_init_java_class_wrapper_module(JSContext *ctx) {
-	return _js_init_java_class_wrapper_module(ctx, "godot/classes/java_class_wrapper");
-}
 
 void register_java_class_wrapper() {
-	js_init_java_class_wrapper_module(ctx);
+	js_java_class_wrapper_class_init(ctx);
 }

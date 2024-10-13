@@ -1,15 +1,19 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/object.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ip.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
+
+static JSValue ip_instance;
+
+static void js_ip_singleton();
 
 static void ip_class_finalizer(JSRuntime *rt, JSValue val) {
 	IP *ip = static_cast<IP *>(JS_GetOpaque(val, IP::__class_id));
@@ -37,35 +41,45 @@ static JSValue ip_class_constructor(JSContext *ctx, JSValueConst new_target, int
 	return obj;
 }
 static JSValue ip_class_resolve_hostname(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&IP::resolve_hostname, IP::__class_id, ctx, this_val, argv);
+    js_ip_singleton();
+	return call_builtin_method_ret(&IP::resolve_hostname, ctx, this_val, argc, argv);
 };
 static JSValue ip_class_resolve_hostname_addresses(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&IP::resolve_hostname_addresses, IP::__class_id, ctx, this_val, argv);
+    js_ip_singleton();
+	return call_builtin_method_ret(&IP::resolve_hostname_addresses, ctx, this_val, argc, argv);
 };
 static JSValue ip_class_resolve_hostname_queue_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&IP::resolve_hostname_queue_item, IP::__class_id, ctx, this_val, argv);
+    js_ip_singleton();
+	return call_builtin_method_ret(&IP::resolve_hostname_queue_item, ctx, this_val, argc, argv);
 };
 static JSValue ip_class_get_resolve_item_status(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&IP::get_resolve_item_status, IP::__class_id, ctx, this_val, argv);
+    js_ip_singleton();
+	return call_builtin_const_method_ret(&IP::get_resolve_item_status, ctx, this_val, argc, argv);
 };
 static JSValue ip_class_get_resolve_item_address(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&IP::get_resolve_item_address, IP::__class_id, ctx, this_val, argv);
+    js_ip_singleton();
+	return call_builtin_const_method_ret(&IP::get_resolve_item_address, ctx, this_val, argc, argv);
 };
 static JSValue ip_class_get_resolve_item_addresses(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&IP::get_resolve_item_addresses, IP::__class_id, ctx, this_val, argv);
+    js_ip_singleton();
+	return call_builtin_const_method_ret(&IP::get_resolve_item_addresses, ctx, this_val, argc, argv);
 };
 static JSValue ip_class_erase_resolve_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&IP::erase_resolve_item, IP::__class_id, ctx, this_val, argv);
+    js_ip_singleton();
+    call_builtin_method_no_ret(&IP::erase_resolve_item, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ip_class_get_local_addresses(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&IP::get_local_addresses, IP::__class_id, ctx, this_val, argv);
+    js_ip_singleton();
+	return call_builtin_const_method_ret(&IP::get_local_addresses, ctx, this_val, argc, argv);
 };
 static JSValue ip_class_get_local_interfaces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&IP::get_local_interfaces, IP::__class_id, ctx, this_val, argv);
+    js_ip_singleton();
+	return call_builtin_const_method_ret(&IP::get_local_interfaces, ctx, this_val, argc, argv);
 };
 static JSValue ip_class_clear_cache(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&IP::clear_cache, IP::__class_id, ctx, this_val, argv);
+    js_ip_singleton();
+    call_builtin_method_no_ret(&IP::clear_cache, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry ip_class_proto_funcs[] = {
@@ -81,7 +95,7 @@ static const JSCFunctionListEntry ip_class_proto_funcs[] = {
 	JS_CFUNC_DEF("clear_cache", 1, &ip_class_clear_cache),
 };
 
-static int js_ip_class_init(JSContext *ctx, JSModuleDef *m) {
+static int js_ip_class_init(JSContext *ctx) {
 	JS_NewClassID(&IP::__class_id);
 	classes["IP"] = IP::__class_id;
 	JS_NewClass(JS_GetRuntime(ctx), IP::__class_id, &ip_class_def);
@@ -91,26 +105,18 @@ static int js_ip_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, IP::__class_id, proto);
 	JS_SetPropertyFunctionList(ctx, proto, ip_class_proto_funcs, _countof(ip_class_proto_funcs));
-
-	JSValue ctor = JS_NewCFunction2(ctx, ip_class_constructor, "IP", 0, JS_CFUNC_constructor, 0);
-
-	JS_SetModuleExport(ctx, m, "IP", ctor);
-
 	return 0;
 }
 
-JSModuleDef *_js_init_ip_module(JSContext *ctx, const char *module_name) {
-	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_ip_class_init);
-	if (!m)
-		return NULL;
-	JS_AddModuleExport(ctx, m, "IP");
-	return m;
+static void js_ip_singleton() {
+	if (JS_IsUninitialized(ip_instance)) {
+		JSValue global = JS_GetGlobalObject(ctx);
+		ip_instance = ip_class_constructor(ctx, global, 0, NULL);
+		JS_SetPropertyStr(ctx, global, "IP", ip_instance);
+	}
 }
 
-JSModuleDef *js_init_ip_module(JSContext *ctx) {
-	return _js_init_ip_module(ctx, "godot/classes/ip");
-}
 
 void register_ip() {
-	js_init_ip_module(ctx);
+	js_ip_class_init(ctx);
 }

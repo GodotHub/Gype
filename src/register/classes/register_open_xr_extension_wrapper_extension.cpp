@@ -1,14 +1,15 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/object.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/open_xrapi_extension.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/open_xr_extension_wrapper_extension.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -35,13 +36,21 @@ static JSValue open_xr_extension_wrapper_extension_class_constructor(JSContext *
 	}
 
 	JS_SetOpaque(obj, open_xr_extension_wrapper_extension_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue open_xr_extension_wrapper_extension_class_get_openxr_api(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&OpenXRExtensionWrapperExtension::get_openxr_api, OpenXRExtensionWrapperExtension::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&OpenXRExtensionWrapperExtension::get_openxr_api, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_extension_wrapper_extension_class_register_extension_wrapper(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&OpenXRExtensionWrapperExtension::register_extension_wrapper, OpenXRExtensionWrapperExtension::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&OpenXRExtensionWrapperExtension::register_extension_wrapper, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry open_xr_extension_wrapper_extension_class_proto_funcs[] = {
@@ -49,18 +58,25 @@ static const JSCFunctionListEntry open_xr_extension_wrapper_extension_class_prot
 	JS_CFUNC_DEF("register_extension_wrapper", 0, &open_xr_extension_wrapper_extension_class_register_extension_wrapper),
 };
 
+void define_open_xr_extension_wrapper_extension_property(JSContext *ctx, JSValue obj) {
+}
+
 static int js_open_xr_extension_wrapper_extension_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&OpenXRExtensionWrapperExtension::__class_id);
 	classes["OpenXRExtensionWrapperExtension"] = OpenXRExtensionWrapperExtension::__class_id;
+	class_id_list.insert(OpenXRExtensionWrapperExtension::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), OpenXRExtensionWrapperExtension::__class_id, &open_xr_extension_wrapper_extension_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, Object::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, OpenXRExtensionWrapperExtension::__class_id, proto);
+	define_open_xr_extension_wrapper_extension_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, open_xr_extension_wrapper_extension_class_proto_funcs, _countof(open_xr_extension_wrapper_extension_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, open_xr_extension_wrapper_extension_class_constructor, "OpenXRExtensionWrapperExtension", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "OpenXRExtensionWrapperExtension", ctor);
 
@@ -68,6 +84,10 @@ static int js_open_xr_extension_wrapper_extension_class_init(JSContext *ctx, JSM
 }
 
 JSModuleDef *_js_init_open_xr_extension_wrapper_extension_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/object';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_open_xr_extension_wrapper_extension_class_init);
 	if (!m)
 		return NULL;
@@ -80,5 +100,6 @@ JSModuleDef *js_init_open_xr_extension_wrapper_extension_module(JSContext *ctx) 
 }
 
 void register_open_xr_extension_wrapper_extension() {
+	OpenXRExtensionWrapperExtension::__init_js_class_id();
 	js_init_open_xr_extension_wrapper_extension_module(ctx);
 }

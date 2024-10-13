@@ -38,6 +38,9 @@
 
 #include <utility>
 
+#include "quickjs/env.h"
+#include "quickjs/quickjs_helper.h"
+
 namespace godot {
 
 GDExtensionVariantFromTypeConstructorFunc Variant::from_type_constructor[Variant::VARIANT_MAX]{};
@@ -251,6 +254,10 @@ Variant::Variant(const PackedColorArray &v) {
 
 Variant::Variant(const PackedVector4Array &v) {
 	from_type_constructor[PACKED_VECTOR4_ARRAY](_native_ptr(), v._native_ptr());
+}
+
+Variant::Variant(JSValue v) {
+	internal::gdextension_interface_variant_new_copy(_native_ptr(), any_to_variant(ctx, v)._native_ptr());
 }
 
 Variant::~Variant() {
@@ -513,6 +520,11 @@ Variant::operator PackedColorArray() const {
 
 Variant::operator PackedVector4Array() const {
 	return PackedVector4Array(this);
+}
+
+// TODO JSValue to Variant
+Variant::operator JSValue() const {
+	return any_to_jsvalue(ctx, this);
 }
 
 Variant &Variant::operator=(const Variant &other) {

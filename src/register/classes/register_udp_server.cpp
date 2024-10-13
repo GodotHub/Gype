@@ -1,14 +1,15 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/udp_server.hpp>
 #include <godot_cpp/classes/packet_peer_udp.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -35,36 +36,44 @@ static JSValue udp_server_class_constructor(JSContext *ctx, JSValueConst new_tar
 	}
 
 	JS_SetOpaque(obj, udp_server_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue udp_server_class_listen(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&UDPServer::listen, UDPServer::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&UDPServer::listen, ctx, this_val, argc, argv);
 };
 static JSValue udp_server_class_poll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&UDPServer::poll, UDPServer::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&UDPServer::poll, ctx, this_val, argc, argv);
 };
 static JSValue udp_server_class_is_connection_available(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&UDPServer::is_connection_available, UDPServer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&UDPServer::is_connection_available, ctx, this_val, argc, argv);
 };
 static JSValue udp_server_class_get_local_port(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&UDPServer::get_local_port, UDPServer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&UDPServer::get_local_port, ctx, this_val, argc, argv);
 };
 static JSValue udp_server_class_is_listening(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&UDPServer::is_listening, UDPServer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&UDPServer::is_listening, ctx, this_val, argc, argv);
 };
 static JSValue udp_server_class_take_connection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&UDPServer::take_connection, UDPServer::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&UDPServer::take_connection, ctx, this_val, argc, argv);
 };
 static JSValue udp_server_class_stop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&UDPServer::stop, UDPServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&UDPServer::stop, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue udp_server_class_set_max_pending_connections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&UDPServer::set_max_pending_connections, UDPServer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&UDPServer::set_max_pending_connections, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue udp_server_class_get_max_pending_connections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&UDPServer::get_max_pending_connections, UDPServer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&UDPServer::get_max_pending_connections, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry udp_server_class_proto_funcs[] = {
 	JS_CFUNC_DEF("listen", 2, &udp_server_class_listen),
@@ -78,18 +87,33 @@ static const JSCFunctionListEntry udp_server_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_max_pending_connections", 0, &udp_server_class_get_max_pending_connections),
 };
 
+void define_udp_server_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "max_pending_connections"),
+        JS_NewCFunction(ctx, udp_server_class_get_max_pending_connections, "get_max_pending_connections", 0),
+        JS_NewCFunction(ctx, udp_server_class_set_max_pending_connections, "set_max_pending_connections", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_udp_server_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&UDPServer::__class_id);
 	classes["UDPServer"] = UDPServer::__class_id;
+	class_id_list.insert(UDPServer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), UDPServer::__class_id, &udp_server_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, UDPServer::__class_id, proto);
+	define_udp_server_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, udp_server_class_proto_funcs, _countof(udp_server_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, udp_server_class_constructor, "UDPServer", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "UDPServer", ctor);
 
@@ -97,6 +121,10 @@ static int js_udp_server_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_udp_server_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_udp_server_class_init);
 	if (!m)
 		return NULL;
@@ -109,5 +137,6 @@ JSModuleDef *js_init_udp_server_module(JSContext *ctx) {
 }
 
 void register_udp_server() {
+	UDPServer::__init_js_class_id();
 	js_init_udp_server_module(ctx);
 }

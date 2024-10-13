@@ -1,13 +1,14 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/shape3d.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/cylinder_shape3d.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -34,21 +35,29 @@ static JSValue cylinder_shape3d_class_constructor(JSContext *ctx, JSValueConst n
 	}
 
 	JS_SetOpaque(obj, cylinder_shape3d_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue cylinder_shape3d_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&CylinderShape3D::set_radius, CylinderShape3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CylinderShape3D::set_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cylinder_shape3d_class_get_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&CylinderShape3D::get_radius, CylinderShape3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&CylinderShape3D::get_radius, ctx, this_val, argc, argv);
 };
 static JSValue cylinder_shape3d_class_set_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&CylinderShape3D::set_height, CylinderShape3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&CylinderShape3D::set_height, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cylinder_shape3d_class_get_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&CylinderShape3D::get_height, CylinderShape3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&CylinderShape3D::get_height, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry cylinder_shape3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_radius", 1, &cylinder_shape3d_class_set_radius),
@@ -57,18 +66,41 @@ static const JSCFunctionListEntry cylinder_shape3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_height", 0, &cylinder_shape3d_class_get_height),
 };
 
+void define_cylinder_shape3d_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "height"),
+        JS_NewCFunction(ctx, cylinder_shape3d_class_get_height, "get_height", 0),
+        JS_NewCFunction(ctx, cylinder_shape3d_class_set_height, "set_height", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "radius"),
+        JS_NewCFunction(ctx, cylinder_shape3d_class_get_radius, "get_radius", 0),
+        JS_NewCFunction(ctx, cylinder_shape3d_class_set_radius, "set_radius", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_cylinder_shape3d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&CylinderShape3D::__class_id);
 	classes["CylinderShape3D"] = CylinderShape3D::__class_id;
+	class_id_list.insert(CylinderShape3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CylinderShape3D::__class_id, &cylinder_shape3d_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, Shape3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, CylinderShape3D::__class_id, proto);
+	define_cylinder_shape3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, cylinder_shape3d_class_proto_funcs, _countof(cylinder_shape3d_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, cylinder_shape3d_class_constructor, "CylinderShape3D", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "CylinderShape3D", ctor);
 
@@ -76,6 +108,10 @@ static int js_cylinder_shape3d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_cylinder_shape3d_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/shape3d';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_cylinder_shape3d_class_init);
 	if (!m)
 		return NULL;
@@ -88,5 +124,6 @@ JSModuleDef *js_init_cylinder_shape3d_module(JSContext *ctx) {
 }
 
 void register_cylinder_shape3d() {
+	CylinderShape3D::__init_js_class_id();
 	js_init_cylinder_shape3d_module(ctx);
 }

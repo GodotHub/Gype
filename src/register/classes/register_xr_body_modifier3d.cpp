@@ -1,13 +1,14 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/xr_body_modifier3d.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/skeleton_modifier3d.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/xr_body_modifier3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -34,28 +35,36 @@ static JSValue xr_body_modifier3d_class_constructor(JSContext *ctx, JSValueConst
 	}
 
 	JS_SetOpaque(obj, xr_body_modifier3d_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue xr_body_modifier3d_class_set_body_tracker(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&XRBodyModifier3D::set_body_tracker, XRBodyModifier3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRBodyModifier3D::set_body_tracker, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_body_modifier3d_class_get_body_tracker(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&XRBodyModifier3D::get_body_tracker, XRBodyModifier3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&XRBodyModifier3D::get_body_tracker, ctx, this_val, argc, argv);
 };
 static JSValue xr_body_modifier3d_class_set_body_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&XRBodyModifier3D::set_body_update, XRBodyModifier3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRBodyModifier3D::set_body_update, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_body_modifier3d_class_get_body_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&XRBodyModifier3D::get_body_update, XRBodyModifier3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&XRBodyModifier3D::get_body_update, ctx, this_val, argc, argv);
 };
 static JSValue xr_body_modifier3d_class_set_bone_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&XRBodyModifier3D::set_bone_update, XRBodyModifier3D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRBodyModifier3D::set_bone_update, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_body_modifier3d_class_get_bone_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&XRBodyModifier3D::get_bone_update, XRBodyModifier3D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&XRBodyModifier3D::get_bone_update, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry xr_body_modifier3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_body_tracker", 1, &xr_body_modifier3d_class_set_body_tracker),
@@ -66,18 +75,49 @@ static const JSCFunctionListEntry xr_body_modifier3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_bone_update", 0, &xr_body_modifier3d_class_get_bone_update),
 };
 
+void define_xr_body_modifier3d_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "body_tracker"),
+        JS_NewCFunction(ctx, xr_body_modifier3d_class_get_body_tracker, "get_body_tracker", 0),
+        JS_NewCFunction(ctx, xr_body_modifier3d_class_set_body_tracker, "set_body_tracker", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "body_update"),
+        JS_NewCFunction(ctx, xr_body_modifier3d_class_get_body_update, "get_body_update", 0),
+        JS_NewCFunction(ctx, xr_body_modifier3d_class_set_body_update, "set_body_update", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "bone_update"),
+        JS_NewCFunction(ctx, xr_body_modifier3d_class_get_bone_update, "get_bone_update", 0),
+        JS_NewCFunction(ctx, xr_body_modifier3d_class_set_bone_update, "set_bone_update", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_xr_body_modifier3d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&XRBodyModifier3D::__class_id);
 	classes["XRBodyModifier3D"] = XRBodyModifier3D::__class_id;
+	class_id_list.insert(XRBodyModifier3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XRBodyModifier3D::__class_id, &xr_body_modifier3d_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, SkeletonModifier3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, XRBodyModifier3D::__class_id, proto);
+	define_xr_body_modifier3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xr_body_modifier3d_class_proto_funcs, _countof(xr_body_modifier3d_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, xr_body_modifier3d_class_constructor, "XRBodyModifier3D", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "XRBodyModifier3D", ctor);
 
@@ -85,6 +125,10 @@ static int js_xr_body_modifier3d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_xr_body_modifier3d_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/skeleton_modifier3d';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_xr_body_modifier3d_class_init);
 	if (!m)
 		return NULL;
@@ -97,5 +141,6 @@ JSModuleDef *js_init_xr_body_modifier3d_module(JSContext *ctx) {
 }
 
 void register_xr_body_modifier3d() {
+	XRBodyModifier3D::__init_js_class_id();
 	js_init_xr_body_modifier3d_module(ctx);
 }

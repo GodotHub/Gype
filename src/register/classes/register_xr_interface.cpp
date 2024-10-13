@@ -1,13 +1,14 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/xr_interface.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -34,96 +35,104 @@ static JSValue xr_interface_class_constructor(JSContext *ctx, JSValueConst new_t
 	}
 
 	JS_SetOpaque(obj, xr_interface_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue xr_interface_class_get_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&XRInterface::get_name, XRInterface::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&XRInterface::get_name, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_get_capabilities(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&XRInterface::get_capabilities, XRInterface::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&XRInterface::get_capabilities, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_is_primary(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&XRInterface::is_primary, XRInterface::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&XRInterface::is_primary, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_set_primary(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&XRInterface::set_primary, XRInterface::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRInterface::set_primary, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_interface_class_is_initialized(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&XRInterface::is_initialized, XRInterface::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&XRInterface::is_initialized, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_initialize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&XRInterface::initialize, XRInterface::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&XRInterface::initialize, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_uninitialize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&XRInterface::uninitialize, XRInterface::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRInterface::uninitialize, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_interface_class_get_system_info(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&XRInterface::get_system_info, XRInterface::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&XRInterface::get_system_info, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_get_tracking_status(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&XRInterface::get_tracking_status, XRInterface::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&XRInterface::get_tracking_status, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_get_render_target_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&XRInterface::get_render_target_size, XRInterface::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&XRInterface::get_render_target_size, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_get_view_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&XRInterface::get_view_count, XRInterface::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&XRInterface::get_view_count, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_trigger_haptic_pulse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&XRInterface::trigger_haptic_pulse, XRInterface::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRInterface::trigger_haptic_pulse, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_interface_class_supports_play_area_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&XRInterface::supports_play_area_mode, XRInterface::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&XRInterface::supports_play_area_mode, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_get_play_area_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&XRInterface::get_play_area_mode, XRInterface::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&XRInterface::get_play_area_mode, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_set_play_area_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&XRInterface::set_play_area_mode, XRInterface::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&XRInterface::set_play_area_mode, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_get_play_area(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&XRInterface::get_play_area, XRInterface::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&XRInterface::get_play_area, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_get_anchor_detection_is_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&XRInterface::get_anchor_detection_is_enabled, XRInterface::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&XRInterface::get_anchor_detection_is_enabled, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_set_anchor_detection_is_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&XRInterface::set_anchor_detection_is_enabled, XRInterface::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRInterface::set_anchor_detection_is_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_interface_class_get_camera_feed_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&XRInterface::get_camera_feed_id, XRInterface::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&XRInterface::get_camera_feed_id, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_is_passthrough_supported(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&XRInterface::is_passthrough_supported, XRInterface::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&XRInterface::is_passthrough_supported, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_is_passthrough_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&XRInterface::is_passthrough_enabled, XRInterface::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&XRInterface::is_passthrough_enabled, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_start_passthrough(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&XRInterface::start_passthrough, XRInterface::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&XRInterface::start_passthrough, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_stop_passthrough(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&XRInterface::stop_passthrough, XRInterface::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&XRInterface::stop_passthrough, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_interface_class_get_transform_for_view(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&XRInterface::get_transform_for_view, XRInterface::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&XRInterface::get_transform_for_view, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_get_projection_for_view(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&XRInterface::get_projection_for_view, XRInterface::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&XRInterface::get_projection_for_view, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_get_supported_environment_blend_modes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&XRInterface::get_supported_environment_blend_modes, XRInterface::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&XRInterface::get_supported_environment_blend_modes, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_set_environment_blend_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&XRInterface::set_environment_blend_mode, XRInterface::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&XRInterface::set_environment_blend_mode, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_get_environment_blend_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&XRInterface::get_environment_blend_mode, XRInterface::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&XRInterface::get_environment_blend_mode, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry xr_interface_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_name", 0, &xr_interface_class_get_name),
@@ -156,18 +165,57 @@ static const JSCFunctionListEntry xr_interface_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_environment_blend_mode", 0, &xr_interface_class_get_environment_blend_mode),
 };
 
+void define_xr_interface_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "interface_is_primary"),
+        JS_NewCFunction(ctx, xr_interface_class_is_primary, "is_primary", 0),
+        JS_NewCFunction(ctx, xr_interface_class_set_primary, "set_primary", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "xr_play_area_mode"),
+        JS_NewCFunction(ctx, xr_interface_class_get_play_area_mode, "get_play_area_mode", 0),
+        JS_NewCFunction(ctx, xr_interface_class_set_play_area_mode, "set_play_area_mode", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "environment_blend_mode"),
+        JS_NewCFunction(ctx, xr_interface_class_get_environment_blend_mode, "get_environment_blend_mode", 0),
+        JS_NewCFunction(ctx, xr_interface_class_set_environment_blend_mode, "set_environment_blend_mode", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "ar_is_anchor_detection_enabled"),
+        JS_NewCFunction(ctx, xr_interface_class_get_anchor_detection_is_enabled, "get_anchor_detection_is_enabled", 0),
+        JS_NewCFunction(ctx, xr_interface_class_set_anchor_detection_is_enabled, "set_anchor_detection_is_enabled", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_xr_interface_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&XRInterface::__class_id);
 	classes["XRInterface"] = XRInterface::__class_id;
+	class_id_list.insert(XRInterface::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XRInterface::__class_id, &xr_interface_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, XRInterface::__class_id, proto);
+	define_xr_interface_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xr_interface_class_proto_funcs, _countof(xr_interface_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, xr_interface_class_constructor, "XRInterface", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "XRInterface", ctor);
 
@@ -175,6 +223,10 @@ static int js_xr_interface_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_xr_interface_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_xr_interface_class_init);
 	if (!m)
 		return NULL;
@@ -187,5 +239,6 @@ JSModuleDef *js_init_xr_interface_module(JSContext *ctx) {
 }
 
 void register_xr_interface() {
+	XRInterface::__init_js_class_id();
 	js_init_xr_interface_module(ctx);
 }

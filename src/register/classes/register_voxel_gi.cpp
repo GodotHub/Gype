@@ -1,16 +1,17 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/voxel_gi.hpp>
-#include <godot_cpp/classes/visual_instance3d.hpp>
-#include <godot_cpp/classes/node.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/camera_attributes.hpp>
+#include <godot_cpp/classes/voxel_gi.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/voxel_gi_data.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -37,42 +38,50 @@ static JSValue voxel_gi_class_constructor(JSContext *ctx, JSValueConst new_targe
 	}
 
 	JS_SetOpaque(obj, voxel_gi_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue voxel_gi_class_set_probe_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&VoxelGI::set_probe_data, VoxelGI::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VoxelGI::set_probe_data, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue voxel_gi_class_get_probe_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&VoxelGI::get_probe_data, VoxelGI::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&VoxelGI::get_probe_data, ctx, this_val, argc, argv);
 };
 static JSValue voxel_gi_class_set_subdiv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&VoxelGI::set_subdiv, VoxelGI::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VoxelGI::set_subdiv, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue voxel_gi_class_get_subdiv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&VoxelGI::get_subdiv, VoxelGI::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&VoxelGI::get_subdiv, ctx, this_val, argc, argv);
 };
 static JSValue voxel_gi_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&VoxelGI::set_size, VoxelGI::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VoxelGI::set_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue voxel_gi_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&VoxelGI::get_size, VoxelGI::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&VoxelGI::get_size, ctx, this_val, argc, argv);
 };
 static JSValue voxel_gi_class_set_camera_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&VoxelGI::set_camera_attributes, VoxelGI::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VoxelGI::set_camera_attributes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue voxel_gi_class_get_camera_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&VoxelGI::get_camera_attributes, VoxelGI::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&VoxelGI::get_camera_attributes, ctx, this_val, argc, argv);
 };
 static JSValue voxel_gi_class_bake(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&VoxelGI::bake, VoxelGI::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VoxelGI::bake, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue voxel_gi_class_debug_bake(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&VoxelGI::debug_bake, VoxelGI::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VoxelGI::debug_bake, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry voxel_gi_class_proto_funcs[] = {
@@ -88,18 +97,57 @@ static const JSCFunctionListEntry voxel_gi_class_proto_funcs[] = {
 	JS_CFUNC_DEF("debug_bake", 0, &voxel_gi_class_debug_bake),
 };
 
+void define_voxel_gi_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "subdiv"),
+        JS_NewCFunction(ctx, voxel_gi_class_get_subdiv, "get_subdiv", 0),
+        JS_NewCFunction(ctx, voxel_gi_class_set_subdiv, "set_subdiv", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "size"),
+        JS_NewCFunction(ctx, voxel_gi_class_get_size, "get_size", 0),
+        JS_NewCFunction(ctx, voxel_gi_class_set_size, "set_size", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "camera_attributes"),
+        JS_NewCFunction(ctx, voxel_gi_class_get_camera_attributes, "get_camera_attributes", 0),
+        JS_NewCFunction(ctx, voxel_gi_class_set_camera_attributes, "set_camera_attributes", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "data"),
+        JS_NewCFunction(ctx, voxel_gi_class_get_probe_data, "get_probe_data", 0),
+        JS_NewCFunction(ctx, voxel_gi_class_set_probe_data, "set_probe_data", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_voxel_gi_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&VoxelGI::__class_id);
 	classes["VoxelGI"] = VoxelGI::__class_id;
+	class_id_list.insert(VoxelGI::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VoxelGI::__class_id, &voxel_gi_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, VisualInstance3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, VoxelGI::__class_id, proto);
+	define_voxel_gi_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, voxel_gi_class_proto_funcs, _countof(voxel_gi_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, voxel_gi_class_constructor, "VoxelGI", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "VoxelGI", ctor);
 
@@ -107,6 +155,10 @@ static int js_voxel_gi_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_voxel_gi_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/visual_instance3d';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_voxel_gi_class_init);
 	if (!m)
 		return NULL;
@@ -119,5 +171,6 @@ JSModuleDef *js_init_voxel_gi_module(JSContext *ctx) {
 }
 
 void register_voxel_gi() {
+	VoxelGI::__init_js_class_id();
 	js_init_voxel_gi_module(ctx);
 }

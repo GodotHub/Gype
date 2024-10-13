@@ -1,8 +1,9 @@
 
 #include "register/classes/register_classes.h"
 
+{%- macro print() %}
+{%- endmacro %}
+
 void register_classes() {
-{%- for class in classes %}
-    register_{{ camel_to_snake(class['name']) }}();
-{%- endfor %}
+{{register_classes()}}
 };

@@ -1,14 +1,15 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/texture2d_array.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/image_texture_layered.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -35,27 +36,42 @@ static JSValue texture2d_array_class_constructor(JSContext *ctx, JSValueConst ne
 	}
 
 	JS_SetOpaque(obj, texture2d_array_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue texture2d_array_class_create_placeholder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Texture2DArray::create_placeholder, Texture2DArray::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Texture2DArray::create_placeholder, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry texture2d_array_class_proto_funcs[] = {
 	JS_CFUNC_DEF("create_placeholder", 0, &texture2d_array_class_create_placeholder),
 };
 
+void define_texture2d_array_property(JSContext *ctx, JSValue obj) {
+}
+
 static int js_texture2d_array_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&Texture2DArray::__class_id);
 	classes["Texture2DArray"] = Texture2DArray::__class_id;
+	class_id_list.insert(Texture2DArray::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Texture2DArray::__class_id, &texture2d_array_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, ImageTextureLayered::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Texture2DArray::__class_id, proto);
+	define_texture2d_array_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, texture2d_array_class_proto_funcs, _countof(texture2d_array_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, texture2d_array_class_constructor, "Texture2DArray", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "Texture2DArray", ctor);
 
@@ -63,6 +79,10 @@ static int js_texture2d_array_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_texture2d_array_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/image_texture_layered';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_texture2d_array_class_init);
 	if (!m)
 		return NULL;
@@ -75,5 +95,6 @@ JSModuleDef *js_init_texture2d_array_module(JSContext *ctx) {
 }
 
 void register_texture2d_array() {
+	Texture2DArray::__init_js_class_id();
 	js_init_texture2d_array_module(ctx);
 }

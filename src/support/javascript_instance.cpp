@@ -1,0 +1,195 @@
+#include "support/javascript_instance.hpp"
+#include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "support/javascript.hpp"
+#include <godot_cpp/classes/class_db_singleton.hpp>
+#include <godot_cpp/classes/resource_loader.hpp>
+#include <godot_cpp/core/error_macros.hpp>
+#include <godot_cpp/variant/string_name.hpp>
+#include <godot_cpp/variant/utility_functions.hpp>
+#include <godot_cpp/variant/variant_size.hpp>
+#include <memory>
+
+using namespace godot;
+
+static JSPropertyDescriptor *get_property(JSContext *ctx, JSValue instance, const char *key);
+
+const char *JavaScriptInstance::symbol_mask = "_GodotClass";
+
+JavaScriptInstance::JavaScriptInstance(Object *p_godot_object, JavaScript *script) {
+	script->instances[p_godot_object->get_instance_id()] = this;
+	this->p_godot_object = p_godot_object;
+	this->script = script;
+	String code = script->_get_source_code();
+	std::string code_str = std::string(code.ascii().get_data());
+	JSValue ret = JS_Eval(ctx, code_str.c_str(), code_str.size(), "<input>", JS_EVAL_TYPE_MODULE | JS_EVAL_FLAG_COMPILE_ONLY);
+	JSModuleDef *md = (JSModuleDef *)JS_VALUE_GET_PTR(ret);
+	ret = JS_EvalFunction(ctx, ret);
+	if (!is_exception(ctx, ret)) {
+		JSValue ns = JS_GetModuleNamespace(ctx, md);
+		ERR_FAIL_COND(is_exception(ctx, ns));
+		JSPropertyEnum *props;
+		uint32_t len;
+		ERR_FAIL_COND_MSG(JS_GetOwnPropertyNames(ctx, &props, &len, ns, JS_GPN_STRING_MASK) < 0, "Error getting module property\n");
+		for (uint32_t i = 0; i < len; i++) {
+			JSAtom class_atom = props[i].atom;
+			const char *prop_name = JS_AtomToCString(ctx, class_atom);
+			ret = JS_GetPropertyStr(ctx, ns, prop_name);
+			if (!is_exception(ctx, ret) && JS_IsObject(ret)) {
+				JSValue clazz = ret;
+				JSPropertyEnum *class_props;
+				uint32_t class_len;
+
+				ERR_FAIL_COND_MSG(JS_GetOwnPropertyNames(ctx, &class_props, &class_len, clazz, JS_GPN_SYMBOL_MASK) < 0, "Error getting class property\n");
+				for (uint32_t j = 0; j < class_len; j++) {
+					JSAtom symbol = class_props[j].atom;
+					const char *symbol_name = JS_AtomToCString(ctx, symbol);
+					ret = JS_GetProperty(ctx, ret, symbol);
+					if (strcmp(symbol_mask, symbol_name) == 0 || true) {
+						JSValue js_instance = JS_CallConstructor(ctx, clazz, 0, NULL);
+						Object *gd_obj = reinterpret_cast<Object *>(JS_GetOpaque(js_instance, p_godot_object->__get_js_class_id()));
+						JS_SetOpaque(js_instance, gd_obj);
+						binding = internal::get_object_instance_binding(p_godot_object->_owner);
+						binding->js_instance = js_instance;
+						binding->ctx = ctx;
+					}
+				}
+			}
+		}
+	}
+}
+
+godot::JavaScriptInstance::~JavaScriptInstance() {
+	script->instances.erase(p_godot_object->get_instance_id());
+	JS_FreeValue(ctx, binding->js_instance);
+}
+
+JSModuleDef *godot::JavaScriptInstance::get_module(const char *path) {
+	char *code = new char[512];
+	sprintf(code, "import * as md from \"%s\";", path);
+	JSValue js_module = JS_Eval(ctx, code, strlen(code), "<input>", JS_EVAL_FLAG_COMPILE_ONLY | JS_EVAL_TYPE_MODULE);
+	JSModuleDef *md = (JSModuleDef *)JS_VALUE_GET_PTR(js_module);
+	js_module = JS_EvalFunction(ctx, js_module);
+	return is_exception(ctx, js_module) ? nullptr : md;
+}
+
+JSValue JavaScriptInstance::find_ns_property(JSModuleDef *md, const char *name) {
+	JSValue ns = JS_GetModuleNamespace(ctx, md);
+	return JS_GetPropertyStr(ctx, ns, name);
+}
+
+#define SET_JS_PROPERTY_WITH_MSG(prop_name, var)                        \
+	if (JS_SetPropertyStr(ctx, js_instance, prop_name, var) <= 0) {     \
+		qjs::print_exception(ctx);                                      \
+		ERR_FAIL_V_EDMSG(false, "Error setting js_instance property."); \
+	}                                                                   \
+	return true;
+
+#define SETTER_JS_PROPERTY_WITH_MSG(js_setter, var)                                                                                      \
+	JSValue _var = var;                                                                                                                  \
+	ERR_FAIL_COND_V_EDMSG(JS_IsException(JS_Call(ctx, js_setter, js_instance, 1, &_var)), false, "Error setting js_instance property."); \
+	return true;
+
+#define SETTER_GD_PROPERTY_WITH_MSG(gd_setter, var)                                                                                      \
+	JSValue _var = var;                                                                                                                  \
+	ERR_FAIL_COND_V_EDMSG(JS_IsException(JS_Call(ctx, gd_setter, js_instance, 1, &_var)), false, "Error setting js_instance property."); \
+	return true;
+
+GDExtensionBool JavaScriptInstance::set(GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_variant) {
+	JSValue js_instance = binding->js_instance;
+	const char *name = to_chars(*reinterpret_cast<const StringName *>(p_name));
+	JSPropertyDescriptor prop;
+	JSAtom atom = JS_NewAtom(ctx, name);
+	if (JS_GetOwnProperty(ctx, &prop, js_instance, atom) <= 0)
+		return false;
+	Variant variant;
+	internal::gdextension_interface_variant_new_copy(variant._native_ptr(), p_variant);
+	JSValue arg = variant;
+	JSValue state = JS_Call(ctx, prop.setter, js_instance, 1, &arg);
+	return is_exception(ctx, state);
+}
+
+GDExtensionBool JavaScriptInstance::get(GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret) {
+	JSValue js_instance = binding->js_instance;
+	const char *name = to_chars(*reinterpret_cast<const StringName *>(p_name));
+	JSPropertyDescriptor prop;
+	JSAtom atom = JS_NewAtom(ctx, name);
+	if (JS_GetOwnProperty(ctx, &prop, js_instance, atom) <= 0)
+		return false;
+	Variant ret = prop.value;
+	internal::gdextension_interface_variant_new_copy(r_ret, ret._native_ptr());
+	return true;
+}
+
+// const GDExtensionPropertyInfo *JavaScriptInstance::get_property_list(uint32_t *r_count) {
+// 	return nullptr;
+// }
+
+// GDExtensionBool JavaScriptInstance::property_can_revert(GDExtensionConstStringNamePtr p_name) {
+// 	return false;
+// }
+
+// GDExtensionBool JavaScriptInstance::property_get_revert(GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret) {
+// StringName *name = (StringName *)p_name;
+// *(Variant *)r_ret = p_godot_object->property_get_revert(*name);
+// return true;
+// }
+
+void JavaScriptInstance::call(GDExtensionConstStringNamePtr p_method, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count, GDExtensionVariantPtr r_return, GDExtensionCallError *r_error) {
+	std::string method = to_chars(*reinterpret_cast<const StringName *>(p_method));
+	JSValue js_instance = binding->js_instance;
+	JSValue js_method = JS_GetPropertyStr(ctx, js_instance, method.c_str());
+	if (!JS_IsFunction(ctx, js_method)) {
+		r_error->argument = p_argument_count;
+		r_error->error = GDExtensionCallErrorType::GDEXTENSION_CALL_ERROR_INVALID_METHOD;
+		return;
+	}
+	std::vector<Variant> variant_args;
+	for (int i = 0; i < p_argument_count; i++) {
+		variant_args.push_back(*const_cast<Variant *>(*reinterpret_cast<const Variant *const *>(p_args)));
+	}
+	std::vector<JSValue> js_args;
+	for (int i = 0; i < p_argument_count; i++) {
+		js_args.push_back(variant_args[i].operator JSValue());
+	}
+	JSValue js_ret = JS_Call(ctx, js_method, js_instance, p_argument_count, js_args.data());
+	Variant ret = Variant(js_ret);
+	internal::gdextension_interface_variant_new_copy(r_return, ret._native_ptr());
+}
+
+void godot::JavaScriptInstance::notification(int32_t p_what, GDExtensionBool p_reversed) {
+	JSValue js_instance = binding->js_instance;
+	JSValue js_method = JS_GetPropertyStr(ctx, js_instance, "_notification");
+}
+
+GDExtensionObjectPtr godot::JavaScriptInstance::get_owner_func() {
+	return p_godot_object->_owner;
+}
+
+GDExtensionObjectPtr godot::JavaScriptInstance::get_script() {
+	return script;
+}
+
+GDExtensionScriptLanguagePtr godot::JavaScriptInstance::get_language() {
+	return JavaScriptLanguage::get_singleton();
+}
+
+static JSPropertyDescriptor *get_property(JSContext *ctx, JSValue instance, const char *key) {
+	JSValue prototype = instance;
+	JSPropertyDescriptor *prop = new JSPropertyDescriptor();
+	JSAtom atom = JS_NewAtom(ctx, key);
+
+	while (!JS_IsUndefined(prototype)) {
+		if (JS_GetOwnProperty(ctx, prop, prototype, atom)) {
+			JS_FreeAtom(ctx, atom);
+			return prop;
+		}
+		prototype = JS_GetPrototype(ctx, prototype);
+	}
+	JS_FreeAtom(ctx, atom);
+	return nullptr;
+}
+
+static void notification_bind(JSValue instance, int32_t p_what, GDExtensionBool p_reversed) {
+	JSValue super = JS_GetPrototype(ctx, instance);
+}

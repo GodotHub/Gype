@@ -37,6 +37,8 @@
 
 namespace godot {
 
+JSClassID Basis::__class_id;
+
 void Basis::from_z(const Vector3 &p_z) {
 	if (Math::abs(p_z.z) > (real_t)Math_SQRT12) {
 		// choose p in y-z plane

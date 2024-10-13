@@ -1,13 +1,14 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/animation_mixer.hpp>
 #include <godot_cpp/classes/animation_player.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -34,159 +35,167 @@ static JSValue animation_player_class_constructor(JSContext *ctx, JSValueConst n
 	}
 
 	JS_SetOpaque(obj, animation_player_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue animation_player_class_animation_set_next(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationPlayer::animation_set_next, AnimationPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationPlayer::animation_set_next, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_player_class_animation_get_next(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationPlayer::animation_get_next, AnimationPlayer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationPlayer::animation_get_next, ctx, this_val, argc, argv);
 };
 static JSValue animation_player_class_set_blend_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationPlayer::set_blend_time, AnimationPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationPlayer::set_blend_time, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_player_class_get_blend_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationPlayer::get_blend_time, AnimationPlayer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationPlayer::get_blend_time, ctx, this_val, argc, argv);
 };
 static JSValue animation_player_class_set_default_blend_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationPlayer::set_default_blend_time, AnimationPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationPlayer::set_default_blend_time, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_player_class_get_default_blend_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationPlayer::get_default_blend_time, AnimationPlayer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationPlayer::get_default_blend_time, ctx, this_val, argc, argv);
 };
 static JSValue animation_player_class_set_auto_capture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationPlayer::set_auto_capture, AnimationPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationPlayer::set_auto_capture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_player_class_is_auto_capture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationPlayer::is_auto_capture, AnimationPlayer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationPlayer::is_auto_capture, ctx, this_val, argc, argv);
 };
 static JSValue animation_player_class_set_auto_capture_duration(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationPlayer::set_auto_capture_duration, AnimationPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationPlayer::set_auto_capture_duration, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_player_class_get_auto_capture_duration(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationPlayer::get_auto_capture_duration, AnimationPlayer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationPlayer::get_auto_capture_duration, ctx, this_val, argc, argv);
 };
 static JSValue animation_player_class_set_auto_capture_transition_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationPlayer::set_auto_capture_transition_type, AnimationPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationPlayer::set_auto_capture_transition_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_player_class_get_auto_capture_transition_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationPlayer::get_auto_capture_transition_type, AnimationPlayer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationPlayer::get_auto_capture_transition_type, ctx, this_val, argc, argv);
 };
 static JSValue animation_player_class_set_auto_capture_ease_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationPlayer::set_auto_capture_ease_type, AnimationPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationPlayer::set_auto_capture_ease_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_player_class_get_auto_capture_ease_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationPlayer::get_auto_capture_ease_type, AnimationPlayer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationPlayer::get_auto_capture_ease_type, ctx, this_val, argc, argv);
 };
 static JSValue animation_player_class_play(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationPlayer::play, AnimationPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationPlayer::play, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_player_class_play_backwards(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationPlayer::play_backwards, AnimationPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationPlayer::play_backwards, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_player_class_play_with_capture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationPlayer::play_with_capture, AnimationPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationPlayer::play_with_capture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_player_class_pause(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationPlayer::pause, AnimationPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationPlayer::pause, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_player_class_stop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationPlayer::stop, AnimationPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationPlayer::stop, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_player_class_is_playing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationPlayer::is_playing, AnimationPlayer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationPlayer::is_playing, ctx, this_val, argc, argv);
 };
 static JSValue animation_player_class_set_current_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationPlayer::set_current_animation, AnimationPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationPlayer::set_current_animation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_player_class_get_current_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationPlayer::get_current_animation, AnimationPlayer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationPlayer::get_current_animation, ctx, this_val, argc, argv);
 };
 static JSValue animation_player_class_set_assigned_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationPlayer::set_assigned_animation, AnimationPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationPlayer::set_assigned_animation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_player_class_get_assigned_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationPlayer::get_assigned_animation, AnimationPlayer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationPlayer::get_assigned_animation, ctx, this_val, argc, argv);
 };
 static JSValue animation_player_class_queue(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationPlayer::queue, AnimationPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationPlayer::queue, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_player_class_get_queue(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&AnimationPlayer::get_queue, AnimationPlayer::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&AnimationPlayer::get_queue, ctx, this_val, argc, argv);
 };
 static JSValue animation_player_class_clear_queue(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationPlayer::clear_queue, AnimationPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationPlayer::clear_queue, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_player_class_set_speed_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationPlayer::set_speed_scale, AnimationPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationPlayer::set_speed_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_player_class_get_speed_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationPlayer::get_speed_scale, AnimationPlayer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationPlayer::get_speed_scale, ctx, this_val, argc, argv);
 };
 static JSValue animation_player_class_get_playing_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationPlayer::get_playing_speed, AnimationPlayer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationPlayer::get_playing_speed, ctx, this_val, argc, argv);
 };
 static JSValue animation_player_class_set_autoplay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationPlayer::set_autoplay, AnimationPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationPlayer::set_autoplay, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_player_class_get_autoplay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationPlayer::get_autoplay, AnimationPlayer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationPlayer::get_autoplay, ctx, this_val, argc, argv);
 };
 static JSValue animation_player_class_set_movie_quit_on_finish_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationPlayer::set_movie_quit_on_finish_enabled, AnimationPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationPlayer::set_movie_quit_on_finish_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_player_class_is_movie_quit_on_finish_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationPlayer::is_movie_quit_on_finish_enabled, AnimationPlayer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationPlayer::is_movie_quit_on_finish_enabled, ctx, this_val, argc, argv);
 };
 static JSValue animation_player_class_get_current_animation_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationPlayer::get_current_animation_position, AnimationPlayer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationPlayer::get_current_animation_position, ctx, this_val, argc, argv);
 };
 static JSValue animation_player_class_get_current_animation_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationPlayer::get_current_animation_length, AnimationPlayer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationPlayer::get_current_animation_length, ctx, this_val, argc, argv);
 };
 static JSValue animation_player_class_seek(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationPlayer::seek, AnimationPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationPlayer::seek, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_player_class_set_process_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationPlayer::set_process_callback, AnimationPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationPlayer::set_process_callback, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_player_class_get_process_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationPlayer::get_process_callback, AnimationPlayer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationPlayer::get_process_callback, ctx, this_val, argc, argv);
 };
 static JSValue animation_player_class_set_method_call_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationPlayer::set_method_call_mode, AnimationPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationPlayer::set_method_call_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_player_class_get_method_call_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationPlayer::get_method_call_mode, AnimationPlayer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationPlayer::get_method_call_mode, ctx, this_val, argc, argv);
 };
 static JSValue animation_player_class_set_root(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationPlayer::set_root, AnimationPlayer::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationPlayer::set_root, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_player_class_get_root(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationPlayer::get_root, AnimationPlayer::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationPlayer::get_root, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry animation_player_class_proto_funcs[] = {
 	JS_CFUNC_DEF("animation_set_next", 2, &animation_player_class_animation_set_next),
@@ -234,18 +243,121 @@ static const JSCFunctionListEntry animation_player_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_root", 0, &animation_player_class_get_root),
 };
 
+void define_animation_player_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "current_animation"),
+        JS_NewCFunction(ctx, animation_player_class_get_current_animation, "get_current_animation", 0),
+        JS_NewCFunction(ctx, animation_player_class_set_current_animation, "set_current_animation", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "assigned_animation"),
+        JS_NewCFunction(ctx, animation_player_class_get_assigned_animation, "get_assigned_animation", 0),
+        JS_NewCFunction(ctx, animation_player_class_set_assigned_animation, "set_assigned_animation", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "autoplay"),
+        JS_NewCFunction(ctx, animation_player_class_get_autoplay, "get_autoplay", 0),
+        JS_NewCFunction(ctx, animation_player_class_set_autoplay, "set_autoplay", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "current_animation_length"),
+        JS_NewCFunction(ctx, animation_player_class_get_current_animation_length, "get_current_animation_length", 0),
+        JS_UNDEFINED,
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "current_animation_position"),
+        JS_NewCFunction(ctx, animation_player_class_get_current_animation_position, "get_current_animation_position", 0),
+        JS_UNDEFINED,
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "playback_auto_capture"),
+        JS_NewCFunction(ctx, animation_player_class_is_auto_capture, "is_auto_capture", 0),
+        JS_NewCFunction(ctx, animation_player_class_set_auto_capture, "set_auto_capture", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "playback_auto_capture_duration"),
+        JS_NewCFunction(ctx, animation_player_class_get_auto_capture_duration, "get_auto_capture_duration", 0),
+        JS_NewCFunction(ctx, animation_player_class_set_auto_capture_duration, "set_auto_capture_duration", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "playback_auto_capture_transition_type"),
+        JS_NewCFunction(ctx, animation_player_class_get_auto_capture_transition_type, "get_auto_capture_transition_type", 0),
+        JS_NewCFunction(ctx, animation_player_class_set_auto_capture_transition_type, "set_auto_capture_transition_type", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "playback_auto_capture_ease_type"),
+        JS_NewCFunction(ctx, animation_player_class_get_auto_capture_ease_type, "get_auto_capture_ease_type", 0),
+        JS_NewCFunction(ctx, animation_player_class_set_auto_capture_ease_type, "set_auto_capture_ease_type", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "playback_default_blend_time"),
+        JS_NewCFunction(ctx, animation_player_class_get_default_blend_time, "get_default_blend_time", 0),
+        JS_NewCFunction(ctx, animation_player_class_set_default_blend_time, "set_default_blend_time", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "speed_scale"),
+        JS_NewCFunction(ctx, animation_player_class_get_speed_scale, "get_speed_scale", 0),
+        JS_NewCFunction(ctx, animation_player_class_set_speed_scale, "set_speed_scale", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "movie_quit_on_finish"),
+        JS_NewCFunction(ctx, animation_player_class_is_movie_quit_on_finish_enabled, "is_movie_quit_on_finish_enabled", 0),
+        JS_NewCFunction(ctx, animation_player_class_set_movie_quit_on_finish_enabled, "set_movie_quit_on_finish_enabled", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_animation_player_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&AnimationPlayer::__class_id);
 	classes["AnimationPlayer"] = AnimationPlayer::__class_id;
+	class_id_list.insert(AnimationPlayer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimationPlayer::__class_id, &animation_player_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, AnimationMixer::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AnimationPlayer::__class_id, proto);
+	define_animation_player_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, animation_player_class_proto_funcs, _countof(animation_player_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, animation_player_class_constructor, "AnimationPlayer", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "AnimationPlayer", ctor);
 
@@ -253,6 +365,10 @@ static int js_animation_player_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_animation_player_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/animation_mixer';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_animation_player_class_init);
 	if (!m)
 		return NULL;
@@ -265,5 +381,6 @@ JSModuleDef *js_init_animation_player_module(JSContext *ctx) {
 }
 
 void register_animation_player() {
+	AnimationPlayer::__init_js_class_id();
 	js_init_animation_player_module(ctx);
 }

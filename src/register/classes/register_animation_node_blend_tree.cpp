@@ -1,14 +1,15 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/animation_node_blend_tree.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/animation_node.hpp>
+#include <godot_cpp/classes/animation_node_blend_tree.hpp>
 #include <godot_cpp/classes/animation_root_node.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -35,47 +36,55 @@ static JSValue animation_node_blend_tree_class_constructor(JSContext *ctx, JSVal
 	}
 
 	JS_SetOpaque(obj, animation_node_blend_tree_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue animation_node_blend_tree_class_add_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationNodeBlendTree::add_node, AnimationNodeBlendTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeBlendTree::add_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_blend_tree_class_get_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationNodeBlendTree::get_node, AnimationNodeBlendTree::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationNodeBlendTree::get_node, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_blend_tree_class_remove_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationNodeBlendTree::remove_node, AnimationNodeBlendTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeBlendTree::remove_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_blend_tree_class_rename_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationNodeBlendTree::rename_node, AnimationNodeBlendTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeBlendTree::rename_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_blend_tree_class_has_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationNodeBlendTree::has_node, AnimationNodeBlendTree::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationNodeBlendTree::has_node, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_blend_tree_class_connect_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationNodeBlendTree::connect_node, AnimationNodeBlendTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeBlendTree::connect_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_blend_tree_class_disconnect_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationNodeBlendTree::disconnect_node, AnimationNodeBlendTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeBlendTree::disconnect_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_blend_tree_class_set_node_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationNodeBlendTree::set_node_position, AnimationNodeBlendTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeBlendTree::set_node_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_blend_tree_class_get_node_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationNodeBlendTree::get_node_position, AnimationNodeBlendTree::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationNodeBlendTree::get_node_position, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_blend_tree_class_set_graph_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&AnimationNodeBlendTree::set_graph_offset, AnimationNodeBlendTree::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&AnimationNodeBlendTree::set_graph_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_blend_tree_class_get_graph_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AnimationNodeBlendTree::get_graph_offset, AnimationNodeBlendTree::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&AnimationNodeBlendTree::get_graph_offset, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry animation_node_blend_tree_class_proto_funcs[] = {
 	JS_CFUNC_DEF("add_node", 3, &animation_node_blend_tree_class_add_node),
@@ -91,18 +100,33 @@ static const JSCFunctionListEntry animation_node_blend_tree_class_proto_funcs[] 
 	JS_CFUNC_DEF("get_graph_offset", 0, &animation_node_blend_tree_class_get_graph_offset),
 };
 
+void define_animation_node_blend_tree_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "graph_offset"),
+        JS_NewCFunction(ctx, animation_node_blend_tree_class_get_graph_offset, "get_graph_offset", 0),
+        JS_NewCFunction(ctx, animation_node_blend_tree_class_set_graph_offset, "set_graph_offset", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_animation_node_blend_tree_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&AnimationNodeBlendTree::__class_id);
 	classes["AnimationNodeBlendTree"] = AnimationNodeBlendTree::__class_id;
+	class_id_list.insert(AnimationNodeBlendTree::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimationNodeBlendTree::__class_id, &animation_node_blend_tree_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, AnimationRootNode::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AnimationNodeBlendTree::__class_id, proto);
+	define_animation_node_blend_tree_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, animation_node_blend_tree_class_proto_funcs, _countof(animation_node_blend_tree_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, animation_node_blend_tree_class_constructor, "AnimationNodeBlendTree", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "AnimationNodeBlendTree", ctor);
 
@@ -110,6 +134,10 @@ static int js_animation_node_blend_tree_class_init(JSContext *ctx, JSModuleDef *
 }
 
 JSModuleDef *_js_init_animation_node_blend_tree_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/animation_root_node';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_animation_node_blend_tree_class_init);
 	if (!m)
 		return NULL;
@@ -122,5 +150,6 @@ JSModuleDef *js_init_animation_node_blend_tree_module(JSContext *ctx) {
 }
 
 void register_animation_node_blend_tree() {
+	AnimationNodeBlendTree::__init_js_class_id();
 	js_init_animation_node_blend_tree_module(ctx);
 }

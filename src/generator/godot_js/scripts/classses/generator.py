@@ -4,9 +4,11 @@ from pathlib import Path
 from scripts.utils.jinja_utils import camel_to_snake, is_pod_type, get_enum_fullname, is_enum, is_variant
 
 def gen_classes():
+    sort()
     gen_classes_cpp()
     gen_classes_h()
     gen_classes_register()
+    gen_singleton_cpp()
 
 def gen_classes_cpp():
     env = Environment(loader=FileSystemLoader(searchpath='./templates/classes'))
@@ -14,10 +16,23 @@ def gen_classes_cpp():
     config_env(env)
     singletons = gde_json['singletons']
     for clazz in gde_json['classes']:
-        dependency = collect_dependency(clazz)
-        content = cpp_template.render({ 'clazz': clazz, 'dependency': dependency, 'singletons': singletons })
-        with open(file=Path.joinpath(generated_root_dir, 'src', 'register', 'classes', f'register_{camel_to_snake(clazz['name'])}.cpp'), mode='w', encoding='utf8') as file:
-            file.write(content)
+        if clazz['name'] not in map(lambda e: e['type'], singletons):
+            dependency = collect_dependency(clazz)
+            content = cpp_template.render({ 'clazz': clazz, 'dependency': dependency, 'singletons': singletons })
+            with open(file=Path.joinpath(generated_root_dir, 'src', 'register', 'classes', f'register_{camel_to_snake(clazz['name'])}.cpp'), mode='w', encoding='utf8') as file:
+                file.write(content)
+
+def gen_singleton_cpp():
+    env = Environment(loader=FileSystemLoader(searchpath='./templates/classes'))
+    cpp_template = env.get_template('singleton.cpp.jinja')
+    config_env(env)
+    singletons = gde_json['singletons']
+    for clazz in gde_json['classes']:
+        if clazz['name'] in map(lambda e: e['type'], singletons):
+            dependency = collect_dependency(clazz)
+            content = cpp_template.render({ 'clazz': clazz, 'dependency': dependency, 'singletons': singletons })
+            with open(file=Path.joinpath(generated_root_dir, 'src', 'register', 'classes', f'register_{camel_to_snake(clazz['name'])}.cpp'), mode='w', encoding='utf8') as file:
+                file.write(content)
 
 def gen_classes_h():
     env = Environment(loader=FileSystemLoader(searchpath='./templates/classes'))
@@ -53,5 +68,26 @@ def collect_dependency(clazz):
     dependency = list(map(lambda e: camel_to_snake(e), dependency))
     return dependency
 
+def sort(base = gde_json['classes'][439], classes = gde_json['classes'], sets = set()):
+    for clazz in classes:
+        if base['name'] == clazz['name']:
+            continue
+        inherits = clazz.get('inherits', None)
+        base['children'] = base.get('children', [])
+        if inherits == base['name']:
+            base['children'].append(clazz)
+            sort(clazz)
+
+def register_classes():
+    def _process(ret = '',clazz=gde_json['classes'][439]):
+        ret = f'\tregister_{ camel_to_snake(clazz['name']) }();\n'
+        for subclass in clazz['children']:
+            ret += _process(ret,subclass)
+        return ret
+    ret = _process()
+    return ret
+
+
 def config_env(env: Environment):
     env.globals['camel_to_snake'] = camel_to_snake
+    env.globals['register_classes'] = register_classes

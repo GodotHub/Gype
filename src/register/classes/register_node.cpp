@@ -1,20 +1,21 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/viewport.hpp>
+#include <godot_cpp/classes/tween.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/input_event.hpp>
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/viewport.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/multiplayer_api.hpp>
-#include <godot_cpp/classes/tween.hpp>
 #include <godot_cpp/classes/scene_tree.hpp>
+#include <godot_cpp/classes/multiplayer_api.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/window.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -41,399 +42,407 @@ static JSValue node_class_constructor(JSContext *ctx, JSValueConst new_target, i
 	}
 
 	JS_SetOpaque(obj, node_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue node_class_add_sibling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::add_sibling, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::add_sibling, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_set_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_name, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_get_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_name, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_name, ctx, this_val, argc, argv);
 };
 static JSValue node_class_add_child(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::add_child, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::add_child, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_remove_child(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::remove_child, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::remove_child, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_reparent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::reparent, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::reparent, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_get_child_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_child_count, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_child_count, ctx, this_val, argc, argv);
 };
 static JSValue node_class_get_children(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_children, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_children, ctx, this_val, argc, argv);
 };
 static JSValue node_class_get_child(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_child, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_child, ctx, this_val, argc, argv);
 };
 static JSValue node_class_has_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::has_node, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::has_node, ctx, this_val, argc, argv);
 };
 static JSValue node_class_get_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_node, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_node, ctx, this_val, argc, argv);
 };
 static JSValue node_class_get_node_or_null(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_node_or_null, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_node_or_null, ctx, this_val, argc, argv);
 };
 static JSValue node_class_get_parent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_parent, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_parent, ctx, this_val, argc, argv);
 };
 static JSValue node_class_find_child(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::find_child, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::find_child, ctx, this_val, argc, argv);
 };
 static JSValue node_class_find_children(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::find_children, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::find_children, ctx, this_val, argc, argv);
 };
 static JSValue node_class_find_parent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::find_parent, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::find_parent, ctx, this_val, argc, argv);
 };
 static JSValue node_class_has_node_and_resource(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::has_node_and_resource, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::has_node_and_resource, ctx, this_val, argc, argv);
 };
 static JSValue node_class_get_node_and_resource(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&Node::get_node_and_resource, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&Node::get_node_and_resource, ctx, this_val, argc, argv);
 };
 static JSValue node_class_is_inside_tree(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::is_inside_tree, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::is_inside_tree, ctx, this_val, argc, argv);
 };
 static JSValue node_class_is_part_of_edited_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::is_part_of_edited_scene, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::is_part_of_edited_scene, ctx, this_val, argc, argv);
 };
 static JSValue node_class_is_ancestor_of(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::is_ancestor_of, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::is_ancestor_of, ctx, this_val, argc, argv);
 };
 static JSValue node_class_is_greater_than(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::is_greater_than, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::is_greater_than, ctx, this_val, argc, argv);
 };
 static JSValue node_class_get_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_path, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_path, ctx, this_val, argc, argv);
 };
 static JSValue node_class_get_path_to(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_path_to, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_path_to, ctx, this_val, argc, argv);
 };
 static JSValue node_class_add_to_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::add_to_group, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::add_to_group, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_remove_from_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::remove_from_group, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::remove_from_group, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_is_in_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::is_in_group, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::is_in_group, ctx, this_val, argc, argv);
 };
 static JSValue node_class_move_child(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::move_child, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::move_child, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_get_groups(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_groups, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_groups, ctx, this_val, argc, argv);
 };
 static JSValue node_class_set_owner(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_owner, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_owner, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_get_owner(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_owner, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_owner, ctx, this_val, argc, argv);
 };
 static JSValue node_class_get_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_index, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_index, ctx, this_val, argc, argv);
 };
 static JSValue node_class_print_tree(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::print_tree, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::print_tree, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_print_tree_pretty(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::print_tree_pretty, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::print_tree_pretty, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_get_tree_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&Node::get_tree_string, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&Node::get_tree_string, ctx, this_val, argc, argv);
 };
 static JSValue node_class_get_tree_string_pretty(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&Node::get_tree_string_pretty, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&Node::get_tree_string_pretty, ctx, this_val, argc, argv);
 };
 static JSValue node_class_set_scene_file_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_scene_file_path, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_scene_file_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_get_scene_file_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_scene_file_path, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_scene_file_path, ctx, this_val, argc, argv);
 };
 static JSValue node_class_propagate_notification(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::propagate_notification, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::propagate_notification, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_propagate_call(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::propagate_call, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::propagate_call, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_set_physics_process(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_physics_process, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_physics_process, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_get_physics_process_delta_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_physics_process_delta_time, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_physics_process_delta_time, ctx, this_val, argc, argv);
 };
 static JSValue node_class_is_physics_processing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::is_physics_processing, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::is_physics_processing, ctx, this_val, argc, argv);
 };
 static JSValue node_class_get_process_delta_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_process_delta_time, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_process_delta_time, ctx, this_val, argc, argv);
 };
 static JSValue node_class_set_process(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_process, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_process, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_set_process_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_process_priority, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_process_priority, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_get_process_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_process_priority, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_process_priority, ctx, this_val, argc, argv);
 };
 static JSValue node_class_set_physics_process_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_physics_process_priority, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_physics_process_priority, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_get_physics_process_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_physics_process_priority, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_physics_process_priority, ctx, this_val, argc, argv);
 };
 static JSValue node_class_is_processing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::is_processing, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::is_processing, ctx, this_val, argc, argv);
 };
 static JSValue node_class_set_process_input(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_process_input, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_process_input, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_is_processing_input(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::is_processing_input, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::is_processing_input, ctx, this_val, argc, argv);
 };
 static JSValue node_class_set_process_shortcut_input(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_process_shortcut_input, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_process_shortcut_input, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_is_processing_shortcut_input(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::is_processing_shortcut_input, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::is_processing_shortcut_input, ctx, this_val, argc, argv);
 };
 static JSValue node_class_set_process_unhandled_input(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_process_unhandled_input, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_process_unhandled_input, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_is_processing_unhandled_input(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::is_processing_unhandled_input, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::is_processing_unhandled_input, ctx, this_val, argc, argv);
 };
 static JSValue node_class_set_process_unhandled_key_input(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_process_unhandled_key_input, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_process_unhandled_key_input, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_is_processing_unhandled_key_input(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::is_processing_unhandled_key_input, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::is_processing_unhandled_key_input, ctx, this_val, argc, argv);
 };
 static JSValue node_class_set_process_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_process_mode, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_process_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_get_process_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_process_mode, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_process_mode, ctx, this_val, argc, argv);
 };
 static JSValue node_class_can_process(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::can_process, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::can_process, ctx, this_val, argc, argv);
 };
 static JSValue node_class_set_process_thread_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_process_thread_group, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_process_thread_group, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_get_process_thread_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_process_thread_group, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_process_thread_group, ctx, this_val, argc, argv);
 };
 static JSValue node_class_set_process_thread_messages(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_process_thread_messages, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_process_thread_messages, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_get_process_thread_messages(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_process_thread_messages, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_process_thread_messages, ctx, this_val, argc, argv);
 };
 static JSValue node_class_set_process_thread_group_order(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_process_thread_group_order, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_process_thread_group_order, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_get_process_thread_group_order(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_process_thread_group_order, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_process_thread_group_order, ctx, this_val, argc, argv);
 };
 static JSValue node_class_set_display_folded(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_display_folded, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_display_folded, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_is_displayed_folded(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::is_displayed_folded, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::is_displayed_folded, ctx, this_val, argc, argv);
 };
 static JSValue node_class_set_process_internal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_process_internal, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_process_internal, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_is_processing_internal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::is_processing_internal, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::is_processing_internal, ctx, this_val, argc, argv);
 };
 static JSValue node_class_set_physics_process_internal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_physics_process_internal, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_physics_process_internal, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_is_physics_processing_internal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::is_physics_processing_internal, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::is_physics_processing_internal, ctx, this_val, argc, argv);
 };
 static JSValue node_class_set_physics_interpolation_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_physics_interpolation_mode, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_physics_interpolation_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_get_physics_interpolation_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_physics_interpolation_mode, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_physics_interpolation_mode, ctx, this_val, argc, argv);
 };
 static JSValue node_class_is_physics_interpolated(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::is_physics_interpolated, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::is_physics_interpolated, ctx, this_val, argc, argv);
 };
 static JSValue node_class_is_physics_interpolated_and_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::is_physics_interpolated_and_enabled, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::is_physics_interpolated_and_enabled, ctx, this_val, argc, argv);
 };
 static JSValue node_class_reset_physics_interpolation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::reset_physics_interpolation, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::reset_physics_interpolation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_set_auto_translate_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_auto_translate_mode, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_auto_translate_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_get_auto_translate_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_auto_translate_mode, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_auto_translate_mode, ctx, this_val, argc, argv);
 };
 static JSValue node_class_get_window(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_window, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_window, ctx, this_val, argc, argv);
 };
 static JSValue node_class_get_last_exclusive_window(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_last_exclusive_window, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_last_exclusive_window, ctx, this_val, argc, argv);
 };
 static JSValue node_class_get_tree(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_tree, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_tree, ctx, this_val, argc, argv);
 };
 static JSValue node_class_create_tween(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&Node::create_tween, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&Node::create_tween, ctx, this_val, argc, argv);
 };
 static JSValue node_class_duplicate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::duplicate, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::duplicate, ctx, this_val, argc, argv);
 };
 static JSValue node_class_replace_by(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::replace_by, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::replace_by, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_set_scene_instance_load_placeholder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_scene_instance_load_placeholder, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_scene_instance_load_placeholder, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_get_scene_instance_load_placeholder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_scene_instance_load_placeholder, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_scene_instance_load_placeholder, ctx, this_val, argc, argv);
 };
 static JSValue node_class_set_editable_instance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_editable_instance, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_editable_instance, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_is_editable_instance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::is_editable_instance, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::is_editable_instance, ctx, this_val, argc, argv);
 };
 static JSValue node_class_get_viewport(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_viewport, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_viewport, ctx, this_val, argc, argv);
 };
 static JSValue node_class_queue_free(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::queue_free, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::queue_free, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_request_ready(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::request_ready, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::request_ready, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_is_node_ready(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::is_node_ready, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::is_node_ready, ctx, this_val, argc, argv);
 };
 static JSValue node_class_set_multiplayer_authority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_multiplayer_authority, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_multiplayer_authority, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_get_multiplayer_authority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_multiplayer_authority, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_multiplayer_authority, ctx, this_val, argc, argv);
 };
 static JSValue node_class_is_multiplayer_authority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::is_multiplayer_authority, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::is_multiplayer_authority, ctx, this_val, argc, argv);
 };
 static JSValue node_class_get_multiplayer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_multiplayer, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_multiplayer, ctx, this_val, argc, argv);
 };
 static JSValue node_class_rpc_config(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::rpc_config, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::rpc_config, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_set_editor_description(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_editor_description, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_editor_description, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_get_editor_description(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::get_editor_description, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::get_editor_description, ctx, this_val, argc, argv);
 };
 static JSValue node_class_set_unique_name_in_owner(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_unique_name_in_owner, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_unique_name_in_owner, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_is_unique_name_in_owner(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::is_unique_name_in_owner, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::is_unique_name_in_owner, ctx, this_val, argc, argv);
 };
 static JSValue node_class_atr(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::atr, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::atr, ctx, this_val, argc, argv);
 };
 static JSValue node_class_atr_n(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Node::atr_n, Node::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Node::atr_n, ctx, this_val, argc, argv);
 };
 static JSValue node_class_update_configuration_warnings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::update_configuration_warnings, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::update_configuration_warnings, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_set_deferred_thread_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_deferred_thread_group, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_deferred_thread_group, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_notify_deferred_thread_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::notify_deferred_thread_group, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::notify_deferred_thread_group, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_set_thread_safe(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::set_thread_safe, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::set_thread_safe, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_notify_thread_safe(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Node::notify_thread_safe, Node::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Node::notify_thread_safe, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_print_orphan_nodes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_static_method_no_ret(&Node::print_orphan_nodes, Node::__class_id, ctx, this_val, argv);
+    call_builtin_static_method_no_ret(&Node::print_orphan_nodes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node_class_rpc(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_vararg_method_ret(&Node::js_rpc, Node::__class_id, ctx, this_val, argc, argv);
+	return call_builtin_vararg_method_ret(&Node::js_rpc, ctx, this_val, argc, argv);
 }
 static JSValue node_class_rpc_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_vararg_method_ret(&Node::js_rpc_id, Node::__class_id, ctx, this_val, argc, argv);
+	return call_builtin_vararg_method_ret(&Node::js_rpc_id, ctx, this_val, argc, argv);
 }
 static JSValue node_class_call_deferred_thread_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_vararg_method_ret(&Node::js_call_deferred_thread_group, Node::__class_id, ctx, this_val, argc, argv);
+	return call_builtin_vararg_method_ret(&Node::js_call_deferred_thread_group, ctx, this_val, argc, argv);
 }
 static JSValue node_class_call_thread_safe(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_vararg_method_ret(&Node::js_call_thread_safe, Node::__class_id, ctx, this_val, argc, argv);
+	return call_builtin_vararg_method_ret(&Node::js_call_thread_safe, ctx, this_val, argc, argv);
 }
 static const JSCFunctionListEntry node_class_proto_funcs[] = {
 	JS_CFUNC_DEF("add_sibling", 2, &node_class_add_sibling),
@@ -555,18 +564,137 @@ static const JSCFunctionListEntry node_class_static_funcs[] = {
 	JS_CFUNC_DEF("print_orphan_nodes", 0, &node_class_print_orphan_nodes),
 };
 
+void define_node_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "name"),
+        JS_NewCFunction(ctx, node_class_get_name, "get_name", 0),
+        JS_NewCFunction(ctx, node_class_set_name, "set_name", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "unique_name_in_owner"),
+        JS_NewCFunction(ctx, node_class_is_unique_name_in_owner, "is_unique_name_in_owner", 0),
+        JS_NewCFunction(ctx, node_class_set_unique_name_in_owner, "set_unique_name_in_owner", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "scene_file_path"),
+        JS_NewCFunction(ctx, node_class_get_scene_file_path, "get_scene_file_path", 0),
+        JS_NewCFunction(ctx, node_class_set_scene_file_path, "set_scene_file_path", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "owner"),
+        JS_NewCFunction(ctx, node_class_get_owner, "get_owner", 0),
+        JS_NewCFunction(ctx, node_class_set_owner, "set_owner", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "multiplayer"),
+        JS_NewCFunction(ctx, node_class_get_multiplayer, "get_multiplayer", 0),
+        JS_UNDEFINED,
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "process_mode"),
+        JS_NewCFunction(ctx, node_class_get_process_mode, "get_process_mode", 0),
+        JS_NewCFunction(ctx, node_class_set_process_mode, "set_process_mode", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "process_priority"),
+        JS_NewCFunction(ctx, node_class_get_process_priority, "get_process_priority", 0),
+        JS_NewCFunction(ctx, node_class_set_process_priority, "set_process_priority", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "process_physics_priority"),
+        JS_NewCFunction(ctx, node_class_get_physics_process_priority, "get_physics_process_priority", 0),
+        JS_NewCFunction(ctx, node_class_set_physics_process_priority, "set_physics_process_priority", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "process_thread_group"),
+        JS_NewCFunction(ctx, node_class_get_process_thread_group, "get_process_thread_group", 0),
+        JS_NewCFunction(ctx, node_class_set_process_thread_group, "set_process_thread_group", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "process_thread_group_order"),
+        JS_NewCFunction(ctx, node_class_get_process_thread_group_order, "get_process_thread_group_order", 0),
+        JS_NewCFunction(ctx, node_class_set_process_thread_group_order, "set_process_thread_group_order", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "process_thread_messages"),
+        JS_NewCFunction(ctx, node_class_get_process_thread_messages, "get_process_thread_messages", 0),
+        JS_NewCFunction(ctx, node_class_set_process_thread_messages, "set_process_thread_messages", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "physics_interpolation_mode"),
+        JS_NewCFunction(ctx, node_class_get_physics_interpolation_mode, "get_physics_interpolation_mode", 0),
+        JS_NewCFunction(ctx, node_class_set_physics_interpolation_mode, "set_physics_interpolation_mode", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "auto_translate_mode"),
+        JS_NewCFunction(ctx, node_class_get_auto_translate_mode, "get_auto_translate_mode", 0),
+        JS_NewCFunction(ctx, node_class_set_auto_translate_mode, "set_auto_translate_mode", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "editor_description"),
+        JS_NewCFunction(ctx, node_class_get_editor_description, "get_editor_description", 0),
+        JS_NewCFunction(ctx, node_class_set_editor_description, "set_editor_description", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_node_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&Node::__class_id);
 	classes["Node"] = Node::__class_id;
+	class_id_list.insert(Node::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Node::__class_id, &node_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, Object::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Node::__class_id, proto);
+	define_node_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, node_class_proto_funcs, _countof(node_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, node_class_constructor, "Node", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 	JS_SetPropertyFunctionList(ctx, ctor, node_class_static_funcs, _countof(node_class_static_funcs));
 
 	JS_SetModuleExport(ctx, m, "Node", ctor);
@@ -575,6 +703,10 @@ static int js_node_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_node_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/object';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_node_class_init);
 	if (!m)
 		return NULL;
@@ -587,5 +719,6 @@ JSModuleDef *js_init_node_module(JSContext *ctx) {
 }
 
 void register_node() {
+	Node::__init_js_class_id();
 	js_init_node_module(ctx);
 }

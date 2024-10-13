@@ -1,14 +1,15 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/joint2d.hpp>
 #include <godot_cpp/classes/rigid_body2d.hpp>
 #include <godot_cpp/classes/physical_bone2d.hpp>
-#include <godot_cpp/classes/joint2d.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -35,48 +36,56 @@ static JSValue physical_bone2d_class_constructor(JSContext *ctx, JSValueConst ne
 	}
 
 	JS_SetOpaque(obj, physical_bone2d_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue physical_bone2d_class_get_joint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicalBone2D::get_joint, PhysicalBone2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&PhysicalBone2D::get_joint, ctx, this_val, argc, argv);
 };
 static JSValue physical_bone2d_class_get_auto_configure_joint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicalBone2D::get_auto_configure_joint, PhysicalBone2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&PhysicalBone2D::get_auto_configure_joint, ctx, this_val, argc, argv);
 };
 static JSValue physical_bone2d_class_set_auto_configure_joint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicalBone2D::set_auto_configure_joint, PhysicalBone2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBone2D::set_auto_configure_joint, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone2d_class_set_simulate_physics(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicalBone2D::set_simulate_physics, PhysicalBone2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBone2D::set_simulate_physics, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone2d_class_get_simulate_physics(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicalBone2D::get_simulate_physics, PhysicalBone2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&PhysicalBone2D::get_simulate_physics, ctx, this_val, argc, argv);
 };
 static JSValue physical_bone2d_class_is_simulating_physics(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicalBone2D::is_simulating_physics, PhysicalBone2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&PhysicalBone2D::is_simulating_physics, ctx, this_val, argc, argv);
 };
 static JSValue physical_bone2d_class_set_bone2d_nodepath(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicalBone2D::set_bone2d_nodepath, PhysicalBone2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBone2D::set_bone2d_nodepath, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone2d_class_get_bone2d_nodepath(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicalBone2D::get_bone2d_nodepath, PhysicalBone2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&PhysicalBone2D::get_bone2d_nodepath, ctx, this_val, argc, argv);
 };
 static JSValue physical_bone2d_class_set_bone2d_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicalBone2D::set_bone2d_index, PhysicalBone2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBone2D::set_bone2d_index, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone2d_class_get_bone2d_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicalBone2D::get_bone2d_index, PhysicalBone2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&PhysicalBone2D::get_bone2d_index, ctx, this_val, argc, argv);
 };
 static JSValue physical_bone2d_class_set_follow_bone_when_simulating(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicalBone2D::set_follow_bone_when_simulating, PhysicalBone2D::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&PhysicalBone2D::set_follow_bone_when_simulating, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone2d_class_get_follow_bone_when_simulating(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicalBone2D::get_follow_bone_when_simulating, PhysicalBone2D::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&PhysicalBone2D::get_follow_bone_when_simulating, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry physical_bone2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_joint", 0, &physical_bone2d_class_get_joint),
@@ -93,18 +102,65 @@ static const JSCFunctionListEntry physical_bone2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_follow_bone_when_simulating", 0, &physical_bone2d_class_get_follow_bone_when_simulating),
 };
 
+void define_physical_bone2d_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "bone2d_nodepath"),
+        JS_NewCFunction(ctx, physical_bone2d_class_get_bone2d_nodepath, "get_bone2d_nodepath", 0),
+        JS_NewCFunction(ctx, physical_bone2d_class_set_bone2d_nodepath, "set_bone2d_nodepath", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "bone2d_index"),
+        JS_NewCFunction(ctx, physical_bone2d_class_get_bone2d_index, "get_bone2d_index", 0),
+        JS_NewCFunction(ctx, physical_bone2d_class_set_bone2d_index, "set_bone2d_index", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "auto_configure_joint"),
+        JS_NewCFunction(ctx, physical_bone2d_class_get_auto_configure_joint, "get_auto_configure_joint", 0),
+        JS_NewCFunction(ctx, physical_bone2d_class_set_auto_configure_joint, "set_auto_configure_joint", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "simulate_physics"),
+        JS_NewCFunction(ctx, physical_bone2d_class_get_simulate_physics, "get_simulate_physics", 0),
+        JS_NewCFunction(ctx, physical_bone2d_class_set_simulate_physics, "set_simulate_physics", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "follow_bone_when_simulating"),
+        JS_NewCFunction(ctx, physical_bone2d_class_get_follow_bone_when_simulating, "get_follow_bone_when_simulating", 0),
+        JS_NewCFunction(ctx, physical_bone2d_class_set_follow_bone_when_simulating, "set_follow_bone_when_simulating", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_physical_bone2d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&PhysicalBone2D::__class_id);
 	classes["PhysicalBone2D"] = PhysicalBone2D::__class_id;
+	class_id_list.insert(PhysicalBone2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PhysicalBone2D::__class_id, &physical_bone2d_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, RigidBody2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PhysicalBone2D::__class_id, proto);
+	define_physical_bone2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, physical_bone2d_class_proto_funcs, _countof(physical_bone2d_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, physical_bone2d_class_constructor, "PhysicalBone2D", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "PhysicalBone2D", ctor);
 
@@ -112,6 +168,10 @@ static int js_physical_bone2d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_physical_bone2d_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/rigid_body2d';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_physical_bone2d_class_init);
 	if (!m)
 		return NULL;
@@ -124,5 +184,6 @@ JSModuleDef *js_init_physical_bone2d_module(JSContext *ctx) {
 }
 
 void register_physical_bone2d() {
+	PhysicalBone2D::__init_js_class_id();
 	js_init_physical_bone2d_module(ctx);
 }

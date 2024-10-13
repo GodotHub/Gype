@@ -1,14 +1,15 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/resource.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/navigation_mesh.hpp>
 #include <godot_cpp/classes/navigation_polygon.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -35,134 +36,142 @@ static JSValue navigation_polygon_class_constructor(JSContext *ctx, JSValueConst
 	}
 
 	JS_SetOpaque(obj, navigation_polygon_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue navigation_polygon_class_set_vertices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPolygon::set_vertices, NavigationPolygon::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPolygon::set_vertices, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_polygon_class_get_vertices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationPolygon::get_vertices, NavigationPolygon::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationPolygon::get_vertices, ctx, this_val, argc, argv);
 };
 static JSValue navigation_polygon_class_add_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPolygon::add_polygon, NavigationPolygon::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPolygon::add_polygon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_polygon_class_get_polygon_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationPolygon::get_polygon_count, NavigationPolygon::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationPolygon::get_polygon_count, ctx, this_val, argc, argv);
 };
 static JSValue navigation_polygon_class_get_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&NavigationPolygon::get_polygon, NavigationPolygon::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&NavigationPolygon::get_polygon, ctx, this_val, argc, argv);
 };
 static JSValue navigation_polygon_class_clear_polygons(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPolygon::clear_polygons, NavigationPolygon::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPolygon::clear_polygons, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_polygon_class_get_navigation_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&NavigationPolygon::get_navigation_mesh, NavigationPolygon::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&NavigationPolygon::get_navigation_mesh, ctx, this_val, argc, argv);
 };
 static JSValue navigation_polygon_class_add_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPolygon::add_outline, NavigationPolygon::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPolygon::add_outline, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_polygon_class_add_outline_at_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPolygon::add_outline_at_index, NavigationPolygon::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPolygon::add_outline_at_index, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_polygon_class_get_outline_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationPolygon::get_outline_count, NavigationPolygon::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationPolygon::get_outline_count, ctx, this_val, argc, argv);
 };
 static JSValue navigation_polygon_class_set_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPolygon::set_outline, NavigationPolygon::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPolygon::set_outline, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_polygon_class_get_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationPolygon::get_outline, NavigationPolygon::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationPolygon::get_outline, ctx, this_val, argc, argv);
 };
 static JSValue navigation_polygon_class_remove_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPolygon::remove_outline, NavigationPolygon::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPolygon::remove_outline, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_polygon_class_clear_outlines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPolygon::clear_outlines, NavigationPolygon::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPolygon::clear_outlines, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_polygon_class_make_polygons_from_outlines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPolygon::make_polygons_from_outlines, NavigationPolygon::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPolygon::make_polygons_from_outlines, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_polygon_class_set_cell_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPolygon::set_cell_size, NavigationPolygon::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPolygon::set_cell_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_polygon_class_get_cell_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationPolygon::get_cell_size, NavigationPolygon::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationPolygon::get_cell_size, ctx, this_val, argc, argv);
 };
 static JSValue navigation_polygon_class_set_border_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPolygon::set_border_size, NavigationPolygon::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPolygon::set_border_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_polygon_class_get_border_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationPolygon::get_border_size, NavigationPolygon::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationPolygon::get_border_size, ctx, this_val, argc, argv);
 };
 static JSValue navigation_polygon_class_set_parsed_geometry_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPolygon::set_parsed_geometry_type, NavigationPolygon::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPolygon::set_parsed_geometry_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_polygon_class_get_parsed_geometry_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationPolygon::get_parsed_geometry_type, NavigationPolygon::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationPolygon::get_parsed_geometry_type, ctx, this_val, argc, argv);
 };
 static JSValue navigation_polygon_class_set_parsed_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPolygon::set_parsed_collision_mask, NavigationPolygon::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPolygon::set_parsed_collision_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_polygon_class_get_parsed_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationPolygon::get_parsed_collision_mask, NavigationPolygon::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationPolygon::get_parsed_collision_mask, ctx, this_val, argc, argv);
 };
 static JSValue navigation_polygon_class_set_parsed_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPolygon::set_parsed_collision_mask_value, NavigationPolygon::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPolygon::set_parsed_collision_mask_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_polygon_class_get_parsed_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationPolygon::get_parsed_collision_mask_value, NavigationPolygon::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationPolygon::get_parsed_collision_mask_value, ctx, this_val, argc, argv);
 };
 static JSValue navigation_polygon_class_set_source_geometry_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPolygon::set_source_geometry_mode, NavigationPolygon::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPolygon::set_source_geometry_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_polygon_class_get_source_geometry_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationPolygon::get_source_geometry_mode, NavigationPolygon::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationPolygon::get_source_geometry_mode, ctx, this_val, argc, argv);
 };
 static JSValue navigation_polygon_class_set_source_geometry_group_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPolygon::set_source_geometry_group_name, NavigationPolygon::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPolygon::set_source_geometry_group_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_polygon_class_get_source_geometry_group_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationPolygon::get_source_geometry_group_name, NavigationPolygon::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationPolygon::get_source_geometry_group_name, ctx, this_val, argc, argv);
 };
 static JSValue navigation_polygon_class_set_agent_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPolygon::set_agent_radius, NavigationPolygon::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPolygon::set_agent_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_polygon_class_get_agent_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationPolygon::get_agent_radius, NavigationPolygon::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationPolygon::get_agent_radius, ctx, this_val, argc, argv);
 };
 static JSValue navigation_polygon_class_set_baking_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPolygon::set_baking_rect, NavigationPolygon::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPolygon::set_baking_rect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_polygon_class_get_baking_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationPolygon::get_baking_rect, NavigationPolygon::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationPolygon::get_baking_rect, ctx, this_val, argc, argv);
 };
 static JSValue navigation_polygon_class_set_baking_rect_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPolygon::set_baking_rect_offset, NavigationPolygon::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPolygon::set_baking_rect_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_polygon_class_get_baking_rect_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&NavigationPolygon::get_baking_rect_offset, NavigationPolygon::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&NavigationPolygon::get_baking_rect_offset, ctx, this_val, argc, argv);
 };
 static JSValue navigation_polygon_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&NavigationPolygon::clear, NavigationPolygon::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&NavigationPolygon::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry navigation_polygon_class_proto_funcs[] = {
@@ -204,18 +213,105 @@ static const JSCFunctionListEntry navigation_polygon_class_proto_funcs[] = {
 	JS_CFUNC_DEF("clear", 0, &navigation_polygon_class_clear),
 };
 
+void define_navigation_polygon_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "vertices"),
+        JS_NewCFunction(ctx, navigation_polygon_class_get_vertices, "get_vertices", 0),
+        JS_NewCFunction(ctx, navigation_polygon_class_set_vertices, "set_vertices", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "parsed_geometry_type"),
+        JS_NewCFunction(ctx, navigation_polygon_class_get_parsed_geometry_type, "get_parsed_geometry_type", 0),
+        JS_NewCFunction(ctx, navigation_polygon_class_set_parsed_geometry_type, "set_parsed_geometry_type", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "parsed_collision_mask"),
+        JS_NewCFunction(ctx, navigation_polygon_class_get_parsed_collision_mask, "get_parsed_collision_mask", 0),
+        JS_NewCFunction(ctx, navigation_polygon_class_set_parsed_collision_mask, "set_parsed_collision_mask", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "source_geometry_mode"),
+        JS_NewCFunction(ctx, navigation_polygon_class_get_source_geometry_mode, "get_source_geometry_mode", 0),
+        JS_NewCFunction(ctx, navigation_polygon_class_set_source_geometry_mode, "set_source_geometry_mode", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "source_geometry_group_name"),
+        JS_NewCFunction(ctx, navigation_polygon_class_get_source_geometry_group_name, "get_source_geometry_group_name", 0),
+        JS_NewCFunction(ctx, navigation_polygon_class_set_source_geometry_group_name, "set_source_geometry_group_name", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "cell_size"),
+        JS_NewCFunction(ctx, navigation_polygon_class_get_cell_size, "get_cell_size", 0),
+        JS_NewCFunction(ctx, navigation_polygon_class_set_cell_size, "set_cell_size", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "border_size"),
+        JS_NewCFunction(ctx, navigation_polygon_class_get_border_size, "get_border_size", 0),
+        JS_NewCFunction(ctx, navigation_polygon_class_set_border_size, "set_border_size", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "agent_radius"),
+        JS_NewCFunction(ctx, navigation_polygon_class_get_agent_radius, "get_agent_radius", 0),
+        JS_NewCFunction(ctx, navigation_polygon_class_set_agent_radius, "set_agent_radius", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "baking_rect"),
+        JS_NewCFunction(ctx, navigation_polygon_class_get_baking_rect, "get_baking_rect", 0),
+        JS_NewCFunction(ctx, navigation_polygon_class_set_baking_rect, "set_baking_rect", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "baking_rect_offset"),
+        JS_NewCFunction(ctx, navigation_polygon_class_get_baking_rect_offset, "get_baking_rect_offset", 0),
+        JS_NewCFunction(ctx, navigation_polygon_class_set_baking_rect_offset, "set_baking_rect_offset", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_navigation_polygon_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&NavigationPolygon::__class_id);
 	classes["NavigationPolygon"] = NavigationPolygon::__class_id;
+	class_id_list.insert(NavigationPolygon::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), NavigationPolygon::__class_id, &navigation_polygon_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, NavigationPolygon::__class_id, proto);
+	define_navigation_polygon_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, navigation_polygon_class_proto_funcs, _countof(navigation_polygon_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, navigation_polygon_class_constructor, "NavigationPolygon", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "NavigationPolygon", ctor);
 
@@ -223,6 +319,10 @@ static int js_navigation_polygon_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_navigation_polygon_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/resource';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_navigation_polygon_class_init);
 	if (!m)
 		return NULL;
@@ -235,5 +335,6 @@ JSModuleDef *js_init_navigation_polygon_module(JSContext *ctx) {
 }
 
 void register_navigation_polygon() {
+	NavigationPolygon::__init_js_class_id();
 	js_init_navigation_polygon_module(ctx);
 }

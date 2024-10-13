@@ -1,14 +1,15 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/audio_stream_ogg_vorbis.hpp>
 #include <godot_cpp/classes/resource_importer_ogg_vorbis.hpp>
 #include <godot_cpp/classes/resource_importer.hpp>
-#include <godot_cpp/classes/audio_stream_ogg_vorbis.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -35,30 +36,45 @@ static JSValue resource_importer_ogg_vorbis_class_constructor(JSContext *ctx, JS
 	}
 
 	JS_SetOpaque(obj, resource_importer_ogg_vorbis_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue resource_importer_ogg_vorbis_class_load_from_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&ResourceImporterOggVorbis::load_from_buffer, ResourceImporterOggVorbis::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&ResourceImporterOggVorbis::load_from_buffer, ctx, this_val, argc, argv);
 };
 static JSValue resource_importer_ogg_vorbis_class_load_from_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&ResourceImporterOggVorbis::load_from_file, ResourceImporterOggVorbis::__class_id, ctx, this_val, argv);
+	return call_builtin_static_method_ret(&ResourceImporterOggVorbis::load_from_file, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry resource_importer_ogg_vorbis_class_static_funcs[] = {
 	JS_CFUNC_DEF("load_from_buffer", 1, &resource_importer_ogg_vorbis_class_load_from_buffer),
 	JS_CFUNC_DEF("load_from_file", 1, &resource_importer_ogg_vorbis_class_load_from_file),
 };
 
+void define_resource_importer_ogg_vorbis_property(JSContext *ctx, JSValue obj) {
+}
+
 static int js_resource_importer_ogg_vorbis_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&ResourceImporterOggVorbis::__class_id);
 	classes["ResourceImporterOggVorbis"] = ResourceImporterOggVorbis::__class_id;
+	class_id_list.insert(ResourceImporterOggVorbis::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ResourceImporterOggVorbis::__class_id, &resource_importer_ogg_vorbis_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, ResourceImporter::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ResourceImporterOggVorbis::__class_id, proto);
+	define_resource_importer_ogg_vorbis_property(ctx, proto);
 
 	JSValue ctor = JS_NewCFunction2(ctx, resource_importer_ogg_vorbis_class_constructor, "ResourceImporterOggVorbis", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 	JS_SetPropertyFunctionList(ctx, ctor, resource_importer_ogg_vorbis_class_static_funcs, _countof(resource_importer_ogg_vorbis_class_static_funcs));
 
 	JS_SetModuleExport(ctx, m, "ResourceImporterOggVorbis", ctor);
@@ -67,6 +83,10 @@ static int js_resource_importer_ogg_vorbis_class_init(JSContext *ctx, JSModuleDe
 }
 
 JSModuleDef *_js_init_resource_importer_ogg_vorbis_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/resource_importer';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_resource_importer_ogg_vorbis_class_init);
 	if (!m)
 		return NULL;
@@ -79,5 +99,6 @@ JSModuleDef *js_init_resource_importer_ogg_vorbis_module(JSContext *ctx) {
 }
 
 void register_resource_importer_ogg_vorbis() {
+	ResourceImporterOggVorbis::__init_js_class_id();
 	js_init_resource_importer_ogg_vorbis_module(ctx);
 }

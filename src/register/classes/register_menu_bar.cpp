@@ -1,14 +1,15 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/popup_menu.hpp>
-#include <godot_cpp/classes/control.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/menu_bar.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -35,90 +36,98 @@ static JSValue menu_bar_class_constructor(JSContext *ctx, JSValueConst new_targe
 	}
 
 	JS_SetOpaque(obj, menu_bar_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue menu_bar_class_set_switch_on_hover(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&MenuBar::set_switch_on_hover, MenuBar::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MenuBar::set_switch_on_hover, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue menu_bar_class_is_switch_on_hover(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&MenuBar::is_switch_on_hover, MenuBar::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&MenuBar::is_switch_on_hover, ctx, this_val, argc, argv);
 };
 static JSValue menu_bar_class_set_disable_shortcuts(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&MenuBar::set_disable_shortcuts, MenuBar::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MenuBar::set_disable_shortcuts, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue menu_bar_class_set_prefer_global_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&MenuBar::set_prefer_global_menu, MenuBar::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MenuBar::set_prefer_global_menu, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue menu_bar_class_is_prefer_global_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&MenuBar::is_prefer_global_menu, MenuBar::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&MenuBar::is_prefer_global_menu, ctx, this_val, argc, argv);
 };
 static JSValue menu_bar_class_is_native_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&MenuBar::is_native_menu, MenuBar::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&MenuBar::is_native_menu, ctx, this_val, argc, argv);
 };
 static JSValue menu_bar_class_get_menu_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&MenuBar::get_menu_count, MenuBar::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&MenuBar::get_menu_count, ctx, this_val, argc, argv);
 };
 static JSValue menu_bar_class_set_text_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&MenuBar::set_text_direction, MenuBar::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MenuBar::set_text_direction, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue menu_bar_class_get_text_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&MenuBar::get_text_direction, MenuBar::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&MenuBar::get_text_direction, ctx, this_val, argc, argv);
 };
 static JSValue menu_bar_class_set_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&MenuBar::set_language, MenuBar::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MenuBar::set_language, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue menu_bar_class_get_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&MenuBar::get_language, MenuBar::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&MenuBar::get_language, ctx, this_val, argc, argv);
 };
 static JSValue menu_bar_class_set_flat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&MenuBar::set_flat, MenuBar::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MenuBar::set_flat, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue menu_bar_class_is_flat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&MenuBar::is_flat, MenuBar::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&MenuBar::is_flat, ctx, this_val, argc, argv);
 };
 static JSValue menu_bar_class_set_start_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&MenuBar::set_start_index, MenuBar::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MenuBar::set_start_index, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue menu_bar_class_get_start_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&MenuBar::get_start_index, MenuBar::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&MenuBar::get_start_index, ctx, this_val, argc, argv);
 };
 static JSValue menu_bar_class_set_menu_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&MenuBar::set_menu_title, MenuBar::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MenuBar::set_menu_title, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue menu_bar_class_get_menu_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&MenuBar::get_menu_title, MenuBar::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&MenuBar::get_menu_title, ctx, this_val, argc, argv);
 };
 static JSValue menu_bar_class_set_menu_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&MenuBar::set_menu_tooltip, MenuBar::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MenuBar::set_menu_tooltip, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue menu_bar_class_get_menu_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&MenuBar::get_menu_tooltip, MenuBar::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&MenuBar::get_menu_tooltip, ctx, this_val, argc, argv);
 };
 static JSValue menu_bar_class_set_menu_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&MenuBar::set_menu_disabled, MenuBar::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MenuBar::set_menu_disabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue menu_bar_class_is_menu_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&MenuBar::is_menu_disabled, MenuBar::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&MenuBar::is_menu_disabled, ctx, this_val, argc, argv);
 };
 static JSValue menu_bar_class_set_menu_hidden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&MenuBar::set_menu_hidden, MenuBar::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&MenuBar::set_menu_hidden, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue menu_bar_class_is_menu_hidden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&MenuBar::is_menu_hidden, MenuBar::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&MenuBar::is_menu_hidden, ctx, this_val, argc, argv);
 };
 static JSValue menu_bar_class_get_menu_popup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&MenuBar::get_menu_popup, MenuBar::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&MenuBar::get_menu_popup, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry menu_bar_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_switch_on_hover", 1, &menu_bar_class_set_switch_on_hover),
@@ -147,18 +156,73 @@ static const JSCFunctionListEntry menu_bar_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_menu_popup", 1, &menu_bar_class_get_menu_popup),
 };
 
+void define_menu_bar_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "flat"),
+        JS_NewCFunction(ctx, menu_bar_class_is_flat, "is_flat", 0),
+        JS_NewCFunction(ctx, menu_bar_class_set_flat, "set_flat", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "start_index"),
+        JS_NewCFunction(ctx, menu_bar_class_get_start_index, "get_start_index", 0),
+        JS_NewCFunction(ctx, menu_bar_class_set_start_index, "set_start_index", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "switch_on_hover"),
+        JS_NewCFunction(ctx, menu_bar_class_is_switch_on_hover, "is_switch_on_hover", 0),
+        JS_NewCFunction(ctx, menu_bar_class_set_switch_on_hover, "set_switch_on_hover", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "prefer_global_menu"),
+        JS_NewCFunction(ctx, menu_bar_class_is_prefer_global_menu, "is_prefer_global_menu", 0),
+        JS_NewCFunction(ctx, menu_bar_class_set_prefer_global_menu, "set_prefer_global_menu", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "text_direction"),
+        JS_NewCFunction(ctx, menu_bar_class_get_text_direction, "get_text_direction", 0),
+        JS_NewCFunction(ctx, menu_bar_class_set_text_direction, "set_text_direction", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "language"),
+        JS_NewCFunction(ctx, menu_bar_class_get_language, "get_language", 0),
+        JS_NewCFunction(ctx, menu_bar_class_set_language, "set_language", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_menu_bar_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&MenuBar::__class_id);
 	classes["MenuBar"] = MenuBar::__class_id;
+	class_id_list.insert(MenuBar::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), MenuBar::__class_id, &menu_bar_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, Control::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, MenuBar::__class_id, proto);
+	define_menu_bar_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, menu_bar_class_proto_funcs, _countof(menu_bar_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, menu_bar_class_constructor, "MenuBar", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "MenuBar", ctor);
 
@@ -166,6 +230,10 @@ static int js_menu_bar_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_menu_bar_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/control';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_menu_bar_class_init);
 	if (!m)
 		return NULL;
@@ -178,5 +246,6 @@ JSModuleDef *js_init_menu_bar_module(JSContext *ctx) {
 }
 
 void register_menu_bar() {
+	MenuBar::__init_js_class_id();
 	js_init_menu_bar_module(ctx);
 }

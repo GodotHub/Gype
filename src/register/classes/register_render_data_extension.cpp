@@ -1,15 +1,16 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/render_data.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/render_scene_buffers.hpp>
-#include <godot_cpp/classes/render_data_extension.hpp>
 #include <godot_cpp/classes/render_scene_data.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/render_data_extension.hpp>
+#include <godot_cpp/classes/render_data.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -36,20 +37,35 @@ static JSValue render_data_extension_class_constructor(JSContext *ctx, JSValueCo
 	}
 
 	JS_SetOpaque(obj, render_data_extension_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 
+void define_render_data_extension_property(JSContext *ctx, JSValue obj) {
+}
+
 static int js_render_data_extension_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&RenderDataExtension::__class_id);
 	classes["RenderDataExtension"] = RenderDataExtension::__class_id;
+	class_id_list.insert(RenderDataExtension::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RenderDataExtension::__class_id, &render_data_extension_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, RenderData::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, RenderDataExtension::__class_id, proto);
+	define_render_data_extension_property(ctx, proto);
 
 	JSValue ctor = JS_NewCFunction2(ctx, render_data_extension_class_constructor, "RenderDataExtension", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "RenderDataExtension", ctor);
 
@@ -57,6 +73,10 @@ static int js_render_data_extension_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_render_data_extension_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/render_data';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_render_data_extension_class_init);
 	if (!m)
 		return NULL;
@@ -69,5 +89,6 @@ JSModuleDef *js_init_render_data_extension_module(JSContext *ctx) {
 }
 
 void register_render_data_extension() {
+	RenderDataExtension::__init_js_class_id();
 	js_init_render_data_extension_module(ctx);
 }

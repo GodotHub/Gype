@@ -38,6 +38,11 @@
 namespace godot {
 
 struct _NO_DISCARD_ Basis {
+	static JSClassID __class_id;
+
+	inline static void __init_js_class_id() {
+		Basis::__class_id = JS_NewClassID(&Basis::__class_id);
+	}
 	Vector3 rows[3] = {
 		Vector3(1, 0, 0),
 		Vector3(0, 1, 0),

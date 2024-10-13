@@ -37,6 +37,11 @@
 namespace godot {
 
 struct _NO_DISCARD_ Quaternion {
+	static JSClassID __class_id;
+
+	inline static void __init_js_class_id() {
+		Quaternion::__class_id = JS_NewClassID(&Quaternion::__class_id);
+	}
 	union {
 		struct {
 			real_t x;

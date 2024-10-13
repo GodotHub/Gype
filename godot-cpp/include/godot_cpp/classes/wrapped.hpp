@@ -31,6 +31,7 @@
 #ifndef GODOT_WRAPPED_HPP
 #define GODOT_WRAPPED_HPP
 
+#include <godot_cpp/core/error_macros.hpp>
 #include <godot_cpp/core/memory.hpp>
 
 #include <godot_cpp/core/property_info.hpp>
@@ -39,6 +40,8 @@
 #include <godot_cpp/templates/vector.hpp>
 
 #include <godot_cpp/godot.hpp>
+
+#include "quickjs/quickjs.h"
 
 namespace godot {
 
@@ -122,6 +125,9 @@ public:
 
 	// Must be public but you should not touch this.
 	GodotObject *_owner = nullptr;
+
+	JSContext *ctx = nullptr;
+	JSValue js_instance = JS_UNDEFINED;
 };
 
 template <typename T, std::enable_if_t<std::is_base_of<::godot::Wrapped, T>::value, bool>>
@@ -487,17 +493,34 @@ public:                                                                         
 		Memory::free_static(reinterpret_cast<m_class *>(p_binding));                                                                                                                   \
 	}                                                                                                                                                                                  \
 	static GDExtensionBool _gde_binding_reference_callback(void *p_token, void *p_instance, GDExtensionBool p_reference) {                                                             \
-		return true;                                                                                                                                                                   \
+		m_class *binding = reinterpret_cast<m_class *>(p_instance);                                                                                                                    \
+		if (!p_reference || binding->ctx == nullptr)                                                                                                                                   \
+			return true;                                                                                                                                                               \
+		JSValue get_reference_count_func = JS_GetPropertyStr(binding->ctx, binding->js_instance, "get_reference_count");                                                               \
+		JSValue ret = JS_Call(binding->ctx, get_reference_count_func, binding->js_instance, 0, NULL);                                                                                  \
+		int32_t count;                                                                                                                                                                 \
+		ERR_FAIL_COND_V(JS_ToInt32(binding->ctx, &count, ret), true);                                                                                                                  \
+		if (count == 0) {                                                                                                                                                              \
+			binding->~m_class();                                                                                                                                                       \
+			return false;                                                                                                                                                              \
+		}                                                                                                                                                                              \
+		if (p_reference) {                                                                                                                                                             \
+			JS_DupValue(binding->ctx, binding->js_instance);                                                                                                                           \
+			return true;                                                                                                                                                               \
+		} else {                                                                                                                                                                       \
+			JS_FreeValue(binding->ctx, binding->js_instance);                                                                                                                          \
+			return true;                                                                                                                                                               \
+		}                                                                                                                                                                              \
 	}                                                                                                                                                                                  \
 	static constexpr GDExtensionInstanceBindingCallbacks _gde_binding_callbacks = {                                                                                                    \
 		_gde_binding_create_callback,                                                                                                                                                  \
 		_gde_binding_free_callback,                                                                                                                                                    \
 		_gde_binding_reference_callback,                                                                                                                                               \
 	};                                                                                                                                                                                 \
-	m_class() : m_class(#m_alias_for) {}                                                                                                                                               \
+	m_class() :                                                                                                                                                                        \
+			m_class(#m_alias_for) {}                                                                                                                                                   \
                                                                                                                                                                                        \
-private:
-
+private:                                                                                                                                                                               \
 // Don't use this for your classes, use GDCLASS() instead.
 #define GDEXTENSION_CLASS(m_class, m_inherits) GDEXTENSION_CLASS_ALIAS(m_class, m_class, m_inherits)
 

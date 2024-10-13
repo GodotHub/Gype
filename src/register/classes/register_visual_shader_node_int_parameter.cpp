@@ -1,13 +1,14 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/visual_shader_node_int_parameter.hpp>
 #include <godot_cpp/classes/visual_shader_node_parameter.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -34,49 +35,57 @@ static JSValue visual_shader_node_int_parameter_class_constructor(JSContext *ctx
 	}
 
 	JS_SetOpaque(obj, visual_shader_node_int_parameter_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue visual_shader_node_int_parameter_class_set_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&VisualShaderNodeIntParameter::set_hint, VisualShaderNodeIntParameter::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VisualShaderNodeIntParameter::set_hint, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_int_parameter_class_get_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&VisualShaderNodeIntParameter::get_hint, VisualShaderNodeIntParameter::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&VisualShaderNodeIntParameter::get_hint, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_int_parameter_class_set_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&VisualShaderNodeIntParameter::set_min, VisualShaderNodeIntParameter::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VisualShaderNodeIntParameter::set_min, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_int_parameter_class_get_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&VisualShaderNodeIntParameter::get_min, VisualShaderNodeIntParameter::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&VisualShaderNodeIntParameter::get_min, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_int_parameter_class_set_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&VisualShaderNodeIntParameter::set_max, VisualShaderNodeIntParameter::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VisualShaderNodeIntParameter::set_max, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_int_parameter_class_get_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&VisualShaderNodeIntParameter::get_max, VisualShaderNodeIntParameter::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&VisualShaderNodeIntParameter::get_max, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_int_parameter_class_set_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&VisualShaderNodeIntParameter::set_step, VisualShaderNodeIntParameter::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VisualShaderNodeIntParameter::set_step, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_int_parameter_class_get_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&VisualShaderNodeIntParameter::get_step, VisualShaderNodeIntParameter::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&VisualShaderNodeIntParameter::get_step, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_int_parameter_class_set_default_value_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&VisualShaderNodeIntParameter::set_default_value_enabled, VisualShaderNodeIntParameter::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VisualShaderNodeIntParameter::set_default_value_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_int_parameter_class_is_default_value_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&VisualShaderNodeIntParameter::is_default_value_enabled, VisualShaderNodeIntParameter::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&VisualShaderNodeIntParameter::is_default_value_enabled, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_int_parameter_class_set_default_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&VisualShaderNodeIntParameter::set_default_value, VisualShaderNodeIntParameter::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&VisualShaderNodeIntParameter::set_default_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_int_parameter_class_get_default_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&VisualShaderNodeIntParameter::get_default_value, VisualShaderNodeIntParameter::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&VisualShaderNodeIntParameter::get_default_value, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry visual_shader_node_int_parameter_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_hint", 1, &visual_shader_node_int_parameter_class_set_hint),
@@ -93,18 +102,73 @@ static const JSCFunctionListEntry visual_shader_node_int_parameter_class_proto_f
 	JS_CFUNC_DEF("get_default_value", 0, &visual_shader_node_int_parameter_class_get_default_value),
 };
 
+void define_visual_shader_node_int_parameter_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "hint"),
+        JS_NewCFunction(ctx, visual_shader_node_int_parameter_class_get_hint, "get_hint", 0),
+        JS_NewCFunction(ctx, visual_shader_node_int_parameter_class_set_hint, "set_hint", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "min"),
+        JS_NewCFunction(ctx, visual_shader_node_int_parameter_class_get_min, "get_min", 0),
+        JS_NewCFunction(ctx, visual_shader_node_int_parameter_class_set_min, "set_min", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "max"),
+        JS_NewCFunction(ctx, visual_shader_node_int_parameter_class_get_max, "get_max", 0),
+        JS_NewCFunction(ctx, visual_shader_node_int_parameter_class_set_max, "set_max", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "step"),
+        JS_NewCFunction(ctx, visual_shader_node_int_parameter_class_get_step, "get_step", 0),
+        JS_NewCFunction(ctx, visual_shader_node_int_parameter_class_set_step, "set_step", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "default_value_enabled"),
+        JS_NewCFunction(ctx, visual_shader_node_int_parameter_class_is_default_value_enabled, "is_default_value_enabled", 0),
+        JS_NewCFunction(ctx, visual_shader_node_int_parameter_class_set_default_value_enabled, "set_default_value_enabled", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "default_value"),
+        JS_NewCFunction(ctx, visual_shader_node_int_parameter_class_get_default_value, "get_default_value", 0),
+        JS_NewCFunction(ctx, visual_shader_node_int_parameter_class_set_default_value, "set_default_value", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_visual_shader_node_int_parameter_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&VisualShaderNodeIntParameter::__class_id);
 	classes["VisualShaderNodeIntParameter"] = VisualShaderNodeIntParameter::__class_id;
+	class_id_list.insert(VisualShaderNodeIntParameter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeIntParameter::__class_id, &visual_shader_node_int_parameter_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, VisualShaderNodeParameter::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, VisualShaderNodeIntParameter::__class_id, proto);
+	define_visual_shader_node_int_parameter_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_int_parameter_class_proto_funcs, _countof(visual_shader_node_int_parameter_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_int_parameter_class_constructor, "VisualShaderNodeIntParameter", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "VisualShaderNodeIntParameter", ctor);
 
@@ -112,6 +176,10 @@ static int js_visual_shader_node_int_parameter_class_init(JSContext *ctx, JSModu
 }
 
 JSModuleDef *_js_init_visual_shader_node_int_parameter_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/visual_shader_node_parameter';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_visual_shader_node_int_parameter_class_init);
 	if (!m)
 		return NULL;
@@ -124,5 +192,6 @@ JSModuleDef *js_init_visual_shader_node_int_parameter_module(JSContext *ctx) {
 }
 
 void register_visual_shader_node_int_parameter() {
+	VisualShaderNodeIntParameter::__init_js_class_id();
 	js_init_visual_shader_node_int_parameter_module(ctx);
 }

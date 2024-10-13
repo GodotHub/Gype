@@ -1,20 +1,24 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/physics_test_motion_result3d.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/physics_server3d_rendering_server_handler.hpp>
+#include <godot_cpp/classes/physics_server3d.hpp>
 #include <godot_cpp/classes/physics_direct_space_state3d.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/physics_direct_body_state3d.hpp>
 #include <godot_cpp/classes/physics_test_motion_parameters3d.hpp>
-#include <godot_cpp/classes/physics_server3d.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/physics_test_motion_result3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
+
+static JSValue physics_server3d_instance;
+
+static void js_physics_server3d_singleton();
 
 static void physics_server3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	PhysicsServer3D *physics_server3d = static_cast<PhysicsServer3D *>(JS_GetOpaque(val, PhysicsServer3D::__class_id));
@@ -42,605 +46,774 @@ static JSValue physics_server3d_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue physics_server3d_class_world_boundary_shape_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&PhysicsServer3D::world_boundary_shape_create, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_method_ret(&PhysicsServer3D::world_boundary_shape_create, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_separation_ray_shape_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&PhysicsServer3D::separation_ray_shape_create, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_method_ret(&PhysicsServer3D::separation_ray_shape_create, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_sphere_shape_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&PhysicsServer3D::sphere_shape_create, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_method_ret(&PhysicsServer3D::sphere_shape_create, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_box_shape_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&PhysicsServer3D::box_shape_create, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_method_ret(&PhysicsServer3D::box_shape_create, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_capsule_shape_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&PhysicsServer3D::capsule_shape_create, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_method_ret(&PhysicsServer3D::capsule_shape_create, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_cylinder_shape_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&PhysicsServer3D::cylinder_shape_create, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_method_ret(&PhysicsServer3D::cylinder_shape_create, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_convex_polygon_shape_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&PhysicsServer3D::convex_polygon_shape_create, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_method_ret(&PhysicsServer3D::convex_polygon_shape_create, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_concave_polygon_shape_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&PhysicsServer3D::concave_polygon_shape_create, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_method_ret(&PhysicsServer3D::concave_polygon_shape_create, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_heightmap_shape_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&PhysicsServer3D::heightmap_shape_create, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_method_ret(&PhysicsServer3D::heightmap_shape_create, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_custom_shape_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&PhysicsServer3D::custom_shape_create, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_method_ret(&PhysicsServer3D::custom_shape_create, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_shape_set_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::shape_set_data, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::shape_set_data, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_shape_set_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::shape_set_margin, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::shape_set_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_shape_get_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::shape_get_type, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::shape_get_type, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_shape_get_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::shape_get_data, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::shape_get_data, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_shape_get_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::shape_get_margin, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::shape_get_margin, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_space_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&PhysicsServer3D::space_create, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_method_ret(&PhysicsServer3D::space_create, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_space_set_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::space_set_active, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::space_set_active, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_space_is_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::space_is_active, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::space_is_active, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_space_set_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::space_set_param, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::space_set_param, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_space_get_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::space_get_param, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::space_get_param, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_space_get_direct_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&PhysicsServer3D::space_get_direct_state, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_method_ret(&PhysicsServer3D::space_get_direct_state, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_area_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&PhysicsServer3D::area_create, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_method_ret(&PhysicsServer3D::area_create, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_area_set_space(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::area_set_space, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::area_set_space, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_area_get_space(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::area_get_space, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::area_get_space, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_area_add_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::area_add_shape, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::area_add_shape, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_area_set_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::area_set_shape, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::area_set_shape, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_area_set_shape_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::area_set_shape_transform, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::area_set_shape_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_area_set_shape_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::area_set_shape_disabled, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::area_set_shape_disabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_area_get_shape_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::area_get_shape_count, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::area_get_shape_count, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_area_get_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::area_get_shape, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::area_get_shape, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_area_get_shape_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::area_get_shape_transform, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::area_get_shape_transform, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_area_remove_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::area_remove_shape, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::area_remove_shape, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_area_clear_shapes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::area_clear_shapes, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::area_clear_shapes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_area_set_collision_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::area_set_collision_layer, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::area_set_collision_layer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_area_get_collision_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::area_get_collision_layer, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::area_get_collision_layer, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_area_set_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::area_set_collision_mask, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::area_set_collision_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_area_get_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::area_get_collision_mask, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::area_get_collision_mask, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_area_set_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::area_set_param, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::area_set_param, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_area_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::area_set_transform, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::area_set_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_area_get_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::area_get_param, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::area_get_param, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_area_get_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::area_get_transform, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::area_get_transform, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_area_attach_object_instance_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::area_attach_object_instance_id, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::area_attach_object_instance_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_area_get_object_instance_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::area_get_object_instance_id, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::area_get_object_instance_id, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_area_set_monitor_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::area_set_monitor_callback, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::area_set_monitor_callback, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_area_set_area_monitor_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::area_set_area_monitor_callback, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::area_set_area_monitor_callback, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_area_set_monitorable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::area_set_monitorable, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::area_set_monitorable, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_area_set_ray_pickable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::area_set_ray_pickable, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::area_set_ray_pickable, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&PhysicsServer3D::body_create, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_method_ret(&PhysicsServer3D::body_create, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_body_set_space(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_set_space, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_set_space, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_get_space(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_space, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_space, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_body_set_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_set_mode, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_set_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_get_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_mode, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_mode, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_body_set_collision_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_set_collision_layer, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_set_collision_layer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_get_collision_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_collision_layer, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_collision_layer, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_body_set_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_set_collision_mask, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_set_collision_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_get_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_collision_mask, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_collision_mask, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_body_set_collision_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_set_collision_priority, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_set_collision_priority, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_get_collision_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_collision_priority, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_collision_priority, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_body_add_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_add_shape, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_add_shape, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_set_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_set_shape, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_set_shape, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_set_shape_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_set_shape_transform, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_set_shape_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_set_shape_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_set_shape_disabled, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_set_shape_disabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_get_shape_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_shape_count, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_shape_count, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_body_get_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_shape, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_shape, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_body_get_shape_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_shape_transform, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_shape_transform, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_body_remove_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_remove_shape, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_remove_shape, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_clear_shapes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_clear_shapes, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_clear_shapes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_attach_object_instance_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_attach_object_instance_id, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_attach_object_instance_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_get_object_instance_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_object_instance_id, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_object_instance_id, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_body_set_enable_continuous_collision_detection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_set_enable_continuous_collision_detection, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_set_enable_continuous_collision_detection, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_is_continuous_collision_detection_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::body_is_continuous_collision_detection_enabled, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::body_is_continuous_collision_detection_enabled, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_body_set_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_set_param, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_set_param, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_get_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_param, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_param, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_body_reset_mass_properties(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_reset_mass_properties, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_reset_mass_properties, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_set_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_set_state, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_set_state, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_get_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_state, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_state, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_body_apply_central_impulse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_apply_central_impulse, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_apply_central_impulse, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_apply_impulse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_apply_impulse, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_apply_impulse, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_apply_torque_impulse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_apply_torque_impulse, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_apply_torque_impulse, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_apply_central_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_apply_central_force, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_apply_central_force, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_apply_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_apply_force, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_apply_force, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_apply_torque(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_apply_torque, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_apply_torque, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_add_constant_central_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_add_constant_central_force, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_add_constant_central_force, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_add_constant_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_add_constant_force, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_add_constant_force, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_add_constant_torque(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_add_constant_torque, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_add_constant_torque, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_set_constant_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_set_constant_force, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_set_constant_force, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_get_constant_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_constant_force, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_constant_force, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_body_set_constant_torque(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_set_constant_torque, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_set_constant_torque, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_get_constant_torque(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_constant_torque, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_constant_torque, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_body_set_axis_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_set_axis_velocity, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_set_axis_velocity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_set_axis_lock(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_set_axis_lock, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_set_axis_lock, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_is_axis_locked(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::body_is_axis_locked, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::body_is_axis_locked, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_body_add_collision_exception(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_add_collision_exception, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_add_collision_exception, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_remove_collision_exception(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_remove_collision_exception, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_remove_collision_exception, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_set_max_contacts_reported(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_set_max_contacts_reported, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_set_max_contacts_reported, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_get_max_contacts_reported(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_max_contacts_reported, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::body_get_max_contacts_reported, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_body_set_omit_force_integration(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_set_omit_force_integration, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_set_omit_force_integration, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_is_omitting_force_integration(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::body_is_omitting_force_integration, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::body_is_omitting_force_integration, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_body_set_state_sync_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_set_state_sync_callback, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_set_state_sync_callback, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_set_force_integration_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_set_force_integration_callback, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_set_force_integration_callback, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_set_ray_pickable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::body_set_ray_pickable, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::body_set_ray_pickable, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_body_test_motion(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&PhysicsServer3D::body_test_motion, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_method_ret(&PhysicsServer3D::body_test_motion, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_body_get_direct_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&PhysicsServer3D::body_get_direct_state, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_method_ret(&PhysicsServer3D::body_get_direct_state, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_soft_body_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&PhysicsServer3D::soft_body_create, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_method_ret(&PhysicsServer3D::soft_body_create, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_soft_body_update_rendering_server(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_update_rendering_server, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_update_rendering_server, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_soft_body_set_space(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_space, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_space, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_soft_body_get_space(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_get_space, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_get_space, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_soft_body_set_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_mesh, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_mesh, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_soft_body_get_bounds(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_get_bounds, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_get_bounds, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_soft_body_set_collision_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_collision_layer, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_collision_layer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_soft_body_get_collision_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_get_collision_layer, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_get_collision_layer, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_soft_body_set_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_collision_mask, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_collision_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_soft_body_get_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_get_collision_mask, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_get_collision_mask, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_soft_body_add_collision_exception(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_add_collision_exception, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_add_collision_exception, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_soft_body_remove_collision_exception(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_remove_collision_exception, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_remove_collision_exception, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_soft_body_set_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_state, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_state, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_soft_body_get_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_get_state, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_get_state, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_soft_body_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_transform, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_soft_body_set_ray_pickable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_ray_pickable, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_ray_pickable, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_soft_body_set_simulation_precision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_simulation_precision, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_simulation_precision, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_soft_body_get_simulation_precision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_get_simulation_precision, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_get_simulation_precision, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_soft_body_set_total_mass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_total_mass, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_total_mass, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_soft_body_get_total_mass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_get_total_mass, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_get_total_mass, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_soft_body_set_linear_stiffness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_linear_stiffness, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_linear_stiffness, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_soft_body_get_linear_stiffness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_get_linear_stiffness, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_get_linear_stiffness, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_soft_body_set_pressure_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_pressure_coefficient, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_pressure_coefficient, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_soft_body_get_pressure_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_get_pressure_coefficient, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_get_pressure_coefficient, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_soft_body_set_damping_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_damping_coefficient, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_damping_coefficient, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_soft_body_get_damping_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_get_damping_coefficient, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_get_damping_coefficient, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_soft_body_set_drag_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_drag_coefficient, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_set_drag_coefficient, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_soft_body_get_drag_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_get_drag_coefficient, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_get_drag_coefficient, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_soft_body_move_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_move_point, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_move_point, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_soft_body_get_point_global_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_get_point_global_position, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_get_point_global_position, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_soft_body_remove_all_pinned_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_remove_all_pinned_points, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_remove_all_pinned_points, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_soft_body_pin_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_pin_point, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::soft_body_pin_point, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_soft_body_is_point_pinned(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_is_point_pinned, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::soft_body_is_point_pinned, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_joint_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&PhysicsServer3D::joint_create, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_method_ret(&PhysicsServer3D::joint_create, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_joint_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::joint_clear, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::joint_clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_joint_make_pin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::joint_make_pin, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::joint_make_pin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_pin_joint_set_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::pin_joint_set_param, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::pin_joint_set_param, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_pin_joint_get_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::pin_joint_get_param, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::pin_joint_get_param, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_pin_joint_set_local_a(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::pin_joint_set_local_a, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::pin_joint_set_local_a, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_pin_joint_get_local_a(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::pin_joint_get_local_a, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::pin_joint_get_local_a, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_pin_joint_set_local_b(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::pin_joint_set_local_b, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::pin_joint_set_local_b, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_pin_joint_get_local_b(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::pin_joint_get_local_b, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::pin_joint_get_local_b, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_joint_make_hinge(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::joint_make_hinge, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::joint_make_hinge, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_hinge_joint_set_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::hinge_joint_set_param, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::hinge_joint_set_param, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_hinge_joint_get_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::hinge_joint_get_param, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::hinge_joint_get_param, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_hinge_joint_set_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::hinge_joint_set_flag, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::hinge_joint_set_flag, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_hinge_joint_get_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::hinge_joint_get_flag, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::hinge_joint_get_flag, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_joint_make_slider(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::joint_make_slider, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::joint_make_slider, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_slider_joint_set_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::slider_joint_set_param, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::slider_joint_set_param, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_slider_joint_get_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::slider_joint_get_param, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::slider_joint_get_param, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_joint_make_cone_twist(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::joint_make_cone_twist, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::joint_make_cone_twist, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_cone_twist_joint_set_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::cone_twist_joint_set_param, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::cone_twist_joint_set_param, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_cone_twist_joint_get_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::cone_twist_joint_get_param, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::cone_twist_joint_get_param, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_joint_get_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::joint_get_type, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::joint_get_type, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_joint_set_solver_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::joint_set_solver_priority, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::joint_set_solver_priority, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_joint_get_solver_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::joint_get_solver_priority, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::joint_get_solver_priority, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_joint_disable_collisions_between_bodies(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::joint_disable_collisions_between_bodies, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::joint_disable_collisions_between_bodies, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_joint_is_disabled_collisions_between_bodies(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::joint_is_disabled_collisions_between_bodies, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::joint_is_disabled_collisions_between_bodies, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_joint_make_generic_6dof(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::joint_make_generic_6dof, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::joint_make_generic_6dof, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_generic_6dof_joint_set_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::generic_6dof_joint_set_param, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::generic_6dof_joint_set_param, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_generic_6dof_joint_get_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::generic_6dof_joint_get_param, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::generic_6dof_joint_get_param, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_generic_6dof_joint_set_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::generic_6dof_joint_set_flag, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::generic_6dof_joint_set_flag, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_generic_6dof_joint_get_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&PhysicsServer3D::generic_6dof_joint_get_flag, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_const_method_ret(&PhysicsServer3D::generic_6dof_joint_get_flag, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_class_free_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::free_rid, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::free_rid, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_set_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PhysicsServer3D::set_active, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3D::set_active, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_class_get_process_info(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&PhysicsServer3D::get_process_info, PhysicsServer3D::__class_id, ctx, this_val, argv);
+    js_physics_server3d_singleton();
+	return call_builtin_method_ret(&PhysicsServer3D::get_process_info, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry physics_server3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("world_boundary_shape_create", 0, &physics_server3d_class_world_boundary_shape_create),
@@ -814,7 +987,7 @@ static const JSCFunctionListEntry physics_server3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_process_info", 1, &physics_server3d_class_get_process_info),
 };
 
-static int js_physics_server3d_class_init(JSContext *ctx, JSModuleDef *m) {
+static int js_physics_server3d_class_init(JSContext *ctx) {
 	JS_NewClassID(&PhysicsServer3D::__class_id);
 	classes["PhysicsServer3D"] = PhysicsServer3D::__class_id;
 	JS_NewClass(JS_GetRuntime(ctx), PhysicsServer3D::__class_id, &physics_server3d_class_def);
@@ -824,26 +997,18 @@ static int js_physics_server3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PhysicsServer3D::__class_id, proto);
 	JS_SetPropertyFunctionList(ctx, proto, physics_server3d_class_proto_funcs, _countof(physics_server3d_class_proto_funcs));
-
-	JSValue ctor = JS_NewCFunction2(ctx, physics_server3d_class_constructor, "PhysicsServer3D", 0, JS_CFUNC_constructor, 0);
-
-	JS_SetModuleExport(ctx, m, "PhysicsServer3D", ctor);
-
 	return 0;
 }
 
-JSModuleDef *_js_init_physics_server3d_module(JSContext *ctx, const char *module_name) {
-	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_physics_server3d_class_init);
-	if (!m)
-		return NULL;
-	JS_AddModuleExport(ctx, m, "PhysicsServer3D");
-	return m;
+static void js_physics_server3d_singleton() {
+	if (JS_IsUninitialized(physics_server3d_instance)) {
+		JSValue global = JS_GetGlobalObject(ctx);
+		physics_server3d_instance = physics_server3d_class_constructor(ctx, global, 0, NULL);
+		JS_SetPropertyStr(ctx, global, "PhysicsServer3D", physics_server3d_instance);
+	}
 }
 
-JSModuleDef *js_init_physics_server3d_module(JSContext *ctx) {
-	return _js_init_physics_server3d_module(ctx, "godot/classes/physics_server3d");
-}
 
 void register_physics_server3d() {
-	js_init_physics_server3d_module(ctx);
+	js_physics_server3d_class_init(ctx);
 }

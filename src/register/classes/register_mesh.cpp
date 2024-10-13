@@ -1,17 +1,18 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/triangle_mesh.hpp>
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/concave_polygon_shape3d.hpp>
-#include <godot_cpp/classes/mesh.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/convex_polygon_shape3d.hpp>
 #include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/concave_polygon_shape3d.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/triangle_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -38,51 +39,59 @@ static JSValue mesh_class_constructor(JSContext *ctx, JSValueConst new_target, i
 	}
 
 	JS_SetOpaque(obj, mesh_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue mesh_class_set_lightmap_size_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Mesh::set_lightmap_size_hint, Mesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Mesh::set_lightmap_size_hint, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_class_get_lightmap_size_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Mesh::get_lightmap_size_hint, Mesh::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Mesh::get_lightmap_size_hint, ctx, this_val, argc, argv);
 };
 static JSValue mesh_class_get_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Mesh::get_aabb, Mesh::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Mesh::get_aabb, ctx, this_val, argc, argv);
 };
 static JSValue mesh_class_get_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Mesh::get_faces, Mesh::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Mesh::get_faces, ctx, this_val, argc, argv);
 };
 static JSValue mesh_class_get_surface_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Mesh::get_surface_count, Mesh::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Mesh::get_surface_count, ctx, this_val, argc, argv);
 };
 static JSValue mesh_class_surface_get_arrays(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Mesh::surface_get_arrays, Mesh::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Mesh::surface_get_arrays, ctx, this_val, argc, argv);
 };
 static JSValue mesh_class_surface_get_blend_shape_arrays(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Mesh::surface_get_blend_shape_arrays, Mesh::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Mesh::surface_get_blend_shape_arrays, ctx, this_val, argc, argv);
 };
 static JSValue mesh_class_surface_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Mesh::surface_set_material, Mesh::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&Mesh::surface_set_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_class_surface_get_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Mesh::surface_get_material, Mesh::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Mesh::surface_get_material, ctx, this_val, argc, argv);
 };
 static JSValue mesh_class_create_placeholder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Mesh::create_placeholder, Mesh::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Mesh::create_placeholder, ctx, this_val, argc, argv);
 };
 static JSValue mesh_class_create_trimesh_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Mesh::create_trimesh_shape, Mesh::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Mesh::create_trimesh_shape, ctx, this_val, argc, argv);
 };
 static JSValue mesh_class_create_convex_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Mesh::create_convex_shape, Mesh::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Mesh::create_convex_shape, ctx, this_val, argc, argv);
 };
 static JSValue mesh_class_create_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Mesh::create_outline, Mesh::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Mesh::create_outline, ctx, this_val, argc, argv);
 };
 static JSValue mesh_class_generate_triangle_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Mesh::generate_triangle_mesh, Mesh::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&Mesh::generate_triangle_mesh, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry mesh_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_lightmap_size_hint", 1, &mesh_class_set_lightmap_size_hint),
@@ -101,18 +110,33 @@ static const JSCFunctionListEntry mesh_class_proto_funcs[] = {
 	JS_CFUNC_DEF("generate_triangle_mesh", 0, &mesh_class_generate_triangle_mesh),
 };
 
+void define_mesh_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "lightmap_size_hint"),
+        JS_NewCFunction(ctx, mesh_class_get_lightmap_size_hint, "get_lightmap_size_hint", 0),
+        JS_NewCFunction(ctx, mesh_class_set_lightmap_size_hint, "set_lightmap_size_hint", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&Mesh::__class_id);
 	classes["Mesh"] = Mesh::__class_id;
+	class_id_list.insert(Mesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Mesh::__class_id, &mesh_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Mesh::__class_id, proto);
+	define_mesh_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, mesh_class_proto_funcs, _countof(mesh_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, mesh_class_constructor, "Mesh", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "Mesh", ctor);
 
@@ -120,6 +144,10 @@ static int js_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_mesh_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/resource';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_mesh_class_init);
 	if (!m)
 		return NULL;
@@ -132,5 +160,6 @@ JSModuleDef *js_init_mesh_module(JSContext *ctx) {
 }
 
 void register_mesh() {
+	Mesh::__init_js_class_id();
 	js_init_mesh_module(ctx);
 }

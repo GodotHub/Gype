@@ -1,13 +1,14 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/java_script_object.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -34,20 +35,35 @@ static JSValue java_script_object_class_constructor(JSContext *ctx, JSValueConst
 	}
 
 	JS_SetOpaque(obj, java_script_object_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 
+void define_java_script_object_property(JSContext *ctx, JSValue obj) {
+}
+
 static int js_java_script_object_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&JavaScriptObject::__class_id);
 	classes["JavaScriptObject"] = JavaScriptObject::__class_id;
+	class_id_list.insert(JavaScriptObject::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), JavaScriptObject::__class_id, &java_script_object_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, JavaScriptObject::__class_id, proto);
+	define_java_script_object_property(ctx, proto);
 
 	JSValue ctor = JS_NewCFunction2(ctx, java_script_object_class_constructor, "JavaScriptObject", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "JavaScriptObject", ctor);
 
@@ -55,6 +71,10 @@ static int js_java_script_object_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_java_script_object_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_java_script_object_class_init);
 	if (!m)
 		return NULL;
@@ -67,5 +87,6 @@ JSModuleDef *js_init_java_script_object_module(JSContext *ctx) {
 }
 
 void register_java_script_object() {
+	JavaScriptObject::__init_js_class_id();
 	js_init_java_script_object_module(ctx);
 }

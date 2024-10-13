@@ -31,6 +31,7 @@
 #ifndef GODOT_VECTOR3_HPP
 #define GODOT_VECTOR3_HPP
 
+#include "quickjs/quickjs.h"
 #include <godot_cpp/core/error_macros.hpp>
 #include <godot_cpp/core/math.hpp>
 
@@ -42,6 +43,12 @@ struct Vector2;
 struct Vector3i;
 
 struct _NO_DISCARD_ Vector3 {
+	static JSClassID __class_id;
+
+	inline static void __init_js_class_id() {
+		Vector3::__class_id = JS_NewClassID(&Vector3::__class_id);
+	}
+
 	static const int AXIS_COUNT = 3;
 
 	enum Axis {

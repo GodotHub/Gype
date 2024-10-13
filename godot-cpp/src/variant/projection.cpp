@@ -39,6 +39,8 @@
 
 namespace godot {
 
+JSClassID Projection::__class_id;
+
 float Projection::determinant() const {
 	return columns[0][3] * columns[1][2] * columns[2][1] * columns[3][0] - columns[0][2] * columns[1][3] * columns[2][1] * columns[3][0] -
 			columns[0][3] * columns[1][1] * columns[2][2] * columns[3][0] + columns[0][1] * columns[1][3] * columns[2][2] * columns[3][0] +

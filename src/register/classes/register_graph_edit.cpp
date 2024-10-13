@@ -1,17 +1,18 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/object.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/h_box_container.hpp>
-#include <godot_cpp/classes/graph_frame.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/graph_edit.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/graph_frame.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -38,253 +39,261 @@ static JSValue graph_edit_class_constructor(JSContext *ctx, JSValueConst new_tar
 	}
 
 	JS_SetOpaque(obj, graph_edit_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue graph_edit_class_connect_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&GraphEdit::connect_node, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&GraphEdit::connect_node, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_is_node_connected(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&GraphEdit::is_node_connected, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&GraphEdit::is_node_connected, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_disconnect_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::disconnect_node, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::disconnect_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_set_connection_activity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_connection_activity, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_connection_activity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_get_connection_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::get_connection_list, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::get_connection_list, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_get_closest_connection_at_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::get_closest_connection_at_point, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::get_closest_connection_at_point, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_get_connections_intersecting_with_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::get_connections_intersecting_with_rect, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::get_connections_intersecting_with_rect, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_clear_connections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::clear_connections, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::clear_connections, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_force_connection_drag_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::force_connection_drag_end, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::force_connection_drag_end, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_get_scroll_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::get_scroll_offset, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::get_scroll_offset, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_set_scroll_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_scroll_offset, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_scroll_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_add_valid_right_disconnect_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::add_valid_right_disconnect_type, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::add_valid_right_disconnect_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_remove_valid_right_disconnect_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::remove_valid_right_disconnect_type, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::remove_valid_right_disconnect_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_add_valid_left_disconnect_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::add_valid_left_disconnect_type, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::add_valid_left_disconnect_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_remove_valid_left_disconnect_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::remove_valid_left_disconnect_type, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::remove_valid_left_disconnect_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_add_valid_connection_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::add_valid_connection_type, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::add_valid_connection_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_remove_valid_connection_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::remove_valid_connection_type, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::remove_valid_connection_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_is_valid_connection_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::is_valid_connection_type, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::is_valid_connection_type, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_get_connection_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::get_connection_line, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::get_connection_line, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_attach_graph_element_to_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::attach_graph_element_to_frame, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::attach_graph_element_to_frame, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_detach_graph_element_from_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::detach_graph_element_from_frame, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::detach_graph_element_from_frame, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_get_element_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&GraphEdit::get_element_frame, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&GraphEdit::get_element_frame, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_get_attached_nodes_of_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&GraphEdit::get_attached_nodes_of_frame, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&GraphEdit::get_attached_nodes_of_frame, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_set_panning_scheme(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_panning_scheme, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_panning_scheme, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_get_panning_scheme(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::get_panning_scheme, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::get_panning_scheme, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_set_zoom(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_zoom, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_zoom, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_get_zoom(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::get_zoom, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::get_zoom, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_set_zoom_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_zoom_min, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_zoom_min, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_get_zoom_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::get_zoom_min, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::get_zoom_min, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_set_zoom_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_zoom_max, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_zoom_max, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_get_zoom_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::get_zoom_max, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::get_zoom_max, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_set_zoom_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_zoom_step, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_zoom_step, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_get_zoom_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::get_zoom_step, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::get_zoom_step, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_set_show_grid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_show_grid, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_show_grid, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_is_showing_grid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::is_showing_grid, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::is_showing_grid, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_set_grid_pattern(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_grid_pattern, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_grid_pattern, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_get_grid_pattern(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::get_grid_pattern, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::get_grid_pattern, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_set_snapping_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_snapping_enabled, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_snapping_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_is_snapping_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::is_snapping_enabled, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::is_snapping_enabled, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_set_snapping_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_snapping_distance, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_snapping_distance, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_get_snapping_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::get_snapping_distance, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::get_snapping_distance, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_set_connection_lines_curvature(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_connection_lines_curvature, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_connection_lines_curvature, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_get_connection_lines_curvature(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::get_connection_lines_curvature, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::get_connection_lines_curvature, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_set_connection_lines_thickness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_connection_lines_thickness, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_connection_lines_thickness, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_get_connection_lines_thickness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::get_connection_lines_thickness, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::get_connection_lines_thickness, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_set_connection_lines_antialiased(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_connection_lines_antialiased, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_connection_lines_antialiased, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_is_connection_lines_antialiased(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::is_connection_lines_antialiased, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::is_connection_lines_antialiased, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_set_minimap_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_minimap_size, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_minimap_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_get_minimap_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::get_minimap_size, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::get_minimap_size, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_set_minimap_opacity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_minimap_opacity, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_minimap_opacity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_get_minimap_opacity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::get_minimap_opacity, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::get_minimap_opacity, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_set_minimap_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_minimap_enabled, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_minimap_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_is_minimap_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::is_minimap_enabled, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::is_minimap_enabled, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_set_show_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_show_menu, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_show_menu, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_is_showing_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::is_showing_menu, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::is_showing_menu, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_set_show_zoom_label(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_show_zoom_label, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_show_zoom_label, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_is_showing_zoom_label(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::is_showing_zoom_label, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::is_showing_zoom_label, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_set_show_grid_buttons(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_show_grid_buttons, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_show_grid_buttons, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_is_showing_grid_buttons(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::is_showing_grid_buttons, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::is_showing_grid_buttons, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_set_show_zoom_buttons(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_show_zoom_buttons, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_show_zoom_buttons, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_is_showing_zoom_buttons(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::is_showing_zoom_buttons, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::is_showing_zoom_buttons, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_set_show_minimap_button(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_show_minimap_button, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_show_minimap_button, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_is_showing_minimap_button(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::is_showing_minimap_button, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::is_showing_minimap_button, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_set_show_arrange_button(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_show_arrange_button, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_show_arrange_button, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_is_showing_arrange_button(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::is_showing_arrange_button, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::is_showing_arrange_button, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_set_right_disconnects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_right_disconnects, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_right_disconnects, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_is_right_disconnects_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&GraphEdit::is_right_disconnects_enabled, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&GraphEdit::is_right_disconnects_enabled, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_get_menu_hbox(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_ret(&GraphEdit::get_menu_hbox, GraphEdit::__class_id, ctx, this_val, argv);
+	return call_builtin_method_ret(&GraphEdit::get_menu_hbox, ctx, this_val, argc, argv);
 };
 static JSValue graph_edit_class_arrange_nodes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::arrange_nodes, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::arrange_nodes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_edit_class_set_selected(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&GraphEdit::set_selected, GraphEdit::__class_id, ctx, this_val, argv);
+    call_builtin_method_no_ret(&GraphEdit::set_selected, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry graph_edit_class_proto_funcs[] = {
@@ -360,18 +369,209 @@ static const JSCFunctionListEntry graph_edit_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_selected", 1, &graph_edit_class_set_selected),
 };
 
+void define_graph_edit_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "scroll_offset"),
+        JS_NewCFunction(ctx, graph_edit_class_get_scroll_offset, "get_scroll_offset", 0),
+        JS_NewCFunction(ctx, graph_edit_class_set_scroll_offset, "set_scroll_offset", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "show_grid"),
+        JS_NewCFunction(ctx, graph_edit_class_is_showing_grid, "is_showing_grid", 0),
+        JS_NewCFunction(ctx, graph_edit_class_set_show_grid, "set_show_grid", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "grid_pattern"),
+        JS_NewCFunction(ctx, graph_edit_class_get_grid_pattern, "get_grid_pattern", 0),
+        JS_NewCFunction(ctx, graph_edit_class_set_grid_pattern, "set_grid_pattern", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "snapping_enabled"),
+        JS_NewCFunction(ctx, graph_edit_class_is_snapping_enabled, "is_snapping_enabled", 0),
+        JS_NewCFunction(ctx, graph_edit_class_set_snapping_enabled, "set_snapping_enabled", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "snapping_distance"),
+        JS_NewCFunction(ctx, graph_edit_class_get_snapping_distance, "get_snapping_distance", 0),
+        JS_NewCFunction(ctx, graph_edit_class_set_snapping_distance, "set_snapping_distance", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "panning_scheme"),
+        JS_NewCFunction(ctx, graph_edit_class_get_panning_scheme, "get_panning_scheme", 0),
+        JS_NewCFunction(ctx, graph_edit_class_set_panning_scheme, "set_panning_scheme", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "right_disconnects"),
+        JS_NewCFunction(ctx, graph_edit_class_is_right_disconnects_enabled, "is_right_disconnects_enabled", 0),
+        JS_NewCFunction(ctx, graph_edit_class_set_right_disconnects, "set_right_disconnects", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "connection_lines_curvature"),
+        JS_NewCFunction(ctx, graph_edit_class_get_connection_lines_curvature, "get_connection_lines_curvature", 0),
+        JS_NewCFunction(ctx, graph_edit_class_set_connection_lines_curvature, "set_connection_lines_curvature", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "connection_lines_thickness"),
+        JS_NewCFunction(ctx, graph_edit_class_get_connection_lines_thickness, "get_connection_lines_thickness", 0),
+        JS_NewCFunction(ctx, graph_edit_class_set_connection_lines_thickness, "set_connection_lines_thickness", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "connection_lines_antialiased"),
+        JS_NewCFunction(ctx, graph_edit_class_is_connection_lines_antialiased, "is_connection_lines_antialiased", 0),
+        JS_NewCFunction(ctx, graph_edit_class_set_connection_lines_antialiased, "set_connection_lines_antialiased", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "zoom"),
+        JS_NewCFunction(ctx, graph_edit_class_get_zoom, "get_zoom", 0),
+        JS_NewCFunction(ctx, graph_edit_class_set_zoom, "set_zoom", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "zoom_min"),
+        JS_NewCFunction(ctx, graph_edit_class_get_zoom_min, "get_zoom_min", 0),
+        JS_NewCFunction(ctx, graph_edit_class_set_zoom_min, "set_zoom_min", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "zoom_max"),
+        JS_NewCFunction(ctx, graph_edit_class_get_zoom_max, "get_zoom_max", 0),
+        JS_NewCFunction(ctx, graph_edit_class_set_zoom_max, "set_zoom_max", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "zoom_step"),
+        JS_NewCFunction(ctx, graph_edit_class_get_zoom_step, "get_zoom_step", 0),
+        JS_NewCFunction(ctx, graph_edit_class_set_zoom_step, "set_zoom_step", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "minimap_enabled"),
+        JS_NewCFunction(ctx, graph_edit_class_is_minimap_enabled, "is_minimap_enabled", 0),
+        JS_NewCFunction(ctx, graph_edit_class_set_minimap_enabled, "set_minimap_enabled", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "minimap_size"),
+        JS_NewCFunction(ctx, graph_edit_class_get_minimap_size, "get_minimap_size", 0),
+        JS_NewCFunction(ctx, graph_edit_class_set_minimap_size, "set_minimap_size", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "minimap_opacity"),
+        JS_NewCFunction(ctx, graph_edit_class_get_minimap_opacity, "get_minimap_opacity", 0),
+        JS_NewCFunction(ctx, graph_edit_class_set_minimap_opacity, "set_minimap_opacity", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "show_menu"),
+        JS_NewCFunction(ctx, graph_edit_class_is_showing_menu, "is_showing_menu", 0),
+        JS_NewCFunction(ctx, graph_edit_class_set_show_menu, "set_show_menu", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "show_zoom_label"),
+        JS_NewCFunction(ctx, graph_edit_class_is_showing_zoom_label, "is_showing_zoom_label", 0),
+        JS_NewCFunction(ctx, graph_edit_class_set_show_zoom_label, "set_show_zoom_label", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "show_zoom_buttons"),
+        JS_NewCFunction(ctx, graph_edit_class_is_showing_zoom_buttons, "is_showing_zoom_buttons", 0),
+        JS_NewCFunction(ctx, graph_edit_class_set_show_zoom_buttons, "set_show_zoom_buttons", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "show_grid_buttons"),
+        JS_NewCFunction(ctx, graph_edit_class_is_showing_grid_buttons, "is_showing_grid_buttons", 0),
+        JS_NewCFunction(ctx, graph_edit_class_set_show_grid_buttons, "set_show_grid_buttons", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "show_minimap_button"),
+        JS_NewCFunction(ctx, graph_edit_class_is_showing_minimap_button, "is_showing_minimap_button", 0),
+        JS_NewCFunction(ctx, graph_edit_class_set_show_minimap_button, "set_show_minimap_button", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "show_arrange_button"),
+        JS_NewCFunction(ctx, graph_edit_class_is_showing_arrange_button, "is_showing_arrange_button", 0),
+        JS_NewCFunction(ctx, graph_edit_class_set_show_arrange_button, "set_show_arrange_button", 0),
+        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+    );
+}
+
 static int js_graph_edit_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&GraphEdit::__class_id);
 	classes["GraphEdit"] = GraphEdit::__class_id;
+	class_id_list.insert(GraphEdit::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GraphEdit::__class_id, &graph_edit_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, Control::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, GraphEdit::__class_id, proto);
+	define_graph_edit_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, graph_edit_class_proto_funcs, _countof(graph_edit_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, graph_edit_class_constructor, "GraphEdit", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "GraphEdit", ctor);
 
@@ -379,6 +579,10 @@ static int js_graph_edit_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_graph_edit_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/control';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_graph_edit_class_init);
 	if (!m)
 		return NULL;
@@ -391,5 +595,6 @@ JSModuleDef *js_init_graph_edit_module(JSContext *ctx) {
 }
 
 void register_graph_edit() {
+	GraphEdit::__init_js_class_id();
 	js_init_graph_edit_module(ctx);
 }

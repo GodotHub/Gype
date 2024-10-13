@@ -439,16 +439,16 @@ void ClassDB::deinitialize(GDExtensionInitializationLevel p_level) {
 	}
 }
 
-JavaScriptDB *JavaScriptDB::singleton = nullptr;
-JSContext *JavaScriptDB::ctx = nullptr;
-void JavaScriptDB::init(JSContext *ctx) {
-	JavaScriptDB::ctx = ctx;
-}
+// JavaScriptDB *JavaScriptDB::singleton = nullptr;
+// JSContext *JavaScriptDB::ctx = nullptr;
+// void JavaScriptDB::init(JSContext *ctx) {
+// 	JavaScriptDB::ctx = ctx;
+// }
 
-JavaScriptDB *JavaScriptDB::get_singleton() {
-	if (singleton == nullptr)
-		singleton = memnew(JavaScriptDB);
-	return singleton;
-}
+// JavaScriptDB *JavaScriptDB::get_singleton() {
+// 	if (singleton == nullptr)
+// 		singleton = memnew(JavaScriptDB);
+// 	return singleton;
+// }
 
 } // namespace godot

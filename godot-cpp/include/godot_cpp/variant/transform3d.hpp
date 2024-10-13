@@ -40,6 +40,11 @@
 namespace godot {
 
 struct _NO_DISCARD_ Transform3D {
+	static JSClassID __class_id;
+
+	inline static void __init_js_class_id() {
+		Transform3D::__class_id = JS_NewClassID(&Transform3D::__class_id);
+	}
 	Basis basis;
 	Vector3 origin;
 

@@ -37,6 +37,8 @@
 
 namespace godot {
 
+JSClassID Vector3::__class_id;
+
 void Vector3::rotate(const Vector3 &p_axis, const real_t p_angle) {
 	*this = Basis(p_axis, p_angle).xform(*this);
 }

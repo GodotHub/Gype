@@ -1,15 +1,19 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/object.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/time.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
+
+static JSValue time_instance;
+
+static void js_time_singleton();
 
 static void time_class_finalizer(JSRuntime *rt, JSValue val) {
 	Time *time = static_cast<Time *>(JS_GetOpaque(val, Time::__class_id));
@@ -37,67 +41,88 @@ static JSValue time_class_constructor(JSContext *ctx, JSValueConst new_target, i
 	return obj;
 }
 static JSValue time_class_get_datetime_dict_from_unix_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Time::get_datetime_dict_from_unix_time, Time::__class_id, ctx, this_val, argv);
+    js_time_singleton();
+	return call_builtin_const_method_ret(&Time::get_datetime_dict_from_unix_time, ctx, this_val, argc, argv);
 };
 static JSValue time_class_get_date_dict_from_unix_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Time::get_date_dict_from_unix_time, Time::__class_id, ctx, this_val, argv);
+    js_time_singleton();
+	return call_builtin_const_method_ret(&Time::get_date_dict_from_unix_time, ctx, this_val, argc, argv);
 };
 static JSValue time_class_get_time_dict_from_unix_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Time::get_time_dict_from_unix_time, Time::__class_id, ctx, this_val, argv);
+    js_time_singleton();
+	return call_builtin_const_method_ret(&Time::get_time_dict_from_unix_time, ctx, this_val, argc, argv);
 };
 static JSValue time_class_get_datetime_string_from_unix_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Time::get_datetime_string_from_unix_time, Time::__class_id, ctx, this_val, argv);
+    js_time_singleton();
+	return call_builtin_const_method_ret(&Time::get_datetime_string_from_unix_time, ctx, this_val, argc, argv);
 };
 static JSValue time_class_get_date_string_from_unix_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Time::get_date_string_from_unix_time, Time::__class_id, ctx, this_val, argv);
+    js_time_singleton();
+	return call_builtin_const_method_ret(&Time::get_date_string_from_unix_time, ctx, this_val, argc, argv);
 };
 static JSValue time_class_get_time_string_from_unix_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Time::get_time_string_from_unix_time, Time::__class_id, ctx, this_val, argv);
+    js_time_singleton();
+	return call_builtin_const_method_ret(&Time::get_time_string_from_unix_time, ctx, this_val, argc, argv);
 };
 static JSValue time_class_get_datetime_dict_from_datetime_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Time::get_datetime_dict_from_datetime_string, Time::__class_id, ctx, this_val, argv);
+    js_time_singleton();
+	return call_builtin_const_method_ret(&Time::get_datetime_dict_from_datetime_string, ctx, this_val, argc, argv);
 };
 static JSValue time_class_get_datetime_string_from_datetime_dict(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Time::get_datetime_string_from_datetime_dict, Time::__class_id, ctx, this_val, argv);
+    js_time_singleton();
+	return call_builtin_const_method_ret(&Time::get_datetime_string_from_datetime_dict, ctx, this_val, argc, argv);
 };
 static JSValue time_class_get_unix_time_from_datetime_dict(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Time::get_unix_time_from_datetime_dict, Time::__class_id, ctx, this_val, argv);
+    js_time_singleton();
+	return call_builtin_const_method_ret(&Time::get_unix_time_from_datetime_dict, ctx, this_val, argc, argv);
 };
 static JSValue time_class_get_unix_time_from_datetime_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Time::get_unix_time_from_datetime_string, Time::__class_id, ctx, this_val, argv);
+    js_time_singleton();
+	return call_builtin_const_method_ret(&Time::get_unix_time_from_datetime_string, ctx, this_val, argc, argv);
 };
 static JSValue time_class_get_offset_string_from_offset_minutes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Time::get_offset_string_from_offset_minutes, Time::__class_id, ctx, this_val, argv);
+    js_time_singleton();
+	return call_builtin_const_method_ret(&Time::get_offset_string_from_offset_minutes, ctx, this_val, argc, argv);
 };
 static JSValue time_class_get_datetime_dict_from_system(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Time::get_datetime_dict_from_system, Time::__class_id, ctx, this_val, argv);
+    js_time_singleton();
+	return call_builtin_const_method_ret(&Time::get_datetime_dict_from_system, ctx, this_val, argc, argv);
 };
 static JSValue time_class_get_date_dict_from_system(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Time::get_date_dict_from_system, Time::__class_id, ctx, this_val, argv);
+    js_time_singleton();
+	return call_builtin_const_method_ret(&Time::get_date_dict_from_system, ctx, this_val, argc, argv);
 };
 static JSValue time_class_get_time_dict_from_system(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Time::get_time_dict_from_system, Time::__class_id, ctx, this_val, argv);
+    js_time_singleton();
+	return call_builtin_const_method_ret(&Time::get_time_dict_from_system, ctx, this_val, argc, argv);
 };
 static JSValue time_class_get_datetime_string_from_system(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Time::get_datetime_string_from_system, Time::__class_id, ctx, this_val, argv);
+    js_time_singleton();
+	return call_builtin_const_method_ret(&Time::get_datetime_string_from_system, ctx, this_val, argc, argv);
 };
 static JSValue time_class_get_date_string_from_system(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Time::get_date_string_from_system, Time::__class_id, ctx, this_val, argv);
+    js_time_singleton();
+	return call_builtin_const_method_ret(&Time::get_date_string_from_system, ctx, this_val, argc, argv);
 };
 static JSValue time_class_get_time_string_from_system(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Time::get_time_string_from_system, Time::__class_id, ctx, this_val, argv);
+    js_time_singleton();
+	return call_builtin_const_method_ret(&Time::get_time_string_from_system, ctx, this_val, argc, argv);
 };
 static JSValue time_class_get_time_zone_from_system(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Time::get_time_zone_from_system, Time::__class_id, ctx, this_val, argv);
+    js_time_singleton();
+	return call_builtin_const_method_ret(&Time::get_time_zone_from_system, ctx, this_val, argc, argv);
 };
 static JSValue time_class_get_unix_time_from_system(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Time::get_unix_time_from_system, Time::__class_id, ctx, this_val, argv);
+    js_time_singleton();
+	return call_builtin_const_method_ret(&Time::get_unix_time_from_system, ctx, this_val, argc, argv);
 };
 static JSValue time_class_get_ticks_msec(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Time::get_ticks_msec, Time::__class_id, ctx, this_val, argv);
+    js_time_singleton();
+	return call_builtin_const_method_ret(&Time::get_ticks_msec, ctx, this_val, argc, argv);
 };
 static JSValue time_class_get_ticks_usec(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Time::get_ticks_usec, Time::__class_id, ctx, this_val, argv);
+    js_time_singleton();
+	return call_builtin_const_method_ret(&Time::get_ticks_usec, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry time_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_datetime_dict_from_unix_time", 1, &time_class_get_datetime_dict_from_unix_time),
@@ -123,7 +148,7 @@ static const JSCFunctionListEntry time_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_ticks_usec", 0, &time_class_get_ticks_usec),
 };
 
-static int js_time_class_init(JSContext *ctx, JSModuleDef *m) {
+static int js_time_class_init(JSContext *ctx) {
 	JS_NewClassID(&Time::__class_id);
 	classes["Time"] = Time::__class_id;
 	JS_NewClass(JS_GetRuntime(ctx), Time::__class_id, &time_class_def);
@@ -133,26 +158,18 @@ static int js_time_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Time::__class_id, proto);
 	JS_SetPropertyFunctionList(ctx, proto, time_class_proto_funcs, _countof(time_class_proto_funcs));
-
-	JSValue ctor = JS_NewCFunction2(ctx, time_class_constructor, "Time", 0, JS_CFUNC_constructor, 0);
-
-	JS_SetModuleExport(ctx, m, "Time", ctor);
-
 	return 0;
 }
 
-JSModuleDef *_js_init_time_module(JSContext *ctx, const char *module_name) {
-	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_time_class_init);
-	if (!m)
-		return NULL;
-	JS_AddModuleExport(ctx, m, "Time");
-	return m;
+static void js_time_singleton() {
+	if (JS_IsUninitialized(time_instance)) {
+		JSValue global = JS_GetGlobalObject(ctx);
+		time_instance = time_class_constructor(ctx, global, 0, NULL);
+		JS_SetPropertyStr(ctx, global, "Time", time_instance);
+	}
 }
 
-JSModuleDef *js_init_time_module(JSContext *ctx) {
-	return _js_init_time_module(ctx, "godot/classes/time");
-}
 
 void register_time() {
-	js_init_time_module(ctx);
+	js_time_class_init(ctx);
 }

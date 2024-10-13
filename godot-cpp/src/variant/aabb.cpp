@@ -35,6 +35,8 @@
 
 namespace godot {
 
+JSClassID AABB::__class_id;
+
 real_t AABB::get_volume() const {
 	return size.x * size.y * size.z;
 }

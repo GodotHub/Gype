@@ -35,6 +35,8 @@
 
 namespace godot {
 
+JSClassID Plane::__class_id;
+
 void Plane::set_normal(const Vector3 &p_normal) {
 	normal = p_normal;
 }

@@ -1,15 +1,16 @@
 
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
-#include "utils/env.h"
-#include "utils/register_helper.h"
+#include "quickjs/env.h"
+#include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include <godot_cpp/classes/render_data.hpp>
-#include <godot_cpp/classes/object.hpp>
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/render_scene_buffers.hpp>
 #include <godot_cpp/classes/render_scene_data.hpp>
-#include <godot_cpp/core/convert_helper.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/render_data.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
@@ -36,19 +37,27 @@ static JSValue render_data_class_constructor(JSContext *ctx, JSValueConst new_ta
 	}
 
 	JS_SetOpaque(obj, render_data_class);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+
+	if (JS_IsObject(proto)) {
+		JS_SetPrototype(ctx, obj, proto);
+	}
+	JS_FreeValue(ctx, proto);
+
+	
 	return obj;
 }
 static JSValue render_data_class_get_render_scene_buffers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&RenderData::get_render_scene_buffers, RenderData::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&RenderData::get_render_scene_buffers, ctx, this_val, argc, argv);
 };
 static JSValue render_data_class_get_render_scene_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&RenderData::get_render_scene_data, RenderData::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&RenderData::get_render_scene_data, ctx, this_val, argc, argv);
 };
 static JSValue render_data_class_get_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&RenderData::get_environment, RenderData::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&RenderData::get_environment, ctx, this_val, argc, argv);
 };
 static JSValue render_data_class_get_camera_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&RenderData::get_camera_attributes, RenderData::__class_id, ctx, this_val, argv);
+	return call_builtin_const_method_ret(&RenderData::get_camera_attributes, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry render_data_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_render_scene_buffers", 0, &render_data_class_get_render_scene_buffers),
@@ -57,18 +66,25 @@ static const JSCFunctionListEntry render_data_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_camera_attributes", 0, &render_data_class_get_camera_attributes),
 };
 
+void define_render_data_property(JSContext *ctx, JSValue obj) {
+}
+
 static int js_render_data_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&RenderData::__class_id);
 	classes["RenderData"] = RenderData::__class_id;
+	class_id_list.insert(RenderData::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RenderData::__class_id, &render_data_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	JSValue base_class = JS_GetClassProto(ctx, Object::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, RenderData::__class_id, proto);
+	define_render_data_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, render_data_class_proto_funcs, _countof(render_data_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, render_data_class_constructor, "RenderData", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "RenderData", ctor);
 
@@ -76,6 +92,10 @@ static int js_render_data_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_render_data_module(JSContext *ctx, const char *module_name) {
+	const char *code = "import * as _ from 'godot/classes/object';";
+	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(module))
+		return NULL;
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_render_data_class_init);
 	if (!m)
 		return NULL;
@@ -88,5 +108,6 @@ JSModuleDef *js_init_render_data_module(JSContext *ctx) {
 }
 
 void register_render_data() {
+	RenderData::__init_js_class_id();
 	js_init_render_data_module(ctx);
 }
