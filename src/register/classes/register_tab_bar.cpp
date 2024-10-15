@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/tab_bar.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void tab_bar_class_finalizer(JSRuntime *rt, JSValue val) {
 	TabBar *tab_bar = static_cast<TabBar *>(JS_GetOpaque(val, TabBar::__class_id));
 	if (tab_bar)
-		TabBar::free(nullptr, tab_bar);
+		memdelete(tab_bar);
 }
 
 static JSClassDef tab_bar_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef tab_bar_class_def = {
 };
 
 static JSValue tab_bar_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	TabBar *tab_bar_class;
-	JSValue obj = JS_NewObjectClass(ctx, TabBar::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TabBar::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	tab_bar_class = memnew(TabBar);
+	TabBar *tab_bar_class = memnew(TabBar);
 	if (!tab_bar_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, tab_bar_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, tab_bar_class);	
 	return obj;
 }
 static JSValue tab_bar_class_set_tab_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -406,13 +397,13 @@ static int js_tab_bar_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(TabBar::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TabBar::__class_id, &tab_bar_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, TabBar::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Control::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, TabBar::__class_id, proto);
+
 	define_tab_bar_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, tab_bar_class_proto_funcs, _countof(tab_bar_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, tab_bar_class_constructor, "TabBar", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

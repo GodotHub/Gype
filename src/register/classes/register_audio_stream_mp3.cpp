@@ -15,7 +15,7 @@ using namespace godot;
 static void audio_stream_mp3_class_finalizer(JSRuntime *rt, JSValue val) {
 	AudioStreamMP3 *audio_stream_mp3 = static_cast<AudioStreamMP3 *>(JS_GetOpaque(val, AudioStreamMP3::__class_id));
 	if (audio_stream_mp3)
-		AudioStreamMP3::free(nullptr, audio_stream_mp3);
+		memdelete(audio_stream_mp3);
 }
 
 static JSClassDef audio_stream_mp3_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef audio_stream_mp3_class_def = {
 };
 
 static JSValue audio_stream_mp3_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	AudioStreamMP3 *audio_stream_mp3_class;
-	JSValue obj = JS_NewObjectClass(ctx, AudioStreamMP3::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioStreamMP3::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	audio_stream_mp3_class = memnew(AudioStreamMP3);
+	AudioStreamMP3 *audio_stream_mp3_class = memnew(AudioStreamMP3);
 	if (!audio_stream_mp3_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, audio_stream_mp3_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, audio_stream_mp3_class);	
 	return obj;
 }
 static JSValue audio_stream_mp3_class_set_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -160,13 +151,13 @@ static int js_audio_stream_mp3_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(AudioStreamMP3::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioStreamMP3::__class_id, &audio_stream_mp3_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, AudioStreamMP3::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, AudioStream::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AudioStreamMP3::__class_id, proto);
+
 	define_audio_stream_mp3_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, audio_stream_mp3_class_proto_funcs, _countof(audio_stream_mp3_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, audio_stream_mp3_class_constructor, "AudioStreamMP3", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

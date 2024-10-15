@@ -16,7 +16,7 @@ using namespace godot;
 static void instance_placeholder_class_finalizer(JSRuntime *rt, JSValue val) {
 	InstancePlaceholder *instance_placeholder = static_cast<InstancePlaceholder *>(JS_GetOpaque(val, InstancePlaceholder::__class_id));
 	if (instance_placeholder)
-		InstancePlaceholder::free(nullptr, instance_placeholder);
+		memdelete(instance_placeholder);
 }
 
 static JSClassDef instance_placeholder_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef instance_placeholder_class_def = {
 };
 
 static JSValue instance_placeholder_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	InstancePlaceholder *instance_placeholder_class;
-	JSValue obj = JS_NewObjectClass(ctx, InstancePlaceholder::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InstancePlaceholder::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	instance_placeholder_class = memnew(InstancePlaceholder);
+	InstancePlaceholder *instance_placeholder_class = memnew(InstancePlaceholder);
 	if (!instance_placeholder_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, instance_placeholder_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, instance_placeholder_class);	
 	return obj;
 }
 static JSValue instance_placeholder_class_get_stored_values(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -71,13 +62,13 @@ static int js_instance_placeholder_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(InstancePlaceholder::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), InstancePlaceholder::__class_id, &instance_placeholder_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, InstancePlaceholder::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, InstancePlaceholder::__class_id, proto);
+
 	define_instance_placeholder_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, instance_placeholder_class_proto_funcs, _countof(instance_placeholder_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, instance_placeholder_class_constructor, "InstancePlaceholder", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

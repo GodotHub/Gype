@@ -15,7 +15,7 @@ using namespace godot;
 static void input_event_mouse_motion_class_finalizer(JSRuntime *rt, JSValue val) {
 	InputEventMouseMotion *input_event_mouse_motion = static_cast<InputEventMouseMotion *>(JS_GetOpaque(val, InputEventMouseMotion::__class_id));
 	if (input_event_mouse_motion)
-		InputEventMouseMotion::free(nullptr, input_event_mouse_motion);
+		memdelete(input_event_mouse_motion);
 }
 
 static JSClassDef input_event_mouse_motion_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef input_event_mouse_motion_class_def = {
 };
 
 static JSValue input_event_mouse_motion_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	InputEventMouseMotion *input_event_mouse_motion_class;
-	JSValue obj = JS_NewObjectClass(ctx, InputEventMouseMotion::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InputEventMouseMotion::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	input_event_mouse_motion_class = memnew(InputEventMouseMotion);
+	InputEventMouseMotion *input_event_mouse_motion_class = memnew(InputEventMouseMotion);
 	if (!input_event_mouse_motion_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, input_event_mouse_motion_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, input_event_mouse_motion_class);	
 	return obj;
 }
 static JSValue input_event_mouse_motion_class_set_tilt(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -177,13 +168,13 @@ static int js_input_event_mouse_motion_class_init(JSContext *ctx, JSModuleDef *m
 	class_id_list.insert(InputEventMouseMotion::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), InputEventMouseMotion::__class_id, &input_event_mouse_motion_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, InputEventMouseMotion::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, InputEventMouse::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, InputEventMouseMotion::__class_id, proto);
+
 	define_input_event_mouse_motion_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, input_event_mouse_motion_class_proto_funcs, _countof(input_event_mouse_motion_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, input_event_mouse_motion_class_constructor, "InputEventMouseMotion", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/joint3d.hpp>
 #include <godot_cpp/classes/hinge_joint3d.hpp>
+#include <godot_cpp/classes/joint3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void hinge_joint3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	HingeJoint3D *hinge_joint3d = static_cast<HingeJoint3D *>(JS_GetOpaque(val, HingeJoint3D::__class_id));
 	if (hinge_joint3d)
-		HingeJoint3D::free(nullptr, hinge_joint3d);
+		memdelete(hinge_joint3d);
 }
 
 static JSClassDef hinge_joint3d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef hinge_joint3d_class_def = {
 };
 
 static JSValue hinge_joint3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	HingeJoint3D *hinge_joint3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, HingeJoint3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, HingeJoint3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	hinge_joint3d_class = memnew(HingeJoint3D);
+	HingeJoint3D *hinge_joint3d_class = memnew(HingeJoint3D);
 	if (!hinge_joint3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, hinge_joint3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, hinge_joint3d_class);	
 	return obj;
 }
 static JSValue hinge_joint3d_class_set_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -76,13 +67,13 @@ static int js_hinge_joint3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(HingeJoint3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), HingeJoint3D::__class_id, &hinge_joint3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, HingeJoint3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Joint3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, HingeJoint3D::__class_id, proto);
+
 	define_hinge_joint3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, hinge_joint3d_class_proto_funcs, _countof(hinge_joint3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, hinge_joint3d_class_constructor, "HingeJoint3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

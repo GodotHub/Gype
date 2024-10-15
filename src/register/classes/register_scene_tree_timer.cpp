@@ -15,7 +15,7 @@ using namespace godot;
 static void scene_tree_timer_class_finalizer(JSRuntime *rt, JSValue val) {
 	SceneTreeTimer *scene_tree_timer = static_cast<SceneTreeTimer *>(JS_GetOpaque(val, SceneTreeTimer::__class_id));
 	if (scene_tree_timer)
-		SceneTreeTimer::free(nullptr, scene_tree_timer);
+		memdelete(scene_tree_timer);
 }
 
 static JSClassDef scene_tree_timer_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef scene_tree_timer_class_def = {
 };
 
 static JSValue scene_tree_timer_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	SceneTreeTimer *scene_tree_timer_class;
-	JSValue obj = JS_NewObjectClass(ctx, SceneTreeTimer::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SceneTreeTimer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	scene_tree_timer_class = memnew(SceneTreeTimer);
+	SceneTreeTimer *scene_tree_timer_class = memnew(SceneTreeTimer);
 	if (!scene_tree_timer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, scene_tree_timer_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, scene_tree_timer_class);	
 	return obj;
 }
 static JSValue scene_tree_timer_class_set_time_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,13 +66,13 @@ static int js_scene_tree_timer_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(SceneTreeTimer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SceneTreeTimer::__class_id, &scene_tree_timer_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, SceneTreeTimer::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, SceneTreeTimer::__class_id, proto);
+
 	define_scene_tree_timer_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, scene_tree_timer_class_proto_funcs, _countof(scene_tree_timer_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, scene_tree_timer_class_constructor, "SceneTreeTimer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

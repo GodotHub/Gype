@@ -16,7 +16,7 @@ using namespace godot;
 static void render_scene_buffers_class_finalizer(JSRuntime *rt, JSValue val) {
 	RenderSceneBuffers *render_scene_buffers = static_cast<RenderSceneBuffers *>(JS_GetOpaque(val, RenderSceneBuffers::__class_id));
 	if (render_scene_buffers)
-		RenderSceneBuffers::free(nullptr, render_scene_buffers);
+		memdelete(render_scene_buffers);
 }
 
 static JSClassDef render_scene_buffers_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef render_scene_buffers_class_def = {
 };
 
 static JSValue render_scene_buffers_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	RenderSceneBuffers *render_scene_buffers_class;
-	JSValue obj = JS_NewObjectClass(ctx, RenderSceneBuffers::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RenderSceneBuffers::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	render_scene_buffers_class = memnew(RenderSceneBuffers);
+	RenderSceneBuffers *render_scene_buffers_class = memnew(RenderSceneBuffers);
 	if (!render_scene_buffers_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, render_scene_buffers_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, render_scene_buffers_class);	
 	return obj;
 }
 static JSValue render_scene_buffers_class_configure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -64,13 +55,13 @@ static int js_render_scene_buffers_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(RenderSceneBuffers::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RenderSceneBuffers::__class_id, &render_scene_buffers_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, RenderSceneBuffers::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, RenderSceneBuffers::__class_id, proto);
+
 	define_render_scene_buffers_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, render_scene_buffers_class_proto_funcs, _countof(render_scene_buffers_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, render_scene_buffers_class_constructor, "RenderSceneBuffers", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

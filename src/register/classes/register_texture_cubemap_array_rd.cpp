@@ -15,7 +15,7 @@ using namespace godot;
 static void texture_cubemap_array_rd_class_finalizer(JSRuntime *rt, JSValue val) {
 	TextureCubemapArrayRD *texture_cubemap_array_rd = static_cast<TextureCubemapArrayRD *>(JS_GetOpaque(val, TextureCubemapArrayRD::__class_id));
 	if (texture_cubemap_array_rd)
-		TextureCubemapArrayRD::free(nullptr, texture_cubemap_array_rd);
+		memdelete(texture_cubemap_array_rd);
 }
 
 static JSClassDef texture_cubemap_array_rd_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef texture_cubemap_array_rd_class_def = {
 };
 
 static JSValue texture_cubemap_array_rd_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	TextureCubemapArrayRD *texture_cubemap_array_rd_class;
-	JSValue obj = JS_NewObjectClass(ctx, TextureCubemapArrayRD::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TextureCubemapArrayRD::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	texture_cubemap_array_rd_class = memnew(TextureCubemapArrayRD);
+	TextureCubemapArrayRD *texture_cubemap_array_rd_class = memnew(TextureCubemapArrayRD);
 	if (!texture_cubemap_array_rd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, texture_cubemap_array_rd_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, texture_cubemap_array_rd_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_texture_cubemap_array_rd_class_init(JSContext *ctx, JSModuleDef *m
 	class_id_list.insert(TextureCubemapArrayRD::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TextureCubemapArrayRD::__class_id, &texture_cubemap_array_rd_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, TextureCubemapArrayRD::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, TextureLayeredRD::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, TextureCubemapArrayRD::__class_id, proto);
-	define_texture_cubemap_array_rd_property(ctx, proto);
 
+	define_texture_cubemap_array_rd_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, texture_cubemap_array_rd_class_constructor, "TextureCubemapArrayRD", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

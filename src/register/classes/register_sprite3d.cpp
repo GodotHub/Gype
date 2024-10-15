@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/sprite_base3d.hpp>
 #include <godot_cpp/classes/sprite3d.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void sprite3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	Sprite3D *sprite3d = static_cast<Sprite3D *>(JS_GetOpaque(val, Sprite3D::__class_id));
 	if (sprite3d)
-		Sprite3D::free(nullptr, sprite3d);
+		memdelete(sprite3d);
 }
 
 static JSClassDef sprite3d_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef sprite3d_class_def = {
 };
 
 static JSValue sprite3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Sprite3D *sprite3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, Sprite3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Sprite3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	sprite3d_class = memnew(Sprite3D);
+	Sprite3D *sprite3d_class = memnew(Sprite3D);
 	if (!sprite3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, sprite3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, sprite3d_class);	
 	return obj;
 }
 static JSValue sprite3d_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -178,13 +169,13 @@ static int js_sprite3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Sprite3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Sprite3D::__class_id, &sprite3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Sprite3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, SpriteBase3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Sprite3D::__class_id, proto);
+
 	define_sprite3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, sprite3d_class_proto_funcs, _countof(sprite3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, sprite3d_class_constructor, "Sprite3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

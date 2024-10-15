@@ -7,10 +7,10 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/convex_polygon_shape3d.hpp>
 #include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/mesh.hpp>
-#include <godot_cpp/classes/concave_polygon_shape3d.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/concave_polygon_shape3d.hpp>
 #include <godot_cpp/classes/triangle_mesh.hpp>
+#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -19,7 +19,7 @@ using namespace godot;
 static void mesh_class_finalizer(JSRuntime *rt, JSValue val) {
 	Mesh *mesh = static_cast<Mesh *>(JS_GetOpaque(val, Mesh::__class_id));
 	if (mesh)
-		Mesh::free(nullptr, mesh);
+		memdelete(mesh);
 }
 
 static JSClassDef mesh_class_def = {
@@ -28,25 +28,16 @@ static JSClassDef mesh_class_def = {
 };
 
 static JSValue mesh_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Mesh *mesh_class;
-	JSValue obj = JS_NewObjectClass(ctx, Mesh::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Mesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	mesh_class = memnew(Mesh);
+	Mesh *mesh_class = memnew(Mesh);
 	if (!mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, mesh_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, mesh_class);	
 	return obj;
 }
 static JSValue mesh_class_set_lightmap_size_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -128,13 +119,13 @@ static int js_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Mesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Mesh::__class_id, &mesh_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Mesh::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Mesh::__class_id, proto);
+
 	define_mesh_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, mesh_class_proto_funcs, _countof(mesh_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, mesh_class_constructor, "Mesh", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

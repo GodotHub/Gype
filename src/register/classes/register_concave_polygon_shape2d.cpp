@@ -15,7 +15,7 @@ using namespace godot;
 static void concave_polygon_shape2d_class_finalizer(JSRuntime *rt, JSValue val) {
 	ConcavePolygonShape2D *concave_polygon_shape2d = static_cast<ConcavePolygonShape2D *>(JS_GetOpaque(val, ConcavePolygonShape2D::__class_id));
 	if (concave_polygon_shape2d)
-		ConcavePolygonShape2D::free(nullptr, concave_polygon_shape2d);
+		memdelete(concave_polygon_shape2d);
 }
 
 static JSClassDef concave_polygon_shape2d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef concave_polygon_shape2d_class_def = {
 };
 
 static JSValue concave_polygon_shape2d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	ConcavePolygonShape2D *concave_polygon_shape2d_class;
-	JSValue obj = JS_NewObjectClass(ctx, ConcavePolygonShape2D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ConcavePolygonShape2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	concave_polygon_shape2d_class = memnew(ConcavePolygonShape2D);
+	ConcavePolygonShape2D *concave_polygon_shape2d_class = memnew(ConcavePolygonShape2D);
 	if (!concave_polygon_shape2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, concave_polygon_shape2d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, concave_polygon_shape2d_class);	
 	return obj;
 }
 static JSValue concave_polygon_shape2d_class_set_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,13 +66,13 @@ static int js_concave_polygon_shape2d_class_init(JSContext *ctx, JSModuleDef *m)
 	class_id_list.insert(ConcavePolygonShape2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ConcavePolygonShape2D::__class_id, &concave_polygon_shape2d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, ConcavePolygonShape2D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Shape2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ConcavePolygonShape2D::__class_id, proto);
+
 	define_concave_polygon_shape2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, concave_polygon_shape2d_class_proto_funcs, _countof(concave_polygon_shape2d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, concave_polygon_shape2d_class_constructor, "ConcavePolygonShape2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

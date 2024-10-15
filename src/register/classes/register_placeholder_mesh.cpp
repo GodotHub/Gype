@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/placeholder_mesh.hpp>
+#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void placeholder_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
 	PlaceholderMesh *placeholder_mesh = static_cast<PlaceholderMesh *>(JS_GetOpaque(val, PlaceholderMesh::__class_id));
 	if (placeholder_mesh)
-		PlaceholderMesh::free(nullptr, placeholder_mesh);
+		memdelete(placeholder_mesh);
 }
 
 static JSClassDef placeholder_mesh_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef placeholder_mesh_class_def = {
 };
 
 static JSValue placeholder_mesh_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PlaceholderMesh *placeholder_mesh_class;
-	JSValue obj = JS_NewObjectClass(ctx, PlaceholderMesh::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PlaceholderMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	placeholder_mesh_class = memnew(PlaceholderMesh);
+	PlaceholderMesh *placeholder_mesh_class = memnew(PlaceholderMesh);
 	if (!placeholder_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, placeholder_mesh_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, placeholder_mesh_class);	
 	return obj;
 }
 static JSValue placeholder_mesh_class_set_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -71,13 +62,13 @@ static int js_placeholder_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(PlaceholderMesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PlaceholderMesh::__class_id, &placeholder_mesh_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, PlaceholderMesh::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Mesh::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PlaceholderMesh::__class_id, proto);
+
 	define_placeholder_mesh_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, placeholder_mesh_class_proto_funcs, _countof(placeholder_mesh_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, placeholder_mesh_class_constructor, "PlaceholderMesh", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

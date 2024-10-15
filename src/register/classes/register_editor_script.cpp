@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_interface.hpp>
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/editor_interface.hpp>
 #include <godot_cpp/classes/editor_script.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -17,7 +17,7 @@ using namespace godot;
 static void editor_script_class_finalizer(JSRuntime *rt, JSValue val) {
 	EditorScript *editor_script = static_cast<EditorScript *>(JS_GetOpaque(val, EditorScript::__class_id));
 	if (editor_script)
-		EditorScript::free(nullptr, editor_script);
+		memdelete(editor_script);
 }
 
 static JSClassDef editor_script_class_def = {
@@ -26,25 +26,16 @@ static JSClassDef editor_script_class_def = {
 };
 
 static JSValue editor_script_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	EditorScript *editor_script_class;
-	JSValue obj = JS_NewObjectClass(ctx, EditorScript::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorScript::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	editor_script_class = memnew(EditorScript);
+	EditorScript *editor_script_class = memnew(EditorScript);
 	if (!editor_script_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, editor_script_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, editor_script_class);	
 	return obj;
 }
 static JSValue editor_script_class_add_root_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -73,13 +64,13 @@ static int js_editor_script_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(EditorScript::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorScript::__class_id, &editor_script_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, EditorScript::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, EditorScript::__class_id, proto);
+
 	define_editor_script_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_script_class_proto_funcs, _countof(editor_script_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, editor_script_class_constructor, "EditorScript", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

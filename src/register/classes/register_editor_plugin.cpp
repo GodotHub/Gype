@@ -5,30 +5,30 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/editor_node3d_gizmo_plugin.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/editor_scene_post_import_plugin.hpp>
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/camera3d.hpp>
+#include <godot_cpp/classes/popup_menu.hpp>
+#include <godot_cpp/classes/editor_import_plugin.hpp>
+#include <godot_cpp/classes/editor_scene_format_importer.hpp>
+#include <godot_cpp/classes/editor_plugin.hpp>
+#include <godot_cpp/classes/editor_undo_redo_manager.hpp>
 #include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/editor_interface.hpp>
-#include <godot_cpp/classes/shortcut.hpp>
-#include <godot_cpp/classes/editor_undo_redo_manager.hpp>
-#include <godot_cpp/classes/editor_export_plugin.hpp>
-#include <godot_cpp/classes/editor_debugger_plugin.hpp>
-#include <godot_cpp/classes/editor_plugin.hpp>
-#include <godot_cpp/classes/editor_scene_format_importer.hpp>
-#include <godot_cpp/classes/editor_scene_post_import_plugin.hpp>
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/editor_import_plugin.hpp>
-#include <godot_cpp/classes/input_event.hpp>
-#include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/script_create_dialog.hpp>
 #include <godot_cpp/classes/editor_resource_conversion_plugin.hpp>
 #include <godot_cpp/classes/editor_translation_parser_plugin.hpp>
+#include <godot_cpp/classes/shortcut.hpp>
+#include <godot_cpp/classes/editor_export_plugin.hpp>
+#include <godot_cpp/classes/script.hpp>
+#include <godot_cpp/classes/script_create_dialog.hpp>
+#include <godot_cpp/classes/editor_debugger_plugin.hpp>
 #include <godot_cpp/classes/editor_inspector_plugin.hpp>
 #include <godot_cpp/classes/config_file.hpp>
-#include <godot_cpp/classes/camera3d.hpp>
-#include <godot_cpp/classes/editor_node3d_gizmo_plugin.hpp>
-#include <godot_cpp/classes/popup_menu.hpp>
-#include <godot_cpp/classes/script.hpp>
+#include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,7 +37,7 @@ using namespace godot;
 static void editor_plugin_class_finalizer(JSRuntime *rt, JSValue val) {
 	EditorPlugin *editor_plugin = static_cast<EditorPlugin *>(JS_GetOpaque(val, EditorPlugin::__class_id));
 	if (editor_plugin)
-		EditorPlugin::free(nullptr, editor_plugin);
+		memdelete(editor_plugin);
 }
 
 static JSClassDef editor_plugin_class_def = {
@@ -46,25 +46,16 @@ static JSClassDef editor_plugin_class_def = {
 };
 
 static JSValue editor_plugin_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	EditorPlugin *editor_plugin_class;
-	JSValue obj = JS_NewObjectClass(ctx, EditorPlugin::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorPlugin::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	editor_plugin_class = memnew(EditorPlugin);
+	EditorPlugin *editor_plugin_class = memnew(EditorPlugin);
 	if (!editor_plugin_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, editor_plugin_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, editor_plugin_class);	
 	return obj;
 }
 static JSValue editor_plugin_class_add_control_to_container(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -298,13 +289,13 @@ static int js_editor_plugin_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(EditorPlugin::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorPlugin::__class_id, &editor_plugin_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, EditorPlugin::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, EditorPlugin::__class_id, proto);
+
 	define_editor_plugin_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_plugin_class_proto_funcs, _countof(editor_plugin_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, editor_plugin_class_constructor, "EditorPlugin", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

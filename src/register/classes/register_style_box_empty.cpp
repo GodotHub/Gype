@@ -15,7 +15,7 @@ using namespace godot;
 static void style_box_empty_class_finalizer(JSRuntime *rt, JSValue val) {
 	StyleBoxEmpty *style_box_empty = static_cast<StyleBoxEmpty *>(JS_GetOpaque(val, StyleBoxEmpty::__class_id));
 	if (style_box_empty)
-		StyleBoxEmpty::free(nullptr, style_box_empty);
+		memdelete(style_box_empty);
 }
 
 static JSClassDef style_box_empty_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef style_box_empty_class_def = {
 };
 
 static JSValue style_box_empty_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	StyleBoxEmpty *style_box_empty_class;
-	JSValue obj = JS_NewObjectClass(ctx, StyleBoxEmpty::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StyleBoxEmpty::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	style_box_empty_class = memnew(StyleBoxEmpty);
+	StyleBoxEmpty *style_box_empty_class = memnew(StyleBoxEmpty);
 	if (!style_box_empty_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, style_box_empty_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, style_box_empty_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_style_box_empty_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(StyleBoxEmpty::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), StyleBoxEmpty::__class_id, &style_box_empty_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, StyleBoxEmpty::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, StyleBox::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, StyleBoxEmpty::__class_id, proto);
-	define_style_box_empty_property(ctx, proto);
 
+	define_style_box_empty_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, style_box_empty_class_constructor, "StyleBoxEmpty", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

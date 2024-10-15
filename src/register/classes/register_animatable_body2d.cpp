@@ -15,7 +15,7 @@ using namespace godot;
 static void animatable_body2d_class_finalizer(JSRuntime *rt, JSValue val) {
 	AnimatableBody2D *animatable_body2d = static_cast<AnimatableBody2D *>(JS_GetOpaque(val, AnimatableBody2D::__class_id));
 	if (animatable_body2d)
-		AnimatableBody2D::free(nullptr, animatable_body2d);
+		memdelete(animatable_body2d);
 }
 
 static JSClassDef animatable_body2d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef animatable_body2d_class_def = {
 };
 
 static JSValue animatable_body2d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	AnimatableBody2D *animatable_body2d_class;
-	JSValue obj = JS_NewObjectClass(ctx, AnimatableBody2D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimatableBody2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	animatable_body2d_class = memnew(AnimatableBody2D);
+	AnimatableBody2D *animatable_body2d_class = memnew(AnimatableBody2D);
 	if (!animatable_body2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, animatable_body2d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, animatable_body2d_class);	
 	return obj;
 }
 static JSValue animatable_body2d_class_set_sync_to_physics(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,13 +66,13 @@ static int js_animatable_body2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(AnimatableBody2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimatableBody2D::__class_id, &animatable_body2d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, AnimatableBody2D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, StaticBody2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AnimatableBody2D::__class_id, proto);
+
 	define_animatable_body2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, animatable_body2d_class_proto_funcs, _countof(animatable_body2d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, animatable_body2d_class_constructor, "AnimatableBody2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

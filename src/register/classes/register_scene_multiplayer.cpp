@@ -15,7 +15,7 @@ using namespace godot;
 static void scene_multiplayer_class_finalizer(JSRuntime *rt, JSValue val) {
 	SceneMultiplayer *scene_multiplayer = static_cast<SceneMultiplayer *>(JS_GetOpaque(val, SceneMultiplayer::__class_id));
 	if (scene_multiplayer)
-		SceneMultiplayer::free(nullptr, scene_multiplayer);
+		memdelete(scene_multiplayer);
 }
 
 static JSClassDef scene_multiplayer_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef scene_multiplayer_class_def = {
 };
 
 static JSValue scene_multiplayer_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	SceneMultiplayer *scene_multiplayer_class;
-	JSValue obj = JS_NewObjectClass(ctx, SceneMultiplayer::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SceneMultiplayer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	scene_multiplayer_class = memnew(SceneMultiplayer);
+	SceneMultiplayer *scene_multiplayer_class = memnew(SceneMultiplayer);
 	if (!scene_multiplayer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, scene_multiplayer_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, scene_multiplayer_class);	
 	return obj;
 }
 static JSValue scene_multiplayer_class_set_root_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -220,13 +211,13 @@ static int js_scene_multiplayer_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(SceneMultiplayer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SceneMultiplayer::__class_id, &scene_multiplayer_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, SceneMultiplayer::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, MultiplayerAPI::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, SceneMultiplayer::__class_id, proto);
+
 	define_scene_multiplayer_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, scene_multiplayer_class_proto_funcs, _countof(scene_multiplayer_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, scene_multiplayer_class_constructor, "SceneMultiplayer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

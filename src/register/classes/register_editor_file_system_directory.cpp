@@ -15,7 +15,7 @@ using namespace godot;
 static void editor_file_system_directory_class_finalizer(JSRuntime *rt, JSValue val) {
 	EditorFileSystemDirectory *editor_file_system_directory = static_cast<EditorFileSystemDirectory *>(JS_GetOpaque(val, EditorFileSystemDirectory::__class_id));
 	if (editor_file_system_directory)
-		EditorFileSystemDirectory::free(nullptr, editor_file_system_directory);
+		memdelete(editor_file_system_directory);
 }
 
 static JSClassDef editor_file_system_directory_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef editor_file_system_directory_class_def = {
 };
 
 static JSValue editor_file_system_directory_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	EditorFileSystemDirectory *editor_file_system_directory_class;
-	JSValue obj = JS_NewObjectClass(ctx, EditorFileSystemDirectory::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorFileSystemDirectory::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	editor_file_system_directory_class = memnew(EditorFileSystemDirectory);
+	EditorFileSystemDirectory *editor_file_system_directory_class = memnew(EditorFileSystemDirectory);
 	if (!editor_file_system_directory_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, editor_file_system_directory_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, editor_file_system_directory_class);	
 	return obj;
 }
 static JSValue editor_file_system_directory_class_get_subdir_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -114,13 +105,13 @@ static int js_editor_file_system_directory_class_init(JSContext *ctx, JSModuleDe
 	class_id_list.insert(EditorFileSystemDirectory::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorFileSystemDirectory::__class_id, &editor_file_system_directory_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, EditorFileSystemDirectory::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Object::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, EditorFileSystemDirectory::__class_id, proto);
+
 	define_editor_file_system_directory_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_file_system_directory_class_proto_funcs, _countof(editor_file_system_directory_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, editor_file_system_directory_class_constructor, "EditorFileSystemDirectory", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

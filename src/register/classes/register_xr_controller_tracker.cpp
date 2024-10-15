@@ -15,7 +15,7 @@ using namespace godot;
 static void xr_controller_tracker_class_finalizer(JSRuntime *rt, JSValue val) {
 	XRControllerTracker *xr_controller_tracker = static_cast<XRControllerTracker *>(JS_GetOpaque(val, XRControllerTracker::__class_id));
 	if (xr_controller_tracker)
-		XRControllerTracker::free(nullptr, xr_controller_tracker);
+		memdelete(xr_controller_tracker);
 }
 
 static JSClassDef xr_controller_tracker_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef xr_controller_tracker_class_def = {
 };
 
 static JSValue xr_controller_tracker_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	XRControllerTracker *xr_controller_tracker_class;
-	JSValue obj = JS_NewObjectClass(ctx, XRControllerTracker::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRControllerTracker::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	xr_controller_tracker_class = memnew(XRControllerTracker);
+	XRControllerTracker *xr_controller_tracker_class = memnew(XRControllerTracker);
 	if (!xr_controller_tracker_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, xr_controller_tracker_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, xr_controller_tracker_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_xr_controller_tracker_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(XRControllerTracker::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XRControllerTracker::__class_id, &xr_controller_tracker_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, XRControllerTracker::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, XRPositionalTracker::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, XRControllerTracker::__class_id, proto);
-	define_xr_controller_tracker_property(ctx, proto);
 
+	define_xr_controller_tracker_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, xr_controller_tracker_class_constructor, "XRControllerTracker", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

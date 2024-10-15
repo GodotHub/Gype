@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource_importer_csv_translation.hpp>
 #include <godot_cpp/classes/resource_importer.hpp>
+#include <godot_cpp/classes/resource_importer_csv_translation.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void resource_importer_csv_translation_class_finalizer(JSRuntime *rt, JSValue val) {
 	ResourceImporterCSVTranslation *resource_importer_csv_translation = static_cast<ResourceImporterCSVTranslation *>(JS_GetOpaque(val, ResourceImporterCSVTranslation::__class_id));
 	if (resource_importer_csv_translation)
-		ResourceImporterCSVTranslation::free(nullptr, resource_importer_csv_translation);
+		memdelete(resource_importer_csv_translation);
 }
 
 static JSClassDef resource_importer_csv_translation_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef resource_importer_csv_translation_class_def = {
 };
 
 static JSValue resource_importer_csv_translation_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	ResourceImporterCSVTranslation *resource_importer_csv_translation_class;
-	JSValue obj = JS_NewObjectClass(ctx, ResourceImporterCSVTranslation::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterCSVTranslation::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	resource_importer_csv_translation_class = memnew(ResourceImporterCSVTranslation);
+	ResourceImporterCSVTranslation *resource_importer_csv_translation_class = memnew(ResourceImporterCSVTranslation);
 	if (!resource_importer_csv_translation_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, resource_importer_csv_translation_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, resource_importer_csv_translation_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_resource_importer_csv_translation_class_init(JSContext *ctx, JSMod
 	class_id_list.insert(ResourceImporterCSVTranslation::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ResourceImporterCSVTranslation::__class_id, &resource_importer_csv_translation_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, ResourceImporterCSVTranslation::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, ResourceImporter::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ResourceImporterCSVTranslation::__class_id, proto);
-	define_resource_importer_csv_translation_property(ctx, proto);
 
+	define_resource_importer_csv_translation_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, resource_importer_csv_translation_class_constructor, "ResourceImporterCSVTranslation", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

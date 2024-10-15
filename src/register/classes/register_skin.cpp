@@ -15,7 +15,7 @@ using namespace godot;
 static void skin_class_finalizer(JSRuntime *rt, JSValue val) {
 	Skin *skin = static_cast<Skin *>(JS_GetOpaque(val, Skin::__class_id));
 	if (skin)
-		Skin::free(nullptr, skin);
+		memdelete(skin);
 }
 
 static JSClassDef skin_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef skin_class_def = {
 };
 
 static JSValue skin_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Skin *skin_class;
-	JSValue obj = JS_NewObjectClass(ctx, Skin::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Skin::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	skin_class = memnew(Skin);
+	Skin *skin_class = memnew(Skin);
 	if (!skin_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, skin_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, skin_class);	
 	return obj;
 }
 static JSValue skin_class_set_bind_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -109,13 +100,13 @@ static int js_skin_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Skin::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Skin::__class_id, &skin_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Skin::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Skin::__class_id, proto);
+
 	define_skin_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, skin_class_proto_funcs, _countof(skin_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, skin_class_constructor, "Skin", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

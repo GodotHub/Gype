@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/encoded_object_as_id.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void encoded_object_as_id_class_finalizer(JSRuntime *rt, JSValue val) {
 	EncodedObjectAsID *encoded_object_as_id = static_cast<EncodedObjectAsID *>(JS_GetOpaque(val, EncodedObjectAsID::__class_id));
 	if (encoded_object_as_id)
-		EncodedObjectAsID::free(nullptr, encoded_object_as_id);
+		memdelete(encoded_object_as_id);
 }
 
 static JSClassDef encoded_object_as_id_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef encoded_object_as_id_class_def = {
 };
 
 static JSValue encoded_object_as_id_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	EncodedObjectAsID *encoded_object_as_id_class;
-	JSValue obj = JS_NewObjectClass(ctx, EncodedObjectAsID::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EncodedObjectAsID::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	encoded_object_as_id_class = memnew(EncodedObjectAsID);
+	EncodedObjectAsID *encoded_object_as_id_class = memnew(EncodedObjectAsID);
 	if (!encoded_object_as_id_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, encoded_object_as_id_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, encoded_object_as_id_class);	
 	return obj;
 }
 static JSValue encoded_object_as_id_class_set_object_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,13 +66,13 @@ static int js_encoded_object_as_id_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(EncodedObjectAsID::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EncodedObjectAsID::__class_id, &encoded_object_as_id_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, EncodedObjectAsID::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, EncodedObjectAsID::__class_id, proto);
+
 	define_encoded_object_as_id_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, encoded_object_as_id_class_proto_funcs, _countof(encoded_object_as_id_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, encoded_object_as_id_class_constructor, "EncodedObjectAsID", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -16,7 +16,7 @@ using namespace godot;
 static void code_edit_class_finalizer(JSRuntime *rt, JSValue val) {
 	CodeEdit *code_edit = static_cast<CodeEdit *>(JS_GetOpaque(val, CodeEdit::__class_id));
 	if (code_edit)
-		CodeEdit::free(nullptr, code_edit);
+		memdelete(code_edit);
 }
 
 static JSClassDef code_edit_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef code_edit_class_def = {
 };
 
 static JSValue code_edit_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	CodeEdit *code_edit_class;
-	JSValue obj = JS_NewObjectClass(ctx, CodeEdit::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CodeEdit::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	code_edit_class = memnew(CodeEdit);
+	CodeEdit *code_edit_class = memnew(CodeEdit);
 	if (!code_edit_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, code_edit_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, code_edit_class);	
 	return obj;
 }
 static JSValue code_edit_class_set_indent_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -714,13 +705,13 @@ static int js_code_edit_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(CodeEdit::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CodeEdit::__class_id, &code_edit_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, CodeEdit::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, TextEdit::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, CodeEdit::__class_id, proto);
+
 	define_code_edit_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, code_edit_class_proto_funcs, _countof(code_edit_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, code_edit_class_constructor, "CodeEdit", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

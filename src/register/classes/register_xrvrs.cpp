@@ -15,7 +15,7 @@ using namespace godot;
 static void xrvrs_class_finalizer(JSRuntime *rt, JSValue val) {
 	XRVRS *xrvrs = static_cast<XRVRS *>(JS_GetOpaque(val, XRVRS::__class_id));
 	if (xrvrs)
-		XRVRS::free(nullptr, xrvrs);
+		memdelete(xrvrs);
 }
 
 static JSClassDef xrvrs_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef xrvrs_class_def = {
 };
 
 static JSValue xrvrs_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	XRVRS *xrvrs_class;
-	JSValue obj = JS_NewObjectClass(ctx, XRVRS::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRVRS::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	xrvrs_class = memnew(XRVRS);
+	XRVRS *xrvrs_class = memnew(XRVRS);
 	if (!xrvrs_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, xrvrs_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, xrvrs_class);	
 	return obj;
 }
 static JSValue xrvrs_class_get_vrs_min_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -96,13 +87,13 @@ static int js_xrvrs_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(XRVRS::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XRVRS::__class_id, &xrvrs_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, XRVRS::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Object::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, XRVRS::__class_id, proto);
+
 	define_xrvrs_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xrvrs_class_proto_funcs, _countof(xrvrs_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, xrvrs_class_constructor, "XRVRS", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -15,7 +15,7 @@ using namespace godot;
 static void audio_effect_eq10_class_finalizer(JSRuntime *rt, JSValue val) {
 	AudioEffectEQ10 *audio_effect_eq10 = static_cast<AudioEffectEQ10 *>(JS_GetOpaque(val, AudioEffectEQ10::__class_id));
 	if (audio_effect_eq10)
-		AudioEffectEQ10::free(nullptr, audio_effect_eq10);
+		memdelete(audio_effect_eq10);
 }
 
 static JSClassDef audio_effect_eq10_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef audio_effect_eq10_class_def = {
 };
 
 static JSValue audio_effect_eq10_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	AudioEffectEQ10 *audio_effect_eq10_class;
-	JSValue obj = JS_NewObjectClass(ctx, AudioEffectEQ10::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffectEQ10::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	audio_effect_eq10_class = memnew(AudioEffectEQ10);
+	AudioEffectEQ10 *audio_effect_eq10_class = memnew(AudioEffectEQ10);
 	if (!audio_effect_eq10_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, audio_effect_eq10_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, audio_effect_eq10_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_audio_effect_eq10_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(AudioEffectEQ10::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffectEQ10::__class_id, &audio_effect_eq10_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, AudioEffectEQ10::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, AudioEffectEQ::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AudioEffectEQ10::__class_id, proto);
-	define_audio_effect_eq10_property(ctx, proto);
 
+	define_audio_effect_eq10_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, audio_effect_eq10_class_constructor, "AudioEffectEQ10", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

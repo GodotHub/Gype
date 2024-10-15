@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/editor_scene_format_importer.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/editor_scene_format_importer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void editor_scene_format_importer_class_finalizer(JSRuntime *rt, JSValue val) {
 	EditorSceneFormatImporter *editor_scene_format_importer = static_cast<EditorSceneFormatImporter *>(JS_GetOpaque(val, EditorSceneFormatImporter::__class_id));
 	if (editor_scene_format_importer)
-		EditorSceneFormatImporter::free(nullptr, editor_scene_format_importer);
+		memdelete(editor_scene_format_importer);
 }
 
 static JSClassDef editor_scene_format_importer_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef editor_scene_format_importer_class_def = {
 };
 
 static JSValue editor_scene_format_importer_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	EditorSceneFormatImporter *editor_scene_format_importer_class;
-	JSValue obj = JS_NewObjectClass(ctx, EditorSceneFormatImporter::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorSceneFormatImporter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	editor_scene_format_importer_class = memnew(EditorSceneFormatImporter);
+	EditorSceneFormatImporter *editor_scene_format_importer_class = memnew(EditorSceneFormatImporter);
 	if (!editor_scene_format_importer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, editor_scene_format_importer_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, editor_scene_format_importer_class);	
 	return obj;
 }
 
@@ -57,12 +48,12 @@ static int js_editor_scene_format_importer_class_init(JSContext *ctx, JSModuleDe
 	class_id_list.insert(EditorSceneFormatImporter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorSceneFormatImporter::__class_id, &editor_scene_format_importer_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, EditorSceneFormatImporter::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, EditorSceneFormatImporter::__class_id, proto);
-	define_editor_scene_format_importer_property(ctx, proto);
 
+	define_editor_scene_format_importer_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, editor_scene_format_importer_class_constructor, "EditorSceneFormatImporter", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

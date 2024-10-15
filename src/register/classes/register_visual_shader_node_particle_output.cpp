@@ -15,7 +15,7 @@ using namespace godot;
 static void visual_shader_node_particle_output_class_finalizer(JSRuntime *rt, JSValue val) {
 	VisualShaderNodeParticleOutput *visual_shader_node_particle_output = static_cast<VisualShaderNodeParticleOutput *>(JS_GetOpaque(val, VisualShaderNodeParticleOutput::__class_id));
 	if (visual_shader_node_particle_output)
-		VisualShaderNodeParticleOutput::free(nullptr, visual_shader_node_particle_output);
+		memdelete(visual_shader_node_particle_output);
 }
 
 static JSClassDef visual_shader_node_particle_output_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef visual_shader_node_particle_output_class_def = {
 };
 
 static JSValue visual_shader_node_particle_output_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	VisualShaderNodeParticleOutput *visual_shader_node_particle_output_class;
-	JSValue obj = JS_NewObjectClass(ctx, VisualShaderNodeParticleOutput::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeParticleOutput::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	visual_shader_node_particle_output_class = memnew(VisualShaderNodeParticleOutput);
+	VisualShaderNodeParticleOutput *visual_shader_node_particle_output_class = memnew(VisualShaderNodeParticleOutput);
 	if (!visual_shader_node_particle_output_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, visual_shader_node_particle_output_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, visual_shader_node_particle_output_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_visual_shader_node_particle_output_class_init(JSContext *ctx, JSMo
 	class_id_list.insert(VisualShaderNodeParticleOutput::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeParticleOutput::__class_id, &visual_shader_node_particle_output_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, VisualShaderNodeParticleOutput::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, VisualShaderNodeOutput::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, VisualShaderNodeParticleOutput::__class_id, proto);
-	define_visual_shader_node_particle_output_property(ctx, proto);
 
+	define_visual_shader_node_particle_output_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_particle_output_class_constructor, "VisualShaderNodeParticleOutput", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

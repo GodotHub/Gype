@@ -15,7 +15,7 @@ using namespace godot;
 static void text_server_advanced_class_finalizer(JSRuntime *rt, JSValue val) {
 	TextServerAdvanced *text_server_advanced = static_cast<TextServerAdvanced *>(JS_GetOpaque(val, TextServerAdvanced::__class_id));
 	if (text_server_advanced)
-		TextServerAdvanced::free(nullptr, text_server_advanced);
+		memdelete(text_server_advanced);
 }
 
 static JSClassDef text_server_advanced_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef text_server_advanced_class_def = {
 };
 
 static JSValue text_server_advanced_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	TextServerAdvanced *text_server_advanced_class;
-	JSValue obj = JS_NewObjectClass(ctx, TextServerAdvanced::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TextServerAdvanced::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	text_server_advanced_class = memnew(TextServerAdvanced);
+	TextServerAdvanced *text_server_advanced_class = memnew(TextServerAdvanced);
 	if (!text_server_advanced_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, text_server_advanced_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, text_server_advanced_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_text_server_advanced_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(TextServerAdvanced::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TextServerAdvanced::__class_id, &text_server_advanced_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, TextServerAdvanced::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, TextServerExtension::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, TextServerAdvanced::__class_id, proto);
-	define_text_server_advanced_property(ctx, proto);
 
+	define_text_server_advanced_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, text_server_advanced_class_constructor, "TextServerAdvanced", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

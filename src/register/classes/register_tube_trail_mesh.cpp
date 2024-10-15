@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/primitive_mesh.hpp>
-#include <godot_cpp/classes/tube_trail_mesh.hpp>
 #include <godot_cpp/classes/curve.hpp>
+#include <godot_cpp/classes/tube_trail_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void tube_trail_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
 	TubeTrailMesh *tube_trail_mesh = static_cast<TubeTrailMesh *>(JS_GetOpaque(val, TubeTrailMesh::__class_id));
 	if (tube_trail_mesh)
-		TubeTrailMesh::free(nullptr, tube_trail_mesh);
+		memdelete(tube_trail_mesh);
 }
 
 static JSClassDef tube_trail_mesh_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef tube_trail_mesh_class_def = {
 };
 
 static JSValue tube_trail_mesh_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	TubeTrailMesh *tube_trail_mesh_class;
-	JSValue obj = JS_NewObjectClass(ctx, TubeTrailMesh::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TubeTrailMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	tube_trail_mesh_class = memnew(TubeTrailMesh);
+	TubeTrailMesh *tube_trail_mesh_class = memnew(TubeTrailMesh);
 	if (!tube_trail_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, tube_trail_mesh_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, tube_trail_mesh_class);	
 	return obj;
 }
 static JSValue tube_trail_mesh_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -195,13 +186,13 @@ static int js_tube_trail_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(TubeTrailMesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TubeTrailMesh::__class_id, &tube_trail_mesh_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, TubeTrailMesh::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, PrimitiveMesh::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, TubeTrailMesh::__class_id, proto);
+
 	define_tube_trail_mesh_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, tube_trail_mesh_class_proto_funcs, _countof(tube_trail_mesh_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, tube_trail_mesh_class_constructor, "TubeTrailMesh", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -19,6 +19,7 @@ void refcount_incremented_func(GDExtensionScriptInstanceDataPtr p_instance);
 GDExtensionBool refcount_decremented_func(GDExtensionScriptInstanceDataPtr p_instance);
 GDExtensionObjectPtr get_owner_func(GDExtensionScriptInstanceDataPtr p_instance);
 GDExtensionObjectPtr get_script_func(GDExtensionScriptInstanceDataPtr p_instance);
+GDExtensionBool is_placeholder_func(GDExtensionScriptInstanceDataPtr p_instance);
 GDExtensionScriptLanguagePtr get_language_func(GDExtensionScriptInstanceDataPtr p_instance);
 void free_func(GDExtensionScriptInstanceDataPtr p_instance);
 

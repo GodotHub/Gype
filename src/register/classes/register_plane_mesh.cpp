@@ -15,7 +15,7 @@ using namespace godot;
 static void plane_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
 	PlaneMesh *plane_mesh = static_cast<PlaneMesh *>(JS_GetOpaque(val, PlaneMesh::__class_id));
 	if (plane_mesh)
-		PlaneMesh::free(nullptr, plane_mesh);
+		memdelete(plane_mesh);
 }
 
 static JSClassDef plane_mesh_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef plane_mesh_class_def = {
 };
 
 static JSValue plane_mesh_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PlaneMesh *plane_mesh_class;
-	JSValue obj = JS_NewObjectClass(ctx, PlaneMesh::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PlaneMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	plane_mesh_class = memnew(PlaneMesh);
+	PlaneMesh *plane_mesh_class = memnew(PlaneMesh);
 	if (!plane_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, plane_mesh_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, plane_mesh_class);	
 	return obj;
 }
 static JSValue plane_mesh_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -143,13 +134,13 @@ static int js_plane_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(PlaneMesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PlaneMesh::__class_id, &plane_mesh_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, PlaneMesh::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, PrimitiveMesh::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PlaneMesh::__class_id, proto);
+
 	define_plane_mesh_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, plane_mesh_class_proto_funcs, _countof(plane_mesh_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, plane_mesh_class_constructor, "PlaneMesh", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_library.hpp>
-#include <godot_cpp/classes/animation.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/animation_library.hpp>
 #include <godot_cpp/classes/animation_mixer.hpp>
+#include <godot_cpp/classes/animation.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -17,7 +17,7 @@ using namespace godot;
 static void animation_mixer_class_finalizer(JSRuntime *rt, JSValue val) {
 	AnimationMixer *animation_mixer = static_cast<AnimationMixer *>(JS_GetOpaque(val, AnimationMixer::__class_id));
 	if (animation_mixer)
-		AnimationMixer::free(nullptr, animation_mixer);
+		memdelete(animation_mixer);
 }
 
 static JSClassDef animation_mixer_class_def = {
@@ -26,25 +26,16 @@ static JSClassDef animation_mixer_class_def = {
 };
 
 static JSValue animation_mixer_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	AnimationMixer *animation_mixer_class;
-	JSValue obj = JS_NewObjectClass(ctx, AnimationMixer::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationMixer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	animation_mixer_class = memnew(AnimationMixer);
+	AnimationMixer *animation_mixer_class = memnew(AnimationMixer);
 	if (!animation_mixer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, animation_mixer_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, animation_mixer_class);	
 	return obj;
 }
 static JSValue animation_mixer_class_add_animation_library(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -298,13 +289,13 @@ static int js_animation_mixer_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(AnimationMixer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimationMixer::__class_id, &animation_mixer_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, AnimationMixer::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AnimationMixer::__class_id, proto);
+
 	define_animation_mixer_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, animation_mixer_class_proto_funcs, _countof(animation_mixer_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, animation_mixer_class_constructor, "AnimationMixer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -15,7 +15,7 @@ using namespace godot;
 static void undo_redo_class_finalizer(JSRuntime *rt, JSValue val) {
 	UndoRedo *undo_redo = static_cast<UndoRedo *>(JS_GetOpaque(val, UndoRedo::__class_id));
 	if (undo_redo)
-		UndoRedo::free(nullptr, undo_redo);
+		memdelete(undo_redo);
 }
 
 static JSClassDef undo_redo_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef undo_redo_class_def = {
 };
 
 static JSValue undo_redo_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	UndoRedo *undo_redo_class;
-	JSValue obj = JS_NewObjectClass(ctx, UndoRedo::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, UndoRedo::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	undo_redo_class = memnew(UndoRedo);
+	UndoRedo *undo_redo_class = memnew(UndoRedo);
 	if (!undo_redo_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, undo_redo_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, undo_redo_class);	
 	return obj;
 }
 static JSValue undo_redo_class_create_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -170,13 +161,13 @@ static int js_undo_redo_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(UndoRedo::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), UndoRedo::__class_id, &undo_redo_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, UndoRedo::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Object::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, UndoRedo::__class_id, proto);
+
 	define_undo_redo_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, undo_redo_class_proto_funcs, _countof(undo_redo_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, undo_redo_class_constructor, "UndoRedo", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -17,7 +17,7 @@ using namespace godot;
 static void editor_resource_tooltip_plugin_class_finalizer(JSRuntime *rt, JSValue val) {
 	EditorResourceTooltipPlugin *editor_resource_tooltip_plugin = static_cast<EditorResourceTooltipPlugin *>(JS_GetOpaque(val, EditorResourceTooltipPlugin::__class_id));
 	if (editor_resource_tooltip_plugin)
-		EditorResourceTooltipPlugin::free(nullptr, editor_resource_tooltip_plugin);
+		memdelete(editor_resource_tooltip_plugin);
 }
 
 static JSClassDef editor_resource_tooltip_plugin_class_def = {
@@ -26,25 +26,16 @@ static JSClassDef editor_resource_tooltip_plugin_class_def = {
 };
 
 static JSValue editor_resource_tooltip_plugin_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	EditorResourceTooltipPlugin *editor_resource_tooltip_plugin_class;
-	JSValue obj = JS_NewObjectClass(ctx, EditorResourceTooltipPlugin::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorResourceTooltipPlugin::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	editor_resource_tooltip_plugin_class = memnew(EditorResourceTooltipPlugin);
+	EditorResourceTooltipPlugin *editor_resource_tooltip_plugin_class = memnew(EditorResourceTooltipPlugin);
 	if (!editor_resource_tooltip_plugin_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, editor_resource_tooltip_plugin_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, editor_resource_tooltip_plugin_class);	
 	return obj;
 }
 static JSValue editor_resource_tooltip_plugin_class_request_thumbnail(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -65,13 +56,13 @@ static int js_editor_resource_tooltip_plugin_class_init(JSContext *ctx, JSModule
 	class_id_list.insert(EditorResourceTooltipPlugin::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorResourceTooltipPlugin::__class_id, &editor_resource_tooltip_plugin_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, EditorResourceTooltipPlugin::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, EditorResourceTooltipPlugin::__class_id, proto);
+
 	define_editor_resource_tooltip_plugin_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_resource_tooltip_plugin_class_proto_funcs, _countof(editor_resource_tooltip_plugin_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, editor_resource_tooltip_plugin_class_constructor, "EditorResourceTooltipPlugin", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

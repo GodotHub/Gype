@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/noise_texture3d.hpp>
+#include <godot_cpp/classes/texture3d.hpp>
 #include <godot_cpp/classes/noise.hpp>
 #include <godot_cpp/classes/gradient.hpp>
-#include <godot_cpp/classes/texture3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -17,7 +17,7 @@ using namespace godot;
 static void noise_texture3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	NoiseTexture3D *noise_texture3d = static_cast<NoiseTexture3D *>(JS_GetOpaque(val, NoiseTexture3D::__class_id));
 	if (noise_texture3d)
-		NoiseTexture3D::free(nullptr, noise_texture3d);
+		memdelete(noise_texture3d);
 }
 
 static JSClassDef noise_texture3d_class_def = {
@@ -26,25 +26,16 @@ static JSClassDef noise_texture3d_class_def = {
 };
 
 static JSValue noise_texture3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	NoiseTexture3D *noise_texture3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, NoiseTexture3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, NoiseTexture3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	noise_texture3d_class = memnew(NoiseTexture3D);
+	NoiseTexture3D *noise_texture3d_class = memnew(NoiseTexture3D);
 	if (!noise_texture3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, noise_texture3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, noise_texture3d_class);	
 	return obj;
 }
 static JSValue noise_texture3d_class_set_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -201,13 +192,13 @@ static int js_noise_texture3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(NoiseTexture3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), NoiseTexture3D::__class_id, &noise_texture3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, NoiseTexture3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Texture3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, NoiseTexture3D::__class_id, proto);
+
 	define_noise_texture3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, noise_texture3d_class_proto_funcs, _countof(noise_texture3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, noise_texture3d_class_constructor, "NoiseTexture3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

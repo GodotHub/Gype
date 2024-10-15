@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/particle_process_material.hpp>
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/particle_process_material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void particle_process_material_class_finalizer(JSRuntime *rt, JSValue val) {
 	ParticleProcessMaterial *particle_process_material = static_cast<ParticleProcessMaterial *>(JS_GetOpaque(val, ParticleProcessMaterial::__class_id));
 	if (particle_process_material)
-		ParticleProcessMaterial::free(nullptr, particle_process_material);
+		memdelete(particle_process_material);
 }
 
 static JSClassDef particle_process_material_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef particle_process_material_class_def = {
 };
 
 static JSValue particle_process_material_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	ParticleProcessMaterial *particle_process_material_class;
-	JSValue obj = JS_NewObjectClass(ctx, ParticleProcessMaterial::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ParticleProcessMaterial::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	particle_process_material_class = memnew(ParticleProcessMaterial);
+	ParticleProcessMaterial *particle_process_material_class = memnew(ParticleProcessMaterial);
 	if (!particle_process_material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, particle_process_material_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, particle_process_material_class);	
 	return obj;
 }
 static JSValue particle_process_material_class_set_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -1361,13 +1352,13 @@ static int js_particle_process_material_class_init(JSContext *ctx, JSModuleDef *
 	class_id_list.insert(ParticleProcessMaterial::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ParticleProcessMaterial::__class_id, &particle_process_material_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, ParticleProcessMaterial::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Material::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ParticleProcessMaterial::__class_id, proto);
+
 	define_particle_process_material_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, particle_process_material_class_proto_funcs, _countof(particle_process_material_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, particle_process_material_class_constructor, "ParticleProcessMaterial", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -1,7 +1,7 @@
 {%- set clazz_name = clazz['name'] -%}
 {%- set snake_name = camel_to_snake(clazz_name) -%}
-{%- set instance_methods = clazz['methods'] | selectattr('is_vararg', 'equalto', false) | selectattr('is_virtual', 'equalto', false) | selectattr('is_static', 'equalto', false) | list -%}
-{%- set static_methods = clazz['methods'] | selectattr('is_vararg', 'equalto', false) | selectattr('is_virtual', 'equalto', false) | selectattr('is_static', 'equalto', true) | list-%}
+{%- set instance_methods = clazz['methods'] | selectattr('is_vararg', 'equalto', false) | selectattr('is_static', 'equalto', false) | list -%}
+{%- set static_methods = clazz['methods'] | selectattr('is_vararg', 'equalto', false) | selectattr('is_static', 'equalto', true) | list-%}
 {%- set vararg_methods = clazz['methods'] | selectattr('is_vararg', 'equalto', true) | list -%}
 {%- set class_id = clazz_name + '::__class_id' %}
 {%- macro get_const(method) %}
@@ -55,7 +55,7 @@ static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueCo
 	return JS_UNDEFINED;
 		{%- endif %}
 };
-{% endfor %}
+{%- endfor %}
 {%- for method in  static_methods %}
 static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 		{%- if method['return_type'] %}
@@ -124,7 +124,7 @@ void define_{{snake_name}}_property(JSContext *ctx, JSValue obj) {
 	{%- endfor %}
 }
 
-static int js_{{snake_name}}_class_init(JSContext *ctx, JSModuleDef *m) {
+static int js_{{snake_name}}_class_init(JSContext *ctx) {
 	
 	JS_NewClassID(&{{class_id}});
 	classes["{{clazz_name}}"] = {{class_id}};
@@ -137,8 +137,8 @@ static int js_{{snake_name}}_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPrototype(ctx, proto, base_class);
 	{%- endif %}
 	JS_SetClassProto(ctx, {{class_id}}, proto);
-	define_{{snake_name}}_property(ctx, proto);
 
+	define_{{snake_name}}_property(ctx, proto);
 	{%- if instance_methods or vararg_methods %}
 	JS_SetPropertyFunctionList(ctx, proto, {{snake_name}}_class_proto_funcs, _countof({{snake_name}}_class_proto_funcs));
 	{%- endif %}
@@ -149,27 +149,14 @@ static int js_{{snake_name}}_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPropertyFunctionList(ctx, ctor, {{snake_name}}_class_static_funcs, _countof({{snake_name}}_class_static_funcs));
 	{%- endif %}
 
-	JS_SetModuleExport(ctx, m, "{{clazz_name}}", ctor);
+	JSValue global = JS_GetGlobalObject(ctx);
+	JS_SetPropertyStr(ctx, global, "{{clazz_name}}", ctor);
 
 	return 0;
 }
 
-JSModuleDef *_js_init_{{ snake_name }}_module(JSContext *ctx, const char *module_name) {
-	{%- if clazz['inherits'] %}
-	const char *code = "import * as _ from 'godot/classes/{{camel_to_snake(clazz['inherits'])}}';";
-	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
-	if (JS_IsException(module))
-		return NULL;
-	{%- endif %}
-	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_{{snake_name}}_class_init);
-	if (!m)
-		return NULL;
-	JS_AddModuleExport(ctx, m, "{{clazz_name}}");
-	return m;
-}
-
-JSModuleDef *js_init_{{ snake_name }}_module(JSContext *ctx) {
-	return _js_init_{{ snake_name }}_module(ctx, "godot/classes/{{snake_name}}");
+void js_init_{{ snake_name }}_module(JSContext *ctx) {
+	js_{{snake_name}}_class_init(ctx);
 }
 
 void register_{{ snake_name }}() {

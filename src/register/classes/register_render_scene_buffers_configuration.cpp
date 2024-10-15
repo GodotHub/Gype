@@ -15,7 +15,7 @@ using namespace godot;
 static void render_scene_buffers_configuration_class_finalizer(JSRuntime *rt, JSValue val) {
 	RenderSceneBuffersConfiguration *render_scene_buffers_configuration = static_cast<RenderSceneBuffersConfiguration *>(JS_GetOpaque(val, RenderSceneBuffersConfiguration::__class_id));
 	if (render_scene_buffers_configuration)
-		RenderSceneBuffersConfiguration::free(nullptr, render_scene_buffers_configuration);
+		memdelete(render_scene_buffers_configuration);
 }
 
 static JSClassDef render_scene_buffers_configuration_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef render_scene_buffers_configuration_class_def = {
 };
 
 static JSValue render_scene_buffers_configuration_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	RenderSceneBuffersConfiguration *render_scene_buffers_configuration_class;
-	JSValue obj = JS_NewObjectClass(ctx, RenderSceneBuffersConfiguration::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RenderSceneBuffersConfiguration::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	render_scene_buffers_configuration_class = memnew(RenderSceneBuffersConfiguration);
+	RenderSceneBuffersConfiguration *render_scene_buffers_configuration_class = memnew(RenderSceneBuffersConfiguration);
 	if (!render_scene_buffers_configuration_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, render_scene_buffers_configuration_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, render_scene_buffers_configuration_class);	
 	return obj;
 }
 static JSValue render_scene_buffers_configuration_class_get_render_target(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -211,13 +202,13 @@ static int js_render_scene_buffers_configuration_class_init(JSContext *ctx, JSMo
 	class_id_list.insert(RenderSceneBuffersConfiguration::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RenderSceneBuffersConfiguration::__class_id, &render_scene_buffers_configuration_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, RenderSceneBuffersConfiguration::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, RenderSceneBuffersConfiguration::__class_id, proto);
+
 	define_render_scene_buffers_configuration_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, render_scene_buffers_configuration_class_proto_funcs, _countof(render_scene_buffers_configuration_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, render_scene_buffers_configuration_class_constructor, "RenderSceneBuffersConfiguration", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

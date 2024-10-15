@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/xr_controller_tracker.hpp>
 #include <godot_cpp/classes/web_xr_interface.hpp>
 #include <godot_cpp/classes/xr_interface.hpp>
-#include <godot_cpp/classes/xr_controller_tracker.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void web_xr_interface_class_finalizer(JSRuntime *rt, JSValue val) {
 	WebXRInterface *web_xr_interface = static_cast<WebXRInterface *>(JS_GetOpaque(val, WebXRInterface::__class_id));
 	if (web_xr_interface)
-		WebXRInterface::free(nullptr, web_xr_interface);
+		memdelete(web_xr_interface);
 }
 
 static JSClassDef web_xr_interface_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef web_xr_interface_class_def = {
 };
 
 static JSValue web_xr_interface_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	WebXRInterface *web_xr_interface_class;
-	JSValue obj = JS_NewObjectClass(ctx, WebXRInterface::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, WebXRInterface::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	web_xr_interface_class = memnew(WebXRInterface);
+	WebXRInterface *web_xr_interface_class = memnew(WebXRInterface);
 	if (!web_xr_interface_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, web_xr_interface_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, web_xr_interface_class);	
 	return obj;
 }
 static JSValue web_xr_interface_class_is_session_supported(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -193,13 +184,13 @@ static int js_web_xr_interface_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(WebXRInterface::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), WebXRInterface::__class_id, &web_xr_interface_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, WebXRInterface::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, XRInterface::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, WebXRInterface::__class_id, proto);
+
 	define_web_xr_interface_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, web_xr_interface_class_proto_funcs, _countof(web_xr_interface_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, web_xr_interface_class_constructor, "WebXRInterface", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

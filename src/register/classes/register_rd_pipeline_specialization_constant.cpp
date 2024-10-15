@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rd_pipeline_specialization_constant.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void rd_pipeline_specialization_constant_class_finalizer(JSRuntime *rt, JSValue val) {
 	RDPipelineSpecializationConstant *rd_pipeline_specialization_constant = static_cast<RDPipelineSpecializationConstant *>(JS_GetOpaque(val, RDPipelineSpecializationConstant::__class_id));
 	if (rd_pipeline_specialization_constant)
-		RDPipelineSpecializationConstant::free(nullptr, rd_pipeline_specialization_constant);
+		memdelete(rd_pipeline_specialization_constant);
 }
 
 static JSClassDef rd_pipeline_specialization_constant_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef rd_pipeline_specialization_constant_class_def = {
 };
 
 static JSValue rd_pipeline_specialization_constant_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	RDPipelineSpecializationConstant *rd_pipeline_specialization_constant_class;
-	JSValue obj = JS_NewObjectClass(ctx, RDPipelineSpecializationConstant::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDPipelineSpecializationConstant::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	rd_pipeline_specialization_constant_class = memnew(RDPipelineSpecializationConstant);
+	RDPipelineSpecializationConstant *rd_pipeline_specialization_constant_class = memnew(RDPipelineSpecializationConstant);
 	if (!rd_pipeline_specialization_constant_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, rd_pipeline_specialization_constant_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, rd_pipeline_specialization_constant_class);	
 	return obj;
 }
 static JSValue rd_pipeline_specialization_constant_class_set_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -92,13 +83,13 @@ static int js_rd_pipeline_specialization_constant_class_init(JSContext *ctx, JSM
 	class_id_list.insert(RDPipelineSpecializationConstant::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RDPipelineSpecializationConstant::__class_id, &rd_pipeline_specialization_constant_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, RDPipelineSpecializationConstant::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, RDPipelineSpecializationConstant::__class_id, proto);
+
 	define_rd_pipeline_specialization_constant_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, rd_pipeline_specialization_constant_class_proto_funcs, _countof(rd_pipeline_specialization_constant_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, rd_pipeline_specialization_constant_class_constructor, "RDPipelineSpecializationConstant", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

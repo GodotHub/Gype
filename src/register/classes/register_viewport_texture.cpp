@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/viewport_texture.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/viewport_texture.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void viewport_texture_class_finalizer(JSRuntime *rt, JSValue val) {
 	ViewportTexture *viewport_texture = static_cast<ViewportTexture *>(JS_GetOpaque(val, ViewportTexture::__class_id));
 	if (viewport_texture)
-		ViewportTexture::free(nullptr, viewport_texture);
+		memdelete(viewport_texture);
 }
 
 static JSClassDef viewport_texture_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef viewport_texture_class_def = {
 };
 
 static JSValue viewport_texture_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	ViewportTexture *viewport_texture_class;
-	JSValue obj = JS_NewObjectClass(ctx, ViewportTexture::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ViewportTexture::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	viewport_texture_class = memnew(ViewportTexture);
+	ViewportTexture *viewport_texture_class = memnew(ViewportTexture);
 	if (!viewport_texture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, viewport_texture_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, viewport_texture_class);	
 	return obj;
 }
 static JSValue viewport_texture_class_set_viewport_path_in_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,13 +66,13 @@ static int js_viewport_texture_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(ViewportTexture::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ViewportTexture::__class_id, &viewport_texture_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, ViewportTexture::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Texture2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ViewportTexture::__class_id, proto);
+
 	define_viewport_texture_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, viewport_texture_class_proto_funcs, _countof(viewport_texture_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, viewport_texture_class_constructor, "ViewportTexture", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

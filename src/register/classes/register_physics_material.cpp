@@ -15,7 +15,7 @@ using namespace godot;
 static void physics_material_class_finalizer(JSRuntime *rt, JSValue val) {
 	PhysicsMaterial *physics_material = static_cast<PhysicsMaterial *>(JS_GetOpaque(val, PhysicsMaterial::__class_id));
 	if (physics_material)
-		PhysicsMaterial::free(nullptr, physics_material);
+		memdelete(physics_material);
 }
 
 static JSClassDef physics_material_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef physics_material_class_def = {
 };
 
 static JSValue physics_material_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PhysicsMaterial *physics_material_class;
-	JSValue obj = JS_NewObjectClass(ctx, PhysicsMaterial::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicsMaterial::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	physics_material_class = memnew(PhysicsMaterial);
+	PhysicsMaterial *physics_material_class = memnew(PhysicsMaterial);
 	if (!physics_material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, physics_material_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, physics_material_class);	
 	return obj;
 }
 static JSValue physics_material_class_set_friction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -126,13 +117,13 @@ static int js_physics_material_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(PhysicsMaterial::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PhysicsMaterial::__class_id, &physics_material_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, PhysicsMaterial::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PhysicsMaterial::__class_id, proto);
+
 	define_physics_material_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, physics_material_class_proto_funcs, _countof(physics_material_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, physics_material_class_constructor, "PhysicsMaterial", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

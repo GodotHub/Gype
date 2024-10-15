@@ -15,7 +15,7 @@ using namespace godot;
 static void xr_interface_class_finalizer(JSRuntime *rt, JSValue val) {
 	XRInterface *xr_interface = static_cast<XRInterface *>(JS_GetOpaque(val, XRInterface::__class_id));
 	if (xr_interface)
-		XRInterface::free(nullptr, xr_interface);
+		memdelete(xr_interface);
 }
 
 static JSClassDef xr_interface_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef xr_interface_class_def = {
 };
 
 static JSValue xr_interface_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	XRInterface *xr_interface_class;
-	JSValue obj = JS_NewObjectClass(ctx, XRInterface::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRInterface::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	xr_interface_class = memnew(XRInterface);
+	XRInterface *xr_interface_class = memnew(XRInterface);
 	if (!xr_interface_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, xr_interface_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, xr_interface_class);	
 	return obj;
 }
 static JSValue xr_interface_class_get_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -207,13 +198,13 @@ static int js_xr_interface_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(XRInterface::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XRInterface::__class_id, &xr_interface_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, XRInterface::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, XRInterface::__class_id, proto);
+
 	define_xr_interface_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xr_interface_class_proto_funcs, _countof(xr_interface_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, xr_interface_class_constructor, "XRInterface", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

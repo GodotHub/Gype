@@ -15,7 +15,7 @@ using namespace godot;
 static void xml_parser_class_finalizer(JSRuntime *rt, JSValue val) {
 	XMLParser *xml_parser = static_cast<XMLParser *>(JS_GetOpaque(val, XMLParser::__class_id));
 	if (xml_parser)
-		XMLParser::free(nullptr, xml_parser);
+		memdelete(xml_parser);
 }
 
 static JSClassDef xml_parser_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef xml_parser_class_def = {
 };
 
 static JSValue xml_parser_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	XMLParser *xml_parser_class;
-	JSValue obj = JS_NewObjectClass(ctx, XMLParser::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XMLParser::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	xml_parser_class = memnew(XMLParser);
+	XMLParser *xml_parser_class = memnew(XMLParser);
 	if (!xml_parser_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, xml_parser_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, xml_parser_class);	
 	return obj;
 }
 static JSValue xml_parser_class_read(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -127,13 +118,13 @@ static int js_xml_parser_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(XMLParser::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XMLParser::__class_id, &xml_parser_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, XMLParser::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, XMLParser::__class_id, proto);
+
 	define_xml_parser_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xml_parser_class_proto_funcs, _countof(xml_parser_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, xml_parser_class_constructor, "XMLParser", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event_gesture.hpp>
 #include <godot_cpp/classes/input_event_magnify_gesture.hpp>
+#include <godot_cpp/classes/input_event_gesture.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void input_event_magnify_gesture_class_finalizer(JSRuntime *rt, JSValue val) {
 	InputEventMagnifyGesture *input_event_magnify_gesture = static_cast<InputEventMagnifyGesture *>(JS_GetOpaque(val, InputEventMagnifyGesture::__class_id));
 	if (input_event_magnify_gesture)
-		InputEventMagnifyGesture::free(nullptr, input_event_magnify_gesture);
+		memdelete(input_event_magnify_gesture);
 }
 
 static JSClassDef input_event_magnify_gesture_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef input_event_magnify_gesture_class_def = {
 };
 
 static JSValue input_event_magnify_gesture_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	InputEventMagnifyGesture *input_event_magnify_gesture_class;
-	JSValue obj = JS_NewObjectClass(ctx, InputEventMagnifyGesture::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InputEventMagnifyGesture::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	input_event_magnify_gesture_class = memnew(InputEventMagnifyGesture);
+	InputEventMagnifyGesture *input_event_magnify_gesture_class = memnew(InputEventMagnifyGesture);
 	if (!input_event_magnify_gesture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, input_event_magnify_gesture_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, input_event_magnify_gesture_class);	
 	return obj;
 }
 static JSValue input_event_magnify_gesture_class_set_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,13 +66,13 @@ static int js_input_event_magnify_gesture_class_init(JSContext *ctx, JSModuleDef
 	class_id_list.insert(InputEventMagnifyGesture::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), InputEventMagnifyGesture::__class_id, &input_event_magnify_gesture_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, InputEventMagnifyGesture::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, InputEventGesture::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, InputEventMagnifyGesture::__class_id, proto);
+
 	define_input_event_magnify_gesture_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, input_event_magnify_gesture_class_proto_funcs, _countof(input_event_magnify_gesture_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, input_event_magnify_gesture_class_constructor, "InputEventMagnifyGesture", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

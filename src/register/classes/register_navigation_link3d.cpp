@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/navigation_link3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/navigation_link3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void navigation_link3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	NavigationLink3D *navigation_link3d = static_cast<NavigationLink3D *>(JS_GetOpaque(val, NavigationLink3D::__class_id));
 	if (navigation_link3d)
-		NavigationLink3D::free(nullptr, navigation_link3d);
+		memdelete(navigation_link3d);
 }
 
 static JSClassDef navigation_link3d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef navigation_link3d_class_def = {
 };
 
 static JSValue navigation_link3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	NavigationLink3D *navigation_link3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, NavigationLink3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, NavigationLink3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	navigation_link3d_class = memnew(NavigationLink3D);
+	NavigationLink3D *navigation_link3d_class = memnew(NavigationLink3D);
 	if (!navigation_link3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, navigation_link3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, navigation_link3d_class);	
 	return obj;
 }
 static JSValue navigation_link3d_class_get_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -208,13 +199,13 @@ static int js_navigation_link3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(NavigationLink3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), NavigationLink3D::__class_id, &navigation_link3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, NavigationLink3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, NavigationLink3D::__class_id, proto);
+
 	define_navigation_link3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, navigation_link3d_class_proto_funcs, _countof(navigation_link3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, navigation_link3d_class_constructor, "NavigationLink3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

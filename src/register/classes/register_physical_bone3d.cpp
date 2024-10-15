@@ -16,7 +16,7 @@ using namespace godot;
 static void physical_bone3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	PhysicalBone3D *physical_bone3d = static_cast<PhysicalBone3D *>(JS_GetOpaque(val, PhysicalBone3D::__class_id));
 	if (physical_bone3d)
-		PhysicalBone3D::free(nullptr, physical_bone3d);
+		memdelete(physical_bone3d);
 }
 
 static JSClassDef physical_bone3d_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef physical_bone3d_class_def = {
 };
 
 static JSValue physical_bone3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PhysicalBone3D *physical_bone3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, PhysicalBone3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicalBone3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	physical_bone3d_class = memnew(PhysicalBone3D);
+	PhysicalBone3D *physical_bone3d_class = memnew(PhysicalBone3D);
 	if (!physical_bone3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, physical_bone3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, physical_bone3d_class);	
 	return obj;
 }
 static JSValue physical_bone3d_class_apply_central_impulse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -353,13 +344,13 @@ static int js_physical_bone3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(PhysicalBone3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PhysicalBone3D::__class_id, &physical_bone3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, PhysicalBone3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, PhysicsBody3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PhysicalBone3D::__class_id, proto);
+
 	define_physical_bone3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, physical_bone3d_class_proto_funcs, _countof(physical_bone3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, physical_bone3d_class_constructor, "PhysicalBone3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -17,7 +17,7 @@ using namespace godot;
 static void noise_class_finalizer(JSRuntime *rt, JSValue val) {
 	Noise *noise = static_cast<Noise *>(JS_GetOpaque(val, Noise::__class_id));
 	if (noise)
-		Noise::free(nullptr, noise);
+		memdelete(noise);
 }
 
 static JSClassDef noise_class_def = {
@@ -26,25 +26,16 @@ static JSClassDef noise_class_def = {
 };
 
 static JSValue noise_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Noise *noise_class;
-	JSValue obj = JS_NewObjectClass(ctx, Noise::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Noise::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	noise_class = memnew(Noise);
+	Noise *noise_class = memnew(Noise);
 	if (!noise_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, noise_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, noise_class);	
 	return obj;
 }
 static JSValue noise_class_get_noise_1d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -96,13 +87,13 @@ static int js_noise_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Noise::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Noise::__class_id, &noise_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Noise::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Noise::__class_id, proto);
+
 	define_noise_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, noise_class_proto_funcs, _countof(noise_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, noise_class_constructor, "Noise", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

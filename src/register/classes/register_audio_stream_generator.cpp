@@ -15,7 +15,7 @@ using namespace godot;
 static void audio_stream_generator_class_finalizer(JSRuntime *rt, JSValue val) {
 	AudioStreamGenerator *audio_stream_generator = static_cast<AudioStreamGenerator *>(JS_GetOpaque(val, AudioStreamGenerator::__class_id));
 	if (audio_stream_generator)
-		AudioStreamGenerator::free(nullptr, audio_stream_generator);
+		memdelete(audio_stream_generator);
 }
 
 static JSClassDef audio_stream_generator_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef audio_stream_generator_class_def = {
 };
 
 static JSValue audio_stream_generator_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	AudioStreamGenerator *audio_stream_generator_class;
-	JSValue obj = JS_NewObjectClass(ctx, AudioStreamGenerator::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioStreamGenerator::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	audio_stream_generator_class = memnew(AudioStreamGenerator);
+	AudioStreamGenerator *audio_stream_generator_class = memnew(AudioStreamGenerator);
 	if (!audio_stream_generator_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, audio_stream_generator_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, audio_stream_generator_class);	
 	return obj;
 }
 static JSValue audio_stream_generator_class_set_mix_rate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -92,13 +83,13 @@ static int js_audio_stream_generator_class_init(JSContext *ctx, JSModuleDef *m) 
 	class_id_list.insert(AudioStreamGenerator::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioStreamGenerator::__class_id, &audio_stream_generator_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, AudioStreamGenerator::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, AudioStream::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AudioStreamGenerator::__class_id, proto);
+
 	define_audio_stream_generator_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, audio_stream_generator_class_proto_funcs, _countof(audio_stream_generator_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, audio_stream_generator_class_constructor, "AudioStreamGenerator", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

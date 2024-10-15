@@ -7,20 +7,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { GodotClass } from "@js_godot/class_defined";
-import { Sprite2D } from "godot/classes/sprite2d";
-let MySprite = class MySprite extends Sprite2D {
+import { GodotClass, Tool } from "@js_godot/class_defined";
+import { Node2D } from "godot/classes/node2d";
+let MyNode = class MyNode extends Node2D {
     constructor() {
         super();
-        this.speed = 1.0;
     }
     _ready() {
-        GD.print("ready");
-        GD.print("speed: ", this.speed);
+        this.add_child(new Node2D());
     }
 };
-MySprite = __decorate([
+MyNode = __decorate([
     GodotClass,
     __metadata("design:paramtypes", [])
-], MySprite);
-export { MySprite };
+], MyNode);
+export { MyNode };

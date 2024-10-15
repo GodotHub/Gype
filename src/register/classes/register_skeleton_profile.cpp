@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton_profile.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/skeleton_profile.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void skeleton_profile_class_finalizer(JSRuntime *rt, JSValue val) {
 	SkeletonProfile *skeleton_profile = static_cast<SkeletonProfile *>(JS_GetOpaque(val, SkeletonProfile::__class_id));
 	if (skeleton_profile)
-		SkeletonProfile::free(nullptr, skeleton_profile);
+		memdelete(skeleton_profile);
 }
 
 static JSClassDef skeleton_profile_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef skeleton_profile_class_def = {
 };
 
 static JSValue skeleton_profile_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	SkeletonProfile *skeleton_profile_class;
-	JSValue obj = JS_NewObjectClass(ctx, SkeletonProfile::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SkeletonProfile::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	skeleton_profile_class = memnew(SkeletonProfile);
+	SkeletonProfile *skeleton_profile_class = memnew(SkeletonProfile);
 	if (!skeleton_profile_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, skeleton_profile_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, skeleton_profile_class);	
 	return obj;
 }
 static JSValue skeleton_profile_class_set_root_bone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -221,13 +212,13 @@ static int js_skeleton_profile_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(SkeletonProfile::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SkeletonProfile::__class_id, &skeleton_profile_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, SkeletonProfile::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, SkeletonProfile::__class_id, proto);
+
 	define_skeleton_profile_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, skeleton_profile_class_proto_funcs, _countof(skeleton_profile_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, skeleton_profile_class_constructor, "SkeletonProfile", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

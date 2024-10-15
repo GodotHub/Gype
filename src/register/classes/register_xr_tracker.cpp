@@ -15,7 +15,7 @@ using namespace godot;
 static void xr_tracker_class_finalizer(JSRuntime *rt, JSValue val) {
 	XRTracker *xr_tracker = static_cast<XRTracker *>(JS_GetOpaque(val, XRTracker::__class_id));
 	if (xr_tracker)
-		XRTracker::free(nullptr, xr_tracker);
+		memdelete(xr_tracker);
 }
 
 static JSClassDef xr_tracker_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef xr_tracker_class_def = {
 };
 
 static JSValue xr_tracker_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	XRTracker *xr_tracker_class;
-	JSValue obj = JS_NewObjectClass(ctx, XRTracker::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRTracker::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	xr_tracker_class = memnew(XRTracker);
+	XRTracker *xr_tracker_class = memnew(XRTracker);
 	if (!xr_tracker_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, xr_tracker_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, xr_tracker_class);	
 	return obj;
 }
 static JSValue xr_tracker_class_get_tracker_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -109,13 +100,13 @@ static int js_xr_tracker_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(XRTracker::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XRTracker::__class_id, &xr_tracker_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, XRTracker::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, XRTracker::__class_id, proto);
+
 	define_xr_tracker_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xr_tracker_class_proto_funcs, _countof(xr_tracker_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, xr_tracker_class_constructor, "XRTracker", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

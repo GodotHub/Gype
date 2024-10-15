@@ -16,7 +16,7 @@ using namespace godot;
 static void audio_effect_class_finalizer(JSRuntime *rt, JSValue val) {
 	AudioEffect *audio_effect = static_cast<AudioEffect *>(JS_GetOpaque(val, AudioEffect::__class_id));
 	if (audio_effect)
-		AudioEffect::free(nullptr, audio_effect);
+		memdelete(audio_effect);
 }
 
 static JSClassDef audio_effect_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef audio_effect_class_def = {
 };
 
 static JSValue audio_effect_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	AudioEffect *audio_effect_class;
-	JSValue obj = JS_NewObjectClass(ctx, AudioEffect::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffect::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	audio_effect_class = memnew(AudioEffect);
+	AudioEffect *audio_effect_class = memnew(AudioEffect);
 	if (!audio_effect_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, audio_effect_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, audio_effect_class);	
 	return obj;
 }
 
@@ -57,12 +48,12 @@ static int js_audio_effect_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(AudioEffect::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffect::__class_id, &audio_effect_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, AudioEffect::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AudioEffect::__class_id, proto);
-	define_audio_effect_property(ctx, proto);
 
+	define_audio_effect_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, audio_effect_class_constructor, "AudioEffect", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

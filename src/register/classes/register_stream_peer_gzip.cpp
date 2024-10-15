@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/stream_peer_gzip.hpp>
 #include <godot_cpp/classes/stream_peer.hpp>
+#include <godot_cpp/classes/stream_peer_gzip.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void stream_peer_gzip_class_finalizer(JSRuntime *rt, JSValue val) {
 	StreamPeerGZIP *stream_peer_gzip = static_cast<StreamPeerGZIP *>(JS_GetOpaque(val, StreamPeerGZIP::__class_id));
 	if (stream_peer_gzip)
-		StreamPeerGZIP::free(nullptr, stream_peer_gzip);
+		memdelete(stream_peer_gzip);
 }
 
 static JSClassDef stream_peer_gzip_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef stream_peer_gzip_class_def = {
 };
 
 static JSValue stream_peer_gzip_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	StreamPeerGZIP *stream_peer_gzip_class;
-	JSValue obj = JS_NewObjectClass(ctx, StreamPeerGZIP::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StreamPeerGZIP::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	stream_peer_gzip_class = memnew(StreamPeerGZIP);
+	StreamPeerGZIP *stream_peer_gzip_class = memnew(StreamPeerGZIP);
 	if (!stream_peer_gzip_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, stream_peer_gzip_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, stream_peer_gzip_class);	
 	return obj;
 }
 static JSValue stream_peer_gzip_class_start_compression(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,13 +66,13 @@ static int js_stream_peer_gzip_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(StreamPeerGZIP::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), StreamPeerGZIP::__class_id, &stream_peer_gzip_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, StreamPeerGZIP::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, StreamPeer::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, StreamPeerGZIP::__class_id, proto);
+
 	define_stream_peer_gzip_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, stream_peer_gzip_class_proto_funcs, _countof(stream_peer_gzip_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, stream_peer_gzip_class_constructor, "StreamPeerGZIP", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

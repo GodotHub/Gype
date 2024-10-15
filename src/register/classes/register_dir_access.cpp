@@ -15,7 +15,7 @@ using namespace godot;
 static void dir_access_class_finalizer(JSRuntime *rt, JSValue val) {
 	DirAccess *dir_access = static_cast<DirAccess *>(JS_GetOpaque(val, DirAccess::__class_id));
 	if (dir_access)
-		DirAccess::free(nullptr, dir_access);
+		memdelete(dir_access);
 }
 
 static JSClassDef dir_access_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef dir_access_class_def = {
 };
 
 static JSValue dir_access_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	DirAccess *dir_access_class;
-	JSValue obj = JS_NewObjectClass(ctx, DirAccess::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, DirAccess::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	dir_access_class = memnew(DirAccess);
+	DirAccess *dir_access_class = memnew(DirAccess);
 	if (!dir_access_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, dir_access_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, dir_access_class);	
 	return obj;
 }
 static JSValue dir_access_class_list_dir_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -227,16 +218,16 @@ static int js_dir_access_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(DirAccess::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), DirAccess::__class_id, &dir_access_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, DirAccess::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, DirAccess::__class_id, proto);
+
 	define_dir_access_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, dir_access_class_proto_funcs, _countof(dir_access_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, dir_access_class_constructor, "DirAccess", 0, JS_CFUNC_constructor, 0);
-	JS_SetConstructor(ctx, ctor, proto);
 	JS_SetPropertyFunctionList(ctx, ctor, dir_access_class_static_funcs, _countof(dir_access_class_static_funcs));
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "DirAccess", ctor);
 

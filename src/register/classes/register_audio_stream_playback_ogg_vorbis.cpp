@@ -15,7 +15,7 @@ using namespace godot;
 static void audio_stream_playback_ogg_vorbis_class_finalizer(JSRuntime *rt, JSValue val) {
 	AudioStreamPlaybackOggVorbis *audio_stream_playback_ogg_vorbis = static_cast<AudioStreamPlaybackOggVorbis *>(JS_GetOpaque(val, AudioStreamPlaybackOggVorbis::__class_id));
 	if (audio_stream_playback_ogg_vorbis)
-		AudioStreamPlaybackOggVorbis::free(nullptr, audio_stream_playback_ogg_vorbis);
+		memdelete(audio_stream_playback_ogg_vorbis);
 }
 
 static JSClassDef audio_stream_playback_ogg_vorbis_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef audio_stream_playback_ogg_vorbis_class_def = {
 };
 
 static JSValue audio_stream_playback_ogg_vorbis_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	AudioStreamPlaybackOggVorbis *audio_stream_playback_ogg_vorbis_class;
-	JSValue obj = JS_NewObjectClass(ctx, AudioStreamPlaybackOggVorbis::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioStreamPlaybackOggVorbis::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	audio_stream_playback_ogg_vorbis_class = memnew(AudioStreamPlaybackOggVorbis);
+	AudioStreamPlaybackOggVorbis *audio_stream_playback_ogg_vorbis_class = memnew(AudioStreamPlaybackOggVorbis);
 	if (!audio_stream_playback_ogg_vorbis_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, audio_stream_playback_ogg_vorbis_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, audio_stream_playback_ogg_vorbis_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_audio_stream_playback_ogg_vorbis_class_init(JSContext *ctx, JSModu
 	class_id_list.insert(AudioStreamPlaybackOggVorbis::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioStreamPlaybackOggVorbis::__class_id, &audio_stream_playback_ogg_vorbis_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, AudioStreamPlaybackOggVorbis::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, AudioStreamPlaybackResampled::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AudioStreamPlaybackOggVorbis::__class_id, proto);
-	define_audio_stream_playback_ogg_vorbis_property(ctx, proto);
 
+	define_audio_stream_playback_ogg_vorbis_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, audio_stream_playback_ogg_vorbis_class_constructor, "AudioStreamPlaybackOggVorbis", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

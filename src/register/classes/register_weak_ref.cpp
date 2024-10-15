@@ -15,7 +15,7 @@ using namespace godot;
 static void weak_ref_class_finalizer(JSRuntime *rt, JSValue val) {
 	WeakRef *weak_ref = static_cast<WeakRef *>(JS_GetOpaque(val, WeakRef::__class_id));
 	if (weak_ref)
-		WeakRef::free(nullptr, weak_ref);
+		memdelete(weak_ref);
 }
 
 static JSClassDef weak_ref_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef weak_ref_class_def = {
 };
 
 static JSValue weak_ref_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	WeakRef *weak_ref_class;
-	JSValue obj = JS_NewObjectClass(ctx, WeakRef::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, WeakRef::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	weak_ref_class = memnew(WeakRef);
+	WeakRef *weak_ref_class = memnew(WeakRef);
 	if (!weak_ref_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, weak_ref_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, weak_ref_class);	
 	return obj;
 }
 static JSValue weak_ref_class_get_ref(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,13 +53,13 @@ static int js_weak_ref_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(WeakRef::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), WeakRef::__class_id, &weak_ref_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, WeakRef::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, WeakRef::__class_id, proto);
+
 	define_weak_ref_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, weak_ref_class_proto_funcs, _countof(weak_ref_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, weak_ref_class_constructor, "WeakRef", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

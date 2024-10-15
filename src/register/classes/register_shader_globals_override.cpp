@@ -15,7 +15,7 @@ using namespace godot;
 static void shader_globals_override_class_finalizer(JSRuntime *rt, JSValue val) {
 	ShaderGlobalsOverride *shader_globals_override = static_cast<ShaderGlobalsOverride *>(JS_GetOpaque(val, ShaderGlobalsOverride::__class_id));
 	if (shader_globals_override)
-		ShaderGlobalsOverride::free(nullptr, shader_globals_override);
+		memdelete(shader_globals_override);
 }
 
 static JSClassDef shader_globals_override_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef shader_globals_override_class_def = {
 };
 
 static JSValue shader_globals_override_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	ShaderGlobalsOverride *shader_globals_override_class;
-	JSValue obj = JS_NewObjectClass(ctx, ShaderGlobalsOverride::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ShaderGlobalsOverride::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	shader_globals_override_class = memnew(ShaderGlobalsOverride);
+	ShaderGlobalsOverride *shader_globals_override_class = memnew(ShaderGlobalsOverride);
 	if (!shader_globals_override_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, shader_globals_override_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, shader_globals_override_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_shader_globals_override_class_init(JSContext *ctx, JSModuleDef *m)
 	class_id_list.insert(ShaderGlobalsOverride::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ShaderGlobalsOverride::__class_id, &shader_globals_override_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, ShaderGlobalsOverride::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ShaderGlobalsOverride::__class_id, proto);
-	define_shader_globals_override_property(ctx, proto);
 
+	define_shader_globals_override_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, shader_globals_override_class_constructor, "ShaderGlobalsOverride", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

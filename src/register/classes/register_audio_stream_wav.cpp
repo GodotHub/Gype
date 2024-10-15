@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_stream.hpp>
 #include <godot_cpp/classes/audio_stream_wav.hpp>
+#include <godot_cpp/classes/audio_stream.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void audio_stream_wav_class_finalizer(JSRuntime *rt, JSValue val) {
 	AudioStreamWAV *audio_stream_wav = static_cast<AudioStreamWAV *>(JS_GetOpaque(val, AudioStreamWAV::__class_id));
 	if (audio_stream_wav)
-		AudioStreamWAV::free(nullptr, audio_stream_wav);
+		memdelete(audio_stream_wav);
 }
 
 static JSClassDef audio_stream_wav_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef audio_stream_wav_class_def = {
 };
 
 static JSValue audio_stream_wav_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	AudioStreamWAV *audio_stream_wav_class;
-	JSValue obj = JS_NewObjectClass(ctx, AudioStreamWAV::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioStreamWAV::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	audio_stream_wav_class = memnew(AudioStreamWAV);
+	AudioStreamWAV *audio_stream_wav_class = memnew(AudioStreamWAV);
 	if (!audio_stream_wav_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, audio_stream_wav_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, audio_stream_wav_class);	
 	return obj;
 }
 static JSValue audio_stream_wav_class_set_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -181,13 +172,13 @@ static int js_audio_stream_wav_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(AudioStreamWAV::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioStreamWAV::__class_id, &audio_stream_wav_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, AudioStreamWAV::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, AudioStream::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AudioStreamWAV::__class_id, proto);
+
 	define_audio_stream_wav_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, audio_stream_wav_class_proto_funcs, _countof(audio_stream_wav_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, audio_stream_wav_class_constructor, "AudioStreamWAV", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

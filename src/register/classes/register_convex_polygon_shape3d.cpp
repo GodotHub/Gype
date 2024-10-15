@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/classes/convex_polygon_shape3d.hpp>
+#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void convex_polygon_shape3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	ConvexPolygonShape3D *convex_polygon_shape3d = static_cast<ConvexPolygonShape3D *>(JS_GetOpaque(val, ConvexPolygonShape3D::__class_id));
 	if (convex_polygon_shape3d)
-		ConvexPolygonShape3D::free(nullptr, convex_polygon_shape3d);
+		memdelete(convex_polygon_shape3d);
 }
 
 static JSClassDef convex_polygon_shape3d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef convex_polygon_shape3d_class_def = {
 };
 
 static JSValue convex_polygon_shape3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	ConvexPolygonShape3D *convex_polygon_shape3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, ConvexPolygonShape3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ConvexPolygonShape3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	convex_polygon_shape3d_class = memnew(ConvexPolygonShape3D);
+	ConvexPolygonShape3D *convex_polygon_shape3d_class = memnew(ConvexPolygonShape3D);
 	if (!convex_polygon_shape3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, convex_polygon_shape3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, convex_polygon_shape3d_class);	
 	return obj;
 }
 static JSValue convex_polygon_shape3d_class_set_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,13 +66,13 @@ static int js_convex_polygon_shape3d_class_init(JSContext *ctx, JSModuleDef *m) 
 	class_id_list.insert(ConvexPolygonShape3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ConvexPolygonShape3D::__class_id, &convex_polygon_shape3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, ConvexPolygonShape3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Shape3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ConvexPolygonShape3D::__class_id, proto);
+
 	define_convex_polygon_shape3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, convex_polygon_shape3d_class_proto_funcs, _countof(convex_polygon_shape3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, convex_polygon_shape3d_class_constructor, "ConvexPolygonShape3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

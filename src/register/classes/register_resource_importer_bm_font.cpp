@@ -15,7 +15,7 @@ using namespace godot;
 static void resource_importer_bm_font_class_finalizer(JSRuntime *rt, JSValue val) {
 	ResourceImporterBMFont *resource_importer_bm_font = static_cast<ResourceImporterBMFont *>(JS_GetOpaque(val, ResourceImporterBMFont::__class_id));
 	if (resource_importer_bm_font)
-		ResourceImporterBMFont::free(nullptr, resource_importer_bm_font);
+		memdelete(resource_importer_bm_font);
 }
 
 static JSClassDef resource_importer_bm_font_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef resource_importer_bm_font_class_def = {
 };
 
 static JSValue resource_importer_bm_font_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	ResourceImporterBMFont *resource_importer_bm_font_class;
-	JSValue obj = JS_NewObjectClass(ctx, ResourceImporterBMFont::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterBMFont::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	resource_importer_bm_font_class = memnew(ResourceImporterBMFont);
+	ResourceImporterBMFont *resource_importer_bm_font_class = memnew(ResourceImporterBMFont);
 	if (!resource_importer_bm_font_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, resource_importer_bm_font_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, resource_importer_bm_font_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_resource_importer_bm_font_class_init(JSContext *ctx, JSModuleDef *
 	class_id_list.insert(ResourceImporterBMFont::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ResourceImporterBMFont::__class_id, &resource_importer_bm_font_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, ResourceImporterBMFont::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, ResourceImporter::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ResourceImporterBMFont::__class_id, proto);
-	define_resource_importer_bm_font_property(ctx, proto);
 
+	define_resource_importer_bm_font_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, resource_importer_bm_font_class_constructor, "ResourceImporterBMFont", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

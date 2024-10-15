@@ -15,7 +15,7 @@ using namespace godot;
 static void aes_context_class_finalizer(JSRuntime *rt, JSValue val) {
 	AESContext *aes_context = static_cast<AESContext *>(JS_GetOpaque(val, AESContext::__class_id));
 	if (aes_context)
-		AESContext::free(nullptr, aes_context);
+		memdelete(aes_context);
 }
 
 static JSClassDef aes_context_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef aes_context_class_def = {
 };
 
 static JSValue aes_context_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	AESContext *aes_context_class;
-	JSValue obj = JS_NewObjectClass(ctx, AESContext::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AESContext::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	aes_context_class = memnew(AESContext);
+	AESContext *aes_context_class = memnew(AESContext);
 	if (!aes_context_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, aes_context_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, aes_context_class);	
 	return obj;
 }
 static JSValue aes_context_class_start(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,13 +66,13 @@ static int js_aes_context_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(AESContext::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AESContext::__class_id, &aes_context_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, AESContext::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AESContext::__class_id, proto);
+
 	define_aes_context_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, aes_context_class_proto_funcs, _countof(aes_context_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, aes_context_class_constructor, "AESContext", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

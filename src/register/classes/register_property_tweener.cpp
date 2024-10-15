@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/property_tweener.hpp>
 #include <godot_cpp/classes/tweener.hpp>
+#include <godot_cpp/classes/property_tweener.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void property_tweener_class_finalizer(JSRuntime *rt, JSValue val) {
 	PropertyTweener *property_tweener = static_cast<PropertyTweener *>(JS_GetOpaque(val, PropertyTweener::__class_id));
 	if (property_tweener)
-		PropertyTweener::free(nullptr, property_tweener);
+		memdelete(property_tweener);
 }
 
 static JSClassDef property_tweener_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef property_tweener_class_def = {
 };
 
 static JSValue property_tweener_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PropertyTweener *property_tweener_class;
-	JSValue obj = JS_NewObjectClass(ctx, PropertyTweener::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PropertyTweener::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	property_tweener_class = memnew(PropertyTweener);
+	PropertyTweener *property_tweener_class = memnew(PropertyTweener);
 	if (!property_tweener_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, property_tweener_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, property_tweener_class);	
 	return obj;
 }
 static JSValue property_tweener_class_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -86,13 +77,13 @@ static int js_property_tweener_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(PropertyTweener::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PropertyTweener::__class_id, &property_tweener_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, PropertyTweener::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Tweener::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PropertyTweener::__class_id, proto);
+
 	define_property_tweener_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, property_tweener_class_proto_funcs, _countof(property_tweener_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, property_tweener_class_constructor, "PropertyTweener", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

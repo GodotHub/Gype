@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/scroll_bar.hpp>
 #include <godot_cpp/classes/v_scroll_bar.hpp>
+#include <godot_cpp/classes/scroll_bar.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void v_scroll_bar_class_finalizer(JSRuntime *rt, JSValue val) {
 	VScrollBar *v_scroll_bar = static_cast<VScrollBar *>(JS_GetOpaque(val, VScrollBar::__class_id));
 	if (v_scroll_bar)
-		VScrollBar::free(nullptr, v_scroll_bar);
+		memdelete(v_scroll_bar);
 }
 
 static JSClassDef v_scroll_bar_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef v_scroll_bar_class_def = {
 };
 
 static JSValue v_scroll_bar_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	VScrollBar *v_scroll_bar_class;
-	JSValue obj = JS_NewObjectClass(ctx, VScrollBar::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VScrollBar::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	v_scroll_bar_class = memnew(VScrollBar);
+	VScrollBar *v_scroll_bar_class = memnew(VScrollBar);
 	if (!v_scroll_bar_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, v_scroll_bar_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, v_scroll_bar_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_v_scroll_bar_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(VScrollBar::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VScrollBar::__class_id, &v_scroll_bar_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, VScrollBar::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, ScrollBar::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, VScrollBar::__class_id, proto);
-	define_v_scroll_bar_property(ctx, proto);
 
+	define_v_scroll_bar_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, v_scroll_bar_class_constructor, "VScrollBar", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

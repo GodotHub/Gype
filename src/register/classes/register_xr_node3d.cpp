@@ -16,7 +16,7 @@ using namespace godot;
 static void xr_node3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	XRNode3D *xr_node3d = static_cast<XRNode3D *>(JS_GetOpaque(val, XRNode3D::__class_id));
 	if (xr_node3d)
-		XRNode3D::free(nullptr, xr_node3d);
+		memdelete(xr_node3d);
 }
 
 static JSClassDef xr_node3d_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef xr_node3d_class_def = {
 };
 
 static JSValue xr_node3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	XRNode3D *xr_node3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, XRNode3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRNode3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	xr_node3d_class = memnew(XRNode3D);
+	XRNode3D *xr_node3d_class = memnew(XRNode3D);
 	if (!xr_node3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, xr_node3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, xr_node3d_class);	
 	return obj;
 }
 static JSValue xr_node3d_class_set_tracker(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -127,13 +118,13 @@ static int js_xr_node3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(XRNode3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XRNode3D::__class_id, &xr_node3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, XRNode3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, XRNode3D::__class_id, proto);
+
 	define_xr_node3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xr_node3d_class_proto_funcs, _countof(xr_node3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, xr_node3d_class_constructor, "XRNode3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

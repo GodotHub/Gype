@@ -16,7 +16,7 @@ using namespace godot;
 static void sky_class_finalizer(JSRuntime *rt, JSValue val) {
 	Sky *sky = static_cast<Sky *>(JS_GetOpaque(val, Sky::__class_id));
 	if (sky)
-		Sky::free(nullptr, sky);
+		memdelete(sky);
 }
 
 static JSClassDef sky_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef sky_class_def = {
 };
 
 static JSValue sky_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Sky *sky_class;
-	JSValue obj = JS_NewObjectClass(ctx, Sky::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Sky::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	sky_class = memnew(Sky);
+	Sky *sky_class = memnew(Sky);
 	if (!sky_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, sky_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, sky_class);	
 	return obj;
 }
 static JSValue sky_class_set_radiance_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -110,13 +101,13 @@ static int js_sky_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Sky::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Sky::__class_id, &sky_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Sky::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Sky::__class_id, proto);
+
 	define_sky_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, sky_class_proto_funcs, _countof(sky_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, sky_class_constructor, "Sky", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

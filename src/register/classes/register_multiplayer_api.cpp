@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/multiplayer_api.hpp>
-#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/multiplayer_peer.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -17,7 +17,7 @@ using namespace godot;
 static void multiplayer_api_class_finalizer(JSRuntime *rt, JSValue val) {
 	MultiplayerAPI *multiplayer_api = static_cast<MultiplayerAPI *>(JS_GetOpaque(val, MultiplayerAPI::__class_id));
 	if (multiplayer_api)
-		MultiplayerAPI::free(nullptr, multiplayer_api);
+		memdelete(multiplayer_api);
 }
 
 static JSClassDef multiplayer_api_class_def = {
@@ -26,25 +26,16 @@ static JSClassDef multiplayer_api_class_def = {
 };
 
 static JSValue multiplayer_api_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	MultiplayerAPI *multiplayer_api_class;
-	JSValue obj = JS_NewObjectClass(ctx, MultiplayerAPI::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MultiplayerAPI::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	multiplayer_api_class = memnew(MultiplayerAPI);
+	MultiplayerAPI *multiplayer_api_class = memnew(MultiplayerAPI);
 	if (!multiplayer_api_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, multiplayer_api_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, multiplayer_api_class);	
 	return obj;
 }
 static JSValue multiplayer_api_class_has_multiplayer_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -128,16 +119,16 @@ static int js_multiplayer_api_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(MultiplayerAPI::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), MultiplayerAPI::__class_id, &multiplayer_api_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, MultiplayerAPI::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, MultiplayerAPI::__class_id, proto);
+
 	define_multiplayer_api_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, multiplayer_api_class_proto_funcs, _countof(multiplayer_api_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, multiplayer_api_class_constructor, "MultiplayerAPI", 0, JS_CFUNC_constructor, 0);
-	JS_SetConstructor(ctx, ctor, proto);
 	JS_SetPropertyFunctionList(ctx, ctor, multiplayer_api_class_static_funcs, _countof(multiplayer_api_class_static_funcs));
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "MultiplayerAPI", ctor);
 

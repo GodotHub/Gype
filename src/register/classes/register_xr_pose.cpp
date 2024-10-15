@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/xr_pose.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void xr_pose_class_finalizer(JSRuntime *rt, JSValue val) {
 	XRPose *xr_pose = static_cast<XRPose *>(JS_GetOpaque(val, XRPose::__class_id));
 	if (xr_pose)
-		XRPose::free(nullptr, xr_pose);
+		memdelete(xr_pose);
 }
 
 static JSClassDef xr_pose_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef xr_pose_class_def = {
 };
 
 static JSValue xr_pose_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	XRPose *xr_pose_class;
-	JSValue obj = JS_NewObjectClass(ctx, XRPose::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRPose::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	xr_pose_class = memnew(XRPose);
+	XRPose *xr_pose_class = memnew(XRPose);
 	if (!xr_pose_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, xr_pose_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, xr_pose_class);	
 	return obj;
 }
 static JSValue xr_pose_class_set_has_tracking_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -164,13 +155,13 @@ static int js_xr_pose_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(XRPose::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XRPose::__class_id, &xr_pose_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, XRPose::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, XRPose::__class_id, proto);
+
 	define_xr_pose_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xr_pose_class_proto_funcs, _countof(xr_pose_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, xr_pose_class_constructor, "XRPose", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

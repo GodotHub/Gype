@@ -15,7 +15,7 @@ using namespace godot;
 static void compressed_texture_layered_class_finalizer(JSRuntime *rt, JSValue val) {
 	CompressedTextureLayered *compressed_texture_layered = static_cast<CompressedTextureLayered *>(JS_GetOpaque(val, CompressedTextureLayered::__class_id));
 	if (compressed_texture_layered)
-		CompressedTextureLayered::free(nullptr, compressed_texture_layered);
+		memdelete(compressed_texture_layered);
 }
 
 static JSClassDef compressed_texture_layered_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef compressed_texture_layered_class_def = {
 };
 
 static JSValue compressed_texture_layered_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	CompressedTextureLayered *compressed_texture_layered_class;
-	JSValue obj = JS_NewObjectClass(ctx, CompressedTextureLayered::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CompressedTextureLayered::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	compressed_texture_layered_class = memnew(CompressedTextureLayered);
+	CompressedTextureLayered *compressed_texture_layered_class = memnew(CompressedTextureLayered);
 	if (!compressed_texture_layered_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, compressed_texture_layered_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, compressed_texture_layered_class);	
 	return obj;
 }
 static JSValue compressed_texture_layered_class_load(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -74,13 +65,13 @@ static int js_compressed_texture_layered_class_init(JSContext *ctx, JSModuleDef 
 	class_id_list.insert(CompressedTextureLayered::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CompressedTextureLayered::__class_id, &compressed_texture_layered_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, CompressedTextureLayered::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, TextureLayered::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, CompressedTextureLayered::__class_id, proto);
+
 	define_compressed_texture_layered_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, compressed_texture_layered_class_proto_funcs, _countof(compressed_texture_layered_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, compressed_texture_layered_class_constructor, "CompressedTextureLayered", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

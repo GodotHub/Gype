@@ -41,6 +41,7 @@
 
 #include <godot_cpp/godot.hpp>
 
+#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
 
 namespace godot {
@@ -489,8 +490,10 @@ public:                                                                         
 	}                                                                                                                                                                                  \
 	static void _gde_binding_free_callback(void *p_token, void *p_instance, void *p_binding) {                                                                                         \
 		/* Explicitly call the deconstructor to ensure proper lifecycle for non-trivial members */                                                                                     \
-		reinterpret_cast<m_class *>(p_binding)->~m_class();                                                                                                                            \
-		Memory::free_static(reinterpret_cast<m_class *>(p_binding));                                                                                                                   \
+		m_class *binding = reinterpret_cast<m_class *>(p_binding);                                                                                                                     \
+		binding->~m_class();                                                                                                                                                           \
+		Memory::free_static(binding);                                                                                                                                                  \
+		JS_FreeValue(binding->ctx, binding->js_instance);                                                                                                                              \
 	}                                                                                                                                                                                  \
 	static GDExtensionBool _gde_binding_reference_callback(void *p_token, void *p_instance, GDExtensionBool p_reference) {                                                             \
 		return true;                                                                                                                                                                   \

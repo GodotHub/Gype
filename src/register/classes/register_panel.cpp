@@ -15,7 +15,7 @@ using namespace godot;
 static void panel_class_finalizer(JSRuntime *rt, JSValue val) {
 	Panel *panel = static_cast<Panel *>(JS_GetOpaque(val, Panel::__class_id));
 	if (panel)
-		Panel::free(nullptr, panel);
+		memdelete(panel);
 }
 
 static JSClassDef panel_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef panel_class_def = {
 };
 
 static JSValue panel_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Panel *panel_class;
-	JSValue obj = JS_NewObjectClass(ctx, Panel::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Panel::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	panel_class = memnew(Panel);
+	Panel *panel_class = memnew(Panel);
 	if (!panel_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, panel_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, panel_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_panel_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Panel::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Panel::__class_id, &panel_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Panel::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Control::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Panel::__class_id, proto);
-	define_panel_property(ctx, proto);
 
+	define_panel_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, panel_class_constructor, "Panel", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

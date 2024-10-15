@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
+#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/classes/http_client.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -17,7 +17,7 @@ using namespace godot;
 static void http_client_class_finalizer(JSRuntime *rt, JSValue val) {
 	HTTPClient *http_client = static_cast<HTTPClient *>(JS_GetOpaque(val, HTTPClient::__class_id));
 	if (http_client)
-		HTTPClient::free(nullptr, http_client);
+		memdelete(http_client);
 }
 
 static JSClassDef http_client_class_def = {
@@ -26,25 +26,16 @@ static JSClassDef http_client_class_def = {
 };
 
 static JSValue http_client_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	HTTPClient *http_client_class;
-	JSValue obj = JS_NewObjectClass(ctx, HTTPClient::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, HTTPClient::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	http_client_class = memnew(HTTPClient);
+	HTTPClient *http_client_class = memnew(HTTPClient);
 	if (!http_client_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, http_client_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, http_client_class);	
 	return obj;
 }
 static JSValue http_client_class_connect_to_host(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -178,13 +169,13 @@ static int js_http_client_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(HTTPClient::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), HTTPClient::__class_id, &http_client_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, HTTPClient::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, HTTPClient::__class_id, proto);
+
 	define_http_client_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, http_client_class_proto_funcs, _countof(http_client_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, http_client_class_constructor, "HTTPClient", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

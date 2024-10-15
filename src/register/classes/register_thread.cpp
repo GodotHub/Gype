@@ -15,7 +15,7 @@ using namespace godot;
 static void thread_class_finalizer(JSRuntime *rt, JSValue val) {
 	Thread *thread = static_cast<Thread *>(JS_GetOpaque(val, Thread::__class_id));
 	if (thread)
-		Thread::free(nullptr, thread);
+		memdelete(thread);
 }
 
 static JSClassDef thread_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef thread_class_def = {
 };
 
 static JSValue thread_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Thread *thread_class;
-	JSValue obj = JS_NewObjectClass(ctx, Thread::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Thread::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	thread_class = memnew(Thread);
+	Thread *thread_class = memnew(Thread);
 	if (!thread_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, thread_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, thread_class);	
 	return obj;
 }
 static JSValue thread_class_start(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -85,16 +76,16 @@ static int js_thread_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Thread::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Thread::__class_id, &thread_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Thread::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Thread::__class_id, proto);
+
 	define_thread_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, thread_class_proto_funcs, _countof(thread_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, thread_class_constructor, "Thread", 0, JS_CFUNC_constructor, 0);
-	JS_SetConstructor(ctx, ctor, proto);
 	JS_SetPropertyFunctionList(ctx, ctor, thread_class_static_funcs, _countof(thread_class_static_funcs));
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "Thread", ctor);
 

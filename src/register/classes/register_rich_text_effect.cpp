@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/rich_text_effect.hpp>
 #include <godot_cpp/classes/char_fx_transform.hpp>
+#include <godot_cpp/classes/rich_text_effect.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void rich_text_effect_class_finalizer(JSRuntime *rt, JSValue val) {
 	RichTextEffect *rich_text_effect = static_cast<RichTextEffect *>(JS_GetOpaque(val, RichTextEffect::__class_id));
 	if (rich_text_effect)
-		RichTextEffect::free(nullptr, rich_text_effect);
+		memdelete(rich_text_effect);
 }
 
 static JSClassDef rich_text_effect_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef rich_text_effect_class_def = {
 };
 
 static JSValue rich_text_effect_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	RichTextEffect *rich_text_effect_class;
-	JSValue obj = JS_NewObjectClass(ctx, RichTextEffect::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RichTextEffect::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	rich_text_effect_class = memnew(RichTextEffect);
+	RichTextEffect *rich_text_effect_class = memnew(RichTextEffect);
 	if (!rich_text_effect_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, rich_text_effect_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, rich_text_effect_class);	
 	return obj;
 }
 
@@ -57,12 +48,12 @@ static int js_rich_text_effect_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(RichTextEffect::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RichTextEffect::__class_id, &rich_text_effect_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, RichTextEffect::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, RichTextEffect::__class_id, proto);
-	define_rich_text_effect_property(ctx, proto);
 
+	define_rich_text_effect_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, rich_text_effect_class_constructor, "RichTextEffect", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -15,7 +15,7 @@ using namespace godot;
 static void open_xr_interface_class_finalizer(JSRuntime *rt, JSValue val) {
 	OpenXRInterface *open_xr_interface = static_cast<OpenXRInterface *>(JS_GetOpaque(val, OpenXRInterface::__class_id));
 	if (open_xr_interface)
-		OpenXRInterface::free(nullptr, open_xr_interface);
+		memdelete(open_xr_interface);
 }
 
 static JSClassDef open_xr_interface_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef open_xr_interface_class_def = {
 };
 
 static JSValue open_xr_interface_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	OpenXRInterface *open_xr_interface_class;
-	JSValue obj = JS_NewObjectClass(ctx, OpenXRInterface::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OpenXRInterface::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	open_xr_interface_class = memnew(OpenXRInterface);
+	OpenXRInterface *open_xr_interface_class = memnew(OpenXRInterface);
 	if (!open_xr_interface_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, open_xr_interface_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, open_xr_interface_class);	
 	return obj;
 }
 static JSValue open_xr_interface_class_get_display_refresh_rate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -230,13 +221,13 @@ static int js_open_xr_interface_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(OpenXRInterface::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), OpenXRInterface::__class_id, &open_xr_interface_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, OpenXRInterface::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, XRInterface::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, OpenXRInterface::__class_id, proto);
+
 	define_open_xr_interface_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, open_xr_interface_class_proto_funcs, _countof(open_xr_interface_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, open_xr_interface_class_constructor, "OpenXRInterface", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

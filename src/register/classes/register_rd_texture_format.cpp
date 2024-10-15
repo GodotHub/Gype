@@ -15,7 +15,7 @@ using namespace godot;
 static void rd_texture_format_class_finalizer(JSRuntime *rt, JSValue val) {
 	RDTextureFormat *rd_texture_format = static_cast<RDTextureFormat *>(JS_GetOpaque(val, RDTextureFormat::__class_id));
 	if (rd_texture_format)
-		RDTextureFormat::free(nullptr, rd_texture_format);
+		memdelete(rd_texture_format);
 }
 
 static JSClassDef rd_texture_format_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef rd_texture_format_class_def = {
 };
 
 static JSValue rd_texture_format_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	RDTextureFormat *rd_texture_format_class;
-	JSValue obj = JS_NewObjectClass(ctx, RDTextureFormat::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDTextureFormat::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	rd_texture_format_class = memnew(RDTextureFormat);
+	RDTextureFormat *rd_texture_format_class = memnew(RDTextureFormat);
 	if (!rd_texture_format_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, rd_texture_format_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, rd_texture_format_class);	
 	return obj;
 }
 static JSValue rd_texture_format_class_set_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -221,13 +212,13 @@ static int js_rd_texture_format_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(RDTextureFormat::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RDTextureFormat::__class_id, &rd_texture_format_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, RDTextureFormat::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, RDTextureFormat::__class_id, proto);
+
 	define_rd_texture_format_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, rd_texture_format_class_proto_funcs, _countof(rd_texture_format_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, rd_texture_format_class_constructor, "RDTextureFormat", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

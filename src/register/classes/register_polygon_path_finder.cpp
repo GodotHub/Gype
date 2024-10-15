@@ -15,7 +15,7 @@ using namespace godot;
 static void polygon_path_finder_class_finalizer(JSRuntime *rt, JSValue val) {
 	PolygonPathFinder *polygon_path_finder = static_cast<PolygonPathFinder *>(JS_GetOpaque(val, PolygonPathFinder::__class_id));
 	if (polygon_path_finder)
-		PolygonPathFinder::free(nullptr, polygon_path_finder);
+		memdelete(polygon_path_finder);
 }
 
 static JSClassDef polygon_path_finder_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef polygon_path_finder_class_def = {
 };
 
 static JSValue polygon_path_finder_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PolygonPathFinder *polygon_path_finder_class;
-	JSValue obj = JS_NewObjectClass(ctx, PolygonPathFinder::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PolygonPathFinder::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	polygon_path_finder_class = memnew(PolygonPathFinder);
+	PolygonPathFinder *polygon_path_finder_class = memnew(PolygonPathFinder);
 	if (!polygon_path_finder_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, polygon_path_finder_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, polygon_path_finder_class);	
 	return obj;
 }
 static JSValue polygon_path_finder_class_setup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -92,13 +83,13 @@ static int js_polygon_path_finder_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(PolygonPathFinder::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PolygonPathFinder::__class_id, &polygon_path_finder_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, PolygonPathFinder::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PolygonPathFinder::__class_id, proto);
+
 	define_polygon_path_finder_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, polygon_path_finder_class_proto_funcs, _countof(polygon_path_finder_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, polygon_path_finder_class_constructor, "PolygonPathFinder", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

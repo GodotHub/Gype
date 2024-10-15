@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/range.hpp>
 #include <godot_cpp/classes/editor_spin_slider.hpp>
+#include <godot_cpp/classes/range.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void editor_spin_slider_class_finalizer(JSRuntime *rt, JSValue val) {
 	EditorSpinSlider *editor_spin_slider = static_cast<EditorSpinSlider *>(JS_GetOpaque(val, EditorSpinSlider::__class_id));
 	if (editor_spin_slider)
-		EditorSpinSlider::free(nullptr, editor_spin_slider);
+		memdelete(editor_spin_slider);
 }
 
 static JSClassDef editor_spin_slider_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef editor_spin_slider_class_def = {
 };
 
 static JSValue editor_spin_slider_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	EditorSpinSlider *editor_spin_slider_class;
-	JSValue obj = JS_NewObjectClass(ctx, EditorSpinSlider::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorSpinSlider::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	editor_spin_slider_class = memnew(EditorSpinSlider);
+	EditorSpinSlider *editor_spin_slider_class = memnew(EditorSpinSlider);
 	if (!editor_spin_slider_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, editor_spin_slider_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, editor_spin_slider_class);	
 	return obj;
 }
 static JSValue editor_spin_slider_class_set_label(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -143,13 +134,13 @@ static int js_editor_spin_slider_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(EditorSpinSlider::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorSpinSlider::__class_id, &editor_spin_slider_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, EditorSpinSlider::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Range::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, EditorSpinSlider::__class_id, proto);
+
 	define_editor_spin_slider_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_spin_slider_class_proto_funcs, _countof(editor_spin_slider_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, editor_spin_slider_class_constructor, "EditorSpinSlider", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -15,7 +15,7 @@ using namespace godot;
 static void offline_multiplayer_peer_class_finalizer(JSRuntime *rt, JSValue val) {
 	OfflineMultiplayerPeer *offline_multiplayer_peer = static_cast<OfflineMultiplayerPeer *>(JS_GetOpaque(val, OfflineMultiplayerPeer::__class_id));
 	if (offline_multiplayer_peer)
-		OfflineMultiplayerPeer::free(nullptr, offline_multiplayer_peer);
+		memdelete(offline_multiplayer_peer);
 }
 
 static JSClassDef offline_multiplayer_peer_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef offline_multiplayer_peer_class_def = {
 };
 
 static JSValue offline_multiplayer_peer_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	OfflineMultiplayerPeer *offline_multiplayer_peer_class;
-	JSValue obj = JS_NewObjectClass(ctx, OfflineMultiplayerPeer::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OfflineMultiplayerPeer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	offline_multiplayer_peer_class = memnew(OfflineMultiplayerPeer);
+	OfflineMultiplayerPeer *offline_multiplayer_peer_class = memnew(OfflineMultiplayerPeer);
 	if (!offline_multiplayer_peer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, offline_multiplayer_peer_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, offline_multiplayer_peer_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_offline_multiplayer_peer_class_init(JSContext *ctx, JSModuleDef *m
 	class_id_list.insert(OfflineMultiplayerPeer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), OfflineMultiplayerPeer::__class_id, &offline_multiplayer_peer_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, OfflineMultiplayerPeer::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, MultiplayerPeer::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, OfflineMultiplayerPeer::__class_id, proto);
-	define_offline_multiplayer_peer_property(ctx, proto);
 
+	define_offline_multiplayer_peer_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, offline_multiplayer_peer_class_constructor, "OfflineMultiplayerPeer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

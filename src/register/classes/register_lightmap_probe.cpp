@@ -15,7 +15,7 @@ using namespace godot;
 static void lightmap_probe_class_finalizer(JSRuntime *rt, JSValue val) {
 	LightmapProbe *lightmap_probe = static_cast<LightmapProbe *>(JS_GetOpaque(val, LightmapProbe::__class_id));
 	if (lightmap_probe)
-		LightmapProbe::free(nullptr, lightmap_probe);
+		memdelete(lightmap_probe);
 }
 
 static JSClassDef lightmap_probe_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef lightmap_probe_class_def = {
 };
 
 static JSValue lightmap_probe_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	LightmapProbe *lightmap_probe_class;
-	JSValue obj = JS_NewObjectClass(ctx, LightmapProbe::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, LightmapProbe::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	lightmap_probe_class = memnew(LightmapProbe);
+	LightmapProbe *lightmap_probe_class = memnew(LightmapProbe);
 	if (!lightmap_probe_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, lightmap_probe_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, lightmap_probe_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_lightmap_probe_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(LightmapProbe::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), LightmapProbe::__class_id, &lightmap_probe_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, LightmapProbe::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, LightmapProbe::__class_id, proto);
-	define_lightmap_probe_property(ctx, proto);
 
+	define_lightmap_probe_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, lightmap_probe_class_constructor, "LightmapProbe", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

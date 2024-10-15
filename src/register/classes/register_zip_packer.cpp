@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/zip_packer.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void zip_packer_class_finalizer(JSRuntime *rt, JSValue val) {
 	ZIPPacker *zip_packer = static_cast<ZIPPacker *>(JS_GetOpaque(val, ZIPPacker::__class_id));
 	if (zip_packer)
-		ZIPPacker::free(nullptr, zip_packer);
+		memdelete(zip_packer);
 }
 
 static JSClassDef zip_packer_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef zip_packer_class_def = {
 };
 
 static JSValue zip_packer_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	ZIPPacker *zip_packer_class;
-	JSValue obj = JS_NewObjectClass(ctx, ZIPPacker::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ZIPPacker::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	zip_packer_class = memnew(ZIPPacker);
+	ZIPPacker *zip_packer_class = memnew(ZIPPacker);
 	if (!zip_packer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, zip_packer_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, zip_packer_class);	
 	return obj;
 }
 static JSValue zip_packer_class_open(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -78,13 +69,13 @@ static int js_zip_packer_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(ZIPPacker::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ZIPPacker::__class_id, &zip_packer_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, ZIPPacker::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ZIPPacker::__class_id, proto);
+
 	define_zip_packer_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, zip_packer_class_proto_funcs, _countof(zip_packer_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, zip_packer_class_constructor, "ZIPPacker", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -15,7 +15,7 @@ using namespace godot;
 static void x509_certificate_class_finalizer(JSRuntime *rt, JSValue val) {
 	X509Certificate *x509_certificate = static_cast<X509Certificate *>(JS_GetOpaque(val, X509Certificate::__class_id));
 	if (x509_certificate)
-		X509Certificate::free(nullptr, x509_certificate);
+		memdelete(x509_certificate);
 }
 
 static JSClassDef x509_certificate_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef x509_certificate_class_def = {
 };
 
 static JSValue x509_certificate_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	X509Certificate *x509_certificate_class;
-	JSValue obj = JS_NewObjectClass(ctx, X509Certificate::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, X509Certificate::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	x509_certificate_class = memnew(X509Certificate);
+	X509Certificate *x509_certificate_class = memnew(X509Certificate);
 	if (!x509_certificate_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, x509_certificate_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, x509_certificate_class);	
 	return obj;
 }
 static JSValue x509_certificate_class_save(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -74,13 +65,13 @@ static int js_x509_certificate_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(X509Certificate::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), X509Certificate::__class_id, &x509_certificate_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, X509Certificate::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, X509Certificate::__class_id, proto);
+
 	define_x509_certificate_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, x509_certificate_class_proto_funcs, _countof(x509_certificate_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, x509_certificate_class_constructor, "X509Certificate", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

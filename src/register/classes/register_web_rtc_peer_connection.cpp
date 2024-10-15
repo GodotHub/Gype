@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/web_rtc_peer_connection.hpp>
 #include <godot_cpp/classes/web_rtc_data_channel.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void web_rtc_peer_connection_class_finalizer(JSRuntime *rt, JSValue val) {
 	WebRTCPeerConnection *web_rtc_peer_connection = static_cast<WebRTCPeerConnection *>(JS_GetOpaque(val, WebRTCPeerConnection::__class_id));
 	if (web_rtc_peer_connection)
-		WebRTCPeerConnection::free(nullptr, web_rtc_peer_connection);
+		memdelete(web_rtc_peer_connection);
 }
 
 static JSClassDef web_rtc_peer_connection_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef web_rtc_peer_connection_class_def = {
 };
 
 static JSValue web_rtc_peer_connection_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	WebRTCPeerConnection *web_rtc_peer_connection_class;
-	JSValue obj = JS_NewObjectClass(ctx, WebRTCPeerConnection::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, WebRTCPeerConnection::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	web_rtc_peer_connection_class = memnew(WebRTCPeerConnection);
+	WebRTCPeerConnection *web_rtc_peer_connection_class = memnew(WebRTCPeerConnection);
 	if (!web_rtc_peer_connection_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, web_rtc_peer_connection_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, web_rtc_peer_connection_class);	
 	return obj;
 }
 static JSValue web_rtc_peer_connection_class_initialize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -111,16 +102,16 @@ static int js_web_rtc_peer_connection_class_init(JSContext *ctx, JSModuleDef *m)
 	class_id_list.insert(WebRTCPeerConnection::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), WebRTCPeerConnection::__class_id, &web_rtc_peer_connection_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, WebRTCPeerConnection::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, WebRTCPeerConnection::__class_id, proto);
+
 	define_web_rtc_peer_connection_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, web_rtc_peer_connection_class_proto_funcs, _countof(web_rtc_peer_connection_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, web_rtc_peer_connection_class_constructor, "WebRTCPeerConnection", 0, JS_CFUNC_constructor, 0);
-	JS_SetConstructor(ctx, ctor, proto);
 	JS_SetPropertyFunctionList(ctx, ctor, web_rtc_peer_connection_class_static_funcs, _countof(web_rtc_peer_connection_class_static_funcs));
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "WebRTCPeerConnection", ctor);
 

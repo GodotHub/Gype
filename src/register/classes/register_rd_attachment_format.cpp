@@ -15,7 +15,7 @@ using namespace godot;
 static void rd_attachment_format_class_finalizer(JSRuntime *rt, JSValue val) {
 	RDAttachmentFormat *rd_attachment_format = static_cast<RDAttachmentFormat *>(JS_GetOpaque(val, RDAttachmentFormat::__class_id));
 	if (rd_attachment_format)
-		RDAttachmentFormat::free(nullptr, rd_attachment_format);
+		memdelete(rd_attachment_format);
 }
 
 static JSClassDef rd_attachment_format_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef rd_attachment_format_class_def = {
 };
 
 static JSValue rd_attachment_format_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	RDAttachmentFormat *rd_attachment_format_class;
-	JSValue obj = JS_NewObjectClass(ctx, RDAttachmentFormat::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDAttachmentFormat::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	rd_attachment_format_class = memnew(RDAttachmentFormat);
+	RDAttachmentFormat *rd_attachment_format_class = memnew(RDAttachmentFormat);
 	if (!rd_attachment_format_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, rd_attachment_format_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, rd_attachment_format_class);	
 	return obj;
 }
 static JSValue rd_attachment_format_class_set_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -109,13 +100,13 @@ static int js_rd_attachment_format_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(RDAttachmentFormat::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RDAttachmentFormat::__class_id, &rd_attachment_format_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, RDAttachmentFormat::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, RDAttachmentFormat::__class_id, proto);
+
 	define_rd_attachment_format_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, rd_attachment_format_class_proto_funcs, _countof(rd_attachment_format_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, rd_attachment_format_class_constructor, "RDAttachmentFormat", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

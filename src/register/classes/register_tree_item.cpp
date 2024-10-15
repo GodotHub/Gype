@@ -5,12 +5,12 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/tree.hpp>
+#include <godot_cpp/classes/tree_item.hpp>
 #include <godot_cpp/classes/tree_item.hpp>
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/tree_item.hpp>
-#include <godot_cpp/classes/tree.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -19,7 +19,7 @@ using namespace godot;
 static void tree_item_class_finalizer(JSRuntime *rt, JSValue val) {
 	TreeItem *tree_item = static_cast<TreeItem *>(JS_GetOpaque(val, TreeItem::__class_id));
 	if (tree_item)
-		TreeItem::free(nullptr, tree_item);
+		memdelete(tree_item);
 }
 
 static JSClassDef tree_item_class_def = {
@@ -28,25 +28,16 @@ static JSClassDef tree_item_class_def = {
 };
 
 static JSValue tree_item_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	TreeItem *tree_item_class;
-	JSValue obj = JS_NewObjectClass(ctx, TreeItem::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TreeItem::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	tree_item_class = memnew(TreeItem);
+	TreeItem *tree_item_class = memnew(TreeItem);
 	if (!tree_item_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, tree_item_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, tree_item_class);	
 	return obj;
 }
 static JSValue tree_item_class_set_cell_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -591,13 +582,13 @@ static int js_tree_item_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(TreeItem::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TreeItem::__class_id, &tree_item_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, TreeItem::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Object::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, TreeItem::__class_id, proto);
+
 	define_tree_item_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, tree_item_class_proto_funcs, _countof(tree_item_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, tree_item_class_constructor, "TreeItem", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

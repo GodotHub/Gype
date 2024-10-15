@@ -15,7 +15,7 @@ using namespace godot;
 static void animation_class_finalizer(JSRuntime *rt, JSValue val) {
 	Animation *animation = static_cast<Animation *>(JS_GetOpaque(val, Animation::__class_id));
 	if (animation)
-		Animation::free(nullptr, animation);
+		memdelete(animation);
 }
 
 static JSClassDef animation_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef animation_class_def = {
 };
 
 static JSValue animation_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Animation *animation_class;
-	JSValue obj = JS_NewObjectClass(ctx, Animation::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Animation::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	animation_class = memnew(Animation);
+	Animation *animation_class = memnew(Animation);
 	if (!animation_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, animation_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, animation_class);	
 	return obj;
 }
 static JSValue animation_class_add_track(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -416,13 +407,13 @@ static int js_animation_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Animation::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Animation::__class_id, &animation_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Animation::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Animation::__class_id, proto);
+
 	define_animation_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, animation_class_proto_funcs, _countof(animation_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, animation_class_constructor, "Animation", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

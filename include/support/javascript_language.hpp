@@ -85,6 +85,7 @@ public:
 
 protected:
 	static void _bind_methods() {}
+	GDExtensionBool is_placeholder();
 };
 } // namespace godot
 

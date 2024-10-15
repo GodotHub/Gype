@@ -16,7 +16,7 @@ using namespace godot;
 static void visual_shader_node_cubemap_class_finalizer(JSRuntime *rt, JSValue val) {
 	VisualShaderNodeCubemap *visual_shader_node_cubemap = static_cast<VisualShaderNodeCubemap *>(JS_GetOpaque(val, VisualShaderNodeCubemap::__class_id));
 	if (visual_shader_node_cubemap)
-		VisualShaderNodeCubemap::free(nullptr, visual_shader_node_cubemap);
+		memdelete(visual_shader_node_cubemap);
 }
 
 static JSClassDef visual_shader_node_cubemap_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef visual_shader_node_cubemap_class_def = {
 };
 
 static JSValue visual_shader_node_cubemap_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	VisualShaderNodeCubemap *visual_shader_node_cubemap_class;
-	JSValue obj = JS_NewObjectClass(ctx, VisualShaderNodeCubemap::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeCubemap::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	visual_shader_node_cubemap_class = memnew(VisualShaderNodeCubemap);
+	VisualShaderNodeCubemap *visual_shader_node_cubemap_class = memnew(VisualShaderNodeCubemap);
 	if (!visual_shader_node_cubemap_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, visual_shader_node_cubemap_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, visual_shader_node_cubemap_class);	
 	return obj;
 }
 static JSValue visual_shader_node_cubemap_class_set_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -110,13 +101,13 @@ static int js_visual_shader_node_cubemap_class_init(JSContext *ctx, JSModuleDef 
 	class_id_list.insert(VisualShaderNodeCubemap::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeCubemap::__class_id, &visual_shader_node_cubemap_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, VisualShaderNodeCubemap::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, VisualShaderNode::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, VisualShaderNodeCubemap::__class_id, proto);
+
 	define_visual_shader_node_cubemap_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_cubemap_class_proto_funcs, _countof(visual_shader_node_cubemap_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_cubemap_class_constructor, "VisualShaderNodeCubemap", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

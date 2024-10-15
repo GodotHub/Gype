@@ -1,10 +1,11 @@
 
-#include "quickjs/quickjs.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/variant/rid.hpp>
+
 
 using namespace godot;
 
@@ -33,12 +34,21 @@ static JSValue rid_class_constructor(JSContext *ctx, JSValueConst new_target, in
 	JS_SetOpaque(obj, rid_class);
 	return obj;
 }
+static JSValue rid_class_is_valid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&RID::is_valid, ctx, this_val, argc, argv);
+};
+static JSValue rid_class_get_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&RID::get_id, ctx, this_val, argc, argv);
+};
+static const JSCFunctionListEntry rid_class_proto_funcs[] = {
+	JS_CFUNC_DEF("is_valid", 0, &rid_class_is_valid),
+	JS_CFUNC_DEF("get_id", 0, &rid_class_get_id),
+};
 
 void define_rid_property(JSContext *ctx, JSValue obj) {
 }
 
-static int js_rid_class_init(JSContext *ctx, JSModuleDef *m) {
-	
+static int js_rid_class_init(JSContext *ctx) {
 	JS_NewClassID(&RID::__class_id);
 	classes["RID"] = RID::__class_id;
 	class_id_list.insert(RID::__class_id);
@@ -46,26 +56,21 @@ static int js_rid_class_init(JSContext *ctx, JSModuleDef *m) {
 
 	JSValue proto = JS_NewObject(ctx);
 	JS_SetClassProto(ctx, RID::__class_id, proto);
+
 	define_rid_property(ctx, proto);
+	JS_SetPropertyFunctionList(ctx, proto, rid_class_proto_funcs, _countof(rid_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, rid_class_constructor, "RID", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 
-	JS_SetModuleExport(ctx, m, "RID", ctor);
+	JSValue global = JS_GetGlobalObject(ctx);
+	JS_SetPropertyStr(ctx, global, "RID", ctor);
 
 	return 0;
 }
 
-JSModuleDef *_js_init_rid_module(JSContext *ctx, const char *module_name) {
-	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_rid_class_init);
-	if (!m)
-		return NULL;
-	JS_AddModuleExport(ctx, m, "RID");
-	return m;
-}
-
-JSModuleDef *js_init_rid_module(JSContext *ctx) {
-	return _js_init_rid_module(ctx, "godot/classes/rid");
+void js_init_rid_module(JSContext *ctx) {
+	js_rid_class_init(ctx);
 }
 
 void register_rid() {

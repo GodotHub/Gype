@@ -5,12 +5,12 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_node3d_gizmo.hpp>
 #include <godot_cpp/classes/standard_material3d.hpp>
-#include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/classes/editor_node3d_gizmo_plugin.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/editor_node3d_gizmo.hpp>
+#include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -20,7 +20,7 @@ using namespace godot;
 static void editor_node3d_gizmo_plugin_class_finalizer(JSRuntime *rt, JSValue val) {
 	EditorNode3DGizmoPlugin *editor_node3d_gizmo_plugin = static_cast<EditorNode3DGizmoPlugin *>(JS_GetOpaque(val, EditorNode3DGizmoPlugin::__class_id));
 	if (editor_node3d_gizmo_plugin)
-		EditorNode3DGizmoPlugin::free(nullptr, editor_node3d_gizmo_plugin);
+		memdelete(editor_node3d_gizmo_plugin);
 }
 
 static JSClassDef editor_node3d_gizmo_plugin_class_def = {
@@ -29,25 +29,16 @@ static JSClassDef editor_node3d_gizmo_plugin_class_def = {
 };
 
 static JSValue editor_node3d_gizmo_plugin_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	EditorNode3DGizmoPlugin *editor_node3d_gizmo_plugin_class;
-	JSValue obj = JS_NewObjectClass(ctx, EditorNode3DGizmoPlugin::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorNode3DGizmoPlugin::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	editor_node3d_gizmo_plugin_class = memnew(EditorNode3DGizmoPlugin);
+	EditorNode3DGizmoPlugin *editor_node3d_gizmo_plugin_class = memnew(EditorNode3DGizmoPlugin);
 	if (!editor_node3d_gizmo_plugin_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, editor_node3d_gizmo_plugin_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, editor_node3d_gizmo_plugin_class);	
 	return obj;
 }
 static JSValue editor_node3d_gizmo_plugin_class_create_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -87,13 +78,13 @@ static int js_editor_node3d_gizmo_plugin_class_init(JSContext *ctx, JSModuleDef 
 	class_id_list.insert(EditorNode3DGizmoPlugin::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorNode3DGizmoPlugin::__class_id, &editor_node3d_gizmo_plugin_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, EditorNode3DGizmoPlugin::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, EditorNode3DGizmoPlugin::__class_id, proto);
+
 	define_editor_node3d_gizmo_plugin_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_node3d_gizmo_plugin_class_proto_funcs, _countof(editor_node3d_gizmo_plugin_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, editor_node3d_gizmo_plugin_class_constructor, "EditorNode3DGizmoPlugin", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

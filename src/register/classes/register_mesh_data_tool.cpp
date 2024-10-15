@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/array_mesh.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/mesh_data_tool.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/array_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -17,7 +17,7 @@ using namespace godot;
 static void mesh_data_tool_class_finalizer(JSRuntime *rt, JSValue val) {
 	MeshDataTool *mesh_data_tool = static_cast<MeshDataTool *>(JS_GetOpaque(val, MeshDataTool::__class_id));
 	if (mesh_data_tool)
-		MeshDataTool::free(nullptr, mesh_data_tool);
+		memdelete(mesh_data_tool);
 }
 
 static JSClassDef mesh_data_tool_class_def = {
@@ -26,25 +26,16 @@ static JSClassDef mesh_data_tool_class_def = {
 };
 
 static JSValue mesh_data_tool_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	MeshDataTool *mesh_data_tool_class;
-	JSValue obj = JS_NewObjectClass(ctx, MeshDataTool::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MeshDataTool::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	mesh_data_tool_class = memnew(MeshDataTool);
+	MeshDataTool *mesh_data_tool_class = memnew(MeshDataTool);
 	if (!mesh_data_tool_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, mesh_data_tool_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, mesh_data_tool_class);	
 	return obj;
 }
 static JSValue mesh_data_tool_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -225,13 +216,13 @@ static int js_mesh_data_tool_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(MeshDataTool::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), MeshDataTool::__class_id, &mesh_data_tool_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, MeshDataTool::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, MeshDataTool::__class_id, proto);
+
 	define_mesh_data_tool_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, mesh_data_tool_class_proto_funcs, _countof(mesh_data_tool_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, mesh_data_tool_class_constructor, "MeshDataTool", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

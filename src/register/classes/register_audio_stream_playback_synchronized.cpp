@@ -15,7 +15,7 @@ using namespace godot;
 static void audio_stream_playback_synchronized_class_finalizer(JSRuntime *rt, JSValue val) {
 	AudioStreamPlaybackSynchronized *audio_stream_playback_synchronized = static_cast<AudioStreamPlaybackSynchronized *>(JS_GetOpaque(val, AudioStreamPlaybackSynchronized::__class_id));
 	if (audio_stream_playback_synchronized)
-		AudioStreamPlaybackSynchronized::free(nullptr, audio_stream_playback_synchronized);
+		memdelete(audio_stream_playback_synchronized);
 }
 
 static JSClassDef audio_stream_playback_synchronized_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef audio_stream_playback_synchronized_class_def = {
 };
 
 static JSValue audio_stream_playback_synchronized_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	AudioStreamPlaybackSynchronized *audio_stream_playback_synchronized_class;
-	JSValue obj = JS_NewObjectClass(ctx, AudioStreamPlaybackSynchronized::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioStreamPlaybackSynchronized::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	audio_stream_playback_synchronized_class = memnew(AudioStreamPlaybackSynchronized);
+	AudioStreamPlaybackSynchronized *audio_stream_playback_synchronized_class = memnew(AudioStreamPlaybackSynchronized);
 	if (!audio_stream_playback_synchronized_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, audio_stream_playback_synchronized_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, audio_stream_playback_synchronized_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_audio_stream_playback_synchronized_class_init(JSContext *ctx, JSMo
 	class_id_list.insert(AudioStreamPlaybackSynchronized::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioStreamPlaybackSynchronized::__class_id, &audio_stream_playback_synchronized_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, AudioStreamPlaybackSynchronized::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, AudioStreamPlayback::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AudioStreamPlaybackSynchronized::__class_id, proto);
-	define_audio_stream_playback_synchronized_property(ctx, proto);
 
+	define_audio_stream_playback_synchronized_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, audio_stream_playback_synchronized_class_constructor, "AudioStreamPlaybackSynchronized", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

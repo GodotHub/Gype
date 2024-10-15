@@ -5,13 +5,13 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/rich_text_effect.hpp>
-#include <godot_cpp/classes/rich_text_label.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/v_scroll_bar.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/popup_menu.hpp>
+#include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/rich_text_label.hpp>
+#include <godot_cpp/classes/rich_text_effect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -20,7 +20,7 @@ using namespace godot;
 static void rich_text_label_class_finalizer(JSRuntime *rt, JSValue val) {
 	RichTextLabel *rich_text_label = static_cast<RichTextLabel *>(JS_GetOpaque(val, RichTextLabel::__class_id));
 	if (rich_text_label)
-		RichTextLabel::free(nullptr, rich_text_label);
+		memdelete(rich_text_label);
 }
 
 static JSClassDef rich_text_label_class_def = {
@@ -29,25 +29,16 @@ static JSClassDef rich_text_label_class_def = {
 };
 
 static JSValue rich_text_label_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	RichTextLabel *rich_text_label_class;
-	JSValue obj = JS_NewObjectClass(ctx, RichTextLabel::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RichTextLabel::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	rich_text_label_class = memnew(RichTextLabel);
+	RichTextLabel *rich_text_label_class = memnew(RichTextLabel);
 	if (!rich_text_label_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, rich_text_label_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, rich_text_label_class);	
 	return obj;
 }
 static JSValue rich_text_label_class_get_parsed_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -794,13 +785,13 @@ static int js_rich_text_label_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(RichTextLabel::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RichTextLabel::__class_id, &rich_text_label_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, RichTextLabel::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Control::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, RichTextLabel::__class_id, proto);
+
 	define_rich_text_label_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, rich_text_label_class_proto_funcs, _countof(rich_text_label_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, rich_text_label_class_constructor, "RichTextLabel", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -15,7 +15,7 @@ using namespace godot;
 static void physical_bone_simulator3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	PhysicalBoneSimulator3D *physical_bone_simulator3d = static_cast<PhysicalBoneSimulator3D *>(JS_GetOpaque(val, PhysicalBoneSimulator3D::__class_id));
 	if (physical_bone_simulator3d)
-		PhysicalBoneSimulator3D::free(nullptr, physical_bone_simulator3d);
+		memdelete(physical_bone_simulator3d);
 }
 
 static JSClassDef physical_bone_simulator3d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef physical_bone_simulator3d_class_def = {
 };
 
 static JSValue physical_bone_simulator3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PhysicalBoneSimulator3D *physical_bone_simulator3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, PhysicalBoneSimulator3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicalBoneSimulator3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	physical_bone_simulator3d_class = memnew(PhysicalBoneSimulator3D);
+	PhysicalBoneSimulator3D *physical_bone_simulator3d_class = memnew(PhysicalBoneSimulator3D);
 	if (!physical_bone_simulator3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, physical_bone_simulator3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, physical_bone_simulator3d_class);	
 	return obj;
 }
 static JSValue physical_bone_simulator3d_class_is_simulating_physics(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -82,13 +73,13 @@ static int js_physical_bone_simulator3d_class_init(JSContext *ctx, JSModuleDef *
 	class_id_list.insert(PhysicalBoneSimulator3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PhysicalBoneSimulator3D::__class_id, &physical_bone_simulator3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, PhysicalBoneSimulator3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, SkeletonModifier3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PhysicalBoneSimulator3D::__class_id, proto);
+
 	define_physical_bone_simulator3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, physical_bone_simulator3d_class_proto_funcs, _countof(physical_bone_simulator3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, physical_bone_simulator3d_class_constructor, "PhysicalBoneSimulator3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

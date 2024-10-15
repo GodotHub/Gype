@@ -5,14 +5,14 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/interval_tweener.hpp>
-#include <godot_cpp/classes/property_tweener.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/callback_tweener.hpp>
+#include <godot_cpp/classes/method_tweener.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/tween.hpp>
+#include <godot_cpp/classes/interval_tweener.hpp>
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/method_tweener.hpp>
-#include <godot_cpp/classes/callback_tweener.hpp>
+#include <godot_cpp/classes/property_tweener.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -21,7 +21,7 @@ using namespace godot;
 static void tween_class_finalizer(JSRuntime *rt, JSValue val) {
 	Tween *tween = static_cast<Tween *>(JS_GetOpaque(val, Tween::__class_id));
 	if (tween)
-		Tween::free(nullptr, tween);
+		memdelete(tween);
 }
 
 static JSClassDef tween_class_def = {
@@ -30,25 +30,16 @@ static JSClassDef tween_class_def = {
 };
 
 static JSValue tween_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Tween *tween_class;
-	JSValue obj = JS_NewObjectClass(ctx, Tween::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Tween::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	tween_class = memnew(Tween);
+	Tween *tween_class = memnew(Tween);
 	if (!tween_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, tween_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, tween_class);	
 	return obj;
 }
 static JSValue tween_class_tween_property(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -166,16 +157,16 @@ static int js_tween_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Tween::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Tween::__class_id, &tween_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Tween::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Tween::__class_id, proto);
+
 	define_tween_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, tween_class_proto_funcs, _countof(tween_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, tween_class_constructor, "Tween", 0, JS_CFUNC_constructor, 0);
-	JS_SetConstructor(ctx, ctor, proto);
 	JS_SetPropertyFunctionList(ctx, ctor, tween_class_static_funcs, _countof(tween_class_static_funcs));
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "Tween", ctor);
 

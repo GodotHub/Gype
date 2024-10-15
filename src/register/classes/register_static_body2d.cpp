@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/physics_material.hpp>
-#include <godot_cpp/classes/physics_body2d.hpp>
 #include <godot_cpp/classes/static_body2d.hpp>
+#include <godot_cpp/classes/physics_body2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void static_body2d_class_finalizer(JSRuntime *rt, JSValue val) {
 	StaticBody2D *static_body2d = static_cast<StaticBody2D *>(JS_GetOpaque(val, StaticBody2D::__class_id));
 	if (static_body2d)
-		StaticBody2D::free(nullptr, static_body2d);
+		memdelete(static_body2d);
 }
 
 static JSClassDef static_body2d_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef static_body2d_class_def = {
 };
 
 static JSValue static_body2d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	StaticBody2D *static_body2d_class;
-	JSValue obj = JS_NewObjectClass(ctx, StaticBody2D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StaticBody2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	static_body2d_class = memnew(StaticBody2D);
+	StaticBody2D *static_body2d_class = memnew(StaticBody2D);
 	if (!static_body2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, static_body2d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, static_body2d_class);	
 	return obj;
 }
 static JSValue static_body2d_class_set_constant_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -110,13 +101,13 @@ static int js_static_body2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(StaticBody2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), StaticBody2D::__class_id, &static_body2d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, StaticBody2D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, PhysicsBody2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, StaticBody2D::__class_id, proto);
+
 	define_static_body2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, static_body2d_class_proto_funcs, _countof(static_body2d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, static_body2d_class_constructor, "StaticBody2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

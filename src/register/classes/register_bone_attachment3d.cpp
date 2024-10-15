@@ -15,7 +15,7 @@ using namespace godot;
 static void bone_attachment3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	BoneAttachment3D *bone_attachment3d = static_cast<BoneAttachment3D *>(JS_GetOpaque(val, BoneAttachment3D::__class_id));
 	if (bone_attachment3d)
-		BoneAttachment3D::free(nullptr, bone_attachment3d);
+		memdelete(bone_attachment3d);
 }
 
 static JSClassDef bone_attachment3d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef bone_attachment3d_class_def = {
 };
 
 static JSValue bone_attachment3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	BoneAttachment3D *bone_attachment3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, BoneAttachment3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, BoneAttachment3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	bone_attachment3d_class = memnew(BoneAttachment3D);
+	BoneAttachment3D *bone_attachment3d_class = memnew(BoneAttachment3D);
 	if (!bone_attachment3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, bone_attachment3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, bone_attachment3d_class);	
 	return obj;
 }
 static JSValue bone_attachment3d_class_set_bone_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -132,13 +123,13 @@ static int js_bone_attachment3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(BoneAttachment3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), BoneAttachment3D::__class_id, &bone_attachment3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, BoneAttachment3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, BoneAttachment3D::__class_id, proto);
+
 	define_bone_attachment3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, bone_attachment3d_class_proto_funcs, _countof(bone_attachment3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, bone_attachment3d_class_constructor, "BoneAttachment3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

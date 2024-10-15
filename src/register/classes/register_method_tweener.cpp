@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/tweener.hpp>
 #include <godot_cpp/classes/method_tweener.hpp>
+#include <godot_cpp/classes/tweener.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void method_tweener_class_finalizer(JSRuntime *rt, JSValue val) {
 	MethodTweener *method_tweener = static_cast<MethodTweener *>(JS_GetOpaque(val, MethodTweener::__class_id));
 	if (method_tweener)
-		MethodTweener::free(nullptr, method_tweener);
+		memdelete(method_tweener);
 }
 
 static JSClassDef method_tweener_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef method_tweener_class_def = {
 };
 
 static JSValue method_tweener_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	MethodTweener *method_tweener_class;
-	JSValue obj = JS_NewObjectClass(ctx, MethodTweener::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MethodTweener::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	method_tweener_class = memnew(MethodTweener);
+	MethodTweener *method_tweener_class = memnew(MethodTweener);
 	if (!method_tweener_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, method_tweener_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, method_tweener_class);	
 	return obj;
 }
 static JSValue method_tweener_class_set_delay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,13 +61,13 @@ static int js_method_tweener_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(MethodTweener::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), MethodTweener::__class_id, &method_tweener_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, MethodTweener::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Tweener::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, MethodTweener::__class_id, proto);
+
 	define_method_tweener_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, method_tweener_class_proto_funcs, _countof(method_tweener_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, method_tweener_class_constructor, "MethodTweener", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

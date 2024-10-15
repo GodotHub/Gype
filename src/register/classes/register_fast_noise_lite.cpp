@@ -15,7 +15,7 @@ using namespace godot;
 static void fast_noise_lite_class_finalizer(JSRuntime *rt, JSValue val) {
 	FastNoiseLite *fast_noise_lite = static_cast<FastNoiseLite *>(JS_GetOpaque(val, FastNoiseLite::__class_id));
 	if (fast_noise_lite)
-		FastNoiseLite::free(nullptr, fast_noise_lite);
+		memdelete(fast_noise_lite);
 }
 
 static JSClassDef fast_noise_lite_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef fast_noise_lite_class_def = {
 };
 
 static JSValue fast_noise_lite_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	FastNoiseLite *fast_noise_lite_class;
-	JSValue obj = JS_NewObjectClass(ctx, FastNoiseLite::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, FastNoiseLite::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	fast_noise_lite_class = memnew(FastNoiseLite);
+	FastNoiseLite *fast_noise_lite_class = memnew(FastNoiseLite);
 	if (!fast_noise_lite_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, fast_noise_lite_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, fast_noise_lite_class);	
 	return obj;
 }
 static JSValue fast_noise_lite_class_set_noise_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -415,13 +406,13 @@ static int js_fast_noise_lite_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(FastNoiseLite::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), FastNoiseLite::__class_id, &fast_noise_lite_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, FastNoiseLite::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Noise::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, FastNoiseLite::__class_id, proto);
+
 	define_fast_noise_lite_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, fast_noise_lite_class_proto_funcs, _countof(fast_noise_lite_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, fast_noise_lite_class_constructor, "FastNoiseLite", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

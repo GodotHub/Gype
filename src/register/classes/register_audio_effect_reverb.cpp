@@ -15,7 +15,7 @@ using namespace godot;
 static void audio_effect_reverb_class_finalizer(JSRuntime *rt, JSValue val) {
 	AudioEffectReverb *audio_effect_reverb = static_cast<AudioEffectReverb *>(JS_GetOpaque(val, AudioEffectReverb::__class_id));
 	if (audio_effect_reverb)
-		AudioEffectReverb::free(nullptr, audio_effect_reverb);
+		memdelete(audio_effect_reverb);
 }
 
 static JSClassDef audio_effect_reverb_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef audio_effect_reverb_class_def = {
 };
 
 static JSValue audio_effect_reverb_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	AudioEffectReverb *audio_effect_reverb_class;
-	JSValue obj = JS_NewObjectClass(ctx, AudioEffectReverb::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffectReverb::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	audio_effect_reverb_class = memnew(AudioEffectReverb);
+	AudioEffectReverb *audio_effect_reverb_class = memnew(AudioEffectReverb);
 	if (!audio_effect_reverb_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, audio_effect_reverb_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, audio_effect_reverb_class);	
 	return obj;
 }
 static JSValue audio_effect_reverb_class_set_predelay_msec(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -194,13 +185,13 @@ static int js_audio_effect_reverb_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(AudioEffectReverb::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffectReverb::__class_id, &audio_effect_reverb_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, AudioEffectReverb::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, AudioEffect::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AudioEffectReverb::__class_id, proto);
+
 	define_audio_effect_reverb_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, audio_effect_reverb_class_proto_funcs, _countof(audio_effect_reverb_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, audio_effect_reverb_class_constructor, "AudioEffectReverb", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

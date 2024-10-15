@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/csg_primitive3d.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/csg_cylinder3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void csg_cylinder3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	CSGCylinder3D *csg_cylinder3d = static_cast<CSGCylinder3D *>(JS_GetOpaque(val, CSGCylinder3D::__class_id));
 	if (csg_cylinder3d)
-		CSGCylinder3D::free(nullptr, csg_cylinder3d);
+		memdelete(csg_cylinder3d);
 }
 
 static JSClassDef csg_cylinder3d_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef csg_cylinder3d_class_def = {
 };
 
 static JSValue csg_cylinder3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	CSGCylinder3D *csg_cylinder3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, CSGCylinder3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CSGCylinder3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	csg_cylinder3d_class = memnew(CSGCylinder3D);
+	CSGCylinder3D *csg_cylinder3d_class = memnew(CSGCylinder3D);
 	if (!csg_cylinder3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, csg_cylinder3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, csg_cylinder3d_class);	
 	return obj;
 }
 static JSValue csg_cylinder3d_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -161,13 +152,13 @@ static int js_csg_cylinder3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(CSGCylinder3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CSGCylinder3D::__class_id, &csg_cylinder3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, CSGCylinder3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, CSGPrimitive3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, CSGCylinder3D::__class_id, proto);
+
 	define_csg_cylinder3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, csg_cylinder3d_class_proto_funcs, _countof(csg_cylinder3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, csg_cylinder3d_class_constructor, "CSGCylinder3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

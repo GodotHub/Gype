@@ -16,7 +16,7 @@ using namespace godot;
 static void rd_shader_file_class_finalizer(JSRuntime *rt, JSValue val) {
 	RDShaderFile *rd_shader_file = static_cast<RDShaderFile *>(JS_GetOpaque(val, RDShaderFile::__class_id));
 	if (rd_shader_file)
-		RDShaderFile::free(nullptr, rd_shader_file);
+		memdelete(rd_shader_file);
 }
 
 static JSClassDef rd_shader_file_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef rd_shader_file_class_def = {
 };
 
 static JSValue rd_shader_file_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	RDShaderFile *rd_shader_file_class;
-	JSValue obj = JS_NewObjectClass(ctx, RDShaderFile::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDShaderFile::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	rd_shader_file_class = memnew(RDShaderFile);
+	RDShaderFile *rd_shader_file_class = memnew(RDShaderFile);
 	if (!rd_shader_file_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, rd_shader_file_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, rd_shader_file_class);	
 	return obj;
 }
 static JSValue rd_shader_file_class_set_bytecode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -89,13 +80,13 @@ static int js_rd_shader_file_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(RDShaderFile::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RDShaderFile::__class_id, &rd_shader_file_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, RDShaderFile::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, RDShaderFile::__class_id, proto);
+
 	define_rd_shader_file_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, rd_shader_file_class_proto_funcs, _countof(rd_shader_file_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, rd_shader_file_class_constructor, "RDShaderFile", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

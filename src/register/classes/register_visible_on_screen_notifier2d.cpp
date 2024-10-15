@@ -15,7 +15,7 @@ using namespace godot;
 static void visible_on_screen_notifier2d_class_finalizer(JSRuntime *rt, JSValue val) {
 	VisibleOnScreenNotifier2D *visible_on_screen_notifier2d = static_cast<VisibleOnScreenNotifier2D *>(JS_GetOpaque(val, VisibleOnScreenNotifier2D::__class_id));
 	if (visible_on_screen_notifier2d)
-		VisibleOnScreenNotifier2D::free(nullptr, visible_on_screen_notifier2d);
+		memdelete(visible_on_screen_notifier2d);
 }
 
 static JSClassDef visible_on_screen_notifier2d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef visible_on_screen_notifier2d_class_def = {
 };
 
 static JSValue visible_on_screen_notifier2d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	VisibleOnScreenNotifier2D *visible_on_screen_notifier2d_class;
-	JSValue obj = JS_NewObjectClass(ctx, VisibleOnScreenNotifier2D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisibleOnScreenNotifier2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	visible_on_screen_notifier2d_class = memnew(VisibleOnScreenNotifier2D);
+	VisibleOnScreenNotifier2D *visible_on_screen_notifier2d_class = memnew(VisibleOnScreenNotifier2D);
 	if (!visible_on_screen_notifier2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, visible_on_screen_notifier2d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, visible_on_screen_notifier2d_class);	
 	return obj;
 }
 static JSValue visible_on_screen_notifier2d_class_set_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -79,13 +70,13 @@ static int js_visible_on_screen_notifier2d_class_init(JSContext *ctx, JSModuleDe
 	class_id_list.insert(VisibleOnScreenNotifier2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisibleOnScreenNotifier2D::__class_id, &visible_on_screen_notifier2d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, VisibleOnScreenNotifier2D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, VisibleOnScreenNotifier2D::__class_id, proto);
+
 	define_visible_on_screen_notifier2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visible_on_screen_notifier2d_class_proto_funcs, _countof(visible_on_screen_notifier2d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, visible_on_screen_notifier2d_class_constructor, "VisibleOnScreenNotifier2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

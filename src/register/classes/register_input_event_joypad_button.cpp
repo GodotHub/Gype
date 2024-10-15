@@ -15,7 +15,7 @@ using namespace godot;
 static void input_event_joypad_button_class_finalizer(JSRuntime *rt, JSValue val) {
 	InputEventJoypadButton *input_event_joypad_button = static_cast<InputEventJoypadButton *>(JS_GetOpaque(val, InputEventJoypadButton::__class_id));
 	if (input_event_joypad_button)
-		InputEventJoypadButton::free(nullptr, input_event_joypad_button);
+		memdelete(input_event_joypad_button);
 }
 
 static JSClassDef input_event_joypad_button_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef input_event_joypad_button_class_def = {
 };
 
 static JSValue input_event_joypad_button_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	InputEventJoypadButton *input_event_joypad_button_class;
-	JSValue obj = JS_NewObjectClass(ctx, InputEventJoypadButton::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InputEventJoypadButton::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	input_event_joypad_button_class = memnew(InputEventJoypadButton);
+	InputEventJoypadButton *input_event_joypad_button_class = memnew(InputEventJoypadButton);
 	if (!input_event_joypad_button_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, input_event_joypad_button_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, input_event_joypad_button_class);	
 	return obj;
 }
 static JSValue input_event_joypad_button_class_set_button_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -105,13 +96,13 @@ static int js_input_event_joypad_button_class_init(JSContext *ctx, JSModuleDef *
 	class_id_list.insert(InputEventJoypadButton::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), InputEventJoypadButton::__class_id, &input_event_joypad_button_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, InputEventJoypadButton::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, InputEvent::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, InputEventJoypadButton::__class_id, proto);
+
 	define_input_event_joypad_button_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, input_event_joypad_button_class_proto_funcs, _countof(input_event_joypad_button_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, input_event_joypad_button_class_constructor, "InputEventJoypadButton", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -16,7 +16,7 @@ using namespace godot;
 static void static_body3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	StaticBody3D *static_body3d = static_cast<StaticBody3D *>(JS_GetOpaque(val, StaticBody3D::__class_id));
 	if (static_body3d)
-		StaticBody3D::free(nullptr, static_body3d);
+		memdelete(static_body3d);
 }
 
 static JSClassDef static_body3d_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef static_body3d_class_def = {
 };
 
 static JSValue static_body3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	StaticBody3D *static_body3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, StaticBody3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StaticBody3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	static_body3d_class = memnew(StaticBody3D);
+	StaticBody3D *static_body3d_class = memnew(StaticBody3D);
 	if (!static_body3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, static_body3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, static_body3d_class);	
 	return obj;
 }
 static JSValue static_body3d_class_set_constant_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -110,13 +101,13 @@ static int js_static_body3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(StaticBody3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), StaticBody3D::__class_id, &static_body3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, StaticBody3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, PhysicsBody3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, StaticBody3D::__class_id, proto);
+
 	define_static_body3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, static_body3d_class_proto_funcs, _countof(static_body3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, static_body3d_class_constructor, "StaticBody3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

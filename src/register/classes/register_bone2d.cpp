@@ -15,7 +15,7 @@ using namespace godot;
 static void bone2d_class_finalizer(JSRuntime *rt, JSValue val) {
 	Bone2D *bone2d = static_cast<Bone2D *>(JS_GetOpaque(val, Bone2D::__class_id));
 	if (bone2d)
-		Bone2D::free(nullptr, bone2d);
+		memdelete(bone2d);
 }
 
 static JSClassDef bone2d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef bone2d_class_def = {
 };
 
 static JSValue bone2d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Bone2D *bone2d_class;
-	JSValue obj = JS_NewObjectClass(ctx, Bone2D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Bone2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	bone2d_class = memnew(Bone2D);
+	Bone2D *bone2d_class = memnew(Bone2D);
 	if (!bone2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, bone2d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, bone2d_class);	
 	return obj;
 }
 static JSValue bone2d_class_set_rest(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -115,13 +106,13 @@ static int js_bone2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Bone2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Bone2D::__class_id, &bone2d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Bone2D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Bone2D::__class_id, proto);
+
 	define_bone2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, bone2d_class_proto_funcs, _countof(bone2d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, bone2d_class_constructor, "Bone2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

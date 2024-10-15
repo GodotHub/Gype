@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/height_map_shape3d.hpp>
 #include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/classes/image.hpp>
+#include <godot_cpp/classes/height_map_shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void height_map_shape3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	HeightMapShape3D *height_map_shape3d = static_cast<HeightMapShape3D *>(JS_GetOpaque(val, HeightMapShape3D::__class_id));
 	if (height_map_shape3d)
-		HeightMapShape3D::free(nullptr, height_map_shape3d);
+		memdelete(height_map_shape3d);
 }
 
 static JSClassDef height_map_shape3d_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef height_map_shape3d_class_def = {
 };
 
 static JSValue height_map_shape3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	HeightMapShape3D *height_map_shape3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, HeightMapShape3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, HeightMapShape3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	height_map_shape3d_class = memnew(HeightMapShape3D);
+	HeightMapShape3D *height_map_shape3d_class = memnew(HeightMapShape3D);
 	if (!height_map_shape3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, height_map_shape3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, height_map_shape3d_class);	
 	return obj;
 }
 static JSValue height_map_shape3d_class_set_map_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -123,13 +114,13 @@ static int js_height_map_shape3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(HeightMapShape3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), HeightMapShape3D::__class_id, &height_map_shape3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, HeightMapShape3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Shape3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, HeightMapShape3D::__class_id, proto);
+
 	define_height_map_shape3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, height_map_shape3d_class_proto_funcs, _countof(height_map_shape3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, height_map_shape3d_class_constructor, "HeightMapShape3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

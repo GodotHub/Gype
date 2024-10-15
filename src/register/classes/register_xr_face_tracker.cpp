@@ -15,7 +15,7 @@ using namespace godot;
 static void xr_face_tracker_class_finalizer(JSRuntime *rt, JSValue val) {
 	XRFaceTracker *xr_face_tracker = static_cast<XRFaceTracker *>(JS_GetOpaque(val, XRFaceTracker::__class_id));
 	if (xr_face_tracker)
-		XRFaceTracker::free(nullptr, xr_face_tracker);
+		memdelete(xr_face_tracker);
 }
 
 static JSClassDef xr_face_tracker_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef xr_face_tracker_class_def = {
 };
 
 static JSValue xr_face_tracker_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	XRFaceTracker *xr_face_tracker_class;
-	JSValue obj = JS_NewObjectClass(ctx, XRFaceTracker::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRFaceTracker::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	xr_face_tracker_class = memnew(XRFaceTracker);
+	XRFaceTracker *xr_face_tracker_class = memnew(XRFaceTracker);
 	if (!xr_face_tracker_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, xr_face_tracker_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, xr_face_tracker_class);	
 	return obj;
 }
 static JSValue xr_face_tracker_class_get_blend_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -84,13 +75,13 @@ static int js_xr_face_tracker_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(XRFaceTracker::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XRFaceTracker::__class_id, &xr_face_tracker_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, XRFaceTracker::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, XRTracker::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, XRFaceTracker::__class_id, proto);
+
 	define_xr_face_tracker_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xr_face_tracker_class_proto_funcs, _countof(xr_face_tracker_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, xr_face_tracker_class_constructor, "XRFaceTracker", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

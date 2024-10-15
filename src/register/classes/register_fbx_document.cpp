@@ -15,7 +15,7 @@ using namespace godot;
 static void fbx_document_class_finalizer(JSRuntime *rt, JSValue val) {
 	FBXDocument *fbx_document = static_cast<FBXDocument *>(JS_GetOpaque(val, FBXDocument::__class_id));
 	if (fbx_document)
-		FBXDocument::free(nullptr, fbx_document);
+		memdelete(fbx_document);
 }
 
 static JSClassDef fbx_document_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef fbx_document_class_def = {
 };
 
 static JSValue fbx_document_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	FBXDocument *fbx_document_class;
-	JSValue obj = JS_NewObjectClass(ctx, FBXDocument::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, FBXDocument::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	fbx_document_class = memnew(FBXDocument);
+	FBXDocument *fbx_document_class = memnew(FBXDocument);
 	if (!fbx_document_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, fbx_document_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, fbx_document_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_fbx_document_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(FBXDocument::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), FBXDocument::__class_id, &fbx_document_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, FBXDocument::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, GLTFDocument::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, FBXDocument::__class_id, proto);
-	define_fbx_document_property(ctx, proto);
 
+	define_fbx_document_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, fbx_document_class_constructor, "FBXDocument", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -15,7 +15,7 @@ using namespace godot;
 static void editor_export_platform_windows_class_finalizer(JSRuntime *rt, JSValue val) {
 	EditorExportPlatformWindows *editor_export_platform_windows = static_cast<EditorExportPlatformWindows *>(JS_GetOpaque(val, EditorExportPlatformWindows::__class_id));
 	if (editor_export_platform_windows)
-		EditorExportPlatformWindows::free(nullptr, editor_export_platform_windows);
+		memdelete(editor_export_platform_windows);
 }
 
 static JSClassDef editor_export_platform_windows_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef editor_export_platform_windows_class_def = {
 };
 
 static JSValue editor_export_platform_windows_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	EditorExportPlatformWindows *editor_export_platform_windows_class;
-	JSValue obj = JS_NewObjectClass(ctx, EditorExportPlatformWindows::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorExportPlatformWindows::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	editor_export_platform_windows_class = memnew(EditorExportPlatformWindows);
+	EditorExportPlatformWindows *editor_export_platform_windows_class = memnew(EditorExportPlatformWindows);
 	if (!editor_export_platform_windows_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, editor_export_platform_windows_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, editor_export_platform_windows_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_editor_export_platform_windows_class_init(JSContext *ctx, JSModule
 	class_id_list.insert(EditorExportPlatformWindows::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorExportPlatformWindows::__class_id, &editor_export_platform_windows_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, EditorExportPlatformWindows::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, EditorExportPlatformPC::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, EditorExportPlatformWindows::__class_id, proto);
-	define_editor_export_platform_windows_property(ctx, proto);
 
+	define_editor_export_platform_windows_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, editor_export_platform_windows_class_constructor, "EditorExportPlatformWindows", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

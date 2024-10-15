@@ -15,7 +15,7 @@ using namespace godot;
 static void visual_shader_node_sdf_raymarch_class_finalizer(JSRuntime *rt, JSValue val) {
 	VisualShaderNodeSDFRaymarch *visual_shader_node_sdf_raymarch = static_cast<VisualShaderNodeSDFRaymarch *>(JS_GetOpaque(val, VisualShaderNodeSDFRaymarch::__class_id));
 	if (visual_shader_node_sdf_raymarch)
-		VisualShaderNodeSDFRaymarch::free(nullptr, visual_shader_node_sdf_raymarch);
+		memdelete(visual_shader_node_sdf_raymarch);
 }
 
 static JSClassDef visual_shader_node_sdf_raymarch_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef visual_shader_node_sdf_raymarch_class_def = {
 };
 
 static JSValue visual_shader_node_sdf_raymarch_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	VisualShaderNodeSDFRaymarch *visual_shader_node_sdf_raymarch_class;
-	JSValue obj = JS_NewObjectClass(ctx, VisualShaderNodeSDFRaymarch::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeSDFRaymarch::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	visual_shader_node_sdf_raymarch_class = memnew(VisualShaderNodeSDFRaymarch);
+	VisualShaderNodeSDFRaymarch *visual_shader_node_sdf_raymarch_class = memnew(VisualShaderNodeSDFRaymarch);
 	if (!visual_shader_node_sdf_raymarch_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, visual_shader_node_sdf_raymarch_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, visual_shader_node_sdf_raymarch_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_visual_shader_node_sdf_raymarch_class_init(JSContext *ctx, JSModul
 	class_id_list.insert(VisualShaderNodeSDFRaymarch::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeSDFRaymarch::__class_id, &visual_shader_node_sdf_raymarch_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, VisualShaderNodeSDFRaymarch::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, VisualShaderNode::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, VisualShaderNodeSDFRaymarch::__class_id, proto);
-	define_visual_shader_node_sdf_raymarch_property(ctx, proto);
 
+	define_visual_shader_node_sdf_raymarch_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_sdf_raymarch_class_constructor, "VisualShaderNodeSDFRaymarch", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

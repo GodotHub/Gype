@@ -15,7 +15,7 @@ using namespace godot;
 static void resource_importer_mp3_class_finalizer(JSRuntime *rt, JSValue val) {
 	ResourceImporterMP3 *resource_importer_mp3 = static_cast<ResourceImporterMP3 *>(JS_GetOpaque(val, ResourceImporterMP3::__class_id));
 	if (resource_importer_mp3)
-		ResourceImporterMP3::free(nullptr, resource_importer_mp3);
+		memdelete(resource_importer_mp3);
 }
 
 static JSClassDef resource_importer_mp3_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef resource_importer_mp3_class_def = {
 };
 
 static JSValue resource_importer_mp3_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	ResourceImporterMP3 *resource_importer_mp3_class;
-	JSValue obj = JS_NewObjectClass(ctx, ResourceImporterMP3::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterMP3::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	resource_importer_mp3_class = memnew(ResourceImporterMP3);
+	ResourceImporterMP3 *resource_importer_mp3_class = memnew(ResourceImporterMP3);
 	if (!resource_importer_mp3_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, resource_importer_mp3_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, resource_importer_mp3_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_resource_importer_mp3_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(ResourceImporterMP3::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ResourceImporterMP3::__class_id, &resource_importer_mp3_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, ResourceImporterMP3::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, ResourceImporter::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ResourceImporterMP3::__class_id, proto);
-	define_resource_importer_mp3_property(ctx, proto);
 
+	define_resource_importer_mp3_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, resource_importer_mp3_class_constructor, "ResourceImporterMP3", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

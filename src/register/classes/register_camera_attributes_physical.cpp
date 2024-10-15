@@ -15,7 +15,7 @@ using namespace godot;
 static void camera_attributes_physical_class_finalizer(JSRuntime *rt, JSValue val) {
 	CameraAttributesPhysical *camera_attributes_physical = static_cast<CameraAttributesPhysical *>(JS_GetOpaque(val, CameraAttributesPhysical::__class_id));
 	if (camera_attributes_physical)
-		CameraAttributesPhysical::free(nullptr, camera_attributes_physical);
+		memdelete(camera_attributes_physical);
 }
 
 static JSClassDef camera_attributes_physical_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef camera_attributes_physical_class_def = {
 };
 
 static JSValue camera_attributes_physical_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	CameraAttributesPhysical *camera_attributes_physical_class;
-	JSValue obj = JS_NewObjectClass(ctx, CameraAttributesPhysical::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CameraAttributesPhysical::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	camera_attributes_physical_class = memnew(CameraAttributesPhysical);
+	CameraAttributesPhysical *camera_attributes_physical_class = memnew(CameraAttributesPhysical);
 	if (!camera_attributes_physical_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, camera_attributes_physical_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, camera_attributes_physical_class);	
 	return obj;
 }
 static JSValue camera_attributes_physical_class_set_aperture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -198,13 +189,13 @@ static int js_camera_attributes_physical_class_init(JSContext *ctx, JSModuleDef 
 	class_id_list.insert(CameraAttributesPhysical::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CameraAttributesPhysical::__class_id, &camera_attributes_physical_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, CameraAttributesPhysical::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, CameraAttributes::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, CameraAttributesPhysical::__class_id, proto);
+
 	define_camera_attributes_physical_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, camera_attributes_physical_class_proto_funcs, _countof(camera_attributes_physical_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, camera_attributes_physical_class_constructor, "CameraAttributesPhysical", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

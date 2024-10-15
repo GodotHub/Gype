@@ -15,7 +15,7 @@ using namespace godot;
 static void sphere_shape3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	SphereShape3D *sphere_shape3d = static_cast<SphereShape3D *>(JS_GetOpaque(val, SphereShape3D::__class_id));
 	if (sphere_shape3d)
-		SphereShape3D::free(nullptr, sphere_shape3d);
+		memdelete(sphere_shape3d);
 }
 
 static JSClassDef sphere_shape3d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef sphere_shape3d_class_def = {
 };
 
 static JSValue sphere_shape3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	SphereShape3D *sphere_shape3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, SphereShape3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SphereShape3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	sphere_shape3d_class = memnew(SphereShape3D);
+	SphereShape3D *sphere_shape3d_class = memnew(SphereShape3D);
 	if (!sphere_shape3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, sphere_shape3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, sphere_shape3d_class);	
 	return obj;
 }
 static JSValue sphere_shape3d_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,13 +66,13 @@ static int js_sphere_shape3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(SphereShape3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SphereShape3D::__class_id, &sphere_shape3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, SphereShape3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Shape3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, SphereShape3D::__class_id, proto);
+
 	define_sphere_shape3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, sphere_shape3d_class_proto_funcs, _countof(sphere_shape3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, sphere_shape3d_class_constructor, "SphereShape3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

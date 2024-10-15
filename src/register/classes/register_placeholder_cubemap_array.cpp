@@ -15,7 +15,7 @@ using namespace godot;
 static void placeholder_cubemap_array_class_finalizer(JSRuntime *rt, JSValue val) {
 	PlaceholderCubemapArray *placeholder_cubemap_array = static_cast<PlaceholderCubemapArray *>(JS_GetOpaque(val, PlaceholderCubemapArray::__class_id));
 	if (placeholder_cubemap_array)
-		PlaceholderCubemapArray::free(nullptr, placeholder_cubemap_array);
+		memdelete(placeholder_cubemap_array);
 }
 
 static JSClassDef placeholder_cubemap_array_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef placeholder_cubemap_array_class_def = {
 };
 
 static JSValue placeholder_cubemap_array_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PlaceholderCubemapArray *placeholder_cubemap_array_class;
-	JSValue obj = JS_NewObjectClass(ctx, PlaceholderCubemapArray::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PlaceholderCubemapArray::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	placeholder_cubemap_array_class = memnew(PlaceholderCubemapArray);
+	PlaceholderCubemapArray *placeholder_cubemap_array_class = memnew(PlaceholderCubemapArray);
 	if (!placeholder_cubemap_array_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, placeholder_cubemap_array_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, placeholder_cubemap_array_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_placeholder_cubemap_array_class_init(JSContext *ctx, JSModuleDef *
 	class_id_list.insert(PlaceholderCubemapArray::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PlaceholderCubemapArray::__class_id, &placeholder_cubemap_array_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, PlaceholderCubemapArray::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, PlaceholderTextureLayered::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PlaceholderCubemapArray::__class_id, proto);
-	define_placeholder_cubemap_array_property(ctx, proto);
 
+	define_placeholder_cubemap_array_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, placeholder_cubemap_array_class_constructor, "PlaceholderCubemapArray", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

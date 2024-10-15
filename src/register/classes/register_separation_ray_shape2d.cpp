@@ -15,7 +15,7 @@ using namespace godot;
 static void separation_ray_shape2d_class_finalizer(JSRuntime *rt, JSValue val) {
 	SeparationRayShape2D *separation_ray_shape2d = static_cast<SeparationRayShape2D *>(JS_GetOpaque(val, SeparationRayShape2D::__class_id));
 	if (separation_ray_shape2d)
-		SeparationRayShape2D::free(nullptr, separation_ray_shape2d);
+		memdelete(separation_ray_shape2d);
 }
 
 static JSClassDef separation_ray_shape2d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef separation_ray_shape2d_class_def = {
 };
 
 static JSValue separation_ray_shape2d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	SeparationRayShape2D *separation_ray_shape2d_class;
-	JSValue obj = JS_NewObjectClass(ctx, SeparationRayShape2D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SeparationRayShape2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	separation_ray_shape2d_class = memnew(SeparationRayShape2D);
+	SeparationRayShape2D *separation_ray_shape2d_class = memnew(SeparationRayShape2D);
 	if (!separation_ray_shape2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, separation_ray_shape2d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, separation_ray_shape2d_class);	
 	return obj;
 }
 static JSValue separation_ray_shape2d_class_set_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -92,13 +83,13 @@ static int js_separation_ray_shape2d_class_init(JSContext *ctx, JSModuleDef *m) 
 	class_id_list.insert(SeparationRayShape2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SeparationRayShape2D::__class_id, &separation_ray_shape2d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, SeparationRayShape2D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Shape2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, SeparationRayShape2D::__class_id, proto);
+
 	define_separation_ray_shape2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, separation_ray_shape2d_class_proto_funcs, _countof(separation_ray_shape2d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, separation_ray_shape2d_class_constructor, "SeparationRayShape2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

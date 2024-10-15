@@ -4,6 +4,7 @@
 #include "support/javascript_instance.hpp"
 #include "support/javascript_language.hpp"
 #include "support/javascript_saver.hpp"
+#include "support/placeholder_javascript_instance.hpp"
 #include "tree_sitter/api.h"
 #include "tree_sitter/tree-sitter-javascript.h"
 #include <godot_cpp/classes/script_extension.hpp>
@@ -24,6 +25,7 @@ class JavaScript : public ScriptExtension {
 	friend class JavaScriptLanguage;
 	friend class JavaScriptSaver;
 	friend class JavaScriptInstance;
+	friend class PlaceholderJavaScriptInstance;
 
 	static const char *symbol_mask;
 
@@ -37,8 +39,9 @@ class JavaScript : public ScriptExtension {
 	String global_class_name;
 	String base_class_name;
 	JavaScript *baseScript;
+	bool is_tool;
 
-	HashMap<int64_t, const JavaScriptInstance *> instances;
+	HashSet<int64_t> instances;
 
 public:
 	bool _editor_can_reload_from_file();

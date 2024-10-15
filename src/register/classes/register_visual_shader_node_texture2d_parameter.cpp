@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_texture2d_parameter.hpp>
 #include <godot_cpp/classes/visual_shader_node_texture_parameter.hpp>
+#include <godot_cpp/classes/visual_shader_node_texture2d_parameter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void visual_shader_node_texture2d_parameter_class_finalizer(JSRuntime *rt, JSValue val) {
 	VisualShaderNodeTexture2DParameter *visual_shader_node_texture2d_parameter = static_cast<VisualShaderNodeTexture2DParameter *>(JS_GetOpaque(val, VisualShaderNodeTexture2DParameter::__class_id));
 	if (visual_shader_node_texture2d_parameter)
-		VisualShaderNodeTexture2DParameter::free(nullptr, visual_shader_node_texture2d_parameter);
+		memdelete(visual_shader_node_texture2d_parameter);
 }
 
 static JSClassDef visual_shader_node_texture2d_parameter_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef visual_shader_node_texture2d_parameter_class_def = {
 };
 
 static JSValue visual_shader_node_texture2d_parameter_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	VisualShaderNodeTexture2DParameter *visual_shader_node_texture2d_parameter_class;
-	JSValue obj = JS_NewObjectClass(ctx, VisualShaderNodeTexture2DParameter::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeTexture2DParameter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	visual_shader_node_texture2d_parameter_class = memnew(VisualShaderNodeTexture2DParameter);
+	VisualShaderNodeTexture2DParameter *visual_shader_node_texture2d_parameter_class = memnew(VisualShaderNodeTexture2DParameter);
 	if (!visual_shader_node_texture2d_parameter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, visual_shader_node_texture2d_parameter_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, visual_shader_node_texture2d_parameter_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_visual_shader_node_texture2d_parameter_class_init(JSContext *ctx, 
 	class_id_list.insert(VisualShaderNodeTexture2DParameter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeTexture2DParameter::__class_id, &visual_shader_node_texture2d_parameter_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, VisualShaderNodeTexture2DParameter::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, VisualShaderNodeTextureParameter::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, VisualShaderNodeTexture2DParameter::__class_id, proto);
-	define_visual_shader_node_texture2d_parameter_property(ctx, proto);
 
+	define_visual_shader_node_texture2d_parameter_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_texture2d_parameter_class_constructor, "VisualShaderNodeTexture2DParameter", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

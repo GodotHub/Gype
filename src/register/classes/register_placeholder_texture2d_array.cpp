@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/placeholder_texture2d_array.hpp>
 #include <godot_cpp/classes/placeholder_texture_layered.hpp>
+#include <godot_cpp/classes/placeholder_texture2d_array.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void placeholder_texture2d_array_class_finalizer(JSRuntime *rt, JSValue val) {
 	PlaceholderTexture2DArray *placeholder_texture2d_array = static_cast<PlaceholderTexture2DArray *>(JS_GetOpaque(val, PlaceholderTexture2DArray::__class_id));
 	if (placeholder_texture2d_array)
-		PlaceholderTexture2DArray::free(nullptr, placeholder_texture2d_array);
+		memdelete(placeholder_texture2d_array);
 }
 
 static JSClassDef placeholder_texture2d_array_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef placeholder_texture2d_array_class_def = {
 };
 
 static JSValue placeholder_texture2d_array_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PlaceholderTexture2DArray *placeholder_texture2d_array_class;
-	JSValue obj = JS_NewObjectClass(ctx, PlaceholderTexture2DArray::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PlaceholderTexture2DArray::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	placeholder_texture2d_array_class = memnew(PlaceholderTexture2DArray);
+	PlaceholderTexture2DArray *placeholder_texture2d_array_class = memnew(PlaceholderTexture2DArray);
 	if (!placeholder_texture2d_array_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, placeholder_texture2d_array_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, placeholder_texture2d_array_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_placeholder_texture2d_array_class_init(JSContext *ctx, JSModuleDef
 	class_id_list.insert(PlaceholderTexture2DArray::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PlaceholderTexture2DArray::__class_id, &placeholder_texture2d_array_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, PlaceholderTexture2DArray::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, PlaceholderTextureLayered::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PlaceholderTexture2DArray::__class_id, proto);
-	define_placeholder_texture2d_array_property(ctx, proto);
 
+	define_placeholder_texture2d_array_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, placeholder_texture2d_array_class_constructor, "PlaceholderTexture2DArray", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

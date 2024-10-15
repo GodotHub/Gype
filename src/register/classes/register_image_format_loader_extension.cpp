@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/image_format_loader.hpp>
 #include <godot_cpp/classes/file_access.hpp>
-#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/image_format_loader_extension.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -17,7 +17,7 @@ using namespace godot;
 static void image_format_loader_extension_class_finalizer(JSRuntime *rt, JSValue val) {
 	ImageFormatLoaderExtension *image_format_loader_extension = static_cast<ImageFormatLoaderExtension *>(JS_GetOpaque(val, ImageFormatLoaderExtension::__class_id));
 	if (image_format_loader_extension)
-		ImageFormatLoaderExtension::free(nullptr, image_format_loader_extension);
+		memdelete(image_format_loader_extension);
 }
 
 static JSClassDef image_format_loader_extension_class_def = {
@@ -26,25 +26,16 @@ static JSClassDef image_format_loader_extension_class_def = {
 };
 
 static JSValue image_format_loader_extension_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	ImageFormatLoaderExtension *image_format_loader_extension_class;
-	JSValue obj = JS_NewObjectClass(ctx, ImageFormatLoaderExtension::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ImageFormatLoaderExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	image_format_loader_extension_class = memnew(ImageFormatLoaderExtension);
+	ImageFormatLoaderExtension *image_format_loader_extension_class = memnew(ImageFormatLoaderExtension);
 	if (!image_format_loader_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, image_format_loader_extension_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, image_format_loader_extension_class);	
 	return obj;
 }
 static JSValue image_format_loader_extension_class_add_format_loader(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,13 +61,13 @@ static int js_image_format_loader_extension_class_init(JSContext *ctx, JSModuleD
 	class_id_list.insert(ImageFormatLoaderExtension::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ImageFormatLoaderExtension::__class_id, &image_format_loader_extension_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, ImageFormatLoaderExtension::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, ImageFormatLoader::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ImageFormatLoaderExtension::__class_id, proto);
+
 	define_image_format_loader_extension_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, image_format_loader_extension_class_proto_funcs, _countof(image_format_loader_extension_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, image_format_loader_extension_class_constructor, "ImageFormatLoaderExtension", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

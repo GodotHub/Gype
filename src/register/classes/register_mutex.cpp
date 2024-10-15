@@ -15,7 +15,7 @@ using namespace godot;
 static void mutex_class_finalizer(JSRuntime *rt, JSValue val) {
 	Mutex *mutex = static_cast<Mutex *>(JS_GetOpaque(val, Mutex::__class_id));
 	if (mutex)
-		Mutex::free(nullptr, mutex);
+		memdelete(mutex);
 }
 
 static JSClassDef mutex_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef mutex_class_def = {
 };
 
 static JSValue mutex_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Mutex *mutex_class;
-	JSValue obj = JS_NewObjectClass(ctx, Mutex::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Mutex::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	mutex_class = memnew(Mutex);
+	Mutex *mutex_class = memnew(Mutex);
 	if (!mutex_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, mutex_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, mutex_class);	
 	return obj;
 }
 static JSValue mutex_class_lock(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -72,13 +63,13 @@ static int js_mutex_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Mutex::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Mutex::__class_id, &mutex_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Mutex::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Mutex::__class_id, proto);
+
 	define_mutex_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, mutex_class_proto_funcs, _countof(mutex_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, mutex_class_constructor, "Mutex", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

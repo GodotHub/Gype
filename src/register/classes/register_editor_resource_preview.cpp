@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/editor_resource_preview_generator.hpp>
-#include <godot_cpp/classes/editor_resource_preview.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/editor_resource_preview.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -18,7 +18,7 @@ using namespace godot;
 static void editor_resource_preview_class_finalizer(JSRuntime *rt, JSValue val) {
 	EditorResourcePreview *editor_resource_preview = static_cast<EditorResourcePreview *>(JS_GetOpaque(val, EditorResourcePreview::__class_id));
 	if (editor_resource_preview)
-		EditorResourcePreview::free(nullptr, editor_resource_preview);
+		memdelete(editor_resource_preview);
 }
 
 static JSClassDef editor_resource_preview_class_def = {
@@ -27,25 +27,16 @@ static JSClassDef editor_resource_preview_class_def = {
 };
 
 static JSValue editor_resource_preview_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	EditorResourcePreview *editor_resource_preview_class;
-	JSValue obj = JS_NewObjectClass(ctx, EditorResourcePreview::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorResourcePreview::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	editor_resource_preview_class = memnew(EditorResourcePreview);
+	EditorResourcePreview *editor_resource_preview_class = memnew(EditorResourcePreview);
 	if (!editor_resource_preview_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, editor_resource_preview_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, editor_resource_preview_class);	
 	return obj;
 }
 static JSValue editor_resource_preview_class_queue_resource_preview(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -86,13 +77,13 @@ static int js_editor_resource_preview_class_init(JSContext *ctx, JSModuleDef *m)
 	class_id_list.insert(EditorResourcePreview::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorResourcePreview::__class_id, &editor_resource_preview_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, EditorResourcePreview::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, EditorResourcePreview::__class_id, proto);
+
 	define_editor_resource_preview_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_resource_preview_class_proto_funcs, _countof(editor_resource_preview_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, editor_resource_preview_class_constructor, "EditorResourcePreview", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

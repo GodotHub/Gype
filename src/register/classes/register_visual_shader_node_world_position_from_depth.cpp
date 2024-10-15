@@ -15,7 +15,7 @@ using namespace godot;
 static void visual_shader_node_world_position_from_depth_class_finalizer(JSRuntime *rt, JSValue val) {
 	VisualShaderNodeWorldPositionFromDepth *visual_shader_node_world_position_from_depth = static_cast<VisualShaderNodeWorldPositionFromDepth *>(JS_GetOpaque(val, VisualShaderNodeWorldPositionFromDepth::__class_id));
 	if (visual_shader_node_world_position_from_depth)
-		VisualShaderNodeWorldPositionFromDepth::free(nullptr, visual_shader_node_world_position_from_depth);
+		memdelete(visual_shader_node_world_position_from_depth);
 }
 
 static JSClassDef visual_shader_node_world_position_from_depth_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef visual_shader_node_world_position_from_depth_class_def = {
 };
 
 static JSValue visual_shader_node_world_position_from_depth_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	VisualShaderNodeWorldPositionFromDepth *visual_shader_node_world_position_from_depth_class;
-	JSValue obj = JS_NewObjectClass(ctx, VisualShaderNodeWorldPositionFromDepth::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeWorldPositionFromDepth::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	visual_shader_node_world_position_from_depth_class = memnew(VisualShaderNodeWorldPositionFromDepth);
+	VisualShaderNodeWorldPositionFromDepth *visual_shader_node_world_position_from_depth_class = memnew(VisualShaderNodeWorldPositionFromDepth);
 	if (!visual_shader_node_world_position_from_depth_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, visual_shader_node_world_position_from_depth_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, visual_shader_node_world_position_from_depth_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_visual_shader_node_world_position_from_depth_class_init(JSContext 
 	class_id_list.insert(VisualShaderNodeWorldPositionFromDepth::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeWorldPositionFromDepth::__class_id, &visual_shader_node_world_position_from_depth_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, VisualShaderNodeWorldPositionFromDepth::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, VisualShaderNode::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, VisualShaderNodeWorldPositionFromDepth::__class_id, proto);
-	define_visual_shader_node_world_position_from_depth_property(ctx, proto);
 
+	define_visual_shader_node_world_position_from_depth_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_world_position_from_depth_class_constructor, "VisualShaderNodeWorldPositionFromDepth", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

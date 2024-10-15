@@ -15,7 +15,7 @@ using namespace godot;
 static void xr_controller3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	XRController3D *xr_controller3d = static_cast<XRController3D *>(JS_GetOpaque(val, XRController3D::__class_id));
 	if (xr_controller3d)
-		XRController3D::free(nullptr, xr_controller3d);
+		memdelete(xr_controller3d);
 }
 
 static JSClassDef xr_controller3d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef xr_controller3d_class_def = {
 };
 
 static JSValue xr_controller3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	XRController3D *xr_controller3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, XRController3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRController3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	xr_controller3d_class = memnew(XRController3D);
+	XRController3D *xr_controller3d_class = memnew(XRController3D);
 	if (!xr_controller3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, xr_controller3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, xr_controller3d_class);	
 	return obj;
 }
 static JSValue xr_controller3d_class_is_button_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -78,13 +69,13 @@ static int js_xr_controller3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(XRController3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XRController3D::__class_id, &xr_controller3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, XRController3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, XRNode3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, XRController3D::__class_id, proto);
+
 	define_xr_controller3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xr_controller3d_class_proto_funcs, _countof(xr_controller3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, xr_controller3d_class_constructor, "XRController3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

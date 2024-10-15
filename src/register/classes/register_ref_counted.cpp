@@ -15,7 +15,7 @@ using namespace godot;
 static void ref_counted_class_finalizer(JSRuntime *rt, JSValue val) {
 	RefCounted *ref_counted = static_cast<RefCounted *>(JS_GetOpaque(val, RefCounted::__class_id));
 	if (ref_counted)
-		RefCounted::free(nullptr, ref_counted);
+		memdelete(ref_counted);
 }
 
 static JSClassDef ref_counted_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef ref_counted_class_def = {
 };
 
 static JSValue ref_counted_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	RefCounted *ref_counted_class;
-	JSValue obj = JS_NewObjectClass(ctx, RefCounted::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RefCounted::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ref_counted_class = memnew(RefCounted);
+	RefCounted *ref_counted_class = memnew(RefCounted);
 	if (!ref_counted_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, ref_counted_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, ref_counted_class);	
 	return obj;
 }
 static JSValue ref_counted_class_init_ref(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -74,13 +65,13 @@ static int js_ref_counted_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(RefCounted::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RefCounted::__class_id, &ref_counted_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, RefCounted::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Object::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, RefCounted::__class_id, proto);
+
 	define_ref_counted_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, ref_counted_class_proto_funcs, _countof(ref_counted_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, ref_counted_class_constructor, "RefCounted", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

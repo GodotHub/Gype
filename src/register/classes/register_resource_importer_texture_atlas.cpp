@@ -15,7 +15,7 @@ using namespace godot;
 static void resource_importer_texture_atlas_class_finalizer(JSRuntime *rt, JSValue val) {
 	ResourceImporterTextureAtlas *resource_importer_texture_atlas = static_cast<ResourceImporterTextureAtlas *>(JS_GetOpaque(val, ResourceImporterTextureAtlas::__class_id));
 	if (resource_importer_texture_atlas)
-		ResourceImporterTextureAtlas::free(nullptr, resource_importer_texture_atlas);
+		memdelete(resource_importer_texture_atlas);
 }
 
 static JSClassDef resource_importer_texture_atlas_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef resource_importer_texture_atlas_class_def = {
 };
 
 static JSValue resource_importer_texture_atlas_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	ResourceImporterTextureAtlas *resource_importer_texture_atlas_class;
-	JSValue obj = JS_NewObjectClass(ctx, ResourceImporterTextureAtlas::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterTextureAtlas::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	resource_importer_texture_atlas_class = memnew(ResourceImporterTextureAtlas);
+	ResourceImporterTextureAtlas *resource_importer_texture_atlas_class = memnew(ResourceImporterTextureAtlas);
 	if (!resource_importer_texture_atlas_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, resource_importer_texture_atlas_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, resource_importer_texture_atlas_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_resource_importer_texture_atlas_class_init(JSContext *ctx, JSModul
 	class_id_list.insert(ResourceImporterTextureAtlas::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ResourceImporterTextureAtlas::__class_id, &resource_importer_texture_atlas_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, ResourceImporterTextureAtlas::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, ResourceImporter::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ResourceImporterTextureAtlas::__class_id, proto);
-	define_resource_importer_texture_atlas_property(ctx, proto);
 
+	define_resource_importer_texture_atlas_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, resource_importer_texture_atlas_class_constructor, "ResourceImporterTextureAtlas", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

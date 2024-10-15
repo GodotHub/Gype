@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_band_pass_filter.hpp>
 #include <godot_cpp/classes/audio_effect_filter.hpp>
+#include <godot_cpp/classes/audio_effect_band_pass_filter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void audio_effect_band_pass_filter_class_finalizer(JSRuntime *rt, JSValue val) {
 	AudioEffectBandPassFilter *audio_effect_band_pass_filter = static_cast<AudioEffectBandPassFilter *>(JS_GetOpaque(val, AudioEffectBandPassFilter::__class_id));
 	if (audio_effect_band_pass_filter)
-		AudioEffectBandPassFilter::free(nullptr, audio_effect_band_pass_filter);
+		memdelete(audio_effect_band_pass_filter);
 }
 
 static JSClassDef audio_effect_band_pass_filter_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef audio_effect_band_pass_filter_class_def = {
 };
 
 static JSValue audio_effect_band_pass_filter_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	AudioEffectBandPassFilter *audio_effect_band_pass_filter_class;
-	JSValue obj = JS_NewObjectClass(ctx, AudioEffectBandPassFilter::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffectBandPassFilter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	audio_effect_band_pass_filter_class = memnew(AudioEffectBandPassFilter);
+	AudioEffectBandPassFilter *audio_effect_band_pass_filter_class = memnew(AudioEffectBandPassFilter);
 	if (!audio_effect_band_pass_filter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, audio_effect_band_pass_filter_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, audio_effect_band_pass_filter_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_audio_effect_band_pass_filter_class_init(JSContext *ctx, JSModuleD
 	class_id_list.insert(AudioEffectBandPassFilter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffectBandPassFilter::__class_id, &audio_effect_band_pass_filter_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, AudioEffectBandPassFilter::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, AudioEffectFilter::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AudioEffectBandPassFilter::__class_id, proto);
-	define_audio_effect_band_pass_filter_property(ctx, proto);
 
+	define_audio_effect_band_pass_filter_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, audio_effect_band_pass_filter_class_constructor, "AudioEffectBandPassFilter", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

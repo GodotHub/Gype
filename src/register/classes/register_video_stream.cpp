@@ -16,7 +16,7 @@ using namespace godot;
 static void video_stream_class_finalizer(JSRuntime *rt, JSValue val) {
 	VideoStream *video_stream = static_cast<VideoStream *>(JS_GetOpaque(val, VideoStream::__class_id));
 	if (video_stream)
-		VideoStream::free(nullptr, video_stream);
+		memdelete(video_stream);
 }
 
 static JSClassDef video_stream_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef video_stream_class_def = {
 };
 
 static JSValue video_stream_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	VideoStream *video_stream_class;
-	JSValue obj = JS_NewObjectClass(ctx, VideoStream::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VideoStream::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	video_stream_class = memnew(VideoStream);
+	VideoStream *video_stream_class = memnew(VideoStream);
 	if (!video_stream_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, video_stream_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, video_stream_class);	
 	return obj;
 }
 static JSValue video_stream_class_set_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -76,13 +67,13 @@ static int js_video_stream_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(VideoStream::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VideoStream::__class_id, &video_stream_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, VideoStream::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, VideoStream::__class_id, proto);
+
 	define_video_stream_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, video_stream_class_proto_funcs, _countof(video_stream_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, video_stream_class_constructor, "VideoStream", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

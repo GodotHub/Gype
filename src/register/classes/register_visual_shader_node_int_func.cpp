@@ -15,7 +15,7 @@ using namespace godot;
 static void visual_shader_node_int_func_class_finalizer(JSRuntime *rt, JSValue val) {
 	VisualShaderNodeIntFunc *visual_shader_node_int_func = static_cast<VisualShaderNodeIntFunc *>(JS_GetOpaque(val, VisualShaderNodeIntFunc::__class_id));
 	if (visual_shader_node_int_func)
-		VisualShaderNodeIntFunc::free(nullptr, visual_shader_node_int_func);
+		memdelete(visual_shader_node_int_func);
 }
 
 static JSClassDef visual_shader_node_int_func_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef visual_shader_node_int_func_class_def = {
 };
 
 static JSValue visual_shader_node_int_func_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	VisualShaderNodeIntFunc *visual_shader_node_int_func_class;
-	JSValue obj = JS_NewObjectClass(ctx, VisualShaderNodeIntFunc::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeIntFunc::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	visual_shader_node_int_func_class = memnew(VisualShaderNodeIntFunc);
+	VisualShaderNodeIntFunc *visual_shader_node_int_func_class = memnew(VisualShaderNodeIntFunc);
 	if (!visual_shader_node_int_func_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, visual_shader_node_int_func_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, visual_shader_node_int_func_class);	
 	return obj;
 }
 static JSValue visual_shader_node_int_func_class_set_function(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,13 +66,13 @@ static int js_visual_shader_node_int_func_class_init(JSContext *ctx, JSModuleDef
 	class_id_list.insert(VisualShaderNodeIntFunc::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeIntFunc::__class_id, &visual_shader_node_int_func_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, VisualShaderNodeIntFunc::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, VisualShaderNode::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, VisualShaderNodeIntFunc::__class_id, proto);
+
 	define_visual_shader_node_int_func_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_int_func_class_proto_funcs, _countof(visual_shader_node_int_func_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_int_func_class_constructor, "VisualShaderNodeIntFunc", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

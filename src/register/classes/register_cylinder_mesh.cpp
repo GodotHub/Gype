@@ -15,7 +15,7 @@ using namespace godot;
 static void cylinder_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
 	CylinderMesh *cylinder_mesh = static_cast<CylinderMesh *>(JS_GetOpaque(val, CylinderMesh::__class_id));
 	if (cylinder_mesh)
-		CylinderMesh::free(nullptr, cylinder_mesh);
+		memdelete(cylinder_mesh);
 }
 
 static JSClassDef cylinder_mesh_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef cylinder_mesh_class_def = {
 };
 
 static JSValue cylinder_mesh_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	CylinderMesh *cylinder_mesh_class;
-	JSValue obj = JS_NewObjectClass(ctx, CylinderMesh::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CylinderMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	cylinder_mesh_class = memnew(CylinderMesh);
+	CylinderMesh *cylinder_mesh_class = memnew(CylinderMesh);
 	if (!cylinder_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, cylinder_mesh_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, cylinder_mesh_class);	
 	return obj;
 }
 static JSValue cylinder_mesh_class_set_top_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -177,13 +168,13 @@ static int js_cylinder_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(CylinderMesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CylinderMesh::__class_id, &cylinder_mesh_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, CylinderMesh::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, PrimitiveMesh::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, CylinderMesh::__class_id, proto);
+
 	define_cylinder_mesh_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, cylinder_mesh_class_proto_funcs, _countof(cylinder_mesh_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, cylinder_mesh_class_constructor, "CylinderMesh", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

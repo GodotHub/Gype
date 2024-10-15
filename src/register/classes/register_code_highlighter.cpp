@@ -15,7 +15,7 @@ using namespace godot;
 static void code_highlighter_class_finalizer(JSRuntime *rt, JSValue val) {
 	CodeHighlighter *code_highlighter = static_cast<CodeHighlighter *>(JS_GetOpaque(val, CodeHighlighter::__class_id));
 	if (code_highlighter)
-		CodeHighlighter::free(nullptr, code_highlighter);
+		memdelete(code_highlighter);
 }
 
 static JSClassDef code_highlighter_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef code_highlighter_class_def = {
 };
 
 static JSValue code_highlighter_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	CodeHighlighter *code_highlighter_class;
-	JSValue obj = JS_NewObjectClass(ctx, CodeHighlighter::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CodeHighlighter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	code_highlighter_class = memnew(CodeHighlighter);
+	CodeHighlighter *code_highlighter_class = memnew(CodeHighlighter);
 	if (!code_highlighter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, code_highlighter_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, code_highlighter_class);	
 	return obj;
 }
 static JSValue code_highlighter_class_add_keyword_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -242,13 +233,13 @@ static int js_code_highlighter_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(CodeHighlighter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CodeHighlighter::__class_id, &code_highlighter_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, CodeHighlighter::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, SyntaxHighlighter::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, CodeHighlighter::__class_id, proto);
+
 	define_code_highlighter_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, code_highlighter_class_proto_funcs, _countof(code_highlighter_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, code_highlighter_class_constructor, "CodeHighlighter", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

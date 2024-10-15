@@ -15,7 +15,7 @@ using namespace godot;
 static void resource_importer_shader_file_class_finalizer(JSRuntime *rt, JSValue val) {
 	ResourceImporterShaderFile *resource_importer_shader_file = static_cast<ResourceImporterShaderFile *>(JS_GetOpaque(val, ResourceImporterShaderFile::__class_id));
 	if (resource_importer_shader_file)
-		ResourceImporterShaderFile::free(nullptr, resource_importer_shader_file);
+		memdelete(resource_importer_shader_file);
 }
 
 static JSClassDef resource_importer_shader_file_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef resource_importer_shader_file_class_def = {
 };
 
 static JSValue resource_importer_shader_file_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	ResourceImporterShaderFile *resource_importer_shader_file_class;
-	JSValue obj = JS_NewObjectClass(ctx, ResourceImporterShaderFile::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterShaderFile::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	resource_importer_shader_file_class = memnew(ResourceImporterShaderFile);
+	ResourceImporterShaderFile *resource_importer_shader_file_class = memnew(ResourceImporterShaderFile);
 	if (!resource_importer_shader_file_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, resource_importer_shader_file_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, resource_importer_shader_file_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_resource_importer_shader_file_class_init(JSContext *ctx, JSModuleD
 	class_id_list.insert(ResourceImporterShaderFile::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ResourceImporterShaderFile::__class_id, &resource_importer_shader_file_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, ResourceImporterShaderFile::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, ResourceImporter::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ResourceImporterShaderFile::__class_id, proto);
-	define_resource_importer_shader_file_property(ctx, proto);
 
+	define_resource_importer_shader_file_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, resource_importer_shader_file_class_constructor, "ResourceImporterShaderFile", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

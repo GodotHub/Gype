@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton_modifier3d.hpp>
 #include <godot_cpp/classes/skeleton3d.hpp>
+#include <godot_cpp/classes/skeleton_modifier3d.hpp>
 #include <godot_cpp/classes/skeleton_ik3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void skeleton_ik3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	SkeletonIK3D *skeleton_ik3d = static_cast<SkeletonIK3D *>(JS_GetOpaque(val, SkeletonIK3D::__class_id));
 	if (skeleton_ik3d)
-		SkeletonIK3D::free(nullptr, skeleton_ik3d);
+		memdelete(skeleton_ik3d);
 }
 
 static JSClassDef skeleton_ik3d_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef skeleton_ik3d_class_def = {
 };
 
 static JSValue skeleton_ik3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	SkeletonIK3D *skeleton_ik3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, SkeletonIK3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SkeletonIK3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	skeleton_ik3d_class = memnew(SkeletonIK3D);
+	SkeletonIK3D *skeleton_ik3d_class = memnew(SkeletonIK3D);
 	if (!skeleton_ik3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, skeleton_ik3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, skeleton_ik3d_class);	
 	return obj;
 }
 static JSValue skeleton_ik3d_class_set_root_bone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -247,13 +238,13 @@ static int js_skeleton_ik3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(SkeletonIK3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SkeletonIK3D::__class_id, &skeleton_ik3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, SkeletonIK3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, SkeletonModifier3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, SkeletonIK3D::__class_id, proto);
+
 	define_skeleton_ik3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, skeleton_ik3d_class_proto_funcs, _countof(skeleton_ik3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, skeleton_ik3d_class_constructor, "SkeletonIK3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

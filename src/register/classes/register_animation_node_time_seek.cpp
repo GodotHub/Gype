@@ -15,7 +15,7 @@ using namespace godot;
 static void animation_node_time_seek_class_finalizer(JSRuntime *rt, JSValue val) {
 	AnimationNodeTimeSeek *animation_node_time_seek = static_cast<AnimationNodeTimeSeek *>(JS_GetOpaque(val, AnimationNodeTimeSeek::__class_id));
 	if (animation_node_time_seek)
-		AnimationNodeTimeSeek::free(nullptr, animation_node_time_seek);
+		memdelete(animation_node_time_seek);
 }
 
 static JSClassDef animation_node_time_seek_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef animation_node_time_seek_class_def = {
 };
 
 static JSValue animation_node_time_seek_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	AnimationNodeTimeSeek *animation_node_time_seek_class;
-	JSValue obj = JS_NewObjectClass(ctx, AnimationNodeTimeSeek::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationNodeTimeSeek::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	animation_node_time_seek_class = memnew(AnimationNodeTimeSeek);
+	AnimationNodeTimeSeek *animation_node_time_seek_class = memnew(AnimationNodeTimeSeek);
 	if (!animation_node_time_seek_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, animation_node_time_seek_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, animation_node_time_seek_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_animation_node_time_seek_class_init(JSContext *ctx, JSModuleDef *m
 	class_id_list.insert(AnimationNodeTimeSeek::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimationNodeTimeSeek::__class_id, &animation_node_time_seek_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, AnimationNodeTimeSeek::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, AnimationNode::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AnimationNodeTimeSeek::__class_id, proto);
-	define_animation_node_time_seek_property(ctx, proto);
 
+	define_animation_node_time_seek_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, animation_node_time_seek_class_constructor, "AnimationNodeTimeSeek", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

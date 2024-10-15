@@ -15,7 +15,7 @@ using namespace godot;
 static void stream_peer_tcp_class_finalizer(JSRuntime *rt, JSValue val) {
 	StreamPeerTCP *stream_peer_tcp = static_cast<StreamPeerTCP *>(JS_GetOpaque(val, StreamPeerTCP::__class_id));
 	if (stream_peer_tcp)
-		StreamPeerTCP::free(nullptr, stream_peer_tcp);
+		memdelete(stream_peer_tcp);
 }
 
 static JSClassDef stream_peer_tcp_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef stream_peer_tcp_class_def = {
 };
 
 static JSValue stream_peer_tcp_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	StreamPeerTCP *stream_peer_tcp_class;
-	JSValue obj = JS_NewObjectClass(ctx, StreamPeerTCP::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StreamPeerTCP::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	stream_peer_tcp_class = memnew(StreamPeerTCP);
+	StreamPeerTCP *stream_peer_tcp_class = memnew(StreamPeerTCP);
 	if (!stream_peer_tcp_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, stream_peer_tcp_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, stream_peer_tcp_class);	
 	return obj;
 }
 static JSValue stream_peer_tcp_class_bind(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -96,13 +87,13 @@ static int js_stream_peer_tcp_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(StreamPeerTCP::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), StreamPeerTCP::__class_id, &stream_peer_tcp_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, StreamPeerTCP::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, StreamPeer::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, StreamPeerTCP::__class_id, proto);
+
 	define_stream_peer_tcp_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, stream_peer_tcp_class_proto_funcs, _countof(stream_peer_tcp_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, stream_peer_tcp_class_constructor, "StreamPeerTCP", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

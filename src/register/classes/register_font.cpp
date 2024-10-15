@@ -16,7 +16,7 @@ using namespace godot;
 static void font_class_finalizer(JSRuntime *rt, JSValue val) {
 	Font *font = static_cast<Font *>(JS_GetOpaque(val, Font::__class_id));
 	if (font)
-		Font::free(nullptr, font);
+		memdelete(font);
 }
 
 static JSClassDef font_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef font_class_def = {
 };
 
 static JSValue font_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Font *font_class;
-	JSValue obj = JS_NewObjectClass(ctx, Font::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Font::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	font_class = memnew(Font);
+	Font *font_class = memnew(Font);
 	if (!font_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, font_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, font_class);	
 	return obj;
 }
 static JSValue font_class_set_fallbacks(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -209,13 +200,13 @@ static int js_font_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Font::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Font::__class_id, &font_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Font::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Font::__class_id, proto);
+
 	define_font_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, font_class_proto_funcs, _countof(font_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, font_class_constructor, "Font", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

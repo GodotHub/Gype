@@ -15,7 +15,7 @@ using namespace godot;
 static void xr_hand_tracker_class_finalizer(JSRuntime *rt, JSValue val) {
 	XRHandTracker *xr_hand_tracker = static_cast<XRHandTracker *>(JS_GetOpaque(val, XRHandTracker::__class_id));
 	if (xr_hand_tracker)
-		XRHandTracker::free(nullptr, xr_hand_tracker);
+		memdelete(xr_hand_tracker);
 }
 
 static JSClassDef xr_hand_tracker_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef xr_hand_tracker_class_def = {
 };
 
 static JSValue xr_hand_tracker_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	XRHandTracker *xr_hand_tracker_class;
-	JSValue obj = JS_NewObjectClass(ctx, XRHandTracker::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRHandTracker::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	xr_hand_tracker_class = memnew(XRHandTracker);
+	XRHandTracker *xr_hand_tracker_class = memnew(XRHandTracker);
 	if (!xr_hand_tracker_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, xr_hand_tracker_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, xr_hand_tracker_class);	
 	return obj;
 }
 static JSValue xr_hand_tracker_class_set_has_tracking_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -137,13 +128,13 @@ static int js_xr_hand_tracker_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(XRHandTracker::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XRHandTracker::__class_id, &xr_hand_tracker_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, XRHandTracker::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, XRPositionalTracker::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, XRHandTracker::__class_id, proto);
+
 	define_xr_hand_tracker_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xr_hand_tracker_class_proto_funcs, _countof(xr_hand_tracker_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, xr_hand_tracker_class_constructor, "XRHandTracker", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

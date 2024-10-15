@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/x509_certificate.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/classes/crypto_key.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
@@ -17,7 +17,7 @@ using namespace godot;
 static void tls_options_class_finalizer(JSRuntime *rt, JSValue val) {
 	TLSOptions *tls_options = static_cast<TLSOptions *>(JS_GetOpaque(val, TLSOptions::__class_id));
 	if (tls_options)
-		TLSOptions::free(nullptr, tls_options);
+		memdelete(tls_options);
 }
 
 static JSClassDef tls_options_class_def = {
@@ -26,25 +26,16 @@ static JSClassDef tls_options_class_def = {
 };
 
 static JSValue tls_options_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	TLSOptions *tls_options_class;
-	JSValue obj = JS_NewObjectClass(ctx, TLSOptions::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TLSOptions::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	tls_options_class = memnew(TLSOptions);
+	TLSOptions *tls_options_class = memnew(TLSOptions);
 	if (!tls_options_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, tls_options_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, tls_options_class);	
 	return obj;
 }
 static JSValue tls_options_class_is_server(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -98,16 +89,16 @@ static int js_tls_options_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(TLSOptions::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TLSOptions::__class_id, &tls_options_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, TLSOptions::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, TLSOptions::__class_id, proto);
+
 	define_tls_options_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, tls_options_class_proto_funcs, _countof(tls_options_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, tls_options_class_constructor, "TLSOptions", 0, JS_CFUNC_constructor, 0);
-	JS_SetConstructor(ctx, ctor, proto);
 	JS_SetPropertyFunctionList(ctx, ctor, tls_options_class_static_funcs, _countof(tls_options_class_static_funcs));
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "TLSOptions", ctor);
 

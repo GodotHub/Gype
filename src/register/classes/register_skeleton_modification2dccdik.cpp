@@ -15,7 +15,7 @@ using namespace godot;
 static void skeleton_modification2dccdik_class_finalizer(JSRuntime *rt, JSValue val) {
 	SkeletonModification2DCCDIK *skeleton_modification2dccdik = static_cast<SkeletonModification2DCCDIK *>(JS_GetOpaque(val, SkeletonModification2DCCDIK::__class_id));
 	if (skeleton_modification2dccdik)
-		SkeletonModification2DCCDIK::free(nullptr, skeleton_modification2dccdik);
+		memdelete(skeleton_modification2dccdik);
 }
 
 static JSClassDef skeleton_modification2dccdik_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef skeleton_modification2dccdik_class_def = {
 };
 
 static JSValue skeleton_modification2dccdik_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	SkeletonModification2DCCDIK *skeleton_modification2dccdik_class;
-	JSValue obj = JS_NewObjectClass(ctx, SkeletonModification2DCCDIK::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SkeletonModification2DCCDIK::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	skeleton_modification2dccdik_class = memnew(SkeletonModification2DCCDIK);
+	SkeletonModification2DCCDIK *skeleton_modification2dccdik_class = memnew(SkeletonModification2DCCDIK);
 	if (!skeleton_modification2dccdik_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, skeleton_modification2dccdik_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, skeleton_modification2dccdik_class);	
 	return obj;
 }
 static JSValue skeleton_modification2dccdik_class_set_target_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -172,13 +163,13 @@ static int js_skeleton_modification2dccdik_class_init(JSContext *ctx, JSModuleDe
 	class_id_list.insert(SkeletonModification2DCCDIK::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SkeletonModification2DCCDIK::__class_id, &skeleton_modification2dccdik_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, SkeletonModification2DCCDIK::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, SkeletonModification2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, SkeletonModification2DCCDIK::__class_id, proto);
+
 	define_skeleton_modification2dccdik_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, skeleton_modification2dccdik_class_proto_funcs, _countof(skeleton_modification2dccdik_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, skeleton_modification2dccdik_class_constructor, "SkeletonModification2DCCDIK", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

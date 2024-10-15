@@ -15,7 +15,7 @@ using namespace godot;
 static void navigation_path_query_parameters3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	NavigationPathQueryParameters3D *navigation_path_query_parameters3d = static_cast<NavigationPathQueryParameters3D *>(JS_GetOpaque(val, NavigationPathQueryParameters3D::__class_id));
 	if (navigation_path_query_parameters3d)
-		NavigationPathQueryParameters3D::free(nullptr, navigation_path_query_parameters3d);
+		memdelete(navigation_path_query_parameters3d);
 }
 
 static JSClassDef navigation_path_query_parameters3d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef navigation_path_query_parameters3d_class_def = {
 };
 
 static JSValue navigation_path_query_parameters3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	NavigationPathQueryParameters3D *navigation_path_query_parameters3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, NavigationPathQueryParameters3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, NavigationPathQueryParameters3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	navigation_path_query_parameters3d_class = memnew(NavigationPathQueryParameters3D);
+	NavigationPathQueryParameters3D *navigation_path_query_parameters3d_class = memnew(NavigationPathQueryParameters3D);
 	if (!navigation_path_query_parameters3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, navigation_path_query_parameters3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, navigation_path_query_parameters3d_class);	
 	return obj;
 }
 static JSValue navigation_path_query_parameters3d_class_set_pathfinding_algorithm(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -211,13 +202,13 @@ static int js_navigation_path_query_parameters3d_class_init(JSContext *ctx, JSMo
 	class_id_list.insert(NavigationPathQueryParameters3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), NavigationPathQueryParameters3D::__class_id, &navigation_path_query_parameters3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, NavigationPathQueryParameters3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, NavigationPathQueryParameters3D::__class_id, proto);
+
 	define_navigation_path_query_parameters3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, navigation_path_query_parameters3d_class_proto_funcs, _countof(navigation_path_query_parameters3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, navigation_path_query_parameters3d_class_constructor, "NavigationPathQueryParameters3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

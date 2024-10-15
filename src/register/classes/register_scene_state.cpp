@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/scene_state.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void scene_state_class_finalizer(JSRuntime *rt, JSValue val) {
 	SceneState *scene_state = static_cast<SceneState *>(JS_GetOpaque(val, SceneState::__class_id));
 	if (scene_state)
-		SceneState::free(nullptr, scene_state);
+		memdelete(scene_state);
 }
 
 static JSClassDef scene_state_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef scene_state_class_def = {
 };
 
 static JSValue scene_state_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	SceneState *scene_state_class;
-	JSValue obj = JS_NewObjectClass(ctx, SceneState::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SceneState::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	scene_state_class = memnew(SceneState);
+	SceneState *scene_state_class = memnew(SceneState);
 	if (!scene_state_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, scene_state_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, scene_state_class);	
 	return obj;
 }
 static JSValue scene_state_class_get_node_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -143,13 +134,13 @@ static int js_scene_state_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(SceneState::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SceneState::__class_id, &scene_state_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, SceneState::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, SceneState::__class_id, proto);
+
 	define_scene_state_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, scene_state_class_proto_funcs, _countof(scene_state_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, scene_state_class_constructor, "SceneState", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 
