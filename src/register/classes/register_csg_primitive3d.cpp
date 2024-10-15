@@ -15,7 +15,7 @@ using namespace godot;
 static void csg_primitive3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	CSGPrimitive3D *csg_primitive3d = static_cast<CSGPrimitive3D *>(JS_GetOpaque(val, CSGPrimitive3D::__class_id));
 	if (csg_primitive3d)
-		CSGPrimitive3D::free(nullptr, csg_primitive3d);
+		memdelete(csg_primitive3d);
 }
 
 static JSClassDef csg_primitive3d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef csg_primitive3d_class_def = {
 };
 
 static JSValue csg_primitive3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	CSGPrimitive3D *csg_primitive3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, CSGPrimitive3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CSGPrimitive3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	csg_primitive3d_class = memnew(CSGPrimitive3D);
+	CSGPrimitive3D *csg_primitive3d_class = memnew(CSGPrimitive3D);
 	if (!csg_primitive3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, csg_primitive3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, csg_primitive3d_class);	
 	return obj;
 }
 static JSValue csg_primitive3d_class_set_flip_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,13 +66,13 @@ static int js_csg_primitive3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(CSGPrimitive3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CSGPrimitive3D::__class_id, &csg_primitive3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, CSGPrimitive3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, CSGShape3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, CSGPrimitive3D::__class_id, proto);
+
 	define_csg_primitive3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, csg_primitive3d_class_proto_funcs, _countof(csg_primitive3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, csg_primitive3d_class_constructor, "CSGPrimitive3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

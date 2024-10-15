@@ -16,7 +16,7 @@ using namespace godot;
 static void gradient_texture2d_class_finalizer(JSRuntime *rt, JSValue val) {
 	GradientTexture2D *gradient_texture2d = static_cast<GradientTexture2D *>(JS_GetOpaque(val, GradientTexture2D::__class_id));
 	if (gradient_texture2d)
-		GradientTexture2D::free(nullptr, gradient_texture2d);
+		memdelete(gradient_texture2d);
 }
 
 static JSClassDef gradient_texture2d_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef gradient_texture2d_class_def = {
 };
 
 static JSValue gradient_texture2d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	GradientTexture2D *gradient_texture2d_class;
-	JSValue obj = JS_NewObjectClass(ctx, GradientTexture2D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GradientTexture2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	gradient_texture2d_class = memnew(GradientTexture2D);
+	GradientTexture2D *gradient_texture2d_class = memnew(GradientTexture2D);
 	if (!gradient_texture2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, gradient_texture2d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, gradient_texture2d_class);	
 	return obj;
 }
 static JSValue gradient_texture2d_class_set_gradient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -187,13 +178,13 @@ static int js_gradient_texture2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(GradientTexture2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GradientTexture2D::__class_id, &gradient_texture2d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, GradientTexture2D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Texture2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, GradientTexture2D::__class_id, proto);
+
 	define_gradient_texture2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, gradient_texture2d_class_proto_funcs, _countof(gradient_texture2d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, gradient_texture2d_class_constructor, "GradientTexture2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

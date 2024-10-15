@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/texture_rect.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void texture_rect_class_finalizer(JSRuntime *rt, JSValue val) {
 	TextureRect *texture_rect = static_cast<TextureRect *>(JS_GetOpaque(val, TextureRect::__class_id));
 	if (texture_rect)
-		TextureRect::free(nullptr, texture_rect);
+		memdelete(texture_rect);
 }
 
 static JSClassDef texture_rect_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef texture_rect_class_def = {
 };
 
 static JSValue texture_rect_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	TextureRect *texture_rect_class;
-	JSValue obj = JS_NewObjectClass(ctx, TextureRect::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TextureRect::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	texture_rect_class = memnew(TextureRect);
+	TextureRect *texture_rect_class = memnew(TextureRect);
 	if (!texture_rect_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, texture_rect_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, texture_rect_class);	
 	return obj;
 }
 static JSValue texture_rect_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -144,13 +135,13 @@ static int js_texture_rect_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(TextureRect::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TextureRect::__class_id, &texture_rect_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, TextureRect::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Control::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, TextureRect::__class_id, proto);
+
 	define_texture_rect_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, texture_rect_class_proto_funcs, _countof(texture_rect_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, texture_rect_class_constructor, "TextureRect", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

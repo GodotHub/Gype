@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/decal.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void decal_class_finalizer(JSRuntime *rt, JSValue val) {
 	Decal *decal = static_cast<Decal *>(JS_GetOpaque(val, Decal::__class_id));
 	if (decal)
-		Decal::free(nullptr, decal);
+		memdelete(decal);
 }
 
 static JSClassDef decal_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef decal_class_def = {
 };
 
 static JSValue decal_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Decal *decal_class;
-	JSValue obj = JS_NewObjectClass(ctx, Decal::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Decal::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	decal_class = memnew(Decal);
+	Decal *decal_class = memnew(Decal);
 	if (!decal_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, decal_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, decal_class);	
 	return obj;
 }
 static JSValue decal_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -287,13 +278,13 @@ static int js_decal_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Decal::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Decal::__class_id, &decal_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Decal::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, VisualInstance3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Decal::__class_id, proto);
+
 	define_decal_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, decal_class_proto_funcs, _countof(decal_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, decal_class_constructor, "Decal", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

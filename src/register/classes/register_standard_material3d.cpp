@@ -15,7 +15,7 @@ using namespace godot;
 static void standard_material3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	StandardMaterial3D *standard_material3d = static_cast<StandardMaterial3D *>(JS_GetOpaque(val, StandardMaterial3D::__class_id));
 	if (standard_material3d)
-		StandardMaterial3D::free(nullptr, standard_material3d);
+		memdelete(standard_material3d);
 }
 
 static JSClassDef standard_material3d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef standard_material3d_class_def = {
 };
 
 static JSValue standard_material3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	StandardMaterial3D *standard_material3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, StandardMaterial3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StandardMaterial3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	standard_material3d_class = memnew(StandardMaterial3D);
+	StandardMaterial3D *standard_material3d_class = memnew(StandardMaterial3D);
 	if (!standard_material3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, standard_material3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, standard_material3d_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_standard_material3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(StandardMaterial3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), StandardMaterial3D::__class_id, &standard_material3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, StandardMaterial3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, BaseMaterial3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, StandardMaterial3D::__class_id, proto);
-	define_standard_material3d_property(ctx, proto);
 
+	define_standard_material3d_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, standard_material3d_class_constructor, "StandardMaterial3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

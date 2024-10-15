@@ -19,6 +19,8 @@ class JavaScriptInstance {
 	Object *binding;
 	Object *p_godot_object;
 	JavaScript *script;
+	int64_t instance_id;
+	bool _is_placeholder;
 
 private:
 	JSModuleDef *get_module(const char *path);
@@ -41,11 +43,13 @@ public:
 	GDExtensionInt get_method_argument_count(GDExtensionConstStringNamePtr p_name, GDExtensionBool *r_is_valid);
 	GDExtensionObjectPtr get_owner();
 	GDExtensionObjectPtr get_script();
+	GDExtensionBool is_placeholder();
 	GDExtensionScriptLanguagePtr get_language();
 
 	Object *get_godot_obj() { return p_godot_object; }
+	Object *get_binding() { return binding; }
 
-	JavaScriptInstance(Object *p_godot_object, JavaScript *script);
+	JavaScriptInstance(Object *p_godot_object, JavaScript *script, bool is_placeholder);
 	~JavaScriptInstance();
 };
 } // namespace godot

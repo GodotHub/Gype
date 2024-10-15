@@ -78,11 +78,17 @@ GDExtensionObjectPtr get_script_func(GDExtensionScriptInstanceDataPtr p_instance
 	return instance->get_script();
 }
 
+GDExtensionBool is_placeholder_func(GDExtensionScriptInstanceDataPtr p_instance) {
+	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_instance);
+	return instance->is_placeholder();
+}
+
 GDExtensionScriptLanguagePtr get_language_func(GDExtensionScriptInstanceDataPtr p_instance) {
 	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_instance);
 	return instance->get_language();
 }
 
 void free_func(GDExtensionScriptInstanceDataPtr p_instance) {
-	memfree(p_instance);
+	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_instance);
+	Memory::free_static(instance);
 }

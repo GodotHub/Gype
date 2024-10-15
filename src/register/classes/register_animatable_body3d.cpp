@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/static_body3d.hpp>
 #include <godot_cpp/classes/animatable_body3d.hpp>
+#include <godot_cpp/classes/static_body3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void animatable_body3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	AnimatableBody3D *animatable_body3d = static_cast<AnimatableBody3D *>(JS_GetOpaque(val, AnimatableBody3D::__class_id));
 	if (animatable_body3d)
-		AnimatableBody3D::free(nullptr, animatable_body3d);
+		memdelete(animatable_body3d);
 }
 
 static JSClassDef animatable_body3d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef animatable_body3d_class_def = {
 };
 
 static JSValue animatable_body3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	AnimatableBody3D *animatable_body3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, AnimatableBody3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimatableBody3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	animatable_body3d_class = memnew(AnimatableBody3D);
+	AnimatableBody3D *animatable_body3d_class = memnew(AnimatableBody3D);
 	if (!animatable_body3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, animatable_body3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, animatable_body3d_class);	
 	return obj;
 }
 static JSValue animatable_body3d_class_set_sync_to_physics(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,13 +66,13 @@ static int js_animatable_body3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(AnimatableBody3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimatableBody3D::__class_id, &animatable_body3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, AnimatableBody3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, StaticBody3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AnimatableBody3D::__class_id, proto);
+
 	define_animatable_body3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, animatable_body3d_class_proto_funcs, _countof(animatable_body3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, animatable_body3d_class_constructor, "AnimatableBody3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

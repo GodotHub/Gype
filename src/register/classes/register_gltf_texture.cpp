@@ -15,7 +15,7 @@ using namespace godot;
 static void gltf_texture_class_finalizer(JSRuntime *rt, JSValue val) {
 	GLTFTexture *gltf_texture = static_cast<GLTFTexture *>(JS_GetOpaque(val, GLTFTexture::__class_id));
 	if (gltf_texture)
-		GLTFTexture::free(nullptr, gltf_texture);
+		memdelete(gltf_texture);
 }
 
 static JSClassDef gltf_texture_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef gltf_texture_class_def = {
 };
 
 static JSValue gltf_texture_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	GLTFTexture *gltf_texture_class;
-	JSValue obj = JS_NewObjectClass(ctx, GLTFTexture::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFTexture::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	gltf_texture_class = memnew(GLTFTexture);
+	GLTFTexture *gltf_texture_class = memnew(GLTFTexture);
 	if (!gltf_texture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, gltf_texture_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, gltf_texture_class);	
 	return obj;
 }
 static JSValue gltf_texture_class_get_src_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -92,13 +83,13 @@ static int js_gltf_texture_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(GLTFTexture::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GLTFTexture::__class_id, &gltf_texture_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, GLTFTexture::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, GLTFTexture::__class_id, proto);
+
 	define_gltf_texture_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, gltf_texture_class_proto_funcs, _countof(gltf_texture_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, gltf_texture_class_constructor, "GLTFTexture", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

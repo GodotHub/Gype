@@ -15,7 +15,7 @@ using namespace godot;
 static void image_class_finalizer(JSRuntime *rt, JSValue val) {
 	Image *image = static_cast<Image *>(JS_GetOpaque(val, Image::__class_id));
 	if (image)
-		Image::free(nullptr, image);
+		memdelete(image);
 }
 
 static JSClassDef image_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef image_class_def = {
 };
 
 static JSValue image_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Image *image_class;
-	JSValue obj = JS_NewObjectClass(ctx, Image::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Image::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	image_class = memnew(Image);
+	Image *image_class = memnew(Image);
 	if (!image_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, image_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, image_class);	
 	return obj;
 }
 static JSValue image_class_get_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -370,16 +361,16 @@ static int js_image_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Image::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Image::__class_id, &image_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Image::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Image::__class_id, proto);
+
 	define_image_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, image_class_proto_funcs, _countof(image_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, image_class_constructor, "Image", 0, JS_CFUNC_constructor, 0);
-	JS_SetConstructor(ctx, ctor, proto);
 	JS_SetPropertyFunctionList(ctx, ctor, image_class_static_funcs, _countof(image_class_static_funcs));
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "Image", ctor);
 

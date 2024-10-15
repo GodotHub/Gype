@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/sprite_frames.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void sprite_frames_class_finalizer(JSRuntime *rt, JSValue val) {
 	SpriteFrames *sprite_frames = static_cast<SpriteFrames *>(JS_GetOpaque(val, SpriteFrames::__class_id));
 	if (sprite_frames)
-		SpriteFrames::free(nullptr, sprite_frames);
+		memdelete(sprite_frames);
 }
 
 static JSClassDef sprite_frames_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef sprite_frames_class_def = {
 };
 
 static JSValue sprite_frames_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	SpriteFrames *sprite_frames_class;
-	JSValue obj = JS_NewObjectClass(ctx, SpriteFrames::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SpriteFrames::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	sprite_frames_class = memnew(SpriteFrames);
+	SpriteFrames *sprite_frames_class = memnew(SpriteFrames);
 	if (!sprite_frames_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, sprite_frames_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, sprite_frames_class);	
 	return obj;
 }
 static JSValue sprite_frames_class_add_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -137,13 +128,13 @@ static int js_sprite_frames_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(SpriteFrames::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SpriteFrames::__class_id, &sprite_frames_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, SpriteFrames::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, SpriteFrames::__class_id, proto);
+
 	define_sprite_frames_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, sprite_frames_class_proto_funcs, _countof(sprite_frames_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, sprite_frames_class_constructor, "SpriteFrames", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/root_motion_view.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/classes/root_motion_view.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void root_motion_view_class_finalizer(JSRuntime *rt, JSValue val) {
 	RootMotionView *root_motion_view = static_cast<RootMotionView *>(JS_GetOpaque(val, RootMotionView::__class_id));
 	if (root_motion_view)
-		RootMotionView::free(nullptr, root_motion_view);
+		memdelete(root_motion_view);
 }
 
 static JSClassDef root_motion_view_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef root_motion_view_class_def = {
 };
 
 static JSValue root_motion_view_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	RootMotionView *root_motion_view_class;
-	JSValue obj = JS_NewObjectClass(ctx, RootMotionView::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RootMotionView::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	root_motion_view_class = memnew(RootMotionView);
+	RootMotionView *root_motion_view_class = memnew(RootMotionView);
 	if (!root_motion_view_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, root_motion_view_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, root_motion_view_class);	
 	return obj;
 }
 static JSValue root_motion_view_class_set_animation_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -143,13 +134,13 @@ static int js_root_motion_view_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(RootMotionView::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RootMotionView::__class_id, &root_motion_view_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, RootMotionView::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, VisualInstance3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, RootMotionView::__class_id, proto);
+
 	define_root_motion_view_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, root_motion_view_class_proto_funcs, _countof(root_motion_view_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, root_motion_view_class_constructor, "RootMotionView", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

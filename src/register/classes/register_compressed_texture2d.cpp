@@ -15,7 +15,7 @@ using namespace godot;
 static void compressed_texture2d_class_finalizer(JSRuntime *rt, JSValue val) {
 	CompressedTexture2D *compressed_texture2d = static_cast<CompressedTexture2D *>(JS_GetOpaque(val, CompressedTexture2D::__class_id));
 	if (compressed_texture2d)
-		CompressedTexture2D::free(nullptr, compressed_texture2d);
+		memdelete(compressed_texture2d);
 }
 
 static JSClassDef compressed_texture2d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef compressed_texture2d_class_def = {
 };
 
 static JSValue compressed_texture2d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	CompressedTexture2D *compressed_texture2d_class;
-	JSValue obj = JS_NewObjectClass(ctx, CompressedTexture2D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CompressedTexture2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	compressed_texture2d_class = memnew(CompressedTexture2D);
+	CompressedTexture2D *compressed_texture2d_class = memnew(CompressedTexture2D);
 	if (!compressed_texture2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, compressed_texture2d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, compressed_texture2d_class);	
 	return obj;
 }
 static JSValue compressed_texture2d_class_load(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -74,13 +65,13 @@ static int js_compressed_texture2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(CompressedTexture2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CompressedTexture2D::__class_id, &compressed_texture2d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, CompressedTexture2D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Texture2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, CompressedTexture2D::__class_id, proto);
+
 	define_compressed_texture2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, compressed_texture2d_class_proto_funcs, _countof(compressed_texture2d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, compressed_texture2d_class_constructor, "CompressedTexture2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -6,10 +6,10 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/camera_attributes.hpp>
-#include <godot_cpp/classes/voxel_gi.hpp>
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/voxel_gi_data.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/classes/voxel_gi.hpp>
+#include <godot_cpp/classes/voxel_gi_data.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -18,7 +18,7 @@ using namespace godot;
 static void voxel_gi_class_finalizer(JSRuntime *rt, JSValue val) {
 	VoxelGI *voxel_gi = static_cast<VoxelGI *>(JS_GetOpaque(val, VoxelGI::__class_id));
 	if (voxel_gi)
-		VoxelGI::free(nullptr, voxel_gi);
+		memdelete(voxel_gi);
 }
 
 static JSClassDef voxel_gi_class_def = {
@@ -27,25 +27,16 @@ static JSClassDef voxel_gi_class_def = {
 };
 
 static JSValue voxel_gi_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	VoxelGI *voxel_gi_class;
-	JSValue obj = JS_NewObjectClass(ctx, VoxelGI::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VoxelGI::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	voxel_gi_class = memnew(VoxelGI);
+	VoxelGI *voxel_gi_class = memnew(VoxelGI);
 	if (!voxel_gi_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, voxel_gi_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, voxel_gi_class);	
 	return obj;
 }
 static JSValue voxel_gi_class_set_probe_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -139,13 +130,13 @@ static int js_voxel_gi_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(VoxelGI::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VoxelGI::__class_id, &voxel_gi_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, VoxelGI::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, VisualInstance3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, VoxelGI::__class_id, proto);
+
 	define_voxel_gi_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, voxel_gi_class_proto_funcs, _countof(voxel_gi_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, voxel_gi_class_constructor, "VoxelGI", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

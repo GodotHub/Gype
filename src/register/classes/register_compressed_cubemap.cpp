@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/compressed_cubemap.hpp>
 #include <godot_cpp/classes/compressed_texture_layered.hpp>
+#include <godot_cpp/classes/compressed_cubemap.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void compressed_cubemap_class_finalizer(JSRuntime *rt, JSValue val) {
 	CompressedCubemap *compressed_cubemap = static_cast<CompressedCubemap *>(JS_GetOpaque(val, CompressedCubemap::__class_id));
 	if (compressed_cubemap)
-		CompressedCubemap::free(nullptr, compressed_cubemap);
+		memdelete(compressed_cubemap);
 }
 
 static JSClassDef compressed_cubemap_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef compressed_cubemap_class_def = {
 };
 
 static JSValue compressed_cubemap_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	CompressedCubemap *compressed_cubemap_class;
-	JSValue obj = JS_NewObjectClass(ctx, CompressedCubemap::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CompressedCubemap::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	compressed_cubemap_class = memnew(CompressedCubemap);
+	CompressedCubemap *compressed_cubemap_class = memnew(CompressedCubemap);
 	if (!compressed_cubemap_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, compressed_cubemap_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, compressed_cubemap_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_compressed_cubemap_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(CompressedCubemap::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CompressedCubemap::__class_id, &compressed_cubemap_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, CompressedCubemap::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, CompressedTextureLayered::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, CompressedCubemap::__class_id, proto);
-	define_compressed_cubemap_property(ctx, proto);
 
+	define_compressed_cubemap_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, compressed_cubemap_class_constructor, "CompressedCubemap", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -15,7 +15,7 @@ using namespace godot;
 static void rd_framebuffer_pass_class_finalizer(JSRuntime *rt, JSValue val) {
 	RDFramebufferPass *rd_framebuffer_pass = static_cast<RDFramebufferPass *>(JS_GetOpaque(val, RDFramebufferPass::__class_id));
 	if (rd_framebuffer_pass)
-		RDFramebufferPass::free(nullptr, rd_framebuffer_pass);
+		memdelete(rd_framebuffer_pass);
 }
 
 static JSClassDef rd_framebuffer_pass_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef rd_framebuffer_pass_class_def = {
 };
 
 static JSValue rd_framebuffer_pass_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	RDFramebufferPass *rd_framebuffer_pass_class;
-	JSValue obj = JS_NewObjectClass(ctx, RDFramebufferPass::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDFramebufferPass::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	rd_framebuffer_pass_class = memnew(RDFramebufferPass);
+	RDFramebufferPass *rd_framebuffer_pass_class = memnew(RDFramebufferPass);
 	if (!rd_framebuffer_pass_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, rd_framebuffer_pass_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, rd_framebuffer_pass_class);	
 	return obj;
 }
 static JSValue rd_framebuffer_pass_class_set_color_attachments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -143,13 +134,13 @@ static int js_rd_framebuffer_pass_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(RDFramebufferPass::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RDFramebufferPass::__class_id, &rd_framebuffer_pass_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, RDFramebufferPass::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, RDFramebufferPass::__class_id, proto);
+
 	define_rd_framebuffer_pass_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, rd_framebuffer_pass_class_proto_funcs, _countof(rd_framebuffer_pass_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, rd_framebuffer_pass_class_constructor, "RDFramebufferPass", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

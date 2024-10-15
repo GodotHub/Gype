@@ -15,7 +15,7 @@ using namespace godot;
 static void stream_peer_buffer_class_finalizer(JSRuntime *rt, JSValue val) {
 	StreamPeerBuffer *stream_peer_buffer = static_cast<StreamPeerBuffer *>(JS_GetOpaque(val, StreamPeerBuffer::__class_id));
 	if (stream_peer_buffer)
-		StreamPeerBuffer::free(nullptr, stream_peer_buffer);
+		memdelete(stream_peer_buffer);
 }
 
 static JSClassDef stream_peer_buffer_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef stream_peer_buffer_class_def = {
 };
 
 static JSValue stream_peer_buffer_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	StreamPeerBuffer *stream_peer_buffer_class;
-	JSValue obj = JS_NewObjectClass(ctx, StreamPeerBuffer::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StreamPeerBuffer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	stream_peer_buffer_class = memnew(StreamPeerBuffer);
+	StreamPeerBuffer *stream_peer_buffer_class = memnew(StreamPeerBuffer);
 	if (!stream_peer_buffer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, stream_peer_buffer_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, stream_peer_buffer_class);	
 	return obj;
 }
 static JSValue stream_peer_buffer_class_seek(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -102,13 +93,13 @@ static int js_stream_peer_buffer_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(StreamPeerBuffer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), StreamPeerBuffer::__class_id, &stream_peer_buffer_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, StreamPeerBuffer::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, StreamPeer::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, StreamPeerBuffer::__class_id, proto);
+
 	define_stream_peer_buffer_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, stream_peer_buffer_class_proto_funcs, _countof(stream_peer_buffer_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, stream_peer_buffer_class_constructor, "StreamPeerBuffer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

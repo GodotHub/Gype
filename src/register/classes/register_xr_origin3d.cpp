@@ -15,7 +15,7 @@ using namespace godot;
 static void xr_origin3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	XROrigin3D *xr_origin3d = static_cast<XROrigin3D *>(JS_GetOpaque(val, XROrigin3D::__class_id));
 	if (xr_origin3d)
-		XROrigin3D::free(nullptr, xr_origin3d);
+		memdelete(xr_origin3d);
 }
 
 static JSClassDef xr_origin3d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef xr_origin3d_class_def = {
 };
 
 static JSValue xr_origin3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	XROrigin3D *xr_origin3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, XROrigin3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XROrigin3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	xr_origin3d_class = memnew(XROrigin3D);
+	XROrigin3D *xr_origin3d_class = memnew(XROrigin3D);
 	if (!xr_origin3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, xr_origin3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, xr_origin3d_class);	
 	return obj;
 }
 static JSValue xr_origin3d_class_set_world_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -92,13 +83,13 @@ static int js_xr_origin3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(XROrigin3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XROrigin3D::__class_id, &xr_origin3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, XROrigin3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, XROrigin3D::__class_id, proto);
+
 	define_xr_origin3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xr_origin3d_class_proto_funcs, _countof(xr_origin3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, xr_origin3d_class_constructor, "XROrigin3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

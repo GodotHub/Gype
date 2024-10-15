@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_boolean_constant.hpp>
 #include <godot_cpp/classes/visual_shader_node_constant.hpp>
+#include <godot_cpp/classes/visual_shader_node_boolean_constant.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void visual_shader_node_boolean_constant_class_finalizer(JSRuntime *rt, JSValue val) {
 	VisualShaderNodeBooleanConstant *visual_shader_node_boolean_constant = static_cast<VisualShaderNodeBooleanConstant *>(JS_GetOpaque(val, VisualShaderNodeBooleanConstant::__class_id));
 	if (visual_shader_node_boolean_constant)
-		VisualShaderNodeBooleanConstant::free(nullptr, visual_shader_node_boolean_constant);
+		memdelete(visual_shader_node_boolean_constant);
 }
 
 static JSClassDef visual_shader_node_boolean_constant_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef visual_shader_node_boolean_constant_class_def = {
 };
 
 static JSValue visual_shader_node_boolean_constant_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	VisualShaderNodeBooleanConstant *visual_shader_node_boolean_constant_class;
-	JSValue obj = JS_NewObjectClass(ctx, VisualShaderNodeBooleanConstant::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeBooleanConstant::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	visual_shader_node_boolean_constant_class = memnew(VisualShaderNodeBooleanConstant);
+	VisualShaderNodeBooleanConstant *visual_shader_node_boolean_constant_class = memnew(VisualShaderNodeBooleanConstant);
 	if (!visual_shader_node_boolean_constant_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, visual_shader_node_boolean_constant_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, visual_shader_node_boolean_constant_class);	
 	return obj;
 }
 static JSValue visual_shader_node_boolean_constant_class_set_constant(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,13 +66,13 @@ static int js_visual_shader_node_boolean_constant_class_init(JSContext *ctx, JSM
 	class_id_list.insert(VisualShaderNodeBooleanConstant::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeBooleanConstant::__class_id, &visual_shader_node_boolean_constant_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, VisualShaderNodeBooleanConstant::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, VisualShaderNodeConstant::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, VisualShaderNodeBooleanConstant::__class_id, proto);
+
 	define_visual_shader_node_boolean_constant_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_boolean_constant_class_proto_funcs, _countof(visual_shader_node_boolean_constant_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_boolean_constant_class_constructor, "VisualShaderNodeBooleanConstant", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

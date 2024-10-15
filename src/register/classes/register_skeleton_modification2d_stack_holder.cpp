@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton_modification2d.hpp>
 #include <godot_cpp/classes/skeleton_modification2d_stack_holder.hpp>
+#include <godot_cpp/classes/skeleton_modification2d.hpp>
 #include <godot_cpp/classes/skeleton_modification_stack2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void skeleton_modification2d_stack_holder_class_finalizer(JSRuntime *rt, JSValue val) {
 	SkeletonModification2DStackHolder *skeleton_modification2d_stack_holder = static_cast<SkeletonModification2DStackHolder *>(JS_GetOpaque(val, SkeletonModification2DStackHolder::__class_id));
 	if (skeleton_modification2d_stack_holder)
-		SkeletonModification2DStackHolder::free(nullptr, skeleton_modification2d_stack_holder);
+		memdelete(skeleton_modification2d_stack_holder);
 }
 
 static JSClassDef skeleton_modification2d_stack_holder_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef skeleton_modification2d_stack_holder_class_def = {
 };
 
 static JSValue skeleton_modification2d_stack_holder_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	SkeletonModification2DStackHolder *skeleton_modification2d_stack_holder_class;
-	JSValue obj = JS_NewObjectClass(ctx, SkeletonModification2DStackHolder::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SkeletonModification2DStackHolder::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	skeleton_modification2d_stack_holder_class = memnew(SkeletonModification2DStackHolder);
+	SkeletonModification2DStackHolder *skeleton_modification2d_stack_holder_class = memnew(SkeletonModification2DStackHolder);
 	if (!skeleton_modification2d_stack_holder_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, skeleton_modification2d_stack_holder_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, skeleton_modification2d_stack_holder_class);	
 	return obj;
 }
 static JSValue skeleton_modification2d_stack_holder_class_set_held_modification_stack(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -68,13 +59,13 @@ static int js_skeleton_modification2d_stack_holder_class_init(JSContext *ctx, JS
 	class_id_list.insert(SkeletonModification2DStackHolder::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SkeletonModification2DStackHolder::__class_id, &skeleton_modification2d_stack_holder_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, SkeletonModification2DStackHolder::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, SkeletonModification2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, SkeletonModification2DStackHolder::__class_id, proto);
+
 	define_skeleton_modification2d_stack_holder_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, skeleton_modification2d_stack_holder_class_proto_funcs, _countof(skeleton_modification2d_stack_holder_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, skeleton_modification2d_stack_holder_class_constructor, "SkeletonModification2DStackHolder", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

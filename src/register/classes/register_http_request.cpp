@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/http_request.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/http_request.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void http_request_class_finalizer(JSRuntime *rt, JSValue val) {
 	HTTPRequest *http_request = static_cast<HTTPRequest *>(JS_GetOpaque(val, HTTPRequest::__class_id));
 	if (http_request)
-		HTTPRequest::free(nullptr, http_request);
+		memdelete(http_request);
 }
 
 static JSClassDef http_request_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef http_request_class_def = {
 };
 
 static JSValue http_request_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	HTTPRequest *http_request_class;
-	JSValue obj = JS_NewObjectClass(ctx, HTTPRequest::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, HTTPRequest::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	http_request_class = memnew(HTTPRequest);
+	HTTPRequest *http_request_class = memnew(HTTPRequest);
 	if (!http_request_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, http_request_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, http_request_class);	
 	return obj;
 }
 static JSValue http_request_class_request(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -218,13 +209,13 @@ static int js_http_request_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(HTTPRequest::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), HTTPRequest::__class_id, &http_request_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, HTTPRequest::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, HTTPRequest::__class_id, proto);
+
 	define_http_request_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, http_request_class_proto_funcs, _countof(http_request_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, http_request_class_constructor, "HTTPRequest", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

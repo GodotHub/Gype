@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/system_font.hpp>
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void system_font_class_finalizer(JSRuntime *rt, JSValue val) {
 	SystemFont *system_font = static_cast<SystemFont *>(JS_GetOpaque(val, SystemFont::__class_id));
 	if (system_font)
-		SystemFont::free(nullptr, system_font);
+		memdelete(system_font);
 }
 
 static JSClassDef system_font_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef system_font_class_def = {
 };
 
 static JSValue system_font_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	SystemFont *system_font_class;
-	JSValue obj = JS_NewObjectClass(ctx, SystemFont::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SystemFont::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	system_font_class = memnew(SystemFont);
+	SystemFont *system_font_class = memnew(SystemFont);
 	if (!system_font_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, system_font_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, system_font_class);	
 	return obj;
 }
 static JSValue system_font_class_set_antialiasing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -305,13 +296,13 @@ static int js_system_font_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(SystemFont::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SystemFont::__class_id, &system_font_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, SystemFont::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Font::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, SystemFont::__class_id, proto);
+
 	define_system_font_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, system_font_class_proto_funcs, _countof(system_font_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, system_font_class_constructor, "SystemFont", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

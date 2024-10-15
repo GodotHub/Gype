@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/pck_packer.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void pck_packer_class_finalizer(JSRuntime *rt, JSValue val) {
 	PCKPacker *pck_packer = static_cast<PCKPacker *>(JS_GetOpaque(val, PCKPacker::__class_id));
 	if (pck_packer)
-		PCKPacker::free(nullptr, pck_packer);
+		memdelete(pck_packer);
 }
 
 static JSClassDef pck_packer_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef pck_packer_class_def = {
 };
 
 static JSValue pck_packer_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PCKPacker *pck_packer_class;
-	JSValue obj = JS_NewObjectClass(ctx, PCKPacker::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PCKPacker::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	pck_packer_class = memnew(PCKPacker);
+	PCKPacker *pck_packer_class = memnew(PCKPacker);
 	if (!pck_packer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, pck_packer_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, pck_packer_class);	
 	return obj;
 }
 static JSValue pck_packer_class_pck_start(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,13 +61,13 @@ static int js_pck_packer_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(PCKPacker::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PCKPacker::__class_id, &pck_packer_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, PCKPacker::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PCKPacker::__class_id, proto);
+
 	define_pck_packer_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, pck_packer_class_proto_funcs, _countof(pck_packer_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, pck_packer_class_constructor, "PCKPacker", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

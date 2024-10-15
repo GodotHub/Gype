@@ -216,7 +216,7 @@ public:
 	Variant(const PackedVector3Array &v);
 	Variant(const PackedColorArray &v);
 	Variant(const PackedVector4Array &v);
-	Variant(JSValue v);
+	Variant(const JSValue &v);
 	~Variant();
 
 	operator bool() const;

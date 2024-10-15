@@ -15,7 +15,7 @@ using namespace godot;
 static void point_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
 	PointMesh *point_mesh = static_cast<PointMesh *>(JS_GetOpaque(val, PointMesh::__class_id));
 	if (point_mesh)
-		PointMesh::free(nullptr, point_mesh);
+		memdelete(point_mesh);
 }
 
 static JSClassDef point_mesh_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef point_mesh_class_def = {
 };
 
 static JSValue point_mesh_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PointMesh *point_mesh_class;
-	JSValue obj = JS_NewObjectClass(ctx, PointMesh::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PointMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	point_mesh_class = memnew(PointMesh);
+	PointMesh *point_mesh_class = memnew(PointMesh);
 	if (!point_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, point_mesh_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, point_mesh_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_point_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(PointMesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PointMesh::__class_id, &point_mesh_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, PointMesh::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, PrimitiveMesh::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PointMesh::__class_id, proto);
-	define_point_mesh_property(ctx, proto);
 
+	define_point_mesh_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, point_mesh_class_constructor, "PointMesh", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

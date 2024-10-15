@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/classes/box_container.hpp>
+#include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void h_box_container_class_finalizer(JSRuntime *rt, JSValue val) {
 	HBoxContainer *h_box_container = static_cast<HBoxContainer *>(JS_GetOpaque(val, HBoxContainer::__class_id));
 	if (h_box_container)
-		HBoxContainer::free(nullptr, h_box_container);
+		memdelete(h_box_container);
 }
 
 static JSClassDef h_box_container_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef h_box_container_class_def = {
 };
 
 static JSValue h_box_container_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	HBoxContainer *h_box_container_class;
-	JSValue obj = JS_NewObjectClass(ctx, HBoxContainer::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, HBoxContainer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	h_box_container_class = memnew(HBoxContainer);
+	HBoxContainer *h_box_container_class = memnew(HBoxContainer);
 	if (!h_box_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, h_box_container_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, h_box_container_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_h_box_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(HBoxContainer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), HBoxContainer::__class_id, &h_box_container_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, HBoxContainer::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, BoxContainer::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, HBoxContainer::__class_id, proto);
-	define_h_box_container_property(ctx, proto);
 
+	define_h_box_container_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, h_box_container_class_constructor, "HBoxContainer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

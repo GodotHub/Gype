@@ -15,7 +15,7 @@ using namespace godot;
 static void render_scene_data_class_finalizer(JSRuntime *rt, JSValue val) {
 	RenderSceneData *render_scene_data = static_cast<RenderSceneData *>(JS_GetOpaque(val, RenderSceneData::__class_id));
 	if (render_scene_data)
-		RenderSceneData::free(nullptr, render_scene_data);
+		memdelete(render_scene_data);
 }
 
 static JSClassDef render_scene_data_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef render_scene_data_class_def = {
 };
 
 static JSValue render_scene_data_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	RenderSceneData *render_scene_data_class;
-	JSValue obj = JS_NewObjectClass(ctx, RenderSceneData::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RenderSceneData::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	render_scene_data_class = memnew(RenderSceneData);
+	RenderSceneData *render_scene_data_class = memnew(RenderSceneData);
 	if (!render_scene_data_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, render_scene_data_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, render_scene_data_class);	
 	return obj;
 }
 static JSValue render_scene_data_class_get_cam_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -82,13 +73,13 @@ static int js_render_scene_data_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(RenderSceneData::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RenderSceneData::__class_id, &render_scene_data_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, RenderSceneData::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Object::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, RenderSceneData::__class_id, proto);
+
 	define_render_scene_data_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, render_scene_data_class_proto_funcs, _countof(render_scene_data_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, render_scene_data_class_constructor, "RenderSceneData", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -15,7 +15,7 @@ using namespace godot;
 static void reference_rect_class_finalizer(JSRuntime *rt, JSValue val) {
 	ReferenceRect *reference_rect = static_cast<ReferenceRect *>(JS_GetOpaque(val, ReferenceRect::__class_id));
 	if (reference_rect)
-		ReferenceRect::free(nullptr, reference_rect);
+		memdelete(reference_rect);
 }
 
 static JSClassDef reference_rect_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef reference_rect_class_def = {
 };
 
 static JSValue reference_rect_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	ReferenceRect *reference_rect_class;
-	JSValue obj = JS_NewObjectClass(ctx, ReferenceRect::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ReferenceRect::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	reference_rect_class = memnew(ReferenceRect);
+	ReferenceRect *reference_rect_class = memnew(ReferenceRect);
 	if (!reference_rect_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, reference_rect_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, reference_rect_class);	
 	return obj;
 }
 static JSValue reference_rect_class_get_border_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -109,13 +100,13 @@ static int js_reference_rect_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(ReferenceRect::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ReferenceRect::__class_id, &reference_rect_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, ReferenceRect::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Control::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ReferenceRect::__class_id, proto);
+
 	define_reference_rect_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, reference_rect_class_proto_funcs, _countof(reference_rect_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, reference_rect_class_constructor, "ReferenceRect", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

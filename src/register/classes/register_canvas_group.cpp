@@ -15,7 +15,7 @@ using namespace godot;
 static void canvas_group_class_finalizer(JSRuntime *rt, JSValue val) {
 	CanvasGroup *canvas_group = static_cast<CanvasGroup *>(JS_GetOpaque(val, CanvasGroup::__class_id));
 	if (canvas_group)
-		CanvasGroup::free(nullptr, canvas_group);
+		memdelete(canvas_group);
 }
 
 static JSClassDef canvas_group_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef canvas_group_class_def = {
 };
 
 static JSValue canvas_group_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	CanvasGroup *canvas_group_class;
-	JSValue obj = JS_NewObjectClass(ctx, CanvasGroup::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CanvasGroup::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	canvas_group_class = memnew(CanvasGroup);
+	CanvasGroup *canvas_group_class = memnew(CanvasGroup);
 	if (!canvas_group_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, canvas_group_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, canvas_group_class);	
 	return obj;
 }
 static JSValue canvas_group_class_set_fit_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -109,13 +100,13 @@ static int js_canvas_group_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(CanvasGroup::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CanvasGroup::__class_id, &canvas_group_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, CanvasGroup::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, CanvasGroup::__class_id, proto);
+
 	define_canvas_group_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, canvas_group_class_proto_funcs, _countof(canvas_group_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, canvas_group_class_constructor, "CanvasGroup", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

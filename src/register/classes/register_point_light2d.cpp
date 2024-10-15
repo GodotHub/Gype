@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/light2d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/light2d.hpp>
 #include <godot_cpp/classes/point_light2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void point_light2d_class_finalizer(JSRuntime *rt, JSValue val) {
 	PointLight2D *point_light2d = static_cast<PointLight2D *>(JS_GetOpaque(val, PointLight2D::__class_id));
 	if (point_light2d)
-		PointLight2D::free(nullptr, point_light2d);
+		memdelete(point_light2d);
 }
 
 static JSClassDef point_light2d_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef point_light2d_class_def = {
 };
 
 static JSValue point_light2d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PointLight2D *point_light2d_class;
-	JSValue obj = JS_NewObjectClass(ctx, PointLight2D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PointLight2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	point_light2d_class = memnew(PointLight2D);
+	PointLight2D *point_light2d_class = memnew(PointLight2D);
 	if (!point_light2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, point_light2d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, point_light2d_class);	
 	return obj;
 }
 static JSValue point_light2d_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -110,13 +101,13 @@ static int js_point_light2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(PointLight2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PointLight2D::__class_id, &point_light2d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, PointLight2D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Light2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PointLight2D::__class_id, proto);
+
 	define_point_light2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, point_light2d_class_proto_funcs, _countof(point_light2d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, point_light2d_class_constructor, "PointLight2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

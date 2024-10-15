@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_resource_picker.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/editor_script_picker.hpp>
+#include <godot_cpp/classes/editor_resource_picker.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void editor_script_picker_class_finalizer(JSRuntime *rt, JSValue val) {
 	EditorScriptPicker *editor_script_picker = static_cast<EditorScriptPicker *>(JS_GetOpaque(val, EditorScriptPicker::__class_id));
 	if (editor_script_picker)
-		EditorScriptPicker::free(nullptr, editor_script_picker);
+		memdelete(editor_script_picker);
 }
 
 static JSClassDef editor_script_picker_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef editor_script_picker_class_def = {
 };
 
 static JSValue editor_script_picker_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	EditorScriptPicker *editor_script_picker_class;
-	JSValue obj = JS_NewObjectClass(ctx, EditorScriptPicker::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorScriptPicker::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	editor_script_picker_class = memnew(EditorScriptPicker);
+	EditorScriptPicker *editor_script_picker_class = memnew(EditorScriptPicker);
 	if (!editor_script_picker_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, editor_script_picker_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, editor_script_picker_class);	
 	return obj;
 }
 static JSValue editor_script_picker_class_set_script_owner(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -76,13 +67,13 @@ static int js_editor_script_picker_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(EditorScriptPicker::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorScriptPicker::__class_id, &editor_script_picker_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, EditorScriptPicker::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, EditorResourcePicker::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, EditorScriptPicker::__class_id, proto);
+
 	define_editor_script_picker_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_script_picker_class_proto_funcs, _countof(editor_script_picker_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, editor_script_picker_class_constructor, "EditorScriptPicker", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -15,7 +15,7 @@ using namespace godot;
 static void path_follow2d_class_finalizer(JSRuntime *rt, JSValue val) {
 	PathFollow2D *path_follow2d = static_cast<PathFollow2D *>(JS_GetOpaque(val, PathFollow2D::__class_id));
 	if (path_follow2d)
-		PathFollow2D::free(nullptr, path_follow2d);
+		memdelete(path_follow2d);
 }
 
 static JSClassDef path_follow2d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef path_follow2d_class_def = {
 };
 
 static JSValue path_follow2d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PathFollow2D *path_follow2d_class;
-	JSValue obj = JS_NewObjectClass(ctx, PathFollow2D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PathFollow2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	path_follow2d_class = memnew(PathFollow2D);
+	PathFollow2D *path_follow2d_class = memnew(PathFollow2D);
 	if (!path_follow2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, path_follow2d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, path_follow2d_class);	
 	return obj;
 }
 static JSValue path_follow2d_class_set_progress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -177,13 +168,13 @@ static int js_path_follow2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(PathFollow2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PathFollow2D::__class_id, &path_follow2d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, PathFollow2D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PathFollow2D::__class_id, proto);
+
 	define_path_follow2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, path_follow2d_class_proto_funcs, _countof(path_follow2d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, path_follow2d_class_constructor, "PathFollow2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

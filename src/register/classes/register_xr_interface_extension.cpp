@@ -15,7 +15,7 @@ using namespace godot;
 static void xr_interface_extension_class_finalizer(JSRuntime *rt, JSValue val) {
 	XRInterfaceExtension *xr_interface_extension = static_cast<XRInterfaceExtension *>(JS_GetOpaque(val, XRInterfaceExtension::__class_id));
 	if (xr_interface_extension)
-		XRInterfaceExtension::free(nullptr, xr_interface_extension);
+		memdelete(xr_interface_extension);
 }
 
 static JSClassDef xr_interface_extension_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef xr_interface_extension_class_def = {
 };
 
 static JSValue xr_interface_extension_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	XRInterfaceExtension *xr_interface_extension_class;
-	JSValue obj = JS_NewObjectClass(ctx, XRInterfaceExtension::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRInterfaceExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	xr_interface_extension_class = memnew(XRInterfaceExtension);
+	XRInterfaceExtension *xr_interface_extension_class = memnew(XRInterfaceExtension);
 	if (!xr_interface_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, xr_interface_extension_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, xr_interface_extension_class);	
 	return obj;
 }
 static JSValue xr_interface_extension_class_get_color_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -79,13 +70,13 @@ static int js_xr_interface_extension_class_init(JSContext *ctx, JSModuleDef *m) 
 	class_id_list.insert(XRInterfaceExtension::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XRInterfaceExtension::__class_id, &xr_interface_extension_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, XRInterfaceExtension::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, XRInterface::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, XRInterfaceExtension::__class_id, proto);
+
 	define_xr_interface_extension_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xr_interface_extension_class_proto_funcs, _countof(xr_interface_extension_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, xr_interface_extension_class_constructor, "XRInterfaceExtension", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

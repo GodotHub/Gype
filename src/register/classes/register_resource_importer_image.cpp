@@ -15,7 +15,7 @@ using namespace godot;
 static void resource_importer_image_class_finalizer(JSRuntime *rt, JSValue val) {
 	ResourceImporterImage *resource_importer_image = static_cast<ResourceImporterImage *>(JS_GetOpaque(val, ResourceImporterImage::__class_id));
 	if (resource_importer_image)
-		ResourceImporterImage::free(nullptr, resource_importer_image);
+		memdelete(resource_importer_image);
 }
 
 static JSClassDef resource_importer_image_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef resource_importer_image_class_def = {
 };
 
 static JSValue resource_importer_image_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	ResourceImporterImage *resource_importer_image_class;
-	JSValue obj = JS_NewObjectClass(ctx, ResourceImporterImage::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterImage::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	resource_importer_image_class = memnew(ResourceImporterImage);
+	ResourceImporterImage *resource_importer_image_class = memnew(ResourceImporterImage);
 	if (!resource_importer_image_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, resource_importer_image_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, resource_importer_image_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_resource_importer_image_class_init(JSContext *ctx, JSModuleDef *m)
 	class_id_list.insert(ResourceImporterImage::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ResourceImporterImage::__class_id, &resource_importer_image_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, ResourceImporterImage::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, ResourceImporter::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ResourceImporterImage::__class_id, proto);
-	define_resource_importer_image_property(ctx, proto);
 
+	define_resource_importer_image_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, resource_importer_image_class_constructor, "ResourceImporterImage", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

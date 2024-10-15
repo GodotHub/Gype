@@ -15,7 +15,7 @@ using namespace godot;
 static void gltf_animation_class_finalizer(JSRuntime *rt, JSValue val) {
 	GLTFAnimation *gltf_animation = static_cast<GLTFAnimation *>(JS_GetOpaque(val, GLTFAnimation::__class_id));
 	if (gltf_animation)
-		GLTFAnimation::free(nullptr, gltf_animation);
+		memdelete(gltf_animation);
 }
 
 static JSClassDef gltf_animation_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef gltf_animation_class_def = {
 };
 
 static JSValue gltf_animation_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	GLTFAnimation *gltf_animation_class;
-	JSValue obj = JS_NewObjectClass(ctx, GLTFAnimation::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFAnimation::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	gltf_animation_class = memnew(GLTFAnimation);
+	GLTFAnimation *gltf_animation_class = memnew(GLTFAnimation);
 	if (!gltf_animation_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, gltf_animation_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, gltf_animation_class);	
 	return obj;
 }
 static JSValue gltf_animation_class_get_original_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -101,13 +92,13 @@ static int js_gltf_animation_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(GLTFAnimation::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GLTFAnimation::__class_id, &gltf_animation_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, GLTFAnimation::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, GLTFAnimation::__class_id, proto);
+
 	define_gltf_animation_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, gltf_animation_class_proto_funcs, _countof(gltf_animation_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, gltf_animation_class_constructor, "GLTFAnimation", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

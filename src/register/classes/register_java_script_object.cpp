@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/java_script_object.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/java_script_object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void java_script_object_class_finalizer(JSRuntime *rt, JSValue val) {
 	JavaScriptObject *java_script_object = static_cast<JavaScriptObject *>(JS_GetOpaque(val, JavaScriptObject::__class_id));
 	if (java_script_object)
-		JavaScriptObject::free(nullptr, java_script_object);
+		memdelete(java_script_object);
 }
 
 static JSClassDef java_script_object_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef java_script_object_class_def = {
 };
 
 static JSValue java_script_object_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	JavaScriptObject *java_script_object_class;
-	JSValue obj = JS_NewObjectClass(ctx, JavaScriptObject::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, JavaScriptObject::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	java_script_object_class = memnew(JavaScriptObject);
+	JavaScriptObject *java_script_object_class = memnew(JavaScriptObject);
 	if (!java_script_object_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, java_script_object_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, java_script_object_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_java_script_object_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(JavaScriptObject::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), JavaScriptObject::__class_id, &java_script_object_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, JavaScriptObject::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, JavaScriptObject::__class_id, proto);
-	define_java_script_object_property(ctx, proto);
 
+	define_java_script_object_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, java_script_object_class_constructor, "JavaScriptObject", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

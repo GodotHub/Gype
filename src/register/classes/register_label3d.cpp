@@ -17,7 +17,7 @@ using namespace godot;
 static void label3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	Label3D *label3d = static_cast<Label3D *>(JS_GetOpaque(val, Label3D::__class_id));
 	if (label3d)
-		Label3D::free(nullptr, label3d);
+		memdelete(label3d);
 }
 
 static JSClassDef label3d_class_def = {
@@ -26,25 +26,16 @@ static JSClassDef label3d_class_def = {
 };
 
 static JSValue label3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Label3D *label3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, Label3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Label3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	label3d_class = memnew(Label3D);
+	Label3D *label3d_class = memnew(Label3D);
 	if (!label3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, label3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, label3d_class);	
 	return obj;
 }
 static JSValue label3d_class_set_horizontal_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -581,13 +572,13 @@ static int js_label3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Label3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Label3D::__class_id, &label3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Label3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, GeometryInstance3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Label3D::__class_id, proto);
+
 	define_label3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, label3d_class_proto_funcs, _countof(label3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, label3d_class_constructor, "Label3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

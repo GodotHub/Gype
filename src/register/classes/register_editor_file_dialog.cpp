@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/confirmation_dialog.hpp>
 #include <godot_cpp/classes/editor_file_dialog.hpp>
 #include <godot_cpp/classes/line_edit.hpp>
 #include <godot_cpp/classes/v_box_container.hpp>
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/confirmation_dialog.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -18,7 +18,7 @@ using namespace godot;
 static void editor_file_dialog_class_finalizer(JSRuntime *rt, JSValue val) {
 	EditorFileDialog *editor_file_dialog = static_cast<EditorFileDialog *>(JS_GetOpaque(val, EditorFileDialog::__class_id));
 	if (editor_file_dialog)
-		EditorFileDialog::free(nullptr, editor_file_dialog);
+		memdelete(editor_file_dialog);
 }
 
 static JSClassDef editor_file_dialog_class_def = {
@@ -27,25 +27,16 @@ static JSClassDef editor_file_dialog_class_def = {
 };
 
 static JSValue editor_file_dialog_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	EditorFileDialog *editor_file_dialog_class;
-	JSValue obj = JS_NewObjectClass(ctx, EditorFileDialog::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorFileDialog::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	editor_file_dialog_class = memnew(EditorFileDialog);
+	EditorFileDialog *editor_file_dialog_class = memnew(EditorFileDialog);
 	if (!editor_file_dialog_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, editor_file_dialog_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, editor_file_dialog_class);	
 	return obj;
 }
 static JSValue editor_file_dialog_class_clear_filters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -300,13 +291,13 @@ static int js_editor_file_dialog_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(EditorFileDialog::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorFileDialog::__class_id, &editor_file_dialog_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, EditorFileDialog::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, ConfirmationDialog::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, EditorFileDialog::__class_id, proto);
+
 	define_editor_file_dialog_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_file_dialog_class_proto_funcs, _countof(editor_file_dialog_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, editor_file_dialog_class_constructor, "EditorFileDialog", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -14,7 +14,7 @@ using namespace godot;
 static void object_class_finalizer(JSRuntime *rt, JSValue val) {
 	Object *object = static_cast<Object *>(JS_GetOpaque(val, Object::__class_id));
 	if (object)
-		Object::free(nullptr, object);
+		memdelete(object);
 }
 
 static JSClassDef object_class_def = {
@@ -23,25 +23,16 @@ static JSClassDef object_class_def = {
 };
 
 static JSValue object_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Object *object_class;
-	JSValue obj = JS_NewObjectClass(ctx, Object::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Object::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	object_class = memnew(Object);
+	Object *object_class = memnew(Object);
 	if (!object_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, object_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, object_class);	
 	return obj;
 }
 static JSValue object_class_get_class(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -255,11 +246,11 @@ static int js_object_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Object::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Object::__class_id, &object_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Object::__class_id);
 	JS_SetClassProto(ctx, Object::__class_id, proto);
+
 	define_object_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, object_class_proto_funcs, _countof(object_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, object_class_constructor, "Object", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

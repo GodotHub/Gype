@@ -15,7 +15,7 @@ using namespace godot;
 static void visual_shader_node_varying_setter_class_finalizer(JSRuntime *rt, JSValue val) {
 	VisualShaderNodeVaryingSetter *visual_shader_node_varying_setter = static_cast<VisualShaderNodeVaryingSetter *>(JS_GetOpaque(val, VisualShaderNodeVaryingSetter::__class_id));
 	if (visual_shader_node_varying_setter)
-		VisualShaderNodeVaryingSetter::free(nullptr, visual_shader_node_varying_setter);
+		memdelete(visual_shader_node_varying_setter);
 }
 
 static JSClassDef visual_shader_node_varying_setter_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef visual_shader_node_varying_setter_class_def = {
 };
 
 static JSValue visual_shader_node_varying_setter_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	VisualShaderNodeVaryingSetter *visual_shader_node_varying_setter_class;
-	JSValue obj = JS_NewObjectClass(ctx, VisualShaderNodeVaryingSetter::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeVaryingSetter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	visual_shader_node_varying_setter_class = memnew(VisualShaderNodeVaryingSetter);
+	VisualShaderNodeVaryingSetter *visual_shader_node_varying_setter_class = memnew(VisualShaderNodeVaryingSetter);
 	if (!visual_shader_node_varying_setter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, visual_shader_node_varying_setter_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, visual_shader_node_varying_setter_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_visual_shader_node_varying_setter_class_init(JSContext *ctx, JSMod
 	class_id_list.insert(VisualShaderNodeVaryingSetter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeVaryingSetter::__class_id, &visual_shader_node_varying_setter_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, VisualShaderNodeVaryingSetter::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, VisualShaderNodeVarying::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, VisualShaderNodeVaryingSetter::__class_id, proto);
-	define_visual_shader_node_varying_setter_property(ctx, proto);
 
+	define_visual_shader_node_varying_setter_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_varying_setter_class_constructor, "VisualShaderNodeVaryingSetter", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

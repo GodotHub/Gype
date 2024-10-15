@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/csg_primitive3d.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/csg_polygon3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void csg_polygon3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	CSGPolygon3D *csg_polygon3d = static_cast<CSGPolygon3D *>(JS_GetOpaque(val, CSGPolygon3D::__class_id));
 	if (csg_polygon3d)
-		CSGPolygon3D::free(nullptr, csg_polygon3d);
+		memdelete(csg_polygon3d);
 }
 
 static JSClassDef csg_polygon3d_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef csg_polygon3d_class_def = {
 };
 
 static JSValue csg_polygon3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	CSGPolygon3D *csg_polygon3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, CSGPolygon3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CSGPolygon3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	csg_polygon3d_class = memnew(CSGPolygon3D);
+	CSGPolygon3D *csg_polygon3d_class = memnew(CSGPolygon3D);
 	if (!csg_polygon3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, csg_polygon3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, csg_polygon3d_class);	
 	return obj;
 }
 static JSValue csg_polygon3d_class_set_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -331,13 +322,13 @@ static int js_csg_polygon3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(CSGPolygon3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CSGPolygon3D::__class_id, &csg_polygon3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, CSGPolygon3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, CSGPrimitive3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, CSGPolygon3D::__class_id, proto);
+
 	define_csg_polygon3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, csg_polygon3d_class_proto_funcs, _countof(csg_polygon3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, csg_polygon3d_class_constructor, "CSGPolygon3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/light3d.hpp>
 #include <godot_cpp/classes/directional_light3d.hpp>
+#include <godot_cpp/classes/light3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void directional_light3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	DirectionalLight3D *directional_light3d = static_cast<DirectionalLight3D *>(JS_GetOpaque(val, DirectionalLight3D::__class_id));
 	if (directional_light3d)
-		DirectionalLight3D::free(nullptr, directional_light3d);
+		memdelete(directional_light3d);
 }
 
 static JSClassDef directional_light3d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef directional_light3d_class_def = {
 };
 
 static JSValue directional_light3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	DirectionalLight3D *directional_light3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, DirectionalLight3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, DirectionalLight3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	directional_light3d_class = memnew(DirectionalLight3D);
+	DirectionalLight3D *directional_light3d_class = memnew(DirectionalLight3D);
 	if (!directional_light3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, directional_light3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, directional_light3d_class);	
 	return obj;
 }
 static JSValue directional_light3d_class_set_shadow_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -109,13 +100,13 @@ static int js_directional_light3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(DirectionalLight3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), DirectionalLight3D::__class_id, &directional_light3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, DirectionalLight3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Light3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, DirectionalLight3D::__class_id, proto);
+
 	define_directional_light3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, directional_light3d_class_proto_funcs, _countof(directional_light3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, directional_light3d_class_constructor, "DirectionalLight3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/collision_object2d.hpp>
 #include <godot_cpp/classes/ray_cast2d.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/collision_object2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -17,7 +17,7 @@ using namespace godot;
 static void ray_cast2d_class_finalizer(JSRuntime *rt, JSValue val) {
 	RayCast2D *ray_cast2d = static_cast<RayCast2D *>(JS_GetOpaque(val, RayCast2D::__class_id));
 	if (ray_cast2d)
-		RayCast2D::free(nullptr, ray_cast2d);
+		memdelete(ray_cast2d);
 }
 
 static JSClassDef ray_cast2d_class_def = {
@@ -26,25 +26,16 @@ static JSClassDef ray_cast2d_class_def = {
 };
 
 static JSValue ray_cast2d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	RayCast2D *ray_cast2d_class;
-	JSValue obj = JS_NewObjectClass(ctx, RayCast2D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RayCast2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ray_cast2d_class = memnew(RayCast2D);
+	RayCast2D *ray_cast2d_class = memnew(RayCast2D);
 	if (!ray_cast2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, ray_cast2d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, ray_cast2d_class);	
 	return obj;
 }
 static JSValue ray_cast2d_class_set_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -242,13 +233,13 @@ static int js_ray_cast2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(RayCast2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RayCast2D::__class_id, &ray_cast2d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, RayCast2D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, RayCast2D::__class_id, proto);
+
 	define_ray_cast2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, ray_cast2d_class_proto_funcs, _countof(ray_cast2d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, ray_cast2d_class_constructor, "RayCast2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

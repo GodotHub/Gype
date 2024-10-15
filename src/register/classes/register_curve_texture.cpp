@@ -16,7 +16,7 @@ using namespace godot;
 static void curve_texture_class_finalizer(JSRuntime *rt, JSValue val) {
 	CurveTexture *curve_texture = static_cast<CurveTexture *>(JS_GetOpaque(val, CurveTexture::__class_id));
 	if (curve_texture)
-		CurveTexture::free(nullptr, curve_texture);
+		memdelete(curve_texture);
 }
 
 static JSClassDef curve_texture_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef curve_texture_class_def = {
 };
 
 static JSValue curve_texture_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	CurveTexture *curve_texture_class;
-	JSValue obj = JS_NewObjectClass(ctx, CurveTexture::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CurveTexture::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	curve_texture_class = memnew(CurveTexture);
+	CurveTexture *curve_texture_class = memnew(CurveTexture);
 	if (!curve_texture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, curve_texture_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, curve_texture_class);	
 	return obj;
 }
 static JSValue curve_texture_class_set_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -106,13 +97,13 @@ static int js_curve_texture_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(CurveTexture::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CurveTexture::__class_id, &curve_texture_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, CurveTexture::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Texture2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, CurveTexture::__class_id, proto);
+
 	define_curve_texture_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, curve_texture_class_proto_funcs, _countof(curve_texture_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, curve_texture_class_constructor, "CurveTexture", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

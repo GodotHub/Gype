@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/editor_debugger_session.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/editor_debugger_session.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void editor_debugger_session_class_finalizer(JSRuntime *rt, JSValue val) {
 	EditorDebuggerSession *editor_debugger_session = static_cast<EditorDebuggerSession *>(JS_GetOpaque(val, EditorDebuggerSession::__class_id));
 	if (editor_debugger_session)
-		EditorDebuggerSession::free(nullptr, editor_debugger_session);
+		memdelete(editor_debugger_session);
 }
 
 static JSClassDef editor_debugger_session_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef editor_debugger_session_class_def = {
 };
 
 static JSValue editor_debugger_session_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	EditorDebuggerSession *editor_debugger_session_class;
-	JSValue obj = JS_NewObjectClass(ctx, EditorDebuggerSession::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorDebuggerSession::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	editor_debugger_session_class = memnew(EditorDebuggerSession);
+	EditorDebuggerSession *editor_debugger_session_class = memnew(EditorDebuggerSession);
 	if (!editor_debugger_session_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, editor_debugger_session_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, editor_debugger_session_class);	
 	return obj;
 }
 static JSValue editor_debugger_session_class_send_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -96,13 +87,13 @@ static int js_editor_debugger_session_class_init(JSContext *ctx, JSModuleDef *m)
 	class_id_list.insert(EditorDebuggerSession::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorDebuggerSession::__class_id, &editor_debugger_session_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, EditorDebuggerSession::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, EditorDebuggerSession::__class_id, proto);
+
 	define_editor_debugger_session_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_debugger_session_class_proto_funcs, _countof(editor_debugger_session_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, editor_debugger_session_class_constructor, "EditorDebuggerSession", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

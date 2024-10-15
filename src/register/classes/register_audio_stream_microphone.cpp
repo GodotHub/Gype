@@ -15,7 +15,7 @@ using namespace godot;
 static void audio_stream_microphone_class_finalizer(JSRuntime *rt, JSValue val) {
 	AudioStreamMicrophone *audio_stream_microphone = static_cast<AudioStreamMicrophone *>(JS_GetOpaque(val, AudioStreamMicrophone::__class_id));
 	if (audio_stream_microphone)
-		AudioStreamMicrophone::free(nullptr, audio_stream_microphone);
+		memdelete(audio_stream_microphone);
 }
 
 static JSClassDef audio_stream_microphone_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef audio_stream_microphone_class_def = {
 };
 
 static JSValue audio_stream_microphone_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	AudioStreamMicrophone *audio_stream_microphone_class;
-	JSValue obj = JS_NewObjectClass(ctx, AudioStreamMicrophone::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioStreamMicrophone::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	audio_stream_microphone_class = memnew(AudioStreamMicrophone);
+	AudioStreamMicrophone *audio_stream_microphone_class = memnew(AudioStreamMicrophone);
 	if (!audio_stream_microphone_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, audio_stream_microphone_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, audio_stream_microphone_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_audio_stream_microphone_class_init(JSContext *ctx, JSModuleDef *m)
 	class_id_list.insert(AudioStreamMicrophone::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioStreamMicrophone::__class_id, &audio_stream_microphone_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, AudioStreamMicrophone::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, AudioStream::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AudioStreamMicrophone::__class_id, proto);
-	define_audio_stream_microphone_property(ctx, proto);
 
+	define_audio_stream_microphone_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, audio_stream_microphone_class_constructor, "AudioStreamMicrophone", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

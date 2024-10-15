@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/config_file.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void config_file_class_finalizer(JSRuntime *rt, JSValue val) {
 	ConfigFile *config_file = static_cast<ConfigFile *>(JS_GetOpaque(val, ConfigFile::__class_id));
 	if (config_file)
-		ConfigFile::free(nullptr, config_file);
+		memdelete(config_file);
 }
 
 static JSClassDef config_file_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef config_file_class_def = {
 };
 
 static JSValue config_file_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	ConfigFile *config_file_class;
-	JSValue obj = JS_NewObjectClass(ctx, ConfigFile::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ConfigFile::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	config_file_class = memnew(ConfigFile);
+	ConfigFile *config_file_class = memnew(ConfigFile);
 	if (!config_file_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, config_file_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, config_file_class);	
 	return obj;
 }
 static JSValue config_file_class_set_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -130,13 +121,13 @@ static int js_config_file_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(ConfigFile::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ConfigFile::__class_id, &config_file_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, ConfigFile::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ConfigFile::__class_id, proto);
+
 	define_config_file_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, config_file_class_proto_funcs, _countof(config_file_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, config_file_class_constructor, "ConfigFile", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

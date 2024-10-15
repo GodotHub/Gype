@@ -15,7 +15,7 @@ using namespace godot;
 static void editor_import_plugin_class_finalizer(JSRuntime *rt, JSValue val) {
 	EditorImportPlugin *editor_import_plugin = static_cast<EditorImportPlugin *>(JS_GetOpaque(val, EditorImportPlugin::__class_id));
 	if (editor_import_plugin)
-		EditorImportPlugin::free(nullptr, editor_import_plugin);
+		memdelete(editor_import_plugin);
 }
 
 static JSClassDef editor_import_plugin_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef editor_import_plugin_class_def = {
 };
 
 static JSValue editor_import_plugin_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	EditorImportPlugin *editor_import_plugin_class;
-	JSValue obj = JS_NewObjectClass(ctx, EditorImportPlugin::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorImportPlugin::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	editor_import_plugin_class = memnew(EditorImportPlugin);
+	EditorImportPlugin *editor_import_plugin_class = memnew(EditorImportPlugin);
 	if (!editor_import_plugin_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, editor_import_plugin_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, editor_import_plugin_class);	
 	return obj;
 }
 static JSValue editor_import_plugin_class_append_import_external_resource(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,13 +53,13 @@ static int js_editor_import_plugin_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(EditorImportPlugin::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorImportPlugin::__class_id, &editor_import_plugin_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, EditorImportPlugin::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, ResourceImporter::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, EditorImportPlugin::__class_id, proto);
+
 	define_editor_import_plugin_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_import_plugin_class_proto_funcs, _countof(editor_import_plugin_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, editor_import_plugin_class_constructor, "EditorImportPlugin", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

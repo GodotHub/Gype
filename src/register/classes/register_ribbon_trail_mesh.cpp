@@ -16,7 +16,7 @@ using namespace godot;
 static void ribbon_trail_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
 	RibbonTrailMesh *ribbon_trail_mesh = static_cast<RibbonTrailMesh *>(JS_GetOpaque(val, RibbonTrailMesh::__class_id));
 	if (ribbon_trail_mesh)
-		RibbonTrailMesh::free(nullptr, ribbon_trail_mesh);
+		memdelete(ribbon_trail_mesh);
 }
 
 static JSClassDef ribbon_trail_mesh_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef ribbon_trail_mesh_class_def = {
 };
 
 static JSValue ribbon_trail_mesh_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	RibbonTrailMesh *ribbon_trail_mesh_class;
-	JSValue obj = JS_NewObjectClass(ctx, RibbonTrailMesh::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RibbonTrailMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ribbon_trail_mesh_class = memnew(RibbonTrailMesh);
+	RibbonTrailMesh *ribbon_trail_mesh_class = memnew(RibbonTrailMesh);
 	if (!ribbon_trail_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, ribbon_trail_mesh_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, ribbon_trail_mesh_class);	
 	return obj;
 }
 static JSValue ribbon_trail_mesh_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -161,13 +152,13 @@ static int js_ribbon_trail_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(RibbonTrailMesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RibbonTrailMesh::__class_id, &ribbon_trail_mesh_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, RibbonTrailMesh::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, PrimitiveMesh::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, RibbonTrailMesh::__class_id, proto);
+
 	define_ribbon_trail_mesh_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, ribbon_trail_mesh_class_proto_funcs, _countof(ribbon_trail_mesh_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, ribbon_trail_mesh_class_constructor, "RibbonTrailMesh", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

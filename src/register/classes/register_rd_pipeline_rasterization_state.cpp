@@ -15,7 +15,7 @@ using namespace godot;
 static void rd_pipeline_rasterization_state_class_finalizer(JSRuntime *rt, JSValue val) {
 	RDPipelineRasterizationState *rd_pipeline_rasterization_state = static_cast<RDPipelineRasterizationState *>(JS_GetOpaque(val, RDPipelineRasterizationState::__class_id));
 	if (rd_pipeline_rasterization_state)
-		RDPipelineRasterizationState::free(nullptr, rd_pipeline_rasterization_state);
+		memdelete(rd_pipeline_rasterization_state);
 }
 
 static JSClassDef rd_pipeline_rasterization_state_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef rd_pipeline_rasterization_state_class_def = {
 };
 
 static JSValue rd_pipeline_rasterization_state_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	RDPipelineRasterizationState *rd_pipeline_rasterization_state_class;
-	JSValue obj = JS_NewObjectClass(ctx, RDPipelineRasterizationState::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDPipelineRasterizationState::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	rd_pipeline_rasterization_state_class = memnew(RDPipelineRasterizationState);
+	RDPipelineRasterizationState *rd_pipeline_rasterization_state_class = memnew(RDPipelineRasterizationState);
 	if (!rd_pipeline_rasterization_state_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, rd_pipeline_rasterization_state_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, rd_pipeline_rasterization_state_class);	
 	return obj;
 }
 static JSValue rd_pipeline_rasterization_state_class_set_enable_depth_clamp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -245,13 +236,13 @@ static int js_rd_pipeline_rasterization_state_class_init(JSContext *ctx, JSModul
 	class_id_list.insert(RDPipelineRasterizationState::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RDPipelineRasterizationState::__class_id, &rd_pipeline_rasterization_state_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, RDPipelineRasterizationState::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, RDPipelineRasterizationState::__class_id, proto);
+
 	define_rd_pipeline_rasterization_state_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, rd_pipeline_rasterization_state_class_proto_funcs, _countof(rd_pipeline_rasterization_state_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, rd_pipeline_rasterization_state_class_constructor, "RDPipelineRasterizationState", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

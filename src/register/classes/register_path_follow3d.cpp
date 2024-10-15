@@ -15,7 +15,7 @@ using namespace godot;
 static void path_follow3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	PathFollow3D *path_follow3d = static_cast<PathFollow3D *>(JS_GetOpaque(val, PathFollow3D::__class_id));
 	if (path_follow3d)
-		PathFollow3D::free(nullptr, path_follow3d);
+		memdelete(path_follow3d);
 }
 
 static JSClassDef path_follow3d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef path_follow3d_class_def = {
 };
 
 static JSValue path_follow3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PathFollow3D *path_follow3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, PathFollow3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PathFollow3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	path_follow3d_class = memnew(PathFollow3D);
+	PathFollow3D *path_follow3d_class = memnew(PathFollow3D);
 	if (!path_follow3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, path_follow3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, path_follow3d_class);	
 	return obj;
 }
 static JSValue path_follow3d_class_set_progress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -217,16 +208,16 @@ static int js_path_follow3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(PathFollow3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PathFollow3D::__class_id, &path_follow3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, PathFollow3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PathFollow3D::__class_id, proto);
+
 	define_path_follow3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, path_follow3d_class_proto_funcs, _countof(path_follow3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, path_follow3d_class_constructor, "PathFollow3D", 0, JS_CFUNC_constructor, 0);
-	JS_SetConstructor(ctx, ctor, proto);
 	JS_SetPropertyFunctionList(ctx, ctor, path_follow3d_class_static_funcs, _countof(path_follow3d_class_static_funcs));
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "PathFollow3D", ctor);
 

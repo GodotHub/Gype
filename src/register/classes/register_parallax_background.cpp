@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/parallax_background.hpp>
 #include <godot_cpp/classes/canvas_layer.hpp>
+#include <godot_cpp/classes/parallax_background.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void parallax_background_class_finalizer(JSRuntime *rt, JSValue val) {
 	ParallaxBackground *parallax_background = static_cast<ParallaxBackground *>(JS_GetOpaque(val, ParallaxBackground::__class_id));
 	if (parallax_background)
-		ParallaxBackground::free(nullptr, parallax_background);
+		memdelete(parallax_background);
 }
 
 static JSClassDef parallax_background_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef parallax_background_class_def = {
 };
 
 static JSValue parallax_background_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	ParallaxBackground *parallax_background_class;
-	JSValue obj = JS_NewObjectClass(ctx, ParallaxBackground::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ParallaxBackground::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	parallax_background_class = memnew(ParallaxBackground);
+	ParallaxBackground *parallax_background_class = memnew(ParallaxBackground);
 	if (!parallax_background_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, parallax_background_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, parallax_background_class);	
 	return obj;
 }
 static JSValue parallax_background_class_set_scroll_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -160,13 +151,13 @@ static int js_parallax_background_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(ParallaxBackground::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ParallaxBackground::__class_id, &parallax_background_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, ParallaxBackground::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, CanvasLayer::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ParallaxBackground::__class_id, proto);
+
 	define_parallax_background_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, parallax_background_class_proto_funcs, _countof(parallax_background_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, parallax_background_class_constructor, "ParallaxBackground", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

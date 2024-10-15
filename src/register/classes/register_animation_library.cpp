@@ -16,7 +16,7 @@ using namespace godot;
 static void animation_library_class_finalizer(JSRuntime *rt, JSValue val) {
 	AnimationLibrary *animation_library = static_cast<AnimationLibrary *>(JS_GetOpaque(val, AnimationLibrary::__class_id));
 	if (animation_library)
-		AnimationLibrary::free(nullptr, animation_library);
+		memdelete(animation_library);
 }
 
 static JSClassDef animation_library_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef animation_library_class_def = {
 };
 
 static JSValue animation_library_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	AnimationLibrary *animation_library_class;
-	JSValue obj = JS_NewObjectClass(ctx, AnimationLibrary::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationLibrary::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	animation_library_class = memnew(AnimationLibrary);
+	AnimationLibrary *animation_library_class = memnew(AnimationLibrary);
 	if (!animation_library_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, animation_library_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, animation_library_class);	
 	return obj;
 }
 static JSValue animation_library_class_add_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -85,13 +76,13 @@ static int js_animation_library_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(AnimationLibrary::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimationLibrary::__class_id, &animation_library_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, AnimationLibrary::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AnimationLibrary::__class_id, proto);
+
 	define_animation_library_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, animation_library_class_proto_funcs, _countof(animation_library_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, animation_library_class_constructor, "AnimationLibrary", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

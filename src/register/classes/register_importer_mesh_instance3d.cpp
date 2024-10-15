@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/importer_mesh.hpp>
-#include <godot_cpp/classes/skin.hpp>
 #include <godot_cpp/classes/importer_mesh_instance3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/skin.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -17,7 +17,7 @@ using namespace godot;
 static void importer_mesh_instance3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	ImporterMeshInstance3D *importer_mesh_instance3d = static_cast<ImporterMeshInstance3D *>(JS_GetOpaque(val, ImporterMeshInstance3D::__class_id));
 	if (importer_mesh_instance3d)
-		ImporterMeshInstance3D::free(nullptr, importer_mesh_instance3d);
+		memdelete(importer_mesh_instance3d);
 }
 
 static JSClassDef importer_mesh_instance3d_class_def = {
@@ -26,25 +26,16 @@ static JSClassDef importer_mesh_instance3d_class_def = {
 };
 
 static JSValue importer_mesh_instance3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	ImporterMeshInstance3D *importer_mesh_instance3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, ImporterMeshInstance3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ImporterMeshInstance3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	importer_mesh_instance3d_class = memnew(ImporterMeshInstance3D);
+	ImporterMeshInstance3D *importer_mesh_instance3d_class = memnew(ImporterMeshInstance3D);
 	if (!importer_mesh_instance3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, importer_mesh_instance3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, importer_mesh_instance3d_class);	
 	return obj;
 }
 static JSValue importer_mesh_instance3d_class_set_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -230,13 +221,13 @@ static int js_importer_mesh_instance3d_class_init(JSContext *ctx, JSModuleDef *m
 	class_id_list.insert(ImporterMeshInstance3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ImporterMeshInstance3D::__class_id, &importer_mesh_instance3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, ImporterMeshInstance3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ImporterMeshInstance3D::__class_id, proto);
+
 	define_importer_mesh_instance3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, importer_mesh_instance3d_class_proto_funcs, _countof(importer_mesh_instance3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, importer_mesh_instance3d_class_constructor, "ImporterMeshInstance3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/sprite_frames.hpp>
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/animated_sprite2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void animated_sprite2d_class_finalizer(JSRuntime *rt, JSValue val) {
 	AnimatedSprite2D *animated_sprite2d = static_cast<AnimatedSprite2D *>(JS_GetOpaque(val, AnimatedSprite2D::__class_id));
 	if (animated_sprite2d)
-		AnimatedSprite2D::free(nullptr, animated_sprite2d);
+		memdelete(animated_sprite2d);
 }
 
 static JSClassDef animated_sprite2d_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef animated_sprite2d_class_def = {
 };
 
 static JSValue animated_sprite2d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	AnimatedSprite2D *animated_sprite2d_class;
-	JSValue obj = JS_NewObjectClass(ctx, AnimatedSprite2D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimatedSprite2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	animated_sprite2d_class = memnew(AnimatedSprite2D);
+	AnimatedSprite2D *animated_sprite2d_class = memnew(AnimatedSprite2D);
 	if (!animated_sprite2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, animated_sprite2d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, animated_sprite2d_class);	
 	return obj;
 }
 static JSValue animated_sprite2d_class_set_sprite_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -262,13 +253,13 @@ static int js_animated_sprite2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(AnimatedSprite2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimatedSprite2D::__class_id, &animated_sprite2d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, AnimatedSprite2D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AnimatedSprite2D::__class_id, proto);
+
 	define_animated_sprite2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, animated_sprite2d_class_proto_funcs, _countof(animated_sprite2d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, animated_sprite2d_class_constructor, "AnimatedSprite2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

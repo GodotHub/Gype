@@ -16,7 +16,7 @@ using namespace godot;
 static void panorama_sky_material_class_finalizer(JSRuntime *rt, JSValue val) {
 	PanoramaSkyMaterial *panorama_sky_material = static_cast<PanoramaSkyMaterial *>(JS_GetOpaque(val, PanoramaSkyMaterial::__class_id));
 	if (panorama_sky_material)
-		PanoramaSkyMaterial::free(nullptr, panorama_sky_material);
+		memdelete(panorama_sky_material);
 }
 
 static JSClassDef panorama_sky_material_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef panorama_sky_material_class_def = {
 };
 
 static JSValue panorama_sky_material_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PanoramaSkyMaterial *panorama_sky_material_class;
-	JSValue obj = JS_NewObjectClass(ctx, PanoramaSkyMaterial::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PanoramaSkyMaterial::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	panorama_sky_material_class = memnew(PanoramaSkyMaterial);
+	PanoramaSkyMaterial *panorama_sky_material_class = memnew(PanoramaSkyMaterial);
 	if (!panorama_sky_material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, panorama_sky_material_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, panorama_sky_material_class);	
 	return obj;
 }
 static JSValue panorama_sky_material_class_set_panorama(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -110,13 +101,13 @@ static int js_panorama_sky_material_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(PanoramaSkyMaterial::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PanoramaSkyMaterial::__class_id, &panorama_sky_material_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, PanoramaSkyMaterial::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Material::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PanoramaSkyMaterial::__class_id, proto);
+
 	define_panorama_sky_material_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, panorama_sky_material_class_proto_funcs, _countof(panorama_sky_material_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, panorama_sky_material_class_constructor, "PanoramaSkyMaterial", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -5,17 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/multiplayer_api.hpp>
+#include <godot_cpp/classes/window.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/scene_tree.hpp>
 #include <godot_cpp/classes/scene_tree_timer.hpp>
 #include <godot_cpp/classes/tween.hpp>
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/tween.hpp>
 #include <godot_cpp/classes/packed_scene.hpp>
+#include <godot_cpp/classes/tween.hpp>
 #include <godot_cpp/classes/main_loop.hpp>
-#include <godot_cpp/classes/scene_tree.hpp>
-#include <godot_cpp/classes/multiplayer_api.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/window.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -24,7 +24,7 @@ using namespace godot;
 static void scene_tree_class_finalizer(JSRuntime *rt, JSValue val) {
 	SceneTree *scene_tree = static_cast<SceneTree *>(JS_GetOpaque(val, SceneTree::__class_id));
 	if (scene_tree)
-		SceneTree::free(nullptr, scene_tree);
+		memdelete(scene_tree);
 }
 
 static JSClassDef scene_tree_class_def = {
@@ -33,25 +33,16 @@ static JSClassDef scene_tree_class_def = {
 };
 
 static JSValue scene_tree_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	SceneTree *scene_tree_class;
-	JSValue obj = JS_NewObjectClass(ctx, SceneTree::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SceneTree::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	scene_tree_class = memnew(SceneTree);
+	SceneTree *scene_tree_class = memnew(SceneTree);
 	if (!scene_tree_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, scene_tree_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, scene_tree_class);	
 	return obj;
 }
 static JSValue scene_tree_class_get_root(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -351,13 +342,13 @@ static int js_scene_tree_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(SceneTree::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SceneTree::__class_id, &scene_tree_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, SceneTree::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, MainLoop::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, SceneTree::__class_id, proto);
+
 	define_scene_tree_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, scene_tree_class_proto_funcs, _countof(scene_tree_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, scene_tree_class_constructor, "SceneTree", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

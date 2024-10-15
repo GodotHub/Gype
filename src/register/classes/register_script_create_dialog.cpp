@@ -15,7 +15,7 @@ using namespace godot;
 static void script_create_dialog_class_finalizer(JSRuntime *rt, JSValue val) {
 	ScriptCreateDialog *script_create_dialog = static_cast<ScriptCreateDialog *>(JS_GetOpaque(val, ScriptCreateDialog::__class_id));
 	if (script_create_dialog)
-		ScriptCreateDialog::free(nullptr, script_create_dialog);
+		memdelete(script_create_dialog);
 }
 
 static JSClassDef script_create_dialog_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef script_create_dialog_class_def = {
 };
 
 static JSValue script_create_dialog_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	ScriptCreateDialog *script_create_dialog_class;
-	JSValue obj = JS_NewObjectClass(ctx, ScriptCreateDialog::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ScriptCreateDialog::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	script_create_dialog_class = memnew(ScriptCreateDialog);
+	ScriptCreateDialog *script_create_dialog_class = memnew(ScriptCreateDialog);
 	if (!script_create_dialog_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, script_create_dialog_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, script_create_dialog_class);	
 	return obj;
 }
 static JSValue script_create_dialog_class_config(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -63,13 +54,13 @@ static int js_script_create_dialog_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(ScriptCreateDialog::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ScriptCreateDialog::__class_id, &script_create_dialog_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, ScriptCreateDialog::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, ConfirmationDialog::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ScriptCreateDialog::__class_id, proto);
+
 	define_script_create_dialog_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, script_create_dialog_class_proto_funcs, _countof(script_create_dialog_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, script_create_dialog_class_constructor, "ScriptCreateDialog", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

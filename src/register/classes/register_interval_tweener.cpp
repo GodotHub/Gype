@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/interval_tweener.hpp>
 #include <godot_cpp/classes/tweener.hpp>
+#include <godot_cpp/classes/interval_tweener.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void interval_tweener_class_finalizer(JSRuntime *rt, JSValue val) {
 	IntervalTweener *interval_tweener = static_cast<IntervalTweener *>(JS_GetOpaque(val, IntervalTweener::__class_id));
 	if (interval_tweener)
-		IntervalTweener::free(nullptr, interval_tweener);
+		memdelete(interval_tweener);
 }
 
 static JSClassDef interval_tweener_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef interval_tweener_class_def = {
 };
 
 static JSValue interval_tweener_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	IntervalTweener *interval_tweener_class;
-	JSValue obj = JS_NewObjectClass(ctx, IntervalTweener::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, IntervalTweener::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	interval_tweener_class = memnew(IntervalTweener);
+	IntervalTweener *interval_tweener_class = memnew(IntervalTweener);
 	if (!interval_tweener_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, interval_tweener_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, interval_tweener_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_interval_tweener_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(IntervalTweener::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), IntervalTweener::__class_id, &interval_tweener_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, IntervalTweener::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Tweener::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, IntervalTweener::__class_id, proto);
-	define_interval_tweener_property(ctx, proto);
 
+	define_interval_tweener_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, interval_tweener_class_constructor, "IntervalTweener", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

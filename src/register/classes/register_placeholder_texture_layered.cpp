@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture_layered.hpp>
 #include <godot_cpp/classes/placeholder_texture_layered.hpp>
+#include <godot_cpp/classes/texture_layered.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void placeholder_texture_layered_class_finalizer(JSRuntime *rt, JSValue val) {
 	PlaceholderTextureLayered *placeholder_texture_layered = static_cast<PlaceholderTextureLayered *>(JS_GetOpaque(val, PlaceholderTextureLayered::__class_id));
 	if (placeholder_texture_layered)
-		PlaceholderTextureLayered::free(nullptr, placeholder_texture_layered);
+		memdelete(placeholder_texture_layered);
 }
 
 static JSClassDef placeholder_texture_layered_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef placeholder_texture_layered_class_def = {
 };
 
 static JSValue placeholder_texture_layered_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PlaceholderTextureLayered *placeholder_texture_layered_class;
-	JSValue obj = JS_NewObjectClass(ctx, PlaceholderTextureLayered::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PlaceholderTextureLayered::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	placeholder_texture_layered_class = memnew(PlaceholderTextureLayered);
+	PlaceholderTextureLayered *placeholder_texture_layered_class = memnew(PlaceholderTextureLayered);
 	if (!placeholder_texture_layered_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, placeholder_texture_layered_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, placeholder_texture_layered_class);	
 	return obj;
 }
 static JSValue placeholder_texture_layered_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -88,13 +79,13 @@ static int js_placeholder_texture_layered_class_init(JSContext *ctx, JSModuleDef
 	class_id_list.insert(PlaceholderTextureLayered::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PlaceholderTextureLayered::__class_id, &placeholder_texture_layered_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, PlaceholderTextureLayered::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, TextureLayered::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PlaceholderTextureLayered::__class_id, proto);
+
 	define_placeholder_texture_layered_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, placeholder_texture_layered_class_proto_funcs, _countof(placeholder_texture_layered_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, placeholder_texture_layered_class_constructor, "PlaceholderTextureLayered", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

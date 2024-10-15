@@ -15,7 +15,7 @@ using namespace godot;
 static void crypto_key_class_finalizer(JSRuntime *rt, JSValue val) {
 	CryptoKey *crypto_key = static_cast<CryptoKey *>(JS_GetOpaque(val, CryptoKey::__class_id));
 	if (crypto_key)
-		CryptoKey::free(nullptr, crypto_key);
+		memdelete(crypto_key);
 }
 
 static JSClassDef crypto_key_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef crypto_key_class_def = {
 };
 
 static JSValue crypto_key_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	CryptoKey *crypto_key_class;
-	JSValue obj = JS_NewObjectClass(ctx, CryptoKey::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CryptoKey::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	crypto_key_class = memnew(CryptoKey);
+	CryptoKey *crypto_key_class = memnew(CryptoKey);
 	if (!crypto_key_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, crypto_key_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, crypto_key_class);	
 	return obj;
 }
 static JSValue crypto_key_class_save(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -78,13 +69,13 @@ static int js_crypto_key_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(CryptoKey::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CryptoKey::__class_id, &crypto_key_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, CryptoKey::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, CryptoKey::__class_id, proto);
+
 	define_crypto_key_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, crypto_key_class_proto_funcs, _countof(crypto_key_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, crypto_key_class_constructor, "CryptoKey", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

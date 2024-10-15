@@ -15,7 +15,7 @@ using namespace godot;
 static void physics_ray_query_parameters2d_class_finalizer(JSRuntime *rt, JSValue val) {
 	PhysicsRayQueryParameters2D *physics_ray_query_parameters2d = static_cast<PhysicsRayQueryParameters2D *>(JS_GetOpaque(val, PhysicsRayQueryParameters2D::__class_id));
 	if (physics_ray_query_parameters2d)
-		PhysicsRayQueryParameters2D::free(nullptr, physics_ray_query_parameters2d);
+		memdelete(physics_ray_query_parameters2d);
 }
 
 static JSClassDef physics_ray_query_parameters2d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef physics_ray_query_parameters2d_class_def = {
 };
 
 static JSValue physics_ray_query_parameters2d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PhysicsRayQueryParameters2D *physics_ray_query_parameters2d_class;
-	JSValue obj = JS_NewObjectClass(ctx, PhysicsRayQueryParameters2D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicsRayQueryParameters2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	physics_ray_query_parameters2d_class = memnew(PhysicsRayQueryParameters2D);
+	PhysicsRayQueryParameters2D *physics_ray_query_parameters2d_class = memnew(PhysicsRayQueryParameters2D);
 	if (!physics_ray_query_parameters2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, physics_ray_query_parameters2d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, physics_ray_query_parameters2d_class);	
 	return obj;
 }
 static JSValue physics_ray_query_parameters2d_class_set_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -183,16 +174,16 @@ static int js_physics_ray_query_parameters2d_class_init(JSContext *ctx, JSModule
 	class_id_list.insert(PhysicsRayQueryParameters2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PhysicsRayQueryParameters2D::__class_id, &physics_ray_query_parameters2d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, PhysicsRayQueryParameters2D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PhysicsRayQueryParameters2D::__class_id, proto);
+
 	define_physics_ray_query_parameters2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, physics_ray_query_parameters2d_class_proto_funcs, _countof(physics_ray_query_parameters2d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, physics_ray_query_parameters2d_class_constructor, "PhysicsRayQueryParameters2D", 0, JS_CFUNC_constructor, 0);
-	JS_SetConstructor(ctx, ctor, proto);
 	JS_SetPropertyFunctionList(ctx, ctor, physics_ray_query_parameters2d_class_static_funcs, _countof(physics_ray_query_parameters2d_class_static_funcs));
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "PhysicsRayQueryParameters2D", ctor);
 

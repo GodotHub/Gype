@@ -15,7 +15,7 @@ using namespace godot;
 static void gltf_document_extension_convert_importer_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
 	GLTFDocumentExtensionConvertImporterMesh *gltf_document_extension_convert_importer_mesh = static_cast<GLTFDocumentExtensionConvertImporterMesh *>(JS_GetOpaque(val, GLTFDocumentExtensionConvertImporterMesh::__class_id));
 	if (gltf_document_extension_convert_importer_mesh)
-		GLTFDocumentExtensionConvertImporterMesh::free(nullptr, gltf_document_extension_convert_importer_mesh);
+		memdelete(gltf_document_extension_convert_importer_mesh);
 }
 
 static JSClassDef gltf_document_extension_convert_importer_mesh_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef gltf_document_extension_convert_importer_mesh_class_def = {
 };
 
 static JSValue gltf_document_extension_convert_importer_mesh_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	GLTFDocumentExtensionConvertImporterMesh *gltf_document_extension_convert_importer_mesh_class;
-	JSValue obj = JS_NewObjectClass(ctx, GLTFDocumentExtensionConvertImporterMesh::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFDocumentExtensionConvertImporterMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	gltf_document_extension_convert_importer_mesh_class = memnew(GLTFDocumentExtensionConvertImporterMesh);
+	GLTFDocumentExtensionConvertImporterMesh *gltf_document_extension_convert_importer_mesh_class = memnew(GLTFDocumentExtensionConvertImporterMesh);
 	if (!gltf_document_extension_convert_importer_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, gltf_document_extension_convert_importer_mesh_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, gltf_document_extension_convert_importer_mesh_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_gltf_document_extension_convert_importer_mesh_class_init(JSContext
 	class_id_list.insert(GLTFDocumentExtensionConvertImporterMesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GLTFDocumentExtensionConvertImporterMesh::__class_id, &gltf_document_extension_convert_importer_mesh_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, GLTFDocumentExtensionConvertImporterMesh::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, GLTFDocumentExtension::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, GLTFDocumentExtensionConvertImporterMesh::__class_id, proto);
-	define_gltf_document_extension_convert_importer_mesh_property(ctx, proto);
 
+	define_gltf_document_extension_convert_importer_mesh_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, gltf_document_extension_convert_importer_mesh_class_constructor, "GLTFDocumentExtensionConvertImporterMesh", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

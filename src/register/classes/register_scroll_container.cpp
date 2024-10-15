@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/scroll_container.hpp>
+#include <godot_cpp/classes/v_scroll_bar.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/container.hpp>
-#include <godot_cpp/classes/scroll_container.hpp>
 #include <godot_cpp/classes/h_scroll_bar.hpp>
-#include <godot_cpp/classes/v_scroll_bar.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -18,7 +18,7 @@ using namespace godot;
 static void scroll_container_class_finalizer(JSRuntime *rt, JSValue val) {
 	ScrollContainer *scroll_container = static_cast<ScrollContainer *>(JS_GetOpaque(val, ScrollContainer::__class_id));
 	if (scroll_container)
-		ScrollContainer::free(nullptr, scroll_container);
+		memdelete(scroll_container);
 }
 
 static JSClassDef scroll_container_class_def = {
@@ -27,25 +27,16 @@ static JSClassDef scroll_container_class_def = {
 };
 
 static JSValue scroll_container_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	ScrollContainer *scroll_container_class;
-	JSValue obj = JS_NewObjectClass(ctx, ScrollContainer::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ScrollContainer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	scroll_container_class = memnew(ScrollContainer);
+	ScrollContainer *scroll_container_class = memnew(ScrollContainer);
 	if (!scroll_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, scroll_container_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, scroll_container_class);	
 	return obj;
 }
 static JSValue scroll_container_class_set_h_scroll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -210,13 +201,13 @@ static int js_scroll_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(ScrollContainer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ScrollContainer::__class_id, &scroll_container_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, ScrollContainer::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Container::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ScrollContainer::__class_id, proto);
+
 	define_scroll_container_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, scroll_container_class_proto_funcs, _countof(scroll_container_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, scroll_container_class_constructor, "ScrollContainer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

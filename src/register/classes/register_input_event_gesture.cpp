@@ -15,7 +15,7 @@ using namespace godot;
 static void input_event_gesture_class_finalizer(JSRuntime *rt, JSValue val) {
 	InputEventGesture *input_event_gesture = static_cast<InputEventGesture *>(JS_GetOpaque(val, InputEventGesture::__class_id));
 	if (input_event_gesture)
-		InputEventGesture::free(nullptr, input_event_gesture);
+		memdelete(input_event_gesture);
 }
 
 static JSClassDef input_event_gesture_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef input_event_gesture_class_def = {
 };
 
 static JSValue input_event_gesture_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	InputEventGesture *input_event_gesture_class;
-	JSValue obj = JS_NewObjectClass(ctx, InputEventGesture::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InputEventGesture::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	input_event_gesture_class = memnew(InputEventGesture);
+	InputEventGesture *input_event_gesture_class = memnew(InputEventGesture);
 	if (!input_event_gesture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, input_event_gesture_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, input_event_gesture_class);	
 	return obj;
 }
 static JSValue input_event_gesture_class_set_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,13 +66,13 @@ static int js_input_event_gesture_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(InputEventGesture::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), InputEventGesture::__class_id, &input_event_gesture_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, InputEventGesture::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, InputEventWithModifiers::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, InputEventGesture::__class_id, proto);
+
 	define_input_event_gesture_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, input_event_gesture_class_proto_funcs, _countof(input_event_gesture_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, input_event_gesture_class_constructor, "InputEventGesture", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

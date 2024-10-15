@@ -15,7 +15,7 @@ using namespace godot;
 static void gpu_particles_attractor_box3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	GPUParticlesAttractorBox3D *gpu_particles_attractor_box3d = static_cast<GPUParticlesAttractorBox3D *>(JS_GetOpaque(val, GPUParticlesAttractorBox3D::__class_id));
 	if (gpu_particles_attractor_box3d)
-		GPUParticlesAttractorBox3D::free(nullptr, gpu_particles_attractor_box3d);
+		memdelete(gpu_particles_attractor_box3d);
 }
 
 static JSClassDef gpu_particles_attractor_box3d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef gpu_particles_attractor_box3d_class_def = {
 };
 
 static JSValue gpu_particles_attractor_box3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	GPUParticlesAttractorBox3D *gpu_particles_attractor_box3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, GPUParticlesAttractorBox3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GPUParticlesAttractorBox3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	gpu_particles_attractor_box3d_class = memnew(GPUParticlesAttractorBox3D);
+	GPUParticlesAttractorBox3D *gpu_particles_attractor_box3d_class = memnew(GPUParticlesAttractorBox3D);
 	if (!gpu_particles_attractor_box3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, gpu_particles_attractor_box3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, gpu_particles_attractor_box3d_class);	
 	return obj;
 }
 static JSValue gpu_particles_attractor_box3d_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,13 +66,13 @@ static int js_gpu_particles_attractor_box3d_class_init(JSContext *ctx, JSModuleD
 	class_id_list.insert(GPUParticlesAttractorBox3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GPUParticlesAttractorBox3D::__class_id, &gpu_particles_attractor_box3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, GPUParticlesAttractorBox3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, GPUParticlesAttractor3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, GPUParticlesAttractorBox3D::__class_id, proto);
+
 	define_gpu_particles_attractor_box3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, gpu_particles_attractor_box3d_class_proto_funcs, _countof(gpu_particles_attractor_box3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, gpu_particles_attractor_box3d_class_constructor, "GPUParticlesAttractorBox3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

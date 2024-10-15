@@ -15,7 +15,7 @@ using namespace godot;
 static void csg_shape3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	CSGShape3D *csg_shape3d = static_cast<CSGShape3D *>(JS_GetOpaque(val, CSGShape3D::__class_id));
 	if (csg_shape3d)
-		CSGShape3D::free(nullptr, csg_shape3d);
+		memdelete(csg_shape3d);
 }
 
 static JSClassDef csg_shape3d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef csg_shape3d_class_def = {
 };
 
 static JSValue csg_shape3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	CSGShape3D *csg_shape3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, CSGShape3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CSGShape3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	csg_shape3d_class = memnew(CSGShape3D);
+	CSGShape3D *csg_shape3d_class = memnew(CSGShape3D);
 	if (!csg_shape3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, csg_shape3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, csg_shape3d_class);	
 	return obj;
 }
 static JSValue csg_shape3d_class_is_root_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -203,13 +194,13 @@ static int js_csg_shape3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(CSGShape3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CSGShape3D::__class_id, &csg_shape3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, CSGShape3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, GeometryInstance3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, CSGShape3D::__class_id, proto);
+
 	define_csg_shape3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, csg_shape3d_class_proto_funcs, _countof(csg_shape3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, csg_shape3d_class_constructor, "CSGShape3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

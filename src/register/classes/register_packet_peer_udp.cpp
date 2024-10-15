@@ -15,7 +15,7 @@ using namespace godot;
 static void packet_peer_udp_class_finalizer(JSRuntime *rt, JSValue val) {
 	PacketPeerUDP *packet_peer_udp = static_cast<PacketPeerUDP *>(JS_GetOpaque(val, PacketPeerUDP::__class_id));
 	if (packet_peer_udp)
-		PacketPeerUDP::free(nullptr, packet_peer_udp);
+		memdelete(packet_peer_udp);
 }
 
 static JSClassDef packet_peer_udp_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef packet_peer_udp_class_def = {
 };
 
 static JSValue packet_peer_udp_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PacketPeerUDP *packet_peer_udp_class;
-	JSValue obj = JS_NewObjectClass(ctx, PacketPeerUDP::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PacketPeerUDP::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	packet_peer_udp_class = memnew(PacketPeerUDP);
+	PacketPeerUDP *packet_peer_udp_class = memnew(PacketPeerUDP);
 	if (!packet_peer_udp_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, packet_peer_udp_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, packet_peer_udp_class);	
 	return obj;
 }
 static JSValue packet_peer_udp_class_bind(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -112,13 +103,13 @@ static int js_packet_peer_udp_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(PacketPeerUDP::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PacketPeerUDP::__class_id, &packet_peer_udp_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, PacketPeerUDP::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, PacketPeer::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PacketPeerUDP::__class_id, proto);
+
 	define_packet_peer_udp_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, packet_peer_udp_class_proto_funcs, _countof(packet_peer_udp_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, packet_peer_udp_class_constructor, "PacketPeerUDP", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

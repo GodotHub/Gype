@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/navigation_mesh.hpp>
 #include <godot_cpp/classes/navigation_polygon.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/navigation_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void navigation_polygon_class_finalizer(JSRuntime *rt, JSValue val) {
 	NavigationPolygon *navigation_polygon = static_cast<NavigationPolygon *>(JS_GetOpaque(val, NavigationPolygon::__class_id));
 	if (navigation_polygon)
-		NavigationPolygon::free(nullptr, navigation_polygon);
+		memdelete(navigation_polygon);
 }
 
 static JSClassDef navigation_polygon_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef navigation_polygon_class_def = {
 };
 
 static JSValue navigation_polygon_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	NavigationPolygon *navigation_polygon_class;
-	JSValue obj = JS_NewObjectClass(ctx, NavigationPolygon::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, NavigationPolygon::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	navigation_polygon_class = memnew(NavigationPolygon);
+	NavigationPolygon *navigation_polygon_class = memnew(NavigationPolygon);
 	if (!navigation_polygon_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, navigation_polygon_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, navigation_polygon_class);	
 	return obj;
 }
 static JSValue navigation_polygon_class_set_vertices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -303,13 +294,13 @@ static int js_navigation_polygon_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(NavigationPolygon::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), NavigationPolygon::__class_id, &navigation_polygon_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, NavigationPolygon::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, NavigationPolygon::__class_id, proto);
+
 	define_navigation_polygon_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, navigation_polygon_class_proto_funcs, _countof(navigation_polygon_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, navigation_polygon_class_constructor, "NavigationPolygon", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

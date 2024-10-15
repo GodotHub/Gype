@@ -15,7 +15,7 @@ using namespace godot;
 static void animation_player_class_finalizer(JSRuntime *rt, JSValue val) {
 	AnimationPlayer *animation_player = static_cast<AnimationPlayer *>(JS_GetOpaque(val, AnimationPlayer::__class_id));
 	if (animation_player)
-		AnimationPlayer::free(nullptr, animation_player);
+		memdelete(animation_player);
 }
 
 static JSClassDef animation_player_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef animation_player_class_def = {
 };
 
 static JSValue animation_player_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	AnimationPlayer *animation_player_class;
-	JSValue obj = JS_NewObjectClass(ctx, AnimationPlayer::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationPlayer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	animation_player_class = memnew(AnimationPlayer);
+	AnimationPlayer *animation_player_class = memnew(AnimationPlayer);
 	if (!animation_player_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, animation_player_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, animation_player_class);	
 	return obj;
 }
 static JSValue animation_player_class_animation_set_next(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -349,13 +340,13 @@ static int js_animation_player_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(AnimationPlayer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimationPlayer::__class_id, &animation_player_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, AnimationPlayer::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, AnimationMixer::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AnimationPlayer::__class_id, proto);
+
 	define_animation_player_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, animation_player_class_proto_funcs, _countof(animation_player_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, animation_player_class_constructor, "AnimationPlayer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

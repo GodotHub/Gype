@@ -15,7 +15,7 @@ using namespace godot;
 static void missing_node_class_finalizer(JSRuntime *rt, JSValue val) {
 	MissingNode *missing_node = static_cast<MissingNode *>(JS_GetOpaque(val, MissingNode::__class_id));
 	if (missing_node)
-		MissingNode::free(nullptr, missing_node);
+		memdelete(missing_node);
 }
 
 static JSClassDef missing_node_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef missing_node_class_def = {
 };
 
 static JSValue missing_node_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	MissingNode *missing_node_class;
-	JSValue obj = JS_NewObjectClass(ctx, MissingNode::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MissingNode::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	missing_node_class = memnew(MissingNode);
+	MissingNode *missing_node_class = memnew(MissingNode);
 	if (!missing_node_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, missing_node_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, missing_node_class);	
 	return obj;
 }
 static JSValue missing_node_class_set_original_class(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -109,13 +100,13 @@ static int js_missing_node_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(MissingNode::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), MissingNode::__class_id, &missing_node_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, MissingNode::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, MissingNode::__class_id, proto);
+
 	define_missing_node_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, missing_node_class_proto_funcs, _countof(missing_node_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, missing_node_class_constructor, "MissingNode", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

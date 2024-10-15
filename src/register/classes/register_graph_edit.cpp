@@ -5,12 +5,12 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/h_box_container.hpp>
-#include <godot_cpp/classes/graph_edit.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/classes/graph_frame.hpp>
+#include <godot_cpp/classes/graph_edit.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -19,7 +19,7 @@ using namespace godot;
 static void graph_edit_class_finalizer(JSRuntime *rt, JSValue val) {
 	GraphEdit *graph_edit = static_cast<GraphEdit *>(JS_GetOpaque(val, GraphEdit::__class_id));
 	if (graph_edit)
-		GraphEdit::free(nullptr, graph_edit);
+		memdelete(graph_edit);
 }
 
 static JSClassDef graph_edit_class_def = {
@@ -28,25 +28,16 @@ static JSClassDef graph_edit_class_def = {
 };
 
 static JSValue graph_edit_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	GraphEdit *graph_edit_class;
-	JSValue obj = JS_NewObjectClass(ctx, GraphEdit::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GraphEdit::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	graph_edit_class = memnew(GraphEdit);
+	GraphEdit *graph_edit_class = memnew(GraphEdit);
 	if (!graph_edit_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, graph_edit_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, graph_edit_class);	
 	return obj;
 }
 static JSValue graph_edit_class_connect_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -563,13 +554,13 @@ static int js_graph_edit_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(GraphEdit::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GraphEdit::__class_id, &graph_edit_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, GraphEdit::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Control::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, GraphEdit::__class_id, proto);
+
 	define_graph_edit_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, graph_edit_class_proto_funcs, _countof(graph_edit_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, graph_edit_class_constructor, "GraphEdit", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

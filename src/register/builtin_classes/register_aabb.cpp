@@ -33,11 +33,113 @@ static JSValue aabb_class_constructor(JSContext *ctx, JSValueConst new_target, i
 	JS_SetOpaque(obj, aabb_class);
 	return obj;
 }
+static JSValue aabb_class_abs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::abs, ctx, this_val, argc, argv);
+};
+static JSValue aabb_class_get_center(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::get_center, ctx, this_val, argc, argv);
+};
+static JSValue aabb_class_get_volume(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::get_volume, ctx, this_val, argc, argv);
+};
+static JSValue aabb_class_has_volume(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::has_volume, ctx, this_val, argc, argv);
+};
+static JSValue aabb_class_has_surface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::has_surface, ctx, this_val, argc, argv);
+};
+static JSValue aabb_class_has_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::has_point, ctx, this_val, argc, argv);
+};
+static JSValue aabb_class_is_equal_approx(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::is_equal_approx, ctx, this_val, argc, argv);
+};
+static JSValue aabb_class_is_finite(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::is_finite, ctx, this_val, argc, argv);
+};
+static JSValue aabb_class_intersects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::intersects, ctx, this_val, argc, argv);
+};
+static JSValue aabb_class_encloses(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::encloses, ctx, this_val, argc, argv);
+};
+static JSValue aabb_class_intersects_plane(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::intersects_plane, ctx, this_val, argc, argv);
+};
+static JSValue aabb_class_intersection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::intersection, ctx, this_val, argc, argv);
+};
+static JSValue aabb_class_merge(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::merge, ctx, this_val, argc, argv);
+};
+static JSValue aabb_class_expand(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::expand, ctx, this_val, argc, argv);
+};
+static JSValue aabb_class_grow(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::grow, ctx, this_val, argc, argv);
+};
+static JSValue aabb_class_get_support(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::get_support, ctx, this_val, argc, argv);
+};
+static JSValue aabb_class_get_longest_axis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::get_longest_axis, ctx, this_val, argc, argv);
+};
+static JSValue aabb_class_get_longest_axis_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::get_longest_axis_index, ctx, this_val, argc, argv);
+};
+static JSValue aabb_class_get_longest_axis_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::get_longest_axis_size, ctx, this_val, argc, argv);
+};
+static JSValue aabb_class_get_shortest_axis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::get_shortest_axis, ctx, this_val, argc, argv);
+};
+static JSValue aabb_class_get_shortest_axis_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::get_shortest_axis_index, ctx, this_val, argc, argv);
+};
+static JSValue aabb_class_get_shortest_axis_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::get_shortest_axis_size, ctx, this_val, argc, argv);
+};
+static JSValue aabb_class_get_endpoint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::get_endpoint, ctx, this_val, argc, argv);
+};
+static JSValue aabb_class_intersects_segment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::intersects_segment, ctx, this_val, argc, argv);
+};
+static JSValue aabb_class_intersects_ray(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&AABB::intersects_ray, ctx, this_val, argc, argv);
+};
+static const JSCFunctionListEntry aabb_class_proto_funcs[] = {
+	JS_CFUNC_DEF("abs", 0, &aabb_class_abs),
+	JS_CFUNC_DEF("get_center", 0, &aabb_class_get_center),
+	JS_CFUNC_DEF("get_volume", 0, &aabb_class_get_volume),
+	JS_CFUNC_DEF("has_volume", 0, &aabb_class_has_volume),
+	JS_CFUNC_DEF("has_surface", 0, &aabb_class_has_surface),
+	JS_CFUNC_DEF("has_point", 1, &aabb_class_has_point),
+	JS_CFUNC_DEF("is_equal_approx", 1, &aabb_class_is_equal_approx),
+	JS_CFUNC_DEF("is_finite", 0, &aabb_class_is_finite),
+	JS_CFUNC_DEF("intersects", 1, &aabb_class_intersects),
+	JS_CFUNC_DEF("encloses", 1, &aabb_class_encloses),
+	JS_CFUNC_DEF("intersects_plane", 1, &aabb_class_intersects_plane),
+	JS_CFUNC_DEF("intersection", 1, &aabb_class_intersection),
+	JS_CFUNC_DEF("merge", 1, &aabb_class_merge),
+	JS_CFUNC_DEF("expand", 1, &aabb_class_expand),
+	JS_CFUNC_DEF("grow", 1, &aabb_class_grow),
+	JS_CFUNC_DEF("get_support", 1, &aabb_class_get_support),
+	JS_CFUNC_DEF("get_longest_axis", 0, &aabb_class_get_longest_axis),
+	JS_CFUNC_DEF("get_longest_axis_index", 0, &aabb_class_get_longest_axis_index),
+	JS_CFUNC_DEF("get_longest_axis_size", 0, &aabb_class_get_longest_axis_size),
+	JS_CFUNC_DEF("get_shortest_axis", 0, &aabb_class_get_shortest_axis),
+	JS_CFUNC_DEF("get_shortest_axis_index", 0, &aabb_class_get_shortest_axis_index),
+	JS_CFUNC_DEF("get_shortest_axis_size", 0, &aabb_class_get_shortest_axis_size),
+	JS_CFUNC_DEF("get_endpoint", 1, &aabb_class_get_endpoint),
+	JS_CFUNC_DEF("intersects_segment", 2, &aabb_class_intersects_segment),
+	JS_CFUNC_DEF("intersects_ray", 2, &aabb_class_intersects_ray),
+};
 
 void define_aabb_property(JSContext *ctx, JSValue obj) {
 }
 
-static int js_aabb_class_init(JSContext *ctx, JSModuleDef *m) {
+static int js_aabb_class_init(JSContext *ctx) {
 	
 	JS_NewClassID(&AABB::__class_id);
 	classes["AABB"] = AABB::__class_id;
@@ -46,26 +148,21 @@ static int js_aabb_class_init(JSContext *ctx, JSModuleDef *m) {
 
 	JSValue proto = JS_NewObject(ctx);
 	JS_SetClassProto(ctx, AABB::__class_id, proto);
+
 	define_aabb_property(ctx, proto);
+	JS_SetPropertyFunctionList(ctx, proto, aabb_class_proto_funcs, _countof(aabb_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, aabb_class_constructor, "AABB", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 
-	JS_SetModuleExport(ctx, m, "AABB", ctor);
+	JSValue global = JS_GetGlobalObject(ctx);
+	JS_SetPropertyStr(ctx, global, "AABB", ctor);
 
 	return 0;
 }
 
-JSModuleDef *_js_init_aabb_module(JSContext *ctx, const char *module_name) {
-	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_aabb_class_init);
-	if (!m)
-		return NULL;
-	JS_AddModuleExport(ctx, m, "AABB");
-	return m;
-}
-
-JSModuleDef *js_init_aabb_module(JSContext *ctx) {
-	return _js_init_aabb_module(ctx, "godot/classes/aabb");
+void js_init_aabb_module(JSContext *ctx) {
+	js_aabb_class_init(ctx);
 }
 
 void register_aabb() {

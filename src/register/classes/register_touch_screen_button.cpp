@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/bit_map.hpp>
 #include <godot_cpp/classes/touch_screen_button.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/bit_map.hpp>
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/shape2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
@@ -18,7 +18,7 @@ using namespace godot;
 static void touch_screen_button_class_finalizer(JSRuntime *rt, JSValue val) {
 	TouchScreenButton *touch_screen_button = static_cast<TouchScreenButton *>(JS_GetOpaque(val, TouchScreenButton::__class_id));
 	if (touch_screen_button)
-		TouchScreenButton::free(nullptr, touch_screen_button);
+		memdelete(touch_screen_button);
 }
 
 static JSClassDef touch_screen_button_class_def = {
@@ -27,25 +27,16 @@ static JSClassDef touch_screen_button_class_def = {
 };
 
 static JSValue touch_screen_button_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	TouchScreenButton *touch_screen_button_class;
-	JSValue obj = JS_NewObjectClass(ctx, TouchScreenButton::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TouchScreenButton::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	touch_screen_button_class = memnew(TouchScreenButton);
+	TouchScreenButton *touch_screen_button_class = memnew(TouchScreenButton);
 	if (!touch_screen_button_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, touch_screen_button_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, touch_screen_button_class);	
 	return obj;
 }
 static JSValue touch_screen_button_class_set_texture_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -218,13 +209,13 @@ static int js_touch_screen_button_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(TouchScreenButton::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TouchScreenButton::__class_id, &touch_screen_button_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, TouchScreenButton::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, TouchScreenButton::__class_id, proto);
+
 	define_touch_screen_button_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, touch_screen_button_class_proto_funcs, _countof(touch_screen_button_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, touch_screen_button_class_constructor, "TouchScreenButton", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

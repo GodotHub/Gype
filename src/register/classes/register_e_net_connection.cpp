@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/e_net_packet_peer.hpp>
-#include <godot_cpp/classes/e_net_packet_peer.hpp>
-#include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/classes/e_net_connection.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/tls_options.hpp>
+#include <godot_cpp/classes/e_net_packet_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -18,7 +18,7 @@ using namespace godot;
 static void e_net_connection_class_finalizer(JSRuntime *rt, JSValue val) {
 	ENetConnection *e_net_connection = static_cast<ENetConnection *>(JS_GetOpaque(val, ENetConnection::__class_id));
 	if (e_net_connection)
-		ENetConnection::free(nullptr, e_net_connection);
+		memdelete(e_net_connection);
 }
 
 static JSClassDef e_net_connection_class_def = {
@@ -27,25 +27,16 @@ static JSClassDef e_net_connection_class_def = {
 };
 
 static JSValue e_net_connection_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	ENetConnection *e_net_connection_class;
-	JSValue obj = JS_NewObjectClass(ctx, ENetConnection::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ENetConnection::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	e_net_connection_class = memnew(ENetConnection);
+	ENetConnection *e_net_connection_class = memnew(ENetConnection);
 	if (!e_net_connection_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, e_net_connection_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, e_net_connection_class);	
 	return obj;
 }
 static JSValue e_net_connection_class_create_host_bound(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -141,13 +132,13 @@ static int js_e_net_connection_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(ENetConnection::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ENetConnection::__class_id, &e_net_connection_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, ENetConnection::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ENetConnection::__class_id, proto);
+
 	define_e_net_connection_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, e_net_connection_class_proto_funcs, _countof(e_net_connection_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, e_net_connection_class_constructor, "ENetConnection", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

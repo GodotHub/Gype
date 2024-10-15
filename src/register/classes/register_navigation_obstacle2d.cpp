@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/navigation_obstacle2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void navigation_obstacle2d_class_finalizer(JSRuntime *rt, JSValue val) {
 	NavigationObstacle2D *navigation_obstacle2d = static_cast<NavigationObstacle2D *>(JS_GetOpaque(val, NavigationObstacle2D::__class_id));
 	if (navigation_obstacle2d)
-		NavigationObstacle2D::free(nullptr, navigation_obstacle2d);
+		memdelete(navigation_obstacle2d);
 }
 
 static JSClassDef navigation_obstacle2d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef navigation_obstacle2d_class_def = {
 };
 
 static JSValue navigation_obstacle2d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	NavigationObstacle2D *navigation_obstacle2d_class;
-	JSValue obj = JS_NewObjectClass(ctx, NavigationObstacle2D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, NavigationObstacle2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	navigation_obstacle2d_class = memnew(NavigationObstacle2D);
+	NavigationObstacle2D *navigation_obstacle2d_class = memnew(NavigationObstacle2D);
 	if (!navigation_obstacle2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, navigation_obstacle2d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, navigation_obstacle2d_class);	
 	return obj;
 }
 static JSValue navigation_obstacle2d_class_get_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -199,13 +190,13 @@ static int js_navigation_obstacle2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(NavigationObstacle2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), NavigationObstacle2D::__class_id, &navigation_obstacle2d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, NavigationObstacle2D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, NavigationObstacle2D::__class_id, proto);
+
 	define_navigation_obstacle2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, navigation_obstacle2d_class_proto_funcs, _countof(navigation_obstacle2d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, navigation_obstacle2d_class_constructor, "NavigationObstacle2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

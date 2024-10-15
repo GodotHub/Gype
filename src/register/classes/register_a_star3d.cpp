@@ -15,7 +15,7 @@ using namespace godot;
 static void a_star3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	AStar3D *a_star3d = static_cast<AStar3D *>(JS_GetOpaque(val, AStar3D::__class_id));
 	if (a_star3d)
-		AStar3D::free(nullptr, a_star3d);
+		memdelete(a_star3d);
 }
 
 static JSClassDef a_star3d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef a_star3d_class_def = {
 };
 
 static JSValue a_star3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	AStar3D *a_star3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, AStar3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AStar3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	a_star3d_class = memnew(AStar3D);
+	AStar3D *a_star3d_class = memnew(AStar3D);
 	if (!a_star3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, a_star3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, a_star3d_class);	
 	return obj;
 }
 static JSValue a_star3d_class_get_available_point_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -159,13 +150,13 @@ static int js_a_star3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(AStar3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AStar3D::__class_id, &a_star3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, AStar3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AStar3D::__class_id, proto);
+
 	define_a_star3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, a_star3d_class_proto_funcs, _countof(a_star3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, a_star3d_class_constructor, "AStar3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

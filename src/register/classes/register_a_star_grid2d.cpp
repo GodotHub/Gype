@@ -15,7 +15,7 @@ using namespace godot;
 static void a_star_grid2d_class_finalizer(JSRuntime *rt, JSValue val) {
 	AStarGrid2D *a_star_grid2d = static_cast<AStarGrid2D *>(JS_GetOpaque(val, AStarGrid2D::__class_id));
 	if (a_star_grid2d)
-		AStarGrid2D::free(nullptr, a_star_grid2d);
+		memdelete(a_star_grid2d);
 }
 
 static JSClassDef a_star_grid2d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef a_star_grid2d_class_def = {
 };
 
 static JSValue a_star_grid2d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	AStarGrid2D *a_star_grid2d_class;
-	JSValue obj = JS_NewObjectClass(ctx, AStarGrid2D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AStarGrid2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	a_star_grid2d_class = memnew(AStarGrid2D);
+	AStarGrid2D *a_star_grid2d_class = memnew(AStarGrid2D);
 	if (!a_star_grid2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, a_star_grid2d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, a_star_grid2d_class);	
 	return obj;
 }
 static JSValue a_star_grid2d_class_set_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -273,13 +264,13 @@ static int js_a_star_grid2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(AStarGrid2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AStarGrid2D::__class_id, &a_star_grid2d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, AStarGrid2D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AStarGrid2D::__class_id, proto);
+
 	define_a_star_grid2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, a_star_grid2d_class_proto_funcs, _countof(a_star_grid2d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, a_star_grid2d_class_constructor, "AStarGrid2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

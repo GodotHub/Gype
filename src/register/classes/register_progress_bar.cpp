@@ -15,7 +15,7 @@ using namespace godot;
 static void progress_bar_class_finalizer(JSRuntime *rt, JSValue val) {
 	ProgressBar *progress_bar = static_cast<ProgressBar *>(JS_GetOpaque(val, ProgressBar::__class_id));
 	if (progress_bar)
-		ProgressBar::free(nullptr, progress_bar);
+		memdelete(progress_bar);
 }
 
 static JSClassDef progress_bar_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef progress_bar_class_def = {
 };
 
 static JSValue progress_bar_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	ProgressBar *progress_bar_class;
-	JSValue obj = JS_NewObjectClass(ctx, ProgressBar::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ProgressBar::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	progress_bar_class = memnew(ProgressBar);
+	ProgressBar *progress_bar_class = memnew(ProgressBar);
 	if (!progress_bar_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, progress_bar_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, progress_bar_class);	
 	return obj;
 }
 static JSValue progress_bar_class_set_fill_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -126,13 +117,13 @@ static int js_progress_bar_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(ProgressBar::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ProgressBar::__class_id, &progress_bar_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, ProgressBar::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Range::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ProgressBar::__class_id, proto);
+
 	define_progress_bar_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, progress_bar_class_proto_funcs, _countof(progress_bar_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, progress_bar_class_constructor, "ProgressBar", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/gradient.hpp>
-#include <godot_cpp/classes/line2d.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/curve.hpp>
+#include <godot_cpp/classes/line2d.hpp>
+#include <godot_cpp/classes/gradient.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -18,7 +18,7 @@ using namespace godot;
 static void line2d_class_finalizer(JSRuntime *rt, JSValue val) {
 	Line2D *line2d = static_cast<Line2D *>(JS_GetOpaque(val, Line2D::__class_id));
 	if (line2d)
-		Line2D::free(nullptr, line2d);
+		memdelete(line2d);
 }
 
 static JSClassDef line2d_class_def = {
@@ -27,25 +27,16 @@ static JSClassDef line2d_class_def = {
 };
 
 static JSValue line2d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Line2D *line2d_class;
-	JSValue obj = JS_NewObjectClass(ctx, Line2D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Line2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	line2d_class = memnew(Line2D);
+	Line2D *line2d_class = memnew(Line2D);
 	if (!line2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, line2d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, line2d_class);	
 	return obj;
 }
 static JSValue line2d_class_set_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -327,13 +318,13 @@ static int js_line2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Line2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Line2D::__class_id, &line2d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Line2D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Line2D::__class_id, proto);
+
 	define_line2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, line2d_class_proto_funcs, _countof(line2d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, line2d_class_constructor, "Line2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/classes/world_boundary_shape3d.hpp>
+#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void world_boundary_shape3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	WorldBoundaryShape3D *world_boundary_shape3d = static_cast<WorldBoundaryShape3D *>(JS_GetOpaque(val, WorldBoundaryShape3D::__class_id));
 	if (world_boundary_shape3d)
-		WorldBoundaryShape3D::free(nullptr, world_boundary_shape3d);
+		memdelete(world_boundary_shape3d);
 }
 
 static JSClassDef world_boundary_shape3d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef world_boundary_shape3d_class_def = {
 };
 
 static JSValue world_boundary_shape3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	WorldBoundaryShape3D *world_boundary_shape3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, WorldBoundaryShape3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, WorldBoundaryShape3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	world_boundary_shape3d_class = memnew(WorldBoundaryShape3D);
+	WorldBoundaryShape3D *world_boundary_shape3d_class = memnew(WorldBoundaryShape3D);
 	if (!world_boundary_shape3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, world_boundary_shape3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, world_boundary_shape3d_class);	
 	return obj;
 }
 static JSValue world_boundary_shape3d_class_set_plane(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,13 +66,13 @@ static int js_world_boundary_shape3d_class_init(JSContext *ctx, JSModuleDef *m) 
 	class_id_list.insert(WorldBoundaryShape3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), WorldBoundaryShape3D::__class_id, &world_boundary_shape3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, WorldBoundaryShape3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Shape3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, WorldBoundaryShape3D::__class_id, proto);
+
 	define_world_boundary_shape3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, world_boundary_shape3d_class_proto_funcs, _countof(world_boundary_shape3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, world_boundary_shape3d_class_constructor, "WorldBoundaryShape3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

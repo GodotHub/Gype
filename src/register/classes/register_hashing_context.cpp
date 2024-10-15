@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/hashing_context.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void hashing_context_class_finalizer(JSRuntime *rt, JSValue val) {
 	HashingContext *hashing_context = static_cast<HashingContext *>(JS_GetOpaque(val, HashingContext::__class_id));
 	if (hashing_context)
-		HashingContext::free(nullptr, hashing_context);
+		memdelete(hashing_context);
 }
 
 static JSClassDef hashing_context_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef hashing_context_class_def = {
 };
 
 static JSValue hashing_context_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	HashingContext *hashing_context_class;
-	JSValue obj = JS_NewObjectClass(ctx, HashingContext::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, HashingContext::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	hashing_context_class = memnew(HashingContext);
+	HashingContext *hashing_context_class = memnew(HashingContext);
 	if (!hashing_context_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, hashing_context_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, hashing_context_class);	
 	return obj;
 }
 static JSValue hashing_context_class_start(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,13 +61,13 @@ static int js_hashing_context_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(HashingContext::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), HashingContext::__class_id, &hashing_context_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, HashingContext::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, HashingContext::__class_id, proto);
+
 	define_hashing_context_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, hashing_context_class_proto_funcs, _countof(hashing_context_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, hashing_context_class_constructor, "HashingContext", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

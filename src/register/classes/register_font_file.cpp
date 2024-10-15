@@ -16,7 +16,7 @@ using namespace godot;
 static void font_file_class_finalizer(JSRuntime *rt, JSValue val) {
 	FontFile *font_file = static_cast<FontFile *>(JS_GetOpaque(val, FontFile::__class_id));
 	if (font_file)
-		FontFile::free(nullptr, font_file);
+		memdelete(font_file);
 }
 
 static JSClassDef font_file_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef font_file_class_def = {
 };
 
 static JSValue font_file_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	FontFile *font_file_class;
-	JSValue obj = JS_NewObjectClass(ctx, FontFile::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, FontFile::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	font_file_class = memnew(FontFile);
+	FontFile *font_file_class = memnew(FontFile);
 	if (!font_file_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, font_file_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, font_file_class);	
 	return obj;
 }
 static JSValue font_file_class_load_bitmap_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -682,13 +673,13 @@ static int js_font_file_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(FontFile::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), FontFile::__class_id, &font_file_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, FontFile::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Font::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, FontFile::__class_id, proto);
+
 	define_font_file_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, font_file_class_proto_funcs, _countof(font_file_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, font_file_class_constructor, "FontFile", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

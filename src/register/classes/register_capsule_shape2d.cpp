@@ -15,7 +15,7 @@ using namespace godot;
 static void capsule_shape2d_class_finalizer(JSRuntime *rt, JSValue val) {
 	CapsuleShape2D *capsule_shape2d = static_cast<CapsuleShape2D *>(JS_GetOpaque(val, CapsuleShape2D::__class_id));
 	if (capsule_shape2d)
-		CapsuleShape2D::free(nullptr, capsule_shape2d);
+		memdelete(capsule_shape2d);
 }
 
 static JSClassDef capsule_shape2d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef capsule_shape2d_class_def = {
 };
 
 static JSValue capsule_shape2d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	CapsuleShape2D *capsule_shape2d_class;
-	JSValue obj = JS_NewObjectClass(ctx, CapsuleShape2D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CapsuleShape2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	capsule_shape2d_class = memnew(CapsuleShape2D);
+	CapsuleShape2D *capsule_shape2d_class = memnew(CapsuleShape2D);
 	if (!capsule_shape2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, capsule_shape2d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, capsule_shape2d_class);	
 	return obj;
 }
 static JSValue capsule_shape2d_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -92,13 +83,13 @@ static int js_capsule_shape2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(CapsuleShape2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CapsuleShape2D::__class_id, &capsule_shape2d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, CapsuleShape2D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Shape2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, CapsuleShape2D::__class_id, proto);
+
 	define_capsule_shape2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, capsule_shape2d_class_proto_funcs, _countof(capsule_shape2d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, capsule_shape2d_class_constructor, "CapsuleShape2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

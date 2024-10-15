@@ -15,7 +15,7 @@ using namespace godot;
 static void material_class_finalizer(JSRuntime *rt, JSValue val) {
 	Material *material = static_cast<Material *>(JS_GetOpaque(val, Material::__class_id));
 	if (material)
-		Material::free(nullptr, material);
+		memdelete(material);
 }
 
 static JSClassDef material_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef material_class_def = {
 };
 
 static JSValue material_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Material *material_class;
-	JSValue obj = JS_NewObjectClass(ctx, Material::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Material::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	material_class = memnew(Material);
+	Material *material_class = memnew(Material);
 	if (!material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, material_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, material_class);	
 	return obj;
 }
 static JSValue material_class_set_next_pass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -101,13 +92,13 @@ static int js_material_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Material::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Material::__class_id, &material_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Material::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Material::__class_id, proto);
+
 	define_material_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, material_class_proto_funcs, _countof(material_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, material_class_constructor, "Material", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

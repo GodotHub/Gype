@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/open_xr_composition_layer_quad.hpp>
 #include <godot_cpp/classes/open_xr_composition_layer.hpp>
+#include <godot_cpp/classes/open_xr_composition_layer_quad.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void open_xr_composition_layer_quad_class_finalizer(JSRuntime *rt, JSValue val) {
 	OpenXRCompositionLayerQuad *open_xr_composition_layer_quad = static_cast<OpenXRCompositionLayerQuad *>(JS_GetOpaque(val, OpenXRCompositionLayerQuad::__class_id));
 	if (open_xr_composition_layer_quad)
-		OpenXRCompositionLayerQuad::free(nullptr, open_xr_composition_layer_quad);
+		memdelete(open_xr_composition_layer_quad);
 }
 
 static JSClassDef open_xr_composition_layer_quad_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef open_xr_composition_layer_quad_class_def = {
 };
 
 static JSValue open_xr_composition_layer_quad_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	OpenXRCompositionLayerQuad *open_xr_composition_layer_quad_class;
-	JSValue obj = JS_NewObjectClass(ctx, OpenXRCompositionLayerQuad::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OpenXRCompositionLayerQuad::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	open_xr_composition_layer_quad_class = memnew(OpenXRCompositionLayerQuad);
+	OpenXRCompositionLayerQuad *open_xr_composition_layer_quad_class = memnew(OpenXRCompositionLayerQuad);
 	if (!open_xr_composition_layer_quad_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, open_xr_composition_layer_quad_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, open_xr_composition_layer_quad_class);	
 	return obj;
 }
 static JSValue open_xr_composition_layer_quad_class_set_quad_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,13 +66,13 @@ static int js_open_xr_composition_layer_quad_class_init(JSContext *ctx, JSModule
 	class_id_list.insert(OpenXRCompositionLayerQuad::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), OpenXRCompositionLayerQuad::__class_id, &open_xr_composition_layer_quad_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, OpenXRCompositionLayerQuad::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, OpenXRCompositionLayer::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, OpenXRCompositionLayerQuad::__class_id, proto);
+
 	define_open_xr_composition_layer_quad_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, open_xr_composition_layer_quad_class_proto_funcs, _countof(open_xr_composition_layer_quad_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, open_xr_composition_layer_quad_class_constructor, "OpenXRCompositionLayerQuad", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

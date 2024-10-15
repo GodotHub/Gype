@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/packet_peer_udp.hpp>
-#include <godot_cpp/classes/tls_options.hpp>
-#include <godot_cpp/classes/packet_peer_dtls.hpp>
 #include <godot_cpp/classes/packet_peer.hpp>
+#include <godot_cpp/classes/packet_peer_dtls.hpp>
+#include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -17,7 +17,7 @@ using namespace godot;
 static void packet_peer_dtls_class_finalizer(JSRuntime *rt, JSValue val) {
 	PacketPeerDTLS *packet_peer_dtls = static_cast<PacketPeerDTLS *>(JS_GetOpaque(val, PacketPeerDTLS::__class_id));
 	if (packet_peer_dtls)
-		PacketPeerDTLS::free(nullptr, packet_peer_dtls);
+		memdelete(packet_peer_dtls);
 }
 
 static JSClassDef packet_peer_dtls_class_def = {
@@ -26,25 +26,16 @@ static JSClassDef packet_peer_dtls_class_def = {
 };
 
 static JSValue packet_peer_dtls_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PacketPeerDTLS *packet_peer_dtls_class;
-	JSValue obj = JS_NewObjectClass(ctx, PacketPeerDTLS::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PacketPeerDTLS::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	packet_peer_dtls_class = memnew(PacketPeerDTLS);
+	PacketPeerDTLS *packet_peer_dtls_class = memnew(PacketPeerDTLS);
 	if (!packet_peer_dtls_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, packet_peer_dtls_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, packet_peer_dtls_class);	
 	return obj;
 }
 static JSValue packet_peer_dtls_class_poll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -78,13 +69,13 @@ static int js_packet_peer_dtls_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(PacketPeerDTLS::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PacketPeerDTLS::__class_id, &packet_peer_dtls_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, PacketPeerDTLS::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, PacketPeer::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PacketPeerDTLS::__class_id, proto);
+
 	define_packet_peer_dtls_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, packet_peer_dtls_class_proto_funcs, _countof(packet_peer_dtls_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, packet_peer_dtls_class_constructor, "PacketPeerDTLS", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/lightmapper_rd.hpp>
 #include <godot_cpp/classes/lightmapper.hpp>
+#include <godot_cpp/classes/lightmapper_rd.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void lightmapper_rd_class_finalizer(JSRuntime *rt, JSValue val) {
 	LightmapperRD *lightmapper_rd = static_cast<LightmapperRD *>(JS_GetOpaque(val, LightmapperRD::__class_id));
 	if (lightmapper_rd)
-		LightmapperRD::free(nullptr, lightmapper_rd);
+		memdelete(lightmapper_rd);
 }
 
 static JSClassDef lightmapper_rd_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef lightmapper_rd_class_def = {
 };
 
 static JSValue lightmapper_rd_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	LightmapperRD *lightmapper_rd_class;
-	JSValue obj = JS_NewObjectClass(ctx, LightmapperRD::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, LightmapperRD::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	lightmapper_rd_class = memnew(LightmapperRD);
+	LightmapperRD *lightmapper_rd_class = memnew(LightmapperRD);
 	if (!lightmapper_rd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, lightmapper_rd_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, lightmapper_rd_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_lightmapper_rd_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(LightmapperRD::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), LightmapperRD::__class_id, &lightmapper_rd_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, LightmapperRD::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Lightmapper::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, LightmapperRD::__class_id, proto);
-	define_lightmapper_rd_property(ctx, proto);
 
+	define_lightmapper_rd_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, lightmapper_rd_class_constructor, "LightmapperRD", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

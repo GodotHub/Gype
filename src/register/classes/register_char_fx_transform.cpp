@@ -15,7 +15,7 @@ using namespace godot;
 static void char_fx_transform_class_finalizer(JSRuntime *rt, JSValue val) {
 	CharFXTransform *char_fx_transform = static_cast<CharFXTransform *>(JS_GetOpaque(val, CharFXTransform::__class_id));
 	if (char_fx_transform)
-		CharFXTransform::free(nullptr, char_fx_transform);
+		memdelete(char_fx_transform);
 }
 
 static JSClassDef char_fx_transform_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef char_fx_transform_class_def = {
 };
 
 static JSValue char_fx_transform_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	CharFXTransform *char_fx_transform_class;
-	JSValue obj = JS_NewObjectClass(ctx, CharFXTransform::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CharFXTransform::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	char_fx_transform_class = memnew(CharFXTransform);
+	CharFXTransform *char_fx_transform_class = memnew(CharFXTransform);
 	if (!char_fx_transform_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, char_fx_transform_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, char_fx_transform_class);	
 	return obj;
 }
 static JSValue char_fx_transform_class_get_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -279,13 +270,13 @@ static int js_char_fx_transform_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(CharFXTransform::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CharFXTransform::__class_id, &char_fx_transform_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, CharFXTransform::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, CharFXTransform::__class_id, proto);
+
 	define_char_fx_transform_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, char_fx_transform_class_proto_funcs, _countof(char_fx_transform_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, char_fx_transform_class_constructor, "CharFXTransform", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/array_mesh.hpp>
-#include <godot_cpp/classes/surface_tool.hpp>
-#include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/array_mesh.hpp>
+#include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/surface_tool.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -18,7 +18,7 @@ using namespace godot;
 static void surface_tool_class_finalizer(JSRuntime *rt, JSValue val) {
 	SurfaceTool *surface_tool = static_cast<SurfaceTool *>(JS_GetOpaque(val, SurfaceTool::__class_id));
 	if (surface_tool)
-		SurfaceTool::free(nullptr, surface_tool);
+		memdelete(surface_tool);
 }
 
 static JSClassDef surface_tool_class_def = {
@@ -27,25 +27,16 @@ static JSClassDef surface_tool_class_def = {
 };
 
 static JSValue surface_tool_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	SurfaceTool *surface_tool_class;
-	JSValue obj = JS_NewObjectClass(ctx, SurfaceTool::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SurfaceTool::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	surface_tool_class = memnew(SurfaceTool);
+	SurfaceTool *surface_tool_class = memnew(SurfaceTool);
 	if (!surface_tool_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, surface_tool_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, surface_tool_class);	
 	return obj;
 }
 static JSValue surface_tool_class_set_skin_weight_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -219,13 +210,13 @@ static int js_surface_tool_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(SurfaceTool::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SurfaceTool::__class_id, &surface_tool_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, SurfaceTool::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, SurfaceTool::__class_id, proto);
+
 	define_surface_tool_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, surface_tool_class_proto_funcs, _countof(surface_tool_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, surface_tool_class_constructor, "SurfaceTool", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

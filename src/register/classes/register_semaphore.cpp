@@ -15,7 +15,7 @@ using namespace godot;
 static void semaphore_class_finalizer(JSRuntime *rt, JSValue val) {
 	Semaphore *semaphore = static_cast<Semaphore *>(JS_GetOpaque(val, Semaphore::__class_id));
 	if (semaphore)
-		Semaphore::free(nullptr, semaphore);
+		memdelete(semaphore);
 }
 
 static JSClassDef semaphore_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef semaphore_class_def = {
 };
 
 static JSValue semaphore_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Semaphore *semaphore_class;
-	JSValue obj = JS_NewObjectClass(ctx, Semaphore::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Semaphore::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	semaphore_class = memnew(Semaphore);
+	Semaphore *semaphore_class = memnew(Semaphore);
 	if (!semaphore_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, semaphore_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, semaphore_class);	
 	return obj;
 }
 static JSValue semaphore_class_wait(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -72,13 +63,13 @@ static int js_semaphore_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Semaphore::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Semaphore::__class_id, &semaphore_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Semaphore::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Semaphore::__class_id, proto);
+
 	define_semaphore_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, semaphore_class_proto_funcs, _countof(semaphore_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, semaphore_class_constructor, "Semaphore", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

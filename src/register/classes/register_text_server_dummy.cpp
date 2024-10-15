@@ -15,7 +15,7 @@ using namespace godot;
 static void text_server_dummy_class_finalizer(JSRuntime *rt, JSValue val) {
 	TextServerDummy *text_server_dummy = static_cast<TextServerDummy *>(JS_GetOpaque(val, TextServerDummy::__class_id));
 	if (text_server_dummy)
-		TextServerDummy::free(nullptr, text_server_dummy);
+		memdelete(text_server_dummy);
 }
 
 static JSClassDef text_server_dummy_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef text_server_dummy_class_def = {
 };
 
 static JSValue text_server_dummy_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	TextServerDummy *text_server_dummy_class;
-	JSValue obj = JS_NewObjectClass(ctx, TextServerDummy::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TextServerDummy::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	text_server_dummy_class = memnew(TextServerDummy);
+	TextServerDummy *text_server_dummy_class = memnew(TextServerDummy);
 	if (!text_server_dummy_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, text_server_dummy_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, text_server_dummy_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_text_server_dummy_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(TextServerDummy::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TextServerDummy::__class_id, &text_server_dummy_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, TextServerDummy::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, TextServerExtension::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, TextServerDummy::__class_id, proto);
-	define_text_server_dummy_property(ctx, proto);
 
+	define_text_server_dummy_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, text_server_dummy_class_constructor, "TextServerDummy", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

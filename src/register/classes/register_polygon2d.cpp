@@ -16,7 +16,7 @@ using namespace godot;
 static void polygon2d_class_finalizer(JSRuntime *rt, JSValue val) {
 	Polygon2D *polygon2d = static_cast<Polygon2D *>(JS_GetOpaque(val, Polygon2D::__class_id));
 	if (polygon2d)
-		Polygon2D::free(nullptr, polygon2d);
+		memdelete(polygon2d);
 }
 
 static JSClassDef polygon2d_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef polygon2d_class_def = {
 };
 
 static JSValue polygon2d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Polygon2D *polygon2d_class;
-	JSValue obj = JS_NewObjectClass(ctx, Polygon2D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Polygon2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	polygon2d_class = memnew(Polygon2D);
+	Polygon2D *polygon2d_class = memnew(Polygon2D);
 	if (!polygon2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, polygon2d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, polygon2d_class);	
 	return obj;
 }
 static JSValue polygon2d_class_set_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -351,13 +342,13 @@ static int js_polygon2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Polygon2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Polygon2D::__class_id, &polygon2d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Polygon2D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node2D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Polygon2D::__class_id, proto);
+
 	define_polygon2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, polygon2d_class_proto_funcs, _countof(polygon2d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, polygon2d_class_constructor, "Polygon2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

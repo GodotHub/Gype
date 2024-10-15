@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/classes/aspect_ratio_container.hpp>
+#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void aspect_ratio_container_class_finalizer(JSRuntime *rt, JSValue val) {
 	AspectRatioContainer *aspect_ratio_container = static_cast<AspectRatioContainer *>(JS_GetOpaque(val, AspectRatioContainer::__class_id));
 	if (aspect_ratio_container)
-		AspectRatioContainer::free(nullptr, aspect_ratio_container);
+		memdelete(aspect_ratio_container);
 }
 
 static JSClassDef aspect_ratio_container_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef aspect_ratio_container_class_def = {
 };
 
 static JSValue aspect_ratio_container_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	AspectRatioContainer *aspect_ratio_container_class;
-	JSValue obj = JS_NewObjectClass(ctx, AspectRatioContainer::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AspectRatioContainer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	aspect_ratio_container_class = memnew(AspectRatioContainer);
+	AspectRatioContainer *aspect_ratio_container_class = memnew(AspectRatioContainer);
 	if (!aspect_ratio_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, aspect_ratio_container_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, aspect_ratio_container_class);	
 	return obj;
 }
 static JSValue aspect_ratio_container_class_set_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -126,13 +117,13 @@ static int js_aspect_ratio_container_class_init(JSContext *ctx, JSModuleDef *m) 
 	class_id_list.insert(AspectRatioContainer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AspectRatioContainer::__class_id, &aspect_ratio_container_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, AspectRatioContainer::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Container::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AspectRatioContainer::__class_id, proto);
+
 	define_aspect_ratio_container_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, aspect_ratio_container_class_proto_funcs, _countof(aspect_ratio_container_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, aspect_ratio_container_class_constructor, "AspectRatioContainer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

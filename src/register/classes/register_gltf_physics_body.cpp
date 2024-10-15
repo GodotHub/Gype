@@ -16,7 +16,7 @@ using namespace godot;
 static void gltf_physics_body_class_finalizer(JSRuntime *rt, JSValue val) {
 	GLTFPhysicsBody *gltf_physics_body = static_cast<GLTFPhysicsBody *>(JS_GetOpaque(val, GLTFPhysicsBody::__class_id));
 	if (gltf_physics_body)
-		GLTFPhysicsBody::free(nullptr, gltf_physics_body);
+		memdelete(gltf_physics_body);
 }
 
 static JSClassDef gltf_physics_body_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef gltf_physics_body_class_def = {
 };
 
 static JSValue gltf_physics_body_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	GLTFPhysicsBody *gltf_physics_body_class;
-	JSValue obj = JS_NewObjectClass(ctx, GLTFPhysicsBody::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFPhysicsBody::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	gltf_physics_body_class = memnew(GLTFPhysicsBody);
+	GLTFPhysicsBody *gltf_physics_body_class = memnew(GLTFPhysicsBody);
 	if (!gltf_physics_body_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, gltf_physics_body_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, gltf_physics_body_class);	
 	return obj;
 }
 static JSValue gltf_physics_body_class_to_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -213,16 +204,16 @@ static int js_gltf_physics_body_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(GLTFPhysicsBody::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GLTFPhysicsBody::__class_id, &gltf_physics_body_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, GLTFPhysicsBody::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, GLTFPhysicsBody::__class_id, proto);
+
 	define_gltf_physics_body_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, gltf_physics_body_class_proto_funcs, _countof(gltf_physics_body_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, gltf_physics_body_class_constructor, "GLTFPhysicsBody", 0, JS_CFUNC_constructor, 0);
-	JS_SetConstructor(ctx, ctor, proto);
 	JS_SetPropertyFunctionList(ctx, ctor, gltf_physics_body_class_static_funcs, _countof(gltf_physics_body_class_static_funcs));
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "GLTFPhysicsBody", ctor);
 

@@ -15,7 +15,7 @@ using namespace godot;
 static void omni_light3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	OmniLight3D *omni_light3d = static_cast<OmniLight3D *>(JS_GetOpaque(val, OmniLight3D::__class_id));
 	if (omni_light3d)
-		OmniLight3D::free(nullptr, omni_light3d);
+		memdelete(omni_light3d);
 }
 
 static JSClassDef omni_light3d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef omni_light3d_class_def = {
 };
 
 static JSValue omni_light3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	OmniLight3D *omni_light3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, OmniLight3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OmniLight3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	omni_light3d_class = memnew(OmniLight3D);
+	OmniLight3D *omni_light3d_class = memnew(OmniLight3D);
 	if (!omni_light3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, omni_light3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, omni_light3d_class);	
 	return obj;
 }
 static JSValue omni_light3d_class_set_shadow_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,13 +66,13 @@ static int js_omni_light3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(OmniLight3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), OmniLight3D::__class_id, &omni_light3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, OmniLight3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Light3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, OmniLight3D::__class_id, proto);
+
 	define_omni_light3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, omni_light3d_class_proto_funcs, _countof(omni_light3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, omni_light3d_class_constructor, "OmniLight3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

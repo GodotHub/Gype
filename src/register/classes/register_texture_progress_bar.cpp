@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/range.hpp>
-#include <godot_cpp/classes/texture_progress_bar.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/texture_progress_bar.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void texture_progress_bar_class_finalizer(JSRuntime *rt, JSValue val) {
 	TextureProgressBar *texture_progress_bar = static_cast<TextureProgressBar *>(JS_GetOpaque(val, TextureProgressBar::__class_id));
 	if (texture_progress_bar)
-		TextureProgressBar::free(nullptr, texture_progress_bar);
+		memdelete(texture_progress_bar);
 }
 
 static JSClassDef texture_progress_bar_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef texture_progress_bar_class_def = {
 };
 
 static JSValue texture_progress_bar_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	TextureProgressBar *texture_progress_bar_class;
-	JSValue obj = JS_NewObjectClass(ctx, TextureProgressBar::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TextureProgressBar::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	texture_progress_bar_class = memnew(TextureProgressBar);
+	TextureProgressBar *texture_progress_bar_class = memnew(TextureProgressBar);
 	if (!texture_progress_bar_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, texture_progress_bar_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, texture_progress_bar_class);	
 	return obj;
 }
 static JSValue texture_progress_bar_class_set_under_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -304,13 +295,13 @@ static int js_texture_progress_bar_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(TextureProgressBar::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TextureProgressBar::__class_id, &texture_progress_bar_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, TextureProgressBar::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Range::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, TextureProgressBar::__class_id, proto);
+
 	define_texture_progress_bar_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, texture_progress_bar_class_proto_funcs, _countof(texture_progress_bar_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, texture_progress_bar_class_constructor, "TextureProgressBar", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

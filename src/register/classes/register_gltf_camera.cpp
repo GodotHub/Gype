@@ -16,7 +16,7 @@ using namespace godot;
 static void gltf_camera_class_finalizer(JSRuntime *rt, JSValue val) {
 	GLTFCamera *gltf_camera = static_cast<GLTFCamera *>(JS_GetOpaque(val, GLTFCamera::__class_id));
 	if (gltf_camera)
-		GLTFCamera::free(nullptr, gltf_camera);
+		memdelete(gltf_camera);
 }
 
 static JSClassDef gltf_camera_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef gltf_camera_class_def = {
 };
 
 static JSValue gltf_camera_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	GLTFCamera *gltf_camera_class;
-	JSValue obj = JS_NewObjectClass(ctx, GLTFCamera::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFCamera::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	gltf_camera_class = memnew(GLTFCamera);
+	GLTFCamera *gltf_camera_class = memnew(GLTFCamera);
 	if (!gltf_camera_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, gltf_camera_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, gltf_camera_class);	
 	return obj;
 }
 static JSValue gltf_camera_class_to_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -162,16 +153,16 @@ static int js_gltf_camera_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(GLTFCamera::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GLTFCamera::__class_id, &gltf_camera_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, GLTFCamera::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, GLTFCamera::__class_id, proto);
+
 	define_gltf_camera_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, gltf_camera_class_proto_funcs, _countof(gltf_camera_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, gltf_camera_class_constructor, "GLTFCamera", 0, JS_CFUNC_constructor, 0);
-	JS_SetConstructor(ctx, ctor, proto);
 	JS_SetPropertyFunctionList(ctx, ctor, gltf_camera_class_static_funcs, _countof(gltf_camera_class_static_funcs));
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "GLTFCamera", ctor);
 

@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/kinematic_collision2d.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void kinematic_collision2d_class_finalizer(JSRuntime *rt, JSValue val) {
 	KinematicCollision2D *kinematic_collision2d = static_cast<KinematicCollision2D *>(JS_GetOpaque(val, KinematicCollision2D::__class_id));
 	if (kinematic_collision2d)
-		KinematicCollision2D::free(nullptr, kinematic_collision2d);
+		memdelete(kinematic_collision2d);
 }
 
 static JSClassDef kinematic_collision2d_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef kinematic_collision2d_class_def = {
 };
 
 static JSValue kinematic_collision2d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	KinematicCollision2D *kinematic_collision2d_class;
-	JSValue obj = JS_NewObjectClass(ctx, KinematicCollision2D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, KinematicCollision2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	kinematic_collision2d_class = memnew(KinematicCollision2D);
+	KinematicCollision2D *kinematic_collision2d_class = memnew(KinematicCollision2D);
 	if (!kinematic_collision2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, kinematic_collision2d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, kinematic_collision2d_class);	
 	return obj;
 }
 static JSValue kinematic_collision2d_class_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -111,13 +102,13 @@ static int js_kinematic_collision2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(KinematicCollision2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), KinematicCollision2D::__class_id, &kinematic_collision2d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, KinematicCollision2D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, KinematicCollision2D::__class_id, proto);
+
 	define_kinematic_collision2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, kinematic_collision2d_class_proto_funcs, _countof(kinematic_collision2d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, kinematic_collision2d_class_constructor, "KinematicCollision2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

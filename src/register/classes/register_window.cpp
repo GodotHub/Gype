@@ -5,13 +5,13 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/viewport.hpp>
-#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/theme.hpp>
-#include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/classes/window.hpp>
+#include <godot_cpp/classes/viewport.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -20,7 +20,7 @@ using namespace godot;
 static void window_class_finalizer(JSRuntime *rt, JSValue val) {
 	Window *window = static_cast<Window *>(JS_GetOpaque(val, Window::__class_id));
 	if (window)
-		Window::free(nullptr, window);
+		memdelete(window);
 }
 
 static JSClassDef window_class_def = {
@@ -29,25 +29,16 @@ static JSClassDef window_class_def = {
 };
 
 static JSValue window_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Window *window_class;
-	JSValue obj = JS_NewObjectClass(ctx, Window::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Window::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	window_class = memnew(Window);
+	Window *window_class = memnew(Window);
 	if (!window_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, window_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, window_class);	
 	return obj;
 }
 static JSValue window_class_set_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -857,13 +848,13 @@ static int js_window_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Window::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Window::__class_id, &window_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Window::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Viewport::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Window::__class_id, proto);
+
 	define_window_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, window_class_proto_funcs, _countof(window_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, window_class_constructor, "Window", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

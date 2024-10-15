@@ -1,19 +1,18 @@
-#include "register/utility_functions/register_utility_functions.h"
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
 #include "quickjs/str_helper.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "register/utility_functions/register_utility_functions.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/variant/builtin_types.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
-
 
 using namespace godot;
 
 JSValue utility_functions_instance;
 
 static void utility_functions_class_finalizer(JSRuntime *rt, JSValue val) {
-	// nothing
+    // nothing
 }
 
 static JSClassDef utility_functions_class_def = {
@@ -264,7 +263,7 @@ static JSValue utility_functions_class_pingpong(JSContext *ctx, JSValueConst thi
 	return call_builtin_static_method_ret(&UtilityFunctions::pingpong, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_randomize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_method_no_ret(&UtilityFunctions::randomize, ctx, this_val, argc, argv);
+    call_builtin_static_method_no_ret(&UtilityFunctions::randomize, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue utility_functions_class_randi(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -283,7 +282,7 @@ static JSValue utility_functions_class_randfn(JSContext *ctx, JSValueConst this_
 	return call_builtin_static_method_ret(&UtilityFunctions::randfn, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_seed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_method_no_ret(&UtilityFunctions::seed, ctx, this_val, argc, argv);
+    call_builtin_static_method_no_ret(&UtilityFunctions::seed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue utility_functions_class_rand_from_seed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -292,7 +291,7 @@ static JSValue utility_functions_class_rand_from_seed(JSContext *ctx, JSValueCon
 static JSValue utility_functions_class_weakref(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_static_method_ret(&UtilityFunctions::weakref, ctx, this_val, argc, argv);
 };
-static JSValue utility_functions_class_typeof(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+static JSValue utility_functions_class_type_of(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_static_method_ret(&UtilityFunctions::type_of, ctx, this_val, argc, argv);
 };
 static JSValue utility_functions_class_type_convert(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -350,39 +349,39 @@ static JSValue utility_functions_class_str(JSContext *ctx, JSValueConst this_val
 	return call_builtin_static_vararg_method_ret(&UtilityFunctions::js_str, ctx, this_val, argc, argv);
 }
 static JSValue utility_functions_class_print(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_print, ctx, this_val, argc, argv);
+    call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_print, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue utility_functions_class_print_rich(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_print_rich, ctx, this_val, argc, argv);
+    call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_print_rich, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue utility_functions_class_printerr(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_printerr, ctx, this_val, argc, argv);
+    call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_printerr, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue utility_functions_class_printt(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_printt, ctx, this_val, argc, argv);
+    call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_printt, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue utility_functions_class_prints(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_prints, ctx, this_val, argc, argv);
+    call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_prints, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue utility_functions_class_printraw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_printraw, ctx, this_val, argc, argv);
+    call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_printraw, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue utility_functions_class_print_verbose(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_print_verbose, ctx, this_val, argc, argv);
+    call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_print_verbose, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue utility_functions_class_push_error(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_push_error, ctx, this_val, argc, argv);
+    call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_push_error, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue utility_functions_class_push_warning(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_push_warning, ctx, this_val, argc, argv);
+    call_builtin_static_vararg_method_no_ret(&UtilityFunctions::js_push_warning, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 
@@ -472,7 +471,7 @@ static const JSCFunctionListEntry utility_functions_class_funcs[] = {
 	JS_CFUNC_DEF("seed", 1, &utility_functions_class_seed),
 	JS_CFUNC_DEF("rand_from_seed", 1, &utility_functions_class_rand_from_seed),
 	JS_CFUNC_DEF("weakref", 1, &utility_functions_class_weakref),
-	JS_CFUNC_DEF("typeof", 1, &utility_functions_class_typeof),
+	JS_CFUNC_DEF("type_of", 1, &utility_functions_class_type_of),
 	JS_CFUNC_DEF("type_convert", 2, &utility_functions_class_type_convert),
 	JS_CFUNC_DEF("error_string", 1, &utility_functions_class_error_string),
 	JS_CFUNC_DEF("type_string", 1, &utility_functions_class_type_string),
@@ -503,7 +502,7 @@ static const JSCFunctionListEntry utility_functions_class_funcs[] = {
 };
 
 static int js_utility_functions_class_init(JSContext *ctx) {
-	JS_NewClassID(&UtilityFunctions::__class_id);
+	JS_NewClassID(&UtilityFunctions::__class_id);	
 	classes["UtilityFunctions"] = UtilityFunctions::__class_id;
 	class_id_list.insert(UtilityFunctions::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), UtilityFunctions::__class_id, &utility_functions_class_def);

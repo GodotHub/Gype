@@ -15,7 +15,7 @@ using namespace godot;
 static void curve3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	Curve3D *curve3d = static_cast<Curve3D *>(JS_GetOpaque(val, Curve3D::__class_id));
 	if (curve3d)
-		Curve3D::free(nullptr, curve3d);
+		memdelete(curve3d);
 }
 
 static JSClassDef curve3d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef curve3d_class_def = {
 };
 
 static JSValue curve3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Curve3D *curve3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, Curve3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Curve3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	curve3d_class = memnew(Curve3D);
+	Curve3D *curve3d_class = memnew(Curve3D);
 	if (!curve3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, curve3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, curve3d_class);	
 	return obj;
 }
 static JSValue curve3d_class_get_point_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -212,13 +203,13 @@ static int js_curve3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Curve3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Curve3D::__class_id, &curve3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Curve3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Curve3D::__class_id, proto);
+
 	define_curve3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, curve3d_class_proto_funcs, _countof(curve3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, curve3d_class_constructor, "Curve3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

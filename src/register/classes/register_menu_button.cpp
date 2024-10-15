@@ -16,7 +16,7 @@ using namespace godot;
 static void menu_button_class_finalizer(JSRuntime *rt, JSValue val) {
 	MenuButton *menu_button = static_cast<MenuButton *>(JS_GetOpaque(val, MenuButton::__class_id));
 	if (menu_button)
-		MenuButton::free(nullptr, menu_button);
+		memdelete(menu_button);
 }
 
 static JSClassDef menu_button_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef menu_button_class_def = {
 };
 
 static JSValue menu_button_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	MenuButton *menu_button_class;
-	JSValue obj = JS_NewObjectClass(ctx, MenuButton::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MenuButton::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	menu_button_class = memnew(MenuButton);
+	MenuButton *menu_button_class = memnew(MenuButton);
 	if (!menu_button_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, menu_button_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, menu_button_class);	
 	return obj;
 }
 static JSValue menu_button_class_get_popup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -107,13 +98,13 @@ static int js_menu_button_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(MenuButton::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), MenuButton::__class_id, &menu_button_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, MenuButton::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Button::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, MenuButton::__class_id, proto);
+
 	define_menu_button_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, menu_button_class_proto_funcs, _countof(menu_button_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, menu_button_class_constructor, "MenuButton", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

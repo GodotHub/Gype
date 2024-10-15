@@ -1,9 +1,9 @@
 
-#include "quickjs/quickjs.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/variant/quaternion.hpp>
 
 using namespace godot;
@@ -33,12 +33,86 @@ static JSValue quaternion_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JS_SetOpaque(obj, quaternion_class);
 	return obj;
 }
+static JSValue quaternion_class_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Quaternion::length, ctx, this_val, argc, argv);
+};
+static JSValue quaternion_class_length_squared(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Quaternion::length_squared, ctx, this_val, argc, argv);
+};
+static JSValue quaternion_class_normalized(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Quaternion::normalized, ctx, this_val, argc, argv);
+};
+static JSValue quaternion_class_is_normalized(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Quaternion::is_normalized, ctx, this_val, argc, argv);
+};
+static JSValue quaternion_class_is_equal_approx(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Quaternion::is_equal_approx, ctx, this_val, argc, argv);
+};
+static JSValue quaternion_class_is_finite(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Quaternion::is_finite, ctx, this_val, argc, argv);
+};
+static JSValue quaternion_class_inverse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Quaternion::inverse, ctx, this_val, argc, argv);
+};
+static JSValue quaternion_class_log(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Quaternion::log, ctx, this_val, argc, argv);
+};
+static JSValue quaternion_class_exp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Quaternion::exp, ctx, this_val, argc, argv);
+};
+static JSValue quaternion_class_angle_to(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Quaternion::angle_to, ctx, this_val, argc, argv);
+};
+static JSValue quaternion_class_dot(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Quaternion::dot, ctx, this_val, argc, argv);
+};
+static JSValue quaternion_class_slerp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Quaternion::slerp, ctx, this_val, argc, argv);
+};
+static JSValue quaternion_class_slerpni(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Quaternion::slerpni, ctx, this_val, argc, argv);
+};
+static JSValue quaternion_class_spherical_cubic_interpolate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Quaternion::spherical_cubic_interpolate, ctx, this_val, argc, argv);
+};
+static JSValue quaternion_class_spherical_cubic_interpolate_in_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Quaternion::spherical_cubic_interpolate_in_time, ctx, this_val, argc, argv);
+};
+static JSValue quaternion_class_get_euler(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Quaternion::get_euler, ctx, this_val, argc, argv);
+};
+static JSValue quaternion_class_get_axis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Quaternion::get_axis, ctx, this_val, argc, argv);
+};
+static JSValue quaternion_class_get_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Quaternion::get_angle, ctx, this_val, argc, argv);
+};
+
+static const JSCFunctionListEntry quaternion_class_proto_funcs[] = {
+	JS_CFUNC_DEF("length", 0, &quaternion_class_length),
+	JS_CFUNC_DEF("length_squared", 0, &quaternion_class_length_squared),
+	JS_CFUNC_DEF("normalized", 0, &quaternion_class_normalized),
+	JS_CFUNC_DEF("is_normalized", 0, &quaternion_class_is_normalized),
+	JS_CFUNC_DEF("is_equal_approx", 1, &quaternion_class_is_equal_approx),
+	JS_CFUNC_DEF("is_finite", 0, &quaternion_class_is_finite),
+	JS_CFUNC_DEF("inverse", 0, &quaternion_class_inverse),
+	JS_CFUNC_DEF("log", 0, &quaternion_class_log),
+	JS_CFUNC_DEF("exp", 0, &quaternion_class_exp),
+	JS_CFUNC_DEF("angle_to", 1, &quaternion_class_angle_to),
+	JS_CFUNC_DEF("dot", 1, &quaternion_class_dot),
+	JS_CFUNC_DEF("slerp", 2, &quaternion_class_slerp),
+	JS_CFUNC_DEF("slerpni", 2, &quaternion_class_slerpni),
+	JS_CFUNC_DEF("spherical_cubic_interpolate", 4, &quaternion_class_spherical_cubic_interpolate),
+	JS_CFUNC_DEF("spherical_cubic_interpolate_in_time", 7, &quaternion_class_spherical_cubic_interpolate_in_time),
+	JS_CFUNC_DEF("get_euler", 1, &quaternion_class_get_euler),
+	JS_CFUNC_DEF("get_axis", 0, &quaternion_class_get_axis),
+	JS_CFUNC_DEF("get_angle", 0, &quaternion_class_get_angle),
+};
 
 void define_quaternion_property(JSContext *ctx, JSValue obj) {
 }
 
-static int js_quaternion_class_init(JSContext *ctx, JSModuleDef *m) {
-	
+static int js_quaternion_class_init(JSContext *ctx) {
 	JS_NewClassID(&Quaternion::__class_id);
 	classes["Quaternion"] = Quaternion::__class_id;
 	class_id_list.insert(Quaternion::__class_id);
@@ -46,26 +120,21 @@ static int js_quaternion_class_init(JSContext *ctx, JSModuleDef *m) {
 
 	JSValue proto = JS_NewObject(ctx);
 	JS_SetClassProto(ctx, Quaternion::__class_id, proto);
+
 	define_quaternion_property(ctx, proto);
+	JS_SetPropertyFunctionList(ctx, proto, quaternion_class_proto_funcs, _countof(quaternion_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, quaternion_class_constructor, "Quaternion", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 
-	JS_SetModuleExport(ctx, m, "Quaternion", ctor);
+	JSValue global = JS_GetGlobalObject(ctx);
+	JS_SetPropertyStr(ctx, global, "Quaternion", ctor);
 
 	return 0;
 }
 
-JSModuleDef *_js_init_quaternion_module(JSContext *ctx, const char *module_name) {
-	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_quaternion_class_init);
-	if (!m)
-		return NULL;
-	JS_AddModuleExport(ctx, m, "Quaternion");
-	return m;
-}
-
-JSModuleDef *js_init_quaternion_module(JSContext *ctx) {
-	return _js_init_quaternion_module(ctx, "godot/classes/quaternion");
+void js_init_quaternion_module(JSContext *ctx) {
+	js_quaternion_class_init(ctx);
 }
 
 void register_quaternion() {

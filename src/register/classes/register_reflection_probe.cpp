@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/reflection_probe.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/classes/reflection_probe.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void reflection_probe_class_finalizer(JSRuntime *rt, JSValue val) {
 	ReflectionProbe *reflection_probe = static_cast<ReflectionProbe *>(JS_GetOpaque(val, ReflectionProbe::__class_id));
 	if (reflection_probe)
-		ReflectionProbe::free(nullptr, reflection_probe);
+		memdelete(reflection_probe);
 }
 
 static JSClassDef reflection_probe_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef reflection_probe_class_def = {
 };
 
 static JSValue reflection_probe_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	ReflectionProbe *reflection_probe_class;
-	JSValue obj = JS_NewObjectClass(ctx, ReflectionProbe::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ReflectionProbe::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	reflection_probe_class = memnew(ReflectionProbe);
+	ReflectionProbe *reflection_probe_class = memnew(ReflectionProbe);
 	if (!reflection_probe_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, reflection_probe_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, reflection_probe_class);	
 	return obj;
 }
 static JSValue reflection_probe_class_set_intensity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -296,13 +287,13 @@ static int js_reflection_probe_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(ReflectionProbe::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ReflectionProbe::__class_id, &reflection_probe_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, ReflectionProbe::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, VisualInstance3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ReflectionProbe::__class_id, proto);
+
 	define_reflection_probe_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, reflection_probe_class_proto_funcs, _countof(reflection_probe_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, reflection_probe_class_constructor, "ReflectionProbe", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

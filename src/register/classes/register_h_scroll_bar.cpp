@@ -15,7 +15,7 @@ using namespace godot;
 static void h_scroll_bar_class_finalizer(JSRuntime *rt, JSValue val) {
 	HScrollBar *h_scroll_bar = static_cast<HScrollBar *>(JS_GetOpaque(val, HScrollBar::__class_id));
 	if (h_scroll_bar)
-		HScrollBar::free(nullptr, h_scroll_bar);
+		memdelete(h_scroll_bar);
 }
 
 static JSClassDef h_scroll_bar_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef h_scroll_bar_class_def = {
 };
 
 static JSValue h_scroll_bar_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	HScrollBar *h_scroll_bar_class;
-	JSValue obj = JS_NewObjectClass(ctx, HScrollBar::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, HScrollBar::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	h_scroll_bar_class = memnew(HScrollBar);
+	HScrollBar *h_scroll_bar_class = memnew(HScrollBar);
 	if (!h_scroll_bar_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, h_scroll_bar_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, h_scroll_bar_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_h_scroll_bar_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(HScrollBar::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), HScrollBar::__class_id, &h_scroll_bar_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, HScrollBar::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, ScrollBar::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, HScrollBar::__class_id, proto);
-	define_h_scroll_bar_property(ctx, proto);
 
+	define_h_scroll_bar_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, h_scroll_bar_class_constructor, "HScrollBar", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

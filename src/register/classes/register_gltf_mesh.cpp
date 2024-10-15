@@ -17,7 +17,7 @@ using namespace godot;
 static void gltf_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
 	GLTFMesh *gltf_mesh = static_cast<GLTFMesh *>(JS_GetOpaque(val, GLTFMesh::__class_id));
 	if (gltf_mesh)
-		GLTFMesh::free(nullptr, gltf_mesh);
+		memdelete(gltf_mesh);
 }
 
 static JSClassDef gltf_mesh_class_def = {
@@ -26,25 +26,16 @@ static JSClassDef gltf_mesh_class_def = {
 };
 
 static JSValue gltf_mesh_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	GLTFMesh *gltf_mesh_class;
-	JSValue obj = JS_NewObjectClass(ctx, GLTFMesh::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	gltf_mesh_class = memnew(GLTFMesh);
+	GLTFMesh *gltf_mesh_class = memnew(GLTFMesh);
 	if (!gltf_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, gltf_mesh_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, gltf_mesh_class);	
 	return obj;
 }
 static JSValue gltf_mesh_class_get_original_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -137,13 +128,13 @@ static int js_gltf_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(GLTFMesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GLTFMesh::__class_id, &gltf_mesh_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, GLTFMesh::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, GLTFMesh::__class_id, proto);
+
 	define_gltf_mesh_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, gltf_mesh_class_proto_funcs, _countof(gltf_mesh_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, gltf_mesh_class_constructor, "GLTFMesh", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

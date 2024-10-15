@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/physics_test_motion_parameters3d.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void physics_test_motion_parameters3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	PhysicsTestMotionParameters3D *physics_test_motion_parameters3d = static_cast<PhysicsTestMotionParameters3D *>(JS_GetOpaque(val, PhysicsTestMotionParameters3D::__class_id));
 	if (physics_test_motion_parameters3d)
-		PhysicsTestMotionParameters3D::free(nullptr, physics_test_motion_parameters3d);
+		memdelete(physics_test_motion_parameters3d);
 }
 
 static JSClassDef physics_test_motion_parameters3d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef physics_test_motion_parameters3d_class_def = {
 };
 
 static JSValue physics_test_motion_parameters3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PhysicsTestMotionParameters3D *physics_test_motion_parameters3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, PhysicsTestMotionParameters3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicsTestMotionParameters3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	physics_test_motion_parameters3d_class = memnew(PhysicsTestMotionParameters3D);
+	PhysicsTestMotionParameters3D *physics_test_motion_parameters3d_class = memnew(PhysicsTestMotionParameters3D);
 	if (!physics_test_motion_parameters3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, physics_test_motion_parameters3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, physics_test_motion_parameters3d_class);	
 	return obj;
 }
 static JSValue physics_test_motion_parameters3d_class_get_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -194,13 +185,13 @@ static int js_physics_test_motion_parameters3d_class_init(JSContext *ctx, JSModu
 	class_id_list.insert(PhysicsTestMotionParameters3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PhysicsTestMotionParameters3D::__class_id, &physics_test_motion_parameters3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, PhysicsTestMotionParameters3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PhysicsTestMotionParameters3D::__class_id, proto);
+
 	define_physics_test_motion_parameters3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, physics_test_motion_parameters3d_class_proto_funcs, _countof(physics_test_motion_parameters3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, physics_test_motion_parameters3d_class_constructor, "PhysicsTestMotionParameters3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

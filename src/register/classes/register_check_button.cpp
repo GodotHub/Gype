@@ -15,7 +15,7 @@ using namespace godot;
 static void check_button_class_finalizer(JSRuntime *rt, JSValue val) {
 	CheckButton *check_button = static_cast<CheckButton *>(JS_GetOpaque(val, CheckButton::__class_id));
 	if (check_button)
-		CheckButton::free(nullptr, check_button);
+		memdelete(check_button);
 }
 
 static JSClassDef check_button_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef check_button_class_def = {
 };
 
 static JSValue check_button_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	CheckButton *check_button_class;
-	JSValue obj = JS_NewObjectClass(ctx, CheckButton::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CheckButton::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	check_button_class = memnew(CheckButton);
+	CheckButton *check_button_class = memnew(CheckButton);
 	if (!check_button_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, check_button_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, check_button_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_check_button_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(CheckButton::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CheckButton::__class_id, &check_button_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, CheckButton::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Button::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, CheckButton::__class_id, proto);
-	define_check_button_property(ctx, proto);
 
+	define_check_button_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, check_button_class_constructor, "CheckButton", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

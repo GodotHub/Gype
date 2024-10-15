@@ -16,7 +16,7 @@ using namespace godot;
 static void tree_class_finalizer(JSRuntime *rt, JSValue val) {
 	Tree *tree = static_cast<Tree *>(JS_GetOpaque(val, Tree::__class_id));
 	if (tree)
-		Tree::free(nullptr, tree);
+		memdelete(tree);
 }
 
 static JSClassDef tree_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef tree_class_def = {
 };
 
 static JSValue tree_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Tree *tree_class;
-	JSValue obj = JS_NewObjectClass(ctx, Tree::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Tree::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	tree_class = memnew(Tree);
+	Tree *tree_class = memnew(Tree);
 	if (!tree_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, tree_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, tree_class);	
 	return obj;
 }
 static JSValue tree_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -424,13 +415,13 @@ static int js_tree_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Tree::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Tree::__class_id, &tree_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Tree::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Control::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Tree::__class_id, proto);
+
 	define_tree_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, tree_class_proto_funcs, _countof(tree_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, tree_class_constructor, "Tree", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

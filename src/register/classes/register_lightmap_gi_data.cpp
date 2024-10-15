@@ -17,7 +17,7 @@ using namespace godot;
 static void lightmap_gi_data_class_finalizer(JSRuntime *rt, JSValue val) {
 	LightmapGIData *lightmap_gi_data = static_cast<LightmapGIData *>(JS_GetOpaque(val, LightmapGIData::__class_id));
 	if (lightmap_gi_data)
-		LightmapGIData::free(nullptr, lightmap_gi_data);
+		memdelete(lightmap_gi_data);
 }
 
 static JSClassDef lightmap_gi_data_class_def = {
@@ -26,25 +26,16 @@ static JSClassDef lightmap_gi_data_class_def = {
 };
 
 static JSValue lightmap_gi_data_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	LightmapGIData *lightmap_gi_data_class;
-	JSValue obj = JS_NewObjectClass(ctx, LightmapGIData::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, LightmapGIData::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	lightmap_gi_data_class = memnew(LightmapGIData);
+	LightmapGIData *lightmap_gi_data_class = memnew(LightmapGIData);
 	if (!lightmap_gi_data_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, lightmap_gi_data_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, lightmap_gi_data_class);	
 	return obj;
 }
 static JSValue lightmap_gi_data_class_set_lightmap_textures(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -129,13 +120,13 @@ static int js_lightmap_gi_data_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(LightmapGIData::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), LightmapGIData::__class_id, &lightmap_gi_data_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, LightmapGIData::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, LightmapGIData::__class_id, proto);
+
 	define_lightmap_gi_data_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, lightmap_gi_data_class_proto_funcs, _countof(lightmap_gi_data_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, lightmap_gi_data_class_constructor, "LightmapGIData", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

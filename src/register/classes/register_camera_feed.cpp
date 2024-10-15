@@ -15,7 +15,7 @@ using namespace godot;
 static void camera_feed_class_finalizer(JSRuntime *rt, JSValue val) {
 	CameraFeed *camera_feed = static_cast<CameraFeed *>(JS_GetOpaque(val, CameraFeed::__class_id));
 	if (camera_feed)
-		CameraFeed::free(nullptr, camera_feed);
+		memdelete(camera_feed);
 }
 
 static JSClassDef camera_feed_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef camera_feed_class_def = {
 };
 
 static JSValue camera_feed_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	CameraFeed *camera_feed_class;
-	JSValue obj = JS_NewObjectClass(ctx, CameraFeed::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CameraFeed::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	camera_feed_class = memnew(CameraFeed);
+	CameraFeed *camera_feed_class = memnew(CameraFeed);
 	if (!camera_feed_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, camera_feed_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, camera_feed_class);	
 	return obj;
 }
 static JSValue camera_feed_class_get_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -108,13 +99,13 @@ static int js_camera_feed_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(CameraFeed::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CameraFeed::__class_id, &camera_feed_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, CameraFeed::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, CameraFeed::__class_id, proto);
+
 	define_camera_feed_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, camera_feed_class_proto_funcs, _countof(camera_feed_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, camera_feed_class_constructor, "CameraFeed", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

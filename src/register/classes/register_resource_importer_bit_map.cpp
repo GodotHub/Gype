@@ -15,7 +15,7 @@ using namespace godot;
 static void resource_importer_bit_map_class_finalizer(JSRuntime *rt, JSValue val) {
 	ResourceImporterBitMap *resource_importer_bit_map = static_cast<ResourceImporterBitMap *>(JS_GetOpaque(val, ResourceImporterBitMap::__class_id));
 	if (resource_importer_bit_map)
-		ResourceImporterBitMap::free(nullptr, resource_importer_bit_map);
+		memdelete(resource_importer_bit_map);
 }
 
 static JSClassDef resource_importer_bit_map_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef resource_importer_bit_map_class_def = {
 };
 
 static JSValue resource_importer_bit_map_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	ResourceImporterBitMap *resource_importer_bit_map_class;
-	JSValue obj = JS_NewObjectClass(ctx, ResourceImporterBitMap::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterBitMap::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	resource_importer_bit_map_class = memnew(ResourceImporterBitMap);
+	ResourceImporterBitMap *resource_importer_bit_map_class = memnew(ResourceImporterBitMap);
 	if (!resource_importer_bit_map_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, resource_importer_bit_map_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, resource_importer_bit_map_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_resource_importer_bit_map_class_init(JSContext *ctx, JSModuleDef *
 	class_id_list.insert(ResourceImporterBitMap::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ResourceImporterBitMap::__class_id, &resource_importer_bit_map_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, ResourceImporterBitMap::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, ResourceImporter::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ResourceImporterBitMap::__class_id, proto);
-	define_resource_importer_bit_map_property(ctx, proto);
 
+	define_resource_importer_bit_map_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, resource_importer_bit_map_class_constructor, "ResourceImporterBitMap", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

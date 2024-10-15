@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/physics_body3d.hpp>
 #include <godot_cpp/classes/character_body3d.hpp>
 #include <godot_cpp/classes/kinematic_collision3d.hpp>
-#include <godot_cpp/classes/physics_body3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void character_body3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	CharacterBody3D *character_body3d = static_cast<CharacterBody3D *>(JS_GetOpaque(val, CharacterBody3D::__class_id));
 	if (character_body3d)
-		CharacterBody3D::free(nullptr, character_body3d);
+		memdelete(character_body3d);
 }
 
 static JSClassDef character_body3d_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef character_body3d_class_def = {
 };
 
 static JSValue character_body3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	CharacterBody3D *character_body3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, CharacterBody3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CharacterBody3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	character_body3d_class = memnew(CharacterBody3D);
+	CharacterBody3D *character_body3d_class = memnew(CharacterBody3D);
 	if (!character_body3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, character_body3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, character_body3d_class);	
 	return obj;
 }
 static JSValue character_body3d_class_move_and_slide(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -391,13 +382,13 @@ static int js_character_body3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(CharacterBody3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CharacterBody3D::__class_id, &character_body3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, CharacterBody3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, PhysicsBody3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, CharacterBody3D::__class_id, proto);
+
 	define_character_body3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, character_body3d_class_proto_funcs, _countof(character_body3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, character_body3d_class_constructor, "CharacterBody3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

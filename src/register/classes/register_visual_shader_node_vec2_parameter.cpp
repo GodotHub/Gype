@@ -15,7 +15,7 @@ using namespace godot;
 static void visual_shader_node_vec2_parameter_class_finalizer(JSRuntime *rt, JSValue val) {
 	VisualShaderNodeVec2Parameter *visual_shader_node_vec2_parameter = static_cast<VisualShaderNodeVec2Parameter *>(JS_GetOpaque(val, VisualShaderNodeVec2Parameter::__class_id));
 	if (visual_shader_node_vec2_parameter)
-		VisualShaderNodeVec2Parameter::free(nullptr, visual_shader_node_vec2_parameter);
+		memdelete(visual_shader_node_vec2_parameter);
 }
 
 static JSClassDef visual_shader_node_vec2_parameter_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef visual_shader_node_vec2_parameter_class_def = {
 };
 
 static JSValue visual_shader_node_vec2_parameter_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	VisualShaderNodeVec2Parameter *visual_shader_node_vec2_parameter_class;
-	JSValue obj = JS_NewObjectClass(ctx, VisualShaderNodeVec2Parameter::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeVec2Parameter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	visual_shader_node_vec2_parameter_class = memnew(VisualShaderNodeVec2Parameter);
+	VisualShaderNodeVec2Parameter *visual_shader_node_vec2_parameter_class = memnew(VisualShaderNodeVec2Parameter);
 	if (!visual_shader_node_vec2_parameter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, visual_shader_node_vec2_parameter_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, visual_shader_node_vec2_parameter_class);	
 	return obj;
 }
 static JSValue visual_shader_node_vec2_parameter_class_set_default_value_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -92,13 +83,13 @@ static int js_visual_shader_node_vec2_parameter_class_init(JSContext *ctx, JSMod
 	class_id_list.insert(VisualShaderNodeVec2Parameter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeVec2Parameter::__class_id, &visual_shader_node_vec2_parameter_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, VisualShaderNodeVec2Parameter::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, VisualShaderNodeParameter::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, VisualShaderNodeVec2Parameter::__class_id, proto);
+
 	define_visual_shader_node_vec2_parameter_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_vec2_parameter_class_proto_funcs, _countof(visual_shader_node_vec2_parameter_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_vec2_parameter_class_constructor, "VisualShaderNodeVec2Parameter", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

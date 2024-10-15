@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/image.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/texture.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -17,7 +17,7 @@ using namespace godot;
 static void texture2d_class_finalizer(JSRuntime *rt, JSValue val) {
 	Texture2D *texture2d = static_cast<Texture2D *>(JS_GetOpaque(val, Texture2D::__class_id));
 	if (texture2d)
-		Texture2D::free(nullptr, texture2d);
+		memdelete(texture2d);
 }
 
 static JSClassDef texture2d_class_def = {
@@ -26,25 +26,16 @@ static JSClassDef texture2d_class_def = {
 };
 
 static JSValue texture2d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Texture2D *texture2d_class;
-	JSValue obj = JS_NewObjectClass(ctx, Texture2D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Texture2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	texture2d_class = memnew(Texture2D);
+	Texture2D *texture2d_class = memnew(Texture2D);
 	if (!texture2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, texture2d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, texture2d_class);	
 	return obj;
 }
 static JSValue texture2d_class_get_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -99,13 +90,13 @@ static int js_texture2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Texture2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Texture2D::__class_id, &texture2d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Texture2D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Texture::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Texture2D::__class_id, proto);
+
 	define_texture2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, texture2d_class_proto_funcs, _countof(texture2d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, texture2d_class_constructor, "Texture2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

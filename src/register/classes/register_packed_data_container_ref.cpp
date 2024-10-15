@@ -15,7 +15,7 @@ using namespace godot;
 static void packed_data_container_ref_class_finalizer(JSRuntime *rt, JSValue val) {
 	PackedDataContainerRef *packed_data_container_ref = static_cast<PackedDataContainerRef *>(JS_GetOpaque(val, PackedDataContainerRef::__class_id));
 	if (packed_data_container_ref)
-		PackedDataContainerRef::free(nullptr, packed_data_container_ref);
+		memdelete(packed_data_container_ref);
 }
 
 static JSClassDef packed_data_container_ref_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef packed_data_container_ref_class_def = {
 };
 
 static JSValue packed_data_container_ref_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PackedDataContainerRef *packed_data_container_ref_class;
-	JSValue obj = JS_NewObjectClass(ctx, PackedDataContainerRef::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PackedDataContainerRef::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	packed_data_container_ref_class = memnew(PackedDataContainerRef);
+	PackedDataContainerRef *packed_data_container_ref_class = memnew(PackedDataContainerRef);
 	if (!packed_data_container_ref_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, packed_data_container_ref_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, packed_data_container_ref_class);	
 	return obj;
 }
 static JSValue packed_data_container_ref_class_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,13 +53,13 @@ static int js_packed_data_container_ref_class_init(JSContext *ctx, JSModuleDef *
 	class_id_list.insert(PackedDataContainerRef::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PackedDataContainerRef::__class_id, &packed_data_container_ref_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, PackedDataContainerRef::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PackedDataContainerRef::__class_id, proto);
+
 	define_packed_data_container_ref_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, packed_data_container_ref_class_proto_funcs, _countof(packed_data_container_ref_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, packed_data_container_ref_class_constructor, "PackedDataContainerRef", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

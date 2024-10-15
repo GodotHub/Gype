@@ -16,7 +16,7 @@ using namespace godot;
 static void syntax_highlighter_class_finalizer(JSRuntime *rt, JSValue val) {
 	SyntaxHighlighter *syntax_highlighter = static_cast<SyntaxHighlighter *>(JS_GetOpaque(val, SyntaxHighlighter::__class_id));
 	if (syntax_highlighter)
-		SyntaxHighlighter::free(nullptr, syntax_highlighter);
+		memdelete(syntax_highlighter);
 }
 
 static JSClassDef syntax_highlighter_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef syntax_highlighter_class_def = {
 };
 
 static JSValue syntax_highlighter_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	SyntaxHighlighter *syntax_highlighter_class;
-	JSValue obj = JS_NewObjectClass(ctx, SyntaxHighlighter::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SyntaxHighlighter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	syntax_highlighter_class = memnew(SyntaxHighlighter);
+	SyntaxHighlighter *syntax_highlighter_class = memnew(SyntaxHighlighter);
 	if (!syntax_highlighter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, syntax_highlighter_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, syntax_highlighter_class);	
 	return obj;
 }
 static JSValue syntax_highlighter_class_get_line_syntax_highlighting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -77,13 +68,13 @@ static int js_syntax_highlighter_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(SyntaxHighlighter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SyntaxHighlighter::__class_id, &syntax_highlighter_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, SyntaxHighlighter::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, SyntaxHighlighter::__class_id, proto);
+
 	define_syntax_highlighter_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, syntax_highlighter_class_proto_funcs, _countof(syntax_highlighter_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, syntax_highlighter_class_constructor, "SyntaxHighlighter", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

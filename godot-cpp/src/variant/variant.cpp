@@ -38,7 +38,6 @@
 
 #include <utility>
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs_helper.h"
 
 namespace godot {
@@ -256,8 +255,8 @@ Variant::Variant(const PackedVector4Array &v) {
 	from_type_constructor[PACKED_VECTOR4_ARRAY](_native_ptr(), v._native_ptr());
 }
 
-Variant::Variant(JSValue v) {
-	internal::gdextension_interface_variant_new_copy(_native_ptr(), any_to_variant(ctx, v)._native_ptr());
+Variant::Variant(const JSValue &v) {
+	internal::gdextension_interface_variant_new_copy(_native_ptr(), any_to_variant(v)._native_ptr());
 }
 
 Variant::~Variant() {
@@ -524,7 +523,7 @@ Variant::operator PackedVector4Array() const {
 
 // TODO JSValue to Variant
 Variant::operator JSValue() const {
-	return any_to_jsvalue(ctx, this);
+	return any_to_jsvalue(this);
 }
 
 Variant &Variant::operator=(const Variant &other) {

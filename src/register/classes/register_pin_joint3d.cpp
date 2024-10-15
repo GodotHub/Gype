@@ -15,7 +15,7 @@ using namespace godot;
 static void pin_joint3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	PinJoint3D *pin_joint3d = static_cast<PinJoint3D *>(JS_GetOpaque(val, PinJoint3D::__class_id));
 	if (pin_joint3d)
-		PinJoint3D::free(nullptr, pin_joint3d);
+		memdelete(pin_joint3d);
 }
 
 static JSClassDef pin_joint3d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef pin_joint3d_class_def = {
 };
 
 static JSValue pin_joint3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PinJoint3D *pin_joint3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, PinJoint3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PinJoint3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	pin_joint3d_class = memnew(PinJoint3D);
+	PinJoint3D *pin_joint3d_class = memnew(PinJoint3D);
 	if (!pin_joint3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, pin_joint3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, pin_joint3d_class);	
 	return obj;
 }
 static JSValue pin_joint3d_class_set_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -67,13 +58,13 @@ static int js_pin_joint3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(PinJoint3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PinJoint3D::__class_id, &pin_joint3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, PinJoint3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Joint3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PinJoint3D::__class_id, proto);
+
 	define_pin_joint3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, pin_joint3d_class_proto_funcs, _countof(pin_joint3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, pin_joint3d_class_constructor, "PinJoint3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

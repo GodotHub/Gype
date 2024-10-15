@@ -5,12 +5,12 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/cpu_particles3d.hpp>
-#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/gradient.hpp>
+#include <godot_cpp/classes/cpu_particles3d.hpp>
 #include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/classes/curve.hpp>
+#include <godot_cpp/classes/gradient.hpp>
+#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -19,7 +19,7 @@ using namespace godot;
 static void cpu_particles3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	CPUParticles3D *cpu_particles3d = static_cast<CPUParticles3D *>(JS_GetOpaque(val, CPUParticles3D::__class_id));
 	if (cpu_particles3d)
-		CPUParticles3D::free(nullptr, cpu_particles3d);
+		memdelete(cpu_particles3d);
 }
 
 static JSClassDef cpu_particles3d_class_def = {
@@ -28,25 +28,16 @@ static JSClassDef cpu_particles3d_class_def = {
 };
 
 static JSValue cpu_particles3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	CPUParticles3D *cpu_particles3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, CPUParticles3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CPUParticles3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	cpu_particles3d_class = memnew(CPUParticles3D);
+	CPUParticles3D *cpu_particles3d_class = memnew(CPUParticles3D);
 	if (!cpu_particles3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, cpu_particles3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, cpu_particles3d_class);	
 	return obj;
 }
 static JSValue cpu_particles3d_class_set_emitting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -1024,13 +1015,13 @@ static int js_cpu_particles3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(CPUParticles3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CPUParticles3D::__class_id, &cpu_particles3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, CPUParticles3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, GeometryInstance3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, CPUParticles3D::__class_id, proto);
+
 	define_cpu_particles3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, cpu_particles3d_class_proto_funcs, _countof(cpu_particles3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, cpu_particles3d_class_constructor, "CPUParticles3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

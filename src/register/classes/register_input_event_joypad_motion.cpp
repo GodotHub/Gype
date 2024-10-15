@@ -15,7 +15,7 @@ using namespace godot;
 static void input_event_joypad_motion_class_finalizer(JSRuntime *rt, JSValue val) {
 	InputEventJoypadMotion *input_event_joypad_motion = static_cast<InputEventJoypadMotion *>(JS_GetOpaque(val, InputEventJoypadMotion::__class_id));
 	if (input_event_joypad_motion)
-		InputEventJoypadMotion::free(nullptr, input_event_joypad_motion);
+		memdelete(input_event_joypad_motion);
 }
 
 static JSClassDef input_event_joypad_motion_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef input_event_joypad_motion_class_def = {
 };
 
 static JSValue input_event_joypad_motion_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	InputEventJoypadMotion *input_event_joypad_motion_class;
-	JSValue obj = JS_NewObjectClass(ctx, InputEventJoypadMotion::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InputEventJoypadMotion::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	input_event_joypad_motion_class = memnew(InputEventJoypadMotion);
+	InputEventJoypadMotion *input_event_joypad_motion_class = memnew(InputEventJoypadMotion);
 	if (!input_event_joypad_motion_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, input_event_joypad_motion_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, input_event_joypad_motion_class);	
 	return obj;
 }
 static JSValue input_event_joypad_motion_class_set_axis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -92,13 +83,13 @@ static int js_input_event_joypad_motion_class_init(JSContext *ctx, JSModuleDef *
 	class_id_list.insert(InputEventJoypadMotion::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), InputEventJoypadMotion::__class_id, &input_event_joypad_motion_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, InputEventJoypadMotion::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, InputEvent::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, InputEventJoypadMotion::__class_id, proto);
+
 	define_input_event_joypad_motion_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, input_event_joypad_motion_class_proto_funcs, _countof(input_event_joypad_motion_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, input_event_joypad_motion_class_constructor, "InputEventJoypadMotion", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

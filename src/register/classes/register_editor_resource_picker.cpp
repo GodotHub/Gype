@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/h_box_container.hpp>
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/editor_resource_picker.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/h_box_container.hpp>
+#include <godot_cpp/classes/editor_resource_picker.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -17,7 +17,7 @@ using namespace godot;
 static void editor_resource_picker_class_finalizer(JSRuntime *rt, JSValue val) {
 	EditorResourcePicker *editor_resource_picker = static_cast<EditorResourcePicker *>(JS_GetOpaque(val, EditorResourcePicker::__class_id));
 	if (editor_resource_picker)
-		EditorResourcePicker::free(nullptr, editor_resource_picker);
+		memdelete(editor_resource_picker);
 }
 
 static JSClassDef editor_resource_picker_class_def = {
@@ -26,25 +26,16 @@ static JSClassDef editor_resource_picker_class_def = {
 };
 
 static JSValue editor_resource_picker_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	EditorResourcePicker *editor_resource_picker_class;
-	JSValue obj = JS_NewObjectClass(ctx, EditorResourcePicker::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorResourcePicker::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	editor_resource_picker_class = memnew(EditorResourcePicker);
+	EditorResourcePicker *editor_resource_picker_class = memnew(EditorResourcePicker);
 	if (!editor_resource_picker_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, editor_resource_picker_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, editor_resource_picker_class);	
 	return obj;
 }
 static JSValue editor_resource_picker_class_set_base_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -137,13 +128,13 @@ static int js_editor_resource_picker_class_init(JSContext *ctx, JSModuleDef *m) 
 	class_id_list.insert(EditorResourcePicker::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorResourcePicker::__class_id, &editor_resource_picker_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, EditorResourcePicker::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, HBoxContainer::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, EditorResourcePicker::__class_id, proto);
+
 	define_editor_resource_picker_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_resource_picker_class_proto_funcs, _countof(editor_resource_picker_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, editor_resource_picker_class_constructor, "EditorResourcePicker", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

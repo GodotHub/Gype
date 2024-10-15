@@ -19,7 +19,7 @@ bool is_float(JSContext *ctx, JSValue value);
 void print_exception(JSContext *ctx);
 int64_t to_int64(JSContext *ctx, JSValue val);
 bool is_exception(JSContext *ctx, JSValue exp);
-Variant any_to_variant(JSContext *ctx, JSValue val);
-JSValue any_to_jsvalue(JSContext *ctx, Variant val);
+Variant any_to_variant(JSValue val);
+JSValue any_to_jsvalue(const Variant *val);
 
 #endif // __QUICKJS_HELPER_H__

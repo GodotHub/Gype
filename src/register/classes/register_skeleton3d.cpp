@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skin.hpp>
 #include <godot_cpp/classes/skeleton3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/skin.hpp>
 #include <godot_cpp/classes/skin_reference.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -17,7 +17,7 @@ using namespace godot;
 static void skeleton3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	Skeleton3D *skeleton3d = static_cast<Skeleton3D *>(JS_GetOpaque(val, Skeleton3D::__class_id));
 	if (skeleton3d)
-		Skeleton3D::free(nullptr, skeleton3d);
+		memdelete(skeleton3d);
 }
 
 static JSClassDef skeleton3d_class_def = {
@@ -26,25 +26,16 @@ static JSClassDef skeleton3d_class_def = {
 };
 
 static JSValue skeleton3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Skeleton3D *skeleton3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, Skeleton3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Skeleton3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	skeleton3d_class = memnew(Skeleton3D);
+	Skeleton3D *skeleton3d_class = memnew(Skeleton3D);
 	if (!skeleton3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, skeleton3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, skeleton3d_class);	
 	return obj;
 }
 static JSValue skeleton3d_class_add_bone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -322,13 +313,13 @@ static int js_skeleton3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Skeleton3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Skeleton3D::__class_id, &skeleton3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Skeleton3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Skeleton3D::__class_id, proto);
+
 	define_skeleton3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, skeleton3d_class_proto_funcs, _countof(skeleton3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, skeleton3d_class_constructor, "Skeleton3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

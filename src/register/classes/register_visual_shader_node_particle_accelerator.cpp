@@ -15,7 +15,7 @@ using namespace godot;
 static void visual_shader_node_particle_accelerator_class_finalizer(JSRuntime *rt, JSValue val) {
 	VisualShaderNodeParticleAccelerator *visual_shader_node_particle_accelerator = static_cast<VisualShaderNodeParticleAccelerator *>(JS_GetOpaque(val, VisualShaderNodeParticleAccelerator::__class_id));
 	if (visual_shader_node_particle_accelerator)
-		VisualShaderNodeParticleAccelerator::free(nullptr, visual_shader_node_particle_accelerator);
+		memdelete(visual_shader_node_particle_accelerator);
 }
 
 static JSClassDef visual_shader_node_particle_accelerator_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef visual_shader_node_particle_accelerator_class_def = {
 };
 
 static JSValue visual_shader_node_particle_accelerator_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	VisualShaderNodeParticleAccelerator *visual_shader_node_particle_accelerator_class;
-	JSValue obj = JS_NewObjectClass(ctx, VisualShaderNodeParticleAccelerator::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeParticleAccelerator::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	visual_shader_node_particle_accelerator_class = memnew(VisualShaderNodeParticleAccelerator);
+	VisualShaderNodeParticleAccelerator *visual_shader_node_particle_accelerator_class = memnew(VisualShaderNodeParticleAccelerator);
 	if (!visual_shader_node_particle_accelerator_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, visual_shader_node_particle_accelerator_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, visual_shader_node_particle_accelerator_class);	
 	return obj;
 }
 static JSValue visual_shader_node_particle_accelerator_class_set_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,13 +66,13 @@ static int js_visual_shader_node_particle_accelerator_class_init(JSContext *ctx,
 	class_id_list.insert(VisualShaderNodeParticleAccelerator::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeParticleAccelerator::__class_id, &visual_shader_node_particle_accelerator_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, VisualShaderNodeParticleAccelerator::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, VisualShaderNode::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, VisualShaderNodeParticleAccelerator::__class_id, proto);
+
 	define_visual_shader_node_particle_accelerator_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_particle_accelerator_class_proto_funcs, _countof(visual_shader_node_particle_accelerator_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_particle_accelerator_class_constructor, "VisualShaderNodeParticleAccelerator", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

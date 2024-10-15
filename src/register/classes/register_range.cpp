@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/range.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void range_class_finalizer(JSRuntime *rt, JSValue val) {
 	Range *range = static_cast<Range *>(JS_GetOpaque(val, Range::__class_id));
 	if (range)
-		Range::free(nullptr, range);
+		memdelete(range);
 }
 
 static JSClassDef range_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef range_class_def = {
 };
 
 static JSValue range_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Range *range_class;
-	JSValue obj = JS_NewObjectClass(ctx, Range::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Range::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	range_class = memnew(Range);
+	Range *range_class = memnew(Range);
 	if (!range_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, range_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, range_class);	
 	return obj;
 }
 static JSValue range_class_get_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -244,13 +235,13 @@ static int js_range_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Range::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Range::__class_id, &range_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Range::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Control::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Range::__class_id, proto);
+
 	define_range_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, range_class_proto_funcs, _countof(range_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, range_class_constructor, "Range", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

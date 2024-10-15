@@ -15,7 +15,7 @@ using namespace godot;
 static void animation_node_animation_class_finalizer(JSRuntime *rt, JSValue val) {
 	AnimationNodeAnimation *animation_node_animation = static_cast<AnimationNodeAnimation *>(JS_GetOpaque(val, AnimationNodeAnimation::__class_id));
 	if (animation_node_animation)
-		AnimationNodeAnimation::free(nullptr, animation_node_animation);
+		memdelete(animation_node_animation);
 }
 
 static JSClassDef animation_node_animation_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef animation_node_animation_class_def = {
 };
 
 static JSValue animation_node_animation_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	AnimationNodeAnimation *animation_node_animation_class;
-	JSValue obj = JS_NewObjectClass(ctx, AnimationNodeAnimation::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationNodeAnimation::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	animation_node_animation_class = memnew(AnimationNodeAnimation);
+	AnimationNodeAnimation *animation_node_animation_class = memnew(AnimationNodeAnimation);
 	if (!animation_node_animation_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, animation_node_animation_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, animation_node_animation_class);	
 	return obj;
 }
 static JSValue animation_node_animation_class_set_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -177,13 +168,13 @@ static int js_animation_node_animation_class_init(JSContext *ctx, JSModuleDef *m
 	class_id_list.insert(AnimationNodeAnimation::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimationNodeAnimation::__class_id, &animation_node_animation_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, AnimationNodeAnimation::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, AnimationRootNode::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AnimationNodeAnimation::__class_id, proto);
+
 	define_animation_node_animation_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, animation_node_animation_class_proto_funcs, _countof(animation_node_animation_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, animation_node_animation_class_constructor, "AnimationNodeAnimation", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -15,7 +15,7 @@ using namespace godot;
 static void voxel_gi_data_class_finalizer(JSRuntime *rt, JSValue val) {
 	VoxelGIData *voxel_gi_data = static_cast<VoxelGIData *>(JS_GetOpaque(val, VoxelGIData::__class_id));
 	if (voxel_gi_data)
-		VoxelGIData::free(nullptr, voxel_gi_data);
+		memdelete(voxel_gi_data);
 }
 
 static JSClassDef voxel_gi_data_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef voxel_gi_data_class_def = {
 };
 
 static JSValue voxel_gi_data_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	VoxelGIData *voxel_gi_data_class;
-	JSValue obj = JS_NewObjectClass(ctx, VoxelGIData::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VoxelGIData::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	voxel_gi_data_class = memnew(VoxelGIData);
+	VoxelGIData *voxel_gi_data_class = memnew(VoxelGIData);
 	if (!voxel_gi_data_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, voxel_gi_data_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, voxel_gi_data_class);	
 	return obj;
 }
 static JSValue voxel_gi_data_class_allocate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -206,13 +197,13 @@ static int js_voxel_gi_data_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(VoxelGIData::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VoxelGIData::__class_id, &voxel_gi_data_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, VoxelGIData::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, VoxelGIData::__class_id, proto);
+
 	define_voxel_gi_data_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, voxel_gi_data_class_proto_funcs, _countof(voxel_gi_data_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, voxel_gi_data_class_constructor, "VoxelGIData", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

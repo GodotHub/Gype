@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/missing_resource.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/missing_resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void missing_resource_class_finalizer(JSRuntime *rt, JSValue val) {
 	MissingResource *missing_resource = static_cast<MissingResource *>(JS_GetOpaque(val, MissingResource::__class_id));
 	if (missing_resource)
-		MissingResource::free(nullptr, missing_resource);
+		memdelete(missing_resource);
 }
 
 static JSClassDef missing_resource_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef missing_resource_class_def = {
 };
 
 static JSValue missing_resource_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	MissingResource *missing_resource_class;
-	JSValue obj = JS_NewObjectClass(ctx, MissingResource::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MissingResource::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	missing_resource_class = memnew(MissingResource);
+	MissingResource *missing_resource_class = memnew(MissingResource);
 	if (!missing_resource_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, missing_resource_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, missing_resource_class);	
 	return obj;
 }
 static JSValue missing_resource_class_set_original_class(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -92,13 +83,13 @@ static int js_missing_resource_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(MissingResource::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), MissingResource::__class_id, &missing_resource_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, MissingResource::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Resource::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, MissingResource::__class_id, proto);
+
 	define_missing_resource_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, missing_resource_class_proto_funcs, _countof(missing_resource_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, missing_resource_class_constructor, "MissingResource", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

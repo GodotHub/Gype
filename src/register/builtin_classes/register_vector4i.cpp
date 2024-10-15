@@ -1,10 +1,11 @@
 
-#include "quickjs/quickjs.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/variant/vector4i.hpp>
+
 
 using namespace godot;
 
@@ -33,12 +34,77 @@ static JSValue vector4i_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JS_SetOpaque(obj, vector4i_class);
 	return obj;
 }
+static JSValue vector4i_class_min_axis_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Vector4i::min_axis_index, ctx, this_val, argc, argv);
+};
+static JSValue vector4i_class_max_axis_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Vector4i::max_axis_index, ctx, this_val, argc, argv);
+};
+static JSValue vector4i_class_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Vector4i::length, ctx, this_val, argc, argv);
+};
+static JSValue vector4i_class_length_squared(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Vector4i::length_squared, ctx, this_val, argc, argv);
+};
+static JSValue vector4i_class_sign(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Vector4i::sign, ctx, this_val, argc, argv);
+};
+static JSValue vector4i_class_abs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Vector4i::abs, ctx, this_val, argc, argv);
+};
+static JSValue vector4i_class_clamp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Vector4i::clamp, ctx, this_val, argc, argv);
+};
+static JSValue vector4i_class_clampi(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Vector4i::clampi, ctx, this_val, argc, argv);
+};
+static JSValue vector4i_class_snapped(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Vector4i::snapped, ctx, this_val, argc, argv);
+};
+static JSValue vector4i_class_snappedi(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Vector4i::snappedi, ctx, this_val, argc, argv);
+};
+static JSValue vector4i_class_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Vector4i::min, ctx, this_val, argc, argv);
+};
+static JSValue vector4i_class_mini(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Vector4i::mini, ctx, this_val, argc, argv);
+};
+static JSValue vector4i_class_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Vector4i::max, ctx, this_val, argc, argv);
+};
+static JSValue vector4i_class_maxi(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Vector4i::maxi, ctx, this_val, argc, argv);
+};
+static JSValue vector4i_class_distance_to(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Vector4i::distance_to, ctx, this_val, argc, argv);
+};
+static JSValue vector4i_class_distance_squared_to(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Vector4i::distance_squared_to, ctx, this_val, argc, argv);
+};
+static const JSCFunctionListEntry vector4i_class_proto_funcs[] = {
+	JS_CFUNC_DEF("min_axis_index", 0, &vector4i_class_min_axis_index),
+	JS_CFUNC_DEF("max_axis_index", 0, &vector4i_class_max_axis_index),
+	JS_CFUNC_DEF("length", 0, &vector4i_class_length),
+	JS_CFUNC_DEF("length_squared", 0, &vector4i_class_length_squared),
+	JS_CFUNC_DEF("sign", 0, &vector4i_class_sign),
+	JS_CFUNC_DEF("abs", 0, &vector4i_class_abs),
+	JS_CFUNC_DEF("clamp", 2, &vector4i_class_clamp),
+	JS_CFUNC_DEF("clampi", 2, &vector4i_class_clampi),
+	JS_CFUNC_DEF("snapped", 1, &vector4i_class_snapped),
+	JS_CFUNC_DEF("snappedi", 1, &vector4i_class_snappedi),
+	JS_CFUNC_DEF("min", 1, &vector4i_class_min),
+	JS_CFUNC_DEF("mini", 1, &vector4i_class_mini),
+	JS_CFUNC_DEF("max", 1, &vector4i_class_max),
+	JS_CFUNC_DEF("maxi", 1, &vector4i_class_maxi),
+	JS_CFUNC_DEF("distance_to", 1, &vector4i_class_distance_to),
+	JS_CFUNC_DEF("distance_squared_to", 1, &vector4i_class_distance_squared_to),
+};
 
 void define_vector4i_property(JSContext *ctx, JSValue obj) {
 }
 
-static int js_vector4i_class_init(JSContext *ctx, JSModuleDef *m) {
-	
+static int js_vector4i_class_init(JSContext *ctx) {
 	JS_NewClassID(&Vector4i::__class_id);
 	classes["Vector4i"] = Vector4i::__class_id;
 	class_id_list.insert(Vector4i::__class_id);
@@ -46,26 +112,21 @@ static int js_vector4i_class_init(JSContext *ctx, JSModuleDef *m) {
 
 	JSValue proto = JS_NewObject(ctx);
 	JS_SetClassProto(ctx, Vector4i::__class_id, proto);
+
 	define_vector4i_property(ctx, proto);
+	JS_SetPropertyFunctionList(ctx, proto, vector4i_class_proto_funcs, _countof(vector4i_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, vector4i_class_constructor, "Vector4i", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 
-	JS_SetModuleExport(ctx, m, "Vector4i", ctor);
+	JSValue global = JS_GetGlobalObject(ctx);
+	JS_SetPropertyStr(ctx, global, "Vector4i", ctor);
 
 	return 0;
 }
 
-JSModuleDef *_js_init_vector4i_module(JSContext *ctx, const char *module_name) {
-	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_vector4i_class_init);
-	if (!m)
-		return NULL;
-	JS_AddModuleExport(ctx, m, "Vector4i");
-	return m;
-}
-
-JSModuleDef *js_init_vector4i_module(JSContext *ctx) {
-	return _js_init_vector4i_module(ctx, "godot/classes/vector4i");
+void js_init_vector4i_module(JSContext *ctx) {
+	js_vector4i_class_init(ctx);
 }
 
 void register_vector4i() {

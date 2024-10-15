@@ -15,7 +15,7 @@ using namespace godot;
 static void margin_container_class_finalizer(JSRuntime *rt, JSValue val) {
 	MarginContainer *margin_container = static_cast<MarginContainer *>(JS_GetOpaque(val, MarginContainer::__class_id));
 	if (margin_container)
-		MarginContainer::free(nullptr, margin_container);
+		memdelete(margin_container);
 }
 
 static JSClassDef margin_container_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef margin_container_class_def = {
 };
 
 static JSValue margin_container_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	MarginContainer *margin_container_class;
-	JSValue obj = JS_NewObjectClass(ctx, MarginContainer::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MarginContainer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	margin_container_class = memnew(MarginContainer);
+	MarginContainer *margin_container_class = memnew(MarginContainer);
 	if (!margin_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, margin_container_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, margin_container_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_margin_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(MarginContainer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), MarginContainer::__class_id, &margin_container_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, MarginContainer::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Container::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, MarginContainer::__class_id, proto);
-	define_margin_container_property(ctx, proto);
 
+	define_margin_container_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, margin_container_class_constructor, "MarginContainer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

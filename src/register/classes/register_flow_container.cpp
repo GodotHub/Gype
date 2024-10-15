@@ -15,7 +15,7 @@ using namespace godot;
 static void flow_container_class_finalizer(JSRuntime *rt, JSValue val) {
 	FlowContainer *flow_container = static_cast<FlowContainer *>(JS_GetOpaque(val, FlowContainer::__class_id));
 	if (flow_container)
-		FlowContainer::free(nullptr, flow_container);
+		memdelete(flow_container);
 }
 
 static JSClassDef flow_container_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef flow_container_class_def = {
 };
 
 static JSValue flow_container_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	FlowContainer *flow_container_class;
-	JSValue obj = JS_NewObjectClass(ctx, FlowContainer::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, FlowContainer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	flow_container_class = memnew(FlowContainer);
+	FlowContainer *flow_container_class = memnew(FlowContainer);
 	if (!flow_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, flow_container_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, flow_container_class);	
 	return obj;
 }
 static JSValue flow_container_class_get_line_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -130,13 +121,13 @@ static int js_flow_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(FlowContainer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), FlowContainer::__class_id, &flow_container_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, FlowContainer::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Container::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, FlowContainer::__class_id, proto);
+
 	define_flow_container_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, flow_container_class_proto_funcs, _countof(flow_container_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, flow_container_class_constructor, "FlowContainer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

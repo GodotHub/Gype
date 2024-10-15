@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/classes/option_button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
@@ -17,7 +17,7 @@ using namespace godot;
 static void option_button_class_finalizer(JSRuntime *rt, JSValue val) {
 	OptionButton *option_button = static_cast<OptionButton *>(JS_GetOpaque(val, OptionButton::__class_id));
 	if (option_button)
-		OptionButton::free(nullptr, option_button);
+		memdelete(option_button);
 }
 
 static JSClassDef option_button_class_def = {
@@ -26,25 +26,16 @@ static JSClassDef option_button_class_def = {
 };
 
 static JSValue option_button_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	OptionButton *option_button_class;
-	JSValue obj = JS_NewObjectClass(ctx, OptionButton::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OptionButton::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	option_button_class = memnew(OptionButton);
+	OptionButton *option_button_class = memnew(OptionButton);
 	if (!option_button_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, option_button_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, option_button_class);	
 	return obj;
 }
 static JSValue option_button_class_add_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -245,13 +236,13 @@ static int js_option_button_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(OptionButton::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), OptionButton::__class_id, &option_button_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, OptionButton::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Button::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, OptionButton::__class_id, proto);
+
 	define_option_button_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, option_button_class_proto_funcs, _countof(option_button_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, option_button_class_constructor, "OptionButton", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

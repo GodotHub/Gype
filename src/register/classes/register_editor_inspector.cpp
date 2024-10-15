@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/scroll_container.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/editor_inspector.hpp>
-#include <godot_cpp/classes/scroll_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void editor_inspector_class_finalizer(JSRuntime *rt, JSValue val) {
 	EditorInspector *editor_inspector = static_cast<EditorInspector *>(JS_GetOpaque(val, EditorInspector::__class_id));
 	if (editor_inspector)
-		EditorInspector::free(nullptr, editor_inspector);
+		memdelete(editor_inspector);
 }
 
 static JSClassDef editor_inspector_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef editor_inspector_class_def = {
 };
 
 static JSValue editor_inspector_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	EditorInspector *editor_inspector_class;
-	JSValue obj = JS_NewObjectClass(ctx, EditorInspector::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorInspector::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	editor_inspector_class = memnew(EditorInspector);
+	EditorInspector *editor_inspector_class = memnew(EditorInspector);
 	if (!editor_inspector_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, editor_inspector_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, editor_inspector_class);	
 	return obj;
 }
 static JSValue editor_inspector_class_get_selected_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -67,13 +58,13 @@ static int js_editor_inspector_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(EditorInspector::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorInspector::__class_id, &editor_inspector_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, EditorInspector::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, ScrollContainer::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, EditorInspector::__class_id, proto);
+
 	define_editor_inspector_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_inspector_class_proto_funcs, _countof(editor_inspector_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, editor_inspector_class_constructor, "EditorInspector", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

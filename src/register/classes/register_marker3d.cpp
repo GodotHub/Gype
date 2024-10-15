@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/marker3d.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void marker3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	Marker3D *marker3d = static_cast<Marker3D *>(JS_GetOpaque(val, Marker3D::__class_id));
 	if (marker3d)
-		Marker3D::free(nullptr, marker3d);
+		memdelete(marker3d);
 }
 
 static JSClassDef marker3d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef marker3d_class_def = {
 };
 
 static JSValue marker3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Marker3D *marker3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, Marker3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Marker3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	marker3d_class = memnew(Marker3D);
+	Marker3D *marker3d_class = memnew(Marker3D);
 	if (!marker3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, marker3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, marker3d_class);	
 	return obj;
 }
 static JSValue marker3d_class_set_gizmo_extents(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,13 +66,13 @@ static int js_marker3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Marker3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Marker3D::__class_id, &marker3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Marker3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Marker3D::__class_id, proto);
+
 	define_marker3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, marker3d_class_proto_funcs, _countof(marker3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, marker3d_class_constructor, "Marker3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

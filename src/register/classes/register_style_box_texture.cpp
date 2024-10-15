@@ -16,7 +16,7 @@ using namespace godot;
 static void style_box_texture_class_finalizer(JSRuntime *rt, JSValue val) {
 	StyleBoxTexture *style_box_texture = static_cast<StyleBoxTexture *>(JS_GetOpaque(val, StyleBoxTexture::__class_id));
 	if (style_box_texture)
-		StyleBoxTexture::free(nullptr, style_box_texture);
+		memdelete(style_box_texture);
 }
 
 static JSClassDef style_box_texture_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef style_box_texture_class_def = {
 };
 
 static JSValue style_box_texture_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	StyleBoxTexture *style_box_texture_class;
-	JSValue obj = JS_NewObjectClass(ctx, StyleBoxTexture::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StyleBoxTexture::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	style_box_texture_class = memnew(StyleBoxTexture);
+	StyleBoxTexture *style_box_texture_class = memnew(StyleBoxTexture);
 	if (!style_box_texture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, style_box_texture_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, style_box_texture_class);	
 	return obj;
 }
 static JSValue style_box_texture_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -253,13 +244,13 @@ static int js_style_box_texture_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(StyleBoxTexture::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), StyleBoxTexture::__class_id, &style_box_texture_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, StyleBoxTexture::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, StyleBox::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, StyleBoxTexture::__class_id, proto);
+
 	define_style_box_texture_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, style_box_texture_class_proto_funcs, _countof(style_box_texture_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, style_box_texture_class_constructor, "StyleBoxTexture", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

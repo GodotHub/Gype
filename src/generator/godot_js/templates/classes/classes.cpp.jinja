@@ -36,7 +36,7 @@ using namespace godot;
 static void {{snake_name}}_class_finalizer(JSRuntime *rt, JSValue val) {
 	{{norm_name}} *{{snake_name}} = static_cast<{{norm_name}} *>(JS_GetOpaque(val, {{class_id}}));
 	if ({{snake_name}})
-		{{norm_name}}::free(nullptr, {{snake_name}});
+		memdelete({{snake_name}});
 }
 
 static JSClassDef {{snake_name}}_class_def = {
@@ -45,30 +45,20 @@ static JSClassDef {{snake_name}}_class_def = {
 };
 
 static JSValue {{snake_name}}_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	{{norm_name}} *{{snake_name}}_class;
-	JSValue obj = JS_NewObjectClass(ctx, {{class_id}});
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, {{class_id}});
 	if (JS_IsException(obj))
 		return obj;
-
 	{%- if clazz_name in (singletons | map(attribute='type') | list) %}
-	{{snake_name}}_class = {{norm_name}}::get_singleton();
+	{{norm_name}} *{{snake_name}}_class = {{norm_name}}::get_singleton();
 	{%- else%}
-	{{snake_name}}_class = memnew({{clazz_name}});
+	{{norm_name}} *{{snake_name}}_class = memnew({{clazz_name}});
 	{%- endif %}
 	if (!{{snake_name}}_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, {{snake_name}}_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	{# JavaScriptDB::get_singleton()->add_instance({{snake_name}}_class, obj); #}
+	JS_SetOpaque(obj, {{snake_name}}_class);	
 	return obj;
 }
 {%- macro get_const(method) %}
@@ -165,23 +155,22 @@ static int js_{{snake_name}}_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert({{class_id}});
 	JS_NewClass(JS_GetRuntime(ctx), {{class_id}}, &{{snake_name}}_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, {{class_id}});
 	{%- if clazz['inherits'] %}
 	JSValue base_class = JS_GetClassProto(ctx, {{clazz['inherits']}}::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	{%- endif %}
 	JS_SetClassProto(ctx, {{class_id}}, proto);
-	define_{{snake_name}}_property(ctx, proto);
 
-	{%- if instance_methods or vararg_methods %}
+	define_{{snake_name}}_property(ctx, proto);
+		{%- if instance_methods or vararg_methods %}
 	JS_SetPropertyFunctionList(ctx, proto, {{snake_name}}_class_proto_funcs, _countof({{snake_name}}_class_proto_funcs));
 	{%- endif %}
-
 	JSValue ctor = JS_NewCFunction2(ctx, {{snake_name}}_class_constructor, "{{clazz_name}}", 0, JS_CFUNC_constructor, 0);
-	JS_SetConstructor(ctx, ctor, proto);
 	{%- if static_methods %}
 	JS_SetPropertyFunctionList(ctx, ctor, {{snake_name}}_class_static_funcs, _countof({{snake_name}}_class_static_funcs));
 	{%- endif %}
+	JS_SetConstructor(ctx, ctor, proto);
 
 	JS_SetModuleExport(ctx, m, "{{clazz_name}}", ctor);
 

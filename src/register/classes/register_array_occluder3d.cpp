@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/occluder3d.hpp>
 #include <godot_cpp/classes/array_occluder3d.hpp>
+#include <godot_cpp/classes/occluder3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void array_occluder3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	ArrayOccluder3D *array_occluder3d = static_cast<ArrayOccluder3D *>(JS_GetOpaque(val, ArrayOccluder3D::__class_id));
 	if (array_occluder3d)
-		ArrayOccluder3D::free(nullptr, array_occluder3d);
+		memdelete(array_occluder3d);
 }
 
 static JSClassDef array_occluder3d_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef array_occluder3d_class_def = {
 };
 
 static JSValue array_occluder3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	ArrayOccluder3D *array_occluder3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, ArrayOccluder3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ArrayOccluder3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	array_occluder3d_class = memnew(ArrayOccluder3D);
+	ArrayOccluder3D *array_occluder3d_class = memnew(ArrayOccluder3D);
 	if (!array_occluder3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, array_occluder3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, array_occluder3d_class);	
 	return obj;
 }
 static JSValue array_occluder3d_class_set_arrays(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -89,13 +80,13 @@ static int js_array_occluder3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(ArrayOccluder3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ArrayOccluder3D::__class_id, &array_occluder3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, ArrayOccluder3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Occluder3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, ArrayOccluder3D::__class_id, proto);
+
 	define_array_occluder3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, array_occluder3d_class_proto_funcs, _countof(array_occluder3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, array_occluder3d_class_constructor, "ArrayOccluder3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

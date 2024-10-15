@@ -15,7 +15,7 @@ using namespace godot;
 static void container_class_finalizer(JSRuntime *rt, JSValue val) {
 	Container *container = static_cast<Container *>(JS_GetOpaque(val, Container::__class_id));
 	if (container)
-		Container::free(nullptr, container);
+		memdelete(container);
 }
 
 static JSClassDef container_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef container_class_def = {
 };
 
 static JSValue container_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Container *container_class;
-	JSValue obj = JS_NewObjectClass(ctx, Container::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Container::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	container_class = memnew(Container);
+	Container *container_class = memnew(Container);
 	if (!container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, container_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, container_class);	
 	return obj;
 }
 static JSValue container_class_queue_sort(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -68,13 +59,13 @@ static int js_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(Container::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Container::__class_id, &container_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, Container::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Control::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Container::__class_id, proto);
+
 	define_container_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, container_class_proto_funcs, _countof(container_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, container_class_constructor, "Container", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

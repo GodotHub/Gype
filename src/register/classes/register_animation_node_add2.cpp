@@ -15,7 +15,7 @@ using namespace godot;
 static void animation_node_add2_class_finalizer(JSRuntime *rt, JSValue val) {
 	AnimationNodeAdd2 *animation_node_add2 = static_cast<AnimationNodeAdd2 *>(JS_GetOpaque(val, AnimationNodeAdd2::__class_id));
 	if (animation_node_add2)
-		AnimationNodeAdd2::free(nullptr, animation_node_add2);
+		memdelete(animation_node_add2);
 }
 
 static JSClassDef animation_node_add2_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef animation_node_add2_class_def = {
 };
 
 static JSValue animation_node_add2_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	AnimationNodeAdd2 *animation_node_add2_class;
-	JSValue obj = JS_NewObjectClass(ctx, AnimationNodeAdd2::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationNodeAdd2::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	animation_node_add2_class = memnew(AnimationNodeAdd2);
+	AnimationNodeAdd2 *animation_node_add2_class = memnew(AnimationNodeAdd2);
 	if (!animation_node_add2_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, animation_node_add2_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, animation_node_add2_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_animation_node_add2_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(AnimationNodeAdd2::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimationNodeAdd2::__class_id, &animation_node_add2_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, AnimationNodeAdd2::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, AnimationNodeSync::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, AnimationNodeAdd2::__class_id, proto);
-	define_animation_node_add2_property(ctx, proto);
 
+	define_animation_node_add2_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, animation_node_add2_class_constructor, "AnimationNodeAdd2", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

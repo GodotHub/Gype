@@ -46,12 +46,12 @@ StringName JavaScript::_get_instance_base_type() const {
 
 void *JavaScript::_instance_create(Object *p_for_object) const {
 	Ref<JavaScript> script = ResourceLoader::get_singleton()->load(this->path.replace("res://", "res://.dist/"));
-	return internal::gdextension_interface_script_instance_create3(&InstanceInfo, new JavaScriptInstance(p_for_object, script.ptr()));
+	return internal::gdextension_interface_script_instance_create3(&InstanceInfo, memnew(JavaScriptInstance(p_for_object, script.ptr(), false)));
 }
 
 void *JavaScript::_placeholder_instance_create(Object *p_for_object) const {
-	Ref<JavaScript> script = ResourceLoader::get_singleton()->load(this->path.replace("res://", "res://.dist/"));
-	return internal::gdextension_interface_placeholder_script_instance_create(_get_language(), script.ptr(), p_for_object->_owner);
+	// return internal::gdextension_interface_placeholder_script_instance_create(_get_language(), const_cast<JavaScript *>(this), p_for_object);
+	return nullptr;
 }
 
 bool JavaScript::_instance_has(Object *p_object) const {
@@ -72,6 +72,7 @@ String JavaScript::get_dist_source_code() const {
 
 void JavaScript::_set_source_code(const String &p_code) {
 	source_code = p_code;
+	is_tool = false;
 	if (!path.begins_with("res://.dist/") && !path.begins_with("res://addons/")) {
 		String tsconfig_path = ProjectSettings::get_singleton()->globalize_path("res://tsconfig.json");
 		int exit_code = OS::get_singleton()->execute("cmd.exe", { "/c", "tsc", "--build", tsconfig_path, "--force" });
@@ -113,6 +114,8 @@ void JavaScript::_set_source_code(const String &p_code) {
 					base_class_name = content;
 				} else if (strcmp(name, "@class.name") == 0) {
 					global_class_name = content;
+				} else if (strcmp(name, "@decorator.name") == 0 && strcmp(content, "Tool") == 0) {
+					is_tool = true;
 				}
 			}
 		}
@@ -170,7 +173,7 @@ Dictionary JavaScript::_get_method_info(const StringName &p_method) const {
 }
 
 bool JavaScript::_is_tool() const {
-	return false;
+	return is_tool;
 }
 
 bool JavaScript::_is_valid() const {

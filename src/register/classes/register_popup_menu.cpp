@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/shortcut.hpp>
 #include <godot_cpp/classes/popup.hpp>
+#include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/shortcut.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/popup_menu.hpp>
-#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -18,7 +18,7 @@ using namespace godot;
 static void popup_menu_class_finalizer(JSRuntime *rt, JSValue val) {
 	PopupMenu *popup_menu = static_cast<PopupMenu *>(JS_GetOpaque(val, PopupMenu::__class_id));
 	if (popup_menu)
-		PopupMenu::free(nullptr, popup_menu);
+		memdelete(popup_menu);
 }
 
 static JSClassDef popup_menu_class_def = {
@@ -27,25 +27,16 @@ static JSClassDef popup_menu_class_def = {
 };
 
 static JSValue popup_menu_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PopupMenu *popup_menu_class;
-	JSValue obj = JS_NewObjectClass(ctx, PopupMenu::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PopupMenu::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	popup_menu_class = memnew(PopupMenu);
+	PopupMenu *popup_menu_class = memnew(PopupMenu);
 	if (!popup_menu_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, popup_menu_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, popup_menu_class);	
 	return obj;
 }
 static JSValue popup_menu_class_activate_item_by_event(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -525,13 +516,13 @@ static int js_popup_menu_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(PopupMenu::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PopupMenu::__class_id, &popup_menu_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, PopupMenu::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Popup::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PopupMenu::__class_id, proto);
+
 	define_popup_menu_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, popup_menu_class_proto_funcs, _countof(popup_menu_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, popup_menu_class_constructor, "PopupMenu", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

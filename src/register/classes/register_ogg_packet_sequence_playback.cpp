@@ -15,7 +15,7 @@ using namespace godot;
 static void ogg_packet_sequence_playback_class_finalizer(JSRuntime *rt, JSValue val) {
 	OggPacketSequencePlayback *ogg_packet_sequence_playback = static_cast<OggPacketSequencePlayback *>(JS_GetOpaque(val, OggPacketSequencePlayback::__class_id));
 	if (ogg_packet_sequence_playback)
-		OggPacketSequencePlayback::free(nullptr, ogg_packet_sequence_playback);
+		memdelete(ogg_packet_sequence_playback);
 }
 
 static JSClassDef ogg_packet_sequence_playback_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef ogg_packet_sequence_playback_class_def = {
 };
 
 static JSValue ogg_packet_sequence_playback_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	OggPacketSequencePlayback *ogg_packet_sequence_playback_class;
-	JSValue obj = JS_NewObjectClass(ctx, OggPacketSequencePlayback::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OggPacketSequencePlayback::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ogg_packet_sequence_playback_class = memnew(OggPacketSequencePlayback);
+	OggPacketSequencePlayback *ogg_packet_sequence_playback_class = memnew(OggPacketSequencePlayback);
 	if (!ogg_packet_sequence_playback_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, ogg_packet_sequence_playback_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, ogg_packet_sequence_playback_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_ogg_packet_sequence_playback_class_init(JSContext *ctx, JSModuleDe
 	class_id_list.insert(OggPacketSequencePlayback::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), OggPacketSequencePlayback::__class_id, &ogg_packet_sequence_playback_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, OggPacketSequencePlayback::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, OggPacketSequencePlayback::__class_id, proto);
-	define_ogg_packet_sequence_playback_property(ctx, proto);
 
+	define_ogg_packet_sequence_playback_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, ogg_packet_sequence_playback_class_constructor, "OggPacketSequencePlayback", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

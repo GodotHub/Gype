@@ -15,7 +15,7 @@ using namespace godot;
 static void visual_shader_node_texture_parameter_triplanar_class_finalizer(JSRuntime *rt, JSValue val) {
 	VisualShaderNodeTextureParameterTriplanar *visual_shader_node_texture_parameter_triplanar = static_cast<VisualShaderNodeTextureParameterTriplanar *>(JS_GetOpaque(val, VisualShaderNodeTextureParameterTriplanar::__class_id));
 	if (visual_shader_node_texture_parameter_triplanar)
-		VisualShaderNodeTextureParameterTriplanar::free(nullptr, visual_shader_node_texture_parameter_triplanar);
+		memdelete(visual_shader_node_texture_parameter_triplanar);
 }
 
 static JSClassDef visual_shader_node_texture_parameter_triplanar_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef visual_shader_node_texture_parameter_triplanar_class_def = {
 };
 
 static JSValue visual_shader_node_texture_parameter_triplanar_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	VisualShaderNodeTextureParameterTriplanar *visual_shader_node_texture_parameter_triplanar_class;
-	JSValue obj = JS_NewObjectClass(ctx, VisualShaderNodeTextureParameterTriplanar::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeTextureParameterTriplanar::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	visual_shader_node_texture_parameter_triplanar_class = memnew(VisualShaderNodeTextureParameterTriplanar);
+	VisualShaderNodeTextureParameterTriplanar *visual_shader_node_texture_parameter_triplanar_class = memnew(VisualShaderNodeTextureParameterTriplanar);
 	if (!visual_shader_node_texture_parameter_triplanar_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, visual_shader_node_texture_parameter_triplanar_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, visual_shader_node_texture_parameter_triplanar_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_visual_shader_node_texture_parameter_triplanar_class_init(JSContex
 	class_id_list.insert(VisualShaderNodeTextureParameterTriplanar::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeTextureParameterTriplanar::__class_id, &visual_shader_node_texture_parameter_triplanar_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, VisualShaderNodeTextureParameterTriplanar::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, VisualShaderNodeTextureParameter::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, VisualShaderNodeTextureParameterTriplanar::__class_id, proto);
-	define_visual_shader_node_texture_parameter_triplanar_property(ctx, proto);
 
+	define_visual_shader_node_texture_parameter_triplanar_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_texture_parameter_triplanar_class_constructor, "VisualShaderNodeTextureParameterTriplanar", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

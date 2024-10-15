@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_vector_base.hpp>
 #include <godot_cpp/classes/visual_shader_node_vector_refract.hpp>
+#include <godot_cpp/classes/visual_shader_node_vector_base.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -15,7 +15,7 @@ using namespace godot;
 static void visual_shader_node_vector_refract_class_finalizer(JSRuntime *rt, JSValue val) {
 	VisualShaderNodeVectorRefract *visual_shader_node_vector_refract = static_cast<VisualShaderNodeVectorRefract *>(JS_GetOpaque(val, VisualShaderNodeVectorRefract::__class_id));
 	if (visual_shader_node_vector_refract)
-		VisualShaderNodeVectorRefract::free(nullptr, visual_shader_node_vector_refract);
+		memdelete(visual_shader_node_vector_refract);
 }
 
 static JSClassDef visual_shader_node_vector_refract_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef visual_shader_node_vector_refract_class_def = {
 };
 
 static JSValue visual_shader_node_vector_refract_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	VisualShaderNodeVectorRefract *visual_shader_node_vector_refract_class;
-	JSValue obj = JS_NewObjectClass(ctx, VisualShaderNodeVectorRefract::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeVectorRefract::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	visual_shader_node_vector_refract_class = memnew(VisualShaderNodeVectorRefract);
+	VisualShaderNodeVectorRefract *visual_shader_node_vector_refract_class = memnew(VisualShaderNodeVectorRefract);
 	if (!visual_shader_node_vector_refract_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, visual_shader_node_vector_refract_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, visual_shader_node_vector_refract_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_visual_shader_node_vector_refract_class_init(JSContext *ctx, JSMod
 	class_id_list.insert(VisualShaderNodeVectorRefract::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeVectorRefract::__class_id, &visual_shader_node_vector_refract_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, VisualShaderNodeVectorRefract::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, VisualShaderNodeVectorBase::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, VisualShaderNodeVectorRefract::__class_id, proto);
-	define_visual_shader_node_vector_refract_property(ctx, proto);
 
+	define_visual_shader_node_vector_refract_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_vector_refract_class_constructor, "VisualShaderNodeVectorRefract", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -16,7 +16,7 @@ using namespace godot;
 static void spring_arm3d_class_finalizer(JSRuntime *rt, JSValue val) {
 	SpringArm3D *spring_arm3d = static_cast<SpringArm3D *>(JS_GetOpaque(val, SpringArm3D::__class_id));
 	if (spring_arm3d)
-		SpringArm3D::free(nullptr, spring_arm3d);
+		memdelete(spring_arm3d);
 }
 
 static JSClassDef spring_arm3d_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef spring_arm3d_class_def = {
 };
 
 static JSValue spring_arm3d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	SpringArm3D *spring_arm3d_class;
-	JSValue obj = JS_NewObjectClass(ctx, SpringArm3D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SpringArm3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	spring_arm3d_class = memnew(SpringArm3D);
+	SpringArm3D *spring_arm3d_class = memnew(SpringArm3D);
 	if (!spring_arm3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, spring_arm3d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, spring_arm3d_class);	
 	return obj;
 }
 static JSValue spring_arm3d_class_get_hit_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -145,13 +136,13 @@ static int js_spring_arm3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(SpringArm3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SpringArm3D::__class_id, &spring_arm3d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, SpringArm3D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, Node3D::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, SpringArm3D::__class_id, proto);
+
 	define_spring_arm3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, spring_arm3d_class_proto_funcs, _countof(spring_arm3d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, spring_arm3d_class_constructor, "SpringArm3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

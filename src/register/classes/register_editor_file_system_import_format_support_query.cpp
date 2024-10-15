@@ -15,7 +15,7 @@ using namespace godot;
 static void editor_file_system_import_format_support_query_class_finalizer(JSRuntime *rt, JSValue val) {
 	EditorFileSystemImportFormatSupportQuery *editor_file_system_import_format_support_query = static_cast<EditorFileSystemImportFormatSupportQuery *>(JS_GetOpaque(val, EditorFileSystemImportFormatSupportQuery::__class_id));
 	if (editor_file_system_import_format_support_query)
-		EditorFileSystemImportFormatSupportQuery::free(nullptr, editor_file_system_import_format_support_query);
+		memdelete(editor_file_system_import_format_support_query);
 }
 
 static JSClassDef editor_file_system_import_format_support_query_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef editor_file_system_import_format_support_query_class_def = {
 };
 
 static JSValue editor_file_system_import_format_support_query_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	EditorFileSystemImportFormatSupportQuery *editor_file_system_import_format_support_query_class;
-	JSValue obj = JS_NewObjectClass(ctx, EditorFileSystemImportFormatSupportQuery::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorFileSystemImportFormatSupportQuery::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	editor_file_system_import_format_support_query_class = memnew(EditorFileSystemImportFormatSupportQuery);
+	EditorFileSystemImportFormatSupportQuery *editor_file_system_import_format_support_query_class = memnew(EditorFileSystemImportFormatSupportQuery);
 	if (!editor_file_system_import_format_support_query_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, editor_file_system_import_format_support_query_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, editor_file_system_import_format_support_query_class);	
 	return obj;
 }
 
@@ -56,12 +47,12 @@ static int js_editor_file_system_import_format_support_query_class_init(JSContex
 	class_id_list.insert(EditorFileSystemImportFormatSupportQuery::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorFileSystemImportFormatSupportQuery::__class_id, &editor_file_system_import_format_support_query_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, EditorFileSystemImportFormatSupportQuery::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, EditorFileSystemImportFormatSupportQuery::__class_id, proto);
-	define_editor_file_system_import_format_support_query_property(ctx, proto);
 
+	define_editor_file_system_import_format_support_query_property(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, editor_file_system_import_format_support_query_class_constructor, "EditorFileSystemImportFormatSupportQuery", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

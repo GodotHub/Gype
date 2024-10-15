@@ -15,7 +15,7 @@ using namespace godot;
 static void web_rtc_data_channel_class_finalizer(JSRuntime *rt, JSValue val) {
 	WebRTCDataChannel *web_rtc_data_channel = static_cast<WebRTCDataChannel *>(JS_GetOpaque(val, WebRTCDataChannel::__class_id));
 	if (web_rtc_data_channel)
-		WebRTCDataChannel::free(nullptr, web_rtc_data_channel);
+		memdelete(web_rtc_data_channel);
 }
 
 static JSClassDef web_rtc_data_channel_class_def = {
@@ -24,25 +24,16 @@ static JSClassDef web_rtc_data_channel_class_def = {
 };
 
 static JSValue web_rtc_data_channel_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	WebRTCDataChannel *web_rtc_data_channel_class;
-	JSValue obj = JS_NewObjectClass(ctx, WebRTCDataChannel::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, WebRTCDataChannel::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	web_rtc_data_channel_class = memnew(WebRTCDataChannel);
+	WebRTCDataChannel *web_rtc_data_channel_class = memnew(WebRTCDataChannel);
 	if (!web_rtc_data_channel_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, web_rtc_data_channel_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, web_rtc_data_channel_class);	
 	return obj;
 }
 static JSValue web_rtc_data_channel_class_poll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -124,13 +115,13 @@ static int js_web_rtc_data_channel_class_init(JSContext *ctx, JSModuleDef *m) {
 	class_id_list.insert(WebRTCDataChannel::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), WebRTCDataChannel::__class_id, &web_rtc_data_channel_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, WebRTCDataChannel::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, PacketPeer::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, WebRTCDataChannel::__class_id, proto);
+
 	define_web_rtc_data_channel_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, web_rtc_data_channel_class_proto_funcs, _countof(web_rtc_data_channel_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, web_rtc_data_channel_class_constructor, "WebRTCDataChannel", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

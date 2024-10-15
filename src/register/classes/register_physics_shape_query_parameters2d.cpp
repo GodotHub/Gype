@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/physics_shape_query_parameters2d.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/physics_shape_query_parameters2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -16,7 +16,7 @@ using namespace godot;
 static void physics_shape_query_parameters2d_class_finalizer(JSRuntime *rt, JSValue val) {
 	PhysicsShapeQueryParameters2D *physics_shape_query_parameters2d = static_cast<PhysicsShapeQueryParameters2D *>(JS_GetOpaque(val, PhysicsShapeQueryParameters2D::__class_id));
 	if (physics_shape_query_parameters2d)
-		PhysicsShapeQueryParameters2D::free(nullptr, physics_shape_query_parameters2d);
+		memdelete(physics_shape_query_parameters2d);
 }
 
 static JSClassDef physics_shape_query_parameters2d_class_def = {
@@ -25,25 +25,16 @@ static JSClassDef physics_shape_query_parameters2d_class_def = {
 };
 
 static JSValue physics_shape_query_parameters2d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PhysicsShapeQueryParameters2D *physics_shape_query_parameters2d_class;
-	JSValue obj = JS_NewObjectClass(ctx, PhysicsShapeQueryParameters2D::__class_id);
+	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicsShapeQueryParameters2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	physics_shape_query_parameters2d_class = memnew(PhysicsShapeQueryParameters2D);
+	PhysicsShapeQueryParameters2D *physics_shape_query_parameters2d_class = memnew(PhysicsShapeQueryParameters2D);
 	if (!physics_shape_query_parameters2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-
-	JS_SetOpaque(obj, physics_shape_query_parameters2d_class);
-	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-
-	if (JS_IsObject(proto)) {
-		JS_SetPrototype(ctx, obj, proto);
-	}
-	JS_FreeValue(ctx, proto);
-
-	
+	JS_SetOpaque(obj, physics_shape_query_parameters2d_class);	
 	return obj;
 }
 static JSValue physics_shape_query_parameters2d_class_set_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -212,13 +203,13 @@ static int js_physics_shape_query_parameters2d_class_init(JSContext *ctx, JSModu
 	class_id_list.insert(PhysicsShapeQueryParameters2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PhysicsShapeQueryParameters2D::__class_id, &physics_shape_query_parameters2d_class_def);
 
-	JSValue proto = JS_NewObject(ctx);
+	JSValue proto = JS_NewObjectClass(ctx, PhysicsShapeQueryParameters2D::__class_id);
 	JSValue base_class = JS_GetClassProto(ctx, RefCounted::__class_id);
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, PhysicsShapeQueryParameters2D::__class_id, proto);
+
 	define_physics_shape_query_parameters2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, physics_shape_query_parameters2d_class_proto_funcs, _countof(physics_shape_query_parameters2d_class_proto_funcs));
-
 	JSValue ctor = JS_NewCFunction2(ctx, physics_shape_query_parameters2d_class_constructor, "PhysicsShapeQueryParameters2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 
