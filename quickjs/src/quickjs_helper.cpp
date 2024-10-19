@@ -1,6 +1,8 @@
 #include "quickjs/quickjs_helper.h"
 #include "quickjs/env.h"
 #include "quickjs/str_helper.h"
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/templates/hash_map.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 #include <unordered_map>
@@ -273,10 +275,7 @@ Variant obj_to_variant(JSValue val) {
 			return gd_arr;
 		}
 		default: {
-			if (class_id_list.has(class_id))
-				return Variant(reinterpret_cast<Object *>(JS_GetOpaque(val, class_id)));
-			else
-				throw JS_ThrowTypeError(ctx, "%s", "Error convert to object");
+			return Variant(reinterpret_cast<Object *>(JS_GetOpaque(val, class_id)));
 		}
 	}
 }

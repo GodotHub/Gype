@@ -20,11 +20,22 @@ static JSClassDef rid_class_def = {
 };
 
 static JSValue rid_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	RID *rid_class;
 	JSValue obj = JS_NewObjectClass(ctx, RID::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	rid_class = memnew(RID);
+
+	RID *rid_class;
+	
+	if (argc == 0 ) {
+		rid_class = memnew(RID());
+	}
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::RID) {
+		RID v0 = Variant(argv[0]);
+		rid_class = memnew(RID(v0));
+	}
+	
+
 	if (!rid_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

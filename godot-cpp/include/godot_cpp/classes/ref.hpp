@@ -39,6 +39,8 @@
 #include <godot_cpp/core/memory.hpp>
 #include <godot_cpp/variant/variant.hpp>
 
+#include "quickjs/quickjs.h"
+
 namespace godot {
 
 // Helper class for RefCounted objects, same as Godot one.

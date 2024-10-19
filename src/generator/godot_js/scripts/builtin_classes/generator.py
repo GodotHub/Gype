@@ -1,7 +1,7 @@
 from scripts.utils.file_utils import gde_json, generated_root_dir
 from jinja2 import Environment, FileSystemLoader
 from pathlib import Path
-from scripts.utils.jinja_utils import camel_to_snake, is_pod_type, get_enum_fullname, is_enum, is_variant
+from scripts.utils.jinja_utils import camel_to_snake, is_pod_type, get_enum_fullname, is_enum, is_variant,put_args,variant_type_cond
 
 def gen_builtin_classes():
     gen_builtin_classes_cpp()
@@ -38,3 +38,5 @@ def gen_builtin_classes_register():
 
 def config_env(env: Environment):
     env.globals['camel_to_snake'] = camel_to_snake
+    env.globals['put_args'] = put_args
+    env.globals['variant_type_cond'] = variant_type_cond

@@ -20,11 +20,53 @@ static JSClassDef plane_class_def = {
 };
 
 static JSValue plane_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Plane *plane_class;
 	JSValue obj = JS_NewObjectClass(ctx, Plane::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	plane_class = memnew(Plane);
+
+	Plane *plane_class;
+
+	if (argc == 0) {
+		plane_class = memnew(Plane());
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::PLANE) {
+		Plane v0 = Variant(argv[0]);
+		plane_class = memnew(Plane(v0));
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::VECTOR3) {
+		Vector3 v0 = Variant(argv[0]);
+		plane_class = memnew(Plane(v0));
+	}
+
+	if (argc == 2 && Variant(argv[0]).get_type() == Variant::Type::VECTOR3 && (Variant(argv[1]).get_type() == Variant::Type::FLOAT || Variant(argv[1]).get_type() == Variant::Type::INT)) {
+		Vector3 v0 = Variant(argv[0]);
+		float v1 = Variant(argv[1]);
+		plane_class = memnew(Plane(v0, v1));
+	}
+
+	if (argc == 2 && Variant(argv[0]).get_type() == Variant::Type::VECTOR3 && Variant(argv[1]).get_type() == Variant::Type::VECTOR3) {
+		Vector3 v0 = Variant(argv[0]);
+		Vector3 v1 = Variant(argv[1]);
+		plane_class = memnew(Plane(v0, v1));
+	}
+
+	if (argc == 3 && Variant(argv[0]).get_type() == Variant::Type::VECTOR3 && Variant(argv[1]).get_type() == Variant::Type::VECTOR3 && Variant(argv[2]).get_type() == Variant::Type::VECTOR3) {
+		Vector3 v0 = Variant(argv[0]);
+		Vector3 v1 = Variant(argv[1]);
+		Vector3 v2 = Variant(argv[2]);
+		plane_class = memnew(Plane(v0, v1, v2));
+	}
+
+	if (argc == 4 && (Variant(argv[0]).get_type() == Variant::Type::FLOAT || Variant(argv[0]).get_type() == Variant::Type::INT) && (Variant(argv[1]).get_type() == Variant::Type::FLOAT || Variant(argv[1]).get_type() == Variant::Type::INT) && (Variant(argv[2]).get_type() == Variant::Type::FLOAT || Variant(argv[2]).get_type() == Variant::Type::INT) && (Variant(argv[3]).get_type() == Variant::Type::FLOAT || Variant(argv[3]).get_type() == Variant::Type::INT)) {
+		float v0 = Variant(argv[0]);
+		float v1 = Variant(argv[1]);
+		float v2 = Variant(argv[2]);
+		float v3 = Variant(argv[3]);
+		plane_class = memnew(Plane(v0, v1, v2, v3));
+	}
+
 	if (!plane_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

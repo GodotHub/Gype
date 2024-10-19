@@ -1,9 +1,9 @@
 
-#include "quickjs/quickjs.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/variant/array.hpp>
 
 using namespace godot;
@@ -20,11 +20,79 @@ static JSClassDef array_class_def = {
 };
 
 static JSValue array_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Array *array_class;
 	JSValue obj = JS_NewObjectClass(ctx, Array::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	array_class = memnew(Array);
+
+	Array *array_class;
+
+	if (argc == 0) {
+		array_class = memnew(Array());
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::ARRAY) {
+		Array v0 = Variant(argv[0]);
+		array_class = memnew(Array(v0));
+	}
+
+	if (argc == 4 && Variant(argv[0]).get_type() == Variant::Type::ARRAY && Variant(argv[1]).get_type() == Variant::Type::INT && Variant(argv[2]).get_type() == Variant::Type::STRING_NAME && Variant(argv[3]).get_type() == Variant::Type::VARIANT_MAX) {
+		Array v0 = Variant(argv[0]);
+		int v1 = Variant(argv[1]);
+		StringName v2 = Variant(argv[2]);
+		Variant v3 = Variant(argv[3]);
+		array_class = memnew(Array(v0, v1, v2, v3));
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::PACKED_BYTE_ARRAY) {
+		PackedByteArray v0 = Variant(argv[0]);
+		array_class = memnew(Array(v0));
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::PACKED_INT32_ARRAY) {
+		PackedInt32Array v0 = Variant(argv[0]);
+		array_class = memnew(Array(v0));
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::PACKED_INT64_ARRAY) {
+		PackedInt64Array v0 = Variant(argv[0]);
+		array_class = memnew(Array(v0));
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::PACKED_FLOAT32_ARRAY) {
+		PackedFloat32Array v0 = Variant(argv[0]);
+		array_class = memnew(Array(v0));
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::PACKED_FLOAT64_ARRAY) {
+		PackedFloat64Array v0 = Variant(argv[0]);
+		array_class = memnew(Array(v0));
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::PACKED_STRING_ARRAY) {
+		PackedStringArray v0 = Variant(argv[0]);
+		array_class = memnew(Array(v0));
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::PACKED_VECTOR2_ARRAY) {
+		PackedVector2Array v0 = Variant(argv[0]);
+		array_class = memnew(Array(v0));
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::PACKED_VECTOR3_ARRAY) {
+		PackedVector3Array v0 = Variant(argv[0]);
+		array_class = memnew(Array(v0));
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::PACKED_COLOR_ARRAY) {
+		PackedColorArray v0 = Variant(argv[0]);
+		array_class = memnew(Array(v0));
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::PACKED_VECTOR4_ARRAY) {
+		PackedVector4Array v0 = Variant(argv[0]);
+		array_class = memnew(Array(v0));
+	}
+
 	if (!array_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -40,30 +108,30 @@ static JSValue array_class_is_empty(JSContext *ctx, JSValueConst this_val, int a
 	return call_builtin_const_method_ret(&Array::is_empty, ctx, this_val, argc, argv);
 };
 static JSValue array_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Array::clear, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Array::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue array_class_hash(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Array::hash, ctx, this_val, argc, argv);
 };
 static JSValue array_class_assign(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Array::assign, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Array::assign, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue array_class_push_back(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Array::push_back, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Array::push_back, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue array_class_push_front(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Array::push_front, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Array::push_front, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue array_class_append(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Array::append, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Array::append, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue array_class_append_array(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Array::append_array, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Array::append_array, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue array_class_resize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -73,15 +141,15 @@ static JSValue array_class_insert(JSContext *ctx, JSValueConst this_val, int arg
 	return call_builtin_method_ret(&Array::insert, ctx, this_val, argc, argv);
 };
 static JSValue array_class_remove_at(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Array::remove_at, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Array::remove_at, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue array_class_fill(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Array::fill, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Array::fill, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue array_class_erase(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Array::erase, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Array::erase, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue array_class_front(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -115,15 +183,15 @@ static JSValue array_class_pop_at(JSContext *ctx, JSValueConst this_val, int arg
 	return call_builtin_method_ret(&Array::pop_at, ctx, this_val, argc, argv);
 };
 static JSValue array_class_sort(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Array::sort, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Array::sort, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue array_class_sort_custom(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Array::sort_custom, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Array::sort_custom, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue array_class_shuffle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Array::shuffle, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Array::shuffle, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue array_class_bsearch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -133,7 +201,7 @@ static JSValue array_class_bsearch_custom(JSContext *ctx, JSValueConst this_val,
 	return call_builtin_const_method_ret(&Array::bsearch_custom, ctx, this_val, argc, argv);
 };
 static JSValue array_class_reverse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Array::reverse, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Array::reverse, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue array_class_duplicate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -179,13 +247,12 @@ static JSValue array_class_get_typed_script(JSContext *ctx, JSValueConst this_va
 	return call_builtin_const_method_ret(&Array::get_typed_script, ctx, this_val, argc, argv);
 };
 static JSValue array_class_make_read_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Array::make_read_only, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Array::make_read_only, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue array_class_is_read_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Array::is_read_only, ctx, this_val, argc, argv);
 };
-
 
 static const JSCFunctionListEntry array_class_proto_funcs[] = {
 	JS_CFUNC_DEF("size", 0, &array_class_size),
@@ -236,10 +303,7 @@ static const JSCFunctionListEntry array_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_read_only", 0, &array_class_is_read_only),
 };
 
-
-
 static int js_array_class_init(JSContext *ctx) {
-	
 	JS_NewClassID(&Array::__class_id);
 	classes["Array"] = Array::__class_id;
 	class_id_list.insert(Array::__class_id);

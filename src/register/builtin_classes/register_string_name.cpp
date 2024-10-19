@@ -20,11 +20,27 @@ static JSClassDef string_name_class_def = {
 };
 
 static JSValue string_name_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	StringName *string_name_class;
 	JSValue obj = JS_NewObjectClass(ctx, StringName::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	string_name_class = memnew(StringName);
+
+	StringName *string_name_class;
+	
+	if (argc == 0 ) {
+		string_name_class = memnew(StringName());
+	}
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::STRING_NAME) {
+		StringName v0 = Variant(argv[0]);
+		string_name_class = memnew(StringName(v0));
+	}
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::STRING) {
+		String v0 = Variant(argv[0]);
+		string_name_class = memnew(StringName(v0));
+	}
+	
+
 	if (!string_name_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

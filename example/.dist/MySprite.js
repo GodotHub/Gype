@@ -12,11 +12,14 @@ import { Sprite2D } from "godot/classes/sprite2d";
 let MySprite = class MySprite extends Sprite2D {
     constructor() {
         super();
+        this.vec2 = new Vector2(500, 0);
     }
     _ready() {
-        GD.print(this.position());
+        this.position = this.vec2;
     }
     _process(delta) {
+        this.vec2.y += 100 * delta;
+        this.position = this.vec2;
     }
 };
 MySprite = __decorate([

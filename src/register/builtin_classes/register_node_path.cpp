@@ -1,10 +1,11 @@
 
-#include "quickjs/quickjs.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/variant/node_path.hpp>
+
 
 using namespace godot;
 
@@ -20,11 +21,26 @@ static JSClassDef node_path_class_def = {
 };
 
 static JSValue node_path_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	NodePath *node_path_class;
 	JSValue obj = JS_NewObjectClass(ctx, NodePath::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	node_path_class = memnew(NodePath);
+
+	NodePath *node_path_class;
+
+	if (argc == 0) {
+		node_path_class = memnew(NodePath());
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::NODE_PATH) {
+		NodePath v0 = Variant(argv[0]);
+		node_path_class = memnew(NodePath(v0));
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::STRING) {
+		String v0 = Variant(argv[0]);
+		node_path_class = memnew(NodePath(v0));
+	}
+
 	if (!node_path_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -67,7 +83,6 @@ static JSValue node_path_class_is_empty(JSContext *ctx, JSValueConst this_val, i
 	return call_builtin_const_method_ret(&NodePath::is_empty, ctx, this_val, argc, argv);
 };
 
-
 static const JSCFunctionListEntry node_path_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_absolute", 0, &node_path_class_is_absolute),
 	JS_CFUNC_DEF("get_name_count", 0, &node_path_class_get_name_count),
@@ -82,10 +97,7 @@ static const JSCFunctionListEntry node_path_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_empty", 0, &node_path_class_is_empty),
 };
 
-
-
 static int js_node_path_class_init(JSContext *ctx) {
-	
 	JS_NewClassID(&NodePath::__class_id);
 	classes["NodePath"] = NodePath::__class_id;
 	class_id_list.insert(NodePath::__class_id);

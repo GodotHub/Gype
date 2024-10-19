@@ -20,11 +20,42 @@ static JSClassDef transform2d_class_def = {
 };
 
 static JSValue transform2d_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Transform2D *transform2d_class;
 	JSValue obj = JS_NewObjectClass(ctx, Transform2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	transform2d_class = memnew(Transform2D);
+
+	Transform2D *transform2d_class;
+
+	if (argc == 0) {
+		transform2d_class = memnew(Transform2D());
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::TRANSFORM2D) {
+		Transform2D v0 = Variant(argv[0]);
+		transform2d_class = memnew(Transform2D(v0));
+	}
+
+	if (argc == 2 && (Variant(argv[0]).get_type() == Variant::Type::FLOAT || Variant(argv[0]).get_type() == Variant::Type::INT) && Variant(argv[1]).get_type() == Variant::Type::VECTOR2) {
+		float v0 = Variant(argv[0]);
+		Vector2 v1 = Variant(argv[1]);
+		transform2d_class = memnew(Transform2D(v0, v1));
+	}
+
+	if (argc == 4 && (Variant(argv[0]).get_type() == Variant::Type::FLOAT || Variant(argv[0]).get_type() == Variant::Type::INT) && Variant(argv[1]).get_type() == Variant::Type::VECTOR2 && (Variant(argv[2]).get_type() == Variant::Type::FLOAT || Variant(argv[2]).get_type() == Variant::Type::INT) && Variant(argv[3]).get_type() == Variant::Type::VECTOR2) {
+		float v0 = Variant(argv[0]);
+		Vector2 v1 = Variant(argv[1]);
+		float v2 = Variant(argv[2]);
+		Vector2 v3 = Variant(argv[3]);
+		transform2d_class = memnew(Transform2D(v0, v1, v2, v3));
+	}
+
+	if (argc == 3 && Variant(argv[0]).get_type() == Variant::Type::VECTOR2 && Variant(argv[1]).get_type() == Variant::Type::VECTOR2 && Variant(argv[2]).get_type() == Variant::Type::VECTOR2) {
+		Vector2 v0 = Variant(argv[0]);
+		Vector2 v1 = Variant(argv[1]);
+		Vector2 v2 = Variant(argv[2]);
+		transform2d_class = memnew(Transform2D(v0, v1, v2));
+	}
+
 	if (!transform2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
