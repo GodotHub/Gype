@@ -6,6 +6,7 @@
 #include "utils/func_utils.h"
 #include <godot_cpp/variant/aabb.hpp>
 
+
 using namespace godot;
 
 static void aabb_class_finalizer(JSRuntime *rt, JSValue val) {
@@ -20,18 +21,33 @@ static JSClassDef aabb_class_def = {
 };
 
 static JSValue aabb_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	AABB *aabb_class;
 	JSValue obj = JS_NewObjectClass(ctx, AABB::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	aabb_class = memnew(AABB);
+
+	AABB *aabb_class;
+
+	if (argc == 0) {
+		aabb_class = memnew(AABB());
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::AABB) {
+		AABB v0 = Variant(argv[0]);
+		aabb_class = memnew(AABB(v0));
+	}
+
+	if (argc == 2 && Variant(argv[0]).get_type() == Variant::Type::VECTOR3 && Variant(argv[1]).get_type() == Variant::Type::VECTOR3) {
+		Vector3 v0 = Variant(argv[0]);
+		Vector3 v1 = Variant(argv[1]);
+		aabb_class = memnew(AABB(v0, v1));
+	}
+
 	if (!aabb_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
 
 	JS_SetOpaque(obj, aabb_class);
-
 	return obj;
 }
 static JSValue aabb_class_abs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

@@ -1,9 +1,9 @@
 
-#include "quickjs/quickjs.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/variant/callable.hpp>
 
 using namespace godot;
@@ -20,11 +20,27 @@ static JSClassDef callable_class_def = {
 };
 
 static JSValue callable_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Callable *callable_class;
 	JSValue obj = JS_NewObjectClass(ctx, Callable::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	callable_class = memnew(Callable);
+
+	Callable *callable_class;
+
+	if (argc == 0) {
+		callable_class = memnew(Callable());
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::CALLABLE) {
+		Callable v0 = Variant(argv[0]);
+		callable_class = memnew(Callable(v0));
+	}
+
+	if (argc == 2 && Variant(argv[0]).get_type() == Variant::Type::OBJECT && Variant(argv[1]).get_type() == Variant::Type::STRING_NAME) {
+		Object *v0 = Variant(argv[0]);
+		StringName v1 = Variant(argv[1]);
+		callable_class = memnew(Callable(v0, v1));
+	}
+
 	if (!callable_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -81,25 +97,22 @@ static JSValue callable_class_create(JSContext *ctx, JSValueConst this_val, int 
 
 static JSValue callable_class_call(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_no_fixed_vararg_method_ret(&Callable::js_call, ctx, this_val, argc, argv);
-	
 }
 static JSValue callable_class_call_deferred(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_const_no_fixed_vararg_method_no_ret(&Callable::js_call_deferred, ctx, this_val, argc, argv);
+	call_builtin_const_no_fixed_vararg_method_no_ret(&Callable::js_call_deferred, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue callable_class_rpc(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_const_no_fixed_vararg_method_no_ret(&Callable::js_rpc, ctx, this_val, argc, argv);
+	call_builtin_const_no_fixed_vararg_method_no_ret(&Callable::js_rpc, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue callable_class_rpc_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_const_vararg_method_no_ret(&Callable::js_rpc_id, ctx, this_val, argc, argv);
+	call_builtin_const_vararg_method_no_ret(&Callable::js_rpc_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue callable_class_bind(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_no_fixed_vararg_method_ret(&Callable::js_bind, ctx, this_val, argc, argv);
-	
 }
-
 
 static const JSCFunctionListEntry callable_class_proto_funcs[] = {
 	JS_CFUNC_DEF("callv", 1, &callable_class_callv),
@@ -126,10 +139,7 @@ static const JSCFunctionListEntry callable_class_static_funcs[] = {
 	JS_CFUNC_DEF("create", 2, &callable_class_create),
 };
 
-
-
 static int js_callable_class_init(JSContext *ctx) {
-	
 	JS_NewClassID(&Callable::__class_id);
 	classes["Callable"] = Callable::__class_id;
 	class_id_list.insert(Callable::__class_id);

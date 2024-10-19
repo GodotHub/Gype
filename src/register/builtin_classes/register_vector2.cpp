@@ -20,11 +20,32 @@ static JSClassDef vector2_class_def = {
 };
 
 static JSValue vector2_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Vector2 *vector2_class;
 	JSValue obj = JS_NewObjectClass(ctx, Vector2::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	vector2_class = memnew(Vector2);
+
+	Vector2 *vector2_class;
+
+	if (argc == 0) {
+		vector2_class = memnew(Vector2());
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::VECTOR2) {
+		Vector2 v0 = Variant(argv[0]);
+		vector2_class = memnew(Vector2(v0));
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::VECTOR2I) {
+		Vector2i v0 = Variant(argv[0]);
+		vector2_class = memnew(Vector2(v0));
+	}
+
+	if (argc == 2 && (Variant(argv[0]).get_type() == Variant::Type::FLOAT || Variant(argv[0]).get_type() == Variant::Type::INT) && (Variant(argv[1]).get_type() == Variant::Type::FLOAT || Variant(argv[1]).get_type() == Variant::Type::INT)) {
+		float v0 = Variant(argv[0]);
+		float v1 = Variant(argv[1]);
+		vector2_class = memnew(Vector2(v0, v1));
+	}
+
 	if (!vector2_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

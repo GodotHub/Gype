@@ -8,16 +8,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { GodotClass, Tool } from "@js_godot/class_defined";
-import { Node2D } from "godot/classes/node2d";
-let MyNode = class MyNode extends Node2D {
+import { Sprite2D } from "godot/classes/sprite2d";
+let MyNode = class MyNode extends Sprite2D {
     constructor() {
         super();
-        this.pos = new Vector2();
-        this.pos.x = 10;
     }
     _ready() {
-        this.position = this.pos;
-        GD.print(this.position);
     }
     _process(delta) {
     }

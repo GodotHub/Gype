@@ -1,10 +1,11 @@
 
-#include "quickjs/quickjs.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/variant/signal.hpp>
+
 
 using namespace godot;
 
@@ -20,11 +21,27 @@ static JSClassDef signal_class_def = {
 };
 
 static JSValue signal_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Signal *signal_class;
 	JSValue obj = JS_NewObjectClass(ctx, Signal::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	signal_class = memnew(Signal);
+
+	Signal *signal_class;
+
+	if (argc == 0) {
+		signal_class = memnew(Signal());
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::SIGNAL) {
+		Signal v0 = Variant(argv[0]);
+		signal_class = memnew(Signal(v0));
+	}
+
+	if (argc == 2 && Variant(argv[0]).get_type() == Variant::Type::OBJECT && Variant(argv[1]).get_type() == Variant::Type::STRING_NAME) {
+		Object *v0 = Variant(argv[0]);
+		StringName v1 = Variant(argv[1]);
+		signal_class = memnew(Signal(v0, v1));
+	}
+
 	if (!signal_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -49,7 +66,7 @@ static JSValue signal_class_connect(JSContext *ctx, JSValueConst this_val, int a
 	return call_builtin_method_ret(&Signal::connect, ctx, this_val, argc, argv);
 };
 static JSValue signal_class_disconnect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Signal::disconnect, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Signal::disconnect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue signal_class_is_connected(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -59,10 +76,9 @@ static JSValue signal_class_get_connections(JSContext *ctx, JSValueConst this_va
 	return call_builtin_const_method_ret(&Signal::get_connections, ctx, this_val, argc, argv);
 };
 static JSValue signal_class_emit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_const_no_fixed_vararg_method_no_ret(&Signal::js_emit, ctx, this_val, argc, argv);
+	call_builtin_const_no_fixed_vararg_method_no_ret(&Signal::js_emit, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
-
 
 static const JSCFunctionListEntry signal_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_null", 0, &signal_class_is_null),
@@ -76,10 +92,7 @@ static const JSCFunctionListEntry signal_class_proto_funcs[] = {
 	JS_CFUNC_DEF("emit", 0, &signal_class_emit),
 };
 
-
-
 static int js_signal_class_init(JSContext *ctx) {
-	
 	JS_NewClassID(&Signal::__class_id);
 	classes["Signal"] = Signal::__class_id;
 	class_id_list.insert(Signal::__class_id);

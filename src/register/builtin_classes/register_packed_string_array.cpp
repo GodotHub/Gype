@@ -20,11 +20,27 @@ static JSClassDef packed_string_array_class_def = {
 };
 
 static JSValue packed_string_array_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PackedStringArray *packed_string_array_class;
 	JSValue obj = JS_NewObjectClass(ctx, PackedStringArray::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	packed_string_array_class = memnew(PackedStringArray);
+
+	PackedStringArray *packed_string_array_class;
+	
+	if (argc == 0 ) {
+		packed_string_array_class = memnew(PackedStringArray());
+	}
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::PACKED_STRING_ARRAY) {
+		PackedStringArray v0 = Variant(argv[0]);
+		packed_string_array_class = memnew(PackedStringArray(v0));
+	}
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::ARRAY) {
+		Array v0 = Variant(argv[0]);
+		packed_string_array_class = memnew(PackedStringArray(v0));
+	}
+	
+
 	if (!packed_string_array_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

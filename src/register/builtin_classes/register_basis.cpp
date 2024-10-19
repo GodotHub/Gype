@@ -20,11 +20,39 @@ static JSClassDef basis_class_def = {
 };
 
 static JSValue basis_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Basis *basis_class;
 	JSValue obj = JS_NewObjectClass(ctx, Basis::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	basis_class = memnew(Basis);
+
+	Basis *basis_class;
+
+	if (argc == 0) {
+		basis_class = memnew(Basis());
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::BASIS) {
+		Basis v0 = Variant(argv[0]);
+		basis_class = memnew(Basis(v0));
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::QUATERNION) {
+		Quaternion v0 = Variant(argv[0]);
+		basis_class = memnew(Basis(v0));
+	}
+
+	if (argc == 2 && Variant(argv[0]).get_type() == Variant::Type::VECTOR3 && (Variant(argv[1]).get_type() == Variant::Type::FLOAT || Variant(argv[1]).get_type() == Variant::Type::INT)) {
+		Vector3 v0 = Variant(argv[0]);
+		float v1 = Variant(argv[1]);
+		basis_class = memnew(Basis(v0, v1));
+	}
+
+	if (argc == 3 && Variant(argv[0]).get_type() == Variant::Type::VECTOR3 && Variant(argv[1]).get_type() == Variant::Type::VECTOR3 && Variant(argv[2]).get_type() == Variant::Type::VECTOR3) {
+		Vector3 v0 = Variant(argv[0]);
+		Vector3 v1 = Variant(argv[1]);
+		Vector3 v2 = Variant(argv[2]);
+		basis_class = memnew(Basis(v0, v1, v2));
+	}
+
 	if (!basis_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

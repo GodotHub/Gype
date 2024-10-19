@@ -20,11 +20,22 @@ static JSClassDef dictionary_class_def = {
 };
 
 static JSValue dictionary_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Dictionary *dictionary_class;
 	JSValue obj = JS_NewObjectClass(ctx, Dictionary::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	dictionary_class = memnew(Dictionary);
+
+	Dictionary *dictionary_class;
+	
+	if (argc == 0 ) {
+		dictionary_class = memnew(Dictionary());
+	}
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::DICTIONARY) {
+		Dictionary v0 = Variant(argv[0]);
+		dictionary_class = memnew(Dictionary(v0));
+	}
+	
+
 	if (!dictionary_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

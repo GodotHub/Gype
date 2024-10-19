@@ -20,11 +20,27 @@ static JSClassDef packed_color_array_class_def = {
 };
 
 static JSValue packed_color_array_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	PackedColorArray *packed_color_array_class;
 	JSValue obj = JS_NewObjectClass(ctx, PackedColorArray::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	packed_color_array_class = memnew(PackedColorArray);
+
+	PackedColorArray *packed_color_array_class;
+	
+	if (argc == 0 ) {
+		packed_color_array_class = memnew(PackedColorArray());
+	}
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::PACKED_COLOR_ARRAY) {
+		PackedColorArray v0 = Variant(argv[0]);
+		packed_color_array_class = memnew(PackedColorArray(v0));
+	}
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::ARRAY) {
+		Array v0 = Variant(argv[0]);
+		packed_color_array_class = memnew(PackedColorArray(v0));
+	}
+	
+
 	if (!packed_color_array_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

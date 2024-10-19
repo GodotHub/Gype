@@ -29,16 +29,21 @@ static JSClassDef {{snake_name}}_class_def = {
 };
 
 static JSValue {{snake_name}}_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	{{clazz_name}} *{{snake_name}}_class;
 	JSValue obj = JS_NewObjectClass(ctx, {{class_id}});
 	if (JS_IsException(obj))
 		return obj;
 
-	{%- if clazz_name in (singletons | map(attribute='type') | list) %}
-	{{snake_name}}_class = {{clazz_name}}::get_singleton();
-	{%- else%}
-	{{snake_name}}_class = memnew({{clazz_name}});
-	{%- endif %}
+	{{clazz_name}} *{{snake_name}}_class;
+	{%- set constructs = clazz['constructors'] %}
+	{% for ctor in constructs %}
+	if (argc == {{ctor['arguments'] | length}} {{variant_type_cond(ctor['arguments'])}}) {
+		{%- for arg in ctor['arguments'] %}
+		{{arg['type']}} v{{loop.index-1}} = Variant(argv[{{loop.index-1}}]);
+		{%- endfor %}
+		{{snake_name}}_class = memnew({{clazz_name}}({{put_args(ctor['arguments'])}}));
+	}
+	{% endfor %}
+
 	if (!{{snake_name}}_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

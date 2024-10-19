@@ -20,11 +20,46 @@ static JSClassDef quaternion_class_def = {
 };
 
 static JSValue quaternion_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Quaternion *quaternion_class;
 	JSValue obj = JS_NewObjectClass(ctx, Quaternion::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	quaternion_class = memnew(Quaternion);
+
+	Quaternion *quaternion_class;
+
+	if (argc == 0) {
+		quaternion_class = memnew(Quaternion());
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::QUATERNION) {
+		Quaternion v0 = Variant(argv[0]);
+		quaternion_class = memnew(Quaternion(v0));
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::BASIS) {
+		Basis v0 = Variant(argv[0]);
+		quaternion_class = memnew(Quaternion(v0));
+	}
+
+	if (argc == 2 && Variant(argv[0]).get_type() == Variant::Type::VECTOR3 && (Variant(argv[1]).get_type() == Variant::Type::FLOAT || Variant(argv[1]).get_type() == Variant::Type::INT)) {
+		Vector3 v0 = Variant(argv[0]);
+		float v1 = Variant(argv[1]);
+		quaternion_class = memnew(Quaternion(v0, v1));
+	}
+
+	if (argc == 2 && Variant(argv[0]).get_type() == Variant::Type::VECTOR3 && Variant(argv[1]).get_type() == Variant::Type::VECTOR3) {
+		Vector3 v0 = Variant(argv[0]);
+		Vector3 v1 = Variant(argv[1]);
+		quaternion_class = memnew(Quaternion(v0, v1));
+	}
+
+	if (argc == 4 && (Variant(argv[0]).get_type() == Variant::Type::FLOAT || Variant(argv[0]).get_type() == Variant::Type::INT) && (Variant(argv[1]).get_type() == Variant::Type::FLOAT || Variant(argv[1]).get_type() == Variant::Type::INT) && (Variant(argv[2]).get_type() == Variant::Type::FLOAT || Variant(argv[2]).get_type() == Variant::Type::INT) && (Variant(argv[3]).get_type() == Variant::Type::FLOAT || Variant(argv[3]).get_type() == Variant::Type::INT)) {
+		float v0 = Variant(argv[0]);
+		float v1 = Variant(argv[1]);
+		float v2 = Variant(argv[2]);
+		float v3 = Variant(argv[3]);
+		quaternion_class = memnew(Quaternion(v0, v1, v2, v3));
+	}
+
 	if (!quaternion_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

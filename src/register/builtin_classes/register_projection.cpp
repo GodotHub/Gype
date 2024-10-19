@@ -20,11 +20,34 @@ static JSClassDef projection_class_def = {
 };
 
 static JSValue projection_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Projection *projection_class;
 	JSValue obj = JS_NewObjectClass(ctx, Projection::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	projection_class = memnew(Projection);
+
+	Projection *projection_class;
+
+	if (argc == 0) {
+		projection_class = memnew(Projection());
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::PROJECTION) {
+		Projection v0 = Variant(argv[0]);
+		projection_class = memnew(Projection(v0));
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::TRANSFORM3D) {
+		Transform3D v0 = Variant(argv[0]);
+		projection_class = memnew(Projection(v0));
+	}
+
+	if (argc == 4 && Variant(argv[0]).get_type() == Variant::Type::VECTOR4 && Variant(argv[1]).get_type() == Variant::Type::VECTOR4 && Variant(argv[2]).get_type() == Variant::Type::VECTOR4 && Variant(argv[3]).get_type() == Variant::Type::VECTOR4) {
+		Vector4 v0 = Variant(argv[0]);
+		Vector4 v1 = Variant(argv[1]);
+		Vector4 v2 = Variant(argv[2]);
+		Vector4 v3 = Variant(argv[3]);
+		projection_class = memnew(Projection(v0, v1, v2, v3));
+	}
+
 	if (!projection_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

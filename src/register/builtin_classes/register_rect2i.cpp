@@ -6,6 +6,7 @@
 #include "utils/func_utils.h"
 #include <godot_cpp/variant/rect2i.hpp>
 
+
 using namespace godot;
 
 static void rect2i_class_finalizer(JSRuntime *rt, JSValue val) {
@@ -20,11 +21,40 @@ static JSClassDef rect2i_class_def = {
 };
 
 static JSValue rect2i_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Rect2i *rect2i_class;
 	JSValue obj = JS_NewObjectClass(ctx, Rect2i::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	rect2i_class = memnew(Rect2i);
+
+	Rect2i *rect2i_class;
+
+	if (argc == 0) {
+		rect2i_class = memnew(Rect2i());
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::RECT2I) {
+		Rect2i v0 = Variant(argv[0]);
+		rect2i_class = memnew(Rect2i(v0));
+	}
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::RECT2) {
+		Rect2 v0 = Variant(argv[0]);
+		rect2i_class = memnew(Rect2i(v0));
+	}
+
+	if (argc == 2 && Variant(argv[0]).get_type() == Variant::Type::VECTOR2I && Variant(argv[1]).get_type() == Variant::Type::VECTOR2I) {
+		Vector2i v0 = Variant(argv[0]);
+		Vector2i v1 = Variant(argv[1]);
+		rect2i_class = memnew(Rect2i(v0, v1));
+	}
+
+	if (argc == 4 && Variant(argv[0]).get_type() == Variant::Type::INT && Variant(argv[1]).get_type() == Variant::Type::INT && Variant(argv[2]).get_type() == Variant::Type::INT && Variant(argv[3]).get_type() == Variant::Type::INT) {
+		int v0 = Variant(argv[0]);
+		int v1 = Variant(argv[1]);
+		int v2 = Variant(argv[2]);
+		int v3 = Variant(argv[3]);
+		rect2i_class = memnew(Rect2i(v0, v1, v2, v3));
+	}
+
 	if (!rect2i_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

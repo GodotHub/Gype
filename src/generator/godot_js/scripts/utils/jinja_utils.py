@@ -179,3 +179,26 @@ def get_enum_name(enum_name: str):
         return enum_name.replace("bitfield::", "").split(".")[-1]
     else:
         return enum_name.replace("enum::", "").split(".")[-1]
+
+def put_args(arguments):
+    def mapper(pair):
+        index, arg = pair
+        return 'v'+str(index)
+    if (len(arguments) > 0):
+        l = list(map(mapper, enumerate(arguments)))
+        return ','.join(l)
+    else:
+        return ''
+
+def variant_type_cond(arguments):
+    arr = []
+    for i in range(len(arguments)):
+        vtype = camel_to_snake(arguments[i]['type']).upper()
+        if vtype == 'FLOAT':
+            arr.append(f'(Variant(argv[{i}]).get_type() == Variant::Type::FLOAT||Variant(argv[{i}]).get_type() == Variant::Type::INT)')
+        else:
+            arr.append(f'Variant(argv[{i}]).get_type() == Variant::Type::{vtype}')
+    if (len(arr) > 0):
+        return '&&' + '&&'.join(arr)
+    else:
+        return ''
