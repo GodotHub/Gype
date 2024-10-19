@@ -9,21 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { GodotClass, Tool } from "@js_godot/class_defined";
 import { Sprite2D } from "godot/classes/sprite2d";
-let MyNode = class MyNode extends Sprite2D {
+let MySprite = class MySprite extends Sprite2D {
     constructor() {
         super();
-        this.pos = new Vector2();
-        this.pos.x = 10;
+        this.vec2 = new Vector2(500, 0);
     }
     _ready() {
-        this.position = this.pos;
-        GD.print(this.pos);
+        this.position = this.vec2;
+        GD.print(this.position);
     }
     _process(delta) {
+        this.vec2.y += 100 * delta;
+        this.position = this.vec2;
     }
 };
-MyNode = __decorate([
+MySprite = __decorate([
     GodotClass,
     __metadata("design:paramtypes", [])
-], MyNode);
-export { MyNode };
+], MySprite);
+export { MySprite };

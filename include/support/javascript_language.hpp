@@ -2,8 +2,14 @@
 #define __JAVASCRIPT_LANGUAGE_H__
 
 #include "support/javascript.hpp"
+#include "support/javascript_loader.hpp"
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/script_language_extension.hpp>
+#include <godot_cpp/templates/hash_map.hpp>
+#include <godot_cpp/templates/hash_set.hpp>
+#include <godot_cpp/templates/list.hpp>
+#include <godot_cpp/variant/array.hpp>
+#include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
 
 namespace godot {
@@ -15,6 +21,10 @@ class JavaScriptLanguage : public ScriptLanguageExtension {
 	GDCLASS(JavaScriptLanguage, ScriptLanguageExtension)
 
 	static JavaScriptLanguage *singleton;
+
+	HashSet<Ref<JavaScript>> scripts;
+
+	friend class JavaScriptLoader;
 
 public:
 	static JavaScriptLanguage *get_singleton();
@@ -77,15 +87,14 @@ public:
 	void _frame();
 	bool _handles_global_class_type(const String &p_type) const;
 	Dictionary _get_global_class_name(const String &p_path) const;
-
-	static String get_base_type(const String &p_path);
-	static String get_class_name(const String &p_path);
+	static TypedArray<JavaScript> get_scripts();
 
 	~JavaScriptLanguage();
 
 protected:
-	static void _bind_methods() {}
-	GDExtensionBool is_placeholder();
+	static void _bind_methods() {
+		ClassDB::bind_static_method("JavaScriptLanguage", D_METHOD("get_scripts"), &JavaScriptLanguage::get_scripts);
+	}
 };
 } // namespace godot
 

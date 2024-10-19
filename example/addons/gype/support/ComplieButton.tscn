@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7lq27l5jn2qr"]
+
+[ext_resource type="Texture2D" uid="uid://bbyglbr3pu3rq" path="res://addons/gype/support/complie.png" id="1_ff6j7"]
+
+[node name="TextureButton" type="TextureButton"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("1_ff6j7")
+stretch_mode = 0

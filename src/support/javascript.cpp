@@ -74,8 +74,7 @@ void JavaScript::_set_source_code(const String &p_code) {
 	source_code = p_code;
 	is_tool = false;
 	if (!path.begins_with("res://.dist/") && !path.begins_with("res://addons/")) {
-		String tsconfig_path = ProjectSettings::get_singleton()->globalize_path("res://tsconfig.json");
-		int exit_code = OS::get_singleton()->execute("cmd.exe", { "/c", "tsc", "--build", tsconfig_path, "--force" });
+		int exit_code = OS::get_singleton()->execute("cmd.exe", { "/c", "tsc", "--build", "tsconfig.json" });
 		ERR_FAIL_COND_EDMSG(exit_code == -1, "Error executing tsc.");
 
 		Ref<JavaScript> dist_script = ResourceLoader::get_singleton()->load(path.replace("res://", "res://.dist/"));
@@ -143,6 +142,7 @@ void JavaScript::remove_dist_internal(const String &path) {
 }
 
 Error JavaScript::_reload(bool p_keep_state) {
+	_set_source_code(source_code);
 	return OK;
 }
 

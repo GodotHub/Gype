@@ -19,8 +19,6 @@ class JavaScriptInstance {
 	Object *binding;
 	Object *p_godot_object;
 	JavaScript *script;
-	int64_t instance_id;
-	bool _is_placeholder;
 
 private:
 	JSModuleDef *get_module(const char *path);

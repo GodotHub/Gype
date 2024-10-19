@@ -18,7 +18,6 @@ static void notification_bind(JSValue instance, JSValue prototype, int32_t p_wha
 const char *JavaScriptInstance::symbol_mask = "_GodotClass";
 
 JavaScriptInstance::JavaScriptInstance(Object *p_godot_object, JavaScript *script, bool is_placeholder) {
-	this->_is_placeholder = is_placeholder;
 	this->script = script;
 	String code = script->_get_source_code();
 	std::string code_str = std::string(code.ascii().get_data());
@@ -53,8 +52,7 @@ JavaScriptInstance::JavaScriptInstance(Object *p_godot_object, JavaScript *scrip
 						memdelete(reinterpret_cast<Object *>(opaque));
 						JS_SetOpaque(js_instance, binding);
 						binding->js_instance = js_instance;
-						instance_id = binding->get_instance_id();
-						script->instances.insert(instance_id);
+						script->instances.insert(binding->get_instance_id());
 					}
 				}
 			}
@@ -63,7 +61,7 @@ JavaScriptInstance::JavaScriptInstance(Object *p_godot_object, JavaScript *scrip
 }
 
 godot::JavaScriptInstance::~JavaScriptInstance() {
-	// JS_FreeValue(ctx, binding->js_instance);
+	// TODO remove instance
 }
 
 JSModuleDef *godot::JavaScriptInstance::get_module(const char *path) {
@@ -98,6 +96,8 @@ JSValue JavaScriptInstance::find_ns_property(JSModuleDef *md, const char *name) 
 	return true;
 
 GDExtensionBool JavaScriptInstance::set(GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_variant) {
+	// if (script->is_tool || Engine::get_singleton()->is_editor_hint())
+	// 	return false;
 	JSValue js_instance = binding->js_instance;
 	const char *name = to_chars(*reinterpret_cast<const StringName *>(p_name));
 	Variant varg;
@@ -109,6 +109,8 @@ GDExtensionBool JavaScriptInstance::set(GDExtensionConstStringNamePtr p_name, GD
 }
 
 GDExtensionBool JavaScriptInstance::get(GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret) {
+	if (script->is_tool || Engine::get_singleton()->is_editor_hint())
+		return false;
 	JSValue js_instance = binding->js_instance;
 	const char *name = to_chars(*reinterpret_cast<const StringName *>(p_name));
 	JSValue js_ret = JS_GetPropertyStr(ctx, js_instance, name);
@@ -153,6 +155,8 @@ GDExtensionInt JavaScriptInstance::get_method_argument_count(GDExtensionConstStr
 }
 
 void JavaScriptInstance::call(GDExtensionConstStringNamePtr p_method, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count, GDExtensionVariantPtr r_return, GDExtensionCallError *r_error) {
+	// if (script->is_tool || Engine::get_singleton()->is_editor_hint())
+	// 	return;
 	JSValue js_instance = binding->js_instance;
 	JSValue prototype = JS_GetPrototype(ctx, js_instance);
 	const char *method = to_chars(*reinterpret_cast<const StringName *>(p_method));
@@ -215,12 +219,13 @@ GDExtensionObjectPtr JavaScriptInstance::get_script() {
 }
 
 GDExtensionBool godot::JavaScriptInstance::is_placeholder() {
-	return _is_placeholder;
+	return false;
 }
 
 GDExtensionScriptLanguagePtr JavaScriptInstance::get_language() {
 	return JavaScriptLanguage::get_singleton();
 }
+
 static void notification_bind(JSValue instance, JSValue prototype, int32_t p_what, GDExtensionBool p_reversed) {
 	if (JS_IsNull(prototype))
 		return;

@@ -67,5 +67,6 @@ Variant JavaScriptLoader::_load(const String &p_path, const String &p_original_p
 	Ref<JavaScript> script = memnew(JavaScript(p_path, p_original_path));
 	String source_code = FileAccess::get_file_as_string(p_original_path);
 	script->_set_source_code(source_code);
+	JavaScriptLanguage::get_singleton()->scripts.insert(script);
 	return script;
 }
