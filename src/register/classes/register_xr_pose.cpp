@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void xr_pose_class_finalizer(JSRuntime *rt, JSValue val) {
-	XRPose *xr_pose = static_cast<XRPose *>(JS_GetOpaque(val, XRPose::__class_id));
-	if (xr_pose)
-		memdelete(xr_pose);
+	
+	// nothing
 }
 
 static JSClassDef xr_pose_class_def = {
@@ -103,48 +102,48 @@ void define_xr_pose_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "has_tracking_data"),
         JS_NewCFunction(ctx, xr_pose_class_get_has_tracking_data, "get_has_tracking_data", 0),
-        JS_NewCFunction(ctx, xr_pose_class_set_has_tracking_data, "set_has_tracking_data", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_pose_class_set_has_tracking_data, "set_has_tracking_data", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "name"),
         JS_NewCFunction(ctx, xr_pose_class_get_name, "get_name", 0),
-        JS_NewCFunction(ctx, xr_pose_class_set_name, "set_name", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_pose_class_set_name, "set_name", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "transform"),
         JS_NewCFunction(ctx, xr_pose_class_get_transform, "get_transform", 0),
-        JS_NewCFunction(ctx, xr_pose_class_set_transform, "set_transform", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_pose_class_set_transform, "set_transform", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "linear_velocity"),
         JS_NewCFunction(ctx, xr_pose_class_get_linear_velocity, "get_linear_velocity", 0),
-        JS_NewCFunction(ctx, xr_pose_class_set_linear_velocity, "set_linear_velocity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_pose_class_set_linear_velocity, "set_linear_velocity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angular_velocity"),
         JS_NewCFunction(ctx, xr_pose_class_get_angular_velocity, "get_angular_velocity", 0),
-        JS_NewCFunction(ctx, xr_pose_class_set_angular_velocity, "set_angular_velocity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_pose_class_set_angular_velocity, "set_angular_velocity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tracking_confidence"),
         JS_NewCFunction(ctx, xr_pose_class_get_tracking_confidence, "get_tracking_confidence", 0),
-        JS_NewCFunction(ctx, xr_pose_class_set_tracking_confidence, "set_tracking_confidence", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_pose_class_set_tracking_confidence, "set_tracking_confidence", 1),
+        JS_PROP_GETSET
     );
 }
 

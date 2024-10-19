@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void xrvrs_class_finalizer(JSRuntime *rt, JSValue val) {
-	XRVRS *xrvrs = static_cast<XRVRS *>(JS_GetOpaque(val, XRVRS::__class_id));
-	if (xrvrs)
-		memdelete(xrvrs);
+	
+	// nothing
 }
 
 static JSClassDef xrvrs_class_def = {
@@ -67,16 +66,16 @@ void define_xrvrs_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "vrs_min_radius"),
         JS_NewCFunction(ctx, xrvrs_class_get_vrs_min_radius, "get_vrs_min_radius", 0),
-        JS_NewCFunction(ctx, xrvrs_class_set_vrs_min_radius, "set_vrs_min_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xrvrs_class_set_vrs_min_radius, "set_vrs_min_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "vrs_strength"),
         JS_NewCFunction(ctx, xrvrs_class_get_vrs_strength, "get_vrs_strength", 0),
-        JS_NewCFunction(ctx, xrvrs_class_set_vrs_strength, "set_vrs_strength", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xrvrs_class_set_vrs_strength, "set_vrs_strength", 1),
+        JS_PROP_GETSET
     );
 }
 

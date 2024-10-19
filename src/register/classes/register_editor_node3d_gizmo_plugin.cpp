@@ -5,12 +5,12 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/standard_material3d.hpp>
-#include <godot_cpp/classes/editor_node3d_gizmo_plugin.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/editor_node3d_gizmo_plugin.hpp>
 #include <godot_cpp/classes/editor_node3d_gizmo.hpp>
 #include <godot_cpp/classes/camera3d.hpp>
+#include <godot_cpp/classes/standard_material3d.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -18,9 +18,8 @@
 using namespace godot;
 
 static void editor_node3d_gizmo_plugin_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorNode3DGizmoPlugin *editor_node3d_gizmo_plugin = static_cast<EditorNode3DGizmoPlugin *>(JS_GetOpaque(val, EditorNode3DGizmoPlugin::__class_id));
-	if (editor_node3d_gizmo_plugin)
-		memdelete(editor_node3d_gizmo_plugin);
+	
+	// nothing
 }
 
 static JSClassDef editor_node3d_gizmo_plugin_class_def = {

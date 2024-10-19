@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void slider_class_finalizer(JSRuntime *rt, JSValue val) {
-	Slider *slider = static_cast<Slider *>(JS_GetOpaque(val, Slider::__class_id));
-	if (slider)
-		memdelete(slider);
+	
+	// nothing
 }
 
 static JSClassDef slider_class_def = {
@@ -81,32 +80,32 @@ void define_slider_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "editable"),
         JS_NewCFunction(ctx, slider_class_is_editable, "is_editable", 0),
-        JS_NewCFunction(ctx, slider_class_set_editable, "set_editable", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, slider_class_set_editable, "set_editable", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scrollable"),
         JS_NewCFunction(ctx, slider_class_is_scrollable, "is_scrollable", 0),
-        JS_NewCFunction(ctx, slider_class_set_scrollable, "set_scrollable", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, slider_class_set_scrollable, "set_scrollable", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tick_count"),
         JS_NewCFunction(ctx, slider_class_get_ticks, "get_ticks", 0),
-        JS_NewCFunction(ctx, slider_class_set_ticks, "set_ticks", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, slider_class_set_ticks, "set_ticks", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ticks_on_borders"),
         JS_NewCFunction(ctx, slider_class_get_ticks_on_borders, "get_ticks_on_borders", 0),
-        JS_NewCFunction(ctx, slider_class_set_ticks_on_borders, "set_ticks_on_borders", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, slider_class_set_ticks_on_borders, "set_ticks_on_borders", 1),
+        JS_PROP_GETSET
     );
 }
 

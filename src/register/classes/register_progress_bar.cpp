@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/progress_bar.hpp>
 #include <godot_cpp/classes/range.hpp>
+#include <godot_cpp/classes/progress_bar.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void progress_bar_class_finalizer(JSRuntime *rt, JSValue val) {
-	ProgressBar *progress_bar = static_cast<ProgressBar *>(JS_GetOpaque(val, ProgressBar::__class_id));
-	if (progress_bar)
-		memdelete(progress_bar);
+	
+	// nothing
 }
 
 static JSClassDef progress_bar_class_def = {
@@ -81,32 +80,32 @@ void define_progress_bar_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "fill_mode"),
         JS_NewCFunction(ctx, progress_bar_class_get_fill_mode, "get_fill_mode", 0),
-        JS_NewCFunction(ctx, progress_bar_class_set_fill_mode, "set_fill_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, progress_bar_class_set_fill_mode, "set_fill_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "show_percentage"),
         JS_NewCFunction(ctx, progress_bar_class_is_percentage_shown, "is_percentage_shown", 0),
-        JS_NewCFunction(ctx, progress_bar_class_set_show_percentage, "set_show_percentage", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, progress_bar_class_set_show_percentage, "set_show_percentage", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "indeterminate"),
         JS_NewCFunction(ctx, progress_bar_class_is_indeterminate, "is_indeterminate", 0),
-        JS_NewCFunction(ctx, progress_bar_class_set_indeterminate, "set_indeterminate", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, progress_bar_class_set_indeterminate, "set_indeterminate", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "editor_preview_indeterminate"),
         JS_NewCFunction(ctx, progress_bar_class_is_editor_preview_indeterminate_enabled, "is_editor_preview_indeterminate_enabled", 0),
-        JS_NewCFunction(ctx, progress_bar_class_set_editor_preview_indeterminate, "set_editor_preview_indeterminate", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, progress_bar_class_set_editor_preview_indeterminate, "set_editor_preview_indeterminate", 1),
+        JS_PROP_GETSET
     );
 }
 

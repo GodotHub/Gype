@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/rd_texture_view.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/rd_texture_view.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void rd_texture_view_class_finalizer(JSRuntime *rt, JSValue val) {
-	RDTextureView *rd_texture_view = static_cast<RDTextureView *>(JS_GetOpaque(val, RDTextureView::__class_id));
-	if (rd_texture_view)
-		memdelete(rd_texture_view);
+	
+	// nothing
 }
 
 static JSClassDef rd_texture_view_class_def = {
@@ -90,40 +89,40 @@ void define_rd_texture_view_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "format_override"),
         JS_NewCFunction(ctx, rd_texture_view_class_get_format_override, "get_format_override", 0),
-        JS_NewCFunction(ctx, rd_texture_view_class_set_format_override, "set_format_override", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_texture_view_class_set_format_override, "set_format_override", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "swizzle_r"),
         JS_NewCFunction(ctx, rd_texture_view_class_get_swizzle_r, "get_swizzle_r", 0),
-        JS_NewCFunction(ctx, rd_texture_view_class_set_swizzle_r, "set_swizzle_r", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_texture_view_class_set_swizzle_r, "set_swizzle_r", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "swizzle_g"),
         JS_NewCFunction(ctx, rd_texture_view_class_get_swizzle_g, "get_swizzle_g", 0),
-        JS_NewCFunction(ctx, rd_texture_view_class_set_swizzle_g, "set_swizzle_g", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_texture_view_class_set_swizzle_g, "set_swizzle_g", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "swizzle_b"),
         JS_NewCFunction(ctx, rd_texture_view_class_get_swizzle_b, "get_swizzle_b", 0),
-        JS_NewCFunction(ctx, rd_texture_view_class_set_swizzle_b, "set_swizzle_b", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_texture_view_class_set_swizzle_b, "set_swizzle_b", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "swizzle_a"),
         JS_NewCFunction(ctx, rd_texture_view_class_get_swizzle_a, "get_swizzle_a", 0),
-        JS_NewCFunction(ctx, rd_texture_view_class_set_swizzle_a, "set_swizzle_a", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_texture_view_class_set_swizzle_a, "set_swizzle_a", 1),
+        JS_PROP_GETSET
     );
 }
 

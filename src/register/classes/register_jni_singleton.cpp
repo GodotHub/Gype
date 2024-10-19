@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/jni_singleton.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void jni_singleton_class_finalizer(JSRuntime *rt, JSValue val) {
-	JNISingleton *jni_singleton = static_cast<JNISingleton *>(JS_GetOpaque(val, JNISingleton::__class_id));
-	if (jni_singleton)
-		memdelete(jni_singleton);
+	
+	// nothing
 }
 
 static JSClassDef jni_singleton_class_def = {

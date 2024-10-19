@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/world_boundary_shape3d.hpp>
 #include <godot_cpp/classes/shape3d.hpp>
+#include <godot_cpp/classes/world_boundary_shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void world_boundary_shape3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	WorldBoundaryShape3D *world_boundary_shape3d = static_cast<WorldBoundaryShape3D *>(JS_GetOpaque(val, WorldBoundaryShape3D::__class_id));
-	if (world_boundary_shape3d)
-		memdelete(world_boundary_shape3d);
+	
+	// nothing
 }
 
 static JSClassDef world_boundary_shape3d_class_def = {
@@ -54,8 +53,8 @@ void define_world_boundary_shape3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "plane"),
         JS_NewCFunction(ctx, world_boundary_shape3d_class_get_plane, "get_plane", 0),
-        JS_NewCFunction(ctx, world_boundary_shape3d_class_set_plane, "set_plane", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, world_boundary_shape3d_class_set_plane, "set_plane", 1),
+        JS_PROP_GETSET
     );
 }
 

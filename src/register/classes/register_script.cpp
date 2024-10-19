@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/script.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void script_class_finalizer(JSRuntime *rt, JSValue val) {
-	Script *script = static_cast<Script *>(JS_GetOpaque(val, Script::__class_id));
-	if (script)
-		memdelete(script);
+	
+	// nothing
 }
 
 static JSClassDef script_class_def = {
@@ -115,8 +114,8 @@ void define_script_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "source_code"),
         JS_NewCFunction(ctx, script_class_get_source_code, "get_source_code", 0),
-        JS_NewCFunction(ctx, script_class_set_source_code, "set_source_code", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, script_class_set_source_code, "set_source_code", 1),
+        JS_PROP_GETSET
     );
 }
 

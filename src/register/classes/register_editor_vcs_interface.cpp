@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void editor_vcs_interface_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorVCSInterface *editor_vcs_interface = static_cast<EditorVCSInterface *>(JS_GetOpaque(val, EditorVCSInterface::__class_id));
-	if (editor_vcs_interface)
-		memdelete(editor_vcs_interface);
+	
+	// nothing
 }
 
 static JSClassDef editor_vcs_interface_class_def = {

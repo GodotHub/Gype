@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void rd_pipeline_specialization_constant_class_finalizer(JSRuntime *rt, JSValue val) {
-	RDPipelineSpecializationConstant *rd_pipeline_specialization_constant = static_cast<RDPipelineSpecializationConstant *>(JS_GetOpaque(val, RDPipelineSpecializationConstant::__class_id));
-	if (rd_pipeline_specialization_constant)
-		memdelete(rd_pipeline_specialization_constant);
+	
+	// nothing
 }
 
 static JSClassDef rd_pipeline_specialization_constant_class_def = {
@@ -63,16 +62,16 @@ void define_rd_pipeline_specialization_constant_property(JSContext *ctx, JSValue
         obj,
         JS_NewAtom(ctx, "value"),
         JS_NewCFunction(ctx, rd_pipeline_specialization_constant_class_get_value, "get_value", 0),
-        JS_NewCFunction(ctx, rd_pipeline_specialization_constant_class_set_value, "set_value", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_specialization_constant_class_set_value, "set_value", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "constant_id"),
         JS_NewCFunction(ctx, rd_pipeline_specialization_constant_class_get_constant_id, "get_constant_id", 0),
-        JS_NewCFunction(ctx, rd_pipeline_specialization_constant_class_set_constant_id, "set_constant_id", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_specialization_constant_class_set_constant_id, "set_constant_id", 1),
+        JS_PROP_GETSET
     );
 }
 

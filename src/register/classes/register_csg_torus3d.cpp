@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/csg_primitive3d.hpp>
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/csg_torus3d.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void csg_torus3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	CSGTorus3D *csg_torus3d = static_cast<CSGTorus3D *>(JS_GetOpaque(val, CSGTorus3D::__class_id));
-	if (csg_torus3d)
-		memdelete(csg_torus3d);
+	
+	// nothing
 }
 
 static JSClassDef csg_torus3d_class_def = {
@@ -100,48 +99,48 @@ void define_csg_torus3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "inner_radius"),
         JS_NewCFunction(ctx, csg_torus3d_class_get_inner_radius, "get_inner_radius", 0),
-        JS_NewCFunction(ctx, csg_torus3d_class_set_inner_radius, "set_inner_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_torus3d_class_set_inner_radius, "set_inner_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "outer_radius"),
         JS_NewCFunction(ctx, csg_torus3d_class_get_outer_radius, "get_outer_radius", 0),
-        JS_NewCFunction(ctx, csg_torus3d_class_set_outer_radius, "set_outer_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_torus3d_class_set_outer_radius, "set_outer_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sides"),
         JS_NewCFunction(ctx, csg_torus3d_class_get_sides, "get_sides", 0),
-        JS_NewCFunction(ctx, csg_torus3d_class_set_sides, "set_sides", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_torus3d_class_set_sides, "set_sides", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ring_sides"),
         JS_NewCFunction(ctx, csg_torus3d_class_get_ring_sides, "get_ring_sides", 0),
-        JS_NewCFunction(ctx, csg_torus3d_class_set_ring_sides, "set_ring_sides", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_torus3d_class_set_ring_sides, "set_ring_sides", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "smooth_faces"),
         JS_NewCFunction(ctx, csg_torus3d_class_get_smooth_faces, "get_smooth_faces", 0),
-        JS_NewCFunction(ctx, csg_torus3d_class_set_smooth_faces, "set_smooth_faces", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_torus3d_class_set_smooth_faces, "set_smooth_faces", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "material"),
         JS_NewCFunction(ctx, csg_torus3d_class_get_material, "get_material", 0),
-        JS_NewCFunction(ctx, csg_torus3d_class_set_material, "set_material", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_torus3d_class_set_material, "set_material", 1),
+        JS_PROP_GETSET
     );
 }
 

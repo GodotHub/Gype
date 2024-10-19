@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void input_event_class_finalizer(JSRuntime *rt, JSValue val) {
-	InputEvent *input_event = static_cast<InputEvent *>(JS_GetOpaque(val, InputEvent::__class_id));
-	if (input_event)
-		memdelete(input_event);
+	
+	// nothing
 }
 
 static JSClassDef input_event_class_def = {
@@ -106,8 +105,8 @@ void define_input_event_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "device"),
         JS_NewCFunction(ctx, input_event_class_get_device, "get_device", 0),
-        JS_NewCFunction(ctx, input_event_class_set_device, "set_device", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_class_set_device, "set_device", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void audio_bus_layout_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioBusLayout *audio_bus_layout = static_cast<AudioBusLayout *>(JS_GetOpaque(val, AudioBusLayout::__class_id));
-	if (audio_bus_layout)
-		memdelete(audio_bus_layout);
+	
+	// nothing
 }
 
 static JSClassDef audio_bus_layout_class_def = {

@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/tweener.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/tweener.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void tweener_class_finalizer(JSRuntime *rt, JSValue val) {
-	Tweener *tweener = static_cast<Tweener *>(JS_GetOpaque(val, Tweener::__class_id));
-	if (tweener)
-		memdelete(tweener);
+	
+	// nothing
 }
 
 static JSClassDef tweener_class_def = {

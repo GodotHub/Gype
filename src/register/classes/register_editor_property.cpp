@@ -5,19 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_property.hpp>
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/container.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/editor_property.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_property_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorProperty *editor_property = static_cast<EditorProperty *>(JS_GetOpaque(val, EditorProperty::__class_id));
-	if (editor_property)
-		memdelete(editor_property);
+	
+	// nothing
 }
 
 static JSClassDef editor_property_class_def = {
@@ -138,56 +137,56 @@ void define_editor_property_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "label"),
         JS_NewCFunction(ctx, editor_property_class_get_label, "get_label", 0),
-        JS_NewCFunction(ctx, editor_property_class_set_label, "set_label", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, editor_property_class_set_label, "set_label", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "read_only"),
         JS_NewCFunction(ctx, editor_property_class_is_read_only, "is_read_only", 0),
-        JS_NewCFunction(ctx, editor_property_class_set_read_only, "set_read_only", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, editor_property_class_set_read_only, "set_read_only", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "checkable"),
         JS_NewCFunction(ctx, editor_property_class_is_checkable, "is_checkable", 0),
-        JS_NewCFunction(ctx, editor_property_class_set_checkable, "set_checkable", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, editor_property_class_set_checkable, "set_checkable", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "checked"),
         JS_NewCFunction(ctx, editor_property_class_is_checked, "is_checked", 0),
-        JS_NewCFunction(ctx, editor_property_class_set_checked, "set_checked", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, editor_property_class_set_checked, "set_checked", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "draw_warning"),
         JS_NewCFunction(ctx, editor_property_class_is_draw_warning, "is_draw_warning", 0),
-        JS_NewCFunction(ctx, editor_property_class_set_draw_warning, "set_draw_warning", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, editor_property_class_set_draw_warning, "set_draw_warning", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "keying"),
         JS_NewCFunction(ctx, editor_property_class_is_keying, "is_keying", 0),
-        JS_NewCFunction(ctx, editor_property_class_set_keying, "set_keying", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, editor_property_class_set_keying, "set_keying", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "deletable"),
         JS_NewCFunction(ctx, editor_property_class_is_deletable, "is_deletable", 0),
-        JS_NewCFunction(ctx, editor_property_class_set_deletable, "set_deletable", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, editor_property_class_set_deletable, "set_deletable", 1),
+        JS_PROP_GETSET
     );
 }
 

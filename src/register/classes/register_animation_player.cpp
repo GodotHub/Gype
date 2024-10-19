@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void animation_player_class_finalizer(JSRuntime *rt, JSValue val) {
-	AnimationPlayer *animation_player = static_cast<AnimationPlayer *>(JS_GetOpaque(val, AnimationPlayer::__class_id));
-	if (animation_player)
-		memdelete(animation_player);
+	
+	// nothing
 }
 
 static JSClassDef animation_player_class_def = {
@@ -240,24 +239,24 @@ void define_animation_player_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "current_animation"),
         JS_NewCFunction(ctx, animation_player_class_get_current_animation, "get_current_animation", 0),
-        JS_NewCFunction(ctx, animation_player_class_set_current_animation, "set_current_animation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_player_class_set_current_animation, "set_current_animation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "assigned_animation"),
         JS_NewCFunction(ctx, animation_player_class_get_assigned_animation, "get_assigned_animation", 0),
-        JS_NewCFunction(ctx, animation_player_class_set_assigned_animation, "set_assigned_animation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_player_class_set_assigned_animation, "set_assigned_animation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "autoplay"),
         JS_NewCFunction(ctx, animation_player_class_get_autoplay, "get_autoplay", 0),
-        JS_NewCFunction(ctx, animation_player_class_set_autoplay, "set_autoplay", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_player_class_set_autoplay, "set_autoplay", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -265,7 +264,7 @@ void define_animation_player_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "current_animation_length"),
         JS_NewCFunction(ctx, animation_player_class_get_current_animation_length, "get_current_animation_length", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -273,63 +272,63 @@ void define_animation_player_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "current_animation_position"),
         JS_NewCFunction(ctx, animation_player_class_get_current_animation_position, "get_current_animation_position", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "playback_auto_capture"),
         JS_NewCFunction(ctx, animation_player_class_is_auto_capture, "is_auto_capture", 0),
-        JS_NewCFunction(ctx, animation_player_class_set_auto_capture, "set_auto_capture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_player_class_set_auto_capture, "set_auto_capture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "playback_auto_capture_duration"),
         JS_NewCFunction(ctx, animation_player_class_get_auto_capture_duration, "get_auto_capture_duration", 0),
-        JS_NewCFunction(ctx, animation_player_class_set_auto_capture_duration, "set_auto_capture_duration", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_player_class_set_auto_capture_duration, "set_auto_capture_duration", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "playback_auto_capture_transition_type"),
         JS_NewCFunction(ctx, animation_player_class_get_auto_capture_transition_type, "get_auto_capture_transition_type", 0),
-        JS_NewCFunction(ctx, animation_player_class_set_auto_capture_transition_type, "set_auto_capture_transition_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_player_class_set_auto_capture_transition_type, "set_auto_capture_transition_type", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "playback_auto_capture_ease_type"),
         JS_NewCFunction(ctx, animation_player_class_get_auto_capture_ease_type, "get_auto_capture_ease_type", 0),
-        JS_NewCFunction(ctx, animation_player_class_set_auto_capture_ease_type, "set_auto_capture_ease_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_player_class_set_auto_capture_ease_type, "set_auto_capture_ease_type", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "playback_default_blend_time"),
         JS_NewCFunction(ctx, animation_player_class_get_default_blend_time, "get_default_blend_time", 0),
-        JS_NewCFunction(ctx, animation_player_class_set_default_blend_time, "set_default_blend_time", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_player_class_set_default_blend_time, "set_default_blend_time", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "speed_scale"),
         JS_NewCFunction(ctx, animation_player_class_get_speed_scale, "get_speed_scale", 0),
-        JS_NewCFunction(ctx, animation_player_class_set_speed_scale, "set_speed_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_player_class_set_speed_scale, "set_speed_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "movie_quit_on_finish"),
         JS_NewCFunction(ctx, animation_player_class_is_movie_quit_on_finish_enabled, "is_movie_quit_on_finish_enabled", 0),
-        JS_NewCFunction(ctx, animation_player_class_set_movie_quit_on_finish_enabled, "set_movie_quit_on_finish_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_player_class_set_movie_quit_on_finish_enabled, "set_movie_quit_on_finish_enabled", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -6,19 +6,18 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/tile_set.hpp>
+#include <godot_cpp/classes/tile_map_pattern.hpp>
 #include <godot_cpp/classes/tile_map_layer.hpp>
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/tile_data.hpp>
-#include <godot_cpp/classes/tile_map_pattern.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void tile_map_layer_class_finalizer(JSRuntime *rt, JSValue val) {
-	TileMapLayer *tile_map_layer = static_cast<TileMapLayer *>(JS_GetOpaque(val, TileMapLayer::__class_id));
-	if (tile_map_layer)
-		memdelete(tile_map_layer);
+	
+	// nothing
 }
 
 static JSClassDef tile_map_layer_class_def = {
@@ -261,88 +260,88 @@ void define_tile_map_layer_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "tile_map_data"),
         JS_NewCFunction(ctx, tile_map_layer_class_get_tile_map_data_as_array, "get_tile_map_data_as_array", 0),
-        JS_NewCFunction(ctx, tile_map_layer_class_set_tile_map_data_from_array, "set_tile_map_data_from_array", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_map_layer_class_set_tile_map_data_from_array, "set_tile_map_data_from_array", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "enabled"),
         JS_NewCFunction(ctx, tile_map_layer_class_is_enabled, "is_enabled", 0),
-        JS_NewCFunction(ctx, tile_map_layer_class_set_enabled, "set_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_map_layer_class_set_enabled, "set_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tile_set"),
         JS_NewCFunction(ctx, tile_map_layer_class_get_tile_set, "get_tile_set", 0),
-        JS_NewCFunction(ctx, tile_map_layer_class_set_tile_set, "set_tile_set", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_map_layer_class_set_tile_set, "set_tile_set", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "y_sort_origin"),
         JS_NewCFunction(ctx, tile_map_layer_class_get_y_sort_origin, "get_y_sort_origin", 0),
-        JS_NewCFunction(ctx, tile_map_layer_class_set_y_sort_origin, "set_y_sort_origin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_map_layer_class_set_y_sort_origin, "set_y_sort_origin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "x_draw_order_reversed"),
         JS_NewCFunction(ctx, tile_map_layer_class_is_x_draw_order_reversed, "is_x_draw_order_reversed", 0),
-        JS_NewCFunction(ctx, tile_map_layer_class_set_x_draw_order_reversed, "set_x_draw_order_reversed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_map_layer_class_set_x_draw_order_reversed, "set_x_draw_order_reversed", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "rendering_quadrant_size"),
         JS_NewCFunction(ctx, tile_map_layer_class_get_rendering_quadrant_size, "get_rendering_quadrant_size", 0),
-        JS_NewCFunction(ctx, tile_map_layer_class_set_rendering_quadrant_size, "set_rendering_quadrant_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_map_layer_class_set_rendering_quadrant_size, "set_rendering_quadrant_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_enabled"),
         JS_NewCFunction(ctx, tile_map_layer_class_is_collision_enabled, "is_collision_enabled", 0),
-        JS_NewCFunction(ctx, tile_map_layer_class_set_collision_enabled, "set_collision_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_map_layer_class_set_collision_enabled, "set_collision_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_kinematic_bodies"),
         JS_NewCFunction(ctx, tile_map_layer_class_is_using_kinematic_bodies, "is_using_kinematic_bodies", 0),
-        JS_NewCFunction(ctx, tile_map_layer_class_set_use_kinematic_bodies, "set_use_kinematic_bodies", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_map_layer_class_set_use_kinematic_bodies, "set_use_kinematic_bodies", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_visibility_mode"),
         JS_NewCFunction(ctx, tile_map_layer_class_get_collision_visibility_mode, "get_collision_visibility_mode", 0),
-        JS_NewCFunction(ctx, tile_map_layer_class_set_collision_visibility_mode, "set_collision_visibility_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_map_layer_class_set_collision_visibility_mode, "set_collision_visibility_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "navigation_enabled"),
         JS_NewCFunction(ctx, tile_map_layer_class_is_navigation_enabled, "is_navigation_enabled", 0),
-        JS_NewCFunction(ctx, tile_map_layer_class_set_navigation_enabled, "set_navigation_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_map_layer_class_set_navigation_enabled, "set_navigation_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "navigation_visibility_mode"),
         JS_NewCFunction(ctx, tile_map_layer_class_get_navigation_visibility_mode, "get_navigation_visibility_mode", 0),
-        JS_NewCFunction(ctx, tile_map_layer_class_set_navigation_visibility_mode, "set_navigation_visibility_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_map_layer_class_set_navigation_visibility_mode, "set_navigation_visibility_mode", 1),
+        JS_PROP_GETSET
     );
 }
 

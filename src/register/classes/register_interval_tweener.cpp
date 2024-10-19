@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/tweener.hpp>
 #include <godot_cpp/classes/interval_tweener.hpp>
+#include <godot_cpp/classes/tweener.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void interval_tweener_class_finalizer(JSRuntime *rt, JSValue val) {
-	IntervalTweener *interval_tweener = static_cast<IntervalTweener *>(JS_GetOpaque(val, IntervalTweener::__class_id));
-	if (interval_tweener)
-		memdelete(interval_tweener);
+	
+	// nothing
 }
 
 static JSClassDef interval_tweener_class_def = {

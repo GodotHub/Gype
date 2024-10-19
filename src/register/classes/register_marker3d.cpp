@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void marker3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	Marker3D *marker3d = static_cast<Marker3D *>(JS_GetOpaque(val, Marker3D::__class_id));
-	if (marker3d)
-		memdelete(marker3d);
+	
+	// nothing
 }
 
 static JSClassDef marker3d_class_def = {
@@ -54,8 +53,8 @@ void define_marker3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "gizmo_extents"),
         JS_NewCFunction(ctx, marker3d_class_get_gizmo_extents, "get_gizmo_extents", 0),
-        JS_NewCFunction(ctx, marker3d_class_set_gizmo_extents, "set_gizmo_extents", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, marker3d_class_set_gizmo_extents, "set_gizmo_extents", 1),
+        JS_PROP_GETSET
     );
 }
 

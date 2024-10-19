@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_remap_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeRemap *visual_shader_node_remap = static_cast<VisualShaderNodeRemap *>(JS_GetOpaque(val, VisualShaderNodeRemap::__class_id));
-	if (visual_shader_node_remap)
-		memdelete(visual_shader_node_remap);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_remap_class_def = {

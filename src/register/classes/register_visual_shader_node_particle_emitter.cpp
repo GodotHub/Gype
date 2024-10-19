@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_particle_emitter_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeParticleEmitter *visual_shader_node_particle_emitter = static_cast<VisualShaderNodeParticleEmitter *>(JS_GetOpaque(val, VisualShaderNodeParticleEmitter::__class_id));
-	if (visual_shader_node_particle_emitter)
-		memdelete(visual_shader_node_particle_emitter);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_particle_emitter_class_def = {
@@ -54,8 +53,8 @@ void define_visual_shader_node_particle_emitter_property(JSContext *ctx, JSValue
         obj,
         JS_NewAtom(ctx, "mode_2d"),
         JS_NewCFunction(ctx, visual_shader_node_particle_emitter_class_is_mode_2d, "is_mode_2d", 0),
-        JS_NewCFunction(ctx, visual_shader_node_particle_emitter_class_set_mode_2d, "set_mode_2d", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_particle_emitter_class_set_mode_2d, "set_mode_2d", 1),
+        JS_PROP_GETSET
     );
 }
 

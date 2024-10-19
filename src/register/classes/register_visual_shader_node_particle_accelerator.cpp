@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_particle_accelerator_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeParticleAccelerator *visual_shader_node_particle_accelerator = static_cast<VisualShaderNodeParticleAccelerator *>(JS_GetOpaque(val, VisualShaderNodeParticleAccelerator::__class_id));
-	if (visual_shader_node_particle_accelerator)
-		memdelete(visual_shader_node_particle_accelerator);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_particle_accelerator_class_def = {
@@ -54,8 +53,8 @@ void define_visual_shader_node_particle_accelerator_property(JSContext *ctx, JSV
         obj,
         JS_NewAtom(ctx, "mode"),
         JS_NewCFunction(ctx, visual_shader_node_particle_accelerator_class_get_mode, "get_mode", 0),
-        JS_NewCFunction(ctx, visual_shader_node_particle_accelerator_class_set_mode, "set_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_particle_accelerator_class_set_mode, "set_mode", 1),
+        JS_PROP_GETSET
     );
 }
 

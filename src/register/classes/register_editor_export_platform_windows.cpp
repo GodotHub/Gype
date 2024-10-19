@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_export_platform_windows.hpp>
 #include <godot_cpp/classes/editor_export_platform_pc.hpp>
+#include <godot_cpp/classes/editor_export_platform_windows.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_export_platform_windows_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorExportPlatformWindows *editor_export_platform_windows = static_cast<EditorExportPlatformWindows *>(JS_GetOpaque(val, EditorExportPlatformWindows::__class_id));
-	if (editor_export_platform_windows)
-		memdelete(editor_export_platform_windows);
+	
+	// nothing
 }
 
 static JSClassDef editor_export_platform_windows_class_def = {

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void open_xr_composition_layer_quad_class_finalizer(JSRuntime *rt, JSValue val) {
-	OpenXRCompositionLayerQuad *open_xr_composition_layer_quad = static_cast<OpenXRCompositionLayerQuad *>(JS_GetOpaque(val, OpenXRCompositionLayerQuad::__class_id));
-	if (open_xr_composition_layer_quad)
-		memdelete(open_xr_composition_layer_quad);
+	
+	// nothing
 }
 
 static JSClassDef open_xr_composition_layer_quad_class_def = {
@@ -54,8 +53,8 @@ void define_open_xr_composition_layer_quad_property(JSContext *ctx, JSValue obj)
         obj,
         JS_NewAtom(ctx, "quad_size"),
         JS_NewCFunction(ctx, open_xr_composition_layer_quad_class_get_quad_size, "get_quad_size", 0),
-        JS_NewCFunction(ctx, open_xr_composition_layer_quad_class_set_quad_size, "set_quad_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_composition_layer_quad_class_set_quad_size, "set_quad_size", 1),
+        JS_PROP_GETSET
     );
 }
 

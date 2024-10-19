@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/classes/audio_effect_limiter.hpp>
+#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void audio_effect_limiter_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioEffectLimiter *audio_effect_limiter = static_cast<AudioEffectLimiter *>(JS_GetOpaque(val, AudioEffectLimiter::__class_id));
-	if (audio_effect_limiter)
-		memdelete(audio_effect_limiter);
+	
+	// nothing
 }
 
 static JSClassDef audio_effect_limiter_class_def = {
@@ -81,32 +80,32 @@ void define_audio_effect_limiter_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "ceiling_db"),
         JS_NewCFunction(ctx, audio_effect_limiter_class_get_ceiling_db, "get_ceiling_db", 0),
-        JS_NewCFunction(ctx, audio_effect_limiter_class_set_ceiling_db, "set_ceiling_db", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_limiter_class_set_ceiling_db, "set_ceiling_db", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "threshold_db"),
         JS_NewCFunction(ctx, audio_effect_limiter_class_get_threshold_db, "get_threshold_db", 0),
-        JS_NewCFunction(ctx, audio_effect_limiter_class_set_threshold_db, "set_threshold_db", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_limiter_class_set_threshold_db, "set_threshold_db", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "soft_clip_db"),
         JS_NewCFunction(ctx, audio_effect_limiter_class_get_soft_clip_db, "get_soft_clip_db", 0),
-        JS_NewCFunction(ctx, audio_effect_limiter_class_set_soft_clip_db, "set_soft_clip_db", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_limiter_class_set_soft_clip_db, "set_soft_clip_db", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "soft_clip_ratio"),
         JS_NewCFunction(ctx, audio_effect_limiter_class_get_soft_clip_ratio, "get_soft_clip_ratio", 0),
-        JS_NewCFunction(ctx, audio_effect_limiter_class_set_soft_clip_ratio, "set_soft_clip_ratio", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_limiter_class_set_soft_clip_ratio, "set_soft_clip_ratio", 1),
+        JS_PROP_GETSET
     );
 }
 

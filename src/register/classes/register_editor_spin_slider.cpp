@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void editor_spin_slider_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorSpinSlider *editor_spin_slider = static_cast<EditorSpinSlider *>(JS_GetOpaque(val, EditorSpinSlider::__class_id));
-	if (editor_spin_slider)
-		memdelete(editor_spin_slider);
+	
+	// nothing
 }
 
 static JSClassDef editor_spin_slider_class_def = {
@@ -90,40 +89,40 @@ void define_editor_spin_slider_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "label"),
         JS_NewCFunction(ctx, editor_spin_slider_class_get_label, "get_label", 0),
-        JS_NewCFunction(ctx, editor_spin_slider_class_set_label, "set_label", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, editor_spin_slider_class_set_label, "set_label", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "suffix"),
         JS_NewCFunction(ctx, editor_spin_slider_class_get_suffix, "get_suffix", 0),
-        JS_NewCFunction(ctx, editor_spin_slider_class_set_suffix, "set_suffix", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, editor_spin_slider_class_set_suffix, "set_suffix", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "read_only"),
         JS_NewCFunction(ctx, editor_spin_slider_class_is_read_only, "is_read_only", 0),
-        JS_NewCFunction(ctx, editor_spin_slider_class_set_read_only, "set_read_only", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, editor_spin_slider_class_set_read_only, "set_read_only", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "flat"),
         JS_NewCFunction(ctx, editor_spin_slider_class_is_flat, "is_flat", 0),
-        JS_NewCFunction(ctx, editor_spin_slider_class_set_flat, "set_flat", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, editor_spin_slider_class_set_flat, "set_flat", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "hide_slider"),
         JS_NewCFunction(ctx, editor_spin_slider_class_is_hiding_slider, "is_hiding_slider", 0),
-        JS_NewCFunction(ctx, editor_spin_slider_class_set_hide_slider, "set_hide_slider", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, editor_spin_slider_class_set_hide_slider, "set_hide_slider", 1),
+        JS_PROP_GETSET
     );
 }
 

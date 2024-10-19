@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/missing_node.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void missing_node_class_finalizer(JSRuntime *rt, JSValue val) {
-	MissingNode *missing_node = static_cast<MissingNode *>(JS_GetOpaque(val, MissingNode::__class_id));
-	if (missing_node)
-		memdelete(missing_node);
+	
+	// nothing
 }
 
 static JSClassDef missing_node_class_def = {
@@ -72,24 +71,24 @@ void define_missing_node_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "original_class"),
         JS_NewCFunction(ctx, missing_node_class_get_original_class, "get_original_class", 0),
-        JS_NewCFunction(ctx, missing_node_class_set_original_class, "set_original_class", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, missing_node_class_set_original_class, "set_original_class", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "original_scene"),
         JS_NewCFunction(ctx, missing_node_class_get_original_scene, "get_original_scene", 0),
-        JS_NewCFunction(ctx, missing_node_class_set_original_scene, "set_original_scene", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, missing_node_class_set_original_scene, "set_original_scene", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "recording_properties"),
         JS_NewCFunction(ctx, missing_node_class_is_recording_properties, "is_recording_properties", 0),
-        JS_NewCFunction(ctx, missing_node_class_set_recording_properties, "set_recording_properties", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, missing_node_class_set_recording_properties, "set_recording_properties", 1),
+        JS_PROP_GETSET
     );
 }
 

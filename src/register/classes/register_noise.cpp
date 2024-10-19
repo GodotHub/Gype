@@ -6,18 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/image.hpp>
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/noise.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void noise_class_finalizer(JSRuntime *rt, JSValue val) {
-	Noise *noise = static_cast<Noise *>(JS_GetOpaque(val, Noise::__class_id));
-	if (noise)
-		memdelete(noise);
+	
+	// nothing
 }
 
 static JSClassDef noise_class_def = {

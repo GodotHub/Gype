@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void physics_test_motion_parameters2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	PhysicsTestMotionParameters2D *physics_test_motion_parameters2d = static_cast<PhysicsTestMotionParameters2D *>(JS_GetOpaque(val, PhysicsTestMotionParameters2D::__class_id));
-	if (physics_test_motion_parameters2d)
-		memdelete(physics_test_motion_parameters2d);
+	
+	// nothing
 }
 
 static JSClassDef physics_test_motion_parameters2d_class_def = {
@@ -108,56 +107,56 @@ void define_physics_test_motion_parameters2d_property(JSContext *ctx, JSValue ob
         obj,
         JS_NewAtom(ctx, "from"),
         JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_get_from, "get_from", 0),
-        JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_set_from, "set_from", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_set_from, "set_from", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "motion"),
         JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_get_motion, "get_motion", 0),
-        JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_set_motion, "set_motion", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_set_motion, "set_motion", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "margin"),
         JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_get_margin, "get_margin", 0),
-        JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_set_margin, "set_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_set_margin, "set_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collide_separation_ray"),
         JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_is_collide_separation_ray_enabled, "is_collide_separation_ray_enabled", 0),
-        JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_set_collide_separation_ray_enabled, "set_collide_separation_ray_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_set_collide_separation_ray_enabled, "set_collide_separation_ray_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "exclude_bodies"),
         JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_get_exclude_bodies, "get_exclude_bodies", 0),
-        JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_set_exclude_bodies, "set_exclude_bodies", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_set_exclude_bodies, "set_exclude_bodies", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "exclude_objects"),
         JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_get_exclude_objects, "get_exclude_objects", 0),
-        JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_set_exclude_objects, "set_exclude_objects", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_set_exclude_objects, "set_exclude_objects", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "recovery_as_collision"),
         JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_is_recovery_as_collision_enabled, "is_recovery_as_collision_enabled", 0),
-        JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_set_recovery_as_collision_enabled, "set_recovery_as_collision_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_set_recovery_as_collision_enabled, "set_recovery_as_collision_enabled", 1),
+        JS_PROP_GETSET
     );
 }
 

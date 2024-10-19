@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void collision_shape2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	CollisionShape2D *collision_shape2d = static_cast<CollisionShape2D *>(JS_GetOpaque(val, CollisionShape2D::__class_id));
-	if (collision_shape2d)
-		memdelete(collision_shape2d);
+	
+	// nothing
 }
 
 static JSClassDef collision_shape2d_class_def = {
@@ -91,40 +90,40 @@ void define_collision_shape2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "shape"),
         JS_NewCFunction(ctx, collision_shape2d_class_get_shape, "get_shape", 0),
-        JS_NewCFunction(ctx, collision_shape2d_class_set_shape, "set_shape", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_shape2d_class_set_shape, "set_shape", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "disabled"),
         JS_NewCFunction(ctx, collision_shape2d_class_is_disabled, "is_disabled", 0),
-        JS_NewCFunction(ctx, collision_shape2d_class_set_disabled, "set_disabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_shape2d_class_set_disabled, "set_disabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "one_way_collision"),
         JS_NewCFunction(ctx, collision_shape2d_class_is_one_way_collision_enabled, "is_one_way_collision_enabled", 0),
-        JS_NewCFunction(ctx, collision_shape2d_class_set_one_way_collision, "set_one_way_collision", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_shape2d_class_set_one_way_collision, "set_one_way_collision", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "one_way_collision_margin"),
         JS_NewCFunction(ctx, collision_shape2d_class_get_one_way_collision_margin, "get_one_way_collision_margin", 0),
-        JS_NewCFunction(ctx, collision_shape2d_class_set_one_way_collision_margin, "set_one_way_collision_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_shape2d_class_set_one_way_collision_margin, "set_one_way_collision_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "debug_color"),
         JS_NewCFunction(ctx, collision_shape2d_class_get_debug_color, "get_debug_color", 0),
-        JS_NewCFunction(ctx, collision_shape2d_class_set_debug_color, "set_debug_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_shape2d_class_set_debug_color, "set_debug_color", 1),
+        JS_PROP_GETSET
     );
 }
 

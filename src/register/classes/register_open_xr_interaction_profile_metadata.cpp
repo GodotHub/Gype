@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void open_xr_interaction_profile_metadata_class_finalizer(JSRuntime *rt, JSValue val) {
-	OpenXRInteractionProfileMetadata *open_xr_interaction_profile_metadata = static_cast<OpenXRInteractionProfileMetadata *>(JS_GetOpaque(val, OpenXRInteractionProfileMetadata::__class_id));
-	if (open_xr_interaction_profile_metadata)
-		memdelete(open_xr_interaction_profile_metadata);
+	
+	// nothing
 }
 
 static JSClassDef open_xr_interaction_profile_metadata_class_def = {

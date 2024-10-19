@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void editor_scene_format_importer_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorSceneFormatImporter *editor_scene_format_importer = static_cast<EditorSceneFormatImporter *>(JS_GetOpaque(val, EditorSceneFormatImporter::__class_id));
-	if (editor_scene_format_importer)
-		memdelete(editor_scene_format_importer);
+	
+	// nothing
 }
 
 static JSClassDef editor_scene_format_importer_class_def = {

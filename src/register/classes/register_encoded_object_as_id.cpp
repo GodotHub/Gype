@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void encoded_object_as_id_class_finalizer(JSRuntime *rt, JSValue val) {
-	EncodedObjectAsID *encoded_object_as_id = static_cast<EncodedObjectAsID *>(JS_GetOpaque(val, EncodedObjectAsID::__class_id));
-	if (encoded_object_as_id)
-		memdelete(encoded_object_as_id);
+	
+	// nothing
 }
 
 static JSClassDef encoded_object_as_id_class_def = {
@@ -54,8 +53,8 @@ void define_encoded_object_as_id_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "object_id"),
         JS_NewCFunction(ctx, encoded_object_as_id_class_get_object_id, "get_object_id", 0),
-        JS_NewCFunction(ctx, encoded_object_as_id_class_set_object_id, "set_object_id", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, encoded_object_as_id_class_set_object_id, "set_object_id", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/range.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/texture_progress_bar.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void texture_progress_bar_class_finalizer(JSRuntime *rt, JSValue val) {
-	TextureProgressBar *texture_progress_bar = static_cast<TextureProgressBar *>(JS_GetOpaque(val, TextureProgressBar::__class_id));
-	if (texture_progress_bar)
-		memdelete(texture_progress_bar);
+	
+	// nothing
 }
 
 static JSClassDef texture_progress_bar_class_def = {
@@ -163,128 +162,128 @@ void define_texture_progress_bar_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "fill_mode"),
         JS_NewCFunction(ctx, texture_progress_bar_class_get_fill_mode, "get_fill_mode", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_fill_mode, "set_fill_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_progress_bar_class_set_fill_mode, "set_fill_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "radial_initial_angle"),
         JS_NewCFunction(ctx, texture_progress_bar_class_get_radial_initial_angle, "get_radial_initial_angle", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_radial_initial_angle, "set_radial_initial_angle", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_progress_bar_class_set_radial_initial_angle, "set_radial_initial_angle", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "radial_fill_degrees"),
         JS_NewCFunction(ctx, texture_progress_bar_class_get_fill_degrees, "get_fill_degrees", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_fill_degrees, "set_fill_degrees", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_progress_bar_class_set_fill_degrees, "set_fill_degrees", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "radial_center_offset"),
         JS_NewCFunction(ctx, texture_progress_bar_class_get_radial_center_offset, "get_radial_center_offset", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_radial_center_offset, "set_radial_center_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_progress_bar_class_set_radial_center_offset, "set_radial_center_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "nine_patch_stretch"),
         JS_NewCFunction(ctx, texture_progress_bar_class_get_nine_patch_stretch, "get_nine_patch_stretch", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_nine_patch_stretch, "set_nine_patch_stretch", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_progress_bar_class_set_nine_patch_stretch, "set_nine_patch_stretch", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "stretch_margin_left"),
         JS_NewCFunction(ctx, texture_progress_bar_class_get_stretch_margin, "get_stretch_margin", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_stretch_margin, "set_stretch_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_progress_bar_class_set_stretch_margin, "set_stretch_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "stretch_margin_top"),
         JS_NewCFunction(ctx, texture_progress_bar_class_get_stretch_margin, "get_stretch_margin", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_stretch_margin, "set_stretch_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_progress_bar_class_set_stretch_margin, "set_stretch_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "stretch_margin_right"),
         JS_NewCFunction(ctx, texture_progress_bar_class_get_stretch_margin, "get_stretch_margin", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_stretch_margin, "set_stretch_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_progress_bar_class_set_stretch_margin, "set_stretch_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "stretch_margin_bottom"),
         JS_NewCFunction(ctx, texture_progress_bar_class_get_stretch_margin, "get_stretch_margin", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_stretch_margin, "set_stretch_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_progress_bar_class_set_stretch_margin, "set_stretch_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_under"),
         JS_NewCFunction(ctx, texture_progress_bar_class_get_under_texture, "get_under_texture", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_under_texture, "set_under_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_progress_bar_class_set_under_texture, "set_under_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_over"),
         JS_NewCFunction(ctx, texture_progress_bar_class_get_over_texture, "get_over_texture", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_over_texture, "set_over_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_progress_bar_class_set_over_texture, "set_over_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_progress"),
         JS_NewCFunction(ctx, texture_progress_bar_class_get_progress_texture, "get_progress_texture", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_progress_texture, "set_progress_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_progress_bar_class_set_progress_texture, "set_progress_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_progress_offset"),
         JS_NewCFunction(ctx, texture_progress_bar_class_get_texture_progress_offset, "get_texture_progress_offset", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_texture_progress_offset, "set_texture_progress_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_progress_bar_class_set_texture_progress_offset, "set_texture_progress_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tint_under"),
         JS_NewCFunction(ctx, texture_progress_bar_class_get_tint_under, "get_tint_under", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_tint_under, "set_tint_under", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_progress_bar_class_set_tint_under, "set_tint_under", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tint_over"),
         JS_NewCFunction(ctx, texture_progress_bar_class_get_tint_over, "get_tint_over", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_tint_over, "set_tint_over", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_progress_bar_class_set_tint_over, "set_tint_over", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tint_progress"),
         JS_NewCFunction(ctx, texture_progress_bar_class_get_tint_progress, "get_tint_progress", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_tint_progress, "set_tint_progress", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_progress_bar_class_set_tint_progress, "set_tint_progress", 1),
+        JS_PROP_GETSET
     );
 }
 

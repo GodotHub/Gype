@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/csg_polygon3d.hpp>
 #include <godot_cpp/classes/csg_primitive3d.hpp>
 #include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/csg_polygon3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void csg_polygon3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	CSGPolygon3D *csg_polygon3d = static_cast<CSGPolygon3D *>(JS_GetOpaque(val, CSGPolygon3D::__class_id));
-	if (csg_polygon3d)
-		memdelete(csg_polygon3d);
+	
+	// nothing
 }
 
 static JSClassDef csg_polygon3d_class_def = {
@@ -190,128 +189,128 @@ void define_csg_polygon3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "polygon"),
         JS_NewCFunction(ctx, csg_polygon3d_class_get_polygon, "get_polygon", 0),
-        JS_NewCFunction(ctx, csg_polygon3d_class_set_polygon, "set_polygon", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_polygon3d_class_set_polygon, "set_polygon", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "mode"),
         JS_NewCFunction(ctx, csg_polygon3d_class_get_mode, "get_mode", 0),
-        JS_NewCFunction(ctx, csg_polygon3d_class_set_mode, "set_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_polygon3d_class_set_mode, "set_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "depth"),
         JS_NewCFunction(ctx, csg_polygon3d_class_get_depth, "get_depth", 0),
-        JS_NewCFunction(ctx, csg_polygon3d_class_set_depth, "set_depth", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_polygon3d_class_set_depth, "set_depth", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "spin_degrees"),
         JS_NewCFunction(ctx, csg_polygon3d_class_get_spin_degrees, "get_spin_degrees", 0),
-        JS_NewCFunction(ctx, csg_polygon3d_class_set_spin_degrees, "set_spin_degrees", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_polygon3d_class_set_spin_degrees, "set_spin_degrees", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "spin_sides"),
         JS_NewCFunction(ctx, csg_polygon3d_class_get_spin_sides, "get_spin_sides", 0),
-        JS_NewCFunction(ctx, csg_polygon3d_class_set_spin_sides, "set_spin_sides", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_polygon3d_class_set_spin_sides, "set_spin_sides", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "path_node"),
         JS_NewCFunction(ctx, csg_polygon3d_class_get_path_node, "get_path_node", 0),
-        JS_NewCFunction(ctx, csg_polygon3d_class_set_path_node, "set_path_node", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_polygon3d_class_set_path_node, "set_path_node", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "path_interval_type"),
         JS_NewCFunction(ctx, csg_polygon3d_class_get_path_interval_type, "get_path_interval_type", 0),
-        JS_NewCFunction(ctx, csg_polygon3d_class_set_path_interval_type, "set_path_interval_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_polygon3d_class_set_path_interval_type, "set_path_interval_type", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "path_interval"),
         JS_NewCFunction(ctx, csg_polygon3d_class_get_path_interval, "get_path_interval", 0),
-        JS_NewCFunction(ctx, csg_polygon3d_class_set_path_interval, "set_path_interval", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_polygon3d_class_set_path_interval, "set_path_interval", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "path_simplify_angle"),
         JS_NewCFunction(ctx, csg_polygon3d_class_get_path_simplify_angle, "get_path_simplify_angle", 0),
-        JS_NewCFunction(ctx, csg_polygon3d_class_set_path_simplify_angle, "set_path_simplify_angle", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_polygon3d_class_set_path_simplify_angle, "set_path_simplify_angle", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "path_rotation"),
         JS_NewCFunction(ctx, csg_polygon3d_class_get_path_rotation, "get_path_rotation", 0),
-        JS_NewCFunction(ctx, csg_polygon3d_class_set_path_rotation, "set_path_rotation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_polygon3d_class_set_path_rotation, "set_path_rotation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "path_local"),
         JS_NewCFunction(ctx, csg_polygon3d_class_is_path_local, "is_path_local", 0),
-        JS_NewCFunction(ctx, csg_polygon3d_class_set_path_local, "set_path_local", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_polygon3d_class_set_path_local, "set_path_local", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "path_continuous_u"),
         JS_NewCFunction(ctx, csg_polygon3d_class_is_path_continuous_u, "is_path_continuous_u", 0),
-        JS_NewCFunction(ctx, csg_polygon3d_class_set_path_continuous_u, "set_path_continuous_u", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_polygon3d_class_set_path_continuous_u, "set_path_continuous_u", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "path_u_distance"),
         JS_NewCFunction(ctx, csg_polygon3d_class_get_path_u_distance, "get_path_u_distance", 0),
-        JS_NewCFunction(ctx, csg_polygon3d_class_set_path_u_distance, "set_path_u_distance", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_polygon3d_class_set_path_u_distance, "set_path_u_distance", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "path_joined"),
         JS_NewCFunction(ctx, csg_polygon3d_class_is_path_joined, "is_path_joined", 0),
-        JS_NewCFunction(ctx, csg_polygon3d_class_set_path_joined, "set_path_joined", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_polygon3d_class_set_path_joined, "set_path_joined", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "smooth_faces"),
         JS_NewCFunction(ctx, csg_polygon3d_class_get_smooth_faces, "get_smooth_faces", 0),
-        JS_NewCFunction(ctx, csg_polygon3d_class_set_smooth_faces, "set_smooth_faces", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_polygon3d_class_set_smooth_faces, "set_smooth_faces", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "material"),
         JS_NewCFunction(ctx, csg_polygon3d_class_get_material, "get_material", 0),
-        JS_NewCFunction(ctx, csg_polygon3d_class_set_material, "set_material", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_polygon3d_class_set_material, "set_material", 1),
+        JS_PROP_GETSET
     );
 }
 

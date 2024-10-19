@@ -7,19 +7,18 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/classes/graph_frame.hpp>
-#include <godot_cpp/classes/graph_edit.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/graph_edit.hpp>
+#include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void graph_edit_class_finalizer(JSRuntime *rt, JSValue val) {
-	GraphEdit *graph_edit = static_cast<GraphEdit *>(JS_GetOpaque(val, GraphEdit::__class_id));
-	if (graph_edit)
-		memdelete(graph_edit);
+	
+	// nothing
 }
 
 static JSClassDef graph_edit_class_def = {
@@ -366,184 +365,184 @@ void define_graph_edit_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "scroll_offset"),
         JS_NewCFunction(ctx, graph_edit_class_get_scroll_offset, "get_scroll_offset", 0),
-        JS_NewCFunction(ctx, graph_edit_class_set_scroll_offset, "set_scroll_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_edit_class_set_scroll_offset, "set_scroll_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "show_grid"),
         JS_NewCFunction(ctx, graph_edit_class_is_showing_grid, "is_showing_grid", 0),
-        JS_NewCFunction(ctx, graph_edit_class_set_show_grid, "set_show_grid", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_edit_class_set_show_grid, "set_show_grid", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "grid_pattern"),
         JS_NewCFunction(ctx, graph_edit_class_get_grid_pattern, "get_grid_pattern", 0),
-        JS_NewCFunction(ctx, graph_edit_class_set_grid_pattern, "set_grid_pattern", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_edit_class_set_grid_pattern, "set_grid_pattern", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "snapping_enabled"),
         JS_NewCFunction(ctx, graph_edit_class_is_snapping_enabled, "is_snapping_enabled", 0),
-        JS_NewCFunction(ctx, graph_edit_class_set_snapping_enabled, "set_snapping_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_edit_class_set_snapping_enabled, "set_snapping_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "snapping_distance"),
         JS_NewCFunction(ctx, graph_edit_class_get_snapping_distance, "get_snapping_distance", 0),
-        JS_NewCFunction(ctx, graph_edit_class_set_snapping_distance, "set_snapping_distance", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_edit_class_set_snapping_distance, "set_snapping_distance", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "panning_scheme"),
         JS_NewCFunction(ctx, graph_edit_class_get_panning_scheme, "get_panning_scheme", 0),
-        JS_NewCFunction(ctx, graph_edit_class_set_panning_scheme, "set_panning_scheme", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_edit_class_set_panning_scheme, "set_panning_scheme", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "right_disconnects"),
         JS_NewCFunction(ctx, graph_edit_class_is_right_disconnects_enabled, "is_right_disconnects_enabled", 0),
-        JS_NewCFunction(ctx, graph_edit_class_set_right_disconnects, "set_right_disconnects", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_edit_class_set_right_disconnects, "set_right_disconnects", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "connection_lines_curvature"),
         JS_NewCFunction(ctx, graph_edit_class_get_connection_lines_curvature, "get_connection_lines_curvature", 0),
-        JS_NewCFunction(ctx, graph_edit_class_set_connection_lines_curvature, "set_connection_lines_curvature", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_edit_class_set_connection_lines_curvature, "set_connection_lines_curvature", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "connection_lines_thickness"),
         JS_NewCFunction(ctx, graph_edit_class_get_connection_lines_thickness, "get_connection_lines_thickness", 0),
-        JS_NewCFunction(ctx, graph_edit_class_set_connection_lines_thickness, "set_connection_lines_thickness", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_edit_class_set_connection_lines_thickness, "set_connection_lines_thickness", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "connection_lines_antialiased"),
         JS_NewCFunction(ctx, graph_edit_class_is_connection_lines_antialiased, "is_connection_lines_antialiased", 0),
-        JS_NewCFunction(ctx, graph_edit_class_set_connection_lines_antialiased, "set_connection_lines_antialiased", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_edit_class_set_connection_lines_antialiased, "set_connection_lines_antialiased", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "zoom"),
         JS_NewCFunction(ctx, graph_edit_class_get_zoom, "get_zoom", 0),
-        JS_NewCFunction(ctx, graph_edit_class_set_zoom, "set_zoom", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_edit_class_set_zoom, "set_zoom", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "zoom_min"),
         JS_NewCFunction(ctx, graph_edit_class_get_zoom_min, "get_zoom_min", 0),
-        JS_NewCFunction(ctx, graph_edit_class_set_zoom_min, "set_zoom_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_edit_class_set_zoom_min, "set_zoom_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "zoom_max"),
         JS_NewCFunction(ctx, graph_edit_class_get_zoom_max, "get_zoom_max", 0),
-        JS_NewCFunction(ctx, graph_edit_class_set_zoom_max, "set_zoom_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_edit_class_set_zoom_max, "set_zoom_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "zoom_step"),
         JS_NewCFunction(ctx, graph_edit_class_get_zoom_step, "get_zoom_step", 0),
-        JS_NewCFunction(ctx, graph_edit_class_set_zoom_step, "set_zoom_step", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_edit_class_set_zoom_step, "set_zoom_step", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "minimap_enabled"),
         JS_NewCFunction(ctx, graph_edit_class_is_minimap_enabled, "is_minimap_enabled", 0),
-        JS_NewCFunction(ctx, graph_edit_class_set_minimap_enabled, "set_minimap_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_edit_class_set_minimap_enabled, "set_minimap_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "minimap_size"),
         JS_NewCFunction(ctx, graph_edit_class_get_minimap_size, "get_minimap_size", 0),
-        JS_NewCFunction(ctx, graph_edit_class_set_minimap_size, "set_minimap_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_edit_class_set_minimap_size, "set_minimap_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "minimap_opacity"),
         JS_NewCFunction(ctx, graph_edit_class_get_minimap_opacity, "get_minimap_opacity", 0),
-        JS_NewCFunction(ctx, graph_edit_class_set_minimap_opacity, "set_minimap_opacity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_edit_class_set_minimap_opacity, "set_minimap_opacity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "show_menu"),
         JS_NewCFunction(ctx, graph_edit_class_is_showing_menu, "is_showing_menu", 0),
-        JS_NewCFunction(ctx, graph_edit_class_set_show_menu, "set_show_menu", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_edit_class_set_show_menu, "set_show_menu", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "show_zoom_label"),
         JS_NewCFunction(ctx, graph_edit_class_is_showing_zoom_label, "is_showing_zoom_label", 0),
-        JS_NewCFunction(ctx, graph_edit_class_set_show_zoom_label, "set_show_zoom_label", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_edit_class_set_show_zoom_label, "set_show_zoom_label", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "show_zoom_buttons"),
         JS_NewCFunction(ctx, graph_edit_class_is_showing_zoom_buttons, "is_showing_zoom_buttons", 0),
-        JS_NewCFunction(ctx, graph_edit_class_set_show_zoom_buttons, "set_show_zoom_buttons", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_edit_class_set_show_zoom_buttons, "set_show_zoom_buttons", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "show_grid_buttons"),
         JS_NewCFunction(ctx, graph_edit_class_is_showing_grid_buttons, "is_showing_grid_buttons", 0),
-        JS_NewCFunction(ctx, graph_edit_class_set_show_grid_buttons, "set_show_grid_buttons", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_edit_class_set_show_grid_buttons, "set_show_grid_buttons", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "show_minimap_button"),
         JS_NewCFunction(ctx, graph_edit_class_is_showing_minimap_button, "is_showing_minimap_button", 0),
-        JS_NewCFunction(ctx, graph_edit_class_set_show_minimap_button, "set_show_minimap_button", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_edit_class_set_show_minimap_button, "set_show_minimap_button", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "show_arrange_button"),
         JS_NewCFunction(ctx, graph_edit_class_is_showing_arrange_button, "is_showing_arrange_button", 0),
-        JS_NewCFunction(ctx, graph_edit_class_set_show_arrange_button, "set_show_arrange_button", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_edit_class_set_show_arrange_button, "set_show_arrange_button", 1),
+        JS_PROP_GETSET
     );
 }
 

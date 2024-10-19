@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/navigation_link2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void navigation_link2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	NavigationLink2D *navigation_link2d = static_cast<NavigationLink2D *>(JS_GetOpaque(val, NavigationLink2D::__class_id));
-	if (navigation_link2d)
-		memdelete(navigation_link2d);
+	
+	// nothing
 }
 
 static JSClassDef navigation_link2d_class_def = {
@@ -139,56 +138,56 @@ void define_navigation_link2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "enabled"),
         JS_NewCFunction(ctx, navigation_link2d_class_is_enabled, "is_enabled", 0),
-        JS_NewCFunction(ctx, navigation_link2d_class_set_enabled, "set_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_link2d_class_set_enabled, "set_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bidirectional"),
         JS_NewCFunction(ctx, navigation_link2d_class_is_bidirectional, "is_bidirectional", 0),
-        JS_NewCFunction(ctx, navigation_link2d_class_set_bidirectional, "set_bidirectional", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_link2d_class_set_bidirectional, "set_bidirectional", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "navigation_layers"),
         JS_NewCFunction(ctx, navigation_link2d_class_get_navigation_layers, "get_navigation_layers", 0),
-        JS_NewCFunction(ctx, navigation_link2d_class_set_navigation_layers, "set_navigation_layers", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_link2d_class_set_navigation_layers, "set_navigation_layers", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "start_position"),
         JS_NewCFunction(ctx, navigation_link2d_class_get_start_position, "get_start_position", 0),
-        JS_NewCFunction(ctx, navigation_link2d_class_set_start_position, "set_start_position", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_link2d_class_set_start_position, "set_start_position", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "end_position"),
         JS_NewCFunction(ctx, navigation_link2d_class_get_end_position, "get_end_position", 0),
-        JS_NewCFunction(ctx, navigation_link2d_class_set_end_position, "set_end_position", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_link2d_class_set_end_position, "set_end_position", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "enter_cost"),
         JS_NewCFunction(ctx, navigation_link2d_class_get_enter_cost, "get_enter_cost", 0),
-        JS_NewCFunction(ctx, navigation_link2d_class_set_enter_cost, "set_enter_cost", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_link2d_class_set_enter_cost, "set_enter_cost", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "travel_cost"),
         JS_NewCFunction(ctx, navigation_link2d_class_get_travel_cost, "get_travel_cost", 0),
-        JS_NewCFunction(ctx, navigation_link2d_class_set_travel_cost, "set_travel_cost", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_link2d_class_set_travel_cost, "set_travel_cost", 1),
+        JS_PROP_GETSET
     );
 }
 

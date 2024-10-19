@@ -7,17 +7,16 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/web_socket_peer.hpp>
 #include <godot_cpp/classes/packet_peer.hpp>
-#include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/classes/stream_peer.hpp>
+#include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void web_socket_peer_class_finalizer(JSRuntime *rt, JSValue val) {
-	WebSocketPeer *web_socket_peer = static_cast<WebSocketPeer *>(JS_GetOpaque(val, WebSocketPeer::__class_id));
-	if (web_socket_peer)
-		memdelete(web_socket_peer);
+	
+	// nothing
 }
 
 static JSClassDef web_socket_peer_class_def = {
@@ -159,40 +158,40 @@ void define_web_socket_peer_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "supported_protocols"),
         JS_NewCFunction(ctx, web_socket_peer_class_get_supported_protocols, "get_supported_protocols", 0),
-        JS_NewCFunction(ctx, web_socket_peer_class_set_supported_protocols, "set_supported_protocols", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, web_socket_peer_class_set_supported_protocols, "set_supported_protocols", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "handshake_headers"),
         JS_NewCFunction(ctx, web_socket_peer_class_get_handshake_headers, "get_handshake_headers", 0),
-        JS_NewCFunction(ctx, web_socket_peer_class_set_handshake_headers, "set_handshake_headers", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, web_socket_peer_class_set_handshake_headers, "set_handshake_headers", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "inbound_buffer_size"),
         JS_NewCFunction(ctx, web_socket_peer_class_get_inbound_buffer_size, "get_inbound_buffer_size", 0),
-        JS_NewCFunction(ctx, web_socket_peer_class_set_inbound_buffer_size, "set_inbound_buffer_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, web_socket_peer_class_set_inbound_buffer_size, "set_inbound_buffer_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "outbound_buffer_size"),
         JS_NewCFunction(ctx, web_socket_peer_class_get_outbound_buffer_size, "get_outbound_buffer_size", 0),
-        JS_NewCFunction(ctx, web_socket_peer_class_set_outbound_buffer_size, "set_outbound_buffer_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, web_socket_peer_class_set_outbound_buffer_size, "set_outbound_buffer_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "max_queued_packets"),
         JS_NewCFunction(ctx, web_socket_peer_class_get_max_queued_packets, "get_max_queued_packets", 0),
-        JS_NewCFunction(ctx, web_socket_peer_class_set_max_queued_packets, "set_max_queued_packets", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, web_socket_peer_class_set_max_queued_packets, "set_max_queued_packets", 1),
+        JS_PROP_GETSET
     );
 }
 

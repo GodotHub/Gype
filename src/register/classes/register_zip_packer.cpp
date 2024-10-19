@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void zip_packer_class_finalizer(JSRuntime *rt, JSValue val) {
-	ZIPPacker *zip_packer = static_cast<ZIPPacker *>(JS_GetOpaque(val, ZIPPacker::__class_id));
-	if (zip_packer)
-		memdelete(zip_packer);
+	
+	// nothing
 }
 
 static JSClassDef zip_packer_class_def = {

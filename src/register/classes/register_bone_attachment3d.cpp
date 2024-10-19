@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/bone_attachment3d.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void bone_attachment3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	BoneAttachment3D *bone_attachment3d = static_cast<BoneAttachment3D *>(JS_GetOpaque(val, BoneAttachment3D::__class_id));
-	if (bone_attachment3d)
-		memdelete(bone_attachment3d);
+	
+	// nothing
 }
 
 static JSClassDef bone_attachment3d_class_def = {
@@ -95,24 +94,24 @@ void define_bone_attachment3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "bone_name"),
         JS_NewCFunction(ctx, bone_attachment3d_class_get_bone_name, "get_bone_name", 0),
-        JS_NewCFunction(ctx, bone_attachment3d_class_set_bone_name, "set_bone_name", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, bone_attachment3d_class_set_bone_name, "set_bone_name", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bone_idx"),
         JS_NewCFunction(ctx, bone_attachment3d_class_get_bone_idx, "get_bone_idx", 0),
-        JS_NewCFunction(ctx, bone_attachment3d_class_set_bone_idx, "set_bone_idx", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, bone_attachment3d_class_set_bone_idx, "set_bone_idx", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "override_pose"),
         JS_NewCFunction(ctx, bone_attachment3d_class_get_override_pose, "get_override_pose", 0),
-        JS_NewCFunction(ctx, bone_attachment3d_class_set_override_pose, "set_override_pose", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, bone_attachment3d_class_set_override_pose, "set_override_pose", 1),
+        JS_PROP_GETSET
     );
 }
 

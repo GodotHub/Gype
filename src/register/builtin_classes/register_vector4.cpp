@@ -1,11 +1,10 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/variant/vector4.hpp>
-
 
 using namespace godot;
 
@@ -130,6 +129,50 @@ static JSValue vector4_class_max(JSContext *ctx, JSValueConst this_val, int argc
 static JSValue vector4_class_maxf(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Vector4::maxf, ctx, this_val, argc, argv);
 };
+
+
+
+static JSValue vector4_class_get_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Vector4 &val = *reinterpret_cast<Vector4 *>(JS_GetOpaque(this_val, Vector4::__class_id));
+	return Variant(val.x);
+}
+static JSValue vector4_class_set_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Vector4 &val = *reinterpret_cast<Vector4 *>(JS_GetOpaque(this_val, Vector4::__class_id));
+	val.x = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue vector4_class_get_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Vector4 &val = *reinterpret_cast<Vector4 *>(JS_GetOpaque(this_val, Vector4::__class_id));
+	return Variant(val.y);
+}
+static JSValue vector4_class_set_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Vector4 &val = *reinterpret_cast<Vector4 *>(JS_GetOpaque(this_val, Vector4::__class_id));
+	val.y = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue vector4_class_get_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Vector4 &val = *reinterpret_cast<Vector4 *>(JS_GetOpaque(this_val, Vector4::__class_id));
+	return Variant(val.z);
+}
+static JSValue vector4_class_set_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Vector4 &val = *reinterpret_cast<Vector4 *>(JS_GetOpaque(this_val, Vector4::__class_id));
+	val.z = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue vector4_class_get_w(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Vector4 &val = *reinterpret_cast<Vector4 *>(JS_GetOpaque(this_val, Vector4::__class_id));
+	return Variant(val.w);
+}
+static JSValue vector4_class_set_w(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Vector4 &val = *reinterpret_cast<Vector4 *>(JS_GetOpaque(this_val, Vector4::__class_id));
+	val.w = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+
 static const JSCFunctionListEntry vector4_class_proto_funcs[] = {
 	JS_CFUNC_DEF("min_axis_index", 0, &vector4_class_min_axis_index),
 	JS_CFUNC_DEF("max_axis_index", 0, &vector4_class_max_axis_index),
@@ -165,10 +208,45 @@ static const JSCFunctionListEntry vector4_class_proto_funcs[] = {
 	JS_CFUNC_DEF("maxf", 1, &vector4_class_maxf),
 };
 
+
 void define_vector4_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "x"),
+        JS_NewCFunction(ctx, vector4_class_get_x, "get_x", 0),
+        JS_NewCFunction(ctx, vector4_class_set_x, "set_x", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "y"),
+        JS_NewCFunction(ctx, vector4_class_get_y, "get_y", 0),
+        JS_NewCFunction(ctx, vector4_class_set_y, "set_y", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "z"),
+        JS_NewCFunction(ctx, vector4_class_get_z, "get_z", 0),
+        JS_NewCFunction(ctx, vector4_class_set_z, "set_z", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "w"),
+        JS_NewCFunction(ctx, vector4_class_get_w, "get_w", 0),
+        JS_NewCFunction(ctx, vector4_class_set_w, "set_w", 1),
+		JS_PROP_GETSET
+    );
 }
 
+
 static int js_vector4_class_init(JSContext *ctx) {
+	
 	JS_NewClassID(&Vector4::__class_id);
 	classes["Vector4"] = Vector4::__class_id;
 	class_id_list.insert(Vector4::__class_id);
@@ -176,7 +254,6 @@ static int js_vector4_class_init(JSContext *ctx) {
 
 	JSValue proto = JS_NewObject(ctx);
 	JS_SetClassProto(ctx, Vector4::__class_id, proto);
-
 	define_vector4_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, vector4_class_proto_funcs, _countof(vector4_class_proto_funcs));
 

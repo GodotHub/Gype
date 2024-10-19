@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/placeholder_material.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/placeholder_material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void placeholder_material_class_finalizer(JSRuntime *rt, JSValue val) {
-	PlaceholderMaterial *placeholder_material = static_cast<PlaceholderMaterial *>(JS_GetOpaque(val, PlaceholderMaterial::__class_id));
-	if (placeholder_material)
-		memdelete(placeholder_material);
+	
+	// nothing
 }
 
 static JSClassDef placeholder_material_class_def = {

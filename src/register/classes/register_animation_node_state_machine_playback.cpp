@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_node_state_machine_playback.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/animation_node_state_machine_playback.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void animation_node_state_machine_playback_class_finalizer(JSRuntime *rt, JSValue val) {
-	AnimationNodeStateMachinePlayback *animation_node_state_machine_playback = static_cast<AnimationNodeStateMachinePlayback *>(JS_GetOpaque(val, AnimationNodeStateMachinePlayback::__class_id));
-	if (animation_node_state_machine_playback)
-		memdelete(animation_node_state_machine_playback);
+	
+	// nothing
 }
 
 static JSClassDef animation_node_state_machine_playback_class_def = {

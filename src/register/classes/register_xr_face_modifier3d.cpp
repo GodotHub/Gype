@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xr_face_modifier3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/xr_face_modifier3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void xr_face_modifier3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	XRFaceModifier3D *xr_face_modifier3d = static_cast<XRFaceModifier3D *>(JS_GetOpaque(val, XRFaceModifier3D::__class_id));
-	if (xr_face_modifier3d)
-		memdelete(xr_face_modifier3d);
+	
+	// nothing
 }
 
 static JSClassDef xr_face_modifier3d_class_def = {
@@ -63,16 +62,16 @@ void define_xr_face_modifier3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "face_tracker"),
         JS_NewCFunction(ctx, xr_face_modifier3d_class_get_face_tracker, "get_face_tracker", 0),
-        JS_NewCFunction(ctx, xr_face_modifier3d_class_set_face_tracker, "set_face_tracker", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_face_modifier3d_class_set_face_tracker, "set_face_tracker", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "target"),
         JS_NewCFunction(ctx, xr_face_modifier3d_class_get_target, "get_target", 0),
-        JS_NewCFunction(ctx, xr_face_modifier3d_class_set_target, "set_target", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_face_modifier3d_class_set_target, "set_target", 1),
+        JS_PROP_GETSET
     );
 }
 

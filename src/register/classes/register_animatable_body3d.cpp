@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animatable_body3d.hpp>
 #include <godot_cpp/classes/static_body3d.hpp>
+#include <godot_cpp/classes/animatable_body3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void animatable_body3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	AnimatableBody3D *animatable_body3d = static_cast<AnimatableBody3D *>(JS_GetOpaque(val, AnimatableBody3D::__class_id));
-	if (animatable_body3d)
-		memdelete(animatable_body3d);
+	
+	// nothing
 }
 
 static JSClassDef animatable_body3d_class_def = {
@@ -54,8 +53,8 @@ void define_animatable_body3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "sync_to_physics"),
         JS_NewCFunction(ctx, animatable_body3d_class_is_sync_to_physics_enabled, "is_sync_to_physics_enabled", 0),
-        JS_NewCFunction(ctx, animatable_body3d_class_set_sync_to_physics, "set_sync_to_physics", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animatable_body3d_class_set_sync_to_physics, "set_sync_to_physics", 1),
+        JS_PROP_GETSET
     );
 }
 

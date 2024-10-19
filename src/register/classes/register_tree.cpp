@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/tree_item.hpp>
 #include <godot_cpp/classes/tree.hpp>
+#include <godot_cpp/classes/tree_item.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void tree_class_finalizer(JSRuntime *rt, JSValue val) {
-	Tree *tree = static_cast<Tree *>(JS_GetOpaque(val, Tree::__class_id));
-	if (tree)
-		memdelete(tree);
+	
+	// nothing
 }
 
 static JSClassDef tree_class_def = {
@@ -315,96 +314,96 @@ void define_tree_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "columns"),
         JS_NewCFunction(ctx, tree_class_get_columns, "get_columns", 0),
-        JS_NewCFunction(ctx, tree_class_set_columns, "set_columns", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tree_class_set_columns, "set_columns", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "column_titles_visible"),
         JS_NewCFunction(ctx, tree_class_are_column_titles_visible, "are_column_titles_visible", 0),
-        JS_NewCFunction(ctx, tree_class_set_column_titles_visible, "set_column_titles_visible", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tree_class_set_column_titles_visible, "set_column_titles_visible", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "allow_reselect"),
         JS_NewCFunction(ctx, tree_class_get_allow_reselect, "get_allow_reselect", 0),
-        JS_NewCFunction(ctx, tree_class_set_allow_reselect, "set_allow_reselect", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tree_class_set_allow_reselect, "set_allow_reselect", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "allow_rmb_select"),
         JS_NewCFunction(ctx, tree_class_get_allow_rmb_select, "get_allow_rmb_select", 0),
-        JS_NewCFunction(ctx, tree_class_set_allow_rmb_select, "set_allow_rmb_select", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tree_class_set_allow_rmb_select, "set_allow_rmb_select", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "allow_search"),
         JS_NewCFunction(ctx, tree_class_get_allow_search, "get_allow_search", 0),
-        JS_NewCFunction(ctx, tree_class_set_allow_search, "set_allow_search", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tree_class_set_allow_search, "set_allow_search", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "hide_folding"),
         JS_NewCFunction(ctx, tree_class_is_folding_hidden, "is_folding_hidden", 0),
-        JS_NewCFunction(ctx, tree_class_set_hide_folding, "set_hide_folding", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tree_class_set_hide_folding, "set_hide_folding", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "enable_recursive_folding"),
         JS_NewCFunction(ctx, tree_class_is_recursive_folding_enabled, "is_recursive_folding_enabled", 0),
-        JS_NewCFunction(ctx, tree_class_set_enable_recursive_folding, "set_enable_recursive_folding", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tree_class_set_enable_recursive_folding, "set_enable_recursive_folding", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "hide_root"),
         JS_NewCFunction(ctx, tree_class_is_root_hidden, "is_root_hidden", 0),
-        JS_NewCFunction(ctx, tree_class_set_hide_root, "set_hide_root", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tree_class_set_hide_root, "set_hide_root", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "drop_mode_flags"),
         JS_NewCFunction(ctx, tree_class_get_drop_mode_flags, "get_drop_mode_flags", 0),
-        JS_NewCFunction(ctx, tree_class_set_drop_mode_flags, "set_drop_mode_flags", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tree_class_set_drop_mode_flags, "set_drop_mode_flags", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "select_mode"),
         JS_NewCFunction(ctx, tree_class_get_select_mode, "get_select_mode", 0),
-        JS_NewCFunction(ctx, tree_class_set_select_mode, "set_select_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tree_class_set_select_mode, "set_select_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scroll_horizontal_enabled"),
         JS_NewCFunction(ctx, tree_class_is_h_scroll_enabled, "is_h_scroll_enabled", 0),
-        JS_NewCFunction(ctx, tree_class_set_h_scroll_enabled, "set_h_scroll_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tree_class_set_h_scroll_enabled, "set_h_scroll_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scroll_vertical_enabled"),
         JS_NewCFunction(ctx, tree_class_is_v_scroll_enabled, "is_v_scroll_enabled", 0),
-        JS_NewCFunction(ctx, tree_class_set_v_scroll_enabled, "set_v_scroll_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tree_class_set_v_scroll_enabled, "set_v_scroll_enabled", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -5,21 +5,20 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/collision_object2d.hpp>
-#include <godot_cpp/classes/input_event.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/viewport.hpp>
-#include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/collision_object2d.hpp>
 #include <godot_cpp/classes/shape2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void collision_object2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	CollisionObject2D *collision_object2d = static_cast<CollisionObject2D *>(JS_GetOpaque(val, CollisionObject2D::__class_id));
-	if (collision_object2d)
-		memdelete(collision_object2d);
+	
+	// nothing
 }
 
 static JSClassDef collision_object2d_class_def = {
@@ -200,40 +199,40 @@ void define_collision_object2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "disable_mode"),
         JS_NewCFunction(ctx, collision_object2d_class_get_disable_mode, "get_disable_mode", 0),
-        JS_NewCFunction(ctx, collision_object2d_class_set_disable_mode, "set_disable_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_object2d_class_set_disable_mode, "set_disable_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_layer"),
         JS_NewCFunction(ctx, collision_object2d_class_get_collision_layer, "get_collision_layer", 0),
-        JS_NewCFunction(ctx, collision_object2d_class_set_collision_layer, "set_collision_layer", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_object2d_class_set_collision_layer, "set_collision_layer", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_mask"),
         JS_NewCFunction(ctx, collision_object2d_class_get_collision_mask, "get_collision_mask", 0),
-        JS_NewCFunction(ctx, collision_object2d_class_set_collision_mask, "set_collision_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_object2d_class_set_collision_mask, "set_collision_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_priority"),
         JS_NewCFunction(ctx, collision_object2d_class_get_collision_priority, "get_collision_priority", 0),
-        JS_NewCFunction(ctx, collision_object2d_class_set_collision_priority, "set_collision_priority", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_object2d_class_set_collision_priority, "set_collision_priority", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "input_pickable"),
         JS_NewCFunction(ctx, collision_object2d_class_is_pickable, "is_pickable", 0),
-        JS_NewCFunction(ctx, collision_object2d_class_set_pickable, "set_pickable", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_object2d_class_set_pickable, "set_pickable", 1),
+        JS_PROP_GETSET
     );
 }
 

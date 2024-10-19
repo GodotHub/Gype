@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/main_loop.hpp>
 #include <godot_cpp/classes/script_language.hpp>
-#include <godot_cpp/classes/engine.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/engine.hpp>
+#include <godot_cpp/classes/main_loop.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
@@ -18,9 +18,8 @@ static JSValue engine_instance;
 static void js_engine_singleton();
 
 static void engine_class_finalizer(JSRuntime *rt, JSValue val) {
-	Engine *engine = static_cast<Engine *>(JS_GetOpaque(val, Engine::__class_id));
-	if (engine)
-		Engine::free(nullptr, engine);
+	
+	// nothing
 }
 
 static JSClassDef engine_class_def = {

@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/physics_shape_query_parameters2d.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void physics_shape_query_parameters2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	PhysicsShapeQueryParameters2D *physics_shape_query_parameters2d = static_cast<PhysicsShapeQueryParameters2D *>(JS_GetOpaque(val, PhysicsShapeQueryParameters2D::__class_id));
-	if (physics_shape_query_parameters2d)
-		memdelete(physics_shape_query_parameters2d);
+	
+	// nothing
 }
 
 static JSClassDef physics_shape_query_parameters2d_class_def = {
@@ -127,72 +126,72 @@ void define_physics_shape_query_parameters2d_property(JSContext *ctx, JSValue ob
         obj,
         JS_NewAtom(ctx, "collision_mask"),
         JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_get_collision_mask, "get_collision_mask", 0),
-        JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_set_collision_mask, "set_collision_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_set_collision_mask, "set_collision_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "exclude"),
         JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_get_exclude, "get_exclude", 0),
-        JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_set_exclude, "set_exclude", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_set_exclude, "set_exclude", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "margin"),
         JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_get_margin, "get_margin", 0),
-        JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_set_margin, "set_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_set_margin, "set_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "motion"),
         JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_get_motion, "get_motion", 0),
-        JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_set_motion, "set_motion", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_set_motion, "set_motion", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shape"),
         JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_get_shape, "get_shape", 0),
-        JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_set_shape, "set_shape", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_set_shape, "set_shape", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shape_rid"),
         JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_get_shape_rid, "get_shape_rid", 0),
-        JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_set_shape_rid, "set_shape_rid", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_set_shape_rid, "set_shape_rid", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "transform"),
         JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_get_transform, "get_transform", 0),
-        JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_set_transform, "set_transform", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_set_transform, "set_transform", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collide_with_bodies"),
         JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_is_collide_with_bodies_enabled, "is_collide_with_bodies_enabled", 0),
-        JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_set_collide_with_bodies, "set_collide_with_bodies", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_set_collide_with_bodies, "set_collide_with_bodies", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collide_with_areas"),
         JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_is_collide_with_areas_enabled, "is_collide_with_areas_enabled", 0),
-        JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_set_collide_with_areas, "set_collide_with_areas", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_shape_query_parameters2d_class_set_collide_with_areas, "set_collide_with_areas", 1),
+        JS_PROP_GETSET
     );
 }
 

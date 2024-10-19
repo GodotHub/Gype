@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void gpu_particles_attractor_vector_field3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	GPUParticlesAttractorVectorField3D *gpu_particles_attractor_vector_field3d = static_cast<GPUParticlesAttractorVectorField3D *>(JS_GetOpaque(val, GPUParticlesAttractorVectorField3D::__class_id));
-	if (gpu_particles_attractor_vector_field3d)
-		memdelete(gpu_particles_attractor_vector_field3d);
+	
+	// nothing
 }
 
 static JSClassDef gpu_particles_attractor_vector_field3d_class_def = {
@@ -64,16 +63,16 @@ void define_gpu_particles_attractor_vector_field3d_property(JSContext *ctx, JSVa
         obj,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, gpu_particles_attractor_vector_field3d_class_get_size, "get_size", 0),
-        JS_NewCFunction(ctx, gpu_particles_attractor_vector_field3d_class_set_size, "set_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gpu_particles_attractor_vector_field3d_class_set_size, "set_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture"),
         JS_NewCFunction(ctx, gpu_particles_attractor_vector_field3d_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, gpu_particles_attractor_vector_field3d_class_set_texture, "set_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gpu_particles_attractor_vector_field3d_class_set_texture, "set_texture", 1),
+        JS_PROP_GETSET
     );
 }
 

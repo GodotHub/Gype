@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void split_container_class_finalizer(JSRuntime *rt, JSValue val) {
-	SplitContainer *split_container = static_cast<SplitContainer *>(JS_GetOpaque(val, SplitContainer::__class_id));
-	if (split_container)
-		memdelete(split_container);
+	
+	// nothing
 }
 
 static JSClassDef split_container_class_def = {
@@ -86,32 +85,32 @@ void define_split_container_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "split_offset"),
         JS_NewCFunction(ctx, split_container_class_get_split_offset, "get_split_offset", 0),
-        JS_NewCFunction(ctx, split_container_class_set_split_offset, "set_split_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, split_container_class_set_split_offset, "set_split_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collapsed"),
         JS_NewCFunction(ctx, split_container_class_is_collapsed, "is_collapsed", 0),
-        JS_NewCFunction(ctx, split_container_class_set_collapsed, "set_collapsed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, split_container_class_set_collapsed, "set_collapsed", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "dragger_visibility"),
         JS_NewCFunction(ctx, split_container_class_get_dragger_visibility, "get_dragger_visibility", 0),
-        JS_NewCFunction(ctx, split_container_class_set_dragger_visibility, "set_dragger_visibility", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, split_container_class_set_dragger_visibility, "set_dragger_visibility", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "vertical"),
         JS_NewCFunction(ctx, split_container_class_is_vertical, "is_vertical", 0),
-        JS_NewCFunction(ctx, split_container_class_set_vertical, "set_vertical", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, split_container_class_set_vertical, "set_vertical", 1),
+        JS_PROP_GETSET
     );
 }
 

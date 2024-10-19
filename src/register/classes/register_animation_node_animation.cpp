@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void animation_node_animation_class_finalizer(JSRuntime *rt, JSValue val) {
-	AnimationNodeAnimation *animation_node_animation = static_cast<AnimationNodeAnimation *>(JS_GetOpaque(val, AnimationNodeAnimation::__class_id));
-	if (animation_node_animation)
-		memdelete(animation_node_animation);
+	
+	// nothing
 }
 
 static JSClassDef animation_node_animation_class_def = {
@@ -108,56 +107,56 @@ void define_animation_node_animation_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "animation"),
         JS_NewCFunction(ctx, animation_node_animation_class_get_animation, "get_animation", 0),
-        JS_NewCFunction(ctx, animation_node_animation_class_set_animation, "set_animation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_animation_class_set_animation, "set_animation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "play_mode"),
         JS_NewCFunction(ctx, animation_node_animation_class_get_play_mode, "get_play_mode", 0),
-        JS_NewCFunction(ctx, animation_node_animation_class_set_play_mode, "set_play_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_animation_class_set_play_mode, "set_play_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_custom_timeline"),
         JS_NewCFunction(ctx, animation_node_animation_class_is_using_custom_timeline, "is_using_custom_timeline", 0),
-        JS_NewCFunction(ctx, animation_node_animation_class_set_use_custom_timeline, "set_use_custom_timeline", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_animation_class_set_use_custom_timeline, "set_use_custom_timeline", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "timeline_length"),
         JS_NewCFunction(ctx, animation_node_animation_class_get_timeline_length, "get_timeline_length", 0),
-        JS_NewCFunction(ctx, animation_node_animation_class_set_timeline_length, "set_timeline_length", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_animation_class_set_timeline_length, "set_timeline_length", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "stretch_time_scale"),
         JS_NewCFunction(ctx, animation_node_animation_class_is_stretching_time_scale, "is_stretching_time_scale", 0),
-        JS_NewCFunction(ctx, animation_node_animation_class_set_stretch_time_scale, "set_stretch_time_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_animation_class_set_stretch_time_scale, "set_stretch_time_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "start_offset"),
         JS_NewCFunction(ctx, animation_node_animation_class_get_start_offset, "get_start_offset", 0),
-        JS_NewCFunction(ctx, animation_node_animation_class_set_start_offset, "set_start_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_animation_class_set_start_offset, "set_start_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "loop_mode"),
         JS_NewCFunction(ctx, animation_node_animation_class_get_loop_mode, "get_loop_mode", 0),
-        JS_NewCFunction(ctx, animation_node_animation_class_set_loop_mode, "set_loop_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_animation_class_set_loop_mode, "set_loop_mode", 1),
+        JS_PROP_GETSET
     );
 }
 

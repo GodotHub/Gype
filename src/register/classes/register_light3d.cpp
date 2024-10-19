@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/visual_instance3d.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/light3d.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void light3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	Light3D *light3d = static_cast<Light3D *>(JS_GetOpaque(val, Light3D::__class_id));
-	if (light3d)
-		memdelete(light3d);
+	
+	// nothing
 }
 
 static JSClassDef light3d_class_def = {
@@ -176,208 +175,208 @@ void define_light3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "light_intensity_lumens"),
         JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "light_intensity_lux"),
         JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "light_temperature"),
         JS_NewCFunction(ctx, light3d_class_get_temperature, "get_temperature", 0),
-        JS_NewCFunction(ctx, light3d_class_set_temperature, "set_temperature", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_temperature, "set_temperature", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "light_color"),
         JS_NewCFunction(ctx, light3d_class_get_color, "get_color", 0),
-        JS_NewCFunction(ctx, light3d_class_set_color, "set_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_color, "set_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "light_energy"),
         JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "light_indirect_energy"),
         JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "light_volumetric_fog_energy"),
         JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "light_projector"),
         JS_NewCFunction(ctx, light3d_class_get_projector, "get_projector", 0),
-        JS_NewCFunction(ctx, light3d_class_set_projector, "set_projector", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_projector, "set_projector", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "light_size"),
         JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "light_angular_distance"),
         JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "light_negative"),
         JS_NewCFunction(ctx, light3d_class_is_negative, "is_negative", 0),
-        JS_NewCFunction(ctx, light3d_class_set_negative, "set_negative", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_negative, "set_negative", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "light_specular"),
         JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "light_bake_mode"),
         JS_NewCFunction(ctx, light3d_class_get_bake_mode, "get_bake_mode", 0),
-        JS_NewCFunction(ctx, light3d_class_set_bake_mode, "set_bake_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_bake_mode, "set_bake_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "light_cull_mask"),
         JS_NewCFunction(ctx, light3d_class_get_cull_mask, "get_cull_mask", 0),
-        JS_NewCFunction(ctx, light3d_class_set_cull_mask, "set_cull_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_cull_mask, "set_cull_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shadow_enabled"),
         JS_NewCFunction(ctx, light3d_class_has_shadow, "has_shadow", 0),
-        JS_NewCFunction(ctx, light3d_class_set_shadow, "set_shadow", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_shadow, "set_shadow", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shadow_bias"),
         JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shadow_normal_bias"),
         JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shadow_reverse_cull_face"),
         JS_NewCFunction(ctx, light3d_class_get_shadow_reverse_cull_face, "get_shadow_reverse_cull_face", 0),
-        JS_NewCFunction(ctx, light3d_class_set_shadow_reverse_cull_face, "set_shadow_reverse_cull_face", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_shadow_reverse_cull_face, "set_shadow_reverse_cull_face", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shadow_transmittance_bias"),
         JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shadow_opacity"),
         JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shadow_blur"),
         JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "distance_fade_enabled"),
         JS_NewCFunction(ctx, light3d_class_is_distance_fade_enabled, "is_distance_fade_enabled", 0),
-        JS_NewCFunction(ctx, light3d_class_set_enable_distance_fade, "set_enable_distance_fade", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_enable_distance_fade, "set_enable_distance_fade", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "distance_fade_begin"),
         JS_NewCFunction(ctx, light3d_class_get_distance_fade_begin, "get_distance_fade_begin", 0),
-        JS_NewCFunction(ctx, light3d_class_set_distance_fade_begin, "set_distance_fade_begin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_distance_fade_begin, "set_distance_fade_begin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "distance_fade_shadow"),
         JS_NewCFunction(ctx, light3d_class_get_distance_fade_shadow, "get_distance_fade_shadow", 0),
-        JS_NewCFunction(ctx, light3d_class_set_distance_fade_shadow, "set_distance_fade_shadow", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_distance_fade_shadow, "set_distance_fade_shadow", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "distance_fade_length"),
         JS_NewCFunction(ctx, light3d_class_get_distance_fade_length, "get_distance_fade_length", 0),
-        JS_NewCFunction(ctx, light3d_class_set_distance_fade_length, "set_distance_fade_length", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_distance_fade_length, "set_distance_fade_length", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "editor_only"),
         JS_NewCFunction(ctx, light3d_class_is_editor_only, "is_editor_only", 0),
-        JS_NewCFunction(ctx, light3d_class_set_editor_only, "set_editor_only", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light3d_class_set_editor_only, "set_editor_only", 1),
+        JS_PROP_GETSET
     );
 }
 

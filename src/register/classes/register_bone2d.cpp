@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void bone2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	Bone2D *bone2d = static_cast<Bone2D *>(JS_GetOpaque(val, Bone2D::__class_id));
-	if (bone2d)
-		memdelete(bone2d);
+	
+	// nothing
 }
 
 static JSClassDef bone2d_class_def = {
@@ -94,8 +93,8 @@ void define_bone2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "rest"),
         JS_NewCFunction(ctx, bone2d_class_get_rest, "get_rest", 0),
-        JS_NewCFunction(ctx, bone2d_class_set_rest, "set_rest", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, bone2d_class_set_rest, "set_rest", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visible_on_screen_enabler3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisibleOnScreenEnabler3D *visible_on_screen_enabler3d = static_cast<VisibleOnScreenEnabler3D *>(JS_GetOpaque(val, VisibleOnScreenEnabler3D::__class_id));
-	if (visible_on_screen_enabler3d)
-		memdelete(visible_on_screen_enabler3d);
+	
+	// nothing
 }
 
 static JSClassDef visible_on_screen_enabler3d_class_def = {
@@ -63,16 +62,16 @@ void define_visible_on_screen_enabler3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "enable_mode"),
         JS_NewCFunction(ctx, visible_on_screen_enabler3d_class_get_enable_mode, "get_enable_mode", 0),
-        JS_NewCFunction(ctx, visible_on_screen_enabler3d_class_set_enable_mode, "set_enable_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visible_on_screen_enabler3d_class_set_enable_mode, "set_enable_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "enable_node_path"),
         JS_NewCFunction(ctx, visible_on_screen_enabler3d_class_get_enable_node_path, "get_enable_node_path", 0),
-        JS_NewCFunction(ctx, visible_on_screen_enabler3d_class_set_enable_node_path, "set_enable_node_path", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visible_on_screen_enabler3d_class_set_enable_node_path, "set_enable_node_path", 1),
+        JS_PROP_GETSET
     );
 }
 

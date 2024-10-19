@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void instance_placeholder_class_finalizer(JSRuntime *rt, JSValue val) {
-	InstancePlaceholder *instance_placeholder = static_cast<InstancePlaceholder *>(JS_GetOpaque(val, InstancePlaceholder::__class_id));
-	if (instance_placeholder)
-		memdelete(instance_placeholder);
+	
+	// nothing
 }
 
 static JSClassDef instance_placeholder_class_def = {

@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/compressed_texture_layered.hpp>
 #include <godot_cpp/classes/compressed_cubemap_array.hpp>
+#include <godot_cpp/classes/compressed_texture_layered.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void compressed_cubemap_array_class_finalizer(JSRuntime *rt, JSValue val) {
-	CompressedCubemapArray *compressed_cubemap_array = static_cast<CompressedCubemapArray *>(JS_GetOpaque(val, CompressedCubemapArray::__class_id));
-	if (compressed_cubemap_array)
-		memdelete(compressed_cubemap_array);
+	
+	// nothing
 }
 
 static JSClassDef compressed_cubemap_array_class_def = {

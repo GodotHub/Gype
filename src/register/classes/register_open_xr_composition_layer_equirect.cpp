@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void open_xr_composition_layer_equirect_class_finalizer(JSRuntime *rt, JSValue val) {
-	OpenXRCompositionLayerEquirect *open_xr_composition_layer_equirect = static_cast<OpenXRCompositionLayerEquirect *>(JS_GetOpaque(val, OpenXRCompositionLayerEquirect::__class_id));
-	if (open_xr_composition_layer_equirect)
-		memdelete(open_xr_composition_layer_equirect);
+	
+	// nothing
 }
 
 static JSClassDef open_xr_composition_layer_equirect_class_def = {
@@ -90,40 +89,40 @@ void define_open_xr_composition_layer_equirect_property(JSContext *ctx, JSValue 
         obj,
         JS_NewAtom(ctx, "radius"),
         JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_get_radius, "get_radius", 0),
-        JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_radius, "set_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_radius, "set_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "central_horizontal_angle"),
         JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_get_central_horizontal_angle, "get_central_horizontal_angle", 0),
-        JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_central_horizontal_angle, "set_central_horizontal_angle", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_central_horizontal_angle, "set_central_horizontal_angle", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "upper_vertical_angle"),
         JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_get_upper_vertical_angle, "get_upper_vertical_angle", 0),
-        JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_upper_vertical_angle, "set_upper_vertical_angle", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_upper_vertical_angle, "set_upper_vertical_angle", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "lower_vertical_angle"),
         JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_get_lower_vertical_angle, "get_lower_vertical_angle", 0),
-        JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_lower_vertical_angle, "set_lower_vertical_angle", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_lower_vertical_angle, "set_lower_vertical_angle", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fallback_segments"),
         JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_get_fallback_segments, "get_fallback_segments", 0),
-        JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_fallback_segments, "set_fallback_segments", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_fallback_segments, "set_fallback_segments", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void audio_stream_playback_resampled_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioStreamPlaybackResampled *audio_stream_playback_resampled = static_cast<AudioStreamPlaybackResampled *>(JS_GetOpaque(val, AudioStreamPlaybackResampled::__class_id));
-	if (audio_stream_playback_resampled)
-		memdelete(audio_stream_playback_resampled);
+	
+	// nothing
 }
 
 static JSClassDef audio_stream_playback_resampled_class_def = {

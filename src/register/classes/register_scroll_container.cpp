@@ -5,20 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/scroll_container.hpp>
 #include <godot_cpp/classes/v_scroll_bar.hpp>
+#include <godot_cpp/classes/scroll_container.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/classes/h_scroll_bar.hpp>
+#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void scroll_container_class_finalizer(JSRuntime *rt, JSValue val) {
-	ScrollContainer *scroll_container = static_cast<ScrollContainer *>(JS_GetOpaque(val, ScrollContainer::__class_id));
-	if (scroll_container)
-		memdelete(scroll_container);
+	
+	// nothing
 }
 
 static JSClassDef scroll_container_class_def = {
@@ -133,64 +132,64 @@ void define_scroll_container_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "follow_focus"),
         JS_NewCFunction(ctx, scroll_container_class_is_following_focus, "is_following_focus", 0),
-        JS_NewCFunction(ctx, scroll_container_class_set_follow_focus, "set_follow_focus", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scroll_container_class_set_follow_focus, "set_follow_focus", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scroll_horizontal"),
         JS_NewCFunction(ctx, scroll_container_class_get_h_scroll, "get_h_scroll", 0),
-        JS_NewCFunction(ctx, scroll_container_class_set_h_scroll, "set_h_scroll", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scroll_container_class_set_h_scroll, "set_h_scroll", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scroll_vertical"),
         JS_NewCFunction(ctx, scroll_container_class_get_v_scroll, "get_v_scroll", 0),
-        JS_NewCFunction(ctx, scroll_container_class_set_v_scroll, "set_v_scroll", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scroll_container_class_set_v_scroll, "set_v_scroll", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scroll_horizontal_custom_step"),
         JS_NewCFunction(ctx, scroll_container_class_get_horizontal_custom_step, "get_horizontal_custom_step", 0),
-        JS_NewCFunction(ctx, scroll_container_class_set_horizontal_custom_step, "set_horizontal_custom_step", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scroll_container_class_set_horizontal_custom_step, "set_horizontal_custom_step", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scroll_vertical_custom_step"),
         JS_NewCFunction(ctx, scroll_container_class_get_vertical_custom_step, "get_vertical_custom_step", 0),
-        JS_NewCFunction(ctx, scroll_container_class_set_vertical_custom_step, "set_vertical_custom_step", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scroll_container_class_set_vertical_custom_step, "set_vertical_custom_step", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "horizontal_scroll_mode"),
         JS_NewCFunction(ctx, scroll_container_class_get_horizontal_scroll_mode, "get_horizontal_scroll_mode", 0),
-        JS_NewCFunction(ctx, scroll_container_class_set_horizontal_scroll_mode, "set_horizontal_scroll_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scroll_container_class_set_horizontal_scroll_mode, "set_horizontal_scroll_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "vertical_scroll_mode"),
         JS_NewCFunction(ctx, scroll_container_class_get_vertical_scroll_mode, "get_vertical_scroll_mode", 0),
-        JS_NewCFunction(ctx, scroll_container_class_set_vertical_scroll_mode, "set_vertical_scroll_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scroll_container_class_set_vertical_scroll_mode, "set_vertical_scroll_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scroll_deadzone"),
         JS_NewCFunction(ctx, scroll_container_class_get_deadzone, "get_deadzone", 0),
-        JS_NewCFunction(ctx, scroll_container_class_set_deadzone, "set_deadzone", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scroll_container_class_set_deadzone, "set_deadzone", 1),
+        JS_PROP_GETSET
     );
 }
 

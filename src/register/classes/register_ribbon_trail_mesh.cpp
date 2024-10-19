@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/classes/ribbon_trail_mesh.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
-#include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void ribbon_trail_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	RibbonTrailMesh *ribbon_trail_mesh = static_cast<RibbonTrailMesh *>(JS_GetOpaque(val, RibbonTrailMesh::__class_id));
-	if (ribbon_trail_mesh)
-		memdelete(ribbon_trail_mesh);
+	
+	// nothing
 }
 
 static JSClassDef ribbon_trail_mesh_class_def = {
@@ -100,48 +99,48 @@ void define_ribbon_trail_mesh_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "shape"),
         JS_NewCFunction(ctx, ribbon_trail_mesh_class_get_shape, "get_shape", 0),
-        JS_NewCFunction(ctx, ribbon_trail_mesh_class_set_shape, "set_shape", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, ribbon_trail_mesh_class_set_shape, "set_shape", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, ribbon_trail_mesh_class_get_size, "get_size", 0),
-        JS_NewCFunction(ctx, ribbon_trail_mesh_class_set_size, "set_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, ribbon_trail_mesh_class_set_size, "set_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sections"),
         JS_NewCFunction(ctx, ribbon_trail_mesh_class_get_sections, "get_sections", 0),
-        JS_NewCFunction(ctx, ribbon_trail_mesh_class_set_sections, "set_sections", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, ribbon_trail_mesh_class_set_sections, "set_sections", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "section_length"),
         JS_NewCFunction(ctx, ribbon_trail_mesh_class_get_section_length, "get_section_length", 0),
-        JS_NewCFunction(ctx, ribbon_trail_mesh_class_set_section_length, "set_section_length", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, ribbon_trail_mesh_class_set_section_length, "set_section_length", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "section_segments"),
         JS_NewCFunction(ctx, ribbon_trail_mesh_class_get_section_segments, "get_section_segments", 0),
-        JS_NewCFunction(ctx, ribbon_trail_mesh_class_set_section_segments, "set_section_segments", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, ribbon_trail_mesh_class_set_section_segments, "set_section_segments", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "curve"),
         JS_NewCFunction(ctx, ribbon_trail_mesh_class_get_curve, "get_curve", 0),
-        JS_NewCFunction(ctx, ribbon_trail_mesh_class_set_curve, "set_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, ribbon_trail_mesh_class_set_curve, "set_curve", 1),
+        JS_PROP_GETSET
     );
 }
 

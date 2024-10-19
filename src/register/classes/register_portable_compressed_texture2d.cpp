@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/portable_compressed_texture2d.hpp>
 #include <godot_cpp/classes/image.hpp>
+#include <godot_cpp/classes/portable_compressed_texture2d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void portable_compressed_texture2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	PortableCompressedTexture2D *portable_compressed_texture2d = static_cast<PortableCompressedTexture2D *>(JS_GetOpaque(val, PortableCompressedTexture2D::__class_id));
-	if (portable_compressed_texture2d)
-		memdelete(portable_compressed_texture2d);
+	
+	// nothing
 }
 
 static JSClassDef portable_compressed_texture2d_class_def = {
@@ -88,16 +87,16 @@ void define_portable_compressed_texture2d_property(JSContext *ctx, JSValue obj) 
         obj,
         JS_NewAtom(ctx, "size_override"),
         JS_NewCFunction(ctx, portable_compressed_texture2d_class_get_size_override, "get_size_override", 0),
-        JS_NewCFunction(ctx, portable_compressed_texture2d_class_set_size_override, "set_size_override", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, portable_compressed_texture2d_class_set_size_override, "set_size_override", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "keep_compressed_buffer"),
         JS_NewCFunction(ctx, portable_compressed_texture2d_class_is_keeping_compressed_buffer, "is_keeping_compressed_buffer", 0),
-        JS_NewCFunction(ctx, portable_compressed_texture2d_class_set_keep_compressed_buffer, "set_keep_compressed_buffer", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, portable_compressed_texture2d_class_set_keep_compressed_buffer, "set_keep_compressed_buffer", 1),
+        JS_PROP_GETSET
     );
 }
 

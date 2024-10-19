@@ -5,23 +5,22 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/callback_tweener.hpp>
 #include <godot_cpp/classes/method_tweener.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/tween.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/interval_tweener.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/property_tweener.hpp>
+#include <godot_cpp/classes/tween.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/callback_tweener.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void tween_class_finalizer(JSRuntime *rt, JSValue val) {
-	Tween *tween = static_cast<Tween *>(JS_GetOpaque(val, Tween::__class_id));
-	if (tween)
-		memdelete(tween);
+	
+	// nothing
 }
 
 static JSClassDef tween_class_def = {

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void resource_importer_csv_translation_class_finalizer(JSRuntime *rt, JSValue val) {
-	ResourceImporterCSVTranslation *resource_importer_csv_translation = static_cast<ResourceImporterCSVTranslation *>(JS_GetOpaque(val, ResourceImporterCSVTranslation::__class_id));
-	if (resource_importer_csv_translation)
-		memdelete(resource_importer_csv_translation);
+	
+	// nothing
 }
 
 static JSClassDef resource_importer_csv_translation_class_def = {

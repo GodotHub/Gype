@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void input_event_joypad_motion_class_finalizer(JSRuntime *rt, JSValue val) {
-	InputEventJoypadMotion *input_event_joypad_motion = static_cast<InputEventJoypadMotion *>(JS_GetOpaque(val, InputEventJoypadMotion::__class_id));
-	if (input_event_joypad_motion)
-		memdelete(input_event_joypad_motion);
+	
+	// nothing
 }
 
 static JSClassDef input_event_joypad_motion_class_def = {
@@ -63,16 +62,16 @@ void define_input_event_joypad_motion_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "axis"),
         JS_NewCFunction(ctx, input_event_joypad_motion_class_get_axis, "get_axis", 0),
-        JS_NewCFunction(ctx, input_event_joypad_motion_class_set_axis, "set_axis", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_joypad_motion_class_set_axis, "set_axis", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "axis_value"),
         JS_NewCFunction(ctx, input_event_joypad_motion_class_get_axis_value, "get_axis_value", 0),
-        JS_NewCFunction(ctx, input_event_joypad_motion_class_set_axis_value, "set_axis_value", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_joypad_motion_class_set_axis_value, "set_axis_value", 1),
+        JS_PROP_GETSET
     );
 }
 

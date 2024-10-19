@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void visual_shader_node_particle_mesh_emitter_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeParticleMeshEmitter *visual_shader_node_particle_mesh_emitter = static_cast<VisualShaderNodeParticleMeshEmitter *>(JS_GetOpaque(val, VisualShaderNodeParticleMeshEmitter::__class_id));
-	if (visual_shader_node_particle_mesh_emitter)
-		memdelete(visual_shader_node_particle_mesh_emitter);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_particle_mesh_emitter_class_def = {
@@ -73,24 +72,24 @@ void define_visual_shader_node_particle_mesh_emitter_property(JSContext *ctx, JS
         obj,
         JS_NewAtom(ctx, "mesh"),
         JS_NewCFunction(ctx, visual_shader_node_particle_mesh_emitter_class_get_mesh, "get_mesh", 0),
-        JS_NewCFunction(ctx, visual_shader_node_particle_mesh_emitter_class_set_mesh, "set_mesh", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_particle_mesh_emitter_class_set_mesh, "set_mesh", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_all_surfaces"),
         JS_NewCFunction(ctx, visual_shader_node_particle_mesh_emitter_class_is_use_all_surfaces, "is_use_all_surfaces", 0),
-        JS_NewCFunction(ctx, visual_shader_node_particle_mesh_emitter_class_set_use_all_surfaces, "set_use_all_surfaces", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_particle_mesh_emitter_class_set_use_all_surfaces, "set_use_all_surfaces", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "surface_index"),
         JS_NewCFunction(ctx, visual_shader_node_particle_mesh_emitter_class_get_surface_index, "get_surface_index", 0),
-        JS_NewCFunction(ctx, visual_shader_node_particle_mesh_emitter_class_set_surface_index, "set_surface_index", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_particle_mesh_emitter_class_set_surface_index, "set_surface_index", 1),
+        JS_PROP_GETSET
     );
 }
 

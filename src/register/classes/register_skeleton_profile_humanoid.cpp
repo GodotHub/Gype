@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton_profile_humanoid.hpp>
 #include <godot_cpp/classes/skeleton_profile.hpp>
+#include <godot_cpp/classes/skeleton_profile_humanoid.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void skeleton_profile_humanoid_class_finalizer(JSRuntime *rt, JSValue val) {
-	SkeletonProfileHumanoid *skeleton_profile_humanoid = static_cast<SkeletonProfileHumanoid *>(JS_GetOpaque(val, SkeletonProfileHumanoid::__class_id));
-	if (skeleton_profile_humanoid)
-		memdelete(skeleton_profile_humanoid);
+	
+	// nothing
 }
 
 static JSClassDef skeleton_profile_humanoid_class_def = {

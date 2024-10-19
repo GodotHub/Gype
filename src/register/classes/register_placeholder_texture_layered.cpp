@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/placeholder_texture_layered.hpp>
 #include <godot_cpp/classes/texture_layered.hpp>
+#include <godot_cpp/classes/placeholder_texture_layered.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void placeholder_texture_layered_class_finalizer(JSRuntime *rt, JSValue val) {
-	PlaceholderTextureLayered *placeholder_texture_layered = static_cast<PlaceholderTextureLayered *>(JS_GetOpaque(val, PlaceholderTextureLayered::__class_id));
-	if (placeholder_texture_layered)
-		memdelete(placeholder_texture_layered);
+	
+	// nothing
 }
 
 static JSClassDef placeholder_texture_layered_class_def = {
@@ -59,16 +58,16 @@ void define_placeholder_texture_layered_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, placeholder_texture_layered_class_get_size, "get_size", 0),
-        JS_NewCFunction(ctx, placeholder_texture_layered_class_set_size, "set_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, placeholder_texture_layered_class_set_size, "set_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "layers"),
         JS_UNDEFINED,
-        JS_NewCFunction(ctx, placeholder_texture_layered_class_set_layers, "set_layers", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, placeholder_texture_layered_class_set_layers, "set_layers", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/classes/audio_effect_compressor.hpp>
+#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void audio_effect_compressor_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioEffectCompressor *audio_effect_compressor = static_cast<AudioEffectCompressor *>(JS_GetOpaque(val, AudioEffectCompressor::__class_id));
-	if (audio_effect_compressor)
-		memdelete(audio_effect_compressor);
+	
+	// nothing
 }
 
 static JSClassDef audio_effect_compressor_class_def = {
@@ -108,56 +107,56 @@ void define_audio_effect_compressor_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "threshold"),
         JS_NewCFunction(ctx, audio_effect_compressor_class_get_threshold, "get_threshold", 0),
-        JS_NewCFunction(ctx, audio_effect_compressor_class_set_threshold, "set_threshold", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_compressor_class_set_threshold, "set_threshold", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ratio"),
         JS_NewCFunction(ctx, audio_effect_compressor_class_get_ratio, "get_ratio", 0),
-        JS_NewCFunction(ctx, audio_effect_compressor_class_set_ratio, "set_ratio", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_compressor_class_set_ratio, "set_ratio", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gain"),
         JS_NewCFunction(ctx, audio_effect_compressor_class_get_gain, "get_gain", 0),
-        JS_NewCFunction(ctx, audio_effect_compressor_class_set_gain, "set_gain", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_compressor_class_set_gain, "set_gain", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "attack_us"),
         JS_NewCFunction(ctx, audio_effect_compressor_class_get_attack_us, "get_attack_us", 0),
-        JS_NewCFunction(ctx, audio_effect_compressor_class_set_attack_us, "set_attack_us", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_compressor_class_set_attack_us, "set_attack_us", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "release_ms"),
         JS_NewCFunction(ctx, audio_effect_compressor_class_get_release_ms, "get_release_ms", 0),
-        JS_NewCFunction(ctx, audio_effect_compressor_class_set_release_ms, "set_release_ms", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_compressor_class_set_release_ms, "set_release_ms", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "mix"),
         JS_NewCFunction(ctx, audio_effect_compressor_class_get_mix, "get_mix", 0),
-        JS_NewCFunction(ctx, audio_effect_compressor_class_set_mix, "set_mix", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_compressor_class_set_mix, "set_mix", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sidechain"),
         JS_NewCFunction(ctx, audio_effect_compressor_class_get_sidechain, "get_sidechain", 0),
-        JS_NewCFunction(ctx, audio_effect_compressor_class_set_sidechain, "set_sidechain", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_compressor_class_set_sidechain, "set_sidechain", 1),
+        JS_PROP_GETSET
     );
 }
 

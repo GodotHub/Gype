@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void timer_class_finalizer(JSRuntime *rt, JSValue val) {
-	Timer *timer = static_cast<Timer *>(JS_GetOpaque(val, Timer::__class_id));
-	if (timer)
-		memdelete(timer);
+	
+	// nothing
 }
 
 static JSClassDef timer_class_def = {
@@ -108,40 +107,40 @@ void define_timer_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "process_callback"),
         JS_NewCFunction(ctx, timer_class_get_timer_process_callback, "get_timer_process_callback", 0),
-        JS_NewCFunction(ctx, timer_class_set_timer_process_callback, "set_timer_process_callback", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, timer_class_set_timer_process_callback, "set_timer_process_callback", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "wait_time"),
         JS_NewCFunction(ctx, timer_class_get_wait_time, "get_wait_time", 0),
-        JS_NewCFunction(ctx, timer_class_set_wait_time, "set_wait_time", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, timer_class_set_wait_time, "set_wait_time", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "one_shot"),
         JS_NewCFunction(ctx, timer_class_is_one_shot, "is_one_shot", 0),
-        JS_NewCFunction(ctx, timer_class_set_one_shot, "set_one_shot", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, timer_class_set_one_shot, "set_one_shot", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "autostart"),
         JS_NewCFunction(ctx, timer_class_has_autostart, "has_autostart", 0),
-        JS_NewCFunction(ctx, timer_class_set_autostart, "set_autostart", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, timer_class_set_autostart, "set_autostart", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "paused"),
         JS_NewCFunction(ctx, timer_class_is_paused, "is_paused", 0),
-        JS_NewCFunction(ctx, timer_class_set_paused, "set_paused", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, timer_class_set_paused, "set_paused", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -149,7 +148,7 @@ void define_timer_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "time_left"),
         JS_NewCFunction(ctx, timer_class_get_time_left, "get_time_left", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
 }
 

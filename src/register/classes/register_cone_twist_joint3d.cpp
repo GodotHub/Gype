@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/cone_twist_joint3d.hpp>
 #include <godot_cpp/classes/joint3d.hpp>
+#include <godot_cpp/classes/cone_twist_joint3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void cone_twist_joint3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	ConeTwistJoint3D *cone_twist_joint3d = static_cast<ConeTwistJoint3D *>(JS_GetOpaque(val, ConeTwistJoint3D::__class_id));
-	if (cone_twist_joint3d)
-		memdelete(cone_twist_joint3d);
+	
+	// nothing
 }
 
 static JSClassDef cone_twist_joint3d_class_def = {
@@ -54,40 +53,40 @@ void define_cone_twist_joint3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "swing_span"),
         JS_NewCFunction(ctx, cone_twist_joint3d_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, cone_twist_joint3d_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cone_twist_joint3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "twist_span"),
         JS_NewCFunction(ctx, cone_twist_joint3d_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, cone_twist_joint3d_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cone_twist_joint3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bias"),
         JS_NewCFunction(ctx, cone_twist_joint3d_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, cone_twist_joint3d_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cone_twist_joint3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "softness"),
         JS_NewCFunction(ctx, cone_twist_joint3d_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, cone_twist_joint3d_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cone_twist_joint3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "relaxation"),
         JS_NewCFunction(ctx, cone_twist_joint3d_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, cone_twist_joint3d_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cone_twist_joint3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
 }
 

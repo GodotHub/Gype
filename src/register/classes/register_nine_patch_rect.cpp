@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/nine_patch_rect.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void nine_patch_rect_class_finalizer(JSRuntime *rt, JSValue val) {
-	NinePatchRect *nine_patch_rect = static_cast<NinePatchRect *>(JS_GetOpaque(val, NinePatchRect::__class_id));
-	if (nine_patch_rect)
-		memdelete(nine_patch_rect);
+	
+	// nothing
 }
 
 static JSClassDef nine_patch_rect_class_def = {
@@ -100,72 +99,72 @@ void define_nine_patch_rect_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "texture"),
         JS_NewCFunction(ctx, nine_patch_rect_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, nine_patch_rect_class_set_texture, "set_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, nine_patch_rect_class_set_texture, "set_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "draw_center"),
         JS_NewCFunction(ctx, nine_patch_rect_class_is_draw_center_enabled, "is_draw_center_enabled", 0),
-        JS_NewCFunction(ctx, nine_patch_rect_class_set_draw_center, "set_draw_center", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, nine_patch_rect_class_set_draw_center, "set_draw_center", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "region_rect"),
         JS_NewCFunction(ctx, nine_patch_rect_class_get_region_rect, "get_region_rect", 0),
-        JS_NewCFunction(ctx, nine_patch_rect_class_set_region_rect, "set_region_rect", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, nine_patch_rect_class_set_region_rect, "set_region_rect", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "patch_margin_left"),
         JS_NewCFunction(ctx, nine_patch_rect_class_get_patch_margin, "get_patch_margin", 0),
-        JS_NewCFunction(ctx, nine_patch_rect_class_set_patch_margin, "set_patch_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, nine_patch_rect_class_set_patch_margin, "set_patch_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "patch_margin_top"),
         JS_NewCFunction(ctx, nine_patch_rect_class_get_patch_margin, "get_patch_margin", 0),
-        JS_NewCFunction(ctx, nine_patch_rect_class_set_patch_margin, "set_patch_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, nine_patch_rect_class_set_patch_margin, "set_patch_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "patch_margin_right"),
         JS_NewCFunction(ctx, nine_patch_rect_class_get_patch_margin, "get_patch_margin", 0),
-        JS_NewCFunction(ctx, nine_patch_rect_class_set_patch_margin, "set_patch_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, nine_patch_rect_class_set_patch_margin, "set_patch_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "patch_margin_bottom"),
         JS_NewCFunction(ctx, nine_patch_rect_class_get_patch_margin, "get_patch_margin", 0),
-        JS_NewCFunction(ctx, nine_patch_rect_class_set_patch_margin, "set_patch_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, nine_patch_rect_class_set_patch_margin, "set_patch_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "axis_stretch_horizontal"),
         JS_NewCFunction(ctx, nine_patch_rect_class_get_h_axis_stretch_mode, "get_h_axis_stretch_mode", 0),
-        JS_NewCFunction(ctx, nine_patch_rect_class_set_h_axis_stretch_mode, "set_h_axis_stretch_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, nine_patch_rect_class_set_h_axis_stretch_mode, "set_h_axis_stretch_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "axis_stretch_vertical"),
         JS_NewCFunction(ctx, nine_patch_rect_class_get_v_axis_stretch_mode, "get_v_axis_stretch_mode", 0),
-        JS_NewCFunction(ctx, nine_patch_rect_class_set_v_axis_stretch_mode, "set_v_axis_stretch_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, nine_patch_rect_class_set_v_axis_stretch_mode, "set_v_axis_stretch_mode", 1),
+        JS_PROP_GETSET
     );
 }
 

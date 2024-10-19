@@ -5,21 +5,20 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/tree.hpp>
-#include <godot_cpp/classes/tree_item.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/tree_item.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/tree_item.hpp>
+#include <godot_cpp/classes/tree.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void tree_item_class_finalizer(JSRuntime *rt, JSValue val) {
-	TreeItem *tree_item = static_cast<TreeItem *>(JS_GetOpaque(val, TreeItem::__class_id));
-	if (tree_item)
-		memdelete(tree_item);
+	
+	// nothing
 }
 
 static JSClassDef tree_item_class_def = {
@@ -546,32 +545,32 @@ void define_tree_item_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "collapsed"),
         JS_NewCFunction(ctx, tree_item_class_is_collapsed, "is_collapsed", 0),
-        JS_NewCFunction(ctx, tree_item_class_set_collapsed, "set_collapsed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tree_item_class_set_collapsed, "set_collapsed", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visible"),
         JS_NewCFunction(ctx, tree_item_class_is_visible, "is_visible", 0),
-        JS_NewCFunction(ctx, tree_item_class_set_visible, "set_visible", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tree_item_class_set_visible, "set_visible", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "disable_folding"),
         JS_NewCFunction(ctx, tree_item_class_is_folding_disabled, "is_folding_disabled", 0),
-        JS_NewCFunction(ctx, tree_item_class_set_disable_folding, "set_disable_folding", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tree_item_class_set_disable_folding, "set_disable_folding", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "custom_minimum_height"),
         JS_NewCFunction(ctx, tree_item_class_get_custom_minimum_height, "get_custom_minimum_height", 0),
-        JS_NewCFunction(ctx, tree_item_class_set_custom_minimum_height, "set_custom_minimum_height", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tree_item_class_set_custom_minimum_height, "set_custom_minimum_height", 1),
+        JS_PROP_GETSET
     );
 }
 

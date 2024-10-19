@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void style_box_line_class_finalizer(JSRuntime *rt, JSValue val) {
-	StyleBoxLine *style_box_line = static_cast<StyleBoxLine *>(JS_GetOpaque(val, StyleBoxLine::__class_id));
-	if (style_box_line)
-		memdelete(style_box_line);
+	
+	// nothing
 }
 
 static JSClassDef style_box_line_class_def = {
@@ -90,40 +89,40 @@ void define_style_box_line_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "color"),
         JS_NewCFunction(ctx, style_box_line_class_get_color, "get_color", 0),
-        JS_NewCFunction(ctx, style_box_line_class_set_color, "set_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_line_class_set_color, "set_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "grow_begin"),
         JS_NewCFunction(ctx, style_box_line_class_get_grow_begin, "get_grow_begin", 0),
-        JS_NewCFunction(ctx, style_box_line_class_set_grow_begin, "set_grow_begin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_line_class_set_grow_begin, "set_grow_begin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "grow_end"),
         JS_NewCFunction(ctx, style_box_line_class_get_grow_end, "get_grow_end", 0),
-        JS_NewCFunction(ctx, style_box_line_class_set_grow_end, "set_grow_end", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_line_class_set_grow_end, "set_grow_end", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "thickness"),
         JS_NewCFunction(ctx, style_box_line_class_get_thickness, "get_thickness", 0),
-        JS_NewCFunction(ctx, style_box_line_class_set_thickness, "set_thickness", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_line_class_set_thickness, "set_thickness", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "vertical"),
         JS_NewCFunction(ctx, style_box_line_class_is_vertical, "is_vertical", 0),
-        JS_NewCFunction(ctx, style_box_line_class_set_vertical, "set_vertical", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_line_class_set_vertical, "set_vertical", 1),
+        JS_PROP_GETSET
     );
 }
 

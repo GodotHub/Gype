@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void sphere_occluder3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	SphereOccluder3D *sphere_occluder3d = static_cast<SphereOccluder3D *>(JS_GetOpaque(val, SphereOccluder3D::__class_id));
-	if (sphere_occluder3d)
-		memdelete(sphere_occluder3d);
+	
+	// nothing
 }
 
 static JSClassDef sphere_occluder3d_class_def = {
@@ -54,8 +53,8 @@ void define_sphere_occluder3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "radius"),
         JS_NewCFunction(ctx, sphere_occluder3d_class_get_radius, "get_radius", 0),
-        JS_NewCFunction(ctx, sphere_occluder3d_class_set_radius, "set_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sphere_occluder3d_class_set_radius, "set_radius", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void rd_framebuffer_pass_class_finalizer(JSRuntime *rt, JSValue val) {
-	RDFramebufferPass *rd_framebuffer_pass = static_cast<RDFramebufferPass *>(JS_GetOpaque(val, RDFramebufferPass::__class_id));
-	if (rd_framebuffer_pass)
-		memdelete(rd_framebuffer_pass);
+	
+	// nothing
 }
 
 static JSClassDef rd_framebuffer_pass_class_def = {
@@ -90,40 +89,40 @@ void define_rd_framebuffer_pass_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "color_attachments"),
         JS_NewCFunction(ctx, rd_framebuffer_pass_class_get_color_attachments, "get_color_attachments", 0),
-        JS_NewCFunction(ctx, rd_framebuffer_pass_class_set_color_attachments, "set_color_attachments", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_framebuffer_pass_class_set_color_attachments, "set_color_attachments", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "input_attachments"),
         JS_NewCFunction(ctx, rd_framebuffer_pass_class_get_input_attachments, "get_input_attachments", 0),
-        JS_NewCFunction(ctx, rd_framebuffer_pass_class_set_input_attachments, "set_input_attachments", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_framebuffer_pass_class_set_input_attachments, "set_input_attachments", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "resolve_attachments"),
         JS_NewCFunction(ctx, rd_framebuffer_pass_class_get_resolve_attachments, "get_resolve_attachments", 0),
-        JS_NewCFunction(ctx, rd_framebuffer_pass_class_set_resolve_attachments, "set_resolve_attachments", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_framebuffer_pass_class_set_resolve_attachments, "set_resolve_attachments", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "preserve_attachments"),
         JS_NewCFunction(ctx, rd_framebuffer_pass_class_get_preserve_attachments, "get_preserve_attachments", 0),
-        JS_NewCFunction(ctx, rd_framebuffer_pass_class_set_preserve_attachments, "set_preserve_attachments", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_framebuffer_pass_class_set_preserve_attachments, "set_preserve_attachments", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "depth_attachment"),
         JS_NewCFunction(ctx, rd_framebuffer_pass_class_get_depth_attachment, "get_depth_attachment", 0),
-        JS_NewCFunction(ctx, rd_framebuffer_pass_class_set_depth_attachment, "set_depth_attachment", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_framebuffer_pass_class_set_depth_attachment, "set_depth_attachment", 1),
+        JS_PROP_GETSET
     );
 }
 

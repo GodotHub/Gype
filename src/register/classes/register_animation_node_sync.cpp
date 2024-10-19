@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void animation_node_sync_class_finalizer(JSRuntime *rt, JSValue val) {
-	AnimationNodeSync *animation_node_sync = static_cast<AnimationNodeSync *>(JS_GetOpaque(val, AnimationNodeSync::__class_id));
-	if (animation_node_sync)
-		memdelete(animation_node_sync);
+	
+	// nothing
 }
 
 static JSClassDef animation_node_sync_class_def = {
@@ -54,8 +53,8 @@ void define_animation_node_sync_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "sync"),
         JS_NewCFunction(ctx, animation_node_sync_class_is_using_sync, "is_using_sync", 0),
-        JS_NewCFunction(ctx, animation_node_sync_class_set_use_sync, "set_use_sync", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_sync_class_set_use_sync, "set_use_sync", 1),
+        JS_PROP_GETSET
     );
 }
 

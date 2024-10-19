@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/camera2d.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void camera2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	Camera2D *camera2d = static_cast<Camera2D *>(JS_GetOpaque(val, Camera2D::__class_id));
-	if (camera2d)
-		memdelete(camera2d);
+	
+	// nothing
 }
 
 static JSClassDef camera2d_class_def = {
@@ -267,216 +266,216 @@ void define_camera2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "offset"),
         JS_NewCFunction(ctx, camera2d_class_get_offset, "get_offset", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_offset, "set_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_offset, "set_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "anchor_mode"),
         JS_NewCFunction(ctx, camera2d_class_get_anchor_mode, "get_anchor_mode", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_anchor_mode, "set_anchor_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_anchor_mode, "set_anchor_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ignore_rotation"),
         JS_NewCFunction(ctx, camera2d_class_is_ignoring_rotation, "is_ignoring_rotation", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_ignore_rotation, "set_ignore_rotation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_ignore_rotation, "set_ignore_rotation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "enabled"),
         JS_NewCFunction(ctx, camera2d_class_is_enabled, "is_enabled", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_enabled, "set_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_enabled, "set_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "zoom"),
         JS_NewCFunction(ctx, camera2d_class_get_zoom, "get_zoom", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_zoom, "set_zoom", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_zoom, "set_zoom", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "custom_viewport"),
         JS_NewCFunction(ctx, camera2d_class_get_custom_viewport, "get_custom_viewport", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_custom_viewport, "set_custom_viewport", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_custom_viewport, "set_custom_viewport", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "process_callback"),
         JS_NewCFunction(ctx, camera2d_class_get_process_callback, "get_process_callback", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_process_callback, "set_process_callback", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_process_callback, "set_process_callback", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "limit_left"),
         JS_NewCFunction(ctx, camera2d_class_get_limit, "get_limit", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_limit, "set_limit", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_limit, "set_limit", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "limit_top"),
         JS_NewCFunction(ctx, camera2d_class_get_limit, "get_limit", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_limit, "set_limit", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_limit, "set_limit", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "limit_right"),
         JS_NewCFunction(ctx, camera2d_class_get_limit, "get_limit", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_limit, "set_limit", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_limit, "set_limit", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "limit_bottom"),
         JS_NewCFunction(ctx, camera2d_class_get_limit, "get_limit", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_limit, "set_limit", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_limit, "set_limit", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "limit_smoothed"),
         JS_NewCFunction(ctx, camera2d_class_is_limit_smoothing_enabled, "is_limit_smoothing_enabled", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_limit_smoothing_enabled, "set_limit_smoothing_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_limit_smoothing_enabled, "set_limit_smoothing_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "position_smoothing_enabled"),
         JS_NewCFunction(ctx, camera2d_class_is_position_smoothing_enabled, "is_position_smoothing_enabled", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_position_smoothing_enabled, "set_position_smoothing_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_position_smoothing_enabled, "set_position_smoothing_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "position_smoothing_speed"),
         JS_NewCFunction(ctx, camera2d_class_get_position_smoothing_speed, "get_position_smoothing_speed", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_position_smoothing_speed, "set_position_smoothing_speed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_position_smoothing_speed, "set_position_smoothing_speed", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "rotation_smoothing_enabled"),
         JS_NewCFunction(ctx, camera2d_class_is_rotation_smoothing_enabled, "is_rotation_smoothing_enabled", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_rotation_smoothing_enabled, "set_rotation_smoothing_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_rotation_smoothing_enabled, "set_rotation_smoothing_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "rotation_smoothing_speed"),
         JS_NewCFunction(ctx, camera2d_class_get_rotation_smoothing_speed, "get_rotation_smoothing_speed", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_rotation_smoothing_speed, "set_rotation_smoothing_speed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_rotation_smoothing_speed, "set_rotation_smoothing_speed", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "drag_horizontal_enabled"),
         JS_NewCFunction(ctx, camera2d_class_is_drag_horizontal_enabled, "is_drag_horizontal_enabled", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_drag_horizontal_enabled, "set_drag_horizontal_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_drag_horizontal_enabled, "set_drag_horizontal_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "drag_vertical_enabled"),
         JS_NewCFunction(ctx, camera2d_class_is_drag_vertical_enabled, "is_drag_vertical_enabled", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_drag_vertical_enabled, "set_drag_vertical_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_drag_vertical_enabled, "set_drag_vertical_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "drag_horizontal_offset"),
         JS_NewCFunction(ctx, camera2d_class_get_drag_horizontal_offset, "get_drag_horizontal_offset", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_drag_horizontal_offset, "set_drag_horizontal_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_drag_horizontal_offset, "set_drag_horizontal_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "drag_vertical_offset"),
         JS_NewCFunction(ctx, camera2d_class_get_drag_vertical_offset, "get_drag_vertical_offset", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_drag_vertical_offset, "set_drag_vertical_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_drag_vertical_offset, "set_drag_vertical_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "drag_left_margin"),
         JS_NewCFunction(ctx, camera2d_class_get_drag_margin, "get_drag_margin", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_drag_margin, "set_drag_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_drag_margin, "set_drag_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "drag_top_margin"),
         JS_NewCFunction(ctx, camera2d_class_get_drag_margin, "get_drag_margin", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_drag_margin, "set_drag_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_drag_margin, "set_drag_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "drag_right_margin"),
         JS_NewCFunction(ctx, camera2d_class_get_drag_margin, "get_drag_margin", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_drag_margin, "set_drag_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_drag_margin, "set_drag_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "drag_bottom_margin"),
         JS_NewCFunction(ctx, camera2d_class_get_drag_margin, "get_drag_margin", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_drag_margin, "set_drag_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_drag_margin, "set_drag_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "editor_draw_screen"),
         JS_NewCFunction(ctx, camera2d_class_is_screen_drawing_enabled, "is_screen_drawing_enabled", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_screen_drawing_enabled, "set_screen_drawing_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_screen_drawing_enabled, "set_screen_drawing_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "editor_draw_limits"),
         JS_NewCFunction(ctx, camera2d_class_is_limit_drawing_enabled, "is_limit_drawing_enabled", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_limit_drawing_enabled, "set_limit_drawing_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_limit_drawing_enabled, "set_limit_drawing_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "editor_draw_drag_margin"),
         JS_NewCFunction(ctx, camera2d_class_is_margin_drawing_enabled, "is_margin_drawing_enabled", 0),
-        JS_NewCFunction(ctx, camera2d_class_set_margin_drawing_enabled, "set_margin_drawing_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera2d_class_set_margin_drawing_enabled, "set_margin_drawing_enabled", 1),
+        JS_PROP_GETSET
     );
 }
 

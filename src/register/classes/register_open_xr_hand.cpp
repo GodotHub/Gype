@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/open_xr_hand.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void open_xr_hand_class_finalizer(JSRuntime *rt, JSValue val) {
-	OpenXRHand *open_xr_hand = static_cast<OpenXRHand *>(JS_GetOpaque(val, OpenXRHand::__class_id));
-	if (open_xr_hand)
-		memdelete(open_xr_hand);
+	
+	// nothing
 }
 
 static JSClassDef open_xr_hand_class_def = {
@@ -90,40 +89,40 @@ void define_open_xr_hand_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "hand"),
         JS_NewCFunction(ctx, open_xr_hand_class_get_hand, "get_hand", 0),
-        JS_NewCFunction(ctx, open_xr_hand_class_set_hand, "set_hand", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_hand_class_set_hand, "set_hand", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "motion_range"),
         JS_NewCFunction(ctx, open_xr_hand_class_get_motion_range, "get_motion_range", 0),
-        JS_NewCFunction(ctx, open_xr_hand_class_set_motion_range, "set_motion_range", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_hand_class_set_motion_range, "set_motion_range", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "hand_skeleton"),
         JS_NewCFunction(ctx, open_xr_hand_class_get_hand_skeleton, "get_hand_skeleton", 0),
-        JS_NewCFunction(ctx, open_xr_hand_class_set_hand_skeleton, "set_hand_skeleton", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_hand_class_set_hand_skeleton, "set_hand_skeleton", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "skeleton_rig"),
         JS_NewCFunction(ctx, open_xr_hand_class_get_skeleton_rig, "get_skeleton_rig", 0),
-        JS_NewCFunction(ctx, open_xr_hand_class_set_skeleton_rig, "set_skeleton_rig", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_hand_class_set_skeleton_rig, "set_skeleton_rig", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bone_update"),
         JS_NewCFunction(ctx, open_xr_hand_class_get_bone_update, "get_bone_update", 0),
-        JS_NewCFunction(ctx, open_xr_hand_class_set_bone_update, "set_bone_update", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_hand_class_set_bone_update, "set_bone_update", 1),
+        JS_PROP_GETSET
     );
 }
 

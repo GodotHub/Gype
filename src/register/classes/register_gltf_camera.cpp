@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/classes/gltf_camera.hpp>
+#include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void gltf_camera_class_finalizer(JSRuntime *rt, JSValue val) {
-	GLTFCamera *gltf_camera = static_cast<GLTFCamera *>(JS_GetOpaque(val, GLTFCamera::__class_id));
-	if (gltf_camera)
-		memdelete(gltf_camera);
+	
+	// nothing
 }
 
 static JSClassDef gltf_camera_class_def = {
@@ -109,40 +108,40 @@ void define_gltf_camera_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "perspective"),
         JS_NewCFunction(ctx, gltf_camera_class_get_perspective, "get_perspective", 0),
-        JS_NewCFunction(ctx, gltf_camera_class_set_perspective, "set_perspective", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_camera_class_set_perspective, "set_perspective", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fov"),
         JS_NewCFunction(ctx, gltf_camera_class_get_fov, "get_fov", 0),
-        JS_NewCFunction(ctx, gltf_camera_class_set_fov, "set_fov", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_camera_class_set_fov, "set_fov", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "size_mag"),
         JS_NewCFunction(ctx, gltf_camera_class_get_size_mag, "get_size_mag", 0),
-        JS_NewCFunction(ctx, gltf_camera_class_set_size_mag, "set_size_mag", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_camera_class_set_size_mag, "set_size_mag", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "depth_far"),
         JS_NewCFunction(ctx, gltf_camera_class_get_depth_far, "get_depth_far", 0),
-        JS_NewCFunction(ctx, gltf_camera_class_set_depth_far, "set_depth_far", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_camera_class_set_depth_far, "set_depth_far", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "depth_near"),
         JS_NewCFunction(ctx, gltf_camera_class_get_depth_near, "get_depth_near", 0),
-        JS_NewCFunction(ctx, gltf_camera_class_set_depth_near, "set_depth_near", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_camera_class_set_depth_near, "set_depth_near", 1),
+        JS_PROP_GETSET
     );
 }
 

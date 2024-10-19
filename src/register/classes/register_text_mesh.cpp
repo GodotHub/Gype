@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/text_mesh.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
-#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void text_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	TextMesh *text_mesh = static_cast<TextMesh *>(JS_GetOpaque(val, TextMesh::__class_id));
-	if (text_mesh)
-		memdelete(text_mesh);
+	
+	// nothing
 }
 
 static JSClassDef text_mesh_class_def = {
@@ -208,144 +207,144 @@ void define_text_mesh_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "text"),
         JS_NewCFunction(ctx, text_mesh_class_get_text, "get_text", 0),
-        JS_NewCFunction(ctx, text_mesh_class_set_text, "set_text", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_mesh_class_set_text, "set_text", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "font"),
         JS_NewCFunction(ctx, text_mesh_class_get_font, "get_font", 0),
-        JS_NewCFunction(ctx, text_mesh_class_set_font, "set_font", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_mesh_class_set_font, "set_font", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "font_size"),
         JS_NewCFunction(ctx, text_mesh_class_get_font_size, "get_font_size", 0),
-        JS_NewCFunction(ctx, text_mesh_class_set_font_size, "set_font_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_mesh_class_set_font_size, "set_font_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "horizontal_alignment"),
         JS_NewCFunction(ctx, text_mesh_class_get_horizontal_alignment, "get_horizontal_alignment", 0),
-        JS_NewCFunction(ctx, text_mesh_class_set_horizontal_alignment, "set_horizontal_alignment", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_mesh_class_set_horizontal_alignment, "set_horizontal_alignment", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "vertical_alignment"),
         JS_NewCFunction(ctx, text_mesh_class_get_vertical_alignment, "get_vertical_alignment", 0),
-        JS_NewCFunction(ctx, text_mesh_class_set_vertical_alignment, "set_vertical_alignment", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_mesh_class_set_vertical_alignment, "set_vertical_alignment", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "uppercase"),
         JS_NewCFunction(ctx, text_mesh_class_is_uppercase, "is_uppercase", 0),
-        JS_NewCFunction(ctx, text_mesh_class_set_uppercase, "set_uppercase", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_mesh_class_set_uppercase, "set_uppercase", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "line_spacing"),
         JS_NewCFunction(ctx, text_mesh_class_get_line_spacing, "get_line_spacing", 0),
-        JS_NewCFunction(ctx, text_mesh_class_set_line_spacing, "set_line_spacing", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_mesh_class_set_line_spacing, "set_line_spacing", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "autowrap_mode"),
         JS_NewCFunction(ctx, text_mesh_class_get_autowrap_mode, "get_autowrap_mode", 0),
-        JS_NewCFunction(ctx, text_mesh_class_set_autowrap_mode, "set_autowrap_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_mesh_class_set_autowrap_mode, "set_autowrap_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "justification_flags"),
         JS_NewCFunction(ctx, text_mesh_class_get_justification_flags, "get_justification_flags", 0),
-        JS_NewCFunction(ctx, text_mesh_class_set_justification_flags, "set_justification_flags", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_mesh_class_set_justification_flags, "set_justification_flags", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "pixel_size"),
         JS_NewCFunction(ctx, text_mesh_class_get_pixel_size, "get_pixel_size", 0),
-        JS_NewCFunction(ctx, text_mesh_class_set_pixel_size, "set_pixel_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_mesh_class_set_pixel_size, "set_pixel_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "curve_step"),
         JS_NewCFunction(ctx, text_mesh_class_get_curve_step, "get_curve_step", 0),
-        JS_NewCFunction(ctx, text_mesh_class_set_curve_step, "set_curve_step", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_mesh_class_set_curve_step, "set_curve_step", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "depth"),
         JS_NewCFunction(ctx, text_mesh_class_get_depth, "get_depth", 0),
-        JS_NewCFunction(ctx, text_mesh_class_set_depth, "set_depth", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_mesh_class_set_depth, "set_depth", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "width"),
         JS_NewCFunction(ctx, text_mesh_class_get_width, "get_width", 0),
-        JS_NewCFunction(ctx, text_mesh_class_set_width, "set_width", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_mesh_class_set_width, "set_width", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "offset"),
         JS_NewCFunction(ctx, text_mesh_class_get_offset, "get_offset", 0),
-        JS_NewCFunction(ctx, text_mesh_class_set_offset, "set_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_mesh_class_set_offset, "set_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "text_direction"),
         JS_NewCFunction(ctx, text_mesh_class_get_text_direction, "get_text_direction", 0),
-        JS_NewCFunction(ctx, text_mesh_class_set_text_direction, "set_text_direction", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_mesh_class_set_text_direction, "set_text_direction", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "language"),
         JS_NewCFunction(ctx, text_mesh_class_get_language, "get_language", 0),
-        JS_NewCFunction(ctx, text_mesh_class_set_language, "set_language", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_mesh_class_set_language, "set_language", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "structured_text_bidi_override"),
         JS_NewCFunction(ctx, text_mesh_class_get_structured_text_bidi_override, "get_structured_text_bidi_override", 0),
-        JS_NewCFunction(ctx, text_mesh_class_set_structured_text_bidi_override, "set_structured_text_bidi_override", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_mesh_class_set_structured_text_bidi_override, "set_structured_text_bidi_override", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "structured_text_bidi_override_options"),
         JS_NewCFunction(ctx, text_mesh_class_get_structured_text_bidi_override_options, "get_structured_text_bidi_override_options", 0),
-        JS_NewCFunction(ctx, text_mesh_class_set_structured_text_bidi_override_options, "set_structured_text_bidi_override_options", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_mesh_class_set_structured_text_bidi_override_options, "set_structured_text_bidi_override_options", 1),
+        JS_PROP_GETSET
     );
 }
 

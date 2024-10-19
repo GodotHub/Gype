@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/button.hpp>
-#include <godot_cpp/classes/confirmation_dialog.hpp>
 #include <godot_cpp/classes/accept_dialog.hpp>
+#include <godot_cpp/classes/confirmation_dialog.hpp>
+#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void confirmation_dialog_class_finalizer(JSRuntime *rt, JSValue val) {
-	ConfirmationDialog *confirmation_dialog = static_cast<ConfirmationDialog *>(JS_GetOpaque(val, ConfirmationDialog::__class_id));
-	if (confirmation_dialog)
-		memdelete(confirmation_dialog);
+	
+	// nothing
 }
 
 static JSClassDef confirmation_dialog_class_def = {
@@ -59,8 +58,8 @@ void define_confirmation_dialog_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "cancel_button_text"),
         JS_NewCFunction(ctx, confirmation_dialog_class_get_cancel_button_text, "get_cancel_button_text", 0),
-        JS_NewCFunction(ctx, confirmation_dialog_class_set_cancel_button_text, "set_cancel_button_text", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, confirmation_dialog_class_set_cancel_button_text, "set_cancel_button_text", 1),
+        JS_PROP_GETSET
     );
 }
 

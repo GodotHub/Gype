@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/light_occluder2d.hpp>
 #include <godot_cpp/classes/occluder_polygon2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/light_occluder2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void light_occluder2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	LightOccluder2D *light_occluder2d = static_cast<LightOccluder2D *>(JS_GetOpaque(val, LightOccluder2D::__class_id));
-	if (light_occluder2d)
-		memdelete(light_occluder2d);
+	
+	// nothing
 }
 
 static JSClassDef light_occluder2d_class_def = {
@@ -73,24 +72,24 @@ void define_light_occluder2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "occluder"),
         JS_NewCFunction(ctx, light_occluder2d_class_get_occluder_polygon, "get_occluder_polygon", 0),
-        JS_NewCFunction(ctx, light_occluder2d_class_set_occluder_polygon, "set_occluder_polygon", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light_occluder2d_class_set_occluder_polygon, "set_occluder_polygon", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sdf_collision"),
         JS_NewCFunction(ctx, light_occluder2d_class_is_set_as_sdf_collision, "is_set_as_sdf_collision", 0),
-        JS_NewCFunction(ctx, light_occluder2d_class_set_as_sdf_collision, "set_as_sdf_collision", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light_occluder2d_class_set_as_sdf_collision, "set_as_sdf_collision", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "occluder_light_mask"),
         JS_NewCFunction(ctx, light_occluder2d_class_get_occluder_light_mask, "get_occluder_light_mask", 0),
-        JS_NewCFunction(ctx, light_occluder2d_class_set_occluder_light_mask, "set_occluder_light_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light_occluder2d_class_set_occluder_light_mask, "set_occluder_light_mask", 1),
+        JS_PROP_GETSET
     );
 }
 

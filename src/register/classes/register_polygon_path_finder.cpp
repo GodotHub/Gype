@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void polygon_path_finder_class_finalizer(JSRuntime *rt, JSValue val) {
-	PolygonPathFinder *polygon_path_finder = static_cast<PolygonPathFinder *>(JS_GetOpaque(val, PolygonPathFinder::__class_id));
-	if (polygon_path_finder)
-		memdelete(polygon_path_finder);
+	
+	// nothing
 }
 
 static JSClassDef polygon_path_finder_class_def = {

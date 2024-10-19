@@ -6,18 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/video_stream.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/video_stream_player.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void video_stream_player_class_finalizer(JSRuntime *rt, JSValue val) {
-	VideoStreamPlayer *video_stream_player = static_cast<VideoStreamPlayer *>(JS_GetOpaque(val, VideoStreamPlayer::__class_id));
-	if (video_stream_player)
-		memdelete(video_stream_player);
+	
+	// nothing
 }
 
 static JSClassDef video_stream_player_class_def = {
@@ -172,88 +171,88 @@ void define_video_stream_player_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "audio_track"),
         JS_NewCFunction(ctx, video_stream_player_class_get_audio_track, "get_audio_track", 0),
-        JS_NewCFunction(ctx, video_stream_player_class_set_audio_track, "set_audio_track", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, video_stream_player_class_set_audio_track, "set_audio_track", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "stream"),
         JS_NewCFunction(ctx, video_stream_player_class_get_stream, "get_stream", 0),
-        JS_NewCFunction(ctx, video_stream_player_class_set_stream, "set_stream", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, video_stream_player_class_set_stream, "set_stream", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "volume_db"),
         JS_NewCFunction(ctx, video_stream_player_class_get_volume_db, "get_volume_db", 0),
-        JS_NewCFunction(ctx, video_stream_player_class_set_volume_db, "set_volume_db", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, video_stream_player_class_set_volume_db, "set_volume_db", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "volume"),
         JS_NewCFunction(ctx, video_stream_player_class_get_volume, "get_volume", 0),
-        JS_NewCFunction(ctx, video_stream_player_class_set_volume, "set_volume", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, video_stream_player_class_set_volume, "set_volume", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "autoplay"),
         JS_NewCFunction(ctx, video_stream_player_class_has_autoplay, "has_autoplay", 0),
-        JS_NewCFunction(ctx, video_stream_player_class_set_autoplay, "set_autoplay", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, video_stream_player_class_set_autoplay, "set_autoplay", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "paused"),
         JS_NewCFunction(ctx, video_stream_player_class_is_paused, "is_paused", 0),
-        JS_NewCFunction(ctx, video_stream_player_class_set_paused, "set_paused", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, video_stream_player_class_set_paused, "set_paused", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "expand"),
         JS_NewCFunction(ctx, video_stream_player_class_has_expand, "has_expand", 0),
-        JS_NewCFunction(ctx, video_stream_player_class_set_expand, "set_expand", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, video_stream_player_class_set_expand, "set_expand", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "loop"),
         JS_NewCFunction(ctx, video_stream_player_class_has_loop, "has_loop", 0),
-        JS_NewCFunction(ctx, video_stream_player_class_set_loop, "set_loop", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, video_stream_player_class_set_loop, "set_loop", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "buffering_msec"),
         JS_NewCFunction(ctx, video_stream_player_class_get_buffering_msec, "get_buffering_msec", 0),
-        JS_NewCFunction(ctx, video_stream_player_class_set_buffering_msec, "set_buffering_msec", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, video_stream_player_class_set_buffering_msec, "set_buffering_msec", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "stream_position"),
         JS_NewCFunction(ctx, video_stream_player_class_get_stream_position, "get_stream_position", 0),
-        JS_NewCFunction(ctx, video_stream_player_class_set_stream_position, "set_stream_position", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, video_stream_player_class_set_stream_position, "set_stream_position", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bus"),
         JS_NewCFunction(ctx, video_stream_player_class_get_bus, "get_bus", 0),
-        JS_NewCFunction(ctx, video_stream_player_class_set_bus, "set_bus", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, video_stream_player_class_set_bus, "set_bus", 1),
+        JS_PROP_GETSET
     );
 }
 

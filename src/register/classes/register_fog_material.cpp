@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/texture3d.hpp>
 #include <godot_cpp/classes/fog_material.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void fog_material_class_finalizer(JSRuntime *rt, JSValue val) {
-	FogMaterial *fog_material = static_cast<FogMaterial *>(JS_GetOpaque(val, FogMaterial::__class_id));
-	if (fog_material)
-		memdelete(fog_material);
+	
+	// nothing
 }
 
 static JSClassDef fog_material_class_def = {
@@ -100,48 +99,48 @@ void define_fog_material_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "density"),
         JS_NewCFunction(ctx, fog_material_class_get_density, "get_density", 0),
-        JS_NewCFunction(ctx, fog_material_class_set_density, "set_density", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fog_material_class_set_density, "set_density", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "albedo"),
         JS_NewCFunction(ctx, fog_material_class_get_albedo, "get_albedo", 0),
-        JS_NewCFunction(ctx, fog_material_class_set_albedo, "set_albedo", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fog_material_class_set_albedo, "set_albedo", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "emission"),
         JS_NewCFunction(ctx, fog_material_class_get_emission, "get_emission", 0),
-        JS_NewCFunction(ctx, fog_material_class_set_emission, "set_emission", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fog_material_class_set_emission, "set_emission", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "height_falloff"),
         JS_NewCFunction(ctx, fog_material_class_get_height_falloff, "get_height_falloff", 0),
-        JS_NewCFunction(ctx, fog_material_class_set_height_falloff, "set_height_falloff", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fog_material_class_set_height_falloff, "set_height_falloff", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "edge_fade"),
         JS_NewCFunction(ctx, fog_material_class_get_edge_fade, "get_edge_fade", 0),
-        JS_NewCFunction(ctx, fog_material_class_set_edge_fade, "set_edge_fade", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fog_material_class_set_edge_fade, "set_edge_fade", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "density_texture"),
         JS_NewCFunction(ctx, fog_material_class_get_density_texture, "get_density_texture", 0),
-        JS_NewCFunction(ctx, fog_material_class_set_density_texture, "set_density_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fog_material_class_set_density_texture, "set_density_texture", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/navigation_mesh_source_geometry_data3d.hpp>
 #include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void navigation_mesh_source_geometry_data3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	NavigationMeshSourceGeometryData3D *navigation_mesh_source_geometry_data3d = static_cast<NavigationMeshSourceGeometryData3D *>(JS_GetOpaque(val, NavigationMeshSourceGeometryData3D::__class_id));
-	if (navigation_mesh_source_geometry_data3d)
-		memdelete(navigation_mesh_source_geometry_data3d);
+	
+	// nothing
 }
 
 static JSClassDef navigation_mesh_source_geometry_data3d_class_def = {
@@ -117,24 +116,24 @@ void define_navigation_mesh_source_geometry_data3d_property(JSContext *ctx, JSVa
         obj,
         JS_NewAtom(ctx, "vertices"),
         JS_NewCFunction(ctx, navigation_mesh_source_geometry_data3d_class_get_vertices, "get_vertices", 0),
-        JS_NewCFunction(ctx, navigation_mesh_source_geometry_data3d_class_set_vertices, "set_vertices", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_mesh_source_geometry_data3d_class_set_vertices, "set_vertices", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "indices"),
         JS_NewCFunction(ctx, navigation_mesh_source_geometry_data3d_class_get_indices, "get_indices", 0),
-        JS_NewCFunction(ctx, navigation_mesh_source_geometry_data3d_class_set_indices, "set_indices", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_mesh_source_geometry_data3d_class_set_indices, "set_indices", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "projected_obstructions"),
         JS_NewCFunction(ctx, navigation_mesh_source_geometry_data3d_class_get_projected_obstructions, "get_projected_obstructions", 0),
-        JS_NewCFunction(ctx, navigation_mesh_source_geometry_data3d_class_set_projected_obstructions, "set_projected_obstructions", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_mesh_source_geometry_data3d_class_set_projected_obstructions, "set_projected_obstructions", 1),
+        JS_PROP_GETSET
     );
 }
 

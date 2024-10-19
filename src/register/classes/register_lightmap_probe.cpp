@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void lightmap_probe_class_finalizer(JSRuntime *rt, JSValue val) {
-	LightmapProbe *lightmap_probe = static_cast<LightmapProbe *>(JS_GetOpaque(val, LightmapProbe::__class_id));
-	if (lightmap_probe)
-		memdelete(lightmap_probe);
+	
+	// nothing
 }
 
 static JSClassDef lightmap_probe_class_def = {

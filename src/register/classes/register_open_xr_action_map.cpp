@@ -5,19 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/open_xr_action_map.hpp>
-#include <godot_cpp/classes/open_xr_interaction_profile.hpp>
 #include <godot_cpp/classes/open_xr_action_set.hpp>
+#include <godot_cpp/classes/open_xr_action_map.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/open_xr_interaction_profile.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void open_xr_action_map_class_finalizer(JSRuntime *rt, JSValue val) {
-	OpenXRActionMap *open_xr_action_map = static_cast<OpenXRActionMap *>(JS_GetOpaque(val, OpenXRActionMap::__class_id));
-	if (open_xr_action_map)
-		memdelete(open_xr_action_map);
+	
+	// nothing
 }
 
 static JSClassDef open_xr_action_map_class_def = {
@@ -114,16 +113,16 @@ void define_open_xr_action_map_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "action_sets"),
         JS_NewCFunction(ctx, open_xr_action_map_class_get_action_sets, "get_action_sets", 0),
-        JS_NewCFunction(ctx, open_xr_action_map_class_set_action_sets, "set_action_sets", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_action_map_class_set_action_sets, "set_action_sets", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "interaction_profiles"),
         JS_NewCFunction(ctx, open_xr_action_map_class_get_interaction_profiles, "get_interaction_profiles", 0),
-        JS_NewCFunction(ctx, open_xr_action_map_class_set_interaction_profiles, "set_interaction_profiles", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_action_map_class_set_interaction_profiles, "set_interaction_profiles", 1),
+        JS_PROP_GETSET
     );
 }
 

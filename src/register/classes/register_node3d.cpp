@@ -6,19 +6,18 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/node3d_gizmo.hpp>
+#include <godot_cpp/classes/world3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/node3d_gizmo.hpp>
-#include <godot_cpp/classes/world3d.hpp>
+#include <godot_cpp/classes/node3d_gizmo.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void node3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	Node3D *node3d = static_cast<Node3D *>(JS_GetOpaque(val, Node3D::__class_id));
-	if (node3d)
-		memdelete(node3d);
+	
+	// nothing
 }
 
 static JSClassDef node3d_class_def = {
@@ -372,136 +371,136 @@ void define_node3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "transform"),
         JS_NewCFunction(ctx, node3d_class_get_transform, "get_transform", 0),
-        JS_NewCFunction(ctx, node3d_class_set_transform, "set_transform", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, node3d_class_set_transform, "set_transform", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "global_transform"),
         JS_NewCFunction(ctx, node3d_class_get_global_transform, "get_global_transform", 0),
-        JS_NewCFunction(ctx, node3d_class_set_global_transform, "set_global_transform", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, node3d_class_set_global_transform, "set_global_transform", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "position"),
         JS_NewCFunction(ctx, node3d_class_get_position, "get_position", 0),
-        JS_NewCFunction(ctx, node3d_class_set_position, "set_position", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, node3d_class_set_position, "set_position", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "rotation"),
         JS_NewCFunction(ctx, node3d_class_get_rotation, "get_rotation", 0),
-        JS_NewCFunction(ctx, node3d_class_set_rotation, "set_rotation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, node3d_class_set_rotation, "set_rotation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "rotation_degrees"),
         JS_NewCFunction(ctx, node3d_class_get_rotation_degrees, "get_rotation_degrees", 0),
-        JS_NewCFunction(ctx, node3d_class_set_rotation_degrees, "set_rotation_degrees", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, node3d_class_set_rotation_degrees, "set_rotation_degrees", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "quaternion"),
         JS_NewCFunction(ctx, node3d_class_get_quaternion, "get_quaternion", 0),
-        JS_NewCFunction(ctx, node3d_class_set_quaternion, "set_quaternion", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, node3d_class_set_quaternion, "set_quaternion", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "basis"),
         JS_NewCFunction(ctx, node3d_class_get_basis, "get_basis", 0),
-        JS_NewCFunction(ctx, node3d_class_set_basis, "set_basis", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, node3d_class_set_basis, "set_basis", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scale"),
         JS_NewCFunction(ctx, node3d_class_get_scale, "get_scale", 0),
-        JS_NewCFunction(ctx, node3d_class_set_scale, "set_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, node3d_class_set_scale, "set_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "rotation_edit_mode"),
         JS_NewCFunction(ctx, node3d_class_get_rotation_edit_mode, "get_rotation_edit_mode", 0),
-        JS_NewCFunction(ctx, node3d_class_set_rotation_edit_mode, "set_rotation_edit_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, node3d_class_set_rotation_edit_mode, "set_rotation_edit_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "rotation_order"),
         JS_NewCFunction(ctx, node3d_class_get_rotation_order, "get_rotation_order", 0),
-        JS_NewCFunction(ctx, node3d_class_set_rotation_order, "set_rotation_order", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, node3d_class_set_rotation_order, "set_rotation_order", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "top_level"),
         JS_NewCFunction(ctx, node3d_class_is_set_as_top_level, "is_set_as_top_level", 0),
-        JS_NewCFunction(ctx, node3d_class_set_as_top_level, "set_as_top_level", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, node3d_class_set_as_top_level, "set_as_top_level", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "global_position"),
         JS_NewCFunction(ctx, node3d_class_get_global_position, "get_global_position", 0),
-        JS_NewCFunction(ctx, node3d_class_set_global_position, "set_global_position", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, node3d_class_set_global_position, "set_global_position", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "global_basis"),
         JS_NewCFunction(ctx, node3d_class_get_global_basis, "get_global_basis", 0),
-        JS_NewCFunction(ctx, node3d_class_set_global_basis, "set_global_basis", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, node3d_class_set_global_basis, "set_global_basis", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "global_rotation"),
         JS_NewCFunction(ctx, node3d_class_get_global_rotation, "get_global_rotation", 0),
-        JS_NewCFunction(ctx, node3d_class_set_global_rotation, "set_global_rotation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, node3d_class_set_global_rotation, "set_global_rotation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "global_rotation_degrees"),
         JS_NewCFunction(ctx, node3d_class_get_global_rotation_degrees, "get_global_rotation_degrees", 0),
-        JS_NewCFunction(ctx, node3d_class_set_global_rotation_degrees, "set_global_rotation_degrees", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, node3d_class_set_global_rotation_degrees, "set_global_rotation_degrees", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visible"),
         JS_NewCFunction(ctx, node3d_class_is_visible, "is_visible", 0),
-        JS_NewCFunction(ctx, node3d_class_set_visible, "set_visible", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, node3d_class_set_visible, "set_visible", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visibility_parent"),
         JS_NewCFunction(ctx, node3d_class_get_visibility_parent, "get_visibility_parent", 0),
-        JS_NewCFunction(ctx, node3d_class_set_visibility_parent, "set_visibility_parent", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, node3d_class_set_visibility_parent, "set_visibility_parent", 1),
+        JS_PROP_GETSET
     );
 }
 

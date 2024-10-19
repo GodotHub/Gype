@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void marker2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	Marker2D *marker2d = static_cast<Marker2D *>(JS_GetOpaque(val, Marker2D::__class_id));
-	if (marker2d)
-		memdelete(marker2d);
+	
+	// nothing
 }
 
 static JSClassDef marker2d_class_def = {
@@ -54,8 +53,8 @@ void define_marker2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "gizmo_extents"),
         JS_NewCFunction(ctx, marker2d_class_get_gizmo_extents, "get_gizmo_extents", 0),
-        JS_NewCFunction(ctx, marker2d_class_set_gizmo_extents, "set_gizmo_extents", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, marker2d_class_set_gizmo_extents, "set_gizmo_extents", 1),
+        JS_PROP_GETSET
     );
 }
 

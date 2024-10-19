@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void random_number_generator_class_finalizer(JSRuntime *rt, JSValue val) {
-	RandomNumberGenerator *random_number_generator = static_cast<RandomNumberGenerator *>(JS_GetOpaque(val, RandomNumberGenerator::__class_id));
-	if (random_number_generator)
-		memdelete(random_number_generator);
+	
+	// nothing
 }
 
 static JSClassDef random_number_generator_class_def = {
@@ -92,16 +91,16 @@ void define_random_number_generator_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "seed"),
         JS_NewCFunction(ctx, random_number_generator_class_get_seed, "get_seed", 0),
-        JS_NewCFunction(ctx, random_number_generator_class_set_seed, "set_seed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, random_number_generator_class_set_seed, "set_seed", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "state"),
         JS_NewCFunction(ctx, random_number_generator_class_get_state, "get_state", 0),
-        JS_NewCFunction(ctx, random_number_generator_class_set_state, "set_state", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, random_number_generator_class_set_state, "set_state", 1),
+        JS_PROP_GETSET
     );
 }
 

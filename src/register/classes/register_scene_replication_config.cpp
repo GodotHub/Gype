@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void scene_replication_config_class_finalizer(JSRuntime *rt, JSValue val) {
-	SceneReplicationConfig *scene_replication_config = static_cast<SceneReplicationConfig *>(JS_GetOpaque(val, SceneReplicationConfig::__class_id));
-	if (scene_replication_config)
-		memdelete(scene_replication_config);
+	
+	// nothing
 }
 
 static JSClassDef scene_replication_config_class_def = {

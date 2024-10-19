@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void margin_container_class_finalizer(JSRuntime *rt, JSValue val) {
-	MarginContainer *margin_container = static_cast<MarginContainer *>(JS_GetOpaque(val, MarginContainer::__class_id));
-	if (margin_container)
-		memdelete(margin_container);
+	
+	// nothing
 }
 
 static JSClassDef margin_container_class_def = {

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/world2d.hpp>
 #include <godot_cpp/classes/physics_direct_space_state2d.hpp>
+#include <godot_cpp/classes/world2d.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void world2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	World2D *world2d = static_cast<World2D *>(JS_GetOpaque(val, World2D::__class_id));
-	if (world2d)
-		memdelete(world2d);
+	
+	// nothing
 }
 
 static JSClassDef world2d_class_def = {
@@ -63,7 +62,7 @@ void define_world2d_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "canvas"),
         JS_NewCFunction(ctx, world2d_class_get_canvas, "get_canvas", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -71,7 +70,7 @@ void define_world2d_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "space"),
         JS_NewCFunction(ctx, world2d_class_get_space, "get_space", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -79,7 +78,7 @@ void define_world2d_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "navigation_map"),
         JS_NewCFunction(ctx, world2d_class_get_navigation_map, "get_navigation_map", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -87,7 +86,7 @@ void define_world2d_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "direct_space_state"),
         JS_NewCFunction(ctx, world2d_class_get_direct_space_state, "get_direct_space_state", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
 }
 

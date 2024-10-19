@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void csg_cylinder3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	CSGCylinder3D *csg_cylinder3d = static_cast<CSGCylinder3D *>(JS_GetOpaque(val, CSGCylinder3D::__class_id));
-	if (csg_cylinder3d)
-		memdelete(csg_cylinder3d);
+	
+	// nothing
 }
 
 static JSClassDef csg_cylinder3d_class_def = {
@@ -100,48 +99,48 @@ void define_csg_cylinder3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "radius"),
         JS_NewCFunction(ctx, csg_cylinder3d_class_get_radius, "get_radius", 0),
-        JS_NewCFunction(ctx, csg_cylinder3d_class_set_radius, "set_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_cylinder3d_class_set_radius, "set_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "height"),
         JS_NewCFunction(ctx, csg_cylinder3d_class_get_height, "get_height", 0),
-        JS_NewCFunction(ctx, csg_cylinder3d_class_set_height, "set_height", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_cylinder3d_class_set_height, "set_height", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sides"),
         JS_NewCFunction(ctx, csg_cylinder3d_class_get_sides, "get_sides", 0),
-        JS_NewCFunction(ctx, csg_cylinder3d_class_set_sides, "set_sides", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_cylinder3d_class_set_sides, "set_sides", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cone"),
         JS_NewCFunction(ctx, csg_cylinder3d_class_is_cone, "is_cone", 0),
-        JS_NewCFunction(ctx, csg_cylinder3d_class_set_cone, "set_cone", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_cylinder3d_class_set_cone, "set_cone", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "smooth_faces"),
         JS_NewCFunction(ctx, csg_cylinder3d_class_get_smooth_faces, "get_smooth_faces", 0),
-        JS_NewCFunction(ctx, csg_cylinder3d_class_set_smooth_faces, "set_smooth_faces", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_cylinder3d_class_set_smooth_faces, "set_smooth_faces", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "material"),
         JS_NewCFunction(ctx, csg_cylinder3d_class_get_material, "get_material", 0),
-        JS_NewCFunction(ctx, csg_cylinder3d_class_set_material, "set_material", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_cylinder3d_class_set_material, "set_material", 1),
+        JS_PROP_GETSET
     );
 }
 

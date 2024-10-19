@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/camera_attributes.hpp>
-#include <godot_cpp/classes/environment.hpp>
 #include <godot_cpp/classes/physics_direct_space_state3d.hpp>
+#include <godot_cpp/classes/environment.hpp>
 #include <godot_cpp/classes/world3d.hpp>
+#include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -16,9 +16,8 @@
 using namespace godot;
 
 static void world3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	World3D *world3d = static_cast<World3D *>(JS_GetOpaque(val, World3D::__class_id));
-	if (world3d)
-		memdelete(world3d);
+	
+	// nothing
 }
 
 static JSClassDef world3d_class_def = {
@@ -91,24 +90,24 @@ void define_world3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "environment"),
         JS_NewCFunction(ctx, world3d_class_get_environment, "get_environment", 0),
-        JS_NewCFunction(ctx, world3d_class_set_environment, "set_environment", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, world3d_class_set_environment, "set_environment", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fallback_environment"),
         JS_NewCFunction(ctx, world3d_class_get_fallback_environment, "get_fallback_environment", 0),
-        JS_NewCFunction(ctx, world3d_class_set_fallback_environment, "set_fallback_environment", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, world3d_class_set_fallback_environment, "set_fallback_environment", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "camera_attributes"),
         JS_NewCFunction(ctx, world3d_class_get_camera_attributes, "get_camera_attributes", 0),
-        JS_NewCFunction(ctx, world3d_class_set_camera_attributes, "set_camera_attributes", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, world3d_class_set_camera_attributes, "set_camera_attributes", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -116,7 +115,7 @@ void define_world3d_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "space"),
         JS_NewCFunction(ctx, world3d_class_get_space, "get_space", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -124,7 +123,7 @@ void define_world3d_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "navigation_map"),
         JS_NewCFunction(ctx, world3d_class_get_navigation_map, "get_navigation_map", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -132,7 +131,7 @@ void define_world3d_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "scenario"),
         JS_NewCFunction(ctx, world3d_class_get_scenario, "get_scenario", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -140,7 +139,7 @@ void define_world3d_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "direct_space_state"),
         JS_NewCFunction(ctx, world3d_class_get_direct_space_state, "get_direct_space_state", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
 }
 

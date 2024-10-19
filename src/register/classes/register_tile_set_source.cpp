@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/tile_set_source.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void tile_set_source_class_finalizer(JSRuntime *rt, JSValue val) {
-	TileSetSource *tile_set_source = static_cast<TileSetSource *>(JS_GetOpaque(val, TileSetSource::__class_id));
-	if (tile_set_source)
-		memdelete(tile_set_source);
+	
+	// nothing
 }
 
 static JSClassDef tile_set_source_class_def = {

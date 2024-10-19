@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_curve_xyz_texture.hpp>
 #include <godot_cpp/classes/curve_xyz_texture.hpp>
+#include <godot_cpp/classes/visual_shader_node_curve_xyz_texture.hpp>
 #include <godot_cpp/classes/visual_shader_node_resizable_base.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void visual_shader_node_curve_xyz_texture_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeCurveXYZTexture *visual_shader_node_curve_xyz_texture = static_cast<VisualShaderNodeCurveXYZTexture *>(JS_GetOpaque(val, VisualShaderNodeCurveXYZTexture::__class_id));
-	if (visual_shader_node_curve_xyz_texture)
-		memdelete(visual_shader_node_curve_xyz_texture);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_curve_xyz_texture_class_def = {
@@ -55,8 +54,8 @@ void define_visual_shader_node_curve_xyz_texture_property(JSContext *ctx, JSValu
         obj,
         JS_NewAtom(ctx, "texture"),
         JS_NewCFunction(ctx, visual_shader_node_curve_xyz_texture_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, visual_shader_node_curve_xyz_texture_class_set_texture, "set_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_curve_xyz_texture_class_set_texture, "set_texture", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void gltf_physics_body_class_finalizer(JSRuntime *rt, JSValue val) {
-	GLTFPhysicsBody *gltf_physics_body = static_cast<GLTFPhysicsBody *>(JS_GetOpaque(val, GLTFPhysicsBody::__class_id));
-	if (gltf_physics_body)
-		memdelete(gltf_physics_body);
+	
+	// nothing
 }
 
 static JSClassDef gltf_physics_body_class_def = {
@@ -136,64 +135,64 @@ void define_gltf_physics_body_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "body_type"),
         JS_NewCFunction(ctx, gltf_physics_body_class_get_body_type, "get_body_type", 0),
-        JS_NewCFunction(ctx, gltf_physics_body_class_set_body_type, "set_body_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_physics_body_class_set_body_type, "set_body_type", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "mass"),
         JS_NewCFunction(ctx, gltf_physics_body_class_get_mass, "get_mass", 0),
-        JS_NewCFunction(ctx, gltf_physics_body_class_set_mass, "set_mass", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_physics_body_class_set_mass, "set_mass", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "linear_velocity"),
         JS_NewCFunction(ctx, gltf_physics_body_class_get_linear_velocity, "get_linear_velocity", 0),
-        JS_NewCFunction(ctx, gltf_physics_body_class_set_linear_velocity, "set_linear_velocity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_physics_body_class_set_linear_velocity, "set_linear_velocity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angular_velocity"),
         JS_NewCFunction(ctx, gltf_physics_body_class_get_angular_velocity, "get_angular_velocity", 0),
-        JS_NewCFunction(ctx, gltf_physics_body_class_set_angular_velocity, "set_angular_velocity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_physics_body_class_set_angular_velocity, "set_angular_velocity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "center_of_mass"),
         JS_NewCFunction(ctx, gltf_physics_body_class_get_center_of_mass, "get_center_of_mass", 0),
-        JS_NewCFunction(ctx, gltf_physics_body_class_set_center_of_mass, "set_center_of_mass", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_physics_body_class_set_center_of_mass, "set_center_of_mass", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "inertia_diagonal"),
         JS_NewCFunction(ctx, gltf_physics_body_class_get_inertia_diagonal, "get_inertia_diagonal", 0),
-        JS_NewCFunction(ctx, gltf_physics_body_class_set_inertia_diagonal, "set_inertia_diagonal", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_physics_body_class_set_inertia_diagonal, "set_inertia_diagonal", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "inertia_orientation"),
         JS_NewCFunction(ctx, gltf_physics_body_class_get_inertia_orientation, "get_inertia_orientation", 0),
-        JS_NewCFunction(ctx, gltf_physics_body_class_set_inertia_orientation, "set_inertia_orientation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_physics_body_class_set_inertia_orientation, "set_inertia_orientation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "inertia_tensor"),
         JS_NewCFunction(ctx, gltf_physics_body_class_get_inertia_tensor, "get_inertia_tensor", 0),
-        JS_NewCFunction(ctx, gltf_physics_body_class_set_inertia_tensor, "set_inertia_tensor", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_physics_body_class_set_inertia_tensor, "set_inertia_tensor", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_world_position_from_depth_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeWorldPositionFromDepth *visual_shader_node_world_position_from_depth = static_cast<VisualShaderNodeWorldPositionFromDepth *>(JS_GetOpaque(val, VisualShaderNodeWorldPositionFromDepth::__class_id));
-	if (visual_shader_node_world_position_from_depth)
-		memdelete(visual_shader_node_world_position_from_depth);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_world_position_from_depth_class_def = {

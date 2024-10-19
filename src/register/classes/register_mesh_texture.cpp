@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/mesh_texture.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void mesh_texture_class_finalizer(JSRuntime *rt, JSValue val) {
-	MeshTexture *mesh_texture = static_cast<MeshTexture *>(JS_GetOpaque(val, MeshTexture::__class_id));
-	if (mesh_texture)
-		memdelete(mesh_texture);
+	
+	// nothing
 }
 
 static JSClassDef mesh_texture_class_def = {
@@ -73,24 +72,24 @@ void define_mesh_texture_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "mesh"),
         JS_NewCFunction(ctx, mesh_texture_class_get_mesh, "get_mesh", 0),
-        JS_NewCFunction(ctx, mesh_texture_class_set_mesh, "set_mesh", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, mesh_texture_class_set_mesh, "set_mesh", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "base_texture"),
         JS_NewCFunction(ctx, mesh_texture_class_get_base_texture, "get_base_texture", 0),
-        JS_NewCFunction(ctx, mesh_texture_class_set_base_texture, "set_base_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, mesh_texture_class_set_base_texture, "set_base_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "image_size"),
         JS_NewCFunction(ctx, mesh_texture_class_get_image_size, "get_image_size", 0),
-        JS_NewCFunction(ctx, mesh_texture_class_set_image_size, "set_image_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, mesh_texture_class_set_image_size, "set_image_size", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton3d.hpp>
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/skeleton_modifier3d.hpp>
+#include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/skeleton3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void skeleton_modifier3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	SkeletonModifier3D *skeleton_modifier3d = static_cast<SkeletonModifier3D *>(JS_GetOpaque(val, SkeletonModifier3D::__class_id));
-	if (skeleton_modifier3d)
-		memdelete(skeleton_modifier3d);
+	
+	// nothing
 }
 
 static JSClassDef skeleton_modifier3d_class_def = {
@@ -68,16 +67,16 @@ void define_skeleton_modifier3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "active"),
         JS_NewCFunction(ctx, skeleton_modifier3d_class_is_active, "is_active", 0),
-        JS_NewCFunction(ctx, skeleton_modifier3d_class_set_active, "set_active", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_modifier3d_class_set_active, "set_active", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "influence"),
         JS_NewCFunction(ctx, skeleton_modifier3d_class_get_influence, "get_influence", 0),
-        JS_NewCFunction(ctx, skeleton_modifier3d_class_set_influence, "set_influence", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_modifier3d_class_set_influence, "set_influence", 1),
+        JS_PROP_GETSET
     );
 }
 

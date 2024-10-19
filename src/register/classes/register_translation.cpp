@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void translation_class_finalizer(JSRuntime *rt, JSValue val) {
-	Translation *translation = static_cast<Translation *>(JS_GetOpaque(val, Translation::__class_id));
-	if (translation)
-		memdelete(translation);
+	
+	// nothing
 }
 
 static JSClassDef translation_class_def = {
@@ -89,8 +88,8 @@ void define_translation_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "locale"),
         JS_NewCFunction(ctx, translation_class_get_locale, "get_locale", 0),
-        JS_NewCFunction(ctx, translation_class_set_locale, "set_locale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, translation_class_set_locale, "set_locale", 1),
+        JS_PROP_GETSET
     );
 }
 

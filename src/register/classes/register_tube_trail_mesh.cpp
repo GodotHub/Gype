@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/primitive_mesh.hpp>
 #include <godot_cpp/classes/curve.hpp>
+#include <godot_cpp/classes/primitive_mesh.hpp>
 #include <godot_cpp/classes/tube_trail_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void tube_trail_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	TubeTrailMesh *tube_trail_mesh = static_cast<TubeTrailMesh *>(JS_GetOpaque(val, TubeTrailMesh::__class_id));
-	if (tube_trail_mesh)
-		memdelete(tube_trail_mesh);
+	
+	// nothing
 }
 
 static JSClassDef tube_trail_mesh_class_def = {
@@ -118,64 +117,64 @@ void define_tube_trail_mesh_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "radius"),
         JS_NewCFunction(ctx, tube_trail_mesh_class_get_radius, "get_radius", 0),
-        JS_NewCFunction(ctx, tube_trail_mesh_class_set_radius, "set_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tube_trail_mesh_class_set_radius, "set_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "radial_steps"),
         JS_NewCFunction(ctx, tube_trail_mesh_class_get_radial_steps, "get_radial_steps", 0),
-        JS_NewCFunction(ctx, tube_trail_mesh_class_set_radial_steps, "set_radial_steps", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tube_trail_mesh_class_set_radial_steps, "set_radial_steps", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sections"),
         JS_NewCFunction(ctx, tube_trail_mesh_class_get_sections, "get_sections", 0),
-        JS_NewCFunction(ctx, tube_trail_mesh_class_set_sections, "set_sections", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tube_trail_mesh_class_set_sections, "set_sections", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "section_length"),
         JS_NewCFunction(ctx, tube_trail_mesh_class_get_section_length, "get_section_length", 0),
-        JS_NewCFunction(ctx, tube_trail_mesh_class_set_section_length, "set_section_length", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tube_trail_mesh_class_set_section_length, "set_section_length", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "section_rings"),
         JS_NewCFunction(ctx, tube_trail_mesh_class_get_section_rings, "get_section_rings", 0),
-        JS_NewCFunction(ctx, tube_trail_mesh_class_set_section_rings, "set_section_rings", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tube_trail_mesh_class_set_section_rings, "set_section_rings", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cap_top"),
         JS_NewCFunction(ctx, tube_trail_mesh_class_is_cap_top, "is_cap_top", 0),
-        JS_NewCFunction(ctx, tube_trail_mesh_class_set_cap_top, "set_cap_top", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tube_trail_mesh_class_set_cap_top, "set_cap_top", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cap_bottom"),
         JS_NewCFunction(ctx, tube_trail_mesh_class_is_cap_bottom, "is_cap_bottom", 0),
-        JS_NewCFunction(ctx, tube_trail_mesh_class_set_cap_bottom, "set_cap_bottom", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tube_trail_mesh_class_set_cap_bottom, "set_cap_bottom", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "curve"),
         JS_NewCFunction(ctx, tube_trail_mesh_class_get_curve, "get_curve", 0),
-        JS_NewCFunction(ctx, tube_trail_mesh_class_set_curve, "set_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tube_trail_mesh_class_set_curve, "set_curve", 1),
+        JS_PROP_GETSET
     );
 }
 

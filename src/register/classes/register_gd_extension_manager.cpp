@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gd_extension_manager.hpp>
 #include <godot_cpp/classes/gd_extension.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/gd_extension_manager.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
@@ -17,9 +17,8 @@ static JSValue gd_extension_manager_instance;
 static void js_gd_extension_manager_singleton();
 
 static void gd_extension_manager_class_finalizer(JSRuntime *rt, JSValue val) {
-	GDExtensionManager *gd_extension_manager = static_cast<GDExtensionManager *>(JS_GetOpaque(val, GDExtensionManager::__class_id));
-	if (gd_extension_manager)
-		GDExtensionManager::free(nullptr, gd_extension_manager);
+	
+	// nothing
 }
 
 static JSClassDef gd_extension_manager_class_def = {

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void audio_effect_filter_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioEffectFilter *audio_effect_filter = static_cast<AudioEffectFilter *>(JS_GetOpaque(val, AudioEffectFilter::__class_id));
-	if (audio_effect_filter)
-		memdelete(audio_effect_filter);
+	
+	// nothing
 }
 
 static JSClassDef audio_effect_filter_class_def = {
@@ -81,32 +80,32 @@ void define_audio_effect_filter_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "cutoff_hz"),
         JS_NewCFunction(ctx, audio_effect_filter_class_get_cutoff, "get_cutoff", 0),
-        JS_NewCFunction(ctx, audio_effect_filter_class_set_cutoff, "set_cutoff", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_filter_class_set_cutoff, "set_cutoff", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "resonance"),
         JS_NewCFunction(ctx, audio_effect_filter_class_get_resonance, "get_resonance", 0),
-        JS_NewCFunction(ctx, audio_effect_filter_class_set_resonance, "set_resonance", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_filter_class_set_resonance, "set_resonance", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gain"),
         JS_NewCFunction(ctx, audio_effect_filter_class_get_gain, "get_gain", 0),
-        JS_NewCFunction(ctx, audio_effect_filter_class_set_gain, "set_gain", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_filter_class_set_gain, "set_gain", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "db"),
         JS_NewCFunction(ctx, audio_effect_filter_class_get_db, "get_db", 0),
-        JS_NewCFunction(ctx, audio_effect_filter_class_set_db, "set_db", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_filter_class_set_db, "set_db", 1),
+        JS_PROP_GETSET
     );
 }
 

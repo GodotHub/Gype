@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/viewport_texture.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void viewport_texture_class_finalizer(JSRuntime *rt, JSValue val) {
-	ViewportTexture *viewport_texture = static_cast<ViewportTexture *>(JS_GetOpaque(val, ViewportTexture::__class_id));
-	if (viewport_texture)
-		memdelete(viewport_texture);
+	
+	// nothing
 }
 
 static JSClassDef viewport_texture_class_def = {
@@ -54,8 +53,8 @@ void define_viewport_texture_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "viewport_path"),
         JS_NewCFunction(ctx, viewport_texture_class_get_viewport_path_in_scene, "get_viewport_path_in_scene", 0),
-        JS_NewCFunction(ctx, viewport_texture_class_set_viewport_path_in_scene, "set_viewport_path_in_scene", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_texture_class_set_viewport_path_in_scene, "set_viewport_path_in_scene", 1),
+        JS_PROP_GETSET
     );
 }
 

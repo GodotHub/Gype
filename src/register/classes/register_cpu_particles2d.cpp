@@ -5,21 +5,20 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/gradient.hpp>
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/cpu_particles2d.hpp>
-#include <godot_cpp/classes/curve.hpp>
-#include <godot_cpp/classes/gradient.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void cpu_particles2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	CPUParticles2D *cpu_particles2d = static_cast<CPUParticles2D *>(JS_GetOpaque(val, CPUParticles2D::__class_id));
-	if (cpu_particles2d)
-		memdelete(cpu_particles2d);
+	
+	// nothing
 }
 
 static JSClassDef cpu_particles2d_class_def = {
@@ -356,520 +355,520 @@ void define_cpu_particles2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "emitting"),
         JS_NewCFunction(ctx, cpu_particles2d_class_is_emitting, "is_emitting", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_emitting, "set_emitting", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_emitting, "set_emitting", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "amount"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_amount, "get_amount", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_amount, "set_amount", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_amount, "set_amount", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "lifetime"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_lifetime, "get_lifetime", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_lifetime, "set_lifetime", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_lifetime, "set_lifetime", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "one_shot"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_one_shot, "get_one_shot", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_one_shot, "set_one_shot", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_one_shot, "set_one_shot", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "preprocess"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_pre_process_time, "get_pre_process_time", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_pre_process_time, "set_pre_process_time", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_pre_process_time, "set_pre_process_time", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "speed_scale"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_speed_scale, "get_speed_scale", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_speed_scale, "set_speed_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_speed_scale, "set_speed_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "explosiveness"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_explosiveness_ratio, "get_explosiveness_ratio", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_explosiveness_ratio, "set_explosiveness_ratio", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_explosiveness_ratio, "set_explosiveness_ratio", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "randomness"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_randomness_ratio, "get_randomness_ratio", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_randomness_ratio, "set_randomness_ratio", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_randomness_ratio, "set_randomness_ratio", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "lifetime_randomness"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_lifetime_randomness, "get_lifetime_randomness", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_lifetime_randomness, "set_lifetime_randomness", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_lifetime_randomness, "set_lifetime_randomness", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fixed_fps"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_fixed_fps, "get_fixed_fps", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_fixed_fps, "set_fixed_fps", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_fixed_fps, "set_fixed_fps", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fract_delta"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_fractional_delta, "get_fractional_delta", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_fractional_delta, "set_fractional_delta", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_fractional_delta, "set_fractional_delta", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "local_coords"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_use_local_coordinates, "get_use_local_coordinates", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_use_local_coordinates, "set_use_local_coordinates", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_use_local_coordinates, "set_use_local_coordinates", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "draw_order"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_draw_order, "get_draw_order", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_draw_order, "set_draw_order", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_draw_order, "set_draw_order", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_texture, "set_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_texture, "set_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "emission_shape"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_emission_shape, "get_emission_shape", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_emission_shape, "set_emission_shape", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_emission_shape, "set_emission_shape", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "emission_sphere_radius"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_emission_sphere_radius, "get_emission_sphere_radius", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_emission_sphere_radius, "set_emission_sphere_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_emission_sphere_radius, "set_emission_sphere_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "emission_rect_extents"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_emission_rect_extents, "get_emission_rect_extents", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_emission_rect_extents, "set_emission_rect_extents", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_emission_rect_extents, "set_emission_rect_extents", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "emission_points"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_emission_points, "get_emission_points", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_emission_points, "set_emission_points", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_emission_points, "set_emission_points", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "emission_normals"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_emission_normals, "get_emission_normals", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_emission_normals, "set_emission_normals", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_emission_normals, "set_emission_normals", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "emission_colors"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_emission_colors, "get_emission_colors", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_emission_colors, "set_emission_colors", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_emission_colors, "set_emission_colors", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "particle_flag_align_y"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_particle_flag, "get_particle_flag", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_particle_flag, "set_particle_flag", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_particle_flag, "set_particle_flag", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "direction"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_direction, "get_direction", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_direction, "set_direction", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_direction, "set_direction", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "spread"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_spread, "get_spread", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_spread, "set_spread", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_spread, "set_spread", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gravity"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_gravity, "get_gravity", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_gravity, "set_gravity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_gravity, "set_gravity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "initial_velocity_min"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "initial_velocity_max"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angular_velocity_min"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angular_velocity_max"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angular_velocity_curve"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_curve, "get_param_curve", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_curve, "set_param_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_curve, "set_param_curve", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "orbit_velocity_min"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "orbit_velocity_max"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "orbit_velocity_curve"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_curve, "get_param_curve", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_curve, "set_param_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_curve, "set_param_curve", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "linear_accel_min"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "linear_accel_max"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "linear_accel_curve"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_curve, "get_param_curve", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_curve, "set_param_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_curve, "set_param_curve", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "radial_accel_min"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "radial_accel_max"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "radial_accel_curve"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_curve, "get_param_curve", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_curve, "set_param_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_curve, "set_param_curve", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tangential_accel_min"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tangential_accel_max"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tangential_accel_curve"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_curve, "get_param_curve", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_curve, "set_param_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_curve, "set_param_curve", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "damping_min"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "damping_max"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "damping_curve"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_curve, "get_param_curve", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_curve, "set_param_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_curve, "set_param_curve", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angle_min"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angle_max"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angle_curve"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_curve, "get_param_curve", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_curve, "set_param_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_curve, "set_param_curve", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scale_amount_min"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scale_amount_max"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scale_amount_curve"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_curve, "get_param_curve", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_curve, "set_param_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_curve, "set_param_curve", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "split_scale"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_split_scale, "get_split_scale", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_split_scale, "set_split_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_split_scale, "set_split_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scale_curve_x"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_scale_curve_x, "get_scale_curve_x", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_scale_curve_x, "set_scale_curve_x", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_scale_curve_x, "set_scale_curve_x", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scale_curve_y"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_scale_curve_y, "get_scale_curve_y", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_scale_curve_y, "set_scale_curve_y", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_scale_curve_y, "set_scale_curve_y", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "color"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_color, "get_color", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_color, "set_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_color, "set_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "color_ramp"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_color_ramp, "get_color_ramp", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_color_ramp, "set_color_ramp", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_color_ramp, "set_color_ramp", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "color_initial_ramp"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_color_initial_ramp, "get_color_initial_ramp", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_color_initial_ramp, "set_color_initial_ramp", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_color_initial_ramp, "set_color_initial_ramp", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "hue_variation_min"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "hue_variation_max"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "hue_variation_curve"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_curve, "get_param_curve", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_curve, "set_param_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_curve, "set_param_curve", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "anim_speed_min"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "anim_speed_max"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "anim_speed_curve"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_curve, "get_param_curve", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_curve, "set_param_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_curve, "set_param_curve", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "anim_offset_min"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "anim_offset_max"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "anim_offset_curve"),
         JS_NewCFunction(ctx, cpu_particles2d_class_get_param_curve, "get_param_curve", 0),
-        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_curve, "set_param_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cpu_particles2d_class_set_param_curve, "set_param_curve", 1),
+        JS_PROP_GETSET
     );
 }
 

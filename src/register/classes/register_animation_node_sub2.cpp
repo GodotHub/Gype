@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_node_sync.hpp>
 #include <godot_cpp/classes/animation_node_sub2.hpp>
+#include <godot_cpp/classes/animation_node_sync.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void animation_node_sub2_class_finalizer(JSRuntime *rt, JSValue val) {
-	AnimationNodeSub2 *animation_node_sub2 = static_cast<AnimationNodeSub2 *>(JS_GetOpaque(val, AnimationNodeSub2::__class_id));
-	if (animation_node_sub2)
-		memdelete(animation_node_sub2);
+	
+	// nothing
 }
 
 static JSClassDef animation_node_sub2_class_def = {

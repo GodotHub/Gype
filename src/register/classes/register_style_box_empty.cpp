@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void style_box_empty_class_finalizer(JSRuntime *rt, JSValue val) {
-	StyleBoxEmpty *style_box_empty = static_cast<StyleBoxEmpty *>(JS_GetOpaque(val, StyleBoxEmpty::__class_id));
-	if (style_box_empty)
-		memdelete(style_box_empty);
+	
+	// nothing
 }
 
 static JSClassDef style_box_empty_class_def = {

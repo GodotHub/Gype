@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_transform_vec_mult.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visual_shader_node_transform_vec_mult_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeTransformVecMult *visual_shader_node_transform_vec_mult = static_cast<VisualShaderNodeTransformVecMult *>(JS_GetOpaque(val, VisualShaderNodeTransformVecMult::__class_id));
-	if (visual_shader_node_transform_vec_mult)
-		memdelete(visual_shader_node_transform_vec_mult);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_transform_vec_mult_class_def = {
@@ -54,8 +53,8 @@ void define_visual_shader_node_transform_vec_mult_property(JSContext *ctx, JSVal
         obj,
         JS_NewAtom(ctx, "operator"),
         JS_NewCFunction(ctx, visual_shader_node_transform_vec_mult_class_get_operator, "get_operator", 0),
-        JS_NewCFunction(ctx, visual_shader_node_transform_vec_mult_class_set_operator, "set_operator", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_transform_vec_mult_class_set_operator, "set_operator", 1),
+        JS_PROP_GETSET
     );
 }
 

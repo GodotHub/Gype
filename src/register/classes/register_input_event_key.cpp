@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event_key.hpp>
 #include <godot_cpp/classes/input_event_with_modifiers.hpp>
+#include <godot_cpp/classes/input_event_key.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void input_event_key_class_finalizer(JSRuntime *rt, JSValue val) {
-	InputEventKey *input_event_key = static_cast<InputEventKey *>(JS_GetOpaque(val, InputEventKey::__class_id));
-	if (input_event_key)
-		memdelete(input_event_key);
+	
+	// nothing
 }
 
 static JSClassDef input_event_key_class_def = {
@@ -128,56 +127,56 @@ void define_input_event_key_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "pressed"),
         JS_UNDEFINED,
-        JS_NewCFunction(ctx, input_event_key_class_set_pressed, "set_pressed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_key_class_set_pressed, "set_pressed", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "keycode"),
         JS_NewCFunction(ctx, input_event_key_class_get_keycode, "get_keycode", 0),
-        JS_NewCFunction(ctx, input_event_key_class_set_keycode, "set_keycode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_key_class_set_keycode, "set_keycode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "physical_keycode"),
         JS_NewCFunction(ctx, input_event_key_class_get_physical_keycode, "get_physical_keycode", 0),
-        JS_NewCFunction(ctx, input_event_key_class_set_physical_keycode, "set_physical_keycode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_key_class_set_physical_keycode, "set_physical_keycode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "key_label"),
         JS_NewCFunction(ctx, input_event_key_class_get_key_label, "get_key_label", 0),
-        JS_NewCFunction(ctx, input_event_key_class_set_key_label, "set_key_label", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_key_class_set_key_label, "set_key_label", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "unicode"),
         JS_NewCFunction(ctx, input_event_key_class_get_unicode, "get_unicode", 0),
-        JS_NewCFunction(ctx, input_event_key_class_set_unicode, "set_unicode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_key_class_set_unicode, "set_unicode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "location"),
         JS_NewCFunction(ctx, input_event_key_class_get_location, "get_location", 0),
-        JS_NewCFunction(ctx, input_event_key_class_set_location, "set_location", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_key_class_set_location, "set_location", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "echo"),
         JS_UNDEFINED,
-        JS_NewCFunction(ctx, input_event_key_class_set_echo, "set_echo", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_key_class_set_echo, "set_echo", 1),
+        JS_PROP_GETSET
     );
 }
 

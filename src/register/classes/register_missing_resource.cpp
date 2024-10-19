@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/missing_resource.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void missing_resource_class_finalizer(JSRuntime *rt, JSValue val) {
-	MissingResource *missing_resource = static_cast<MissingResource *>(JS_GetOpaque(val, MissingResource::__class_id));
-	if (missing_resource)
-		memdelete(missing_resource);
+	
+	// nothing
 }
 
 static JSClassDef missing_resource_class_def = {
@@ -63,16 +62,16 @@ void define_missing_resource_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "original_class"),
         JS_NewCFunction(ctx, missing_resource_class_get_original_class, "get_original_class", 0),
-        JS_NewCFunction(ctx, missing_resource_class_set_original_class, "set_original_class", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, missing_resource_class_set_original_class, "set_original_class", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "recording_properties"),
         JS_NewCFunction(ctx, missing_resource_class_is_recording_properties, "is_recording_properties", 0),
-        JS_NewCFunction(ctx, missing_resource_class_set_recording_properties, "set_recording_properties", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, missing_resource_class_set_recording_properties, "set_recording_properties", 1),
+        JS_PROP_GETSET
     );
 }
 

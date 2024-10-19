@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void scene_tree_timer_class_finalizer(JSRuntime *rt, JSValue val) {
-	SceneTreeTimer *scene_tree_timer = static_cast<SceneTreeTimer *>(JS_GetOpaque(val, SceneTreeTimer::__class_id));
-	if (scene_tree_timer)
-		memdelete(scene_tree_timer);
+	
+	// nothing
 }
 
 static JSClassDef scene_tree_timer_class_def = {
@@ -54,8 +53,8 @@ void define_scene_tree_timer_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "time_left"),
         JS_NewCFunction(ctx, scene_tree_timer_class_get_time_left, "get_time_left", 0),
-        JS_NewCFunction(ctx, scene_tree_timer_class_set_time_left, "set_time_left", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scene_tree_timer_class_set_time_left, "set_time_left", 1),
+        JS_PROP_GETSET
     );
 }
 

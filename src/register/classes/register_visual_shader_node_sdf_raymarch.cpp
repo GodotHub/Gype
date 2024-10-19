@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_sdf_raymarch_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeSDFRaymarch *visual_shader_node_sdf_raymarch = static_cast<VisualShaderNodeSDFRaymarch *>(JS_GetOpaque(val, VisualShaderNodeSDFRaymarch::__class_id));
-	if (visual_shader_node_sdf_raymarch)
-		memdelete(visual_shader_node_sdf_raymarch);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_sdf_raymarch_class_def = {

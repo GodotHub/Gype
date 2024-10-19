@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void light2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	Light2D *light2d = static_cast<Light2D *>(JS_GetOpaque(val, Light2D::__class_id));
-	if (light2d)
-		memdelete(light2d);
+	
+	// nothing
 }
 
 static JSClassDef light2d_class_def = {
@@ -189,120 +188,120 @@ void define_light2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "enabled"),
         JS_NewCFunction(ctx, light2d_class_is_enabled, "is_enabled", 0),
-        JS_NewCFunction(ctx, light2d_class_set_enabled, "set_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light2d_class_set_enabled, "set_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "editor_only"),
         JS_NewCFunction(ctx, light2d_class_is_editor_only, "is_editor_only", 0),
-        JS_NewCFunction(ctx, light2d_class_set_editor_only, "set_editor_only", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light2d_class_set_editor_only, "set_editor_only", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "color"),
         JS_NewCFunction(ctx, light2d_class_get_color, "get_color", 0),
-        JS_NewCFunction(ctx, light2d_class_set_color, "set_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light2d_class_set_color, "set_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "energy"),
         JS_NewCFunction(ctx, light2d_class_get_energy, "get_energy", 0),
-        JS_NewCFunction(ctx, light2d_class_set_energy, "set_energy", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light2d_class_set_energy, "set_energy", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "blend_mode"),
         JS_NewCFunction(ctx, light2d_class_get_blend_mode, "get_blend_mode", 0),
-        JS_NewCFunction(ctx, light2d_class_set_blend_mode, "set_blend_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light2d_class_set_blend_mode, "set_blend_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "range_z_min"),
         JS_NewCFunction(ctx, light2d_class_get_z_range_min, "get_z_range_min", 0),
-        JS_NewCFunction(ctx, light2d_class_set_z_range_min, "set_z_range_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light2d_class_set_z_range_min, "set_z_range_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "range_z_max"),
         JS_NewCFunction(ctx, light2d_class_get_z_range_max, "get_z_range_max", 0),
-        JS_NewCFunction(ctx, light2d_class_set_z_range_max, "set_z_range_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light2d_class_set_z_range_max, "set_z_range_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "range_layer_min"),
         JS_NewCFunction(ctx, light2d_class_get_layer_range_min, "get_layer_range_min", 0),
-        JS_NewCFunction(ctx, light2d_class_set_layer_range_min, "set_layer_range_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light2d_class_set_layer_range_min, "set_layer_range_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "range_layer_max"),
         JS_NewCFunction(ctx, light2d_class_get_layer_range_max, "get_layer_range_max", 0),
-        JS_NewCFunction(ctx, light2d_class_set_layer_range_max, "set_layer_range_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light2d_class_set_layer_range_max, "set_layer_range_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "range_item_cull_mask"),
         JS_NewCFunction(ctx, light2d_class_get_item_cull_mask, "get_item_cull_mask", 0),
-        JS_NewCFunction(ctx, light2d_class_set_item_cull_mask, "set_item_cull_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light2d_class_set_item_cull_mask, "set_item_cull_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shadow_enabled"),
         JS_NewCFunction(ctx, light2d_class_is_shadow_enabled, "is_shadow_enabled", 0),
-        JS_NewCFunction(ctx, light2d_class_set_shadow_enabled, "set_shadow_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light2d_class_set_shadow_enabled, "set_shadow_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shadow_color"),
         JS_NewCFunction(ctx, light2d_class_get_shadow_color, "get_shadow_color", 0),
-        JS_NewCFunction(ctx, light2d_class_set_shadow_color, "set_shadow_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light2d_class_set_shadow_color, "set_shadow_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shadow_filter"),
         JS_NewCFunction(ctx, light2d_class_get_shadow_filter, "get_shadow_filter", 0),
-        JS_NewCFunction(ctx, light2d_class_set_shadow_filter, "set_shadow_filter", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light2d_class_set_shadow_filter, "set_shadow_filter", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shadow_filter_smooth"),
         JS_NewCFunction(ctx, light2d_class_get_shadow_smooth, "get_shadow_smooth", 0),
-        JS_NewCFunction(ctx, light2d_class_set_shadow_smooth, "set_shadow_smooth", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light2d_class_set_shadow_smooth, "set_shadow_smooth", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shadow_item_cull_mask"),
         JS_NewCFunction(ctx, light2d_class_get_item_shadow_cull_mask, "get_item_shadow_cull_mask", 0),
-        JS_NewCFunction(ctx, light2d_class_set_item_shadow_cull_mask, "set_item_shadow_cull_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, light2d_class_set_item_shadow_cull_mask, "set_item_shadow_cull_mask", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void tile_map_pattern_class_finalizer(JSRuntime *rt, JSValue val) {
-	TileMapPattern *tile_map_pattern = static_cast<TileMapPattern *>(JS_GetOpaque(val, TileMapPattern::__class_id));
-	if (tile_map_pattern)
-		memdelete(tile_map_pattern);
+	
+	// nothing
 }
 
 static JSClassDef tile_map_pattern_class_def = {

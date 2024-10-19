@@ -5,20 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/mesh_library.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/grid_map.hpp>
 #include <godot_cpp/classes/physics_material.hpp>
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/mesh_library.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void grid_map_class_finalizer(JSRuntime *rt, JSValue val) {
-	GridMap *grid_map = static_cast<GridMap *>(JS_GetOpaque(val, GridMap::__class_id));
-	if (grid_map)
-		memdelete(grid_map);
+	
+	// nothing
 }
 
 static JSClassDef grid_map_class_def = {
@@ -256,96 +255,96 @@ void define_grid_map_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "mesh_library"),
         JS_NewCFunction(ctx, grid_map_class_get_mesh_library, "get_mesh_library", 0),
-        JS_NewCFunction(ctx, grid_map_class_set_mesh_library, "set_mesh_library", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, grid_map_class_set_mesh_library, "set_mesh_library", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "physics_material"),
         JS_NewCFunction(ctx, grid_map_class_get_physics_material, "get_physics_material", 0),
-        JS_NewCFunction(ctx, grid_map_class_set_physics_material, "set_physics_material", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, grid_map_class_set_physics_material, "set_physics_material", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cell_size"),
         JS_NewCFunction(ctx, grid_map_class_get_cell_size, "get_cell_size", 0),
-        JS_NewCFunction(ctx, grid_map_class_set_cell_size, "set_cell_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, grid_map_class_set_cell_size, "set_cell_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cell_octant_size"),
         JS_NewCFunction(ctx, grid_map_class_get_octant_size, "get_octant_size", 0),
-        JS_NewCFunction(ctx, grid_map_class_set_octant_size, "set_octant_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, grid_map_class_set_octant_size, "set_octant_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cell_center_x"),
         JS_NewCFunction(ctx, grid_map_class_get_center_x, "get_center_x", 0),
-        JS_NewCFunction(ctx, grid_map_class_set_center_x, "set_center_x", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, grid_map_class_set_center_x, "set_center_x", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cell_center_y"),
         JS_NewCFunction(ctx, grid_map_class_get_center_y, "get_center_y", 0),
-        JS_NewCFunction(ctx, grid_map_class_set_center_y, "set_center_y", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, grid_map_class_set_center_y, "set_center_y", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cell_center_z"),
         JS_NewCFunction(ctx, grid_map_class_get_center_z, "get_center_z", 0),
-        JS_NewCFunction(ctx, grid_map_class_set_center_z, "set_center_z", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, grid_map_class_set_center_z, "set_center_z", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cell_scale"),
         JS_NewCFunction(ctx, grid_map_class_get_cell_scale, "get_cell_scale", 0),
-        JS_NewCFunction(ctx, grid_map_class_set_cell_scale, "set_cell_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, grid_map_class_set_cell_scale, "set_cell_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_layer"),
         JS_NewCFunction(ctx, grid_map_class_get_collision_layer, "get_collision_layer", 0),
-        JS_NewCFunction(ctx, grid_map_class_set_collision_layer, "set_collision_layer", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, grid_map_class_set_collision_layer, "set_collision_layer", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_mask"),
         JS_NewCFunction(ctx, grid_map_class_get_collision_mask, "get_collision_mask", 0),
-        JS_NewCFunction(ctx, grid_map_class_set_collision_mask, "set_collision_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, grid_map_class_set_collision_mask, "set_collision_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_priority"),
         JS_NewCFunction(ctx, grid_map_class_get_collision_priority, "get_collision_priority", 0),
-        JS_NewCFunction(ctx, grid_map_class_set_collision_priority, "set_collision_priority", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, grid_map_class_set_collision_priority, "set_collision_priority", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bake_navigation"),
         JS_NewCFunction(ctx, grid_map_class_is_baking_navigation, "is_baking_navigation", 0),
-        JS_NewCFunction(ctx, grid_map_class_set_bake_navigation, "set_bake_navigation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, grid_map_class_set_bake_navigation, "set_bake_navigation", 1),
+        JS_PROP_GETSET
     );
 }
 

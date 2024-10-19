@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/animated_texture.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void animated_texture_class_finalizer(JSRuntime *rt, JSValue val) {
-	AnimatedTexture *animated_texture = static_cast<AnimatedTexture *>(JS_GetOpaque(val, AnimatedTexture::__class_id));
-	if (animated_texture)
-		memdelete(animated_texture);
+	
+	// nothing
 }
 
 static JSClassDef animated_texture_class_def = {
@@ -108,40 +107,40 @@ void define_animated_texture_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "frames"),
         JS_NewCFunction(ctx, animated_texture_class_get_frames, "get_frames", 0),
-        JS_NewCFunction(ctx, animated_texture_class_set_frames, "set_frames", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animated_texture_class_set_frames, "set_frames", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "current_frame"),
         JS_NewCFunction(ctx, animated_texture_class_get_current_frame, "get_current_frame", 0),
-        JS_NewCFunction(ctx, animated_texture_class_set_current_frame, "set_current_frame", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animated_texture_class_set_current_frame, "set_current_frame", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "pause"),
         JS_NewCFunction(ctx, animated_texture_class_get_pause, "get_pause", 0),
-        JS_NewCFunction(ctx, animated_texture_class_set_pause, "set_pause", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animated_texture_class_set_pause, "set_pause", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "one_shot"),
         JS_NewCFunction(ctx, animated_texture_class_get_one_shot, "get_one_shot", 0),
-        JS_NewCFunction(ctx, animated_texture_class_set_one_shot, "set_one_shot", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animated_texture_class_set_one_shot, "set_one_shot", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "speed_scale"),
         JS_NewCFunction(ctx, animated_texture_class_get_speed_scale, "get_speed_scale", 0),
-        JS_NewCFunction(ctx, animated_texture_class_set_speed_scale, "set_speed_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animated_texture_class_set_speed_scale, "set_speed_scale", 1),
+        JS_PROP_GETSET
     );
 }
 

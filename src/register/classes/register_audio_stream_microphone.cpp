@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void audio_stream_microphone_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioStreamMicrophone *audio_stream_microphone = static_cast<AudioStreamMicrophone *>(JS_GetOpaque(val, AudioStreamMicrophone::__class_id));
-	if (audio_stream_microphone)
-		memdelete(audio_stream_microphone);
+	
+	// nothing
 }
 
 static JSClassDef audio_stream_microphone_class_def = {

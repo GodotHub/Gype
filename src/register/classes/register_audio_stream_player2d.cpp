@@ -5,19 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_stream_player2d.hpp>
 #include <godot_cpp/classes/audio_stream_playback.hpp>
-#include <godot_cpp/classes/audio_stream.hpp>
+#include <godot_cpp/classes/audio_stream_player2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/audio_stream.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void audio_stream_player2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioStreamPlayer2D *audio_stream_player2d = static_cast<AudioStreamPlayer2D *>(JS_GetOpaque(val, AudioStreamPlayer2D::__class_id));
-	if (audio_stream_player2d)
-		memdelete(audio_stream_player2d);
+	
+	// nothing
 }
 
 static JSClassDef audio_stream_player2d_class_def = {
@@ -186,24 +185,24 @@ void define_audio_stream_player2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "stream"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_get_stream, "get_stream", 0),
-        JS_NewCFunction(ctx, audio_stream_player2d_class_set_stream, "set_stream", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_player2d_class_set_stream, "set_stream", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "volume_db"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_get_volume_db, "get_volume_db", 0),
-        JS_NewCFunction(ctx, audio_stream_player2d_class_set_volume_db, "set_volume_db", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_player2d_class_set_volume_db, "set_volume_db", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "pitch_scale"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_get_pitch_scale, "get_pitch_scale", 0),
-        JS_NewCFunction(ctx, audio_stream_player2d_class_set_pitch_scale, "set_pitch_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_player2d_class_set_pitch_scale, "set_pitch_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -211,79 +210,79 @@ void define_audio_stream_player2d_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "playing"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_is_playing, "is_playing", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "autoplay"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_is_autoplay_enabled, "is_autoplay_enabled", 0),
-        JS_NewCFunction(ctx, audio_stream_player2d_class_set_autoplay, "set_autoplay", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_player2d_class_set_autoplay, "set_autoplay", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "stream_paused"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_get_stream_paused, "get_stream_paused", 0),
-        JS_NewCFunction(ctx, audio_stream_player2d_class_set_stream_paused, "set_stream_paused", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_player2d_class_set_stream_paused, "set_stream_paused", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "max_distance"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_get_max_distance, "get_max_distance", 0),
-        JS_NewCFunction(ctx, audio_stream_player2d_class_set_max_distance, "set_max_distance", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_player2d_class_set_max_distance, "set_max_distance", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "attenuation"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_get_attenuation, "get_attenuation", 0),
-        JS_NewCFunction(ctx, audio_stream_player2d_class_set_attenuation, "set_attenuation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_player2d_class_set_attenuation, "set_attenuation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "max_polyphony"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_get_max_polyphony, "get_max_polyphony", 0),
-        JS_NewCFunction(ctx, audio_stream_player2d_class_set_max_polyphony, "set_max_polyphony", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_player2d_class_set_max_polyphony, "set_max_polyphony", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "panning_strength"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_get_panning_strength, "get_panning_strength", 0),
-        JS_NewCFunction(ctx, audio_stream_player2d_class_set_panning_strength, "set_panning_strength", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_player2d_class_set_panning_strength, "set_panning_strength", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bus"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_get_bus, "get_bus", 0),
-        JS_NewCFunction(ctx, audio_stream_player2d_class_set_bus, "set_bus", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_player2d_class_set_bus, "set_bus", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "area_mask"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_get_area_mask, "get_area_mask", 0),
-        JS_NewCFunction(ctx, audio_stream_player2d_class_set_area_mask, "set_area_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_player2d_class_set_area_mask, "set_area_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "playback_type"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_get_playback_type, "get_playback_type", 0),
-        JS_NewCFunction(ctx, audio_stream_player2d_class_set_playback_type, "set_playback_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_player2d_class_set_playback_type, "set_playback_type", 1),
+        JS_PROP_GETSET
     );
 }
 

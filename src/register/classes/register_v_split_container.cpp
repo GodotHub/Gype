@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void v_split_container_class_finalizer(JSRuntime *rt, JSValue val) {
-	VSplitContainer *v_split_container = static_cast<VSplitContainer *>(JS_GetOpaque(val, VSplitContainer::__class_id));
-	if (v_split_container)
-		memdelete(v_split_container);
+	
+	// nothing
 }
 
 static JSClassDef v_split_container_class_def = {

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void placeholder_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	PlaceholderMesh *placeholder_mesh = static_cast<PlaceholderMesh *>(JS_GetOpaque(val, PlaceholderMesh::__class_id));
-	if (placeholder_mesh)
-		memdelete(placeholder_mesh);
+	
+	// nothing
 }
 
 static JSClassDef placeholder_mesh_class_def = {
@@ -50,8 +49,8 @@ void define_placeholder_mesh_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "aabb"),
         JS_UNDEFINED,
-        JS_NewCFunction(ctx, placeholder_mesh_class_set_aabb, "set_aabb", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, placeholder_mesh_class_set_aabb, "set_aabb", 1),
+        JS_PROP_GETSET
     );
 }
 

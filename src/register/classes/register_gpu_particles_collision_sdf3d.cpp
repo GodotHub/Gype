@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/gpu_particles_collision_sdf3d.hpp>
-#include <godot_cpp/classes/texture3d.hpp>
 #include <godot_cpp/classes/gpu_particles_collision3d.hpp>
+#include <godot_cpp/classes/texture3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gpu_particles_collision_sdf3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	GPUParticlesCollisionSDF3D *gpu_particles_collision_sdf3d = static_cast<GPUParticlesCollisionSDF3D *>(JS_GetOpaque(val, GPUParticlesCollisionSDF3D::__class_id));
-	if (gpu_particles_collision_sdf3d)
-		memdelete(gpu_particles_collision_sdf3d);
+	
+	// nothing
 }
 
 static JSClassDef gpu_particles_collision_sdf3d_class_def = {
@@ -100,40 +99,40 @@ void define_gpu_particles_collision_sdf3d_property(JSContext *ctx, JSValue obj) 
         obj,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, gpu_particles_collision_sdf3d_class_get_size, "get_size", 0),
-        JS_NewCFunction(ctx, gpu_particles_collision_sdf3d_class_set_size, "set_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gpu_particles_collision_sdf3d_class_set_size, "set_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "resolution"),
         JS_NewCFunction(ctx, gpu_particles_collision_sdf3d_class_get_resolution, "get_resolution", 0),
-        JS_NewCFunction(ctx, gpu_particles_collision_sdf3d_class_set_resolution, "set_resolution", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gpu_particles_collision_sdf3d_class_set_resolution, "set_resolution", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "thickness"),
         JS_NewCFunction(ctx, gpu_particles_collision_sdf3d_class_get_thickness, "get_thickness", 0),
-        JS_NewCFunction(ctx, gpu_particles_collision_sdf3d_class_set_thickness, "set_thickness", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gpu_particles_collision_sdf3d_class_set_thickness, "set_thickness", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bake_mask"),
         JS_NewCFunction(ctx, gpu_particles_collision_sdf3d_class_get_bake_mask, "get_bake_mask", 0),
-        JS_NewCFunction(ctx, gpu_particles_collision_sdf3d_class_set_bake_mask, "set_bake_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gpu_particles_collision_sdf3d_class_set_bake_mask, "set_bake_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture"),
         JS_NewCFunction(ctx, gpu_particles_collision_sdf3d_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, gpu_particles_collision_sdf3d_class_set_texture, "set_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gpu_particles_collision_sdf3d_class_set_texture, "set_texture", 1),
+        JS_PROP_GETSET
     );
 }
 

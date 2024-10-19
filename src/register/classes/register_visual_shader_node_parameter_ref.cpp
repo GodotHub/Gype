@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_parameter_ref_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeParameterRef *visual_shader_node_parameter_ref = static_cast<VisualShaderNodeParameterRef *>(JS_GetOpaque(val, VisualShaderNodeParameterRef::__class_id));
-	if (visual_shader_node_parameter_ref)
-		memdelete(visual_shader_node_parameter_ref);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_parameter_ref_class_def = {
@@ -54,8 +53,8 @@ void define_visual_shader_node_parameter_ref_property(JSContext *ctx, JSValue ob
         obj,
         JS_NewAtom(ctx, "parameter_name"),
         JS_NewCFunction(ctx, visual_shader_node_parameter_ref_class_get_parameter_name, "get_parameter_name", 0),
-        JS_NewCFunction(ctx, visual_shader_node_parameter_ref_class_set_parameter_name, "set_parameter_name", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_parameter_ref_class_set_parameter_name, "set_parameter_name", 1),
+        JS_PROP_GETSET
     );
 }
 

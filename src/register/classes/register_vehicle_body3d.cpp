@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void vehicle_body3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	VehicleBody3D *vehicle_body3d = static_cast<VehicleBody3D *>(JS_GetOpaque(val, VehicleBody3D::__class_id));
-	if (vehicle_body3d)
-		memdelete(vehicle_body3d);
+	
+	// nothing
 }
 
 static JSClassDef vehicle_body3d_class_def = {
@@ -72,24 +71,24 @@ void define_vehicle_body3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "engine_force"),
         JS_NewCFunction(ctx, vehicle_body3d_class_get_engine_force, "get_engine_force", 0),
-        JS_NewCFunction(ctx, vehicle_body3d_class_set_engine_force, "set_engine_force", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, vehicle_body3d_class_set_engine_force, "set_engine_force", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "brake"),
         JS_NewCFunction(ctx, vehicle_body3d_class_get_brake, "get_brake", 0),
-        JS_NewCFunction(ctx, vehicle_body3d_class_set_brake, "set_brake", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, vehicle_body3d_class_set_brake, "set_brake", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "steering"),
         JS_NewCFunction(ctx, vehicle_body3d_class_get_steering, "get_steering", 0),
-        JS_NewCFunction(ctx, vehicle_body3d_class_set_steering, "set_steering", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, vehicle_body3d_class_set_steering, "set_steering", 1),
+        JS_PROP_GETSET
     );
 }
 

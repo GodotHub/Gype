@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/navigation_polygon.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/navigation_mesh.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/navigation_polygon.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void navigation_polygon_class_finalizer(JSRuntime *rt, JSValue val) {
-	NavigationPolygon *navigation_polygon = static_cast<NavigationPolygon *>(JS_GetOpaque(val, NavigationPolygon::__class_id));
-	if (navigation_polygon)
-		memdelete(navigation_polygon);
+	
+	// nothing
 }
 
 static JSClassDef navigation_polygon_class_def = {
@@ -210,80 +209,80 @@ void define_navigation_polygon_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "vertices"),
         JS_NewCFunction(ctx, navigation_polygon_class_get_vertices, "get_vertices", 0),
-        JS_NewCFunction(ctx, navigation_polygon_class_set_vertices, "set_vertices", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_polygon_class_set_vertices, "set_vertices", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "parsed_geometry_type"),
         JS_NewCFunction(ctx, navigation_polygon_class_get_parsed_geometry_type, "get_parsed_geometry_type", 0),
-        JS_NewCFunction(ctx, navigation_polygon_class_set_parsed_geometry_type, "set_parsed_geometry_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_polygon_class_set_parsed_geometry_type, "set_parsed_geometry_type", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "parsed_collision_mask"),
         JS_NewCFunction(ctx, navigation_polygon_class_get_parsed_collision_mask, "get_parsed_collision_mask", 0),
-        JS_NewCFunction(ctx, navigation_polygon_class_set_parsed_collision_mask, "set_parsed_collision_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_polygon_class_set_parsed_collision_mask, "set_parsed_collision_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "source_geometry_mode"),
         JS_NewCFunction(ctx, navigation_polygon_class_get_source_geometry_mode, "get_source_geometry_mode", 0),
-        JS_NewCFunction(ctx, navigation_polygon_class_set_source_geometry_mode, "set_source_geometry_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_polygon_class_set_source_geometry_mode, "set_source_geometry_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "source_geometry_group_name"),
         JS_NewCFunction(ctx, navigation_polygon_class_get_source_geometry_group_name, "get_source_geometry_group_name", 0),
-        JS_NewCFunction(ctx, navigation_polygon_class_set_source_geometry_group_name, "set_source_geometry_group_name", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_polygon_class_set_source_geometry_group_name, "set_source_geometry_group_name", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cell_size"),
         JS_NewCFunction(ctx, navigation_polygon_class_get_cell_size, "get_cell_size", 0),
-        JS_NewCFunction(ctx, navigation_polygon_class_set_cell_size, "set_cell_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_polygon_class_set_cell_size, "set_cell_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "border_size"),
         JS_NewCFunction(ctx, navigation_polygon_class_get_border_size, "get_border_size", 0),
-        JS_NewCFunction(ctx, navigation_polygon_class_set_border_size, "set_border_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_polygon_class_set_border_size, "set_border_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "agent_radius"),
         JS_NewCFunction(ctx, navigation_polygon_class_get_agent_radius, "get_agent_radius", 0),
-        JS_NewCFunction(ctx, navigation_polygon_class_set_agent_radius, "set_agent_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_polygon_class_set_agent_radius, "set_agent_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "baking_rect"),
         JS_NewCFunction(ctx, navigation_polygon_class_get_baking_rect, "get_baking_rect", 0),
-        JS_NewCFunction(ctx, navigation_polygon_class_set_baking_rect, "set_baking_rect", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_polygon_class_set_baking_rect, "set_baking_rect", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "baking_rect_offset"),
         JS_NewCFunction(ctx, navigation_polygon_class_get_baking_rect_offset, "get_baking_rect_offset", 0),
-        JS_NewCFunction(ctx, navigation_polygon_class_set_baking_rect_offset, "set_baking_rect_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_polygon_class_set_baking_rect_offset, "set_baking_rect_offset", 1),
+        JS_PROP_GETSET
     );
 }
 

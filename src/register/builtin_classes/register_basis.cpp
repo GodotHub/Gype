@@ -5,7 +5,6 @@
 #include "quickjs/str_helper.h"
 #include "utils/func_utils.h"
 #include <godot_cpp/variant/basis.hpp>
-#include <godot_cpp/variant/vector3.hpp>
 
 using namespace godot;
 
@@ -45,9 +44,6 @@ static JSValue basis_class_orthonormalized(JSContext *ctx, JSValueConst this_val
 };
 static JSValue basis_class_determinant(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Basis::determinant, ctx, this_val, argc, argv);
-};
-static JSValue basis_class_rotated(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(static_cast<Basis (Basis::*)(const Vector3 &, real_t) const>(&Basis::rotated), ctx, this_val, argc, argv);
 };
 static JSValue basis_class_scaled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Basis::scaled, ctx, this_val, argc, argv);
@@ -91,12 +87,41 @@ static JSValue basis_class_from_euler(JSContext *ctx, JSValueConst this_val, int
 	return call_builtin_static_method_ret(&Basis::from_euler, ctx, this_val, argc, argv);
 };
 
+static JSValue basis_class_get_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Basis &val = *reinterpret_cast<Basis *>(JS_GetOpaque(this_val, Basis::__class_id));
+	return Variant(val.rows[0]);
+}
+static JSValue basis_class_set_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Basis &val = *reinterpret_cast<Basis *>(JS_GetOpaque(this_val, Basis::__class_id));
+	val.rows[0] = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue basis_class_get_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Basis &val = *reinterpret_cast<Basis *>(JS_GetOpaque(this_val, Basis::__class_id));
+	return Variant(val.rows[1]);
+}
+static JSValue basis_class_set_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Basis &val = *reinterpret_cast<Basis *>(JS_GetOpaque(this_val, Basis::__class_id));
+	val.rows[1] = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue basis_class_get_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Basis &val = *reinterpret_cast<Basis *>(JS_GetOpaque(this_val, Basis::__class_id));
+	return Variant(val.rows[2]);
+}
+static JSValue basis_class_set_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Basis &val = *reinterpret_cast<Basis *>(JS_GetOpaque(this_val, Basis::__class_id));
+	val.rows[2] = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
 static const JSCFunctionListEntry basis_class_proto_funcs[] = {
 	JS_CFUNC_DEF("inverse", 0, &basis_class_inverse),
 	JS_CFUNC_DEF("transposed", 0, &basis_class_transposed),
 	JS_CFUNC_DEF("orthonormalized", 0, &basis_class_orthonormalized),
 	JS_CFUNC_DEF("determinant", 0, &basis_class_determinant),
-	JS_CFUNC_DEF("rotated", 2, &basis_class_rotated),
 	JS_CFUNC_DEF("scaled", 1, &basis_class_scaled),
 	JS_CFUNC_DEF("get_scale", 0, &basis_class_get_scale),
 	JS_CFUNC_DEF("get_euler", 1, &basis_class_get_euler),
@@ -115,6 +140,27 @@ static const JSCFunctionListEntry basis_class_static_funcs[] = {
 };
 
 void define_basis_property(JSContext *ctx, JSValue obj) {
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "x"),
+			JS_NewCFunction(ctx, basis_class_get_x, "get_x", 0),
+			JS_NewCFunction(ctx, basis_class_set_x, "set_x", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "y"),
+			JS_NewCFunction(ctx, basis_class_get_y, "get_y", 0),
+			JS_NewCFunction(ctx, basis_class_set_y, "set_y", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "z"),
+			JS_NewCFunction(ctx, basis_class_get_z, "get_z", 0),
+			JS_NewCFunction(ctx, basis_class_set_z, "set_z", 1),
+			JS_PROP_GETSET);
 }
 
 static int js_basis_class_init(JSContext *ctx) {
@@ -125,7 +171,6 @@ static int js_basis_class_init(JSContext *ctx) {
 
 	JSValue proto = JS_NewObject(ctx);
 	JS_SetClassProto(ctx, Basis::__class_id, proto);
-
 	define_basis_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, basis_class_proto_funcs, _countof(basis_class_proto_funcs));
 

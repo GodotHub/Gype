@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void resource_preloader_class_finalizer(JSRuntime *rt, JSValue val) {
-	ResourcePreloader *resource_preloader = static_cast<ResourcePreloader *>(JS_GetOpaque(val, ResourcePreloader::__class_id));
-	if (resource_preloader)
-		memdelete(resource_preloader);
+	
+	// nothing
 }
 
 static JSClassDef resource_preloader_class_def = {

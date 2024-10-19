@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/skeleton_profile.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/skeleton_profile.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void skeleton_profile_class_finalizer(JSRuntime *rt, JSValue val) {
-	SkeletonProfile *skeleton_profile = static_cast<SkeletonProfile *>(JS_GetOpaque(val, SkeletonProfile::__class_id));
-	if (skeleton_profile)
-		memdelete(skeleton_profile);
+	
+	// nothing
 }
 
 static JSClassDef skeleton_profile_class_def = {
@@ -176,32 +175,32 @@ void define_skeleton_profile_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "root_bone"),
         JS_NewCFunction(ctx, skeleton_profile_class_get_root_bone, "get_root_bone", 0),
-        JS_NewCFunction(ctx, skeleton_profile_class_set_root_bone, "set_root_bone", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_profile_class_set_root_bone, "set_root_bone", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scale_base_bone"),
         JS_NewCFunction(ctx, skeleton_profile_class_get_scale_base_bone, "get_scale_base_bone", 0),
-        JS_NewCFunction(ctx, skeleton_profile_class_set_scale_base_bone, "set_scale_base_bone", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_profile_class_set_scale_base_bone, "set_scale_base_bone", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "group_size"),
         JS_NewCFunction(ctx, skeleton_profile_class_get_group_size, "get_group_size", 0),
-        JS_NewCFunction(ctx, skeleton_profile_class_set_group_size, "set_group_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_profile_class_set_group_size, "set_group_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bone_size"),
         JS_NewCFunction(ctx, skeleton_profile_class_get_bone_size, "get_bone_size", 0),
-        JS_NewCFunction(ctx, skeleton_profile_class_set_bone_size, "set_bone_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_profile_class_set_bone_size, "set_bone_size", 1),
+        JS_PROP_GETSET
     );
 }
 

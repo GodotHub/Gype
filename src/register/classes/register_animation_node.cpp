@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/animation_node.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void animation_node_class_finalizer(JSRuntime *rt, JSValue val) {
-	AnimationNode *animation_node = static_cast<AnimationNode *>(JS_GetOpaque(val, AnimationNode::__class_id));
-	if (animation_node)
-		memdelete(animation_node);
+	
+	// nothing
 }
 
 static JSClassDef animation_node_class_def = {
@@ -110,8 +109,8 @@ void define_animation_node_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "filter_enabled"),
         JS_NewCFunction(ctx, animation_node_class_is_filter_enabled, "is_filter_enabled", 0),
-        JS_NewCFunction(ctx, animation_node_class_set_filter_enabled, "set_filter_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_class_set_filter_enabled, "set_filter_enabled", 1),
+        JS_PROP_GETSET
     );
 }
 

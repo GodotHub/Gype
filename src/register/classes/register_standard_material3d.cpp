@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void standard_material3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	StandardMaterial3D *standard_material3d = static_cast<StandardMaterial3D *>(JS_GetOpaque(val, StandardMaterial3D::__class_id));
-	if (standard_material3d)
-		memdelete(standard_material3d);
+	
+	// nothing
 }
 
 static JSClassDef standard_material3d_class_def = {

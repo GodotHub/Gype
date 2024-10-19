@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/sprite_base3d.hpp>
 #include <godot_cpp/classes/sprite3d.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void sprite3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	Sprite3D *sprite3d = static_cast<Sprite3D *>(JS_GetOpaque(val, Sprite3D::__class_id));
-	if (sprite3d)
-		memdelete(sprite3d);
+	
+	// nothing
 }
 
 static JSClassDef sprite3d_class_def = {
@@ -109,56 +108,56 @@ void define_sprite3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "texture"),
         JS_NewCFunction(ctx, sprite3d_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, sprite3d_class_set_texture, "set_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite3d_class_set_texture, "set_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "hframes"),
         JS_NewCFunction(ctx, sprite3d_class_get_hframes, "get_hframes", 0),
-        JS_NewCFunction(ctx, sprite3d_class_set_hframes, "set_hframes", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite3d_class_set_hframes, "set_hframes", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "vframes"),
         JS_NewCFunction(ctx, sprite3d_class_get_vframes, "get_vframes", 0),
-        JS_NewCFunction(ctx, sprite3d_class_set_vframes, "set_vframes", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite3d_class_set_vframes, "set_vframes", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "frame"),
         JS_NewCFunction(ctx, sprite3d_class_get_frame, "get_frame", 0),
-        JS_NewCFunction(ctx, sprite3d_class_set_frame, "set_frame", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite3d_class_set_frame, "set_frame", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "frame_coords"),
         JS_NewCFunction(ctx, sprite3d_class_get_frame_coords, "get_frame_coords", 0),
-        JS_NewCFunction(ctx, sprite3d_class_set_frame_coords, "set_frame_coords", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite3d_class_set_frame_coords, "set_frame_coords", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "region_enabled"),
         JS_NewCFunction(ctx, sprite3d_class_is_region_enabled, "is_region_enabled", 0),
-        JS_NewCFunction(ctx, sprite3d_class_set_region_enabled, "set_region_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite3d_class_set_region_enabled, "set_region_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "region_rect"),
         JS_NewCFunction(ctx, sprite3d_class_get_region_rect, "get_region_rect", 0),
-        JS_NewCFunction(ctx, sprite3d_class_set_region_rect, "set_region_rect", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite3d_class_set_region_rect, "set_region_rect", 1),
+        JS_PROP_GETSET
     );
 }
 

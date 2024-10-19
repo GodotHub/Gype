@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/bit_map.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void bit_map_class_finalizer(JSRuntime *rt, JSValue val) {
-	BitMap *bit_map = static_cast<BitMap *>(JS_GetOpaque(val, BitMap::__class_id));
-	if (bit_map)
-		memdelete(bit_map);
+	
+	// nothing
 }
 
 static JSClassDef bit_map_class_def = {

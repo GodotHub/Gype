@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void triangle_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	TriangleMesh *triangle_mesh = static_cast<TriangleMesh *>(JS_GetOpaque(val, TriangleMesh::__class_id));
-	if (triangle_mesh)
-		memdelete(triangle_mesh);
+	
+	// nothing
 }
 
 static JSClassDef triangle_mesh_class_def = {

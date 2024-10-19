@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void e_net_packet_peer_class_finalizer(JSRuntime *rt, JSValue val) {
-	ENetPacketPeer *e_net_packet_peer = static_cast<ENetPacketPeer *>(JS_GetOpaque(val, ENetPacketPeer::__class_id));
-	if (e_net_packet_peer)
-		memdelete(e_net_packet_peer);
+	
+	// nothing
 }
 
 static JSClassDef e_net_packet_peer_class_def = {

@@ -1,11 +1,10 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/variant/packed_byte_array.hpp>
-
 
 using namespace godot;
 
@@ -41,7 +40,7 @@ static JSValue packed_byte_array_class_is_empty(JSContext *ctx, JSValueConst thi
 	return call_builtin_const_method_ret(&PackedByteArray::is_empty, ctx, this_val, argc, argv);
 };
 static JSValue packed_byte_array_class_set(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedByteArray::set, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedByteArray::set, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_byte_array_class_push_back(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -51,39 +50,39 @@ static JSValue packed_byte_array_class_append(JSContext *ctx, JSValueConst this_
 	return call_builtin_method_ret(&PackedByteArray::append, ctx, this_val, argc, argv);
 };
 static JSValue packed_byte_array_class_append_array(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedByteArray::append_array, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedByteArray::append_array, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_byte_array_class_remove_at(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedByteArray::remove_at, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedByteArray::remove_at, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_byte_array_class_insert(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&PackedByteArray::insert, ctx, this_val, argc, argv);
 };
 static JSValue packed_byte_array_class_fill(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedByteArray::fill, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedByteArray::fill, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_byte_array_class_resize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&PackedByteArray::resize, ctx, this_val, argc, argv);
 };
 static JSValue packed_byte_array_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedByteArray::clear, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedByteArray::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_byte_array_class_has(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PackedByteArray::has, ctx, this_val, argc, argv);
 };
 static JSValue packed_byte_array_class_reverse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedByteArray::reverse, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedByteArray::reverse, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_byte_array_class_slice(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PackedByteArray::slice, ctx, this_val, argc, argv);
 };
 static JSValue packed_byte_array_class_sort(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedByteArray::sort, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedByteArray::sort, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_byte_array_class_bsearch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -183,52 +182,54 @@ static JSValue packed_byte_array_class_to_float64_array(JSContext *ctx, JSValueC
 	return call_builtin_const_method_ret(&PackedByteArray::to_float64_array, ctx, this_val, argc, argv);
 };
 static JSValue packed_byte_array_class_encode_u8(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedByteArray::encode_u8, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedByteArray::encode_u8, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_byte_array_class_encode_s8(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedByteArray::encode_s8, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedByteArray::encode_s8, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_byte_array_class_encode_u16(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedByteArray::encode_u16, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedByteArray::encode_u16, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_byte_array_class_encode_s16(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedByteArray::encode_s16, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedByteArray::encode_s16, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_byte_array_class_encode_u32(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedByteArray::encode_u32, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedByteArray::encode_u32, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_byte_array_class_encode_s32(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedByteArray::encode_s32, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedByteArray::encode_s32, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_byte_array_class_encode_u64(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedByteArray::encode_u64, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedByteArray::encode_u64, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_byte_array_class_encode_s64(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedByteArray::encode_s64, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedByteArray::encode_s64, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_byte_array_class_encode_half(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedByteArray::encode_half, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedByteArray::encode_half, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_byte_array_class_encode_float(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedByteArray::encode_float, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedByteArray::encode_float, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_byte_array_class_encode_double(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedByteArray::encode_double, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedByteArray::encode_double, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_byte_array_class_encode_var(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&PackedByteArray::encode_var, ctx, this_val, argc, argv);
 };
+
+
 static const JSCFunctionListEntry packed_byte_array_class_proto_funcs[] = {
 	JS_CFUNC_DEF("size", 0, &packed_byte_array_class_size),
 	JS_CFUNC_DEF("is_empty", 0, &packed_byte_array_class_is_empty),
@@ -291,10 +292,10 @@ static const JSCFunctionListEntry packed_byte_array_class_proto_funcs[] = {
 	JS_CFUNC_DEF("encode_var", 3, &packed_byte_array_class_encode_var),
 };
 
-void define_packed_byte_array_property(JSContext *ctx, JSValue obj) {
-}
+
 
 static int js_packed_byte_array_class_init(JSContext *ctx) {
+	
 	JS_NewClassID(&PackedByteArray::__class_id);
 	classes["PackedByteArray"] = PackedByteArray::__class_id;
 	class_id_list.insert(PackedByteArray::__class_id);
@@ -302,8 +303,6 @@ static int js_packed_byte_array_class_init(JSContext *ctx) {
 
 	JSValue proto = JS_NewObject(ctx);
 	JS_SetClassProto(ctx, PackedByteArray::__class_id, proto);
-
-	define_packed_byte_array_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, packed_byte_array_class_proto_funcs, _countof(packed_byte_array_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, packed_byte_array_class_constructor, "PackedByteArray", 0, JS_CFUNC_constructor, 0);

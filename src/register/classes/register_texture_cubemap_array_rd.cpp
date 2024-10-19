@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void texture_cubemap_array_rd_class_finalizer(JSRuntime *rt, JSValue val) {
-	TextureCubemapArrayRD *texture_cubemap_array_rd = static_cast<TextureCubemapArrayRD *>(JS_GetOpaque(val, TextureCubemapArrayRD::__class_id));
-	if (texture_cubemap_array_rd)
-		memdelete(texture_cubemap_array_rd);
+	
+	// nothing
 }
 
 static JSClassDef texture_cubemap_array_rd_class_def = {

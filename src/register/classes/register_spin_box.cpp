@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/spin_box.hpp>
 #include <godot_cpp/classes/range.hpp>
 #include <godot_cpp/classes/line_edit.hpp>
-#include <godot_cpp/classes/spin_box.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void spin_box_class_finalizer(JSRuntime *rt, JSValue val) {
-	SpinBox *spin_box = static_cast<SpinBox *>(JS_GetOpaque(val, SpinBox::__class_id));
-	if (spin_box)
-		memdelete(spin_box);
+	
+	// nothing
 }
 
 static JSClassDef spin_box_class_def = {
@@ -118,56 +117,56 @@ void define_spin_box_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "alignment"),
         JS_NewCFunction(ctx, spin_box_class_get_horizontal_alignment, "get_horizontal_alignment", 0),
-        JS_NewCFunction(ctx, spin_box_class_set_horizontal_alignment, "set_horizontal_alignment", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, spin_box_class_set_horizontal_alignment, "set_horizontal_alignment", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "editable"),
         JS_NewCFunction(ctx, spin_box_class_is_editable, "is_editable", 0),
-        JS_NewCFunction(ctx, spin_box_class_set_editable, "set_editable", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, spin_box_class_set_editable, "set_editable", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "update_on_text_changed"),
         JS_NewCFunction(ctx, spin_box_class_get_update_on_text_changed, "get_update_on_text_changed", 0),
-        JS_NewCFunction(ctx, spin_box_class_set_update_on_text_changed, "set_update_on_text_changed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, spin_box_class_set_update_on_text_changed, "set_update_on_text_changed", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "prefix"),
         JS_NewCFunction(ctx, spin_box_class_get_prefix, "get_prefix", 0),
-        JS_NewCFunction(ctx, spin_box_class_set_prefix, "set_prefix", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, spin_box_class_set_prefix, "set_prefix", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "suffix"),
         JS_NewCFunction(ctx, spin_box_class_get_suffix, "get_suffix", 0),
-        JS_NewCFunction(ctx, spin_box_class_set_suffix, "set_suffix", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, spin_box_class_set_suffix, "set_suffix", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "custom_arrow_step"),
         JS_NewCFunction(ctx, spin_box_class_get_custom_arrow_step, "get_custom_arrow_step", 0),
-        JS_NewCFunction(ctx, spin_box_class_set_custom_arrow_step, "set_custom_arrow_step", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, spin_box_class_set_custom_arrow_step, "set_custom_arrow_step", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "select_all_on_focus"),
         JS_NewCFunction(ctx, spin_box_class_is_select_all_on_focus, "is_select_all_on_focus", 0),
-        JS_NewCFunction(ctx, spin_box_class_set_select_all_on_focus, "set_select_all_on_focus", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, spin_box_class_set_select_all_on_focus, "set_select_all_on_focus", 1),
+        JS_PROP_GETSET
     );
 }
 

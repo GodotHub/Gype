@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void text_paragraph_class_finalizer(JSRuntime *rt, JSValue val) {
-	TextParagraph *text_paragraph = static_cast<TextParagraph *>(JS_GetOpaque(val, TextParagraph::__class_id));
-	if (text_paragraph)
-		memdelete(text_paragraph);
+	
+	// nothing
 }
 
 static JSClassDef text_paragraph_class_def = {
@@ -292,96 +291,96 @@ void define_text_paragraph_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "direction"),
         JS_NewCFunction(ctx, text_paragraph_class_get_direction, "get_direction", 0),
-        JS_NewCFunction(ctx, text_paragraph_class_set_direction, "set_direction", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_paragraph_class_set_direction, "set_direction", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "custom_punctuation"),
         JS_NewCFunction(ctx, text_paragraph_class_get_custom_punctuation, "get_custom_punctuation", 0),
-        JS_NewCFunction(ctx, text_paragraph_class_set_custom_punctuation, "set_custom_punctuation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_paragraph_class_set_custom_punctuation, "set_custom_punctuation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "orientation"),
         JS_NewCFunction(ctx, text_paragraph_class_get_orientation, "get_orientation", 0),
-        JS_NewCFunction(ctx, text_paragraph_class_set_orientation, "set_orientation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_paragraph_class_set_orientation, "set_orientation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "preserve_invalid"),
         JS_NewCFunction(ctx, text_paragraph_class_get_preserve_invalid, "get_preserve_invalid", 0),
-        JS_NewCFunction(ctx, text_paragraph_class_set_preserve_invalid, "set_preserve_invalid", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_paragraph_class_set_preserve_invalid, "set_preserve_invalid", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "preserve_control"),
         JS_NewCFunction(ctx, text_paragraph_class_get_preserve_control, "get_preserve_control", 0),
-        JS_NewCFunction(ctx, text_paragraph_class_set_preserve_control, "set_preserve_control", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_paragraph_class_set_preserve_control, "set_preserve_control", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "alignment"),
         JS_NewCFunction(ctx, text_paragraph_class_get_alignment, "get_alignment", 0),
-        JS_NewCFunction(ctx, text_paragraph_class_set_alignment, "set_alignment", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_paragraph_class_set_alignment, "set_alignment", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "break_flags"),
         JS_NewCFunction(ctx, text_paragraph_class_get_break_flags, "get_break_flags", 0),
-        JS_NewCFunction(ctx, text_paragraph_class_set_break_flags, "set_break_flags", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_paragraph_class_set_break_flags, "set_break_flags", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "justification_flags"),
         JS_NewCFunction(ctx, text_paragraph_class_get_justification_flags, "get_justification_flags", 0),
-        JS_NewCFunction(ctx, text_paragraph_class_set_justification_flags, "set_justification_flags", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_paragraph_class_set_justification_flags, "set_justification_flags", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "text_overrun_behavior"),
         JS_NewCFunction(ctx, text_paragraph_class_get_text_overrun_behavior, "get_text_overrun_behavior", 0),
-        JS_NewCFunction(ctx, text_paragraph_class_set_text_overrun_behavior, "set_text_overrun_behavior", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_paragraph_class_set_text_overrun_behavior, "set_text_overrun_behavior", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ellipsis_char"),
         JS_NewCFunction(ctx, text_paragraph_class_get_ellipsis_char, "get_ellipsis_char", 0),
-        JS_NewCFunction(ctx, text_paragraph_class_set_ellipsis_char, "set_ellipsis_char", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_paragraph_class_set_ellipsis_char, "set_ellipsis_char", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "width"),
         JS_NewCFunction(ctx, text_paragraph_class_get_width, "get_width", 0),
-        JS_NewCFunction(ctx, text_paragraph_class_set_width, "set_width", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_paragraph_class_set_width, "set_width", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "max_lines_visible"),
         JS_NewCFunction(ctx, text_paragraph_class_get_max_lines_visible, "get_max_lines_visible", 0),
-        JS_NewCFunction(ctx, text_paragraph_class_set_max_lines_visible, "set_max_lines_visible", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_paragraph_class_set_max_lines_visible, "set_max_lines_visible", 1),
+        JS_PROP_GETSET
     );
 }
 

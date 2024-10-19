@@ -5,20 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/surface_tool.hpp>
 #include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/array_mesh.hpp>
 #include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/surface_tool.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void surface_tool_class_finalizer(JSRuntime *rt, JSValue val) {
-	SurfaceTool *surface_tool = static_cast<SurfaceTool *>(JS_GetOpaque(val, SurfaceTool::__class_id));
-	if (surface_tool)
-		memdelete(surface_tool);
+	
+	// nothing
 }
 
 static JSClassDef surface_tool_class_def = {

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void input_event_magnify_gesture_class_finalizer(JSRuntime *rt, JSValue val) {
-	InputEventMagnifyGesture *input_event_magnify_gesture = static_cast<InputEventMagnifyGesture *>(JS_GetOpaque(val, InputEventMagnifyGesture::__class_id));
-	if (input_event_magnify_gesture)
-		memdelete(input_event_magnify_gesture);
+	
+	// nothing
 }
 
 static JSClassDef input_event_magnify_gesture_class_def = {
@@ -54,8 +53,8 @@ void define_input_event_magnify_gesture_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "factor"),
         JS_NewCFunction(ctx, input_event_magnify_gesture_class_get_factor, "get_factor", 0),
-        JS_NewCFunction(ctx, input_event_magnify_gesture_class_set_factor, "set_factor", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_magnify_gesture_class_set_factor, "set_factor", 1),
+        JS_PROP_GETSET
     );
 }
 

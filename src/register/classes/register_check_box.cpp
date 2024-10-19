@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void check_box_class_finalizer(JSRuntime *rt, JSValue val) {
-	CheckBox *check_box = static_cast<CheckBox *>(JS_GetOpaque(val, CheckBox::__class_id));
-	if (check_box)
-		memdelete(check_box);
+	
+	// nothing
 }
 
 static JSClassDef check_box_class_def = {

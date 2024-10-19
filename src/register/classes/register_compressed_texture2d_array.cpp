@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/compressed_texture_layered.hpp>
 #include <godot_cpp/classes/compressed_texture2d_array.hpp>
+#include <godot_cpp/classes/compressed_texture_layered.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void compressed_texture2d_array_class_finalizer(JSRuntime *rt, JSValue val) {
-	CompressedTexture2DArray *compressed_texture2d_array = static_cast<CompressedTexture2DArray *>(JS_GetOpaque(val, CompressedTexture2DArray::__class_id));
-	if (compressed_texture2d_array)
-		memdelete(compressed_texture2d_array);
+	
+	// nothing
 }
 
 static JSClassDef compressed_texture2d_array_class_def = {

@@ -18,9 +18,8 @@ static JSValue camera_server_instance;
 static void js_camera_server_singleton();
 
 static void camera_server_class_finalizer(JSRuntime *rt, JSValue val) {
-	CameraServer *camera_server = static_cast<CameraServer *>(JS_GetOpaque(val, CameraServer::__class_id));
-	if (camera_server)
-		CameraServer::free(nullptr, camera_server);
+	
+	// nothing
 }
 
 static JSClassDef camera_server_class_def = {

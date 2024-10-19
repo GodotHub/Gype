@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/environment.hpp>
-#include <godot_cpp/classes/sky.hpp>
 #include <godot_cpp/classes/texture.hpp>
+#include <godot_cpp/classes/sky.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -15,9 +15,8 @@
 using namespace godot;
 
 static void environment_class_finalizer(JSRuntime *rt, JSValue val) {
-	Environment *environment = static_cast<Environment *>(JS_GetOpaque(val, Environment::__class_id));
-	if (environment)
-		memdelete(environment);
+	
+	// nothing
 }
 
 static JSClassDef environment_class_def = {
@@ -875,728 +874,728 @@ void define_environment_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "background_mode"),
         JS_NewCFunction(ctx, environment_class_get_background, "get_background", 0),
-        JS_NewCFunction(ctx, environment_class_set_background, "set_background", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_background, "set_background", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "background_color"),
         JS_NewCFunction(ctx, environment_class_get_bg_color, "get_bg_color", 0),
-        JS_NewCFunction(ctx, environment_class_set_bg_color, "set_bg_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_bg_color, "set_bg_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "background_energy_multiplier"),
         JS_NewCFunction(ctx, environment_class_get_bg_energy_multiplier, "get_bg_energy_multiplier", 0),
-        JS_NewCFunction(ctx, environment_class_set_bg_energy_multiplier, "set_bg_energy_multiplier", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_bg_energy_multiplier, "set_bg_energy_multiplier", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "background_intensity"),
         JS_NewCFunction(ctx, environment_class_get_bg_intensity, "get_bg_intensity", 0),
-        JS_NewCFunction(ctx, environment_class_set_bg_intensity, "set_bg_intensity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_bg_intensity, "set_bg_intensity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "background_canvas_max_layer"),
         JS_NewCFunction(ctx, environment_class_get_canvas_max_layer, "get_canvas_max_layer", 0),
-        JS_NewCFunction(ctx, environment_class_set_canvas_max_layer, "set_canvas_max_layer", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_canvas_max_layer, "set_canvas_max_layer", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "background_camera_feed_id"),
         JS_NewCFunction(ctx, environment_class_get_camera_feed_id, "get_camera_feed_id", 0),
-        JS_NewCFunction(ctx, environment_class_set_camera_feed_id, "set_camera_feed_id", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_camera_feed_id, "set_camera_feed_id", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sky"),
         JS_NewCFunction(ctx, environment_class_get_sky, "get_sky", 0),
-        JS_NewCFunction(ctx, environment_class_set_sky, "set_sky", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_sky, "set_sky", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sky_custom_fov"),
         JS_NewCFunction(ctx, environment_class_get_sky_custom_fov, "get_sky_custom_fov", 0),
-        JS_NewCFunction(ctx, environment_class_set_sky_custom_fov, "set_sky_custom_fov", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_sky_custom_fov, "set_sky_custom_fov", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sky_rotation"),
         JS_NewCFunction(ctx, environment_class_get_sky_rotation, "get_sky_rotation", 0),
-        JS_NewCFunction(ctx, environment_class_set_sky_rotation, "set_sky_rotation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_sky_rotation, "set_sky_rotation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ambient_light_source"),
         JS_NewCFunction(ctx, environment_class_get_ambient_source, "get_ambient_source", 0),
-        JS_NewCFunction(ctx, environment_class_set_ambient_source, "set_ambient_source", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_ambient_source, "set_ambient_source", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ambient_light_color"),
         JS_NewCFunction(ctx, environment_class_get_ambient_light_color, "get_ambient_light_color", 0),
-        JS_NewCFunction(ctx, environment_class_set_ambient_light_color, "set_ambient_light_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_ambient_light_color, "set_ambient_light_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ambient_light_sky_contribution"),
         JS_NewCFunction(ctx, environment_class_get_ambient_light_sky_contribution, "get_ambient_light_sky_contribution", 0),
-        JS_NewCFunction(ctx, environment_class_set_ambient_light_sky_contribution, "set_ambient_light_sky_contribution", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_ambient_light_sky_contribution, "set_ambient_light_sky_contribution", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ambient_light_energy"),
         JS_NewCFunction(ctx, environment_class_get_ambient_light_energy, "get_ambient_light_energy", 0),
-        JS_NewCFunction(ctx, environment_class_set_ambient_light_energy, "set_ambient_light_energy", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_ambient_light_energy, "set_ambient_light_energy", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "reflected_light_source"),
         JS_NewCFunction(ctx, environment_class_get_reflection_source, "get_reflection_source", 0),
-        JS_NewCFunction(ctx, environment_class_set_reflection_source, "set_reflection_source", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_reflection_source, "set_reflection_source", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tonemap_mode"),
         JS_NewCFunction(ctx, environment_class_get_tonemapper, "get_tonemapper", 0),
-        JS_NewCFunction(ctx, environment_class_set_tonemapper, "set_tonemapper", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_tonemapper, "set_tonemapper", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tonemap_exposure"),
         JS_NewCFunction(ctx, environment_class_get_tonemap_exposure, "get_tonemap_exposure", 0),
-        JS_NewCFunction(ctx, environment_class_set_tonemap_exposure, "set_tonemap_exposure", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_tonemap_exposure, "set_tonemap_exposure", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tonemap_white"),
         JS_NewCFunction(ctx, environment_class_get_tonemap_white, "get_tonemap_white", 0),
-        JS_NewCFunction(ctx, environment_class_set_tonemap_white, "set_tonemap_white", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_tonemap_white, "set_tonemap_white", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ssr_enabled"),
         JS_NewCFunction(ctx, environment_class_is_ssr_enabled, "is_ssr_enabled", 0),
-        JS_NewCFunction(ctx, environment_class_set_ssr_enabled, "set_ssr_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_ssr_enabled, "set_ssr_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ssr_max_steps"),
         JS_NewCFunction(ctx, environment_class_get_ssr_max_steps, "get_ssr_max_steps", 0),
-        JS_NewCFunction(ctx, environment_class_set_ssr_max_steps, "set_ssr_max_steps", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_ssr_max_steps, "set_ssr_max_steps", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ssr_fade_in"),
         JS_NewCFunction(ctx, environment_class_get_ssr_fade_in, "get_ssr_fade_in", 0),
-        JS_NewCFunction(ctx, environment_class_set_ssr_fade_in, "set_ssr_fade_in", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_ssr_fade_in, "set_ssr_fade_in", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ssr_fade_out"),
         JS_NewCFunction(ctx, environment_class_get_ssr_fade_out, "get_ssr_fade_out", 0),
-        JS_NewCFunction(ctx, environment_class_set_ssr_fade_out, "set_ssr_fade_out", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_ssr_fade_out, "set_ssr_fade_out", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ssr_depth_tolerance"),
         JS_NewCFunction(ctx, environment_class_get_ssr_depth_tolerance, "get_ssr_depth_tolerance", 0),
-        JS_NewCFunction(ctx, environment_class_set_ssr_depth_tolerance, "set_ssr_depth_tolerance", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_ssr_depth_tolerance, "set_ssr_depth_tolerance", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ssao_enabled"),
         JS_NewCFunction(ctx, environment_class_is_ssao_enabled, "is_ssao_enabled", 0),
-        JS_NewCFunction(ctx, environment_class_set_ssao_enabled, "set_ssao_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_ssao_enabled, "set_ssao_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ssao_radius"),
         JS_NewCFunction(ctx, environment_class_get_ssao_radius, "get_ssao_radius", 0),
-        JS_NewCFunction(ctx, environment_class_set_ssao_radius, "set_ssao_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_ssao_radius, "set_ssao_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ssao_intensity"),
         JS_NewCFunction(ctx, environment_class_get_ssao_intensity, "get_ssao_intensity", 0),
-        JS_NewCFunction(ctx, environment_class_set_ssao_intensity, "set_ssao_intensity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_ssao_intensity, "set_ssao_intensity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ssao_power"),
         JS_NewCFunction(ctx, environment_class_get_ssao_power, "get_ssao_power", 0),
-        JS_NewCFunction(ctx, environment_class_set_ssao_power, "set_ssao_power", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_ssao_power, "set_ssao_power", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ssao_detail"),
         JS_NewCFunction(ctx, environment_class_get_ssao_detail, "get_ssao_detail", 0),
-        JS_NewCFunction(ctx, environment_class_set_ssao_detail, "set_ssao_detail", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_ssao_detail, "set_ssao_detail", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ssao_horizon"),
         JS_NewCFunction(ctx, environment_class_get_ssao_horizon, "get_ssao_horizon", 0),
-        JS_NewCFunction(ctx, environment_class_set_ssao_horizon, "set_ssao_horizon", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_ssao_horizon, "set_ssao_horizon", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ssao_sharpness"),
         JS_NewCFunction(ctx, environment_class_get_ssao_sharpness, "get_ssao_sharpness", 0),
-        JS_NewCFunction(ctx, environment_class_set_ssao_sharpness, "set_ssao_sharpness", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_ssao_sharpness, "set_ssao_sharpness", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ssao_light_affect"),
         JS_NewCFunction(ctx, environment_class_get_ssao_direct_light_affect, "get_ssao_direct_light_affect", 0),
-        JS_NewCFunction(ctx, environment_class_set_ssao_direct_light_affect, "set_ssao_direct_light_affect", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_ssao_direct_light_affect, "set_ssao_direct_light_affect", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ssao_ao_channel_affect"),
         JS_NewCFunction(ctx, environment_class_get_ssao_ao_channel_affect, "get_ssao_ao_channel_affect", 0),
-        JS_NewCFunction(ctx, environment_class_set_ssao_ao_channel_affect, "set_ssao_ao_channel_affect", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_ssao_ao_channel_affect, "set_ssao_ao_channel_affect", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ssil_enabled"),
         JS_NewCFunction(ctx, environment_class_is_ssil_enabled, "is_ssil_enabled", 0),
-        JS_NewCFunction(ctx, environment_class_set_ssil_enabled, "set_ssil_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_ssil_enabled, "set_ssil_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ssil_radius"),
         JS_NewCFunction(ctx, environment_class_get_ssil_radius, "get_ssil_radius", 0),
-        JS_NewCFunction(ctx, environment_class_set_ssil_radius, "set_ssil_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_ssil_radius, "set_ssil_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ssil_intensity"),
         JS_NewCFunction(ctx, environment_class_get_ssil_intensity, "get_ssil_intensity", 0),
-        JS_NewCFunction(ctx, environment_class_set_ssil_intensity, "set_ssil_intensity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_ssil_intensity, "set_ssil_intensity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ssil_sharpness"),
         JS_NewCFunction(ctx, environment_class_get_ssil_sharpness, "get_ssil_sharpness", 0),
-        JS_NewCFunction(ctx, environment_class_set_ssil_sharpness, "set_ssil_sharpness", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_ssil_sharpness, "set_ssil_sharpness", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ssil_normal_rejection"),
         JS_NewCFunction(ctx, environment_class_get_ssil_normal_rejection, "get_ssil_normal_rejection", 0),
-        JS_NewCFunction(ctx, environment_class_set_ssil_normal_rejection, "set_ssil_normal_rejection", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_ssil_normal_rejection, "set_ssil_normal_rejection", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sdfgi_enabled"),
         JS_NewCFunction(ctx, environment_class_is_sdfgi_enabled, "is_sdfgi_enabled", 0),
-        JS_NewCFunction(ctx, environment_class_set_sdfgi_enabled, "set_sdfgi_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_sdfgi_enabled, "set_sdfgi_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sdfgi_use_occlusion"),
         JS_NewCFunction(ctx, environment_class_is_sdfgi_using_occlusion, "is_sdfgi_using_occlusion", 0),
-        JS_NewCFunction(ctx, environment_class_set_sdfgi_use_occlusion, "set_sdfgi_use_occlusion", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_sdfgi_use_occlusion, "set_sdfgi_use_occlusion", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sdfgi_read_sky_light"),
         JS_NewCFunction(ctx, environment_class_is_sdfgi_reading_sky_light, "is_sdfgi_reading_sky_light", 0),
-        JS_NewCFunction(ctx, environment_class_set_sdfgi_read_sky_light, "set_sdfgi_read_sky_light", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_sdfgi_read_sky_light, "set_sdfgi_read_sky_light", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sdfgi_bounce_feedback"),
         JS_NewCFunction(ctx, environment_class_get_sdfgi_bounce_feedback, "get_sdfgi_bounce_feedback", 0),
-        JS_NewCFunction(ctx, environment_class_set_sdfgi_bounce_feedback, "set_sdfgi_bounce_feedback", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_sdfgi_bounce_feedback, "set_sdfgi_bounce_feedback", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sdfgi_cascades"),
         JS_NewCFunction(ctx, environment_class_get_sdfgi_cascades, "get_sdfgi_cascades", 0),
-        JS_NewCFunction(ctx, environment_class_set_sdfgi_cascades, "set_sdfgi_cascades", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_sdfgi_cascades, "set_sdfgi_cascades", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sdfgi_min_cell_size"),
         JS_NewCFunction(ctx, environment_class_get_sdfgi_min_cell_size, "get_sdfgi_min_cell_size", 0),
-        JS_NewCFunction(ctx, environment_class_set_sdfgi_min_cell_size, "set_sdfgi_min_cell_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_sdfgi_min_cell_size, "set_sdfgi_min_cell_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sdfgi_cascade0_distance"),
         JS_NewCFunction(ctx, environment_class_get_sdfgi_cascade0_distance, "get_sdfgi_cascade0_distance", 0),
-        JS_NewCFunction(ctx, environment_class_set_sdfgi_cascade0_distance, "set_sdfgi_cascade0_distance", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_sdfgi_cascade0_distance, "set_sdfgi_cascade0_distance", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sdfgi_max_distance"),
         JS_NewCFunction(ctx, environment_class_get_sdfgi_max_distance, "get_sdfgi_max_distance", 0),
-        JS_NewCFunction(ctx, environment_class_set_sdfgi_max_distance, "set_sdfgi_max_distance", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_sdfgi_max_distance, "set_sdfgi_max_distance", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sdfgi_y_scale"),
         JS_NewCFunction(ctx, environment_class_get_sdfgi_y_scale, "get_sdfgi_y_scale", 0),
-        JS_NewCFunction(ctx, environment_class_set_sdfgi_y_scale, "set_sdfgi_y_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_sdfgi_y_scale, "set_sdfgi_y_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sdfgi_energy"),
         JS_NewCFunction(ctx, environment_class_get_sdfgi_energy, "get_sdfgi_energy", 0),
-        JS_NewCFunction(ctx, environment_class_set_sdfgi_energy, "set_sdfgi_energy", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_sdfgi_energy, "set_sdfgi_energy", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sdfgi_normal_bias"),
         JS_NewCFunction(ctx, environment_class_get_sdfgi_normal_bias, "get_sdfgi_normal_bias", 0),
-        JS_NewCFunction(ctx, environment_class_set_sdfgi_normal_bias, "set_sdfgi_normal_bias", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_sdfgi_normal_bias, "set_sdfgi_normal_bias", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sdfgi_probe_bias"),
         JS_NewCFunction(ctx, environment_class_get_sdfgi_probe_bias, "get_sdfgi_probe_bias", 0),
-        JS_NewCFunction(ctx, environment_class_set_sdfgi_probe_bias, "set_sdfgi_probe_bias", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_sdfgi_probe_bias, "set_sdfgi_probe_bias", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "glow_enabled"),
         JS_NewCFunction(ctx, environment_class_is_glow_enabled, "is_glow_enabled", 0),
-        JS_NewCFunction(ctx, environment_class_set_glow_enabled, "set_glow_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_glow_enabled, "set_glow_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "glow_normalized"),
         JS_NewCFunction(ctx, environment_class_is_glow_normalized, "is_glow_normalized", 0),
-        JS_NewCFunction(ctx, environment_class_set_glow_normalized, "set_glow_normalized", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_glow_normalized, "set_glow_normalized", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "glow_intensity"),
         JS_NewCFunction(ctx, environment_class_get_glow_intensity, "get_glow_intensity", 0),
-        JS_NewCFunction(ctx, environment_class_set_glow_intensity, "set_glow_intensity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_glow_intensity, "set_glow_intensity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "glow_strength"),
         JS_NewCFunction(ctx, environment_class_get_glow_strength, "get_glow_strength", 0),
-        JS_NewCFunction(ctx, environment_class_set_glow_strength, "set_glow_strength", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_glow_strength, "set_glow_strength", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "glow_mix"),
         JS_NewCFunction(ctx, environment_class_get_glow_mix, "get_glow_mix", 0),
-        JS_NewCFunction(ctx, environment_class_set_glow_mix, "set_glow_mix", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_glow_mix, "set_glow_mix", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "glow_bloom"),
         JS_NewCFunction(ctx, environment_class_get_glow_bloom, "get_glow_bloom", 0),
-        JS_NewCFunction(ctx, environment_class_set_glow_bloom, "set_glow_bloom", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_glow_bloom, "set_glow_bloom", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "glow_blend_mode"),
         JS_NewCFunction(ctx, environment_class_get_glow_blend_mode, "get_glow_blend_mode", 0),
-        JS_NewCFunction(ctx, environment_class_set_glow_blend_mode, "set_glow_blend_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_glow_blend_mode, "set_glow_blend_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "glow_hdr_threshold"),
         JS_NewCFunction(ctx, environment_class_get_glow_hdr_bleed_threshold, "get_glow_hdr_bleed_threshold", 0),
-        JS_NewCFunction(ctx, environment_class_set_glow_hdr_bleed_threshold, "set_glow_hdr_bleed_threshold", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_glow_hdr_bleed_threshold, "set_glow_hdr_bleed_threshold", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "glow_hdr_scale"),
         JS_NewCFunction(ctx, environment_class_get_glow_hdr_bleed_scale, "get_glow_hdr_bleed_scale", 0),
-        JS_NewCFunction(ctx, environment_class_set_glow_hdr_bleed_scale, "set_glow_hdr_bleed_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_glow_hdr_bleed_scale, "set_glow_hdr_bleed_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "glow_hdr_luminance_cap"),
         JS_NewCFunction(ctx, environment_class_get_glow_hdr_luminance_cap, "get_glow_hdr_luminance_cap", 0),
-        JS_NewCFunction(ctx, environment_class_set_glow_hdr_luminance_cap, "set_glow_hdr_luminance_cap", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_glow_hdr_luminance_cap, "set_glow_hdr_luminance_cap", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "glow_map_strength"),
         JS_NewCFunction(ctx, environment_class_get_glow_map_strength, "get_glow_map_strength", 0),
-        JS_NewCFunction(ctx, environment_class_set_glow_map_strength, "set_glow_map_strength", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_glow_map_strength, "set_glow_map_strength", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "glow_map"),
         JS_NewCFunction(ctx, environment_class_get_glow_map, "get_glow_map", 0),
-        JS_NewCFunction(ctx, environment_class_set_glow_map, "set_glow_map", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_glow_map, "set_glow_map", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fog_enabled"),
         JS_NewCFunction(ctx, environment_class_is_fog_enabled, "is_fog_enabled", 0),
-        JS_NewCFunction(ctx, environment_class_set_fog_enabled, "set_fog_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_fog_enabled, "set_fog_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fog_mode"),
         JS_NewCFunction(ctx, environment_class_get_fog_mode, "get_fog_mode", 0),
-        JS_NewCFunction(ctx, environment_class_set_fog_mode, "set_fog_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_fog_mode, "set_fog_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fog_light_color"),
         JS_NewCFunction(ctx, environment_class_get_fog_light_color, "get_fog_light_color", 0),
-        JS_NewCFunction(ctx, environment_class_set_fog_light_color, "set_fog_light_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_fog_light_color, "set_fog_light_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fog_light_energy"),
         JS_NewCFunction(ctx, environment_class_get_fog_light_energy, "get_fog_light_energy", 0),
-        JS_NewCFunction(ctx, environment_class_set_fog_light_energy, "set_fog_light_energy", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_fog_light_energy, "set_fog_light_energy", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fog_sun_scatter"),
         JS_NewCFunction(ctx, environment_class_get_fog_sun_scatter, "get_fog_sun_scatter", 0),
-        JS_NewCFunction(ctx, environment_class_set_fog_sun_scatter, "set_fog_sun_scatter", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_fog_sun_scatter, "set_fog_sun_scatter", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fog_density"),
         JS_NewCFunction(ctx, environment_class_get_fog_density, "get_fog_density", 0),
-        JS_NewCFunction(ctx, environment_class_set_fog_density, "set_fog_density", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_fog_density, "set_fog_density", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fog_aerial_perspective"),
         JS_NewCFunction(ctx, environment_class_get_fog_aerial_perspective, "get_fog_aerial_perspective", 0),
-        JS_NewCFunction(ctx, environment_class_set_fog_aerial_perspective, "set_fog_aerial_perspective", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_fog_aerial_perspective, "set_fog_aerial_perspective", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fog_sky_affect"),
         JS_NewCFunction(ctx, environment_class_get_fog_sky_affect, "get_fog_sky_affect", 0),
-        JS_NewCFunction(ctx, environment_class_set_fog_sky_affect, "set_fog_sky_affect", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_fog_sky_affect, "set_fog_sky_affect", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fog_height"),
         JS_NewCFunction(ctx, environment_class_get_fog_height, "get_fog_height", 0),
-        JS_NewCFunction(ctx, environment_class_set_fog_height, "set_fog_height", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_fog_height, "set_fog_height", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fog_height_density"),
         JS_NewCFunction(ctx, environment_class_get_fog_height_density, "get_fog_height_density", 0),
-        JS_NewCFunction(ctx, environment_class_set_fog_height_density, "set_fog_height_density", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_fog_height_density, "set_fog_height_density", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fog_depth_curve"),
         JS_NewCFunction(ctx, environment_class_get_fog_depth_curve, "get_fog_depth_curve", 0),
-        JS_NewCFunction(ctx, environment_class_set_fog_depth_curve, "set_fog_depth_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_fog_depth_curve, "set_fog_depth_curve", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fog_depth_begin"),
         JS_NewCFunction(ctx, environment_class_get_fog_depth_begin, "get_fog_depth_begin", 0),
-        JS_NewCFunction(ctx, environment_class_set_fog_depth_begin, "set_fog_depth_begin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_fog_depth_begin, "set_fog_depth_begin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fog_depth_end"),
         JS_NewCFunction(ctx, environment_class_get_fog_depth_end, "get_fog_depth_end", 0),
-        JS_NewCFunction(ctx, environment_class_set_fog_depth_end, "set_fog_depth_end", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_fog_depth_end, "set_fog_depth_end", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "volumetric_fog_enabled"),
         JS_NewCFunction(ctx, environment_class_is_volumetric_fog_enabled, "is_volumetric_fog_enabled", 0),
-        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_enabled, "set_volumetric_fog_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_enabled, "set_volumetric_fog_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "volumetric_fog_density"),
         JS_NewCFunction(ctx, environment_class_get_volumetric_fog_density, "get_volumetric_fog_density", 0),
-        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_density, "set_volumetric_fog_density", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_density, "set_volumetric_fog_density", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "volumetric_fog_albedo"),
         JS_NewCFunction(ctx, environment_class_get_volumetric_fog_albedo, "get_volumetric_fog_albedo", 0),
-        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_albedo, "set_volumetric_fog_albedo", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_albedo, "set_volumetric_fog_albedo", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "volumetric_fog_emission"),
         JS_NewCFunction(ctx, environment_class_get_volumetric_fog_emission, "get_volumetric_fog_emission", 0),
-        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_emission, "set_volumetric_fog_emission", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_emission, "set_volumetric_fog_emission", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "volumetric_fog_emission_energy"),
         JS_NewCFunction(ctx, environment_class_get_volumetric_fog_emission_energy, "get_volumetric_fog_emission_energy", 0),
-        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_emission_energy, "set_volumetric_fog_emission_energy", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_emission_energy, "set_volumetric_fog_emission_energy", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "volumetric_fog_gi_inject"),
         JS_NewCFunction(ctx, environment_class_get_volumetric_fog_gi_inject, "get_volumetric_fog_gi_inject", 0),
-        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_gi_inject, "set_volumetric_fog_gi_inject", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_gi_inject, "set_volumetric_fog_gi_inject", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "volumetric_fog_anisotropy"),
         JS_NewCFunction(ctx, environment_class_get_volumetric_fog_anisotropy, "get_volumetric_fog_anisotropy", 0),
-        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_anisotropy, "set_volumetric_fog_anisotropy", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_anisotropy, "set_volumetric_fog_anisotropy", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "volumetric_fog_length"),
         JS_NewCFunction(ctx, environment_class_get_volumetric_fog_length, "get_volumetric_fog_length", 0),
-        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_length, "set_volumetric_fog_length", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_length, "set_volumetric_fog_length", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "volumetric_fog_detail_spread"),
         JS_NewCFunction(ctx, environment_class_get_volumetric_fog_detail_spread, "get_volumetric_fog_detail_spread", 0),
-        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_detail_spread, "set_volumetric_fog_detail_spread", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_detail_spread, "set_volumetric_fog_detail_spread", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "volumetric_fog_ambient_inject"),
         JS_NewCFunction(ctx, environment_class_get_volumetric_fog_ambient_inject, "get_volumetric_fog_ambient_inject", 0),
-        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_ambient_inject, "set_volumetric_fog_ambient_inject", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_ambient_inject, "set_volumetric_fog_ambient_inject", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "volumetric_fog_sky_affect"),
         JS_NewCFunction(ctx, environment_class_get_volumetric_fog_sky_affect, "get_volumetric_fog_sky_affect", 0),
-        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_sky_affect, "set_volumetric_fog_sky_affect", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_sky_affect, "set_volumetric_fog_sky_affect", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "volumetric_fog_temporal_reprojection_enabled"),
         JS_NewCFunction(ctx, environment_class_is_volumetric_fog_temporal_reprojection_enabled, "is_volumetric_fog_temporal_reprojection_enabled", 0),
-        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_temporal_reprojection_enabled, "set_volumetric_fog_temporal_reprojection_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_temporal_reprojection_enabled, "set_volumetric_fog_temporal_reprojection_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "volumetric_fog_temporal_reprojection_amount"),
         JS_NewCFunction(ctx, environment_class_get_volumetric_fog_temporal_reprojection_amount, "get_volumetric_fog_temporal_reprojection_amount", 0),
-        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_temporal_reprojection_amount, "set_volumetric_fog_temporal_reprojection_amount", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_volumetric_fog_temporal_reprojection_amount, "set_volumetric_fog_temporal_reprojection_amount", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "adjustment_enabled"),
         JS_NewCFunction(ctx, environment_class_is_adjustment_enabled, "is_adjustment_enabled", 0),
-        JS_NewCFunction(ctx, environment_class_set_adjustment_enabled, "set_adjustment_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_adjustment_enabled, "set_adjustment_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "adjustment_brightness"),
         JS_NewCFunction(ctx, environment_class_get_adjustment_brightness, "get_adjustment_brightness", 0),
-        JS_NewCFunction(ctx, environment_class_set_adjustment_brightness, "set_adjustment_brightness", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_adjustment_brightness, "set_adjustment_brightness", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "adjustment_contrast"),
         JS_NewCFunction(ctx, environment_class_get_adjustment_contrast, "get_adjustment_contrast", 0),
-        JS_NewCFunction(ctx, environment_class_set_adjustment_contrast, "set_adjustment_contrast", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_adjustment_contrast, "set_adjustment_contrast", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "adjustment_saturation"),
         JS_NewCFunction(ctx, environment_class_get_adjustment_saturation, "get_adjustment_saturation", 0),
-        JS_NewCFunction(ctx, environment_class_set_adjustment_saturation, "set_adjustment_saturation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_adjustment_saturation, "set_adjustment_saturation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "adjustment_color_correction"),
         JS_NewCFunction(ctx, environment_class_get_adjustment_color_correction, "get_adjustment_color_correction", 0),
-        JS_NewCFunction(ctx, environment_class_set_adjustment_color_correction, "set_adjustment_color_correction", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, environment_class_set_adjustment_color_correction, "set_adjustment_color_correction", 1),
+        JS_PROP_GETSET
     );
 }
 

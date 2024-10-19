@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/audio_listener2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void audio_listener2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioListener2D *audio_listener2d = static_cast<AudioListener2D *>(JS_GetOpaque(val, AudioListener2D::__class_id));
-	if (audio_listener2d)
-		memdelete(audio_listener2d);
+	
+	// nothing
 }
 
 static JSClassDef audio_listener2d_class_def = {

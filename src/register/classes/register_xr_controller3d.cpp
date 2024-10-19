@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void xr_controller3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	XRController3D *xr_controller3d = static_cast<XRController3D *>(JS_GetOpaque(val, XRController3D::__class_id));
-	if (xr_controller3d)
-		memdelete(xr_controller3d);
+	
+	// nothing
 }
 
 static JSClassDef xr_controller3d_class_def = {

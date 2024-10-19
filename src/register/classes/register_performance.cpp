@@ -16,9 +16,8 @@ static JSValue performance_instance;
 static void js_performance_singleton();
 
 static void performance_class_finalizer(JSRuntime *rt, JSValue val) {
-	Performance *performance = static_cast<Performance *>(JS_GetOpaque(val, Performance::__class_id));
-	if (performance)
-		Performance::free(nullptr, performance);
+	
+	// nothing
 }
 
 static JSClassDef performance_class_def = {

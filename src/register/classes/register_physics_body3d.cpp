@@ -5,20 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/collision_object3d.hpp>
-#include <godot_cpp/classes/physics_body3d.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/physics_body3d.hpp>
 #include <godot_cpp/classes/kinematic_collision3d.hpp>
+#include <godot_cpp/classes/physics_body3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void physics_body3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	PhysicsBody3D *physics_body3d = static_cast<PhysicsBody3D *>(JS_GetOpaque(val, PhysicsBody3D::__class_id));
-	if (physics_body3d)
-		memdelete(physics_body3d);
+	
+	// nothing
 }
 
 static JSClassDef physics_body3d_class_def = {
@@ -83,48 +82,48 @@ void define_physics_body3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "axis_lock_linear_x"),
         JS_NewCFunction(ctx, physics_body3d_class_get_axis_lock, "get_axis_lock", 0),
-        JS_NewCFunction(ctx, physics_body3d_class_set_axis_lock, "set_axis_lock", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_body3d_class_set_axis_lock, "set_axis_lock", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "axis_lock_linear_y"),
         JS_NewCFunction(ctx, physics_body3d_class_get_axis_lock, "get_axis_lock", 0),
-        JS_NewCFunction(ctx, physics_body3d_class_set_axis_lock, "set_axis_lock", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_body3d_class_set_axis_lock, "set_axis_lock", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "axis_lock_linear_z"),
         JS_NewCFunction(ctx, physics_body3d_class_get_axis_lock, "get_axis_lock", 0),
-        JS_NewCFunction(ctx, physics_body3d_class_set_axis_lock, "set_axis_lock", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_body3d_class_set_axis_lock, "set_axis_lock", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "axis_lock_angular_x"),
         JS_NewCFunction(ctx, physics_body3d_class_get_axis_lock, "get_axis_lock", 0),
-        JS_NewCFunction(ctx, physics_body3d_class_set_axis_lock, "set_axis_lock", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_body3d_class_set_axis_lock, "set_axis_lock", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "axis_lock_angular_y"),
         JS_NewCFunction(ctx, physics_body3d_class_get_axis_lock, "get_axis_lock", 0),
-        JS_NewCFunction(ctx, physics_body3d_class_set_axis_lock, "set_axis_lock", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_body3d_class_set_axis_lock, "set_axis_lock", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "axis_lock_angular_z"),
         JS_NewCFunction(ctx, physics_body3d_class_get_axis_lock, "get_axis_lock", 0),
-        JS_NewCFunction(ctx, physics_body3d_class_set_axis_lock, "set_axis_lock", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_body3d_class_set_axis_lock, "set_axis_lock", 1),
+        JS_PROP_GETSET
     );
 }
 

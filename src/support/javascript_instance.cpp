@@ -53,7 +53,6 @@ JavaScriptInstance::JavaScriptInstance(Object *p_godot_object, JavaScript *scrip
 						memdelete(reinterpret_cast<Object *>(opaque));
 						JS_SetOpaque(js_instance, binding);
 						binding->js_instance = js_instance;
-						binding->ctx = ctx;
 						instance_id = binding->get_instance_id();
 						script->instances.insert(instance_id);
 					}
@@ -101,25 +100,21 @@ JSValue JavaScriptInstance::find_ns_property(JSModuleDef *md, const char *name) 
 GDExtensionBool JavaScriptInstance::set(GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_variant) {
 	JSValue js_instance = binding->js_instance;
 	const char *name = to_chars(*reinterpret_cast<const StringName *>(p_name));
-	JSPropertyDescriptor prop;
-	JSAtom atom = JS_NewAtom(ctx, name);
-	if (JS_GetOwnProperty(ctx, &prop, js_instance, atom) <= 0)
-		return false;
-	Variant variant;
-	internal::gdextension_interface_variant_new_copy(variant._native_ptr(), p_variant);
-	JSValue arg = variant;
-	JSValue state = JS_Call(ctx, prop.setter, js_instance, 1, &arg);
-	return is_exception(ctx, state);
+	Variant varg;
+	internal::gdextension_interface_variant_new_copy(varg._native_ptr(), p_variant);
+	JSValue jsarg = varg;
+	if (JS_SetPropertyStr(ctx, js_instance, name, jsarg) > 0)
+		return true;
+	return false;
 }
 
 GDExtensionBool JavaScriptInstance::get(GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret) {
 	JSValue js_instance = binding->js_instance;
 	const char *name = to_chars(*reinterpret_cast<const StringName *>(p_name));
-	JSPropertyDescriptor prop;
-	JSAtom atom = JS_NewAtom(ctx, name);
-	if (JS_GetOwnProperty(ctx, &prop, js_instance, atom) <= 0)
+	JSValue js_ret = JS_GetPropertyStr(ctx, js_instance, name);
+	if (JS_IsUndefined(js_ret))
 		return false;
-	Variant ret = prop.value;
+	Variant ret = js_ret;
 	internal::gdextension_interface_variant_new_copy(r_ret, ret._native_ptr());
 	return true;
 }
@@ -158,12 +153,11 @@ GDExtensionInt JavaScriptInstance::get_method_argument_count(GDExtensionConstStr
 }
 
 void JavaScriptInstance::call(GDExtensionConstStringNamePtr p_method, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count, GDExtensionVariantPtr r_return, GDExtensionCallError *r_error) {
-	if (script->is_tool || Engine::get_singleton()->is_editor_hint())
-		return;
 	JSValue js_instance = binding->js_instance;
 	JSValue prototype = JS_GetPrototype(ctx, js_instance);
 	const char *method = to_chars(*reinterpret_cast<const StringName *>(p_method));
 	JSAtom atom = JS_NewAtom(ctx, method);
+	int it = 0;
 	while (!JS_IsNull(prototype)) {
 		JSPropertyDescriptor prop;
 		if (JS_GetOwnProperty(ctx, &prop, prototype, atom) > 0) {
@@ -183,6 +177,7 @@ void JavaScriptInstance::call(GDExtensionConstStringNamePtr p_method, const GDEx
 			return;
 		}
 		prototype = JS_GetPrototype(ctx, prototype);
+		++it;
 	}
 }
 

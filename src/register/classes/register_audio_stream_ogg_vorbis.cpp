@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_stream_ogg_vorbis.hpp>
 #include <godot_cpp/classes/audio_stream.hpp>
+#include <godot_cpp/classes/audio_stream_ogg_vorbis.hpp>
 #include <godot_cpp/classes/ogg_packet_sequence.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void audio_stream_ogg_vorbis_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioStreamOggVorbis *audio_stream_ogg_vorbis = static_cast<AudioStreamOggVorbis *>(JS_GetOpaque(val, AudioStreamOggVorbis::__class_id));
-	if (audio_stream_ogg_vorbis)
-		memdelete(audio_stream_ogg_vorbis);
+	
+	// nothing
 }
 
 static JSClassDef audio_stream_ogg_vorbis_class_def = {
@@ -110,48 +109,48 @@ void define_audio_stream_ogg_vorbis_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "packet_sequence"),
         JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_get_packet_sequence, "get_packet_sequence", 0),
-        JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_set_packet_sequence, "set_packet_sequence", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_set_packet_sequence, "set_packet_sequence", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bpm"),
         JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_get_bpm, "get_bpm", 0),
-        JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_set_bpm, "set_bpm", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_set_bpm, "set_bpm", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "beat_count"),
         JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_get_beat_count, "get_beat_count", 0),
-        JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_set_beat_count, "set_beat_count", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_set_beat_count, "set_beat_count", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bar_beats"),
         JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_get_bar_beats, "get_bar_beats", 0),
-        JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_set_bar_beats, "set_bar_beats", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_set_bar_beats, "set_bar_beats", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "loop"),
         JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_has_loop, "has_loop", 0),
-        JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_set_loop, "set_loop", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_set_loop, "set_loop", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "loop_offset"),
         JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_get_loop_offset, "get_loop_offset", 0),
-        JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_set_loop_offset, "set_loop_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_set_loop_offset, "set_loop_offset", 1),
+        JS_PROP_GETSET
     );
 }
 

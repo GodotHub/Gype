@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void path_follow2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	PathFollow2D *path_follow2d = static_cast<PathFollow2D *>(JS_GetOpaque(val, PathFollow2D::__class_id));
-	if (path_follow2d)
-		memdelete(path_follow2d);
+	
+	// nothing
 }
 
 static JSClassDef path_follow2d_class_def = {
@@ -108,56 +107,56 @@ void define_path_follow2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "progress"),
         JS_NewCFunction(ctx, path_follow2d_class_get_progress, "get_progress", 0),
-        JS_NewCFunction(ctx, path_follow2d_class_set_progress, "set_progress", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, path_follow2d_class_set_progress, "set_progress", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "progress_ratio"),
         JS_NewCFunction(ctx, path_follow2d_class_get_progress_ratio, "get_progress_ratio", 0),
-        JS_NewCFunction(ctx, path_follow2d_class_set_progress_ratio, "set_progress_ratio", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, path_follow2d_class_set_progress_ratio, "set_progress_ratio", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "h_offset"),
         JS_NewCFunction(ctx, path_follow2d_class_get_h_offset, "get_h_offset", 0),
-        JS_NewCFunction(ctx, path_follow2d_class_set_h_offset, "set_h_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, path_follow2d_class_set_h_offset, "set_h_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "v_offset"),
         JS_NewCFunction(ctx, path_follow2d_class_get_v_offset, "get_v_offset", 0),
-        JS_NewCFunction(ctx, path_follow2d_class_set_v_offset, "set_v_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, path_follow2d_class_set_v_offset, "set_v_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "rotates"),
         JS_NewCFunction(ctx, path_follow2d_class_is_rotating, "is_rotating", 0),
-        JS_NewCFunction(ctx, path_follow2d_class_set_rotates, "set_rotates", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, path_follow2d_class_set_rotates, "set_rotates", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cubic_interp"),
         JS_NewCFunction(ctx, path_follow2d_class_get_cubic_interpolation, "get_cubic_interpolation", 0),
-        JS_NewCFunction(ctx, path_follow2d_class_set_cubic_interpolation, "set_cubic_interpolation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, path_follow2d_class_set_cubic_interpolation, "set_cubic_interpolation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "loop"),
         JS_NewCFunction(ctx, path_follow2d_class_has_loop, "has_loop", 0),
-        JS_NewCFunction(ctx, path_follow2d_class_set_loop, "set_loop", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, path_follow2d_class_set_loop, "set_loop", 1),
+        JS_PROP_GETSET
     );
 }
 

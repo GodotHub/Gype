@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/joint2d.hpp>
 #include <godot_cpp/classes/damped_spring_joint2d.hpp>
+#include <godot_cpp/classes/joint2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void damped_spring_joint2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	DampedSpringJoint2D *damped_spring_joint2d = static_cast<DampedSpringJoint2D *>(JS_GetOpaque(val, DampedSpringJoint2D::__class_id));
-	if (damped_spring_joint2d)
-		memdelete(damped_spring_joint2d);
+	
+	// nothing
 }
 
 static JSClassDef damped_spring_joint2d_class_def = {
@@ -81,32 +80,32 @@ void define_damped_spring_joint2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "length"),
         JS_NewCFunction(ctx, damped_spring_joint2d_class_get_length, "get_length", 0),
-        JS_NewCFunction(ctx, damped_spring_joint2d_class_set_length, "set_length", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, damped_spring_joint2d_class_set_length, "set_length", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "rest_length"),
         JS_NewCFunction(ctx, damped_spring_joint2d_class_get_rest_length, "get_rest_length", 0),
-        JS_NewCFunction(ctx, damped_spring_joint2d_class_set_rest_length, "set_rest_length", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, damped_spring_joint2d_class_set_rest_length, "set_rest_length", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "stiffness"),
         JS_NewCFunction(ctx, damped_spring_joint2d_class_get_stiffness, "get_stiffness", 0),
-        JS_NewCFunction(ctx, damped_spring_joint2d_class_set_stiffness, "set_stiffness", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, damped_spring_joint2d_class_set_stiffness, "set_stiffness", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "damping"),
         JS_NewCFunction(ctx, damped_spring_joint2d_class_get_damping, "get_damping", 0),
-        JS_NewCFunction(ctx, damped_spring_joint2d_class_set_damping, "set_damping", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, damped_spring_joint2d_class_set_damping, "set_damping", 1),
+        JS_PROP_GETSET
     );
 }
 

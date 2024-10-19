@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/classes/texture_layered.hpp>
 #include <godot_cpp/classes/texture.hpp>
+#include <godot_cpp/classes/texture_layered.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void texture_layered_class_finalizer(JSRuntime *rt, JSValue val) {
-	TextureLayered *texture_layered = static_cast<TextureLayered *>(JS_GetOpaque(val, TextureLayered::__class_id));
-	if (texture_layered)
-		memdelete(texture_layered);
+	
+	// nothing
 }
 
 static JSClassDef texture_layered_class_def = {

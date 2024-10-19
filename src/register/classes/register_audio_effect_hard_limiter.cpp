@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void audio_effect_hard_limiter_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioEffectHardLimiter *audio_effect_hard_limiter = static_cast<AudioEffectHardLimiter *>(JS_GetOpaque(val, AudioEffectHardLimiter::__class_id));
-	if (audio_effect_hard_limiter)
-		memdelete(audio_effect_hard_limiter);
+	
+	// nothing
 }
 
 static JSClassDef audio_effect_hard_limiter_class_def = {
@@ -72,24 +71,24 @@ void define_audio_effect_hard_limiter_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "pre_gain_db"),
         JS_NewCFunction(ctx, audio_effect_hard_limiter_class_get_pre_gain_db, "get_pre_gain_db", 0),
-        JS_NewCFunction(ctx, audio_effect_hard_limiter_class_set_pre_gain_db, "set_pre_gain_db", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_hard_limiter_class_set_pre_gain_db, "set_pre_gain_db", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ceiling_db"),
         JS_NewCFunction(ctx, audio_effect_hard_limiter_class_get_ceiling_db, "get_ceiling_db", 0),
-        JS_NewCFunction(ctx, audio_effect_hard_limiter_class_set_ceiling_db, "set_ceiling_db", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_hard_limiter_class_set_ceiling_db, "set_ceiling_db", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "release"),
         JS_NewCFunction(ctx, audio_effect_hard_limiter_class_get_release, "get_release", 0),
-        JS_NewCFunction(ctx, audio_effect_hard_limiter_class_set_release, "set_release", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_hard_limiter_class_set_release, "set_release", 1),
+        JS_PROP_GETSET
     );
 }
 

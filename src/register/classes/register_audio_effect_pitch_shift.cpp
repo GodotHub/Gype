@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/classes/audio_effect_pitch_shift.hpp>
+#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void audio_effect_pitch_shift_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioEffectPitchShift *audio_effect_pitch_shift = static_cast<AudioEffectPitchShift *>(JS_GetOpaque(val, AudioEffectPitchShift::__class_id));
-	if (audio_effect_pitch_shift)
-		memdelete(audio_effect_pitch_shift);
+	
+	// nothing
 }
 
 static JSClassDef audio_effect_pitch_shift_class_def = {
@@ -72,24 +71,24 @@ void define_audio_effect_pitch_shift_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "pitch_scale"),
         JS_NewCFunction(ctx, audio_effect_pitch_shift_class_get_pitch_scale, "get_pitch_scale", 0),
-        JS_NewCFunction(ctx, audio_effect_pitch_shift_class_set_pitch_scale, "set_pitch_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_pitch_shift_class_set_pitch_scale, "set_pitch_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "oversampling"),
         JS_NewCFunction(ctx, audio_effect_pitch_shift_class_get_oversampling, "get_oversampling", 0),
-        JS_NewCFunction(ctx, audio_effect_pitch_shift_class_set_oversampling, "set_oversampling", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_pitch_shift_class_set_oversampling, "set_oversampling", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fft_size"),
         JS_NewCFunction(ctx, audio_effect_pitch_shift_class_get_fft_size, "get_fft_size", 0),
-        JS_NewCFunction(ctx, audio_effect_pitch_shift_class_set_fft_size, "set_fft_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_pitch_shift_class_set_fft_size, "set_fft_size", 1),
+        JS_PROP_GETSET
     );
 }
 

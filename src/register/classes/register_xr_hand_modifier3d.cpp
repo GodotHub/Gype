@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void xr_hand_modifier3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	XRHandModifier3D *xr_hand_modifier3d = static_cast<XRHandModifier3D *>(JS_GetOpaque(val, XRHandModifier3D::__class_id));
-	if (xr_hand_modifier3d)
-		memdelete(xr_hand_modifier3d);
+	
+	// nothing
 }
 
 static JSClassDef xr_hand_modifier3d_class_def = {
@@ -63,16 +62,16 @@ void define_xr_hand_modifier3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "hand_tracker"),
         JS_NewCFunction(ctx, xr_hand_modifier3d_class_get_hand_tracker, "get_hand_tracker", 0),
-        JS_NewCFunction(ctx, xr_hand_modifier3d_class_set_hand_tracker, "set_hand_tracker", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_hand_modifier3d_class_set_hand_tracker, "set_hand_tracker", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bone_update"),
         JS_NewCFunction(ctx, xr_hand_modifier3d_class_get_bone_update, "get_bone_update", 0),
-        JS_NewCFunction(ctx, xr_hand_modifier3d_class_set_bone_update, "set_bone_update", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_hand_modifier3d_class_set_bone_update, "set_bone_update", 1),
+        JS_PROP_GETSET
     );
 }
 

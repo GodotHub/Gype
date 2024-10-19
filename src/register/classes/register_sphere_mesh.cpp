@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/sphere_mesh.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
+#include <godot_cpp/classes/sphere_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void sphere_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	SphereMesh *sphere_mesh = static_cast<SphereMesh *>(JS_GetOpaque(val, SphereMesh::__class_id));
-	if (sphere_mesh)
-		memdelete(sphere_mesh);
+	
+	// nothing
 }
 
 static JSClassDef sphere_mesh_class_def = {
@@ -90,40 +89,40 @@ void define_sphere_mesh_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "radius"),
         JS_NewCFunction(ctx, sphere_mesh_class_get_radius, "get_radius", 0),
-        JS_NewCFunction(ctx, sphere_mesh_class_set_radius, "set_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sphere_mesh_class_set_radius, "set_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "height"),
         JS_NewCFunction(ctx, sphere_mesh_class_get_height, "get_height", 0),
-        JS_NewCFunction(ctx, sphere_mesh_class_set_height, "set_height", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sphere_mesh_class_set_height, "set_height", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "radial_segments"),
         JS_NewCFunction(ctx, sphere_mesh_class_get_radial_segments, "get_radial_segments", 0),
-        JS_NewCFunction(ctx, sphere_mesh_class_set_radial_segments, "set_radial_segments", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sphere_mesh_class_set_radial_segments, "set_radial_segments", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "rings"),
         JS_NewCFunction(ctx, sphere_mesh_class_get_rings, "get_rings", 0),
-        JS_NewCFunction(ctx, sphere_mesh_class_set_rings, "set_rings", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sphere_mesh_class_set_rings, "set_rings", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "is_hemisphere"),
         JS_NewCFunction(ctx, sphere_mesh_class_get_is_hemisphere, "get_is_hemisphere", 0),
-        JS_NewCFunction(ctx, sphere_mesh_class_set_is_hemisphere, "set_is_hemisphere", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sphere_mesh_class_set_is_hemisphere, "set_is_hemisphere", 1),
+        JS_PROP_GETSET
     );
 }
 

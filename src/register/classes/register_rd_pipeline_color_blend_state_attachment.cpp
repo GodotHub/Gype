@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rd_pipeline_color_blend_state_attachment.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void rd_pipeline_color_blend_state_attachment_class_finalizer(JSRuntime *rt, JSValue val) {
-	RDPipelineColorBlendStateAttachment *rd_pipeline_color_blend_state_attachment = static_cast<RDPipelineColorBlendStateAttachment *>(JS_GetOpaque(val, RDPipelineColorBlendStateAttachment::__class_id));
-	if (rd_pipeline_color_blend_state_attachment)
-		memdelete(rd_pipeline_color_blend_state_attachment);
+	
+	// nothing
 }
 
 static JSClassDef rd_pipeline_color_blend_state_attachment_class_def = {
@@ -149,88 +148,88 @@ void define_rd_pipeline_color_blend_state_attachment_property(JSContext *ctx, JS
         obj,
         JS_NewAtom(ctx, "enable_blend"),
         JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_get_enable_blend, "get_enable_blend", 0),
-        JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_set_enable_blend, "set_enable_blend", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_set_enable_blend, "set_enable_blend", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "src_color_blend_factor"),
         JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_get_src_color_blend_factor, "get_src_color_blend_factor", 0),
-        JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_set_src_color_blend_factor, "set_src_color_blend_factor", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_set_src_color_blend_factor, "set_src_color_blend_factor", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "dst_color_blend_factor"),
         JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_get_dst_color_blend_factor, "get_dst_color_blend_factor", 0),
-        JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_set_dst_color_blend_factor, "set_dst_color_blend_factor", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_set_dst_color_blend_factor, "set_dst_color_blend_factor", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "color_blend_op"),
         JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_get_color_blend_op, "get_color_blend_op", 0),
-        JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_set_color_blend_op, "set_color_blend_op", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_set_color_blend_op, "set_color_blend_op", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "src_alpha_blend_factor"),
         JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_get_src_alpha_blend_factor, "get_src_alpha_blend_factor", 0),
-        JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_set_src_alpha_blend_factor, "set_src_alpha_blend_factor", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_set_src_alpha_blend_factor, "set_src_alpha_blend_factor", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "dst_alpha_blend_factor"),
         JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_get_dst_alpha_blend_factor, "get_dst_alpha_blend_factor", 0),
-        JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_set_dst_alpha_blend_factor, "set_dst_alpha_blend_factor", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_set_dst_alpha_blend_factor, "set_dst_alpha_blend_factor", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "alpha_blend_op"),
         JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_get_alpha_blend_op, "get_alpha_blend_op", 0),
-        JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_set_alpha_blend_op, "set_alpha_blend_op", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_set_alpha_blend_op, "set_alpha_blend_op", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "write_r"),
         JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_get_write_r, "get_write_r", 0),
-        JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_set_write_r, "set_write_r", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_set_write_r, "set_write_r", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "write_g"),
         JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_get_write_g, "get_write_g", 0),
-        JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_set_write_g, "set_write_g", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_set_write_g, "set_write_g", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "write_b"),
         JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_get_write_b, "get_write_b", 0),
-        JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_set_write_b, "set_write_b", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_set_write_b, "set_write_b", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "write_a"),
         JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_get_write_a, "get_write_a", 0),
-        JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_set_write_a, "set_write_a", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_color_blend_state_attachment_class_set_write_a, "set_write_a", 1),
+        JS_PROP_GETSET
     );
 }
 

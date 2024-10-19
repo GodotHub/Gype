@@ -5,20 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/occluder_polygon2d.hpp>
+#include <godot_cpp/classes/tile_data.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/navigation_polygon.hpp>
-#include <godot_cpp/classes/tile_data.hpp>
-#include <godot_cpp/classes/occluder_polygon2d.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void tile_data_class_finalizer(JSRuntime *rt, JSValue val) {
-	TileData *tile_data = static_cast<TileData *>(JS_GetOpaque(val, TileData::__class_id));
-	if (tile_data)
-		memdelete(tile_data);
+	
+	// nothing
 }
 
 static JSClassDef tile_data_class_def = {
@@ -260,88 +259,88 @@ void define_tile_data_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "flip_h"),
         JS_NewCFunction(ctx, tile_data_class_get_flip_h, "get_flip_h", 0),
-        JS_NewCFunction(ctx, tile_data_class_set_flip_h, "set_flip_h", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_data_class_set_flip_h, "set_flip_h", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "flip_v"),
         JS_NewCFunction(ctx, tile_data_class_get_flip_v, "get_flip_v", 0),
-        JS_NewCFunction(ctx, tile_data_class_set_flip_v, "set_flip_v", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_data_class_set_flip_v, "set_flip_v", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "transpose"),
         JS_NewCFunction(ctx, tile_data_class_get_transpose, "get_transpose", 0),
-        JS_NewCFunction(ctx, tile_data_class_set_transpose, "set_transpose", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_data_class_set_transpose, "set_transpose", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_origin"),
         JS_NewCFunction(ctx, tile_data_class_get_texture_origin, "get_texture_origin", 0),
-        JS_NewCFunction(ctx, tile_data_class_set_texture_origin, "set_texture_origin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_data_class_set_texture_origin, "set_texture_origin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "modulate"),
         JS_NewCFunction(ctx, tile_data_class_get_modulate, "get_modulate", 0),
-        JS_NewCFunction(ctx, tile_data_class_set_modulate, "set_modulate", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_data_class_set_modulate, "set_modulate", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "material"),
         JS_NewCFunction(ctx, tile_data_class_get_material, "get_material", 0),
-        JS_NewCFunction(ctx, tile_data_class_set_material, "set_material", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_data_class_set_material, "set_material", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "z_index"),
         JS_NewCFunction(ctx, tile_data_class_get_z_index, "get_z_index", 0),
-        JS_NewCFunction(ctx, tile_data_class_set_z_index, "set_z_index", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_data_class_set_z_index, "set_z_index", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "y_sort_origin"),
         JS_NewCFunction(ctx, tile_data_class_get_y_sort_origin, "get_y_sort_origin", 0),
-        JS_NewCFunction(ctx, tile_data_class_set_y_sort_origin, "set_y_sort_origin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_data_class_set_y_sort_origin, "set_y_sort_origin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "terrain_set"),
         JS_NewCFunction(ctx, tile_data_class_get_terrain_set, "get_terrain_set", 0),
-        JS_NewCFunction(ctx, tile_data_class_set_terrain_set, "set_terrain_set", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_data_class_set_terrain_set, "set_terrain_set", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "terrain"),
         JS_NewCFunction(ctx, tile_data_class_get_terrain, "get_terrain", 0),
-        JS_NewCFunction(ctx, tile_data_class_set_terrain, "set_terrain", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_data_class_set_terrain, "set_terrain", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "probability"),
         JS_NewCFunction(ctx, tile_data_class_get_probability, "get_probability", 0),
-        JS_NewCFunction(ctx, tile_data_class_set_probability, "set_probability", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_data_class_set_probability, "set_probability", 1),
+        JS_PROP_GETSET
     );
 }
 

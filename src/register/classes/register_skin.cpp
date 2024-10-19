@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void skin_class_finalizer(JSRuntime *rt, JSValue val) {
-	Skin *skin = static_cast<Skin *>(JS_GetOpaque(val, Skin::__class_id));
-	if (skin)
-		memdelete(skin);
+	
+	// nothing
 }
 
 static JSClassDef skin_class_def = {

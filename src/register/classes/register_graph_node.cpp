@@ -5,19 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/graph_element.hpp>
 #include <godot_cpp/classes/graph_node.hpp>
 #include <godot_cpp/classes/h_box_container.hpp>
+#include <godot_cpp/classes/graph_element.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void graph_node_class_finalizer(JSRuntime *rt, JSValue val) {
-	GraphNode *graph_node = static_cast<GraphNode *>(JS_GetOpaque(val, GraphNode::__class_id));
-	if (graph_node)
-		memdelete(graph_node);
+	
+	// nothing
 }
 
 static JSClassDef graph_node_class_def = {
@@ -205,16 +204,16 @@ void define_graph_node_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "title"),
         JS_NewCFunction(ctx, graph_node_class_get_title, "get_title", 0),
-        JS_NewCFunction(ctx, graph_node_class_set_title, "set_title", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_node_class_set_title, "set_title", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ignore_invalid_connection_type"),
         JS_NewCFunction(ctx, graph_node_class_is_ignoring_valid_connection_type, "is_ignoring_valid_connection_type", 0),
-        JS_NewCFunction(ctx, graph_node_class_set_ignore_invalid_connection_type, "set_ignore_invalid_connection_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_node_class_set_ignore_invalid_connection_type, "set_ignore_invalid_connection_type", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/segment_shape2d.hpp>
 #include <godot_cpp/classes/shape2d.hpp>
+#include <godot_cpp/classes/segment_shape2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void segment_shape2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	SegmentShape2D *segment_shape2d = static_cast<SegmentShape2D *>(JS_GetOpaque(val, SegmentShape2D::__class_id));
-	if (segment_shape2d)
-		memdelete(segment_shape2d);
+	
+	// nothing
 }
 
 static JSClassDef segment_shape2d_class_def = {
@@ -63,16 +62,16 @@ void define_segment_shape2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "a"),
         JS_NewCFunction(ctx, segment_shape2d_class_get_a, "get_a", 0),
-        JS_NewCFunction(ctx, segment_shape2d_class_set_a, "set_a", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, segment_shape2d_class_set_a, "set_a", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "b"),
         JS_NewCFunction(ctx, segment_shape2d_class_get_b, "get_b", 0),
-        JS_NewCFunction(ctx, segment_shape2d_class_set_b, "set_b", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, segment_shape2d_class_set_b, "set_b", 1),
+        JS_PROP_GETSET
     );
 }
 

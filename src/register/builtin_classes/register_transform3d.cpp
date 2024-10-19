@@ -1,9 +1,9 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/variant/transform3d.hpp>
 
 using namespace godot;
@@ -72,6 +72,30 @@ static JSValue transform3d_class_is_equal_approx(JSContext *ctx, JSValueConst th
 static JSValue transform3d_class_is_finite(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Transform3D::is_finite, ctx, this_val, argc, argv);
 };
+
+
+
+static JSValue transform3d_class_get_basis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Transform3D &val = *reinterpret_cast<Transform3D *>(JS_GetOpaque(this_val, Transform3D::__class_id));
+	return Variant(val.basis);
+}
+static JSValue transform3d_class_set_basis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Transform3D &val = *reinterpret_cast<Transform3D *>(JS_GetOpaque(this_val, Transform3D::__class_id));
+	val.basis = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue transform3d_class_get_origin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Transform3D &val = *reinterpret_cast<Transform3D *>(JS_GetOpaque(this_val, Transform3D::__class_id));
+	return Variant(val.origin);
+}
+static JSValue transform3d_class_set_origin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Transform3D &val = *reinterpret_cast<Transform3D *>(JS_GetOpaque(this_val, Transform3D::__class_id));
+	val.origin = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+
 static const JSCFunctionListEntry transform3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("inverse", 0, &transform3d_class_inverse),
 	JS_CFUNC_DEF("affine_inverse", 0, &transform3d_class_affine_inverse),
@@ -88,10 +112,29 @@ static const JSCFunctionListEntry transform3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_finite", 0, &transform3d_class_is_finite),
 };
 
+
 void define_transform3d_property(JSContext *ctx, JSValue obj) {
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "basis"),
+        JS_NewCFunction(ctx, transform3d_class_get_basis, "get_basis", 0),
+        JS_NewCFunction(ctx, transform3d_class_set_basis, "set_basis", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "origin"),
+        JS_NewCFunction(ctx, transform3d_class_get_origin, "get_origin", 0),
+        JS_NewCFunction(ctx, transform3d_class_set_origin, "set_origin", 1),
+		JS_PROP_GETSET
+    );
 }
 
+
 static int js_transform3d_class_init(JSContext *ctx) {
+	
 	JS_NewClassID(&Transform3D::__class_id);
 	classes["Transform3D"] = Transform3D::__class_id;
 	class_id_list.insert(Transform3D::__class_id);
@@ -99,7 +142,6 @@ static int js_transform3d_class_init(JSContext *ctx) {
 
 	JSValue proto = JS_NewObject(ctx);
 	JS_SetClassProto(ctx, Transform3D::__class_id, proto);
-
 	define_transform3d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, transform3d_class_proto_funcs, _countof(transform3d_class_proto_funcs));
 

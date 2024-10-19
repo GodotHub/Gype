@@ -16,9 +16,8 @@ static JSValue os_instance;
 static void js_os_singleton();
 
 static void os_class_finalizer(JSRuntime *rt, JSValue val) {
-	OS *os = static_cast<OS *>(JS_GetOpaque(val, OS::__class_id));
-	if (os)
-		OS::free(nullptr, os);
+	
+	// nothing
 }
 
 static JSClassDef os_class_def = {

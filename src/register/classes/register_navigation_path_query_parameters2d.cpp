@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void navigation_path_query_parameters2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	NavigationPathQueryParameters2D *navigation_path_query_parameters2d = static_cast<NavigationPathQueryParameters2D *>(JS_GetOpaque(val, NavigationPathQueryParameters2D::__class_id));
-	if (navigation_path_query_parameters2d)
-		memdelete(navigation_path_query_parameters2d);
+	
+	// nothing
 }
 
 static JSClassDef navigation_path_query_parameters2d_class_def = {
@@ -126,72 +125,72 @@ void define_navigation_path_query_parameters2d_property(JSContext *ctx, JSValue 
         obj,
         JS_NewAtom(ctx, "map"),
         JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_map, "get_map", 0),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_map, "set_map", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_map, "set_map", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "start_position"),
         JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_start_position, "get_start_position", 0),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_start_position, "set_start_position", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_start_position, "set_start_position", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "target_position"),
         JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_target_position, "get_target_position", 0),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_target_position, "set_target_position", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_target_position, "set_target_position", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "navigation_layers"),
         JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_navigation_layers, "get_navigation_layers", 0),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_navigation_layers, "set_navigation_layers", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_navigation_layers, "set_navigation_layers", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "pathfinding_algorithm"),
         JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_pathfinding_algorithm, "get_pathfinding_algorithm", 0),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_pathfinding_algorithm, "set_pathfinding_algorithm", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_pathfinding_algorithm, "set_pathfinding_algorithm", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "path_postprocessing"),
         JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_path_postprocessing, "get_path_postprocessing", 0),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_path_postprocessing, "set_path_postprocessing", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_path_postprocessing, "set_path_postprocessing", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "metadata_flags"),
         JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_metadata_flags, "get_metadata_flags", 0),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_metadata_flags, "set_metadata_flags", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_metadata_flags, "set_metadata_flags", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "simplify_path"),
         JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_simplify_path, "get_simplify_path", 0),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_simplify_path, "set_simplify_path", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_simplify_path, "set_simplify_path", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "simplify_epsilon"),
         JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_simplify_epsilon, "get_simplify_epsilon", 0),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_simplify_epsilon, "set_simplify_epsilon", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_simplify_epsilon, "set_simplify_epsilon", 1),
+        JS_PROP_GETSET
     );
 }
 

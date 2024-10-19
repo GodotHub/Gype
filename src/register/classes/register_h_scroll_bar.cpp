@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void h_scroll_bar_class_finalizer(JSRuntime *rt, JSValue val) {
-	HScrollBar *h_scroll_bar = static_cast<HScrollBar *>(JS_GetOpaque(val, HScrollBar::__class_id));
-	if (h_scroll_bar)
-		memdelete(h_scroll_bar);
+	
+	// nothing
 }
 
 static JSClassDef h_scroll_bar_class_def = {

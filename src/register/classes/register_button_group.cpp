@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/base_button.hpp>
+#include <godot_cpp/classes/base_button.hpp>
 #include <godot_cpp/classes/button_group.hpp>
-#include <godot_cpp/classes/base_button.hpp>
-#include <godot_cpp/classes/base_button.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -15,9 +15,8 @@
 using namespace godot;
 
 static void button_group_class_finalizer(JSRuntime *rt, JSValue val) {
-	ButtonGroup *button_group = static_cast<ButtonGroup *>(JS_GetOpaque(val, ButtonGroup::__class_id));
-	if (button_group)
-		memdelete(button_group);
+	
+	// nothing
 }
 
 static JSClassDef button_group_class_def = {
@@ -64,8 +63,8 @@ void define_button_group_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "allow_unpress"),
         JS_NewCFunction(ctx, button_group_class_is_allow_unpress, "is_allow_unpress", 0),
-        JS_NewCFunction(ctx, button_group_class_set_allow_unpress, "set_allow_unpress", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, button_group_class_set_allow_unpress, "set_allow_unpress", 1),
+        JS_PROP_GETSET
     );
 }
 

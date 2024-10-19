@@ -6,11 +6,11 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/audio_effect_instance.hpp>
-#include <godot_cpp/classes/audio_server.hpp>
-#include <godot_cpp/classes/audio_effect.hpp>
-#include <godot_cpp/classes/audio_bus_layout.hpp>
 #include <godot_cpp/classes/audio_stream.hpp>
+#include <godot_cpp/classes/audio_server.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/audio_bus_layout.hpp>
+#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
@@ -20,9 +20,8 @@ static JSValue audio_server_instance;
 static void js_audio_server_singleton();
 
 static void audio_server_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioServer *audio_server = static_cast<AudioServer *>(JS_GetOpaque(val, AudioServer::__class_id));
-	if (audio_server)
-		AudioServer::free(nullptr, audio_server);
+	
+	// nothing
 }
 
 static JSClassDef audio_server_class_def = {

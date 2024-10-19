@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void method_tweener_class_finalizer(JSRuntime *rt, JSValue val) {
-	MethodTweener *method_tweener = static_cast<MethodTweener *>(JS_GetOpaque(val, MethodTweener::__class_id));
-	if (method_tweener)
-		memdelete(method_tweener);
+	
+	// nothing
 }
 
 static JSClassDef method_tweener_class_def = {

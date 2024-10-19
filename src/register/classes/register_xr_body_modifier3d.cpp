@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void xr_body_modifier3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	XRBodyModifier3D *xr_body_modifier3d = static_cast<XRBodyModifier3D *>(JS_GetOpaque(val, XRBodyModifier3D::__class_id));
-	if (xr_body_modifier3d)
-		memdelete(xr_body_modifier3d);
+	
+	// nothing
 }
 
 static JSClassDef xr_body_modifier3d_class_def = {
@@ -72,24 +71,24 @@ void define_xr_body_modifier3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "body_tracker"),
         JS_NewCFunction(ctx, xr_body_modifier3d_class_get_body_tracker, "get_body_tracker", 0),
-        JS_NewCFunction(ctx, xr_body_modifier3d_class_set_body_tracker, "set_body_tracker", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_body_modifier3d_class_set_body_tracker, "set_body_tracker", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "body_update"),
         JS_NewCFunction(ctx, xr_body_modifier3d_class_get_body_update, "get_body_update", 0),
-        JS_NewCFunction(ctx, xr_body_modifier3d_class_set_body_update, "set_body_update", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_body_modifier3d_class_set_body_update, "set_body_update", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bone_update"),
         JS_NewCFunction(ctx, xr_body_modifier3d_class_get_bone_update, "get_bone_update", 0),
-        JS_NewCFunction(ctx, xr_body_modifier3d_class_set_bone_update, "set_bone_update", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_body_modifier3d_class_set_bone_update, "set_bone_update", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture_layered_rd.hpp>
 #include <godot_cpp/classes/texture2d_array_rd.hpp>
+#include <godot_cpp/classes/texture_layered_rd.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void texture2d_array_rd_class_finalizer(JSRuntime *rt, JSValue val) {
-	Texture2DArrayRD *texture2d_array_rd = static_cast<Texture2DArrayRD *>(JS_GetOpaque(val, Texture2DArrayRD::__class_id));
-	if (texture2d_array_rd)
-		memdelete(texture2d_array_rd);
+	
+	// nothing
 }
 
 static JSClassDef texture2d_array_rd_class_def = {

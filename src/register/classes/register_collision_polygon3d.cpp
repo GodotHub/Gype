@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void collision_polygon3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	CollisionPolygon3D *collision_polygon3d = static_cast<CollisionPolygon3D *>(JS_GetOpaque(val, CollisionPolygon3D::__class_id));
-	if (collision_polygon3d)
-		memdelete(collision_polygon3d);
+	
+	// nothing
 }
 
 static JSClassDef collision_polygon3d_class_def = {
@@ -81,32 +80,32 @@ void define_collision_polygon3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "depth"),
         JS_NewCFunction(ctx, collision_polygon3d_class_get_depth, "get_depth", 0),
-        JS_NewCFunction(ctx, collision_polygon3d_class_set_depth, "set_depth", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_polygon3d_class_set_depth, "set_depth", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "disabled"),
         JS_NewCFunction(ctx, collision_polygon3d_class_is_disabled, "is_disabled", 0),
-        JS_NewCFunction(ctx, collision_polygon3d_class_set_disabled, "set_disabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_polygon3d_class_set_disabled, "set_disabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "polygon"),
         JS_NewCFunction(ctx, collision_polygon3d_class_get_polygon, "get_polygon", 0),
-        JS_NewCFunction(ctx, collision_polygon3d_class_set_polygon, "set_polygon", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_polygon3d_class_set_polygon, "set_polygon", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "margin"),
         JS_NewCFunction(ctx, collision_polygon3d_class_get_margin, "get_margin", 0),
-        JS_NewCFunction(ctx, collision_polygon3d_class_set_margin, "set_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_polygon3d_class_set_margin, "set_margin", 1),
+        JS_PROP_GETSET
     );
 }
 

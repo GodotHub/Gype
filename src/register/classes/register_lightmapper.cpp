@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void lightmapper_class_finalizer(JSRuntime *rt, JSValue val) {
-	Lightmapper *lightmapper = static_cast<Lightmapper *>(JS_GetOpaque(val, Lightmapper::__class_id));
-	if (lightmapper)
-		memdelete(lightmapper);
+	
+	// nothing
 }
 
 static JSClassDef lightmapper_class_def = {

@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/shader_include.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void shader_include_class_finalizer(JSRuntime *rt, JSValue val) {
-	ShaderInclude *shader_include = static_cast<ShaderInclude *>(JS_GetOpaque(val, ShaderInclude::__class_id));
-	if (shader_include)
-		memdelete(shader_include);
+	
+	// nothing
 }
 
 static JSClassDef shader_include_class_def = {
@@ -54,8 +53,8 @@ void define_shader_include_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "code"),
         JS_NewCFunction(ctx, shader_include_class_get_code, "get_code", 0),
-        JS_NewCFunction(ctx, shader_include_class_set_code, "set_code", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, shader_include_class_set_code, "set_code", 1),
+        JS_PROP_GETSET
     );
 }
 

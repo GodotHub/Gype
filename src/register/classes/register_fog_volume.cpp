@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void fog_volume_class_finalizer(JSRuntime *rt, JSValue val) {
-	FogVolume *fog_volume = static_cast<FogVolume *>(JS_GetOpaque(val, FogVolume::__class_id));
-	if (fog_volume)
-		memdelete(fog_volume);
+	
+	// nothing
 }
 
 static JSClassDef fog_volume_class_def = {
@@ -73,24 +72,24 @@ void define_fog_volume_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, fog_volume_class_get_size, "get_size", 0),
-        JS_NewCFunction(ctx, fog_volume_class_set_size, "set_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fog_volume_class_set_size, "set_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shape"),
         JS_NewCFunction(ctx, fog_volume_class_get_shape, "get_shape", 0),
-        JS_NewCFunction(ctx, fog_volume_class_set_shape, "set_shape", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fog_volume_class_set_shape, "set_shape", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "material"),
         JS_NewCFunction(ctx, fog_volume_class_get_material, "get_material", 0),
-        JS_NewCFunction(ctx, fog_volume_class_set_material, "set_material", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fog_volume_class_set_material, "set_material", 1),
+        JS_PROP_GETSET
     );
 }
 

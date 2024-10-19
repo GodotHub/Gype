@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_face_forward_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeFaceForward *visual_shader_node_face_forward = static_cast<VisualShaderNodeFaceForward *>(JS_GetOpaque(val, VisualShaderNodeFaceForward::__class_id));
-	if (visual_shader_node_face_forward)
-		memdelete(visual_shader_node_face_forward);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_face_forward_class_def = {

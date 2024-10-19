@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void atlas_texture_class_finalizer(JSRuntime *rt, JSValue val) {
-	AtlasTexture *atlas_texture = static_cast<AtlasTexture *>(JS_GetOpaque(val, AtlasTexture::__class_id));
-	if (atlas_texture)
-		memdelete(atlas_texture);
+	
+	// nothing
 }
 
 static JSClassDef atlas_texture_class_def = {
@@ -81,32 +80,32 @@ void define_atlas_texture_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "atlas"),
         JS_NewCFunction(ctx, atlas_texture_class_get_atlas, "get_atlas", 0),
-        JS_NewCFunction(ctx, atlas_texture_class_set_atlas, "set_atlas", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, atlas_texture_class_set_atlas, "set_atlas", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "region"),
         JS_NewCFunction(ctx, atlas_texture_class_get_region, "get_region", 0),
-        JS_NewCFunction(ctx, atlas_texture_class_set_region, "set_region", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, atlas_texture_class_set_region, "set_region", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "margin"),
         JS_NewCFunction(ctx, atlas_texture_class_get_margin, "get_margin", 0),
-        JS_NewCFunction(ctx, atlas_texture_class_set_margin, "set_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, atlas_texture_class_set_margin, "set_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "filter_clip"),
         JS_NewCFunction(ctx, atlas_texture_class_has_filter_clip, "has_filter_clip", 0),
-        JS_NewCFunction(ctx, atlas_texture_class_set_filter_clip, "set_filter_clip", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, atlas_texture_class_set_filter_clip, "set_filter_clip", 1),
+        JS_PROP_GETSET
     );
 }
 

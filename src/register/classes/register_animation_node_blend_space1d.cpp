@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_root_node.hpp>
 #include <godot_cpp/classes/animation_node_blend_space1d.hpp>
+#include <godot_cpp/classes/animation_root_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void animation_node_blend_space1d_class_finalizer(JSRuntime *rt, JSValue val) {
-	AnimationNodeBlendSpace1D *animation_node_blend_space1d = static_cast<AnimationNodeBlendSpace1D *>(JS_GetOpaque(val, AnimationNodeBlendSpace1D::__class_id));
-	if (animation_node_blend_space1d)
-		memdelete(animation_node_blend_space1d);
+	
+	// nothing
 }
 
 static JSClassDef animation_node_blend_space1d_class_def = {
@@ -131,48 +130,48 @@ void define_animation_node_blend_space1d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "min_space"),
         JS_NewCFunction(ctx, animation_node_blend_space1d_class_get_min_space, "get_min_space", 0),
-        JS_NewCFunction(ctx, animation_node_blend_space1d_class_set_min_space, "set_min_space", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_blend_space1d_class_set_min_space, "set_min_space", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "max_space"),
         JS_NewCFunction(ctx, animation_node_blend_space1d_class_get_max_space, "get_max_space", 0),
-        JS_NewCFunction(ctx, animation_node_blend_space1d_class_set_max_space, "set_max_space", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_blend_space1d_class_set_max_space, "set_max_space", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "snap"),
         JS_NewCFunction(ctx, animation_node_blend_space1d_class_get_snap, "get_snap", 0),
-        JS_NewCFunction(ctx, animation_node_blend_space1d_class_set_snap, "set_snap", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_blend_space1d_class_set_snap, "set_snap", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "value_label"),
         JS_NewCFunction(ctx, animation_node_blend_space1d_class_get_value_label, "get_value_label", 0),
-        JS_NewCFunction(ctx, animation_node_blend_space1d_class_set_value_label, "set_value_label", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_blend_space1d_class_set_value_label, "set_value_label", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "blend_mode"),
         JS_NewCFunction(ctx, animation_node_blend_space1d_class_get_blend_mode, "get_blend_mode", 0),
-        JS_NewCFunction(ctx, animation_node_blend_space1d_class_set_blend_mode, "set_blend_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_blend_space1d_class_set_blend_mode, "set_blend_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sync"),
         JS_NewCFunction(ctx, animation_node_blend_space1d_class_is_using_sync, "is_using_sync", 0),
-        JS_NewCFunction(ctx, animation_node_blend_space1d_class_set_use_sync, "set_use_sync", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_blend_space1d_class_set_use_sync, "set_use_sync", 1),
+        JS_PROP_GETSET
     );
 }
 

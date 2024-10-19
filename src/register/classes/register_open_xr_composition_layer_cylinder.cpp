@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void open_xr_composition_layer_cylinder_class_finalizer(JSRuntime *rt, JSValue val) {
-	OpenXRCompositionLayerCylinder *open_xr_composition_layer_cylinder = static_cast<OpenXRCompositionLayerCylinder *>(JS_GetOpaque(val, OpenXRCompositionLayerCylinder::__class_id));
-	if (open_xr_composition_layer_cylinder)
-		memdelete(open_xr_composition_layer_cylinder);
+	
+	// nothing
 }
 
 static JSClassDef open_xr_composition_layer_cylinder_class_def = {
@@ -81,32 +80,32 @@ void define_open_xr_composition_layer_cylinder_property(JSContext *ctx, JSValue 
         obj,
         JS_NewAtom(ctx, "radius"),
         JS_NewCFunction(ctx, open_xr_composition_layer_cylinder_class_get_radius, "get_radius", 0),
-        JS_NewCFunction(ctx, open_xr_composition_layer_cylinder_class_set_radius, "set_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_composition_layer_cylinder_class_set_radius, "set_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "aspect_ratio"),
         JS_NewCFunction(ctx, open_xr_composition_layer_cylinder_class_get_aspect_ratio, "get_aspect_ratio", 0),
-        JS_NewCFunction(ctx, open_xr_composition_layer_cylinder_class_set_aspect_ratio, "set_aspect_ratio", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_composition_layer_cylinder_class_set_aspect_ratio, "set_aspect_ratio", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "central_angle"),
         JS_NewCFunction(ctx, open_xr_composition_layer_cylinder_class_get_central_angle, "get_central_angle", 0),
-        JS_NewCFunction(ctx, open_xr_composition_layer_cylinder_class_set_central_angle, "set_central_angle", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_composition_layer_cylinder_class_set_central_angle, "set_central_angle", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fallback_segments"),
         JS_NewCFunction(ctx, open_xr_composition_layer_cylinder_class_get_fallback_segments, "get_fallback_segments", 0),
-        JS_NewCFunction(ctx, open_xr_composition_layer_cylinder_class_set_fallback_segments, "set_fallback_segments", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_composition_layer_cylinder_class_set_fallback_segments, "set_fallback_segments", 1),
+        JS_PROP_GETSET
     );
 }
 

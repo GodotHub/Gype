@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/kinematic_collision2d.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void kinematic_collision2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	KinematicCollision2D *kinematic_collision2d = static_cast<KinematicCollision2D *>(JS_GetOpaque(val, KinematicCollision2D::__class_id));
-	if (kinematic_collision2d)
-		memdelete(kinematic_collision2d);
+	
+	// nothing
 }
 
 static JSClassDef kinematic_collision2d_class_def = {

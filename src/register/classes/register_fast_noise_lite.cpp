@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/noise.hpp>
 #include <godot_cpp/classes/fast_noise_lite.hpp>
+#include <godot_cpp/classes/noise.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void fast_noise_lite_class_finalizer(JSRuntime *rt, JSValue val) {
-	FastNoiseLite *fast_noise_lite = static_cast<FastNoiseLite *>(JS_GetOpaque(val, FastNoiseLite::__class_id));
-	if (fast_noise_lite)
-		memdelete(fast_noise_lite);
+	
+	// nothing
 }
 
 static JSClassDef fast_noise_lite_class_def = {
@@ -234,168 +233,168 @@ void define_fast_noise_lite_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "noise_type"),
         JS_NewCFunction(ctx, fast_noise_lite_class_get_noise_type, "get_noise_type", 0),
-        JS_NewCFunction(ctx, fast_noise_lite_class_set_noise_type, "set_noise_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fast_noise_lite_class_set_noise_type, "set_noise_type", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "seed"),
         JS_NewCFunction(ctx, fast_noise_lite_class_get_seed, "get_seed", 0),
-        JS_NewCFunction(ctx, fast_noise_lite_class_set_seed, "set_seed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fast_noise_lite_class_set_seed, "set_seed", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "frequency"),
         JS_NewCFunction(ctx, fast_noise_lite_class_get_frequency, "get_frequency", 0),
-        JS_NewCFunction(ctx, fast_noise_lite_class_set_frequency, "set_frequency", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fast_noise_lite_class_set_frequency, "set_frequency", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "offset"),
         JS_NewCFunction(ctx, fast_noise_lite_class_get_offset, "get_offset", 0),
-        JS_NewCFunction(ctx, fast_noise_lite_class_set_offset, "set_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fast_noise_lite_class_set_offset, "set_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fractal_type"),
         JS_NewCFunction(ctx, fast_noise_lite_class_get_fractal_type, "get_fractal_type", 0),
-        JS_NewCFunction(ctx, fast_noise_lite_class_set_fractal_type, "set_fractal_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fast_noise_lite_class_set_fractal_type, "set_fractal_type", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fractal_octaves"),
         JS_NewCFunction(ctx, fast_noise_lite_class_get_fractal_octaves, "get_fractal_octaves", 0),
-        JS_NewCFunction(ctx, fast_noise_lite_class_set_fractal_octaves, "set_fractal_octaves", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fast_noise_lite_class_set_fractal_octaves, "set_fractal_octaves", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fractal_lacunarity"),
         JS_NewCFunction(ctx, fast_noise_lite_class_get_fractal_lacunarity, "get_fractal_lacunarity", 0),
-        JS_NewCFunction(ctx, fast_noise_lite_class_set_fractal_lacunarity, "set_fractal_lacunarity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fast_noise_lite_class_set_fractal_lacunarity, "set_fractal_lacunarity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fractal_gain"),
         JS_NewCFunction(ctx, fast_noise_lite_class_get_fractal_gain, "get_fractal_gain", 0),
-        JS_NewCFunction(ctx, fast_noise_lite_class_set_fractal_gain, "set_fractal_gain", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fast_noise_lite_class_set_fractal_gain, "set_fractal_gain", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fractal_weighted_strength"),
         JS_NewCFunction(ctx, fast_noise_lite_class_get_fractal_weighted_strength, "get_fractal_weighted_strength", 0),
-        JS_NewCFunction(ctx, fast_noise_lite_class_set_fractal_weighted_strength, "set_fractal_weighted_strength", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fast_noise_lite_class_set_fractal_weighted_strength, "set_fractal_weighted_strength", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fractal_ping_pong_strength"),
         JS_NewCFunction(ctx, fast_noise_lite_class_get_fractal_ping_pong_strength, "get_fractal_ping_pong_strength", 0),
-        JS_NewCFunction(ctx, fast_noise_lite_class_set_fractal_ping_pong_strength, "set_fractal_ping_pong_strength", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fast_noise_lite_class_set_fractal_ping_pong_strength, "set_fractal_ping_pong_strength", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cellular_distance_function"),
         JS_NewCFunction(ctx, fast_noise_lite_class_get_cellular_distance_function, "get_cellular_distance_function", 0),
-        JS_NewCFunction(ctx, fast_noise_lite_class_set_cellular_distance_function, "set_cellular_distance_function", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fast_noise_lite_class_set_cellular_distance_function, "set_cellular_distance_function", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cellular_jitter"),
         JS_NewCFunction(ctx, fast_noise_lite_class_get_cellular_jitter, "get_cellular_jitter", 0),
-        JS_NewCFunction(ctx, fast_noise_lite_class_set_cellular_jitter, "set_cellular_jitter", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fast_noise_lite_class_set_cellular_jitter, "set_cellular_jitter", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cellular_return_type"),
         JS_NewCFunction(ctx, fast_noise_lite_class_get_cellular_return_type, "get_cellular_return_type", 0),
-        JS_NewCFunction(ctx, fast_noise_lite_class_set_cellular_return_type, "set_cellular_return_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fast_noise_lite_class_set_cellular_return_type, "set_cellular_return_type", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "domain_warp_enabled"),
         JS_NewCFunction(ctx, fast_noise_lite_class_is_domain_warp_enabled, "is_domain_warp_enabled", 0),
-        JS_NewCFunction(ctx, fast_noise_lite_class_set_domain_warp_enabled, "set_domain_warp_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fast_noise_lite_class_set_domain_warp_enabled, "set_domain_warp_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "domain_warp_type"),
         JS_NewCFunction(ctx, fast_noise_lite_class_get_domain_warp_type, "get_domain_warp_type", 0),
-        JS_NewCFunction(ctx, fast_noise_lite_class_set_domain_warp_type, "set_domain_warp_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fast_noise_lite_class_set_domain_warp_type, "set_domain_warp_type", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "domain_warp_amplitude"),
         JS_NewCFunction(ctx, fast_noise_lite_class_get_domain_warp_amplitude, "get_domain_warp_amplitude", 0),
-        JS_NewCFunction(ctx, fast_noise_lite_class_set_domain_warp_amplitude, "set_domain_warp_amplitude", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fast_noise_lite_class_set_domain_warp_amplitude, "set_domain_warp_amplitude", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "domain_warp_frequency"),
         JS_NewCFunction(ctx, fast_noise_lite_class_get_domain_warp_frequency, "get_domain_warp_frequency", 0),
-        JS_NewCFunction(ctx, fast_noise_lite_class_set_domain_warp_frequency, "set_domain_warp_frequency", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fast_noise_lite_class_set_domain_warp_frequency, "set_domain_warp_frequency", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "domain_warp_fractal_type"),
         JS_NewCFunction(ctx, fast_noise_lite_class_get_domain_warp_fractal_type, "get_domain_warp_fractal_type", 0),
-        JS_NewCFunction(ctx, fast_noise_lite_class_set_domain_warp_fractal_type, "set_domain_warp_fractal_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fast_noise_lite_class_set_domain_warp_fractal_type, "set_domain_warp_fractal_type", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "domain_warp_fractal_octaves"),
         JS_NewCFunction(ctx, fast_noise_lite_class_get_domain_warp_fractal_octaves, "get_domain_warp_fractal_octaves", 0),
-        JS_NewCFunction(ctx, fast_noise_lite_class_set_domain_warp_fractal_octaves, "set_domain_warp_fractal_octaves", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fast_noise_lite_class_set_domain_warp_fractal_octaves, "set_domain_warp_fractal_octaves", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "domain_warp_fractal_lacunarity"),
         JS_NewCFunction(ctx, fast_noise_lite_class_get_domain_warp_fractal_lacunarity, "get_domain_warp_fractal_lacunarity", 0),
-        JS_NewCFunction(ctx, fast_noise_lite_class_set_domain_warp_fractal_lacunarity, "set_domain_warp_fractal_lacunarity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fast_noise_lite_class_set_domain_warp_fractal_lacunarity, "set_domain_warp_fractal_lacunarity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "domain_warp_fractal_gain"),
         JS_NewCFunction(ctx, fast_noise_lite_class_get_domain_warp_fractal_gain, "get_domain_warp_fractal_gain", 0),
-        JS_NewCFunction(ctx, fast_noise_lite_class_set_domain_warp_fractal_gain, "set_domain_warp_fractal_gain", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fast_noise_lite_class_set_domain_warp_fractal_gain, "set_domain_warp_fractal_gain", 1),
+        JS_PROP_GETSET
     );
 }
 

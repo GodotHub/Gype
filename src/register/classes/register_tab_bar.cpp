@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/tab_bar.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void tab_bar_class_finalizer(JSRuntime *rt, JSValue val) {
-	TabBar *tab_bar = static_cast<TabBar *>(JS_GetOpaque(val, TabBar::__class_id));
-	if (tab_bar)
-		memdelete(tab_bar);
+	
+	// nothing
 }
 
 static JSClassDef tab_bar_class_def = {
@@ -297,96 +296,96 @@ void define_tab_bar_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "current_tab"),
         JS_NewCFunction(ctx, tab_bar_class_get_current_tab, "get_current_tab", 0),
-        JS_NewCFunction(ctx, tab_bar_class_set_current_tab, "set_current_tab", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tab_bar_class_set_current_tab, "set_current_tab", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tab_alignment"),
         JS_NewCFunction(ctx, tab_bar_class_get_tab_alignment, "get_tab_alignment", 0),
-        JS_NewCFunction(ctx, tab_bar_class_set_tab_alignment, "set_tab_alignment", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tab_bar_class_set_tab_alignment, "set_tab_alignment", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "clip_tabs"),
         JS_NewCFunction(ctx, tab_bar_class_get_clip_tabs, "get_clip_tabs", 0),
-        JS_NewCFunction(ctx, tab_bar_class_set_clip_tabs, "set_clip_tabs", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tab_bar_class_set_clip_tabs, "set_clip_tabs", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tab_close_display_policy"),
         JS_NewCFunction(ctx, tab_bar_class_get_tab_close_display_policy, "get_tab_close_display_policy", 0),
-        JS_NewCFunction(ctx, tab_bar_class_set_tab_close_display_policy, "set_tab_close_display_policy", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tab_bar_class_set_tab_close_display_policy, "set_tab_close_display_policy", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "max_tab_width"),
         JS_NewCFunction(ctx, tab_bar_class_get_max_tab_width, "get_max_tab_width", 0),
-        JS_NewCFunction(ctx, tab_bar_class_set_max_tab_width, "set_max_tab_width", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tab_bar_class_set_max_tab_width, "set_max_tab_width", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scrolling_enabled"),
         JS_NewCFunction(ctx, tab_bar_class_get_scrolling_enabled, "get_scrolling_enabled", 0),
-        JS_NewCFunction(ctx, tab_bar_class_set_scrolling_enabled, "set_scrolling_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tab_bar_class_set_scrolling_enabled, "set_scrolling_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "drag_to_rearrange_enabled"),
         JS_NewCFunction(ctx, tab_bar_class_get_drag_to_rearrange_enabled, "get_drag_to_rearrange_enabled", 0),
-        JS_NewCFunction(ctx, tab_bar_class_set_drag_to_rearrange_enabled, "set_drag_to_rearrange_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tab_bar_class_set_drag_to_rearrange_enabled, "set_drag_to_rearrange_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tabs_rearrange_group"),
         JS_NewCFunction(ctx, tab_bar_class_get_tabs_rearrange_group, "get_tabs_rearrange_group", 0),
-        JS_NewCFunction(ctx, tab_bar_class_set_tabs_rearrange_group, "set_tabs_rearrange_group", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tab_bar_class_set_tabs_rearrange_group, "set_tabs_rearrange_group", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scroll_to_selected"),
         JS_NewCFunction(ctx, tab_bar_class_get_scroll_to_selected, "get_scroll_to_selected", 0),
-        JS_NewCFunction(ctx, tab_bar_class_set_scroll_to_selected, "set_scroll_to_selected", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tab_bar_class_set_scroll_to_selected, "set_scroll_to_selected", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "select_with_rmb"),
         JS_NewCFunction(ctx, tab_bar_class_get_select_with_rmb, "get_select_with_rmb", 0),
-        JS_NewCFunction(ctx, tab_bar_class_set_select_with_rmb, "set_select_with_rmb", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tab_bar_class_set_select_with_rmb, "set_select_with_rmb", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "deselect_enabled"),
         JS_NewCFunction(ctx, tab_bar_class_get_deselect_enabled, "get_deselect_enabled", 0),
-        JS_NewCFunction(ctx, tab_bar_class_set_deselect_enabled, "set_deselect_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tab_bar_class_set_deselect_enabled, "set_deselect_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tab_count"),
         JS_NewCFunction(ctx, tab_bar_class_get_tab_count, "get_tab_count", 0),
-        JS_NewCFunction(ctx, tab_bar_class_set_tab_count, "set_tab_count", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tab_bar_class_set_tab_count, "set_tab_count", 1),
+        JS_PROP_GETSET
     );
 }
 

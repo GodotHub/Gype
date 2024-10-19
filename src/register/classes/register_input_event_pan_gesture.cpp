@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event_gesture.hpp>
 #include <godot_cpp/classes/input_event_pan_gesture.hpp>
+#include <godot_cpp/classes/input_event_gesture.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void input_event_pan_gesture_class_finalizer(JSRuntime *rt, JSValue val) {
-	InputEventPanGesture *input_event_pan_gesture = static_cast<InputEventPanGesture *>(JS_GetOpaque(val, InputEventPanGesture::__class_id));
-	if (input_event_pan_gesture)
-		memdelete(input_event_pan_gesture);
+	
+	// nothing
 }
 
 static JSClassDef input_event_pan_gesture_class_def = {
@@ -54,8 +53,8 @@ void define_input_event_pan_gesture_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "delta"),
         JS_NewCFunction(ctx, input_event_pan_gesture_class_get_delta, "get_delta", 0),
-        JS_NewCFunction(ctx, input_event_pan_gesture_class_set_delta, "set_delta", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_pan_gesture_class_set_delta, "set_delta", 1),
+        JS_PROP_GETSET
     );
 }
 

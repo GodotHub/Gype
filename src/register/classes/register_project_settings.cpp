@@ -16,9 +16,8 @@ static JSValue project_settings_instance;
 static void js_project_settings_singleton();
 
 static void project_settings_class_finalizer(JSRuntime *rt, JSValue val) {
-	ProjectSettings *project_settings = static_cast<ProjectSettings *>(JS_GetOpaque(val, ProjectSettings::__class_id));
-	if (project_settings)
-		ProjectSettings::free(nullptr, project_settings);
+	
+	// nothing
 }
 
 static JSClassDef project_settings_class_def = {

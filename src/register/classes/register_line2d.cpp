@@ -5,20 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/curve.hpp>
+#include <godot_cpp/classes/gradient.hpp>
+#include <godot_cpp/classes/line2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/curve.hpp>
-#include <godot_cpp/classes/line2d.hpp>
-#include <godot_cpp/classes/gradient.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void line2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	Line2D *line2d = static_cast<Line2D *>(JS_GetOpaque(val, Line2D::__class_id));
-	if (line2d)
-		memdelete(line2d);
+	
+	// nothing
 }
 
 static JSClassDef line2d_class_def = {
@@ -202,112 +201,112 @@ void define_line2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "points"),
         JS_NewCFunction(ctx, line2d_class_get_points, "get_points", 0),
-        JS_NewCFunction(ctx, line2d_class_set_points, "set_points", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line2d_class_set_points, "set_points", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "closed"),
         JS_NewCFunction(ctx, line2d_class_is_closed, "is_closed", 0),
-        JS_NewCFunction(ctx, line2d_class_set_closed, "set_closed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line2d_class_set_closed, "set_closed", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "width"),
         JS_NewCFunction(ctx, line2d_class_get_width, "get_width", 0),
-        JS_NewCFunction(ctx, line2d_class_set_width, "set_width", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line2d_class_set_width, "set_width", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "width_curve"),
         JS_NewCFunction(ctx, line2d_class_get_curve, "get_curve", 0),
-        JS_NewCFunction(ctx, line2d_class_set_curve, "set_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line2d_class_set_curve, "set_curve", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "default_color"),
         JS_NewCFunction(ctx, line2d_class_get_default_color, "get_default_color", 0),
-        JS_NewCFunction(ctx, line2d_class_set_default_color, "set_default_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line2d_class_set_default_color, "set_default_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gradient"),
         JS_NewCFunction(ctx, line2d_class_get_gradient, "get_gradient", 0),
-        JS_NewCFunction(ctx, line2d_class_set_gradient, "set_gradient", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line2d_class_set_gradient, "set_gradient", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture"),
         JS_NewCFunction(ctx, line2d_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, line2d_class_set_texture, "set_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line2d_class_set_texture, "set_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_mode"),
         JS_NewCFunction(ctx, line2d_class_get_texture_mode, "get_texture_mode", 0),
-        JS_NewCFunction(ctx, line2d_class_set_texture_mode, "set_texture_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line2d_class_set_texture_mode, "set_texture_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "joint_mode"),
         JS_NewCFunction(ctx, line2d_class_get_joint_mode, "get_joint_mode", 0),
-        JS_NewCFunction(ctx, line2d_class_set_joint_mode, "set_joint_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line2d_class_set_joint_mode, "set_joint_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "begin_cap_mode"),
         JS_NewCFunction(ctx, line2d_class_get_begin_cap_mode, "get_begin_cap_mode", 0),
-        JS_NewCFunction(ctx, line2d_class_set_begin_cap_mode, "set_begin_cap_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line2d_class_set_begin_cap_mode, "set_begin_cap_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "end_cap_mode"),
         JS_NewCFunction(ctx, line2d_class_get_end_cap_mode, "get_end_cap_mode", 0),
-        JS_NewCFunction(ctx, line2d_class_set_end_cap_mode, "set_end_cap_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line2d_class_set_end_cap_mode, "set_end_cap_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sharp_limit"),
         JS_NewCFunction(ctx, line2d_class_get_sharp_limit, "get_sharp_limit", 0),
-        JS_NewCFunction(ctx, line2d_class_set_sharp_limit, "set_sharp_limit", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line2d_class_set_sharp_limit, "set_sharp_limit", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "round_precision"),
         JS_NewCFunction(ctx, line2d_class_get_round_precision, "get_round_precision", 0),
-        JS_NewCFunction(ctx, line2d_class_set_round_precision, "set_round_precision", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line2d_class_set_round_precision, "set_round_precision", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "antialiased"),
         JS_NewCFunction(ctx, line2d_class_get_antialiased, "get_antialiased", 0),
-        JS_NewCFunction(ctx, line2d_class_set_antialiased, "set_antialiased", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line2d_class_set_antialiased, "set_antialiased", 1),
+        JS_PROP_GETSET
     );
 }
 

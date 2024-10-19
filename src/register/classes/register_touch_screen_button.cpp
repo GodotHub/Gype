@@ -6,19 +6,18 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/touch_screen_button.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/bit_map.hpp>
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/shape2d.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void touch_screen_button_class_finalizer(JSRuntime *rt, JSValue val) {
-	TouchScreenButton *touch_screen_button = static_cast<TouchScreenButton *>(JS_GetOpaque(val, TouchScreenButton::__class_id));
-	if (touch_screen_button)
-		memdelete(touch_screen_button);
+	
+	// nothing
 }
 
 static JSClassDef touch_screen_button_class_def = {
@@ -133,72 +132,72 @@ void define_touch_screen_button_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "texture_normal"),
         JS_NewCFunction(ctx, touch_screen_button_class_get_texture_normal, "get_texture_normal", 0),
-        JS_NewCFunction(ctx, touch_screen_button_class_set_texture_normal, "set_texture_normal", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, touch_screen_button_class_set_texture_normal, "set_texture_normal", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_pressed"),
         JS_NewCFunction(ctx, touch_screen_button_class_get_texture_pressed, "get_texture_pressed", 0),
-        JS_NewCFunction(ctx, touch_screen_button_class_set_texture_pressed, "set_texture_pressed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, touch_screen_button_class_set_texture_pressed, "set_texture_pressed", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bitmask"),
         JS_NewCFunction(ctx, touch_screen_button_class_get_bitmask, "get_bitmask", 0),
-        JS_NewCFunction(ctx, touch_screen_button_class_set_bitmask, "set_bitmask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, touch_screen_button_class_set_bitmask, "set_bitmask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shape"),
         JS_NewCFunction(ctx, touch_screen_button_class_get_shape, "get_shape", 0),
-        JS_NewCFunction(ctx, touch_screen_button_class_set_shape, "set_shape", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, touch_screen_button_class_set_shape, "set_shape", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shape_centered"),
         JS_NewCFunction(ctx, touch_screen_button_class_is_shape_centered, "is_shape_centered", 0),
-        JS_NewCFunction(ctx, touch_screen_button_class_set_shape_centered, "set_shape_centered", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, touch_screen_button_class_set_shape_centered, "set_shape_centered", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shape_visible"),
         JS_NewCFunction(ctx, touch_screen_button_class_is_shape_visible, "is_shape_visible", 0),
-        JS_NewCFunction(ctx, touch_screen_button_class_set_shape_visible, "set_shape_visible", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, touch_screen_button_class_set_shape_visible, "set_shape_visible", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "passby_press"),
         JS_NewCFunction(ctx, touch_screen_button_class_is_passby_press_enabled, "is_passby_press_enabled", 0),
-        JS_NewCFunction(ctx, touch_screen_button_class_set_passby_press, "set_passby_press", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, touch_screen_button_class_set_passby_press, "set_passby_press", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "action"),
         JS_NewCFunction(ctx, touch_screen_button_class_get_action, "get_action", 0),
-        JS_NewCFunction(ctx, touch_screen_button_class_set_action, "set_action", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, touch_screen_button_class_set_action, "set_action", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visibility_mode"),
         JS_NewCFunction(ctx, touch_screen_button_class_get_visibility_mode, "get_visibility_mode", 0),
-        JS_NewCFunction(ctx, touch_screen_button_class_set_visibility_mode, "set_visibility_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, touch_screen_button_class_set_visibility_mode, "set_visibility_mode", 1),
+        JS_PROP_GETSET
     );
 }
 

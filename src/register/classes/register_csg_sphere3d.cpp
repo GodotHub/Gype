@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/csg_sphere3d.hpp>
 #include <godot_cpp/classes/csg_primitive3d.hpp>
 #include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/csg_sphere3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void csg_sphere3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	CSGSphere3D *csg_sphere3d = static_cast<CSGSphere3D *>(JS_GetOpaque(val, CSGSphere3D::__class_id));
-	if (csg_sphere3d)
-		memdelete(csg_sphere3d);
+	
+	// nothing
 }
 
 static JSClassDef csg_sphere3d_class_def = {
@@ -91,40 +90,40 @@ void define_csg_sphere3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "radius"),
         JS_NewCFunction(ctx, csg_sphere3d_class_get_radius, "get_radius", 0),
-        JS_NewCFunction(ctx, csg_sphere3d_class_set_radius, "set_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_sphere3d_class_set_radius, "set_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "radial_segments"),
         JS_NewCFunction(ctx, csg_sphere3d_class_get_radial_segments, "get_radial_segments", 0),
-        JS_NewCFunction(ctx, csg_sphere3d_class_set_radial_segments, "set_radial_segments", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_sphere3d_class_set_radial_segments, "set_radial_segments", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "rings"),
         JS_NewCFunction(ctx, csg_sphere3d_class_get_rings, "get_rings", 0),
-        JS_NewCFunction(ctx, csg_sphere3d_class_set_rings, "set_rings", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_sphere3d_class_set_rings, "set_rings", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "smooth_faces"),
         JS_NewCFunction(ctx, csg_sphere3d_class_get_smooth_faces, "get_smooth_faces", 0),
-        JS_NewCFunction(ctx, csg_sphere3d_class_set_smooth_faces, "set_smooth_faces", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_sphere3d_class_set_smooth_faces, "set_smooth_faces", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "material"),
         JS_NewCFunction(ctx, csg_sphere3d_class_get_material, "get_material", 0),
-        JS_NewCFunction(ctx, csg_sphere3d_class_set_material, "set_material", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_sphere3d_class_set_material, "set_material", 1),
+        JS_PROP_GETSET
     );
 }
 

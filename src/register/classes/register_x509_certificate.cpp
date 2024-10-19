@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void x509_certificate_class_finalizer(JSRuntime *rt, JSValue val) {
-	X509Certificate *x509_certificate = static_cast<X509Certificate *>(JS_GetOpaque(val, X509Certificate::__class_id));
-	if (x509_certificate)
-		memdelete(x509_certificate);
+	
+	// nothing
 }
 
 static JSClassDef x509_certificate_class_def = {

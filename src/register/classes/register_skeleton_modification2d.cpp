@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/skeleton_modification2d.hpp>
 #include <godot_cpp/classes/skeleton_modification_stack2d.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/skeleton_modification2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void skeleton_modification2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	SkeletonModification2D *skeleton_modification2d = static_cast<SkeletonModification2D *>(JS_GetOpaque(val, SkeletonModification2D::__class_id));
-	if (skeleton_modification2d)
-		memdelete(skeleton_modification2d);
+	
+	// nothing
 }
 
 static JSClassDef skeleton_modification2d_class_def = {
@@ -90,16 +89,16 @@ void define_skeleton_modification2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "enabled"),
         JS_NewCFunction(ctx, skeleton_modification2d_class_get_enabled, "get_enabled", 0),
-        JS_NewCFunction(ctx, skeleton_modification2d_class_set_enabled, "set_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_modification2d_class_set_enabled, "set_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "execution_mode"),
         JS_NewCFunction(ctx, skeleton_modification2d_class_get_execution_mode, "get_execution_mode", 0),
-        JS_NewCFunction(ctx, skeleton_modification2d_class_set_execution_mode, "set_execution_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_modification2d_class_set_execution_mode, "set_execution_mode", 1),
+        JS_PROP_GETSET
     );
 }
 

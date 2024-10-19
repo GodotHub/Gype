@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void occluder_polygon2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	OccluderPolygon2D *occluder_polygon2d = static_cast<OccluderPolygon2D *>(JS_GetOpaque(val, OccluderPolygon2D::__class_id));
-	if (occluder_polygon2d)
-		memdelete(occluder_polygon2d);
+	
+	// nothing
 }
 
 static JSClassDef occluder_polygon2d_class_def = {
@@ -72,24 +71,24 @@ void define_occluder_polygon2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "closed"),
         JS_NewCFunction(ctx, occluder_polygon2d_class_is_closed, "is_closed", 0),
-        JS_NewCFunction(ctx, occluder_polygon2d_class_set_closed, "set_closed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, occluder_polygon2d_class_set_closed, "set_closed", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cull_mode"),
         JS_NewCFunction(ctx, occluder_polygon2d_class_get_cull_mode, "get_cull_mode", 0),
-        JS_NewCFunction(ctx, occluder_polygon2d_class_set_cull_mode, "set_cull_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, occluder_polygon2d_class_set_cull_mode, "set_cull_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "polygon"),
         JS_NewCFunction(ctx, occluder_polygon2d_class_get_polygon, "get_polygon", 0),
-        JS_NewCFunction(ctx, occluder_polygon2d_class_set_polygon, "set_polygon", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, occluder_polygon2d_class_set_polygon, "set_polygon", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/tweener.hpp>
 #include <godot_cpp/classes/callback_tweener.hpp>
+#include <godot_cpp/classes/tweener.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void callback_tweener_class_finalizer(JSRuntime *rt, JSValue val) {
-	CallbackTweener *callback_tweener = static_cast<CallbackTweener *>(JS_GetOpaque(val, CallbackTweener::__class_id));
-	if (callback_tweener)
-		memdelete(callback_tweener);
+	
+	// nothing
 }
 
 static JSClassDef callback_tweener_class_def = {

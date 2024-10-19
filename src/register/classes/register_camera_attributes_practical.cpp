@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void camera_attributes_practical_class_finalizer(JSRuntime *rt, JSValue val) {
-	CameraAttributesPractical *camera_attributes_practical = static_cast<CameraAttributesPractical *>(JS_GetOpaque(val, CameraAttributesPractical::__class_id));
-	if (camera_attributes_practical)
-		memdelete(camera_attributes_practical);
+	
+	// nothing
 }
 
 static JSClassDef camera_attributes_practical_class_def = {
@@ -126,72 +125,72 @@ void define_camera_attributes_practical_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "dof_blur_far_enabled"),
         JS_NewCFunction(ctx, camera_attributes_practical_class_is_dof_blur_far_enabled, "is_dof_blur_far_enabled", 0),
-        JS_NewCFunction(ctx, camera_attributes_practical_class_set_dof_blur_far_enabled, "set_dof_blur_far_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera_attributes_practical_class_set_dof_blur_far_enabled, "set_dof_blur_far_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "dof_blur_far_distance"),
         JS_NewCFunction(ctx, camera_attributes_practical_class_get_dof_blur_far_distance, "get_dof_blur_far_distance", 0),
-        JS_NewCFunction(ctx, camera_attributes_practical_class_set_dof_blur_far_distance, "set_dof_blur_far_distance", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera_attributes_practical_class_set_dof_blur_far_distance, "set_dof_blur_far_distance", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "dof_blur_far_transition"),
         JS_NewCFunction(ctx, camera_attributes_practical_class_get_dof_blur_far_transition, "get_dof_blur_far_transition", 0),
-        JS_NewCFunction(ctx, camera_attributes_practical_class_set_dof_blur_far_transition, "set_dof_blur_far_transition", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera_attributes_practical_class_set_dof_blur_far_transition, "set_dof_blur_far_transition", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "dof_blur_near_enabled"),
         JS_NewCFunction(ctx, camera_attributes_practical_class_is_dof_blur_near_enabled, "is_dof_blur_near_enabled", 0),
-        JS_NewCFunction(ctx, camera_attributes_practical_class_set_dof_blur_near_enabled, "set_dof_blur_near_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera_attributes_practical_class_set_dof_blur_near_enabled, "set_dof_blur_near_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "dof_blur_near_distance"),
         JS_NewCFunction(ctx, camera_attributes_practical_class_get_dof_blur_near_distance, "get_dof_blur_near_distance", 0),
-        JS_NewCFunction(ctx, camera_attributes_practical_class_set_dof_blur_near_distance, "set_dof_blur_near_distance", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera_attributes_practical_class_set_dof_blur_near_distance, "set_dof_blur_near_distance", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "dof_blur_near_transition"),
         JS_NewCFunction(ctx, camera_attributes_practical_class_get_dof_blur_near_transition, "get_dof_blur_near_transition", 0),
-        JS_NewCFunction(ctx, camera_attributes_practical_class_set_dof_blur_near_transition, "set_dof_blur_near_transition", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera_attributes_practical_class_set_dof_blur_near_transition, "set_dof_blur_near_transition", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "dof_blur_amount"),
         JS_NewCFunction(ctx, camera_attributes_practical_class_get_dof_blur_amount, "get_dof_blur_amount", 0),
-        JS_NewCFunction(ctx, camera_attributes_practical_class_set_dof_blur_amount, "set_dof_blur_amount", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera_attributes_practical_class_set_dof_blur_amount, "set_dof_blur_amount", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "auto_exposure_min_sensitivity"),
         JS_NewCFunction(ctx, camera_attributes_practical_class_get_auto_exposure_min_sensitivity, "get_auto_exposure_min_sensitivity", 0),
-        JS_NewCFunction(ctx, camera_attributes_practical_class_set_auto_exposure_min_sensitivity, "set_auto_exposure_min_sensitivity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera_attributes_practical_class_set_auto_exposure_min_sensitivity, "set_auto_exposure_min_sensitivity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "auto_exposure_max_sensitivity"),
         JS_NewCFunction(ctx, camera_attributes_practical_class_get_auto_exposure_max_sensitivity, "get_auto_exposure_max_sensitivity", 0),
-        JS_NewCFunction(ctx, camera_attributes_practical_class_set_auto_exposure_max_sensitivity, "set_auto_exposure_max_sensitivity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera_attributes_practical_class_set_auto_exposure_max_sensitivity, "set_auto_exposure_max_sensitivity", 1),
+        JS_PROP_GETSET
     );
 }
 

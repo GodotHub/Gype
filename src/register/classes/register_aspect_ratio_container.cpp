@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void aspect_ratio_container_class_finalizer(JSRuntime *rt, JSValue val) {
-	AspectRatioContainer *aspect_ratio_container = static_cast<AspectRatioContainer *>(JS_GetOpaque(val, AspectRatioContainer::__class_id));
-	if (aspect_ratio_container)
-		memdelete(aspect_ratio_container);
+	
+	// nothing
 }
 
 static JSClassDef aspect_ratio_container_class_def = {
@@ -81,32 +80,32 @@ void define_aspect_ratio_container_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "ratio"),
         JS_NewCFunction(ctx, aspect_ratio_container_class_get_ratio, "get_ratio", 0),
-        JS_NewCFunction(ctx, aspect_ratio_container_class_set_ratio, "set_ratio", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, aspect_ratio_container_class_set_ratio, "set_ratio", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "stretch_mode"),
         JS_NewCFunction(ctx, aspect_ratio_container_class_get_stretch_mode, "get_stretch_mode", 0),
-        JS_NewCFunction(ctx, aspect_ratio_container_class_set_stretch_mode, "set_stretch_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, aspect_ratio_container_class_set_stretch_mode, "set_stretch_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "alignment_horizontal"),
         JS_NewCFunction(ctx, aspect_ratio_container_class_get_alignment_horizontal, "get_alignment_horizontal", 0),
-        JS_NewCFunction(ctx, aspect_ratio_container_class_set_alignment_horizontal, "set_alignment_horizontal", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, aspect_ratio_container_class_set_alignment_horizontal, "set_alignment_horizontal", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "alignment_vertical"),
         JS_NewCFunction(ctx, aspect_ratio_container_class_get_alignment_vertical, "get_alignment_vertical", 0),
-        JS_NewCFunction(ctx, aspect_ratio_container_class_set_alignment_vertical, "set_alignment_vertical", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, aspect_ratio_container_class_set_alignment_vertical, "set_alignment_vertical", 1),
+        JS_PROP_GETSET
     );
 }
 

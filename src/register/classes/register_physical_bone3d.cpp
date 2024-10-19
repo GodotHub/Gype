@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/physical_bone3d.hpp>
-#include <godot_cpp/classes/physics_direct_body_state3d.hpp>
 #include <godot_cpp/classes/physics_body3d.hpp>
+#include <godot_cpp/classes/physics_direct_body_state3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void physical_bone3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	PhysicalBone3D *physical_bone3d = static_cast<PhysicalBone3D *>(JS_GetOpaque(val, PhysicalBone3D::__class_id));
-	if (physical_bone3d)
-		memdelete(physical_bone3d);
+	
+	// nothing
 }
 
 static JSClassDef physical_bone3d_class_def = {
@@ -212,128 +211,128 @@ void define_physical_bone3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "joint_type"),
         JS_NewCFunction(ctx, physical_bone3d_class_get_joint_type, "get_joint_type", 0),
-        JS_NewCFunction(ctx, physical_bone3d_class_set_joint_type, "set_joint_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_bone3d_class_set_joint_type, "set_joint_type", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "joint_offset"),
         JS_NewCFunction(ctx, physical_bone3d_class_get_joint_offset, "get_joint_offset", 0),
-        JS_NewCFunction(ctx, physical_bone3d_class_set_joint_offset, "set_joint_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_bone3d_class_set_joint_offset, "set_joint_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "joint_rotation"),
         JS_NewCFunction(ctx, physical_bone3d_class_get_joint_rotation, "get_joint_rotation", 0),
-        JS_NewCFunction(ctx, physical_bone3d_class_set_joint_rotation, "set_joint_rotation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_bone3d_class_set_joint_rotation, "set_joint_rotation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "body_offset"),
         JS_NewCFunction(ctx, physical_bone3d_class_get_body_offset, "get_body_offset", 0),
-        JS_NewCFunction(ctx, physical_bone3d_class_set_body_offset, "set_body_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_bone3d_class_set_body_offset, "set_body_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "mass"),
         JS_NewCFunction(ctx, physical_bone3d_class_get_mass, "get_mass", 0),
-        JS_NewCFunction(ctx, physical_bone3d_class_set_mass, "set_mass", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_bone3d_class_set_mass, "set_mass", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "friction"),
         JS_NewCFunction(ctx, physical_bone3d_class_get_friction, "get_friction", 0),
-        JS_NewCFunction(ctx, physical_bone3d_class_set_friction, "set_friction", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_bone3d_class_set_friction, "set_friction", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bounce"),
         JS_NewCFunction(ctx, physical_bone3d_class_get_bounce, "get_bounce", 0),
-        JS_NewCFunction(ctx, physical_bone3d_class_set_bounce, "set_bounce", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_bone3d_class_set_bounce, "set_bounce", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gravity_scale"),
         JS_NewCFunction(ctx, physical_bone3d_class_get_gravity_scale, "get_gravity_scale", 0),
-        JS_NewCFunction(ctx, physical_bone3d_class_set_gravity_scale, "set_gravity_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_bone3d_class_set_gravity_scale, "set_gravity_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "custom_integrator"),
         JS_NewCFunction(ctx, physical_bone3d_class_is_using_custom_integrator, "is_using_custom_integrator", 0),
-        JS_NewCFunction(ctx, physical_bone3d_class_set_use_custom_integrator, "set_use_custom_integrator", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_bone3d_class_set_use_custom_integrator, "set_use_custom_integrator", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "linear_damp_mode"),
         JS_NewCFunction(ctx, physical_bone3d_class_get_linear_damp_mode, "get_linear_damp_mode", 0),
-        JS_NewCFunction(ctx, physical_bone3d_class_set_linear_damp_mode, "set_linear_damp_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_bone3d_class_set_linear_damp_mode, "set_linear_damp_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "linear_damp"),
         JS_NewCFunction(ctx, physical_bone3d_class_get_linear_damp, "get_linear_damp", 0),
-        JS_NewCFunction(ctx, physical_bone3d_class_set_linear_damp, "set_linear_damp", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_bone3d_class_set_linear_damp, "set_linear_damp", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angular_damp_mode"),
         JS_NewCFunction(ctx, physical_bone3d_class_get_angular_damp_mode, "get_angular_damp_mode", 0),
-        JS_NewCFunction(ctx, physical_bone3d_class_set_angular_damp_mode, "set_angular_damp_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_bone3d_class_set_angular_damp_mode, "set_angular_damp_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angular_damp"),
         JS_NewCFunction(ctx, physical_bone3d_class_get_angular_damp, "get_angular_damp", 0),
-        JS_NewCFunction(ctx, physical_bone3d_class_set_angular_damp, "set_angular_damp", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_bone3d_class_set_angular_damp, "set_angular_damp", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "linear_velocity"),
         JS_NewCFunction(ctx, physical_bone3d_class_get_linear_velocity, "get_linear_velocity", 0),
-        JS_NewCFunction(ctx, physical_bone3d_class_set_linear_velocity, "set_linear_velocity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_bone3d_class_set_linear_velocity, "set_linear_velocity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angular_velocity"),
         JS_NewCFunction(ctx, physical_bone3d_class_get_angular_velocity, "get_angular_velocity", 0),
-        JS_NewCFunction(ctx, physical_bone3d_class_set_angular_velocity, "set_angular_velocity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_bone3d_class_set_angular_velocity, "set_angular_velocity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "can_sleep"),
         JS_NewCFunction(ctx, physical_bone3d_class_is_able_to_sleep, "is_able_to_sleep", 0),
-        JS_NewCFunction(ctx, physical_bone3d_class_set_can_sleep, "set_can_sleep", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_bone3d_class_set_can_sleep, "set_can_sleep", 1),
+        JS_PROP_GETSET
     );
 }
 

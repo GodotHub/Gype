@@ -5,19 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/http_client.hpp>
+#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
-#include <godot_cpp/classes/stream_peer.hpp>
-#include <godot_cpp/classes/http_client.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void http_client_class_finalizer(JSRuntime *rt, JSValue val) {
-	HTTPClient *http_client = static_cast<HTTPClient *>(JS_GetOpaque(val, HTTPClient::__class_id));
-	if (http_client)
-		memdelete(http_client);
+	
+	// nothing
 }
 
 static JSClassDef http_client_class_def = {
@@ -141,24 +140,24 @@ void define_http_client_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "blocking_mode_enabled"),
         JS_NewCFunction(ctx, http_client_class_is_blocking_mode_enabled, "is_blocking_mode_enabled", 0),
-        JS_NewCFunction(ctx, http_client_class_set_blocking_mode, "set_blocking_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, http_client_class_set_blocking_mode, "set_blocking_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "connection"),
         JS_NewCFunction(ctx, http_client_class_get_connection, "get_connection", 0),
-        JS_NewCFunction(ctx, http_client_class_set_connection, "set_connection", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, http_client_class_set_connection, "set_connection", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "read_chunk_size"),
         JS_NewCFunction(ctx, http_client_class_get_read_chunk_size, "get_read_chunk_size", 0),
-        JS_NewCFunction(ctx, http_client_class_set_read_chunk_size, "set_read_chunk_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, http_client_class_set_read_chunk_size, "set_read_chunk_size", 1),
+        JS_PROP_GETSET
     );
 }
 

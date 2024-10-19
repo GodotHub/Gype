@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_float_constant.hpp>
 #include <godot_cpp/classes/visual_shader_node_constant.hpp>
+#include <godot_cpp/classes/visual_shader_node_float_constant.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visual_shader_node_float_constant_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeFloatConstant *visual_shader_node_float_constant = static_cast<VisualShaderNodeFloatConstant *>(JS_GetOpaque(val, VisualShaderNodeFloatConstant::__class_id));
-	if (visual_shader_node_float_constant)
-		memdelete(visual_shader_node_float_constant);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_float_constant_class_def = {
@@ -54,8 +53,8 @@ void define_visual_shader_node_float_constant_property(JSContext *ctx, JSValue o
         obj,
         JS_NewAtom(ctx, "constant"),
         JS_NewCFunction(ctx, visual_shader_node_float_constant_class_get_constant, "get_constant", 0),
-        JS_NewCFunction(ctx, visual_shader_node_float_constant_class_set_constant, "set_constant", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_float_constant_class_set_constant, "set_constant", 1),
+        JS_PROP_GETSET
     );
 }
 

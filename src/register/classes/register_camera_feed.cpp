@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void camera_feed_class_finalizer(JSRuntime *rt, JSValue val) {
-	CameraFeed *camera_feed = static_cast<CameraFeed *>(JS_GetOpaque(val, CameraFeed::__class_id));
-	if (camera_feed)
-		memdelete(camera_feed);
+	
+	// nothing
 }
 
 static JSClassDef camera_feed_class_def = {
@@ -79,16 +78,16 @@ void define_camera_feed_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "feed_is_active"),
         JS_NewCFunction(ctx, camera_feed_class_is_active, "is_active", 0),
-        JS_NewCFunction(ctx, camera_feed_class_set_active, "set_active", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera_feed_class_set_active, "set_active", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "feed_transform"),
         JS_NewCFunction(ctx, camera_feed_class_get_transform, "get_transform", 0),
-        JS_NewCFunction(ctx, camera_feed_class_set_transform, "set_transform", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera_feed_class_set_transform, "set_transform", 1),
+        JS_PROP_GETSET
     );
 }
 

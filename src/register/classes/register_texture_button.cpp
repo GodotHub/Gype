@@ -5,19 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/base_button.hpp>
-#include <godot_cpp/classes/bit_map.hpp>
 #include <godot_cpp/classes/texture_button.hpp>
+#include <godot_cpp/classes/bit_map.hpp>
+#include <godot_cpp/classes/base_button.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void texture_button_class_finalizer(JSRuntime *rt, JSValue val) {
-	TextureButton *texture_button = static_cast<TextureButton *>(JS_GetOpaque(val, TextureButton::__class_id));
-	if (texture_button)
-		memdelete(texture_button);
+	
+	// nothing
 }
 
 static JSClassDef texture_button_class_def = {
@@ -137,80 +136,80 @@ void define_texture_button_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "texture_normal"),
         JS_NewCFunction(ctx, texture_button_class_get_texture_normal, "get_texture_normal", 0),
-        JS_NewCFunction(ctx, texture_button_class_set_texture_normal, "set_texture_normal", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_button_class_set_texture_normal, "set_texture_normal", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_pressed"),
         JS_NewCFunction(ctx, texture_button_class_get_texture_pressed, "get_texture_pressed", 0),
-        JS_NewCFunction(ctx, texture_button_class_set_texture_pressed, "set_texture_pressed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_button_class_set_texture_pressed, "set_texture_pressed", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_hover"),
         JS_NewCFunction(ctx, texture_button_class_get_texture_hover, "get_texture_hover", 0),
-        JS_NewCFunction(ctx, texture_button_class_set_texture_hover, "set_texture_hover", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_button_class_set_texture_hover, "set_texture_hover", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_disabled"),
         JS_NewCFunction(ctx, texture_button_class_get_texture_disabled, "get_texture_disabled", 0),
-        JS_NewCFunction(ctx, texture_button_class_set_texture_disabled, "set_texture_disabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_button_class_set_texture_disabled, "set_texture_disabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_focused"),
         JS_NewCFunction(ctx, texture_button_class_get_texture_focused, "get_texture_focused", 0),
-        JS_NewCFunction(ctx, texture_button_class_set_texture_focused, "set_texture_focused", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_button_class_set_texture_focused, "set_texture_focused", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_click_mask"),
         JS_NewCFunction(ctx, texture_button_class_get_click_mask, "get_click_mask", 0),
-        JS_NewCFunction(ctx, texture_button_class_set_click_mask, "set_click_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_button_class_set_click_mask, "set_click_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ignore_texture_size"),
         JS_NewCFunction(ctx, texture_button_class_get_ignore_texture_size, "get_ignore_texture_size", 0),
-        JS_NewCFunction(ctx, texture_button_class_set_ignore_texture_size, "set_ignore_texture_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_button_class_set_ignore_texture_size, "set_ignore_texture_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "stretch_mode"),
         JS_NewCFunction(ctx, texture_button_class_get_stretch_mode, "get_stretch_mode", 0),
-        JS_NewCFunction(ctx, texture_button_class_set_stretch_mode, "set_stretch_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_button_class_set_stretch_mode, "set_stretch_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "flip_h"),
         JS_NewCFunction(ctx, texture_button_class_is_flipped_h, "is_flipped_h", 0),
-        JS_NewCFunction(ctx, texture_button_class_set_flip_h, "set_flip_h", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_button_class_set_flip_h, "set_flip_h", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "flip_v"),
         JS_NewCFunction(ctx, texture_button_class_is_flipped_v, "is_flipped_v", 0),
-        JS_NewCFunction(ctx, texture_button_class_set_flip_v, "set_flip_v", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_button_class_set_flip_v, "set_flip_v", 1),
+        JS_PROP_GETSET
     );
 }
 

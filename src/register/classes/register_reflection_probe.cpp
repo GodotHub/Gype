@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void reflection_probe_class_finalizer(JSRuntime *rt, JSValue val) {
-	ReflectionProbe *reflection_probe = static_cast<ReflectionProbe *>(JS_GetOpaque(val, ReflectionProbe::__class_id));
-	if (reflection_probe)
-		memdelete(reflection_probe);
+	
+	// nothing
 }
 
 static JSClassDef reflection_probe_class_def = {
@@ -171,112 +170,112 @@ void define_reflection_probe_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "update_mode"),
         JS_NewCFunction(ctx, reflection_probe_class_get_update_mode, "get_update_mode", 0),
-        JS_NewCFunction(ctx, reflection_probe_class_set_update_mode, "set_update_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, reflection_probe_class_set_update_mode, "set_update_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "intensity"),
         JS_NewCFunction(ctx, reflection_probe_class_get_intensity, "get_intensity", 0),
-        JS_NewCFunction(ctx, reflection_probe_class_set_intensity, "set_intensity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, reflection_probe_class_set_intensity, "set_intensity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "max_distance"),
         JS_NewCFunction(ctx, reflection_probe_class_get_max_distance, "get_max_distance", 0),
-        JS_NewCFunction(ctx, reflection_probe_class_set_max_distance, "set_max_distance", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, reflection_probe_class_set_max_distance, "set_max_distance", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, reflection_probe_class_get_size, "get_size", 0),
-        JS_NewCFunction(ctx, reflection_probe_class_set_size, "set_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, reflection_probe_class_set_size, "set_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "origin_offset"),
         JS_NewCFunction(ctx, reflection_probe_class_get_origin_offset, "get_origin_offset", 0),
-        JS_NewCFunction(ctx, reflection_probe_class_set_origin_offset, "set_origin_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, reflection_probe_class_set_origin_offset, "set_origin_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "box_projection"),
         JS_NewCFunction(ctx, reflection_probe_class_is_box_projection_enabled, "is_box_projection_enabled", 0),
-        JS_NewCFunction(ctx, reflection_probe_class_set_enable_box_projection, "set_enable_box_projection", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, reflection_probe_class_set_enable_box_projection, "set_enable_box_projection", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "interior"),
         JS_NewCFunction(ctx, reflection_probe_class_is_set_as_interior, "is_set_as_interior", 0),
-        JS_NewCFunction(ctx, reflection_probe_class_set_as_interior, "set_as_interior", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, reflection_probe_class_set_as_interior, "set_as_interior", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "enable_shadows"),
         JS_NewCFunction(ctx, reflection_probe_class_are_shadows_enabled, "are_shadows_enabled", 0),
-        JS_NewCFunction(ctx, reflection_probe_class_set_enable_shadows, "set_enable_shadows", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, reflection_probe_class_set_enable_shadows, "set_enable_shadows", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cull_mask"),
         JS_NewCFunction(ctx, reflection_probe_class_get_cull_mask, "get_cull_mask", 0),
-        JS_NewCFunction(ctx, reflection_probe_class_set_cull_mask, "set_cull_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, reflection_probe_class_set_cull_mask, "set_cull_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "reflection_mask"),
         JS_NewCFunction(ctx, reflection_probe_class_get_reflection_mask, "get_reflection_mask", 0),
-        JS_NewCFunction(ctx, reflection_probe_class_set_reflection_mask, "set_reflection_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, reflection_probe_class_set_reflection_mask, "set_reflection_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "mesh_lod_threshold"),
         JS_NewCFunction(ctx, reflection_probe_class_get_mesh_lod_threshold, "get_mesh_lod_threshold", 0),
-        JS_NewCFunction(ctx, reflection_probe_class_set_mesh_lod_threshold, "set_mesh_lod_threshold", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, reflection_probe_class_set_mesh_lod_threshold, "set_mesh_lod_threshold", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ambient_mode"),
         JS_NewCFunction(ctx, reflection_probe_class_get_ambient_mode, "get_ambient_mode", 0),
-        JS_NewCFunction(ctx, reflection_probe_class_set_ambient_mode, "set_ambient_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, reflection_probe_class_set_ambient_mode, "set_ambient_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ambient_color"),
         JS_NewCFunction(ctx, reflection_probe_class_get_ambient_color, "get_ambient_color", 0),
-        JS_NewCFunction(ctx, reflection_probe_class_set_ambient_color, "set_ambient_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, reflection_probe_class_set_ambient_color, "set_ambient_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ambient_color_energy"),
         JS_NewCFunction(ctx, reflection_probe_class_get_ambient_color_energy, "get_ambient_color_energy", 0),
-        JS_NewCFunction(ctx, reflection_probe_class_set_ambient_color_energy, "set_ambient_color_energy", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, reflection_probe_class_set_ambient_color_energy, "set_ambient_color_energy", 1),
+        JS_PROP_GETSET
     );
 }
 

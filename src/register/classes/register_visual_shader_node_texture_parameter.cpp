@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_parameter.hpp>
 #include <godot_cpp/classes/visual_shader_node_texture_parameter.hpp>
+#include <godot_cpp/classes/visual_shader_node_parameter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visual_shader_node_texture_parameter_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeTextureParameter *visual_shader_node_texture_parameter = static_cast<VisualShaderNodeTextureParameter *>(JS_GetOpaque(val, VisualShaderNodeTextureParameter::__class_id));
-	if (visual_shader_node_texture_parameter)
-		memdelete(visual_shader_node_texture_parameter);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_texture_parameter_class_def = {
@@ -90,40 +89,40 @@ void define_visual_shader_node_texture_parameter_property(JSContext *ctx, JSValu
         obj,
         JS_NewAtom(ctx, "texture_type"),
         JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_get_texture_type, "get_texture_type", 0),
-        JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_set_texture_type, "set_texture_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_set_texture_type, "set_texture_type", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "color_default"),
         JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_get_color_default, "get_color_default", 0),
-        JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_set_color_default, "set_color_default", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_set_color_default, "set_color_default", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_filter"),
         JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_get_texture_filter, "get_texture_filter", 0),
-        JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_set_texture_filter, "set_texture_filter", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_set_texture_filter, "set_texture_filter", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_repeat"),
         JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_get_texture_repeat, "get_texture_repeat", 0),
-        JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_set_texture_repeat, "set_texture_repeat", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_set_texture_repeat, "set_texture_repeat", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_source"),
         JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_get_texture_source, "get_texture_source", 0),
-        JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_set_texture_source, "set_texture_source", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_set_texture_source, "set_texture_source", 1),
+        JS_PROP_GETSET
     );
 }
 

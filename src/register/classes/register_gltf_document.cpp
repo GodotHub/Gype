@@ -5,20 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/gltf_state.hpp>
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/gltf_document_extension.hpp>
 #include <godot_cpp/classes/gltf_document.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/gltf_state.hpp>
+#include <godot_cpp/classes/gltf_document_extension.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gltf_document_class_finalizer(JSRuntime *rt, JSValue val) {
-	GLTFDocument *gltf_document = static_cast<GLTFDocument *>(JS_GetOpaque(val, GLTFDocument::__class_id));
-	if (gltf_document)
-		memdelete(gltf_document);
+	
+	// nothing
 }
 
 static JSClassDef gltf_document_class_def = {
@@ -111,24 +110,24 @@ void define_gltf_document_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "image_format"),
         JS_NewCFunction(ctx, gltf_document_class_get_image_format, "get_image_format", 0),
-        JS_NewCFunction(ctx, gltf_document_class_set_image_format, "set_image_format", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_document_class_set_image_format, "set_image_format", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "lossy_quality"),
         JS_NewCFunction(ctx, gltf_document_class_get_lossy_quality, "get_lossy_quality", 0),
-        JS_NewCFunction(ctx, gltf_document_class_set_lossy_quality, "set_lossy_quality", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_document_class_set_lossy_quality, "set_lossy_quality", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "root_node_mode"),
         JS_NewCFunction(ctx, gltf_document_class_get_root_node_mode, "get_root_node_mode", 0),
-        JS_NewCFunction(ctx, gltf_document_class_set_root_node_mode, "set_root_node_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_document_class_set_root_node_mode, "set_root_node_mode", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -16,9 +16,8 @@ static JSValue marshalls_instance;
 static void js_marshalls_singleton();
 
 static void marshalls_class_finalizer(JSRuntime *rt, JSValue val) {
-	Marshalls *marshalls = static_cast<Marshalls *>(JS_GetOpaque(val, Marshalls::__class_id));
-	if (marshalls)
-		Marshalls::free(nullptr, marshalls);
+	
+	// nothing
 }
 
 static JSClassDef marshalls_class_def = {

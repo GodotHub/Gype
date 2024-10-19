@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/bone_map.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/skeleton_profile.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void bone_map_class_finalizer(JSRuntime *rt, JSValue val) {
-	BoneMap *bone_map = static_cast<BoneMap *>(JS_GetOpaque(val, BoneMap::__class_id));
-	if (bone_map)
-		memdelete(bone_map);
+	
+	// nothing
 }
 
 static JSClassDef bone_map_class_def = {
@@ -68,8 +67,8 @@ void define_bone_map_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "profile"),
         JS_NewCFunction(ctx, bone_map_class_get_profile, "get_profile", 0),
-        JS_NewCFunction(ctx, bone_map_class_set_profile, "set_profile", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, bone_map_class_set_profile, "set_profile", 1),
+        JS_PROP_GETSET
     );
 }
 

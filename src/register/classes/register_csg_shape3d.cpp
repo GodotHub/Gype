@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/csg_shape3d.hpp>
 #include <godot_cpp/classes/geometry_instance3d.hpp>
+#include <godot_cpp/classes/csg_shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void csg_shape3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	CSGShape3D *csg_shape3d = static_cast<CSGShape3D *>(JS_GetOpaque(val, CSGShape3D::__class_id));
-	if (csg_shape3d)
-		memdelete(csg_shape3d);
+	
+	// nothing
 }
 
 static JSClassDef csg_shape3d_class_def = {
@@ -134,56 +133,56 @@ void define_csg_shape3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "operation"),
         JS_NewCFunction(ctx, csg_shape3d_class_get_operation, "get_operation", 0),
-        JS_NewCFunction(ctx, csg_shape3d_class_set_operation, "set_operation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_shape3d_class_set_operation, "set_operation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "snap"),
         JS_NewCFunction(ctx, csg_shape3d_class_get_snap, "get_snap", 0),
-        JS_NewCFunction(ctx, csg_shape3d_class_set_snap, "set_snap", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_shape3d_class_set_snap, "set_snap", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "calculate_tangents"),
         JS_NewCFunction(ctx, csg_shape3d_class_is_calculating_tangents, "is_calculating_tangents", 0),
-        JS_NewCFunction(ctx, csg_shape3d_class_set_calculate_tangents, "set_calculate_tangents", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_shape3d_class_set_calculate_tangents, "set_calculate_tangents", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_collision"),
         JS_NewCFunction(ctx, csg_shape3d_class_is_using_collision, "is_using_collision", 0),
-        JS_NewCFunction(ctx, csg_shape3d_class_set_use_collision, "set_use_collision", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_shape3d_class_set_use_collision, "set_use_collision", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_layer"),
         JS_NewCFunction(ctx, csg_shape3d_class_get_collision_layer, "get_collision_layer", 0),
-        JS_NewCFunction(ctx, csg_shape3d_class_set_collision_layer, "set_collision_layer", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_shape3d_class_set_collision_layer, "set_collision_layer", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_mask"),
         JS_NewCFunction(ctx, csg_shape3d_class_get_collision_mask, "get_collision_mask", 0),
-        JS_NewCFunction(ctx, csg_shape3d_class_set_collision_mask, "set_collision_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_shape3d_class_set_collision_mask, "set_collision_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_priority"),
         JS_NewCFunction(ctx, csg_shape3d_class_get_collision_priority, "get_collision_priority", 0),
-        JS_NewCFunction(ctx, csg_shape3d_class_set_collision_priority, "set_collision_priority", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_shape3d_class_set_collision_priority, "set_collision_priority", 1),
+        JS_PROP_GETSET
     );
 }
 

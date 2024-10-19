@@ -5,19 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/editor_selection.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_selection_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorSelection *editor_selection = static_cast<EditorSelection *>(JS_GetOpaque(val, EditorSelection::__class_id));
-	if (editor_selection)
-		memdelete(editor_selection);
+	
+	// nothing
 }
 
 static JSClassDef editor_selection_class_def = {

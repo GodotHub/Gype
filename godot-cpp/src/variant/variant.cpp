@@ -256,7 +256,8 @@ Variant::Variant(const PackedVector4Array &v) {
 }
 
 Variant::Variant(const JSValue &v) {
-	internal::gdextension_interface_variant_new_copy(_native_ptr(), any_to_variant(v)._native_ptr());
+	Variant val = any_to_variant(v);
+	internal::gdextension_interface_variant_new_copy(_native_ptr(), val._native_ptr());
 }
 
 Variant::~Variant() {

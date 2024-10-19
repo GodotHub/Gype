@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void physics_direct_space_state2d_extension_class_finalizer(JSRuntime *rt, JSValue val) {
-	PhysicsDirectSpaceState2DExtension *physics_direct_space_state2d_extension = static_cast<PhysicsDirectSpaceState2DExtension *>(JS_GetOpaque(val, PhysicsDirectSpaceState2DExtension::__class_id));
-	if (physics_direct_space_state2d_extension)
-		memdelete(physics_direct_space_state2d_extension);
+	
+	// nothing
 }
 
 static JSClassDef physics_direct_space_state2d_extension_class_def = {

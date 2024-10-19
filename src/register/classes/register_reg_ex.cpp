@@ -6,18 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/reg_ex_match.hpp>
+#include <godot_cpp/classes/reg_ex.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/reg_ex_match.hpp>
-#include <godot_cpp/classes/reg_ex.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void reg_ex_class_finalizer(JSRuntime *rt, JSValue val) {
-	RegEx *reg_ex = static_cast<RegEx *>(JS_GetOpaque(val, RegEx::__class_id));
-	if (reg_ex)
-		memdelete(reg_ex);
+	
+	// nothing
 }
 
 static JSClassDef reg_ex_class_def = {

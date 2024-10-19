@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void ogg_packet_sequence_class_finalizer(JSRuntime *rt, JSValue val) {
-	OggPacketSequence *ogg_packet_sequence = static_cast<OggPacketSequence *>(JS_GetOpaque(val, OggPacketSequence::__class_id));
-	if (ogg_packet_sequence)
-		memdelete(ogg_packet_sequence);
+	
+	// nothing
 }
 
 static JSClassDef ogg_packet_sequence_class_def = {
@@ -76,24 +75,24 @@ void define_ogg_packet_sequence_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "packet_data"),
         JS_NewCFunction(ctx, ogg_packet_sequence_class_get_packet_data, "get_packet_data", 0),
-        JS_NewCFunction(ctx, ogg_packet_sequence_class_set_packet_data, "set_packet_data", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, ogg_packet_sequence_class_set_packet_data, "set_packet_data", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "granule_positions"),
         JS_NewCFunction(ctx, ogg_packet_sequence_class_get_packet_granule_positions, "get_packet_granule_positions", 0),
-        JS_NewCFunction(ctx, ogg_packet_sequence_class_set_packet_granule_positions, "set_packet_granule_positions", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, ogg_packet_sequence_class_set_packet_granule_positions, "set_packet_granule_positions", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sampling_rate"),
         JS_NewCFunction(ctx, ogg_packet_sequence_class_get_sampling_rate, "get_sampling_rate", 0),
-        JS_NewCFunction(ctx, ogg_packet_sequence_class_set_sampling_rate, "set_sampling_rate", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, ogg_packet_sequence_class_set_sampling_rate, "set_sampling_rate", 1),
+        JS_PROP_GETSET
     );
 }
 

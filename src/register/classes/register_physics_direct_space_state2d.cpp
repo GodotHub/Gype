@@ -6,19 +6,18 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/physics_direct_space_state2d.hpp>
+#include <godot_cpp/classes/physics_ray_query_parameters2d.hpp>
 #include <godot_cpp/classes/physics_point_query_parameters2d.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/physics_shape_query_parameters2d.hpp>
-#include <godot_cpp/classes/physics_ray_query_parameters2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void physics_direct_space_state2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	PhysicsDirectSpaceState2D *physics_direct_space_state2d = static_cast<PhysicsDirectSpaceState2D *>(JS_GetOpaque(val, PhysicsDirectSpaceState2D::__class_id));
-	if (physics_direct_space_state2d)
-		memdelete(physics_direct_space_state2d);
+	
+	// nothing
 }
 
 static JSClassDef physics_direct_space_state2d_class_def = {

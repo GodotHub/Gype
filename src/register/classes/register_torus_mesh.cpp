@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void torus_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	TorusMesh *torus_mesh = static_cast<TorusMesh *>(JS_GetOpaque(val, TorusMesh::__class_id));
-	if (torus_mesh)
-		memdelete(torus_mesh);
+	
+	// nothing
 }
 
 static JSClassDef torus_mesh_class_def = {
@@ -81,32 +80,32 @@ void define_torus_mesh_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "inner_radius"),
         JS_NewCFunction(ctx, torus_mesh_class_get_inner_radius, "get_inner_radius", 0),
-        JS_NewCFunction(ctx, torus_mesh_class_set_inner_radius, "set_inner_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, torus_mesh_class_set_inner_radius, "set_inner_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "outer_radius"),
         JS_NewCFunction(ctx, torus_mesh_class_get_outer_radius, "get_outer_radius", 0),
-        JS_NewCFunction(ctx, torus_mesh_class_set_outer_radius, "set_outer_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, torus_mesh_class_set_outer_radius, "set_outer_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "rings"),
         JS_NewCFunction(ctx, torus_mesh_class_get_rings, "get_rings", 0),
-        JS_NewCFunction(ctx, torus_mesh_class_set_rings, "set_rings", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, torus_mesh_class_set_rings, "set_rings", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ring_segments"),
         JS_NewCFunction(ctx, torus_mesh_class_get_ring_segments, "get_ring_segments", 0),
-        JS_NewCFunction(ctx, torus_mesh_class_set_ring_segments, "set_ring_segments", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, torus_mesh_class_set_ring_segments, "set_ring_segments", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void expression_class_finalizer(JSRuntime *rt, JSValue val) {
-	Expression *expression = static_cast<Expression *>(JS_GetOpaque(val, Expression::__class_id));
-	if (expression)
-		memdelete(expression);
+	
+	// nothing
 }
 
 static JSClassDef expression_class_def = {

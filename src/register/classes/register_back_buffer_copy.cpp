@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void back_buffer_copy_class_finalizer(JSRuntime *rt, JSValue val) {
-	BackBufferCopy *back_buffer_copy = static_cast<BackBufferCopy *>(JS_GetOpaque(val, BackBufferCopy::__class_id));
-	if (back_buffer_copy)
-		memdelete(back_buffer_copy);
+	
+	// nothing
 }
 
 static JSClassDef back_buffer_copy_class_def = {
@@ -63,16 +62,16 @@ void define_back_buffer_copy_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "copy_mode"),
         JS_NewCFunction(ctx, back_buffer_copy_class_get_copy_mode, "get_copy_mode", 0),
-        JS_NewCFunction(ctx, back_buffer_copy_class_set_copy_mode, "set_copy_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, back_buffer_copy_class_set_copy_mode, "set_copy_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "rect"),
         JS_NewCFunction(ctx, back_buffer_copy_class_get_rect, "get_rect", 0),
-        JS_NewCFunction(ctx, back_buffer_copy_class_set_rect, "set_rect", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, back_buffer_copy_class_set_rect, "set_rect", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -5,22 +5,21 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/theme.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/style_box.hpp>
-#include <godot_cpp/classes/window.hpp>
 #include <godot_cpp/classes/viewport.hpp>
+#include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/window.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/style_box.hpp>
+#include <godot_cpp/classes/theme.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void window_class_finalizer(JSRuntime *rt, JSValue val) {
-	Window *window = static_cast<Window *>(JS_GetOpaque(val, Window::__class_id));
-	if (window)
-		memdelete(window);
+	
+	// nothing
 }
 
 static JSClassDef window_class_def = {
@@ -588,256 +587,256 @@ void define_window_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "mode"),
         JS_NewCFunction(ctx, window_class_get_mode, "get_mode", 0),
-        JS_NewCFunction(ctx, window_class_set_mode, "set_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_mode, "set_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "title"),
         JS_NewCFunction(ctx, window_class_get_title, "get_title", 0),
-        JS_NewCFunction(ctx, window_class_set_title, "set_title", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_title, "set_title", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "initial_position"),
         JS_NewCFunction(ctx, window_class_get_initial_position, "get_initial_position", 0),
-        JS_NewCFunction(ctx, window_class_set_initial_position, "set_initial_position", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_initial_position, "set_initial_position", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "position"),
         JS_NewCFunction(ctx, window_class_get_position, "get_position", 0),
-        JS_NewCFunction(ctx, window_class_set_position, "set_position", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_position, "set_position", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, window_class_get_size, "get_size", 0),
-        JS_NewCFunction(ctx, window_class_set_size, "set_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_size, "set_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "current_screen"),
         JS_NewCFunction(ctx, window_class_get_current_screen, "get_current_screen", 0),
-        JS_NewCFunction(ctx, window_class_set_current_screen, "set_current_screen", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_current_screen, "set_current_screen", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "mouse_passthrough_polygon"),
         JS_NewCFunction(ctx, window_class_get_mouse_passthrough_polygon, "get_mouse_passthrough_polygon", 0),
-        JS_NewCFunction(ctx, window_class_set_mouse_passthrough_polygon, "set_mouse_passthrough_polygon", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_mouse_passthrough_polygon, "set_mouse_passthrough_polygon", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visible"),
         JS_NewCFunction(ctx, window_class_is_visible, "is_visible", 0),
-        JS_NewCFunction(ctx, window_class_set_visible, "set_visible", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_visible, "set_visible", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "wrap_controls"),
         JS_NewCFunction(ctx, window_class_is_wrapping_controls, "is_wrapping_controls", 0),
-        JS_NewCFunction(ctx, window_class_set_wrap_controls, "set_wrap_controls", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_wrap_controls, "set_wrap_controls", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "transient"),
         JS_NewCFunction(ctx, window_class_is_transient, "is_transient", 0),
-        JS_NewCFunction(ctx, window_class_set_transient, "set_transient", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_transient, "set_transient", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "transient_to_focused"),
         JS_NewCFunction(ctx, window_class_is_transient_to_focused, "is_transient_to_focused", 0),
-        JS_NewCFunction(ctx, window_class_set_transient_to_focused, "set_transient_to_focused", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_transient_to_focused, "set_transient_to_focused", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "exclusive"),
         JS_NewCFunction(ctx, window_class_is_exclusive, "is_exclusive", 0),
-        JS_NewCFunction(ctx, window_class_set_exclusive, "set_exclusive", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_exclusive, "set_exclusive", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "unresizable"),
         JS_NewCFunction(ctx, window_class_get_flag, "get_flag", 0),
-        JS_NewCFunction(ctx, window_class_set_flag, "set_flag", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_flag, "set_flag", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "borderless"),
         JS_NewCFunction(ctx, window_class_get_flag, "get_flag", 0),
-        JS_NewCFunction(ctx, window_class_set_flag, "set_flag", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_flag, "set_flag", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "always_on_top"),
         JS_NewCFunction(ctx, window_class_get_flag, "get_flag", 0),
-        JS_NewCFunction(ctx, window_class_set_flag, "set_flag", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_flag, "set_flag", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "transparent"),
         JS_NewCFunction(ctx, window_class_get_flag, "get_flag", 0),
-        JS_NewCFunction(ctx, window_class_set_flag, "set_flag", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_flag, "set_flag", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "unfocusable"),
         JS_NewCFunction(ctx, window_class_get_flag, "get_flag", 0),
-        JS_NewCFunction(ctx, window_class_set_flag, "set_flag", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_flag, "set_flag", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "popup_window"),
         JS_NewCFunction(ctx, window_class_get_flag, "get_flag", 0),
-        JS_NewCFunction(ctx, window_class_set_flag, "set_flag", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_flag, "set_flag", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "extend_to_title"),
         JS_NewCFunction(ctx, window_class_get_flag, "get_flag", 0),
-        JS_NewCFunction(ctx, window_class_set_flag, "set_flag", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_flag, "set_flag", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "mouse_passthrough"),
         JS_NewCFunction(ctx, window_class_get_flag, "get_flag", 0),
-        JS_NewCFunction(ctx, window_class_set_flag, "set_flag", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_flag, "set_flag", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "force_native"),
         JS_NewCFunction(ctx, window_class_get_force_native, "get_force_native", 0),
-        JS_NewCFunction(ctx, window_class_set_force_native, "set_force_native", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_force_native, "set_force_native", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "min_size"),
         JS_NewCFunction(ctx, window_class_get_min_size, "get_min_size", 0),
-        JS_NewCFunction(ctx, window_class_set_min_size, "set_min_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_min_size, "set_min_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "max_size"),
         JS_NewCFunction(ctx, window_class_get_max_size, "get_max_size", 0),
-        JS_NewCFunction(ctx, window_class_set_max_size, "set_max_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_max_size, "set_max_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "keep_title_visible"),
         JS_NewCFunction(ctx, window_class_get_keep_title_visible, "get_keep_title_visible", 0),
-        JS_NewCFunction(ctx, window_class_set_keep_title_visible, "set_keep_title_visible", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_keep_title_visible, "set_keep_title_visible", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "content_scale_size"),
         JS_NewCFunction(ctx, window_class_get_content_scale_size, "get_content_scale_size", 0),
-        JS_NewCFunction(ctx, window_class_set_content_scale_size, "set_content_scale_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_content_scale_size, "set_content_scale_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "content_scale_mode"),
         JS_NewCFunction(ctx, window_class_get_content_scale_mode, "get_content_scale_mode", 0),
-        JS_NewCFunction(ctx, window_class_set_content_scale_mode, "set_content_scale_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_content_scale_mode, "set_content_scale_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "content_scale_aspect"),
         JS_NewCFunction(ctx, window_class_get_content_scale_aspect, "get_content_scale_aspect", 0),
-        JS_NewCFunction(ctx, window_class_set_content_scale_aspect, "set_content_scale_aspect", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_content_scale_aspect, "set_content_scale_aspect", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "content_scale_stretch"),
         JS_NewCFunction(ctx, window_class_get_content_scale_stretch, "get_content_scale_stretch", 0),
-        JS_NewCFunction(ctx, window_class_set_content_scale_stretch, "set_content_scale_stretch", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_content_scale_stretch, "set_content_scale_stretch", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "content_scale_factor"),
         JS_NewCFunction(ctx, window_class_get_content_scale_factor, "get_content_scale_factor", 0),
-        JS_NewCFunction(ctx, window_class_set_content_scale_factor, "set_content_scale_factor", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_content_scale_factor, "set_content_scale_factor", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "auto_translate"),
         JS_NewCFunction(ctx, window_class_is_auto_translating, "is_auto_translating", 0),
-        JS_NewCFunction(ctx, window_class_set_auto_translate, "set_auto_translate", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_auto_translate, "set_auto_translate", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "theme"),
         JS_NewCFunction(ctx, window_class_get_theme, "get_theme", 0),
-        JS_NewCFunction(ctx, window_class_set_theme, "set_theme", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_theme, "set_theme", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "theme_type_variation"),
         JS_NewCFunction(ctx, window_class_get_theme_type_variation, "get_theme_type_variation", 0),
-        JS_NewCFunction(ctx, window_class_set_theme_type_variation, "set_theme_type_variation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, window_class_set_theme_type_variation, "set_theme_type_variation", 1),
+        JS_PROP_GETSET
     );
 }
 

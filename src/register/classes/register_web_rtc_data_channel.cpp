@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/web_rtc_data_channel.hpp>
 #include <godot_cpp/classes/packet_peer.hpp>
+#include <godot_cpp/classes/web_rtc_data_channel.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void web_rtc_data_channel_class_finalizer(JSRuntime *rt, JSValue val) {
-	WebRTCDataChannel *web_rtc_data_channel = static_cast<WebRTCDataChannel *>(JS_GetOpaque(val, WebRTCDataChannel::__class_id));
-	if (web_rtc_data_channel)
-		memdelete(web_rtc_data_channel);
+	
+	// nothing
 }
 
 static JSClassDef web_rtc_data_channel_class_def = {
@@ -103,8 +102,8 @@ void define_web_rtc_data_channel_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "write_mode"),
         JS_NewCFunction(ctx, web_rtc_data_channel_class_get_write_mode, "get_write_mode", 0),
-        JS_NewCFunction(ctx, web_rtc_data_channel_class_set_write_mode, "set_write_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, web_rtc_data_channel_class_set_write_mode, "set_write_mode", 1),
+        JS_PROP_GETSET
     );
 }
 

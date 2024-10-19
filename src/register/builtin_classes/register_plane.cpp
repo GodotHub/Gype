@@ -63,6 +63,57 @@ static JSValue plane_class_intersects_ray(JSContext *ctx, JSValueConst this_val,
 static JSValue plane_class_intersects_segment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Plane::intersects_segment, ctx, this_val, argc, argv);
 };
+
+static JSValue plane_class_get_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Plane &val = *reinterpret_cast<Plane *>(JS_GetOpaque(this_val, Plane::__class_id));
+	return Variant(val.normal.x);
+}
+static JSValue plane_class_set_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Plane &val = *reinterpret_cast<Plane *>(JS_GetOpaque(this_val, Plane::__class_id));
+	val.normal.x = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue plane_class_get_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Plane &val = *reinterpret_cast<Plane *>(JS_GetOpaque(this_val, Plane::__class_id));
+	return Variant(val.normal.y);
+}
+static JSValue plane_class_set_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Plane &val = *reinterpret_cast<Plane *>(JS_GetOpaque(this_val, Plane::__class_id));
+	val.normal.y = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue plane_class_get_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Plane &val = *reinterpret_cast<Plane *>(JS_GetOpaque(this_val, Plane::__class_id));
+	return Variant(val.normal.z);
+}
+static JSValue plane_class_set_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Plane &val = *reinterpret_cast<Plane *>(JS_GetOpaque(this_val, Plane::__class_id));
+	val.normal.z = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue plane_class_get_d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Plane &val = *reinterpret_cast<Plane *>(JS_GetOpaque(this_val, Plane::__class_id));
+	return Variant(val.d);
+}
+static JSValue plane_class_set_d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Plane &val = *reinterpret_cast<Plane *>(JS_GetOpaque(this_val, Plane::__class_id));
+	val.d = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue plane_class_get_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Plane &val = *reinterpret_cast<Plane *>(JS_GetOpaque(this_val, Plane::__class_id));
+	return Variant(val.normal);
+}
+static JSValue plane_class_set_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Plane &val = *reinterpret_cast<Plane *>(JS_GetOpaque(this_val, Plane::__class_id));
+	val.normal = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
 static const JSCFunctionListEntry plane_class_proto_funcs[] = {
 	JS_CFUNC_DEF("normalized", 0, &plane_class_normalized),
 	JS_CFUNC_DEF("is_equal_approx", 1, &plane_class_is_equal_approx),
@@ -77,6 +128,41 @@ static const JSCFunctionListEntry plane_class_proto_funcs[] = {
 };
 
 void define_plane_property(JSContext *ctx, JSValue obj) {
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "x"),
+			JS_NewCFunction(ctx, plane_class_get_x, "get_x", 0),
+			JS_NewCFunction(ctx, plane_class_set_x, "set_x", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "y"),
+			JS_NewCFunction(ctx, plane_class_get_y, "get_y", 0),
+			JS_NewCFunction(ctx, plane_class_set_y, "set_y", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "z"),
+			JS_NewCFunction(ctx, plane_class_get_z, "get_z", 0),
+			JS_NewCFunction(ctx, plane_class_set_z, "set_z", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "d"),
+			JS_NewCFunction(ctx, plane_class_get_d, "get_d", 0),
+			JS_NewCFunction(ctx, plane_class_set_d, "set_d", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "normal"),
+			JS_NewCFunction(ctx, plane_class_get_normal, "get_normal", 0),
+			JS_NewCFunction(ctx, plane_class_set_normal, "set_normal", 1),
+			JS_PROP_GETSET);
 }
 
 static int js_plane_class_init(JSContext *ctx) {
@@ -87,7 +173,6 @@ static int js_plane_class_init(JSContext *ctx) {
 
 	JSValue proto = JS_NewObject(ctx);
 	JS_SetClassProto(ctx, Plane::__class_id, proto);
-
 	define_plane_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, plane_class_proto_funcs, _countof(plane_class_proto_funcs));
 

@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/canvas_item_material.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void canvas_item_material_class_finalizer(JSRuntime *rt, JSValue val) {
-	CanvasItemMaterial *canvas_item_material = static_cast<CanvasItemMaterial *>(JS_GetOpaque(val, CanvasItemMaterial::__class_id));
-	if (canvas_item_material)
-		memdelete(canvas_item_material);
+	
+	// nothing
 }
 
 static JSClassDef canvas_item_material_class_def = {
@@ -99,48 +98,48 @@ void define_canvas_item_material_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "blend_mode"),
         JS_NewCFunction(ctx, canvas_item_material_class_get_blend_mode, "get_blend_mode", 0),
-        JS_NewCFunction(ctx, canvas_item_material_class_set_blend_mode, "set_blend_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_item_material_class_set_blend_mode, "set_blend_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "light_mode"),
         JS_NewCFunction(ctx, canvas_item_material_class_get_light_mode, "get_light_mode", 0),
-        JS_NewCFunction(ctx, canvas_item_material_class_set_light_mode, "set_light_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_item_material_class_set_light_mode, "set_light_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "particles_animation"),
         JS_NewCFunction(ctx, canvas_item_material_class_get_particles_animation, "get_particles_animation", 0),
-        JS_NewCFunction(ctx, canvas_item_material_class_set_particles_animation, "set_particles_animation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_item_material_class_set_particles_animation, "set_particles_animation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "particles_anim_h_frames"),
         JS_NewCFunction(ctx, canvas_item_material_class_get_particles_anim_h_frames, "get_particles_anim_h_frames", 0),
-        JS_NewCFunction(ctx, canvas_item_material_class_set_particles_anim_h_frames, "set_particles_anim_h_frames", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_item_material_class_set_particles_anim_h_frames, "set_particles_anim_h_frames", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "particles_anim_v_frames"),
         JS_NewCFunction(ctx, canvas_item_material_class_get_particles_anim_v_frames, "get_particles_anim_v_frames", 0),
-        JS_NewCFunction(ctx, canvas_item_material_class_set_particles_anim_v_frames, "set_particles_anim_v_frames", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_item_material_class_set_particles_anim_v_frames, "set_particles_anim_v_frames", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "particles_anim_loop"),
         JS_NewCFunction(ctx, canvas_item_material_class_get_particles_anim_loop, "get_particles_anim_loop", 0),
-        JS_NewCFunction(ctx, canvas_item_material_class_set_particles_anim_loop, "set_particles_anim_loop", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_item_material_class_set_particles_anim_loop, "set_particles_anim_loop", 1),
+        JS_PROP_GETSET
     );
 }
 

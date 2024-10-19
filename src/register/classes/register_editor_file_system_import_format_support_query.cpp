@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void editor_file_system_import_format_support_query_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorFileSystemImportFormatSupportQuery *editor_file_system_import_format_support_query = static_cast<EditorFileSystemImportFormatSupportQuery *>(JS_GetOpaque(val, EditorFileSystemImportFormatSupportQuery::__class_id));
-	if (editor_file_system_import_format_support_query)
-		memdelete(editor_file_system_import_format_support_query);
+	
+	// nothing
 }
 
 static JSClassDef editor_file_system_import_format_support_query_class_def = {

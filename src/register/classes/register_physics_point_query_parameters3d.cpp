@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void physics_point_query_parameters3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	PhysicsPointQueryParameters3D *physics_point_query_parameters3d = static_cast<PhysicsPointQueryParameters3D *>(JS_GetOpaque(val, PhysicsPointQueryParameters3D::__class_id));
-	if (physics_point_query_parameters3d)
-		memdelete(physics_point_query_parameters3d);
+	
+	// nothing
 }
 
 static JSClassDef physics_point_query_parameters3d_class_def = {
@@ -90,40 +89,40 @@ void define_physics_point_query_parameters3d_property(JSContext *ctx, JSValue ob
         obj,
         JS_NewAtom(ctx, "position"),
         JS_NewCFunction(ctx, physics_point_query_parameters3d_class_get_position, "get_position", 0),
-        JS_NewCFunction(ctx, physics_point_query_parameters3d_class_set_position, "set_position", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_point_query_parameters3d_class_set_position, "set_position", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_mask"),
         JS_NewCFunction(ctx, physics_point_query_parameters3d_class_get_collision_mask, "get_collision_mask", 0),
-        JS_NewCFunction(ctx, physics_point_query_parameters3d_class_set_collision_mask, "set_collision_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_point_query_parameters3d_class_set_collision_mask, "set_collision_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "exclude"),
         JS_NewCFunction(ctx, physics_point_query_parameters3d_class_get_exclude, "get_exclude", 0),
-        JS_NewCFunction(ctx, physics_point_query_parameters3d_class_set_exclude, "set_exclude", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_point_query_parameters3d_class_set_exclude, "set_exclude", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collide_with_bodies"),
         JS_NewCFunction(ctx, physics_point_query_parameters3d_class_is_collide_with_bodies_enabled, "is_collide_with_bodies_enabled", 0),
-        JS_NewCFunction(ctx, physics_point_query_parameters3d_class_set_collide_with_bodies, "set_collide_with_bodies", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_point_query_parameters3d_class_set_collide_with_bodies, "set_collide_with_bodies", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collide_with_areas"),
         JS_NewCFunction(ctx, physics_point_query_parameters3d_class_is_collide_with_areas_enabled, "is_collide_with_areas_enabled", 0),
-        JS_NewCFunction(ctx, physics_point_query_parameters3d_class_set_collide_with_areas, "set_collide_with_areas", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_point_query_parameters3d_class_set_collide_with_areas, "set_collide_with_areas", 1),
+        JS_PROP_GETSET
     );
 }
 

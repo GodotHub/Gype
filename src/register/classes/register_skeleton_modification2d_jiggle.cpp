@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton_modification2d_jiggle.hpp>
 #include <godot_cpp/classes/skeleton_modification2d.hpp>
+#include <godot_cpp/classes/skeleton_modification2d_jiggle.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void skeleton_modification2d_jiggle_class_finalizer(JSRuntime *rt, JSValue val) {
-	SkeletonModification2DJiggle *skeleton_modification2d_jiggle = static_cast<SkeletonModification2DJiggle *>(JS_GetOpaque(val, SkeletonModification2DJiggle::__class_id));
-	if (skeleton_modification2d_jiggle)
-		memdelete(skeleton_modification2d_jiggle);
+	
+	// nothing
 }
 
 static JSClassDef skeleton_modification2d_jiggle_class_def = {
@@ -198,56 +197,56 @@ void define_skeleton_modification2d_jiggle_property(JSContext *ctx, JSValue obj)
         obj,
         JS_NewAtom(ctx, "target_nodepath"),
         JS_NewCFunction(ctx, skeleton_modification2d_jiggle_class_get_target_node, "get_target_node", 0),
-        JS_NewCFunction(ctx, skeleton_modification2d_jiggle_class_set_target_node, "set_target_node", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_modification2d_jiggle_class_set_target_node, "set_target_node", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "jiggle_data_chain_length"),
         JS_NewCFunction(ctx, skeleton_modification2d_jiggle_class_get_jiggle_data_chain_length, "get_jiggle_data_chain_length", 0),
-        JS_NewCFunction(ctx, skeleton_modification2d_jiggle_class_set_jiggle_data_chain_length, "set_jiggle_data_chain_length", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_modification2d_jiggle_class_set_jiggle_data_chain_length, "set_jiggle_data_chain_length", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "stiffness"),
         JS_NewCFunction(ctx, skeleton_modification2d_jiggle_class_get_stiffness, "get_stiffness", 0),
-        JS_NewCFunction(ctx, skeleton_modification2d_jiggle_class_set_stiffness, "set_stiffness", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_modification2d_jiggle_class_set_stiffness, "set_stiffness", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "mass"),
         JS_NewCFunction(ctx, skeleton_modification2d_jiggle_class_get_mass, "get_mass", 0),
-        JS_NewCFunction(ctx, skeleton_modification2d_jiggle_class_set_mass, "set_mass", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_modification2d_jiggle_class_set_mass, "set_mass", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "damping"),
         JS_NewCFunction(ctx, skeleton_modification2d_jiggle_class_get_damping, "get_damping", 0),
-        JS_NewCFunction(ctx, skeleton_modification2d_jiggle_class_set_damping, "set_damping", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_modification2d_jiggle_class_set_damping, "set_damping", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_gravity"),
         JS_NewCFunction(ctx, skeleton_modification2d_jiggle_class_get_use_gravity, "get_use_gravity", 0),
-        JS_NewCFunction(ctx, skeleton_modification2d_jiggle_class_set_use_gravity, "set_use_gravity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_modification2d_jiggle_class_set_use_gravity, "set_use_gravity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gravity"),
         JS_NewCFunction(ctx, skeleton_modification2d_jiggle_class_get_gravity, "get_gravity", 0),
-        JS_NewCFunction(ctx, skeleton_modification2d_jiggle_class_set_gravity, "set_gravity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_modification2d_jiggle_class_set_gravity, "set_gravity", 1),
+        JS_PROP_GETSET
     );
 }
 

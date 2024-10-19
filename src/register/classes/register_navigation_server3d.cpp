@@ -7,11 +7,11 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/navigation_path_query_result3d.hpp>
-#include <godot_cpp/classes/navigation_server3d.hpp>
-#include <godot_cpp/classes/navigation_path_query_parameters3d.hpp>
 #include <godot_cpp/classes/navigation_mesh_source_geometry_data3d.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/navigation_mesh.hpp>
+#include <godot_cpp/classes/navigation_path_query_parameters3d.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/navigation_server3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
@@ -21,9 +21,8 @@ static JSValue navigation_server3d_instance;
 static void js_navigation_server3d_singleton();
 
 static void navigation_server3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	NavigationServer3D *navigation_server3d = static_cast<NavigationServer3D *>(JS_GetOpaque(val, NavigationServer3D::__class_id));
-	if (navigation_server3d)
-		NavigationServer3D::free(nullptr, navigation_server3d);
+	
+	// nothing
 }
 
 static JSClassDef navigation_server3d_class_def = {

@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/physics_ray_query_parameters2d.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void physics_ray_query_parameters2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	PhysicsRayQueryParameters2D *physics_ray_query_parameters2d = static_cast<PhysicsRayQueryParameters2D *>(JS_GetOpaque(val, PhysicsRayQueryParameters2D::__class_id));
-	if (physics_ray_query_parameters2d)
-		memdelete(physics_ray_query_parameters2d);
+	
+	// nothing
 }
 
 static JSClassDef physics_ray_query_parameters2d_class_def = {
@@ -114,56 +113,56 @@ void define_physics_ray_query_parameters2d_property(JSContext *ctx, JSValue obj)
         obj,
         JS_NewAtom(ctx, "from"),
         JS_NewCFunction(ctx, physics_ray_query_parameters2d_class_get_from, "get_from", 0),
-        JS_NewCFunction(ctx, physics_ray_query_parameters2d_class_set_from, "set_from", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_ray_query_parameters2d_class_set_from, "set_from", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "to"),
         JS_NewCFunction(ctx, physics_ray_query_parameters2d_class_get_to, "get_to", 0),
-        JS_NewCFunction(ctx, physics_ray_query_parameters2d_class_set_to, "set_to", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_ray_query_parameters2d_class_set_to, "set_to", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_mask"),
         JS_NewCFunction(ctx, physics_ray_query_parameters2d_class_get_collision_mask, "get_collision_mask", 0),
-        JS_NewCFunction(ctx, physics_ray_query_parameters2d_class_set_collision_mask, "set_collision_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_ray_query_parameters2d_class_set_collision_mask, "set_collision_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "exclude"),
         JS_NewCFunction(ctx, physics_ray_query_parameters2d_class_get_exclude, "get_exclude", 0),
-        JS_NewCFunction(ctx, physics_ray_query_parameters2d_class_set_exclude, "set_exclude", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_ray_query_parameters2d_class_set_exclude, "set_exclude", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collide_with_bodies"),
         JS_NewCFunction(ctx, physics_ray_query_parameters2d_class_is_collide_with_bodies_enabled, "is_collide_with_bodies_enabled", 0),
-        JS_NewCFunction(ctx, physics_ray_query_parameters2d_class_set_collide_with_bodies, "set_collide_with_bodies", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_ray_query_parameters2d_class_set_collide_with_bodies, "set_collide_with_bodies", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collide_with_areas"),
         JS_NewCFunction(ctx, physics_ray_query_parameters2d_class_is_collide_with_areas_enabled, "is_collide_with_areas_enabled", 0),
-        JS_NewCFunction(ctx, physics_ray_query_parameters2d_class_set_collide_with_areas, "set_collide_with_areas", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_ray_query_parameters2d_class_set_collide_with_areas, "set_collide_with_areas", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "hit_from_inside"),
         JS_NewCFunction(ctx, physics_ray_query_parameters2d_class_is_hit_from_inside_enabled, "is_hit_from_inside_enabled", 0),
-        JS_NewCFunction(ctx, physics_ray_query_parameters2d_class_set_hit_from_inside, "set_hit_from_inside", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_ray_query_parameters2d_class_set_hit_from_inside, "set_hit_from_inside", 1),
+        JS_PROP_GETSET
     );
 }
 

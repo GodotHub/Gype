@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/script_language.hpp>
 #include <godot_cpp/classes/engine_debugger.hpp>
 #include <godot_cpp/classes/engine_profiler.hpp>
-#include <godot_cpp/classes/script_language.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -18,9 +18,8 @@ static JSValue engine_debugger_instance;
 static void js_engine_debugger_singleton();
 
 static void engine_debugger_class_finalizer(JSRuntime *rt, JSValue val) {
-	EngineDebugger *engine_debugger = static_cast<EngineDebugger *>(JS_GetOpaque(val, EngineDebugger::__class_id));
-	if (engine_debugger)
-		EngineDebugger::free(nullptr, engine_debugger);
+	
+	// nothing
 }
 
 static JSClassDef engine_debugger_class_def = {

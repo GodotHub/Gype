@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void visual_shader_node_texture3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeTexture3D *visual_shader_node_texture3d = static_cast<VisualShaderNodeTexture3D *>(JS_GetOpaque(val, VisualShaderNodeTexture3D::__class_id));
-	if (visual_shader_node_texture3d)
-		memdelete(visual_shader_node_texture3d);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_texture3d_class_def = {
@@ -55,8 +54,8 @@ void define_visual_shader_node_texture3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "texture"),
         JS_NewCFunction(ctx, visual_shader_node_texture3d_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, visual_shader_node_texture3d_class_set_texture, "set_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_texture3d_class_set_texture, "set_texture", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_screen_normal_world_space_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeScreenNormalWorldSpace *visual_shader_node_screen_normal_world_space = static_cast<VisualShaderNodeScreenNormalWorldSpace *>(JS_GetOpaque(val, VisualShaderNodeScreenNormalWorldSpace::__class_id));
-	if (visual_shader_node_screen_normal_world_space)
-		memdelete(visual_shader_node_screen_normal_world_space);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_screen_normal_world_space_class_def = {

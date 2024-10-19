@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/classes/image.hpp>
+#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/classes/height_map_shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void height_map_shape3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	HeightMapShape3D *height_map_shape3d = static_cast<HeightMapShape3D *>(JS_GetOpaque(val, HeightMapShape3D::__class_id));
-	if (height_map_shape3d)
-		memdelete(height_map_shape3d);
+	
+	// nothing
 }
 
 static JSClassDef height_map_shape3d_class_def = {
@@ -86,24 +85,24 @@ void define_height_map_shape3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "map_width"),
         JS_NewCFunction(ctx, height_map_shape3d_class_get_map_width, "get_map_width", 0),
-        JS_NewCFunction(ctx, height_map_shape3d_class_set_map_width, "set_map_width", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, height_map_shape3d_class_set_map_width, "set_map_width", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "map_depth"),
         JS_NewCFunction(ctx, height_map_shape3d_class_get_map_depth, "get_map_depth", 0),
-        JS_NewCFunction(ctx, height_map_shape3d_class_set_map_depth, "set_map_depth", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, height_map_shape3d_class_set_map_depth, "set_map_depth", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "map_data"),
         JS_NewCFunction(ctx, height_map_shape3d_class_get_map_data, "get_map_data", 0),
-        JS_NewCFunction(ctx, height_map_shape3d_class_set_map_data, "set_map_data", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, height_map_shape3d_class_set_map_data, "set_map_data", 1),
+        JS_PROP_GETSET
     );
 }
 

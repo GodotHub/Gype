@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/gltf_texture_sampler.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gltf_texture_sampler_class_finalizer(JSRuntime *rt, JSValue val) {
-	GLTFTextureSampler *gltf_texture_sampler = static_cast<GLTFTextureSampler *>(JS_GetOpaque(val, GLTFTextureSampler::__class_id));
-	if (gltf_texture_sampler)
-		memdelete(gltf_texture_sampler);
+	
+	// nothing
 }
 
 static JSClassDef gltf_texture_sampler_class_def = {
@@ -81,32 +80,32 @@ void define_gltf_texture_sampler_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "mag_filter"),
         JS_NewCFunction(ctx, gltf_texture_sampler_class_get_mag_filter, "get_mag_filter", 0),
-        JS_NewCFunction(ctx, gltf_texture_sampler_class_set_mag_filter, "set_mag_filter", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_texture_sampler_class_set_mag_filter, "set_mag_filter", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "min_filter"),
         JS_NewCFunction(ctx, gltf_texture_sampler_class_get_min_filter, "get_min_filter", 0),
-        JS_NewCFunction(ctx, gltf_texture_sampler_class_set_min_filter, "set_min_filter", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_texture_sampler_class_set_min_filter, "set_min_filter", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "wrap_s"),
         JS_NewCFunction(ctx, gltf_texture_sampler_class_get_wrap_s, "get_wrap_s", 0),
-        JS_NewCFunction(ctx, gltf_texture_sampler_class_set_wrap_s, "set_wrap_s", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_texture_sampler_class_set_wrap_s, "set_wrap_s", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "wrap_t"),
         JS_NewCFunction(ctx, gltf_texture_sampler_class_get_wrap_t, "get_wrap_t", 0),
-        JS_NewCFunction(ctx, gltf_texture_sampler_class_set_wrap_t, "set_wrap_t", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_texture_sampler_class_set_wrap_t, "set_wrap_t", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton_modification2d_two_bone_ik.hpp>
 #include <godot_cpp/classes/skeleton_modification2d.hpp>
+#include <godot_cpp/classes/skeleton_modification2d_two_bone_ik.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void skeleton_modification2d_two_bone_ik_class_finalizer(JSRuntime *rt, JSValue val) {
-	SkeletonModification2DTwoBoneIK *skeleton_modification2d_two_bone_ik = static_cast<SkeletonModification2DTwoBoneIK *>(JS_GetOpaque(val, SkeletonModification2DTwoBoneIK::__class_id));
-	if (skeleton_modification2d_two_bone_ik)
-		memdelete(skeleton_modification2d_two_bone_ik);
+	
+	// nothing
 }
 
 static JSClassDef skeleton_modification2d_two_bone_ik_class_def = {
@@ -117,32 +116,32 @@ void define_skeleton_modification2d_two_bone_ik_property(JSContext *ctx, JSValue
         obj,
         JS_NewAtom(ctx, "target_nodepath"),
         JS_NewCFunction(ctx, skeleton_modification2d_two_bone_ik_class_get_target_node, "get_target_node", 0),
-        JS_NewCFunction(ctx, skeleton_modification2d_two_bone_ik_class_set_target_node, "set_target_node", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_modification2d_two_bone_ik_class_set_target_node, "set_target_node", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "target_minimum_distance"),
         JS_NewCFunction(ctx, skeleton_modification2d_two_bone_ik_class_get_target_minimum_distance, "get_target_minimum_distance", 0),
-        JS_NewCFunction(ctx, skeleton_modification2d_two_bone_ik_class_set_target_minimum_distance, "set_target_minimum_distance", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_modification2d_two_bone_ik_class_set_target_minimum_distance, "set_target_minimum_distance", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "target_maximum_distance"),
         JS_NewCFunction(ctx, skeleton_modification2d_two_bone_ik_class_get_target_maximum_distance, "get_target_maximum_distance", 0),
-        JS_NewCFunction(ctx, skeleton_modification2d_two_bone_ik_class_set_target_maximum_distance, "set_target_maximum_distance", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_modification2d_two_bone_ik_class_set_target_maximum_distance, "set_target_maximum_distance", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "flip_bend_direction"),
         JS_NewCFunction(ctx, skeleton_modification2d_two_bone_ik_class_get_flip_bend_direction, "get_flip_bend_direction", 0),
-        JS_NewCFunction(ctx, skeleton_modification2d_two_bone_ik_class_set_flip_bend_direction, "set_flip_bend_direction", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_modification2d_two_bone_ik_class_set_flip_bend_direction, "set_flip_bend_direction", 1),
+        JS_PROP_GETSET
     );
 }
 

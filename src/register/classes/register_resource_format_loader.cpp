@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void resource_format_loader_class_finalizer(JSRuntime *rt, JSValue val) {
-	ResourceFormatLoader *resource_format_loader = static_cast<ResourceFormatLoader *>(JS_GetOpaque(val, ResourceFormatLoader::__class_id));
-	if (resource_format_loader)
-		memdelete(resource_format_loader);
+	
+	// nothing
 }
 
 static JSClassDef resource_format_loader_class_def = {

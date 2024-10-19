@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gpu_particles_attractor3d.hpp>
 #include <godot_cpp/classes/gpu_particles_attractor_sphere3d.hpp>
+#include <godot_cpp/classes/gpu_particles_attractor3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gpu_particles_attractor_sphere3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	GPUParticlesAttractorSphere3D *gpu_particles_attractor_sphere3d = static_cast<GPUParticlesAttractorSphere3D *>(JS_GetOpaque(val, GPUParticlesAttractorSphere3D::__class_id));
-	if (gpu_particles_attractor_sphere3d)
-		memdelete(gpu_particles_attractor_sphere3d);
+	
+	// nothing
 }
 
 static JSClassDef gpu_particles_attractor_sphere3d_class_def = {
@@ -54,8 +53,8 @@ void define_gpu_particles_attractor_sphere3d_property(JSContext *ctx, JSValue ob
         obj,
         JS_NewAtom(ctx, "radius"),
         JS_NewCFunction(ctx, gpu_particles_attractor_sphere3d_class_get_radius, "get_radius", 0),
-        JS_NewCFunction(ctx, gpu_particles_attractor_sphere3d_class_set_radius, "set_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gpu_particles_attractor_sphere3d_class_set_radius, "set_radius", 1),
+        JS_PROP_GETSET
     );
 }
 

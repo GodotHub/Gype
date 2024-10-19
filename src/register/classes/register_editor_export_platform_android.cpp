@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_export_platform_android.hpp>
 #include <godot_cpp/classes/editor_export_platform.hpp>
+#include <godot_cpp/classes/editor_export_platform_android.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_export_platform_android_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorExportPlatformAndroid *editor_export_platform_android = static_cast<EditorExportPlatformAndroid *>(JS_GetOpaque(val, EditorExportPlatformAndroid::__class_id));
-	if (editor_export_platform_android)
-		memdelete(editor_export_platform_android);
+	
+	// nothing
 }
 
 static JSClassDef editor_export_platform_android_class_def = {

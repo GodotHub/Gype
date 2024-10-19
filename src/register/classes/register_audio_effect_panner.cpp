@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/classes/audio_effect_panner.hpp>
+#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void audio_effect_panner_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioEffectPanner *audio_effect_panner = static_cast<AudioEffectPanner *>(JS_GetOpaque(val, AudioEffectPanner::__class_id));
-	if (audio_effect_panner)
-		memdelete(audio_effect_panner);
+	
+	// nothing
 }
 
 static JSClassDef audio_effect_panner_class_def = {
@@ -54,8 +53,8 @@ void define_audio_effect_panner_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "pan"),
         JS_NewCFunction(ctx, audio_effect_panner_class_get_pan, "get_pan", 0),
-        JS_NewCFunction(ctx, audio_effect_panner_class_set_pan, "set_pan", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_panner_class_set_pan, "set_pan", 1),
+        JS_PROP_GETSET
     );
 }
 

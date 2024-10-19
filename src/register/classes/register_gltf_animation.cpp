@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void gltf_animation_class_finalizer(JSRuntime *rt, JSValue val) {
-	GLTFAnimation *gltf_animation = static_cast<GLTFAnimation *>(JS_GetOpaque(val, GLTFAnimation::__class_id));
-	if (gltf_animation)
-		memdelete(gltf_animation);
+	
+	// nothing
 }
 
 static JSClassDef gltf_animation_class_def = {
@@ -72,16 +71,16 @@ void define_gltf_animation_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "original_name"),
         JS_NewCFunction(ctx, gltf_animation_class_get_original_name, "get_original_name", 0),
-        JS_NewCFunction(ctx, gltf_animation_class_set_original_name, "set_original_name", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_animation_class_set_original_name, "set_original_name", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "loop"),
         JS_NewCFunction(ctx, gltf_animation_class_get_loop, "get_loop", 0),
-        JS_NewCFunction(ctx, gltf_animation_class_set_loop, "set_loop", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_animation_class_set_loop, "set_loop", 1),
+        JS_PROP_GETSET
     );
 }
 

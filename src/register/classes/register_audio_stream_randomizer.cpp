@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void audio_stream_randomizer_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioStreamRandomizer *audio_stream_randomizer = static_cast<AudioStreamRandomizer *>(JS_GetOpaque(val, AudioStreamRandomizer::__class_id));
-	if (audio_stream_randomizer)
-		memdelete(audio_stream_randomizer);
+	
+	// nothing
 }
 
 static JSClassDef audio_stream_randomizer_class_def = {
@@ -114,32 +113,32 @@ void define_audio_stream_randomizer_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "playback_mode"),
         JS_NewCFunction(ctx, audio_stream_randomizer_class_get_playback_mode, "get_playback_mode", 0),
-        JS_NewCFunction(ctx, audio_stream_randomizer_class_set_playback_mode, "set_playback_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_randomizer_class_set_playback_mode, "set_playback_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "random_pitch"),
         JS_NewCFunction(ctx, audio_stream_randomizer_class_get_random_pitch, "get_random_pitch", 0),
-        JS_NewCFunction(ctx, audio_stream_randomizer_class_set_random_pitch, "set_random_pitch", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_randomizer_class_set_random_pitch, "set_random_pitch", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "random_volume_offset_db"),
         JS_NewCFunction(ctx, audio_stream_randomizer_class_get_random_volume_offset_db, "get_random_volume_offset_db", 0),
-        JS_NewCFunction(ctx, audio_stream_randomizer_class_set_random_volume_offset_db, "set_random_volume_offset_db", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_randomizer_class_set_random_volume_offset_db, "set_random_volume_offset_db", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "streams_count"),
         JS_NewCFunction(ctx, audio_stream_randomizer_class_get_streams_count, "get_streams_count", 0),
-        JS_NewCFunction(ctx, audio_stream_randomizer_class_set_streams_count, "set_streams_count", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_randomizer_class_set_streams_count, "set_streams_count", 1),
+        JS_PROP_GETSET
     );
 }
 

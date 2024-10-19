@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void resource_importer_bm_font_class_finalizer(JSRuntime *rt, JSValue val) {
-	ResourceImporterBMFont *resource_importer_bm_font = static_cast<ResourceImporterBMFont *>(JS_GetOpaque(val, ResourceImporterBMFont::__class_id));
-	if (resource_importer_bm_font)
-		memdelete(resource_importer_bm_font);
+	
+	// nothing
 }
 
 static JSClassDef resource_importer_bm_font_class_def = {

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void color_picker_class_finalizer(JSRuntime *rt, JSValue val) {
-	ColorPicker *color_picker = static_cast<ColorPicker *>(JS_GetOpaque(val, ColorPicker::__class_id));
-	if (color_picker)
-		memdelete(color_picker);
+	
+	// nothing
 }
 
 static JSClassDef color_picker_class_def = {
@@ -172,88 +171,88 @@ void define_color_picker_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "color"),
         JS_NewCFunction(ctx, color_picker_class_get_pick_color, "get_pick_color", 0),
-        JS_NewCFunction(ctx, color_picker_class_set_pick_color, "set_pick_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, color_picker_class_set_pick_color, "set_pick_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "edit_alpha"),
         JS_NewCFunction(ctx, color_picker_class_is_editing_alpha, "is_editing_alpha", 0),
-        JS_NewCFunction(ctx, color_picker_class_set_edit_alpha, "set_edit_alpha", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, color_picker_class_set_edit_alpha, "set_edit_alpha", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "color_mode"),
         JS_NewCFunction(ctx, color_picker_class_get_color_mode, "get_color_mode", 0),
-        JS_NewCFunction(ctx, color_picker_class_set_color_mode, "set_color_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, color_picker_class_set_color_mode, "set_color_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "deferred_mode"),
         JS_NewCFunction(ctx, color_picker_class_is_deferred_mode, "is_deferred_mode", 0),
-        JS_NewCFunction(ctx, color_picker_class_set_deferred_mode, "set_deferred_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, color_picker_class_set_deferred_mode, "set_deferred_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "picker_shape"),
         JS_NewCFunction(ctx, color_picker_class_get_picker_shape, "get_picker_shape", 0),
-        JS_NewCFunction(ctx, color_picker_class_set_picker_shape, "set_picker_shape", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, color_picker_class_set_picker_shape, "set_picker_shape", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "can_add_swatches"),
         JS_NewCFunction(ctx, color_picker_class_are_swatches_enabled, "are_swatches_enabled", 0),
-        JS_NewCFunction(ctx, color_picker_class_set_can_add_swatches, "set_can_add_swatches", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, color_picker_class_set_can_add_swatches, "set_can_add_swatches", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sampler_visible"),
         JS_NewCFunction(ctx, color_picker_class_is_sampler_visible, "is_sampler_visible", 0),
-        JS_NewCFunction(ctx, color_picker_class_set_sampler_visible, "set_sampler_visible", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, color_picker_class_set_sampler_visible, "set_sampler_visible", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "color_modes_visible"),
         JS_NewCFunction(ctx, color_picker_class_are_modes_visible, "are_modes_visible", 0),
-        JS_NewCFunction(ctx, color_picker_class_set_modes_visible, "set_modes_visible", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, color_picker_class_set_modes_visible, "set_modes_visible", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sliders_visible"),
         JS_NewCFunction(ctx, color_picker_class_are_sliders_visible, "are_sliders_visible", 0),
-        JS_NewCFunction(ctx, color_picker_class_set_sliders_visible, "set_sliders_visible", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, color_picker_class_set_sliders_visible, "set_sliders_visible", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "hex_visible"),
         JS_NewCFunction(ctx, color_picker_class_is_hex_visible, "is_hex_visible", 0),
-        JS_NewCFunction(ctx, color_picker_class_set_hex_visible, "set_hex_visible", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, color_picker_class_set_hex_visible, "set_hex_visible", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "presets_visible"),
         JS_NewCFunction(ctx, color_picker_class_are_presets_visible, "are_presets_visible", 0),
-        JS_NewCFunction(ctx, color_picker_class_set_presets_visible, "set_presets_visible", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, color_picker_class_set_presets_visible, "set_presets_visible", 1),
+        JS_PROP_GETSET
     );
 }
 

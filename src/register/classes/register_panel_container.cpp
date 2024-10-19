@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/panel_container.hpp>
 #include <godot_cpp/classes/container.hpp>
+#include <godot_cpp/classes/panel_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void panel_container_class_finalizer(JSRuntime *rt, JSValue val) {
-	PanelContainer *panel_container = static_cast<PanelContainer *>(JS_GetOpaque(val, PanelContainer::__class_id));
-	if (panel_container)
-		memdelete(panel_container);
+	
+	// nothing
 }
 
 static JSClassDef panel_container_class_def = {

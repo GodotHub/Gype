@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event_mouse.hpp>
 #include <godot_cpp/classes/input_event_mouse_button.hpp>
+#include <godot_cpp/classes/input_event_mouse.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void input_event_mouse_button_class_finalizer(JSRuntime *rt, JSValue val) {
-	InputEventMouseButton *input_event_mouse_button = static_cast<InputEventMouseButton *>(JS_GetOpaque(val, InputEventMouseButton::__class_id));
-	if (input_event_mouse_button)
-		memdelete(input_event_mouse_button);
+	
+	// nothing
 }
 
 static JSClassDef input_event_mouse_button_class_def = {
@@ -82,40 +81,40 @@ void define_input_event_mouse_button_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "factor"),
         JS_NewCFunction(ctx, input_event_mouse_button_class_get_factor, "get_factor", 0),
-        JS_NewCFunction(ctx, input_event_mouse_button_class_set_factor, "set_factor", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_mouse_button_class_set_factor, "set_factor", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "button_index"),
         JS_NewCFunction(ctx, input_event_mouse_button_class_get_button_index, "get_button_index", 0),
-        JS_NewCFunction(ctx, input_event_mouse_button_class_set_button_index, "set_button_index", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_mouse_button_class_set_button_index, "set_button_index", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "canceled"),
         JS_UNDEFINED,
-        JS_NewCFunction(ctx, input_event_mouse_button_class_set_canceled, "set_canceled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_mouse_button_class_set_canceled, "set_canceled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "pressed"),
         JS_UNDEFINED,
-        JS_NewCFunction(ctx, input_event_mouse_button_class_set_pressed, "set_pressed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_mouse_button_class_set_pressed, "set_pressed", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "double_click"),
         JS_NewCFunction(ctx, input_event_mouse_button_class_is_double_click, "is_double_click", 0),
-        JS_NewCFunction(ctx, input_event_mouse_button_class_set_double_click, "set_double_click", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_mouse_button_class_set_double_click, "set_double_click", 1),
+        JS_PROP_GETSET
     );
 }
 

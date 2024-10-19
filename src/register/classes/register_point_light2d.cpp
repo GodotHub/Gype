@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/light2d.hpp>
 #include <godot_cpp/classes/point_light2d.hpp>
+#include <godot_cpp/classes/light2d.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void point_light2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	PointLight2D *point_light2d = static_cast<PointLight2D *>(JS_GetOpaque(val, PointLight2D::__class_id));
-	if (point_light2d)
-		memdelete(point_light2d);
+	
+	// nothing
 }
 
 static JSClassDef point_light2d_class_def = {
@@ -73,24 +72,24 @@ void define_point_light2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "texture"),
         JS_NewCFunction(ctx, point_light2d_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, point_light2d_class_set_texture, "set_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, point_light2d_class_set_texture, "set_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "offset"),
         JS_NewCFunction(ctx, point_light2d_class_get_texture_offset, "get_texture_offset", 0),
-        JS_NewCFunction(ctx, point_light2d_class_set_texture_offset, "set_texture_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, point_light2d_class_set_texture_offset, "set_texture_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_scale"),
         JS_NewCFunction(ctx, point_light2d_class_get_texture_scale, "get_texture_scale", 0),
-        JS_NewCFunction(ctx, point_light2d_class_set_texture_scale, "set_texture_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, point_light2d_class_set_texture_scale, "set_texture_scale", 1),
+        JS_PROP_GETSET
     );
 }
 

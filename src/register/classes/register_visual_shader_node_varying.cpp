@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_varying_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeVarying *visual_shader_node_varying = static_cast<VisualShaderNodeVarying *>(JS_GetOpaque(val, VisualShaderNodeVarying::__class_id));
-	if (visual_shader_node_varying)
-		memdelete(visual_shader_node_varying);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_varying_class_def = {
@@ -63,16 +62,16 @@ void define_visual_shader_node_varying_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "varying_name"),
         JS_NewCFunction(ctx, visual_shader_node_varying_class_get_varying_name, "get_varying_name", 0),
-        JS_NewCFunction(ctx, visual_shader_node_varying_class_set_varying_name, "set_varying_name", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_varying_class_set_varying_name, "set_varying_name", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "varying_type"),
         JS_NewCFunction(ctx, visual_shader_node_varying_class_get_varying_type, "get_varying_type", 0),
-        JS_NewCFunction(ctx, visual_shader_node_varying_class_set_varying_type, "set_varying_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_varying_class_set_varying_type, "set_varying_type", 1),
+        JS_PROP_GETSET
     );
 }
 

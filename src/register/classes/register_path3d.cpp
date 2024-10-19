@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/curve3d.hpp>
 #include <godot_cpp/classes/path3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/curve3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void path3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	Path3D *path3d = static_cast<Path3D *>(JS_GetOpaque(val, Path3D::__class_id));
-	if (path3d)
-		memdelete(path3d);
+	
+	// nothing
 }
 
 static JSClassDef path3d_class_def = {
@@ -55,8 +54,8 @@ void define_path3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "curve"),
         JS_NewCFunction(ctx, path3d_class_get_curve, "get_curve", 0),
-        JS_NewCFunction(ctx, path3d_class_set_curve, "set_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, path3d_class_set_curve, "set_curve", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/sprite2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void sprite2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	Sprite2D *sprite2d = static_cast<Sprite2D *>(JS_GetOpaque(val, Sprite2D::__class_id));
-	if (sprite2d)
-		memdelete(sprite2d);
+	
+	// nothing
 }
 
 static JSClassDef sprite2d_class_def = {
@@ -162,96 +161,96 @@ void define_sprite2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "texture"),
         JS_NewCFunction(ctx, sprite2d_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, sprite2d_class_set_texture, "set_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite2d_class_set_texture, "set_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "centered"),
         JS_NewCFunction(ctx, sprite2d_class_is_centered, "is_centered", 0),
-        JS_NewCFunction(ctx, sprite2d_class_set_centered, "set_centered", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite2d_class_set_centered, "set_centered", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "offset"),
         JS_NewCFunction(ctx, sprite2d_class_get_offset, "get_offset", 0),
-        JS_NewCFunction(ctx, sprite2d_class_set_offset, "set_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite2d_class_set_offset, "set_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "flip_h"),
         JS_NewCFunction(ctx, sprite2d_class_is_flipped_h, "is_flipped_h", 0),
-        JS_NewCFunction(ctx, sprite2d_class_set_flip_h, "set_flip_h", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite2d_class_set_flip_h, "set_flip_h", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "flip_v"),
         JS_NewCFunction(ctx, sprite2d_class_is_flipped_v, "is_flipped_v", 0),
-        JS_NewCFunction(ctx, sprite2d_class_set_flip_v, "set_flip_v", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite2d_class_set_flip_v, "set_flip_v", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "hframes"),
         JS_NewCFunction(ctx, sprite2d_class_get_hframes, "get_hframes", 0),
-        JS_NewCFunction(ctx, sprite2d_class_set_hframes, "set_hframes", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite2d_class_set_hframes, "set_hframes", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "vframes"),
         JS_NewCFunction(ctx, sprite2d_class_get_vframes, "get_vframes", 0),
-        JS_NewCFunction(ctx, sprite2d_class_set_vframes, "set_vframes", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite2d_class_set_vframes, "set_vframes", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "frame"),
         JS_NewCFunction(ctx, sprite2d_class_get_frame, "get_frame", 0),
-        JS_NewCFunction(ctx, sprite2d_class_set_frame, "set_frame", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite2d_class_set_frame, "set_frame", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "frame_coords"),
         JS_NewCFunction(ctx, sprite2d_class_get_frame_coords, "get_frame_coords", 0),
-        JS_NewCFunction(ctx, sprite2d_class_set_frame_coords, "set_frame_coords", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite2d_class_set_frame_coords, "set_frame_coords", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "region_enabled"),
         JS_NewCFunction(ctx, sprite2d_class_is_region_enabled, "is_region_enabled", 0),
-        JS_NewCFunction(ctx, sprite2d_class_set_region_enabled, "set_region_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite2d_class_set_region_enabled, "set_region_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "region_rect"),
         JS_NewCFunction(ctx, sprite2d_class_get_region_rect, "get_region_rect", 0),
-        JS_NewCFunction(ctx, sprite2d_class_set_region_rect, "set_region_rect", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite2d_class_set_region_rect, "set_region_rect", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "region_filter_clip_enabled"),
         JS_NewCFunction(ctx, sprite2d_class_is_region_filter_clip_enabled, "is_region_filter_clip_enabled", 0),
-        JS_NewCFunction(ctx, sprite2d_class_set_region_filter_clip_enabled, "set_region_filter_clip_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite2d_class_set_region_filter_clip_enabled, "set_region_filter_clip_enabled", 1),
+        JS_PROP_GETSET
     );
 }
 

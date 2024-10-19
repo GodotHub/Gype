@@ -8,8 +8,8 @@
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/navigation_mesh_generator.hpp>
 #include <godot_cpp/classes/navigation_mesh_source_geometry_data3d.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/navigation_mesh.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
@@ -19,9 +19,8 @@ static JSValue navigation_mesh_generator_instance;
 static void js_navigation_mesh_generator_singleton();
 
 static void navigation_mesh_generator_class_finalizer(JSRuntime *rt, JSValue val) {
-	NavigationMeshGenerator *navigation_mesh_generator = static_cast<NavigationMeshGenerator *>(JS_GetOpaque(val, NavigationMeshGenerator::__class_id));
-	if (navigation_mesh_generator)
-		NavigationMeshGenerator::free(nullptr, navigation_mesh_generator);
+	
+	// nothing
 }
 
 static JSClassDef navigation_mesh_generator_class_def = {

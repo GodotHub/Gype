@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/popup_menu.hpp>
+#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/menu_button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void menu_button_class_finalizer(JSRuntime *rt, JSValue val) {
-	MenuButton *menu_button = static_cast<MenuButton *>(JS_GetOpaque(val, MenuButton::__class_id));
-	if (menu_button)
-		memdelete(menu_button);
+	
+	// nothing
 }
 
 static JSClassDef menu_button_class_def = {
@@ -78,16 +77,16 @@ void define_menu_button_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "switch_on_hover"),
         JS_NewCFunction(ctx, menu_button_class_is_switch_on_hover, "is_switch_on_hover", 0),
-        JS_NewCFunction(ctx, menu_button_class_set_switch_on_hover, "set_switch_on_hover", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, menu_button_class_set_switch_on_hover, "set_switch_on_hover", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "item_count"),
         JS_NewCFunction(ctx, menu_button_class_get_item_count, "get_item_count", 0),
-        JS_NewCFunction(ctx, menu_button_class_set_item_count, "set_item_count", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, menu_button_class_set_item_count, "set_item_count", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/classes/xr_controller_tracker.hpp>
 #include <godot_cpp/classes/web_xr_interface.hpp>
-#include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void web_xr_interface_class_finalizer(JSRuntime *rt, JSValue val) {
-	WebXRInterface *web_xr_interface = static_cast<WebXRInterface *>(JS_GetOpaque(val, WebXRInterface::__class_id));
-	if (web_xr_interface)
-		memdelete(web_xr_interface);
+	
+	// nothing
 }
 
 static JSClassDef web_xr_interface_class_def = {
@@ -124,32 +123,32 @@ void define_web_xr_interface_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "session_mode"),
         JS_NewCFunction(ctx, web_xr_interface_class_get_session_mode, "get_session_mode", 0),
-        JS_NewCFunction(ctx, web_xr_interface_class_set_session_mode, "set_session_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, web_xr_interface_class_set_session_mode, "set_session_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "required_features"),
         JS_NewCFunction(ctx, web_xr_interface_class_get_required_features, "get_required_features", 0),
-        JS_NewCFunction(ctx, web_xr_interface_class_set_required_features, "set_required_features", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, web_xr_interface_class_set_required_features, "set_required_features", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "optional_features"),
         JS_NewCFunction(ctx, web_xr_interface_class_get_optional_features, "get_optional_features", 0),
-        JS_NewCFunction(ctx, web_xr_interface_class_set_optional_features, "set_optional_features", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, web_xr_interface_class_set_optional_features, "set_optional_features", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "requested_reference_space_types"),
         JS_NewCFunction(ctx, web_xr_interface_class_get_requested_reference_space_types, "get_requested_reference_space_types", 0),
-        JS_NewCFunction(ctx, web_xr_interface_class_set_requested_reference_space_types, "set_requested_reference_space_types", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, web_xr_interface_class_set_requested_reference_space_types, "set_requested_reference_space_types", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -157,7 +156,7 @@ void define_web_xr_interface_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "reference_space_type"),
         JS_NewCFunction(ctx, web_xr_interface_class_get_reference_space_type, "get_reference_space_type", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -165,7 +164,7 @@ void define_web_xr_interface_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "enabled_features"),
         JS_NewCFunction(ctx, web_xr_interface_class_get_enabled_features, "get_enabled_features", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -173,7 +172,7 @@ void define_web_xr_interface_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "visibility_state"),
         JS_NewCFunction(ctx, web_xr_interface_class_get_visibility_state, "get_visibility_state", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
 }
 

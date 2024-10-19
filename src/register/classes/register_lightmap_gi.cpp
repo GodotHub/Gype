@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/camera_attributes.hpp>
-#include <godot_cpp/classes/lightmap_gi.hpp>
-#include <godot_cpp/classes/sky.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/classes/lightmap_gi.hpp>
+#include <godot_cpp/classes/camera_attributes.hpp>
+#include <godot_cpp/classes/sky.hpp>
 #include <godot_cpp/classes/lightmap_gi_data.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -16,9 +16,8 @@
 using namespace godot;
 
 static void lightmap_gi_class_finalizer(JSRuntime *rt, JSValue val) {
-	LightmapGI *lightmap_gi = static_cast<LightmapGI *>(JS_GetOpaque(val, LightmapGI::__class_id));
-	if (lightmap_gi)
-		memdelete(lightmap_gi);
+	
+	// nothing
 }
 
 static JSClassDef lightmap_gi_class_def = {
@@ -219,152 +218,152 @@ void define_lightmap_gi_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "quality"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_bake_quality, "get_bake_quality", 0),
-        JS_NewCFunction(ctx, lightmap_gi_class_set_bake_quality, "set_bake_quality", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, lightmap_gi_class_set_bake_quality, "set_bake_quality", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bounces"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_bounces, "get_bounces", 0),
-        JS_NewCFunction(ctx, lightmap_gi_class_set_bounces, "set_bounces", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, lightmap_gi_class_set_bounces, "set_bounces", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bounce_indirect_energy"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_bounce_indirect_energy, "get_bounce_indirect_energy", 0),
-        JS_NewCFunction(ctx, lightmap_gi_class_set_bounce_indirect_energy, "set_bounce_indirect_energy", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, lightmap_gi_class_set_bounce_indirect_energy, "set_bounce_indirect_energy", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "directional"),
         JS_NewCFunction(ctx, lightmap_gi_class_is_directional, "is_directional", 0),
-        JS_NewCFunction(ctx, lightmap_gi_class_set_directional, "set_directional", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, lightmap_gi_class_set_directional, "set_directional", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_texture_for_bounces"),
         JS_NewCFunction(ctx, lightmap_gi_class_is_using_texture_for_bounces, "is_using_texture_for_bounces", 0),
-        JS_NewCFunction(ctx, lightmap_gi_class_set_use_texture_for_bounces, "set_use_texture_for_bounces", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, lightmap_gi_class_set_use_texture_for_bounces, "set_use_texture_for_bounces", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "interior"),
         JS_NewCFunction(ctx, lightmap_gi_class_is_interior, "is_interior", 0),
-        JS_NewCFunction(ctx, lightmap_gi_class_set_interior, "set_interior", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, lightmap_gi_class_set_interior, "set_interior", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_denoiser"),
         JS_NewCFunction(ctx, lightmap_gi_class_is_using_denoiser, "is_using_denoiser", 0),
-        JS_NewCFunction(ctx, lightmap_gi_class_set_use_denoiser, "set_use_denoiser", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, lightmap_gi_class_set_use_denoiser, "set_use_denoiser", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "denoiser_strength"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_denoiser_strength, "get_denoiser_strength", 0),
-        JS_NewCFunction(ctx, lightmap_gi_class_set_denoiser_strength, "set_denoiser_strength", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, lightmap_gi_class_set_denoiser_strength, "set_denoiser_strength", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "denoiser_range"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_denoiser_range, "get_denoiser_range", 0),
-        JS_NewCFunction(ctx, lightmap_gi_class_set_denoiser_range, "set_denoiser_range", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, lightmap_gi_class_set_denoiser_range, "set_denoiser_range", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bias"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_bias, "get_bias", 0),
-        JS_NewCFunction(ctx, lightmap_gi_class_set_bias, "set_bias", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, lightmap_gi_class_set_bias, "set_bias", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texel_scale"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_texel_scale, "get_texel_scale", 0),
-        JS_NewCFunction(ctx, lightmap_gi_class_set_texel_scale, "set_texel_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, lightmap_gi_class_set_texel_scale, "set_texel_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "max_texture_size"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_max_texture_size, "get_max_texture_size", 0),
-        JS_NewCFunction(ctx, lightmap_gi_class_set_max_texture_size, "set_max_texture_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, lightmap_gi_class_set_max_texture_size, "set_max_texture_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "environment_mode"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_environment_mode, "get_environment_mode", 0),
-        JS_NewCFunction(ctx, lightmap_gi_class_set_environment_mode, "set_environment_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, lightmap_gi_class_set_environment_mode, "set_environment_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "environment_custom_sky"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_environment_custom_sky, "get_environment_custom_sky", 0),
-        JS_NewCFunction(ctx, lightmap_gi_class_set_environment_custom_sky, "set_environment_custom_sky", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, lightmap_gi_class_set_environment_custom_sky, "set_environment_custom_sky", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "environment_custom_color"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_environment_custom_color, "get_environment_custom_color", 0),
-        JS_NewCFunction(ctx, lightmap_gi_class_set_environment_custom_color, "set_environment_custom_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, lightmap_gi_class_set_environment_custom_color, "set_environment_custom_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "environment_custom_energy"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_environment_custom_energy, "get_environment_custom_energy", 0),
-        JS_NewCFunction(ctx, lightmap_gi_class_set_environment_custom_energy, "set_environment_custom_energy", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, lightmap_gi_class_set_environment_custom_energy, "set_environment_custom_energy", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "camera_attributes"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_camera_attributes, "get_camera_attributes", 0),
-        JS_NewCFunction(ctx, lightmap_gi_class_set_camera_attributes, "set_camera_attributes", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, lightmap_gi_class_set_camera_attributes, "set_camera_attributes", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "generate_probes_subdiv"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_generate_probes, "get_generate_probes", 0),
-        JS_NewCFunction(ctx, lightmap_gi_class_set_generate_probes, "set_generate_probes", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, lightmap_gi_class_set_generate_probes, "set_generate_probes", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "light_data"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_light_data, "get_light_data", 0),
-        JS_NewCFunction(ctx, lightmap_gi_class_set_light_data, "set_light_data", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, lightmap_gi_class_set_light_data, "set_light_data", 1),
+        JS_PROP_GETSET
     );
 }
 

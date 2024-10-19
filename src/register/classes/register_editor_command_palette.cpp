@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void editor_command_palette_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorCommandPalette *editor_command_palette = static_cast<EditorCommandPalette *>(JS_GetOpaque(val, EditorCommandPalette::__class_id));
-	if (editor_command_palette)
-		memdelete(editor_command_palette);
+	
+	// nothing
 }
 
 static JSClassDef editor_command_palette_class_def = {

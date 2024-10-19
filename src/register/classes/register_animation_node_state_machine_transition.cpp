@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/classes/animation_node_state_machine_transition.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void animation_node_state_machine_transition_class_finalizer(JSRuntime *rt, JSValue val) {
-	AnimationNodeStateMachineTransition *animation_node_state_machine_transition = static_cast<AnimationNodeStateMachineTransition *>(JS_GetOpaque(val, AnimationNodeStateMachineTransition::__class_id));
-	if (animation_node_state_machine_transition)
-		memdelete(animation_node_state_machine_transition);
+	
+	// nothing
 }
 
 static JSClassDef animation_node_state_machine_transition_class_def = {
@@ -127,72 +126,72 @@ void define_animation_node_state_machine_transition_property(JSContext *ctx, JSV
         obj,
         JS_NewAtom(ctx, "xfade_time"),
         JS_NewCFunction(ctx, animation_node_state_machine_transition_class_get_xfade_time, "get_xfade_time", 0),
-        JS_NewCFunction(ctx, animation_node_state_machine_transition_class_set_xfade_time, "set_xfade_time", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_state_machine_transition_class_set_xfade_time, "set_xfade_time", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "xfade_curve"),
         JS_NewCFunction(ctx, animation_node_state_machine_transition_class_get_xfade_curve, "get_xfade_curve", 0),
-        JS_NewCFunction(ctx, animation_node_state_machine_transition_class_set_xfade_curve, "set_xfade_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_state_machine_transition_class_set_xfade_curve, "set_xfade_curve", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "break_loop_at_end"),
         JS_NewCFunction(ctx, animation_node_state_machine_transition_class_is_loop_broken_at_end, "is_loop_broken_at_end", 0),
-        JS_NewCFunction(ctx, animation_node_state_machine_transition_class_set_break_loop_at_end, "set_break_loop_at_end", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_state_machine_transition_class_set_break_loop_at_end, "set_break_loop_at_end", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "reset"),
         JS_NewCFunction(ctx, animation_node_state_machine_transition_class_is_reset, "is_reset", 0),
-        JS_NewCFunction(ctx, animation_node_state_machine_transition_class_set_reset, "set_reset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_state_machine_transition_class_set_reset, "set_reset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "priority"),
         JS_NewCFunction(ctx, animation_node_state_machine_transition_class_get_priority, "get_priority", 0),
-        JS_NewCFunction(ctx, animation_node_state_machine_transition_class_set_priority, "set_priority", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_state_machine_transition_class_set_priority, "set_priority", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "switch_mode"),
         JS_NewCFunction(ctx, animation_node_state_machine_transition_class_get_switch_mode, "get_switch_mode", 0),
-        JS_NewCFunction(ctx, animation_node_state_machine_transition_class_set_switch_mode, "set_switch_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_state_machine_transition_class_set_switch_mode, "set_switch_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "advance_mode"),
         JS_NewCFunction(ctx, animation_node_state_machine_transition_class_get_advance_mode, "get_advance_mode", 0),
-        JS_NewCFunction(ctx, animation_node_state_machine_transition_class_set_advance_mode, "set_advance_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_state_machine_transition_class_set_advance_mode, "set_advance_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "advance_condition"),
         JS_NewCFunction(ctx, animation_node_state_machine_transition_class_get_advance_condition, "get_advance_condition", 0),
-        JS_NewCFunction(ctx, animation_node_state_machine_transition_class_set_advance_condition, "set_advance_condition", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_state_machine_transition_class_set_advance_condition, "set_advance_condition", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "advance_expression"),
         JS_NewCFunction(ctx, animation_node_state_machine_transition_class_get_advance_expression, "get_advance_expression", 0),
-        JS_NewCFunction(ctx, animation_node_state_machine_transition_class_set_advance_expression, "set_advance_expression", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_state_machine_transition_class_set_advance_expression, "set_advance_expression", 1),
+        JS_PROP_GETSET
     );
 }
 

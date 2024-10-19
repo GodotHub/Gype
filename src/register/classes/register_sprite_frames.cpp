@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void sprite_frames_class_finalizer(JSRuntime *rt, JSValue val) {
-	SpriteFrames *sprite_frames = static_cast<SpriteFrames *>(JS_GetOpaque(val, SpriteFrames::__class_id));
-	if (sprite_frames)
-		memdelete(sprite_frames);
+	
+	// nothing
 }
 
 static JSClassDef sprite_frames_class_def = {

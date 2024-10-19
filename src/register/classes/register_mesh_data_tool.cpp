@@ -5,19 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/mesh_data_tool.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/array_mesh.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void mesh_data_tool_class_finalizer(JSRuntime *rt, JSValue val) {
-	MeshDataTool *mesh_data_tool = static_cast<MeshDataTool *>(JS_GetOpaque(val, MeshDataTool::__class_id));
-	if (mesh_data_tool)
-		memdelete(mesh_data_tool);
+	
+	// nothing
 }
 
 static JSClassDef mesh_data_tool_class_def = {

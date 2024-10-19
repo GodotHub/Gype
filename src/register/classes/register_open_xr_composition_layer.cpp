@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/sub_viewport.hpp>
 #include <godot_cpp/classes/open_xr_composition_layer.hpp>
 #include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/sub_viewport.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void open_xr_composition_layer_class_finalizer(JSRuntime *rt, JSValue val) {
-	OpenXRCompositionLayer *open_xr_composition_layer = static_cast<OpenXRCompositionLayer *>(JS_GetOpaque(val, OpenXRCompositionLayer::__class_id));
-	if (open_xr_composition_layer)
-		memdelete(open_xr_composition_layer);
+	
+	// nothing
 }
 
 static JSClassDef open_xr_composition_layer_class_def = {
@@ -90,32 +89,32 @@ void define_open_xr_composition_layer_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "layer_viewport"),
         JS_NewCFunction(ctx, open_xr_composition_layer_class_get_layer_viewport, "get_layer_viewport", 0),
-        JS_NewCFunction(ctx, open_xr_composition_layer_class_set_layer_viewport, "set_layer_viewport", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_composition_layer_class_set_layer_viewport, "set_layer_viewport", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sort_order"),
         JS_NewCFunction(ctx, open_xr_composition_layer_class_get_sort_order, "get_sort_order", 0),
-        JS_NewCFunction(ctx, open_xr_composition_layer_class_set_sort_order, "set_sort_order", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_composition_layer_class_set_sort_order, "set_sort_order", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "alpha_blend"),
         JS_NewCFunction(ctx, open_xr_composition_layer_class_get_alpha_blend, "get_alpha_blend", 0),
-        JS_NewCFunction(ctx, open_xr_composition_layer_class_set_alpha_blend, "set_alpha_blend", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_composition_layer_class_set_alpha_blend, "set_alpha_blend", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "enable_hole_punch"),
         JS_NewCFunction(ctx, open_xr_composition_layer_class_get_enable_hole_punch, "get_enable_hole_punch", 0),
-        JS_NewCFunction(ctx, open_xr_composition_layer_class_set_enable_hole_punch, "set_enable_hole_punch", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_composition_layer_class_set_enable_hole_punch, "set_enable_hole_punch", 1),
+        JS_PROP_GETSET
     );
 }
 

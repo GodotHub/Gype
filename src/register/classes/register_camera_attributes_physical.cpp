@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void camera_attributes_physical_class_finalizer(JSRuntime *rt, JSValue val) {
-	CameraAttributesPhysical *camera_attributes_physical = static_cast<CameraAttributesPhysical *>(JS_GetOpaque(val, CameraAttributesPhysical::__class_id));
-	if (camera_attributes_physical)
-		memdelete(camera_attributes_physical);
+	
+	// nothing
 }
 
 static JSClassDef camera_attributes_physical_class_def = {
@@ -121,64 +120,64 @@ void define_camera_attributes_physical_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "frustum_focus_distance"),
         JS_NewCFunction(ctx, camera_attributes_physical_class_get_focus_distance, "get_focus_distance", 0),
-        JS_NewCFunction(ctx, camera_attributes_physical_class_set_focus_distance, "set_focus_distance", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera_attributes_physical_class_set_focus_distance, "set_focus_distance", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "frustum_focal_length"),
         JS_NewCFunction(ctx, camera_attributes_physical_class_get_focal_length, "get_focal_length", 0),
-        JS_NewCFunction(ctx, camera_attributes_physical_class_set_focal_length, "set_focal_length", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera_attributes_physical_class_set_focal_length, "set_focal_length", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "frustum_near"),
         JS_NewCFunction(ctx, camera_attributes_physical_class_get_near, "get_near", 0),
-        JS_NewCFunction(ctx, camera_attributes_physical_class_set_near, "set_near", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera_attributes_physical_class_set_near, "set_near", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "frustum_far"),
         JS_NewCFunction(ctx, camera_attributes_physical_class_get_far, "get_far", 0),
-        JS_NewCFunction(ctx, camera_attributes_physical_class_set_far, "set_far", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera_attributes_physical_class_set_far, "set_far", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "exposure_aperture"),
         JS_NewCFunction(ctx, camera_attributes_physical_class_get_aperture, "get_aperture", 0),
-        JS_NewCFunction(ctx, camera_attributes_physical_class_set_aperture, "set_aperture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera_attributes_physical_class_set_aperture, "set_aperture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "exposure_shutter_speed"),
         JS_NewCFunction(ctx, camera_attributes_physical_class_get_shutter_speed, "get_shutter_speed", 0),
-        JS_NewCFunction(ctx, camera_attributes_physical_class_set_shutter_speed, "set_shutter_speed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera_attributes_physical_class_set_shutter_speed, "set_shutter_speed", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "auto_exposure_min_exposure_value"),
         JS_NewCFunction(ctx, camera_attributes_physical_class_get_auto_exposure_min_exposure_value, "get_auto_exposure_min_exposure_value", 0),
-        JS_NewCFunction(ctx, camera_attributes_physical_class_set_auto_exposure_min_exposure_value, "set_auto_exposure_min_exposure_value", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera_attributes_physical_class_set_auto_exposure_min_exposure_value, "set_auto_exposure_min_exposure_value", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "auto_exposure_max_exposure_value"),
         JS_NewCFunction(ctx, camera_attributes_physical_class_get_auto_exposure_max_exposure_value, "get_auto_exposure_max_exposure_value", 0),
-        JS_NewCFunction(ctx, camera_attributes_physical_class_set_auto_exposure_max_exposure_value, "set_auto_exposure_max_exposure_value", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera_attributes_physical_class_set_auto_exposure_max_exposure_value, "set_auto_exposure_max_exposure_value", 1),
+        JS_PROP_GETSET
     );
 }
 

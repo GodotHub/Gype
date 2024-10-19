@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/open_xr_action.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/open_xr_action.hpp>
 #include <godot_cpp/classes/open_xrip_binding.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void open_xrip_binding_class_finalizer(JSRuntime *rt, JSValue val) {
-	OpenXRIPBinding *open_xrip_binding = static_cast<OpenXRIPBinding *>(JS_GetOpaque(val, OpenXRIPBinding::__class_id));
-	if (open_xrip_binding)
-		memdelete(open_xrip_binding);
+	
+	// nothing
 }
 
 static JSClassDef open_xrip_binding_class_def = {
@@ -82,16 +81,16 @@ void define_open_xrip_binding_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "action"),
         JS_NewCFunction(ctx, open_xrip_binding_class_get_action, "get_action", 0),
-        JS_NewCFunction(ctx, open_xrip_binding_class_set_action, "set_action", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xrip_binding_class_set_action, "set_action", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "paths"),
         JS_NewCFunction(ctx, open_xrip_binding_class_get_paths, "get_paths", 0),
-        JS_NewCFunction(ctx, open_xrip_binding_class_set_paths, "set_paths", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xrip_binding_class_set_paths, "set_paths", 1),
+        JS_PROP_GETSET
     );
 }
 

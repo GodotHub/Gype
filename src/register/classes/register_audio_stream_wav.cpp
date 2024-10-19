@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void audio_stream_wav_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioStreamWAV *audio_stream_wav = static_cast<AudioStreamWAV *>(JS_GetOpaque(val, AudioStreamWAV::__class_id));
-	if (audio_stream_wav)
-		memdelete(audio_stream_wav);
+	
+	// nothing
 }
 
 static JSClassDef audio_stream_wav_class_def = {
@@ -112,56 +111,56 @@ void define_audio_stream_wav_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "data"),
         JS_NewCFunction(ctx, audio_stream_wav_class_get_data, "get_data", 0),
-        JS_NewCFunction(ctx, audio_stream_wav_class_set_data, "set_data", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_wav_class_set_data, "set_data", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "format"),
         JS_NewCFunction(ctx, audio_stream_wav_class_get_format, "get_format", 0),
-        JS_NewCFunction(ctx, audio_stream_wav_class_set_format, "set_format", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_wav_class_set_format, "set_format", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "loop_mode"),
         JS_NewCFunction(ctx, audio_stream_wav_class_get_loop_mode, "get_loop_mode", 0),
-        JS_NewCFunction(ctx, audio_stream_wav_class_set_loop_mode, "set_loop_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_wav_class_set_loop_mode, "set_loop_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "loop_begin"),
         JS_NewCFunction(ctx, audio_stream_wav_class_get_loop_begin, "get_loop_begin", 0),
-        JS_NewCFunction(ctx, audio_stream_wav_class_set_loop_begin, "set_loop_begin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_wav_class_set_loop_begin, "set_loop_begin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "loop_end"),
         JS_NewCFunction(ctx, audio_stream_wav_class_get_loop_end, "get_loop_end", 0),
-        JS_NewCFunction(ctx, audio_stream_wav_class_set_loop_end, "set_loop_end", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_wav_class_set_loop_end, "set_loop_end", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "mix_rate"),
         JS_NewCFunction(ctx, audio_stream_wav_class_get_mix_rate, "get_mix_rate", 0),
-        JS_NewCFunction(ctx, audio_stream_wav_class_set_mix_rate, "set_mix_rate", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_wav_class_set_mix_rate, "set_mix_rate", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "stereo"),
         JS_NewCFunction(ctx, audio_stream_wav_class_is_stereo, "is_stereo", 0),
-        JS_NewCFunction(ctx, audio_stream_wav_class_set_stereo, "set_stereo", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_wav_class_set_stereo, "set_stereo", 1),
+        JS_PROP_GETSET
     );
 }
 

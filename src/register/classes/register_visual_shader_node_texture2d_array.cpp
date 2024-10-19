@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void visual_shader_node_texture2d_array_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeTexture2DArray *visual_shader_node_texture2d_array = static_cast<VisualShaderNodeTexture2DArray *>(JS_GetOpaque(val, VisualShaderNodeTexture2DArray::__class_id));
-	if (visual_shader_node_texture2d_array)
-		memdelete(visual_shader_node_texture2d_array);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_texture2d_array_class_def = {
@@ -55,8 +54,8 @@ void define_visual_shader_node_texture2d_array_property(JSContext *ctx, JSValue 
         obj,
         JS_NewAtom(ctx, "texture_array"),
         JS_NewCFunction(ctx, visual_shader_node_texture2d_array_class_get_texture_array, "get_texture_array", 0),
-        JS_NewCFunction(ctx, visual_shader_node_texture2d_array_class_set_texture_array, "set_texture_array", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_texture2d_array_class_set_texture_array, "set_texture_array", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void input_event_joypad_button_class_finalizer(JSRuntime *rt, JSValue val) {
-	InputEventJoypadButton *input_event_joypad_button = static_cast<InputEventJoypadButton *>(JS_GetOpaque(val, InputEventJoypadButton::__class_id));
-	if (input_event_joypad_button)
-		memdelete(input_event_joypad_button);
+	
+	// nothing
 }
 
 static JSClassDef input_event_joypad_button_class_def = {
@@ -68,24 +67,24 @@ void define_input_event_joypad_button_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "button_index"),
         JS_NewCFunction(ctx, input_event_joypad_button_class_get_button_index, "get_button_index", 0),
-        JS_NewCFunction(ctx, input_event_joypad_button_class_set_button_index, "set_button_index", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_joypad_button_class_set_button_index, "set_button_index", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "pressure"),
         JS_NewCFunction(ctx, input_event_joypad_button_class_get_pressure, "get_pressure", 0),
-        JS_NewCFunction(ctx, input_event_joypad_button_class_set_pressure, "set_pressure", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_joypad_button_class_set_pressure, "set_pressure", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "pressed"),
         JS_UNDEFINED,
-        JS_NewCFunction(ctx, input_event_joypad_button_class_set_pressed, "set_pressed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_joypad_button_class_set_pressed, "set_pressed", 1),
+        JS_PROP_GETSET
     );
 }
 

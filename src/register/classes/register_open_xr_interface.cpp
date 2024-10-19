@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void open_xr_interface_class_finalizer(JSRuntime *rt, JSValue val) {
-	OpenXRInterface *open_xr_interface = static_cast<OpenXRInterface *>(JS_GetOpaque(val, OpenXRInterface::__class_id));
-	if (open_xr_interface)
-		memdelete(open_xr_interface);
+	
+	// nothing
 }
 
 static JSClassDef open_xr_interface_class_def = {
@@ -169,48 +168,48 @@ void define_open_xr_interface_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "display_refresh_rate"),
         JS_NewCFunction(ctx, open_xr_interface_class_get_display_refresh_rate, "get_display_refresh_rate", 0),
-        JS_NewCFunction(ctx, open_xr_interface_class_set_display_refresh_rate, "set_display_refresh_rate", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_interface_class_set_display_refresh_rate, "set_display_refresh_rate", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "render_target_size_multiplier"),
         JS_NewCFunction(ctx, open_xr_interface_class_get_render_target_size_multiplier, "get_render_target_size_multiplier", 0),
-        JS_NewCFunction(ctx, open_xr_interface_class_set_render_target_size_multiplier, "set_render_target_size_multiplier", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_interface_class_set_render_target_size_multiplier, "set_render_target_size_multiplier", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "foveation_level"),
         JS_NewCFunction(ctx, open_xr_interface_class_get_foveation_level, "get_foveation_level", 0),
-        JS_NewCFunction(ctx, open_xr_interface_class_set_foveation_level, "set_foveation_level", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_interface_class_set_foveation_level, "set_foveation_level", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "foveation_dynamic"),
         JS_NewCFunction(ctx, open_xr_interface_class_get_foveation_dynamic, "get_foveation_dynamic", 0),
-        JS_NewCFunction(ctx, open_xr_interface_class_set_foveation_dynamic, "set_foveation_dynamic", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_interface_class_set_foveation_dynamic, "set_foveation_dynamic", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "vrs_min_radius"),
         JS_NewCFunction(ctx, open_xr_interface_class_get_vrs_min_radius, "get_vrs_min_radius", 0),
-        JS_NewCFunction(ctx, open_xr_interface_class_set_vrs_min_radius, "set_vrs_min_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_interface_class_set_vrs_min_radius, "set_vrs_min_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "vrs_strength"),
         JS_NewCFunction(ctx, open_xr_interface_class_get_vrs_strength, "get_vrs_strength", 0),
-        JS_NewCFunction(ctx, open_xr_interface_class_set_vrs_strength, "set_vrs_strength", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_interface_class_set_vrs_strength, "set_vrs_strength", 1),
+        JS_PROP_GETSET
     );
 }
 

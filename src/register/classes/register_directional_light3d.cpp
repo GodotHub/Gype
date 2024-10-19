@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/directional_light3d.hpp>
 #include <godot_cpp/classes/light3d.hpp>
+#include <godot_cpp/classes/directional_light3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void directional_light3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	DirectionalLight3D *directional_light3d = static_cast<DirectionalLight3D *>(JS_GetOpaque(val, DirectionalLight3D::__class_id));
-	if (directional_light3d)
-		memdelete(directional_light3d);
+	
+	// nothing
 }
 
 static JSClassDef directional_light3d_class_def = {
@@ -72,24 +71,24 @@ void define_directional_light3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "directional_shadow_mode"),
         JS_NewCFunction(ctx, directional_light3d_class_get_shadow_mode, "get_shadow_mode", 0),
-        JS_NewCFunction(ctx, directional_light3d_class_set_shadow_mode, "set_shadow_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, directional_light3d_class_set_shadow_mode, "set_shadow_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "directional_shadow_blend_splits"),
         JS_NewCFunction(ctx, directional_light3d_class_is_blend_splits_enabled, "is_blend_splits_enabled", 0),
-        JS_NewCFunction(ctx, directional_light3d_class_set_blend_splits, "set_blend_splits", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, directional_light3d_class_set_blend_splits, "set_blend_splits", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sky_mode"),
         JS_NewCFunction(ctx, directional_light3d_class_get_sky_mode, "get_sky_mode", 0),
-        JS_NewCFunction(ctx, directional_light3d_class_set_sky_mode, "set_sky_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, directional_light3d_class_set_sky_mode, "set_sky_mode", 1),
+        JS_PROP_GETSET
     );
 }
 

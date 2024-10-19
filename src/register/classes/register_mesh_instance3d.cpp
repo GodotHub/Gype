@@ -5,23 +5,22 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/mesh_instance3d.hpp>
-#include <godot_cpp/classes/skin.hpp>
-#include <godot_cpp/classes/mesh_convex_decomposition_settings.hpp>
-#include <godot_cpp/classes/skin_reference.hpp>
-#include <godot_cpp/classes/array_mesh.hpp>
 #include <godot_cpp/classes/geometry_instance3d.hpp>
+#include <godot_cpp/classes/array_mesh.hpp>
 #include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/skin.hpp>
+#include <godot_cpp/classes/skin_reference.hpp>
+#include <godot_cpp/classes/mesh_convex_decomposition_settings.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void mesh_instance3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	MeshInstance3D *mesh_instance3d = static_cast<MeshInstance3D *>(JS_GetOpaque(val, MeshInstance3D::__class_id));
-	if (mesh_instance3d)
-		memdelete(mesh_instance3d);
+	
+	// nothing
 }
 
 static JSClassDef mesh_instance3d_class_def = {
@@ -140,24 +139,24 @@ void define_mesh_instance3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "mesh"),
         JS_NewCFunction(ctx, mesh_instance3d_class_get_mesh, "get_mesh", 0),
-        JS_NewCFunction(ctx, mesh_instance3d_class_set_mesh, "set_mesh", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, mesh_instance3d_class_set_mesh, "set_mesh", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "skin"),
         JS_NewCFunction(ctx, mesh_instance3d_class_get_skin, "get_skin", 0),
-        JS_NewCFunction(ctx, mesh_instance3d_class_set_skin, "set_skin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, mesh_instance3d_class_set_skin, "set_skin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "skeleton"),
         JS_NewCFunction(ctx, mesh_instance3d_class_get_skeleton_path, "get_skeleton_path", 0),
-        JS_NewCFunction(ctx, mesh_instance3d_class_set_skeleton_path, "set_skeleton_path", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, mesh_instance3d_class_set_skeleton_path, "set_skeleton_path", 1),
+        JS_PROP_GETSET
     );
 }
 

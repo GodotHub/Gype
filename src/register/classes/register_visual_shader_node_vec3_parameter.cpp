@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_vec3_parameter_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeVec3Parameter *visual_shader_node_vec3_parameter = static_cast<VisualShaderNodeVec3Parameter *>(JS_GetOpaque(val, VisualShaderNodeVec3Parameter::__class_id));
-	if (visual_shader_node_vec3_parameter)
-		memdelete(visual_shader_node_vec3_parameter);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_vec3_parameter_class_def = {
@@ -63,16 +62,16 @@ void define_visual_shader_node_vec3_parameter_property(JSContext *ctx, JSValue o
         obj,
         JS_NewAtom(ctx, "default_value_enabled"),
         JS_NewCFunction(ctx, visual_shader_node_vec3_parameter_class_is_default_value_enabled, "is_default_value_enabled", 0),
-        JS_NewCFunction(ctx, visual_shader_node_vec3_parameter_class_set_default_value_enabled, "set_default_value_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_vec3_parameter_class_set_default_value_enabled, "set_default_value_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "default_value"),
         JS_NewCFunction(ctx, visual_shader_node_vec3_parameter_class_get_default_value, "get_default_value", 0),
-        JS_NewCFunction(ctx, visual_shader_node_vec3_parameter_class_set_default_value, "set_default_value", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_vec3_parameter_class_set_default_value, "set_default_value", 1),
+        JS_PROP_GETSET
     );
 }
 

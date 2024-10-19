@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton_modification2dccdik.hpp>
 #include <godot_cpp/classes/skeleton_modification2d.hpp>
+#include <godot_cpp/classes/skeleton_modification2dccdik.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void skeleton_modification2dccdik_class_finalizer(JSRuntime *rt, JSValue val) {
-	SkeletonModification2DCCDIK *skeleton_modification2dccdik = static_cast<SkeletonModification2DCCDIK *>(JS_GetOpaque(val, SkeletonModification2DCCDIK::__class_id));
-	if (skeleton_modification2dccdik)
-		memdelete(skeleton_modification2dccdik);
+	
+	// nothing
 }
 
 static JSClassDef skeleton_modification2dccdik_class_def = {
@@ -135,24 +134,24 @@ void define_skeleton_modification2dccdik_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "target_nodepath"),
         JS_NewCFunction(ctx, skeleton_modification2dccdik_class_get_target_node, "get_target_node", 0),
-        JS_NewCFunction(ctx, skeleton_modification2dccdik_class_set_target_node, "set_target_node", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_modification2dccdik_class_set_target_node, "set_target_node", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tip_nodepath"),
         JS_NewCFunction(ctx, skeleton_modification2dccdik_class_get_tip_node, "get_tip_node", 0),
-        JS_NewCFunction(ctx, skeleton_modification2dccdik_class_set_tip_node, "set_tip_node", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_modification2dccdik_class_set_tip_node, "set_tip_node", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ccdik_data_chain_length"),
         JS_NewCFunction(ctx, skeleton_modification2dccdik_class_get_ccdik_data_chain_length, "get_ccdik_data_chain_length", 0),
-        JS_NewCFunction(ctx, skeleton_modification2dccdik_class_set_ccdik_data_chain_length, "set_ccdik_data_chain_length", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_modification2dccdik_class_set_ccdik_data_chain_length, "set_ccdik_data_chain_length", 1),
+        JS_PROP_GETSET
     );
 }
 

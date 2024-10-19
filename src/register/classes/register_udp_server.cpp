@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/udp_server.hpp>
 #include <godot_cpp/classes/packet_peer_udp.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/udp_server.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void udp_server_class_finalizer(JSRuntime *rt, JSValue val) {
-	UDPServer *udp_server = static_cast<UDPServer *>(JS_GetOpaque(val, UDPServer::__class_id));
-	if (udp_server)
-		memdelete(udp_server);
+	
+	// nothing
 }
 
 static JSClassDef udp_server_class_def = {
@@ -84,8 +83,8 @@ void define_udp_server_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "max_pending_connections"),
         JS_NewCFunction(ctx, udp_server_class_get_max_pending_connections, "get_max_pending_connections", 0),
-        JS_NewCFunction(ctx, udp_server_class_set_max_pending_connections, "set_max_pending_connections", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, udp_server_class_set_max_pending_connections, "set_max_pending_connections", 1),
+        JS_PROP_GETSET
     );
 }
 

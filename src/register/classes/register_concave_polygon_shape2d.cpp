@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/concave_polygon_shape2d.hpp>
 #include <godot_cpp/classes/shape2d.hpp>
+#include <godot_cpp/classes/concave_polygon_shape2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void concave_polygon_shape2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	ConcavePolygonShape2D *concave_polygon_shape2d = static_cast<ConcavePolygonShape2D *>(JS_GetOpaque(val, ConcavePolygonShape2D::__class_id));
-	if (concave_polygon_shape2d)
-		memdelete(concave_polygon_shape2d);
+	
+	// nothing
 }
 
 static JSClassDef concave_polygon_shape2d_class_def = {
@@ -54,8 +53,8 @@ void define_concave_polygon_shape2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "segments"),
         JS_NewCFunction(ctx, concave_polygon_shape2d_class_get_segments, "get_segments", 0),
-        JS_NewCFunction(ctx, concave_polygon_shape2d_class_set_segments, "set_segments", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, concave_polygon_shape2d_class_set_segments, "set_segments", 1),
+        JS_PROP_GETSET
     );
 }
 

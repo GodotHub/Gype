@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void editor_scene_format_importer_gltf_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorSceneFormatImporterGLTF *editor_scene_format_importer_gltf = static_cast<EditorSceneFormatImporterGLTF *>(JS_GetOpaque(val, EditorSceneFormatImporterGLTF::__class_id));
-	if (editor_scene_format_importer_gltf)
-		memdelete(editor_scene_format_importer_gltf);
+	
+	// nothing
 }
 
 static JSClassDef editor_scene_format_importer_gltf_class_def = {

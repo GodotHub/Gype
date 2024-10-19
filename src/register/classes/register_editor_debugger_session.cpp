@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_debugger_session.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/editor_debugger_session.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_debugger_session_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorDebuggerSession *editor_debugger_session = static_cast<EditorDebuggerSession *>(JS_GetOpaque(val, EditorDebuggerSession::__class_id));
-	if (editor_debugger_session)
-		memdelete(editor_debugger_session);
+	
+	// nothing
 }
 
 static JSClassDef editor_debugger_session_class_def = {

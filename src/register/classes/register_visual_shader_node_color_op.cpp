@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_color_op.hpp>
 #include <godot_cpp/classes/visual_shader_node.hpp>
+#include <godot_cpp/classes/visual_shader_node_color_op.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visual_shader_node_color_op_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeColorOp *visual_shader_node_color_op = static_cast<VisualShaderNodeColorOp *>(JS_GetOpaque(val, VisualShaderNodeColorOp::__class_id));
-	if (visual_shader_node_color_op)
-		memdelete(visual_shader_node_color_op);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_color_op_class_def = {
@@ -54,8 +53,8 @@ void define_visual_shader_node_color_op_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "operator"),
         JS_NewCFunction(ctx, visual_shader_node_color_op_class_get_operator, "get_operator", 0),
-        JS_NewCFunction(ctx, visual_shader_node_color_op_class_set_operator, "set_operator", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_color_op_class_set_operator, "set_operator", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void placeholder_texture3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	PlaceholderTexture3D *placeholder_texture3d = static_cast<PlaceholderTexture3D *>(JS_GetOpaque(val, PlaceholderTexture3D::__class_id));
-	if (placeholder_texture3d)
-		memdelete(placeholder_texture3d);
+	
+	// nothing
 }
 
 static JSClassDef placeholder_texture3d_class_def = {
@@ -54,8 +53,8 @@ void define_placeholder_texture3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, placeholder_texture3d_class_get_size, "get_size", 0),
-        JS_NewCFunction(ctx, placeholder_texture3d_class_set_size, "set_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, placeholder_texture3d_class_set_size, "set_size", 1),
+        JS_PROP_GETSET
     );
 }
 

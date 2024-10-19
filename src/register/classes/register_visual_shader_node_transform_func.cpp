@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_transform_func.hpp>
 #include <godot_cpp/classes/visual_shader_node.hpp>
+#include <godot_cpp/classes/visual_shader_node_transform_func.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visual_shader_node_transform_func_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeTransformFunc *visual_shader_node_transform_func = static_cast<VisualShaderNodeTransformFunc *>(JS_GetOpaque(val, VisualShaderNodeTransformFunc::__class_id));
-	if (visual_shader_node_transform_func)
-		memdelete(visual_shader_node_transform_func);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_transform_func_class_def = {
@@ -54,8 +53,8 @@ void define_visual_shader_node_transform_func_property(JSContext *ctx, JSValue o
         obj,
         JS_NewAtom(ctx, "function"),
         JS_NewCFunction(ctx, visual_shader_node_transform_func_class_get_function, "get_function", 0),
-        JS_NewCFunction(ctx, visual_shader_node_transform_func_class_set_function, "set_function", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_transform_func_class_set_function, "set_function", 1),
+        JS_PROP_GETSET
     );
 }
 

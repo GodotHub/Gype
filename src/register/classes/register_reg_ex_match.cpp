@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void reg_ex_match_class_finalizer(JSRuntime *rt, JSValue val) {
-	RegExMatch *reg_ex_match = static_cast<RegExMatch *>(JS_GetOpaque(val, RegExMatch::__class_id));
-	if (reg_ex_match)
-		memdelete(reg_ex_match);
+	
+	// nothing
 }
 
 static JSClassDef reg_ex_match_class_def = {
@@ -74,7 +73,7 @@ void define_reg_ex_match_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "subject"),
         JS_NewCFunction(ctx, reg_ex_match_class_get_subject, "get_subject", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -82,7 +81,7 @@ void define_reg_ex_match_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "names"),
         JS_NewCFunction(ctx, reg_ex_match_class_get_names, "get_names", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -90,7 +89,7 @@ void define_reg_ex_match_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "strings"),
         JS_NewCFunction(ctx, reg_ex_match_class_get_strings, "get_strings", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
 }
 

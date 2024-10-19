@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/spring_arm3d.hpp>
 #include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/spring_arm3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void spring_arm3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	SpringArm3D *spring_arm3d = static_cast<SpringArm3D *>(JS_GetOpaque(val, SpringArm3D::__class_id));
-	if (spring_arm3d)
-		memdelete(spring_arm3d);
+	
+	// nothing
 }
 
 static JSClassDef spring_arm3d_class_def = {
@@ -100,32 +99,32 @@ void define_spring_arm3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "collision_mask"),
         JS_NewCFunction(ctx, spring_arm3d_class_get_collision_mask, "get_collision_mask", 0),
-        JS_NewCFunction(ctx, spring_arm3d_class_set_collision_mask, "set_collision_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, spring_arm3d_class_set_collision_mask, "set_collision_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shape"),
         JS_NewCFunction(ctx, spring_arm3d_class_get_shape, "get_shape", 0),
-        JS_NewCFunction(ctx, spring_arm3d_class_set_shape, "set_shape", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, spring_arm3d_class_set_shape, "set_shape", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "spring_length"),
         JS_NewCFunction(ctx, spring_arm3d_class_get_length, "get_length", 0),
-        JS_NewCFunction(ctx, spring_arm3d_class_set_length, "set_length", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, spring_arm3d_class_set_length, "set_length", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "margin"),
         JS_NewCFunction(ctx, spring_arm3d_class_get_margin, "get_margin", 0),
-        JS_NewCFunction(ctx, spring_arm3d_class_set_margin, "set_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, spring_arm3d_class_set_margin, "set_margin", 1),
+        JS_PROP_GETSET
     );
 }
 

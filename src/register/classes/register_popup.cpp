@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void popup_class_finalizer(JSRuntime *rt, JSValue val) {
-	Popup *popup = static_cast<Popup *>(JS_GetOpaque(val, Popup::__class_id));
-	if (popup)
-		memdelete(popup);
+	
+	// nothing
 }
 
 static JSClassDef popup_class_def = {

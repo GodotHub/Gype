@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/kinematic_collision3d.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void kinematic_collision3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	KinematicCollision3D *kinematic_collision3d = static_cast<KinematicCollision3D *>(JS_GetOpaque(val, KinematicCollision3D::__class_id));
-	if (kinematic_collision3d)
-		memdelete(kinematic_collision3d);
+	
+	// nothing
 }
 
 static JSClassDef kinematic_collision3d_class_def = {

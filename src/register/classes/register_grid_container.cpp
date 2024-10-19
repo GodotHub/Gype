@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void grid_container_class_finalizer(JSRuntime *rt, JSValue val) {
-	GridContainer *grid_container = static_cast<GridContainer *>(JS_GetOpaque(val, GridContainer::__class_id));
-	if (grid_container)
-		memdelete(grid_container);
+	
+	// nothing
 }
 
 static JSClassDef grid_container_class_def = {
@@ -54,8 +53,8 @@ void define_grid_container_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "columns"),
         JS_NewCFunction(ctx, grid_container_class_get_columns, "get_columns", 0),
-        JS_NewCFunction(ctx, grid_container_class_set_columns, "set_columns", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, grid_container_class_set_columns, "set_columns", 1),
+        JS_PROP_GETSET
     );
 }
 

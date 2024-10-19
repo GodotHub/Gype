@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void code_highlighter_class_finalizer(JSRuntime *rt, JSValue val) {
-	CodeHighlighter *code_highlighter = static_cast<CodeHighlighter *>(JS_GetOpaque(val, CodeHighlighter::__class_id));
-	if (code_highlighter)
-		memdelete(code_highlighter);
+	
+	// nothing
 }
 
 static JSClassDef code_highlighter_class_def = {
@@ -173,56 +172,56 @@ void define_code_highlighter_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "number_color"),
         JS_NewCFunction(ctx, code_highlighter_class_get_number_color, "get_number_color", 0),
-        JS_NewCFunction(ctx, code_highlighter_class_set_number_color, "set_number_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_highlighter_class_set_number_color, "set_number_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "symbol_color"),
         JS_NewCFunction(ctx, code_highlighter_class_get_symbol_color, "get_symbol_color", 0),
-        JS_NewCFunction(ctx, code_highlighter_class_set_symbol_color, "set_symbol_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_highlighter_class_set_symbol_color, "set_symbol_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "function_color"),
         JS_NewCFunction(ctx, code_highlighter_class_get_function_color, "get_function_color", 0),
-        JS_NewCFunction(ctx, code_highlighter_class_set_function_color, "set_function_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_highlighter_class_set_function_color, "set_function_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "member_variable_color"),
         JS_NewCFunction(ctx, code_highlighter_class_get_member_variable_color, "get_member_variable_color", 0),
-        JS_NewCFunction(ctx, code_highlighter_class_set_member_variable_color, "set_member_variable_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_highlighter_class_set_member_variable_color, "set_member_variable_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "keyword_colors"),
         JS_NewCFunction(ctx, code_highlighter_class_get_keyword_colors, "get_keyword_colors", 0),
-        JS_NewCFunction(ctx, code_highlighter_class_set_keyword_colors, "set_keyword_colors", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_highlighter_class_set_keyword_colors, "set_keyword_colors", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "member_keyword_colors"),
         JS_NewCFunction(ctx, code_highlighter_class_get_member_keyword_colors, "get_member_keyword_colors", 0),
-        JS_NewCFunction(ctx, code_highlighter_class_set_member_keyword_colors, "set_member_keyword_colors", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_highlighter_class_set_member_keyword_colors, "set_member_keyword_colors", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "color_regions"),
         JS_NewCFunction(ctx, code_highlighter_class_get_color_regions, "get_color_regions", 0),
-        JS_NewCFunction(ctx, code_highlighter_class_set_color_regions, "set_color_regions", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_highlighter_class_set_color_regions, "set_color_regions", 1),
+        JS_PROP_GETSET
     );
 }
 

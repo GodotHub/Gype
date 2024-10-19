@@ -6,18 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/texture_layered.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/texture_layered.hpp>
 #include <godot_cpp/classes/lightmap_gi_data.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void lightmap_gi_data_class_finalizer(JSRuntime *rt, JSValue val) {
-	LightmapGIData *lightmap_gi_data = static_cast<LightmapGIData *>(JS_GetOpaque(val, LightmapGIData::__class_id));
-	if (lightmap_gi_data)
-		memdelete(lightmap_gi_data);
+	
+	// nothing
 }
 
 static JSClassDef lightmap_gi_data_class_def = {
@@ -92,24 +91,24 @@ void define_lightmap_gi_data_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "lightmap_textures"),
         JS_NewCFunction(ctx, lightmap_gi_data_class_get_lightmap_textures, "get_lightmap_textures", 0),
-        JS_NewCFunction(ctx, lightmap_gi_data_class_set_lightmap_textures, "set_lightmap_textures", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, lightmap_gi_data_class_set_lightmap_textures, "set_lightmap_textures", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "uses_spherical_harmonics"),
         JS_NewCFunction(ctx, lightmap_gi_data_class_is_using_spherical_harmonics, "is_using_spherical_harmonics", 0),
-        JS_NewCFunction(ctx, lightmap_gi_data_class_set_uses_spherical_harmonics, "set_uses_spherical_harmonics", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, lightmap_gi_data_class_set_uses_spherical_harmonics, "set_uses_spherical_harmonics", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "light_texture"),
         JS_NewCFunction(ctx, lightmap_gi_data_class_get_light_texture, "get_light_texture", 0),
-        JS_NewCFunction(ctx, lightmap_gi_data_class_set_light_texture, "set_light_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, lightmap_gi_data_class_set_light_texture, "set_light_texture", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void concave_polygon_shape3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	ConcavePolygonShape3D *concave_polygon_shape3d = static_cast<ConcavePolygonShape3D *>(JS_GetOpaque(val, ConcavePolygonShape3D::__class_id));
-	if (concave_polygon_shape3d)
-		memdelete(concave_polygon_shape3d);
+	
+	// nothing
 }
 
 static JSClassDef concave_polygon_shape3d_class_def = {
@@ -63,16 +62,16 @@ void define_concave_polygon_shape3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "data"),
         JS_NewCFunction(ctx, concave_polygon_shape3d_class_get_faces, "get_faces", 0),
-        JS_NewCFunction(ctx, concave_polygon_shape3d_class_set_faces, "set_faces", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, concave_polygon_shape3d_class_set_faces, "set_faces", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "backface_collision"),
         JS_NewCFunction(ctx, concave_polygon_shape3d_class_is_backface_collision_enabled, "is_backface_collision_enabled", 0),
-        JS_NewCFunction(ctx, concave_polygon_shape3d_class_set_backface_collision_enabled, "set_backface_collision_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, concave_polygon_shape3d_class_set_backface_collision_enabled, "set_backface_collision_enabled", 1),
+        JS_PROP_GETSET
     );
 }
 

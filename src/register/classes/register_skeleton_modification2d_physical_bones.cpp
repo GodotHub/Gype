@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton_modification2d_physical_bones.hpp>
 #include <godot_cpp/classes/skeleton_modification2d.hpp>
+#include <godot_cpp/classes/skeleton_modification2d_physical_bones.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void skeleton_modification2d_physical_bones_class_finalizer(JSRuntime *rt, JSValue val) {
-	SkeletonModification2DPhysicalBones *skeleton_modification2d_physical_bones = static_cast<SkeletonModification2DPhysicalBones *>(JS_GetOpaque(val, SkeletonModification2DPhysicalBones::__class_id));
-	if (skeleton_modification2d_physical_bones)
-		memdelete(skeleton_modification2d_physical_bones);
+	
+	// nothing
 }
 
 static JSClassDef skeleton_modification2d_physical_bones_class_def = {
@@ -78,8 +77,8 @@ void define_skeleton_modification2d_physical_bones_property(JSContext *ctx, JSVa
         obj,
         JS_NewAtom(ctx, "physical_bone_chain_length"),
         JS_NewCFunction(ctx, skeleton_modification2d_physical_bones_class_get_physical_bone_chain_length, "get_physical_bone_chain_length", 0),
-        JS_NewCFunction(ctx, skeleton_modification2d_physical_bones_class_set_physical_bone_chain_length, "set_physical_bone_chain_length", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_modification2d_physical_bones_class_set_physical_bone_chain_length, "set_physical_bone_chain_length", 1),
+        JS_PROP_GETSET
     );
 }
 

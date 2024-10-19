@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void canvas_layer_class_finalizer(JSRuntime *rt, JSValue val) {
-	CanvasLayer *canvas_layer = static_cast<CanvasLayer *>(JS_GetOpaque(val, CanvasLayer::__class_id));
-	if (canvas_layer)
-		memdelete(canvas_layer);
+	
+	// nothing
 }
 
 static JSClassDef canvas_layer_class_def = {
@@ -144,72 +143,72 @@ void define_canvas_layer_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "layer"),
         JS_NewCFunction(ctx, canvas_layer_class_get_layer, "get_layer", 0),
-        JS_NewCFunction(ctx, canvas_layer_class_set_layer, "set_layer", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_layer_class_set_layer, "set_layer", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visible"),
         JS_NewCFunction(ctx, canvas_layer_class_is_visible, "is_visible", 0),
-        JS_NewCFunction(ctx, canvas_layer_class_set_visible, "set_visible", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_layer_class_set_visible, "set_visible", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "offset"),
         JS_NewCFunction(ctx, canvas_layer_class_get_offset, "get_offset", 0),
-        JS_NewCFunction(ctx, canvas_layer_class_set_offset, "set_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_layer_class_set_offset, "set_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "rotation"),
         JS_NewCFunction(ctx, canvas_layer_class_get_rotation, "get_rotation", 0),
-        JS_NewCFunction(ctx, canvas_layer_class_set_rotation, "set_rotation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_layer_class_set_rotation, "set_rotation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scale"),
         JS_NewCFunction(ctx, canvas_layer_class_get_scale, "get_scale", 0),
-        JS_NewCFunction(ctx, canvas_layer_class_set_scale, "set_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_layer_class_set_scale, "set_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "transform"),
         JS_NewCFunction(ctx, canvas_layer_class_get_transform, "get_transform", 0),
-        JS_NewCFunction(ctx, canvas_layer_class_set_transform, "set_transform", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_layer_class_set_transform, "set_transform", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "custom_viewport"),
         JS_NewCFunction(ctx, canvas_layer_class_get_custom_viewport, "get_custom_viewport", 0),
-        JS_NewCFunction(ctx, canvas_layer_class_set_custom_viewport, "set_custom_viewport", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_layer_class_set_custom_viewport, "set_custom_viewport", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "follow_viewport_enabled"),
         JS_NewCFunction(ctx, canvas_layer_class_is_following_viewport, "is_following_viewport", 0),
-        JS_NewCFunction(ctx, canvas_layer_class_set_follow_viewport, "set_follow_viewport", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_layer_class_set_follow_viewport, "set_follow_viewport", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "follow_viewport_scale"),
         JS_NewCFunction(ctx, canvas_layer_class_get_follow_viewport_scale, "get_follow_viewport_scale", 0),
-        JS_NewCFunction(ctx, canvas_layer_class_set_follow_viewport_scale, "set_follow_viewport_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_layer_class_set_follow_viewport_scale, "set_follow_viewport_scale", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/mesh_instance3d.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/soft_body3d.hpp>
-#include <godot_cpp/classes/mesh_instance3d.hpp>
 #include <godot_cpp/classes/physics_body3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -15,9 +15,8 @@
 using namespace godot;
 
 static void soft_body3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	SoftBody3D *soft_body3d = static_cast<SoftBody3D *>(JS_GetOpaque(val, SoftBody3D::__class_id));
-	if (soft_body3d)
-		memdelete(soft_body3d);
+	
+	// nothing
 }
 
 static JSClassDef soft_body3d_class_def = {
@@ -195,88 +194,88 @@ void define_soft_body3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "collision_layer"),
         JS_NewCFunction(ctx, soft_body3d_class_get_collision_layer, "get_collision_layer", 0),
-        JS_NewCFunction(ctx, soft_body3d_class_set_collision_layer, "set_collision_layer", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, soft_body3d_class_set_collision_layer, "set_collision_layer", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_mask"),
         JS_NewCFunction(ctx, soft_body3d_class_get_collision_mask, "get_collision_mask", 0),
-        JS_NewCFunction(ctx, soft_body3d_class_set_collision_mask, "set_collision_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, soft_body3d_class_set_collision_mask, "set_collision_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "parent_collision_ignore"),
         JS_NewCFunction(ctx, soft_body3d_class_get_parent_collision_ignore, "get_parent_collision_ignore", 0),
-        JS_NewCFunction(ctx, soft_body3d_class_set_parent_collision_ignore, "set_parent_collision_ignore", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, soft_body3d_class_set_parent_collision_ignore, "set_parent_collision_ignore", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "simulation_precision"),
         JS_NewCFunction(ctx, soft_body3d_class_get_simulation_precision, "get_simulation_precision", 0),
-        JS_NewCFunction(ctx, soft_body3d_class_set_simulation_precision, "set_simulation_precision", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, soft_body3d_class_set_simulation_precision, "set_simulation_precision", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "total_mass"),
         JS_NewCFunction(ctx, soft_body3d_class_get_total_mass, "get_total_mass", 0),
-        JS_NewCFunction(ctx, soft_body3d_class_set_total_mass, "set_total_mass", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, soft_body3d_class_set_total_mass, "set_total_mass", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "linear_stiffness"),
         JS_NewCFunction(ctx, soft_body3d_class_get_linear_stiffness, "get_linear_stiffness", 0),
-        JS_NewCFunction(ctx, soft_body3d_class_set_linear_stiffness, "set_linear_stiffness", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, soft_body3d_class_set_linear_stiffness, "set_linear_stiffness", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "pressure_coefficient"),
         JS_NewCFunction(ctx, soft_body3d_class_get_pressure_coefficient, "get_pressure_coefficient", 0),
-        JS_NewCFunction(ctx, soft_body3d_class_set_pressure_coefficient, "set_pressure_coefficient", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, soft_body3d_class_set_pressure_coefficient, "set_pressure_coefficient", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "damping_coefficient"),
         JS_NewCFunction(ctx, soft_body3d_class_get_damping_coefficient, "get_damping_coefficient", 0),
-        JS_NewCFunction(ctx, soft_body3d_class_set_damping_coefficient, "set_damping_coefficient", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, soft_body3d_class_set_damping_coefficient, "set_damping_coefficient", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "drag_coefficient"),
         JS_NewCFunction(ctx, soft_body3d_class_get_drag_coefficient, "get_drag_coefficient", 0),
-        JS_NewCFunction(ctx, soft_body3d_class_set_drag_coefficient, "set_drag_coefficient", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, soft_body3d_class_set_drag_coefficient, "set_drag_coefficient", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ray_pickable"),
         JS_NewCFunction(ctx, soft_body3d_class_is_ray_pickable, "is_ray_pickable", 0),
-        JS_NewCFunction(ctx, soft_body3d_class_set_ray_pickable, "set_ray_pickable", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, soft_body3d_class_set_ray_pickable, "set_ray_pickable", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "disable_mode"),
         JS_NewCFunction(ctx, soft_body3d_class_get_disable_mode, "get_disable_mode", 0),
-        JS_NewCFunction(ctx, soft_body3d_class_set_disable_mode, "set_disable_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, soft_body3d_class_set_disable_mode, "set_disable_mode", 1),
+        JS_PROP_GETSET
     );
 }
 

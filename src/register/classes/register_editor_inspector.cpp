@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void editor_inspector_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorInspector *editor_inspector = static_cast<EditorInspector *>(JS_GetOpaque(val, EditorInspector::__class_id));
-	if (editor_inspector)
-		memdelete(editor_inspector);
+	
+	// nothing
 }
 
 static JSClassDef editor_inspector_class_def = {

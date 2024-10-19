@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xr_node3d.hpp>
 #include <godot_cpp/classes/xr_anchor3d.hpp>
+#include <godot_cpp/classes/xr_node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void xr_anchor3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	XRAnchor3D *xr_anchor3d = static_cast<XRAnchor3D *>(JS_GetOpaque(val, XRAnchor3D::__class_id));
-	if (xr_anchor3d)
-		memdelete(xr_anchor3d);
+	
+	// nothing
 }
 
 static JSClassDef xr_anchor3d_class_def = {
