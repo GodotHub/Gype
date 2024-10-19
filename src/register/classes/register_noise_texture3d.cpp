@@ -6,18 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/noise_texture3d.hpp>
-#include <godot_cpp/classes/texture3d.hpp>
-#include <godot_cpp/classes/noise.hpp>
 #include <godot_cpp/classes/gradient.hpp>
+#include <godot_cpp/classes/noise.hpp>
+#include <godot_cpp/classes/texture3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void noise_texture3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	NoiseTexture3D *noise_texture3d = static_cast<NoiseTexture3D *>(JS_GetOpaque(val, NoiseTexture3D::__class_id));
-	if (noise_texture3d)
-		memdelete(noise_texture3d);
+	
+	// nothing
 }
 
 static JSClassDef noise_texture3d_class_def = {
@@ -116,72 +115,72 @@ void define_noise_texture3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "width"),
         JS_UNDEFINED,
-        JS_NewCFunction(ctx, noise_texture3d_class_set_width, "set_width", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, noise_texture3d_class_set_width, "set_width", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "height"),
         JS_UNDEFINED,
-        JS_NewCFunction(ctx, noise_texture3d_class_set_height, "set_height", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, noise_texture3d_class_set_height, "set_height", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "depth"),
         JS_UNDEFINED,
-        JS_NewCFunction(ctx, noise_texture3d_class_set_depth, "set_depth", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, noise_texture3d_class_set_depth, "set_depth", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "invert"),
         JS_NewCFunction(ctx, noise_texture3d_class_get_invert, "get_invert", 0),
-        JS_NewCFunction(ctx, noise_texture3d_class_set_invert, "set_invert", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, noise_texture3d_class_set_invert, "set_invert", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "seamless"),
         JS_NewCFunction(ctx, noise_texture3d_class_get_seamless, "get_seamless", 0),
-        JS_NewCFunction(ctx, noise_texture3d_class_set_seamless, "set_seamless", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, noise_texture3d_class_set_seamless, "set_seamless", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "seamless_blend_skirt"),
         JS_NewCFunction(ctx, noise_texture3d_class_get_seamless_blend_skirt, "get_seamless_blend_skirt", 0),
-        JS_NewCFunction(ctx, noise_texture3d_class_set_seamless_blend_skirt, "set_seamless_blend_skirt", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, noise_texture3d_class_set_seamless_blend_skirt, "set_seamless_blend_skirt", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "normalize"),
         JS_NewCFunction(ctx, noise_texture3d_class_is_normalized, "is_normalized", 0),
-        JS_NewCFunction(ctx, noise_texture3d_class_set_normalize, "set_normalize", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, noise_texture3d_class_set_normalize, "set_normalize", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "color_ramp"),
         JS_NewCFunction(ctx, noise_texture3d_class_get_color_ramp, "get_color_ramp", 0),
-        JS_NewCFunction(ctx, noise_texture3d_class_set_color_ramp, "set_color_ramp", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, noise_texture3d_class_set_color_ramp, "set_color_ramp", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "noise"),
         JS_NewCFunction(ctx, noise_texture3d_class_get_noise, "get_noise", 0),
-        JS_NewCFunction(ctx, noise_texture3d_class_set_noise, "set_noise", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, noise_texture3d_class_set_noise, "set_noise", 1),
+        JS_PROP_GETSET
     );
 }
 

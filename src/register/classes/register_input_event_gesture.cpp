@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void input_event_gesture_class_finalizer(JSRuntime *rt, JSValue val) {
-	InputEventGesture *input_event_gesture = static_cast<InputEventGesture *>(JS_GetOpaque(val, InputEventGesture::__class_id));
-	if (input_event_gesture)
-		memdelete(input_event_gesture);
+	
+	// nothing
 }
 
 static JSClassDef input_event_gesture_class_def = {
@@ -54,8 +53,8 @@ void define_input_event_gesture_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "position"),
         JS_NewCFunction(ctx, input_event_gesture_class_get_position, "get_position", 0),
-        JS_NewCFunction(ctx, input_event_gesture_class_set_position, "set_position", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_gesture_class_set_position, "set_position", 1),
+        JS_PROP_GETSET
     );
 }
 

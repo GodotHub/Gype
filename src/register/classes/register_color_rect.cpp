@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void color_rect_class_finalizer(JSRuntime *rt, JSValue val) {
-	ColorRect *color_rect = static_cast<ColorRect *>(JS_GetOpaque(val, ColorRect::__class_id));
-	if (color_rect)
-		memdelete(color_rect);
+	
+	// nothing
 }
 
 static JSClassDef color_rect_class_def = {
@@ -54,8 +53,8 @@ void define_color_rect_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "color"),
         JS_NewCFunction(ctx, color_rect_class_get_color, "get_color", 0),
-        JS_NewCFunction(ctx, color_rect_class_set_color, "set_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, color_rect_class_set_color, "set_color", 1),
+        JS_PROP_GETSET
     );
 }
 

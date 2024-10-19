@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void collision_polygon2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	CollisionPolygon2D *collision_polygon2d = static_cast<CollisionPolygon2D *>(JS_GetOpaque(val, CollisionPolygon2D::__class_id));
-	if (collision_polygon2d)
-		memdelete(collision_polygon2d);
+	
+	// nothing
 }
 
 static JSClassDef collision_polygon2d_class_def = {
@@ -90,40 +89,40 @@ void define_collision_polygon2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "build_mode"),
         JS_NewCFunction(ctx, collision_polygon2d_class_get_build_mode, "get_build_mode", 0),
-        JS_NewCFunction(ctx, collision_polygon2d_class_set_build_mode, "set_build_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_polygon2d_class_set_build_mode, "set_build_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "polygon"),
         JS_NewCFunction(ctx, collision_polygon2d_class_get_polygon, "get_polygon", 0),
-        JS_NewCFunction(ctx, collision_polygon2d_class_set_polygon, "set_polygon", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_polygon2d_class_set_polygon, "set_polygon", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "disabled"),
         JS_NewCFunction(ctx, collision_polygon2d_class_is_disabled, "is_disabled", 0),
-        JS_NewCFunction(ctx, collision_polygon2d_class_set_disabled, "set_disabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_polygon2d_class_set_disabled, "set_disabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "one_way_collision"),
         JS_NewCFunction(ctx, collision_polygon2d_class_is_one_way_collision_enabled, "is_one_way_collision_enabled", 0),
-        JS_NewCFunction(ctx, collision_polygon2d_class_set_one_way_collision, "set_one_way_collision", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_polygon2d_class_set_one_way_collision, "set_one_way_collision", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "one_way_collision_margin"),
         JS_NewCFunction(ctx, collision_polygon2d_class_get_one_way_collision_margin, "get_one_way_collision_margin", 0),
-        JS_NewCFunction(ctx, collision_polygon2d_class_set_one_way_collision_margin, "set_one_way_collision_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_polygon2d_class_set_one_way_collision_margin, "set_one_way_collision_margin", 1),
+        JS_PROP_GETSET
     );
 }
 

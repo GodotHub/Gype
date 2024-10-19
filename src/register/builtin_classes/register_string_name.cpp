@@ -1,11 +1,10 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/variant/string_name.hpp>
-
 
 using namespace godot;
 
@@ -337,6 +336,8 @@ static JSValue string_name_class_to_wchar_buffer(JSContext *ctx, JSValueConst th
 static JSValue string_name_class_hash(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StringName::hash, ctx, this_val, argc, argv);
 };
+
+
 static const JSCFunctionListEntry string_name_class_proto_funcs[] = {
 	JS_CFUNC_DEF("casecmp_to", 1, &string_name_class_casecmp_to),
 	JS_CFUNC_DEF("nocasecmp_to", 1, &string_name_class_nocasecmp_to),
@@ -441,10 +442,10 @@ static const JSCFunctionListEntry string_name_class_proto_funcs[] = {
 	JS_CFUNC_DEF("hash", 0, &string_name_class_hash),
 };
 
-void define_string_name_property(JSContext *ctx, JSValue obj) {
-}
+
 
 static int js_string_name_class_init(JSContext *ctx) {
+	
 	JS_NewClassID(&StringName::__class_id);
 	classes["StringName"] = StringName::__class_id;
 	class_id_list.insert(StringName::__class_id);
@@ -452,8 +453,6 @@ static int js_string_name_class_init(JSContext *ctx) {
 
 	JSValue proto = JS_NewObject(ctx);
 	JS_SetClassProto(ctx, StringName::__class_id, proto);
-
-	define_string_name_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, string_name_class_proto_funcs, _countof(string_name_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, string_name_class_constructor, "StringName", 0, JS_CFUNC_constructor, 0);

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void joint3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	Joint3D *joint3d = static_cast<Joint3D *>(JS_GetOpaque(val, Joint3D::__class_id));
-	if (joint3d)
-		memdelete(joint3d);
+	
+	// nothing
 }
 
 static JSClassDef joint3d_class_def = {
@@ -85,32 +84,32 @@ void define_joint3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "node_a"),
         JS_NewCFunction(ctx, joint3d_class_get_node_a, "get_node_a", 0),
-        JS_NewCFunction(ctx, joint3d_class_set_node_a, "set_node_a", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, joint3d_class_set_node_a, "set_node_a", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "node_b"),
         JS_NewCFunction(ctx, joint3d_class_get_node_b, "get_node_b", 0),
-        JS_NewCFunction(ctx, joint3d_class_set_node_b, "set_node_b", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, joint3d_class_set_node_b, "set_node_b", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "solver_priority"),
         JS_NewCFunction(ctx, joint3d_class_get_solver_priority, "get_solver_priority", 0),
-        JS_NewCFunction(ctx, joint3d_class_set_solver_priority, "set_solver_priority", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, joint3d_class_set_solver_priority, "set_solver_priority", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "exclude_nodes_from_collision"),
         JS_NewCFunction(ctx, joint3d_class_get_exclude_nodes_from_collision, "get_exclude_nodes_from_collision", 0),
-        JS_NewCFunction(ctx, joint3d_class_set_exclude_nodes_from_collision, "set_exclude_nodes_from_collision", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, joint3d_class_set_exclude_nodes_from_collision, "set_exclude_nodes_from_collision", 1),
+        JS_PROP_GETSET
     );
 }
 

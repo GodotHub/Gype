@@ -88,6 +88,46 @@ static JSValue quaternion_class_get_angle(JSContext *ctx, JSValueConst this_val,
 	return call_builtin_const_method_ret(&Quaternion::get_angle, ctx, this_val, argc, argv);
 };
 
+static JSValue quaternion_class_get_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Quaternion &val = *reinterpret_cast<Quaternion *>(JS_GetOpaque(this_val, Quaternion::__class_id));
+	return Variant(val.x);
+}
+static JSValue quaternion_class_set_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Quaternion &val = *reinterpret_cast<Quaternion *>(JS_GetOpaque(this_val, Quaternion::__class_id));
+	val.x = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue quaternion_class_get_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Quaternion &val = *reinterpret_cast<Quaternion *>(JS_GetOpaque(this_val, Quaternion::__class_id));
+	return Variant(val.y);
+}
+static JSValue quaternion_class_set_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Quaternion &val = *reinterpret_cast<Quaternion *>(JS_GetOpaque(this_val, Quaternion::__class_id));
+	val.y = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue quaternion_class_get_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Quaternion &val = *reinterpret_cast<Quaternion *>(JS_GetOpaque(this_val, Quaternion::__class_id));
+	return Variant(val.z);
+}
+static JSValue quaternion_class_set_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Quaternion &val = *reinterpret_cast<Quaternion *>(JS_GetOpaque(this_val, Quaternion::__class_id));
+	val.z = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue quaternion_class_get_w(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Quaternion &val = *reinterpret_cast<Quaternion *>(JS_GetOpaque(this_val, Quaternion::__class_id));
+	return Variant(val.w);
+}
+static JSValue quaternion_class_set_w(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Quaternion &val = *reinterpret_cast<Quaternion *>(JS_GetOpaque(this_val, Quaternion::__class_id));
+	val.w = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
 static const JSCFunctionListEntry quaternion_class_proto_funcs[] = {
 	JS_CFUNC_DEF("length", 0, &quaternion_class_length),
 	JS_CFUNC_DEF("length_squared", 0, &quaternion_class_length_squared),
@@ -110,6 +150,34 @@ static const JSCFunctionListEntry quaternion_class_proto_funcs[] = {
 };
 
 void define_quaternion_property(JSContext *ctx, JSValue obj) {
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "x"),
+			JS_NewCFunction(ctx, quaternion_class_get_x, "get_x", 0),
+			JS_NewCFunction(ctx, quaternion_class_set_x, "set_x", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "y"),
+			JS_NewCFunction(ctx, quaternion_class_get_y, "get_y", 0),
+			JS_NewCFunction(ctx, quaternion_class_set_y, "set_y", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "z"),
+			JS_NewCFunction(ctx, quaternion_class_get_z, "get_z", 0),
+			JS_NewCFunction(ctx, quaternion_class_set_z, "set_z", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "w"),
+			JS_NewCFunction(ctx, quaternion_class_get_w, "get_w", 0),
+			JS_NewCFunction(ctx, quaternion_class_set_w, "set_w", 1),
+			JS_PROP_GETSET);
 }
 
 static int js_quaternion_class_init(JSContext *ctx) {
@@ -120,7 +188,6 @@ static int js_quaternion_class_init(JSContext *ctx) {
 
 	JSValue proto = JS_NewObject(ctx);
 	JS_SetClassProto(ctx, Quaternion::__class_id, proto);
-
 	define_quaternion_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, quaternion_class_proto_funcs, _countof(quaternion_class_proto_funcs));
 

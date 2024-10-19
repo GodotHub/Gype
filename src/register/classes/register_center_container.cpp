@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void center_container_class_finalizer(JSRuntime *rt, JSValue val) {
-	CenterContainer *center_container = static_cast<CenterContainer *>(JS_GetOpaque(val, CenterContainer::__class_id));
-	if (center_container)
-		memdelete(center_container);
+	
+	// nothing
 }
 
 static JSClassDef center_container_class_def = {
@@ -54,8 +53,8 @@ void define_center_container_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "use_top_left"),
         JS_NewCFunction(ctx, center_container_class_is_using_top_left, "is_using_top_left", 0),
-        JS_NewCFunction(ctx, center_container_class_set_use_top_left, "set_use_top_left", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, center_container_class_set_use_top_left, "set_use_top_left", 1),
+        JS_PROP_GETSET
     );
 }
 

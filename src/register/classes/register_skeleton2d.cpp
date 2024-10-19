@@ -5,19 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton_modification_stack2d.hpp>
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/bone2d.hpp>
 #include <godot_cpp/classes/skeleton2d.hpp>
+#include <godot_cpp/classes/skeleton_modification_stack2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void skeleton2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	Skeleton2D *skeleton2d = static_cast<Skeleton2D *>(JS_GetOpaque(val, Skeleton2D::__class_id));
-	if (skeleton2d)
-		memdelete(skeleton2d);
+	
+	// nothing
 }
 
 static JSClassDef skeleton2d_class_def = {

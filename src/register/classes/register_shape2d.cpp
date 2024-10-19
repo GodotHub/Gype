@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/shape2d.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void shape2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	Shape2D *shape2d = static_cast<Shape2D *>(JS_GetOpaque(val, Shape2D::__class_id));
-	if (shape2d)
-		memdelete(shape2d);
+	
+	// nothing
 }
 
 static JSClassDef shape2d_class_def = {
@@ -79,8 +78,8 @@ void define_shape2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "custom_solver_bias"),
         JS_NewCFunction(ctx, shape2d_class_get_custom_solver_bias, "get_custom_solver_bias", 0),
-        JS_NewCFunction(ctx, shape2d_class_set_custom_solver_bias, "set_custom_solver_bias", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, shape2d_class_set_custom_solver_bias, "set_custom_solver_bias", 1),
+        JS_PROP_GETSET
     );
 }
 

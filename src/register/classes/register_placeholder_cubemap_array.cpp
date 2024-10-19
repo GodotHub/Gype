@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void placeholder_cubemap_array_class_finalizer(JSRuntime *rt, JSValue val) {
-	PlaceholderCubemapArray *placeholder_cubemap_array = static_cast<PlaceholderCubemapArray *>(JS_GetOpaque(val, PlaceholderCubemapArray::__class_id));
-	if (placeholder_cubemap_array)
-		memdelete(placeholder_cubemap_array);
+	
+	// nothing
 }
 
 static JSClassDef placeholder_cubemap_array_class_def = {

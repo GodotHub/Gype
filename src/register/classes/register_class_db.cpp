@@ -16,9 +16,8 @@ static JSValue class_db_instance;
 static void js_class_db_singleton();
 
 static void class_db_class_finalizer(JSRuntime *rt, JSValue val) {
-	ClassDBSingleton *class_db = static_cast<ClassDBSingleton *>(JS_GetOpaque(val, ClassDBSingleton::__class_id));
-	if (class_db)
-		ClassDBSingleton::free(nullptr, class_db);
+	
+	// nothing
 }
 
 static JSClassDef class_db_class_def = {

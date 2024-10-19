@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void stream_peer_extension_class_finalizer(JSRuntime *rt, JSValue val) {
-	StreamPeerExtension *stream_peer_extension = static_cast<StreamPeerExtension *>(JS_GetOpaque(val, StreamPeerExtension::__class_id));
-	if (stream_peer_extension)
-		memdelete(stream_peer_extension);
+	
+	// nothing
 }
 
 static JSClassDef stream_peer_extension_class_def = {

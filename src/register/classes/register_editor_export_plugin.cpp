@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/editor_export_platform.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/editor_export_plugin.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/resource.hpp>
@@ -16,9 +16,8 @@
 using namespace godot;
 
 static void editor_export_plugin_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorExportPlugin *editor_export_plugin = static_cast<EditorExportPlugin *>(JS_GetOpaque(val, EditorExportPlugin::__class_id));
-	if (editor_export_plugin)
-		memdelete(editor_export_plugin);
+	
+	// nothing
 }
 
 static JSClassDef editor_export_plugin_class_def = {

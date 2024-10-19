@@ -5,19 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/editor_interface.hpp>
-#include <godot_cpp/classes/editor_script.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/editor_script.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_script_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorScript *editor_script = static_cast<EditorScript *>(JS_GetOpaque(val, EditorScript::__class_id));
-	if (editor_script)
-		memdelete(editor_script);
+	
+	// nothing
 }
 
 static JSClassDef editor_script_class_def = {

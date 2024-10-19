@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_random_range_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeRandomRange *visual_shader_node_random_range = static_cast<VisualShaderNodeRandomRange *>(JS_GetOpaque(val, VisualShaderNodeRandomRange::__class_id));
-	if (visual_shader_node_random_range)
-		memdelete(visual_shader_node_random_range);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_random_range_class_def = {

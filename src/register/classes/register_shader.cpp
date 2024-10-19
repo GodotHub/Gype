@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void shader_class_finalizer(JSRuntime *rt, JSValue val) {
-	Shader *shader = static_cast<Shader *>(JS_GetOpaque(val, Shader::__class_id));
-	if (shader)
-		memdelete(shader);
+	
+	// nothing
 }
 
 static JSClassDef shader_class_def = {
@@ -72,8 +71,8 @@ void define_shader_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "code"),
         JS_NewCFunction(ctx, shader_class_get_code, "get_code", 0),
-        JS_NewCFunction(ctx, shader_class_set_code, "set_code", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, shader_class_set_code, "set_code", 1),
+        JS_PROP_GETSET
     );
 }
 

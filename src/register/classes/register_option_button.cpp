@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/popup_menu.hpp>
+#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/option_button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -15,9 +15,8 @@
 using namespace godot;
 
 static void option_button_class_finalizer(JSRuntime *rt, JSValue val) {
-	OptionButton *option_button = static_cast<OptionButton *>(JS_GetOpaque(val, OptionButton::__class_id));
-	if (option_button)
-		memdelete(option_button);
+	
+	// nothing
 }
 
 static JSClassDef option_button_class_def = {
@@ -201,31 +200,31 @@ void define_option_button_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "selected"),
         JS_NewCFunction(ctx, option_button_class_get_selected, "get_selected", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fit_to_longest_item"),
         JS_NewCFunction(ctx, option_button_class_is_fit_to_longest_item, "is_fit_to_longest_item", 0),
-        JS_NewCFunction(ctx, option_button_class_set_fit_to_longest_item, "set_fit_to_longest_item", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, option_button_class_set_fit_to_longest_item, "set_fit_to_longest_item", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "allow_reselect"),
         JS_NewCFunction(ctx, option_button_class_get_allow_reselect, "get_allow_reselect", 0),
-        JS_NewCFunction(ctx, option_button_class_set_allow_reselect, "set_allow_reselect", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, option_button_class_set_allow_reselect, "set_allow_reselect", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "item_count"),
         JS_NewCFunction(ctx, option_button_class_get_item_count, "get_item_count", 0),
-        JS_NewCFunction(ctx, option_button_class_set_item_count, "set_item_count", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, option_button_class_set_item_count, "set_item_count", 1),
+        JS_PROP_GETSET
     );
 }
 

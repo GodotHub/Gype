@@ -7,18 +7,17 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/popup.hpp>
 #include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/classes/shortcut.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void popup_menu_class_finalizer(JSRuntime *rt, JSValue val) {
-	PopupMenu *popup_menu = static_cast<PopupMenu *>(JS_GetOpaque(val, PopupMenu::__class_id));
-	if (popup_menu)
-		memdelete(popup_menu);
+	
+	// nothing
 }
 
 static JSClassDef popup_menu_class_def = {
@@ -448,64 +447,64 @@ void define_popup_menu_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "hide_on_item_selection"),
         JS_NewCFunction(ctx, popup_menu_class_is_hide_on_item_selection, "is_hide_on_item_selection", 0),
-        JS_NewCFunction(ctx, popup_menu_class_set_hide_on_item_selection, "set_hide_on_item_selection", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, popup_menu_class_set_hide_on_item_selection, "set_hide_on_item_selection", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "hide_on_checkable_item_selection"),
         JS_NewCFunction(ctx, popup_menu_class_is_hide_on_checkable_item_selection, "is_hide_on_checkable_item_selection", 0),
-        JS_NewCFunction(ctx, popup_menu_class_set_hide_on_checkable_item_selection, "set_hide_on_checkable_item_selection", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, popup_menu_class_set_hide_on_checkable_item_selection, "set_hide_on_checkable_item_selection", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "hide_on_state_item_selection"),
         JS_NewCFunction(ctx, popup_menu_class_is_hide_on_state_item_selection, "is_hide_on_state_item_selection", 0),
-        JS_NewCFunction(ctx, popup_menu_class_set_hide_on_state_item_selection, "set_hide_on_state_item_selection", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, popup_menu_class_set_hide_on_state_item_selection, "set_hide_on_state_item_selection", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "submenu_popup_delay"),
         JS_NewCFunction(ctx, popup_menu_class_get_submenu_popup_delay, "get_submenu_popup_delay", 0),
-        JS_NewCFunction(ctx, popup_menu_class_set_submenu_popup_delay, "set_submenu_popup_delay", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, popup_menu_class_set_submenu_popup_delay, "set_submenu_popup_delay", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "allow_search"),
         JS_NewCFunction(ctx, popup_menu_class_get_allow_search, "get_allow_search", 0),
-        JS_NewCFunction(ctx, popup_menu_class_set_allow_search, "set_allow_search", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, popup_menu_class_set_allow_search, "set_allow_search", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "system_menu_id"),
         JS_NewCFunction(ctx, popup_menu_class_get_system_menu, "get_system_menu", 0),
-        JS_NewCFunction(ctx, popup_menu_class_set_system_menu, "set_system_menu", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, popup_menu_class_set_system_menu, "set_system_menu", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "prefer_native_menu"),
         JS_NewCFunction(ctx, popup_menu_class_is_prefer_native_menu, "is_prefer_native_menu", 0),
-        JS_NewCFunction(ctx, popup_menu_class_set_prefer_native_menu, "set_prefer_native_menu", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, popup_menu_class_set_prefer_native_menu, "set_prefer_native_menu", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "item_count"),
         JS_NewCFunction(ctx, popup_menu_class_get_item_count, "get_item_count", 0),
-        JS_NewCFunction(ctx, popup_menu_class_set_item_count, "set_item_count", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, popup_menu_class_set_item_count, "set_item_count", 1),
+        JS_PROP_GETSET
     );
 }
 

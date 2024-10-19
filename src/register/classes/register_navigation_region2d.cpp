@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void navigation_region2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	NavigationRegion2D *navigation_region2d = static_cast<NavigationRegion2D *>(JS_GetOpaque(val, NavigationRegion2D::__class_id));
-	if (navigation_region2d)
-		memdelete(navigation_region2d);
+	
+	// nothing
 }
 
 static JSClassDef navigation_region2d_class_def = {
@@ -135,48 +134,48 @@ void define_navigation_region2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "navigation_polygon"),
         JS_NewCFunction(ctx, navigation_region2d_class_get_navigation_polygon, "get_navigation_polygon", 0),
-        JS_NewCFunction(ctx, navigation_region2d_class_set_navigation_polygon, "set_navigation_polygon", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_region2d_class_set_navigation_polygon, "set_navigation_polygon", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "enabled"),
         JS_NewCFunction(ctx, navigation_region2d_class_is_enabled, "is_enabled", 0),
-        JS_NewCFunction(ctx, navigation_region2d_class_set_enabled, "set_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_region2d_class_set_enabled, "set_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_edge_connections"),
         JS_NewCFunction(ctx, navigation_region2d_class_get_use_edge_connections, "get_use_edge_connections", 0),
-        JS_NewCFunction(ctx, navigation_region2d_class_set_use_edge_connections, "set_use_edge_connections", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_region2d_class_set_use_edge_connections, "set_use_edge_connections", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "navigation_layers"),
         JS_NewCFunction(ctx, navigation_region2d_class_get_navigation_layers, "get_navigation_layers", 0),
-        JS_NewCFunction(ctx, navigation_region2d_class_set_navigation_layers, "set_navigation_layers", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_region2d_class_set_navigation_layers, "set_navigation_layers", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "enter_cost"),
         JS_NewCFunction(ctx, navigation_region2d_class_get_enter_cost, "get_enter_cost", 0),
-        JS_NewCFunction(ctx, navigation_region2d_class_set_enter_cost, "set_enter_cost", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_region2d_class_set_enter_cost, "set_enter_cost", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "travel_cost"),
         JS_NewCFunction(ctx, navigation_region2d_class_get_travel_cost, "get_travel_cost", 0),
-        JS_NewCFunction(ctx, navigation_region2d_class_set_travel_cost, "set_travel_cost", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_region2d_class_set_travel_cost, "set_travel_cost", 1),
+        JS_PROP_GETSET
     );
 }
 

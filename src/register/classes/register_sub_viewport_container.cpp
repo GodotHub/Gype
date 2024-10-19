@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void sub_viewport_container_class_finalizer(JSRuntime *rt, JSValue val) {
-	SubViewportContainer *sub_viewport_container = static_cast<SubViewportContainer *>(JS_GetOpaque(val, SubViewportContainer::__class_id));
-	if (sub_viewport_container)
-		memdelete(sub_viewport_container);
+	
+	// nothing
 }
 
 static JSClassDef sub_viewport_container_class_def = {
@@ -64,16 +63,16 @@ void define_sub_viewport_container_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "stretch"),
         JS_NewCFunction(ctx, sub_viewport_container_class_is_stretch_enabled, "is_stretch_enabled", 0),
-        JS_NewCFunction(ctx, sub_viewport_container_class_set_stretch, "set_stretch", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sub_viewport_container_class_set_stretch, "set_stretch", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "stretch_shrink"),
         JS_NewCFunction(ctx, sub_viewport_container_class_get_stretch_shrink, "get_stretch_shrink", 0),
-        JS_NewCFunction(ctx, sub_viewport_container_class_set_stretch_shrink, "set_stretch_shrink", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sub_viewport_container_class_set_stretch_shrink, "set_stretch_shrink", 1),
+        JS_PROP_GETSET
     );
 }
 

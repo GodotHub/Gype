@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_reverb.hpp>
 #include <godot_cpp/classes/audio_effect.hpp>
+#include <godot_cpp/classes/audio_effect_reverb.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void audio_effect_reverb_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioEffectReverb *audio_effect_reverb = static_cast<AudioEffectReverb *>(JS_GetOpaque(val, AudioEffectReverb::__class_id));
-	if (audio_effect_reverb)
-		memdelete(audio_effect_reverb);
+	
+	// nothing
 }
 
 static JSClassDef audio_effect_reverb_class_def = {
@@ -117,64 +116,64 @@ void define_audio_effect_reverb_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "predelay_msec"),
         JS_NewCFunction(ctx, audio_effect_reverb_class_get_predelay_msec, "get_predelay_msec", 0),
-        JS_NewCFunction(ctx, audio_effect_reverb_class_set_predelay_msec, "set_predelay_msec", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_reverb_class_set_predelay_msec, "set_predelay_msec", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "predelay_feedback"),
         JS_NewCFunction(ctx, audio_effect_reverb_class_get_predelay_feedback, "get_predelay_feedback", 0),
-        JS_NewCFunction(ctx, audio_effect_reverb_class_set_predelay_feedback, "set_predelay_feedback", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_reverb_class_set_predelay_feedback, "set_predelay_feedback", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "room_size"),
         JS_NewCFunction(ctx, audio_effect_reverb_class_get_room_size, "get_room_size", 0),
-        JS_NewCFunction(ctx, audio_effect_reverb_class_set_room_size, "set_room_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_reverb_class_set_room_size, "set_room_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "damping"),
         JS_NewCFunction(ctx, audio_effect_reverb_class_get_damping, "get_damping", 0),
-        JS_NewCFunction(ctx, audio_effect_reverb_class_set_damping, "set_damping", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_reverb_class_set_damping, "set_damping", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "spread"),
         JS_NewCFunction(ctx, audio_effect_reverb_class_get_spread, "get_spread", 0),
-        JS_NewCFunction(ctx, audio_effect_reverb_class_set_spread, "set_spread", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_reverb_class_set_spread, "set_spread", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "hipass"),
         JS_NewCFunction(ctx, audio_effect_reverb_class_get_hpf, "get_hpf", 0),
-        JS_NewCFunction(ctx, audio_effect_reverb_class_set_hpf, "set_hpf", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_reverb_class_set_hpf, "set_hpf", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "dry"),
         JS_NewCFunction(ctx, audio_effect_reverb_class_get_dry, "get_dry", 0),
-        JS_NewCFunction(ctx, audio_effect_reverb_class_set_dry, "set_dry", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_reverb_class_set_dry, "set_dry", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "wet"),
         JS_NewCFunction(ctx, audio_effect_reverb_class_get_wet, "get_wet", 0),
-        JS_NewCFunction(ctx, audio_effect_reverb_class_set_wet, "set_wet", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_reverb_class_set_wet, "set_wet", 1),
+        JS_PROP_GETSET
     );
 }
 

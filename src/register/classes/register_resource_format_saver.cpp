@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/resource_format_saver.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/resource_format_saver.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void resource_format_saver_class_finalizer(JSRuntime *rt, JSValue val) {
-	ResourceFormatSaver *resource_format_saver = static_cast<ResourceFormatSaver *>(JS_GetOpaque(val, ResourceFormatSaver::__class_id));
-	if (resource_format_saver)
-		memdelete(resource_format_saver);
+	
+	// nothing
 }
 
 static JSClassDef resource_format_saver_class_def = {

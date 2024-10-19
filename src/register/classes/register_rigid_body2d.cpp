@@ -5,20 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physics_direct_body_state2d.hpp>
-#include <godot_cpp/classes/physics_material.hpp>
-#include <godot_cpp/classes/physics_body2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/physics_direct_body_state2d.hpp>
+#include <godot_cpp/classes/physics_body2d.hpp>
 #include <godot_cpp/classes/rigid_body2d.hpp>
+#include <godot_cpp/classes/physics_material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void rigid_body2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	RigidBody2D *rigid_body2d = static_cast<RigidBody2D *>(JS_GetOpaque(val, RigidBody2D::__class_id));
-	if (rigid_body2d)
-		memdelete(rigid_body2d);
+	
+	// nothing
 }
 
 static JSClassDef rigid_body2d_class_def = {
@@ -313,184 +312,184 @@ void define_rigid_body2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "mass"),
         JS_NewCFunction(ctx, rigid_body2d_class_get_mass, "get_mass", 0),
-        JS_NewCFunction(ctx, rigid_body2d_class_set_mass, "set_mass", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rigid_body2d_class_set_mass, "set_mass", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "physics_material_override"),
         JS_NewCFunction(ctx, rigid_body2d_class_get_physics_material_override, "get_physics_material_override", 0),
-        JS_NewCFunction(ctx, rigid_body2d_class_set_physics_material_override, "set_physics_material_override", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rigid_body2d_class_set_physics_material_override, "set_physics_material_override", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gravity_scale"),
         JS_NewCFunction(ctx, rigid_body2d_class_get_gravity_scale, "get_gravity_scale", 0),
-        JS_NewCFunction(ctx, rigid_body2d_class_set_gravity_scale, "set_gravity_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rigid_body2d_class_set_gravity_scale, "set_gravity_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "center_of_mass_mode"),
         JS_NewCFunction(ctx, rigid_body2d_class_get_center_of_mass_mode, "get_center_of_mass_mode", 0),
-        JS_NewCFunction(ctx, rigid_body2d_class_set_center_of_mass_mode, "set_center_of_mass_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rigid_body2d_class_set_center_of_mass_mode, "set_center_of_mass_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "center_of_mass"),
         JS_NewCFunction(ctx, rigid_body2d_class_get_center_of_mass, "get_center_of_mass", 0),
-        JS_NewCFunction(ctx, rigid_body2d_class_set_center_of_mass, "set_center_of_mass", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rigid_body2d_class_set_center_of_mass, "set_center_of_mass", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "inertia"),
         JS_NewCFunction(ctx, rigid_body2d_class_get_inertia, "get_inertia", 0),
-        JS_NewCFunction(ctx, rigid_body2d_class_set_inertia, "set_inertia", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rigid_body2d_class_set_inertia, "set_inertia", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sleeping"),
         JS_NewCFunction(ctx, rigid_body2d_class_is_sleeping, "is_sleeping", 0),
-        JS_NewCFunction(ctx, rigid_body2d_class_set_sleeping, "set_sleeping", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rigid_body2d_class_set_sleeping, "set_sleeping", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "can_sleep"),
         JS_NewCFunction(ctx, rigid_body2d_class_is_able_to_sleep, "is_able_to_sleep", 0),
-        JS_NewCFunction(ctx, rigid_body2d_class_set_can_sleep, "set_can_sleep", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rigid_body2d_class_set_can_sleep, "set_can_sleep", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "lock_rotation"),
         JS_NewCFunction(ctx, rigid_body2d_class_is_lock_rotation_enabled, "is_lock_rotation_enabled", 0),
-        JS_NewCFunction(ctx, rigid_body2d_class_set_lock_rotation_enabled, "set_lock_rotation_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rigid_body2d_class_set_lock_rotation_enabled, "set_lock_rotation_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "freeze"),
         JS_NewCFunction(ctx, rigid_body2d_class_is_freeze_enabled, "is_freeze_enabled", 0),
-        JS_NewCFunction(ctx, rigid_body2d_class_set_freeze_enabled, "set_freeze_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rigid_body2d_class_set_freeze_enabled, "set_freeze_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "freeze_mode"),
         JS_NewCFunction(ctx, rigid_body2d_class_get_freeze_mode, "get_freeze_mode", 0),
-        JS_NewCFunction(ctx, rigid_body2d_class_set_freeze_mode, "set_freeze_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rigid_body2d_class_set_freeze_mode, "set_freeze_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "custom_integrator"),
         JS_NewCFunction(ctx, rigid_body2d_class_is_using_custom_integrator, "is_using_custom_integrator", 0),
-        JS_NewCFunction(ctx, rigid_body2d_class_set_use_custom_integrator, "set_use_custom_integrator", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rigid_body2d_class_set_use_custom_integrator, "set_use_custom_integrator", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "continuous_cd"),
         JS_NewCFunction(ctx, rigid_body2d_class_get_continuous_collision_detection_mode, "get_continuous_collision_detection_mode", 0),
-        JS_NewCFunction(ctx, rigid_body2d_class_set_continuous_collision_detection_mode, "set_continuous_collision_detection_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rigid_body2d_class_set_continuous_collision_detection_mode, "set_continuous_collision_detection_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "contact_monitor"),
         JS_NewCFunction(ctx, rigid_body2d_class_is_contact_monitor_enabled, "is_contact_monitor_enabled", 0),
-        JS_NewCFunction(ctx, rigid_body2d_class_set_contact_monitor, "set_contact_monitor", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rigid_body2d_class_set_contact_monitor, "set_contact_monitor", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "max_contacts_reported"),
         JS_NewCFunction(ctx, rigid_body2d_class_get_max_contacts_reported, "get_max_contacts_reported", 0),
-        JS_NewCFunction(ctx, rigid_body2d_class_set_max_contacts_reported, "set_max_contacts_reported", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rigid_body2d_class_set_max_contacts_reported, "set_max_contacts_reported", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "linear_velocity"),
         JS_NewCFunction(ctx, rigid_body2d_class_get_linear_velocity, "get_linear_velocity", 0),
-        JS_NewCFunction(ctx, rigid_body2d_class_set_linear_velocity, "set_linear_velocity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rigid_body2d_class_set_linear_velocity, "set_linear_velocity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "linear_damp_mode"),
         JS_NewCFunction(ctx, rigid_body2d_class_get_linear_damp_mode, "get_linear_damp_mode", 0),
-        JS_NewCFunction(ctx, rigid_body2d_class_set_linear_damp_mode, "set_linear_damp_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rigid_body2d_class_set_linear_damp_mode, "set_linear_damp_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "linear_damp"),
         JS_NewCFunction(ctx, rigid_body2d_class_get_linear_damp, "get_linear_damp", 0),
-        JS_NewCFunction(ctx, rigid_body2d_class_set_linear_damp, "set_linear_damp", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rigid_body2d_class_set_linear_damp, "set_linear_damp", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angular_velocity"),
         JS_NewCFunction(ctx, rigid_body2d_class_get_angular_velocity, "get_angular_velocity", 0),
-        JS_NewCFunction(ctx, rigid_body2d_class_set_angular_velocity, "set_angular_velocity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rigid_body2d_class_set_angular_velocity, "set_angular_velocity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angular_damp_mode"),
         JS_NewCFunction(ctx, rigid_body2d_class_get_angular_damp_mode, "get_angular_damp_mode", 0),
-        JS_NewCFunction(ctx, rigid_body2d_class_set_angular_damp_mode, "set_angular_damp_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rigid_body2d_class_set_angular_damp_mode, "set_angular_damp_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angular_damp"),
         JS_NewCFunction(ctx, rigid_body2d_class_get_angular_damp, "get_angular_damp", 0),
-        JS_NewCFunction(ctx, rigid_body2d_class_set_angular_damp, "set_angular_damp", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rigid_body2d_class_set_angular_damp, "set_angular_damp", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "constant_force"),
         JS_NewCFunction(ctx, rigid_body2d_class_get_constant_force, "get_constant_force", 0),
-        JS_NewCFunction(ctx, rigid_body2d_class_set_constant_force, "set_constant_force", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rigid_body2d_class_set_constant_force, "set_constant_force", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "constant_torque"),
         JS_NewCFunction(ctx, rigid_body2d_class_get_constant_torque, "get_constant_torque", 0),
-        JS_NewCFunction(ctx, rigid_body2d_class_set_constant_torque, "set_constant_torque", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rigid_body2d_class_set_constant_torque, "set_constant_torque", 1),
+        JS_PROP_GETSET
     );
 }
 

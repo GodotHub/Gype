@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void gd_extension_class_finalizer(JSRuntime *rt, JSValue val) {
-	GDExtension *gd_extension = static_cast<GDExtension *>(JS_GetOpaque(val, GDExtension::__class_id));
-	if (gd_extension)
-		memdelete(gd_extension);
+	
+	// nothing
 }
 
 static JSClassDef gd_extension_class_def = {

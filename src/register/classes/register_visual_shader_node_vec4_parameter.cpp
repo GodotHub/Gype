@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_parameter.hpp>
 #include <godot_cpp/classes/visual_shader_node_vec4_parameter.hpp>
+#include <godot_cpp/classes/visual_shader_node_parameter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visual_shader_node_vec4_parameter_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeVec4Parameter *visual_shader_node_vec4_parameter = static_cast<VisualShaderNodeVec4Parameter *>(JS_GetOpaque(val, VisualShaderNodeVec4Parameter::__class_id));
-	if (visual_shader_node_vec4_parameter)
-		memdelete(visual_shader_node_vec4_parameter);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_vec4_parameter_class_def = {
@@ -63,16 +62,16 @@ void define_visual_shader_node_vec4_parameter_property(JSContext *ctx, JSValue o
         obj,
         JS_NewAtom(ctx, "default_value_enabled"),
         JS_NewCFunction(ctx, visual_shader_node_vec4_parameter_class_is_default_value_enabled, "is_default_value_enabled", 0),
-        JS_NewCFunction(ctx, visual_shader_node_vec4_parameter_class_set_default_value_enabled, "set_default_value_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_vec4_parameter_class_set_default_value_enabled, "set_default_value_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "default_value"),
         JS_NewCFunction(ctx, visual_shader_node_vec4_parameter_class_get_default_value, "get_default_value", 0),
-        JS_NewCFunction(ctx, visual_shader_node_vec4_parameter_class_set_default_value, "set_default_value", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_vec4_parameter_class_set_default_value, "set_default_value", 1),
+        JS_PROP_GETSET
     );
 }
 

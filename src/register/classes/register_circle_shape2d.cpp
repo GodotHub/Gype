@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void circle_shape2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	CircleShape2D *circle_shape2d = static_cast<CircleShape2D *>(JS_GetOpaque(val, CircleShape2D::__class_id));
-	if (circle_shape2d)
-		memdelete(circle_shape2d);
+	
+	// nothing
 }
 
 static JSClassDef circle_shape2d_class_def = {
@@ -54,8 +53,8 @@ void define_circle_shape2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "radius"),
         JS_NewCFunction(ctx, circle_shape2d_class_get_radius, "get_radius", 0),
-        JS_NewCFunction(ctx, circle_shape2d_class_set_radius, "set_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, circle_shape2d_class_set_radius, "set_radius", 1),
+        JS_PROP_GETSET
     );
 }
 

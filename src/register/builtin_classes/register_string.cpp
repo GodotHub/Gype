@@ -1,9 +1,9 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/variant/string.hpp>
 
 using namespace godot;
@@ -360,6 +360,8 @@ static JSValue string_class_humanize_size(JSContext *ctx, JSValueConst this_val,
 	return call_builtin_static_method_ret(&String::humanize_size, ctx, this_val, argc, argv);
 };
 
+
+
 static const JSCFunctionListEntry string_class_proto_funcs[] = {
 	JS_CFUNC_DEF("casecmp_to", 1, &string_class_casecmp_to),
 	JS_CFUNC_DEF("nocasecmp_to", 1, &string_class_nocasecmp_to),
@@ -472,10 +474,10 @@ static const JSCFunctionListEntry string_class_static_funcs[] = {
 	JS_CFUNC_DEF("humanize_size", 1, &string_class_humanize_size),
 };
 
-void define_string_property(JSContext *ctx, JSValue obj) {
-}
+
 
 static int js_string_class_init(JSContext *ctx) {
+	
 	JS_NewClassID(&String::__class_id);
 	classes["String"] = String::__class_id;
 	class_id_list.insert(String::__class_id);
@@ -483,8 +485,6 @@ static int js_string_class_init(JSContext *ctx) {
 
 	JSValue proto = JS_NewObject(ctx);
 	JS_SetClassProto(ctx, String::__class_id, proto);
-
-	define_string_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, string_class_proto_funcs, _countof(string_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, string_class_constructor, "String", 0, JS_CFUNC_constructor, 0);

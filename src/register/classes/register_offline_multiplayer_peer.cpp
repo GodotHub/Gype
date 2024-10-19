@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/offline_multiplayer_peer.hpp>
 #include <godot_cpp/classes/multiplayer_peer.hpp>
+#include <godot_cpp/classes/offline_multiplayer_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void offline_multiplayer_peer_class_finalizer(JSRuntime *rt, JSValue val) {
-	OfflineMultiplayerPeer *offline_multiplayer_peer = static_cast<OfflineMultiplayerPeer *>(JS_GetOpaque(val, OfflineMultiplayerPeer::__class_id));
-	if (offline_multiplayer_peer)
-		memdelete(offline_multiplayer_peer);
+	
+	// nothing
 }
 
 static JSClassDef offline_multiplayer_peer_class_def = {

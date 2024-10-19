@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void voxel_gi_data_class_finalizer(JSRuntime *rt, JSValue val) {
-	VoxelGIData *voxel_gi_data = static_cast<VoxelGIData *>(JS_GetOpaque(val, VoxelGIData::__class_id));
-	if (voxel_gi_data)
-		memdelete(voxel_gi_data);
+	
+	// nothing
 }
 
 static JSClassDef voxel_gi_data_class_def = {
@@ -137,56 +136,56 @@ void define_voxel_gi_data_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "dynamic_range"),
         JS_NewCFunction(ctx, voxel_gi_data_class_get_dynamic_range, "get_dynamic_range", 0),
-        JS_NewCFunction(ctx, voxel_gi_data_class_set_dynamic_range, "set_dynamic_range", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, voxel_gi_data_class_set_dynamic_range, "set_dynamic_range", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "energy"),
         JS_NewCFunction(ctx, voxel_gi_data_class_get_energy, "get_energy", 0),
-        JS_NewCFunction(ctx, voxel_gi_data_class_set_energy, "set_energy", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, voxel_gi_data_class_set_energy, "set_energy", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bias"),
         JS_NewCFunction(ctx, voxel_gi_data_class_get_bias, "get_bias", 0),
-        JS_NewCFunction(ctx, voxel_gi_data_class_set_bias, "set_bias", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, voxel_gi_data_class_set_bias, "set_bias", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "normal_bias"),
         JS_NewCFunction(ctx, voxel_gi_data_class_get_normal_bias, "get_normal_bias", 0),
-        JS_NewCFunction(ctx, voxel_gi_data_class_set_normal_bias, "set_normal_bias", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, voxel_gi_data_class_set_normal_bias, "set_normal_bias", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "propagation"),
         JS_NewCFunction(ctx, voxel_gi_data_class_get_propagation, "get_propagation", 0),
-        JS_NewCFunction(ctx, voxel_gi_data_class_set_propagation, "set_propagation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, voxel_gi_data_class_set_propagation, "set_propagation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_two_bounces"),
         JS_NewCFunction(ctx, voxel_gi_data_class_is_using_two_bounces, "is_using_two_bounces", 0),
-        JS_NewCFunction(ctx, voxel_gi_data_class_set_use_two_bounces, "set_use_two_bounces", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, voxel_gi_data_class_set_use_two_bounces, "set_use_two_bounces", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "interior"),
         JS_NewCFunction(ctx, voxel_gi_data_class_is_interior, "is_interior", 0),
-        JS_NewCFunction(ctx, voxel_gi_data_class_set_interior, "set_interior", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, voxel_gi_data_class_set_interior, "set_interior", 1),
+        JS_PROP_GETSET
     );
 }
 

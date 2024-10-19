@@ -185,6 +185,8 @@ static JSValue array_class_make_read_only(JSContext *ctx, JSValueConst this_val,
 static JSValue array_class_is_read_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Array::is_read_only, ctx, this_val, argc, argv);
 };
+
+
 static const JSCFunctionListEntry array_class_proto_funcs[] = {
 	JS_CFUNC_DEF("size", 0, &array_class_size),
 	JS_CFUNC_DEF("is_empty", 0, &array_class_is_empty),
@@ -234,8 +236,7 @@ static const JSCFunctionListEntry array_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_read_only", 0, &array_class_is_read_only),
 };
 
-void define_array_property(JSContext *ctx, JSValue obj) {
-}
+
 
 static int js_array_class_init(JSContext *ctx) {
 	
@@ -246,8 +247,6 @@ static int js_array_class_init(JSContext *ctx) {
 
 	JSValue proto = JS_NewObject(ctx);
 	JS_SetClassProto(ctx, Array::__class_id, proto);
-
-	define_array_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, array_class_proto_funcs, _countof(array_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, array_class_constructor, "Array", 0, JS_CFUNC_constructor, 0);

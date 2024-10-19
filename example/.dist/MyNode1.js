@@ -12,9 +12,14 @@ import { Node2D } from "godot/classes/node2d";
 let MyNode = class MyNode extends Node2D {
     constructor() {
         super();
+        this.pos = new Vector2();
+        this.pos.x = 10;
     }
     _ready() {
-        this.add_child(new Node2D());
+        this.position = this.pos;
+        GD.print(this.position);
+    }
+    _process(delta) {
     }
 };
 MyNode = __decorate([

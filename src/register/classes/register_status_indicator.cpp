@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/status_indicator.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/status_indicator.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void status_indicator_class_finalizer(JSRuntime *rt, JSValue val) {
-	StatusIndicator *status_indicator = static_cast<StatusIndicator *>(JS_GetOpaque(val, StatusIndicator::__class_id));
-	if (status_indicator)
-		memdelete(status_indicator);
+	
+	// nothing
 }
 
 static JSClassDef status_indicator_class_def = {
@@ -86,32 +85,32 @@ void define_status_indicator_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "tooltip"),
         JS_NewCFunction(ctx, status_indicator_class_get_tooltip, "get_tooltip", 0),
-        JS_NewCFunction(ctx, status_indicator_class_set_tooltip, "set_tooltip", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, status_indicator_class_set_tooltip, "set_tooltip", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "icon"),
         JS_NewCFunction(ctx, status_indicator_class_get_icon, "get_icon", 0),
-        JS_NewCFunction(ctx, status_indicator_class_set_icon, "set_icon", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, status_indicator_class_set_icon, "set_icon", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "menu"),
         JS_NewCFunction(ctx, status_indicator_class_get_menu, "get_menu", 0),
-        JS_NewCFunction(ctx, status_indicator_class_set_menu, "set_menu", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, status_indicator_class_set_menu, "set_menu", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visible"),
         JS_NewCFunction(ctx, status_indicator_class_is_visible, "is_visible", 0),
-        JS_NewCFunction(ctx, status_indicator_class_set_visible, "set_visible", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, status_indicator_class_set_visible, "set_visible", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rd_shader_source.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void rd_shader_source_class_finalizer(JSRuntime *rt, JSValue val) {
-	RDShaderSource *rd_shader_source = static_cast<RDShaderSource *>(JS_GetOpaque(val, RDShaderSource::__class_id));
-	if (rd_shader_source)
-		memdelete(rd_shader_source);
+	
+	// nothing
 }
 
 static JSClassDef rd_shader_source_class_def = {
@@ -63,48 +62,48 @@ void define_rd_shader_source_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "source_vertex"),
         JS_NewCFunction(ctx, rd_shader_source_class_get_stage_source, "get_stage_source", 0),
-        JS_NewCFunction(ctx, rd_shader_source_class_set_stage_source, "set_stage_source", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_shader_source_class_set_stage_source, "set_stage_source", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "source_fragment"),
         JS_NewCFunction(ctx, rd_shader_source_class_get_stage_source, "get_stage_source", 0),
-        JS_NewCFunction(ctx, rd_shader_source_class_set_stage_source, "set_stage_source", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_shader_source_class_set_stage_source, "set_stage_source", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "source_tesselation_control"),
         JS_NewCFunction(ctx, rd_shader_source_class_get_stage_source, "get_stage_source", 0),
-        JS_NewCFunction(ctx, rd_shader_source_class_set_stage_source, "set_stage_source", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_shader_source_class_set_stage_source, "set_stage_source", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "source_tesselation_evaluation"),
         JS_NewCFunction(ctx, rd_shader_source_class_get_stage_source, "get_stage_source", 0),
-        JS_NewCFunction(ctx, rd_shader_source_class_set_stage_source, "set_stage_source", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_shader_source_class_set_stage_source, "set_stage_source", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "source_compute"),
         JS_NewCFunction(ctx, rd_shader_source_class_get_stage_source, "get_stage_source", 0),
-        JS_NewCFunction(ctx, rd_shader_source_class_set_stage_source, "set_stage_source", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_shader_source_class_set_stage_source, "set_stage_source", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "language"),
         JS_NewCFunction(ctx, rd_shader_source_class_get_language, "get_language", 0),
-        JS_NewCFunction(ctx, rd_shader_source_class_set_language, "set_language", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_shader_source_class_set_language, "set_language", 1),
+        JS_PROP_GETSET
     );
 }
 

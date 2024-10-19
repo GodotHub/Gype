@@ -5,19 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_node_state_machine.hpp>
-#include <godot_cpp/classes/animation_root_node.hpp>
 #include <godot_cpp/classes/animation_node_state_machine_transition.hpp>
+#include <godot_cpp/classes/animation_node_state_machine.hpp>
 #include <godot_cpp/classes/animation_node.hpp>
+#include <godot_cpp/classes/animation_root_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void animation_node_state_machine_class_finalizer(JSRuntime *rt, JSValue val) {
-	AnimationNodeStateMachine *animation_node_state_machine = static_cast<AnimationNodeStateMachine *>(JS_GetOpaque(val, AnimationNodeStateMachine::__class_id));
-	if (animation_node_state_machine)
-		memdelete(animation_node_state_machine);
+	
+	// nothing
 }
 
 static JSClassDef animation_node_state_machine_class_def = {
@@ -159,24 +158,24 @@ void define_animation_node_state_machine_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "state_machine_type"),
         JS_NewCFunction(ctx, animation_node_state_machine_class_get_state_machine_type, "get_state_machine_type", 0),
-        JS_NewCFunction(ctx, animation_node_state_machine_class_set_state_machine_type, "set_state_machine_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_state_machine_class_set_state_machine_type, "set_state_machine_type", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "allow_transition_to_self"),
         JS_NewCFunction(ctx, animation_node_state_machine_class_is_allow_transition_to_self, "is_allow_transition_to_self", 0),
-        JS_NewCFunction(ctx, animation_node_state_machine_class_set_allow_transition_to_self, "set_allow_transition_to_self", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_state_machine_class_set_allow_transition_to_self, "set_allow_transition_to_self", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "reset_ends"),
         JS_NewCFunction(ctx, animation_node_state_machine_class_are_ends_reset, "are_ends_reset", 0),
-        JS_NewCFunction(ctx, animation_node_state_machine_class_set_reset_ends, "set_reset_ends", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_state_machine_class_set_reset_ends, "set_reset_ends", 1),
+        JS_PROP_GETSET
     );
 }
 

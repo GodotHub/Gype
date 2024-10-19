@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/classes/canvas_item.hpp>
+#include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void style_box_class_finalizer(JSRuntime *rt, JSValue val) {
-	StyleBox *style_box = static_cast<StyleBox *>(JS_GetOpaque(val, StyleBox::__class_id));
-	if (style_box)
-		memdelete(style_box);
+	
+	// nothing
 }
 
 static JSClassDef style_box_class_def = {
@@ -85,32 +84,32 @@ void define_style_box_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "content_margin_left"),
         JS_NewCFunction(ctx, style_box_class_get_content_margin, "get_content_margin", 0),
-        JS_NewCFunction(ctx, style_box_class_set_content_margin, "set_content_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_class_set_content_margin, "set_content_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "content_margin_top"),
         JS_NewCFunction(ctx, style_box_class_get_content_margin, "get_content_margin", 0),
-        JS_NewCFunction(ctx, style_box_class_set_content_margin, "set_content_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_class_set_content_margin, "set_content_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "content_margin_right"),
         JS_NewCFunction(ctx, style_box_class_get_content_margin, "get_content_margin", 0),
-        JS_NewCFunction(ctx, style_box_class_set_content_margin, "set_content_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_class_set_content_margin, "set_content_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "content_margin_bottom"),
         JS_NewCFunction(ctx, style_box_class_get_content_margin, "get_content_margin", 0),
-        JS_NewCFunction(ctx, style_box_class_set_content_margin, "set_content_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_class_set_content_margin, "set_content_margin", 1),
+        JS_PROP_GETSET
     );
 }
 

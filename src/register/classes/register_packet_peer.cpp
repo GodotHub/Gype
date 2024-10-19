@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void packet_peer_class_finalizer(JSRuntime *rt, JSValue val) {
-	PacketPeer *packet_peer = static_cast<PacketPeer *>(JS_GetOpaque(val, PacketPeer::__class_id));
-	if (packet_peer)
-		memdelete(packet_peer);
+	
+	// nothing
 }
 
 static JSClassDef packet_peer_class_def = {
@@ -78,8 +77,8 @@ void define_packet_peer_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "encode_buffer_max_size"),
         JS_NewCFunction(ctx, packet_peer_class_get_encode_buffer_max_size, "get_encode_buffer_max_size", 0),
-        JS_NewCFunction(ctx, packet_peer_class_set_encode_buffer_max_size, "set_encode_buffer_max_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, packet_peer_class_set_encode_buffer_max_size, "set_encode_buffer_max_size", 1),
+        JS_PROP_GETSET
     );
 }
 

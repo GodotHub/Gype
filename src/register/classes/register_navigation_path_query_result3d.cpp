@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void navigation_path_query_result3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	NavigationPathQueryResult3D *navigation_path_query_result3d = static_cast<NavigationPathQueryResult3D *>(JS_GetOpaque(val, NavigationPathQueryResult3D::__class_id));
-	if (navigation_path_query_result3d)
-		memdelete(navigation_path_query_result3d);
+	
+	// nothing
 }
 
 static JSClassDef navigation_path_query_result3d_class_def = {
@@ -86,32 +85,32 @@ void define_navigation_path_query_result3d_property(JSContext *ctx, JSValue obj)
         obj,
         JS_NewAtom(ctx, "path"),
         JS_NewCFunction(ctx, navigation_path_query_result3d_class_get_path, "get_path", 0),
-        JS_NewCFunction(ctx, navigation_path_query_result3d_class_set_path, "set_path", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_path_query_result3d_class_set_path, "set_path", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "path_types"),
         JS_NewCFunction(ctx, navigation_path_query_result3d_class_get_path_types, "get_path_types", 0),
-        JS_NewCFunction(ctx, navigation_path_query_result3d_class_set_path_types, "set_path_types", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_path_query_result3d_class_set_path_types, "set_path_types", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "path_rids"),
         JS_NewCFunction(ctx, navigation_path_query_result3d_class_get_path_rids, "get_path_rids", 0),
-        JS_NewCFunction(ctx, navigation_path_query_result3d_class_set_path_rids, "set_path_rids", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_path_query_result3d_class_set_path_rids, "set_path_rids", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "path_owner_ids"),
         JS_NewCFunction(ctx, navigation_path_query_result3d_class_get_path_owner_ids, "get_path_owner_ids", 0),
-        JS_NewCFunction(ctx, navigation_path_query_result3d_class_set_path_owner_ids, "set_path_owner_ids", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_path_query_result3d_class_set_path_owner_ids, "set_path_owner_ids", 1),
+        JS_PROP_GETSET
     );
 }
 

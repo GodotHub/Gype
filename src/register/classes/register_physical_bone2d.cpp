@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physical_bone2d.hpp>
 #include <godot_cpp/classes/joint2d.hpp>
+#include <godot_cpp/classes/physical_bone2d.hpp>
 #include <godot_cpp/classes/rigid_body2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void physical_bone2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	PhysicalBone2D *physical_bone2d = static_cast<PhysicalBone2D *>(JS_GetOpaque(val, PhysicalBone2D::__class_id));
-	if (physical_bone2d)
-		memdelete(physical_bone2d);
+	
+	// nothing
 }
 
 static JSClassDef physical_bone2d_class_def = {
@@ -99,40 +98,40 @@ void define_physical_bone2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "bone2d_nodepath"),
         JS_NewCFunction(ctx, physical_bone2d_class_get_bone2d_nodepath, "get_bone2d_nodepath", 0),
-        JS_NewCFunction(ctx, physical_bone2d_class_set_bone2d_nodepath, "set_bone2d_nodepath", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_bone2d_class_set_bone2d_nodepath, "set_bone2d_nodepath", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bone2d_index"),
         JS_NewCFunction(ctx, physical_bone2d_class_get_bone2d_index, "get_bone2d_index", 0),
-        JS_NewCFunction(ctx, physical_bone2d_class_set_bone2d_index, "set_bone2d_index", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_bone2d_class_set_bone2d_index, "set_bone2d_index", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "auto_configure_joint"),
         JS_NewCFunction(ctx, physical_bone2d_class_get_auto_configure_joint, "get_auto_configure_joint", 0),
-        JS_NewCFunction(ctx, physical_bone2d_class_set_auto_configure_joint, "set_auto_configure_joint", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_bone2d_class_set_auto_configure_joint, "set_auto_configure_joint", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "simulate_physics"),
         JS_NewCFunction(ctx, physical_bone2d_class_get_simulate_physics, "get_simulate_physics", 0),
-        JS_NewCFunction(ctx, physical_bone2d_class_set_simulate_physics, "set_simulate_physics", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_bone2d_class_set_simulate_physics, "set_simulate_physics", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "follow_bone_when_simulating"),
         JS_NewCFunction(ctx, physical_bone2d_class_get_follow_bone_when_simulating, "get_follow_bone_when_simulating", 0),
-        JS_NewCFunction(ctx, physical_bone2d_class_set_follow_bone_when_simulating, "set_follow_bone_when_simulating", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_bone2d_class_set_follow_bone_when_simulating, "set_follow_bone_when_simulating", 1),
+        JS_PROP_GETSET
     );
 }
 

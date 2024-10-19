@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void texture3drd_class_finalizer(JSRuntime *rt, JSValue val) {
-	Texture3DRD *texture3drd = static_cast<Texture3DRD *>(JS_GetOpaque(val, Texture3DRD::__class_id));
-	if (texture3drd)
-		memdelete(texture3drd);
+	
+	// nothing
 }
 
 static JSClassDef texture3drd_class_def = {
@@ -54,8 +53,8 @@ void define_texture3drd_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "texture_rd_rid"),
         JS_NewCFunction(ctx, texture3drd_class_get_texture_rd_rid, "get_texture_rd_rid", 0),
-        JS_NewCFunction(ctx, texture3drd_class_set_texture_rd_rid, "set_texture_rd_rid", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture3drd_class_set_texture_rd_rid, "set_texture_rd_rid", 1),
+        JS_PROP_GETSET
     );
 }
 

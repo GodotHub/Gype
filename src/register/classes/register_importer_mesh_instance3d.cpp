@@ -5,19 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/importer_mesh.hpp>
 #include <godot_cpp/classes/importer_mesh_instance3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/skin.hpp>
+#include <godot_cpp/classes/importer_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void importer_mesh_instance3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	ImporterMeshInstance3D *importer_mesh_instance3d = static_cast<ImporterMeshInstance3D *>(JS_GetOpaque(val, ImporterMeshInstance3D::__class_id));
-	if (importer_mesh_instance3d)
-		memdelete(importer_mesh_instance3d);
+	
+	// nothing
 }
 
 static JSClassDef importer_mesh_instance3d_class_def = {
@@ -137,80 +136,80 @@ void define_importer_mesh_instance3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "mesh"),
         JS_NewCFunction(ctx, importer_mesh_instance3d_class_get_mesh, "get_mesh", 0),
-        JS_NewCFunction(ctx, importer_mesh_instance3d_class_set_mesh, "set_mesh", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, importer_mesh_instance3d_class_set_mesh, "set_mesh", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "skin"),
         JS_NewCFunction(ctx, importer_mesh_instance3d_class_get_skin, "get_skin", 0),
-        JS_NewCFunction(ctx, importer_mesh_instance3d_class_set_skin, "set_skin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, importer_mesh_instance3d_class_set_skin, "set_skin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "skeleton_path"),
         JS_NewCFunction(ctx, importer_mesh_instance3d_class_get_skeleton_path, "get_skeleton_path", 0),
-        JS_NewCFunction(ctx, importer_mesh_instance3d_class_set_skeleton_path, "set_skeleton_path", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, importer_mesh_instance3d_class_set_skeleton_path, "set_skeleton_path", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "layer_mask"),
         JS_NewCFunction(ctx, importer_mesh_instance3d_class_get_layer_mask, "get_layer_mask", 0),
-        JS_NewCFunction(ctx, importer_mesh_instance3d_class_set_layer_mask, "set_layer_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, importer_mesh_instance3d_class_set_layer_mask, "set_layer_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cast_shadow"),
         JS_NewCFunction(ctx, importer_mesh_instance3d_class_get_cast_shadows_setting, "get_cast_shadows_setting", 0),
-        JS_NewCFunction(ctx, importer_mesh_instance3d_class_set_cast_shadows_setting, "set_cast_shadows_setting", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, importer_mesh_instance3d_class_set_cast_shadows_setting, "set_cast_shadows_setting", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visibility_range_begin"),
         JS_NewCFunction(ctx, importer_mesh_instance3d_class_get_visibility_range_begin, "get_visibility_range_begin", 0),
-        JS_NewCFunction(ctx, importer_mesh_instance3d_class_set_visibility_range_begin, "set_visibility_range_begin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, importer_mesh_instance3d_class_set_visibility_range_begin, "set_visibility_range_begin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visibility_range_begin_margin"),
         JS_NewCFunction(ctx, importer_mesh_instance3d_class_get_visibility_range_begin_margin, "get_visibility_range_begin_margin", 0),
-        JS_NewCFunction(ctx, importer_mesh_instance3d_class_set_visibility_range_begin_margin, "set_visibility_range_begin_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, importer_mesh_instance3d_class_set_visibility_range_begin_margin, "set_visibility_range_begin_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visibility_range_end"),
         JS_NewCFunction(ctx, importer_mesh_instance3d_class_get_visibility_range_end, "get_visibility_range_end", 0),
-        JS_NewCFunction(ctx, importer_mesh_instance3d_class_set_visibility_range_end, "set_visibility_range_end", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, importer_mesh_instance3d_class_set_visibility_range_end, "set_visibility_range_end", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visibility_range_end_margin"),
         JS_NewCFunction(ctx, importer_mesh_instance3d_class_get_visibility_range_end_margin, "get_visibility_range_end_margin", 0),
-        JS_NewCFunction(ctx, importer_mesh_instance3d_class_set_visibility_range_end_margin, "set_visibility_range_end_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, importer_mesh_instance3d_class_set_visibility_range_end_margin, "set_visibility_range_end_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visibility_range_fade_mode"),
         JS_NewCFunction(ctx, importer_mesh_instance3d_class_get_visibility_range_fade_mode, "get_visibility_range_fade_mode", 0),
-        JS_NewCFunction(ctx, importer_mesh_instance3d_class_set_visibility_range_fade_mode, "set_visibility_range_fade_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, importer_mesh_instance3d_class_set_visibility_range_fade_mode, "set_visibility_range_fade_mode", 1),
+        JS_PROP_GETSET
     );
 }
 

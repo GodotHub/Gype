@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/base_button.hpp>
 #include <godot_cpp/classes/button.hpp>
+#include <godot_cpp/classes/base_button.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void button_class_finalizer(JSRuntime *rt, JSValue val) {
-	Button *button = static_cast<Button *>(JS_GetOpaque(val, Button::__class_id));
-	if (button)
-		memdelete(button);
+	
+	// nothing
 }
 
 static JSClassDef button_class_def = {
@@ -154,96 +153,96 @@ void define_button_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "text"),
         JS_NewCFunction(ctx, button_class_get_text, "get_text", 0),
-        JS_NewCFunction(ctx, button_class_set_text, "set_text", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, button_class_set_text, "set_text", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "icon"),
         JS_NewCFunction(ctx, button_class_get_button_icon, "get_button_icon", 0),
-        JS_NewCFunction(ctx, button_class_set_button_icon, "set_button_icon", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, button_class_set_button_icon, "set_button_icon", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "flat"),
         JS_NewCFunction(ctx, button_class_is_flat, "is_flat", 0),
-        JS_NewCFunction(ctx, button_class_set_flat, "set_flat", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, button_class_set_flat, "set_flat", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "alignment"),
         JS_NewCFunction(ctx, button_class_get_text_alignment, "get_text_alignment", 0),
-        JS_NewCFunction(ctx, button_class_set_text_alignment, "set_text_alignment", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, button_class_set_text_alignment, "set_text_alignment", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "text_overrun_behavior"),
         JS_NewCFunction(ctx, button_class_get_text_overrun_behavior, "get_text_overrun_behavior", 0),
-        JS_NewCFunction(ctx, button_class_set_text_overrun_behavior, "set_text_overrun_behavior", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, button_class_set_text_overrun_behavior, "set_text_overrun_behavior", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "autowrap_mode"),
         JS_NewCFunction(ctx, button_class_get_autowrap_mode, "get_autowrap_mode", 0),
-        JS_NewCFunction(ctx, button_class_set_autowrap_mode, "set_autowrap_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, button_class_set_autowrap_mode, "set_autowrap_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "clip_text"),
         JS_NewCFunction(ctx, button_class_get_clip_text, "get_clip_text", 0),
-        JS_NewCFunction(ctx, button_class_set_clip_text, "set_clip_text", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, button_class_set_clip_text, "set_clip_text", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "icon_alignment"),
         JS_NewCFunction(ctx, button_class_get_icon_alignment, "get_icon_alignment", 0),
-        JS_NewCFunction(ctx, button_class_set_icon_alignment, "set_icon_alignment", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, button_class_set_icon_alignment, "set_icon_alignment", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "vertical_icon_alignment"),
         JS_NewCFunction(ctx, button_class_get_vertical_icon_alignment, "get_vertical_icon_alignment", 0),
-        JS_NewCFunction(ctx, button_class_set_vertical_icon_alignment, "set_vertical_icon_alignment", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, button_class_set_vertical_icon_alignment, "set_vertical_icon_alignment", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "expand_icon"),
         JS_NewCFunction(ctx, button_class_is_expand_icon, "is_expand_icon", 0),
-        JS_NewCFunction(ctx, button_class_set_expand_icon, "set_expand_icon", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, button_class_set_expand_icon, "set_expand_icon", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "text_direction"),
         JS_NewCFunction(ctx, button_class_get_text_direction, "get_text_direction", 0),
-        JS_NewCFunction(ctx, button_class_set_text_direction, "set_text_direction", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, button_class_set_text_direction, "set_text_direction", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "language"),
         JS_NewCFunction(ctx, button_class_get_language, "get_language", 0),
-        JS_NewCFunction(ctx, button_class_set_language, "set_language", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, button_class_set_language, "set_language", 1),
+        JS_PROP_GETSET
     );
 }
 

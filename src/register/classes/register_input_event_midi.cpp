@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/input_event_midi.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void input_event_midi_class_finalizer(JSRuntime *rt, JSValue val) {
-	InputEventMIDI *input_event_midi = static_cast<InputEventMIDI *>(JS_GetOpaque(val, InputEventMIDI::__class_id));
-	if (input_event_midi)
-		memdelete(input_event_midi);
+	
+	// nothing
 }
 
 static JSClassDef input_event_midi_class_def = {
@@ -117,64 +116,64 @@ void define_input_event_midi_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "channel"),
         JS_NewCFunction(ctx, input_event_midi_class_get_channel, "get_channel", 0),
-        JS_NewCFunction(ctx, input_event_midi_class_set_channel, "set_channel", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_midi_class_set_channel, "set_channel", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "message"),
         JS_NewCFunction(ctx, input_event_midi_class_get_message, "get_message", 0),
-        JS_NewCFunction(ctx, input_event_midi_class_set_message, "set_message", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_midi_class_set_message, "set_message", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "pitch"),
         JS_NewCFunction(ctx, input_event_midi_class_get_pitch, "get_pitch", 0),
-        JS_NewCFunction(ctx, input_event_midi_class_set_pitch, "set_pitch", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_midi_class_set_pitch, "set_pitch", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "velocity"),
         JS_NewCFunction(ctx, input_event_midi_class_get_velocity, "get_velocity", 0),
-        JS_NewCFunction(ctx, input_event_midi_class_set_velocity, "set_velocity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_midi_class_set_velocity, "set_velocity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "instrument"),
         JS_NewCFunction(ctx, input_event_midi_class_get_instrument, "get_instrument", 0),
-        JS_NewCFunction(ctx, input_event_midi_class_set_instrument, "set_instrument", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_midi_class_set_instrument, "set_instrument", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "pressure"),
         JS_NewCFunction(ctx, input_event_midi_class_get_pressure, "get_pressure", 0),
-        JS_NewCFunction(ctx, input_event_midi_class_set_pressure, "set_pressure", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_midi_class_set_pressure, "set_pressure", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "controller_number"),
         JS_NewCFunction(ctx, input_event_midi_class_get_controller_number, "get_controller_number", 0),
-        JS_NewCFunction(ctx, input_event_midi_class_set_controller_number, "set_controller_number", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_midi_class_set_controller_number, "set_controller_number", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "controller_value"),
         JS_NewCFunction(ctx, input_event_midi_class_get_controller_value, "get_controller_value", 0),
-        JS_NewCFunction(ctx, input_event_midi_class_set_controller_value, "set_controller_value", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_midi_class_set_controller_value, "set_controller_value", 1),
+        JS_PROP_GETSET
     );
 }
 

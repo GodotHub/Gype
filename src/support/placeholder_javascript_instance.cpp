@@ -25,7 +25,6 @@ PlaceholderJavaScriptInstance::PlaceholderJavaScriptInstance(Object *p_godot_obj
 	JSValue js_instance = JS_NewObjectClass(ctx, class_id);
 	JS_SetOpaque(js_instance, binding);
 	binding->js_instance = js_instance;
-	binding->ctx = ctx;
 }
 
 godot::PlaceholderJavaScriptInstance::~PlaceholderJavaScriptInstance() {

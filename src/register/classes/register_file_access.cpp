@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/file_access.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void file_access_class_finalizer(JSRuntime *rt, JSValue val) {
-	FileAccess *file_access = static_cast<FileAccess *>(JS_GetOpaque(val, FileAccess::__class_id));
-	if (file_access)
-		memdelete(file_access);
+	
+	// nothing
 }
 
 static JSClassDef file_access_class_def = {
@@ -294,8 +293,8 @@ void define_file_access_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "big_endian"),
         JS_NewCFunction(ctx, file_access_class_is_big_endian, "is_big_endian", 0),
-        JS_NewCFunction(ctx, file_access_class_set_big_endian, "set_big_endian", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, file_access_class_set_big_endian, "set_big_endian", 1),
+        JS_PROP_GETSET
     );
 }
 

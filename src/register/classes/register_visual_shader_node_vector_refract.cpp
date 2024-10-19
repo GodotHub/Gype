@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_vector_refract_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeVectorRefract *visual_shader_node_vector_refract = static_cast<VisualShaderNodeVectorRefract *>(JS_GetOpaque(val, VisualShaderNodeVectorRefract::__class_id));
-	if (visual_shader_node_vector_refract)
-		memdelete(visual_shader_node_vector_refract);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_vector_refract_class_def = {

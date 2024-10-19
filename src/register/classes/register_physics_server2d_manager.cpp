@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physics_server2d_manager.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/physics_server2d_manager.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
@@ -16,9 +16,8 @@ static JSValue physics_server2d_manager_instance;
 static void js_physics_server2d_manager_singleton();
 
 static void physics_server2d_manager_class_finalizer(JSRuntime *rt, JSValue val) {
-	PhysicsServer2DManager *physics_server2d_manager = static_cast<PhysicsServer2DManager *>(JS_GetOpaque(val, PhysicsServer2DManager::__class_id));
-	if (physics_server2d_manager)
-		PhysicsServer2DManager::free(nullptr, physics_server2d_manager);
+	
+	// nothing
 }
 
 static JSClassDef physics_server2d_manager_class_def = {

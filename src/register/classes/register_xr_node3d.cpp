@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void xr_node3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	XRNode3D *xr_node3d = static_cast<XRNode3D *>(JS_GetOpaque(val, XRNode3D::__class_id));
-	if (xr_node3d)
-		memdelete(xr_node3d);
+	
+	// nothing
 }
 
 static JSClassDef xr_node3d_class_def = {
@@ -90,24 +89,24 @@ void define_xr_node3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "tracker"),
         JS_NewCFunction(ctx, xr_node3d_class_get_tracker, "get_tracker", 0),
-        JS_NewCFunction(ctx, xr_node3d_class_set_tracker, "set_tracker", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_node3d_class_set_tracker, "set_tracker", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "pose"),
         JS_NewCFunction(ctx, xr_node3d_class_get_pose_name, "get_pose_name", 0),
-        JS_NewCFunction(ctx, xr_node3d_class_set_pose_name, "set_pose_name", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_node3d_class_set_pose_name, "set_pose_name", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "show_when_tracked"),
         JS_NewCFunction(ctx, xr_node3d_class_get_show_when_tracked, "get_show_when_tracked", 0),
-        JS_NewCFunction(ctx, xr_node3d_class_set_show_when_tracked, "set_show_when_tracked", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_node3d_class_set_show_when_tracked, "set_show_when_tracked", 1),
+        JS_PROP_GETSET
     );
 }
 

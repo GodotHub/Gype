@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/render_data_rd.hpp>
 #include <godot_cpp/classes/render_data.hpp>
+#include <godot_cpp/classes/render_data_rd.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void render_data_rd_class_finalizer(JSRuntime *rt, JSValue val) {
-	RenderDataRD *render_data_rd = static_cast<RenderDataRD *>(JS_GetOpaque(val, RenderDataRD::__class_id));
-	if (render_data_rd)
-		memdelete(render_data_rd);
+	
+	// nothing
 }
 
 static JSClassDef render_data_rd_class_def = {

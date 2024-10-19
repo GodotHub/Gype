@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/multiplayer_api.hpp>
 #include <godot_cpp/classes/scene_multiplayer.hpp>
+#include <godot_cpp/classes/multiplayer_api.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void scene_multiplayer_class_finalizer(JSRuntime *rt, JSValue val) {
-	SceneMultiplayer *scene_multiplayer = static_cast<SceneMultiplayer *>(JS_GetOpaque(val, SceneMultiplayer::__class_id));
-	if (scene_multiplayer)
-		memdelete(scene_multiplayer);
+	
+	// nothing
 }
 
 static JSClassDef scene_multiplayer_class_def = {
@@ -143,64 +142,64 @@ void define_scene_multiplayer_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "root_path"),
         JS_NewCFunction(ctx, scene_multiplayer_class_get_root_path, "get_root_path", 0),
-        JS_NewCFunction(ctx, scene_multiplayer_class_set_root_path, "set_root_path", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scene_multiplayer_class_set_root_path, "set_root_path", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "auth_callback"),
         JS_NewCFunction(ctx, scene_multiplayer_class_get_auth_callback, "get_auth_callback", 0),
-        JS_NewCFunction(ctx, scene_multiplayer_class_set_auth_callback, "set_auth_callback", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scene_multiplayer_class_set_auth_callback, "set_auth_callback", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "auth_timeout"),
         JS_NewCFunction(ctx, scene_multiplayer_class_get_auth_timeout, "get_auth_timeout", 0),
-        JS_NewCFunction(ctx, scene_multiplayer_class_set_auth_timeout, "set_auth_timeout", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scene_multiplayer_class_set_auth_timeout, "set_auth_timeout", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "allow_object_decoding"),
         JS_NewCFunction(ctx, scene_multiplayer_class_is_object_decoding_allowed, "is_object_decoding_allowed", 0),
-        JS_NewCFunction(ctx, scene_multiplayer_class_set_allow_object_decoding, "set_allow_object_decoding", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scene_multiplayer_class_set_allow_object_decoding, "set_allow_object_decoding", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "refuse_new_connections"),
         JS_NewCFunction(ctx, scene_multiplayer_class_is_refusing_new_connections, "is_refusing_new_connections", 0),
-        JS_NewCFunction(ctx, scene_multiplayer_class_set_refuse_new_connections, "set_refuse_new_connections", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scene_multiplayer_class_set_refuse_new_connections, "set_refuse_new_connections", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "server_relay"),
         JS_NewCFunction(ctx, scene_multiplayer_class_is_server_relay_enabled, "is_server_relay_enabled", 0),
-        JS_NewCFunction(ctx, scene_multiplayer_class_set_server_relay_enabled, "set_server_relay_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scene_multiplayer_class_set_server_relay_enabled, "set_server_relay_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "max_sync_packet_size"),
         JS_NewCFunction(ctx, scene_multiplayer_class_get_max_sync_packet_size, "get_max_sync_packet_size", 0),
-        JS_NewCFunction(ctx, scene_multiplayer_class_set_max_sync_packet_size, "set_max_sync_packet_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scene_multiplayer_class_set_max_sync_packet_size, "set_max_sync_packet_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "max_delta_packet_size"),
         JS_NewCFunction(ctx, scene_multiplayer_class_get_max_delta_packet_size, "get_max_delta_packet_size", 0),
-        JS_NewCFunction(ctx, scene_multiplayer_class_set_max_delta_packet_size, "set_max_delta_packet_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scene_multiplayer_class_set_max_delta_packet_size, "set_max_delta_packet_size", 1),
+        JS_PROP_GETSET
     );
 }
 

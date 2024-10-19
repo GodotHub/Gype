@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/compositor_effect.hpp>
 #include <godot_cpp/classes/render_data.hpp>
+#include <godot_cpp/classes/compositor_effect.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void compositor_effect_class_finalizer(JSRuntime *rt, JSValue val) {
-	CompositorEffect *compositor_effect = static_cast<CompositorEffect *>(JS_GetOpaque(val, CompositorEffect::__class_id));
-	if (compositor_effect)
-		memdelete(compositor_effect);
+	
+	// nothing
 }
 
 static JSClassDef compositor_effect_class_def = {
@@ -109,56 +108,56 @@ void define_compositor_effect_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "enabled"),
         JS_NewCFunction(ctx, compositor_effect_class_get_enabled, "get_enabled", 0),
-        JS_NewCFunction(ctx, compositor_effect_class_set_enabled, "set_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, compositor_effect_class_set_enabled, "set_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "effect_callback_type"),
         JS_NewCFunction(ctx, compositor_effect_class_get_effect_callback_type, "get_effect_callback_type", 0),
-        JS_NewCFunction(ctx, compositor_effect_class_set_effect_callback_type, "set_effect_callback_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, compositor_effect_class_set_effect_callback_type, "set_effect_callback_type", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "access_resolved_color"),
         JS_NewCFunction(ctx, compositor_effect_class_get_access_resolved_color, "get_access_resolved_color", 0),
-        JS_NewCFunction(ctx, compositor_effect_class_set_access_resolved_color, "set_access_resolved_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, compositor_effect_class_set_access_resolved_color, "set_access_resolved_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "access_resolved_depth"),
         JS_NewCFunction(ctx, compositor_effect_class_get_access_resolved_depth, "get_access_resolved_depth", 0),
-        JS_NewCFunction(ctx, compositor_effect_class_set_access_resolved_depth, "set_access_resolved_depth", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, compositor_effect_class_set_access_resolved_depth, "set_access_resolved_depth", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "needs_motion_vectors"),
         JS_NewCFunction(ctx, compositor_effect_class_get_needs_motion_vectors, "get_needs_motion_vectors", 0),
-        JS_NewCFunction(ctx, compositor_effect_class_set_needs_motion_vectors, "set_needs_motion_vectors", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, compositor_effect_class_set_needs_motion_vectors, "set_needs_motion_vectors", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "needs_normal_roughness"),
         JS_NewCFunction(ctx, compositor_effect_class_get_needs_normal_roughness, "get_needs_normal_roughness", 0),
-        JS_NewCFunction(ctx, compositor_effect_class_set_needs_normal_roughness, "set_needs_normal_roughness", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, compositor_effect_class_set_needs_normal_roughness, "set_needs_normal_roughness", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "needs_separate_specular"),
         JS_NewCFunction(ctx, compositor_effect_class_get_needs_separate_specular, "get_needs_separate_specular", 0),
-        JS_NewCFunction(ctx, compositor_effect_class_set_needs_separate_specular, "set_needs_separate_specular", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, compositor_effect_class_set_needs_separate_specular, "set_needs_separate_specular", 1),
+        JS_PROP_GETSET
     );
 }
 

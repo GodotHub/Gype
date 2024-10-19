@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rd_sampler_state.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void rd_sampler_state_class_finalizer(JSRuntime *rt, JSValue val) {
-	RDSamplerState *rd_sampler_state = static_cast<RDSamplerState *>(JS_GetOpaque(val, RDSamplerState::__class_id));
-	if (rd_sampler_state)
-		memdelete(rd_sampler_state);
+	
+	// nothing
 }
 
 static JSClassDef rd_sampler_state_class_def = {
@@ -180,120 +179,120 @@ void define_rd_sampler_state_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "mag_filter"),
         JS_NewCFunction(ctx, rd_sampler_state_class_get_mag_filter, "get_mag_filter", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_mag_filter, "set_mag_filter", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_sampler_state_class_set_mag_filter, "set_mag_filter", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "min_filter"),
         JS_NewCFunction(ctx, rd_sampler_state_class_get_min_filter, "get_min_filter", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_min_filter, "set_min_filter", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_sampler_state_class_set_min_filter, "set_min_filter", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "mip_filter"),
         JS_NewCFunction(ctx, rd_sampler_state_class_get_mip_filter, "get_mip_filter", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_mip_filter, "set_mip_filter", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_sampler_state_class_set_mip_filter, "set_mip_filter", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "repeat_u"),
         JS_NewCFunction(ctx, rd_sampler_state_class_get_repeat_u, "get_repeat_u", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_repeat_u, "set_repeat_u", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_sampler_state_class_set_repeat_u, "set_repeat_u", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "repeat_v"),
         JS_NewCFunction(ctx, rd_sampler_state_class_get_repeat_v, "get_repeat_v", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_repeat_v, "set_repeat_v", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_sampler_state_class_set_repeat_v, "set_repeat_v", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "repeat_w"),
         JS_NewCFunction(ctx, rd_sampler_state_class_get_repeat_w, "get_repeat_w", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_repeat_w, "set_repeat_w", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_sampler_state_class_set_repeat_w, "set_repeat_w", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "lod_bias"),
         JS_NewCFunction(ctx, rd_sampler_state_class_get_lod_bias, "get_lod_bias", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_lod_bias, "set_lod_bias", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_sampler_state_class_set_lod_bias, "set_lod_bias", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_anisotropy"),
         JS_NewCFunction(ctx, rd_sampler_state_class_get_use_anisotropy, "get_use_anisotropy", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_use_anisotropy, "set_use_anisotropy", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_sampler_state_class_set_use_anisotropy, "set_use_anisotropy", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "anisotropy_max"),
         JS_NewCFunction(ctx, rd_sampler_state_class_get_anisotropy_max, "get_anisotropy_max", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_anisotropy_max, "set_anisotropy_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_sampler_state_class_set_anisotropy_max, "set_anisotropy_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "enable_compare"),
         JS_NewCFunction(ctx, rd_sampler_state_class_get_enable_compare, "get_enable_compare", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_enable_compare, "set_enable_compare", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_sampler_state_class_set_enable_compare, "set_enable_compare", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "compare_op"),
         JS_NewCFunction(ctx, rd_sampler_state_class_get_compare_op, "get_compare_op", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_compare_op, "set_compare_op", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_sampler_state_class_set_compare_op, "set_compare_op", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "min_lod"),
         JS_NewCFunction(ctx, rd_sampler_state_class_get_min_lod, "get_min_lod", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_min_lod, "set_min_lod", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_sampler_state_class_set_min_lod, "set_min_lod", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "max_lod"),
         JS_NewCFunction(ctx, rd_sampler_state_class_get_max_lod, "get_max_lod", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_max_lod, "set_max_lod", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_sampler_state_class_set_max_lod, "set_max_lod", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "border_color"),
         JS_NewCFunction(ctx, rd_sampler_state_class_get_border_color, "get_border_color", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_border_color, "set_border_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_sampler_state_class_set_border_color, "set_border_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "unnormalized_uvw"),
         JS_NewCFunction(ctx, rd_sampler_state_class_get_unnormalized_uvw, "get_unnormalized_uvw", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_unnormalized_uvw, "set_unnormalized_uvw", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_sampler_state_class_set_unnormalized_uvw, "set_unnormalized_uvw", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -5,26 +5,25 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/camera3d.hpp>
-#include <godot_cpp/classes/world3d.hpp>
-#include <godot_cpp/classes/camera2d.hpp>
-#include <godot_cpp/classes/world2d.hpp>
-#include <godot_cpp/classes/window.hpp>
-#include <godot_cpp/classes/viewport_texture.hpp>
 #include <godot_cpp/classes/viewport.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/world3d.hpp>
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/camera2d.hpp>
+#include <godot_cpp/classes/camera3d.hpp>
+#include <godot_cpp/classes/window.hpp>
+#include <godot_cpp/classes/world2d.hpp>
+#include <godot_cpp/classes/viewport_texture.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void viewport_class_finalizer(JSRuntime *rt, JSValue val) {
-	Viewport *viewport = static_cast<Viewport *>(JS_GetOpaque(val, Viewport::__class_id));
-	if (viewport)
-		memdelete(viewport);
+	
+	// nothing
 }
 
 static JSClassDef viewport_class_def = {
@@ -557,368 +556,368 @@ void define_viewport_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "disable_3d"),
         JS_NewCFunction(ctx, viewport_class_is_3d_disabled, "is_3d_disabled", 0),
-        JS_NewCFunction(ctx, viewport_class_set_disable_3d, "set_disable_3d", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_disable_3d, "set_disable_3d", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_xr"),
         JS_NewCFunction(ctx, viewport_class_is_using_xr, "is_using_xr", 0),
-        JS_NewCFunction(ctx, viewport_class_set_use_xr, "set_use_xr", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_use_xr, "set_use_xr", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "own_world_3d"),
         JS_NewCFunction(ctx, viewport_class_is_using_own_world_3d, "is_using_own_world_3d", 0),
-        JS_NewCFunction(ctx, viewport_class_set_use_own_world_3d, "set_use_own_world_3d", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_use_own_world_3d, "set_use_own_world_3d", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "world_3d"),
         JS_NewCFunction(ctx, viewport_class_get_world_3d, "get_world_3d", 0),
-        JS_NewCFunction(ctx, viewport_class_set_world_3d, "set_world_3d", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_world_3d, "set_world_3d", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "world_2d"),
         JS_NewCFunction(ctx, viewport_class_get_world_2d, "get_world_2d", 0),
-        JS_NewCFunction(ctx, viewport_class_set_world_2d, "set_world_2d", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_world_2d, "set_world_2d", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "transparent_bg"),
         JS_NewCFunction(ctx, viewport_class_has_transparent_background, "has_transparent_background", 0),
-        JS_NewCFunction(ctx, viewport_class_set_transparent_background, "set_transparent_background", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_transparent_background, "set_transparent_background", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "handle_input_locally"),
         JS_NewCFunction(ctx, viewport_class_is_handling_input_locally, "is_handling_input_locally", 0),
-        JS_NewCFunction(ctx, viewport_class_set_handle_input_locally, "set_handle_input_locally", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_handle_input_locally, "set_handle_input_locally", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "snap_2d_transforms_to_pixel"),
         JS_NewCFunction(ctx, viewport_class_is_snap_2d_transforms_to_pixel_enabled, "is_snap_2d_transforms_to_pixel_enabled", 0),
-        JS_NewCFunction(ctx, viewport_class_set_snap_2d_transforms_to_pixel, "set_snap_2d_transforms_to_pixel", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_snap_2d_transforms_to_pixel, "set_snap_2d_transforms_to_pixel", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "snap_2d_vertices_to_pixel"),
         JS_NewCFunction(ctx, viewport_class_is_snap_2d_vertices_to_pixel_enabled, "is_snap_2d_vertices_to_pixel_enabled", 0),
-        JS_NewCFunction(ctx, viewport_class_set_snap_2d_vertices_to_pixel, "set_snap_2d_vertices_to_pixel", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_snap_2d_vertices_to_pixel, "set_snap_2d_vertices_to_pixel", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "msaa_2d"),
         JS_NewCFunction(ctx, viewport_class_get_msaa_2d, "get_msaa_2d", 0),
-        JS_NewCFunction(ctx, viewport_class_set_msaa_2d, "set_msaa_2d", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_msaa_2d, "set_msaa_2d", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "msaa_3d"),
         JS_NewCFunction(ctx, viewport_class_get_msaa_3d, "get_msaa_3d", 0),
-        JS_NewCFunction(ctx, viewport_class_set_msaa_3d, "set_msaa_3d", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_msaa_3d, "set_msaa_3d", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "screen_space_aa"),
         JS_NewCFunction(ctx, viewport_class_get_screen_space_aa, "get_screen_space_aa", 0),
-        JS_NewCFunction(ctx, viewport_class_set_screen_space_aa, "set_screen_space_aa", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_screen_space_aa, "set_screen_space_aa", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_taa"),
         JS_NewCFunction(ctx, viewport_class_is_using_taa, "is_using_taa", 0),
-        JS_NewCFunction(ctx, viewport_class_set_use_taa, "set_use_taa", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_use_taa, "set_use_taa", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_debanding"),
         JS_NewCFunction(ctx, viewport_class_is_using_debanding, "is_using_debanding", 0),
-        JS_NewCFunction(ctx, viewport_class_set_use_debanding, "set_use_debanding", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_use_debanding, "set_use_debanding", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_occlusion_culling"),
         JS_NewCFunction(ctx, viewport_class_is_using_occlusion_culling, "is_using_occlusion_culling", 0),
-        JS_NewCFunction(ctx, viewport_class_set_use_occlusion_culling, "set_use_occlusion_culling", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_use_occlusion_culling, "set_use_occlusion_culling", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "mesh_lod_threshold"),
         JS_NewCFunction(ctx, viewport_class_get_mesh_lod_threshold, "get_mesh_lod_threshold", 0),
-        JS_NewCFunction(ctx, viewport_class_set_mesh_lod_threshold, "set_mesh_lod_threshold", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_mesh_lod_threshold, "set_mesh_lod_threshold", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "debug_draw"),
         JS_NewCFunction(ctx, viewport_class_get_debug_draw, "get_debug_draw", 0),
-        JS_NewCFunction(ctx, viewport_class_set_debug_draw, "set_debug_draw", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_debug_draw, "set_debug_draw", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_hdr_2d"),
         JS_NewCFunction(ctx, viewport_class_is_using_hdr_2d, "is_using_hdr_2d", 0),
-        JS_NewCFunction(ctx, viewport_class_set_use_hdr_2d, "set_use_hdr_2d", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_use_hdr_2d, "set_use_hdr_2d", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scaling_3d_mode"),
         JS_NewCFunction(ctx, viewport_class_get_scaling_3d_mode, "get_scaling_3d_mode", 0),
-        JS_NewCFunction(ctx, viewport_class_set_scaling_3d_mode, "set_scaling_3d_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_scaling_3d_mode, "set_scaling_3d_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scaling_3d_scale"),
         JS_NewCFunction(ctx, viewport_class_get_scaling_3d_scale, "get_scaling_3d_scale", 0),
-        JS_NewCFunction(ctx, viewport_class_set_scaling_3d_scale, "set_scaling_3d_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_scaling_3d_scale, "set_scaling_3d_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_mipmap_bias"),
         JS_NewCFunction(ctx, viewport_class_get_texture_mipmap_bias, "get_texture_mipmap_bias", 0),
-        JS_NewCFunction(ctx, viewport_class_set_texture_mipmap_bias, "set_texture_mipmap_bias", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_texture_mipmap_bias, "set_texture_mipmap_bias", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fsr_sharpness"),
         JS_NewCFunction(ctx, viewport_class_get_fsr_sharpness, "get_fsr_sharpness", 0),
-        JS_NewCFunction(ctx, viewport_class_set_fsr_sharpness, "set_fsr_sharpness", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_fsr_sharpness, "set_fsr_sharpness", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "vrs_mode"),
         JS_NewCFunction(ctx, viewport_class_get_vrs_mode, "get_vrs_mode", 0),
-        JS_NewCFunction(ctx, viewport_class_set_vrs_mode, "set_vrs_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_vrs_mode, "set_vrs_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "vrs_update_mode"),
         JS_NewCFunction(ctx, viewport_class_get_vrs_update_mode, "get_vrs_update_mode", 0),
-        JS_NewCFunction(ctx, viewport_class_set_vrs_update_mode, "set_vrs_update_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_vrs_update_mode, "set_vrs_update_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "vrs_texture"),
         JS_NewCFunction(ctx, viewport_class_get_vrs_texture, "get_vrs_texture", 0),
-        JS_NewCFunction(ctx, viewport_class_set_vrs_texture, "set_vrs_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_vrs_texture, "set_vrs_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "canvas_item_default_texture_filter"),
         JS_NewCFunction(ctx, viewport_class_get_default_canvas_item_texture_filter, "get_default_canvas_item_texture_filter", 0),
-        JS_NewCFunction(ctx, viewport_class_set_default_canvas_item_texture_filter, "set_default_canvas_item_texture_filter", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_default_canvas_item_texture_filter, "set_default_canvas_item_texture_filter", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "canvas_item_default_texture_repeat"),
         JS_NewCFunction(ctx, viewport_class_get_default_canvas_item_texture_repeat, "get_default_canvas_item_texture_repeat", 0),
-        JS_NewCFunction(ctx, viewport_class_set_default_canvas_item_texture_repeat, "set_default_canvas_item_texture_repeat", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_default_canvas_item_texture_repeat, "set_default_canvas_item_texture_repeat", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "audio_listener_enable_2d"),
         JS_NewCFunction(ctx, viewport_class_is_audio_listener_2d, "is_audio_listener_2d", 0),
-        JS_NewCFunction(ctx, viewport_class_set_as_audio_listener_2d, "set_as_audio_listener_2d", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_as_audio_listener_2d, "set_as_audio_listener_2d", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "audio_listener_enable_3d"),
         JS_NewCFunction(ctx, viewport_class_is_audio_listener_3d, "is_audio_listener_3d", 0),
-        JS_NewCFunction(ctx, viewport_class_set_as_audio_listener_3d, "set_as_audio_listener_3d", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_as_audio_listener_3d, "set_as_audio_listener_3d", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "physics_object_picking"),
         JS_NewCFunction(ctx, viewport_class_get_physics_object_picking, "get_physics_object_picking", 0),
-        JS_NewCFunction(ctx, viewport_class_set_physics_object_picking, "set_physics_object_picking", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_physics_object_picking, "set_physics_object_picking", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "physics_object_picking_sort"),
         JS_NewCFunction(ctx, viewport_class_get_physics_object_picking_sort, "get_physics_object_picking_sort", 0),
-        JS_NewCFunction(ctx, viewport_class_set_physics_object_picking_sort, "set_physics_object_picking_sort", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_physics_object_picking_sort, "set_physics_object_picking_sort", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "physics_object_picking_first_only"),
         JS_NewCFunction(ctx, viewport_class_get_physics_object_picking_first_only, "get_physics_object_picking_first_only", 0),
-        JS_NewCFunction(ctx, viewport_class_set_physics_object_picking_first_only, "set_physics_object_picking_first_only", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_physics_object_picking_first_only, "set_physics_object_picking_first_only", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gui_disable_input"),
         JS_NewCFunction(ctx, viewport_class_is_input_disabled, "is_input_disabled", 0),
-        JS_NewCFunction(ctx, viewport_class_set_disable_input, "set_disable_input", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_disable_input, "set_disable_input", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gui_snap_controls_to_pixels"),
         JS_NewCFunction(ctx, viewport_class_is_snap_controls_to_pixels_enabled, "is_snap_controls_to_pixels_enabled", 0),
-        JS_NewCFunction(ctx, viewport_class_set_snap_controls_to_pixels, "set_snap_controls_to_pixels", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_snap_controls_to_pixels, "set_snap_controls_to_pixels", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gui_embed_subwindows"),
         JS_NewCFunction(ctx, viewport_class_is_embedding_subwindows, "is_embedding_subwindows", 0),
-        JS_NewCFunction(ctx, viewport_class_set_embedding_subwindows, "set_embedding_subwindows", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_embedding_subwindows, "set_embedding_subwindows", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sdf_oversize"),
         JS_NewCFunction(ctx, viewport_class_get_sdf_oversize, "get_sdf_oversize", 0),
-        JS_NewCFunction(ctx, viewport_class_set_sdf_oversize, "set_sdf_oversize", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_sdf_oversize, "set_sdf_oversize", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sdf_scale"),
         JS_NewCFunction(ctx, viewport_class_get_sdf_scale, "get_sdf_scale", 0),
-        JS_NewCFunction(ctx, viewport_class_set_sdf_scale, "set_sdf_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_sdf_scale, "set_sdf_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "positional_shadow_atlas_size"),
         JS_NewCFunction(ctx, viewport_class_get_positional_shadow_atlas_size, "get_positional_shadow_atlas_size", 0),
-        JS_NewCFunction(ctx, viewport_class_set_positional_shadow_atlas_size, "set_positional_shadow_atlas_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_positional_shadow_atlas_size, "set_positional_shadow_atlas_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "positional_shadow_atlas_16_bits"),
         JS_NewCFunction(ctx, viewport_class_get_positional_shadow_atlas_16_bits, "get_positional_shadow_atlas_16_bits", 0),
-        JS_NewCFunction(ctx, viewport_class_set_positional_shadow_atlas_16_bits, "set_positional_shadow_atlas_16_bits", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_positional_shadow_atlas_16_bits, "set_positional_shadow_atlas_16_bits", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "positional_shadow_atlas_quad_0"),
         JS_NewCFunction(ctx, viewport_class_get_positional_shadow_atlas_quadrant_subdiv, "get_positional_shadow_atlas_quadrant_subdiv", 0),
-        JS_NewCFunction(ctx, viewport_class_set_positional_shadow_atlas_quadrant_subdiv, "set_positional_shadow_atlas_quadrant_subdiv", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_positional_shadow_atlas_quadrant_subdiv, "set_positional_shadow_atlas_quadrant_subdiv", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "positional_shadow_atlas_quad_1"),
         JS_NewCFunction(ctx, viewport_class_get_positional_shadow_atlas_quadrant_subdiv, "get_positional_shadow_atlas_quadrant_subdiv", 0),
-        JS_NewCFunction(ctx, viewport_class_set_positional_shadow_atlas_quadrant_subdiv, "set_positional_shadow_atlas_quadrant_subdiv", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_positional_shadow_atlas_quadrant_subdiv, "set_positional_shadow_atlas_quadrant_subdiv", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "positional_shadow_atlas_quad_2"),
         JS_NewCFunction(ctx, viewport_class_get_positional_shadow_atlas_quadrant_subdiv, "get_positional_shadow_atlas_quadrant_subdiv", 0),
-        JS_NewCFunction(ctx, viewport_class_set_positional_shadow_atlas_quadrant_subdiv, "set_positional_shadow_atlas_quadrant_subdiv", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_positional_shadow_atlas_quadrant_subdiv, "set_positional_shadow_atlas_quadrant_subdiv", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "positional_shadow_atlas_quad_3"),
         JS_NewCFunction(ctx, viewport_class_get_positional_shadow_atlas_quadrant_subdiv, "get_positional_shadow_atlas_quadrant_subdiv", 0),
-        JS_NewCFunction(ctx, viewport_class_set_positional_shadow_atlas_quadrant_subdiv, "set_positional_shadow_atlas_quadrant_subdiv", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_positional_shadow_atlas_quadrant_subdiv, "set_positional_shadow_atlas_quadrant_subdiv", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "canvas_transform"),
         JS_NewCFunction(ctx, viewport_class_get_canvas_transform, "get_canvas_transform", 0),
-        JS_NewCFunction(ctx, viewport_class_set_canvas_transform, "set_canvas_transform", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_canvas_transform, "set_canvas_transform", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "global_canvas_transform"),
         JS_NewCFunction(ctx, viewport_class_get_global_canvas_transform, "get_global_canvas_transform", 0),
-        JS_NewCFunction(ctx, viewport_class_set_global_canvas_transform, "set_global_canvas_transform", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_global_canvas_transform, "set_global_canvas_transform", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "canvas_cull_mask"),
         JS_NewCFunction(ctx, viewport_class_get_canvas_cull_mask, "get_canvas_cull_mask", 0),
-        JS_NewCFunction(ctx, viewport_class_set_canvas_cull_mask, "set_canvas_cull_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, viewport_class_set_canvas_cull_mask, "set_canvas_cull_mask", 1),
+        JS_PROP_GETSET
     );
 }
 

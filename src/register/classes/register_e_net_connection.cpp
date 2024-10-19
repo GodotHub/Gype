@@ -5,20 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/e_net_packet_peer.hpp>
 #include <godot_cpp/classes/e_net_connection.hpp>
+#include <godot_cpp/classes/e_net_packet_peer.hpp>
+#include <godot_cpp/classes/e_net_packet_peer.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
-#include <godot_cpp/classes/e_net_packet_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void e_net_connection_class_finalizer(JSRuntime *rt, JSValue val) {
-	ENetConnection *e_net_connection = static_cast<ENetConnection *>(JS_GetOpaque(val, ENetConnection::__class_id));
-	if (e_net_connection)
-		memdelete(e_net_connection);
+	
+	// nothing
 }
 
 static JSClassDef e_net_connection_class_def = {

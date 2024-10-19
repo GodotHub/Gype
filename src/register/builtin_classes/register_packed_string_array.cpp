@@ -1,9 +1,9 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/variant/packed_string_array.hpp>
 
 using namespace godot;
@@ -40,7 +40,7 @@ static JSValue packed_string_array_class_is_empty(JSContext *ctx, JSValueConst t
 	return call_builtin_const_method_ret(&PackedStringArray::is_empty, ctx, this_val, argc, argv);
 };
 static JSValue packed_string_array_class_set(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedStringArray::set, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedStringArray::set, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_string_array_class_push_back(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -50,32 +50,32 @@ static JSValue packed_string_array_class_append(JSContext *ctx, JSValueConst thi
 	return call_builtin_method_ret(&PackedStringArray::append, ctx, this_val, argc, argv);
 };
 static JSValue packed_string_array_class_append_array(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedStringArray::append_array, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedStringArray::append_array, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_string_array_class_remove_at(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedStringArray::remove_at, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedStringArray::remove_at, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_string_array_class_insert(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&PackedStringArray::insert, ctx, this_val, argc, argv);
 };
 static JSValue packed_string_array_class_fill(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedStringArray::fill, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedStringArray::fill, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_string_array_class_resize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&PackedStringArray::resize, ctx, this_val, argc, argv);
 };
 static JSValue packed_string_array_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedStringArray::clear, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedStringArray::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_string_array_class_has(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PackedStringArray::has, ctx, this_val, argc, argv);
 };
 static JSValue packed_string_array_class_reverse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedStringArray::reverse, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedStringArray::reverse, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_string_array_class_slice(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -85,7 +85,7 @@ static JSValue packed_string_array_class_to_byte_array(JSContext *ctx, JSValueCo
 	return call_builtin_const_method_ret(&PackedStringArray::to_byte_array, ctx, this_val, argc, argv);
 };
 static JSValue packed_string_array_class_sort(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&PackedStringArray::sort, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PackedStringArray::sort, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_string_array_class_bsearch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -103,6 +103,8 @@ static JSValue packed_string_array_class_rfind(JSContext *ctx, JSValueConst this
 static JSValue packed_string_array_class_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PackedStringArray::count, ctx, this_val, argc, argv);
 };
+
+
 static const JSCFunctionListEntry packed_string_array_class_proto_funcs[] = {
 	JS_CFUNC_DEF("size", 0, &packed_string_array_class_size),
 	JS_CFUNC_DEF("is_empty", 0, &packed_string_array_class_is_empty),
@@ -127,10 +129,10 @@ static const JSCFunctionListEntry packed_string_array_class_proto_funcs[] = {
 	JS_CFUNC_DEF("count", 1, &packed_string_array_class_count),
 };
 
-void define_packed_string_array_property(JSContext *ctx, JSValue obj) {
-}
+
 
 static int js_packed_string_array_class_init(JSContext *ctx) {
+	
 	JS_NewClassID(&PackedStringArray::__class_id);
 	classes["PackedStringArray"] = PackedStringArray::__class_id;
 	class_id_list.insert(PackedStringArray::__class_id);
@@ -138,8 +140,6 @@ static int js_packed_string_array_class_init(JSContext *ctx) {
 
 	JSValue proto = JS_NewObject(ctx);
 	JS_SetClassProto(ctx, PackedStringArray::__class_id, proto);
-
-	define_packed_string_array_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, packed_string_array_class_proto_funcs, _countof(packed_string_array_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, packed_string_array_class_constructor, "PackedStringArray", 0, JS_CFUNC_constructor, 0);

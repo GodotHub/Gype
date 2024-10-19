@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void xr_origin3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	XROrigin3D *xr_origin3d = static_cast<XROrigin3D *>(JS_GetOpaque(val, XROrigin3D::__class_id));
-	if (xr_origin3d)
-		memdelete(xr_origin3d);
+	
+	// nothing
 }
 
 static JSClassDef xr_origin3d_class_def = {
@@ -63,16 +62,16 @@ void define_xr_origin3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "world_scale"),
         JS_NewCFunction(ctx, xr_origin3d_class_get_world_scale, "get_world_scale", 0),
-        JS_NewCFunction(ctx, xr_origin3d_class_set_world_scale, "set_world_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_origin3d_class_set_world_scale, "set_world_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "current"),
         JS_NewCFunction(ctx, xr_origin3d_class_is_current, "is_current", 0),
-        JS_NewCFunction(ctx, xr_origin3d_class_set_current, "set_current", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_origin3d_class_set_current, "set_current", 1),
+        JS_PROP_GETSET
     );
 }
 

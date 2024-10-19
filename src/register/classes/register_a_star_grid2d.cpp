@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/a_star_grid2d.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void a_star_grid2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	AStarGrid2D *a_star_grid2d = static_cast<AStarGrid2D *>(JS_GetOpaque(val, AStarGrid2D::__class_id));
-	if (a_star_grid2d)
-		memdelete(a_star_grid2d);
+	
+	// nothing
 }
 
 static JSClassDef a_star_grid2d_class_def = {
@@ -188,72 +187,72 @@ void define_a_star_grid2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "region"),
         JS_NewCFunction(ctx, a_star_grid2d_class_get_region, "get_region", 0),
-        JS_NewCFunction(ctx, a_star_grid2d_class_set_region, "set_region", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, a_star_grid2d_class_set_region, "set_region", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, a_star_grid2d_class_get_size, "get_size", 0),
-        JS_NewCFunction(ctx, a_star_grid2d_class_set_size, "set_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, a_star_grid2d_class_set_size, "set_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "offset"),
         JS_NewCFunction(ctx, a_star_grid2d_class_get_offset, "get_offset", 0),
-        JS_NewCFunction(ctx, a_star_grid2d_class_set_offset, "set_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, a_star_grid2d_class_set_offset, "set_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cell_size"),
         JS_NewCFunction(ctx, a_star_grid2d_class_get_cell_size, "get_cell_size", 0),
-        JS_NewCFunction(ctx, a_star_grid2d_class_set_cell_size, "set_cell_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, a_star_grid2d_class_set_cell_size, "set_cell_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cell_shape"),
         JS_NewCFunction(ctx, a_star_grid2d_class_get_cell_shape, "get_cell_shape", 0),
-        JS_NewCFunction(ctx, a_star_grid2d_class_set_cell_shape, "set_cell_shape", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, a_star_grid2d_class_set_cell_shape, "set_cell_shape", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "jumping_enabled"),
         JS_NewCFunction(ctx, a_star_grid2d_class_is_jumping_enabled, "is_jumping_enabled", 0),
-        JS_NewCFunction(ctx, a_star_grid2d_class_set_jumping_enabled, "set_jumping_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, a_star_grid2d_class_set_jumping_enabled, "set_jumping_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "default_compute_heuristic"),
         JS_NewCFunction(ctx, a_star_grid2d_class_get_default_compute_heuristic, "get_default_compute_heuristic", 0),
-        JS_NewCFunction(ctx, a_star_grid2d_class_set_default_compute_heuristic, "set_default_compute_heuristic", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, a_star_grid2d_class_set_default_compute_heuristic, "set_default_compute_heuristic", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "default_estimate_heuristic"),
         JS_NewCFunction(ctx, a_star_grid2d_class_get_default_estimate_heuristic, "get_default_estimate_heuristic", 0),
-        JS_NewCFunction(ctx, a_star_grid2d_class_set_default_estimate_heuristic, "set_default_estimate_heuristic", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, a_star_grid2d_class_set_default_estimate_heuristic, "set_default_estimate_heuristic", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "diagonal_mode"),
         JS_NewCFunction(ctx, a_star_grid2d_class_get_diagonal_mode, "get_diagonal_mode", 0),
-        JS_NewCFunction(ctx, a_star_grid2d_class_set_diagonal_mode, "set_diagonal_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, a_star_grid2d_class_set_diagonal_mode, "set_diagonal_mode", 1),
+        JS_PROP_GETSET
     );
 }
 

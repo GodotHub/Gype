@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void audio_stream_synchronized_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioStreamSynchronized *audio_stream_synchronized = static_cast<AudioStreamSynchronized *>(JS_GetOpaque(val, AudioStreamSynchronized::__class_id));
-	if (audio_stream_synchronized)
-		memdelete(audio_stream_synchronized);
+	
+	// nothing
 }
 
 static JSClassDef audio_stream_synchronized_class_def = {
@@ -72,8 +71,8 @@ void define_audio_stream_synchronized_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "stream_count"),
         JS_NewCFunction(ctx, audio_stream_synchronized_class_get_stream_count, "get_stream_count", 0),
-        JS_NewCFunction(ctx, audio_stream_synchronized_class_set_stream_count, "set_stream_count", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_synchronized_class_set_stream_count, "set_stream_count", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void sky_class_finalizer(JSRuntime *rt, JSValue val) {
-	Sky *sky = static_cast<Sky *>(JS_GetOpaque(val, Sky::__class_id));
-	if (sky)
-		memdelete(sky);
+	
+	// nothing
 }
 
 static JSClassDef sky_class_def = {
@@ -73,24 +72,24 @@ void define_sky_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "sky_material"),
         JS_NewCFunction(ctx, sky_class_get_material, "get_material", 0),
-        JS_NewCFunction(ctx, sky_class_set_material, "set_material", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sky_class_set_material, "set_material", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "process_mode"),
         JS_NewCFunction(ctx, sky_class_get_process_mode, "get_process_mode", 0),
-        JS_NewCFunction(ctx, sky_class_set_process_mode, "set_process_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sky_class_set_process_mode, "set_process_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "radiance_size"),
         JS_NewCFunction(ctx, sky_class_get_radiance_size, "get_radiance_size", 0),
-        JS_NewCFunction(ctx, sky_class_set_radiance_size, "set_radiance_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sky_class_set_radiance_size, "set_radiance_size", 1),
+        JS_PROP_GETSET
     );
 }
 

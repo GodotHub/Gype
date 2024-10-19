@@ -5,22 +5,21 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/popup.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/tab_container.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/classes/tab_bar.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void tab_container_class_finalizer(JSRuntime *rt, JSValue val) {
-	TabContainer *tab_container = static_cast<TabContainer *>(JS_GetOpaque(val, TabContainer::__class_id));
-	if (tab_container)
-		memdelete(tab_container);
+	
+	// nothing
 }
 
 static JSClassDef tab_container_class_def = {
@@ -266,88 +265,88 @@ void define_tab_container_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "tab_alignment"),
         JS_NewCFunction(ctx, tab_container_class_get_tab_alignment, "get_tab_alignment", 0),
-        JS_NewCFunction(ctx, tab_container_class_set_tab_alignment, "set_tab_alignment", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tab_container_class_set_tab_alignment, "set_tab_alignment", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "current_tab"),
         JS_NewCFunction(ctx, tab_container_class_get_current_tab, "get_current_tab", 0),
-        JS_NewCFunction(ctx, tab_container_class_set_current_tab, "set_current_tab", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tab_container_class_set_current_tab, "set_current_tab", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tabs_position"),
         JS_NewCFunction(ctx, tab_container_class_get_tabs_position, "get_tabs_position", 0),
-        JS_NewCFunction(ctx, tab_container_class_set_tabs_position, "set_tabs_position", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tab_container_class_set_tabs_position, "set_tabs_position", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "clip_tabs"),
         JS_NewCFunction(ctx, tab_container_class_get_clip_tabs, "get_clip_tabs", 0),
-        JS_NewCFunction(ctx, tab_container_class_set_clip_tabs, "set_clip_tabs", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tab_container_class_set_clip_tabs, "set_clip_tabs", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tabs_visible"),
         JS_NewCFunction(ctx, tab_container_class_are_tabs_visible, "are_tabs_visible", 0),
-        JS_NewCFunction(ctx, tab_container_class_set_tabs_visible, "set_tabs_visible", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tab_container_class_set_tabs_visible, "set_tabs_visible", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "all_tabs_in_front"),
         JS_NewCFunction(ctx, tab_container_class_is_all_tabs_in_front, "is_all_tabs_in_front", 0),
-        JS_NewCFunction(ctx, tab_container_class_set_all_tabs_in_front, "set_all_tabs_in_front", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tab_container_class_set_all_tabs_in_front, "set_all_tabs_in_front", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "drag_to_rearrange_enabled"),
         JS_NewCFunction(ctx, tab_container_class_get_drag_to_rearrange_enabled, "get_drag_to_rearrange_enabled", 0),
-        JS_NewCFunction(ctx, tab_container_class_set_drag_to_rearrange_enabled, "set_drag_to_rearrange_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tab_container_class_set_drag_to_rearrange_enabled, "set_drag_to_rearrange_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tabs_rearrange_group"),
         JS_NewCFunction(ctx, tab_container_class_get_tabs_rearrange_group, "get_tabs_rearrange_group", 0),
-        JS_NewCFunction(ctx, tab_container_class_set_tabs_rearrange_group, "set_tabs_rearrange_group", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tab_container_class_set_tabs_rearrange_group, "set_tabs_rearrange_group", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_hidden_tabs_for_min_size"),
         JS_NewCFunction(ctx, tab_container_class_get_use_hidden_tabs_for_min_size, "get_use_hidden_tabs_for_min_size", 0),
-        JS_NewCFunction(ctx, tab_container_class_set_use_hidden_tabs_for_min_size, "set_use_hidden_tabs_for_min_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tab_container_class_set_use_hidden_tabs_for_min_size, "set_use_hidden_tabs_for_min_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tab_focus_mode"),
         JS_NewCFunction(ctx, tab_container_class_get_tab_focus_mode, "get_tab_focus_mode", 0),
-        JS_NewCFunction(ctx, tab_container_class_set_tab_focus_mode, "set_tab_focus_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tab_container_class_set_tab_focus_mode, "set_tab_focus_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "deselect_enabled"),
         JS_NewCFunction(ctx, tab_container_class_get_deselect_enabled, "get_deselect_enabled", 0),
-        JS_NewCFunction(ctx, tab_container_class_set_deselect_enabled, "set_deselect_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tab_container_class_set_deselect_enabled, "set_deselect_enabled", 1),
+        JS_PROP_GETSET
     );
 }
 

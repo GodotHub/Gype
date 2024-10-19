@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void material_class_finalizer(JSRuntime *rt, JSValue val) {
-	Material *material = static_cast<Material *>(JS_GetOpaque(val, Material::__class_id));
-	if (material)
-		memdelete(material);
+	
+	// nothing
 }
 
 static JSClassDef material_class_def = {
@@ -72,16 +71,16 @@ void define_material_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "render_priority"),
         JS_NewCFunction(ctx, material_class_get_render_priority, "get_render_priority", 0),
-        JS_NewCFunction(ctx, material_class_set_render_priority, "set_render_priority", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, material_class_set_render_priority, "set_render_priority", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "next_pass"),
         JS_NewCFunction(ctx, material_class_get_next_pass, "get_next_pass", 0),
-        JS_NewCFunction(ctx, material_class_set_next_pass, "set_next_pass", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, material_class_set_next_pass, "set_next_pass", 1),
+        JS_PROP_GETSET
     );
 }
 

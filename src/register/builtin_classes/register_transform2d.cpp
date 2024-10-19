@@ -90,6 +90,31 @@ static JSValue transform2d_class_is_finite(JSContext *ctx, JSValueConst this_val
 static JSValue transform2d_class_looking_at(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Transform2D::looking_at, ctx, this_val, argc, argv);
 };
+
+static JSValue transform2d_class_get_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Transform2D &val = *reinterpret_cast<Transform2D *>(JS_GetOpaque(this_val, Transform2D::__class_id));
+	return Variant(val.columns[0]);
+}
+static JSValue transform2d_class_set_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Transform2D &val = *reinterpret_cast<Transform2D *>(JS_GetOpaque(this_val, Transform2D::__class_id));
+	val.columns[0] = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue transform2d_class_get_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Transform2D &val = *reinterpret_cast<Transform2D *>(JS_GetOpaque(this_val, Transform2D::__class_id));
+	return Variant(val.columns[1]);
+}
+static JSValue transform2d_class_set_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Transform2D &val = *reinterpret_cast<Transform2D *>(JS_GetOpaque(this_val, Transform2D::__class_id));
+	val.columns[1] = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue transform2d_class_set_origin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_method_no_ret(&Transform2D::set_origin, ctx, this_val, argc, argv);
+}
+
 static const JSCFunctionListEntry transform2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("inverse", 0, &transform2d_class_inverse),
 	JS_CFUNC_DEF("affine_inverse", 0, &transform2d_class_affine_inverse),
@@ -113,6 +138,27 @@ static const JSCFunctionListEntry transform2d_class_proto_funcs[] = {
 };
 
 void define_transform2d_property(JSContext *ctx, JSValue obj) {
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "x"),
+			JS_NewCFunction(ctx, transform2d_class_get_x, "get_x", 0),
+			JS_NewCFunction(ctx, transform2d_class_set_x, "set_x", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "y"),
+			JS_NewCFunction(ctx, transform2d_class_get_y, "get_y", 0),
+			JS_NewCFunction(ctx, transform2d_class_set_y, "set_y", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "origin"),
+			JS_NewCFunction(ctx, transform2d_class_get_origin, "get_origin", 0),
+			JS_NewCFunction(ctx, transform2d_class_set_origin, "set_origin", 1),
+			JS_PROP_GETSET);
 }
 
 static int js_transform2d_class_init(JSContext *ctx) {
@@ -123,7 +169,6 @@ static int js_transform2d_class_init(JSContext *ctx) {
 
 	JSValue proto = JS_NewObject(ctx);
 	JS_SetClassProto(ctx, Transform2D::__class_id, proto);
-
 	define_transform2d_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, transform2d_class_proto_funcs, _countof(transform2d_class_proto_funcs));
 

@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/rd_shader_spirv.hpp>
 #include <godot_cpp/classes/rd_shader_file.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/rd_shader_spirv.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void rd_shader_file_class_finalizer(JSRuntime *rt, JSValue val) {
-	RDShaderFile *rd_shader_file = static_cast<RDShaderFile *>(JS_GetOpaque(val, RDShaderFile::__class_id));
-	if (rd_shader_file)
-		memdelete(rd_shader_file);
+	
+	// nothing
 }
 
 static JSClassDef rd_shader_file_class_def = {
@@ -68,8 +67,8 @@ void define_rd_shader_file_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "base_error"),
         JS_NewCFunction(ctx, rd_shader_file_class_get_base_error, "get_base_error", 0),
-        JS_NewCFunction(ctx, rd_shader_file_class_set_base_error, "set_base_error", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_shader_file_class_set_base_error, "set_base_error", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/texture.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -15,9 +15,8 @@
 using namespace godot;
 
 static void texture2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	Texture2D *texture2d = static_cast<Texture2D *>(JS_GetOpaque(val, Texture2D::__class_id));
-	if (texture2d)
-		memdelete(texture2d);
+	
+	// nothing
 }
 
 static JSClassDef texture2d_class_def = {

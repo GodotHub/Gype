@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/classes/gd_script.hpp>
+#include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gd_script_class_finalizer(JSRuntime *rt, JSValue val) {
-	GDScript *gd_script = static_cast<GDScript *>(JS_GetOpaque(val, GDScript::__class_id));
-	if (gd_script)
-		memdelete(gd_script);
+	
+	// nothing
 }
 
 static JSClassDef gd_script_class_def = {

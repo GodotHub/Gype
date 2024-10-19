@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void input_event_action_class_finalizer(JSRuntime *rt, JSValue val) {
-	InputEventAction *input_event_action = static_cast<InputEventAction *>(JS_GetOpaque(val, InputEventAction::__class_id));
-	if (input_event_action)
-		memdelete(input_event_action);
+	
+	// nothing
 }
 
 static JSClassDef input_event_action_class_def = {
@@ -77,32 +76,32 @@ void define_input_event_action_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "action"),
         JS_NewCFunction(ctx, input_event_action_class_get_action, "get_action", 0),
-        JS_NewCFunction(ctx, input_event_action_class_set_action, "set_action", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_action_class_set_action, "set_action", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "pressed"),
         JS_UNDEFINED,
-        JS_NewCFunction(ctx, input_event_action_class_set_pressed, "set_pressed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_action_class_set_pressed, "set_pressed", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "strength"),
         JS_NewCFunction(ctx, input_event_action_class_get_strength, "get_strength", 0),
-        JS_NewCFunction(ctx, input_event_action_class_set_strength, "set_strength", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_action_class_set_strength, "set_strength", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "event_index"),
         JS_NewCFunction(ctx, input_event_action_class_get_event_index, "get_event_index", 0),
-        JS_NewCFunction(ctx, input_event_action_class_set_event_index, "set_event_index", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_action_class_set_event_index, "set_event_index", 1),
+        JS_PROP_GETSET
     );
 }
 

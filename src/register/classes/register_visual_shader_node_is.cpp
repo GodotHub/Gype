@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_is_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeIs *visual_shader_node_is = static_cast<VisualShaderNodeIs *>(JS_GetOpaque(val, VisualShaderNodeIs::__class_id));
-	if (visual_shader_node_is)
-		memdelete(visual_shader_node_is);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_is_class_def = {
@@ -54,8 +53,8 @@ void define_visual_shader_node_is_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "function"),
         JS_NewCFunction(ctx, visual_shader_node_is_class_get_function, "get_function", 0),
-        JS_NewCFunction(ctx, visual_shader_node_is_class_set_function, "set_function", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_is_class_set_function, "set_function", 1),
+        JS_PROP_GETSET
     );
 }
 

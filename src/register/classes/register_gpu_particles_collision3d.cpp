@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void gpu_particles_collision3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	GPUParticlesCollision3D *gpu_particles_collision3d = static_cast<GPUParticlesCollision3D *>(JS_GetOpaque(val, GPUParticlesCollision3D::__class_id));
-	if (gpu_particles_collision3d)
-		memdelete(gpu_particles_collision3d);
+	
+	// nothing
 }
 
 static JSClassDef gpu_particles_collision3d_class_def = {
@@ -54,8 +53,8 @@ void define_gpu_particles_collision3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "cull_mask"),
         JS_NewCFunction(ctx, gpu_particles_collision3d_class_get_cull_mask, "get_cull_mask", 0),
-        JS_NewCFunction(ctx, gpu_particles_collision3d_class_set_cull_mask, "set_cull_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gpu_particles_collision3d_class_set_cull_mask, "set_cull_mask", 1),
+        JS_PROP_GETSET
     );
 }
 

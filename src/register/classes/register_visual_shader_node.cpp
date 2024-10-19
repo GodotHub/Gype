@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNode *visual_shader_node = static_cast<VisualShaderNode *>(JS_GetOpaque(val, VisualShaderNode::__class_id));
-	if (visual_shader_node)
-		memdelete(visual_shader_node);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_class_def = {
@@ -95,24 +94,24 @@ void define_visual_shader_node_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "output_port_for_preview"),
         JS_NewCFunction(ctx, visual_shader_node_class_get_output_port_for_preview, "get_output_port_for_preview", 0),
-        JS_NewCFunction(ctx, visual_shader_node_class_set_output_port_for_preview, "set_output_port_for_preview", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_class_set_output_port_for_preview, "set_output_port_for_preview", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "default_input_values"),
         JS_NewCFunction(ctx, visual_shader_node_class_get_default_input_values, "get_default_input_values", 0),
-        JS_NewCFunction(ctx, visual_shader_node_class_set_default_input_values, "set_default_input_values", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_class_set_default_input_values, "set_default_input_values", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "linked_parent_graph_frame"),
         JS_NewCFunction(ctx, visual_shader_node_class_get_frame, "get_frame", 0),
-        JS_NewCFunction(ctx, visual_shader_node_class_set_frame, "set_frame", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_class_set_frame, "set_frame", 1),
+        JS_PROP_GETSET
     );
 }
 

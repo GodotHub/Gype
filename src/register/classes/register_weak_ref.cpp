@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void weak_ref_class_finalizer(JSRuntime *rt, JSValue val) {
-	WeakRef *weak_ref = static_cast<WeakRef *>(JS_GetOpaque(val, WeakRef::__class_id));
-	if (weak_ref)
-		memdelete(weak_ref);
+	
+	// nothing
 }
 
 static JSClassDef weak_ref_class_def = {

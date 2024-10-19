@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gpu_particles_collision_box3d.hpp>
 #include <godot_cpp/classes/gpu_particles_collision3d.hpp>
+#include <godot_cpp/classes/gpu_particles_collision_box3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gpu_particles_collision_box3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	GPUParticlesCollisionBox3D *gpu_particles_collision_box3d = static_cast<GPUParticlesCollisionBox3D *>(JS_GetOpaque(val, GPUParticlesCollisionBox3D::__class_id));
-	if (gpu_particles_collision_box3d)
-		memdelete(gpu_particles_collision_box3d);
+	
+	// nothing
 }
 
 static JSClassDef gpu_particles_collision_box3d_class_def = {
@@ -54,8 +53,8 @@ void define_gpu_particles_collision_box3d_property(JSContext *ctx, JSValue obj) 
         obj,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, gpu_particles_collision_box3d_class_get_size, "get_size", 0),
-        JS_NewCFunction(ctx, gpu_particles_collision_box3d_class_set_size, "set_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gpu_particles_collision_box3d_class_set_size, "set_size", 1),
+        JS_PROP_GETSET
     );
 }
 

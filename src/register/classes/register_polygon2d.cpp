@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/polygon2d.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void polygon2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	Polygon2D *polygon2d = static_cast<Polygon2D *>(JS_GetOpaque(val, Polygon2D::__class_id));
-	if (polygon2d)
-		memdelete(polygon2d);
+	
+	// nothing
 }
 
 static JSClassDef polygon2d_class_def = {
@@ -218,120 +217,120 @@ void define_polygon2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "color"),
         JS_NewCFunction(ctx, polygon2d_class_get_color, "get_color", 0),
-        JS_NewCFunction(ctx, polygon2d_class_set_color, "set_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, polygon2d_class_set_color, "set_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "offset"),
         JS_NewCFunction(ctx, polygon2d_class_get_offset, "get_offset", 0),
-        JS_NewCFunction(ctx, polygon2d_class_set_offset, "set_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, polygon2d_class_set_offset, "set_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "antialiased"),
         JS_NewCFunction(ctx, polygon2d_class_get_antialiased, "get_antialiased", 0),
-        JS_NewCFunction(ctx, polygon2d_class_set_antialiased, "set_antialiased", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, polygon2d_class_set_antialiased, "set_antialiased", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture"),
         JS_NewCFunction(ctx, polygon2d_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, polygon2d_class_set_texture, "set_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, polygon2d_class_set_texture, "set_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_offset"),
         JS_NewCFunction(ctx, polygon2d_class_get_texture_offset, "get_texture_offset", 0),
-        JS_NewCFunction(ctx, polygon2d_class_set_texture_offset, "set_texture_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, polygon2d_class_set_texture_offset, "set_texture_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_scale"),
         JS_NewCFunction(ctx, polygon2d_class_get_texture_scale, "get_texture_scale", 0),
-        JS_NewCFunction(ctx, polygon2d_class_set_texture_scale, "set_texture_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, polygon2d_class_set_texture_scale, "set_texture_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_rotation"),
         JS_NewCFunction(ctx, polygon2d_class_get_texture_rotation, "get_texture_rotation", 0),
-        JS_NewCFunction(ctx, polygon2d_class_set_texture_rotation, "set_texture_rotation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, polygon2d_class_set_texture_rotation, "set_texture_rotation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "skeleton"),
         JS_NewCFunction(ctx, polygon2d_class_get_skeleton, "get_skeleton", 0),
-        JS_NewCFunction(ctx, polygon2d_class_set_skeleton, "set_skeleton", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, polygon2d_class_set_skeleton, "set_skeleton", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "invert_enabled"),
         JS_NewCFunction(ctx, polygon2d_class_get_invert_enabled, "get_invert_enabled", 0),
-        JS_NewCFunction(ctx, polygon2d_class_set_invert_enabled, "set_invert_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, polygon2d_class_set_invert_enabled, "set_invert_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "invert_border"),
         JS_NewCFunction(ctx, polygon2d_class_get_invert_border, "get_invert_border", 0),
-        JS_NewCFunction(ctx, polygon2d_class_set_invert_border, "set_invert_border", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, polygon2d_class_set_invert_border, "set_invert_border", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "polygon"),
         JS_NewCFunction(ctx, polygon2d_class_get_polygon, "get_polygon", 0),
-        JS_NewCFunction(ctx, polygon2d_class_set_polygon, "set_polygon", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, polygon2d_class_set_polygon, "set_polygon", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "uv"),
         JS_NewCFunction(ctx, polygon2d_class_get_uv, "get_uv", 0),
-        JS_NewCFunction(ctx, polygon2d_class_set_uv, "set_uv", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, polygon2d_class_set_uv, "set_uv", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "vertex_colors"),
         JS_NewCFunction(ctx, polygon2d_class_get_vertex_colors, "get_vertex_colors", 0),
-        JS_NewCFunction(ctx, polygon2d_class_set_vertex_colors, "set_vertex_colors", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, polygon2d_class_set_vertex_colors, "set_vertex_colors", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "polygons"),
         JS_NewCFunction(ctx, polygon2d_class_get_polygons, "get_polygons", 0),
-        JS_NewCFunction(ctx, polygon2d_class_set_polygons, "set_polygons", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, polygon2d_class_set_polygons, "set_polygons", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "internal_vertex_count"),
         JS_NewCFunction(ctx, polygon2d_class_get_internal_vertex_count, "get_internal_vertex_count", 0),
-        JS_NewCFunction(ctx, polygon2d_class_set_internal_vertex_count, "set_internal_vertex_count", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, polygon2d_class_set_internal_vertex_count, "set_internal_vertex_count", 1),
+        JS_PROP_GETSET
     );
 }
 

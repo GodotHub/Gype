@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void array_occluder3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	ArrayOccluder3D *array_occluder3d = static_cast<ArrayOccluder3D *>(JS_GetOpaque(val, ArrayOccluder3D::__class_id));
-	if (array_occluder3d)
-		memdelete(array_occluder3d);
+	
+	// nothing
 }
 
 static JSClassDef array_occluder3d_class_def = {
@@ -60,16 +59,16 @@ void define_array_occluder3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "vertices"),
         JS_UNDEFINED,
-        JS_NewCFunction(ctx, array_occluder3d_class_set_vertices, "set_vertices", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, array_occluder3d_class_set_vertices, "set_vertices", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "indices"),
         JS_UNDEFINED,
-        JS_NewCFunction(ctx, array_occluder3d_class_set_indices, "set_indices", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, array_occluder3d_class_set_indices, "set_indices", 1),
+        JS_PROP_GETSET
     );
 }
 

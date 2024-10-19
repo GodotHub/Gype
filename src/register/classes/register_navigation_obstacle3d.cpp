@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/navigation_obstacle3d.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void navigation_obstacle3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	NavigationObstacle3D *navigation_obstacle3d = static_cast<NavigationObstacle3D *>(JS_GetOpaque(val, NavigationObstacle3D::__class_id));
-	if (navigation_obstacle3d)
-		memdelete(navigation_obstacle3d);
+	
+	// nothing
 }
 
 static JSClassDef navigation_obstacle3d_class_def = {
@@ -148,72 +147,72 @@ void define_navigation_obstacle3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "radius"),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_get_radius, "get_radius", 0),
-        JS_NewCFunction(ctx, navigation_obstacle3d_class_set_radius, "set_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_obstacle3d_class_set_radius, "set_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "height"),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_get_height, "get_height", 0),
-        JS_NewCFunction(ctx, navigation_obstacle3d_class_set_height, "set_height", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_obstacle3d_class_set_height, "set_height", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "vertices"),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_get_vertices, "get_vertices", 0),
-        JS_NewCFunction(ctx, navigation_obstacle3d_class_set_vertices, "set_vertices", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_obstacle3d_class_set_vertices, "set_vertices", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "affect_navigation_mesh"),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_get_affect_navigation_mesh, "get_affect_navigation_mesh", 0),
-        JS_NewCFunction(ctx, navigation_obstacle3d_class_set_affect_navigation_mesh, "set_affect_navigation_mesh", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_obstacle3d_class_set_affect_navigation_mesh, "set_affect_navigation_mesh", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "carve_navigation_mesh"),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_get_carve_navigation_mesh, "get_carve_navigation_mesh", 0),
-        JS_NewCFunction(ctx, navigation_obstacle3d_class_set_carve_navigation_mesh, "set_carve_navigation_mesh", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_obstacle3d_class_set_carve_navigation_mesh, "set_carve_navigation_mesh", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "avoidance_enabled"),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_get_avoidance_enabled, "get_avoidance_enabled", 0),
-        JS_NewCFunction(ctx, navigation_obstacle3d_class_set_avoidance_enabled, "set_avoidance_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_obstacle3d_class_set_avoidance_enabled, "set_avoidance_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "velocity"),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_get_velocity, "get_velocity", 0),
-        JS_NewCFunction(ctx, navigation_obstacle3d_class_set_velocity, "set_velocity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_obstacle3d_class_set_velocity, "set_velocity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "avoidance_layers"),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_get_avoidance_layers, "get_avoidance_layers", 0),
-        JS_NewCFunction(ctx, navigation_obstacle3d_class_set_avoidance_layers, "set_avoidance_layers", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_obstacle3d_class_set_avoidance_layers, "set_avoidance_layers", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_3d_avoidance"),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_get_use_3d_avoidance, "get_use_3d_avoidance", 0),
-        JS_NewCFunction(ctx, navigation_obstacle3d_class_set_use_3d_avoidance, "set_use_3d_avoidance", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_obstacle3d_class_set_use_3d_avoidance, "set_use_3d_avoidance", 1),
+        JS_PROP_GETSET
     );
 }
 

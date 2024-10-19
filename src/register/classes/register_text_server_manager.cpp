@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/text_server_manager.hpp>
 #include <godot_cpp/classes/text_server.hpp>
+#include <godot_cpp/classes/text_server_manager.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -17,9 +17,8 @@ static JSValue text_server_manager_instance;
 static void js_text_server_manager_singleton();
 
 static void text_server_manager_class_finalizer(JSRuntime *rt, JSValue val) {
-	TextServerManager *text_server_manager = static_cast<TextServerManager *>(JS_GetOpaque(val, TextServerManager::__class_id));
-	if (text_server_manager)
-		TextServerManager::free(nullptr, text_server_manager);
+	
+	// nothing
 }
 
 static JSClassDef text_server_manager_class_def = {

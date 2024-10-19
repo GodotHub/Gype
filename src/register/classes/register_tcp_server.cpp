@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void tcp_server_class_finalizer(JSRuntime *rt, JSValue val) {
-	TCPServer *tcp_server = static_cast<TCPServer *>(JS_GetOpaque(val, TCPServer::__class_id));
-	if (tcp_server)
-		memdelete(tcp_server);
+	
+	// nothing
 }
 
 static JSClassDef tcp_server_class_def = {

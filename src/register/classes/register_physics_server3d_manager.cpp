@@ -16,9 +16,8 @@ static JSValue physics_server3d_manager_instance;
 static void js_physics_server3d_manager_singleton();
 
 static void physics_server3d_manager_class_finalizer(JSRuntime *rt, JSValue val) {
-	PhysicsServer3DManager *physics_server3d_manager = static_cast<PhysicsServer3DManager *>(JS_GetOpaque(val, PhysicsServer3DManager::__class_id));
-	if (physics_server3d_manager)
-		PhysicsServer3DManager::free(nullptr, physics_server3d_manager);
+	
+	// nothing
 }
 
 static JSClassDef physics_server3d_manager_class_def = {

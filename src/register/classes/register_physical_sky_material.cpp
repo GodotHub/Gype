@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/physical_sky_material.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void physical_sky_material_class_finalizer(JSRuntime *rt, JSValue val) {
-	PhysicalSkyMaterial *physical_sky_material = static_cast<PhysicalSkyMaterial *>(JS_GetOpaque(val, PhysicalSkyMaterial::__class_id));
-	if (physical_sky_material)
-		memdelete(physical_sky_material);
+	
+	// nothing
 }
 
 static JSClassDef physical_sky_material_class_def = {
@@ -145,88 +144,88 @@ void define_physical_sky_material_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "rayleigh_coefficient"),
         JS_NewCFunction(ctx, physical_sky_material_class_get_rayleigh_coefficient, "get_rayleigh_coefficient", 0),
-        JS_NewCFunction(ctx, physical_sky_material_class_set_rayleigh_coefficient, "set_rayleigh_coefficient", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_sky_material_class_set_rayleigh_coefficient, "set_rayleigh_coefficient", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "rayleigh_color"),
         JS_NewCFunction(ctx, physical_sky_material_class_get_rayleigh_color, "get_rayleigh_color", 0),
-        JS_NewCFunction(ctx, physical_sky_material_class_set_rayleigh_color, "set_rayleigh_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_sky_material_class_set_rayleigh_color, "set_rayleigh_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "mie_coefficient"),
         JS_NewCFunction(ctx, physical_sky_material_class_get_mie_coefficient, "get_mie_coefficient", 0),
-        JS_NewCFunction(ctx, physical_sky_material_class_set_mie_coefficient, "set_mie_coefficient", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_sky_material_class_set_mie_coefficient, "set_mie_coefficient", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "mie_eccentricity"),
         JS_NewCFunction(ctx, physical_sky_material_class_get_mie_eccentricity, "get_mie_eccentricity", 0),
-        JS_NewCFunction(ctx, physical_sky_material_class_set_mie_eccentricity, "set_mie_eccentricity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_sky_material_class_set_mie_eccentricity, "set_mie_eccentricity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "mie_color"),
         JS_NewCFunction(ctx, physical_sky_material_class_get_mie_color, "get_mie_color", 0),
-        JS_NewCFunction(ctx, physical_sky_material_class_set_mie_color, "set_mie_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_sky_material_class_set_mie_color, "set_mie_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "turbidity"),
         JS_NewCFunction(ctx, physical_sky_material_class_get_turbidity, "get_turbidity", 0),
-        JS_NewCFunction(ctx, physical_sky_material_class_set_turbidity, "set_turbidity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_sky_material_class_set_turbidity, "set_turbidity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sun_disk_scale"),
         JS_NewCFunction(ctx, physical_sky_material_class_get_sun_disk_scale, "get_sun_disk_scale", 0),
-        JS_NewCFunction(ctx, physical_sky_material_class_set_sun_disk_scale, "set_sun_disk_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_sky_material_class_set_sun_disk_scale, "set_sun_disk_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ground_color"),
         JS_NewCFunction(ctx, physical_sky_material_class_get_ground_color, "get_ground_color", 0),
-        JS_NewCFunction(ctx, physical_sky_material_class_set_ground_color, "set_ground_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_sky_material_class_set_ground_color, "set_ground_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "energy_multiplier"),
         JS_NewCFunction(ctx, physical_sky_material_class_get_energy_multiplier, "get_energy_multiplier", 0),
-        JS_NewCFunction(ctx, physical_sky_material_class_set_energy_multiplier, "set_energy_multiplier", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_sky_material_class_set_energy_multiplier, "set_energy_multiplier", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_debanding"),
         JS_NewCFunction(ctx, physical_sky_material_class_get_use_debanding, "get_use_debanding", 0),
-        JS_NewCFunction(ctx, physical_sky_material_class_set_use_debanding, "set_use_debanding", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_sky_material_class_set_use_debanding, "set_use_debanding", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "night_sky"),
         JS_NewCFunction(ctx, physical_sky_material_class_get_night_sky, "get_night_sky", 0),
-        JS_NewCFunction(ctx, physical_sky_material_class_set_night_sky, "set_night_sky", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physical_sky_material_class_set_night_sky, "set_night_sky", 1),
+        JS_PROP_GETSET
     );
 }
 

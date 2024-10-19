@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void resource_importer_dynamic_font_class_finalizer(JSRuntime *rt, JSValue val) {
-	ResourceImporterDynamicFont *resource_importer_dynamic_font = static_cast<ResourceImporterDynamicFont *>(JS_GetOpaque(val, ResourceImporterDynamicFont::__class_id));
-	if (resource_importer_dynamic_font)
-		memdelete(resource_importer_dynamic_font);
+	
+	// nothing
 }
 
 static JSClassDef resource_importer_dynamic_font_class_def = {

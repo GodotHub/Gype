@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/editor_resource_preview_generator.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -15,9 +15,8 @@
 using namespace godot;
 
 static void editor_resource_preview_generator_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorResourcePreviewGenerator *editor_resource_preview_generator = static_cast<EditorResourcePreviewGenerator *>(JS_GetOpaque(val, EditorResourcePreviewGenerator::__class_id));
-	if (editor_resource_preview_generator)
-		memdelete(editor_resource_preview_generator);
+	
+	// nothing
 }
 
 static JSClassDef editor_resource_preview_generator_class_def = {

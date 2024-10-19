@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/stream_peer.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void stream_peer_class_finalizer(JSRuntime *rt, JSValue val) {
-	StreamPeer *stream_peer = static_cast<StreamPeer *>(JS_GetOpaque(val, StreamPeer::__class_id));
-	if (stream_peer)
-		memdelete(stream_peer);
+	
+	// nothing
 }
 
 static JSClassDef stream_peer_class_def = {
@@ -191,8 +190,8 @@ void define_stream_peer_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "big_endian"),
         JS_NewCFunction(ctx, stream_peer_class_is_big_endian_enabled, "is_big_endian_enabled", 0),
-        JS_NewCFunction(ctx, stream_peer_class_set_big_endian, "set_big_endian", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, stream_peer_class_set_big_endian, "set_big_endian", 1),
+        JS_PROP_GETSET
     );
 }
 

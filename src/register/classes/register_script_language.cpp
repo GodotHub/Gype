@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/script_language.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void script_language_class_finalizer(JSRuntime *rt, JSValue val) {
-	ScriptLanguage *script_language = static_cast<ScriptLanguage *>(JS_GetOpaque(val, ScriptLanguage::__class_id));
-	if (script_language)
-		memdelete(script_language);
+	
+	// nothing
 }
 
 static JSClassDef script_language_class_def = {

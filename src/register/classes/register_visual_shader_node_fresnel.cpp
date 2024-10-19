@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_fresnel_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeFresnel *visual_shader_node_fresnel = static_cast<VisualShaderNodeFresnel *>(JS_GetOpaque(val, VisualShaderNodeFresnel::__class_id));
-	if (visual_shader_node_fresnel)
-		memdelete(visual_shader_node_fresnel);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_fresnel_class_def = {

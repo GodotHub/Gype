@@ -175,6 +175,26 @@ static JSValue vector2_class_from_angle(JSContext *ctx, JSValueConst this_val, i
 	return call_builtin_static_method_ret(&Vector2::from_angle, ctx, this_val, argc, argv);
 };
 
+static JSValue vector2_class_get_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Vector2 &val = *reinterpret_cast<Vector2 *>(JS_GetOpaque(this_val, Vector2::__class_id));
+	return Variant(val.x);
+}
+static JSValue vector2_class_set_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Vector2 &val = *reinterpret_cast<Vector2 *>(JS_GetOpaque(this_val, Vector2::__class_id));
+	val.x = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue vector2_class_get_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Vector2 &val = *reinterpret_cast<Vector2 *>(JS_GetOpaque(this_val, Vector2::__class_id));
+	return Variant(val.y);
+}
+static JSValue vector2_class_set_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Vector2 &val = *reinterpret_cast<Vector2 *>(JS_GetOpaque(this_val, Vector2::__class_id));
+	val.y = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
 static const JSCFunctionListEntry vector2_class_proto_funcs[] = {
 	JS_CFUNC_DEF("angle", 0, &vector2_class_angle),
 	JS_CFUNC_DEF("angle_to", 1, &vector2_class_angle_to),
@@ -228,6 +248,20 @@ static const JSCFunctionListEntry vector2_class_static_funcs[] = {
 };
 
 void define_vector2_property(JSContext *ctx, JSValue obj) {
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "x"),
+			JS_NewCFunction(ctx, vector2_class_get_x, "get_x", 0),
+			JS_NewCFunction(ctx, vector2_class_set_x, "set_x", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "y"),
+			JS_NewCFunction(ctx, vector2_class_get_y, "get_y", 0),
+			JS_NewCFunction(ctx, vector2_class_set_y, "set_y", 1),
+			JS_PROP_GETSET);
 }
 
 static int js_vector2_class_init(JSContext *ctx) {
@@ -238,7 +272,6 @@ static int js_vector2_class_init(JSContext *ctx) {
 
 	JSValue proto = JS_NewObject(ctx);
 	JS_SetClassProto(ctx, Vector2::__class_id, proto);
-
 	define_vector2_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, vector2_class_proto_funcs, _countof(vector2_class_proto_funcs));
 

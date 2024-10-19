@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/text_line.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void text_line_class_finalizer(JSRuntime *rt, JSValue val) {
-	TextLine *text_line = static_cast<TextLine *>(JS_GetOpaque(val, TextLine::__class_id));
-	if (text_line)
-		memdelete(text_line);
+	
+	// nothing
 }
 
 static JSClassDef text_line_class_def = {
@@ -204,72 +203,72 @@ void define_text_line_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "direction"),
         JS_NewCFunction(ctx, text_line_class_get_direction, "get_direction", 0),
-        JS_NewCFunction(ctx, text_line_class_set_direction, "set_direction", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_line_class_set_direction, "set_direction", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "orientation"),
         JS_NewCFunction(ctx, text_line_class_get_orientation, "get_orientation", 0),
-        JS_NewCFunction(ctx, text_line_class_set_orientation, "set_orientation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_line_class_set_orientation, "set_orientation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "preserve_invalid"),
         JS_NewCFunction(ctx, text_line_class_get_preserve_invalid, "get_preserve_invalid", 0),
-        JS_NewCFunction(ctx, text_line_class_set_preserve_invalid, "set_preserve_invalid", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_line_class_set_preserve_invalid, "set_preserve_invalid", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "preserve_control"),
         JS_NewCFunction(ctx, text_line_class_get_preserve_control, "get_preserve_control", 0),
-        JS_NewCFunction(ctx, text_line_class_set_preserve_control, "set_preserve_control", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_line_class_set_preserve_control, "set_preserve_control", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "width"),
         JS_NewCFunction(ctx, text_line_class_get_width, "get_width", 0),
-        JS_NewCFunction(ctx, text_line_class_set_width, "set_width", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_line_class_set_width, "set_width", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "alignment"),
         JS_NewCFunction(ctx, text_line_class_get_horizontal_alignment, "get_horizontal_alignment", 0),
-        JS_NewCFunction(ctx, text_line_class_set_horizontal_alignment, "set_horizontal_alignment", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_line_class_set_horizontal_alignment, "set_horizontal_alignment", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "flags"),
         JS_NewCFunction(ctx, text_line_class_get_flags, "get_flags", 0),
-        JS_NewCFunction(ctx, text_line_class_set_flags, "set_flags", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_line_class_set_flags, "set_flags", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "text_overrun_behavior"),
         JS_NewCFunction(ctx, text_line_class_get_text_overrun_behavior, "get_text_overrun_behavior", 0),
-        JS_NewCFunction(ctx, text_line_class_set_text_overrun_behavior, "set_text_overrun_behavior", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_line_class_set_text_overrun_behavior, "set_text_overrun_behavior", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ellipsis_char"),
         JS_NewCFunction(ctx, text_line_class_get_ellipsis_char, "get_ellipsis_char", 0),
-        JS_NewCFunction(ctx, text_line_class_set_ellipsis_char, "set_ellipsis_char", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, text_line_class_set_ellipsis_char, "set_ellipsis_char", 1),
+        JS_PROP_GETSET
     );
 }
 

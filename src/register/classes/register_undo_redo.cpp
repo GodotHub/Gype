@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void undo_redo_class_finalizer(JSRuntime *rt, JSValue val) {
-	UndoRedo *undo_redo = static_cast<UndoRedo *>(JS_GetOpaque(val, UndoRedo::__class_id));
-	if (undo_redo)
-		memdelete(undo_redo);
+	
+	// nothing
 }
 
 static JSClassDef undo_redo_class_def = {
@@ -149,8 +148,8 @@ void define_undo_redo_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "max_steps"),
         JS_NewCFunction(ctx, undo_redo_class_get_max_steps, "get_max_steps", 0),
-        JS_NewCFunction(ctx, undo_redo_class_set_max_steps, "set_max_steps", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, undo_redo_class_set_max_steps, "set_max_steps", 1),
+        JS_PROP_GETSET
     );
 }
 

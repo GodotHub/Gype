@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/web_rtc_peer_connection.hpp>
 #include <godot_cpp/classes/web_rtc_data_channel.hpp>
+#include <godot_cpp/classes/web_rtc_peer_connection.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void web_rtc_peer_connection_class_finalizer(JSRuntime *rt, JSValue val) {
-	WebRTCPeerConnection *web_rtc_peer_connection = static_cast<WebRTCPeerConnection *>(JS_GetOpaque(val, WebRTCPeerConnection::__class_id));
-	if (web_rtc_peer_connection)
-		memdelete(web_rtc_peer_connection);
+	
+	// nothing
 }
 
 static JSClassDef web_rtc_peer_connection_class_def = {

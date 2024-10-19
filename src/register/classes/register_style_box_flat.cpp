@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/classes/style_box_flat.hpp>
+#include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void style_box_flat_class_finalizer(JSRuntime *rt, JSValue val) {
-	StyleBoxFlat *style_box_flat = static_cast<StyleBoxFlat *>(JS_GetOpaque(val, StyleBoxFlat::__class_id));
-	if (style_box_flat)
-		memdelete(style_box_flat);
+	
+	// nothing
 }
 
 static JSClassDef style_box_flat_class_def = {
@@ -190,184 +189,184 @@ void define_style_box_flat_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "bg_color"),
         JS_NewCFunction(ctx, style_box_flat_class_get_bg_color, "get_bg_color", 0),
-        JS_NewCFunction(ctx, style_box_flat_class_set_bg_color, "set_bg_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_flat_class_set_bg_color, "set_bg_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "draw_center"),
         JS_NewCFunction(ctx, style_box_flat_class_is_draw_center_enabled, "is_draw_center_enabled", 0),
-        JS_NewCFunction(ctx, style_box_flat_class_set_draw_center, "set_draw_center", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_flat_class_set_draw_center, "set_draw_center", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "skew"),
         JS_NewCFunction(ctx, style_box_flat_class_get_skew, "get_skew", 0),
-        JS_NewCFunction(ctx, style_box_flat_class_set_skew, "set_skew", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_flat_class_set_skew, "set_skew", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "border_width_left"),
         JS_NewCFunction(ctx, style_box_flat_class_get_border_width, "get_border_width", 0),
-        JS_NewCFunction(ctx, style_box_flat_class_set_border_width, "set_border_width", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_flat_class_set_border_width, "set_border_width", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "border_width_top"),
         JS_NewCFunction(ctx, style_box_flat_class_get_border_width, "get_border_width", 0),
-        JS_NewCFunction(ctx, style_box_flat_class_set_border_width, "set_border_width", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_flat_class_set_border_width, "set_border_width", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "border_width_right"),
         JS_NewCFunction(ctx, style_box_flat_class_get_border_width, "get_border_width", 0),
-        JS_NewCFunction(ctx, style_box_flat_class_set_border_width, "set_border_width", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_flat_class_set_border_width, "set_border_width", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "border_width_bottom"),
         JS_NewCFunction(ctx, style_box_flat_class_get_border_width, "get_border_width", 0),
-        JS_NewCFunction(ctx, style_box_flat_class_set_border_width, "set_border_width", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_flat_class_set_border_width, "set_border_width", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "border_color"),
         JS_NewCFunction(ctx, style_box_flat_class_get_border_color, "get_border_color", 0),
-        JS_NewCFunction(ctx, style_box_flat_class_set_border_color, "set_border_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_flat_class_set_border_color, "set_border_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "border_blend"),
         JS_NewCFunction(ctx, style_box_flat_class_get_border_blend, "get_border_blend", 0),
-        JS_NewCFunction(ctx, style_box_flat_class_set_border_blend, "set_border_blend", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_flat_class_set_border_blend, "set_border_blend", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "corner_radius_top_left"),
         JS_NewCFunction(ctx, style_box_flat_class_get_corner_radius, "get_corner_radius", 0),
-        JS_NewCFunction(ctx, style_box_flat_class_set_corner_radius, "set_corner_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_flat_class_set_corner_radius, "set_corner_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "corner_radius_top_right"),
         JS_NewCFunction(ctx, style_box_flat_class_get_corner_radius, "get_corner_radius", 0),
-        JS_NewCFunction(ctx, style_box_flat_class_set_corner_radius, "set_corner_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_flat_class_set_corner_radius, "set_corner_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "corner_radius_bottom_right"),
         JS_NewCFunction(ctx, style_box_flat_class_get_corner_radius, "get_corner_radius", 0),
-        JS_NewCFunction(ctx, style_box_flat_class_set_corner_radius, "set_corner_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_flat_class_set_corner_radius, "set_corner_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "corner_radius_bottom_left"),
         JS_NewCFunction(ctx, style_box_flat_class_get_corner_radius, "get_corner_radius", 0),
-        JS_NewCFunction(ctx, style_box_flat_class_set_corner_radius, "set_corner_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_flat_class_set_corner_radius, "set_corner_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "corner_detail"),
         JS_NewCFunction(ctx, style_box_flat_class_get_corner_detail, "get_corner_detail", 0),
-        JS_NewCFunction(ctx, style_box_flat_class_set_corner_detail, "set_corner_detail", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_flat_class_set_corner_detail, "set_corner_detail", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "expand_margin_left"),
         JS_NewCFunction(ctx, style_box_flat_class_get_expand_margin, "get_expand_margin", 0),
-        JS_NewCFunction(ctx, style_box_flat_class_set_expand_margin, "set_expand_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_flat_class_set_expand_margin, "set_expand_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "expand_margin_top"),
         JS_NewCFunction(ctx, style_box_flat_class_get_expand_margin, "get_expand_margin", 0),
-        JS_NewCFunction(ctx, style_box_flat_class_set_expand_margin, "set_expand_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_flat_class_set_expand_margin, "set_expand_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "expand_margin_right"),
         JS_NewCFunction(ctx, style_box_flat_class_get_expand_margin, "get_expand_margin", 0),
-        JS_NewCFunction(ctx, style_box_flat_class_set_expand_margin, "set_expand_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_flat_class_set_expand_margin, "set_expand_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "expand_margin_bottom"),
         JS_NewCFunction(ctx, style_box_flat_class_get_expand_margin, "get_expand_margin", 0),
-        JS_NewCFunction(ctx, style_box_flat_class_set_expand_margin, "set_expand_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_flat_class_set_expand_margin, "set_expand_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shadow_color"),
         JS_NewCFunction(ctx, style_box_flat_class_get_shadow_color, "get_shadow_color", 0),
-        JS_NewCFunction(ctx, style_box_flat_class_set_shadow_color, "set_shadow_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_flat_class_set_shadow_color, "set_shadow_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shadow_size"),
         JS_NewCFunction(ctx, style_box_flat_class_get_shadow_size, "get_shadow_size", 0),
-        JS_NewCFunction(ctx, style_box_flat_class_set_shadow_size, "set_shadow_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_flat_class_set_shadow_size, "set_shadow_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shadow_offset"),
         JS_NewCFunction(ctx, style_box_flat_class_get_shadow_offset, "get_shadow_offset", 0),
-        JS_NewCFunction(ctx, style_box_flat_class_set_shadow_offset, "set_shadow_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_flat_class_set_shadow_offset, "set_shadow_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "anti_aliasing"),
         JS_NewCFunction(ctx, style_box_flat_class_is_anti_aliased, "is_anti_aliased", 0),
-        JS_NewCFunction(ctx, style_box_flat_class_set_anti_aliased, "set_anti_aliased", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_flat_class_set_anti_aliased, "set_anti_aliased", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "anti_aliasing_size"),
         JS_NewCFunction(ctx, style_box_flat_class_get_aa_size, "get_aa_size", 0),
-        JS_NewCFunction(ctx, style_box_flat_class_set_aa_size, "set_aa_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_flat_class_set_aa_size, "set_aa_size", 1),
+        JS_PROP_GETSET
     );
 }
 

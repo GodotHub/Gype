@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/resource_format_loader.hpp>
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/resource_loader.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
@@ -18,9 +18,8 @@ static JSValue resource_loader_instance;
 static void js_resource_loader_singleton();
 
 static void resource_loader_class_finalizer(JSRuntime *rt, JSValue val) {
-	ResourceLoader *resource_loader = static_cast<ResourceLoader *>(JS_GetOpaque(val, ResourceLoader::__class_id));
-	if (resource_loader)
-		ResourceLoader::free(nullptr, resource_loader);
+	
+	// nothing
 }
 
 static JSClassDef resource_loader_class_def = {

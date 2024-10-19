@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton3d.hpp>
-#include <godot_cpp/classes/gltf_skeleton.hpp>
 #include <godot_cpp/classes/bone_attachment3d.hpp>
+#include <godot_cpp/classes/gltf_skeleton.hpp>
+#include <godot_cpp/classes/skeleton3d.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -15,9 +15,8 @@
 using namespace godot;
 
 static void gltf_skeleton_class_finalizer(JSRuntime *rt, JSValue val) {
-	GLTFSkeleton *gltf_skeleton = static_cast<GLTFSkeleton *>(JS_GetOpaque(val, GLTFSkeleton::__class_id));
-	if (gltf_skeleton)
-		memdelete(gltf_skeleton);
+	
+	// nothing
 }
 
 static JSClassDef gltf_skeleton_class_def = {
@@ -95,32 +94,32 @@ void define_gltf_skeleton_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "joints"),
         JS_NewCFunction(ctx, gltf_skeleton_class_get_joints, "get_joints", 0),
-        JS_NewCFunction(ctx, gltf_skeleton_class_set_joints, "set_joints", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_skeleton_class_set_joints, "set_joints", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "roots"),
         JS_NewCFunction(ctx, gltf_skeleton_class_get_roots, "get_roots", 0),
-        JS_NewCFunction(ctx, gltf_skeleton_class_set_roots, "set_roots", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_skeleton_class_set_roots, "set_roots", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "unique_names"),
         JS_NewCFunction(ctx, gltf_skeleton_class_get_unique_names, "get_unique_names", 0),
-        JS_NewCFunction(ctx, gltf_skeleton_class_set_unique_names, "set_unique_names", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_skeleton_class_set_unique_names, "set_unique_names", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "godot_bone_node"),
         JS_NewCFunction(ctx, gltf_skeleton_class_get_godot_bone_node, "get_godot_bone_node", 0),
-        JS_NewCFunction(ctx, gltf_skeleton_class_set_godot_bone_node, "set_godot_bone_node", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_skeleton_class_set_godot_bone_node, "set_godot_bone_node", 1),
+        JS_PROP_GETSET
     );
 }
 

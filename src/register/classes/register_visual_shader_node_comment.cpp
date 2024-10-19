@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_comment.hpp>
 #include <godot_cpp/classes/visual_shader_node_frame.hpp>
+#include <godot_cpp/classes/visual_shader_node_comment.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visual_shader_node_comment_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeComment *visual_shader_node_comment = static_cast<VisualShaderNodeComment *>(JS_GetOpaque(val, VisualShaderNodeComment::__class_id));
-	if (visual_shader_node_comment)
-		memdelete(visual_shader_node_comment);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_comment_class_def = {
@@ -54,8 +53,8 @@ void define_visual_shader_node_comment_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "description"),
         JS_NewCFunction(ctx, visual_shader_node_comment_class_get_description, "get_description", 0),
-        JS_NewCFunction(ctx, visual_shader_node_comment_class_set_description, "set_description", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_comment_class_set_description, "set_description", 1),
+        JS_PROP_GETSET
     );
 }
 

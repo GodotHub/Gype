@@ -5,19 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/classes/editor_resource_picker.hpp>
+#include <godot_cpp/classes/h_box_container.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_resource_picker_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorResourcePicker *editor_resource_picker = static_cast<EditorResourcePicker *>(JS_GetOpaque(val, EditorResourcePicker::__class_id));
-	if (editor_resource_picker)
-		memdelete(editor_resource_picker);
+	
+	// nothing
 }
 
 static JSClassDef editor_resource_picker_class_def = {
@@ -92,32 +91,32 @@ void define_editor_resource_picker_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "base_type"),
         JS_NewCFunction(ctx, editor_resource_picker_class_get_base_type, "get_base_type", 0),
-        JS_NewCFunction(ctx, editor_resource_picker_class_set_base_type, "set_base_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, editor_resource_picker_class_set_base_type, "set_base_type", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "edited_resource"),
         JS_NewCFunction(ctx, editor_resource_picker_class_get_edited_resource, "get_edited_resource", 0),
-        JS_NewCFunction(ctx, editor_resource_picker_class_set_edited_resource, "set_edited_resource", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, editor_resource_picker_class_set_edited_resource, "set_edited_resource", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "editable"),
         JS_NewCFunction(ctx, editor_resource_picker_class_is_editable, "is_editable", 0),
-        JS_NewCFunction(ctx, editor_resource_picker_class_set_editable, "set_editable", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, editor_resource_picker_class_set_editable, "set_editable", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "toggle_mode"),
         JS_NewCFunction(ctx, editor_resource_picker_class_is_toggle_mode, "is_toggle_mode", 0),
-        JS_NewCFunction(ctx, editor_resource_picker_class_set_toggle_mode, "set_toggle_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, editor_resource_picker_class_set_toggle_mode, "set_toggle_mode", 1),
+        JS_PROP_GETSET
     );
 }
 

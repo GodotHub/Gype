@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/curve_xyz_texture.hpp>
 #include <godot_cpp/classes/curve.hpp>
+#include <godot_cpp/classes/curve_xyz_texture.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void curve_xyz_texture_class_finalizer(JSRuntime *rt, JSValue val) {
-	CurveXYZTexture *curve_xyz_texture = static_cast<CurveXYZTexture *>(JS_GetOpaque(val, CurveXYZTexture::__class_id));
-	if (curve_xyz_texture)
-		memdelete(curve_xyz_texture);
+	
+	// nothing
 }
 
 static JSClassDef curve_xyz_texture_class_def = {
@@ -78,32 +77,32 @@ void define_curve_xyz_texture_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "width"),
         JS_UNDEFINED,
-        JS_NewCFunction(ctx, curve_xyz_texture_class_set_width, "set_width", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, curve_xyz_texture_class_set_width, "set_width", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "curve_x"),
         JS_NewCFunction(ctx, curve_xyz_texture_class_get_curve_x, "get_curve_x", 0),
-        JS_NewCFunction(ctx, curve_xyz_texture_class_set_curve_x, "set_curve_x", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, curve_xyz_texture_class_set_curve_x, "set_curve_x", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "curve_y"),
         JS_NewCFunction(ctx, curve_xyz_texture_class_get_curve_y, "get_curve_y", 0),
-        JS_NewCFunction(ctx, curve_xyz_texture_class_set_curve_y, "set_curve_y", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, curve_xyz_texture_class_set_curve_y, "set_curve_y", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "curve_z"),
         JS_NewCFunction(ctx, curve_xyz_texture_class_get_curve_z, "get_curve_z", 0),
-        JS_NewCFunction(ctx, curve_xyz_texture_class_set_curve_z, "set_curve_z", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, curve_xyz_texture_class_set_curve_z, "set_curve_z", 1),
+        JS_PROP_GETSET
     );
 }
 

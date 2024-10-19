@@ -7,17 +7,16 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/editor_scene_post_import.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/editor_scene_post_import.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_scene_post_import_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorScenePostImport *editor_scene_post_import = static_cast<EditorScenePostImport *>(JS_GetOpaque(val, EditorScenePostImport::__class_id));
-	if (editor_scene_post_import)
-		memdelete(editor_scene_post_import);
+	
+	// nothing
 }
 
 static JSClassDef editor_scene_post_import_class_def = {

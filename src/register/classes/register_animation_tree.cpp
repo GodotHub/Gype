@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void animation_tree_class_finalizer(JSRuntime *rt, JSValue val) {
-	AnimationTree *animation_tree = static_cast<AnimationTree *>(JS_GetOpaque(val, AnimationTree::__class_id));
-	if (animation_tree)
-		memdelete(animation_tree);
+	
+	// nothing
 }
 
 static JSClassDef animation_tree_class_def = {
@@ -82,24 +81,24 @@ void define_animation_tree_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "tree_root"),
         JS_NewCFunction(ctx, animation_tree_class_get_tree_root, "get_tree_root", 0),
-        JS_NewCFunction(ctx, animation_tree_class_set_tree_root, "set_tree_root", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_tree_class_set_tree_root, "set_tree_root", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "advance_expression_base_node"),
         JS_NewCFunction(ctx, animation_tree_class_get_advance_expression_base_node, "get_advance_expression_base_node", 0),
-        JS_NewCFunction(ctx, animation_tree_class_set_advance_expression_base_node, "set_advance_expression_base_node", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_tree_class_set_advance_expression_base_node, "set_advance_expression_base_node", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "anim_player"),
         JS_NewCFunction(ctx, animation_tree_class_get_animation_player, "get_animation_player", 0),
-        JS_NewCFunction(ctx, animation_tree_class_set_animation_player, "set_animation_player", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_tree_class_set_animation_player, "set_animation_player", 1),
+        JS_PROP_GETSET
     );
 }
 

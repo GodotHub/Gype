@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void texture_layered_rd_class_finalizer(JSRuntime *rt, JSValue val) {
-	TextureLayeredRD *texture_layered_rd = static_cast<TextureLayeredRD *>(JS_GetOpaque(val, TextureLayeredRD::__class_id));
-	if (texture_layered_rd)
-		memdelete(texture_layered_rd);
+	
+	// nothing
 }
 
 static JSClassDef texture_layered_rd_class_def = {
@@ -54,8 +53,8 @@ void define_texture_layered_rd_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "texture_rd_rid"),
         JS_NewCFunction(ctx, texture_layered_rd_class_get_texture_rd_rid, "get_texture_rd_rid", 0),
-        JS_NewCFunction(ctx, texture_layered_rd_class_set_texture_rd_rid, "set_texture_rd_rid", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_layered_rd_class_set_texture_rd_rid, "set_texture_rd_rid", 1),
+        JS_PROP_GETSET
     );
 }
 

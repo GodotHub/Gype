@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/classes/cylinder_shape3d.hpp>
+#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void cylinder_shape3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	CylinderShape3D *cylinder_shape3d = static_cast<CylinderShape3D *>(JS_GetOpaque(val, CylinderShape3D::__class_id));
-	if (cylinder_shape3d)
-		memdelete(cylinder_shape3d);
+	
+	// nothing
 }
 
 static JSClassDef cylinder_shape3d_class_def = {
@@ -63,16 +62,16 @@ void define_cylinder_shape3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "height"),
         JS_NewCFunction(ctx, cylinder_shape3d_class_get_height, "get_height", 0),
-        JS_NewCFunction(ctx, cylinder_shape3d_class_set_height, "set_height", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cylinder_shape3d_class_set_height, "set_height", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "radius"),
         JS_NewCFunction(ctx, cylinder_shape3d_class_get_radius, "get_radius", 0),
-        JS_NewCFunction(ctx, cylinder_shape3d_class_set_radius, "set_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cylinder_shape3d_class_set_radius, "set_radius", 1),
+        JS_PROP_GETSET
     );
 }
 

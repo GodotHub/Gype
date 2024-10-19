@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void http_request_class_finalizer(JSRuntime *rt, JSValue val) {
-	HTTPRequest *http_request = static_cast<HTTPRequest *>(JS_GetOpaque(val, HTTPRequest::__class_id));
-	if (http_request)
-		memdelete(http_request);
+	
+	// nothing
 }
 
 static JSClassDef http_request_class_def = {
@@ -149,56 +148,56 @@ void define_http_request_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "download_file"),
         JS_NewCFunction(ctx, http_request_class_get_download_file, "get_download_file", 0),
-        JS_NewCFunction(ctx, http_request_class_set_download_file, "set_download_file", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, http_request_class_set_download_file, "set_download_file", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "download_chunk_size"),
         JS_NewCFunction(ctx, http_request_class_get_download_chunk_size, "get_download_chunk_size", 0),
-        JS_NewCFunction(ctx, http_request_class_set_download_chunk_size, "set_download_chunk_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, http_request_class_set_download_chunk_size, "set_download_chunk_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_threads"),
         JS_NewCFunction(ctx, http_request_class_is_using_threads, "is_using_threads", 0),
-        JS_NewCFunction(ctx, http_request_class_set_use_threads, "set_use_threads", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, http_request_class_set_use_threads, "set_use_threads", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "accept_gzip"),
         JS_NewCFunction(ctx, http_request_class_is_accepting_gzip, "is_accepting_gzip", 0),
-        JS_NewCFunction(ctx, http_request_class_set_accept_gzip, "set_accept_gzip", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, http_request_class_set_accept_gzip, "set_accept_gzip", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "body_size_limit"),
         JS_NewCFunction(ctx, http_request_class_get_body_size_limit, "get_body_size_limit", 0),
-        JS_NewCFunction(ctx, http_request_class_set_body_size_limit, "set_body_size_limit", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, http_request_class_set_body_size_limit, "set_body_size_limit", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "max_redirects"),
         JS_NewCFunction(ctx, http_request_class_get_max_redirects, "get_max_redirects", 0),
-        JS_NewCFunction(ctx, http_request_class_set_max_redirects, "set_max_redirects", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, http_request_class_set_max_redirects, "set_max_redirects", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "timeout"),
         JS_NewCFunction(ctx, http_request_class_get_timeout, "get_timeout", 0),
-        JS_NewCFunction(ctx, http_request_class_set_timeout, "set_timeout", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, http_request_class_set_timeout, "set_timeout", 1),
+        JS_PROP_GETSET
     );
 }
 

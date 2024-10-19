@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/time.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
@@ -16,9 +16,8 @@ static JSValue time_instance;
 static void js_time_singleton();
 
 static void time_class_finalizer(JSRuntime *rt, JSValue val) {
-	Time *time = static_cast<Time *>(JS_GetOpaque(val, Time::__class_id));
-	if (time)
-		Time::free(nullptr, time);
+	
+	// nothing
 }
 
 static JSClassDef time_class_def = {

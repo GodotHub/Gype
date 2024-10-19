@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/label_settings.hpp>
 #include <godot_cpp/classes/label.hpp>
 #include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/label_settings.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void label_class_finalizer(JSRuntime *rt, JSValue val) {
-	Label *label = static_cast<Label *>(JS_GetOpaque(val, Label::__class_id));
-	if (label)
-		memdelete(label);
+	
+	// nothing
 }
 
 static JSClassDef label_class_def = {
@@ -246,160 +245,160 @@ void define_label_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "text"),
         JS_NewCFunction(ctx, label_class_get_text, "get_text", 0),
-        JS_NewCFunction(ctx, label_class_set_text, "set_text", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_class_set_text, "set_text", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "label_settings"),
         JS_NewCFunction(ctx, label_class_get_label_settings, "get_label_settings", 0),
-        JS_NewCFunction(ctx, label_class_set_label_settings, "set_label_settings", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_class_set_label_settings, "set_label_settings", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "horizontal_alignment"),
         JS_NewCFunction(ctx, label_class_get_horizontal_alignment, "get_horizontal_alignment", 0),
-        JS_NewCFunction(ctx, label_class_set_horizontal_alignment, "set_horizontal_alignment", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_class_set_horizontal_alignment, "set_horizontal_alignment", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "vertical_alignment"),
         JS_NewCFunction(ctx, label_class_get_vertical_alignment, "get_vertical_alignment", 0),
-        JS_NewCFunction(ctx, label_class_set_vertical_alignment, "set_vertical_alignment", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_class_set_vertical_alignment, "set_vertical_alignment", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "autowrap_mode"),
         JS_NewCFunction(ctx, label_class_get_autowrap_mode, "get_autowrap_mode", 0),
-        JS_NewCFunction(ctx, label_class_set_autowrap_mode, "set_autowrap_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_class_set_autowrap_mode, "set_autowrap_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "justification_flags"),
         JS_NewCFunction(ctx, label_class_get_justification_flags, "get_justification_flags", 0),
-        JS_NewCFunction(ctx, label_class_set_justification_flags, "set_justification_flags", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_class_set_justification_flags, "set_justification_flags", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "clip_text"),
         JS_NewCFunction(ctx, label_class_is_clipping_text, "is_clipping_text", 0),
-        JS_NewCFunction(ctx, label_class_set_clip_text, "set_clip_text", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_class_set_clip_text, "set_clip_text", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "text_overrun_behavior"),
         JS_NewCFunction(ctx, label_class_get_text_overrun_behavior, "get_text_overrun_behavior", 0),
-        JS_NewCFunction(ctx, label_class_set_text_overrun_behavior, "set_text_overrun_behavior", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_class_set_text_overrun_behavior, "set_text_overrun_behavior", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ellipsis_char"),
         JS_NewCFunction(ctx, label_class_get_ellipsis_char, "get_ellipsis_char", 0),
-        JS_NewCFunction(ctx, label_class_set_ellipsis_char, "set_ellipsis_char", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_class_set_ellipsis_char, "set_ellipsis_char", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "uppercase"),
         JS_NewCFunction(ctx, label_class_is_uppercase, "is_uppercase", 0),
-        JS_NewCFunction(ctx, label_class_set_uppercase, "set_uppercase", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_class_set_uppercase, "set_uppercase", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tab_stops"),
         JS_NewCFunction(ctx, label_class_get_tab_stops, "get_tab_stops", 0),
-        JS_NewCFunction(ctx, label_class_set_tab_stops, "set_tab_stops", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_class_set_tab_stops, "set_tab_stops", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "lines_skipped"),
         JS_NewCFunction(ctx, label_class_get_lines_skipped, "get_lines_skipped", 0),
-        JS_NewCFunction(ctx, label_class_set_lines_skipped, "set_lines_skipped", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_class_set_lines_skipped, "set_lines_skipped", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "max_lines_visible"),
         JS_NewCFunction(ctx, label_class_get_max_lines_visible, "get_max_lines_visible", 0),
-        JS_NewCFunction(ctx, label_class_set_max_lines_visible, "set_max_lines_visible", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_class_set_max_lines_visible, "set_max_lines_visible", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visible_characters"),
         JS_NewCFunction(ctx, label_class_get_visible_characters, "get_visible_characters", 0),
-        JS_NewCFunction(ctx, label_class_set_visible_characters, "set_visible_characters", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_class_set_visible_characters, "set_visible_characters", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visible_characters_behavior"),
         JS_NewCFunction(ctx, label_class_get_visible_characters_behavior, "get_visible_characters_behavior", 0),
-        JS_NewCFunction(ctx, label_class_set_visible_characters_behavior, "set_visible_characters_behavior", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_class_set_visible_characters_behavior, "set_visible_characters_behavior", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visible_ratio"),
         JS_NewCFunction(ctx, label_class_get_visible_ratio, "get_visible_ratio", 0),
-        JS_NewCFunction(ctx, label_class_set_visible_ratio, "set_visible_ratio", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_class_set_visible_ratio, "set_visible_ratio", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "text_direction"),
         JS_NewCFunction(ctx, label_class_get_text_direction, "get_text_direction", 0),
-        JS_NewCFunction(ctx, label_class_set_text_direction, "set_text_direction", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_class_set_text_direction, "set_text_direction", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "language"),
         JS_NewCFunction(ctx, label_class_get_language, "get_language", 0),
-        JS_NewCFunction(ctx, label_class_set_language, "set_language", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_class_set_language, "set_language", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "structured_text_bidi_override"),
         JS_NewCFunction(ctx, label_class_get_structured_text_bidi_override, "get_structured_text_bidi_override", 0),
-        JS_NewCFunction(ctx, label_class_set_structured_text_bidi_override, "set_structured_text_bidi_override", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_class_set_structured_text_bidi_override, "set_structured_text_bidi_override", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "structured_text_bidi_override_options"),
         JS_NewCFunction(ctx, label_class_get_structured_text_bidi_override_options, "get_structured_text_bidi_override_options", 0),
-        JS_NewCFunction(ctx, label_class_set_structured_text_bidi_override_options, "set_structured_text_bidi_override_options", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_class_set_structured_text_bidi_override_options, "set_structured_text_bidi_override_options", 1),
+        JS_PROP_GETSET
     );
 }
 

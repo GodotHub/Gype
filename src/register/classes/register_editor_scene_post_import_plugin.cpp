@@ -15,9 +15,8 @@
 using namespace godot;
 
 static void editor_scene_post_import_plugin_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorScenePostImportPlugin *editor_scene_post_import_plugin = static_cast<EditorScenePostImportPlugin *>(JS_GetOpaque(val, EditorScenePostImportPlugin::__class_id));
-	if (editor_scene_post_import_plugin)
-		memdelete(editor_scene_post_import_plugin);
+	
+	// nothing
 }
 
 static JSClassDef editor_scene_post_import_plugin_class_def = {

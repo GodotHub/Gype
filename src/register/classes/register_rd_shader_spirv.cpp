@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/rd_shader_spirv.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void rd_shader_spirv_class_finalizer(JSRuntime *rt, JSValue val) {
-	RDShaderSPIRV *rd_shader_spirv = static_cast<RDShaderSPIRV *>(JS_GetOpaque(val, RDShaderSPIRV::__class_id));
-	if (rd_shader_spirv)
-		memdelete(rd_shader_spirv);
+	
+	// nothing
 }
 
 static JSClassDef rd_shader_spirv_class_def = {
@@ -63,80 +62,80 @@ void define_rd_shader_spirv_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "bytecode_vertex"),
         JS_NewCFunction(ctx, rd_shader_spirv_class_get_stage_bytecode, "get_stage_bytecode", 0),
-        JS_NewCFunction(ctx, rd_shader_spirv_class_set_stage_bytecode, "set_stage_bytecode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_shader_spirv_class_set_stage_bytecode, "set_stage_bytecode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bytecode_fragment"),
         JS_NewCFunction(ctx, rd_shader_spirv_class_get_stage_bytecode, "get_stage_bytecode", 0),
-        JS_NewCFunction(ctx, rd_shader_spirv_class_set_stage_bytecode, "set_stage_bytecode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_shader_spirv_class_set_stage_bytecode, "set_stage_bytecode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bytecode_tesselation_control"),
         JS_NewCFunction(ctx, rd_shader_spirv_class_get_stage_bytecode, "get_stage_bytecode", 0),
-        JS_NewCFunction(ctx, rd_shader_spirv_class_set_stage_bytecode, "set_stage_bytecode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_shader_spirv_class_set_stage_bytecode, "set_stage_bytecode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bytecode_tesselation_evaluation"),
         JS_NewCFunction(ctx, rd_shader_spirv_class_get_stage_bytecode, "get_stage_bytecode", 0),
-        JS_NewCFunction(ctx, rd_shader_spirv_class_set_stage_bytecode, "set_stage_bytecode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_shader_spirv_class_set_stage_bytecode, "set_stage_bytecode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bytecode_compute"),
         JS_NewCFunction(ctx, rd_shader_spirv_class_get_stage_bytecode, "get_stage_bytecode", 0),
-        JS_NewCFunction(ctx, rd_shader_spirv_class_set_stage_bytecode, "set_stage_bytecode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_shader_spirv_class_set_stage_bytecode, "set_stage_bytecode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "compile_error_vertex"),
         JS_NewCFunction(ctx, rd_shader_spirv_class_get_stage_compile_error, "get_stage_compile_error", 0),
-        JS_NewCFunction(ctx, rd_shader_spirv_class_set_stage_compile_error, "set_stage_compile_error", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_shader_spirv_class_set_stage_compile_error, "set_stage_compile_error", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "compile_error_fragment"),
         JS_NewCFunction(ctx, rd_shader_spirv_class_get_stage_compile_error, "get_stage_compile_error", 0),
-        JS_NewCFunction(ctx, rd_shader_spirv_class_set_stage_compile_error, "set_stage_compile_error", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_shader_spirv_class_set_stage_compile_error, "set_stage_compile_error", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "compile_error_tesselation_control"),
         JS_NewCFunction(ctx, rd_shader_spirv_class_get_stage_compile_error, "get_stage_compile_error", 0),
-        JS_NewCFunction(ctx, rd_shader_spirv_class_set_stage_compile_error, "set_stage_compile_error", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_shader_spirv_class_set_stage_compile_error, "set_stage_compile_error", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "compile_error_tesselation_evaluation"),
         JS_NewCFunction(ctx, rd_shader_spirv_class_get_stage_compile_error, "get_stage_compile_error", 0),
-        JS_NewCFunction(ctx, rd_shader_spirv_class_set_stage_compile_error, "set_stage_compile_error", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_shader_spirv_class_set_stage_compile_error, "set_stage_compile_error", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "compile_error_compute"),
         JS_NewCFunction(ctx, rd_shader_spirv_class_get_stage_compile_error, "get_stage_compile_error", 0),
-        JS_NewCFunction(ctx, rd_shader_spirv_class_set_stage_compile_error, "set_stage_compile_error", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_shader_spirv_class_set_stage_compile_error, "set_stage_compile_error", 1),
+        JS_PROP_GETSET
     );
 }
 

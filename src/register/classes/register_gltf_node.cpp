@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/gltf_node.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gltf_node_class_finalizer(JSRuntime *rt, JSValue val) {
-	GLTFNode *gltf_node = static_cast<GLTFNode *>(JS_GetOpaque(val, GLTFNode::__class_id));
-	if (gltf_node)
-		memdelete(gltf_node);
+	
+	// nothing
 }
 
 static JSClassDef gltf_node_class_def = {
@@ -171,104 +170,104 @@ void define_gltf_node_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "original_name"),
         JS_NewCFunction(ctx, gltf_node_class_get_original_name, "get_original_name", 0),
-        JS_NewCFunction(ctx, gltf_node_class_set_original_name, "set_original_name", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_node_class_set_original_name, "set_original_name", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "parent"),
         JS_NewCFunction(ctx, gltf_node_class_get_parent, "get_parent", 0),
-        JS_NewCFunction(ctx, gltf_node_class_set_parent, "set_parent", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_node_class_set_parent, "set_parent", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "height"),
         JS_NewCFunction(ctx, gltf_node_class_get_height, "get_height", 0),
-        JS_NewCFunction(ctx, gltf_node_class_set_height, "set_height", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_node_class_set_height, "set_height", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "xform"),
         JS_NewCFunction(ctx, gltf_node_class_get_xform, "get_xform", 0),
-        JS_NewCFunction(ctx, gltf_node_class_set_xform, "set_xform", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_node_class_set_xform, "set_xform", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "mesh"),
         JS_NewCFunction(ctx, gltf_node_class_get_mesh, "get_mesh", 0),
-        JS_NewCFunction(ctx, gltf_node_class_set_mesh, "set_mesh", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_node_class_set_mesh, "set_mesh", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "camera"),
         JS_NewCFunction(ctx, gltf_node_class_get_camera, "get_camera", 0),
-        JS_NewCFunction(ctx, gltf_node_class_set_camera, "set_camera", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_node_class_set_camera, "set_camera", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "skin"),
         JS_NewCFunction(ctx, gltf_node_class_get_skin, "get_skin", 0),
-        JS_NewCFunction(ctx, gltf_node_class_set_skin, "set_skin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_node_class_set_skin, "set_skin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "skeleton"),
         JS_NewCFunction(ctx, gltf_node_class_get_skeleton, "get_skeleton", 0),
-        JS_NewCFunction(ctx, gltf_node_class_set_skeleton, "set_skeleton", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_node_class_set_skeleton, "set_skeleton", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "position"),
         JS_NewCFunction(ctx, gltf_node_class_get_position, "get_position", 0),
-        JS_NewCFunction(ctx, gltf_node_class_set_position, "set_position", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_node_class_set_position, "set_position", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "rotation"),
         JS_NewCFunction(ctx, gltf_node_class_get_rotation, "get_rotation", 0),
-        JS_NewCFunction(ctx, gltf_node_class_set_rotation, "set_rotation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_node_class_set_rotation, "set_rotation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scale"),
         JS_NewCFunction(ctx, gltf_node_class_get_scale, "get_scale", 0),
-        JS_NewCFunction(ctx, gltf_node_class_set_scale, "set_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_node_class_set_scale, "set_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "children"),
         JS_NewCFunction(ctx, gltf_node_class_get_children, "get_children", 0),
-        JS_NewCFunction(ctx, gltf_node_class_set_children, "set_children", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_node_class_set_children, "set_children", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "light"),
         JS_NewCFunction(ctx, gltf_node_class_get_light, "get_light", 0),
-        JS_NewCFunction(ctx, gltf_node_class_set_light, "set_light", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_node_class_set_light, "set_light", 1),
+        JS_PROP_GETSET
     );
 }
 

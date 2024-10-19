@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/menu_bar.hpp>
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/popup_menu.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void menu_bar_class_finalizer(JSRuntime *rt, JSValue val) {
-	MenuBar *menu_bar = static_cast<MenuBar *>(JS_GetOpaque(val, MenuBar::__class_id));
-	if (menu_bar)
-		memdelete(menu_bar);
+	
+	// nothing
 }
 
 static JSClassDef menu_bar_class_def = {
@@ -153,48 +152,48 @@ void define_menu_bar_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "flat"),
         JS_NewCFunction(ctx, menu_bar_class_is_flat, "is_flat", 0),
-        JS_NewCFunction(ctx, menu_bar_class_set_flat, "set_flat", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, menu_bar_class_set_flat, "set_flat", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "start_index"),
         JS_NewCFunction(ctx, menu_bar_class_get_start_index, "get_start_index", 0),
-        JS_NewCFunction(ctx, menu_bar_class_set_start_index, "set_start_index", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, menu_bar_class_set_start_index, "set_start_index", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "switch_on_hover"),
         JS_NewCFunction(ctx, menu_bar_class_is_switch_on_hover, "is_switch_on_hover", 0),
-        JS_NewCFunction(ctx, menu_bar_class_set_switch_on_hover, "set_switch_on_hover", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, menu_bar_class_set_switch_on_hover, "set_switch_on_hover", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "prefer_global_menu"),
         JS_NewCFunction(ctx, menu_bar_class_is_prefer_global_menu, "is_prefer_global_menu", 0),
-        JS_NewCFunction(ctx, menu_bar_class_set_prefer_global_menu, "set_prefer_global_menu", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, menu_bar_class_set_prefer_global_menu, "set_prefer_global_menu", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "text_direction"),
         JS_NewCFunction(ctx, menu_bar_class_get_text_direction, "get_text_direction", 0),
-        JS_NewCFunction(ctx, menu_bar_class_set_text_direction, "set_text_direction", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, menu_bar_class_set_text_direction, "set_text_direction", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "language"),
         JS_NewCFunction(ctx, menu_bar_class_get_language, "get_language", 0),
-        JS_NewCFunction(ctx, menu_bar_class_set_language, "set_language", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, menu_bar_class_set_language, "set_language", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -60,6 +60,9 @@ void uninitialize_tgds_types(godot::ModuleInitializationLevel p_level) {
 	Engine::get_singleton()->unregister_script_language(JavaScriptLanguage::get_singleton());
 	ResourceSaver::get_singleton()->remove_resource_format_saver(JavaScriptSaver::get_singleton());
 	ResourceLoader::get_singleton()->remove_resource_format_loader(JavaScriptLoader::get_singleton());
+	// memdelete(JavaScriptLanguage::get_singleton());
+	// memdelete(JavaScriptSaver::get_singleton());
+	// memdelete(JavaScriptLoader::get_singleton());
 	printf("Quickjs close\n");
 }
 

@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void font_class_finalizer(JSRuntime *rt, JSValue val) {
-	Font *font = static_cast<Font *>(JS_GetOpaque(val, Font::__class_id));
-	if (font)
-		memdelete(font);
+	
+	// nothing
 }
 
 static JSClassDef font_class_def = {
@@ -188,8 +187,8 @@ void define_font_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "fallbacks"),
         JS_NewCFunction(ctx, font_class_get_fallbacks, "get_fallbacks", 0),
-        JS_NewCFunction(ctx, font_class_set_fallbacks, "set_fallbacks", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, font_class_set_fallbacks, "set_fallbacks", 1),
+        JS_PROP_GETSET
     );
 }
 

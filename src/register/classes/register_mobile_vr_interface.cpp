@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void mobile_vr_interface_class_finalizer(JSRuntime *rt, JSValue val) {
-	MobileVRInterface *mobile_vr_interface = static_cast<MobileVRInterface *>(JS_GetOpaque(val, MobileVRInterface::__class_id));
-	if (mobile_vr_interface)
-		memdelete(mobile_vr_interface);
+	
+	// nothing
 }
 
 static JSClassDef mobile_vr_interface_class_def = {
@@ -135,80 +134,80 @@ void define_mobile_vr_interface_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "eye_height"),
         JS_NewCFunction(ctx, mobile_vr_interface_class_get_eye_height, "get_eye_height", 0),
-        JS_NewCFunction(ctx, mobile_vr_interface_class_set_eye_height, "set_eye_height", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, mobile_vr_interface_class_set_eye_height, "set_eye_height", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "iod"),
         JS_NewCFunction(ctx, mobile_vr_interface_class_get_iod, "get_iod", 0),
-        JS_NewCFunction(ctx, mobile_vr_interface_class_set_iod, "set_iod", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, mobile_vr_interface_class_set_iod, "set_iod", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "display_width"),
         JS_NewCFunction(ctx, mobile_vr_interface_class_get_display_width, "get_display_width", 0),
-        JS_NewCFunction(ctx, mobile_vr_interface_class_set_display_width, "set_display_width", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, mobile_vr_interface_class_set_display_width, "set_display_width", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "display_to_lens"),
         JS_NewCFunction(ctx, mobile_vr_interface_class_get_display_to_lens, "get_display_to_lens", 0),
-        JS_NewCFunction(ctx, mobile_vr_interface_class_set_display_to_lens, "set_display_to_lens", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, mobile_vr_interface_class_set_display_to_lens, "set_display_to_lens", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "offset_rect"),
         JS_NewCFunction(ctx, mobile_vr_interface_class_get_offset_rect, "get_offset_rect", 0),
-        JS_NewCFunction(ctx, mobile_vr_interface_class_set_offset_rect, "set_offset_rect", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, mobile_vr_interface_class_set_offset_rect, "set_offset_rect", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "oversample"),
         JS_NewCFunction(ctx, mobile_vr_interface_class_get_oversample, "get_oversample", 0),
-        JS_NewCFunction(ctx, mobile_vr_interface_class_set_oversample, "set_oversample", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, mobile_vr_interface_class_set_oversample, "set_oversample", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "k1"),
         JS_NewCFunction(ctx, mobile_vr_interface_class_get_k1, "get_k1", 0),
-        JS_NewCFunction(ctx, mobile_vr_interface_class_set_k1, "set_k1", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, mobile_vr_interface_class_set_k1, "set_k1", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "k2"),
         JS_NewCFunction(ctx, mobile_vr_interface_class_get_k2, "get_k2", 0),
-        JS_NewCFunction(ctx, mobile_vr_interface_class_set_k2, "set_k2", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, mobile_vr_interface_class_set_k2, "set_k2", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "vrs_min_radius"),
         JS_NewCFunction(ctx, mobile_vr_interface_class_get_vrs_min_radius, "get_vrs_min_radius", 0),
-        JS_NewCFunction(ctx, mobile_vr_interface_class_set_vrs_min_radius, "set_vrs_min_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, mobile_vr_interface_class_set_vrs_min_radius, "set_vrs_min_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "vrs_strength"),
         JS_NewCFunction(ctx, mobile_vr_interface_class_get_vrs_strength, "get_vrs_strength", 0),
-        JS_NewCFunction(ctx, mobile_vr_interface_class_set_vrs_strength, "set_vrs_strength", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, mobile_vr_interface_class_set_vrs_strength, "set_vrs_strength", 1),
+        JS_PROP_GETSET
     );
 }
 

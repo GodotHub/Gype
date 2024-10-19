@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture_layered_rd.hpp>
 #include <godot_cpp/classes/texture_cubemap_rd.hpp>
+#include <godot_cpp/classes/texture_layered_rd.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void texture_cubemap_rd_class_finalizer(JSRuntime *rt, JSValue val) {
-	TextureCubemapRD *texture_cubemap_rd = static_cast<TextureCubemapRD *>(JS_GetOpaque(val, TextureCubemapRD::__class_id));
-	if (texture_cubemap_rd)
-		memdelete(texture_cubemap_rd);
+	
+	// nothing
 }
 
 static JSClassDef texture_cubemap_rd_class_def = {

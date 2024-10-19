@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rd_pipeline_depth_stencil_state.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void rd_pipeline_depth_stencil_state_class_finalizer(JSRuntime *rt, JSValue val) {
-	RDPipelineDepthStencilState *rd_pipeline_depth_stencil_state = static_cast<RDPipelineDepthStencilState *>(JS_GetOpaque(val, RDPipelineDepthStencilState::__class_id));
-	if (rd_pipeline_depth_stencil_state)
-		memdelete(rd_pipeline_depth_stencil_state);
+	
+	// nothing
 }
 
 static JSClassDef rd_pipeline_depth_stencil_state_class_def = {
@@ -234,168 +233,168 @@ void define_rd_pipeline_depth_stencil_state_property(JSContext *ctx, JSValue obj
         obj,
         JS_NewAtom(ctx, "enable_depth_test"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_enable_depth_test, "get_enable_depth_test", 0),
-        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_enable_depth_test, "set_enable_depth_test", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_enable_depth_test, "set_enable_depth_test", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "enable_depth_write"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_enable_depth_write, "get_enable_depth_write", 0),
-        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_enable_depth_write, "set_enable_depth_write", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_enable_depth_write, "set_enable_depth_write", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "depth_compare_operator"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_depth_compare_operator, "get_depth_compare_operator", 0),
-        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_depth_compare_operator, "set_depth_compare_operator", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_depth_compare_operator, "set_depth_compare_operator", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "enable_depth_range"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_enable_depth_range, "get_enable_depth_range", 0),
-        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_enable_depth_range, "set_enable_depth_range", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_enable_depth_range, "set_enable_depth_range", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "depth_range_min"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_depth_range_min, "get_depth_range_min", 0),
-        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_depth_range_min, "set_depth_range_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_depth_range_min, "set_depth_range_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "depth_range_max"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_depth_range_max, "get_depth_range_max", 0),
-        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_depth_range_max, "set_depth_range_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_depth_range_max, "set_depth_range_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "enable_stencil"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_enable_stencil, "get_enable_stencil", 0),
-        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_enable_stencil, "set_enable_stencil", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_enable_stencil, "set_enable_stencil", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "front_op_fail"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_front_op_fail, "get_front_op_fail", 0),
-        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_front_op_fail, "set_front_op_fail", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_front_op_fail, "set_front_op_fail", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "front_op_pass"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_front_op_pass, "get_front_op_pass", 0),
-        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_front_op_pass, "set_front_op_pass", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_front_op_pass, "set_front_op_pass", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "front_op_depth_fail"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_front_op_depth_fail, "get_front_op_depth_fail", 0),
-        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_front_op_depth_fail, "set_front_op_depth_fail", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_front_op_depth_fail, "set_front_op_depth_fail", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "front_op_compare"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_front_op_compare, "get_front_op_compare", 0),
-        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_front_op_compare, "set_front_op_compare", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_front_op_compare, "set_front_op_compare", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "front_op_compare_mask"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_front_op_compare_mask, "get_front_op_compare_mask", 0),
-        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_front_op_compare_mask, "set_front_op_compare_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_front_op_compare_mask, "set_front_op_compare_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "front_op_write_mask"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_front_op_write_mask, "get_front_op_write_mask", 0),
-        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_front_op_write_mask, "set_front_op_write_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_front_op_write_mask, "set_front_op_write_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "front_op_reference"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_front_op_reference, "get_front_op_reference", 0),
-        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_front_op_reference, "set_front_op_reference", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_front_op_reference, "set_front_op_reference", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "back_op_fail"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_back_op_fail, "get_back_op_fail", 0),
-        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_back_op_fail, "set_back_op_fail", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_back_op_fail, "set_back_op_fail", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "back_op_pass"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_back_op_pass, "get_back_op_pass", 0),
-        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_back_op_pass, "set_back_op_pass", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_back_op_pass, "set_back_op_pass", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "back_op_depth_fail"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_back_op_depth_fail, "get_back_op_depth_fail", 0),
-        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_back_op_depth_fail, "set_back_op_depth_fail", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_back_op_depth_fail, "set_back_op_depth_fail", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "back_op_compare"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_back_op_compare, "get_back_op_compare", 0),
-        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_back_op_compare, "set_back_op_compare", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_back_op_compare, "set_back_op_compare", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "back_op_compare_mask"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_back_op_compare_mask, "get_back_op_compare_mask", 0),
-        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_back_op_compare_mask, "set_back_op_compare_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_back_op_compare_mask, "set_back_op_compare_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "back_op_write_mask"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_back_op_write_mask, "get_back_op_write_mask", 0),
-        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_back_op_write_mask, "set_back_op_write_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_back_op_write_mask, "set_back_op_write_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "back_op_reference"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_back_op_reference, "get_back_op_reference", 0),
-        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_back_op_reference, "set_back_op_reference", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_back_op_reference, "set_back_op_reference", 1),
+        JS_PROP_GETSET
     );
 }
 

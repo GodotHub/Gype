@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/multiplayer_api.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/multiplayer_api.hpp>
 #include <godot_cpp/classes/multiplayer_peer.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
@@ -15,9 +15,8 @@
 using namespace godot;
 
 static void multiplayer_api_class_finalizer(JSRuntime *rt, JSValue val) {
-	MultiplayerAPI *multiplayer_api = static_cast<MultiplayerAPI *>(JS_GetOpaque(val, MultiplayerAPI::__class_id));
-	if (multiplayer_api)
-		memdelete(multiplayer_api);
+	
+	// nothing
 }
 
 static JSClassDef multiplayer_api_class_def = {
@@ -107,8 +106,8 @@ void define_multiplayer_api_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "multiplayer_peer"),
         JS_NewCFunction(ctx, multiplayer_api_class_get_multiplayer_peer, "get_multiplayer_peer", 0),
-        JS_NewCFunction(ctx, multiplayer_api_class_set_multiplayer_peer, "set_multiplayer_peer", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, multiplayer_api_class_set_multiplayer_peer, "set_multiplayer_peer", 1),
+        JS_PROP_GETSET
     );
 }
 

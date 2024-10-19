@@ -5,20 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/line_edit.hpp>
 #include <godot_cpp/classes/label.hpp>
 #include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/accept_dialog.hpp>
 #include <godot_cpp/classes/window.hpp>
+#include <godot_cpp/classes/line_edit.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void accept_dialog_class_finalizer(JSRuntime *rt, JSValue val) {
-	AcceptDialog *accept_dialog = static_cast<AcceptDialog *>(JS_GetOpaque(val, AcceptDialog::__class_id));
-	if (accept_dialog)
-		memdelete(accept_dialog);
+	
+	// nothing
 }
 
 static JSClassDef accept_dialog_class_def = {
@@ -119,40 +118,40 @@ void define_accept_dialog_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "ok_button_text"),
         JS_NewCFunction(ctx, accept_dialog_class_get_ok_button_text, "get_ok_button_text", 0),
-        JS_NewCFunction(ctx, accept_dialog_class_set_ok_button_text, "set_ok_button_text", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, accept_dialog_class_set_ok_button_text, "set_ok_button_text", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "dialog_text"),
         JS_NewCFunction(ctx, accept_dialog_class_get_text, "get_text", 0),
-        JS_NewCFunction(ctx, accept_dialog_class_set_text, "set_text", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, accept_dialog_class_set_text, "set_text", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "dialog_hide_on_ok"),
         JS_NewCFunction(ctx, accept_dialog_class_get_hide_on_ok, "get_hide_on_ok", 0),
-        JS_NewCFunction(ctx, accept_dialog_class_set_hide_on_ok, "set_hide_on_ok", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, accept_dialog_class_set_hide_on_ok, "set_hide_on_ok", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "dialog_close_on_escape"),
         JS_NewCFunction(ctx, accept_dialog_class_get_close_on_escape, "get_close_on_escape", 0),
-        JS_NewCFunction(ctx, accept_dialog_class_set_close_on_escape, "set_close_on_escape", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, accept_dialog_class_set_close_on_escape, "set_close_on_escape", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "dialog_autowrap"),
         JS_NewCFunction(ctx, accept_dialog_class_has_autowrap, "has_autowrap", 0),
-        JS_NewCFunction(ctx, accept_dialog_class_set_autowrap, "set_autowrap", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, accept_dialog_class_set_autowrap, "set_autowrap", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -175,6 +175,36 @@ static JSValue vector3_class_octahedron_decode(JSContext *ctx, JSValueConst this
 	return call_builtin_static_method_ret(&Vector3::octahedron_decode, ctx, this_val, argc, argv);
 };
 
+static JSValue vector3_class_get_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Vector3 &val = *reinterpret_cast<Vector3 *>(JS_GetOpaque(this_val, Vector3::__class_id));
+	return Variant(val.x);
+}
+static JSValue vector3_class_set_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Vector3 &val = *reinterpret_cast<Vector3 *>(JS_GetOpaque(this_val, Vector3::__class_id));
+	val.x = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue vector3_class_get_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Vector3 &val = *reinterpret_cast<Vector3 *>(JS_GetOpaque(this_val, Vector3::__class_id));
+	return Variant(val.y);
+}
+static JSValue vector3_class_set_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Vector3 &val = *reinterpret_cast<Vector3 *>(JS_GetOpaque(this_val, Vector3::__class_id));
+	val.y = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue vector3_class_get_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Vector3 &val = *reinterpret_cast<Vector3 *>(JS_GetOpaque(this_val, Vector3::__class_id));
+	return Variant(val.z);
+}
+static JSValue vector3_class_set_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Vector3 &val = *reinterpret_cast<Vector3 *>(JS_GetOpaque(this_val, Vector3::__class_id));
+	val.z = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
 static const JSCFunctionListEntry vector3_class_proto_funcs[] = {
 	JS_CFUNC_DEF("min_axis_index", 0, &vector3_class_min_axis_index),
 	JS_CFUNC_DEF("max_axis_index", 0, &vector3_class_max_axis_index),
@@ -228,6 +258,27 @@ static const JSCFunctionListEntry vector3_class_static_funcs[] = {
 };
 
 void define_vector3_property(JSContext *ctx, JSValue obj) {
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "x"),
+			JS_NewCFunction(ctx, vector3_class_get_x, "get_x", 0),
+			JS_NewCFunction(ctx, vector3_class_set_x, "set_x", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "y"),
+			JS_NewCFunction(ctx, vector3_class_get_y, "get_y", 0),
+			JS_NewCFunction(ctx, vector3_class_set_y, "set_y", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "z"),
+			JS_NewCFunction(ctx, vector3_class_get_z, "get_z", 0),
+			JS_NewCFunction(ctx, vector3_class_set_z, "set_z", 1),
+			JS_PROP_GETSET);
 }
 
 static int js_vector3_class_init(JSContext *ctx) {
@@ -238,7 +289,6 @@ static int js_vector3_class_init(JSContext *ctx) {
 
 	JSValue proto = JS_NewObject(ctx);
 	JS_SetClassProto(ctx, Vector3::__class_id, proto);
-
 	define_vector3_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, vector3_class_proto_funcs, _countof(vector3_class_proto_funcs));
 

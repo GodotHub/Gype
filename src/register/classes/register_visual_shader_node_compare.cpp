@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_compare.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visual_shader_node_compare_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeCompare *visual_shader_node_compare = static_cast<VisualShaderNodeCompare *>(JS_GetOpaque(val, VisualShaderNodeCompare::__class_id));
-	if (visual_shader_node_compare)
-		memdelete(visual_shader_node_compare);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_compare_class_def = {
@@ -72,24 +71,24 @@ void define_visual_shader_node_compare_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "type"),
         JS_NewCFunction(ctx, visual_shader_node_compare_class_get_comparison_type, "get_comparison_type", 0),
-        JS_NewCFunction(ctx, visual_shader_node_compare_class_set_comparison_type, "set_comparison_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_compare_class_set_comparison_type, "set_comparison_type", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "function"),
         JS_NewCFunction(ctx, visual_shader_node_compare_class_get_function, "get_function", 0),
-        JS_NewCFunction(ctx, visual_shader_node_compare_class_set_function, "set_function", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_compare_class_set_function, "set_function", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "condition"),
         JS_NewCFunction(ctx, visual_shader_node_compare_class_get_condition, "get_condition", 0),
-        JS_NewCFunction(ctx, visual_shader_node_compare_class_set_condition, "set_condition", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_compare_class_set_condition, "set_condition", 1),
+        JS_PROP_GETSET
     );
 }
 

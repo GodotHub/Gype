@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void joint2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	Joint2D *joint2d = static_cast<Joint2D *>(JS_GetOpaque(val, Joint2D::__class_id));
-	if (joint2d)
-		memdelete(joint2d);
+	
+	// nothing
 }
 
 static JSClassDef joint2d_class_def = {
@@ -85,32 +84,32 @@ void define_joint2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "node_a"),
         JS_NewCFunction(ctx, joint2d_class_get_node_a, "get_node_a", 0),
-        JS_NewCFunction(ctx, joint2d_class_set_node_a, "set_node_a", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, joint2d_class_set_node_a, "set_node_a", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "node_b"),
         JS_NewCFunction(ctx, joint2d_class_get_node_b, "get_node_b", 0),
-        JS_NewCFunction(ctx, joint2d_class_set_node_b, "set_node_b", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, joint2d_class_set_node_b, "set_node_b", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bias"),
         JS_NewCFunction(ctx, joint2d_class_get_bias, "get_bias", 0),
-        JS_NewCFunction(ctx, joint2d_class_set_bias, "set_bias", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, joint2d_class_set_bias, "set_bias", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "disable_collision"),
         JS_NewCFunction(ctx, joint2d_class_get_exclude_nodes_from_collision, "get_exclude_nodes_from_collision", 0),
-        JS_NewCFunction(ctx, joint2d_class_set_exclude_nodes_from_collision, "set_exclude_nodes_from_collision", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, joint2d_class_set_exclude_nodes_from_collision, "set_exclude_nodes_from_collision", 1),
+        JS_PROP_GETSET
     );
 }
 

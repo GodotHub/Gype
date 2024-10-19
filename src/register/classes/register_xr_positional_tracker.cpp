@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void xr_positional_tracker_class_finalizer(JSRuntime *rt, JSValue val) {
-	XRPositionalTracker *xr_positional_tracker = static_cast<XRPositionalTracker *>(JS_GetOpaque(val, XRPositionalTracker::__class_id));
-	if (xr_positional_tracker)
-		memdelete(xr_positional_tracker);
+	
+	// nothing
 }
 
 static JSClassDef xr_positional_tracker_class_def = {
@@ -91,16 +90,16 @@ void define_xr_positional_tracker_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "profile"),
         JS_NewCFunction(ctx, xr_positional_tracker_class_get_tracker_profile, "get_tracker_profile", 0),
-        JS_NewCFunction(ctx, xr_positional_tracker_class_set_tracker_profile, "set_tracker_profile", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_positional_tracker_class_set_tracker_profile, "set_tracker_profile", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "hand"),
         JS_NewCFunction(ctx, xr_positional_tracker_class_get_tracker_hand, "get_tracker_hand", 0),
-        JS_NewCFunction(ctx, xr_positional_tracker_class_set_tracker_hand, "set_tracker_hand", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_positional_tracker_class_set_tracker_hand, "set_tracker_hand", 1),
+        JS_PROP_GETSET
     );
 }
 

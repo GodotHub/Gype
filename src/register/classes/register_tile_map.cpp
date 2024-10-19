@@ -7,18 +7,17 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/tile_set.hpp>
 #include <godot_cpp/classes/tile_map.hpp>
+#include <godot_cpp/classes/tile_map_pattern.hpp>
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/tile_data.hpp>
-#include <godot_cpp/classes/tile_map_pattern.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void tile_map_class_finalizer(JSRuntime *rt, JSValue val) {
-	TileMap *tile_map = static_cast<TileMap *>(JS_GetOpaque(val, TileMap::__class_id));
-	if (tile_map)
-		memdelete(tile_map);
+	
+	// nothing
 }
 
 static JSClassDef tile_map_class_def = {
@@ -308,40 +307,40 @@ void define_tile_map_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "tile_set"),
         JS_NewCFunction(ctx, tile_map_class_get_tileset, "get_tileset", 0),
-        JS_NewCFunction(ctx, tile_map_class_set_tileset, "set_tileset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_map_class_set_tileset, "set_tileset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "rendering_quadrant_size"),
         JS_NewCFunction(ctx, tile_map_class_get_rendering_quadrant_size, "get_rendering_quadrant_size", 0),
-        JS_NewCFunction(ctx, tile_map_class_set_rendering_quadrant_size, "set_rendering_quadrant_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_map_class_set_rendering_quadrant_size, "set_rendering_quadrant_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_animatable"),
         JS_NewCFunction(ctx, tile_map_class_is_collision_animatable, "is_collision_animatable", 0),
-        JS_NewCFunction(ctx, tile_map_class_set_collision_animatable, "set_collision_animatable", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_map_class_set_collision_animatable, "set_collision_animatable", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_visibility_mode"),
         JS_NewCFunction(ctx, tile_map_class_get_collision_visibility_mode, "get_collision_visibility_mode", 0),
-        JS_NewCFunction(ctx, tile_map_class_set_collision_visibility_mode, "set_collision_visibility_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_map_class_set_collision_visibility_mode, "set_collision_visibility_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "navigation_visibility_mode"),
         JS_NewCFunction(ctx, tile_map_class_get_navigation_visibility_mode, "get_navigation_visibility_mode", 0),
-        JS_NewCFunction(ctx, tile_map_class_set_navigation_visibility_mode, "set_navigation_visibility_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_map_class_set_navigation_visibility_mode, "set_navigation_visibility_mode", 1),
+        JS_PROP_GETSET
     );
 }
 

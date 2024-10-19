@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/box_container.hpp>
 #include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/box_container.hpp>
 #include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void box_container_class_finalizer(JSRuntime *rt, JSValue val) {
-	BoxContainer *box_container = static_cast<BoxContainer *>(JS_GetOpaque(val, BoxContainer::__class_id));
-	if (box_container)
-		memdelete(box_container);
+	
+	// nothing
 }
 
 static JSClassDef box_container_class_def = {
@@ -68,16 +67,16 @@ void define_box_container_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "alignment"),
         JS_NewCFunction(ctx, box_container_class_get_alignment, "get_alignment", 0),
-        JS_NewCFunction(ctx, box_container_class_set_alignment, "set_alignment", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, box_container_class_set_alignment, "set_alignment", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "vertical"),
         JS_NewCFunction(ctx, box_container_class_is_vertical, "is_vertical", 0),
-        JS_NewCFunction(ctx, box_container_class_set_vertical, "set_vertical", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, box_container_class_set_vertical, "set_vertical", 1),
+        JS_PROP_GETSET
     );
 }
 

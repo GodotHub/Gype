@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_color_func_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeColorFunc *visual_shader_node_color_func = static_cast<VisualShaderNodeColorFunc *>(JS_GetOpaque(val, VisualShaderNodeColorFunc::__class_id));
-	if (visual_shader_node_color_func)
-		memdelete(visual_shader_node_color_func);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_color_func_class_def = {
@@ -54,8 +53,8 @@ void define_visual_shader_node_color_func_property(JSContext *ctx, JSValue obj) 
         obj,
         JS_NewAtom(ctx, "function"),
         JS_NewCFunction(ctx, visual_shader_node_color_func_class_get_function, "get_function", 0),
-        JS_NewCFunction(ctx, visual_shader_node_color_func_class_set_function, "set_function", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_color_func_class_set_function, "set_function", 1),
+        JS_PROP_GETSET
     );
 }
 

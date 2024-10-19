@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/java_class_wrapper.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/java_class.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/java_class_wrapper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
@@ -17,9 +17,8 @@ static JSValue java_class_wrapper_instance;
 static void js_java_class_wrapper_singleton();
 
 static void java_class_wrapper_class_finalizer(JSRuntime *rt, JSValue val) {
-	JavaClassWrapper *java_class_wrapper = static_cast<JavaClassWrapper *>(JS_GetOpaque(val, JavaClassWrapper::__class_id));
-	if (java_class_wrapper)
-		JavaClassWrapper::free(nullptr, java_class_wrapper);
+	
+	// nothing
 }
 
 static JSClassDef java_class_wrapper_class_def = {

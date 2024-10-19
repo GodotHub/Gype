@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void audio_stream_polyphonic_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioStreamPolyphonic *audio_stream_polyphonic = static_cast<AudioStreamPolyphonic *>(JS_GetOpaque(val, AudioStreamPolyphonic::__class_id));
-	if (audio_stream_polyphonic)
-		memdelete(audio_stream_polyphonic);
+	
+	// nothing
 }
 
 static JSClassDef audio_stream_polyphonic_class_def = {
@@ -54,8 +53,8 @@ void define_audio_stream_polyphonic_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "polyphony"),
         JS_NewCFunction(ctx, audio_stream_polyphonic_class_get_polyphony, "get_polyphony", 0),
-        JS_NewCFunction(ctx, audio_stream_polyphonic_class_set_polyphony, "set_polyphony", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_polyphonic_class_set_polyphony, "set_polyphony", 1),
+        JS_PROP_GETSET
     );
 }
 

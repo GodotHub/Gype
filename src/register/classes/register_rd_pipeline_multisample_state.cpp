@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void rd_pipeline_multisample_state_class_finalizer(JSRuntime *rt, JSValue val) {
-	RDPipelineMultisampleState *rd_pipeline_multisample_state = static_cast<RDPipelineMultisampleState *>(JS_GetOpaque(val, RDPipelineMultisampleState::__class_id));
-	if (rd_pipeline_multisample_state)
-		memdelete(rd_pipeline_multisample_state);
+	
+	// nothing
 }
 
 static JSClassDef rd_pipeline_multisample_state_class_def = {
@@ -99,48 +98,48 @@ void define_rd_pipeline_multisample_state_property(JSContext *ctx, JSValue obj) 
         obj,
         JS_NewAtom(ctx, "sample_count"),
         JS_NewCFunction(ctx, rd_pipeline_multisample_state_class_get_sample_count, "get_sample_count", 0),
-        JS_NewCFunction(ctx, rd_pipeline_multisample_state_class_set_sample_count, "set_sample_count", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_multisample_state_class_set_sample_count, "set_sample_count", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "enable_sample_shading"),
         JS_NewCFunction(ctx, rd_pipeline_multisample_state_class_get_enable_sample_shading, "get_enable_sample_shading", 0),
-        JS_NewCFunction(ctx, rd_pipeline_multisample_state_class_set_enable_sample_shading, "set_enable_sample_shading", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_multisample_state_class_set_enable_sample_shading, "set_enable_sample_shading", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "min_sample_shading"),
         JS_NewCFunction(ctx, rd_pipeline_multisample_state_class_get_min_sample_shading, "get_min_sample_shading", 0),
-        JS_NewCFunction(ctx, rd_pipeline_multisample_state_class_set_min_sample_shading, "set_min_sample_shading", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_multisample_state_class_set_min_sample_shading, "set_min_sample_shading", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "enable_alpha_to_coverage"),
         JS_NewCFunction(ctx, rd_pipeline_multisample_state_class_get_enable_alpha_to_coverage, "get_enable_alpha_to_coverage", 0),
-        JS_NewCFunction(ctx, rd_pipeline_multisample_state_class_set_enable_alpha_to_coverage, "set_enable_alpha_to_coverage", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_multisample_state_class_set_enable_alpha_to_coverage, "set_enable_alpha_to_coverage", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "enable_alpha_to_one"),
         JS_NewCFunction(ctx, rd_pipeline_multisample_state_class_get_enable_alpha_to_one, "get_enable_alpha_to_one", 0),
-        JS_NewCFunction(ctx, rd_pipeline_multisample_state_class_set_enable_alpha_to_one, "set_enable_alpha_to_one", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_multisample_state_class_set_enable_alpha_to_one, "set_enable_alpha_to_one", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sample_masks"),
         JS_NewCFunction(ctx, rd_pipeline_multisample_state_class_get_sample_masks, "get_sample_masks", 0),
-        JS_NewCFunction(ctx, rd_pipeline_multisample_state_class_set_sample_masks, "set_sample_masks", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_pipeline_multisample_state_class_set_sample_masks, "set_sample_masks", 1),
+        JS_PROP_GETSET
     );
 }
 

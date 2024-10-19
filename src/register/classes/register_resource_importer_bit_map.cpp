@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource_importer_bit_map.hpp>
 #include <godot_cpp/classes/resource_importer.hpp>
+#include <godot_cpp/classes/resource_importer_bit_map.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void resource_importer_bit_map_class_finalizer(JSRuntime *rt, JSValue val) {
-	ResourceImporterBitMap *resource_importer_bit_map = static_cast<ResourceImporterBitMap *>(JS_GetOpaque(val, ResourceImporterBitMap::__class_id));
-	if (resource_importer_bit_map)
-		memdelete(resource_importer_bit_map);
+	
+	// nothing
 }
 
 static JSClassDef resource_importer_bit_map_class_def = {

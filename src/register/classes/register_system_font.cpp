@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/system_font.hpp>
 #include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/system_font.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void system_font_class_finalizer(JSRuntime *rt, JSValue val) {
-	SystemFont *system_font = static_cast<SystemFont *>(JS_GetOpaque(val, SystemFont::__class_id));
-	if (system_font)
-		memdelete(system_font);
+	
+	// nothing
 }
 
 static JSClassDef system_font_class_def = {
@@ -172,120 +171,120 @@ void define_system_font_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "font_names"),
         JS_NewCFunction(ctx, system_font_class_get_font_names, "get_font_names", 0),
-        JS_NewCFunction(ctx, system_font_class_set_font_names, "set_font_names", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, system_font_class_set_font_names, "set_font_names", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "font_italic"),
         JS_NewCFunction(ctx, system_font_class_get_font_italic, "get_font_italic", 0),
-        JS_NewCFunction(ctx, system_font_class_set_font_italic, "set_font_italic", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, system_font_class_set_font_italic, "set_font_italic", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "font_weight"),
         JS_UNDEFINED,
-        JS_NewCFunction(ctx, system_font_class_set_font_weight, "set_font_weight", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, system_font_class_set_font_weight, "set_font_weight", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "font_stretch"),
         JS_UNDEFINED,
-        JS_NewCFunction(ctx, system_font_class_set_font_stretch, "set_font_stretch", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, system_font_class_set_font_stretch, "set_font_stretch", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "antialiasing"),
         JS_NewCFunction(ctx, system_font_class_get_antialiasing, "get_antialiasing", 0),
-        JS_NewCFunction(ctx, system_font_class_set_antialiasing, "set_antialiasing", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, system_font_class_set_antialiasing, "set_antialiasing", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "generate_mipmaps"),
         JS_NewCFunction(ctx, system_font_class_get_generate_mipmaps, "get_generate_mipmaps", 0),
-        JS_NewCFunction(ctx, system_font_class_set_generate_mipmaps, "set_generate_mipmaps", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, system_font_class_set_generate_mipmaps, "set_generate_mipmaps", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "disable_embedded_bitmaps"),
         JS_NewCFunction(ctx, system_font_class_get_disable_embedded_bitmaps, "get_disable_embedded_bitmaps", 0),
-        JS_NewCFunction(ctx, system_font_class_set_disable_embedded_bitmaps, "set_disable_embedded_bitmaps", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, system_font_class_set_disable_embedded_bitmaps, "set_disable_embedded_bitmaps", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "allow_system_fallback"),
         JS_NewCFunction(ctx, system_font_class_is_allow_system_fallback, "is_allow_system_fallback", 0),
-        JS_NewCFunction(ctx, system_font_class_set_allow_system_fallback, "set_allow_system_fallback", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, system_font_class_set_allow_system_fallback, "set_allow_system_fallback", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "force_autohinter"),
         JS_NewCFunction(ctx, system_font_class_is_force_autohinter, "is_force_autohinter", 0),
-        JS_NewCFunction(ctx, system_font_class_set_force_autohinter, "set_force_autohinter", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, system_font_class_set_force_autohinter, "set_force_autohinter", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "hinting"),
         JS_NewCFunction(ctx, system_font_class_get_hinting, "get_hinting", 0),
-        JS_NewCFunction(ctx, system_font_class_set_hinting, "set_hinting", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, system_font_class_set_hinting, "set_hinting", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "subpixel_positioning"),
         JS_NewCFunction(ctx, system_font_class_get_subpixel_positioning, "get_subpixel_positioning", 0),
-        JS_NewCFunction(ctx, system_font_class_set_subpixel_positioning, "set_subpixel_positioning", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, system_font_class_set_subpixel_positioning, "set_subpixel_positioning", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "multichannel_signed_distance_field"),
         JS_NewCFunction(ctx, system_font_class_is_multichannel_signed_distance_field, "is_multichannel_signed_distance_field", 0),
-        JS_NewCFunction(ctx, system_font_class_set_multichannel_signed_distance_field, "set_multichannel_signed_distance_field", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, system_font_class_set_multichannel_signed_distance_field, "set_multichannel_signed_distance_field", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "msdf_pixel_range"),
         JS_NewCFunction(ctx, system_font_class_get_msdf_pixel_range, "get_msdf_pixel_range", 0),
-        JS_NewCFunction(ctx, system_font_class_set_msdf_pixel_range, "set_msdf_pixel_range", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, system_font_class_set_msdf_pixel_range, "set_msdf_pixel_range", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "msdf_size"),
         JS_NewCFunction(ctx, system_font_class_get_msdf_size, "get_msdf_size", 0),
-        JS_NewCFunction(ctx, system_font_class_set_msdf_size, "set_msdf_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, system_font_class_set_msdf_size, "set_msdf_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "oversampling"),
         JS_NewCFunction(ctx, system_font_class_get_oversampling, "get_oversampling", 0),
-        JS_NewCFunction(ctx, system_font_class_set_oversampling, "set_oversampling", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, system_font_class_set_oversampling, "set_oversampling", 1),
+        JS_PROP_GETSET
     );
 }
 

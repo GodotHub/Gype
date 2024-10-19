@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/polygon_occluder3d.hpp>
 #include <godot_cpp/classes/occluder3d.hpp>
+#include <godot_cpp/classes/polygon_occluder3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void polygon_occluder3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	PolygonOccluder3D *polygon_occluder3d = static_cast<PolygonOccluder3D *>(JS_GetOpaque(val, PolygonOccluder3D::__class_id));
-	if (polygon_occluder3d)
-		memdelete(polygon_occluder3d);
+	
+	// nothing
 }
 
 static JSClassDef polygon_occluder3d_class_def = {
@@ -54,8 +53,8 @@ void define_polygon_occluder3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "polygon"),
         JS_NewCFunction(ctx, polygon_occluder3d_class_get_polygon, "get_polygon", 0),
-        JS_NewCFunction(ctx, polygon_occluder3d_class_set_polygon, "set_polygon", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, polygon_occluder3d_class_set_polygon, "set_polygon", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/multi_mesh.hpp>
 #include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void multi_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	MultiMesh *multi_mesh = static_cast<MultiMesh *>(JS_GetOpaque(val, MultiMesh::__class_id));
-	if (multi_mesh)
-		memdelete(multi_mesh);
+	
+	// nothing
 }
 
 static JSClassDef multi_mesh_class_def = {
@@ -158,64 +157,64 @@ void define_multi_mesh_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "transform_format"),
         JS_NewCFunction(ctx, multi_mesh_class_get_transform_format, "get_transform_format", 0),
-        JS_NewCFunction(ctx, multi_mesh_class_set_transform_format, "set_transform_format", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, multi_mesh_class_set_transform_format, "set_transform_format", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_colors"),
         JS_NewCFunction(ctx, multi_mesh_class_is_using_colors, "is_using_colors", 0),
-        JS_NewCFunction(ctx, multi_mesh_class_set_use_colors, "set_use_colors", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, multi_mesh_class_set_use_colors, "set_use_colors", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_custom_data"),
         JS_NewCFunction(ctx, multi_mesh_class_is_using_custom_data, "is_using_custom_data", 0),
-        JS_NewCFunction(ctx, multi_mesh_class_set_use_custom_data, "set_use_custom_data", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, multi_mesh_class_set_use_custom_data, "set_use_custom_data", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "custom_aabb"),
         JS_NewCFunction(ctx, multi_mesh_class_get_custom_aabb, "get_custom_aabb", 0),
-        JS_NewCFunction(ctx, multi_mesh_class_set_custom_aabb, "set_custom_aabb", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, multi_mesh_class_set_custom_aabb, "set_custom_aabb", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "instance_count"),
         JS_NewCFunction(ctx, multi_mesh_class_get_instance_count, "get_instance_count", 0),
-        JS_NewCFunction(ctx, multi_mesh_class_set_instance_count, "set_instance_count", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, multi_mesh_class_set_instance_count, "set_instance_count", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visible_instance_count"),
         JS_NewCFunction(ctx, multi_mesh_class_get_visible_instance_count, "get_visible_instance_count", 0),
-        JS_NewCFunction(ctx, multi_mesh_class_set_visible_instance_count, "set_visible_instance_count", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, multi_mesh_class_set_visible_instance_count, "set_visible_instance_count", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "mesh"),
         JS_NewCFunction(ctx, multi_mesh_class_get_mesh, "get_mesh", 0),
-        JS_NewCFunction(ctx, multi_mesh_class_set_mesh, "set_mesh", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, multi_mesh_class_set_mesh, "set_mesh", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "buffer"),
         JS_NewCFunction(ctx, multi_mesh_class_get_buffer, "get_buffer", 0),
-        JS_NewCFunction(ctx, multi_mesh_class_set_buffer, "set_buffer", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, multi_mesh_class_set_buffer, "set_buffer", 1),
+        JS_PROP_GETSET
     );
 }
 

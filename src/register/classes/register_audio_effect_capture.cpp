@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/classes/audio_effect_capture.hpp>
+#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void audio_effect_capture_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioEffectCapture *audio_effect_capture = static_cast<AudioEffectCapture *>(JS_GetOpaque(val, AudioEffectCapture::__class_id));
-	if (audio_effect_capture)
-		memdelete(audio_effect_capture);
+	
+	// nothing
 }
 
 static JSClassDef audio_effect_capture_class_def = {
@@ -83,8 +82,8 @@ void define_audio_effect_capture_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "buffer_length"),
         JS_NewCFunction(ctx, audio_effect_capture_class_get_buffer_length, "get_buffer_length", 0),
-        JS_NewCFunction(ctx, audio_effect_capture_class_set_buffer_length, "set_buffer_length", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_capture_class_set_buffer_length, "set_buffer_length", 1),
+        JS_PROP_GETSET
     );
 }
 

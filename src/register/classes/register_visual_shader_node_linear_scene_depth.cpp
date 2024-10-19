@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_linear_scene_depth_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeLinearSceneDepth *visual_shader_node_linear_scene_depth = static_cast<VisualShaderNodeLinearSceneDepth *>(JS_GetOpaque(val, VisualShaderNodeLinearSceneDepth::__class_id));
-	if (visual_shader_node_linear_scene_depth)
-		memdelete(visual_shader_node_linear_scene_depth);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_linear_scene_depth_class_def = {

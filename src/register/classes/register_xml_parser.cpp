@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void xml_parser_class_finalizer(JSRuntime *rt, JSValue val) {
-	XMLParser *xml_parser = static_cast<XMLParser *>(JS_GetOpaque(val, XMLParser::__class_id));
-	if (xml_parser)
-		memdelete(xml_parser);
+	
+	// nothing
 }
 
 static JSClassDef xml_parser_class_def = {

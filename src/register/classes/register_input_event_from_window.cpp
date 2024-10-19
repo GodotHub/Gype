@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/input_event_from_window.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void input_event_from_window_class_finalizer(JSRuntime *rt, JSValue val) {
-	InputEventFromWindow *input_event_from_window = static_cast<InputEventFromWindow *>(JS_GetOpaque(val, InputEventFromWindow::__class_id));
-	if (input_event_from_window)
-		memdelete(input_event_from_window);
+	
+	// nothing
 }
 
 static JSClassDef input_event_from_window_class_def = {
@@ -54,8 +53,8 @@ void define_input_event_from_window_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "window_id"),
         JS_NewCFunction(ctx, input_event_from_window_class_get_window_id, "get_window_id", 0),
-        JS_NewCFunction(ctx, input_event_from_window_class_set_window_id, "set_window_id", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_from_window_class_set_window_id, "set_window_id", 1),
+        JS_PROP_GETSET
     );
 }
 

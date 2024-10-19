@@ -5,19 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/button.hpp>
-#include <godot_cpp/classes/popup_panel.hpp>
-#include <godot_cpp/classes/color_picker.hpp>
 #include <godot_cpp/classes/color_picker_button.hpp>
+#include <godot_cpp/classes/button.hpp>
+#include <godot_cpp/classes/color_picker.hpp>
+#include <godot_cpp/classes/popup_panel.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void color_picker_button_class_finalizer(JSRuntime *rt, JSValue val) {
-	ColorPickerButton *color_picker_button = static_cast<ColorPickerButton *>(JS_GetOpaque(val, ColorPickerButton::__class_id));
-	if (color_picker_button)
-		memdelete(color_picker_button);
+	
+	// nothing
 }
 
 static JSClassDef color_picker_button_class_def = {
@@ -73,16 +72,16 @@ void define_color_picker_button_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "color"),
         JS_NewCFunction(ctx, color_picker_button_class_get_pick_color, "get_pick_color", 0),
-        JS_NewCFunction(ctx, color_picker_button_class_set_pick_color, "set_pick_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, color_picker_button_class_set_pick_color, "set_pick_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "edit_alpha"),
         JS_NewCFunction(ctx, color_picker_button_class_is_editing_alpha, "is_editing_alpha", 0),
-        JS_NewCFunction(ctx, color_picker_button_class_set_edit_alpha, "set_edit_alpha", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, color_picker_button_class_set_edit_alpha, "set_edit_alpha", 1),
+        JS_PROP_GETSET
     );
 }
 

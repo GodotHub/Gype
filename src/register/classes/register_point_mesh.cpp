@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void point_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	PointMesh *point_mesh = static_cast<PointMesh *>(JS_GetOpaque(val, PointMesh::__class_id));
-	if (point_mesh)
-		memdelete(point_mesh);
+	
+	// nothing
 }
 
 static JSClassDef point_mesh_class_def = {

@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/classes/root_motion_view.hpp>
+#include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void root_motion_view_class_finalizer(JSRuntime *rt, JSValue val) {
-	RootMotionView *root_motion_view = static_cast<RootMotionView *>(JS_GetOpaque(val, RootMotionView::__class_id));
-	if (root_motion_view)
-		memdelete(root_motion_view);
+	
+	// nothing
 }
 
 static JSClassDef root_motion_view_class_def = {
@@ -90,40 +89,40 @@ void define_root_motion_view_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "animation_path"),
         JS_NewCFunction(ctx, root_motion_view_class_get_animation_path, "get_animation_path", 0),
-        JS_NewCFunction(ctx, root_motion_view_class_set_animation_path, "set_animation_path", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, root_motion_view_class_set_animation_path, "set_animation_path", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "color"),
         JS_NewCFunction(ctx, root_motion_view_class_get_color, "get_color", 0),
-        JS_NewCFunction(ctx, root_motion_view_class_set_color, "set_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, root_motion_view_class_set_color, "set_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cell_size"),
         JS_NewCFunction(ctx, root_motion_view_class_get_cell_size, "get_cell_size", 0),
-        JS_NewCFunction(ctx, root_motion_view_class_set_cell_size, "set_cell_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, root_motion_view_class_set_cell_size, "set_cell_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "radius"),
         JS_NewCFunction(ctx, root_motion_view_class_get_radius, "get_radius", 0),
-        JS_NewCFunction(ctx, root_motion_view_class_set_radius, "set_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, root_motion_view_class_set_radius, "set_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "zero_y"),
         JS_NewCFunction(ctx, root_motion_view_class_get_zero_y, "get_zero_y", 0),
-        JS_NewCFunction(ctx, root_motion_view_class_set_zero_y, "set_zero_y", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, root_motion_view_class_set_zero_y, "set_zero_y", 1),
+        JS_PROP_GETSET
     );
 }
 

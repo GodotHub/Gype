@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void resource_class_finalizer(JSRuntime *rt, JSValue val) {
-	Resource *resource = static_cast<Resource *>(JS_GetOpaque(val, Resource::__class_id));
-	if (resource)
-		memdelete(resource);
+	
+	// nothing
 }
 
 static JSClassDef resource_class_def = {
@@ -115,32 +114,32 @@ void define_resource_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "resource_local_to_scene"),
         JS_NewCFunction(ctx, resource_class_is_local_to_scene, "is_local_to_scene", 0),
-        JS_NewCFunction(ctx, resource_class_set_local_to_scene, "set_local_to_scene", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, resource_class_set_local_to_scene, "set_local_to_scene", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "resource_path"),
         JS_NewCFunction(ctx, resource_class_get_path, "get_path", 0),
-        JS_NewCFunction(ctx, resource_class_set_path, "set_path", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, resource_class_set_path, "set_path", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "resource_name"),
         JS_NewCFunction(ctx, resource_class_get_name, "get_name", 0),
-        JS_NewCFunction(ctx, resource_class_set_name, "set_name", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, resource_class_set_name, "set_name", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "resource_scene_unique_id"),
         JS_NewCFunction(ctx, resource_class_get_scene_unique_id, "get_scene_unique_id", 0),
-        JS_NewCFunction(ctx, resource_class_set_scene_unique_id, "set_scene_unique_id", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, resource_class_set_scene_unique_id, "set_scene_unique_id", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void audio_effect_phaser_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioEffectPhaser *audio_effect_phaser = static_cast<AudioEffectPhaser *>(JS_GetOpaque(val, AudioEffectPhaser::__class_id));
-	if (audio_effect_phaser)
-		memdelete(audio_effect_phaser);
+	
+	// nothing
 }
 
 static JSClassDef audio_effect_phaser_class_def = {
@@ -90,40 +89,40 @@ void define_audio_effect_phaser_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "range_min_hz"),
         JS_NewCFunction(ctx, audio_effect_phaser_class_get_range_min_hz, "get_range_min_hz", 0),
-        JS_NewCFunction(ctx, audio_effect_phaser_class_set_range_min_hz, "set_range_min_hz", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_phaser_class_set_range_min_hz, "set_range_min_hz", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "range_max_hz"),
         JS_NewCFunction(ctx, audio_effect_phaser_class_get_range_max_hz, "get_range_max_hz", 0),
-        JS_NewCFunction(ctx, audio_effect_phaser_class_set_range_max_hz, "set_range_max_hz", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_phaser_class_set_range_max_hz, "set_range_max_hz", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "rate_hz"),
         JS_NewCFunction(ctx, audio_effect_phaser_class_get_rate_hz, "get_rate_hz", 0),
-        JS_NewCFunction(ctx, audio_effect_phaser_class_set_rate_hz, "set_rate_hz", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_phaser_class_set_rate_hz, "set_rate_hz", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "feedback"),
         JS_NewCFunction(ctx, audio_effect_phaser_class_get_feedback, "get_feedback", 0),
-        JS_NewCFunction(ctx, audio_effect_phaser_class_set_feedback, "set_feedback", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_phaser_class_set_feedback, "set_feedback", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "depth"),
         JS_NewCFunction(ctx, audio_effect_phaser_class_get_depth, "get_depth", 0),
-        JS_NewCFunction(ctx, audio_effect_phaser_class_set_depth, "set_depth", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_phaser_class_set_depth, "set_depth", 1),
+        JS_PROP_GETSET
     );
 }
 

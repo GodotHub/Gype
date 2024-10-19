@@ -1,9 +1,9 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/variant/callable.hpp>
 
 using namespace godot;
@@ -81,22 +81,26 @@ static JSValue callable_class_create(JSContext *ctx, JSValueConst this_val, int 
 
 static JSValue callable_class_call(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_no_fixed_vararg_method_ret(&Callable::js_call, ctx, this_val, argc, argv);
+	
 }
 static JSValue callable_class_call_deferred(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_no_fixed_vararg_method_no_ret(&Callable::js_call_deferred, ctx, this_val, argc, argv);
+    call_builtin_const_no_fixed_vararg_method_no_ret(&Callable::js_call_deferred, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue callable_class_rpc(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_no_fixed_vararg_method_no_ret(&Callable::js_rpc, ctx, this_val, argc, argv);
+    call_builtin_const_no_fixed_vararg_method_no_ret(&Callable::js_rpc, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue callable_class_rpc_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_const_vararg_method_no_ret(&Callable::js_rpc_id, ctx, this_val, argc, argv);
+    call_builtin_const_vararg_method_no_ret(&Callable::js_rpc_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue callable_class_bind(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_no_fixed_vararg_method_ret(&Callable::js_bind, ctx, this_val, argc, argv);
+	
 }
+
+
 static const JSCFunctionListEntry callable_class_proto_funcs[] = {
 	JS_CFUNC_DEF("callv", 1, &callable_class_callv),
 	JS_CFUNC_DEF("is_null", 0, &callable_class_is_null),
@@ -122,10 +126,10 @@ static const JSCFunctionListEntry callable_class_static_funcs[] = {
 	JS_CFUNC_DEF("create", 2, &callable_class_create),
 };
 
-void define_callable_property(JSContext *ctx, JSValue obj) {
-}
+
 
 static int js_callable_class_init(JSContext *ctx) {
+	
 	JS_NewClassID(&Callable::__class_id);
 	classes["Callable"] = Callable::__class_id;
 	class_id_list.insert(Callable::__class_id);
@@ -133,8 +137,6 @@ static int js_callable_class_init(JSContext *ctx) {
 
 	JSValue proto = JS_NewObject(ctx);
 	JS_SetClassProto(ctx, Callable::__class_id, proto);
-
-	define_callable_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, callable_class_proto_funcs, _countof(callable_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, callable_class_constructor, "Callable", 0, JS_CFUNC_constructor, 0);

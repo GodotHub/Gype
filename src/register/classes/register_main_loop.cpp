@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/main_loop.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void main_loop_class_finalizer(JSRuntime *rt, JSValue val) {
-	MainLoop *main_loop = static_cast<MainLoop *>(JS_GetOpaque(val, MainLoop::__class_id));
-	if (main_loop)
-		memdelete(main_loop);
+	
+	// nothing
 }
 
 static JSClassDef main_loop_class_def = {

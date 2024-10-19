@@ -330,5 +330,4 @@ Dictionary JavaScriptLanguage::_get_global_class_name(const String &p_path) cons
 // }
 
 JavaScriptLanguage::~JavaScriptLanguage() {
-	memdelete(singleton);
 }

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void hashing_context_class_finalizer(JSRuntime *rt, JSValue val) {
-	HashingContext *hashing_context = static_cast<HashingContext *>(JS_GetOpaque(val, HashingContext::__class_id));
-	if (hashing_context)
-		memdelete(hashing_context);
+	
+	// nothing
 }
 
 static JSClassDef hashing_context_class_def = {

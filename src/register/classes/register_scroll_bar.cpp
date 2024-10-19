@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/range.hpp>
 #include <godot_cpp/classes/scroll_bar.hpp>
+#include <godot_cpp/classes/range.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void scroll_bar_class_finalizer(JSRuntime *rt, JSValue val) {
-	ScrollBar *scroll_bar = static_cast<ScrollBar *>(JS_GetOpaque(val, ScrollBar::__class_id));
-	if (scroll_bar)
-		memdelete(scroll_bar);
+	
+	// nothing
 }
 
 static JSClassDef scroll_bar_class_def = {
@@ -54,8 +53,8 @@ void define_scroll_bar_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "custom_step"),
         JS_NewCFunction(ctx, scroll_bar_class_get_custom_step, "get_custom_step", 0),
-        JS_NewCFunction(ctx, scroll_bar_class_set_custom_step, "set_custom_step", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scroll_bar_class_set_custom_step, "set_custom_step", 1),
+        JS_PROP_GETSET
     );
 }
 

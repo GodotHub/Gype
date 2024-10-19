@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void xr_face_tracker_class_finalizer(JSRuntime *rt, JSValue val) {
-	XRFaceTracker *xr_face_tracker = static_cast<XRFaceTracker *>(JS_GetOpaque(val, XRFaceTracker::__class_id));
-	if (xr_face_tracker)
-		memdelete(xr_face_tracker);
+	
+	// nothing
 }
 
 static JSClassDef xr_face_tracker_class_def = {
@@ -63,8 +62,8 @@ void define_xr_face_tracker_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "blend_shapes"),
         JS_NewCFunction(ctx, xr_face_tracker_class_get_blend_shapes, "get_blend_shapes", 0),
-        JS_NewCFunction(ctx, xr_face_tracker_class_set_blend_shapes, "set_blend_shapes", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_face_tracker_class_set_blend_shapes, "set_blend_shapes", 1),
+        JS_PROP_GETSET
     );
 }
 

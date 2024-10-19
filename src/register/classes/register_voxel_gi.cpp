@@ -5,20 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/camera_attributes.hpp>
+#include <godot_cpp/classes/voxel_gi.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
-#include <godot_cpp/classes/voxel_gi.hpp>
 #include <godot_cpp/classes/voxel_gi_data.hpp>
+#include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void voxel_gi_class_finalizer(JSRuntime *rt, JSValue val) {
-	VoxelGI *voxel_gi = static_cast<VoxelGI *>(JS_GetOpaque(val, VoxelGI::__class_id));
-	if (voxel_gi)
-		memdelete(voxel_gi);
+	
+	// nothing
 }
 
 static JSClassDef voxel_gi_class_def = {
@@ -94,32 +93,32 @@ void define_voxel_gi_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "subdiv"),
         JS_NewCFunction(ctx, voxel_gi_class_get_subdiv, "get_subdiv", 0),
-        JS_NewCFunction(ctx, voxel_gi_class_set_subdiv, "set_subdiv", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, voxel_gi_class_set_subdiv, "set_subdiv", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, voxel_gi_class_get_size, "get_size", 0),
-        JS_NewCFunction(ctx, voxel_gi_class_set_size, "set_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, voxel_gi_class_set_size, "set_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "camera_attributes"),
         JS_NewCFunction(ctx, voxel_gi_class_get_camera_attributes, "get_camera_attributes", 0),
-        JS_NewCFunction(ctx, voxel_gi_class_set_camera_attributes, "set_camera_attributes", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, voxel_gi_class_set_camera_attributes, "set_camera_attributes", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "data"),
         JS_NewCFunction(ctx, voxel_gi_class_get_probe_data, "get_probe_data", 0),
-        JS_NewCFunction(ctx, voxel_gi_class_set_probe_data, "set_probe_data", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, voxel_gi_class_set_probe_data, "set_probe_data", 1),
+        JS_PROP_GETSET
     );
 }
 

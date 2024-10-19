@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_filter.hpp>
 #include <godot_cpp/classes/audio_effect_band_limit_filter.hpp>
+#include <godot_cpp/classes/audio_effect_filter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void audio_effect_band_limit_filter_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioEffectBandLimitFilter *audio_effect_band_limit_filter = static_cast<AudioEffectBandLimitFilter *>(JS_GetOpaque(val, AudioEffectBandLimitFilter::__class_id));
-	if (audio_effect_band_limit_filter)
-		memdelete(audio_effect_band_limit_filter);
+	
+	// nothing
 }
 
 static JSClassDef audio_effect_band_limit_filter_class_def = {

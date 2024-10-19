@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_billboard.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visual_shader_node_billboard_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeBillboard *visual_shader_node_billboard = static_cast<VisualShaderNodeBillboard *>(JS_GetOpaque(val, VisualShaderNodeBillboard::__class_id));
-	if (visual_shader_node_billboard)
-		memdelete(visual_shader_node_billboard);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_billboard_class_def = {
@@ -63,16 +62,16 @@ void define_visual_shader_node_billboard_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "billboard_type"),
         JS_NewCFunction(ctx, visual_shader_node_billboard_class_get_billboard_type, "get_billboard_type", 0),
-        JS_NewCFunction(ctx, visual_shader_node_billboard_class_set_billboard_type, "set_billboard_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_billboard_class_set_billboard_type, "set_billboard_type", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "keep_scale"),
         JS_NewCFunction(ctx, visual_shader_node_billboard_class_is_keep_scale_enabled, "is_keep_scale_enabled", 0),
-        JS_NewCFunction(ctx, visual_shader_node_billboard_class_set_keep_scale_enabled, "set_keep_scale_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_billboard_class_set_keep_scale_enabled, "set_keep_scale_enabled", 1),
+        JS_PROP_GETSET
     );
 }
 

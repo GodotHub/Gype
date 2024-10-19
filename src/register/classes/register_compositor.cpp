@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/compositor_effect.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/compositor.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/compositor_effect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void compositor_class_finalizer(JSRuntime *rt, JSValue val) {
-	Compositor *compositor = static_cast<Compositor *>(JS_GetOpaque(val, Compositor::__class_id));
-	if (compositor)
-		memdelete(compositor);
+	
+	// nothing
 }
 
 static JSClassDef compositor_class_def = {
@@ -55,8 +54,8 @@ void define_compositor_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "compositor_effects"),
         JS_NewCFunction(ctx, compositor_class_get_compositor_effects, "get_compositor_effects", 0),
-        JS_NewCFunction(ctx, compositor_class_set_compositor_effects, "set_compositor_effects", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, compositor_class_set_compositor_effects, "set_compositor_effects", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void resource_importer_image_class_finalizer(JSRuntime *rt, JSValue val) {
-	ResourceImporterImage *resource_importer_image = static_cast<ResourceImporterImage *>(JS_GetOpaque(val, ResourceImporterImage::__class_id));
-	if (resource_importer_image)
-		memdelete(resource_importer_image);
+	
+	// nothing
 }
 
 static JSClassDef resource_importer_image_class_def = {

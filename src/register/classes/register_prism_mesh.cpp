@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void prism_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	PrismMesh *prism_mesh = static_cast<PrismMesh *>(JS_GetOpaque(val, PrismMesh::__class_id));
-	if (prism_mesh)
-		memdelete(prism_mesh);
+	
+	// nothing
 }
 
 static JSClassDef prism_mesh_class_def = {
@@ -90,40 +89,40 @@ void define_prism_mesh_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "left_to_right"),
         JS_NewCFunction(ctx, prism_mesh_class_get_left_to_right, "get_left_to_right", 0),
-        JS_NewCFunction(ctx, prism_mesh_class_set_left_to_right, "set_left_to_right", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, prism_mesh_class_set_left_to_right, "set_left_to_right", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, prism_mesh_class_get_size, "get_size", 0),
-        JS_NewCFunction(ctx, prism_mesh_class_set_size, "set_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, prism_mesh_class_set_size, "set_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "subdivide_width"),
         JS_NewCFunction(ctx, prism_mesh_class_get_subdivide_width, "get_subdivide_width", 0),
-        JS_NewCFunction(ctx, prism_mesh_class_set_subdivide_width, "set_subdivide_width", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, prism_mesh_class_set_subdivide_width, "set_subdivide_width", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "subdivide_height"),
         JS_NewCFunction(ctx, prism_mesh_class_get_subdivide_height, "get_subdivide_height", 0),
-        JS_NewCFunction(ctx, prism_mesh_class_set_subdivide_height, "set_subdivide_height", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, prism_mesh_class_set_subdivide_height, "set_subdivide_height", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "subdivide_depth"),
         JS_NewCFunction(ctx, prism_mesh_class_get_subdivide_depth, "get_subdivide_depth", 0),
-        JS_NewCFunction(ctx, prism_mesh_class_set_subdivide_depth, "set_subdivide_depth", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, prism_mesh_class_set_subdivide_depth, "set_subdivide_depth", 1),
+        JS_PROP_GETSET
     );
 }
 

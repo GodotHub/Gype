@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void input_event_screen_touch_class_finalizer(JSRuntime *rt, JSValue val) {
-	InputEventScreenTouch *input_event_screen_touch = static_cast<InputEventScreenTouch *>(JS_GetOpaque(val, InputEventScreenTouch::__class_id));
-	if (input_event_screen_touch)
-		memdelete(input_event_screen_touch);
+	
+	// nothing
 }
 
 static JSClassDef input_event_screen_touch_class_def = {
@@ -82,40 +81,40 @@ void define_input_event_screen_touch_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "index"),
         JS_NewCFunction(ctx, input_event_screen_touch_class_get_index, "get_index", 0),
-        JS_NewCFunction(ctx, input_event_screen_touch_class_set_index, "set_index", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_screen_touch_class_set_index, "set_index", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "position"),
         JS_NewCFunction(ctx, input_event_screen_touch_class_get_position, "get_position", 0),
-        JS_NewCFunction(ctx, input_event_screen_touch_class_set_position, "set_position", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_screen_touch_class_set_position, "set_position", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "canceled"),
         JS_UNDEFINED,
-        JS_NewCFunction(ctx, input_event_screen_touch_class_set_canceled, "set_canceled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_screen_touch_class_set_canceled, "set_canceled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "pressed"),
         JS_UNDEFINED,
-        JS_NewCFunction(ctx, input_event_screen_touch_class_set_pressed, "set_pressed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_screen_touch_class_set_pressed, "set_pressed", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "double_tap"),
         JS_NewCFunction(ctx, input_event_screen_touch_class_is_double_tap, "is_double_tap", 0),
-        JS_NewCFunction(ctx, input_event_screen_touch_class_set_double_tap, "set_double_tap", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_screen_touch_class_set_double_tap, "set_double_tap", 1),
+        JS_PROP_GETSET
     );
 }
 

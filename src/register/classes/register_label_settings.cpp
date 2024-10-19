@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/label_settings.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void label_settings_class_finalizer(JSRuntime *rt, JSValue val) {
-	LabelSettings *label_settings = static_cast<LabelSettings *>(JS_GetOpaque(val, LabelSettings::__class_id));
-	if (label_settings)
-		memdelete(label_settings);
+	
+	// nothing
 }
 
 static JSClassDef label_settings_class_def = {
@@ -127,72 +126,72 @@ void define_label_settings_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "line_spacing"),
         JS_NewCFunction(ctx, label_settings_class_get_line_spacing, "get_line_spacing", 0),
-        JS_NewCFunction(ctx, label_settings_class_set_line_spacing, "set_line_spacing", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_settings_class_set_line_spacing, "set_line_spacing", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "font"),
         JS_NewCFunction(ctx, label_settings_class_get_font, "get_font", 0),
-        JS_NewCFunction(ctx, label_settings_class_set_font, "set_font", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_settings_class_set_font, "set_font", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "font_size"),
         JS_NewCFunction(ctx, label_settings_class_get_font_size, "get_font_size", 0),
-        JS_NewCFunction(ctx, label_settings_class_set_font_size, "set_font_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_settings_class_set_font_size, "set_font_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "font_color"),
         JS_NewCFunction(ctx, label_settings_class_get_font_color, "get_font_color", 0),
-        JS_NewCFunction(ctx, label_settings_class_set_font_color, "set_font_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_settings_class_set_font_color, "set_font_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "outline_size"),
         JS_NewCFunction(ctx, label_settings_class_get_outline_size, "get_outline_size", 0),
-        JS_NewCFunction(ctx, label_settings_class_set_outline_size, "set_outline_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_settings_class_set_outline_size, "set_outline_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "outline_color"),
         JS_NewCFunction(ctx, label_settings_class_get_outline_color, "get_outline_color", 0),
-        JS_NewCFunction(ctx, label_settings_class_set_outline_color, "set_outline_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_settings_class_set_outline_color, "set_outline_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shadow_size"),
         JS_NewCFunction(ctx, label_settings_class_get_shadow_size, "get_shadow_size", 0),
-        JS_NewCFunction(ctx, label_settings_class_set_shadow_size, "set_shadow_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_settings_class_set_shadow_size, "set_shadow_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shadow_color"),
         JS_NewCFunction(ctx, label_settings_class_get_shadow_color, "get_shadow_color", 0),
-        JS_NewCFunction(ctx, label_settings_class_set_shadow_color, "set_shadow_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_settings_class_set_shadow_color, "set_shadow_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shadow_offset"),
         JS_NewCFunction(ctx, label_settings_class_get_shadow_offset, "get_shadow_offset", 0),
-        JS_NewCFunction(ctx, label_settings_class_set_shadow_offset, "set_shadow_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, label_settings_class_set_shadow_offset, "set_shadow_offset", 1),
+        JS_PROP_GETSET
     );
 }
 

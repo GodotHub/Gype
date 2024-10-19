@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_reroute_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeReroute *visual_shader_node_reroute = static_cast<VisualShaderNodeReroute *>(JS_GetOpaque(val, VisualShaderNodeReroute::__class_id));
-	if (visual_shader_node_reroute)
-		memdelete(visual_shader_node_reroute);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_reroute_class_def = {
@@ -50,7 +49,7 @@ void define_visual_shader_node_reroute_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "port_type"),
         JS_NewCFunction(ctx, visual_shader_node_reroute_class_get_port_type, "get_port_type", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
 }
 

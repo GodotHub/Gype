@@ -231,15 +231,36 @@ Variant any_to_variant(JSValue val) {
 	}
 }
 
+#define COND_CAST_TO_VARIANT(type, val) \
+	if (class_id == type::__class_id)   \
+		return *reinterpret_cast<type *>(JS_GetOpaque(val, class_id));
+
 Variant obj_to_variant(JSValue val) {
 	int class_id = JS_GetClassID(val);
+	if (class_id != Object::__class_id) {
+		COND_CAST_TO_VARIANT(Vector2, val)
+		COND_CAST_TO_VARIANT(Vector2i, val)
+		COND_CAST_TO_VARIANT(Vector3, val)
+		COND_CAST_TO_VARIANT(Vector3i, val)
+		COND_CAST_TO_VARIANT(Vector4, val)
+		COND_CAST_TO_VARIANT(Vector4i, val)
+		COND_CAST_TO_VARIANT(AABB, val)
+		COND_CAST_TO_VARIANT(Callable, val)
+		COND_CAST_TO_VARIANT(Basis, val)
+		COND_CAST_TO_VARIANT(Dictionary, val)
+		COND_CAST_TO_VARIANT(Color, val)
+		COND_CAST_TO_VARIANT(NodePath, val)
+		COND_CAST_TO_VARIANT(Plane, val)
+		COND_CAST_TO_VARIANT(Projection, val)
+		COND_CAST_TO_VARIANT(Quaternion, val)
+		COND_CAST_TO_VARIANT(Rect2, val)
+		COND_CAST_TO_VARIANT(Rect2i, val)
+		COND_CAST_TO_VARIANT(RID, val)
+		COND_CAST_TO_VARIANT(Signal, val)
+		COND_CAST_TO_VARIANT(Transform2D, val)
+		COND_CAST_TO_VARIANT(Transform3D, val)
+	}
 	switch (class_id) {
-		case JS_CLASS_OBJECT: {
-			if (class_id_list.has(class_id))
-				return Variant(reinterpret_cast<Object *>(JS_GetOpaque(val, class_id)));
-			else
-				throw JS_ThrowTypeError(ctx, "%s", "Error convert to object");
-		}
 		case JS_CLASS_ARRAY: {
 			Array gd_arr;
 			JSValue js_len = JS_GetPropertyStr(ctx, val, "length");
@@ -251,8 +272,12 @@ Variant obj_to_variant(JSValue val) {
 			JS_FreeValue(ctx, js_len);
 			return gd_arr;
 		}
-		default:
-			return JSArray_to_PackedArray(val);
+		default: {
+			if (class_id_list.has(class_id))
+				return Variant(reinterpret_cast<Object *>(JS_GetOpaque(val, class_id)));
+			else
+				throw JS_ThrowTypeError(ctx, "%s", "Error convert to object");
+		}
 	}
 }
 
@@ -343,10 +368,13 @@ JSValue any_to_jsvalue(const Variant *val) {
 		}
 		case Variant::Type::OBJECT: {
 			Object *obj = *val;
-			JSClassID class_id = obj->__get_js_class_id();
-			JSValue js_obj = JS_NewObjectClass(ctx, class_id);
-			JS_SetOpaque(js_obj, obj);
-			return js_obj;
+			if (obj) {
+				JSClassID class_id = obj->__get_js_class_id();
+				JSValue js_obj = JS_NewObjectClass(ctx, class_id);
+				JS_SetOpaque(js_obj, obj);
+				return js_obj;
+			}
+			return JS_UNDEFINED;
 		}
 		default:
 			return packed_to_jsvalue(val);

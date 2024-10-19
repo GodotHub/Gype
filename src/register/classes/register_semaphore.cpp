@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void semaphore_class_finalizer(JSRuntime *rt, JSValue val) {
-	Semaphore *semaphore = static_cast<Semaphore *>(JS_GetOpaque(val, Semaphore::__class_id));
-	if (semaphore)
-		memdelete(semaphore);
+	
+	// nothing
 }
 
 static JSClassDef semaphore_class_def = {

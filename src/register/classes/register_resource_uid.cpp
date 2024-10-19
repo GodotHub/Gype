@@ -16,9 +16,8 @@ static JSValue resource_uid_instance;
 static void js_resource_uid_singleton();
 
 static void resource_uid_class_finalizer(JSRuntime *rt, JSValue val) {
-	ResourceUID *resource_uid = static_cast<ResourceUID *>(JS_GetOpaque(val, ResourceUID::__class_id));
-	if (resource_uid)
-		ResourceUID::free(nullptr, resource_uid);
+	
+	// nothing
 }
 
 static JSClassDef resource_uid_class_def = {

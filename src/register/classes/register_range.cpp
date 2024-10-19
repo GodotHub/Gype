@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/range.hpp>
 #include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/range.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void range_class_finalizer(JSRuntime *rt, JSValue val) {
-	Range *range = static_cast<Range *>(JS_GetOpaque(val, Range::__class_id));
-	if (range)
-		memdelete(range);
+	
+	// nothing
 }
 
 static JSClassDef range_class_def = {
@@ -151,80 +150,80 @@ void define_range_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "min_value"),
         JS_NewCFunction(ctx, range_class_get_min, "get_min", 0),
-        JS_NewCFunction(ctx, range_class_set_min, "set_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, range_class_set_min, "set_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "max_value"),
         JS_NewCFunction(ctx, range_class_get_max, "get_max", 0),
-        JS_NewCFunction(ctx, range_class_set_max, "set_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, range_class_set_max, "set_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "step"),
         JS_NewCFunction(ctx, range_class_get_step, "get_step", 0),
-        JS_NewCFunction(ctx, range_class_set_step, "set_step", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, range_class_set_step, "set_step", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "page"),
         JS_NewCFunction(ctx, range_class_get_page, "get_page", 0),
-        JS_NewCFunction(ctx, range_class_set_page, "set_page", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, range_class_set_page, "set_page", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "value"),
         JS_NewCFunction(ctx, range_class_get_value, "get_value", 0),
-        JS_NewCFunction(ctx, range_class_set_value, "set_value", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, range_class_set_value, "set_value", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ratio"),
         JS_NewCFunction(ctx, range_class_get_as_ratio, "get_as_ratio", 0),
-        JS_NewCFunction(ctx, range_class_set_as_ratio, "set_as_ratio", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, range_class_set_as_ratio, "set_as_ratio", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "exp_edit"),
         JS_NewCFunction(ctx, range_class_is_ratio_exp, "is_ratio_exp", 0),
-        JS_NewCFunction(ctx, range_class_set_exp_ratio, "set_exp_ratio", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, range_class_set_exp_ratio, "set_exp_ratio", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "rounded"),
         JS_NewCFunction(ctx, range_class_is_using_rounded_values, "is_using_rounded_values", 0),
-        JS_NewCFunction(ctx, range_class_set_use_rounded_values, "set_use_rounded_values", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, range_class_set_use_rounded_values, "set_use_rounded_values", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "allow_greater"),
         JS_NewCFunction(ctx, range_class_is_greater_allowed, "is_greater_allowed", 0),
-        JS_NewCFunction(ctx, range_class_set_allow_greater, "set_allow_greater", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, range_class_set_allow_greater, "set_allow_greater", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "allow_lesser"),
         JS_NewCFunction(ctx, range_class_is_lesser_allowed, "is_lesser_allowed", 0),
-        JS_NewCFunction(ctx, range_class_set_allow_lesser, "set_allow_lesser", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, range_class_set_allow_lesser, "set_allow_lesser", 1),
+        JS_PROP_GETSET
     );
 }
 

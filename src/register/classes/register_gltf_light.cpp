@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/gltf_light.hpp>
 #include <godot_cpp/classes/light3d.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/gltf_light.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gltf_light_class_finalizer(JSRuntime *rt, JSValue val) {
-	GLTFLight *gltf_light = static_cast<GLTFLight *>(JS_GetOpaque(val, GLTFLight::__class_id));
-	if (gltf_light)
-		memdelete(gltf_light);
+	
+	// nothing
 }
 
 static JSClassDef gltf_light_class_def = {
@@ -127,48 +126,48 @@ void define_gltf_light_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "color"),
         JS_NewCFunction(ctx, gltf_light_class_get_color, "get_color", 0),
-        JS_NewCFunction(ctx, gltf_light_class_set_color, "set_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_light_class_set_color, "set_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "intensity"),
         JS_NewCFunction(ctx, gltf_light_class_get_intensity, "get_intensity", 0),
-        JS_NewCFunction(ctx, gltf_light_class_set_intensity, "set_intensity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_light_class_set_intensity, "set_intensity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "light_type"),
         JS_NewCFunction(ctx, gltf_light_class_get_light_type, "get_light_type", 0),
-        JS_NewCFunction(ctx, gltf_light_class_set_light_type, "set_light_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_light_class_set_light_type, "set_light_type", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "range"),
         JS_NewCFunction(ctx, gltf_light_class_get_range, "get_range", 0),
-        JS_NewCFunction(ctx, gltf_light_class_set_range, "set_range", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_light_class_set_range, "set_range", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "inner_cone_angle"),
         JS_NewCFunction(ctx, gltf_light_class_get_inner_cone_angle, "get_inner_cone_angle", 0),
-        JS_NewCFunction(ctx, gltf_light_class_set_inner_cone_angle, "set_inner_cone_angle", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_light_class_set_inner_cone_angle, "set_inner_cone_angle", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "outer_cone_angle"),
         JS_NewCFunction(ctx, gltf_light_class_get_outer_cone_angle, "get_outer_cone_angle", 0),
-        JS_NewCFunction(ctx, gltf_light_class_set_outer_cone_angle, "set_outer_cone_angle", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_light_class_set_outer_cone_angle, "set_outer_cone_angle", 1),
+        JS_PROP_GETSET
     );
 }
 

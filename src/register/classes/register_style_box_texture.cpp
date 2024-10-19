@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/style_box_texture.hpp>
 #include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/style_box_texture.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void style_box_texture_class_finalizer(JSRuntime *rt, JSValue val) {
-	StyleBoxTexture *style_box_texture = static_cast<StyleBoxTexture *>(JS_GetOpaque(val, StyleBoxTexture::__class_id));
-	if (style_box_texture)
-		memdelete(style_box_texture);
+	
+	// nothing
 }
 
 static JSClassDef style_box_texture_class_def = {
@@ -128,112 +127,112 @@ void define_style_box_texture_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "texture"),
         JS_NewCFunction(ctx, style_box_texture_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, style_box_texture_class_set_texture, "set_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_texture_class_set_texture, "set_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_margin_left"),
         JS_NewCFunction(ctx, style_box_texture_class_get_texture_margin, "get_texture_margin", 0),
-        JS_NewCFunction(ctx, style_box_texture_class_set_texture_margin, "set_texture_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_texture_class_set_texture_margin, "set_texture_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_margin_top"),
         JS_NewCFunction(ctx, style_box_texture_class_get_texture_margin, "get_texture_margin", 0),
-        JS_NewCFunction(ctx, style_box_texture_class_set_texture_margin, "set_texture_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_texture_class_set_texture_margin, "set_texture_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_margin_right"),
         JS_NewCFunction(ctx, style_box_texture_class_get_texture_margin, "get_texture_margin", 0),
-        JS_NewCFunction(ctx, style_box_texture_class_set_texture_margin, "set_texture_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_texture_class_set_texture_margin, "set_texture_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_margin_bottom"),
         JS_NewCFunction(ctx, style_box_texture_class_get_texture_margin, "get_texture_margin", 0),
-        JS_NewCFunction(ctx, style_box_texture_class_set_texture_margin, "set_texture_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_texture_class_set_texture_margin, "set_texture_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "expand_margin_left"),
         JS_NewCFunction(ctx, style_box_texture_class_get_expand_margin, "get_expand_margin", 0),
-        JS_NewCFunction(ctx, style_box_texture_class_set_expand_margin, "set_expand_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_texture_class_set_expand_margin, "set_expand_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "expand_margin_top"),
         JS_NewCFunction(ctx, style_box_texture_class_get_expand_margin, "get_expand_margin", 0),
-        JS_NewCFunction(ctx, style_box_texture_class_set_expand_margin, "set_expand_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_texture_class_set_expand_margin, "set_expand_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "expand_margin_right"),
         JS_NewCFunction(ctx, style_box_texture_class_get_expand_margin, "get_expand_margin", 0),
-        JS_NewCFunction(ctx, style_box_texture_class_set_expand_margin, "set_expand_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_texture_class_set_expand_margin, "set_expand_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "expand_margin_bottom"),
         JS_NewCFunction(ctx, style_box_texture_class_get_expand_margin, "get_expand_margin", 0),
-        JS_NewCFunction(ctx, style_box_texture_class_set_expand_margin, "set_expand_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_texture_class_set_expand_margin, "set_expand_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "axis_stretch_horizontal"),
         JS_NewCFunction(ctx, style_box_texture_class_get_h_axis_stretch_mode, "get_h_axis_stretch_mode", 0),
-        JS_NewCFunction(ctx, style_box_texture_class_set_h_axis_stretch_mode, "set_h_axis_stretch_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_texture_class_set_h_axis_stretch_mode, "set_h_axis_stretch_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "axis_stretch_vertical"),
         JS_NewCFunction(ctx, style_box_texture_class_get_v_axis_stretch_mode, "get_v_axis_stretch_mode", 0),
-        JS_NewCFunction(ctx, style_box_texture_class_set_v_axis_stretch_mode, "set_v_axis_stretch_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_texture_class_set_v_axis_stretch_mode, "set_v_axis_stretch_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "region_rect"),
         JS_NewCFunction(ctx, style_box_texture_class_get_region_rect, "get_region_rect", 0),
-        JS_NewCFunction(ctx, style_box_texture_class_set_region_rect, "set_region_rect", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_texture_class_set_region_rect, "set_region_rect", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "modulate_color"),
         JS_NewCFunction(ctx, style_box_texture_class_get_modulate, "get_modulate", 0),
-        JS_NewCFunction(ctx, style_box_texture_class_set_modulate, "set_modulate", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_texture_class_set_modulate, "set_modulate", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "draw_center"),
         JS_NewCFunction(ctx, style_box_texture_class_is_draw_center_enabled, "is_draw_center_enabled", 0),
-        JS_NewCFunction(ctx, style_box_texture_class_set_draw_center, "set_draw_center", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, style_box_texture_class_set_draw_center, "set_draw_center", 1),
+        JS_PROP_GETSET
     );
 }
 

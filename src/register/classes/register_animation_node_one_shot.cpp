@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void animation_node_one_shot_class_finalizer(JSRuntime *rt, JSValue val) {
-	AnimationNodeOneShot *animation_node_one_shot = static_cast<AnimationNodeOneShot *>(JS_GetOpaque(val, AnimationNodeOneShot::__class_id));
-	if (animation_node_one_shot)
-		memdelete(animation_node_one_shot);
+	
+	// nothing
 }
 
 static JSClassDef animation_node_one_shot_class_def = {
@@ -127,72 +126,72 @@ void define_animation_node_one_shot_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "mix_mode"),
         JS_NewCFunction(ctx, animation_node_one_shot_class_get_mix_mode, "get_mix_mode", 0),
-        JS_NewCFunction(ctx, animation_node_one_shot_class_set_mix_mode, "set_mix_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_one_shot_class_set_mix_mode, "set_mix_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fadein_time"),
         JS_NewCFunction(ctx, animation_node_one_shot_class_get_fadein_time, "get_fadein_time", 0),
-        JS_NewCFunction(ctx, animation_node_one_shot_class_set_fadein_time, "set_fadein_time", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_one_shot_class_set_fadein_time, "set_fadein_time", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fadein_curve"),
         JS_NewCFunction(ctx, animation_node_one_shot_class_get_fadein_curve, "get_fadein_curve", 0),
-        JS_NewCFunction(ctx, animation_node_one_shot_class_set_fadein_curve, "set_fadein_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_one_shot_class_set_fadein_curve, "set_fadein_curve", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fadeout_time"),
         JS_NewCFunction(ctx, animation_node_one_shot_class_get_fadeout_time, "get_fadeout_time", 0),
-        JS_NewCFunction(ctx, animation_node_one_shot_class_set_fadeout_time, "set_fadeout_time", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_one_shot_class_set_fadeout_time, "set_fadeout_time", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fadeout_curve"),
         JS_NewCFunction(ctx, animation_node_one_shot_class_get_fadeout_curve, "get_fadeout_curve", 0),
-        JS_NewCFunction(ctx, animation_node_one_shot_class_set_fadeout_curve, "set_fadeout_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_one_shot_class_set_fadeout_curve, "set_fadeout_curve", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "break_loop_at_end"),
         JS_NewCFunction(ctx, animation_node_one_shot_class_is_loop_broken_at_end, "is_loop_broken_at_end", 0),
-        JS_NewCFunction(ctx, animation_node_one_shot_class_set_break_loop_at_end, "set_break_loop_at_end", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_one_shot_class_set_break_loop_at_end, "set_break_loop_at_end", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "autorestart"),
         JS_NewCFunction(ctx, animation_node_one_shot_class_has_autorestart, "has_autorestart", 0),
-        JS_NewCFunction(ctx, animation_node_one_shot_class_set_autorestart, "set_autorestart", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_one_shot_class_set_autorestart, "set_autorestart", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "autorestart_delay"),
         JS_NewCFunction(ctx, animation_node_one_shot_class_get_autorestart_delay, "get_autorestart_delay", 0),
-        JS_NewCFunction(ctx, animation_node_one_shot_class_set_autorestart_delay, "set_autorestart_delay", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_one_shot_class_set_autorestart_delay, "set_autorestart_delay", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "autorestart_random_delay"),
         JS_NewCFunction(ctx, animation_node_one_shot_class_get_autorestart_random_delay, "get_autorestart_random_delay", 0),
-        JS_NewCFunction(ctx, animation_node_one_shot_class_set_autorestart_random_delay, "set_autorestart_random_delay", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_one_shot_class_set_autorestart_random_delay, "set_autorestart_random_delay", 1),
+        JS_PROP_GETSET
     );
 }
 

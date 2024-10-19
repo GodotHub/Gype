@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/text_server.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/classes/text_server.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void text_server_class_finalizer(JSRuntime *rt, JSValue val) {
-	TextServer *text_server = static_cast<TextServer *>(JS_GetOpaque(val, TextServer::__class_id));
-	if (text_server)
-		memdelete(text_server);
+	
+	// nothing
 }
 
 static JSClassDef text_server_class_def = {

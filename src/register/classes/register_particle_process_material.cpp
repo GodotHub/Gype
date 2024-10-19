@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/particle_process_material.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void particle_process_material_class_finalizer(JSRuntime *rt, JSValue val) {
-	ParticleProcessMaterial *particle_process_material = static_cast<ParticleProcessMaterial *>(JS_GetOpaque(val, ParticleProcessMaterial::__class_id));
-	if (particle_process_material)
-		memdelete(particle_process_material);
+	
+	// nothing
 }
 
 static JSClassDef particle_process_material_class_def = {
@@ -460,888 +459,888 @@ void define_particle_process_material_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "lifetime_randomness"),
         JS_NewCFunction(ctx, particle_process_material_class_get_lifetime_randomness, "get_lifetime_randomness", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_lifetime_randomness, "set_lifetime_randomness", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_lifetime_randomness, "set_lifetime_randomness", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "particle_flag_align_y"),
         JS_NewCFunction(ctx, particle_process_material_class_get_particle_flag, "get_particle_flag", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_particle_flag, "set_particle_flag", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_particle_flag, "set_particle_flag", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "particle_flag_rotate_y"),
         JS_NewCFunction(ctx, particle_process_material_class_get_particle_flag, "get_particle_flag", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_particle_flag, "set_particle_flag", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_particle_flag, "set_particle_flag", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "particle_flag_disable_z"),
         JS_NewCFunction(ctx, particle_process_material_class_get_particle_flag, "get_particle_flag", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_particle_flag, "set_particle_flag", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_particle_flag, "set_particle_flag", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "particle_flag_damping_as_friction"),
         JS_NewCFunction(ctx, particle_process_material_class_get_particle_flag, "get_particle_flag", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_particle_flag, "set_particle_flag", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_particle_flag, "set_particle_flag", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "emission_shape_offset"),
         JS_NewCFunction(ctx, particle_process_material_class_get_emission_shape_offset, "get_emission_shape_offset", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_emission_shape_offset, "set_emission_shape_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_emission_shape_offset, "set_emission_shape_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "emission_shape_scale"),
         JS_NewCFunction(ctx, particle_process_material_class_get_emission_shape_scale, "get_emission_shape_scale", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_emission_shape_scale, "set_emission_shape_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_emission_shape_scale, "set_emission_shape_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "emission_shape"),
         JS_NewCFunction(ctx, particle_process_material_class_get_emission_shape, "get_emission_shape", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_emission_shape, "set_emission_shape", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_emission_shape, "set_emission_shape", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "emission_sphere_radius"),
         JS_NewCFunction(ctx, particle_process_material_class_get_emission_sphere_radius, "get_emission_sphere_radius", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_emission_sphere_radius, "set_emission_sphere_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_emission_sphere_radius, "set_emission_sphere_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "emission_box_extents"),
         JS_NewCFunction(ctx, particle_process_material_class_get_emission_box_extents, "get_emission_box_extents", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_emission_box_extents, "set_emission_box_extents", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_emission_box_extents, "set_emission_box_extents", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "emission_point_texture"),
         JS_NewCFunction(ctx, particle_process_material_class_get_emission_point_texture, "get_emission_point_texture", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_emission_point_texture, "set_emission_point_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_emission_point_texture, "set_emission_point_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "emission_normal_texture"),
         JS_NewCFunction(ctx, particle_process_material_class_get_emission_normal_texture, "get_emission_normal_texture", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_emission_normal_texture, "set_emission_normal_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_emission_normal_texture, "set_emission_normal_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "emission_color_texture"),
         JS_NewCFunction(ctx, particle_process_material_class_get_emission_color_texture, "get_emission_color_texture", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_emission_color_texture, "set_emission_color_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_emission_color_texture, "set_emission_color_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "emission_point_count"),
         JS_NewCFunction(ctx, particle_process_material_class_get_emission_point_count, "get_emission_point_count", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_emission_point_count, "set_emission_point_count", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_emission_point_count, "set_emission_point_count", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "emission_ring_axis"),
         JS_NewCFunction(ctx, particle_process_material_class_get_emission_ring_axis, "get_emission_ring_axis", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_emission_ring_axis, "set_emission_ring_axis", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_emission_ring_axis, "set_emission_ring_axis", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "emission_ring_height"),
         JS_NewCFunction(ctx, particle_process_material_class_get_emission_ring_height, "get_emission_ring_height", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_emission_ring_height, "set_emission_ring_height", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_emission_ring_height, "set_emission_ring_height", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "emission_ring_radius"),
         JS_NewCFunction(ctx, particle_process_material_class_get_emission_ring_radius, "get_emission_ring_radius", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_emission_ring_radius, "set_emission_ring_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_emission_ring_radius, "set_emission_ring_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "emission_ring_inner_radius"),
         JS_NewCFunction(ctx, particle_process_material_class_get_emission_ring_inner_radius, "get_emission_ring_inner_radius", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_emission_ring_inner_radius, "set_emission_ring_inner_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_emission_ring_inner_radius, "set_emission_ring_inner_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angle"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angle_min"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angle_max"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angle_curve"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_texture, "get_param_texture", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "inherit_velocity_ratio"),
         JS_NewCFunction(ctx, particle_process_material_class_get_inherit_velocity_ratio, "get_inherit_velocity_ratio", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_inherit_velocity_ratio, "set_inherit_velocity_ratio", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_inherit_velocity_ratio, "set_inherit_velocity_ratio", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "velocity_pivot"),
         JS_NewCFunction(ctx, particle_process_material_class_get_velocity_pivot, "get_velocity_pivot", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_velocity_pivot, "set_velocity_pivot", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_velocity_pivot, "set_velocity_pivot", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "direction"),
         JS_NewCFunction(ctx, particle_process_material_class_get_direction, "get_direction", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_direction, "set_direction", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_direction, "set_direction", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "spread"),
         JS_NewCFunction(ctx, particle_process_material_class_get_spread, "get_spread", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_spread, "set_spread", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_spread, "set_spread", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "flatness"),
         JS_NewCFunction(ctx, particle_process_material_class_get_flatness, "get_flatness", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_flatness, "set_flatness", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_flatness, "set_flatness", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "initial_velocity"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "initial_velocity_min"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "initial_velocity_max"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angular_velocity"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angular_velocity_min"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angular_velocity_max"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angular_velocity_curve"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_texture, "get_param_texture", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "directional_velocity"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "directional_velocity_min"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "directional_velocity_max"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "directional_velocity_curve"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_texture, "get_param_texture", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "orbit_velocity"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "orbit_velocity_min"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "orbit_velocity_max"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "orbit_velocity_curve"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_texture, "get_param_texture", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "radial_velocity"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "radial_velocity_min"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "radial_velocity_max"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "radial_velocity_curve"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_texture, "get_param_texture", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "velocity_limit_curve"),
         JS_NewCFunction(ctx, particle_process_material_class_get_velocity_limit_curve, "get_velocity_limit_curve", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_velocity_limit_curve, "set_velocity_limit_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_velocity_limit_curve, "set_velocity_limit_curve", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gravity"),
         JS_NewCFunction(ctx, particle_process_material_class_get_gravity, "get_gravity", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_gravity, "set_gravity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_gravity, "set_gravity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "linear_accel"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "linear_accel_min"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "linear_accel_max"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "linear_accel_curve"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_texture, "get_param_texture", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "radial_accel"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "radial_accel_min"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "radial_accel_max"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "radial_accel_curve"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_texture, "get_param_texture", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tangential_accel"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tangential_accel_min"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tangential_accel_max"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tangential_accel_curve"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_texture, "get_param_texture", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "damping"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "damping_min"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "damping_max"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "damping_curve"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_texture, "get_param_texture", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "attractor_interaction_enabled"),
         JS_NewCFunction(ctx, particle_process_material_class_is_attractor_interaction_enabled, "is_attractor_interaction_enabled", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_attractor_interaction_enabled, "set_attractor_interaction_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_attractor_interaction_enabled, "set_attractor_interaction_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scale"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scale_min"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scale_max"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scale_curve"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_texture, "get_param_texture", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scale_over_velocity"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scale_over_velocity_min"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scale_over_velocity_max"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scale_over_velocity_curve"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_texture, "get_param_texture", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "color"),
         JS_NewCFunction(ctx, particle_process_material_class_get_color, "get_color", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_color, "set_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_color, "set_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "color_ramp"),
         JS_NewCFunction(ctx, particle_process_material_class_get_color_ramp, "get_color_ramp", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_color_ramp, "set_color_ramp", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_color_ramp, "set_color_ramp", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "color_initial_ramp"),
         JS_NewCFunction(ctx, particle_process_material_class_get_color_initial_ramp, "get_color_initial_ramp", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_color_initial_ramp, "set_color_initial_ramp", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_color_initial_ramp, "set_color_initial_ramp", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "alpha_curve"),
         JS_NewCFunction(ctx, particle_process_material_class_get_alpha_curve, "get_alpha_curve", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_alpha_curve, "set_alpha_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_alpha_curve, "set_alpha_curve", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "emission_curve"),
         JS_NewCFunction(ctx, particle_process_material_class_get_emission_curve, "get_emission_curve", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_emission_curve, "set_emission_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_emission_curve, "set_emission_curve", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "hue_variation"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "hue_variation_min"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "hue_variation_max"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "hue_variation_curve"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_texture, "get_param_texture", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "anim_speed"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "anim_speed_min"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "anim_speed_max"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "anim_speed_curve"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_texture, "get_param_texture", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "anim_offset"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "anim_offset_min"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "anim_offset_max"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "anim_offset_curve"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_texture, "get_param_texture", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "turbulence_enabled"),
         JS_NewCFunction(ctx, particle_process_material_class_get_turbulence_enabled, "get_turbulence_enabled", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_turbulence_enabled, "set_turbulence_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_turbulence_enabled, "set_turbulence_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "turbulence_noise_strength"),
         JS_NewCFunction(ctx, particle_process_material_class_get_turbulence_noise_strength, "get_turbulence_noise_strength", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_turbulence_noise_strength, "set_turbulence_noise_strength", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_turbulence_noise_strength, "set_turbulence_noise_strength", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "turbulence_noise_scale"),
         JS_NewCFunction(ctx, particle_process_material_class_get_turbulence_noise_scale, "get_turbulence_noise_scale", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_turbulence_noise_scale, "set_turbulence_noise_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_turbulence_noise_scale, "set_turbulence_noise_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "turbulence_noise_speed"),
         JS_NewCFunction(ctx, particle_process_material_class_get_turbulence_noise_speed, "get_turbulence_noise_speed", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_turbulence_noise_speed, "set_turbulence_noise_speed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_turbulence_noise_speed, "set_turbulence_noise_speed", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "turbulence_noise_speed_random"),
         JS_NewCFunction(ctx, particle_process_material_class_get_turbulence_noise_speed_random, "get_turbulence_noise_speed_random", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_turbulence_noise_speed_random, "set_turbulence_noise_speed_random", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_turbulence_noise_speed_random, "set_turbulence_noise_speed_random", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "turbulence_influence"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "turbulence_influence_min"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "turbulence_influence_max"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "turbulence_initial_displacement"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param, "get_param", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "turbulence_initial_displacement_min"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_min, "get_param_min", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_min, "set_param_min", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "turbulence_initial_displacement_max"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_max, "get_param_max", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_max, "set_param_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "turbulence_influence_over_life"),
         JS_NewCFunction(ctx, particle_process_material_class_get_param_texture, "get_param_texture", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_param_texture, "set_param_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_mode"),
         JS_NewCFunction(ctx, particle_process_material_class_get_collision_mode, "get_collision_mode", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_collision_mode, "set_collision_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_collision_mode, "set_collision_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_friction"),
         JS_NewCFunction(ctx, particle_process_material_class_get_collision_friction, "get_collision_friction", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_collision_friction, "set_collision_friction", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_collision_friction, "set_collision_friction", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_bounce"),
         JS_NewCFunction(ctx, particle_process_material_class_get_collision_bounce, "get_collision_bounce", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_collision_bounce, "set_collision_bounce", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_collision_bounce, "set_collision_bounce", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_use_scale"),
         JS_NewCFunction(ctx, particle_process_material_class_is_collision_using_scale, "is_collision_using_scale", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_collision_use_scale, "set_collision_use_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_collision_use_scale, "set_collision_use_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sub_emitter_mode"),
         JS_NewCFunction(ctx, particle_process_material_class_get_sub_emitter_mode, "get_sub_emitter_mode", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_sub_emitter_mode, "set_sub_emitter_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_sub_emitter_mode, "set_sub_emitter_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sub_emitter_frequency"),
         JS_NewCFunction(ctx, particle_process_material_class_get_sub_emitter_frequency, "get_sub_emitter_frequency", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_sub_emitter_frequency, "set_sub_emitter_frequency", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_sub_emitter_frequency, "set_sub_emitter_frequency", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sub_emitter_amount_at_end"),
         JS_NewCFunction(ctx, particle_process_material_class_get_sub_emitter_amount_at_end, "get_sub_emitter_amount_at_end", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_sub_emitter_amount_at_end, "set_sub_emitter_amount_at_end", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_sub_emitter_amount_at_end, "set_sub_emitter_amount_at_end", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sub_emitter_amount_at_collision"),
         JS_NewCFunction(ctx, particle_process_material_class_get_sub_emitter_amount_at_collision, "get_sub_emitter_amount_at_collision", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_sub_emitter_amount_at_collision, "set_sub_emitter_amount_at_collision", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_sub_emitter_amount_at_collision, "set_sub_emitter_amount_at_collision", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sub_emitter_keep_velocity"),
         JS_NewCFunction(ctx, particle_process_material_class_get_sub_emitter_keep_velocity, "get_sub_emitter_keep_velocity", 0),
-        JS_NewCFunction(ctx, particle_process_material_class_set_sub_emitter_keep_velocity, "set_sub_emitter_keep_velocity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, particle_process_material_class_set_sub_emitter_keep_velocity, "set_sub_emitter_keep_velocity", 1),
+        JS_PROP_GETSET
     );
 }
 

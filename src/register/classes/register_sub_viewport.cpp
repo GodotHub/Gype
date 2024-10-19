@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void sub_viewport_class_finalizer(JSRuntime *rt, JSValue val) {
-	SubViewport *sub_viewport = static_cast<SubViewport *>(JS_GetOpaque(val, SubViewport::__class_id));
-	if (sub_viewport)
-		memdelete(sub_viewport);
+	
+	// nothing
 }
 
 static JSClassDef sub_viewport_class_def = {
@@ -90,40 +89,40 @@ void define_sub_viewport_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, sub_viewport_class_get_size, "get_size", 0),
-        JS_NewCFunction(ctx, sub_viewport_class_set_size, "set_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sub_viewport_class_set_size, "set_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "size_2d_override"),
         JS_NewCFunction(ctx, sub_viewport_class_get_size_2d_override, "get_size_2d_override", 0),
-        JS_NewCFunction(ctx, sub_viewport_class_set_size_2d_override, "set_size_2d_override", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sub_viewport_class_set_size_2d_override, "set_size_2d_override", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "size_2d_override_stretch"),
         JS_NewCFunction(ctx, sub_viewport_class_is_size_2d_override_stretch_enabled, "is_size_2d_override_stretch_enabled", 0),
-        JS_NewCFunction(ctx, sub_viewport_class_set_size_2d_override_stretch, "set_size_2d_override_stretch", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sub_viewport_class_set_size_2d_override_stretch, "set_size_2d_override_stretch", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "render_target_clear_mode"),
         JS_NewCFunction(ctx, sub_viewport_class_get_clear_mode, "get_clear_mode", 0),
-        JS_NewCFunction(ctx, sub_viewport_class_set_clear_mode, "set_clear_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sub_viewport_class_set_clear_mode, "set_clear_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "render_target_update_mode"),
         JS_NewCFunction(ctx, sub_viewport_class_get_update_mode, "get_update_mode", 0),
-        JS_NewCFunction(ctx, sub_viewport_class_set_update_mode, "set_update_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sub_viewport_class_set_update_mode, "set_update_mode", 1),
+        JS_PROP_GETSET
     );
 }
 

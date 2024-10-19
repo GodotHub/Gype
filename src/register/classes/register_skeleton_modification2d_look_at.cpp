@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void skeleton_modification2d_look_at_class_finalizer(JSRuntime *rt, JSValue val) {
-	SkeletonModification2DLookAt *skeleton_modification2d_look_at = static_cast<SkeletonModification2DLookAt *>(JS_GetOpaque(val, SkeletonModification2DLookAt::__class_id));
-	if (skeleton_modification2d_look_at)
-		memdelete(skeleton_modification2d_look_at);
+	
+	// nothing
 }
 
 static JSClassDef skeleton_modification2d_look_at_class_def = {
@@ -117,24 +116,24 @@ void define_skeleton_modification2d_look_at_property(JSContext *ctx, JSValue obj
         obj,
         JS_NewAtom(ctx, "bone_index"),
         JS_NewCFunction(ctx, skeleton_modification2d_look_at_class_get_bone_index, "get_bone_index", 0),
-        JS_NewCFunction(ctx, skeleton_modification2d_look_at_class_set_bone_index, "set_bone_index", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_modification2d_look_at_class_set_bone_index, "set_bone_index", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bone2d_node"),
         JS_NewCFunction(ctx, skeleton_modification2d_look_at_class_get_bone2d_node, "get_bone2d_node", 0),
-        JS_NewCFunction(ctx, skeleton_modification2d_look_at_class_set_bone2d_node, "set_bone2d_node", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_modification2d_look_at_class_set_bone2d_node, "set_bone2d_node", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "target_nodepath"),
         JS_NewCFunction(ctx, skeleton_modification2d_look_at_class_get_target_node, "get_target_node", 0),
-        JS_NewCFunction(ctx, skeleton_modification2d_look_at_class_set_target_node, "set_target_node", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_modification2d_look_at_class_set_target_node, "set_target_node", 1),
+        JS_PROP_GETSET
     );
 }
 

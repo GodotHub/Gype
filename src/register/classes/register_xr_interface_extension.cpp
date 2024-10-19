@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void xr_interface_extension_class_finalizer(JSRuntime *rt, JSValue val) {
-	XRInterfaceExtension *xr_interface_extension = static_cast<XRInterfaceExtension *>(JS_GetOpaque(val, XRInterfaceExtension::__class_id));
-	if (xr_interface_extension)
-		memdelete(xr_interface_extension);
+	
+	// nothing
 }
 
 static JSClassDef xr_interface_extension_class_def = {

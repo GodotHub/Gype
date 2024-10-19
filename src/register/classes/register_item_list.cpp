@@ -5,19 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/item_list.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/v_scroll_bar.hpp>
+#include <godot_cpp/classes/item_list.hpp>
 #include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void item_list_class_finalizer(JSRuntime *rt, JSValue val) {
-	ItemList *item_list = static_cast<ItemList *>(JS_GetOpaque(val, ItemList::__class_id));
-	if (item_list)
-		memdelete(item_list);
+	
+	// nothing
 }
 
 static JSClassDef item_list_class_def = {
@@ -376,112 +375,112 @@ void define_item_list_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "select_mode"),
         JS_NewCFunction(ctx, item_list_class_get_select_mode, "get_select_mode", 0),
-        JS_NewCFunction(ctx, item_list_class_set_select_mode, "set_select_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, item_list_class_set_select_mode, "set_select_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "allow_reselect"),
         JS_NewCFunction(ctx, item_list_class_get_allow_reselect, "get_allow_reselect", 0),
-        JS_NewCFunction(ctx, item_list_class_set_allow_reselect, "set_allow_reselect", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, item_list_class_set_allow_reselect, "set_allow_reselect", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "allow_rmb_select"),
         JS_NewCFunction(ctx, item_list_class_get_allow_rmb_select, "get_allow_rmb_select", 0),
-        JS_NewCFunction(ctx, item_list_class_set_allow_rmb_select, "set_allow_rmb_select", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, item_list_class_set_allow_rmb_select, "set_allow_rmb_select", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "allow_search"),
         JS_NewCFunction(ctx, item_list_class_get_allow_search, "get_allow_search", 0),
-        JS_NewCFunction(ctx, item_list_class_set_allow_search, "set_allow_search", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, item_list_class_set_allow_search, "set_allow_search", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "max_text_lines"),
         JS_NewCFunction(ctx, item_list_class_get_max_text_lines, "get_max_text_lines", 0),
-        JS_NewCFunction(ctx, item_list_class_set_max_text_lines, "set_max_text_lines", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, item_list_class_set_max_text_lines, "set_max_text_lines", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "auto_height"),
         JS_NewCFunction(ctx, item_list_class_has_auto_height, "has_auto_height", 0),
-        JS_NewCFunction(ctx, item_list_class_set_auto_height, "set_auto_height", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, item_list_class_set_auto_height, "set_auto_height", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "text_overrun_behavior"),
         JS_NewCFunction(ctx, item_list_class_get_text_overrun_behavior, "get_text_overrun_behavior", 0),
-        JS_NewCFunction(ctx, item_list_class_set_text_overrun_behavior, "set_text_overrun_behavior", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, item_list_class_set_text_overrun_behavior, "set_text_overrun_behavior", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "item_count"),
         JS_NewCFunction(ctx, item_list_class_get_item_count, "get_item_count", 0),
-        JS_NewCFunction(ctx, item_list_class_set_item_count, "set_item_count", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, item_list_class_set_item_count, "set_item_count", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "max_columns"),
         JS_NewCFunction(ctx, item_list_class_get_max_columns, "get_max_columns", 0),
-        JS_NewCFunction(ctx, item_list_class_set_max_columns, "set_max_columns", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, item_list_class_set_max_columns, "set_max_columns", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "same_column_width"),
         JS_NewCFunction(ctx, item_list_class_is_same_column_width, "is_same_column_width", 0),
-        JS_NewCFunction(ctx, item_list_class_set_same_column_width, "set_same_column_width", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, item_list_class_set_same_column_width, "set_same_column_width", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fixed_column_width"),
         JS_NewCFunction(ctx, item_list_class_get_fixed_column_width, "get_fixed_column_width", 0),
-        JS_NewCFunction(ctx, item_list_class_set_fixed_column_width, "set_fixed_column_width", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, item_list_class_set_fixed_column_width, "set_fixed_column_width", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "icon_mode"),
         JS_NewCFunction(ctx, item_list_class_get_icon_mode, "get_icon_mode", 0),
-        JS_NewCFunction(ctx, item_list_class_set_icon_mode, "set_icon_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, item_list_class_set_icon_mode, "set_icon_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "icon_scale"),
         JS_NewCFunction(ctx, item_list_class_get_icon_scale, "get_icon_scale", 0),
-        JS_NewCFunction(ctx, item_list_class_set_icon_scale, "set_icon_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, item_list_class_set_icon_scale, "set_icon_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fixed_icon_size"),
         JS_NewCFunction(ctx, item_list_class_get_fixed_icon_size, "get_fixed_icon_size", 0),
-        JS_NewCFunction(ctx, item_list_class_set_fixed_icon_size, "set_fixed_icon_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, item_list_class_set_fixed_icon_size, "set_fixed_icon_size", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void canvas_group_class_finalizer(JSRuntime *rt, JSValue val) {
-	CanvasGroup *canvas_group = static_cast<CanvasGroup *>(JS_GetOpaque(val, CanvasGroup::__class_id));
-	if (canvas_group)
-		memdelete(canvas_group);
+	
+	// nothing
 }
 
 static JSClassDef canvas_group_class_def = {
@@ -72,24 +71,24 @@ void define_canvas_group_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "fit_margin"),
         JS_NewCFunction(ctx, canvas_group_class_get_fit_margin, "get_fit_margin", 0),
-        JS_NewCFunction(ctx, canvas_group_class_set_fit_margin, "set_fit_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_group_class_set_fit_margin, "set_fit_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "clear_margin"),
         JS_NewCFunction(ctx, canvas_group_class_get_clear_margin, "get_clear_margin", 0),
-        JS_NewCFunction(ctx, canvas_group_class_set_clear_margin, "set_clear_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_group_class_set_clear_margin, "set_clear_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_mipmaps"),
         JS_NewCFunction(ctx, canvas_group_class_is_using_mipmaps, "is_using_mipmaps", 0),
-        JS_NewCFunction(ctx, canvas_group_class_set_use_mipmaps, "set_use_mipmaps", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_group_class_set_use_mipmaps, "set_use_mipmaps", 1),
+        JS_PROP_GETSET
     );
 }
 

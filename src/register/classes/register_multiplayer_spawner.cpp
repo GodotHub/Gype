@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void multiplayer_spawner_class_finalizer(JSRuntime *rt, JSValue val) {
-	MultiplayerSpawner *multiplayer_spawner = static_cast<MultiplayerSpawner *>(JS_GetOpaque(val, MultiplayerSpawner::__class_id));
-	if (multiplayer_spawner)
-		memdelete(multiplayer_spawner);
+	
+	// nothing
 }
 
 static JSClassDef multiplayer_spawner_class_def = {
@@ -94,24 +93,24 @@ void define_multiplayer_spawner_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "spawn_path"),
         JS_NewCFunction(ctx, multiplayer_spawner_class_get_spawn_path, "get_spawn_path", 0),
-        JS_NewCFunction(ctx, multiplayer_spawner_class_set_spawn_path, "set_spawn_path", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, multiplayer_spawner_class_set_spawn_path, "set_spawn_path", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "spawn_limit"),
         JS_NewCFunction(ctx, multiplayer_spawner_class_get_spawn_limit, "get_spawn_limit", 0),
-        JS_NewCFunction(ctx, multiplayer_spawner_class_set_spawn_limit, "set_spawn_limit", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, multiplayer_spawner_class_set_spawn_limit, "set_spawn_limit", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "spawn_function"),
         JS_NewCFunction(ctx, multiplayer_spawner_class_get_spawn_function, "get_spawn_function", 0),
-        JS_NewCFunction(ctx, multiplayer_spawner_class_set_spawn_function, "set_spawn_function", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, multiplayer_spawner_class_set_spawn_function, "set_spawn_function", 1),
+        JS_PROP_GETSET
     );
 }
 

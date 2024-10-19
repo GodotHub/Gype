@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void remote_transform3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	RemoteTransform3D *remote_transform3d = static_cast<RemoteTransform3D *>(JS_GetOpaque(val, RemoteTransform3D::__class_id));
-	if (remote_transform3d)
-		memdelete(remote_transform3d);
+	
+	// nothing
 }
 
 static JSClassDef remote_transform3d_class_def = {
@@ -95,40 +94,40 @@ void define_remote_transform3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "remote_path"),
         JS_NewCFunction(ctx, remote_transform3d_class_get_remote_node, "get_remote_node", 0),
-        JS_NewCFunction(ctx, remote_transform3d_class_set_remote_node, "set_remote_node", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, remote_transform3d_class_set_remote_node, "set_remote_node", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_global_coordinates"),
         JS_NewCFunction(ctx, remote_transform3d_class_get_use_global_coordinates, "get_use_global_coordinates", 0),
-        JS_NewCFunction(ctx, remote_transform3d_class_set_use_global_coordinates, "set_use_global_coordinates", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, remote_transform3d_class_set_use_global_coordinates, "set_use_global_coordinates", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "update_position"),
         JS_NewCFunction(ctx, remote_transform3d_class_get_update_position, "get_update_position", 0),
-        JS_NewCFunction(ctx, remote_transform3d_class_set_update_position, "set_update_position", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, remote_transform3d_class_set_update_position, "set_update_position", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "update_rotation"),
         JS_NewCFunction(ctx, remote_transform3d_class_get_update_rotation, "get_update_rotation", 0),
-        JS_NewCFunction(ctx, remote_transform3d_class_set_update_rotation, "set_update_rotation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, remote_transform3d_class_set_update_rotation, "set_update_rotation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "update_scale"),
         JS_NewCFunction(ctx, remote_transform3d_class_get_update_scale, "get_update_scale", 0),
-        JS_NewCFunction(ctx, remote_transform3d_class_set_update_scale, "set_update_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, remote_transform3d_class_set_update_scale, "set_update_scale", 1),
+        JS_PROP_GETSET
     );
 }
 

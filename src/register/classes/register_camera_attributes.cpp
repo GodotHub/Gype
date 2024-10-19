@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void camera_attributes_class_finalizer(JSRuntime *rt, JSValue val) {
-	CameraAttributes *camera_attributes = static_cast<CameraAttributes *>(JS_GetOpaque(val, CameraAttributes::__class_id));
-	if (camera_attributes)
-		memdelete(camera_attributes);
+	
+	// nothing
 }
 
 static JSClassDef camera_attributes_class_def = {
@@ -90,40 +89,40 @@ void define_camera_attributes_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "exposure_sensitivity"),
         JS_NewCFunction(ctx, camera_attributes_class_get_exposure_sensitivity, "get_exposure_sensitivity", 0),
-        JS_NewCFunction(ctx, camera_attributes_class_set_exposure_sensitivity, "set_exposure_sensitivity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera_attributes_class_set_exposure_sensitivity, "set_exposure_sensitivity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "exposure_multiplier"),
         JS_NewCFunction(ctx, camera_attributes_class_get_exposure_multiplier, "get_exposure_multiplier", 0),
-        JS_NewCFunction(ctx, camera_attributes_class_set_exposure_multiplier, "set_exposure_multiplier", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera_attributes_class_set_exposure_multiplier, "set_exposure_multiplier", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "auto_exposure_enabled"),
         JS_NewCFunction(ctx, camera_attributes_class_is_auto_exposure_enabled, "is_auto_exposure_enabled", 0),
-        JS_NewCFunction(ctx, camera_attributes_class_set_auto_exposure_enabled, "set_auto_exposure_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera_attributes_class_set_auto_exposure_enabled, "set_auto_exposure_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "auto_exposure_scale"),
         JS_NewCFunction(ctx, camera_attributes_class_get_auto_exposure_scale, "get_auto_exposure_scale", 0),
-        JS_NewCFunction(ctx, camera_attributes_class_set_auto_exposure_scale, "set_auto_exposure_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera_attributes_class_set_auto_exposure_scale, "set_auto_exposure_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "auto_exposure_speed"),
         JS_NewCFunction(ctx, camera_attributes_class_get_auto_exposure_speed, "get_auto_exposure_speed", 0),
-        JS_NewCFunction(ctx, camera_attributes_class_set_auto_exposure_speed, "set_auto_exposure_speed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, camera_attributes_class_set_auto_exposure_speed, "set_auto_exposure_speed", 1),
+        JS_PROP_GETSET
     );
 }
 

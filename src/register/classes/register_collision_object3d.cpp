@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/classes/collision_object3d.hpp>
 #include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/classes/object.hpp>
@@ -17,9 +17,8 @@
 using namespace godot;
 
 static void collision_object3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	CollisionObject3D *collision_object3d = static_cast<CollisionObject3D *>(JS_GetOpaque(val, CollisionObject3D::__class_id));
-	if (collision_object3d)
-		memdelete(collision_object3d);
+	
+	// nothing
 }
 
 static JSClassDef collision_object3d_class_def = {
@@ -191,48 +190,48 @@ void define_collision_object3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "disable_mode"),
         JS_NewCFunction(ctx, collision_object3d_class_get_disable_mode, "get_disable_mode", 0),
-        JS_NewCFunction(ctx, collision_object3d_class_set_disable_mode, "set_disable_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_object3d_class_set_disable_mode, "set_disable_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_layer"),
         JS_NewCFunction(ctx, collision_object3d_class_get_collision_layer, "get_collision_layer", 0),
-        JS_NewCFunction(ctx, collision_object3d_class_set_collision_layer, "set_collision_layer", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_object3d_class_set_collision_layer, "set_collision_layer", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_mask"),
         JS_NewCFunction(ctx, collision_object3d_class_get_collision_mask, "get_collision_mask", 0),
-        JS_NewCFunction(ctx, collision_object3d_class_set_collision_mask, "set_collision_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_object3d_class_set_collision_mask, "set_collision_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_priority"),
         JS_NewCFunction(ctx, collision_object3d_class_get_collision_priority, "get_collision_priority", 0),
-        JS_NewCFunction(ctx, collision_object3d_class_set_collision_priority, "set_collision_priority", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_object3d_class_set_collision_priority, "set_collision_priority", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "input_ray_pickable"),
         JS_NewCFunction(ctx, collision_object3d_class_is_ray_pickable, "is_ray_pickable", 0),
-        JS_NewCFunction(ctx, collision_object3d_class_set_ray_pickable, "set_ray_pickable", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_object3d_class_set_ray_pickable, "set_ray_pickable", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "input_capture_on_drag"),
         JS_NewCFunction(ctx, collision_object3d_class_get_capture_input_on_drag, "get_capture_input_on_drag", 0),
-        JS_NewCFunction(ctx, collision_object3d_class_set_capture_input_on_drag, "set_capture_input_on_drag", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_object3d_class_set_capture_input_on_drag, "set_capture_input_on_drag", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_particle_ring_emitter_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeParticleRingEmitter *visual_shader_node_particle_ring_emitter = static_cast<VisualShaderNodeParticleRingEmitter *>(JS_GetOpaque(val, VisualShaderNodeParticleRingEmitter::__class_id));
-	if (visual_shader_node_particle_ring_emitter)
-		memdelete(visual_shader_node_particle_ring_emitter);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_particle_ring_emitter_class_def = {

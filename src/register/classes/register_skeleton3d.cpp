@@ -5,19 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/skin.hpp>
 #include <godot_cpp/classes/skin_reference.hpp>
+#include <godot_cpp/classes/skeleton3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void skeleton3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	Skeleton3D *skeleton3d = static_cast<Skeleton3D *>(JS_GetOpaque(val, Skeleton3D::__class_id));
-	if (skeleton3d)
-		memdelete(skeleton3d);
+	
+	// nothing
 }
 
 static JSClassDef skeleton3d_class_def = {
@@ -277,32 +276,32 @@ void define_skeleton3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "motion_scale"),
         JS_NewCFunction(ctx, skeleton3d_class_get_motion_scale, "get_motion_scale", 0),
-        JS_NewCFunction(ctx, skeleton3d_class_set_motion_scale, "set_motion_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton3d_class_set_motion_scale, "set_motion_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "show_rest_only"),
         JS_NewCFunction(ctx, skeleton3d_class_is_show_rest_only, "is_show_rest_only", 0),
-        JS_NewCFunction(ctx, skeleton3d_class_set_show_rest_only, "set_show_rest_only", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton3d_class_set_show_rest_only, "set_show_rest_only", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "modifier_callback_mode_process"),
         JS_NewCFunction(ctx, skeleton3d_class_get_modifier_callback_mode_process, "get_modifier_callback_mode_process", 0),
-        JS_NewCFunction(ctx, skeleton3d_class_set_modifier_callback_mode_process, "set_modifier_callback_mode_process", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton3d_class_set_modifier_callback_mode_process, "set_modifier_callback_mode_process", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "animate_physical_bones"),
         JS_NewCFunction(ctx, skeleton3d_class_get_animate_physical_bones, "get_animate_physical_bones", 0),
-        JS_NewCFunction(ctx, skeleton3d_class_set_animate_physical_bones, "set_animate_physical_bones", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton3d_class_set_animate_physical_bones, "set_animate_physical_bones", 1),
+        JS_PROP_GETSET
     );
 }
 

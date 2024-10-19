@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void stream_peer_gzip_class_finalizer(JSRuntime *rt, JSValue val) {
-	StreamPeerGZIP *stream_peer_gzip = static_cast<StreamPeerGZIP *>(JS_GetOpaque(val, StreamPeerGZIP::__class_id));
-	if (stream_peer_gzip)
-		memdelete(stream_peer_gzip);
+	
+	// nothing
 }
 
 static JSClassDef stream_peer_gzip_class_def = {

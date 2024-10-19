@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void a_star3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	AStar3D *a_star3d = static_cast<AStar3D *>(JS_GetOpaque(val, AStar3D::__class_id));
-	if (a_star3d)
-		memdelete(a_star3d);
+	
+	// nothing
 }
 
 static JSClassDef a_star3d_class_def = {

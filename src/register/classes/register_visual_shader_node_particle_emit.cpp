@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_particle_emit_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeParticleEmit *visual_shader_node_particle_emit = static_cast<VisualShaderNodeParticleEmit *>(JS_GetOpaque(val, VisualShaderNodeParticleEmit::__class_id));
-	if (visual_shader_node_particle_emit)
-		memdelete(visual_shader_node_particle_emit);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_particle_emit_class_def = {
@@ -54,8 +53,8 @@ void define_visual_shader_node_particle_emit_property(JSContext *ctx, JSValue ob
         obj,
         JS_NewAtom(ctx, "flags"),
         JS_NewCFunction(ctx, visual_shader_node_particle_emit_class_get_flags, "get_flags", 0),
-        JS_NewCFunction(ctx, visual_shader_node_particle_emit_class_set_flags, "set_flags", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_particle_emit_class_set_flags, "set_flags", 1),
+        JS_PROP_GETSET
     );
 }
 

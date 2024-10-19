@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void graph_element_class_finalizer(JSRuntime *rt, JSValue val) {
-	GraphElement *graph_element = static_cast<GraphElement *>(JS_GetOpaque(val, GraphElement::__class_id));
-	if (graph_element)
-		memdelete(graph_element);
+	
+	// nothing
 }
 
 static JSClassDef graph_element_class_def = {
@@ -90,40 +89,40 @@ void define_graph_element_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "position_offset"),
         JS_NewCFunction(ctx, graph_element_class_get_position_offset, "get_position_offset", 0),
-        JS_NewCFunction(ctx, graph_element_class_set_position_offset, "set_position_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_element_class_set_position_offset, "set_position_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "resizable"),
         JS_NewCFunction(ctx, graph_element_class_is_resizable, "is_resizable", 0),
-        JS_NewCFunction(ctx, graph_element_class_set_resizable, "set_resizable", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_element_class_set_resizable, "set_resizable", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "draggable"),
         JS_NewCFunction(ctx, graph_element_class_is_draggable, "is_draggable", 0),
-        JS_NewCFunction(ctx, graph_element_class_set_draggable, "set_draggable", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_element_class_set_draggable, "set_draggable", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "selectable"),
         JS_NewCFunction(ctx, graph_element_class_is_selectable, "is_selectable", 0),
-        JS_NewCFunction(ctx, graph_element_class_set_selectable, "set_selectable", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_element_class_set_selectable, "set_selectable", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "selected"),
         JS_NewCFunction(ctx, graph_element_class_is_selected, "is_selected", 0),
-        JS_NewCFunction(ctx, graph_element_class_set_selected, "set_selected", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, graph_element_class_set_selected, "set_selected", 1),
+        JS_PROP_GETSET
     );
 }
 

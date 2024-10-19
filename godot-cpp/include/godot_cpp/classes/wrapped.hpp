@@ -127,7 +127,6 @@ public:
 	// Must be public but you should not touch this.
 	GodotObject *_owner = nullptr;
 
-	JSContext *ctx = nullptr;
 	JSValue js_instance = JS_UNDEFINED;
 };
 
@@ -493,10 +492,16 @@ public:                                                                         
 		m_class *binding = reinterpret_cast<m_class *>(p_binding);                                                                                                                     \
 		binding->~m_class();                                                                                                                                                           \
 		Memory::free_static(binding);                                                                                                                                                  \
-		JS_FreeValue(binding->ctx, binding->js_instance);                                                                                                                              \
+		JS_FreeValue(ctx, binding->js_instance);                                                                                                                                       \
 	}                                                                                                                                                                                  \
 	static GDExtensionBool _gde_binding_reference_callback(void *p_token, void *p_instance, GDExtensionBool p_reference) {                                                             \
-		return true;                                                                                                                                                                   \
+		m_class *binding = reinterpret_cast<m_class *>(p_instance);                                                                                                                    \
+		if (p_reference) {                                                                                                                                                             \
+			JS_DupValue(ctx, binding->js_instance);                                                                                                                                    \
+		} else {                                                                                                                                                                       \
+			JS_FreeValue(ctx, binding->js_instance);                                                                                                                                   \
+		}                                                                                                                                                                              \
+		return !JS_IsLiveObject(rt, binding->js_instance);                                                                                                                             \
 	}                                                                                                                                                                                  \
 	static constexpr GDExtensionInstanceBindingCallbacks _gde_binding_callbacks = {                                                                                                    \
 		_gde_binding_create_callback,                                                                                                                                                  \

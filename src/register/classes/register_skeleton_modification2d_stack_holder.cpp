@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/skeleton_modification2d_stack_holder.hpp>
-#include <godot_cpp/classes/skeleton_modification2d.hpp>
 #include <godot_cpp/classes/skeleton_modification_stack2d.hpp>
+#include <godot_cpp/classes/skeleton_modification2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void skeleton_modification2d_stack_holder_class_finalizer(JSRuntime *rt, JSValue val) {
-	SkeletonModification2DStackHolder *skeleton_modification2d_stack_holder = static_cast<SkeletonModification2DStackHolder *>(JS_GetOpaque(val, SkeletonModification2DStackHolder::__class_id));
-	if (skeleton_modification2d_stack_holder)
-		memdelete(skeleton_modification2d_stack_holder);
+	
+	// nothing
 }
 
 static JSClassDef skeleton_modification2d_stack_holder_class_def = {

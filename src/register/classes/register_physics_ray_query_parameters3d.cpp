@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void physics_ray_query_parameters3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	PhysicsRayQueryParameters3D *physics_ray_query_parameters3d = static_cast<PhysicsRayQueryParameters3D *>(JS_GetOpaque(val, PhysicsRayQueryParameters3D::__class_id));
-	if (physics_ray_query_parameters3d)
-		memdelete(physics_ray_query_parameters3d);
+	
+	// nothing
 }
 
 static JSClassDef physics_ray_query_parameters3d_class_def = {
@@ -123,64 +122,64 @@ void define_physics_ray_query_parameters3d_property(JSContext *ctx, JSValue obj)
         obj,
         JS_NewAtom(ctx, "from"),
         JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_get_from, "get_from", 0),
-        JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_set_from, "set_from", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_set_from, "set_from", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "to"),
         JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_get_to, "get_to", 0),
-        JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_set_to, "set_to", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_set_to, "set_to", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_mask"),
         JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_get_collision_mask, "get_collision_mask", 0),
-        JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_set_collision_mask, "set_collision_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_set_collision_mask, "set_collision_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "exclude"),
         JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_get_exclude, "get_exclude", 0),
-        JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_set_exclude, "set_exclude", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_set_exclude, "set_exclude", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collide_with_bodies"),
         JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_is_collide_with_bodies_enabled, "is_collide_with_bodies_enabled", 0),
-        JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_set_collide_with_bodies, "set_collide_with_bodies", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_set_collide_with_bodies, "set_collide_with_bodies", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collide_with_areas"),
         JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_is_collide_with_areas_enabled, "is_collide_with_areas_enabled", 0),
-        JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_set_collide_with_areas, "set_collide_with_areas", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_set_collide_with_areas, "set_collide_with_areas", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "hit_from_inside"),
         JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_is_hit_from_inside_enabled, "is_hit_from_inside_enabled", 0),
-        JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_set_hit_from_inside, "set_hit_from_inside", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_set_hit_from_inside, "set_hit_from_inside", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "hit_back_faces"),
         JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_is_hit_back_faces_enabled, "is_hit_back_faces_enabled", 0),
-        JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_set_hit_back_faces, "set_hit_back_faces", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_set_hit_back_faces, "set_hit_back_faces", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void audio_sample_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioSample *audio_sample = static_cast<AudioSample *>(JS_GetOpaque(val, AudioSample::__class_id));
-	if (audio_sample)
-		memdelete(audio_sample);
+	
+	// nothing
 }
 
 static JSClassDef audio_sample_class_def = {

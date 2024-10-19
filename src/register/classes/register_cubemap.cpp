@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/cubemap.hpp>
 #include <godot_cpp/classes/image_texture_layered.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/cubemap.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void cubemap_class_finalizer(JSRuntime *rt, JSValue val) {
-	Cubemap *cubemap = static_cast<Cubemap *>(JS_GetOpaque(val, Cubemap::__class_id));
-	if (cubemap)
-		memdelete(cubemap);
+	
+	// nothing
 }
 
 static JSClassDef cubemap_class_def = {

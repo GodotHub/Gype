@@ -5,19 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/line_edit.hpp>
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/popup_menu.hpp>
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/line_edit.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void line_edit_class_finalizer(JSRuntime *rt, JSValue val) {
-	LineEdit *line_edit = static_cast<LineEdit *>(JS_GetOpaque(val, LineEdit::__class_id));
-	if (line_edit)
-		memdelete(line_edit);
+	
+	// nothing
 }
 
 static JSClassDef line_edit_class_def = {
@@ -385,240 +384,240 @@ void define_line_edit_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "text"),
         JS_NewCFunction(ctx, line_edit_class_get_text, "get_text", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_text, "set_text", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_text, "set_text", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "placeholder_text"),
         JS_NewCFunction(ctx, line_edit_class_get_placeholder, "get_placeholder", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_placeholder, "set_placeholder", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_placeholder, "set_placeholder", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "alignment"),
         JS_NewCFunction(ctx, line_edit_class_get_horizontal_alignment, "get_horizontal_alignment", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_horizontal_alignment, "set_horizontal_alignment", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_horizontal_alignment, "set_horizontal_alignment", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "max_length"),
         JS_NewCFunction(ctx, line_edit_class_get_max_length, "get_max_length", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_max_length, "set_max_length", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_max_length, "set_max_length", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "editable"),
         JS_NewCFunction(ctx, line_edit_class_is_editable, "is_editable", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_editable, "set_editable", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_editable, "set_editable", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "expand_to_text_length"),
         JS_NewCFunction(ctx, line_edit_class_is_expand_to_text_length_enabled, "is_expand_to_text_length_enabled", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_expand_to_text_length_enabled, "set_expand_to_text_length_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_expand_to_text_length_enabled, "set_expand_to_text_length_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "context_menu_enabled"),
         JS_NewCFunction(ctx, line_edit_class_is_context_menu_enabled, "is_context_menu_enabled", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_context_menu_enabled, "set_context_menu_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_context_menu_enabled, "set_context_menu_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "virtual_keyboard_enabled"),
         JS_NewCFunction(ctx, line_edit_class_is_virtual_keyboard_enabled, "is_virtual_keyboard_enabled", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_virtual_keyboard_enabled, "set_virtual_keyboard_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_virtual_keyboard_enabled, "set_virtual_keyboard_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "virtual_keyboard_type"),
         JS_NewCFunction(ctx, line_edit_class_get_virtual_keyboard_type, "get_virtual_keyboard_type", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_virtual_keyboard_type, "set_virtual_keyboard_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_virtual_keyboard_type, "set_virtual_keyboard_type", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "clear_button_enabled"),
         JS_NewCFunction(ctx, line_edit_class_is_clear_button_enabled, "is_clear_button_enabled", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_clear_button_enabled, "set_clear_button_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_clear_button_enabled, "set_clear_button_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shortcut_keys_enabled"),
         JS_NewCFunction(ctx, line_edit_class_is_shortcut_keys_enabled, "is_shortcut_keys_enabled", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_shortcut_keys_enabled, "set_shortcut_keys_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_shortcut_keys_enabled, "set_shortcut_keys_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "middle_mouse_paste_enabled"),
         JS_NewCFunction(ctx, line_edit_class_is_middle_mouse_paste_enabled, "is_middle_mouse_paste_enabled", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_middle_mouse_paste_enabled, "set_middle_mouse_paste_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_middle_mouse_paste_enabled, "set_middle_mouse_paste_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "selecting_enabled"),
         JS_NewCFunction(ctx, line_edit_class_is_selecting_enabled, "is_selecting_enabled", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_selecting_enabled, "set_selecting_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_selecting_enabled, "set_selecting_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "deselect_on_focus_loss_enabled"),
         JS_NewCFunction(ctx, line_edit_class_is_deselect_on_focus_loss_enabled, "is_deselect_on_focus_loss_enabled", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_deselect_on_focus_loss_enabled, "set_deselect_on_focus_loss_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_deselect_on_focus_loss_enabled, "set_deselect_on_focus_loss_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "drag_and_drop_selection_enabled"),
         JS_NewCFunction(ctx, line_edit_class_is_drag_and_drop_selection_enabled, "is_drag_and_drop_selection_enabled", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_drag_and_drop_selection_enabled, "set_drag_and_drop_selection_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_drag_and_drop_selection_enabled, "set_drag_and_drop_selection_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "right_icon"),
         JS_NewCFunction(ctx, line_edit_class_get_right_icon, "get_right_icon", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_right_icon, "set_right_icon", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_right_icon, "set_right_icon", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "flat"),
         JS_NewCFunction(ctx, line_edit_class_is_flat, "is_flat", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_flat, "set_flat", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_flat, "set_flat", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "draw_control_chars"),
         JS_NewCFunction(ctx, line_edit_class_get_draw_control_chars, "get_draw_control_chars", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_draw_control_chars, "set_draw_control_chars", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_draw_control_chars, "set_draw_control_chars", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "select_all_on_focus"),
         JS_NewCFunction(ctx, line_edit_class_is_select_all_on_focus, "is_select_all_on_focus", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_select_all_on_focus, "set_select_all_on_focus", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_select_all_on_focus, "set_select_all_on_focus", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "caret_blink"),
         JS_NewCFunction(ctx, line_edit_class_is_caret_blink_enabled, "is_caret_blink_enabled", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_caret_blink_enabled, "set_caret_blink_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_caret_blink_enabled, "set_caret_blink_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "caret_blink_interval"),
         JS_NewCFunction(ctx, line_edit_class_get_caret_blink_interval, "get_caret_blink_interval", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_caret_blink_interval, "set_caret_blink_interval", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_caret_blink_interval, "set_caret_blink_interval", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "caret_column"),
         JS_NewCFunction(ctx, line_edit_class_get_caret_column, "get_caret_column", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_caret_column, "set_caret_column", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_caret_column, "set_caret_column", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "caret_force_displayed"),
         JS_NewCFunction(ctx, line_edit_class_is_caret_force_displayed, "is_caret_force_displayed", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_caret_force_displayed, "set_caret_force_displayed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_caret_force_displayed, "set_caret_force_displayed", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "caret_mid_grapheme"),
         JS_NewCFunction(ctx, line_edit_class_is_caret_mid_grapheme_enabled, "is_caret_mid_grapheme_enabled", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_caret_mid_grapheme_enabled, "set_caret_mid_grapheme_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_caret_mid_grapheme_enabled, "set_caret_mid_grapheme_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "secret"),
         JS_NewCFunction(ctx, line_edit_class_is_secret, "is_secret", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_secret, "set_secret", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_secret, "set_secret", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "secret_character"),
         JS_NewCFunction(ctx, line_edit_class_get_secret_character, "get_secret_character", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_secret_character, "set_secret_character", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_secret_character, "set_secret_character", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "text_direction"),
         JS_NewCFunction(ctx, line_edit_class_get_text_direction, "get_text_direction", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_text_direction, "set_text_direction", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_text_direction, "set_text_direction", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "language"),
         JS_NewCFunction(ctx, line_edit_class_get_language, "get_language", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_language, "set_language", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_language, "set_language", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "structured_text_bidi_override"),
         JS_NewCFunction(ctx, line_edit_class_get_structured_text_bidi_override, "get_structured_text_bidi_override", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_structured_text_bidi_override, "set_structured_text_bidi_override", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_structured_text_bidi_override, "set_structured_text_bidi_override", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "structured_text_bidi_override_options"),
         JS_NewCFunction(ctx, line_edit_class_get_structured_text_bidi_override_options, "get_structured_text_bidi_override_options", 0),
-        JS_NewCFunction(ctx, line_edit_class_set_structured_text_bidi_override_options, "set_structured_text_bidi_override_options", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, line_edit_class_set_structured_text_bidi_override_options, "set_structured_text_bidi_override_options", 1),
+        JS_PROP_GETSET
     );
 }
 

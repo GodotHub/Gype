@@ -5,21 +5,20 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/classes/collision_object3d.hpp>
-#include <godot_cpp/classes/shape_cast3d.hpp>
+#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/shape_cast3d.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void shape_cast3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	ShapeCast3D *shape_cast3d = static_cast<ShapeCast3D *>(JS_GetOpaque(val, ShapeCast3D::__class_id));
-	if (shape_cast3d)
-		memdelete(shape_cast3d);
+	
+	// nothing
 }
 
 static JSClassDef shape_cast3d_class_def = {
@@ -219,80 +218,80 @@ void define_shape_cast3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "enabled"),
         JS_NewCFunction(ctx, shape_cast3d_class_is_enabled, "is_enabled", 0),
-        JS_NewCFunction(ctx, shape_cast3d_class_set_enabled, "set_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, shape_cast3d_class_set_enabled, "set_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shape"),
         JS_NewCFunction(ctx, shape_cast3d_class_get_shape, "get_shape", 0),
-        JS_NewCFunction(ctx, shape_cast3d_class_set_shape, "set_shape", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, shape_cast3d_class_set_shape, "set_shape", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "exclude_parent"),
         JS_NewCFunction(ctx, shape_cast3d_class_get_exclude_parent_body, "get_exclude_parent_body", 0),
-        JS_NewCFunction(ctx, shape_cast3d_class_set_exclude_parent_body, "set_exclude_parent_body", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, shape_cast3d_class_set_exclude_parent_body, "set_exclude_parent_body", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "target_position"),
         JS_NewCFunction(ctx, shape_cast3d_class_get_target_position, "get_target_position", 0),
-        JS_NewCFunction(ctx, shape_cast3d_class_set_target_position, "set_target_position", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, shape_cast3d_class_set_target_position, "set_target_position", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "margin"),
         JS_NewCFunction(ctx, shape_cast3d_class_get_margin, "get_margin", 0),
-        JS_NewCFunction(ctx, shape_cast3d_class_set_margin, "set_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, shape_cast3d_class_set_margin, "set_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "max_results"),
         JS_NewCFunction(ctx, shape_cast3d_class_get_max_results, "get_max_results", 0),
-        JS_NewCFunction(ctx, shape_cast3d_class_set_max_results, "set_max_results", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, shape_cast3d_class_set_max_results, "set_max_results", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_mask"),
         JS_NewCFunction(ctx, shape_cast3d_class_get_collision_mask, "get_collision_mask", 0),
-        JS_NewCFunction(ctx, shape_cast3d_class_set_collision_mask, "set_collision_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, shape_cast3d_class_set_collision_mask, "set_collision_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collide_with_areas"),
         JS_NewCFunction(ctx, shape_cast3d_class_is_collide_with_areas_enabled, "is_collide_with_areas_enabled", 0),
-        JS_NewCFunction(ctx, shape_cast3d_class_set_collide_with_areas, "set_collide_with_areas", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, shape_cast3d_class_set_collide_with_areas, "set_collide_with_areas", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collide_with_bodies"),
         JS_NewCFunction(ctx, shape_cast3d_class_is_collide_with_bodies_enabled, "is_collide_with_bodies_enabled", 0),
-        JS_NewCFunction(ctx, shape_cast3d_class_set_collide_with_bodies, "set_collide_with_bodies", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, shape_cast3d_class_set_collide_with_bodies, "set_collide_with_bodies", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "debug_shape_custom_color"),
         JS_NewCFunction(ctx, shape_cast3d_class_get_debug_shape_custom_color, "get_debug_shape_custom_color", 0),
-        JS_NewCFunction(ctx, shape_cast3d_class_set_debug_shape_custom_color, "set_debug_shape_custom_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, shape_cast3d_class_set_debug_shape_custom_color, "set_debug_shape_custom_color", 1),
+        JS_PROP_GETSET
     );
 }
 

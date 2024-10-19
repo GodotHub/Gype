@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/editor_resource_conversion_plugin.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_resource_conversion_plugin_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorResourceConversionPlugin *editor_resource_conversion_plugin = static_cast<EditorResourceConversionPlugin *>(JS_GetOpaque(val, EditorResourceConversionPlugin::__class_id));
-	if (editor_resource_conversion_plugin)
-		memdelete(editor_resource_conversion_plugin);
+	
+	// nothing
 }
 
 static JSClassDef editor_resource_conversion_plugin_class_def = {

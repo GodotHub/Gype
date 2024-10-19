@@ -6,18 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/tile_set_source.hpp>
+#include <godot_cpp/classes/tile_set_atlas_source.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/tile_data.hpp>
-#include <godot_cpp/classes/tile_set_atlas_source.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void tile_set_atlas_source_class_finalizer(JSRuntime *rt, JSValue val) {
-	TileSetAtlasSource *tile_set_atlas_source = static_cast<TileSetAtlasSource *>(JS_GetOpaque(val, TileSetAtlasSource::__class_id));
-	if (tile_set_atlas_source)
-		memdelete(tile_set_atlas_source);
+	
+	// nothing
 }
 
 static JSClassDef tile_set_atlas_source_class_def = {
@@ -228,40 +227,40 @@ void define_tile_set_atlas_source_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "texture"),
         JS_NewCFunction(ctx, tile_set_atlas_source_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, tile_set_atlas_source_class_set_texture, "set_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_set_atlas_source_class_set_texture, "set_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "margins"),
         JS_NewCFunction(ctx, tile_set_atlas_source_class_get_margins, "get_margins", 0),
-        JS_NewCFunction(ctx, tile_set_atlas_source_class_set_margins, "set_margins", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_set_atlas_source_class_set_margins, "set_margins", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "separation"),
         JS_NewCFunction(ctx, tile_set_atlas_source_class_get_separation, "get_separation", 0),
-        JS_NewCFunction(ctx, tile_set_atlas_source_class_set_separation, "set_separation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_set_atlas_source_class_set_separation, "set_separation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_region_size"),
         JS_NewCFunction(ctx, tile_set_atlas_source_class_get_texture_region_size, "get_texture_region_size", 0),
-        JS_NewCFunction(ctx, tile_set_atlas_source_class_set_texture_region_size, "set_texture_region_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_set_atlas_source_class_set_texture_region_size, "set_texture_region_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_texture_padding"),
         JS_NewCFunction(ctx, tile_set_atlas_source_class_get_use_texture_padding, "get_use_texture_padding", 0),
-        JS_NewCFunction(ctx, tile_set_atlas_source_class_set_use_texture_padding, "set_use_texture_padding", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_set_atlas_source_class_set_use_texture_padding, "set_use_texture_padding", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void animation_node_time_seek_class_finalizer(JSRuntime *rt, JSValue val) {
-	AnimationNodeTimeSeek *animation_node_time_seek = static_cast<AnimationNodeTimeSeek *>(JS_GetOpaque(val, AnimationNodeTimeSeek::__class_id));
-	if (animation_node_time_seek)
-		memdelete(animation_node_time_seek);
+	
+	// nothing
 }
 
 static JSClassDef animation_node_time_seek_class_def = {

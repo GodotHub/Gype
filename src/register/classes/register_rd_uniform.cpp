@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rd_uniform.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void rd_uniform_class_finalizer(JSRuntime *rt, JSValue val) {
-	RDUniform *rd_uniform = static_cast<RDUniform *>(JS_GetOpaque(val, RDUniform::__class_id));
-	if (rd_uniform)
-		memdelete(rd_uniform);
+	
+	// nothing
 }
 
 static JSClassDef rd_uniform_class_def = {
@@ -77,16 +76,16 @@ void define_rd_uniform_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "uniform_type"),
         JS_NewCFunction(ctx, rd_uniform_class_get_uniform_type, "get_uniform_type", 0),
-        JS_NewCFunction(ctx, rd_uniform_class_set_uniform_type, "set_uniform_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_uniform_class_set_uniform_type, "set_uniform_type", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "binding"),
         JS_NewCFunction(ctx, rd_uniform_class_get_binding, "get_binding", 0),
-        JS_NewCFunction(ctx, rd_uniform_class_set_binding, "set_binding", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_uniform_class_set_binding, "set_binding", 1),
+        JS_PROP_GETSET
     );
 }
 

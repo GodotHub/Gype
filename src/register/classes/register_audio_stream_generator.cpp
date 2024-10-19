@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void audio_stream_generator_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioStreamGenerator *audio_stream_generator = static_cast<AudioStreamGenerator *>(JS_GetOpaque(val, AudioStreamGenerator::__class_id));
-	if (audio_stream_generator)
-		memdelete(audio_stream_generator);
+	
+	// nothing
 }
 
 static JSClassDef audio_stream_generator_class_def = {
@@ -63,16 +62,16 @@ void define_audio_stream_generator_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "mix_rate"),
         JS_NewCFunction(ctx, audio_stream_generator_class_get_mix_rate, "get_mix_rate", 0),
-        JS_NewCFunction(ctx, audio_stream_generator_class_set_mix_rate, "set_mix_rate", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_generator_class_set_mix_rate, "set_mix_rate", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "buffer_length"),
         JS_NewCFunction(ctx, audio_stream_generator_class_get_buffer_length, "get_buffer_length", 0),
-        JS_NewCFunction(ctx, audio_stream_generator_class_set_buffer_length, "set_buffer_length", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_generator_class_set_buffer_length, "set_buffer_length", 1),
+        JS_PROP_GETSET
     );
 }
 

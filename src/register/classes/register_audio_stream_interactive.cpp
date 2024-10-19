@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void audio_stream_interactive_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioStreamInteractive *audio_stream_interactive = static_cast<AudioStreamInteractive *>(JS_GetOpaque(val, AudioStreamInteractive::__class_id));
-	if (audio_stream_interactive)
-		memdelete(audio_stream_interactive);
+	
+	// nothing
 }
 
 static JSClassDef audio_stream_interactive_class_def = {
@@ -145,16 +144,16 @@ void define_audio_stream_interactive_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "initial_clip"),
         JS_NewCFunction(ctx, audio_stream_interactive_class_get_initial_clip, "get_initial_clip", 0),
-        JS_NewCFunction(ctx, audio_stream_interactive_class_set_initial_clip, "set_initial_clip", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_interactive_class_set_initial_clip, "set_initial_clip", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "clip_count"),
         JS_NewCFunction(ctx, audio_stream_interactive_class_get_clip_count, "get_clip_count", 0),
-        JS_NewCFunction(ctx, audio_stream_interactive_class_set_clip_count, "set_clip_count", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_interactive_class_set_clip_count, "set_clip_count", 1),
+        JS_PROP_GETSET
     );
 }
 

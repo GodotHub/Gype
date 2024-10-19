@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/fbx_state.hpp>
 #include <godot_cpp/classes/gltf_state.hpp>
+#include <godot_cpp/classes/fbx_state.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void fbx_state_class_finalizer(JSRuntime *rt, JSValue val) {
-	FBXState *fbx_state = static_cast<FBXState *>(JS_GetOpaque(val, FBXState::__class_id));
-	if (fbx_state)
-		memdelete(fbx_state);
+	
+	// nothing
 }
 
 static JSClassDef fbx_state_class_def = {
@@ -54,8 +53,8 @@ void define_fbx_state_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "allow_geometry_helper_nodes"),
         JS_NewCFunction(ctx, fbx_state_class_get_allow_geometry_helper_nodes, "get_allow_geometry_helper_nodes", 0),
-        JS_NewCFunction(ctx, fbx_state_class_set_allow_geometry_helper_nodes, "set_allow_geometry_helper_nodes", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, fbx_state_class_set_allow_geometry_helper_nodes, "set_allow_geometry_helper_nodes", 1),
+        JS_PROP_GETSET
     );
 }
 

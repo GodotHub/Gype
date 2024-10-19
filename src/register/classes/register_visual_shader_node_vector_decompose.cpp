@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_vector_decompose.hpp>
 #include <godot_cpp/classes/visual_shader_node_vector_base.hpp>
+#include <godot_cpp/classes/visual_shader_node_vector_decompose.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visual_shader_node_vector_decompose_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeVectorDecompose *visual_shader_node_vector_decompose = static_cast<VisualShaderNodeVectorDecompose *>(JS_GetOpaque(val, VisualShaderNodeVectorDecompose::__class_id));
-	if (visual_shader_node_vector_decompose)
-		memdelete(visual_shader_node_vector_decompose);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_vector_decompose_class_def = {

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void resource_importer_wav_class_finalizer(JSRuntime *rt, JSValue val) {
-	ResourceImporterWAV *resource_importer_wav = static_cast<ResourceImporterWAV *>(JS_GetOpaque(val, ResourceImporterWAV::__class_id));
-	if (resource_importer_wav)
-		memdelete(resource_importer_wav);
+	
+	// nothing
 }
 
 static JSClassDef resource_importer_wav_class_def = {

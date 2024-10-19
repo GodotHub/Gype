@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void curve3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	Curve3D *curve3d = static_cast<Curve3D *>(JS_GetOpaque(val, Curve3D::__class_id));
-	if (curve3d)
-		memdelete(curve3d);
+	
+	// nothing
 }
 
 static JSClassDef curve3d_class_def = {
@@ -175,24 +174,24 @@ void define_curve3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "bake_interval"),
         JS_NewCFunction(ctx, curve3d_class_get_bake_interval, "get_bake_interval", 0),
-        JS_NewCFunction(ctx, curve3d_class_set_bake_interval, "set_bake_interval", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, curve3d_class_set_bake_interval, "set_bake_interval", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "point_count"),
         JS_NewCFunction(ctx, curve3d_class_get_point_count, "get_point_count", 0),
-        JS_NewCFunction(ctx, curve3d_class_set_point_count, "set_point_count", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, curve3d_class_set_point_count, "set_point_count", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "up_vector_enabled"),
         JS_NewCFunction(ctx, curve3d_class_is_up_vector_enabled, "is_up_vector_enabled", 0),
-        JS_NewCFunction(ctx, curve3d_class_set_up_vector_enabled, "set_up_vector_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, curve3d_class_set_up_vector_enabled, "set_up_vector_enabled", 1),
+        JS_PROP_GETSET
     );
 }
 

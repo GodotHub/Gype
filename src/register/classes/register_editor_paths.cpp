@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_paths.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/editor_paths.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_paths_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorPaths *editor_paths = static_cast<EditorPaths *>(JS_GetOpaque(val, EditorPaths::__class_id));
-	if (editor_paths)
-		memdelete(editor_paths);
+	
+	// nothing
 }
 
 static JSClassDef editor_paths_class_def = {

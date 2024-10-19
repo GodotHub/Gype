@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/reference_rect.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void reference_rect_class_finalizer(JSRuntime *rt, JSValue val) {
-	ReferenceRect *reference_rect = static_cast<ReferenceRect *>(JS_GetOpaque(val, ReferenceRect::__class_id));
-	if (reference_rect)
-		memdelete(reference_rect);
+	
+	// nothing
 }
 
 static JSClassDef reference_rect_class_def = {
@@ -72,24 +71,24 @@ void define_reference_rect_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "border_color"),
         JS_NewCFunction(ctx, reference_rect_class_get_border_color, "get_border_color", 0),
-        JS_NewCFunction(ctx, reference_rect_class_set_border_color, "set_border_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, reference_rect_class_set_border_color, "set_border_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "border_width"),
         JS_NewCFunction(ctx, reference_rect_class_get_border_width, "get_border_width", 0),
-        JS_NewCFunction(ctx, reference_rect_class_set_border_width, "set_border_width", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, reference_rect_class_set_border_width, "set_border_width", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "editor_only"),
         JS_NewCFunction(ctx, reference_rect_class_get_editor_only, "get_editor_only", 0),
-        JS_NewCFunction(ctx, reference_rect_class_set_editor_only, "set_editor_only", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, reference_rect_class_set_editor_only, "set_editor_only", 1),
+        JS_PROP_GETSET
     );
 }
 

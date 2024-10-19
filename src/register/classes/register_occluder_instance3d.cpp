@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/classes/occluder_instance3d.hpp>
 #include <godot_cpp/classes/occluder3d.hpp>
+#include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void occluder_instance3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	OccluderInstance3D *occluder_instance3d = static_cast<OccluderInstance3D *>(JS_GetOpaque(val, OccluderInstance3D::__class_id));
-	if (occluder_instance3d)
-		memdelete(occluder_instance3d);
+	
+	// nothing
 }
 
 static JSClassDef occluder_instance3d_class_def = {
@@ -82,24 +81,24 @@ void define_occluder_instance3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "occluder"),
         JS_NewCFunction(ctx, occluder_instance3d_class_get_occluder, "get_occluder", 0),
-        JS_NewCFunction(ctx, occluder_instance3d_class_set_occluder, "set_occluder", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, occluder_instance3d_class_set_occluder, "set_occluder", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bake_mask"),
         JS_NewCFunction(ctx, occluder_instance3d_class_get_bake_mask, "get_bake_mask", 0),
-        JS_NewCFunction(ctx, occluder_instance3d_class_set_bake_mask, "set_bake_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, occluder_instance3d_class_set_bake_mask, "set_bake_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bake_simplification_distance"),
         JS_NewCFunction(ctx, occluder_instance3d_class_get_bake_simplification_distance, "get_bake_simplification_distance", 0),
-        JS_NewCFunction(ctx, occluder_instance3d_class_set_bake_simplification_distance, "set_bake_simplification_distance", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, occluder_instance3d_class_set_bake_simplification_distance, "set_bake_simplification_distance", 1),
+        JS_PROP_GETSET
     );
 }
 

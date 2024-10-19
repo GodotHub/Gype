@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/classes/audio_effect_stereo_enhance.hpp>
+#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void audio_effect_stereo_enhance_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioEffectStereoEnhance *audio_effect_stereo_enhance = static_cast<AudioEffectStereoEnhance *>(JS_GetOpaque(val, AudioEffectStereoEnhance::__class_id));
-	if (audio_effect_stereo_enhance)
-		memdelete(audio_effect_stereo_enhance);
+	
+	// nothing
 }
 
 static JSClassDef audio_effect_stereo_enhance_class_def = {
@@ -72,24 +71,24 @@ void define_audio_effect_stereo_enhance_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "pan_pullout"),
         JS_NewCFunction(ctx, audio_effect_stereo_enhance_class_get_pan_pullout, "get_pan_pullout", 0),
-        JS_NewCFunction(ctx, audio_effect_stereo_enhance_class_set_pan_pullout, "set_pan_pullout", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_stereo_enhance_class_set_pan_pullout, "set_pan_pullout", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "time_pullout_ms"),
         JS_NewCFunction(ctx, audio_effect_stereo_enhance_class_get_time_pullout, "get_time_pullout", 0),
-        JS_NewCFunction(ctx, audio_effect_stereo_enhance_class_set_time_pullout, "set_time_pullout", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_stereo_enhance_class_set_time_pullout, "set_time_pullout", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "surround"),
         JS_NewCFunction(ctx, audio_effect_stereo_enhance_class_get_surround, "get_surround", 0),
-        JS_NewCFunction(ctx, audio_effect_stereo_enhance_class_set_surround, "set_surround", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_stereo_enhance_class_set_surround, "set_surround", 1),
+        JS_PROP_GETSET
     );
 }
 

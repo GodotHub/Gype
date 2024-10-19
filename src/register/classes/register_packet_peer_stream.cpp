@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/packet_peer_stream.hpp>
-#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/classes/packet_peer.hpp>
+#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void packet_peer_stream_class_finalizer(JSRuntime *rt, JSValue val) {
-	PacketPeerStream *packet_peer_stream = static_cast<PacketPeerStream *>(JS_GetOpaque(val, PacketPeerStream::__class_id));
-	if (packet_peer_stream)
-		memdelete(packet_peer_stream);
+	
+	// nothing
 }
 
 static JSClassDef packet_peer_stream_class_def = {
@@ -73,24 +72,24 @@ void define_packet_peer_stream_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "input_buffer_max_size"),
         JS_NewCFunction(ctx, packet_peer_stream_class_get_input_buffer_max_size, "get_input_buffer_max_size", 0),
-        JS_NewCFunction(ctx, packet_peer_stream_class_set_input_buffer_max_size, "set_input_buffer_max_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, packet_peer_stream_class_set_input_buffer_max_size, "set_input_buffer_max_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "output_buffer_max_size"),
         JS_NewCFunction(ctx, packet_peer_stream_class_get_output_buffer_max_size, "get_output_buffer_max_size", 0),
-        JS_NewCFunction(ctx, packet_peer_stream_class_set_output_buffer_max_size, "set_output_buffer_max_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, packet_peer_stream_class_set_output_buffer_max_size, "set_output_buffer_max_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "stream_peer"),
         JS_NewCFunction(ctx, packet_peer_stream_class_get_stream_peer, "get_stream_peer", 0),
-        JS_NewCFunction(ctx, packet_peer_stream_class_set_stream_peer, "set_stream_peer", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, packet_peer_stream_class_set_stream_peer, "set_stream_peer", 1),
+        JS_PROP_GETSET
     );
 }
 

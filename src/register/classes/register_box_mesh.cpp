@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/primitive_mesh.hpp>
 #include <godot_cpp/classes/box_mesh.hpp>
+#include <godot_cpp/classes/primitive_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void box_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	BoxMesh *box_mesh = static_cast<BoxMesh *>(JS_GetOpaque(val, BoxMesh::__class_id));
-	if (box_mesh)
-		memdelete(box_mesh);
+	
+	// nothing
 }
 
 static JSClassDef box_mesh_class_def = {
@@ -81,32 +80,32 @@ void define_box_mesh_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, box_mesh_class_get_size, "get_size", 0),
-        JS_NewCFunction(ctx, box_mesh_class_set_size, "set_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, box_mesh_class_set_size, "set_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "subdivide_width"),
         JS_NewCFunction(ctx, box_mesh_class_get_subdivide_width, "get_subdivide_width", 0),
-        JS_NewCFunction(ctx, box_mesh_class_set_subdivide_width, "set_subdivide_width", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, box_mesh_class_set_subdivide_width, "set_subdivide_width", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "subdivide_height"),
         JS_NewCFunction(ctx, box_mesh_class_get_subdivide_height, "get_subdivide_height", 0),
-        JS_NewCFunction(ctx, box_mesh_class_set_subdivide_height, "set_subdivide_height", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, box_mesh_class_set_subdivide_height, "set_subdivide_height", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "subdivide_depth"),
         JS_NewCFunction(ctx, box_mesh_class_get_subdivide_depth, "get_subdivide_depth", 0),
-        JS_NewCFunction(ctx, box_mesh_class_set_subdivide_depth, "set_subdivide_depth", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, box_mesh_class_set_subdivide_depth, "set_subdivide_depth", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input.hpp>
-#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/input.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -18,9 +18,8 @@ static JSValue input_instance;
 static void js_input_singleton();
 
 static void input_class_finalizer(JSRuntime *rt, JSValue val) {
-	Input *input = static_cast<Input *>(JS_GetOpaque(val, Input::__class_id));
-	if (input)
-		Input::free(nullptr, input);
+	
+	// nothing
 }
 
 static JSClassDef input_class_def = {

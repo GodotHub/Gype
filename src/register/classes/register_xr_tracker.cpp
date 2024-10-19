@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/xr_tracker.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void xr_tracker_class_finalizer(JSRuntime *rt, JSValue val) {
-	XRTracker *xr_tracker = static_cast<XRTracker *>(JS_GetOpaque(val, XRTracker::__class_id));
-	if (xr_tracker)
-		memdelete(xr_tracker);
+	
+	// nothing
 }
 
 static JSClassDef xr_tracker_class_def = {
@@ -72,24 +71,24 @@ void define_xr_tracker_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "type"),
         JS_NewCFunction(ctx, xr_tracker_class_get_tracker_type, "get_tracker_type", 0),
-        JS_NewCFunction(ctx, xr_tracker_class_set_tracker_type, "set_tracker_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_tracker_class_set_tracker_type, "set_tracker_type", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "name"),
         JS_NewCFunction(ctx, xr_tracker_class_get_tracker_name, "get_tracker_name", 0),
-        JS_NewCFunction(ctx, xr_tracker_class_set_tracker_name, "set_tracker_name", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_tracker_class_set_tracker_name, "set_tracker_name", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "description"),
         JS_NewCFunction(ctx, xr_tracker_class_get_tracker_desc, "get_tracker_desc", 0),
-        JS_NewCFunction(ctx, xr_tracker_class_set_tracker_desc, "set_tracker_desc", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_tracker_class_set_tracker_desc, "set_tracker_desc", 1),
+        JS_PROP_GETSET
     );
 }
 

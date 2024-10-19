@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void parallax_background_class_finalizer(JSRuntime *rt, JSValue val) {
-	ParallaxBackground *parallax_background = static_cast<ParallaxBackground *>(JS_GetOpaque(val, ParallaxBackground::__class_id));
-	if (parallax_background)
-		memdelete(parallax_background);
+	
+	// nothing
 }
 
 static JSClassDef parallax_background_class_def = {
@@ -99,48 +98,48 @@ void define_parallax_background_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "scroll_offset"),
         JS_NewCFunction(ctx, parallax_background_class_get_scroll_offset, "get_scroll_offset", 0),
-        JS_NewCFunction(ctx, parallax_background_class_set_scroll_offset, "set_scroll_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, parallax_background_class_set_scroll_offset, "set_scroll_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scroll_base_offset"),
         JS_NewCFunction(ctx, parallax_background_class_get_scroll_base_offset, "get_scroll_base_offset", 0),
-        JS_NewCFunction(ctx, parallax_background_class_set_scroll_base_offset, "set_scroll_base_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, parallax_background_class_set_scroll_base_offset, "set_scroll_base_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scroll_base_scale"),
         JS_NewCFunction(ctx, parallax_background_class_get_scroll_base_scale, "get_scroll_base_scale", 0),
-        JS_NewCFunction(ctx, parallax_background_class_set_scroll_base_scale, "set_scroll_base_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, parallax_background_class_set_scroll_base_scale, "set_scroll_base_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scroll_limit_begin"),
         JS_NewCFunction(ctx, parallax_background_class_get_limit_begin, "get_limit_begin", 0),
-        JS_NewCFunction(ctx, parallax_background_class_set_limit_begin, "set_limit_begin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, parallax_background_class_set_limit_begin, "set_limit_begin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scroll_limit_end"),
         JS_NewCFunction(ctx, parallax_background_class_get_limit_end, "get_limit_end", 0),
-        JS_NewCFunction(ctx, parallax_background_class_set_limit_end, "set_limit_end", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, parallax_background_class_set_limit_end, "set_limit_end", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scroll_ignore_camera_zoom"),
         JS_NewCFunction(ctx, parallax_background_class_is_ignore_camera_zoom, "is_ignore_camera_zoom", 0),
-        JS_NewCFunction(ctx, parallax_background_class_set_ignore_camera_zoom, "set_ignore_camera_zoom", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, parallax_background_class_set_ignore_camera_zoom, "set_ignore_camera_zoom", 1),
+        JS_PROP_GETSET
     );
 }
 

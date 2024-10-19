@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void flow_container_class_finalizer(JSRuntime *rt, JSValue val) {
-	FlowContainer *flow_container = static_cast<FlowContainer *>(JS_GetOpaque(val, FlowContainer::__class_id));
-	if (flow_container)
-		memdelete(flow_container);
+	
+	// nothing
 }
 
 static JSClassDef flow_container_class_def = {
@@ -85,32 +84,32 @@ void define_flow_container_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "alignment"),
         JS_NewCFunction(ctx, flow_container_class_get_alignment, "get_alignment", 0),
-        JS_NewCFunction(ctx, flow_container_class_set_alignment, "set_alignment", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, flow_container_class_set_alignment, "set_alignment", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "last_wrap_alignment"),
         JS_NewCFunction(ctx, flow_container_class_get_last_wrap_alignment, "get_last_wrap_alignment", 0),
-        JS_NewCFunction(ctx, flow_container_class_set_last_wrap_alignment, "set_last_wrap_alignment", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, flow_container_class_set_last_wrap_alignment, "set_last_wrap_alignment", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "vertical"),
         JS_NewCFunction(ctx, flow_container_class_is_vertical, "is_vertical", 0),
-        JS_NewCFunction(ctx, flow_container_class_set_vertical, "set_vertical", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, flow_container_class_set_vertical, "set_vertical", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "reverse_fill"),
         JS_NewCFunction(ctx, flow_container_class_is_reverse_fill, "is_reverse_fill", 0),
-        JS_NewCFunction(ctx, flow_container_class_set_reverse_fill, "set_reverse_fill", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, flow_container_class_set_reverse_fill, "set_reverse_fill", 1),
+        JS_PROP_GETSET
     );
 }
 

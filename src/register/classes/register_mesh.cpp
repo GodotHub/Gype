@@ -5,21 +5,20 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/triangle_mesh.hpp>
+#include <godot_cpp/classes/concave_polygon_shape3d.hpp>
 #include <godot_cpp/classes/convex_polygon_shape3d.hpp>
+#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/concave_polygon_shape3d.hpp>
-#include <godot_cpp/classes/triangle_mesh.hpp>
-#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	Mesh *mesh = static_cast<Mesh *>(JS_GetOpaque(val, Mesh::__class_id));
-	if (mesh)
-		memdelete(mesh);
+	
+	// nothing
 }
 
 static JSClassDef mesh_class_def = {
@@ -107,8 +106,8 @@ void define_mesh_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "lightmap_size_hint"),
         JS_NewCFunction(ctx, mesh_class_get_lightmap_size_hint, "get_lightmap_size_hint", 0),
-        JS_NewCFunction(ctx, mesh_class_set_lightmap_size_hint, "set_lightmap_size_hint", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, mesh_class_set_lightmap_size_hint, "set_lightmap_size_hint", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/gradient.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gradient_class_finalizer(JSRuntime *rt, JSValue val) {
-	Gradient *gradient = static_cast<Gradient *>(JS_GetOpaque(val, Gradient::__class_id));
-	if (gradient)
-		memdelete(gradient);
+	
+	// nothing
 }
 
 static JSClassDef gradient_class_def = {
@@ -122,32 +121,32 @@ void define_gradient_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "interpolation_mode"),
         JS_NewCFunction(ctx, gradient_class_get_interpolation_mode, "get_interpolation_mode", 0),
-        JS_NewCFunction(ctx, gradient_class_set_interpolation_mode, "set_interpolation_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gradient_class_set_interpolation_mode, "set_interpolation_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "interpolation_color_space"),
         JS_NewCFunction(ctx, gradient_class_get_interpolation_color_space, "get_interpolation_color_space", 0),
-        JS_NewCFunction(ctx, gradient_class_set_interpolation_color_space, "set_interpolation_color_space", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gradient_class_set_interpolation_color_space, "set_interpolation_color_space", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "offsets"),
         JS_NewCFunction(ctx, gradient_class_get_offsets, "get_offsets", 0),
-        JS_NewCFunction(ctx, gradient_class_set_offsets, "set_offsets", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gradient_class_set_offsets, "set_offsets", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "colors"),
         JS_NewCFunction(ctx, gradient_class_get_colors, "get_colors", 0),
-        JS_NewCFunction(ctx, gradient_class_set_colors, "set_colors", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gradient_class_set_colors, "set_colors", 1),
+        JS_PROP_GETSET
     );
 }
 

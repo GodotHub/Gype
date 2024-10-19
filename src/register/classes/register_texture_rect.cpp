@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/texture_rect.hpp>
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void texture_rect_class_finalizer(JSRuntime *rt, JSValue val) {
-	TextureRect *texture_rect = static_cast<TextureRect *>(JS_GetOpaque(val, TextureRect::__class_id));
-	if (texture_rect)
-		memdelete(texture_rect);
+	
+	// nothing
 }
 
 static JSClassDef texture_rect_class_def = {
@@ -91,40 +90,40 @@ void define_texture_rect_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "texture"),
         JS_NewCFunction(ctx, texture_rect_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, texture_rect_class_set_texture, "set_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_rect_class_set_texture, "set_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "expand_mode"),
         JS_NewCFunction(ctx, texture_rect_class_get_expand_mode, "get_expand_mode", 0),
-        JS_NewCFunction(ctx, texture_rect_class_set_expand_mode, "set_expand_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_rect_class_set_expand_mode, "set_expand_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "stretch_mode"),
         JS_NewCFunction(ctx, texture_rect_class_get_stretch_mode, "get_stretch_mode", 0),
-        JS_NewCFunction(ctx, texture_rect_class_set_stretch_mode, "set_stretch_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_rect_class_set_stretch_mode, "set_stretch_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "flip_h"),
         JS_NewCFunction(ctx, texture_rect_class_is_flipped_h, "is_flipped_h", 0),
-        JS_NewCFunction(ctx, texture_rect_class_set_flip_h, "set_flip_h", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_rect_class_set_flip_h, "set_flip_h", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "flip_v"),
         JS_NewCFunction(ctx, texture_rect_class_is_flipped_v, "is_flipped_v", 0),
-        JS_NewCFunction(ctx, texture_rect_class_set_flip_v, "set_flip_v", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, texture_rect_class_set_flip_v, "set_flip_v", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_parameter.hpp>
 #include <godot_cpp/classes/visual_shader_node.hpp>
+#include <godot_cpp/classes/visual_shader_node_parameter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visual_shader_node_parameter_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeParameter *visual_shader_node_parameter = static_cast<VisualShaderNodeParameter *>(JS_GetOpaque(val, VisualShaderNodeParameter::__class_id));
-	if (visual_shader_node_parameter)
-		memdelete(visual_shader_node_parameter);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_parameter_class_def = {
@@ -63,16 +62,16 @@ void define_visual_shader_node_parameter_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "parameter_name"),
         JS_NewCFunction(ctx, visual_shader_node_parameter_class_get_parameter_name, "get_parameter_name", 0),
-        JS_NewCFunction(ctx, visual_shader_node_parameter_class_set_parameter_name, "set_parameter_name", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_parameter_class_set_parameter_name, "set_parameter_name", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "qualifier"),
         JS_NewCFunction(ctx, visual_shader_node_parameter_class_get_qualifier, "get_qualifier", 0),
-        JS_NewCFunction(ctx, visual_shader_node_parameter_class_set_qualifier, "set_qualifier", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_parameter_class_set_qualifier, "set_qualifier", 1),
+        JS_PROP_GETSET
     );
 }
 

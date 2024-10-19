@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void rectangle_shape2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	RectangleShape2D *rectangle_shape2d = static_cast<RectangleShape2D *>(JS_GetOpaque(val, RectangleShape2D::__class_id));
-	if (rectangle_shape2d)
-		memdelete(rectangle_shape2d);
+	
+	// nothing
 }
 
 static JSClassDef rectangle_shape2d_class_def = {
@@ -54,8 +53,8 @@ void define_rectangle_shape2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, rectangle_shape2d_class_get_size, "get_size", 0),
-        JS_NewCFunction(ctx, rectangle_shape2d_class_set_size, "set_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rectangle_shape2d_class_set_size, "set_size", 1),
+        JS_PROP_GETSET
     );
 }
 

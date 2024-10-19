@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/classes/stream_peer_buffer.hpp>
+#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void stream_peer_buffer_class_finalizer(JSRuntime *rt, JSValue val) {
-	StreamPeerBuffer *stream_peer_buffer = static_cast<StreamPeerBuffer *>(JS_GetOpaque(val, StreamPeerBuffer::__class_id));
-	if (stream_peer_buffer)
-		memdelete(stream_peer_buffer);
+	
+	// nothing
 }
 
 static JSClassDef stream_peer_buffer_class_def = {
@@ -81,8 +80,8 @@ void define_stream_peer_buffer_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "data_array"),
         JS_NewCFunction(ctx, stream_peer_buffer_class_get_data_array, "get_data_array", 0),
-        JS_NewCFunction(ctx, stream_peer_buffer_class_set_data_array, "set_data_array", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, stream_peer_buffer_class_set_data_array, "set_data_array", 1),
+        JS_PROP_GETSET
     );
 }
 

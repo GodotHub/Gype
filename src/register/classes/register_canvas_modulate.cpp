@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void canvas_modulate_class_finalizer(JSRuntime *rt, JSValue val) {
-	CanvasModulate *canvas_modulate = static_cast<CanvasModulate *>(JS_GetOpaque(val, CanvasModulate::__class_id));
-	if (canvas_modulate)
-		memdelete(canvas_modulate);
+	
+	// nothing
 }
 
 static JSClassDef canvas_modulate_class_def = {
@@ -54,8 +53,8 @@ void define_canvas_modulate_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "color"),
         JS_NewCFunction(ctx, canvas_modulate_class_get_color, "get_color", 0),
-        JS_NewCFunction(ctx, canvas_modulate_class_set_color, "set_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_modulate_class_set_color, "set_color", 1),
+        JS_PROP_GETSET
     );
 }
 

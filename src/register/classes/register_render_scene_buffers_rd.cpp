@@ -5,19 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/render_scene_buffers_rd.hpp>
 #include <godot_cpp/classes/rd_texture_view.hpp>
-#include <godot_cpp/classes/render_scene_buffers.hpp>
 #include <godot_cpp/classes/rd_texture_format.hpp>
+#include <godot_cpp/classes/render_scene_buffers_rd.hpp>
+#include <godot_cpp/classes/render_scene_buffers.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void render_scene_buffers_rd_class_finalizer(JSRuntime *rt, JSValue val) {
-	RenderSceneBuffersRD *render_scene_buffers_rd = static_cast<RenderSceneBuffersRD *>(JS_GetOpaque(val, RenderSceneBuffersRD::__class_id));
-	if (render_scene_buffers_rd)
-		memdelete(render_scene_buffers_rd);
+	
+	// nothing
 }
 
 static JSClassDef render_scene_buffers_rd_class_def = {

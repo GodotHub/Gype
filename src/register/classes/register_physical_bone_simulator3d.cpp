@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void physical_bone_simulator3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	PhysicalBoneSimulator3D *physical_bone_simulator3d = static_cast<PhysicalBoneSimulator3D *>(JS_GetOpaque(val, PhysicalBoneSimulator3D::__class_id));
-	if (physical_bone_simulator3d)
-		memdelete(physical_bone_simulator3d);
+	
+	// nothing
 }
 
 static JSClassDef physical_bone_simulator3d_class_def = {

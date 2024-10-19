@@ -7,17 +7,16 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/collision_object2d.hpp>
 #include <godot_cpp/classes/ray_cast2d.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void ray_cast2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	RayCast2D *ray_cast2d = static_cast<RayCast2D *>(JS_GetOpaque(val, RayCast2D::__class_id));
-	if (ray_cast2d)
-		memdelete(ray_cast2d);
+	
+	// nothing
 }
 
 static JSClassDef ray_cast2d_class_def = {
@@ -173,56 +172,56 @@ void define_ray_cast2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "enabled"),
         JS_NewCFunction(ctx, ray_cast2d_class_is_enabled, "is_enabled", 0),
-        JS_NewCFunction(ctx, ray_cast2d_class_set_enabled, "set_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, ray_cast2d_class_set_enabled, "set_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "exclude_parent"),
         JS_NewCFunction(ctx, ray_cast2d_class_get_exclude_parent_body, "get_exclude_parent_body", 0),
-        JS_NewCFunction(ctx, ray_cast2d_class_set_exclude_parent_body, "set_exclude_parent_body", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, ray_cast2d_class_set_exclude_parent_body, "set_exclude_parent_body", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "target_position"),
         JS_NewCFunction(ctx, ray_cast2d_class_get_target_position, "get_target_position", 0),
-        JS_NewCFunction(ctx, ray_cast2d_class_set_target_position, "set_target_position", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, ray_cast2d_class_set_target_position, "set_target_position", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collision_mask"),
         JS_NewCFunction(ctx, ray_cast2d_class_get_collision_mask, "get_collision_mask", 0),
-        JS_NewCFunction(ctx, ray_cast2d_class_set_collision_mask, "set_collision_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, ray_cast2d_class_set_collision_mask, "set_collision_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "hit_from_inside"),
         JS_NewCFunction(ctx, ray_cast2d_class_is_hit_from_inside_enabled, "is_hit_from_inside_enabled", 0),
-        JS_NewCFunction(ctx, ray_cast2d_class_set_hit_from_inside, "set_hit_from_inside", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, ray_cast2d_class_set_hit_from_inside, "set_hit_from_inside", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collide_with_areas"),
         JS_NewCFunction(ctx, ray_cast2d_class_is_collide_with_areas_enabled, "is_collide_with_areas_enabled", 0),
-        JS_NewCFunction(ctx, ray_cast2d_class_set_collide_with_areas, "set_collide_with_areas", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, ray_cast2d_class_set_collide_with_areas, "set_collide_with_areas", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "collide_with_bodies"),
         JS_NewCFunction(ctx, ray_cast2d_class_is_collide_with_bodies_enabled, "is_collide_with_bodies_enabled", 0),
-        JS_NewCFunction(ctx, ray_cast2d_class_set_collide_with_bodies, "set_collide_with_bodies", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, ray_cast2d_class_set_collide_with_bodies, "set_collide_with_bodies", 1),
+        JS_PROP_GETSET
     );
 }
 

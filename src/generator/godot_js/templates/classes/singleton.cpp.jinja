@@ -35,9 +35,10 @@ static JSValue {{snake_name}}_instance;
 static void js_{{snake_name}}_singleton();
 
 static void {{snake_name}}_class_finalizer(JSRuntime *rt, JSValue val) {
-	{{norm_name}} *{{snake_name}} = static_cast<{{norm_name}} *>(JS_GetOpaque(val, {{class_id}}));
+	{# {{norm_name}} *{{snake_name}} = static_cast<{{norm_name}} *>(JS_GetOpaque(val, {{class_id}}));
 	if ({{snake_name}})
-		{{norm_name}}::free(nullptr, {{snake_name}});
+		{{norm_name}}::free(nullptr, {{snake_name}}); #}
+	// nothing
 }
 
 static JSClassDef {{snake_name}}_class_def = {

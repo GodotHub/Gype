@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/light2d.hpp>
 #include <godot_cpp/classes/directional_light2d.hpp>
+#include <godot_cpp/classes/light2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void directional_light2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	DirectionalLight2D *directional_light2d = static_cast<DirectionalLight2D *>(JS_GetOpaque(val, DirectionalLight2D::__class_id));
-	if (directional_light2d)
-		memdelete(directional_light2d);
+	
+	// nothing
 }
 
 static JSClassDef directional_light2d_class_def = {
@@ -54,8 +53,8 @@ void define_directional_light2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "max_distance"),
         JS_NewCFunction(ctx, directional_light2d_class_get_max_distance, "get_max_distance", 0),
-        JS_NewCFunction(ctx, directional_light2d_class_set_max_distance, "set_max_distance", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, directional_light2d_class_set_max_distance, "set_max_distance", 1),
+        JS_PROP_GETSET
     );
 }
 

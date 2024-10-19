@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/gradient_texture2d.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/gradient.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gradient_texture2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	GradientTexture2D *gradient_texture2d = static_cast<GradientTexture2D *>(JS_GetOpaque(val, GradientTexture2D::__class_id));
-	if (gradient_texture2d)
-		memdelete(gradient_texture2d);
+	
+	// nothing
 }
 
 static JSClassDef gradient_texture2d_class_def = {
@@ -110,64 +109,64 @@ void define_gradient_texture2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "gradient"),
         JS_NewCFunction(ctx, gradient_texture2d_class_get_gradient, "get_gradient", 0),
-        JS_NewCFunction(ctx, gradient_texture2d_class_set_gradient, "set_gradient", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gradient_texture2d_class_set_gradient, "set_gradient", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "width"),
         JS_UNDEFINED,
-        JS_NewCFunction(ctx, gradient_texture2d_class_set_width, "set_width", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gradient_texture2d_class_set_width, "set_width", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "height"),
         JS_UNDEFINED,
-        JS_NewCFunction(ctx, gradient_texture2d_class_set_height, "set_height", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gradient_texture2d_class_set_height, "set_height", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_hdr"),
         JS_NewCFunction(ctx, gradient_texture2d_class_is_using_hdr, "is_using_hdr", 0),
-        JS_NewCFunction(ctx, gradient_texture2d_class_set_use_hdr, "set_use_hdr", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gradient_texture2d_class_set_use_hdr, "set_use_hdr", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fill"),
         JS_NewCFunction(ctx, gradient_texture2d_class_get_fill, "get_fill", 0),
-        JS_NewCFunction(ctx, gradient_texture2d_class_set_fill, "set_fill", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gradient_texture2d_class_set_fill, "set_fill", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fill_from"),
         JS_NewCFunction(ctx, gradient_texture2d_class_get_fill_from, "get_fill_from", 0),
-        JS_NewCFunction(ctx, gradient_texture2d_class_set_fill_from, "set_fill_from", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gradient_texture2d_class_set_fill_from, "set_fill_from", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fill_to"),
         JS_NewCFunction(ctx, gradient_texture2d_class_get_fill_to, "get_fill_to", 0),
-        JS_NewCFunction(ctx, gradient_texture2d_class_set_fill_to, "set_fill_to", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gradient_texture2d_class_set_fill_to, "set_fill_to", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "repeat"),
         JS_NewCFunction(ctx, gradient_texture2d_class_get_repeat, "get_repeat", 0),
-        JS_NewCFunction(ctx, gradient_texture2d_class_set_repeat, "set_repeat", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gradient_texture2d_class_set_repeat, "set_repeat", 1),
+        JS_PROP_GETSET
     );
 }
 

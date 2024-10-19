@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/video_stream_playback.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/video_stream.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void video_stream_class_finalizer(JSRuntime *rt, JSValue val) {
-	VideoStream *video_stream = static_cast<VideoStream *>(JS_GetOpaque(val, VideoStream::__class_id));
-	if (video_stream)
-		memdelete(video_stream);
+	
+	// nothing
 }
 
 static JSClassDef video_stream_class_def = {
@@ -55,8 +54,8 @@ void define_video_stream_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "file"),
         JS_NewCFunction(ctx, video_stream_class_get_file, "get_file", 0),
-        JS_NewCFunction(ctx, video_stream_class_set_file, "set_file", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, video_stream_class_set_file, "set_file", 1),
+        JS_PROP_GETSET
     );
 }
 

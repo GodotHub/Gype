@@ -5,20 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/theme.hpp>
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/style_box.hpp>
+#include <godot_cpp/classes/theme.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void theme_class_finalizer(JSRuntime *rt, JSValue val) {
-	Theme *theme = static_cast<Theme *>(JS_GetOpaque(val, Theme::__class_id));
-	if (theme)
-		memdelete(theme);
+	
+	// nothing
 }
 
 static JSClassDef theme_class_def = {
@@ -350,24 +349,24 @@ void define_theme_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "default_base_scale"),
         JS_NewCFunction(ctx, theme_class_get_default_base_scale, "get_default_base_scale", 0),
-        JS_NewCFunction(ctx, theme_class_set_default_base_scale, "set_default_base_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, theme_class_set_default_base_scale, "set_default_base_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "default_font"),
         JS_NewCFunction(ctx, theme_class_get_default_font, "get_default_font", 0),
-        JS_NewCFunction(ctx, theme_class_set_default_font, "set_default_font", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, theme_class_set_default_font, "set_default_font", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "default_font_size"),
         JS_NewCFunction(ctx, theme_class_get_default_font_size, "get_default_font_size", 0),
-        JS_NewCFunction(ctx, theme_class_set_default_font_size, "set_default_font_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, theme_class_set_default_font_size, "set_default_font_size", 1),
+        JS_PROP_GETSET
     );
 }
 

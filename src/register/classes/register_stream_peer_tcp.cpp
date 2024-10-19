@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void stream_peer_tcp_class_finalizer(JSRuntime *rt, JSValue val) {
-	StreamPeerTCP *stream_peer_tcp = static_cast<StreamPeerTCP *>(JS_GetOpaque(val, StreamPeerTCP::__class_id));
-	if (stream_peer_tcp)
-		memdelete(stream_peer_tcp);
+	
+	// nothing
 }
 
 static JSClassDef stream_peer_tcp_class_def = {

@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gpu_particles_attractor3d.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/classes/gpu_particles_attractor3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gpu_particles_attractor3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	GPUParticlesAttractor3D *gpu_particles_attractor3d = static_cast<GPUParticlesAttractor3D *>(JS_GetOpaque(val, GPUParticlesAttractor3D::__class_id));
-	if (gpu_particles_attractor3d)
-		memdelete(gpu_particles_attractor3d);
+	
+	// nothing
 }
 
 static JSClassDef gpu_particles_attractor3d_class_def = {
@@ -81,32 +80,32 @@ void define_gpu_particles_attractor3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "strength"),
         JS_NewCFunction(ctx, gpu_particles_attractor3d_class_get_strength, "get_strength", 0),
-        JS_NewCFunction(ctx, gpu_particles_attractor3d_class_set_strength, "set_strength", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gpu_particles_attractor3d_class_set_strength, "set_strength", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "attenuation"),
         JS_NewCFunction(ctx, gpu_particles_attractor3d_class_get_attenuation, "get_attenuation", 0),
-        JS_NewCFunction(ctx, gpu_particles_attractor3d_class_set_attenuation, "set_attenuation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gpu_particles_attractor3d_class_set_attenuation, "set_attenuation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "directionality"),
         JS_NewCFunction(ctx, gpu_particles_attractor3d_class_get_directionality, "get_directionality", 0),
-        JS_NewCFunction(ctx, gpu_particles_attractor3d_class_set_directionality, "set_directionality", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gpu_particles_attractor3d_class_set_directionality, "set_directionality", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cull_mask"),
         JS_NewCFunction(ctx, gpu_particles_attractor3d_class_get_cull_mask, "get_cull_mask", 0),
-        JS_NewCFunction(ctx, gpu_particles_attractor3d_class_set_cull_mask, "set_cull_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gpu_particles_attractor3d_class_set_cull_mask, "set_cull_mask", 1),
+        JS_PROP_GETSET
     );
 }
 

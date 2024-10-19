@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/curve.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void curve_class_finalizer(JSRuntime *rt, JSValue val) {
-	Curve *curve = static_cast<Curve *>(JS_GetOpaque(val, Curve::__class_id));
-	if (curve)
-		memdelete(curve);
+	
+	// nothing
 }
 
 static JSClassDef curve_class_def = {
@@ -162,32 +161,32 @@ void define_curve_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "min_value"),
         JS_NewCFunction(ctx, curve_class_get_min_value, "get_min_value", 0),
-        JS_NewCFunction(ctx, curve_class_set_min_value, "set_min_value", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, curve_class_set_min_value, "set_min_value", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "max_value"),
         JS_NewCFunction(ctx, curve_class_get_max_value, "get_max_value", 0),
-        JS_NewCFunction(ctx, curve_class_set_max_value, "set_max_value", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, curve_class_set_max_value, "set_max_value", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bake_resolution"),
         JS_NewCFunction(ctx, curve_class_get_bake_resolution, "get_bake_resolution", 0),
-        JS_NewCFunction(ctx, curve_class_set_bake_resolution, "set_bake_resolution", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, curve_class_set_bake_resolution, "set_bake_resolution", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "point_count"),
         JS_NewCFunction(ctx, curve_class_get_point_count, "get_point_count", 0),
-        JS_NewCFunction(ctx, curve_class_set_point_count, "set_point_count", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, curve_class_set_point_count, "set_point_count", 1),
+        JS_PROP_GETSET
     );
 }
 

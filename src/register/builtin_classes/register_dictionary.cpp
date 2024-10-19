@@ -1,11 +1,10 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/variant/dictionary.hpp>
-
 
 using namespace godot;
 
@@ -41,11 +40,11 @@ static JSValue dictionary_class_is_empty(JSContext *ctx, JSValueConst this_val, 
 	return call_builtin_const_method_ret(&Dictionary::is_empty, ctx, this_val, argc, argv);
 };
 static JSValue dictionary_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Dictionary::clear, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Dictionary::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue dictionary_class_merge(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Dictionary::merge, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Dictionary::merge, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue dictionary_class_merged(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -82,7 +81,7 @@ static JSValue dictionary_class_get_or_add(JSContext *ctx, JSValueConst this_val
 	return call_builtin_method_ret(&Dictionary::get_or_add, ctx, this_val, argc, argv);
 };
 static JSValue dictionary_class_make_read_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_method_no_ret(&Dictionary::make_read_only, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Dictionary::make_read_only, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue dictionary_class_is_read_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -91,6 +90,8 @@ static JSValue dictionary_class_is_read_only(JSContext *ctx, JSValueConst this_v
 static JSValue dictionary_class_recursive_equal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Dictionary::recursive_equal, ctx, this_val, argc, argv);
 };
+
+
 static const JSCFunctionListEntry dictionary_class_proto_funcs[] = {
 	JS_CFUNC_DEF("size", 0, &dictionary_class_size),
 	JS_CFUNC_DEF("is_empty", 0, &dictionary_class_is_empty),
@@ -112,10 +113,10 @@ static const JSCFunctionListEntry dictionary_class_proto_funcs[] = {
 	JS_CFUNC_DEF("recursive_equal", 2, &dictionary_class_recursive_equal),
 };
 
-void define_dictionary_property(JSContext *ctx, JSValue obj) {
-}
+
 
 static int js_dictionary_class_init(JSContext *ctx) {
+	
 	JS_NewClassID(&Dictionary::__class_id);
 	classes["Dictionary"] = Dictionary::__class_id;
 	class_id_list.insert(Dictionary::__class_id);
@@ -123,8 +124,6 @@ static int js_dictionary_class_init(JSContext *ctx) {
 
 	JSValue proto = JS_NewObject(ctx);
 	JS_SetClassProto(ctx, Dictionary::__class_id, proto);
-
-	define_dictionary_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, dictionary_class_proto_funcs, _countof(dictionary_class_proto_funcs));
 
 	JSValue ctor = JS_NewCFunction2(ctx, dictionary_class_constructor, "Dictionary", 0, JS_CFUNC_constructor, 0);

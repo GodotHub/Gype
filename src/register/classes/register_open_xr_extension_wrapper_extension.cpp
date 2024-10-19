@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void open_xr_extension_wrapper_extension_class_finalizer(JSRuntime *rt, JSValue val) {
-	OpenXRExtensionWrapperExtension *open_xr_extension_wrapper_extension = static_cast<OpenXRExtensionWrapperExtension *>(JS_GetOpaque(val, OpenXRExtensionWrapperExtension::__class_id));
-	if (open_xr_extension_wrapper_extension)
-		memdelete(open_xr_extension_wrapper_extension);
+	
+	// nothing
 }
 
 static JSClassDef open_xr_extension_wrapper_extension_class_def = {

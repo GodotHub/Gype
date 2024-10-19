@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/line_edit.hpp>
 #include <godot_cpp/classes/v_box_container.hpp>
 #include <godot_cpp/classes/confirmation_dialog.hpp>
+#include <godot_cpp/classes/line_edit.hpp>
 #include <godot_cpp/classes/file_dialog.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -15,9 +15,8 @@
 using namespace godot;
 
 static void file_dialog_class_finalizer(JSRuntime *rt, JSValue val) {
-	FileDialog *file_dialog = static_cast<FileDialog *>(JS_GetOpaque(val, FileDialog::__class_id));
-	if (file_dialog)
-		memdelete(file_dialog);
+	
+	// nothing
 }
 
 static JSClassDef file_dialog_class_def = {
@@ -210,88 +209,88 @@ void define_file_dialog_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "mode_overrides_title"),
         JS_NewCFunction(ctx, file_dialog_class_is_mode_overriding_title, "is_mode_overriding_title", 0),
-        JS_NewCFunction(ctx, file_dialog_class_set_mode_overrides_title, "set_mode_overrides_title", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, file_dialog_class_set_mode_overrides_title, "set_mode_overrides_title", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "file_mode"),
         JS_NewCFunction(ctx, file_dialog_class_get_file_mode, "get_file_mode", 0),
-        JS_NewCFunction(ctx, file_dialog_class_set_file_mode, "set_file_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, file_dialog_class_set_file_mode, "set_file_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "access"),
         JS_NewCFunction(ctx, file_dialog_class_get_access, "get_access", 0),
-        JS_NewCFunction(ctx, file_dialog_class_set_access, "set_access", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, file_dialog_class_set_access, "set_access", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "root_subfolder"),
         JS_NewCFunction(ctx, file_dialog_class_get_root_subfolder, "get_root_subfolder", 0),
-        JS_NewCFunction(ctx, file_dialog_class_set_root_subfolder, "set_root_subfolder", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, file_dialog_class_set_root_subfolder, "set_root_subfolder", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "filters"),
         JS_NewCFunction(ctx, file_dialog_class_get_filters, "get_filters", 0),
-        JS_NewCFunction(ctx, file_dialog_class_set_filters, "set_filters", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, file_dialog_class_set_filters, "set_filters", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "option_count"),
         JS_NewCFunction(ctx, file_dialog_class_get_option_count, "get_option_count", 0),
-        JS_NewCFunction(ctx, file_dialog_class_set_option_count, "set_option_count", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, file_dialog_class_set_option_count, "set_option_count", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "show_hidden_files"),
         JS_NewCFunction(ctx, file_dialog_class_is_showing_hidden_files, "is_showing_hidden_files", 0),
-        JS_NewCFunction(ctx, file_dialog_class_set_show_hidden_files, "set_show_hidden_files", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, file_dialog_class_set_show_hidden_files, "set_show_hidden_files", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_native_dialog"),
         JS_NewCFunction(ctx, file_dialog_class_get_use_native_dialog, "get_use_native_dialog", 0),
-        JS_NewCFunction(ctx, file_dialog_class_set_use_native_dialog, "set_use_native_dialog", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, file_dialog_class_set_use_native_dialog, "set_use_native_dialog", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "current_dir"),
         JS_NewCFunction(ctx, file_dialog_class_get_current_dir, "get_current_dir", 0),
-        JS_NewCFunction(ctx, file_dialog_class_set_current_dir, "set_current_dir", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, file_dialog_class_set_current_dir, "set_current_dir", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "current_file"),
         JS_NewCFunction(ctx, file_dialog_class_get_current_file, "get_current_file", 0),
-        JS_NewCFunction(ctx, file_dialog_class_set_current_file, "set_current_file", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, file_dialog_class_set_current_file, "set_current_file", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "current_path"),
         JS_NewCFunction(ctx, file_dialog_class_get_current_path, "get_current_path", 0),
-        JS_NewCFunction(ctx, file_dialog_class_set_current_path, "set_current_path", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, file_dialog_class_set_current_path, "set_current_path", 1),
+        JS_PROP_GETSET
     );
 }
 

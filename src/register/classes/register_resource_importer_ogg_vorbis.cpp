@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource_importer_ogg_vorbis.hpp>
 #include <godot_cpp/classes/resource_importer.hpp>
+#include <godot_cpp/classes/resource_importer_ogg_vorbis.hpp>
 #include <godot_cpp/classes/audio_stream_ogg_vorbis.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void resource_importer_ogg_vorbis_class_finalizer(JSRuntime *rt, JSValue val) {
-	ResourceImporterOggVorbis *resource_importer_ogg_vorbis = static_cast<ResourceImporterOggVorbis *>(JS_GetOpaque(val, ResourceImporterOggVorbis::__class_id));
-	if (resource_importer_ogg_vorbis)
-		memdelete(resource_importer_ogg_vorbis);
+	
+	// nothing
 }
 
 static JSClassDef resource_importer_ogg_vorbis_class_def = {

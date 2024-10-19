@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_mix_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeMix *visual_shader_node_mix = static_cast<VisualShaderNodeMix *>(JS_GetOpaque(val, VisualShaderNodeMix::__class_id));
-	if (visual_shader_node_mix)
-		memdelete(visual_shader_node_mix);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_mix_class_def = {
@@ -54,8 +53,8 @@ void define_visual_shader_node_mix_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "op_type"),
         JS_NewCFunction(ctx, visual_shader_node_mix_class_get_op_type, "get_op_type", 0),
-        JS_NewCFunction(ctx, visual_shader_node_mix_class_set_op_type, "set_op_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_mix_class_set_op_type, "set_op_type", 1),
+        JS_PROP_GETSET
     );
 }
 

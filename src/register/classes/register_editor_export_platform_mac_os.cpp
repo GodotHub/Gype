@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void editor_export_platform_mac_os_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorExportPlatformMacOS *editor_export_platform_mac_os = static_cast<EditorExportPlatformMacOS *>(JS_GetOpaque(val, EditorExportPlatformMacOS::__class_id));
-	if (editor_export_platform_mac_os)
-		memdelete(editor_export_platform_mac_os);
+	
+	// nothing
 }
 
 static JSClassDef editor_export_platform_mac_os_class_def = {

@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/array_mesh.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/shape3d.hpp>
-#include <godot_cpp/classes/array_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void shape3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	Shape3D *shape3d = static_cast<Shape3D *>(JS_GetOpaque(val, Shape3D::__class_id));
-	if (shape3d)
-		memdelete(shape3d);
+	
+	// nothing
 }
 
 static JSClassDef shape3d_class_def = {
@@ -68,16 +67,16 @@ void define_shape3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "custom_solver_bias"),
         JS_NewCFunction(ctx, shape3d_class_get_custom_solver_bias, "get_custom_solver_bias", 0),
-        JS_NewCFunction(ctx, shape3d_class_set_custom_solver_bias, "set_custom_solver_bias", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, shape3d_class_set_custom_solver_bias, "set_custom_solver_bias", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "margin"),
         JS_NewCFunction(ctx, shape3d_class_get_margin, "get_margin", 0),
-        JS_NewCFunction(ctx, shape3d_class_set_margin, "set_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, shape3d_class_set_margin, "set_margin", 1),
+        JS_PROP_GETSET
     );
 }
 

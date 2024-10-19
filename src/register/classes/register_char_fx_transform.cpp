@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/char_fx_transform.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void char_fx_transform_class_finalizer(JSRuntime *rt, JSValue val) {
-	CharFXTransform *char_fx_transform = static_cast<CharFXTransform *>(JS_GetOpaque(val, CharFXTransform::__class_id));
-	if (char_fx_transform)
-		memdelete(char_fx_transform);
+	
+	// nothing
 }
 
 static JSClassDef char_fx_transform_class_def = {
@@ -162,104 +161,104 @@ void define_char_fx_transform_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "transform"),
         JS_NewCFunction(ctx, char_fx_transform_class_get_transform, "get_transform", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_transform, "set_transform", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, char_fx_transform_class_set_transform, "set_transform", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "range"),
         JS_NewCFunction(ctx, char_fx_transform_class_get_range, "get_range", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_range, "set_range", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, char_fx_transform_class_set_range, "set_range", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "elapsed_time"),
         JS_NewCFunction(ctx, char_fx_transform_class_get_elapsed_time, "get_elapsed_time", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_elapsed_time, "set_elapsed_time", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, char_fx_transform_class_set_elapsed_time, "set_elapsed_time", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visible"),
         JS_NewCFunction(ctx, char_fx_transform_class_is_visible, "is_visible", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_visibility, "set_visibility", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, char_fx_transform_class_set_visibility, "set_visibility", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "outline"),
         JS_NewCFunction(ctx, char_fx_transform_class_is_outline, "is_outline", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_outline, "set_outline", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, char_fx_transform_class_set_outline, "set_outline", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "offset"),
         JS_NewCFunction(ctx, char_fx_transform_class_get_offset, "get_offset", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_offset, "set_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, char_fx_transform_class_set_offset, "set_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "color"),
         JS_NewCFunction(ctx, char_fx_transform_class_get_color, "get_color", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_color, "set_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, char_fx_transform_class_set_color, "set_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "env"),
         JS_NewCFunction(ctx, char_fx_transform_class_get_environment, "get_environment", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_environment, "set_environment", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, char_fx_transform_class_set_environment, "set_environment", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "glyph_index"),
         JS_NewCFunction(ctx, char_fx_transform_class_get_glyph_index, "get_glyph_index", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_glyph_index, "set_glyph_index", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, char_fx_transform_class_set_glyph_index, "set_glyph_index", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "glyph_count"),
         JS_NewCFunction(ctx, char_fx_transform_class_get_glyph_count, "get_glyph_count", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_glyph_count, "set_glyph_count", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, char_fx_transform_class_set_glyph_count, "set_glyph_count", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "glyph_flags"),
         JS_NewCFunction(ctx, char_fx_transform_class_get_glyph_flags, "get_glyph_flags", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_glyph_flags, "set_glyph_flags", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, char_fx_transform_class_set_glyph_flags, "set_glyph_flags", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "relative_index"),
         JS_NewCFunction(ctx, char_fx_transform_class_get_relative_index, "get_relative_index", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_relative_index, "set_relative_index", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, char_fx_transform_class_set_relative_index, "set_relative_index", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "font"),
         JS_NewCFunction(ctx, char_fx_transform_class_get_font, "get_font", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_font, "set_font", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, char_fx_transform_class_set_font, "set_font", 1),
+        JS_PROP_GETSET
     );
 }
 

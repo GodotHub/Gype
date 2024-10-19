@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void gltf_spec_gloss_class_finalizer(JSRuntime *rt, JSValue val) {
-	GLTFSpecGloss *gltf_spec_gloss = static_cast<GLTFSpecGloss *>(JS_GetOpaque(val, GLTFSpecGloss::__class_id));
-	if (gltf_spec_gloss)
-		memdelete(gltf_spec_gloss);
+	
+	// nothing
 }
 
 static JSClassDef gltf_spec_gloss_class_def = {
@@ -91,40 +90,40 @@ void define_gltf_spec_gloss_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "diffuse_img"),
         JS_NewCFunction(ctx, gltf_spec_gloss_class_get_diffuse_img, "get_diffuse_img", 0),
-        JS_NewCFunction(ctx, gltf_spec_gloss_class_set_diffuse_img, "set_diffuse_img", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_spec_gloss_class_set_diffuse_img, "set_diffuse_img", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "diffuse_factor"),
         JS_NewCFunction(ctx, gltf_spec_gloss_class_get_diffuse_factor, "get_diffuse_factor", 0),
-        JS_NewCFunction(ctx, gltf_spec_gloss_class_set_diffuse_factor, "set_diffuse_factor", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_spec_gloss_class_set_diffuse_factor, "set_diffuse_factor", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gloss_factor"),
         JS_NewCFunction(ctx, gltf_spec_gloss_class_get_gloss_factor, "get_gloss_factor", 0),
-        JS_NewCFunction(ctx, gltf_spec_gloss_class_set_gloss_factor, "set_gloss_factor", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_spec_gloss_class_set_gloss_factor, "set_gloss_factor", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "specular_factor"),
         JS_NewCFunction(ctx, gltf_spec_gloss_class_get_specular_factor, "get_specular_factor", 0),
-        JS_NewCFunction(ctx, gltf_spec_gloss_class_set_specular_factor, "set_specular_factor", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_spec_gloss_class_set_specular_factor, "set_specular_factor", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "spec_gloss_img"),
         JS_NewCFunction(ctx, gltf_spec_gloss_class_get_spec_gloss_img, "get_spec_gloss_img", 0),
-        JS_NewCFunction(ctx, gltf_spec_gloss_class_set_spec_gloss_img, "set_spec_gloss_img", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_spec_gloss_class_set_spec_gloss_img, "set_spec_gloss_img", 1),
+        JS_PROP_GETSET
     );
 }
 

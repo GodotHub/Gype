@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void web_rtc_data_channel_extension_class_finalizer(JSRuntime *rt, JSValue val) {
-	WebRTCDataChannelExtension *web_rtc_data_channel_extension = static_cast<WebRTCDataChannelExtension *>(JS_GetOpaque(val, WebRTCDataChannelExtension::__class_id));
-	if (web_rtc_data_channel_extension)
-		memdelete(web_rtc_data_channel_extension);
+	
+	// nothing
 }
 
 static JSClassDef web_rtc_data_channel_extension_class_def = {

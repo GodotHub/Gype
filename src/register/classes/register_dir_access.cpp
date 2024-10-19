@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/dir_access.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void dir_access_class_finalizer(JSRuntime *rt, JSValue val) {
-	DirAccess *dir_access = static_cast<DirAccess *>(JS_GetOpaque(val, DirAccess::__class_id));
-	if (dir_access)
-		memdelete(dir_access);
+	
+	// nothing
 }
 
 static JSClassDef dir_access_class_def = {
@@ -198,16 +197,16 @@ void define_dir_access_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "include_navigational"),
         JS_NewCFunction(ctx, dir_access_class_get_include_navigational, "get_include_navigational", 0),
-        JS_NewCFunction(ctx, dir_access_class_set_include_navigational, "set_include_navigational", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, dir_access_class_set_include_navigational, "set_include_navigational", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "include_hidden"),
         JS_NewCFunction(ctx, dir_access_class_get_include_hidden, "get_include_hidden", 0),
-        JS_NewCFunction(ctx, dir_access_class_set_include_hidden, "set_include_hidden", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, dir_access_class_set_include_hidden, "set_include_hidden", 1),
+        JS_PROP_GETSET
     );
 }
 

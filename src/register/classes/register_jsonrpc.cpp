@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/jsonrpc.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void jsonrpc_class_finalizer(JSRuntime *rt, JSValue val) {
-	JSONRPC *jsonrpc = static_cast<JSONRPC *>(JS_GetOpaque(val, JSONRPC::__class_id));
-	if (jsonrpc)
-		memdelete(jsonrpc);
+	
+	// nothing
 }
 
 static JSClassDef jsonrpc_class_def = {

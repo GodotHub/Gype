@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_determinant_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeDeterminant *visual_shader_node_determinant = static_cast<VisualShaderNodeDeterminant *>(JS_GetOpaque(val, VisualShaderNodeDeterminant::__class_id));
-	if (visual_shader_node_determinant)
-		memdelete(visual_shader_node_determinant);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_determinant_class_def = {

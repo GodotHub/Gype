@@ -122,6 +122,46 @@ static JSValue projection_class_get_fovy(JSContext *ctx, JSValueConst this_val, 
 	return call_builtin_static_method_ret(&Projection::get_fovy, ctx, this_val, argc, argv);
 };
 
+static JSValue projection_class_get_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Projection &val = *reinterpret_cast<Projection *>(JS_GetOpaque(this_val, Projection::__class_id));
+	return Variant(val.columns[0]);
+}
+static JSValue projection_class_set_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Projection &val = *reinterpret_cast<Projection *>(JS_GetOpaque(this_val, Projection::__class_id));
+	val.columns[0] = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue projection_class_get_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Projection &val = *reinterpret_cast<Projection *>(JS_GetOpaque(this_val, Projection::__class_id));
+	return Variant(val.columns[1]);
+}
+static JSValue projection_class_set_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Projection &val = *reinterpret_cast<Projection *>(JS_GetOpaque(this_val, Projection::__class_id));
+	val.columns[1] = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue projection_class_get_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Projection &val = *reinterpret_cast<Projection *>(JS_GetOpaque(this_val, Projection::__class_id));
+	return Variant(val.columns[2]);
+}
+static JSValue projection_class_set_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Projection &val = *reinterpret_cast<Projection *>(JS_GetOpaque(this_val, Projection::__class_id));
+	val.columns[2] = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue projection_class_get_w(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Projection &val = *reinterpret_cast<Projection *>(JS_GetOpaque(this_val, Projection::__class_id));
+	return Variant(val.columns[3]);
+}
+static JSValue projection_class_set_w(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Projection &val = *reinterpret_cast<Projection *>(JS_GetOpaque(this_val, Projection::__class_id));
+	val.columns[3] = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
 static const JSCFunctionListEntry projection_class_proto_funcs[] = {
 	JS_CFUNC_DEF("determinant", 0, &projection_class_determinant),
 	JS_CFUNC_DEF("perspective_znear_adjusted", 1, &projection_class_perspective_znear_adjusted),
@@ -154,6 +194,34 @@ static const JSCFunctionListEntry projection_class_static_funcs[] = {
 };
 
 void define_projection_property(JSContext *ctx, JSValue obj) {
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "x"),
+			JS_NewCFunction(ctx, projection_class_get_x, "get_x", 0),
+			JS_NewCFunction(ctx, projection_class_set_x, "set_x", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "y"),
+			JS_NewCFunction(ctx, projection_class_get_y, "get_y", 0),
+			JS_NewCFunction(ctx, projection_class_set_y, "set_y", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "z"),
+			JS_NewCFunction(ctx, projection_class_get_z, "get_z", 0),
+			JS_NewCFunction(ctx, projection_class_set_z, "set_z", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "w"),
+			JS_NewCFunction(ctx, projection_class_get_w, "get_w", 0),
+			JS_NewCFunction(ctx, projection_class_set_w, "set_w", 1),
+			JS_PROP_GETSET);
 }
 
 static int js_projection_class_init(JSContext *ctx) {
@@ -164,7 +232,6 @@ static int js_projection_class_init(JSContext *ctx) {
 
 	JSValue proto = JS_NewObject(ctx);
 	JS_SetClassProto(ctx, Projection::__class_id, proto);
-
 	define_projection_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, projection_class_proto_funcs, _countof(projection_class_proto_funcs));
 

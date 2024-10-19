@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/code_edit.hpp>
 #include <godot_cpp/classes/text_edit.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/code_edit.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void code_edit_class_finalizer(JSRuntime *rt, JSValue val) {
-	CodeEdit *code_edit = static_cast<CodeEdit *>(JS_GetOpaque(val, CodeEdit::__class_id));
-	if (code_edit)
-		memdelete(code_edit);
+	
+	// nothing
 }
 
 static JSClassDef code_edit_class_def = {
@@ -541,160 +540,160 @@ void define_code_edit_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "symbol_lookup_on_click"),
         JS_NewCFunction(ctx, code_edit_class_is_symbol_lookup_on_click_enabled, "is_symbol_lookup_on_click_enabled", 0),
-        JS_NewCFunction(ctx, code_edit_class_set_symbol_lookup_on_click_enabled, "set_symbol_lookup_on_click_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_edit_class_set_symbol_lookup_on_click_enabled, "set_symbol_lookup_on_click_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "line_folding"),
         JS_NewCFunction(ctx, code_edit_class_is_line_folding_enabled, "is_line_folding_enabled", 0),
-        JS_NewCFunction(ctx, code_edit_class_set_line_folding_enabled, "set_line_folding_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_edit_class_set_line_folding_enabled, "set_line_folding_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "line_length_guidelines"),
         JS_NewCFunction(ctx, code_edit_class_get_line_length_guidelines, "get_line_length_guidelines", 0),
-        JS_NewCFunction(ctx, code_edit_class_set_line_length_guidelines, "set_line_length_guidelines", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_edit_class_set_line_length_guidelines, "set_line_length_guidelines", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gutters_draw_breakpoints_gutter"),
         JS_NewCFunction(ctx, code_edit_class_is_drawing_breakpoints_gutter, "is_drawing_breakpoints_gutter", 0),
-        JS_NewCFunction(ctx, code_edit_class_set_draw_breakpoints_gutter, "set_draw_breakpoints_gutter", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_edit_class_set_draw_breakpoints_gutter, "set_draw_breakpoints_gutter", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gutters_draw_bookmarks"),
         JS_NewCFunction(ctx, code_edit_class_is_drawing_bookmarks_gutter, "is_drawing_bookmarks_gutter", 0),
-        JS_NewCFunction(ctx, code_edit_class_set_draw_bookmarks_gutter, "set_draw_bookmarks_gutter", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_edit_class_set_draw_bookmarks_gutter, "set_draw_bookmarks_gutter", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gutters_draw_executing_lines"),
         JS_NewCFunction(ctx, code_edit_class_is_drawing_executing_lines_gutter, "is_drawing_executing_lines_gutter", 0),
-        JS_NewCFunction(ctx, code_edit_class_set_draw_executing_lines_gutter, "set_draw_executing_lines_gutter", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_edit_class_set_draw_executing_lines_gutter, "set_draw_executing_lines_gutter", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gutters_draw_line_numbers"),
         JS_NewCFunction(ctx, code_edit_class_is_draw_line_numbers_enabled, "is_draw_line_numbers_enabled", 0),
-        JS_NewCFunction(ctx, code_edit_class_set_draw_line_numbers, "set_draw_line_numbers", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_edit_class_set_draw_line_numbers, "set_draw_line_numbers", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gutters_zero_pad_line_numbers"),
         JS_NewCFunction(ctx, code_edit_class_is_line_numbers_zero_padded, "is_line_numbers_zero_padded", 0),
-        JS_NewCFunction(ctx, code_edit_class_set_line_numbers_zero_padded, "set_line_numbers_zero_padded", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_edit_class_set_line_numbers_zero_padded, "set_line_numbers_zero_padded", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gutters_draw_fold_gutter"),
         JS_NewCFunction(ctx, code_edit_class_is_drawing_fold_gutter, "is_drawing_fold_gutter", 0),
-        JS_NewCFunction(ctx, code_edit_class_set_draw_fold_gutter, "set_draw_fold_gutter", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_edit_class_set_draw_fold_gutter, "set_draw_fold_gutter", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "delimiter_strings"),
         JS_NewCFunction(ctx, code_edit_class_get_string_delimiters, "get_string_delimiters", 0),
-        JS_NewCFunction(ctx, code_edit_class_set_string_delimiters, "set_string_delimiters", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_edit_class_set_string_delimiters, "set_string_delimiters", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "delimiter_comments"),
         JS_NewCFunction(ctx, code_edit_class_get_comment_delimiters, "get_comment_delimiters", 0),
-        JS_NewCFunction(ctx, code_edit_class_set_comment_delimiters, "set_comment_delimiters", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_edit_class_set_comment_delimiters, "set_comment_delimiters", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "code_completion_enabled"),
         JS_NewCFunction(ctx, code_edit_class_is_code_completion_enabled, "is_code_completion_enabled", 0),
-        JS_NewCFunction(ctx, code_edit_class_set_code_completion_enabled, "set_code_completion_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_edit_class_set_code_completion_enabled, "set_code_completion_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "code_completion_prefixes"),
         JS_NewCFunction(ctx, code_edit_class_get_code_completion_prefixes, "get_code_completion_prefixes", 0),
-        JS_NewCFunction(ctx, code_edit_class_set_code_completion_prefixes, "set_code_completion_prefixes", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_edit_class_set_code_completion_prefixes, "set_code_completion_prefixes", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "indent_size"),
         JS_NewCFunction(ctx, code_edit_class_get_indent_size, "get_indent_size", 0),
-        JS_NewCFunction(ctx, code_edit_class_set_indent_size, "set_indent_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_edit_class_set_indent_size, "set_indent_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "indent_use_spaces"),
         JS_NewCFunction(ctx, code_edit_class_is_indent_using_spaces, "is_indent_using_spaces", 0),
-        JS_NewCFunction(ctx, code_edit_class_set_indent_using_spaces, "set_indent_using_spaces", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_edit_class_set_indent_using_spaces, "set_indent_using_spaces", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "indent_automatic"),
         JS_NewCFunction(ctx, code_edit_class_is_auto_indent_enabled, "is_auto_indent_enabled", 0),
-        JS_NewCFunction(ctx, code_edit_class_set_auto_indent_enabled, "set_auto_indent_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_edit_class_set_auto_indent_enabled, "set_auto_indent_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "indent_automatic_prefixes"),
         JS_NewCFunction(ctx, code_edit_class_get_auto_indent_prefixes, "get_auto_indent_prefixes", 0),
-        JS_NewCFunction(ctx, code_edit_class_set_auto_indent_prefixes, "set_auto_indent_prefixes", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_edit_class_set_auto_indent_prefixes, "set_auto_indent_prefixes", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "auto_brace_completion_enabled"),
         JS_NewCFunction(ctx, code_edit_class_is_auto_brace_completion_enabled, "is_auto_brace_completion_enabled", 0),
-        JS_NewCFunction(ctx, code_edit_class_set_auto_brace_completion_enabled, "set_auto_brace_completion_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_edit_class_set_auto_brace_completion_enabled, "set_auto_brace_completion_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "auto_brace_completion_highlight_matching"),
         JS_NewCFunction(ctx, code_edit_class_is_highlight_matching_braces_enabled, "is_highlight_matching_braces_enabled", 0),
-        JS_NewCFunction(ctx, code_edit_class_set_highlight_matching_braces_enabled, "set_highlight_matching_braces_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_edit_class_set_highlight_matching_braces_enabled, "set_highlight_matching_braces_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "auto_brace_completion_pairs"),
         JS_NewCFunction(ctx, code_edit_class_get_auto_brace_completion_pairs, "get_auto_brace_completion_pairs", 0),
-        JS_NewCFunction(ctx, code_edit_class_set_auto_brace_completion_pairs, "set_auto_brace_completion_pairs", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, code_edit_class_set_auto_brace_completion_pairs, "set_auto_brace_completion_pairs", 1),
+        JS_PROP_GETSET
     );
 }
 

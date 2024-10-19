@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void animatable_body2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	AnimatableBody2D *animatable_body2d = static_cast<AnimatableBody2D *>(JS_GetOpaque(val, AnimatableBody2D::__class_id));
-	if (animatable_body2d)
-		memdelete(animatable_body2d);
+	
+	// nothing
 }
 
 static JSClassDef animatable_body2d_class_def = {
@@ -54,8 +53,8 @@ void define_animatable_body2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "sync_to_physics"),
         JS_NewCFunction(ctx, animatable_body2d_class_is_sync_to_physics_enabled, "is_sync_to_physics_enabled", 0),
-        JS_NewCFunction(ctx, animatable_body2d_class_set_sync_to_physics, "set_sync_to_physics", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animatable_body2d_class_set_sync_to_physics, "set_sync_to_physics", 1),
+        JS_PROP_GETSET
     );
 }
 

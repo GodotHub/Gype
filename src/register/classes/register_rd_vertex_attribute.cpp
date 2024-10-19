@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void rd_vertex_attribute_class_finalizer(JSRuntime *rt, JSValue val) {
-	RDVertexAttribute *rd_vertex_attribute = static_cast<RDVertexAttribute *>(JS_GetOpaque(val, RDVertexAttribute::__class_id));
-	if (rd_vertex_attribute)
-		memdelete(rd_vertex_attribute);
+	
+	// nothing
 }
 
 static JSClassDef rd_vertex_attribute_class_def = {
@@ -90,40 +89,40 @@ void define_rd_vertex_attribute_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "location"),
         JS_NewCFunction(ctx, rd_vertex_attribute_class_get_location, "get_location", 0),
-        JS_NewCFunction(ctx, rd_vertex_attribute_class_set_location, "set_location", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_vertex_attribute_class_set_location, "set_location", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "offset"),
         JS_NewCFunction(ctx, rd_vertex_attribute_class_get_offset, "get_offset", 0),
-        JS_NewCFunction(ctx, rd_vertex_attribute_class_set_offset, "set_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_vertex_attribute_class_set_offset, "set_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "format"),
         JS_NewCFunction(ctx, rd_vertex_attribute_class_get_format, "get_format", 0),
-        JS_NewCFunction(ctx, rd_vertex_attribute_class_set_format, "set_format", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_vertex_attribute_class_set_format, "set_format", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "stride"),
         JS_NewCFunction(ctx, rd_vertex_attribute_class_get_stride, "get_stride", 0),
-        JS_NewCFunction(ctx, rd_vertex_attribute_class_set_stride, "set_stride", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_vertex_attribute_class_set_stride, "set_stride", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "frequency"),
         JS_NewCFunction(ctx, rd_vertex_attribute_class_get_frequency, "get_frequency", 0),
-        JS_NewCFunction(ctx, rd_vertex_attribute_class_set_frequency, "set_frequency", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_vertex_attribute_class_set_frequency, "set_frequency", 1),
+        JS_PROP_GETSET
     );
 }
 

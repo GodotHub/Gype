@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/classes/audio_effect_spectrum_analyzer.hpp>
+#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void audio_effect_spectrum_analyzer_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioEffectSpectrumAnalyzer *audio_effect_spectrum_analyzer = static_cast<AudioEffectSpectrumAnalyzer *>(JS_GetOpaque(val, AudioEffectSpectrumAnalyzer::__class_id));
-	if (audio_effect_spectrum_analyzer)
-		memdelete(audio_effect_spectrum_analyzer);
+	
+	// nothing
 }
 
 static JSClassDef audio_effect_spectrum_analyzer_class_def = {
@@ -72,24 +71,24 @@ void define_audio_effect_spectrum_analyzer_property(JSContext *ctx, JSValue obj)
         obj,
         JS_NewAtom(ctx, "buffer_length"),
         JS_NewCFunction(ctx, audio_effect_spectrum_analyzer_class_get_buffer_length, "get_buffer_length", 0),
-        JS_NewCFunction(ctx, audio_effect_spectrum_analyzer_class_set_buffer_length, "set_buffer_length", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_spectrum_analyzer_class_set_buffer_length, "set_buffer_length", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tap_back_pos"),
         JS_NewCFunction(ctx, audio_effect_spectrum_analyzer_class_get_tap_back_pos, "get_tap_back_pos", 0),
-        JS_NewCFunction(ctx, audio_effect_spectrum_analyzer_class_set_tap_back_pos, "set_tap_back_pos", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_spectrum_analyzer_class_set_tap_back_pos, "set_tap_back_pos", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fft_size"),
         JS_NewCFunction(ctx, audio_effect_spectrum_analyzer_class_get_fft_size, "get_fft_size", 0),
-        JS_NewCFunction(ctx, audio_effect_spectrum_analyzer_class_set_fft_size, "set_fft_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_spectrum_analyzer_class_set_fft_size, "set_fft_size", 1),
+        JS_PROP_GETSET
     );
 }
 

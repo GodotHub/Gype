@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void convex_polygon_shape2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	ConvexPolygonShape2D *convex_polygon_shape2d = static_cast<ConvexPolygonShape2D *>(JS_GetOpaque(val, ConvexPolygonShape2D::__class_id));
-	if (convex_polygon_shape2d)
-		memdelete(convex_polygon_shape2d);
+	
+	// nothing
 }
 
 static JSClassDef convex_polygon_shape2d_class_def = {
@@ -59,8 +58,8 @@ void define_convex_polygon_shape2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "points"),
         JS_NewCFunction(ctx, convex_polygon_shape2d_class_get_points, "get_points", 0),
-        JS_NewCFunction(ctx, convex_polygon_shape2d_class_set_points, "set_points", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, convex_polygon_shape2d_class_set_points, "set_points", 1),
+        JS_PROP_GETSET
     );
 }
 

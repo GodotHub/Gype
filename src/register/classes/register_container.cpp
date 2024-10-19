@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void container_class_finalizer(JSRuntime *rt, JSValue val) {
-	Container *container = static_cast<Container *>(JS_GetOpaque(val, Container::__class_id));
-	if (container)
-		memdelete(container);
+	
+	// nothing
 }
 
 static JSClassDef container_class_def = {

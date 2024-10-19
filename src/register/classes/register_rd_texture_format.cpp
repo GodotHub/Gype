@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rd_texture_format.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void rd_texture_format_class_finalizer(JSRuntime *rt, JSValue val) {
-	RDTextureFormat *rd_texture_format = static_cast<RDTextureFormat *>(JS_GetOpaque(val, RDTextureFormat::__class_id));
-	if (rd_texture_format)
-		memdelete(rd_texture_format);
+	
+	// nothing
 }
 
 static JSClassDef rd_texture_format_class_def = {
@@ -136,72 +135,72 @@ void define_rd_texture_format_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "format"),
         JS_NewCFunction(ctx, rd_texture_format_class_get_format, "get_format", 0),
-        JS_NewCFunction(ctx, rd_texture_format_class_set_format, "set_format", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_texture_format_class_set_format, "set_format", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "width"),
         JS_NewCFunction(ctx, rd_texture_format_class_get_width, "get_width", 0),
-        JS_NewCFunction(ctx, rd_texture_format_class_set_width, "set_width", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_texture_format_class_set_width, "set_width", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "height"),
         JS_NewCFunction(ctx, rd_texture_format_class_get_height, "get_height", 0),
-        JS_NewCFunction(ctx, rd_texture_format_class_set_height, "set_height", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_texture_format_class_set_height, "set_height", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "depth"),
         JS_NewCFunction(ctx, rd_texture_format_class_get_depth, "get_depth", 0),
-        JS_NewCFunction(ctx, rd_texture_format_class_set_depth, "set_depth", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_texture_format_class_set_depth, "set_depth", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "array_layers"),
         JS_NewCFunction(ctx, rd_texture_format_class_get_array_layers, "get_array_layers", 0),
-        JS_NewCFunction(ctx, rd_texture_format_class_set_array_layers, "set_array_layers", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_texture_format_class_set_array_layers, "set_array_layers", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "mipmaps"),
         JS_NewCFunction(ctx, rd_texture_format_class_get_mipmaps, "get_mipmaps", 0),
-        JS_NewCFunction(ctx, rd_texture_format_class_set_mipmaps, "set_mipmaps", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_texture_format_class_set_mipmaps, "set_mipmaps", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_type"),
         JS_NewCFunction(ctx, rd_texture_format_class_get_texture_type, "get_texture_type", 0),
-        JS_NewCFunction(ctx, rd_texture_format_class_set_texture_type, "set_texture_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_texture_format_class_set_texture_type, "set_texture_type", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "samples"),
         JS_NewCFunction(ctx, rd_texture_format_class_get_samples, "get_samples", 0),
-        JS_NewCFunction(ctx, rd_texture_format_class_set_samples, "set_samples", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_texture_format_class_set_samples, "set_samples", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "usage_bits"),
         JS_NewCFunction(ctx, rd_texture_format_class_get_usage_bits, "get_usage_bits", 0),
-        JS_NewCFunction(ctx, rd_texture_format_class_set_usage_bits, "set_usage_bits", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rd_texture_format_class_set_usage_bits, "set_usage_bits", 1),
+        JS_PROP_GETSET
     );
 }
 

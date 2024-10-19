@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/skin_reference.hpp>
 #include <godot_cpp/classes/skin.hpp>
+#include <godot_cpp/classes/skin_reference.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void skin_reference_class_finalizer(JSRuntime *rt, JSValue val) {
-	SkinReference *skin_reference = static_cast<SkinReference *>(JS_GetOpaque(val, SkinReference::__class_id));
-	if (skin_reference)
-		memdelete(skin_reference);
+	
+	// nothing
 }
 
 static JSClassDef skin_reference_class_def = {

@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/primitive_mesh.hpp>
 #include <godot_cpp/classes/plane_mesh.hpp>
+#include <godot_cpp/classes/primitive_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void plane_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	PlaneMesh *plane_mesh = static_cast<PlaneMesh *>(JS_GetOpaque(val, PlaneMesh::__class_id));
-	if (plane_mesh)
-		memdelete(plane_mesh);
+	
+	// nothing
 }
 
 static JSClassDef plane_mesh_class_def = {
@@ -90,40 +89,40 @@ void define_plane_mesh_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, plane_mesh_class_get_size, "get_size", 0),
-        JS_NewCFunction(ctx, plane_mesh_class_set_size, "set_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, plane_mesh_class_set_size, "set_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "subdivide_width"),
         JS_NewCFunction(ctx, plane_mesh_class_get_subdivide_width, "get_subdivide_width", 0),
-        JS_NewCFunction(ctx, plane_mesh_class_set_subdivide_width, "set_subdivide_width", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, plane_mesh_class_set_subdivide_width, "set_subdivide_width", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "subdivide_depth"),
         JS_NewCFunction(ctx, plane_mesh_class_get_subdivide_depth, "get_subdivide_depth", 0),
-        JS_NewCFunction(ctx, plane_mesh_class_set_subdivide_depth, "set_subdivide_depth", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, plane_mesh_class_set_subdivide_depth, "set_subdivide_depth", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "center_offset"),
         JS_NewCFunction(ctx, plane_mesh_class_get_center_offset, "get_center_offset", 0),
-        JS_NewCFunction(ctx, plane_mesh_class_set_center_offset, "set_center_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, plane_mesh_class_set_center_offset, "set_center_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "orientation"),
         JS_NewCFunction(ctx, plane_mesh_class_get_orientation, "get_orientation", 0),
-        JS_NewCFunction(ctx, plane_mesh_class_set_orientation, "set_orientation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, plane_mesh_class_set_orientation, "set_orientation", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/array_mesh.hpp>
+#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void array_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	ArrayMesh *array_mesh = static_cast<ArrayMesh *>(JS_GetOpaque(val, ArrayMesh::__class_id));
-	if (array_mesh)
-		memdelete(array_mesh);
+	
+	// nothing
 }
 
 static JSClassDef array_mesh_class_def = {
@@ -158,24 +157,24 @@ void define_array_mesh_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "blend_shape_mode"),
         JS_NewCFunction(ctx, array_mesh_class_get_blend_shape_mode, "get_blend_shape_mode", 0),
-        JS_NewCFunction(ctx, array_mesh_class_set_blend_shape_mode, "set_blend_shape_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, array_mesh_class_set_blend_shape_mode, "set_blend_shape_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "custom_aabb"),
         JS_NewCFunction(ctx, array_mesh_class_get_custom_aabb, "get_custom_aabb", 0),
-        JS_NewCFunction(ctx, array_mesh_class_set_custom_aabb, "set_custom_aabb", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, array_mesh_class_set_custom_aabb, "set_custom_aabb", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shadow_mesh"),
         JS_NewCFunction(ctx, array_mesh_class_get_shadow_mesh, "get_shadow_mesh", 0),
-        JS_NewCFunction(ctx, array_mesh_class_set_shadow_mesh, "set_shadow_mesh", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, array_mesh_class_set_shadow_mesh, "set_shadow_mesh", 1),
+        JS_PROP_GETSET
     );
 }
 

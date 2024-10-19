@@ -16,9 +16,8 @@ static JSValue geometry2d_instance;
 static void js_geometry2d_singleton();
 
 static void geometry2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	Geometry2D *geometry2d = static_cast<Geometry2D *>(JS_GetOpaque(val, Geometry2D::__class_id));
-	if (geometry2d)
-		Geometry2D::free(nullptr, geometry2d);
+	
+	// nothing
 }
 
 static JSClassDef geometry2d_class_def = {

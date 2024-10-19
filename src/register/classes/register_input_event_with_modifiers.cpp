@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event_with_modifiers.hpp>
 #include <godot_cpp/classes/input_event_from_window.hpp>
+#include <godot_cpp/classes/input_event_with_modifiers.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void input_event_with_modifiers_class_finalizer(JSRuntime *rt, JSValue val) {
-	InputEventWithModifiers *input_event_with_modifiers = static_cast<InputEventWithModifiers *>(JS_GetOpaque(val, InputEventWithModifiers::__class_id));
-	if (input_event_with_modifiers)
-		memdelete(input_event_with_modifiers);
+	
+	// nothing
 }
 
 static JSClassDef input_event_with_modifiers_class_def = {
@@ -98,40 +97,40 @@ void define_input_event_with_modifiers_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "command_or_control_autoremap"),
         JS_NewCFunction(ctx, input_event_with_modifiers_class_is_command_or_control_autoremap, "is_command_or_control_autoremap", 0),
-        JS_NewCFunction(ctx, input_event_with_modifiers_class_set_command_or_control_autoremap, "set_command_or_control_autoremap", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_with_modifiers_class_set_command_or_control_autoremap, "set_command_or_control_autoremap", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "alt_pressed"),
         JS_NewCFunction(ctx, input_event_with_modifiers_class_is_alt_pressed, "is_alt_pressed", 0),
-        JS_NewCFunction(ctx, input_event_with_modifiers_class_set_alt_pressed, "set_alt_pressed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_with_modifiers_class_set_alt_pressed, "set_alt_pressed", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shift_pressed"),
         JS_NewCFunction(ctx, input_event_with_modifiers_class_is_shift_pressed, "is_shift_pressed", 0),
-        JS_NewCFunction(ctx, input_event_with_modifiers_class_set_shift_pressed, "set_shift_pressed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_with_modifiers_class_set_shift_pressed, "set_shift_pressed", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ctrl_pressed"),
         JS_NewCFunction(ctx, input_event_with_modifiers_class_is_ctrl_pressed, "is_ctrl_pressed", 0),
-        JS_NewCFunction(ctx, input_event_with_modifiers_class_set_ctrl_pressed, "set_ctrl_pressed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_with_modifiers_class_set_ctrl_pressed, "set_ctrl_pressed", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "meta_pressed"),
         JS_NewCFunction(ctx, input_event_with_modifiers_class_is_meta_pressed, "is_meta_pressed", 0),
-        JS_NewCFunction(ctx, input_event_with_modifiers_class_set_meta_pressed, "set_meta_pressed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_with_modifiers_class_set_meta_pressed, "set_meta_pressed", 1),
+        JS_PROP_GETSET
     );
 }
 

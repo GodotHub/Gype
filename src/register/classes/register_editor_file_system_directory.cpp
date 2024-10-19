@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void editor_file_system_directory_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorFileSystemDirectory *editor_file_system_directory = static_cast<EditorFileSystemDirectory *>(JS_GetOpaque(val, EditorFileSystemDirectory::__class_id));
-	if (editor_file_system_directory)
-		memdelete(editor_file_system_directory);
+	
+	// nothing
 }
 
 static JSClassDef editor_file_system_directory_class_def = {

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void packed_data_container_class_finalizer(JSRuntime *rt, JSValue val) {
-	PackedDataContainer *packed_data_container = static_cast<PackedDataContainer *>(JS_GetOpaque(val, PackedDataContainer::__class_id));
-	if (packed_data_container)
-		memdelete(packed_data_container);
+	
+	// nothing
 }
 
 static JSClassDef packed_data_container_class_def = {

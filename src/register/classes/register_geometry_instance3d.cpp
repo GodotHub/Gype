@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/classes/geometry_instance3d.hpp>
+#include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void geometry_instance3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	GeometryInstance3D *geometry_instance3d = static_cast<GeometryInstance3D *>(JS_GetOpaque(val, GeometryInstance3D::__class_id));
-	if (geometry_instance3d)
-		memdelete(geometry_instance3d);
+	
+	// nothing
 }
 
 static JSClassDef geometry_instance3d_class_def = {
@@ -190,120 +189,120 @@ void define_geometry_instance3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "material_override"),
         JS_NewCFunction(ctx, geometry_instance3d_class_get_material_override, "get_material_override", 0),
-        JS_NewCFunction(ctx, geometry_instance3d_class_set_material_override, "set_material_override", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, geometry_instance3d_class_set_material_override, "set_material_override", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "material_overlay"),
         JS_NewCFunction(ctx, geometry_instance3d_class_get_material_overlay, "get_material_overlay", 0),
-        JS_NewCFunction(ctx, geometry_instance3d_class_set_material_overlay, "set_material_overlay", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, geometry_instance3d_class_set_material_overlay, "set_material_overlay", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "transparency"),
         JS_NewCFunction(ctx, geometry_instance3d_class_get_transparency, "get_transparency", 0),
-        JS_NewCFunction(ctx, geometry_instance3d_class_set_transparency, "set_transparency", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, geometry_instance3d_class_set_transparency, "set_transparency", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cast_shadow"),
         JS_NewCFunction(ctx, geometry_instance3d_class_get_cast_shadows_setting, "get_cast_shadows_setting", 0),
-        JS_NewCFunction(ctx, geometry_instance3d_class_set_cast_shadows_setting, "set_cast_shadows_setting", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, geometry_instance3d_class_set_cast_shadows_setting, "set_cast_shadows_setting", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "extra_cull_margin"),
         JS_NewCFunction(ctx, geometry_instance3d_class_get_extra_cull_margin, "get_extra_cull_margin", 0),
-        JS_NewCFunction(ctx, geometry_instance3d_class_set_extra_cull_margin, "set_extra_cull_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, geometry_instance3d_class_set_extra_cull_margin, "set_extra_cull_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "custom_aabb"),
         JS_NewCFunction(ctx, geometry_instance3d_class_get_custom_aabb, "get_custom_aabb", 0),
-        JS_NewCFunction(ctx, geometry_instance3d_class_set_custom_aabb, "set_custom_aabb", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, geometry_instance3d_class_set_custom_aabb, "set_custom_aabb", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "lod_bias"),
         JS_NewCFunction(ctx, geometry_instance3d_class_get_lod_bias, "get_lod_bias", 0),
-        JS_NewCFunction(ctx, geometry_instance3d_class_set_lod_bias, "set_lod_bias", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, geometry_instance3d_class_set_lod_bias, "set_lod_bias", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ignore_occlusion_culling"),
         JS_NewCFunction(ctx, geometry_instance3d_class_is_ignoring_occlusion_culling, "is_ignoring_occlusion_culling", 0),
-        JS_NewCFunction(ctx, geometry_instance3d_class_set_ignore_occlusion_culling, "set_ignore_occlusion_culling", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, geometry_instance3d_class_set_ignore_occlusion_culling, "set_ignore_occlusion_culling", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gi_mode"),
         JS_NewCFunction(ctx, geometry_instance3d_class_get_gi_mode, "get_gi_mode", 0),
-        JS_NewCFunction(ctx, geometry_instance3d_class_set_gi_mode, "set_gi_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, geometry_instance3d_class_set_gi_mode, "set_gi_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gi_lightmap_scale"),
         JS_NewCFunction(ctx, geometry_instance3d_class_get_lightmap_scale, "get_lightmap_scale", 0),
-        JS_NewCFunction(ctx, geometry_instance3d_class_set_lightmap_scale, "set_lightmap_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, geometry_instance3d_class_set_lightmap_scale, "set_lightmap_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visibility_range_begin"),
         JS_NewCFunction(ctx, geometry_instance3d_class_get_visibility_range_begin, "get_visibility_range_begin", 0),
-        JS_NewCFunction(ctx, geometry_instance3d_class_set_visibility_range_begin, "set_visibility_range_begin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, geometry_instance3d_class_set_visibility_range_begin, "set_visibility_range_begin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visibility_range_begin_margin"),
         JS_NewCFunction(ctx, geometry_instance3d_class_get_visibility_range_begin_margin, "get_visibility_range_begin_margin", 0),
-        JS_NewCFunction(ctx, geometry_instance3d_class_set_visibility_range_begin_margin, "set_visibility_range_begin_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, geometry_instance3d_class_set_visibility_range_begin_margin, "set_visibility_range_begin_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visibility_range_end"),
         JS_NewCFunction(ctx, geometry_instance3d_class_get_visibility_range_end, "get_visibility_range_end", 0),
-        JS_NewCFunction(ctx, geometry_instance3d_class_set_visibility_range_end, "set_visibility_range_end", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, geometry_instance3d_class_set_visibility_range_end, "set_visibility_range_end", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visibility_range_end_margin"),
         JS_NewCFunction(ctx, geometry_instance3d_class_get_visibility_range_end_margin, "get_visibility_range_end_margin", 0),
-        JS_NewCFunction(ctx, geometry_instance3d_class_set_visibility_range_end_margin, "set_visibility_range_end_margin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, geometry_instance3d_class_set_visibility_range_end_margin, "set_visibility_range_end_margin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visibility_range_fade_mode"),
         JS_NewCFunction(ctx, geometry_instance3d_class_get_visibility_range_fade_mode, "get_visibility_range_fade_mode", 0),
-        JS_NewCFunction(ctx, geometry_instance3d_class_set_visibility_range_fade_mode, "set_visibility_range_fade_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, geometry_instance3d_class_set_visibility_range_fade_mode, "set_visibility_range_fade_mode", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void audio_stream_mp3_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioStreamMP3 *audio_stream_mp3 = static_cast<AudioStreamMP3 *>(JS_GetOpaque(val, AudioStreamMP3::__class_id));
-	if (audio_stream_mp3)
-		memdelete(audio_stream_mp3);
+	
+	// nothing
 }
 
 static JSClassDef audio_stream_mp3_class_def = {
@@ -99,48 +98,48 @@ void define_audio_stream_mp3_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "data"),
         JS_NewCFunction(ctx, audio_stream_mp3_class_get_data, "get_data", 0),
-        JS_NewCFunction(ctx, audio_stream_mp3_class_set_data, "set_data", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_mp3_class_set_data, "set_data", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bpm"),
         JS_NewCFunction(ctx, audio_stream_mp3_class_get_bpm, "get_bpm", 0),
-        JS_NewCFunction(ctx, audio_stream_mp3_class_set_bpm, "set_bpm", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_mp3_class_set_bpm, "set_bpm", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "beat_count"),
         JS_NewCFunction(ctx, audio_stream_mp3_class_get_beat_count, "get_beat_count", 0),
-        JS_NewCFunction(ctx, audio_stream_mp3_class_set_beat_count, "set_beat_count", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_mp3_class_set_beat_count, "set_beat_count", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bar_beats"),
         JS_NewCFunction(ctx, audio_stream_mp3_class_get_bar_beats, "get_bar_beats", 0),
-        JS_NewCFunction(ctx, audio_stream_mp3_class_set_bar_beats, "set_bar_beats", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_mp3_class_set_bar_beats, "set_bar_beats", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "loop"),
         JS_NewCFunction(ctx, audio_stream_mp3_class_has_loop, "has_loop", 0),
-        JS_NewCFunction(ctx, audio_stream_mp3_class_set_loop, "set_loop", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_mp3_class_set_loop, "set_loop", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "loop_offset"),
         JS_NewCFunction(ctx, audio_stream_mp3_class_get_loop_offset, "get_loop_offset", 0),
-        JS_NewCFunction(ctx, audio_stream_mp3_class_set_loop_offset, "set_loop_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_stream_mp3_class_set_loop_offset, "set_loop_offset", 1),
+        JS_PROP_GETSET
     );
 }
 

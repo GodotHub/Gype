@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/open_xr_interaction_profile.hpp>
 #include <godot_cpp/classes/open_xrip_binding.hpp>
+#include <godot_cpp/classes/open_xr_interaction_profile.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void open_xr_interaction_profile_class_finalizer(JSRuntime *rt, JSValue val) {
-	OpenXRInteractionProfile *open_xr_interaction_profile = static_cast<OpenXRInteractionProfile *>(JS_GetOpaque(val, OpenXRInteractionProfile::__class_id));
-	if (open_xr_interaction_profile)
-		memdelete(open_xr_interaction_profile);
+	
+	// nothing
 }
 
 static JSClassDef open_xr_interaction_profile_class_def = {
@@ -72,16 +71,16 @@ void define_open_xr_interaction_profile_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "interaction_profile_path"),
         JS_NewCFunction(ctx, open_xr_interaction_profile_class_get_interaction_profile_path, "get_interaction_profile_path", 0),
-        JS_NewCFunction(ctx, open_xr_interaction_profile_class_set_interaction_profile_path, "set_interaction_profile_path", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_interaction_profile_class_set_interaction_profile_path, "set_interaction_profile_path", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bindings"),
         JS_NewCFunction(ctx, open_xr_interaction_profile_class_get_bindings, "get_bindings", 0),
-        JS_NewCFunction(ctx, open_xr_interaction_profile_class_set_bindings, "set_bindings", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_interaction_profile_class_set_bindings, "set_bindings", 1),
+        JS_PROP_GETSET
     );
 }
 

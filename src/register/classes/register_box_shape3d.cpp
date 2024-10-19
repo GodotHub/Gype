@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void box_shape3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	BoxShape3D *box_shape3d = static_cast<BoxShape3D *>(JS_GetOpaque(val, BoxShape3D::__class_id));
-	if (box_shape3d)
-		memdelete(box_shape3d);
+	
+	// nothing
 }
 
 static JSClassDef box_shape3d_class_def = {
@@ -54,8 +53,8 @@ void define_box_shape3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, box_shape3d_class_get_size, "get_size", 0),
-        JS_NewCFunction(ctx, box_shape3d_class_set_size, "set_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, box_shape3d_class_set_size, "set_size", 1),
+        JS_PROP_GETSET
     );
 }
 

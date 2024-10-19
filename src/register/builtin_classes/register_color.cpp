@@ -112,6 +112,95 @@ static JSValue color_class_from_rgbe9995(JSContext *ctx, JSValueConst this_val, 
 	return call_builtin_static_method_ret(&Color::from_rgbe9995, ctx, this_val, argc, argv);
 };
 
+static JSValue color_class_get_r(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Color &val = *reinterpret_cast<Color *>(JS_GetOpaque(this_val, Color::__class_id));
+	return Variant(val.r);
+}
+static JSValue color_class_set_r(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Color &val = *reinterpret_cast<Color *>(JS_GetOpaque(this_val, Color::__class_id));
+	val.r = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue color_class_get_g(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Color &val = *reinterpret_cast<Color *>(JS_GetOpaque(this_val, Color::__class_id));
+	return Variant(val.g);
+}
+static JSValue color_class_set_g(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Color &val = *reinterpret_cast<Color *>(JS_GetOpaque(this_val, Color::__class_id));
+	val.g = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue color_class_get_b(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Color &val = *reinterpret_cast<Color *>(JS_GetOpaque(this_val, Color::__class_id));
+	return Variant(val.b);
+}
+static JSValue color_class_set_b(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Color &val = *reinterpret_cast<Color *>(JS_GetOpaque(this_val, Color::__class_id));
+	val.b = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue color_class_get_a(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Color &val = *reinterpret_cast<Color *>(JS_GetOpaque(this_val, Color::__class_id));
+	return Variant(val.a);
+}
+static JSValue color_class_set_a(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Color &val = *reinterpret_cast<Color *>(JS_GetOpaque(this_val, Color::__class_id));
+	val.a = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue color_class_get_r8(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Color::get_r8, ctx, this_val, argc, argv);
+}
+static JSValue color_class_set_r8(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_method_no_ret(&Color::set_r8, ctx, this_val, argc, argv);
+}
+
+static JSValue color_class_get_g8(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Color::get_g8, ctx, this_val, argc, argv);
+}
+static JSValue color_class_set_g8(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_method_no_ret(&Color::set_g8, ctx, this_val, argc, argv);
+}
+
+static JSValue color_class_get_b8(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Color::get_b8, ctx, this_val, argc, argv);
+}
+static JSValue color_class_set_b8(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_method_no_ret(&Color::set_b8, ctx, this_val, argc, argv);
+}
+
+static JSValue color_class_get_a8(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Color::get_a8, ctx, this_val, argc, argv);
+}
+static JSValue color_class_set_a8(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_method_no_ret(&Color::set_a8, ctx, this_val, argc, argv);
+}
+
+static JSValue color_class_get_h(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Color::get_h, ctx, this_val, argc, argv);
+}
+static JSValue color_class_set_h(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_method_no_ret(&Color::set_h, ctx, this_val, argc, argv);
+}
+
+static JSValue color_class_get_s(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Color::get_s, ctx, this_val, argc, argv);
+}
+static JSValue color_class_set_s(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_method_no_ret(&Color::set_s, ctx, this_val, argc, argv);
+}
+
+static JSValue color_class_get_v(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Color::get_v, ctx, this_val, argc, argv);
+}
+static JSValue color_class_set_v(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_method_no_ret(&Color::set_v, ctx, this_val, argc, argv);
+}
+
 static const JSCFunctionListEntry color_class_proto_funcs[] = {
 	JS_CFUNC_DEF("to_argb32", 0, &color_class_to_argb32),
 	JS_CFUNC_DEF("to_abgr32", 0, &color_class_to_abgr32),
@@ -142,6 +231,83 @@ static const JSCFunctionListEntry color_class_static_funcs[] = {
 };
 
 void define_color_property(JSContext *ctx, JSValue obj) {
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "r"),
+			JS_NewCFunction(ctx, color_class_get_r, "get_r", 0),
+			JS_NewCFunction(ctx, color_class_set_r, "set_r", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "g"),
+			JS_NewCFunction(ctx, color_class_get_g, "get_g", 0),
+			JS_NewCFunction(ctx, color_class_set_g, "set_g", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "b"),
+			JS_NewCFunction(ctx, color_class_get_b, "get_b", 0),
+			JS_NewCFunction(ctx, color_class_set_b, "set_b", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "a"),
+			JS_NewCFunction(ctx, color_class_get_a, "get_a", 0),
+			JS_NewCFunction(ctx, color_class_set_a, "set_a", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "r8"),
+			JS_NewCFunction(ctx, color_class_get_r8, "get_r8", 0),
+			JS_NewCFunction(ctx, color_class_set_r8, "set_r8", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "g8"),
+			JS_NewCFunction(ctx, color_class_get_g8, "get_g8", 0),
+			JS_NewCFunction(ctx, color_class_set_g8, "set_g8", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "b8"),
+			JS_NewCFunction(ctx, color_class_get_b8, "get_b8", 0),
+			JS_NewCFunction(ctx, color_class_set_b8, "set_b8", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "a8"),
+			JS_NewCFunction(ctx, color_class_get_a8, "get_a8", 0),
+			JS_NewCFunction(ctx, color_class_set_a8, "set_a8", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "h"),
+			JS_NewCFunction(ctx, color_class_get_h, "get_h", 0),
+			JS_NewCFunction(ctx, color_class_set_h, "set_h", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "s"),
+			JS_NewCFunction(ctx, color_class_get_s, "get_s", 0),
+			JS_NewCFunction(ctx, color_class_set_s, "set_s", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "v"),
+			JS_NewCFunction(ctx, color_class_get_v, "get_v", 0),
+			JS_NewCFunction(ctx, color_class_set_v, "set_v", 1),
+			JS_PROP_GETSET);
 }
 
 static int js_color_class_init(JSContext *ctx) {
@@ -152,7 +318,6 @@ static int js_color_class_init(JSContext *ctx) {
 
 	JSValue proto = JS_NewObject(ctx);
 	JS_SetClassProto(ctx, Color::__class_id, proto);
-
 	define_color_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, color_class_proto_funcs, _countof(color_class_proto_funcs));
 

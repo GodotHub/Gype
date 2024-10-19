@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void ref_counted_class_finalizer(JSRuntime *rt, JSValue val) {
-	RefCounted *ref_counted = static_cast<RefCounted *>(JS_GetOpaque(val, RefCounted::__class_id));
-	if (ref_counted)
-		memdelete(ref_counted);
+	
+	// nothing
 }
 
 static JSClassDef ref_counted_class_def = {

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void physics_material_class_finalizer(JSRuntime *rt, JSValue val) {
-	PhysicsMaterial *physics_material = static_cast<PhysicsMaterial *>(JS_GetOpaque(val, PhysicsMaterial::__class_id));
-	if (physics_material)
-		memdelete(physics_material);
+	
+	// nothing
 }
 
 static JSClassDef physics_material_class_def = {
@@ -81,32 +80,32 @@ void define_physics_material_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "friction"),
         JS_NewCFunction(ctx, physics_material_class_get_friction, "get_friction", 0),
-        JS_NewCFunction(ctx, physics_material_class_set_friction, "set_friction", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_material_class_set_friction, "set_friction", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "rough"),
         JS_NewCFunction(ctx, physics_material_class_is_rough, "is_rough", 0),
-        JS_NewCFunction(ctx, physics_material_class_set_rough, "set_rough", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_material_class_set_rough, "set_rough", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bounce"),
         JS_NewCFunction(ctx, physics_material_class_get_bounce, "get_bounce", 0),
-        JS_NewCFunction(ctx, physics_material_class_set_bounce, "set_bounce", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_material_class_set_bounce, "set_bounce", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "absorbent"),
         JS_NewCFunction(ctx, physics_material_class_is_absorbent, "is_absorbent", 0),
-        JS_NewCFunction(ctx, physics_material_class_set_absorbent, "set_absorbent", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, physics_material_class_set_absorbent, "set_absorbent", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void mutex_class_finalizer(JSRuntime *rt, JSValue val) {
-	Mutex *mutex = static_cast<Mutex *>(JS_GetOpaque(val, Mutex::__class_id));
-	if (mutex)
-		memdelete(mutex);
+	
+	// nothing
 }
 
 static JSClassDef mutex_class_def = {

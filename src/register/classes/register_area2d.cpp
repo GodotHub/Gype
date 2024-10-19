@@ -5,20 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/collision_object2d.hpp>
 #include <godot_cpp/classes/area2d.hpp>
 #include <godot_cpp/classes/area2d.hpp>
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void area2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	Area2D *area2d = static_cast<Area2D *>(JS_GetOpaque(val, Area2D::__class_id));
-	if (area2d)
-		memdelete(area2d);
+	
+	// nothing
 }
 
 static JSClassDef area2d_class_def = {
@@ -207,120 +206,120 @@ void define_area2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "monitoring"),
         JS_NewCFunction(ctx, area2d_class_is_monitoring, "is_monitoring", 0),
-        JS_NewCFunction(ctx, area2d_class_set_monitoring, "set_monitoring", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, area2d_class_set_monitoring, "set_monitoring", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "monitorable"),
         JS_NewCFunction(ctx, area2d_class_is_monitorable, "is_monitorable", 0),
-        JS_NewCFunction(ctx, area2d_class_set_monitorable, "set_monitorable", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, area2d_class_set_monitorable, "set_monitorable", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "priority"),
         JS_NewCFunction(ctx, area2d_class_get_priority, "get_priority", 0),
-        JS_NewCFunction(ctx, area2d_class_set_priority, "set_priority", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, area2d_class_set_priority, "set_priority", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gravity_space_override"),
         JS_NewCFunction(ctx, area2d_class_get_gravity_space_override_mode, "get_gravity_space_override_mode", 0),
-        JS_NewCFunction(ctx, area2d_class_set_gravity_space_override_mode, "set_gravity_space_override_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, area2d_class_set_gravity_space_override_mode, "set_gravity_space_override_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gravity_point"),
         JS_NewCFunction(ctx, area2d_class_is_gravity_a_point, "is_gravity_a_point", 0),
-        JS_NewCFunction(ctx, area2d_class_set_gravity_is_point, "set_gravity_is_point", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, area2d_class_set_gravity_is_point, "set_gravity_is_point", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gravity_point_unit_distance"),
         JS_NewCFunction(ctx, area2d_class_get_gravity_point_unit_distance, "get_gravity_point_unit_distance", 0),
-        JS_NewCFunction(ctx, area2d_class_set_gravity_point_unit_distance, "set_gravity_point_unit_distance", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, area2d_class_set_gravity_point_unit_distance, "set_gravity_point_unit_distance", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gravity_point_center"),
         JS_NewCFunction(ctx, area2d_class_get_gravity_point_center, "get_gravity_point_center", 0),
-        JS_NewCFunction(ctx, area2d_class_set_gravity_point_center, "set_gravity_point_center", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, area2d_class_set_gravity_point_center, "set_gravity_point_center", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gravity_direction"),
         JS_NewCFunction(ctx, area2d_class_get_gravity_direction, "get_gravity_direction", 0),
-        JS_NewCFunction(ctx, area2d_class_set_gravity_direction, "set_gravity_direction", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, area2d_class_set_gravity_direction, "set_gravity_direction", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "gravity"),
         JS_NewCFunction(ctx, area2d_class_get_gravity, "get_gravity", 0),
-        JS_NewCFunction(ctx, area2d_class_set_gravity, "set_gravity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, area2d_class_set_gravity, "set_gravity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "linear_damp_space_override"),
         JS_NewCFunction(ctx, area2d_class_get_linear_damp_space_override_mode, "get_linear_damp_space_override_mode", 0),
-        JS_NewCFunction(ctx, area2d_class_set_linear_damp_space_override_mode, "set_linear_damp_space_override_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, area2d_class_set_linear_damp_space_override_mode, "set_linear_damp_space_override_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "linear_damp"),
         JS_NewCFunction(ctx, area2d_class_get_linear_damp, "get_linear_damp", 0),
-        JS_NewCFunction(ctx, area2d_class_set_linear_damp, "set_linear_damp", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, area2d_class_set_linear_damp, "set_linear_damp", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angular_damp_space_override"),
         JS_NewCFunction(ctx, area2d_class_get_angular_damp_space_override_mode, "get_angular_damp_space_override_mode", 0),
-        JS_NewCFunction(ctx, area2d_class_set_angular_damp_space_override_mode, "set_angular_damp_space_override_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, area2d_class_set_angular_damp_space_override_mode, "set_angular_damp_space_override_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angular_damp"),
         JS_NewCFunction(ctx, area2d_class_get_angular_damp, "get_angular_damp", 0),
-        JS_NewCFunction(ctx, area2d_class_set_angular_damp, "set_angular_damp", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, area2d_class_set_angular_damp, "set_angular_damp", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "audio_bus_override"),
         JS_NewCFunction(ctx, area2d_class_is_overriding_audio_bus, "is_overriding_audio_bus", 0),
-        JS_NewCFunction(ctx, area2d_class_set_audio_bus_override, "set_audio_bus_override", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, area2d_class_set_audio_bus_override, "set_audio_bus_override", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "audio_bus_name"),
         JS_NewCFunction(ctx, area2d_class_get_audio_bus_name, "get_audio_bus_name", 0),
-        JS_NewCFunction(ctx, area2d_class_set_audio_bus_name, "set_audio_bus_name", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, area2d_class_set_audio_bus_name, "set_audio_bus_name", 1),
+        JS_PROP_GETSET
     );
 }
 

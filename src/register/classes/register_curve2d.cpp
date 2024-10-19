@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void curve2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	Curve2D *curve2d = static_cast<Curve2D *>(JS_GetOpaque(val, Curve2D::__class_id));
-	if (curve2d)
-		memdelete(curve2d);
+	
+	// nothing
 }
 
 static JSClassDef curve2d_class_def = {
@@ -145,16 +144,16 @@ void define_curve2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "bake_interval"),
         JS_NewCFunction(ctx, curve2d_class_get_bake_interval, "get_bake_interval", 0),
-        JS_NewCFunction(ctx, curve2d_class_set_bake_interval, "set_bake_interval", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, curve2d_class_set_bake_interval, "set_bake_interval", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "point_count"),
         JS_NewCFunction(ctx, curve2d_class_get_point_count, "get_point_count", 0),
-        JS_NewCFunction(ctx, curve2d_class_set_point_count, "set_point_count", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, curve2d_class_set_point_count, "set_point_count", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/box_occluder3d.hpp>
 #include <godot_cpp/classes/occluder3d.hpp>
+#include <godot_cpp/classes/box_occluder3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void box_occluder3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	BoxOccluder3D *box_occluder3d = static_cast<BoxOccluder3D *>(JS_GetOpaque(val, BoxOccluder3D::__class_id));
-	if (box_occluder3d)
-		memdelete(box_occluder3d);
+	
+	// nothing
 }
 
 static JSClassDef box_occluder3d_class_def = {
@@ -54,8 +53,8 @@ void define_box_occluder3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, box_occluder3d_class_get_size, "get_size", 0),
-        JS_NewCFunction(ctx, box_occluder3d_class_set_size, "set_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, box_occluder3d_class_set_size, "set_size", 1),
+        JS_PROP_GETSET
     );
 }
 

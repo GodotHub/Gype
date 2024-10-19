@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void xr_body_tracker_class_finalizer(JSRuntime *rt, JSValue val) {
-	XRBodyTracker *xr_body_tracker = static_cast<XRBodyTracker *>(JS_GetOpaque(val, XRBodyTracker::__class_id));
-	if (xr_body_tracker)
-		memdelete(xr_body_tracker);
+	
+	// nothing
 }
 
 static JSClassDef xr_body_tracker_class_def = {
@@ -81,16 +80,16 @@ void define_xr_body_tracker_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "has_tracking_data"),
         JS_NewCFunction(ctx, xr_body_tracker_class_get_has_tracking_data, "get_has_tracking_data", 0),
-        JS_NewCFunction(ctx, xr_body_tracker_class_set_has_tracking_data, "set_has_tracking_data", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_body_tracker_class_set_has_tracking_data, "set_has_tracking_data", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "body_flags"),
         JS_NewCFunction(ctx, xr_body_tracker_class_get_body_flags, "get_body_flags", 0),
-        JS_NewCFunction(ctx, xr_body_tracker_class_set_body_flags, "set_body_flags", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, xr_body_tracker_class_set_body_flags, "set_body_flags", 1),
+        JS_PROP_GETSET
     );
 }
 

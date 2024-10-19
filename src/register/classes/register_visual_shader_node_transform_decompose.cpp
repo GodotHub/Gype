@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_transform_decompose_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeTransformDecompose *visual_shader_node_transform_decompose = static_cast<VisualShaderNodeTransformDecompose *>(JS_GetOpaque(val, VisualShaderNodeTransformDecompose::__class_id));
-	if (visual_shader_node_transform_decompose)
-		memdelete(visual_shader_node_transform_decompose);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_transform_decompose_class_def = {

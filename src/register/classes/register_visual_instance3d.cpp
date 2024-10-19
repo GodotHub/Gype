@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_instance3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualInstance3D *visual_instance3d = static_cast<VisualInstance3D *>(JS_GetOpaque(val, VisualInstance3D::__class_id));
-	if (visual_instance3d)
-		memdelete(visual_instance3d);
+	
+	// nothing
 }
 
 static JSClassDef visual_instance3d_class_def = {
@@ -98,24 +97,24 @@ void define_visual_instance3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "layers"),
         JS_NewCFunction(ctx, visual_instance3d_class_get_layer_mask, "get_layer_mask", 0),
-        JS_NewCFunction(ctx, visual_instance3d_class_set_layer_mask, "set_layer_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_instance3d_class_set_layer_mask, "set_layer_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sorting_offset"),
         JS_NewCFunction(ctx, visual_instance3d_class_get_sorting_offset, "get_sorting_offset", 0),
-        JS_NewCFunction(ctx, visual_instance3d_class_set_sorting_offset, "set_sorting_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_instance3d_class_set_sorting_offset, "set_sorting_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sorting_use_aabb_center"),
         JS_NewCFunction(ctx, visual_instance3d_class_is_sorting_use_aabb_center, "is_sorting_use_aabb_center", 0),
-        JS_NewCFunction(ctx, visual_instance3d_class_set_sorting_use_aabb_center, "set_sorting_use_aabb_center", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_instance3d_class_set_sorting_use_aabb_center, "set_sorting_use_aabb_center", 1),
+        JS_PROP_GETSET
     );
 }
 

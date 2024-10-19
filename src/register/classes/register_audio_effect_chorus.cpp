@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/classes/audio_effect_chorus.hpp>
+#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void audio_effect_chorus_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioEffectChorus *audio_effect_chorus = static_cast<AudioEffectChorus *>(JS_GetOpaque(val, AudioEffectChorus::__class_id));
-	if (audio_effect_chorus)
-		memdelete(audio_effect_chorus);
+	
+	// nothing
 }
 
 static JSClassDef audio_effect_chorus_class_def = {
@@ -126,24 +125,24 @@ void define_audio_effect_chorus_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "voice_count"),
         JS_NewCFunction(ctx, audio_effect_chorus_class_get_voice_count, "get_voice_count", 0),
-        JS_NewCFunction(ctx, audio_effect_chorus_class_set_voice_count, "set_voice_count", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_chorus_class_set_voice_count, "set_voice_count", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "dry"),
         JS_NewCFunction(ctx, audio_effect_chorus_class_get_dry, "get_dry", 0),
-        JS_NewCFunction(ctx, audio_effect_chorus_class_set_dry, "set_dry", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_chorus_class_set_dry, "set_dry", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "wet"),
         JS_NewCFunction(ctx, audio_effect_chorus_class_get_wet, "get_wet", 0),
-        JS_NewCFunction(ctx, audio_effect_chorus_class_set_wet, "set_wet", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_chorus_class_set_wet, "set_wet", 1),
+        JS_PROP_GETSET
     );
 }
 

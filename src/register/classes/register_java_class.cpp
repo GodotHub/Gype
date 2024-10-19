@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/java_class.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void java_class_class_finalizer(JSRuntime *rt, JSValue val) {
-	JavaClass *java_class = static_cast<JavaClass *>(JS_GetOpaque(val, JavaClass::__class_id));
-	if (java_class)
-		memdelete(java_class);
+	
+	// nothing
 }
 
 static JSClassDef java_class_class_def = {

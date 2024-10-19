@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
-#include <godot_cpp/classes/visual_shader_node_cubemap.hpp>
 #include <godot_cpp/classes/cubemap.hpp>
+#include <godot_cpp/classes/visual_shader_node_cubemap.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visual_shader_node_cubemap_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeCubemap *visual_shader_node_cubemap = static_cast<VisualShaderNodeCubemap *>(JS_GetOpaque(val, VisualShaderNodeCubemap::__class_id));
-	if (visual_shader_node_cubemap)
-		memdelete(visual_shader_node_cubemap);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_cubemap_class_def = {
@@ -73,24 +72,24 @@ void define_visual_shader_node_cubemap_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "source"),
         JS_NewCFunction(ctx, visual_shader_node_cubemap_class_get_source, "get_source", 0),
-        JS_NewCFunction(ctx, visual_shader_node_cubemap_class_set_source, "set_source", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_cubemap_class_set_source, "set_source", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cube_map"),
         JS_NewCFunction(ctx, visual_shader_node_cubemap_class_get_cube_map, "get_cube_map", 0),
-        JS_NewCFunction(ctx, visual_shader_node_cubemap_class_set_cube_map, "set_cube_map", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_cubemap_class_set_cube_map, "set_cube_map", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_type"),
         JS_NewCFunction(ctx, visual_shader_node_cubemap_class_get_texture_type, "get_texture_type", 0),
-        JS_NewCFunction(ctx, visual_shader_node_cubemap_class_set_texture_type, "set_texture_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_cubemap_class_set_texture_type, "set_texture_type", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void capsule_shape2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	CapsuleShape2D *capsule_shape2d = static_cast<CapsuleShape2D *>(JS_GetOpaque(val, CapsuleShape2D::__class_id));
-	if (capsule_shape2d)
-		memdelete(capsule_shape2d);
+	
+	// nothing
 }
 
 static JSClassDef capsule_shape2d_class_def = {
@@ -63,16 +62,16 @@ void define_capsule_shape2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "radius"),
         JS_NewCFunction(ctx, capsule_shape2d_class_get_radius, "get_radius", 0),
-        JS_NewCFunction(ctx, capsule_shape2d_class_set_radius, "set_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, capsule_shape2d_class_set_radius, "set_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "height"),
         JS_NewCFunction(ctx, capsule_shape2d_class_get_height, "get_height", 0),
-        JS_NewCFunction(ctx, capsule_shape2d_class_set_height, "set_height", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, capsule_shape2d_class_set_height, "set_height", 1),
+        JS_PROP_GETSET
     );
 }
 

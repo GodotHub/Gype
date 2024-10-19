@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event_screen_drag.hpp>
 #include <godot_cpp/classes/input_event_from_window.hpp>
+#include <godot_cpp/classes/input_event_screen_drag.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void input_event_screen_drag_class_finalizer(JSRuntime *rt, JSValue val) {
-	InputEventScreenDrag *input_event_screen_drag = static_cast<InputEventScreenDrag *>(JS_GetOpaque(val, InputEventScreenDrag::__class_id));
-	if (input_event_screen_drag)
-		memdelete(input_event_screen_drag);
+	
+	// nothing
 }
 
 static JSClassDef input_event_screen_drag_class_def = {
@@ -126,72 +125,72 @@ void define_input_event_screen_drag_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "index"),
         JS_NewCFunction(ctx, input_event_screen_drag_class_get_index, "get_index", 0),
-        JS_NewCFunction(ctx, input_event_screen_drag_class_set_index, "set_index", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_screen_drag_class_set_index, "set_index", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tilt"),
         JS_NewCFunction(ctx, input_event_screen_drag_class_get_tilt, "get_tilt", 0),
-        JS_NewCFunction(ctx, input_event_screen_drag_class_set_tilt, "set_tilt", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_screen_drag_class_set_tilt, "set_tilt", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "pressure"),
         JS_NewCFunction(ctx, input_event_screen_drag_class_get_pressure, "get_pressure", 0),
-        JS_NewCFunction(ctx, input_event_screen_drag_class_set_pressure, "set_pressure", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_screen_drag_class_set_pressure, "set_pressure", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "pen_inverted"),
         JS_NewCFunction(ctx, input_event_screen_drag_class_get_pen_inverted, "get_pen_inverted", 0),
-        JS_NewCFunction(ctx, input_event_screen_drag_class_set_pen_inverted, "set_pen_inverted", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_screen_drag_class_set_pen_inverted, "set_pen_inverted", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "position"),
         JS_NewCFunction(ctx, input_event_screen_drag_class_get_position, "get_position", 0),
-        JS_NewCFunction(ctx, input_event_screen_drag_class_set_position, "set_position", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_screen_drag_class_set_position, "set_position", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "relative"),
         JS_NewCFunction(ctx, input_event_screen_drag_class_get_relative, "get_relative", 0),
-        JS_NewCFunction(ctx, input_event_screen_drag_class_set_relative, "set_relative", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_screen_drag_class_set_relative, "set_relative", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "screen_relative"),
         JS_NewCFunction(ctx, input_event_screen_drag_class_get_screen_relative, "get_screen_relative", 0),
-        JS_NewCFunction(ctx, input_event_screen_drag_class_set_screen_relative, "set_screen_relative", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_screen_drag_class_set_screen_relative, "set_screen_relative", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "velocity"),
         JS_NewCFunction(ctx, input_event_screen_drag_class_get_velocity, "get_velocity", 0),
-        JS_NewCFunction(ctx, input_event_screen_drag_class_set_velocity, "set_velocity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_screen_drag_class_set_velocity, "set_velocity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "screen_velocity"),
         JS_NewCFunction(ctx, input_event_screen_drag_class_get_screen_velocity, "get_screen_velocity", 0),
-        JS_NewCFunction(ctx, input_event_screen_drag_class_set_screen_velocity, "set_screen_velocity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_screen_drag_class_set_screen_velocity, "set_screen_velocity", 1),
+        JS_PROP_GETSET
     );
 }
 

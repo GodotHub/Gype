@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_particle_sphere_emitter_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeParticleSphereEmitter *visual_shader_node_particle_sphere_emitter = static_cast<VisualShaderNodeParticleSphereEmitter *>(JS_GetOpaque(val, VisualShaderNodeParticleSphereEmitter::__class_id));
-	if (visual_shader_node_particle_sphere_emitter)
-		memdelete(visual_shader_node_particle_sphere_emitter);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_particle_sphere_emitter_class_def = {

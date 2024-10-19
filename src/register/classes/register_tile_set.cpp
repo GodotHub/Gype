@@ -5,20 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/tile_set.hpp>
 #include <godot_cpp/classes/tile_set_source.hpp>
-#include <godot_cpp/classes/physics_material.hpp>
+#include <godot_cpp/classes/tile_set.hpp>
 #include <godot_cpp/classes/tile_map_pattern.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/physics_material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void tile_set_class_finalizer(JSRuntime *rt, JSValue val) {
-	TileSet *tile_set = static_cast<TileSet *>(JS_GetOpaque(val, TileSet::__class_id));
-	if (tile_set)
-		memdelete(tile_set);
+	
+	// nothing
 }
 
 static JSClassDef tile_set_class_def = {
@@ -438,40 +437,40 @@ void define_tile_set_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "tile_shape"),
         JS_NewCFunction(ctx, tile_set_class_get_tile_shape, "get_tile_shape", 0),
-        JS_NewCFunction(ctx, tile_set_class_set_tile_shape, "set_tile_shape", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_set_class_set_tile_shape, "set_tile_shape", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tile_layout"),
         JS_NewCFunction(ctx, tile_set_class_get_tile_layout, "get_tile_layout", 0),
-        JS_NewCFunction(ctx, tile_set_class_set_tile_layout, "set_tile_layout", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_set_class_set_tile_layout, "set_tile_layout", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tile_offset_axis"),
         JS_NewCFunction(ctx, tile_set_class_get_tile_offset_axis, "get_tile_offset_axis", 0),
-        JS_NewCFunction(ctx, tile_set_class_set_tile_offset_axis, "set_tile_offset_axis", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_set_class_set_tile_offset_axis, "set_tile_offset_axis", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tile_size"),
         JS_NewCFunction(ctx, tile_set_class_get_tile_size, "get_tile_size", 0),
-        JS_NewCFunction(ctx, tile_set_class_set_tile_size, "set_tile_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_set_class_set_tile_size, "set_tile_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "uv_clipping"),
         JS_NewCFunction(ctx, tile_set_class_is_uv_clipping, "is_uv_clipping", 0),
-        JS_NewCFunction(ctx, tile_set_class_set_uv_clipping, "set_uv_clipping", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, tile_set_class_set_uv_clipping, "set_uv_clipping", 1),
+        JS_PROP_GETSET
     );
 }
 

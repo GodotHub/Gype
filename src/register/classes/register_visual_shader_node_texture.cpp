@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_texture.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void visual_shader_node_texture_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeTexture *visual_shader_node_texture = static_cast<VisualShaderNodeTexture *>(JS_GetOpaque(val, VisualShaderNodeTexture::__class_id));
-	if (visual_shader_node_texture)
-		memdelete(visual_shader_node_texture);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_texture_class_def = {
@@ -73,24 +72,24 @@ void define_visual_shader_node_texture_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "source"),
         JS_NewCFunction(ctx, visual_shader_node_texture_class_get_source, "get_source", 0),
-        JS_NewCFunction(ctx, visual_shader_node_texture_class_set_source, "set_source", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_texture_class_set_source, "set_source", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture"),
         JS_NewCFunction(ctx, visual_shader_node_texture_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, visual_shader_node_texture_class_set_texture, "set_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_texture_class_set_texture, "set_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_type"),
         JS_NewCFunction(ctx, visual_shader_node_texture_class_get_texture_type, "get_texture_type", 0),
-        JS_NewCFunction(ctx, visual_shader_node_texture_class_set_texture_type, "set_texture_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_texture_class_set_texture_type, "set_texture_type", 1),
+        JS_PROP_GETSET
     );
 }
 

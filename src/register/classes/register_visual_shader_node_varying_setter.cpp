@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_varying.hpp>
 #include <godot_cpp/classes/visual_shader_node_varying_setter.hpp>
+#include <godot_cpp/classes/visual_shader_node_varying.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visual_shader_node_varying_setter_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeVaryingSetter *visual_shader_node_varying_setter = static_cast<VisualShaderNodeVaryingSetter *>(JS_GetOpaque(val, VisualShaderNodeVaryingSetter::__class_id));
-	if (visual_shader_node_varying_setter)
-		memdelete(visual_shader_node_varying_setter);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_varying_setter_class_def = {

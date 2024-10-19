@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/config_file.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/config_file.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void config_file_class_finalizer(JSRuntime *rt, JSValue val) {
-	ConfigFile *config_file = static_cast<ConfigFile *>(JS_GetOpaque(val, ConfigFile::__class_id));
-	if (config_file)
-		memdelete(config_file);
+	
+	// nothing
 }
 
 static JSClassDef config_file_class_def = {

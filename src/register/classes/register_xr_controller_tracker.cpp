@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void xr_controller_tracker_class_finalizer(JSRuntime *rt, JSValue val) {
-	XRControllerTracker *xr_controller_tracker = static_cast<XRControllerTracker *>(JS_GetOpaque(val, XRControllerTracker::__class_id));
-	if (xr_controller_tracker)
-		memdelete(xr_controller_tracker);
+	
+	// nothing
 }
 
 static JSClassDef xr_controller_tracker_class_def = {

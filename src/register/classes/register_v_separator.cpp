@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void v_separator_class_finalizer(JSRuntime *rt, JSValue val) {
-	VSeparator *v_separator = static_cast<VSeparator *>(JS_GetOpaque(val, VSeparator::__class_id));
-	if (v_separator)
-		memdelete(v_separator);
+	
+	// nothing
 }
 
 static JSClassDef v_separator_class_def = {

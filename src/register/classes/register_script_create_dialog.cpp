@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void script_create_dialog_class_finalizer(JSRuntime *rt, JSValue val) {
-	ScriptCreateDialog *script_create_dialog = static_cast<ScriptCreateDialog *>(JS_GetOpaque(val, ScriptCreateDialog::__class_id));
-	if (script_create_dialog)
-		memdelete(script_create_dialog);
+	
+	// nothing
 }
 
 static JSClassDef script_create_dialog_class_def = {

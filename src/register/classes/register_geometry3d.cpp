@@ -16,9 +16,8 @@ static JSValue geometry3d_instance;
 static void js_geometry3d_singleton();
 
 static void geometry3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	Geometry3D *geometry3d = static_cast<Geometry3D *>(JS_GetOpaque(val, Geometry3D::__class_id));
-	if (geometry3d)
-		Geometry3D::free(nullptr, geometry3d);
+	
+	// nothing
 }
 
 static JSClassDef geometry3d_class_def = {

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void xr_camera3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	XRCamera3D *xr_camera3d = static_cast<XRCamera3D *>(JS_GetOpaque(val, XRCamera3D::__class_id));
-	if (xr_camera3d)
-		memdelete(xr_camera3d);
+	
+	// nothing
 }
 
 static JSClassDef xr_camera3d_class_def = {

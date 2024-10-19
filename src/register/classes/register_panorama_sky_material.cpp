@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/panorama_sky_material.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void panorama_sky_material_class_finalizer(JSRuntime *rt, JSValue val) {
-	PanoramaSkyMaterial *panorama_sky_material = static_cast<PanoramaSkyMaterial *>(JS_GetOpaque(val, PanoramaSkyMaterial::__class_id));
-	if (panorama_sky_material)
-		memdelete(panorama_sky_material);
+	
+	// nothing
 }
 
 static JSClassDef panorama_sky_material_class_def = {
@@ -73,24 +72,24 @@ void define_panorama_sky_material_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "panorama"),
         JS_NewCFunction(ctx, panorama_sky_material_class_get_panorama, "get_panorama", 0),
-        JS_NewCFunction(ctx, panorama_sky_material_class_set_panorama, "set_panorama", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, panorama_sky_material_class_set_panorama, "set_panorama", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "filter"),
         JS_NewCFunction(ctx, panorama_sky_material_class_is_filtering_enabled, "is_filtering_enabled", 0),
-        JS_NewCFunction(ctx, panorama_sky_material_class_set_filtering_enabled, "set_filtering_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, panorama_sky_material_class_set_filtering_enabled, "set_filtering_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "energy_multiplier"),
         JS_NewCFunction(ctx, panorama_sky_material_class_get_energy_multiplier, "get_energy_multiplier", 0),
-        JS_NewCFunction(ctx, panorama_sky_material_class_set_energy_multiplier, "set_energy_multiplier", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, panorama_sky_material_class_set_energy_multiplier, "set_energy_multiplier", 1),
+        JS_PROP_GETSET
     );
 }
 

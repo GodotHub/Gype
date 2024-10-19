@@ -6,25 +6,24 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/tween.hpp>
 #include <godot_cpp/classes/multiplayer_api.hpp>
-#include <godot_cpp/classes/window.hpp>
+#include <godot_cpp/classes/main_loop.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/scene_tree.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/scene_tree_timer.hpp>
 #include <godot_cpp/classes/tween.hpp>
 #include <godot_cpp/classes/packed_scene.hpp>
-#include <godot_cpp/classes/tween.hpp>
-#include <godot_cpp/classes/main_loop.hpp>
-#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/window.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void scene_tree_class_finalizer(JSRuntime *rt, JSValue val) {
-	SceneTree *scene_tree = static_cast<SceneTree *>(JS_GetOpaque(val, SceneTree::__class_id));
-	if (scene_tree)
-		memdelete(scene_tree);
+	
+	// nothing
 }
 
 static JSClassDef scene_tree_class_def = {
@@ -250,64 +249,64 @@ void define_scene_tree_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "auto_accept_quit"),
         JS_NewCFunction(ctx, scene_tree_class_is_auto_accept_quit, "is_auto_accept_quit", 0),
-        JS_NewCFunction(ctx, scene_tree_class_set_auto_accept_quit, "set_auto_accept_quit", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scene_tree_class_set_auto_accept_quit, "set_auto_accept_quit", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "quit_on_go_back"),
         JS_NewCFunction(ctx, scene_tree_class_is_quit_on_go_back, "is_quit_on_go_back", 0),
-        JS_NewCFunction(ctx, scene_tree_class_set_quit_on_go_back, "set_quit_on_go_back", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scene_tree_class_set_quit_on_go_back, "set_quit_on_go_back", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "debug_collisions_hint"),
         JS_NewCFunction(ctx, scene_tree_class_is_debugging_collisions_hint, "is_debugging_collisions_hint", 0),
-        JS_NewCFunction(ctx, scene_tree_class_set_debug_collisions_hint, "set_debug_collisions_hint", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scene_tree_class_set_debug_collisions_hint, "set_debug_collisions_hint", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "debug_paths_hint"),
         JS_NewCFunction(ctx, scene_tree_class_is_debugging_paths_hint, "is_debugging_paths_hint", 0),
-        JS_NewCFunction(ctx, scene_tree_class_set_debug_paths_hint, "set_debug_paths_hint", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scene_tree_class_set_debug_paths_hint, "set_debug_paths_hint", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "debug_navigation_hint"),
         JS_NewCFunction(ctx, scene_tree_class_is_debugging_navigation_hint, "is_debugging_navigation_hint", 0),
-        JS_NewCFunction(ctx, scene_tree_class_set_debug_navigation_hint, "set_debug_navigation_hint", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scene_tree_class_set_debug_navigation_hint, "set_debug_navigation_hint", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "paused"),
         JS_NewCFunction(ctx, scene_tree_class_is_paused, "is_paused", 0),
-        JS_NewCFunction(ctx, scene_tree_class_set_pause, "set_pause", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scene_tree_class_set_pause, "set_pause", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "edited_scene_root"),
         JS_NewCFunction(ctx, scene_tree_class_get_edited_scene_root, "get_edited_scene_root", 0),
-        JS_NewCFunction(ctx, scene_tree_class_set_edited_scene_root, "set_edited_scene_root", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scene_tree_class_set_edited_scene_root, "set_edited_scene_root", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "current_scene"),
         JS_NewCFunction(ctx, scene_tree_class_get_current_scene, "get_current_scene", 0),
-        JS_NewCFunction(ctx, scene_tree_class_set_current_scene, "set_current_scene", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scene_tree_class_set_current_scene, "set_current_scene", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -315,23 +314,23 @@ void define_scene_tree_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "root"),
         JS_NewCFunction(ctx, scene_tree_class_get_root, "get_root", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "multiplayer_poll"),
         JS_NewCFunction(ctx, scene_tree_class_is_multiplayer_poll_enabled, "is_multiplayer_poll_enabled", 0),
-        JS_NewCFunction(ctx, scene_tree_class_set_multiplayer_poll_enabled, "set_multiplayer_poll_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scene_tree_class_set_multiplayer_poll_enabled, "set_multiplayer_poll_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "physics_interpolation"),
         JS_NewCFunction(ctx, scene_tree_class_is_physics_interpolation_enabled, "is_physics_interpolation_enabled", 0),
-        JS_NewCFunction(ctx, scene_tree_class_set_physics_interpolation_enabled, "set_physics_interpolation_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, scene_tree_class_set_physics_interpolation_enabled, "set_physics_interpolation_enabled", 1),
+        JS_PROP_GETSET
     );
 }
 

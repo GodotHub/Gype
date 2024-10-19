@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/primitive_mesh.hpp>
 #include <godot_cpp/classes/cylinder_mesh.hpp>
+#include <godot_cpp/classes/primitive_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void cylinder_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	CylinderMesh *cylinder_mesh = static_cast<CylinderMesh *>(JS_GetOpaque(val, CylinderMesh::__class_id));
-	if (cylinder_mesh)
-		memdelete(cylinder_mesh);
+	
+	// nothing
 }
 
 static JSClassDef cylinder_mesh_class_def = {
@@ -108,56 +107,56 @@ void define_cylinder_mesh_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "top_radius"),
         JS_NewCFunction(ctx, cylinder_mesh_class_get_top_radius, "get_top_radius", 0),
-        JS_NewCFunction(ctx, cylinder_mesh_class_set_top_radius, "set_top_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cylinder_mesh_class_set_top_radius, "set_top_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bottom_radius"),
         JS_NewCFunction(ctx, cylinder_mesh_class_get_bottom_radius, "get_bottom_radius", 0),
-        JS_NewCFunction(ctx, cylinder_mesh_class_set_bottom_radius, "set_bottom_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cylinder_mesh_class_set_bottom_radius, "set_bottom_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "height"),
         JS_NewCFunction(ctx, cylinder_mesh_class_get_height, "get_height", 0),
-        JS_NewCFunction(ctx, cylinder_mesh_class_set_height, "set_height", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cylinder_mesh_class_set_height, "set_height", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "radial_segments"),
         JS_NewCFunction(ctx, cylinder_mesh_class_get_radial_segments, "get_radial_segments", 0),
-        JS_NewCFunction(ctx, cylinder_mesh_class_set_radial_segments, "set_radial_segments", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cylinder_mesh_class_set_radial_segments, "set_radial_segments", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "rings"),
         JS_NewCFunction(ctx, cylinder_mesh_class_get_rings, "get_rings", 0),
-        JS_NewCFunction(ctx, cylinder_mesh_class_set_rings, "set_rings", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cylinder_mesh_class_set_rings, "set_rings", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cap_top"),
         JS_NewCFunction(ctx, cylinder_mesh_class_is_cap_top, "is_cap_top", 0),
-        JS_NewCFunction(ctx, cylinder_mesh_class_set_cap_top, "set_cap_top", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cylinder_mesh_class_set_cap_top, "set_cap_top", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cap_bottom"),
         JS_NewCFunction(ctx, cylinder_mesh_class_is_cap_bottom, "is_cap_bottom", 0),
-        JS_NewCFunction(ctx, cylinder_mesh_class_set_cap_bottom, "set_cap_bottom", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, cylinder_mesh_class_set_cap_bottom, "set_cap_bottom", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton_modification2dfabrik.hpp>
 #include <godot_cpp/classes/skeleton_modification2d.hpp>
+#include <godot_cpp/classes/skeleton_modification2dfabrik.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void skeleton_modification2dfabrik_class_finalizer(JSRuntime *rt, JSValue val) {
-	SkeletonModification2DFABRIK *skeleton_modification2dfabrik = static_cast<SkeletonModification2DFABRIK *>(JS_GetOpaque(val, SkeletonModification2DFABRIK::__class_id));
-	if (skeleton_modification2dfabrik)
-		memdelete(skeleton_modification2dfabrik);
+	
+	// nothing
 }
 
 static JSClassDef skeleton_modification2dfabrik_class_def = {
@@ -99,16 +98,16 @@ void define_skeleton_modification2dfabrik_property(JSContext *ctx, JSValue obj) 
         obj,
         JS_NewAtom(ctx, "target_nodepath"),
         JS_NewCFunction(ctx, skeleton_modification2dfabrik_class_get_target_node, "get_target_node", 0),
-        JS_NewCFunction(ctx, skeleton_modification2dfabrik_class_set_target_node, "set_target_node", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_modification2dfabrik_class_set_target_node, "set_target_node", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fabrik_data_chain_length"),
         JS_NewCFunction(ctx, skeleton_modification2dfabrik_class_get_fabrik_data_chain_length, "get_fabrik_data_chain_length", 0),
-        JS_NewCFunction(ctx, skeleton_modification2dfabrik_class_set_fabrik_data_chain_length, "set_fabrik_data_chain_length", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, skeleton_modification2dfabrik_class_set_fabrik_data_chain_length, "set_fabrik_data_chain_length", 1),
+        JS_PROP_GETSET
     );
 }
 

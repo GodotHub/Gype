@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/display_server.hpp>
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
@@ -19,9 +19,8 @@ static JSValue display_server_instance;
 static void js_display_server_singleton();
 
 static void display_server_class_finalizer(JSRuntime *rt, JSValue val) {
-	DisplayServer *display_server = static_cast<DisplayServer *>(JS_GetOpaque(val, DisplayServer::__class_id));
-	if (display_server)
-		DisplayServer::free(nullptr, display_server);
+	
+	// nothing
 }
 
 static JSClassDef display_server_class_def = {

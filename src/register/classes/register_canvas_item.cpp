@@ -5,26 +5,25 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/canvas_layer.hpp>
 #include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/multi_mesh.hpp>
 #include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/canvas_item.hpp>
 #include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/world2d.hpp>
-#include <godot_cpp/classes/input_event.hpp>
-#include <godot_cpp/classes/canvas_item.hpp>
+#include <godot_cpp/classes/canvas_layer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void canvas_item_class_finalizer(JSRuntime *rt, JSValue val) {
-	CanvasItem *canvas_item = static_cast<CanvasItem *>(JS_GetOpaque(val, CanvasItem::__class_id));
-	if (canvas_item)
-		memdelete(canvas_item);
+	
+	// nothing
 }
 
 static JSClassDef canvas_item_class_def = {
@@ -455,120 +454,120 @@ void define_canvas_item_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "visible"),
         JS_NewCFunction(ctx, canvas_item_class_is_visible, "is_visible", 0),
-        JS_NewCFunction(ctx, canvas_item_class_set_visible, "set_visible", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_item_class_set_visible, "set_visible", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "modulate"),
         JS_NewCFunction(ctx, canvas_item_class_get_modulate, "get_modulate", 0),
-        JS_NewCFunction(ctx, canvas_item_class_set_modulate, "set_modulate", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_item_class_set_modulate, "set_modulate", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "self_modulate"),
         JS_NewCFunction(ctx, canvas_item_class_get_self_modulate, "get_self_modulate", 0),
-        JS_NewCFunction(ctx, canvas_item_class_set_self_modulate, "set_self_modulate", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_item_class_set_self_modulate, "set_self_modulate", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "show_behind_parent"),
         JS_NewCFunction(ctx, canvas_item_class_is_draw_behind_parent_enabled, "is_draw_behind_parent_enabled", 0),
-        JS_NewCFunction(ctx, canvas_item_class_set_draw_behind_parent, "set_draw_behind_parent", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_item_class_set_draw_behind_parent, "set_draw_behind_parent", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "top_level"),
         JS_NewCFunction(ctx, canvas_item_class_is_set_as_top_level, "is_set_as_top_level", 0),
-        JS_NewCFunction(ctx, canvas_item_class_set_as_top_level, "set_as_top_level", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_item_class_set_as_top_level, "set_as_top_level", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "clip_children"),
         JS_NewCFunction(ctx, canvas_item_class_get_clip_children_mode, "get_clip_children_mode", 0),
-        JS_NewCFunction(ctx, canvas_item_class_set_clip_children_mode, "set_clip_children_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_item_class_set_clip_children_mode, "set_clip_children_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "light_mask"),
         JS_NewCFunction(ctx, canvas_item_class_get_light_mask, "get_light_mask", 0),
-        JS_NewCFunction(ctx, canvas_item_class_set_light_mask, "set_light_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_item_class_set_light_mask, "set_light_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visibility_layer"),
         JS_NewCFunction(ctx, canvas_item_class_get_visibility_layer, "get_visibility_layer", 0),
-        JS_NewCFunction(ctx, canvas_item_class_set_visibility_layer, "set_visibility_layer", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_item_class_set_visibility_layer, "set_visibility_layer", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "z_index"),
         JS_NewCFunction(ctx, canvas_item_class_get_z_index, "get_z_index", 0),
-        JS_NewCFunction(ctx, canvas_item_class_set_z_index, "set_z_index", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_item_class_set_z_index, "set_z_index", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "z_as_relative"),
         JS_NewCFunction(ctx, canvas_item_class_is_z_relative, "is_z_relative", 0),
-        JS_NewCFunction(ctx, canvas_item_class_set_z_as_relative, "set_z_as_relative", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_item_class_set_z_as_relative, "set_z_as_relative", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "y_sort_enabled"),
         JS_NewCFunction(ctx, canvas_item_class_is_y_sort_enabled, "is_y_sort_enabled", 0),
-        JS_NewCFunction(ctx, canvas_item_class_set_y_sort_enabled, "set_y_sort_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_item_class_set_y_sort_enabled, "set_y_sort_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_filter"),
         JS_NewCFunction(ctx, canvas_item_class_get_texture_filter, "get_texture_filter", 0),
-        JS_NewCFunction(ctx, canvas_item_class_set_texture_filter, "set_texture_filter", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_item_class_set_texture_filter, "set_texture_filter", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_repeat"),
         JS_NewCFunction(ctx, canvas_item_class_get_texture_repeat, "get_texture_repeat", 0),
-        JS_NewCFunction(ctx, canvas_item_class_set_texture_repeat, "set_texture_repeat", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_item_class_set_texture_repeat, "set_texture_repeat", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "material"),
         JS_NewCFunction(ctx, canvas_item_class_get_material, "get_material", 0),
-        JS_NewCFunction(ctx, canvas_item_class_set_material, "set_material", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_item_class_set_material, "set_material", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_parent_material"),
         JS_NewCFunction(ctx, canvas_item_class_get_use_parent_material, "get_use_parent_material", 0),
-        JS_NewCFunction(ctx, canvas_item_class_set_use_parent_material, "set_use_parent_material", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_item_class_set_use_parent_material, "set_use_parent_material", 1),
+        JS_PROP_GETSET
     );
 }
 

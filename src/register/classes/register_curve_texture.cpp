@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/curve_texture.hpp>
 #include <godot_cpp/classes/curve.hpp>
+#include <godot_cpp/classes/curve_texture.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void curve_texture_class_finalizer(JSRuntime *rt, JSValue val) {
-	CurveTexture *curve_texture = static_cast<CurveTexture *>(JS_GetOpaque(val, CurveTexture::__class_id));
-	if (curve_texture)
-		memdelete(curve_texture);
+	
+	// nothing
 }
 
 static JSClassDef curve_texture_class_def = {
@@ -69,24 +68,24 @@ void define_curve_texture_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "width"),
         JS_UNDEFINED,
-        JS_NewCFunction(ctx, curve_texture_class_set_width, "set_width", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, curve_texture_class_set_width, "set_width", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_mode"),
         JS_NewCFunction(ctx, curve_texture_class_get_texture_mode, "get_texture_mode", 0),
-        JS_NewCFunction(ctx, curve_texture_class_set_texture_mode, "set_texture_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, curve_texture_class_set_texture_mode, "set_texture_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "curve"),
         JS_NewCFunction(ctx, curve_texture_class_get_curve, "get_curve", 0),
-        JS_NewCFunction(ctx, curve_texture_class_set_curve, "set_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, curve_texture_class_set_curve, "set_curve", 1),
+        JS_PROP_GETSET
     );
 }
 

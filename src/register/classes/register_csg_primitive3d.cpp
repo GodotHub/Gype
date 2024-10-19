@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void csg_primitive3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	CSGPrimitive3D *csg_primitive3d = static_cast<CSGPrimitive3D *>(JS_GetOpaque(val, CSGPrimitive3D::__class_id));
-	if (csg_primitive3d)
-		memdelete(csg_primitive3d);
+	
+	// nothing
 }
 
 static JSClassDef csg_primitive3d_class_def = {
@@ -54,8 +53,8 @@ void define_csg_primitive3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "flip_faces"),
         JS_NewCFunction(ctx, csg_primitive3d_class_get_flip_faces, "get_flip_faces", 0),
-        JS_NewCFunction(ctx, csg_primitive3d_class_set_flip_faces, "set_flip_faces", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, csg_primitive3d_class_set_flip_faces, "set_flip_faces", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void texture_class_finalizer(JSRuntime *rt, JSValue val) {
-	Texture *texture = static_cast<Texture *>(JS_GetOpaque(val, Texture::__class_id));
-	if (texture)
-		memdelete(texture);
+	
+	// nothing
 }
 
 static JSClassDef texture_class_def = {

@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/open_xrapi_extension.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/open_xr_extension_wrapper_extension.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void open_xrapi_extension_class_finalizer(JSRuntime *rt, JSValue val) {
-	OpenXRAPIExtension *open_xrapi_extension = static_cast<OpenXRAPIExtension *>(JS_GetOpaque(val, OpenXRAPIExtension::__class_id));
-	if (open_xrapi_extension)
-		memdelete(open_xrapi_extension);
+	
+	// nothing
 }
 
 static JSClassDef open_xrapi_extension_class_def = {

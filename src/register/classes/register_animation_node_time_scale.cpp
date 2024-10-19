@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void animation_node_time_scale_class_finalizer(JSRuntime *rt, JSValue val) {
-	AnimationNodeTimeScale *animation_node_time_scale = static_cast<AnimationNodeTimeScale *>(JS_GetOpaque(val, AnimationNodeTimeScale::__class_id));
-	if (animation_node_time_scale)
-		memdelete(animation_node_time_scale);
+	
+	// nothing
 }
 
 static JSClassDef animation_node_time_scale_class_def = {

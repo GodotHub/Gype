@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/gltf_state.hpp>
 #include <godot_cpp/classes/gltf_buffer_view.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/gltf_state.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gltf_buffer_view_class_finalizer(JSRuntime *rt, JSValue val) {
-	GLTFBufferView *gltf_buffer_view = static_cast<GLTFBufferView *>(JS_GetOpaque(val, GLTFBufferView::__class_id));
-	if (gltf_buffer_view)
-		memdelete(gltf_buffer_view);
+	
+	// nothing
 }
 
 static JSClassDef gltf_buffer_view_class_def = {
@@ -104,48 +103,48 @@ void define_gltf_buffer_view_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "buffer"),
         JS_NewCFunction(ctx, gltf_buffer_view_class_get_buffer, "get_buffer", 0),
-        JS_NewCFunction(ctx, gltf_buffer_view_class_set_buffer, "set_buffer", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_buffer_view_class_set_buffer, "set_buffer", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "byte_offset"),
         JS_NewCFunction(ctx, gltf_buffer_view_class_get_byte_offset, "get_byte_offset", 0),
-        JS_NewCFunction(ctx, gltf_buffer_view_class_set_byte_offset, "set_byte_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_buffer_view_class_set_byte_offset, "set_byte_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "byte_length"),
         JS_NewCFunction(ctx, gltf_buffer_view_class_get_byte_length, "get_byte_length", 0),
-        JS_NewCFunction(ctx, gltf_buffer_view_class_set_byte_length, "set_byte_length", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_buffer_view_class_set_byte_length, "set_byte_length", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "byte_stride"),
         JS_NewCFunction(ctx, gltf_buffer_view_class_get_byte_stride, "get_byte_stride", 0),
-        JS_NewCFunction(ctx, gltf_buffer_view_class_set_byte_stride, "set_byte_stride", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_buffer_view_class_set_byte_stride, "set_byte_stride", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "indices"),
         JS_NewCFunction(ctx, gltf_buffer_view_class_get_indices, "get_indices", 0),
-        JS_NewCFunction(ctx, gltf_buffer_view_class_set_indices, "set_indices", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_buffer_view_class_set_indices, "set_indices", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "vertex_attributes"),
         JS_NewCFunction(ctx, gltf_buffer_view_class_get_vertex_attributes, "get_vertex_attributes", 0),
-        JS_NewCFunction(ctx, gltf_buffer_view_class_set_vertex_attributes, "set_vertex_attributes", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_buffer_view_class_set_vertex_attributes, "set_vertex_attributes", 1),
+        JS_PROP_GETSET
     );
 }
 

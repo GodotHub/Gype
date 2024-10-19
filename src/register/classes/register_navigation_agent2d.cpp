@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/navigation_path_query_result2d.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/navigation_agent2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void navigation_agent2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	NavigationAgent2D *navigation_agent2d = static_cast<NavigationAgent2D *>(JS_GetOpaque(val, NavigationAgent2D::__class_id));
-	if (navigation_agent2d)
-		memdelete(navigation_agent2d);
+	
+	// nothing
 }
 
 static JSClassDef navigation_agent2d_class_def = {
@@ -361,208 +360,208 @@ void define_navigation_agent2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "target_position"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_target_position, "get_target_position", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_target_position, "set_target_position", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_target_position, "set_target_position", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "path_desired_distance"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_path_desired_distance, "get_path_desired_distance", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_path_desired_distance, "set_path_desired_distance", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_path_desired_distance, "set_path_desired_distance", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "target_desired_distance"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_target_desired_distance, "get_target_desired_distance", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_target_desired_distance, "set_target_desired_distance", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_target_desired_distance, "set_target_desired_distance", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "path_max_distance"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_path_max_distance, "get_path_max_distance", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_path_max_distance, "set_path_max_distance", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_path_max_distance, "set_path_max_distance", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "navigation_layers"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_navigation_layers, "get_navigation_layers", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_navigation_layers, "set_navigation_layers", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_navigation_layers, "set_navigation_layers", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "pathfinding_algorithm"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_pathfinding_algorithm, "get_pathfinding_algorithm", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_pathfinding_algorithm, "set_pathfinding_algorithm", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_pathfinding_algorithm, "set_pathfinding_algorithm", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "path_postprocessing"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_path_postprocessing, "get_path_postprocessing", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_path_postprocessing, "set_path_postprocessing", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_path_postprocessing, "set_path_postprocessing", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "path_metadata_flags"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_path_metadata_flags, "get_path_metadata_flags", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_path_metadata_flags, "set_path_metadata_flags", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_path_metadata_flags, "set_path_metadata_flags", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "simplify_path"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_simplify_path, "get_simplify_path", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_simplify_path, "set_simplify_path", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_simplify_path, "set_simplify_path", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "simplify_epsilon"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_simplify_epsilon, "get_simplify_epsilon", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_simplify_epsilon, "set_simplify_epsilon", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_simplify_epsilon, "set_simplify_epsilon", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "avoidance_enabled"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_avoidance_enabled, "get_avoidance_enabled", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_avoidance_enabled, "set_avoidance_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_avoidance_enabled, "set_avoidance_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "velocity"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_velocity, "get_velocity", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_velocity, "set_velocity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_velocity, "set_velocity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "radius"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_radius, "get_radius", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_radius, "set_radius", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_radius, "set_radius", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "neighbor_distance"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_neighbor_distance, "get_neighbor_distance", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_neighbor_distance, "set_neighbor_distance", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_neighbor_distance, "set_neighbor_distance", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "max_neighbors"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_max_neighbors, "get_max_neighbors", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_max_neighbors, "set_max_neighbors", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_max_neighbors, "set_max_neighbors", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "time_horizon_agents"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_time_horizon_agents, "get_time_horizon_agents", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_time_horizon_agents, "set_time_horizon_agents", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_time_horizon_agents, "set_time_horizon_agents", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "time_horizon_obstacles"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_time_horizon_obstacles, "get_time_horizon_obstacles", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_time_horizon_obstacles, "set_time_horizon_obstacles", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_time_horizon_obstacles, "set_time_horizon_obstacles", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "max_speed"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_max_speed, "get_max_speed", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_max_speed, "set_max_speed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_max_speed, "set_max_speed", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "avoidance_layers"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_avoidance_layers, "get_avoidance_layers", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_avoidance_layers, "set_avoidance_layers", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_avoidance_layers, "set_avoidance_layers", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "avoidance_mask"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_avoidance_mask, "get_avoidance_mask", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_avoidance_mask, "set_avoidance_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_avoidance_mask, "set_avoidance_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "avoidance_priority"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_avoidance_priority, "get_avoidance_priority", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_avoidance_priority, "set_avoidance_priority", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_avoidance_priority, "set_avoidance_priority", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "debug_enabled"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_debug_enabled, "get_debug_enabled", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_debug_enabled, "set_debug_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_debug_enabled, "set_debug_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "debug_use_custom"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_debug_use_custom, "get_debug_use_custom", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_debug_use_custom, "set_debug_use_custom", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_debug_use_custom, "set_debug_use_custom", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "debug_path_custom_color"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_debug_path_custom_color, "get_debug_path_custom_color", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_debug_path_custom_color, "set_debug_path_custom_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_debug_path_custom_color, "set_debug_path_custom_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "debug_path_custom_point_size"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_debug_path_custom_point_size, "get_debug_path_custom_point_size", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_debug_path_custom_point_size, "set_debug_path_custom_point_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_debug_path_custom_point_size, "set_debug_path_custom_point_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "debug_path_custom_line_width"),
         JS_NewCFunction(ctx, navigation_agent2d_class_get_debug_path_custom_line_width, "get_debug_path_custom_line_width", 0),
-        JS_NewCFunction(ctx, navigation_agent2d_class_set_debug_path_custom_line_width, "set_debug_path_custom_line_width", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_agent2d_class_set_debug_path_custom_line_width, "set_debug_path_custom_line_width", 1),
+        JS_PROP_GETSET
     );
 }
 

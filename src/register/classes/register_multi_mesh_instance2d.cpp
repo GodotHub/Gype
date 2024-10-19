@@ -5,19 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/multi_mesh_instance2d.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/multi_mesh.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void multi_mesh_instance2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	MultiMeshInstance2D *multi_mesh_instance2d = static_cast<MultiMeshInstance2D *>(JS_GetOpaque(val, MultiMeshInstance2D::__class_id));
-	if (multi_mesh_instance2d)
-		memdelete(multi_mesh_instance2d);
+	
+	// nothing
 }
 
 static JSClassDef multi_mesh_instance2d_class_def = {
@@ -65,16 +64,16 @@ void define_multi_mesh_instance2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "multimesh"),
         JS_NewCFunction(ctx, multi_mesh_instance2d_class_get_multimesh, "get_multimesh", 0),
-        JS_NewCFunction(ctx, multi_mesh_instance2d_class_set_multimesh, "set_multimesh", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, multi_mesh_instance2d_class_set_multimesh, "set_multimesh", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture"),
         JS_NewCFunction(ctx, multi_mesh_instance2d_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, multi_mesh_instance2d_class_set_texture, "set_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, multi_mesh_instance2d_class_set_texture, "set_texture", 1),
+        JS_PROP_GETSET
     );
 }
 

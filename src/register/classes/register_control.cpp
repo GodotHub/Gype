@@ -5,24 +5,23 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/theme.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/style_box.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/canvas_item.hpp>
+#include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/theme.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void control_class_finalizer(JSRuntime *rt, JSValue val) {
-	Control *control = static_cast<Control *>(JS_GetOpaque(val, Control::__class_id));
-	if (control)
-		memdelete(control);
+	
+	// nothing
 }
 
 static JSClassDef control_class_def = {
@@ -624,24 +623,24 @@ void define_control_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "clip_contents"),
         JS_NewCFunction(ctx, control_class_is_clipping_contents, "is_clipping_contents", 0),
-        JS_NewCFunction(ctx, control_class_set_clip_contents, "set_clip_contents", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_clip_contents, "set_clip_contents", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "custom_minimum_size"),
         JS_NewCFunction(ctx, control_class_get_custom_minimum_size, "get_custom_minimum_size", 0),
-        JS_NewCFunction(ctx, control_class_set_custom_minimum_size, "set_custom_minimum_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_custom_minimum_size, "set_custom_minimum_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "layout_direction"),
         JS_NewCFunction(ctx, control_class_get_layout_direction, "get_layout_direction", 0),
-        JS_NewCFunction(ctx, control_class_set_layout_direction, "set_layout_direction", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_layout_direction, "set_layout_direction", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -649,7 +648,7 @@ void define_control_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "anchor_left"),
         JS_NewCFunction(ctx, control_class_get_anchor, "get_anchor", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -657,7 +656,7 @@ void define_control_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "anchor_top"),
         JS_NewCFunction(ctx, control_class_get_anchor, "get_anchor", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -665,7 +664,7 @@ void define_control_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "anchor_right"),
         JS_NewCFunction(ctx, control_class_get_anchor, "get_anchor", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -673,55 +672,55 @@ void define_control_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "anchor_bottom"),
         JS_NewCFunction(ctx, control_class_get_anchor, "get_anchor", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "offset_left"),
         JS_NewCFunction(ctx, control_class_get_offset, "get_offset", 0),
-        JS_NewCFunction(ctx, control_class_set_offset, "set_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_offset, "set_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "offset_top"),
         JS_NewCFunction(ctx, control_class_get_offset, "get_offset", 0),
-        JS_NewCFunction(ctx, control_class_set_offset, "set_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_offset, "set_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "offset_right"),
         JS_NewCFunction(ctx, control_class_get_offset, "get_offset", 0),
-        JS_NewCFunction(ctx, control_class_set_offset, "set_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_offset, "set_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "offset_bottom"),
         JS_NewCFunction(ctx, control_class_get_offset, "get_offset", 0),
-        JS_NewCFunction(ctx, control_class_set_offset, "set_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_offset, "set_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "grow_horizontal"),
         JS_NewCFunction(ctx, control_class_get_h_grow_direction, "get_h_grow_direction", 0),
-        JS_NewCFunction(ctx, control_class_set_h_grow_direction, "set_h_grow_direction", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_h_grow_direction, "set_h_grow_direction", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "grow_vertical"),
         JS_NewCFunction(ctx, control_class_get_v_grow_direction, "get_v_grow_direction", 0),
-        JS_NewCFunction(ctx, control_class_set_v_grow_direction, "set_v_grow_direction", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_v_grow_direction, "set_v_grow_direction", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -729,7 +728,7 @@ void define_control_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, control_class_get_size, "get_size", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -737,7 +736,7 @@ void define_control_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "position"),
         JS_NewCFunction(ctx, control_class_get_position, "get_position", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -745,191 +744,191 @@ void define_control_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "global_position"),
         JS_NewCFunction(ctx, control_class_get_global_position, "get_global_position", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "rotation"),
         JS_NewCFunction(ctx, control_class_get_rotation, "get_rotation", 0),
-        JS_NewCFunction(ctx, control_class_set_rotation, "set_rotation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_rotation, "set_rotation", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "rotation_degrees"),
         JS_NewCFunction(ctx, control_class_get_rotation_degrees, "get_rotation_degrees", 0),
-        JS_NewCFunction(ctx, control_class_set_rotation_degrees, "set_rotation_degrees", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_rotation_degrees, "set_rotation_degrees", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scale"),
         JS_NewCFunction(ctx, control_class_get_scale, "get_scale", 0),
-        JS_NewCFunction(ctx, control_class_set_scale, "set_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_scale, "set_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "pivot_offset"),
         JS_NewCFunction(ctx, control_class_get_pivot_offset, "get_pivot_offset", 0),
-        JS_NewCFunction(ctx, control_class_set_pivot_offset, "set_pivot_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_pivot_offset, "set_pivot_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "size_flags_horizontal"),
         JS_NewCFunction(ctx, control_class_get_h_size_flags, "get_h_size_flags", 0),
-        JS_NewCFunction(ctx, control_class_set_h_size_flags, "set_h_size_flags", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_h_size_flags, "set_h_size_flags", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "size_flags_vertical"),
         JS_NewCFunction(ctx, control_class_get_v_size_flags, "get_v_size_flags", 0),
-        JS_NewCFunction(ctx, control_class_set_v_size_flags, "set_v_size_flags", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_v_size_flags, "set_v_size_flags", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "size_flags_stretch_ratio"),
         JS_NewCFunction(ctx, control_class_get_stretch_ratio, "get_stretch_ratio", 0),
-        JS_NewCFunction(ctx, control_class_set_stretch_ratio, "set_stretch_ratio", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_stretch_ratio, "set_stretch_ratio", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "localize_numeral_system"),
         JS_NewCFunction(ctx, control_class_is_localizing_numeral_system, "is_localizing_numeral_system", 0),
-        JS_NewCFunction(ctx, control_class_set_localize_numeral_system, "set_localize_numeral_system", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_localize_numeral_system, "set_localize_numeral_system", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "auto_translate"),
         JS_NewCFunction(ctx, control_class_is_auto_translating, "is_auto_translating", 0),
-        JS_NewCFunction(ctx, control_class_set_auto_translate, "set_auto_translate", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_auto_translate, "set_auto_translate", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tooltip_text"),
         JS_NewCFunction(ctx, control_class_get_tooltip_text, "get_tooltip_text", 0),
-        JS_NewCFunction(ctx, control_class_set_tooltip_text, "set_tooltip_text", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_tooltip_text, "set_tooltip_text", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "focus_neighbor_left"),
         JS_NewCFunction(ctx, control_class_get_focus_neighbor, "get_focus_neighbor", 0),
-        JS_NewCFunction(ctx, control_class_set_focus_neighbor, "set_focus_neighbor", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_focus_neighbor, "set_focus_neighbor", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "focus_neighbor_top"),
         JS_NewCFunction(ctx, control_class_get_focus_neighbor, "get_focus_neighbor", 0),
-        JS_NewCFunction(ctx, control_class_set_focus_neighbor, "set_focus_neighbor", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_focus_neighbor, "set_focus_neighbor", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "focus_neighbor_right"),
         JS_NewCFunction(ctx, control_class_get_focus_neighbor, "get_focus_neighbor", 0),
-        JS_NewCFunction(ctx, control_class_set_focus_neighbor, "set_focus_neighbor", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_focus_neighbor, "set_focus_neighbor", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "focus_neighbor_bottom"),
         JS_NewCFunction(ctx, control_class_get_focus_neighbor, "get_focus_neighbor", 0),
-        JS_NewCFunction(ctx, control_class_set_focus_neighbor, "set_focus_neighbor", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_focus_neighbor, "set_focus_neighbor", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "focus_next"),
         JS_NewCFunction(ctx, control_class_get_focus_next, "get_focus_next", 0),
-        JS_NewCFunction(ctx, control_class_set_focus_next, "set_focus_next", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_focus_next, "set_focus_next", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "focus_previous"),
         JS_NewCFunction(ctx, control_class_get_focus_previous, "get_focus_previous", 0),
-        JS_NewCFunction(ctx, control_class_set_focus_previous, "set_focus_previous", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_focus_previous, "set_focus_previous", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "focus_mode"),
         JS_NewCFunction(ctx, control_class_get_focus_mode, "get_focus_mode", 0),
-        JS_NewCFunction(ctx, control_class_set_focus_mode, "set_focus_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_focus_mode, "set_focus_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "mouse_filter"),
         JS_NewCFunction(ctx, control_class_get_mouse_filter, "get_mouse_filter", 0),
-        JS_NewCFunction(ctx, control_class_set_mouse_filter, "set_mouse_filter", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_mouse_filter, "set_mouse_filter", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "mouse_force_pass_scroll_events"),
         JS_NewCFunction(ctx, control_class_is_force_pass_scroll_events, "is_force_pass_scroll_events", 0),
-        JS_NewCFunction(ctx, control_class_set_force_pass_scroll_events, "set_force_pass_scroll_events", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_force_pass_scroll_events, "set_force_pass_scroll_events", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "mouse_default_cursor_shape"),
         JS_NewCFunction(ctx, control_class_get_default_cursor_shape, "get_default_cursor_shape", 0),
-        JS_NewCFunction(ctx, control_class_set_default_cursor_shape, "set_default_cursor_shape", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_default_cursor_shape, "set_default_cursor_shape", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shortcut_context"),
         JS_NewCFunction(ctx, control_class_get_shortcut_context, "get_shortcut_context", 0),
-        JS_NewCFunction(ctx, control_class_set_shortcut_context, "set_shortcut_context", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_shortcut_context, "set_shortcut_context", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "theme"),
         JS_NewCFunction(ctx, control_class_get_theme, "get_theme", 0),
-        JS_NewCFunction(ctx, control_class_set_theme, "set_theme", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_theme, "set_theme", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "theme_type_variation"),
         JS_NewCFunction(ctx, control_class_get_theme_type_variation, "get_theme_type_variation", 0),
-        JS_NewCFunction(ctx, control_class_set_theme_type_variation, "set_theme_type_variation", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, control_class_set_theme_type_variation, "set_theme_type_variation", 1),
+        JS_PROP_GETSET
     );
 }
 

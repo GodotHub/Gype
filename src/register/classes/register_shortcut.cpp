@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void shortcut_class_finalizer(JSRuntime *rt, JSValue val) {
-	Shortcut *shortcut = static_cast<Shortcut *>(JS_GetOpaque(val, Shortcut::__class_id));
-	if (shortcut)
-		memdelete(shortcut);
+	
+	// nothing
 }
 
 static JSClassDef shortcut_class_def = {
@@ -67,8 +66,8 @@ void define_shortcut_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "events"),
         JS_NewCFunction(ctx, shortcut_class_get_events, "get_events", 0),
-        JS_NewCFunction(ctx, shortcut_class_set_events, "set_events", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, shortcut_class_set_events, "set_events", 1),
+        JS_PROP_GETSET
     );
 }
 

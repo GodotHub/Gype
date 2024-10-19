@@ -15,9 +15,8 @@
 using namespace godot;
 
 static void collision_shape3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	CollisionShape3D *collision_shape3d = static_cast<CollisionShape3D *>(JS_GetOpaque(val, CollisionShape3D::__class_id));
-	if (collision_shape3d)
-		memdelete(collision_shape3d);
+	
+	// nothing
 }
 
 static JSClassDef collision_shape3d_class_def = {
@@ -75,16 +74,16 @@ void define_collision_shape3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "shape"),
         JS_NewCFunction(ctx, collision_shape3d_class_get_shape, "get_shape", 0),
-        JS_NewCFunction(ctx, collision_shape3d_class_set_shape, "set_shape", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_shape3d_class_set_shape, "set_shape", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "disabled"),
         JS_NewCFunction(ctx, collision_shape3d_class_is_disabled, "is_disabled", 0),
-        JS_NewCFunction(ctx, collision_shape3d_class_set_disabled, "set_disabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, collision_shape3d_class_set_disabled, "set_disabled", 1),
+        JS_PROP_GETSET
     );
 }
 

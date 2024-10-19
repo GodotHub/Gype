@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void procedural_sky_material_class_finalizer(JSRuntime *rt, JSValue val) {
-	ProceduralSkyMaterial *procedural_sky_material = static_cast<ProceduralSkyMaterial *>(JS_GetOpaque(val, ProceduralSkyMaterial::__class_id));
-	if (procedural_sky_material)
-		memdelete(procedural_sky_material);
+	
+	// nothing
 }
 
 static JSClassDef procedural_sky_material_class_def = {
@@ -172,112 +171,112 @@ void define_procedural_sky_material_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "sky_top_color"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_sky_top_color, "get_sky_top_color", 0),
-        JS_NewCFunction(ctx, procedural_sky_material_class_set_sky_top_color, "set_sky_top_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, procedural_sky_material_class_set_sky_top_color, "set_sky_top_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sky_horizon_color"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_sky_horizon_color, "get_sky_horizon_color", 0),
-        JS_NewCFunction(ctx, procedural_sky_material_class_set_sky_horizon_color, "set_sky_horizon_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, procedural_sky_material_class_set_sky_horizon_color, "set_sky_horizon_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sky_curve"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_sky_curve, "get_sky_curve", 0),
-        JS_NewCFunction(ctx, procedural_sky_material_class_set_sky_curve, "set_sky_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, procedural_sky_material_class_set_sky_curve, "set_sky_curve", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sky_energy_multiplier"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_sky_energy_multiplier, "get_sky_energy_multiplier", 0),
-        JS_NewCFunction(ctx, procedural_sky_material_class_set_sky_energy_multiplier, "set_sky_energy_multiplier", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, procedural_sky_material_class_set_sky_energy_multiplier, "set_sky_energy_multiplier", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sky_cover"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_sky_cover, "get_sky_cover", 0),
-        JS_NewCFunction(ctx, procedural_sky_material_class_set_sky_cover, "set_sky_cover", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, procedural_sky_material_class_set_sky_cover, "set_sky_cover", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sky_cover_modulate"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_sky_cover_modulate, "get_sky_cover_modulate", 0),
-        JS_NewCFunction(ctx, procedural_sky_material_class_set_sky_cover_modulate, "set_sky_cover_modulate", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, procedural_sky_material_class_set_sky_cover_modulate, "set_sky_cover_modulate", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ground_bottom_color"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_ground_bottom_color, "get_ground_bottom_color", 0),
-        JS_NewCFunction(ctx, procedural_sky_material_class_set_ground_bottom_color, "set_ground_bottom_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, procedural_sky_material_class_set_ground_bottom_color, "set_ground_bottom_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ground_horizon_color"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_ground_horizon_color, "get_ground_horizon_color", 0),
-        JS_NewCFunction(ctx, procedural_sky_material_class_set_ground_horizon_color, "set_ground_horizon_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, procedural_sky_material_class_set_ground_horizon_color, "set_ground_horizon_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ground_curve"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_ground_curve, "get_ground_curve", 0),
-        JS_NewCFunction(ctx, procedural_sky_material_class_set_ground_curve, "set_ground_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, procedural_sky_material_class_set_ground_curve, "set_ground_curve", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "ground_energy_multiplier"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_ground_energy_multiplier, "get_ground_energy_multiplier", 0),
-        JS_NewCFunction(ctx, procedural_sky_material_class_set_ground_energy_multiplier, "set_ground_energy_multiplier", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, procedural_sky_material_class_set_ground_energy_multiplier, "set_ground_energy_multiplier", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sun_angle_max"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_sun_angle_max, "get_sun_angle_max", 0),
-        JS_NewCFunction(ctx, procedural_sky_material_class_set_sun_angle_max, "set_sun_angle_max", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, procedural_sky_material_class_set_sun_angle_max, "set_sun_angle_max", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "sun_curve"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_sun_curve, "get_sun_curve", 0),
-        JS_NewCFunction(ctx, procedural_sky_material_class_set_sun_curve, "set_sun_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, procedural_sky_material_class_set_sun_curve, "set_sun_curve", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_debanding"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_use_debanding, "get_use_debanding", 0),
-        JS_NewCFunction(ctx, procedural_sky_material_class_set_use_debanding, "set_use_debanding", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, procedural_sky_material_class_set_use_debanding, "set_use_debanding", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "energy_multiplier"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_energy_multiplier, "get_energy_multiplier", 0),
-        JS_NewCFunction(ctx, procedural_sky_material_class_set_energy_multiplier, "set_energy_multiplier", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, procedural_sky_material_class_set_energy_multiplier, "set_energy_multiplier", 1),
+        JS_PROP_GETSET
     );
 }
 

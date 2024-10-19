@@ -5,12 +5,12 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/v_scroll_bar.hpp>
-#include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/classes/rich_text_label.hpp>
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/rich_text_effect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -18,9 +18,8 @@
 using namespace godot;
 
 static void rich_text_label_class_finalizer(JSRuntime *rt, JSValue val) {
-	RichTextLabel *rich_text_label = static_cast<RichTextLabel *>(JS_GetOpaque(val, RichTextLabel::__class_id));
-	if (rich_text_label)
-		memdelete(rich_text_label);
+	
+	// nothing
 }
 
 static JSClassDef rich_text_label_class_def = {
@@ -589,192 +588,192 @@ void define_rich_text_label_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "bbcode_enabled"),
         JS_NewCFunction(ctx, rich_text_label_class_is_using_bbcode, "is_using_bbcode", 0),
-        JS_NewCFunction(ctx, rich_text_label_class_set_use_bbcode, "set_use_bbcode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rich_text_label_class_set_use_bbcode, "set_use_bbcode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "text"),
         JS_NewCFunction(ctx, rich_text_label_class_get_text, "get_text", 0),
-        JS_NewCFunction(ctx, rich_text_label_class_set_text, "set_text", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rich_text_label_class_set_text, "set_text", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fit_content"),
         JS_NewCFunction(ctx, rich_text_label_class_is_fit_content_enabled, "is_fit_content_enabled", 0),
-        JS_NewCFunction(ctx, rich_text_label_class_set_fit_content, "set_fit_content", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rich_text_label_class_set_fit_content, "set_fit_content", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scroll_active"),
         JS_NewCFunction(ctx, rich_text_label_class_is_scroll_active, "is_scroll_active", 0),
-        JS_NewCFunction(ctx, rich_text_label_class_set_scroll_active, "set_scroll_active", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rich_text_label_class_set_scroll_active, "set_scroll_active", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scroll_following"),
         JS_NewCFunction(ctx, rich_text_label_class_is_scroll_following, "is_scroll_following", 0),
-        JS_NewCFunction(ctx, rich_text_label_class_set_scroll_follow, "set_scroll_follow", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rich_text_label_class_set_scroll_follow, "set_scroll_follow", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "autowrap_mode"),
         JS_NewCFunction(ctx, rich_text_label_class_get_autowrap_mode, "get_autowrap_mode", 0),
-        JS_NewCFunction(ctx, rich_text_label_class_set_autowrap_mode, "set_autowrap_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rich_text_label_class_set_autowrap_mode, "set_autowrap_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "tab_size"),
         JS_NewCFunction(ctx, rich_text_label_class_get_tab_size, "get_tab_size", 0),
-        JS_NewCFunction(ctx, rich_text_label_class_set_tab_size, "set_tab_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rich_text_label_class_set_tab_size, "set_tab_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "context_menu_enabled"),
         JS_NewCFunction(ctx, rich_text_label_class_is_context_menu_enabled, "is_context_menu_enabled", 0),
-        JS_NewCFunction(ctx, rich_text_label_class_set_context_menu_enabled, "set_context_menu_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rich_text_label_class_set_context_menu_enabled, "set_context_menu_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shortcut_keys_enabled"),
         JS_NewCFunction(ctx, rich_text_label_class_is_shortcut_keys_enabled, "is_shortcut_keys_enabled", 0),
-        JS_NewCFunction(ctx, rich_text_label_class_set_shortcut_keys_enabled, "set_shortcut_keys_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rich_text_label_class_set_shortcut_keys_enabled, "set_shortcut_keys_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "custom_effects"),
         JS_NewCFunction(ctx, rich_text_label_class_get_effects, "get_effects", 0),
-        JS_NewCFunction(ctx, rich_text_label_class_set_effects, "set_effects", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rich_text_label_class_set_effects, "set_effects", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "meta_underlined"),
         JS_NewCFunction(ctx, rich_text_label_class_is_meta_underlined, "is_meta_underlined", 0),
-        JS_NewCFunction(ctx, rich_text_label_class_set_meta_underline, "set_meta_underline", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rich_text_label_class_set_meta_underline, "set_meta_underline", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "hint_underlined"),
         JS_NewCFunction(ctx, rich_text_label_class_is_hint_underlined, "is_hint_underlined", 0),
-        JS_NewCFunction(ctx, rich_text_label_class_set_hint_underline, "set_hint_underline", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rich_text_label_class_set_hint_underline, "set_hint_underline", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "threaded"),
         JS_NewCFunction(ctx, rich_text_label_class_is_threaded, "is_threaded", 0),
-        JS_NewCFunction(ctx, rich_text_label_class_set_threaded, "set_threaded", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rich_text_label_class_set_threaded, "set_threaded", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "progress_bar_delay"),
         JS_NewCFunction(ctx, rich_text_label_class_get_progress_bar_delay, "get_progress_bar_delay", 0),
-        JS_NewCFunction(ctx, rich_text_label_class_set_progress_bar_delay, "set_progress_bar_delay", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rich_text_label_class_set_progress_bar_delay, "set_progress_bar_delay", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "selection_enabled"),
         JS_NewCFunction(ctx, rich_text_label_class_is_selection_enabled, "is_selection_enabled", 0),
-        JS_NewCFunction(ctx, rich_text_label_class_set_selection_enabled, "set_selection_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rich_text_label_class_set_selection_enabled, "set_selection_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "deselect_on_focus_loss_enabled"),
         JS_NewCFunction(ctx, rich_text_label_class_is_deselect_on_focus_loss_enabled, "is_deselect_on_focus_loss_enabled", 0),
-        JS_NewCFunction(ctx, rich_text_label_class_set_deselect_on_focus_loss_enabled, "set_deselect_on_focus_loss_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rich_text_label_class_set_deselect_on_focus_loss_enabled, "set_deselect_on_focus_loss_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "drag_and_drop_selection_enabled"),
         JS_NewCFunction(ctx, rich_text_label_class_is_drag_and_drop_selection_enabled, "is_drag_and_drop_selection_enabled", 0),
-        JS_NewCFunction(ctx, rich_text_label_class_set_drag_and_drop_selection_enabled, "set_drag_and_drop_selection_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rich_text_label_class_set_drag_and_drop_selection_enabled, "set_drag_and_drop_selection_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visible_characters"),
         JS_NewCFunction(ctx, rich_text_label_class_get_visible_characters, "get_visible_characters", 0),
-        JS_NewCFunction(ctx, rich_text_label_class_set_visible_characters, "set_visible_characters", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rich_text_label_class_set_visible_characters, "set_visible_characters", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visible_characters_behavior"),
         JS_NewCFunction(ctx, rich_text_label_class_get_visible_characters_behavior, "get_visible_characters_behavior", 0),
-        JS_NewCFunction(ctx, rich_text_label_class_set_visible_characters_behavior, "set_visible_characters_behavior", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rich_text_label_class_set_visible_characters_behavior, "set_visible_characters_behavior", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visible_ratio"),
         JS_NewCFunction(ctx, rich_text_label_class_get_visible_ratio, "get_visible_ratio", 0),
-        JS_NewCFunction(ctx, rich_text_label_class_set_visible_ratio, "set_visible_ratio", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rich_text_label_class_set_visible_ratio, "set_visible_ratio", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "text_direction"),
         JS_NewCFunction(ctx, rich_text_label_class_get_text_direction, "get_text_direction", 0),
-        JS_NewCFunction(ctx, rich_text_label_class_set_text_direction, "set_text_direction", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rich_text_label_class_set_text_direction, "set_text_direction", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "language"),
         JS_NewCFunction(ctx, rich_text_label_class_get_language, "get_language", 0),
-        JS_NewCFunction(ctx, rich_text_label_class_set_language, "set_language", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rich_text_label_class_set_language, "set_language", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "structured_text_bidi_override"),
         JS_NewCFunction(ctx, rich_text_label_class_get_structured_text_bidi_override, "get_structured_text_bidi_override", 0),
-        JS_NewCFunction(ctx, rich_text_label_class_set_structured_text_bidi_override, "set_structured_text_bidi_override", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rich_text_label_class_set_structured_text_bidi_override, "set_structured_text_bidi_override", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "structured_text_bidi_override_options"),
         JS_NewCFunction(ctx, rich_text_label_class_get_structured_text_bidi_override_options, "get_structured_text_bidi_override_options", 0),
-        JS_NewCFunction(ctx, rich_text_label_class_set_structured_text_bidi_override_options, "set_structured_text_bidi_override_options", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, rich_text_label_class_set_structured_text_bidi_override_options, "set_structured_text_bidi_override_options", 1),
+        JS_PROP_GETSET
     );
 }
 

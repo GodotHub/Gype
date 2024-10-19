@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void multiplayer_peer_class_finalizer(JSRuntime *rt, JSValue val) {
-	MultiplayerPeer *multiplayer_peer = static_cast<MultiplayerPeer *>(JS_GetOpaque(val, MultiplayerPeer::__class_id));
-	if (multiplayer_peer)
-		memdelete(multiplayer_peer);
+	
+	// nothing
 }
 
 static JSClassDef multiplayer_peer_class_def = {
@@ -120,24 +119,24 @@ void define_multiplayer_peer_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "refuse_new_connections"),
         JS_NewCFunction(ctx, multiplayer_peer_class_is_refusing_new_connections, "is_refusing_new_connections", 0),
-        JS_NewCFunction(ctx, multiplayer_peer_class_set_refuse_new_connections, "set_refuse_new_connections", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, multiplayer_peer_class_set_refuse_new_connections, "set_refuse_new_connections", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "transfer_mode"),
         JS_NewCFunction(ctx, multiplayer_peer_class_get_transfer_mode, "get_transfer_mode", 0),
-        JS_NewCFunction(ctx, multiplayer_peer_class_set_transfer_mode, "set_transfer_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, multiplayer_peer_class_set_transfer_mode, "set_transfer_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "transfer_channel"),
         JS_NewCFunction(ctx, multiplayer_peer_class_get_transfer_channel, "get_transfer_channel", 0),
-        JS_NewCFunction(ctx, multiplayer_peer_class_set_transfer_channel, "set_transfer_channel", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, multiplayer_peer_class_set_transfer_channel, "set_transfer_channel", 1),
+        JS_PROP_GETSET
     );
 }
 

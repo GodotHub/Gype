@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/text_edit.hpp>
-#include <godot_cpp/classes/syntax_highlighter.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/syntax_highlighter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void syntax_highlighter_class_finalizer(JSRuntime *rt, JSValue val) {
-	SyntaxHighlighter *syntax_highlighter = static_cast<SyntaxHighlighter *>(JS_GetOpaque(val, SyntaxHighlighter::__class_id));
-	if (syntax_highlighter)
-		memdelete(syntax_highlighter);
+	
+	// nothing
 }
 
 static JSClassDef syntax_highlighter_class_def = {

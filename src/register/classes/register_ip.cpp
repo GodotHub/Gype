@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/ip.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
@@ -16,9 +16,8 @@ static JSValue ip_instance;
 static void js_ip_singleton();
 
 static void ip_class_finalizer(JSRuntime *rt, JSValue val) {
-	IP *ip = static_cast<IP *>(JS_GetOpaque(val, IP::__class_id));
-	if (ip)
-		IP::free(nullptr, ip);
+	
+	// nothing
 }
 
 static JSClassDef ip_class_def = {

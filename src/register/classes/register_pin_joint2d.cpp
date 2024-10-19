@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/joint2d.hpp>
 #include <godot_cpp/classes/pin_joint2d.hpp>
+#include <godot_cpp/classes/joint2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void pin_joint2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	PinJoint2D *pin_joint2d = static_cast<PinJoint2D *>(JS_GetOpaque(val, PinJoint2D::__class_id));
-	if (pin_joint2d)
-		memdelete(pin_joint2d);
+	
+	// nothing
 }
 
 static JSClassDef pin_joint2d_class_def = {
@@ -99,48 +98,48 @@ void define_pin_joint2d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "softness"),
         JS_NewCFunction(ctx, pin_joint2d_class_get_softness, "get_softness", 0),
-        JS_NewCFunction(ctx, pin_joint2d_class_set_softness, "set_softness", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, pin_joint2d_class_set_softness, "set_softness", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angular_limit_enabled"),
         JS_NewCFunction(ctx, pin_joint2d_class_is_angular_limit_enabled, "is_angular_limit_enabled", 0),
-        JS_NewCFunction(ctx, pin_joint2d_class_set_angular_limit_enabled, "set_angular_limit_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, pin_joint2d_class_set_angular_limit_enabled, "set_angular_limit_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angular_limit_lower"),
         JS_NewCFunction(ctx, pin_joint2d_class_get_angular_limit_lower, "get_angular_limit_lower", 0),
-        JS_NewCFunction(ctx, pin_joint2d_class_set_angular_limit_lower, "set_angular_limit_lower", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, pin_joint2d_class_set_angular_limit_lower, "set_angular_limit_lower", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "angular_limit_upper"),
         JS_NewCFunction(ctx, pin_joint2d_class_get_angular_limit_upper, "get_angular_limit_upper", 0),
-        JS_NewCFunction(ctx, pin_joint2d_class_set_angular_limit_upper, "set_angular_limit_upper", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, pin_joint2d_class_set_angular_limit_upper, "set_angular_limit_upper", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "motor_enabled"),
         JS_NewCFunction(ctx, pin_joint2d_class_is_motor_enabled, "is_motor_enabled", 0),
-        JS_NewCFunction(ctx, pin_joint2d_class_set_motor_enabled, "set_motor_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, pin_joint2d_class_set_motor_enabled, "set_motor_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "motor_target_velocity"),
         JS_NewCFunction(ctx, pin_joint2d_class_get_motor_target_velocity, "get_motor_target_velocity", 0),
-        JS_NewCFunction(ctx, pin_joint2d_class_set_motor_target_velocity, "set_motor_target_velocity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, pin_joint2d_class_set_motor_target_velocity, "set_motor_target_velocity", 1),
+        JS_PROP_GETSET
     );
 }
 

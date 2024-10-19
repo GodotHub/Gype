@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/navigation_mesh.hpp>
 #include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/navigation_region3d.hpp>
-#include <godot_cpp/classes/navigation_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void navigation_region3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	NavigationRegion3D *navigation_region3d = static_cast<NavigationRegion3D *>(JS_GetOpaque(val, NavigationRegion3D::__class_id));
-	if (navigation_region3d)
-		memdelete(navigation_region3d);
+	
+	// nothing
 }
 
 static JSClassDef navigation_region3d_class_def = {
@@ -135,48 +134,48 @@ void define_navigation_region3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "navigation_mesh"),
         JS_NewCFunction(ctx, navigation_region3d_class_get_navigation_mesh, "get_navigation_mesh", 0),
-        JS_NewCFunction(ctx, navigation_region3d_class_set_navigation_mesh, "set_navigation_mesh", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_region3d_class_set_navigation_mesh, "set_navigation_mesh", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "enabled"),
         JS_NewCFunction(ctx, navigation_region3d_class_is_enabled, "is_enabled", 0),
-        JS_NewCFunction(ctx, navigation_region3d_class_set_enabled, "set_enabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_region3d_class_set_enabled, "set_enabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_edge_connections"),
         JS_NewCFunction(ctx, navigation_region3d_class_get_use_edge_connections, "get_use_edge_connections", 0),
-        JS_NewCFunction(ctx, navigation_region3d_class_set_use_edge_connections, "set_use_edge_connections", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_region3d_class_set_use_edge_connections, "set_use_edge_connections", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "navigation_layers"),
         JS_NewCFunction(ctx, navigation_region3d_class_get_navigation_layers, "get_navigation_layers", 0),
-        JS_NewCFunction(ctx, navigation_region3d_class_set_navigation_layers, "set_navigation_layers", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_region3d_class_set_navigation_layers, "set_navigation_layers", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "enter_cost"),
         JS_NewCFunction(ctx, navigation_region3d_class_get_enter_cost, "get_enter_cost", 0),
-        JS_NewCFunction(ctx, navigation_region3d_class_set_enter_cost, "set_enter_cost", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_region3d_class_set_enter_cost, "set_enter_cost", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "travel_cost"),
         JS_NewCFunction(ctx, navigation_region3d_class_get_travel_cost, "get_travel_cost", 0),
-        JS_NewCFunction(ctx, navigation_region3d_class_set_travel_cost, "set_travel_cost", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_region3d_class_set_travel_cost, "set_travel_cost", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/canvas_texture.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void canvas_texture_class_finalizer(JSRuntime *rt, JSValue val) {
-	CanvasTexture *canvas_texture = static_cast<CanvasTexture *>(JS_GetOpaque(val, CanvasTexture::__class_id));
-	if (canvas_texture)
-		memdelete(canvas_texture);
+	
+	// nothing
 }
 
 static JSClassDef canvas_texture_class_def = {
@@ -108,56 +107,56 @@ void define_canvas_texture_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "diffuse_texture"),
         JS_NewCFunction(ctx, canvas_texture_class_get_diffuse_texture, "get_diffuse_texture", 0),
-        JS_NewCFunction(ctx, canvas_texture_class_set_diffuse_texture, "set_diffuse_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_texture_class_set_diffuse_texture, "set_diffuse_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "normal_texture"),
         JS_NewCFunction(ctx, canvas_texture_class_get_normal_texture, "get_normal_texture", 0),
-        JS_NewCFunction(ctx, canvas_texture_class_set_normal_texture, "set_normal_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_texture_class_set_normal_texture, "set_normal_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "specular_texture"),
         JS_NewCFunction(ctx, canvas_texture_class_get_specular_texture, "get_specular_texture", 0),
-        JS_NewCFunction(ctx, canvas_texture_class_set_specular_texture, "set_specular_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_texture_class_set_specular_texture, "set_specular_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "specular_color"),
         JS_NewCFunction(ctx, canvas_texture_class_get_specular_color, "get_specular_color", 0),
-        JS_NewCFunction(ctx, canvas_texture_class_set_specular_color, "set_specular_color", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_texture_class_set_specular_color, "set_specular_color", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "specular_shininess"),
         JS_NewCFunction(ctx, canvas_texture_class_get_specular_shininess, "get_specular_shininess", 0),
-        JS_NewCFunction(ctx, canvas_texture_class_set_specular_shininess, "set_specular_shininess", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_texture_class_set_specular_shininess, "set_specular_shininess", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_filter"),
         JS_NewCFunction(ctx, canvas_texture_class_get_texture_filter, "get_texture_filter", 0),
-        JS_NewCFunction(ctx, canvas_texture_class_set_texture_filter, "set_texture_filter", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_texture_class_set_texture_filter, "set_texture_filter", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_repeat"),
         JS_NewCFunction(ctx, canvas_texture_class_get_texture_repeat, "get_texture_repeat", 0),
-        JS_NewCFunction(ctx, canvas_texture_class_set_texture_repeat, "set_texture_repeat", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, canvas_texture_class_set_texture_repeat, "set_texture_repeat", 1),
+        JS_PROP_GETSET
     );
 }
 

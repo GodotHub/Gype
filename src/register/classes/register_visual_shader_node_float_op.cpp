@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void visual_shader_node_float_op_class_finalizer(JSRuntime *rt, JSValue val) {
-	VisualShaderNodeFloatOp *visual_shader_node_float_op = static_cast<VisualShaderNodeFloatOp *>(JS_GetOpaque(val, VisualShaderNodeFloatOp::__class_id));
-	if (visual_shader_node_float_op)
-		memdelete(visual_shader_node_float_op);
+	
+	// nothing
 }
 
 static JSClassDef visual_shader_node_float_op_class_def = {
@@ -54,8 +53,8 @@ void define_visual_shader_node_float_op_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "operator"),
         JS_NewCFunction(ctx, visual_shader_node_float_op_class_get_operator, "get_operator", 0),
-        JS_NewCFunction(ctx, visual_shader_node_float_op_class_set_operator, "set_operator", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, visual_shader_node_float_op_class_set_operator, "set_operator", 1),
+        JS_PROP_GETSET
     );
 }
 

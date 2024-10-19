@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/native_menu.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -17,9 +17,8 @@ static JSValue native_menu_instance;
 static void js_native_menu_singleton();
 
 static void native_menu_class_finalizer(JSRuntime *rt, JSValue val) {
-	NativeMenu *native_menu = static_cast<NativeMenu *>(JS_GetOpaque(val, NativeMenu::__class_id));
-	if (native_menu)
-		NativeMenu::free(nullptr, native_menu);
+	
+	// nothing
 }
 
 static JSClassDef native_menu_class_def = {

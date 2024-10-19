@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void open_xr_action_class_finalizer(JSRuntime *rt, JSValue val) {
-	OpenXRAction *open_xr_action = static_cast<OpenXRAction *>(JS_GetOpaque(val, OpenXRAction::__class_id));
-	if (open_xr_action)
-		memdelete(open_xr_action);
+	
+	// nothing
 }
 
 static JSClassDef open_xr_action_class_def = {
@@ -72,24 +71,24 @@ void define_open_xr_action_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "localized_name"),
         JS_NewCFunction(ctx, open_xr_action_class_get_localized_name, "get_localized_name", 0),
-        JS_NewCFunction(ctx, open_xr_action_class_set_localized_name, "set_localized_name", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_action_class_set_localized_name, "set_localized_name", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "action_type"),
         JS_NewCFunction(ctx, open_xr_action_class_get_action_type, "get_action_type", 0),
-        JS_NewCFunction(ctx, open_xr_action_class_set_action_type, "set_action_type", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_action_class_set_action_type, "set_action_type", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "toplevel_paths"),
         JS_NewCFunction(ctx, open_xr_action_class_get_toplevel_paths, "get_toplevel_paths", 0),
-        JS_NewCFunction(ctx, open_xr_action_class_set_toplevel_paths, "set_toplevel_paths", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, open_xr_action_class_set_toplevel_paths, "set_toplevel_paths", 1),
+        JS_PROP_GETSET
     );
 }
 

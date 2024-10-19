@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource_importer_shader_file.hpp>
 #include <godot_cpp/classes/resource_importer.hpp>
+#include <godot_cpp/classes/resource_importer_shader_file.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void resource_importer_shader_file_class_finalizer(JSRuntime *rt, JSValue val) {
-	ResourceImporterShaderFile *resource_importer_shader_file = static_cast<ResourceImporterShaderFile *>(JS_GetOpaque(val, ResourceImporterShaderFile::__class_id));
-	if (resource_importer_shader_file)
-		memdelete(resource_importer_shader_file);
+	
+	// nothing
 }
 
 static JSClassDef resource_importer_shader_file_class_def = {

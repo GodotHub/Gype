@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void optimized_translation_class_finalizer(JSRuntime *rt, JSValue val) {
-	OptimizedTranslation *optimized_translation = static_cast<OptimizedTranslation *>(JS_GetOpaque(val, OptimizedTranslation::__class_id));
-	if (optimized_translation)
-		memdelete(optimized_translation);
+	
+	// nothing
 }
 
 static JSClassDef optimized_translation_class_def = {

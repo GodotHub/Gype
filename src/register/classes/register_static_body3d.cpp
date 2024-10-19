@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/physics_body3d.hpp>
 #include <godot_cpp/classes/static_body3d.hpp>
 #include <godot_cpp/classes/physics_material.hpp>
-#include <godot_cpp/classes/physics_body3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void static_body3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	StaticBody3D *static_body3d = static_cast<StaticBody3D *>(JS_GetOpaque(val, StaticBody3D::__class_id));
-	if (static_body3d)
-		memdelete(static_body3d);
+	
+	// nothing
 }
 
 static JSClassDef static_body3d_class_def = {
@@ -73,24 +72,24 @@ void define_static_body3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "physics_material_override"),
         JS_NewCFunction(ctx, static_body3d_class_get_physics_material_override, "get_physics_material_override", 0),
-        JS_NewCFunction(ctx, static_body3d_class_set_physics_material_override, "set_physics_material_override", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, static_body3d_class_set_physics_material_override, "set_physics_material_override", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "constant_linear_velocity"),
         JS_NewCFunction(ctx, static_body3d_class_get_constant_linear_velocity, "get_constant_linear_velocity", 0),
-        JS_NewCFunction(ctx, static_body3d_class_set_constant_linear_velocity, "set_constant_linear_velocity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, static_body3d_class_set_constant_linear_velocity, "set_constant_linear_velocity", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "constant_angular_velocity"),
         JS_NewCFunction(ctx, static_body3d_class_get_constant_angular_velocity, "get_constant_angular_velocity", 0),
-        JS_NewCFunction(ctx, static_body3d_class_set_constant_angular_velocity, "set_constant_angular_velocity", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, static_body3d_class_set_constant_angular_velocity, "set_constant_angular_velocity", 1),
+        JS_PROP_GETSET
     );
 }
 

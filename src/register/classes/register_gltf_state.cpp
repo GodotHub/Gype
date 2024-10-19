@@ -6,31 +6,30 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/gltf_camera.hpp>
+#include <godot_cpp/classes/gltf_animation.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/gltf_mesh.hpp>
 #include <godot_cpp/classes/gltf_node.hpp>
-#include <godot_cpp/classes/gltf_skeleton.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/gltf_texture.hpp>
-#include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/animation_player.hpp>
-#include <godot_cpp/classes/gltf_skin.hpp>
-#include <godot_cpp/classes/gltf_state.hpp>
 #include <godot_cpp/classes/gltf_texture_sampler.hpp>
-#include <godot_cpp/classes/gltf_buffer_view.hpp>
+#include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/gltf_skeleton.hpp>
 #include <godot_cpp/classes/gltf_accessor.hpp>
 #include <godot_cpp/classes/gltf_light.hpp>
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/gltf_animation.hpp>
+#include <godot_cpp/classes/gltf_texture.hpp>
+#include <godot_cpp/classes/gltf_state.hpp>
+#include <godot_cpp/classes/gltf_camera.hpp>
+#include <godot_cpp/classes/gltf_skin.hpp>
+#include <godot_cpp/classes/gltf_buffer_view.hpp>
+#include <godot_cpp/classes/animation_player.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gltf_state_class_finalizer(JSRuntime *rt, JSValue val) {
-	GLTFState *gltf_state = static_cast<GLTFState *>(JS_GetOpaque(val, GLTFState::__class_id));
-	if (gltf_state)
-		memdelete(gltf_state);
+	
+	// nothing
 }
 
 static JSClassDef gltf_state_class_def = {
@@ -364,240 +363,240 @@ void define_gltf_state_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "json"),
         JS_NewCFunction(ctx, gltf_state_class_get_json, "get_json", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_json, "set_json", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_json, "set_json", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "major_version"),
         JS_NewCFunction(ctx, gltf_state_class_get_major_version, "get_major_version", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_major_version, "set_major_version", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_major_version, "set_major_version", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "minor_version"),
         JS_NewCFunction(ctx, gltf_state_class_get_minor_version, "get_minor_version", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_minor_version, "set_minor_version", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_minor_version, "set_minor_version", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "copyright"),
         JS_NewCFunction(ctx, gltf_state_class_get_copyright, "get_copyright", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_copyright, "set_copyright", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_copyright, "set_copyright", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "glb_data"),
         JS_NewCFunction(ctx, gltf_state_class_get_glb_data, "get_glb_data", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_glb_data, "set_glb_data", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_glb_data, "set_glb_data", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "use_named_skin_binds"),
         JS_NewCFunction(ctx, gltf_state_class_get_use_named_skin_binds, "get_use_named_skin_binds", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_use_named_skin_binds, "set_use_named_skin_binds", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_use_named_skin_binds, "set_use_named_skin_binds", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "nodes"),
         JS_NewCFunction(ctx, gltf_state_class_get_nodes, "get_nodes", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_nodes, "set_nodes", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_nodes, "set_nodes", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "buffers"),
         JS_NewCFunction(ctx, gltf_state_class_get_buffers, "get_buffers", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_buffers, "set_buffers", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_buffers, "set_buffers", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "buffer_views"),
         JS_NewCFunction(ctx, gltf_state_class_get_buffer_views, "get_buffer_views", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_buffer_views, "set_buffer_views", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_buffer_views, "set_buffer_views", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "accessors"),
         JS_NewCFunction(ctx, gltf_state_class_get_accessors, "get_accessors", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_accessors, "set_accessors", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_accessors, "set_accessors", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "meshes"),
         JS_NewCFunction(ctx, gltf_state_class_get_meshes, "get_meshes", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_meshes, "set_meshes", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_meshes, "set_meshes", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "materials"),
         JS_NewCFunction(ctx, gltf_state_class_get_materials, "get_materials", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_materials, "set_materials", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_materials, "set_materials", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "scene_name"),
         JS_NewCFunction(ctx, gltf_state_class_get_scene_name, "get_scene_name", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_scene_name, "set_scene_name", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_scene_name, "set_scene_name", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "base_path"),
         JS_NewCFunction(ctx, gltf_state_class_get_base_path, "get_base_path", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_base_path, "set_base_path", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_base_path, "set_base_path", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "filename"),
         JS_NewCFunction(ctx, gltf_state_class_get_filename, "get_filename", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_filename, "set_filename", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_filename, "set_filename", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "root_nodes"),
         JS_NewCFunction(ctx, gltf_state_class_get_root_nodes, "get_root_nodes", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_root_nodes, "set_root_nodes", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_root_nodes, "set_root_nodes", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "textures"),
         JS_NewCFunction(ctx, gltf_state_class_get_textures, "get_textures", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_textures, "set_textures", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_textures, "set_textures", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_samplers"),
         JS_NewCFunction(ctx, gltf_state_class_get_texture_samplers, "get_texture_samplers", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_texture_samplers, "set_texture_samplers", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_texture_samplers, "set_texture_samplers", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "images"),
         JS_NewCFunction(ctx, gltf_state_class_get_images, "get_images", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_images, "set_images", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_images, "set_images", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "skins"),
         JS_NewCFunction(ctx, gltf_state_class_get_skins, "get_skins", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_skins, "set_skins", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_skins, "set_skins", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cameras"),
         JS_NewCFunction(ctx, gltf_state_class_get_cameras, "get_cameras", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_cameras, "set_cameras", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_cameras, "set_cameras", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "lights"),
         JS_NewCFunction(ctx, gltf_state_class_get_lights, "get_lights", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_lights, "set_lights", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_lights, "set_lights", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "unique_names"),
         JS_NewCFunction(ctx, gltf_state_class_get_unique_names, "get_unique_names", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_unique_names, "set_unique_names", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_unique_names, "set_unique_names", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "unique_animation_names"),
         JS_NewCFunction(ctx, gltf_state_class_get_unique_animation_names, "get_unique_animation_names", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_unique_animation_names, "set_unique_animation_names", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_unique_animation_names, "set_unique_animation_names", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "skeletons"),
         JS_NewCFunction(ctx, gltf_state_class_get_skeletons, "get_skeletons", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_skeletons, "set_skeletons", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_skeletons, "set_skeletons", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "create_animations"),
         JS_NewCFunction(ctx, gltf_state_class_get_create_animations, "get_create_animations", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_create_animations, "set_create_animations", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_create_animations, "set_create_animations", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "import_as_skeleton_bones"),
         JS_NewCFunction(ctx, gltf_state_class_get_import_as_skeleton_bones, "get_import_as_skeleton_bones", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_import_as_skeleton_bones, "set_import_as_skeleton_bones", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_import_as_skeleton_bones, "set_import_as_skeleton_bones", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "animations"),
         JS_NewCFunction(ctx, gltf_state_class_get_animations, "get_animations", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_animations, "set_animations", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_animations, "set_animations", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "handle_binary_image"),
         JS_NewCFunction(ctx, gltf_state_class_get_handle_binary_image, "get_handle_binary_image", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_handle_binary_image, "set_handle_binary_image", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_handle_binary_image, "set_handle_binary_image", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "bake_fps"),
         JS_NewCFunction(ctx, gltf_state_class_get_bake_fps, "get_bake_fps", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_bake_fps, "set_bake_fps", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_state_class_set_bake_fps, "set_bake_fps", 1),
+        JS_PROP_GETSET
     );
 }
 

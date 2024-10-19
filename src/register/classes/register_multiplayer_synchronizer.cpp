@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/scene_replication_config.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/multiplayer_synchronizer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void multiplayer_synchronizer_class_finalizer(JSRuntime *rt, JSValue val) {
-	MultiplayerSynchronizer *multiplayer_synchronizer = static_cast<MultiplayerSynchronizer *>(JS_GetOpaque(val, MultiplayerSynchronizer::__class_id));
-	if (multiplayer_synchronizer)
-		memdelete(multiplayer_synchronizer);
+	
+	// nothing
 }
 
 static JSClassDef multiplayer_synchronizer_class_def = {
@@ -124,48 +123,48 @@ void define_multiplayer_synchronizer_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "root_path"),
         JS_NewCFunction(ctx, multiplayer_synchronizer_class_get_root_path, "get_root_path", 0),
-        JS_NewCFunction(ctx, multiplayer_synchronizer_class_set_root_path, "set_root_path", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, multiplayer_synchronizer_class_set_root_path, "set_root_path", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "replication_interval"),
         JS_NewCFunction(ctx, multiplayer_synchronizer_class_get_replication_interval, "get_replication_interval", 0),
-        JS_NewCFunction(ctx, multiplayer_synchronizer_class_set_replication_interval, "set_replication_interval", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, multiplayer_synchronizer_class_set_replication_interval, "set_replication_interval", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "delta_interval"),
         JS_NewCFunction(ctx, multiplayer_synchronizer_class_get_delta_interval, "get_delta_interval", 0),
-        JS_NewCFunction(ctx, multiplayer_synchronizer_class_set_delta_interval, "set_delta_interval", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, multiplayer_synchronizer_class_set_delta_interval, "set_delta_interval", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "replication_config"),
         JS_NewCFunction(ctx, multiplayer_synchronizer_class_get_replication_config, "get_replication_config", 0),
-        JS_NewCFunction(ctx, multiplayer_synchronizer_class_set_replication_config, "set_replication_config", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, multiplayer_synchronizer_class_set_replication_config, "set_replication_config", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "visibility_update_mode"),
         JS_NewCFunction(ctx, multiplayer_synchronizer_class_get_visibility_update_mode, "get_visibility_update_mode", 0),
-        JS_NewCFunction(ctx, multiplayer_synchronizer_class_set_visibility_update_mode, "set_visibility_update_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, multiplayer_synchronizer_class_set_visibility_update_mode, "set_visibility_update_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "public_visibility"),
         JS_NewCFunction(ctx, multiplayer_synchronizer_class_is_visibility_public, "is_visibility_public", 0),
-        JS_NewCFunction(ctx, multiplayer_synchronizer_class_set_visibility_public, "set_visibility_public", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, multiplayer_synchronizer_class_set_visibility_public, "set_visibility_public", 1),
+        JS_PROP_GETSET
     );
 }
 

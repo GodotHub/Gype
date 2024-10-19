@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/camera_attributes.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/environment.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/compositor.hpp>
+#include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/classes/world_environment.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -16,9 +16,8 @@
 using namespace godot;
 
 static void world_environment_class_finalizer(JSRuntime *rt, JSValue val) {
-	WorldEnvironment *world_environment = static_cast<WorldEnvironment *>(JS_GetOpaque(val, WorldEnvironment::__class_id));
-	if (world_environment)
-		memdelete(world_environment);
+	
+	// nothing
 }
 
 static JSClassDef world_environment_class_def = {
@@ -75,24 +74,24 @@ void define_world_environment_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "environment"),
         JS_NewCFunction(ctx, world_environment_class_get_environment, "get_environment", 0),
-        JS_NewCFunction(ctx, world_environment_class_set_environment, "set_environment", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, world_environment_class_set_environment, "set_environment", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "camera_attributes"),
         JS_NewCFunction(ctx, world_environment_class_get_camera_attributes, "get_camera_attributes", 0),
-        JS_NewCFunction(ctx, world_environment_class_set_camera_attributes, "set_camera_attributes", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, world_environment_class_set_camera_attributes, "set_camera_attributes", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "compositor"),
         JS_NewCFunction(ctx, world_environment_class_get_compositor, "get_compositor", 0),
-        JS_NewCFunction(ctx, world_environment_class_set_compositor, "set_compositor", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, world_environment_class_set_compositor, "set_compositor", 1),
+        JS_PROP_GETSET
     );
 }
 

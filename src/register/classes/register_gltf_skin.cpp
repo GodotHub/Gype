@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void gltf_skin_class_finalizer(JSRuntime *rt, JSValue val) {
-	GLTFSkin *gltf_skin = static_cast<GLTFSkin *>(JS_GetOpaque(val, GLTFSkin::__class_id));
-	if (gltf_skin)
-		memdelete(gltf_skin);
+	
+	// nothing
 }
 
 static JSClassDef gltf_skin_class_def = {
@@ -136,80 +135,80 @@ void define_gltf_skin_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "skin_root"),
         JS_NewCFunction(ctx, gltf_skin_class_get_skin_root, "get_skin_root", 0),
-        JS_NewCFunction(ctx, gltf_skin_class_set_skin_root, "set_skin_root", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_skin_class_set_skin_root, "set_skin_root", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "joints_original"),
         JS_NewCFunction(ctx, gltf_skin_class_get_joints_original, "get_joints_original", 0),
-        JS_NewCFunction(ctx, gltf_skin_class_set_joints_original, "set_joints_original", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_skin_class_set_joints_original, "set_joints_original", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "inverse_binds"),
         JS_NewCFunction(ctx, gltf_skin_class_get_inverse_binds, "get_inverse_binds", 0),
-        JS_NewCFunction(ctx, gltf_skin_class_set_inverse_binds, "set_inverse_binds", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_skin_class_set_inverse_binds, "set_inverse_binds", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "joints"),
         JS_NewCFunction(ctx, gltf_skin_class_get_joints, "get_joints", 0),
-        JS_NewCFunction(ctx, gltf_skin_class_set_joints, "set_joints", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_skin_class_set_joints, "set_joints", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "non_joints"),
         JS_NewCFunction(ctx, gltf_skin_class_get_non_joints, "get_non_joints", 0),
-        JS_NewCFunction(ctx, gltf_skin_class_set_non_joints, "set_non_joints", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_skin_class_set_non_joints, "set_non_joints", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "roots"),
         JS_NewCFunction(ctx, gltf_skin_class_get_roots, "get_roots", 0),
-        JS_NewCFunction(ctx, gltf_skin_class_set_roots, "set_roots", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_skin_class_set_roots, "set_roots", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "skeleton"),
         JS_NewCFunction(ctx, gltf_skin_class_get_skeleton, "get_skeleton", 0),
-        JS_NewCFunction(ctx, gltf_skin_class_set_skeleton, "set_skeleton", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_skin_class_set_skeleton, "set_skeleton", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "joint_i_to_bone_i"),
         JS_NewCFunction(ctx, gltf_skin_class_get_joint_i_to_bone_i, "get_joint_i_to_bone_i", 0),
-        JS_NewCFunction(ctx, gltf_skin_class_set_joint_i_to_bone_i, "set_joint_i_to_bone_i", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_skin_class_set_joint_i_to_bone_i, "set_joint_i_to_bone_i", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "joint_i_to_name"),
         JS_NewCFunction(ctx, gltf_skin_class_get_joint_i_to_name, "get_joint_i_to_name", 0),
-        JS_NewCFunction(ctx, gltf_skin_class_set_joint_i_to_name, "set_joint_i_to_name", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_skin_class_set_joint_i_to_name, "set_joint_i_to_name", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "godot_skin"),
         JS_NewCFunction(ctx, gltf_skin_class_get_godot_skin, "get_godot_skin", 0),
-        JS_NewCFunction(ctx, gltf_skin_class_set_godot_skin, "set_godot_skin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, gltf_skin_class_set_godot_skin, "set_godot_skin", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void shader_globals_override_class_finalizer(JSRuntime *rt, JSValue val) {
-	ShaderGlobalsOverride *shader_globals_override = static_cast<ShaderGlobalsOverride *>(JS_GetOpaque(val, ShaderGlobalsOverride::__class_id));
-	if (shader_globals_override)
-		memdelete(shader_globals_override);
+	
+	// nothing
 }
 
 static JSClassDef shader_globals_override_class_def = {

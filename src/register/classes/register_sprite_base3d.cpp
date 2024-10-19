@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void sprite_base3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	SpriteBase3D *sprite_base3d = static_cast<SpriteBase3D *>(JS_GetOpaque(val, SpriteBase3D::__class_id));
-	if (sprite_base3d)
-		memdelete(sprite_base3d);
+	
+	// nothing
 }
 
 static JSClassDef sprite_base3d_class_def = {
@@ -198,160 +197,160 @@ void define_sprite_base3d_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "centered"),
         JS_NewCFunction(ctx, sprite_base3d_class_is_centered, "is_centered", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_centered, "set_centered", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite_base3d_class_set_centered, "set_centered", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "offset"),
         JS_NewCFunction(ctx, sprite_base3d_class_get_offset, "get_offset", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_offset, "set_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite_base3d_class_set_offset, "set_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "flip_h"),
         JS_NewCFunction(ctx, sprite_base3d_class_is_flipped_h, "is_flipped_h", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_flip_h, "set_flip_h", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite_base3d_class_set_flip_h, "set_flip_h", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "flip_v"),
         JS_NewCFunction(ctx, sprite_base3d_class_is_flipped_v, "is_flipped_v", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_flip_v, "set_flip_v", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite_base3d_class_set_flip_v, "set_flip_v", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "modulate"),
         JS_NewCFunction(ctx, sprite_base3d_class_get_modulate, "get_modulate", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_modulate, "set_modulate", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite_base3d_class_set_modulate, "set_modulate", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "pixel_size"),
         JS_NewCFunction(ctx, sprite_base3d_class_get_pixel_size, "get_pixel_size", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_pixel_size, "set_pixel_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite_base3d_class_set_pixel_size, "set_pixel_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "axis"),
         JS_NewCFunction(ctx, sprite_base3d_class_get_axis, "get_axis", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_axis, "set_axis", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite_base3d_class_set_axis, "set_axis", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "billboard"),
         JS_NewCFunction(ctx, sprite_base3d_class_get_billboard_mode, "get_billboard_mode", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_billboard_mode, "set_billboard_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite_base3d_class_set_billboard_mode, "set_billboard_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "transparent"),
         JS_NewCFunction(ctx, sprite_base3d_class_get_draw_flag, "get_draw_flag", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_draw_flag, "set_draw_flag", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite_base3d_class_set_draw_flag, "set_draw_flag", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shaded"),
         JS_NewCFunction(ctx, sprite_base3d_class_get_draw_flag, "get_draw_flag", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_draw_flag, "set_draw_flag", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite_base3d_class_set_draw_flag, "set_draw_flag", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "double_sided"),
         JS_NewCFunction(ctx, sprite_base3d_class_get_draw_flag, "get_draw_flag", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_draw_flag, "set_draw_flag", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite_base3d_class_set_draw_flag, "set_draw_flag", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "no_depth_test"),
         JS_NewCFunction(ctx, sprite_base3d_class_get_draw_flag, "get_draw_flag", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_draw_flag, "set_draw_flag", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite_base3d_class_set_draw_flag, "set_draw_flag", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "fixed_size"),
         JS_NewCFunction(ctx, sprite_base3d_class_get_draw_flag, "get_draw_flag", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_draw_flag, "set_draw_flag", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite_base3d_class_set_draw_flag, "set_draw_flag", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "alpha_cut"),
         JS_NewCFunction(ctx, sprite_base3d_class_get_alpha_cut_mode, "get_alpha_cut_mode", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_alpha_cut_mode, "set_alpha_cut_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite_base3d_class_set_alpha_cut_mode, "set_alpha_cut_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "alpha_scissor_threshold"),
         JS_NewCFunction(ctx, sprite_base3d_class_get_alpha_scissor_threshold, "get_alpha_scissor_threshold", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_alpha_scissor_threshold, "set_alpha_scissor_threshold", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite_base3d_class_set_alpha_scissor_threshold, "set_alpha_scissor_threshold", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "alpha_hash_scale"),
         JS_NewCFunction(ctx, sprite_base3d_class_get_alpha_hash_scale, "get_alpha_hash_scale", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_alpha_hash_scale, "set_alpha_hash_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite_base3d_class_set_alpha_hash_scale, "set_alpha_hash_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "alpha_antialiasing_mode"),
         JS_NewCFunction(ctx, sprite_base3d_class_get_alpha_antialiasing, "get_alpha_antialiasing", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_alpha_antialiasing, "set_alpha_antialiasing", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite_base3d_class_set_alpha_antialiasing, "set_alpha_antialiasing", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "alpha_antialiasing_edge"),
         JS_NewCFunction(ctx, sprite_base3d_class_get_alpha_antialiasing_edge, "get_alpha_antialiasing_edge", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_alpha_antialiasing_edge, "set_alpha_antialiasing_edge", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite_base3d_class_set_alpha_antialiasing_edge, "set_alpha_antialiasing_edge", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_filter"),
         JS_NewCFunction(ctx, sprite_base3d_class_get_texture_filter, "get_texture_filter", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_texture_filter, "set_texture_filter", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite_base3d_class_set_texture_filter, "set_texture_filter", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "render_priority"),
         JS_NewCFunction(ctx, sprite_base3d_class_get_render_priority, "get_render_priority", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_render_priority, "set_render_priority", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, sprite_base3d_class_set_render_priority, "set_render_priority", 1),
+        JS_PROP_GETSET
     );
 }
 

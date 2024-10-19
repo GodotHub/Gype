@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_node_transition.hpp>
 #include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/classes/animation_node_sync.hpp>
+#include <godot_cpp/classes/animation_node_transition.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void animation_node_transition_class_finalizer(JSRuntime *rt, JSValue val) {
-	AnimationNodeTransition *animation_node_transition = static_cast<AnimationNodeTransition *>(JS_GetOpaque(val, AnimationNodeTransition::__class_id));
-	if (animation_node_transition)
-		memdelete(animation_node_transition);
+	
+	// nothing
 }
 
 static JSClassDef animation_node_transition_class_def = {
@@ -105,32 +104,32 @@ void define_animation_node_transition_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "xfade_time"),
         JS_NewCFunction(ctx, animation_node_transition_class_get_xfade_time, "get_xfade_time", 0),
-        JS_NewCFunction(ctx, animation_node_transition_class_set_xfade_time, "set_xfade_time", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_transition_class_set_xfade_time, "set_xfade_time", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "xfade_curve"),
         JS_NewCFunction(ctx, animation_node_transition_class_get_xfade_curve, "get_xfade_curve", 0),
-        JS_NewCFunction(ctx, animation_node_transition_class_set_xfade_curve, "set_xfade_curve", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_transition_class_set_xfade_curve, "set_xfade_curve", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "allow_transition_to_self"),
         JS_NewCFunction(ctx, animation_node_transition_class_is_allow_transition_to_self, "is_allow_transition_to_self", 0),
-        JS_NewCFunction(ctx, animation_node_transition_class_set_allow_transition_to_self, "set_allow_transition_to_self", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_transition_class_set_allow_transition_to_self, "set_allow_transition_to_self", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "input_count"),
         JS_UNDEFINED,
-        JS_NewCFunction(ctx, animation_node_transition_class_set_input_count, "set_input_count", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_transition_class_set_input_count, "set_input_count", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -6,7 +6,6 @@
 #include "utils/func_utils.h"
 #include <godot_cpp/variant/rect2i.hpp>
 
-
 using namespace godot;
 
 static void rect2i_class_finalizer(JSRuntime *rt, JSValue val) {
@@ -73,6 +72,34 @@ static JSValue rect2i_class_grow_individual(JSContext *ctx, JSValueConst this_va
 static JSValue rect2i_class_abs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Rect2i::abs, ctx, this_val, argc, argv);
 };
+
+static JSValue rect2i_class_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Rect2i &val = *reinterpret_cast<Rect2i *>(JS_GetOpaque(this_val, Rect2i::__class_id));
+	return Variant(val.position);
+}
+static JSValue rect2i_class_set_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Rect2i &val = *reinterpret_cast<Rect2i *>(JS_GetOpaque(this_val, Rect2i::__class_id));
+	val.position = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue rect2i_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Rect2i &val = *reinterpret_cast<Rect2i *>(JS_GetOpaque(this_val, Rect2i::__class_id));
+	return Variant(val.size);
+}
+static JSValue rect2i_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	Rect2i &val = *reinterpret_cast<Rect2i *>(JS_GetOpaque(this_val, Rect2i::__class_id));
+	val.size = Variant(*argv);
+	return JS_UNDEFINED;
+}
+
+static JSValue rect2i_class_get_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_const_method_ret(&Rect2::get_end, ctx, this_val, argc, argv);
+}
+static JSValue rect2i_class_set_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	return call_builtin_method_no_ret(&Rect2::set_end, ctx, this_val, argc, argv);
+}
+
 static const JSCFunctionListEntry rect2i_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_center", 0, &rect2i_class_get_center),
 	JS_CFUNC_DEF("get_area", 0, &rect2i_class_get_area),
@@ -90,6 +117,27 @@ static const JSCFunctionListEntry rect2i_class_proto_funcs[] = {
 };
 
 void define_rect2i_property(JSContext *ctx, JSValue obj) {
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "position"),
+			JS_NewCFunction(ctx, rect2i_class_get_position, "get_position", 0),
+			JS_NewCFunction(ctx, rect2i_class_set_position, "set_position", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "size"),
+			JS_NewCFunction(ctx, rect2i_class_get_size, "get_size", 0),
+			JS_NewCFunction(ctx, rect2i_class_set_size, "set_size", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "end"),
+			JS_NewCFunction(ctx, rect2i_class_get_end, "get_end", 0),
+			JS_NewCFunction(ctx, rect2i_class_set_end, "set_end", 1),
+			JS_PROP_GETSET);
 }
 
 static int js_rect2i_class_init(JSContext *ctx) {
@@ -100,7 +148,6 @@ static int js_rect2i_class_init(JSContext *ctx) {
 
 	JSValue proto = JS_NewObject(ctx);
 	JS_SetClassProto(ctx, Rect2i::__class_id, proto);
-
 	define_rect2i_property(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, rect2i_class_proto_funcs, _countof(rect2i_class_proto_funcs));
 

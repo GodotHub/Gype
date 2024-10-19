@@ -5,18 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/input_event_shortcut.hpp>
 #include <godot_cpp/classes/shortcut.hpp>
 #include <godot_cpp/classes/input_event.hpp>
-#include <godot_cpp/classes/input_event_shortcut.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void input_event_shortcut_class_finalizer(JSRuntime *rt, JSValue val) {
-	InputEventShortcut *input_event_shortcut = static_cast<InputEventShortcut *>(JS_GetOpaque(val, InputEventShortcut::__class_id));
-	if (input_event_shortcut)
-		memdelete(input_event_shortcut);
+	
+	// nothing
 }
 
 static JSClassDef input_event_shortcut_class_def = {
@@ -55,8 +54,8 @@ void define_input_event_shortcut_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "shortcut"),
         JS_NewCFunction(ctx, input_event_shortcut_class_get_shortcut, "get_shortcut", 0),
-        JS_NewCFunction(ctx, input_event_shortcut_class_set_shortcut, "set_shortcut", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, input_event_shortcut_class_set_shortcut, "set_shortcut", 1),
+        JS_PROP_GETSET
     );
 }
 

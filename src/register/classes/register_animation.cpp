@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void animation_class_finalizer(JSRuntime *rt, JSValue val) {
-	Animation *animation = static_cast<Animation *>(JS_GetOpaque(val, Animation::__class_id));
-	if (animation)
-		memdelete(animation);
+	
+	// nothing
 }
 
 static JSClassDef animation_class_def = {
@@ -371,24 +370,24 @@ void define_animation_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "length"),
         JS_NewCFunction(ctx, animation_class_get_length, "get_length", 0),
-        JS_NewCFunction(ctx, animation_class_set_length, "set_length", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_class_set_length, "set_length", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "loop_mode"),
         JS_NewCFunction(ctx, animation_class_get_loop_mode, "get_loop_mode", 0),
-        JS_NewCFunction(ctx, animation_class_set_loop_mode, "set_loop_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_class_set_loop_mode, "set_loop_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "step"),
         JS_NewCFunction(ctx, animation_class_get_step, "get_step", 0),
-        JS_NewCFunction(ctx, animation_class_set_step, "set_step", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_class_set_step, "set_step", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
@@ -396,7 +395,7 @@ void define_animation_property(JSContext *ctx, JSValue obj) {
         JS_NewAtom(ctx, "capture_included"),
         JS_NewCFunction(ctx, animation_class_is_capture_included, "is_capture_included", 0),
         JS_UNDEFINED,
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_PROP_GETSET
     );
 }
 

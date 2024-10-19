@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/video_stream.hpp>
 #include <godot_cpp/classes/video_stream_theora.hpp>
+#include <godot_cpp/classes/video_stream.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void video_stream_theora_class_finalizer(JSRuntime *rt, JSValue val) {
-	VideoStreamTheora *video_stream_theora = static_cast<VideoStreamTheora *>(JS_GetOpaque(val, VideoStreamTheora::__class_id));
-	if (video_stream_theora)
-		memdelete(video_stream_theora);
+	
+	// nothing
 }
 
 static JSClassDef video_stream_theora_class_def = {

@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/classes/audio_effect_amplify.hpp>
+#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void audio_effect_amplify_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioEffectAmplify *audio_effect_amplify = static_cast<AudioEffectAmplify *>(JS_GetOpaque(val, AudioEffectAmplify::__class_id));
-	if (audio_effect_amplify)
-		memdelete(audio_effect_amplify);
+	
+	// nothing
 }
 
 static JSClassDef audio_effect_amplify_class_def = {
@@ -54,8 +53,8 @@ void define_audio_effect_amplify_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "volume_db"),
         JS_NewCFunction(ctx, audio_effect_amplify_class_get_volume_db, "get_volume_db", 0),
-        JS_NewCFunction(ctx, audio_effect_amplify_class_set_volume_db, "set_volume_db", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, audio_effect_amplify_class_set_volume_db, "set_volume_db", 1),
+        JS_PROP_GETSET
     );
 }
 

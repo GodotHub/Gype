@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/upnp_device.hpp>
-#include <godot_cpp/classes/upnp.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/upnp.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void upnp_class_finalizer(JSRuntime *rt, JSValue val) {
-	UPNP *upnp = static_cast<UPNP *>(JS_GetOpaque(val, UPNP::__class_id));
-	if (upnp)
-		memdelete(upnp);
+	
+	// nothing
 }
 
 static JSClassDef upnp_class_def = {
@@ -121,24 +120,24 @@ void define_upnp_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "discover_multicast_if"),
         JS_NewCFunction(ctx, upnp_class_get_discover_multicast_if, "get_discover_multicast_if", 0),
-        JS_NewCFunction(ctx, upnp_class_set_discover_multicast_if, "set_discover_multicast_if", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, upnp_class_set_discover_multicast_if, "set_discover_multicast_if", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "discover_local_port"),
         JS_NewCFunction(ctx, upnp_class_get_discover_local_port, "get_discover_local_port", 0),
-        JS_NewCFunction(ctx, upnp_class_set_discover_local_port, "set_discover_local_port", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, upnp_class_set_discover_local_port, "set_discover_local_port", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "discover_ipv6"),
         JS_NewCFunction(ctx, upnp_class_is_discover_ipv6, "is_discover_ipv6", 0),
-        JS_NewCFunction(ctx, upnp_class_set_discover_ipv6, "set_discover_ipv6", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, upnp_class_set_discover_ipv6, "set_discover_ipv6", 1),
+        JS_PROP_GETSET
     );
 }
 

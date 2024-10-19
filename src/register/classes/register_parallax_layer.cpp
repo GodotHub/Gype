@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/parallax_layer.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void parallax_layer_class_finalizer(JSRuntime *rt, JSValue val) {
-	ParallaxLayer *parallax_layer = static_cast<ParallaxLayer *>(JS_GetOpaque(val, ParallaxLayer::__class_id));
-	if (parallax_layer)
-		memdelete(parallax_layer);
+	
+	// nothing
 }
 
 static JSClassDef parallax_layer_class_def = {
@@ -72,24 +71,24 @@ void define_parallax_layer_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "motion_scale"),
         JS_NewCFunction(ctx, parallax_layer_class_get_motion_scale, "get_motion_scale", 0),
-        JS_NewCFunction(ctx, parallax_layer_class_set_motion_scale, "set_motion_scale", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, parallax_layer_class_set_motion_scale, "set_motion_scale", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "motion_offset"),
         JS_NewCFunction(ctx, parallax_layer_class_get_motion_offset, "get_motion_offset", 0),
-        JS_NewCFunction(ctx, parallax_layer_class_set_motion_offset, "set_motion_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, parallax_layer_class_set_motion_offset, "set_motion_offset", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "motion_mirroring"),
         JS_NewCFunction(ctx, parallax_layer_class_get_mirroring, "get_mirroring", 0),
-        JS_NewCFunction(ctx, parallax_layer_class_set_mirroring, "set_mirroring", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, parallax_layer_class_set_mirroring, "set_mirroring", 1),
+        JS_PROP_GETSET
     );
 }
 

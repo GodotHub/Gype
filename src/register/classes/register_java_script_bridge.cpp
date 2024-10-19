@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/java_script_object.hpp>
-#include <godot_cpp/classes/java_script_bridge.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/java_script_bridge.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
@@ -17,9 +17,8 @@ static JSValue java_script_bridge_instance;
 static void js_java_script_bridge_singleton();
 
 static void java_script_bridge_class_finalizer(JSRuntime *rt, JSValue val) {
-	JavaScriptBridge *java_script_bridge = static_cast<JavaScriptBridge *>(JS_GetOpaque(val, JavaScriptBridge::__class_id));
-	if (java_script_bridge)
-		JavaScriptBridge::free(nullptr, java_script_bridge);
+	
+	// nothing
 }
 
 static JSClassDef java_script_bridge_class_def = {

@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void editor_undo_redo_manager_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorUndoRedoManager *editor_undo_redo_manager = static_cast<EditorUndoRedoManager *>(JS_GetOpaque(val, EditorUndoRedoManager::__class_id));
-	if (editor_undo_redo_manager)
-		memdelete(editor_undo_redo_manager);
+	
+	// nothing
 }
 
 static JSClassDef editor_undo_redo_manager_class_def = {

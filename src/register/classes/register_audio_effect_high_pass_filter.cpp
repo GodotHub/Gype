@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_filter.hpp>
 #include <godot_cpp/classes/audio_effect_high_pass_filter.hpp>
+#include <godot_cpp/classes/audio_effect_filter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void audio_effect_high_pass_filter_class_finalizer(JSRuntime *rt, JSValue val) {
-	AudioEffectHighPassFilter *audio_effect_high_pass_filter = static_cast<AudioEffectHighPassFilter *>(JS_GetOpaque(val, AudioEffectHighPassFilter::__class_id));
-	if (audio_effect_high_pass_filter)
-		memdelete(audio_effect_high_pass_filter);
+	
+	// nothing
 }
 
 static JSClassDef audio_effect_high_pass_filter_class_def = {

@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void navigation_mesh_source_geometry_data2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	NavigationMeshSourceGeometryData2D *navigation_mesh_source_geometry_data2d = static_cast<NavigationMeshSourceGeometryData2D *>(JS_GetOpaque(val, NavigationMeshSourceGeometryData2D::__class_id));
-	if (navigation_mesh_source_geometry_data2d)
-		memdelete(navigation_mesh_source_geometry_data2d);
+	
+	// nothing
 }
 
 static JSClassDef navigation_mesh_source_geometry_data2d_class_def = {
@@ -116,24 +115,24 @@ void define_navigation_mesh_source_geometry_data2d_property(JSContext *ctx, JSVa
         obj,
         JS_NewAtom(ctx, "traversable_outlines"),
         JS_NewCFunction(ctx, navigation_mesh_source_geometry_data2d_class_get_traversable_outlines, "get_traversable_outlines", 0),
-        JS_NewCFunction(ctx, navigation_mesh_source_geometry_data2d_class_set_traversable_outlines, "set_traversable_outlines", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_mesh_source_geometry_data2d_class_set_traversable_outlines, "set_traversable_outlines", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "obstruction_outlines"),
         JS_NewCFunction(ctx, navigation_mesh_source_geometry_data2d_class_get_obstruction_outlines, "get_obstruction_outlines", 0),
-        JS_NewCFunction(ctx, navigation_mesh_source_geometry_data2d_class_set_obstruction_outlines, "set_obstruction_outlines", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_mesh_source_geometry_data2d_class_set_obstruction_outlines, "set_obstruction_outlines", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "projected_obstructions"),
         JS_NewCFunction(ctx, navigation_mesh_source_geometry_data2d_class_get_projected_obstructions, "get_projected_obstructions", 0),
-        JS_NewCFunction(ctx, navigation_mesh_source_geometry_data2d_class_set_projected_obstructions, "set_projected_obstructions", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, navigation_mesh_source_geometry_data2d_class_set_projected_obstructions, "set_projected_obstructions", 1),
+        JS_PROP_GETSET
     );
 }
 

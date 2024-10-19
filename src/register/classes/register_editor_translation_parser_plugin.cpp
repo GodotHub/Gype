@@ -13,9 +13,8 @@
 using namespace godot;
 
 static void editor_translation_parser_plugin_class_finalizer(JSRuntime *rt, JSValue val) {
-	EditorTranslationParserPlugin *editor_translation_parser_plugin = static_cast<EditorTranslationParserPlugin *>(JS_GetOpaque(val, EditorTranslationParserPlugin::__class_id));
-	if (editor_translation_parser_plugin)
-		memdelete(editor_translation_parser_plugin);
+	
+	// nothing
 }
 
 static JSClassDef editor_translation_parser_plugin_class_def = {

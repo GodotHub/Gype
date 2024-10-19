@@ -6,17 +6,16 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/animation_node_blend_tree.hpp>
-#include <godot_cpp/classes/animation_root_node.hpp>
 #include <godot_cpp/classes/animation_node.hpp>
+#include <godot_cpp/classes/animation_root_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void animation_node_blend_tree_class_finalizer(JSRuntime *rt, JSValue val) {
-	AnimationNodeBlendTree *animation_node_blend_tree = static_cast<AnimationNodeBlendTree *>(JS_GetOpaque(val, AnimationNodeBlendTree::__class_id));
-	if (animation_node_blend_tree)
-		memdelete(animation_node_blend_tree);
+	
+	// nothing
 }
 
 static JSClassDef animation_node_blend_tree_class_def = {
@@ -97,8 +96,8 @@ void define_animation_node_blend_tree_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "graph_offset"),
         JS_NewCFunction(ctx, animation_node_blend_tree_class_get_graph_offset, "get_graph_offset", 0),
-        JS_NewCFunction(ctx, animation_node_blend_tree_class_set_graph_offset, "set_graph_offset", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, animation_node_blend_tree_class_set_graph_offset, "set_graph_offset", 1),
+        JS_PROP_GETSET
     );
 }
 

@@ -14,9 +14,8 @@
 using namespace godot;
 
 static void decal_class_finalizer(JSRuntime *rt, JSValue val) {
-	Decal *decal = static_cast<Decal *>(JS_GetOpaque(val, Decal::__class_id));
-	if (decal)
-		memdelete(decal);
+	
+	// nothing
 }
 
 static JSClassDef decal_class_def = {
@@ -154,120 +153,120 @@ void define_decal_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, decal_class_get_size, "get_size", 0),
-        JS_NewCFunction(ctx, decal_class_set_size, "set_size", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, decal_class_set_size, "set_size", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_albedo"),
         JS_NewCFunction(ctx, decal_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, decal_class_set_texture, "set_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, decal_class_set_texture, "set_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_normal"),
         JS_NewCFunction(ctx, decal_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, decal_class_set_texture, "set_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, decal_class_set_texture, "set_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_orm"),
         JS_NewCFunction(ctx, decal_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, decal_class_set_texture, "set_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, decal_class_set_texture, "set_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "texture_emission"),
         JS_NewCFunction(ctx, decal_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, decal_class_set_texture, "set_texture", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, decal_class_set_texture, "set_texture", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "emission_energy"),
         JS_NewCFunction(ctx, decal_class_get_emission_energy, "get_emission_energy", 0),
-        JS_NewCFunction(ctx, decal_class_set_emission_energy, "set_emission_energy", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, decal_class_set_emission_energy, "set_emission_energy", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "modulate"),
         JS_NewCFunction(ctx, decal_class_get_modulate, "get_modulate", 0),
-        JS_NewCFunction(ctx, decal_class_set_modulate, "set_modulate", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, decal_class_set_modulate, "set_modulate", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "albedo_mix"),
         JS_NewCFunction(ctx, decal_class_get_albedo_mix, "get_albedo_mix", 0),
-        JS_NewCFunction(ctx, decal_class_set_albedo_mix, "set_albedo_mix", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, decal_class_set_albedo_mix, "set_albedo_mix", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "normal_fade"),
         JS_NewCFunction(ctx, decal_class_get_normal_fade, "get_normal_fade", 0),
-        JS_NewCFunction(ctx, decal_class_set_normal_fade, "set_normal_fade", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, decal_class_set_normal_fade, "set_normal_fade", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "upper_fade"),
         JS_NewCFunction(ctx, decal_class_get_upper_fade, "get_upper_fade", 0),
-        JS_NewCFunction(ctx, decal_class_set_upper_fade, "set_upper_fade", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, decal_class_set_upper_fade, "set_upper_fade", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "lower_fade"),
         JS_NewCFunction(ctx, decal_class_get_lower_fade, "get_lower_fade", 0),
-        JS_NewCFunction(ctx, decal_class_set_lower_fade, "set_lower_fade", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, decal_class_set_lower_fade, "set_lower_fade", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "distance_fade_enabled"),
         JS_NewCFunction(ctx, decal_class_is_distance_fade_enabled, "is_distance_fade_enabled", 0),
-        JS_NewCFunction(ctx, decal_class_set_enable_distance_fade, "set_enable_distance_fade", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, decal_class_set_enable_distance_fade, "set_enable_distance_fade", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "distance_fade_begin"),
         JS_NewCFunction(ctx, decal_class_get_distance_fade_begin, "get_distance_fade_begin", 0),
-        JS_NewCFunction(ctx, decal_class_set_distance_fade_begin, "set_distance_fade_begin", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, decal_class_set_distance_fade_begin, "set_distance_fade_begin", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "distance_fade_length"),
         JS_NewCFunction(ctx, decal_class_get_distance_fade_length, "get_distance_fade_length", 0),
-        JS_NewCFunction(ctx, decal_class_set_distance_fade_length, "set_distance_fade_length", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, decal_class_set_distance_fade_length, "set_distance_fade_length", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "cull_mask"),
         JS_NewCFunction(ctx, decal_class_get_cull_mask, "get_cull_mask", 0),
-        JS_NewCFunction(ctx, decal_class_set_cull_mask, "set_cull_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, decal_class_set_cull_mask, "set_cull_mask", 1),
+        JS_PROP_GETSET
     );
 }
 

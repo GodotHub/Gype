@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/v_box_container.hpp>
 #include <godot_cpp/classes/box_container.hpp>
+#include <godot_cpp/classes/v_box_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void v_box_container_class_finalizer(JSRuntime *rt, JSValue val) {
-	VBoxContainer *v_box_container = static_cast<VBoxContainer *>(JS_GetOpaque(val, VBoxContainer::__class_id));
-	if (v_box_container)
-		memdelete(v_box_container);
+	
+	// nothing
 }
 
 static JSClassDef v_box_container_class_def = {

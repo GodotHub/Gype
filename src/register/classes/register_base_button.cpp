@@ -5,19 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/shortcut.hpp>
-#include <godot_cpp/classes/button_group.hpp>
-#include <godot_cpp/classes/base_button.hpp>
 #include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/shortcut.hpp>
+#include <godot_cpp/classes/base_button.hpp>
+#include <godot_cpp/classes/button_group.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void base_button_class_finalizer(JSRuntime *rt, JSValue val) {
-	BaseButton *base_button = static_cast<BaseButton *>(JS_GetOpaque(val, BaseButton::__class_id));
-	if (base_button)
-		memdelete(base_button);
+	
+	// nothing
 }
 
 static JSClassDef base_button_class_def = {
@@ -150,80 +149,80 @@ void define_base_button_property(JSContext *ctx, JSValue obj) {
         obj,
         JS_NewAtom(ctx, "disabled"),
         JS_NewCFunction(ctx, base_button_class_is_disabled, "is_disabled", 0),
-        JS_NewCFunction(ctx, base_button_class_set_disabled, "set_disabled", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, base_button_class_set_disabled, "set_disabled", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "toggle_mode"),
         JS_NewCFunction(ctx, base_button_class_is_toggle_mode, "is_toggle_mode", 0),
-        JS_NewCFunction(ctx, base_button_class_set_toggle_mode, "set_toggle_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, base_button_class_set_toggle_mode, "set_toggle_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "button_pressed"),
         JS_NewCFunction(ctx, base_button_class_is_pressed, "is_pressed", 0),
-        JS_NewCFunction(ctx, base_button_class_set_pressed, "set_pressed", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, base_button_class_set_pressed, "set_pressed", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "action_mode"),
         JS_NewCFunction(ctx, base_button_class_get_action_mode, "get_action_mode", 0),
-        JS_NewCFunction(ctx, base_button_class_set_action_mode, "set_action_mode", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, base_button_class_set_action_mode, "set_action_mode", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "button_mask"),
         JS_NewCFunction(ctx, base_button_class_get_button_mask, "get_button_mask", 0),
-        JS_NewCFunction(ctx, base_button_class_set_button_mask, "set_button_mask", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, base_button_class_set_button_mask, "set_button_mask", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "keep_pressed_outside"),
         JS_NewCFunction(ctx, base_button_class_is_keep_pressed_outside, "is_keep_pressed_outside", 0),
-        JS_NewCFunction(ctx, base_button_class_set_keep_pressed_outside, "set_keep_pressed_outside", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, base_button_class_set_keep_pressed_outside, "set_keep_pressed_outside", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "button_group"),
         JS_NewCFunction(ctx, base_button_class_get_button_group, "get_button_group", 0),
-        JS_NewCFunction(ctx, base_button_class_set_button_group, "set_button_group", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, base_button_class_set_button_group, "set_button_group", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shortcut"),
         JS_NewCFunction(ctx, base_button_class_get_shortcut, "get_shortcut", 0),
-        JS_NewCFunction(ctx, base_button_class_set_shortcut, "set_shortcut", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, base_button_class_set_shortcut, "set_shortcut", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shortcut_feedback"),
         JS_NewCFunction(ctx, base_button_class_is_shortcut_feedback, "is_shortcut_feedback", 0),
-        JS_NewCFunction(ctx, base_button_class_set_shortcut_feedback, "set_shortcut_feedback", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, base_button_class_set_shortcut_feedback, "set_shortcut_feedback", 1),
+        JS_PROP_GETSET
     );
     JS_DefinePropertyGetSet(
         ctx,
         obj,
         JS_NewAtom(ctx, "shortcut_in_tooltip"),
         JS_NewCFunction(ctx, base_button_class_is_shortcut_in_tooltip_enabled, "is_shortcut_in_tooltip_enabled", 0),
-        JS_NewCFunction(ctx, base_button_class_set_shortcut_in_tooltip, "set_shortcut_in_tooltip", 0),
-        JS_PROP_CONFIGURABLE | JS_PROP_ENUMERABLE
+        JS_NewCFunction(ctx, base_button_class_set_shortcut_in_tooltip, "set_shortcut_in_tooltip", 1),
+        JS_PROP_GETSET
     );
 }
 

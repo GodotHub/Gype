@@ -5,17 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gltf_document.hpp>
 #include <godot_cpp/classes/fbx_document.hpp>
+#include <godot_cpp/classes/gltf_document.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void fbx_document_class_finalizer(JSRuntime *rt, JSValue val) {
-	FBXDocument *fbx_document = static_cast<FBXDocument *>(JS_GetOpaque(val, FBXDocument::__class_id));
-	if (fbx_document)
-		memdelete(fbx_document);
+	
+	// nothing
 }
 
 static JSClassDef fbx_document_class_def = {

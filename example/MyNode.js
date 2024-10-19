@@ -3,14 +3,15 @@ import { Node2D } from "godot/classes/node2d";
 
 @GodotClass
 export class MyNode extends Node2D {
-  node;
-
+  _position = new Vector2();
   constructor() {
 	super();
   }
 
   _ready() {
-	this.node = new Node2D();
-	this.add_child(this.node);
+	GD.print(this.position);
+  }
+
+  _process(delta) {
   }
 }
