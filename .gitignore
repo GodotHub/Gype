@@ -13,3 +13,4 @@ godot-cpp/__pycache__
 .venv
 .cache
 __pycache__
+.TMP
