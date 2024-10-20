@@ -1,22 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://chwr58n4uwapo"]
+[gd_scene load_steps=2 format=3 uid="uid://bp3ese7njloef"]
 
-[ext_resource type="Script" path="res://MySprite.js" id="1_6qv32"]
-[ext_resource type="Texture2D" uid="uid://b8cebd1utf34e" path="res://icon.svg" id="1_nadou"]
+[ext_resource type="Script" path="res://MySprite.js" id="1_0l2e1"]
 
 [node name="Sprite2D" type="Sprite2D"]
-unique_name_in_owner = 0
-visible = 1
-show_behind_parent = 0
-top_level = 0
-z_as_relative = 1
-y_sort_enabled = 0
-use_parent_material = 0
-rotation = 0
-skew = 0
-texture = ExtResource("1_nadou")
-centered = 1
-flip_h = 0
-flip_v = 0
-region_enabled = 0
-region_filter_clip_enabled = 0
-script = ExtResource("1_6qv32")
+script = ExtResource("1_0l2e1")

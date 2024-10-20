@@ -10,6 +10,7 @@ export class MySprite extends Sprite2D {
 
   _ready() {
 	this.position = this.vec2;
+	GD.print(this.position);
   }
 
   _process(delta) {
